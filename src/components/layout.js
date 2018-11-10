@@ -8,6 +8,7 @@ import store from '../store'
 import Header from './header'
 import './layout.css'
 import ResponsiveSidebar from './ResponsiveSidebar';
+import Container from './Container';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -34,26 +35,9 @@ const Layout = ({ children }) => (
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <ResponsiveSidebar/>
-        <div
-          style={{
-            position: "absolute",
-            top: 80,
-            left: 0,
-            right: "20%",
-            bottom: 0,
-          }}
-        >
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0,
-          }}
-        >
+        <Container>
           {children}
-        </div>
-        </div>
+        </Container>
         </>
       </Provider>
     )}

@@ -1,8 +1,8 @@
 import { SET_SIDEBAR_OPEN, SET_SIDEBAR_DOCKED } from "../actions/actionTypes";
 
 const initialState = {
-  sidebarDocked: false,
-  sidebarOpen: true
+  sidebarDocked: window.matchMedia(`(min-width: 800px)`).matches,
+  sidebarOpen: false
 }
 
 export default function(state=initialState, action) {

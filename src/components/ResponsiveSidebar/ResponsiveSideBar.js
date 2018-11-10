@@ -24,7 +24,7 @@ const styles =
     transition: "transform .3s ease-out",
     WebkitTransition: "-webkit-transform .3s ease-out",
     willChange: "transform",
-    overflowY: "auto"
+    overflowY: "auto",
   },
   content: {
     position: "absolute",
