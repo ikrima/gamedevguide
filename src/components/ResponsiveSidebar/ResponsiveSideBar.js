@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import Sidebar from "react-sidebar";
-
-const mql = window.matchMedia(`(min-width: 800px)`);
-const window_width = window.innerWidth;
+import { getSidebarState } from "../../store/selectors";
+import { connect } from "react-redux";
+import { onSetSidebarOpen, onSetSidebarDocked } from "../../actions/sidebar";
+import MediaQuery from "react-responsive";
 
 const styles = 
 {
   root: {
     position: "absolute",
     top: 80,
-    left: window_width*0.8,
+    left: "80%",
     right: 10,
     bottom: 0,
     overflow: "hidden"
@@ -17,6 +18,7 @@ const styles =
   sidebar: {
     zIndex: 2,
     position: "absolute",
+    left: 0,
     top: 0,
     bottom: 0,
     transition: "transform .3s ease-out",
@@ -54,49 +56,45 @@ const styles =
   }
 };
 
-class ResponsiveSideBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sidebarDocked: mql.matches,
-      sidebarOpen: false
-    };
-
-    this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
-    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-  }
-
-  UNSAFE_componentWillMount() {
-    mql.addListener(this.mediaQueryChanged);
-  }
-
-  componentWillUnmount() {
-    mql.removeListener(this.mediaQueryChanged);
-  }
-
-  onSetSidebarOpen(open) {
-    this.setState({ sidebarOpen: open });
-  }
-
-  mediaQueryChanged() {
-    this.setState({ sidebarDocked: mql.matches, sidebarOpen: false });
-  }
+class ResponsiveSidebar extends Component {
 
   render() {
+    const { sidebarOpen } = this.props.sidebar
+    const { onSetSidebarDocked } = this.props
     return (
-      <Sidebar
-        styles={styles}
-        sidebar={<b>Sidebar content</b>}
-        open={this.state.sidebarOpen}
-        docked={this.state.sidebarDocked}
-        onSetOpen={this.onSetSidebarOpen}
-        pullRight={true}
-        // shadow={false}
+      <MediaQuery
+        maxWidth={800}
+        onChange={(matches) => {
+          onSetSidebarDocked(!matches)
+        }}
       >
-        <b></b>
-      </Sidebar>
+        {(matches) => {
+          return (
+            <Sidebar
+              styles={styles}
+              sidebar={<b>Sidebar content</b>}
+              open={sidebarOpen}
+              docked={!matches}
+              onSetOpen={this.onSetSidebarOpen}
+              pullRight={true}
+              shadow={false}
+            >
+              <b></b>
+            </Sidebar>
+          )
+        }}
+      </MediaQuery>
     );
   }
 }
 
-export default ResponsiveSideBar;
+const mapStateToProps = (state) => {
+  return { sidebar: getSidebarState(state) }
+}
+
+const mapDispatchToProps = {
+  onSetSidebarOpen,
+  onSetSidebarDocked
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (ResponsiveSidebar);
