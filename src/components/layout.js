@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
 import './layout.css'
+import ResponsiveSideBar from './ResponsiveSidebar';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -29,6 +30,7 @@ const Layout = ({ children }) => (
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
+        <ResponsiveSideBar/>
         <div
           style={{
             margin: '0 auto',

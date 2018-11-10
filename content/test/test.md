@@ -1,5 +1,5 @@
 ---
-path: "/test"
+path: "/test/test"
 date: "2019-11-08"
 title: Test
 ---
