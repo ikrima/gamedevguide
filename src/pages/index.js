@@ -1,14 +1,13 @@
 import React from 'react'
 import { graphql } from "gatsby"
-import Layout from '../components/layout'
-import PostLink from '../components/post-link';
+import Layout from '../components/Layout'
+import PostLink from '../components/PostLink';
 
 const IndexPage = ({
   data: {
     allMarkdownRemark: { edges },
   },
 }) => {
-  console.log(edges)
   const posts = edges
     .filter(edge => !! edge.node.frontmatter.date)
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />)
