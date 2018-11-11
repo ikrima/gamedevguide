@@ -4,11 +4,11 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import { Provider } from 'react-redux'
 
-import store from '../store'
-import Header from './header'
+import store from '../../store'
+import Header from '../Header/header'
 import './layout.css'
-import ResponsiveSidebar from './ResponsiveSidebar';
-import Container from './Container';
+import ResponsiveSidebar from '../ResponsiveSidebar';
+import Container from '../Container';
 
 const Layout = ({ children }) => (
   <StaticQuery

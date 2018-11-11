@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getSidebarDockedState } from '../../store/selectors';
+import { getSidebarDockedState, getHeaderHeightState } from '../../store/selectors';
 import { pullRight } from '../ResponsiveSidebar/sidebar-config';
 
 class Container extends Component {
   render() {
-    const { sidebarDocked } = this.props;
+    const { sidebarDocked, headerHeight } = this.props;
     return (
       <div
         style={{
           position: "absolute",
-          top: 100,
+          top: headerHeight + 30,
           left: (sidebarDocked && !pullRight) ? "20%" : 0,
           right: (sidebarDocked && pullRight) ? "20%" : 0,
           bottom: 0,
@@ -32,7 +32,10 @@ class Container extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { sidebarDocked: getSidebarDockedState(state) }
+  return { 
+    sidebarDocked: getSidebarDockedState(state),
+    headerHeight: getHeaderHeightState(state)
+  }
 }
 
 export default connect(mapStateToProps) (Container);

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Sidebar from "react-sidebar";
-import { getSidebarState } from "../../store/selectors";
+import { getSidebarState, getHeaderHeightState } from "../../store/selectors";
 import { connect } from "react-redux";
 import { onSetSidebarOpen, onSetSidebarDocked } from "../../actions/sidebar";
 import MediaQuery from "react-responsive";
@@ -10,7 +10,7 @@ class ResponsiveSidebar extends Component {
 
   render() {
     const { sidebarOpen } = this.props.sidebar
-    const { onSetSidebarDocked } = this.props
+    const { onSetSidebarDocked, headerHeight } = this.props
     return (
       <MediaQuery
         maxWidth={maxWidth}
@@ -21,7 +21,13 @@ class ResponsiveSidebar extends Component {
         {(matches) => {
           return (
             <Sidebar
-              styles={styles}
+              styles={{
+                ...styles,
+                root: {
+                  ...styles.root,
+                  top: headerHeight + 30
+                }
+              }}
               sidebar={<b>Sidebar content</b>}
               open={sidebarOpen}
               docked={!matches}
@@ -39,7 +45,10 @@ class ResponsiveSidebar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { sidebar: getSidebarState(state) }
+  return { 
+    sidebar: getSidebarState(state),
+    headerHeight: getHeaderHeightState(state)
+  }
 }
 
 const mapDispatchToProps = {
