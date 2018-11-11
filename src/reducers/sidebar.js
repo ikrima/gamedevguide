@@ -1,7 +1,8 @@
 import { SET_SIDEBAR_OPEN, SET_SIDEBAR_DOCKED } from "../actions/actionTypes";
+import { maxWidth } from '../components/ResponsiveSidebar/sidebar-config';
 
 const initialState = {
-  sidebarDocked: window.matchMedia(`(min-width: 800px)`).matches,
+  sidebarDocked: window.matchMedia(`(min-width: ${maxWidth}px)`).matches,
   sidebarOpen: false
 }
 

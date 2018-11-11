@@ -4,6 +4,10 @@ import { Link } from 'gatsby'
 const Header = ({ siteTitle }) => (
   <div
     style={{
+      position: "fixed",
+      top: 0,
+      width: "100%",
+      zIndex: 1000,
       background: 'rebeccapurple',
       marginBottom: '1.45rem',
     }}
@@ -11,7 +15,7 @@ const Header = ({ siteTitle }) => (
     <div
       style={{
         margin: '0 auto',
-        maxWidth: 960,
+        maxWidth: 1360,
         padding: '0.8rem 1.0875rem',
       }}
     >

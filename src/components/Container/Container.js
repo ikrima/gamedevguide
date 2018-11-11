@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getSidebarDockedState } from '../../store/selectors';
+import { pullRight } from '../ResponsiveSidebar/sidebar-config';
 
 class Container extends Component {
   render() {
@@ -9,9 +10,9 @@ class Container extends Component {
       <div
         style={{
           position: "absolute",
-          top: 80,
-          left: 0,
-          right: sidebarDocked ? "20%" : 0,
+          top: 100,
+          left: (sidebarDocked && !pullRight) ? "20%" : 0,
+          right: (sidebarDocked && pullRight) ? "20%" : 0,
           bottom: 0,
         }}
       >
