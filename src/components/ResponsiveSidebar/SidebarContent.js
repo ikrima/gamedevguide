@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { graphql, StaticQuery, Link } from "gatsby"
-import { Tree } from 'antd'
+import { Menu } from 'antd'
 import { connect } from "react-redux"
 import { getSidebarState } from '../../store/selectors';
 import { onSidebarContentExpand } from '../../actions/sidebar'
 import 'antd/dist/antd.css'
 
-const TreeNode = Tree.TreeNode
+const SubMenu = Menu.SubMenu
 
 const convertToTree = (data) => {
   const list = data.allMarkdownRemark.edges
@@ -51,7 +51,6 @@ class SidebarContent extends Component {
   }
 
   render() {
-    const { expandedKeys } = this.props.sidebar
     return (
       <StaticQuery
         query={graphql`
@@ -77,27 +76,25 @@ class SidebarContent extends Component {
           const loop = data => data.map((item) => {
             if (item.children) {
               return (
-                <TreeNode key={item.key} title={item.title}>
+                <SubMenu key={item.key} title={<span>{item.title}</span>}>
                   {loop(item.children)}
-                </TreeNode>
+                </SubMenu>
               )
             }
             return (
-              <TreeNode
-                key={item.key} 
-                title={<Link to={item.path} style={{color:'grey'}}>{item.title}</Link>}
-                isLeaf
-              />
+              <Menu.Item key={item.key}>
+                <Link to={item.path}>{item.title}</Link>
+              </Menu.Item>
             )
           })
           return (
             <div>
-              <Tree
-                defaultExpandAll
-                showIcon={false}
+              <Menu 
+                mode="inline"
+                defaultOpenKeys={tree.map(node => node.key)}
               >
                 {loop(tree)}
-              </Tree>
+              </Menu>
             </div>
           )
         }}
@@ -114,7 +111,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   onSidebarContentExpand,
-  // onSidebarContentChange
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (SidebarContent)
