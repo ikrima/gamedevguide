@@ -1,4 +1,3 @@
-export const pullRight = true;
 export const maxWidth = 800;
 
 export const styles = 
@@ -6,16 +5,16 @@ export const styles =
   root: {
     position: "fixed",
     top: 100,
-    left: pullRight ? "80%" : 10,
-    right: !pullRight ? "80%" : 10,
+    left: 10,
+    right: "80%",
     bottom: 0,
     overflow: "hidden"
   },
   sidebar: {
     zIndex: 2,
     position: "absolute",
-    left: pullRight ? 10 : null,
-    right: !pullRight ? 10 : null,
+    left: null,
+    right: 10,
     top: 0,
     bottom: 0,
     transition: "transform .3s ease-out",

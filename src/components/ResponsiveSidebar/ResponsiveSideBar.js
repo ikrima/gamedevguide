@@ -4,7 +4,7 @@ import { getSidebarState, getHeaderHeightState } from "../../store/selectors";
 import { connect } from "react-redux";
 import { onSetSidebarOpen, onSetSidebarDocked } from "../../actions/sidebar";
 import MediaQuery from "react-responsive";
-import { maxWidth, pullRight, styles } from './sidebar-config';
+import { maxWidth, styles } from './sidebar-config';
 import SidebarContent from "./SidebarContent";
 
 class ResponsiveSidebar extends Component {
@@ -33,7 +33,6 @@ class ResponsiveSidebar extends Component {
               open={sidebarOpen}
               docked={!matches}
               onSetOpen={this.onSetSidebarOpen}
-              pullRight={pullRight}
               shadow={false}
             >
               <b></b>

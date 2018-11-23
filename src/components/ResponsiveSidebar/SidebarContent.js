@@ -23,6 +23,7 @@ const convertToTree = (data) => {
 
 const constructTree = (list) => {
   let tree = []
+  let dir = []
   list.forEach(item => {
     if (item.parents === [] || item.parents === null) tree.push(item)
     else {
@@ -31,18 +32,20 @@ const constructTree = (list) => {
         if (subtree
           .filter(node => node.title === item.parents[i] && node.children)
           .length === 0) {
-          subtree.push({
+          const newNode = {
             key: "tree/" + item.parents[i],
             title: item.parents[i],
             children: []
-          })
+          }
+          subtree.push(newNode)
+          dir.push(newNode)
         }
         subtree = subtree.find(node => node.title === item.parents[i] && node.children).children
       }
       subtree.push(item)
     }
   })
-  return tree
+  return [tree, dir]
 }
 
 class SidebarContent extends Component {
@@ -51,6 +54,7 @@ class SidebarContent extends Component {
   }
 
   render() {
+    const { expandedKeys } = this.props.sidebar
     return (
       <StaticQuery
         query={graphql`
@@ -72,7 +76,7 @@ class SidebarContent extends Component {
       }
     `}
         render={data => {
-          const tree = convertToTree(data)
+          const [tree, dir] = convertToTree(data)
           const loop = data => data.map((item) => {
             if (item.children) {
               return (
@@ -87,11 +91,17 @@ class SidebarContent extends Component {
               </Menu.Item>
             )
           })
+          const selectedKeys = data.allMarkdownRemark.edges
+            .filter(item => window.location.pathname === item.node.fields.slug ||
+              window.location.pathname+'/' === item.node.fields.slug)
+            .length > 0 ? [expandedKeys] : []
+          const defaultOpenKeys = dir.map(item => item.key)
           return (
             <div>
               <Menu 
                 mode="inline"
-                defaultOpenKeys={tree.map(node => node.key)}
+                defaultOpenKeys={defaultOpenKeys}
+                selectedKeys={selectedKeys}
               >
                 {loop(tree)}
               </Menu>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getSidebarDockedState, getHeaderHeightState } from '../../store/selectors';
-import { pullRight } from '../ResponsiveSidebar/sidebar-config';
 
 class Container extends Component {
   render() {
@@ -11,8 +10,8 @@ class Container extends Component {
         style={{
           position: "absolute",
           top: headerHeight + 30,
-          left: (sidebarDocked && !pullRight) ? "20%" : 0,
-          right: (sidebarDocked && pullRight) ? "20%" : 0,
+          left: (sidebarDocked) ? "20%" : 0,
+          right: 0,
           bottom: 0,
         }}
       >

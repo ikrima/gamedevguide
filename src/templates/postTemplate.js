@@ -1,13 +1,17 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout";
+import { connect } from 'react-redux'
+import { onSidebarContentExpand } from '../actions/sidebar'
 import "katex/dist/katex.min.css"
 
-export default function Template({
+function Template({
   data, // this prop will be injected by the GraphQL query below.
+  onSidebarContentExpand
 }) {
   const { markdownRemark } = data // data.markdownRemark holds our post data
-  const { frontmatter, html } = markdownRemark
+  const { frontmatter, html, id } = markdownRemark
+  onSidebarContentExpand(id)
   return (
     <Layout>
     <div className="blog-post-container">
@@ -24,12 +28,19 @@ export default function Template({
   )
 }
 
+const mapDispatchToProps = {
+  onSidebarContentExpand
+}
+
+export default connect(()=>({}), mapDispatchToProps) (Template)
+
 export const pageQuery = graphql`
   query($path: String!) {
     markdownRemark(fields: { slug: { eq: $path} }) {
       fields {
         slug
       }
+      id
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")

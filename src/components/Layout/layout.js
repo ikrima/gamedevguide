@@ -2,9 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import { Provider } from 'react-redux'
-
-import store from '../../store'
 import Header from '../Header/header'
 import './layout.css'
 import ResponsiveSidebar from '../ResponsiveSidebar';
@@ -22,7 +19,6 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <Provider store={store}>
       <>
         <Helmet
           title={data.site.siteMetadata.title}
@@ -38,8 +34,7 @@ const Layout = ({ children }) => (
         <Container>
           {children}
         </Container>
-        </>
-      </Provider>
+      </>
     )}
   />
 )
