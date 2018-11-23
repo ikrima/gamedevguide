@@ -1,16 +1,20 @@
-import React from 'react'
-import { graphql, StaticQuery } from "gatsby"
-import { Tree } from 'element-react'
+import React, { Component } from 'react'
+import { graphql, StaticQuery, Link } from "gatsby"
+import { Tree } from 'antd'
+import { connect } from "react-redux"
+import { getSidebarState } from '../../store/selectors';
+import { onSidebarContentExpand } from '../../actions/sidebar'
+import 'antd/dist/antd.css'
 
-import 'element-theme-default'
+const TreeNode = Tree.TreeNode
 
 const convertToTree = (data) => {
   const list = data.allMarkdownRemark.edges
     .map(edge => {
       return ({
         path: edge.node.fields.slug,
-        id: edge.node.id,
-        label: edge.node.frontmatter.title,
+        key: edge.node.id,
+        title: edge.node.frontmatter.title,
         parents: edge.node.frontmatter.parents
       })
     })
@@ -25,16 +29,15 @@ const constructTree = (list) => {
       let subtree = tree
       for (let i = 0; i < item.parents.length; i++) {
         if (subtree
-          .filter(node => node.label === item.parents[i] && node.children)
-          .length === 0) 
-        {
+          .filter(node => node.title === item.parents[i] && node.children)
+          .length === 0) {
           subtree.push({
-            id: "tree/"+item.parents[i],
-            label: item.parents[i],
+            key: "tree/" + item.parents[i],
+            title: item.parents[i],
             children: []
           })
         }
-        subtree = subtree.find(node => node.label === item.parents[i] && node.children).children
+        subtree = subtree.find(node => node.title === item.parents[i] && node.children).children
       }
       subtree.push(item)
     }
@@ -42,9 +45,16 @@ const constructTree = (list) => {
   return tree
 }
 
-const SidebarContent = () => (
-  <StaticQuery
-    query={graphql`
+class SidebarContent extends Component {
+  onExpand = (expendedKeys) => {
+    this.props.onSidebarContentExpand(expendedKeys)
+  }
+
+  render() {
+    const { expandedKeys } = this.props.sidebar
+    return (
+      <StaticQuery
+        query={graphql`
       query sidebarContentQuery {
         allMarkdownRemark(sort: { order: ASC, fields: [fields___slug] }) {
           edges {
@@ -62,25 +72,49 @@ const SidebarContent = () => (
         }
       }
     `}
-    render={data => {
-      const tree = convertToTree(data)
-      return (
-        <div>
-          <Tree 
-            data={tree}
-            option={{children:'children', label:'label'}}
-            highlightCurrent={true}
-            defaultExpandAll={true}
-            onNodeClicked={(data, reactElement,)=>{
-              console.debug('onNodeClicked: ', data, reactElement)
-              if (data.path) window.location.href = data.path
-            }}
-          />
-          {/* {data.allMarkdownRemark.edges.map(edge => <div><Link to={edge.node.fields.slug}>{edge.node.frontmatter.title}</Link></div>)} */}
-        </div>
-      )
-    }}
-  />
-)
+        render={data => {
+          const tree = convertToTree(data)
+          const loop = data => data.map((item) => {
+            if (item.children) {
+              return (
+                <TreeNode key={item.key} title={item.title}>
+                  {loop(item.children)}
+                </TreeNode>
+              )
+            }
+            return (
+              <TreeNode
+                key={item.key} 
+                title={<Link to={item.path} style={{color:'grey'}}>{item.title}</Link>}
+                isLeaf
+              />
+            )
+          })
+          return (
+            <div>
+              <Tree
+                defaultExpandAll
+                showIcon={false}
+              >
+                {loop(tree)}
+              </Tree>
+            </div>
+          )
+        }}
+      />
+    )
+  }
+}
 
-export default SidebarContent 
+const mapStateToProps = (state) => {
+  return {
+    sidebar: getSidebarState(state)
+  }
+}
+
+const mapDispatchToProps = {
+  onSidebarContentExpand,
+  // onSidebarContentChange
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (SidebarContent)

@@ -1,9 +1,12 @@
-import { SET_SIDEBAR_OPEN, SET_SIDEBAR_DOCKED } from "../actions/actionTypes";
+import { SET_SIDEBAR_OPEN, SET_SIDEBAR_DOCKED, ON_SIDEBAR_CONTENT_EXPEND } from "../actions/actionTypes";
 import { maxWidth } from '../components/ResponsiveSidebar/sidebar-config';
 
 const initialState = {
   sidebarDocked: window.matchMedia(`(min-width: ${maxWidth}px)`).matches,
-  sidebarOpen: false
+  sidebarOpen: false,
+  expandedKeys: [],
+  searchValue: '',
+  autoExpandParent: true
 }
 
 export default function(state=initialState, action) {
@@ -19,6 +22,13 @@ export default function(state=initialState, action) {
         ...state,
         sidebarDocked: action.payload.sidebarDocked,
         sidebarOpen: action.payload.sidebarOpen
+      }
+    }
+    case ON_SIDEBAR_CONTENT_EXPEND: {
+      return {
+        ...state,
+        expandedKeys: action.payload.expandedKeys,
+        autoExpandParent: action.payload.autoExpandParent
       }
     }
     default: return state

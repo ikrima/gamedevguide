@@ -1,4 +1,4 @@
-import { SET_SIDEBAR_OPEN, SET_SIDEBAR_DOCKED } from './actionTypes';
+import { SET_SIDEBAR_OPEN, SET_SIDEBAR_DOCKED, ON_SIDEBAR_CONTENT_EXPEND } from './actionTypes';
 
 export const onSetSidebarOpen = (open) => ({
   type: SET_SIDEBAR_OPEN,
@@ -10,5 +10,13 @@ export const onSetSidebarDocked = (docked) => ({
   payload: {
     sidebarDocked: docked,
     sidebarOpen: false
+  }
+})
+
+export const onSidebarContentExpand = (expandedKeys) => ({
+  type: ON_SIDEBAR_CONTENT_EXPEND,
+  payload: {
+    expandedKeys,
+    autoExpandParent: false
   }
 })
