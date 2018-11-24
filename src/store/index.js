@@ -1,14 +1,13 @@
 import { createStore as reduxCreateStore } from "redux"
 import rootReducer from "../reducers";
-// import thunk from "redux-thunk";
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// export default createStore(
-  // rootReducer,
-  // composeEnhancers(applyMiddleware(thunk))
-// );
+const redux_devtool_extention = () => {
+  if (typeof window !== 'undefined')
+    return window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+}
+
 const createStore = () => reduxCreateStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  redux_devtool_extention()
 )
 export default createStore

@@ -2,7 +2,8 @@ import { SET_SIDEBAR_OPEN, SET_SIDEBAR_DOCKED, ON_SIDEBAR_CONTENT_EXPEND } from 
 import { maxWidth } from '../components/ResponsiveSidebar/sidebar-config';
 
 const initialState = {
-  sidebarDocked: window.matchMedia(`(min-width: ${maxWidth}px)`).matches,
+  sidebarDocked: (typeof window !== 'undefined') ? 
+    window.matchMedia(`(min-width: ${maxWidth}px)`).matches: false,
   sidebarOpen: false,
   expandedKeys: [],
   searchValue: '',
