@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import TableOfContents from './TableOfContents';
-import { getAnchorState } from '../../store/selectors';
 import { onSetAnchorDocked } from '../../actions/anchor'
 import { connect } from 'react-redux'
 import MediaQuery from 'react-responsive'
 import { styles, maxWidth } from './anchor-config'
+import { getHeaderHeightState } from "../../store/selectors";
 
 class ResponsiveAnchor extends Component {
   render() {
-    const { onSetAnchorDocked } = this.props
+    const { onSetAnchorDocked, headerHeight } = this.props
     return (
       <MediaQuery
         maxWidth={maxWidth}
@@ -17,8 +17,11 @@ class ResponsiveAnchor extends Component {
         }}
       >
         {(matches) => ((!matches && 
-          <div style={styles} >
-            <TableOfContents />
+          <div style={{
+            ...styles,
+            top: headerHeight + 30
+          }} >
+            <TableOfContents offsetTop={headerHeight+30}/>
           </div>)
         )}
       </MediaQuery>
@@ -28,7 +31,7 @@ class ResponsiveAnchor extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    anchor: getAnchorState(state)
+    headerHeight: getHeaderHeightState(state)
   }
 }
 

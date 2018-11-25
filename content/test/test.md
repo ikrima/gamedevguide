@@ -39,7 +39,7 @@ A <span style="color:red">**language**</span> over an alphabet $\Sigma$ will con
 
 $$ a\quad b\quad ab\quad cab\quad bacca\quad cccccccc $$
 
-# Test2
+## Test2
 
 A <span style="color:red">**language**</span> over an alphabet $\Sigma$ will consist of
  finite sequences (<span style="color:red">strings</span>) of elements of Σ. E.g. the 
@@ -62,7 +62,7 @@ A <span style="color:red">**language**</span> over an alphabet $\Sigma$ will con
 
 $$ a\quad b\quad ab\quad cab\quad bacca\quad cccccccc $$
 
-# Test3
+### Test3
 
 A <span style="color:red">**language**</span> over an alphabet $\Sigma$ will consist of
  finite sequences (<span style="color:red">strings</span>) of elements of Σ. E.g. the 
@@ -85,7 +85,7 @@ A <span style="color:red">**language**</span> over an alphabet $\Sigma$ will con
 
 $$ a\quad b\quad ab\quad cab\quad bacca\quad cccccccc $$
 
-# Test4
+#### Test4
 
 A <span style="color:red">**language**</span> over an alphabet $\Sigma$ will consist of
  finite sequences (<span style="color:red">strings</span>) of elements of Σ. E.g. the 
@@ -108,7 +108,7 @@ A <span style="color:red">**language**</span> over an alphabet $\Sigma$ will con
 
 $$ a\quad b\quad ab\quad cab\quad bacca\quad cccccccc $$
 
-# Test5
+### Test5
 
 A <span style="color:red">**language**</span> over an alphabet $\Sigma$ will consist of
  finite sequences (<span style="color:red">strings</span>) of elements of Σ. E.g. the 
