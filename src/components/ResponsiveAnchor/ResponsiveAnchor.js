@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import TableOfContents from './TableOfContents';
-import './ResponsiveAnchor.css'
 
 class ResponsiveAnchor extends Component {
   render() {
