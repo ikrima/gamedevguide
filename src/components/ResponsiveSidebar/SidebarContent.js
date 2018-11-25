@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { graphql, StaticQuery, Link } from "gatsby"
-import { Menu } from 'antd'
 import { connect } from "react-redux"
 import { getSidebarState } from '../../store/selectors';
 import { onSidebarContentExpand } from '../../actions/sidebar'
-import 'antd/dist/antd.css'
+import Menu from 'antd/lib/menu'
+import 'antd/lib/menu/style/css'
 
 const SubMenu = Menu.SubMenu
 

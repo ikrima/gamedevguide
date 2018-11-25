@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Anchor } from 'antd';
+import Anchor from 'antd/lib/anchor'
+import 'antd/lib/anchor/style/css'
 
 const { Link } = Anchor
 
