@@ -13,7 +13,7 @@ class TableOfContents extends Component {
   }
 
   componentDidMount() {
-    let anchors = document.getElementsByClassName('anchor')
+    let anchors = document.getElementsByClassName('post-toc-anchor')
     anchors = [].slice.call(anchors).map(anchor => {
       return ({
         href: "#"+ anchor.parentElement.id,

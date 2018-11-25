@@ -37,7 +37,12 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-katex`,
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              className: "post-toc-anchor"
+            }
+          }
         ],
       },
     },

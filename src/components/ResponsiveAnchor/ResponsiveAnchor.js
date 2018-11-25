@@ -1,23 +1,39 @@
 import React, { Component } from 'react'
 import TableOfContents from './TableOfContents';
+import { getAnchorState } from '../../store/selectors';
+import { onSetAnchorDocked } from '../../actions/anchor'
+import { connect } from 'react-redux'
+import MediaQuery from 'react-responsive'
+import { styles, maxWidth } from './anchor-config'
 
 class ResponsiveAnchor extends Component {
   render() {
+    const { onSetAnchorDocked } = this.props
     return (
-      <div
-        style={{
-          position: "fixed",
-          top: 100,
-          left: "85%",
-          right: 10,
-          bottom: 0,
-          overflow: "hidden"
+      <MediaQuery
+        maxWidth={maxWidth}
+        onChange={(matches) => {
+          onSetAnchorDocked(!matches)
         }}
       >
-        <TableOfContents />
-      </div>
+        {(matches) => ((!matches && 
+          <div style={styles} >
+            <TableOfContents />
+          </div>)
+        )}
+      </MediaQuery>
     )
   }
 }
 
-export default ResponsiveAnchor
+const mapStateToProps = (state) => {
+  return {
+    anchor: getAnchorState(state)
+  }
+}
+
+const mapDispatchToProps = {
+  onSetAnchorDocked
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (ResponsiveAnchor)

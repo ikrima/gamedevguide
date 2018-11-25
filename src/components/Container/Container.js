@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getSidebarDockedState, getHeaderHeightState } from '../../store/selectors';
+import { getSidebarDockedState, getHeaderHeightState, getAnchorState } from '../../store/selectors';
 
 class Container extends Component {
   render() {
-    const { sidebarDocked, headerHeight } = this.props;
+    const { sidebarDocked, headerHeight, anchorDocked } = this.props;
     return (
       <div
         style={{
           position: "absolute",
           top: headerHeight + 30,
           left: (sidebarDocked) ? "20%" : 0,
-          right: "15%",
+          right: (anchorDocked) ? "15%" : 0,
           bottom: 0,
         }}
       >
@@ -33,7 +33,8 @@ class Container extends Component {
 const mapStateToProps = (state) => {
   return { 
     sidebarDocked: getSidebarDockedState(state),
-    headerHeight: getHeaderHeightState(state)
+    headerHeight: getHeaderHeightState(state),
+    anchorDocked: getAnchorState(state).anchorDocked
   }
 }
 

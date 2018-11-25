@@ -1,4 +1,4 @@
-export const maxWidth = 800;
+export const maxWidth = 1000;
 
 export const styles = 
 {
