@@ -37,6 +37,7 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-katex`,
+          `gatsby-remark-autolink-headers`,
         ],
       },
     },

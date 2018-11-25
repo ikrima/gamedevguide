@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import Header from '../Header/header'
-import './layout.css'
+import './Layout.css'
 import ResponsiveSidebar from '../ResponsiveSidebar';
 import Container from '../Container';
+import ResponsiveAnchor from '../ResponsiveAnchor';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -31,6 +32,7 @@ const Layout = ({ children }) => (
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <ResponsiveSidebar/>
+        <ResponsiveAnchor />
         <Container>
           {children}
         </Container>

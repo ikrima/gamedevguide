@@ -11,7 +11,7 @@ class Container extends Component {
           position: "absolute",
           top: headerHeight + 30,
           left: (sidebarDocked) ? "20%" : 0,
-          right: 0,
+          right: "15%",
           bottom: 0,
         }}
       >
