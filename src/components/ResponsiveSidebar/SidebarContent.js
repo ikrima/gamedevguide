@@ -5,6 +5,7 @@ import { getSidebarState } from '../../store/selectors';
 import { onSidebarContentExpand } from '../../actions/sidebar'
 import Menu from 'antd/lib/menu'
 import 'antd/lib/menu/style/css'
+import { inlineIndent } from './sidebar-config'
 
 const SubMenu = Menu.SubMenu
 
@@ -102,6 +103,7 @@ class SidebarContent extends Component {
                 mode="inline"
                 defaultOpenKeys={defaultOpenKeys}
                 selectedKeys={selectedKeys}
+                inlineIndent={inlineIndent}
               >
                 {loop(tree)}
               </Menu>

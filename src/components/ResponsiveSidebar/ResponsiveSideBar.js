@@ -6,6 +6,7 @@ import { onSetSidebarOpen, onSetSidebarDocked } from "../../actions/sidebar";
 import MediaQuery from "react-responsive";
 import { maxWidth, styles } from './sidebar-config';
 import SidebarContent from "./SidebarContent";
+import './ResponsiveSidebar.css'
 
 class ResponsiveSidebar extends Component {
 

@@ -1,4 +1,5 @@
 export const maxWidth = 1000;
+export const inlineIndent = 12;
 
 export const styles = 
 {
@@ -8,7 +9,7 @@ export const styles =
     left: 10,
     right: "80%",
     bottom: 0,
-    overflow: "hidden"
+    overflow: "hidden",
   },
   sidebar: {
     zIndex: 2,
@@ -30,7 +31,7 @@ export const styles =
     bottom: 0,
     overflowY: "auto",
     WebkitOverflowScrolling: "touch",
-    transition: "left .3s ease-out, right .3s ease-out"
+    transition: "left .3s ease-out, right .3s ease-out",
   },
   overlay: {
     zIndex: 1,
@@ -49,5 +50,5 @@ export const styles =
     position: "fixed",
     top: 0,
     bottom: 0
-  }
+  },
 };

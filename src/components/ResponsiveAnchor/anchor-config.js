@@ -7,5 +7,5 @@ export const styles =
   left: "85%",
   right: 10,
   bottom: 0,
-  overflow: "hidden" 
+  overflow: "hidden", 
 };
