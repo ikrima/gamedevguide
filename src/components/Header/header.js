@@ -30,7 +30,7 @@ class Header extends Component {
             padding: '0.8rem 1.0875rem',
           }}
         >
-          <h1 style={{ margin: 0 }}>
+          <h1 style={{ margin: 0, fontSize: "1.25rem"}}>
             <Link
               to="/"
               style={{

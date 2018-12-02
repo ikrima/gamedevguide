@@ -49,6 +49,16 @@ const constructTree = (list) => {
   return [tree, dir]
 }
 
+const sortTree = tree => {
+  tree.sort((a,b)=> {
+    if (((a.children && b.children) || 
+    (!a.children && !b.children)) &&
+    a.title > b.title) return 1
+    else if (a.children) return 1
+    return -1
+  })
+}
+
 class SidebarContent extends Component {
   onExpand = (expendedKeys) => {
     this.props.onSidebarContentExpand(expendedKeys)
@@ -59,27 +69,29 @@ class SidebarContent extends Component {
     return (
       <StaticQuery
         query={graphql`
-      query sidebarContentQuery {
-        allMarkdownRemark(sort: { order: ASC, fields: [fields___slug] }) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              id
-              frontmatter {
-                title
-                parents
+          query sidebarContentQuery {
+            allMarkdownRemark(sort: { order: ASC, fields: [fields___slug] }) {
+              edges {
+                node {
+                  fields {
+                    slug
+                  }
+                  id
+                  frontmatter {
+                    title
+                    parents
+                  }
+                }
               }
             }
           }
-        }
-      }
-    `}
+        `}
         render={data => {
           const [tree, dir] = convertToTree(data)
+          sortTree(tree)
           const loop = data => data.map((item) => {
             if (item.children) {
+              sortTree(item.children)
               return (
                 <SubMenu key={item.key} title={<span>{item.title}</span>}>
                   {loop(item.children)}

@@ -32,7 +32,7 @@ const constructTree = list => {
       else if (list[i].depth >= list[j].depth) break 
     } 
   }
-  deleteNode.sort().reverse().forEach(index => list.splice(index,1))
+  deleteNode.sort((a,b)=>b-a).forEach(index => list.splice(index,1))
 }
 
 class TableOfContents extends Component {
