@@ -9,7 +9,7 @@ class Container extends Component {
       <div
         style={{
           position: "absolute",
-          top: headerHeight + 30,
+          top: (sidebarDocked) ? headerHeight + 30: headerHeight + 65,
           left: (sidebarDocked) ? "20%" : 0,
           right: (anchorDocked) ? "15%" : 0,
           bottom: 0,

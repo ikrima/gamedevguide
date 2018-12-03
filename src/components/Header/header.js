@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'gatsby';
 import sizeMe  from 'react-sizeme';
 import { connect } from "react-redux";
-import { getHeaderHeightState } from '../../store/selectors';
 import { updateHeaderHeight } from '../../actions/layout';
 
 class Header extends Component {
@@ -19,7 +18,7 @@ class Header extends Component {
           top: 0,
           width: "100%",
           zIndex: 1000,
-          background: 'rebeccapurple',
+          background: 'cornflowerblue',
           marginBottom: '1.45rem',
         }}
       >
@@ -47,12 +46,8 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { sidebar: getHeaderHeightState(state) }
-}
-
 const mapDispatchToProps = {
   updateHeaderHeight
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (sizeMe({monitorHeight: true})(Header))
+export default connect(()=>{}, mapDispatchToProps) (sizeMe({monitorHeight: true})(Header))

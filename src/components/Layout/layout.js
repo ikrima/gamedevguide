@@ -7,6 +7,7 @@ import './Layout.css'
 import ResponsiveSidebar from '../ResponsiveSidebar';
 import Container from '../Container';
 import ResponsiveAnchor from '../ResponsiveAnchor';
+import ResponsiveTopBar from '../ResponsiveTopBar';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -31,7 +32,8 @@ const Layout = ({ children }) => (
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <ResponsiveSidebar/>
+        <ResponsiveTopBar />
+        <ResponsiveSidebar />
         <ResponsiveAnchor />
         <Container>
           {children}
