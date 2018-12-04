@@ -9,7 +9,6 @@ export const onSetSidebarDocked = (docked) => ({
   type: SET_SIDEBAR_DOCKED,
   payload: {
     sidebarDocked: docked,
-    sidebarOpen: false
   }
 })
 

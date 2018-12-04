@@ -50,4 +50,4 @@ const mapDispatchToProps = {
   updateHeaderHeight
 }
 
-export default connect(()=>{}, mapDispatchToProps) (sizeMe({monitorHeight: true})(Header))
+export default connect(()=>({}), mapDispatchToProps) (sizeMe({monitorHeight: true})(Header))

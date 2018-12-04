@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Anchor from 'antd/lib/anchor'
 import 'antd/lib/anchor/style/css'
+import { onSetAnchorOpen } from '../../actions/anchor'
+import { connect } from 'react-redux'
 
 const { Link } = Anchor
 
@@ -50,6 +52,10 @@ class TableOfContents extends Component {
     })
   }
 
+  onSetAnchorOpen = () => {
+    this.props.onSetAnchorOpen(false)
+  }
+
   render() {
     const { anchors } = this.state
     const { offsetTop } = this.props
@@ -64,7 +70,7 @@ class TableOfContents extends Component {
       return (<Link href={item.href} title={item.title} key={item.href}/>)
     })
     return (
-      <Anchor offsetTop={offsetTop} >
+      <Anchor offsetTop={offsetTop} onClick={this.onSetAnchorOpen}>
         {loop(anchors)}
         {/* {(anchors.length > 1 && loop(anchors)) ||
          (anchors.length === 1 && loop(anchors[0].children))} */}
@@ -73,4 +79,8 @@ class TableOfContents extends Component {
   }
 }
 
-export default TableOfContents
+const mapDispatchToProps = {
+  onSetAnchorOpen
+}
+
+export default connect(()=>({}), mapDispatchToProps) (TableOfContents)

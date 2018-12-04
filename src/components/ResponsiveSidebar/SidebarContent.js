@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { graphql, StaticQuery, Link } from "gatsby"
 import { connect } from "react-redux"
 import { getSidebarState } from '../../store/selectors';
-import { onSidebarContentExpand } from '../../actions/sidebar'
+import { onSetSidebarOpen } from '../../actions/sidebar'
 import Menu from 'antd/lib/menu'
 import 'antd/lib/menu/style/css'
 import { inlineIndent } from './sidebar-config'
@@ -10,8 +10,7 @@ import { inlineIndent } from './sidebar-config'
 const SubMenu = Menu.SubMenu
 
 const convertToTree = (data) => {
-  const list = data.allMarkdownRemark.edges
-    .map(edge => {
+  const list = data.map(edge => {
       return ({
         path: edge.node.fields.slug,
         key: edge.node.id,
@@ -60,8 +59,8 @@ const sortTree = tree => {
 }
 
 class SidebarContent extends Component {
-  onExpand = (expendedKeys) => {
-    this.props.onSidebarContentExpand(expendedKeys)
+  onSetSidebarOpen = () => {
+    this.props.onSetSidebarOpen(false)
   }
 
   render() {
@@ -87,20 +86,22 @@ class SidebarContent extends Component {
           }
         `}
         render={data => {
-          const [tree, dir] = convertToTree(data)
+          const [tree, dir] = convertToTree(data.allMarkdownRemark.edges.filter(node => 
+            node.node.fields.slug.startsWith('/')
+          ))
           sortTree(tree)
           const loop = data => data.map((item) => {
             if (item.children) {
               sortTree(item.children)
               return (
-                <SubMenu key={item.key} title={<span>{item.title}</span>}>
+                <SubMenu key={item.key} title={<span style={{fontWeight:900}}>{item.title}</span>}>
                   {loop(item.children)}
                 </SubMenu>
               )
             }
             return (
               <Menu.Item key={item.key}>
-                <Link to={item.path}>{item.title}</Link>
+                <Link to={item.path} onClick={this.onSetSidebarOpen}>{item.title}</Link>
               </Menu.Item>
             )
           })
@@ -134,7 +135,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  onSidebarContentExpand,
+  onSetSidebarOpen
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (SidebarContent)

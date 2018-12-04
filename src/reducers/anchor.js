@@ -1,9 +1,10 @@
-import { SET_ANCHOR_DOCKED } from "../actions/actionTypes";
+import { SET_ANCHOR_DOCKED, SET_ANCHOR_OPEN } from "../actions/actionTypes";
 import { maxWidth } from '../components/ResponsiveAnchor/anchor-config';
 
 const initialState = {
   anchorDocked: (typeof window !== 'undefined') ? 
     window.matchMedia(`(min-width: ${maxWidth}px)`).matches: false,
+  anchorOpen: false
 }
 
 export default function(state=initialState, action) {
@@ -12,6 +13,12 @@ export default function(state=initialState, action) {
       return {
         ...state,
         anchorDocked: action.payload.anchorDocked,
+      }
+    }
+    case SET_ANCHOR_OPEN: {
+      return {
+        ...state,
+        anchorOpen: action.payload.anchorOpen
       }
     }
     default: return state

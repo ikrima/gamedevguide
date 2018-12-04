@@ -10,3 +10,4 @@ export const UPDATE_HEADER_HEIGHT = "UPDATE_HEADER_HEIGHT";
 
 // anchor
 export const SET_ANCHOR_DOCKED = "SET_ANCHOR_DOCKED";
+export const SET_ANCHOR_OPEN = "SET_ANCHOR_OPEN";
