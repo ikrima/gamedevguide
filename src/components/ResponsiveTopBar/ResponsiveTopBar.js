@@ -60,7 +60,18 @@ class ResponsiveTopBar extends Component {
                 bottom: 0,
                 backgroundColor: 'white'
               }}>
-                <SidebarContent />
+                <div style={{
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  overflowY: "auto",
+                  WebkitOverflowScrolling: "touch",
+                  transition: "left .3s ease-out, right .3s ease-out",
+                }}>
+                  <SidebarContent />
+                </div>
               </div>
             }
           </div>
@@ -82,7 +93,9 @@ class ResponsiveTopBar extends Component {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundColor: 'white'
+                overflowY: "auto",
+                backgroundColor: 'white',
+                WebkitOverflowScrolling: "touch",
               }}>
                 <TableOfContents offsetTop={headerHeight+70}/>
               </div>
