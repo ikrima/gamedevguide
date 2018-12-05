@@ -3,15 +3,18 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout";
 import { connect } from 'react-redux'
 import { onSidebarContentExpand } from '../actions/sidebar'
+import { setPostPageOn } from '../actions/sidebar'
 import "katex/dist/katex.min.css"
 
 function Template({
   data, // this prop will be injected by the GraphQL query below.
-  onSidebarContentExpand
+  onSidebarContentExpand,
+  setPostPageOn
 }) {
   const { markdownRemark } = data // data.markdownRemark holds our post data
   const { frontmatter, html, id } = markdownRemark
   onSidebarContentExpand(id)
+  setPostPageOn()
   return (
     <Layout>
     <div className="blog-post-container">
@@ -29,7 +32,8 @@ function Template({
 }
 
 const mapDispatchToProps = {
-  onSidebarContentExpand
+  onSidebarContentExpand,
+  setPostPageOn,
 }
 
 export default connect(()=>({}), mapDispatchToProps) (Template)

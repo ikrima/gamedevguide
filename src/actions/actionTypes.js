@@ -7,6 +7,8 @@ export const ON_SIDEBAR_CONTENT_EXPEND = "ON_SIDEBAR_CONTENT_EXPEND";
 
 // layout
 export const UPDATE_HEADER_HEIGHT = "UPDATE_HEADER_HEIGHT";
+export const SET_POST_PAGE_ON = "SET_POST_PAGE_ON";
+export const SET_POST_PAGE_OFF = "SET_POST_PAGE_OFF";
 
 // anchor
 export const SET_ANCHOR_DOCKED = "SET_ANCHOR_DOCKED";

@@ -26,9 +26,9 @@ class ResponsiveTopBar extends Component {
   }
 
   render() {
-    const { headerHeight, siderbarDocked, sidebarOpen, anchorOpen } = this.props
+    const { headerHeight, siderbarDocked, sidebarOpen, anchorOpen, onPostPage } = this.props
 
-    if (siderbarDocked) return <></>
+    if (siderbarDocked || !onPostPage) return <></>
     return (
       <div
         style={{
@@ -113,6 +113,7 @@ const mapStateToProps = (state) => {
     siderbarDocked: getSidebarDockedState(state),
     sidebarOpen: getSidebarState(state).sidebarOpen,
     anchorOpen: getAnchorState(state).anchorOpen,
+    onPostPage: getSidebarState(state).onPostPage,
   }
 }
 

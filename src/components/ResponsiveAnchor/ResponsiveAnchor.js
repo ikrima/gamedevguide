@@ -40,7 +40,7 @@ class ResponsiveAnchor extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    headerHeight: getHeaderHeightState(state)
+    headerHeight: getHeaderHeightState(state),
   }
 }
 

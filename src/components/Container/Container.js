@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getSidebarDockedState, getHeaderHeightState, getAnchorState } from '../../store/selectors';
+import { getSidebarDockedState, getHeaderHeightState, getAnchorState, getSidebarState } from '../../store/selectors';
 
 class Container extends Component {
   render() {
-    const { sidebarDocked, headerHeight, anchorDocked } = this.props;
+    const { sidebarDocked, headerHeight, anchorDocked, onPostPage } = this.props;
     return (
       <div
         style={{
           position: "absolute",
-          top: (sidebarDocked) ? headerHeight + 30: headerHeight + 70,
+          top: (sidebarDocked || !onPostPage) ? headerHeight + 30: headerHeight + 70,
           left: (sidebarDocked) ? "20%" : 0,
           right: (anchorDocked) ? "15%" : 0,
           bottom: 0,
@@ -34,7 +34,8 @@ const mapStateToProps = (state) => {
   return { 
     sidebarDocked: getSidebarDockedState(state),
     headerHeight: getHeaderHeightState(state),
-    anchorDocked: getAnchorState(state).anchorDocked
+    anchorDocked: getAnchorState(state).anchorDocked,
+    onPostPage: getSidebarState(state).onPostPage,
   }
 }
 

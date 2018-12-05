@@ -1,7 +1,7 @@
 import { UPDATE_HEADER_HEIGHT } from "../actions/actionTypes";
 
 const initialState = {
-  headerHeight: 0
+  headerHeight: 0,
 }
 
 export default function(state=initialState, action) {
