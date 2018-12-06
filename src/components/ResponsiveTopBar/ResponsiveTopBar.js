@@ -96,8 +96,9 @@ class ResponsiveTopBar extends Component {
                 overflowY: "auto",
                 backgroundColor: 'white',
                 WebkitOverflowScrolling: "touch",
+                transition: "left .3s ease-out, right .3s ease-out",
               }}>
-                <TableOfContents offsetTop={headerHeight+70}/>
+                <TableOfContents offsetTop={headerHeight+70} affix={false}/>
               </div>
             }
           </div>

@@ -1,11 +1,4 @@
-import { SET_ANCHOR_DOCKED, SET_ANCHOR_OPEN } from './actionTypes'
-
-export const onSetAnchorDocked = (docked) => ({
-  type: SET_ANCHOR_DOCKED,
-  payload: {
-    anchorDocked: docked
-  }
-})
+import { SET_ANCHOR_OPEN } from './actionTypes'
 
 export const onSetAnchorOpen = (open) => ({
   type: SET_ANCHOR_OPEN,
