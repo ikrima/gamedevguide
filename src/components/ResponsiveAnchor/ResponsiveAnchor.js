@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import TableOfContents from './TableOfContents';
+import TableOfContents from '../TableOfContents';
 import { connect } from 'react-redux'
 import { getHeaderHeightState, getSidebarDockedState } from "../../store/selectors";
-import './ResponsiveAnchor.css'
 
 class ResponsiveAnchor extends Component {
   render() {

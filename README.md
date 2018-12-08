@@ -1,1 +1,1 @@
-# Gatsby Remark Starter
+# Gatsby Markdown Starter

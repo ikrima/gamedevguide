@@ -3,6 +3,7 @@ import Anchor from 'antd/lib/anchor'
 import 'antd/lib/anchor/style/css'
 import { onSetAnchorOpen } from '../../actions/anchor'
 import { connect } from 'react-redux'
+import './TableOfContents.css'
 
 const { Link } = Anchor
 

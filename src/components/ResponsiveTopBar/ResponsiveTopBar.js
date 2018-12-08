@@ -5,8 +5,8 @@ import 'antd/lib/button/style/css'
 import { getHeaderHeightState, getSidebarDockedState, getSidebarState, getAnchorState } from '../../store/selectors';
 import { onSetSidebarOpen } from '../../actions/sidebar'
 import { onSetAnchorOpen } from '../../actions/anchor'
-import SidebarContent from '../ResponsiveSidebar/SidebarContent';
-import TableOfContents from '../ResponsiveAnchor/TableOfContents';
+import SidebarContents from '../SidebarContents';
+import TableOfContents from '../TableOfContents';
 
 class ResponsiveTopBar extends Component {
   onSetSidebarOpen = () => {
@@ -70,7 +70,7 @@ class ResponsiveTopBar extends Component {
                   WebkitOverflowScrolling: "touch",
                   transition: "left .3s ease-out, right .3s ease-out",
                 }}>
-                  <SidebarContent />
+                  <SidebarContents />
                 </div>
               </div>
             }

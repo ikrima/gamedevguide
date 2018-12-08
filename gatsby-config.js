@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Remark Starter',
+    title: 'Gatsby Markdown Starter',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -23,7 +23,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-remark',
+        name: 'gatsby-starter-markdown',
         short_name: 'starter',
         start_url: '/',
         background_color: '#663399',

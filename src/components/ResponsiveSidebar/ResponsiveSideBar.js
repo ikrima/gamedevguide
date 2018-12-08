@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 import { onSetSidebarOpen, onSetSidebarDocked } from "../../actions/sidebar";
 import MediaQuery from "react-responsive";
 import { maxWidth, styles } from './sidebar-config';
-import SidebarContent from "./SidebarContent";
-import './ResponsiveSidebar.css'
+import SidebarContents from "../SidebarContents";
 
 class ResponsiveSidebar extends Component {
 
@@ -30,7 +29,7 @@ class ResponsiveSidebar extends Component {
                   top: headerHeight + 30
                 }
               }}
-              sidebar={<SidebarContent/>}
+              sidebar={<SidebarContents/>}
               docked={!matches}
               shadow={false}
             >

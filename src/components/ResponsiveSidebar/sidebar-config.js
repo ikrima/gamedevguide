@@ -1,5 +1,4 @@
 export const maxWidth = 1000;
-export const inlineIndent = 12;
 
 export const styles = 
 {

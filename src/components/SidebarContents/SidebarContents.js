@@ -5,7 +5,7 @@ import { getSidebarState } from '../../store/selectors';
 import { onSetSidebarOpen } from '../../actions/sidebar'
 import Menu from 'antd/lib/menu'
 import 'antd/lib/menu/style/css'
-import { inlineIndent } from './sidebar-config'
+import './SidebarContents.css'
 
 const SubMenu = Menu.SubMenu
 
@@ -58,7 +58,7 @@ const sortTree = tree => {
   })
 }
 
-class SidebarContent extends Component {
+class SidebarContents extends Component {
   onSetSidebarOpen = () => {
     this.props.onSetSidebarOpen(false)
   }
@@ -116,7 +116,7 @@ class SidebarContent extends Component {
                 mode="inline"
                 defaultOpenKeys={defaultOpenKeys}
                 selectedKeys={selectedKeys}
-                inlineIndent={inlineIndent}
+                inlineIndent={12}
               >
                 {loop(tree)}
               </Menu>
@@ -138,4 +138,4 @@ const mapDispatchToProps = {
   onSetSidebarOpen
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (SidebarContent)
+export default connect(mapStateToProps, mapDispatchToProps) (SidebarContents)
