@@ -37,6 +37,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "gatsby-plugin-remove-trailing-slashes": "^2.0.6",
     "prettier": "^1.14.2"
   },
   "repository": {

@@ -1,3 +1,5 @@
+
+const replacePath = require('./utils')
 const path = require("path")
 
 module.exports = exports.createPages = ({ actions, graphql }) => {
@@ -27,7 +29,7 @@ module.exports = exports.createPages = ({ actions, graphql }) => {
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
-        path: node.fields.slug,
+        path: replacePath(node.fields.slug),
         component: postTemplate,
         context: {}, // additional data can be passed via context
       })
