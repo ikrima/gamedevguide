@@ -8,8 +8,14 @@ import ResponsiveSidebar from '../ResponsiveSidebar';
 import Container from '../Container';
 import ResponsiveAnchor from '../ResponsiveAnchor';
 import ResponsiveTopBar from '../ResponsiveTopBar';
+import { setPostPageOn, setPostPageOff } from '../../actions/sidebar'
+import { connect } from 'react-redux'
 
-const Layout = ({ children }) => (
+const Layout = ({ 
+  children,
+  setPostPageOn,
+  setPostPageOff,
+}) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -18,9 +24,23 @@ const Layout = ({ children }) => (
             title
           }
         }
+        allMarkdownRemark {
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
+        }
       }
     `}
-    render={data => (
+    render={data => {
+      const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
+      allPosts.indexOf(window.location.pathname) >= 0 ?
+      setPostPageOn() : setPostPageOff()
+      
+      return (
       <>
         <Helmet
           title={data.site.siteMetadata.title}
@@ -38,8 +58,8 @@ const Layout = ({ children }) => (
         <Container>
           {children}
         </Container>
-      </>
-    )}
+      </>)
+    }}
   />
 )
 
@@ -47,4 +67,9 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+const mapDispatchToProps = {
+  setPostPageOn,
+  setPostPageOff,
+}
+
+export default connect(()=>({}), mapDispatchToProps) (Layout)
