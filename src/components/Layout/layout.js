@@ -8,7 +8,7 @@ import ResponsiveSidebar from '../ResponsiveSidebar';
 import Container from '../Container';
 import ResponsiveAnchor from '../ResponsiveAnchor';
 import ResponsiveTopBar from '../ResponsiveTopBar';
-import { setPostPageOn, setPostPageOff } from '../../actions/sidebar'
+import { setPostPageOn, setPostPageOff } from '../../actions/layout'
 import { connect } from 'react-redux'
 
 const Layout = ({ 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getSidebarDockedState, getHeaderHeightState, getSidebarState } from '../../store/selectors';
+import { getSidebarDockedState, getHeaderHeightState, getContentOnPostPageState } from '../../store/selectors';
 
 class Container extends Component {
   render() {
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
   return { 
     sidebarDocked: getSidebarDockedState(state),
     headerHeight: getHeaderHeightState(state),
-    onPostPage: getSidebarState(state).onPostPage,
+    onPostPage: getContentOnPostPageState(state),
   }
 }
 

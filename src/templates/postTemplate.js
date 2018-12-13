@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout";
 import { connect } from 'react-redux'
-import { onSidebarContentExpand } from '../actions/sidebar'
+import { onSidebarContentExpand } from '../actions/layout'
 import "katex/dist/katex.min.css"
 
 function Template({

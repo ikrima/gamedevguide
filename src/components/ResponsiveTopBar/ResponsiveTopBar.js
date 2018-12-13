@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Button from 'antd/lib/button'
 import 'antd/lib/button/style/css'
-import { getHeaderHeightState, getSidebarDockedState, getSidebarState, getAnchorState } from '../../store/selectors';
-import { onSetSidebarOpen } from '../../actions/sidebar'
-import { onSetAnchorOpen } from '../../actions/anchor'
+import { getHeaderHeightState, getSidebarDockedState, getSidebarState, getAnchorState, getContentOnPostPageState } from '../../store/selectors';
+import { onSetAnchorOpen, onSetSidebarOpen } from '../../actions/layout'
 import SidebarContents from '../SidebarContents';
 import TableOfContents from '../TableOfContents';
 
@@ -112,9 +111,9 @@ const mapStateToProps = (state) => {
   return {
     headerHeight: getHeaderHeightState(state),
     siderbarDocked: getSidebarDockedState(state),
-    sidebarOpen: getSidebarState(state).sidebarOpen,
-    anchorOpen: getAnchorState(state).anchorOpen,
-    onPostPage: getSidebarState(state).onPostPage,
+    sidebarOpen: getSidebarState(state).open,
+    anchorOpen: getAnchorState(state).open,
+    onPostPage: getContentOnPostPageState(state),
   }
 }
 

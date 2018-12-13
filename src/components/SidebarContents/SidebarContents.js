@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { graphql, StaticQuery, Link } from "gatsby"
 import { connect } from "react-redux"
 import { getSidebarState } from '../../store/selectors';
-import { onSetSidebarOpen } from '../../actions/sidebar'
+import { onSetSidebarOpen } from '../../actions/layout'
 import Menu from 'antd/lib/menu'
 import 'antd/lib/menu/style/css'
 import './SidebarContents.css'

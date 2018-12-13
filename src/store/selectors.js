@@ -1,7 +1,13 @@
-export const getSidebarState = store => store.sidebar;
+export const getSidebarState = store => store.layout.sidebar;
 
-export const getSidebarDockedState = store => store.sidebar.sidebarDocked;
+// header
+export const getHeaderHeightState = store => store.layout.header.height;
 
-export const getHeaderHeightState = store => store.layout.headerHeight;
+// anchor
+export const getAnchorState = store => store.layout.anchor;
 
-export const getAnchorState = store => store.anchor;
+// sidebar
+export const getSidebarDockedState = store => store.layout.sidebar.docked;
+
+// content
+export const getContentOnPostPageState = store => store.layout.content.onPostPage;

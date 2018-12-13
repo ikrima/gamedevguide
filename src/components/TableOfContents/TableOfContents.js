@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Anchor from 'antd/lib/anchor'
 import 'antd/lib/anchor/style/css'
-import { onSetAnchorOpen } from '../../actions/anchor'
+import { onSetAnchorOpen } from '../../actions/layout'
 import { connect } from 'react-redux'
 import './TableOfContents.css'
 

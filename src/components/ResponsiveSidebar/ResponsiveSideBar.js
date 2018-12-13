@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Sidebar from "react-sidebar";
 import { getHeaderHeightState, getSidebarDockedState } from "../../store/selectors";
 import { connect } from "react-redux";
-import { onSetSidebarOpen, onSetSidebarDocked } from "../../actions/sidebar";
+import { onSetSidebarOpen, onSetSidebarDocked } from "../../actions/layout";
 import MediaQuery from "react-responsive";
 import { maxWidth, styles } from './sidebar-config';
 import SidebarContents from "../SidebarContents";
