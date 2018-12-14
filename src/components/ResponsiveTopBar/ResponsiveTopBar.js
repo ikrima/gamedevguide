@@ -90,7 +90,7 @@ class ResponsiveTopBar extends Component {
                 position: "fixed",
                 top: headerHeight + 40,
                 left: 0,
-                right: 0,
+                right: 10,
                 bottom: 0,
                 overflowY: "auto",
                 backgroundColor: 'white',

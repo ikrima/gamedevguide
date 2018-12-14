@@ -12,6 +12,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-transformer-json`,
+      options: {
+        typeName: `MenuItems`, // a fixed string
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `menuItems`,
+        path: `${__dirname}/src/menuItems`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,

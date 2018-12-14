@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import Header from '../Header/header'
+import Header from '../Header/Header'
 import './Layout.css'
 import ResponsiveSidebar from '../ResponsiveSidebar';
 import Container from '../Container';
