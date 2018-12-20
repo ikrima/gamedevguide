@@ -10,7 +10,7 @@ import SidebarContents from "../SidebarContents";
 class ResponsiveSidebar extends Component {
 
   render() {
-    const { onSetSidebarDocked, headerHeight, sidebarDocked, onPostPage } = this.props
+    const { onSetSidebarDocked, headerHeight, sidebarDocked, onPostPage, root } = this.props
     return (
       <MediaQuery
         maxWidth={maxWidth}
@@ -29,7 +29,7 @@ class ResponsiveSidebar extends Component {
                   top: headerHeight + 30
                 }
               }}
-              sidebar={<SidebarContents/>}
+              sidebar={<SidebarContents root={root}/>}
               docked={!matches}
               shadow={false}
             >

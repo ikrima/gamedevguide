@@ -1,5 +1,6 @@
 ---
-date: "2019-11-07"
+date: "2018-11-07"
 title: Hello World
+root: "/blog"
 ---
 # Hello World

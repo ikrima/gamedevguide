@@ -15,6 +15,7 @@ const Layout = ({
   children,
   setPostPageOn,
   setPostPageOff,
+  sidebarRoot,
 }) => (
   <StaticQuery
     query={graphql`
@@ -53,7 +54,7 @@ const Layout = ({
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <ResponsiveTopBar />
-        <ResponsiveSidebar />
+        <ResponsiveSidebar root={sidebarRoot}/>
         <ResponsiveAnchor />
         <Container>
           {children}

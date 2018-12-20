@@ -13,7 +13,7 @@ function Template({
   const { frontmatter, html, id } = markdownRemark
   onSidebarContentExpand(id)
   return (
-    <Layout>
+    <Layout sidebarRoot={frontmatter.root}>
     <div className="blog-post-container">
       <div className="blog-post">
         <h1>{frontmatter.title}</h1>
@@ -45,6 +45,7 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        root
       }
     }
   }

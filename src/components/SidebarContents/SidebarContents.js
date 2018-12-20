@@ -65,6 +65,7 @@ class SidebarContents extends Component {
 
   render() {
     const { expandedKeys } = this.props.sidebar
+    const { root } = this.props
     return (
       <StaticQuery
         query={graphql`
@@ -87,7 +88,7 @@ class SidebarContents extends Component {
         `}
         render={data => {
           const [tree, dir] = convertToTree(data.allMarkdownRemark.edges.filter(node => 
-            node.node.fields.slug.startsWith('/')
+            node.node.fields.slug.startsWith(root)
           ))
           sortTree(tree)
           const loop = data => data.map((item) => {
