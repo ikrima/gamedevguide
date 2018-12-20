@@ -39,8 +39,9 @@ const Layout = ({
     `}
     render={data => {
       const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
+      const getDiff = (string, diffBy) => string.split(diffBy).join('')
       if (typeof window !== 'undefined') {
-        allPosts.indexOf(pathPrefix + window.location.pathname) >= 0 ?
+        allPosts.indexOf(getDiff(window.location.pathname, pathPrefix)) >= 0 ?
         setPostPageOn() : setPostPageOff()
       }
       
