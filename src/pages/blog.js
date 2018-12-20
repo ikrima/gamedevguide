@@ -21,10 +21,10 @@ const BlogPage = ({
 export default BlogPage
 
 export const pageQuery = graphql`
-  query {
+  query($path: String!) {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { root: {eq: "/blog" }}}
+      filter: { frontmatter: { root: {eq: $path }}}
     ) {
       edges {
         node {
