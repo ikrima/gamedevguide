@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Sidebar from "react-sidebar";
-import { getHeaderHeightState, getSidebarDockedState } from "../../store/selectors";
+import { getHeaderHeightState, getSidebarDockedState, getContentOnPostPageState } from "../../store/selectors";
 import { connect } from "react-redux";
 import { onSetSidebarOpen, onSetSidebarDocked } from "../../actions/layout";
 import MediaQuery from "react-responsive";
@@ -10,7 +10,7 @@ import SidebarContents from "../SidebarContents";
 class ResponsiveSidebar extends Component {
 
   render() {
-    const { onSetSidebarDocked, headerHeight, sidebarDocked } = this.props
+    const { onSetSidebarDocked, headerHeight, sidebarDocked, onPostPage } = this.props
     return (
       <MediaQuery
         maxWidth={maxWidth}
@@ -19,7 +19,7 @@ class ResponsiveSidebar extends Component {
         }}
       >
         {(matches) => {
-          if (!sidebarDocked) return <></>
+          if (!sidebarDocked || !onPostPage) return <></>
           return (
             <Sidebar
               styles={{
@@ -46,6 +46,7 @@ const mapStateToProps = (state) => {
   return { 
     headerHeight: getHeaderHeightState(state),
     sidebarDocked: getSidebarDockedState(state),
+    onPostPage: getContentOnPostPageState(state),
   }
 }
 
