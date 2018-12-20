@@ -1,6 +1,8 @@
 # Gatsby Markdown Starter
 
-Boilerplate for markdown-based website (Documentation, Blog, etc.). Based on [gatsby-default-starter](https://github.com/gatsbyjs/gatsby-starter-default).
+Boilerplate for markdown-based website (Documentation, Blog, etc.).  Based on [gatsby-default-starter](https://github.com/gatsbyjs/gatsby-starter-default).
+
+[live demo](https://cvluca.github.io/gatsby-starter-markdow)
 
 ## Features
 * Responsive Web Design
@@ -11,6 +13,19 @@ Boilerplate for markdown-based website (Documentation, Blog, etc.). Based on [ga
 * Footer
 * Optional Sidebar
 * Optional Anchor
+
+## Plugins
+* gatsby-image
+* gatsby-plugin-manifest
+* gatsby-plugin-offline
+* gatsby-plugin-react-helmet
+* gatsby-plugin-sharp
+* gatsby-remark-autolink-headers
+* gatsby-remark-katex
+* gatsby-source-filesystem
+* gatsby-transformer-json
+* gatsby-transformer-remark
+* gatsby-transformer-sharp
 
 ## Quick Start
 
