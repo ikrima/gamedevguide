@@ -38,8 +38,10 @@ const Layout = ({
     `}
     render={data => {
       const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
-      allPosts.indexOf(window.location.pathname) >= 0 ?
-      setPostPageOn() : setPostPageOff()
+      if (typeof window !== 'undefined') {
+        allPosts.indexOf(window.location.pathname) >= 0 ?
+        setPostPageOn() : setPostPageOff()
+      }
       
       return (
       <>
