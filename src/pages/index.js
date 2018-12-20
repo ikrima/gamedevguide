@@ -18,9 +18,7 @@ const IndexPage = () => {
           <Link to="/docs/test">
             <Button type="primary" size="large" style={{marginRight: 10}}>Get Started</Button>
           </Link>
-          <a href="https://github.com/cvluca/gatsby-starter-markdown">
-            <Button type="primary" size="large">Github</Button>
-          </a>
+          <Button type="primary" size="large" href="https://github.com/cvluca/gatsby-starter-markdown">Github</Button>
         </div>
       </div>
     </Layout>
