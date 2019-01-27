@@ -18,7 +18,6 @@ const initialState = {
     expandedKeys: [],
     searchValue: '',
     autoExpandParent: true,
-    onPostPage: false,
   },
   content: { onPostPage: false },
 }

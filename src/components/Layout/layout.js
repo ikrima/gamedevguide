@@ -40,7 +40,12 @@ const Layout = ({
     render={data => {
       const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
       if (typeof window !== 'undefined') {
+<<<<<<< HEAD
         allPosts.indexOf(window.location.pathname.replace(pathPrefix.slice(0,-1),"")) >= 0 ?
+=======
+        const path = window.location.pathname.replace(pathPrefix.slice(0,-1),"")
+        allPosts.indexOf(path) >= 0 || allPosts.indexOf(path.slice(0,-1)) >= 0 ?
+>>>>>>> master
         setPostPageOn() : setPostPageOff()
       }
       
