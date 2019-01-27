@@ -56,7 +56,7 @@ const Layout = ({
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <ResponsiveTopBar />
+        <ResponsiveTopBar root={sidebarRoot}/>
         <ResponsiveSidebar root={sidebarRoot}/>
         <ResponsiveAnchor />
         <Container>

@@ -25,7 +25,7 @@ class ResponsiveTopBar extends Component {
   }
 
   render() {
-    const { headerHeight, siderbarDocked, sidebarOpen, anchorOpen, onPostPage } = this.props
+    const { headerHeight, siderbarDocked, sidebarOpen, anchorOpen, onPostPage, root } = this.props
 
     if (siderbarDocked || !onPostPage) return <></>
     return (
@@ -48,7 +48,7 @@ class ResponsiveTopBar extends Component {
           }}>
             {sidebarOpen ? 
               <Button icon="close" onClick={this.onSetSidebarClose}/> :
-              <Button icon="fullscreen" onClick={this.onSetSidebarOpen}/>
+              <Button icon="bars" onClick={this.onSetSidebarOpen}/>
             }
             {sidebarOpen &&
               <div style={{
@@ -69,7 +69,7 @@ class ResponsiveTopBar extends Component {
                   WebkitOverflowScrolling: "touch",
                   transition: "left .3s ease-out, right .3s ease-out",
                 }}>
-                  <SidebarContents />
+                  <SidebarContents root={root}/>
                 </div>
               </div>
             }
@@ -83,7 +83,7 @@ class ResponsiveTopBar extends Component {
           }}>
             {anchorOpen ?
               <Button icon="close" onClick={this.onSetAnchorClose}/> :
-              <Button icon="dash" onClick={this.onSetAnchorOpen}/>
+              <Button icon="ellipsis" onClick={this.onSetAnchorOpen}/>
             }
               {anchorOpen &&
               <div style={{
