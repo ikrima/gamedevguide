@@ -13,7 +13,7 @@ import { connect } from 'react-redux'
 import { pathPrefix } from '../../../gatsby-config'
 import MediaQuery from "react-responsive";
 import { onSetSidebarDocked } from "../../actions/layout";
-import { getSidebarDockedState, getContentOnPostPageState } from "../../store/selectors";
+import { getContentOnPostPageState } from "../../store/selectors";
 
 const Layout = ({ 
   children,
@@ -58,7 +58,7 @@ const Layout = ({
           onSetSidebarDocked(!matches)
         }}
       >
-        {() => (
+        {(matches) => (
           <>
         <Helmet
           title={data.site.siteMetadata.title}
@@ -70,10 +70,10 @@ const Layout = ({
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        {(!sidebarDocked && onPostPage) ? <ResponsiveTopBar root={sidebarRoot}/> : null}
-        {(sidebarDocked && onPostPage) ? 
+        {(matches && onPostPage) ? <ResponsiveTopBar root={sidebarRoot}/> : null}
+        {(!matches && onPostPage) ? 
         <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </>: null }
-        <Container>
+        <Container sidebarDocked={!matches}>
           {children}
         </Container>
         </>)}
@@ -89,7 +89,6 @@ Layout.propTypes = {
 
 const mapStateToProps = (state) => {
   return { 
-    sidebarDocked: getSidebarDockedState(state),
     onPostPage: getContentOnPostPageState(state),
   }
 }
