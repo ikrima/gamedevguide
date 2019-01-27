@@ -11,12 +11,15 @@ import ResponsiveTopBar from '../ResponsiveTopBar';
 import { setPostPageOn, setPostPageOff } from '../../actions/layout'
 import { connect } from 'react-redux'
 import { pathPrefix } from '../../../gatsby-config'
+import MediaQuery from "react-responsive";
+import { onSetSidebarDocked } from "../../actions/layout";
 
 const Layout = ({ 
   children,
   setPostPageOn,
   setPostPageOff,
   sidebarRoot,
+  onSetSidebarDocked,
 }) => (
   <StaticQuery
     query={graphql`
@@ -47,7 +50,14 @@ const Layout = ({
       }
       
       return (
-      <>
+      <MediaQuery
+        maxWidth={1000}
+        onChange={(matches) => {
+          onSetSidebarDocked(!matches)
+        }}
+      >
+        {() => (
+          <>
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
@@ -64,7 +74,9 @@ const Layout = ({
         <Container>
           {children}
         </Container>
-      </>)
+        </>)}
+        </MediaQuery>
+      )
     }}
   />
 )
@@ -76,6 +88,7 @@ Layout.propTypes = {
 const mapDispatchToProps = {
   setPostPageOn,
   setPostPageOff,
+  onSetSidebarDocked
 }
 
 export default connect(()=>({}), mapDispatchToProps) (Layout)

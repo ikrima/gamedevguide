@@ -9,14 +9,14 @@ import SidebarContents from "../SidebarContents";
 class ResponsiveSidebar extends Component {
   render() {
     const { onSetSidebarDocked, headerHeight, sidebarDocked, onPostPage, root } = this.props
-    return (
-      <MediaQuery
-        maxWidth={maxWidth}
-        onChange={(matches) => {
-          onSetSidebarDocked(!matches)
-        }}
-      >
-        {() => {
+    // return (
+    //   <MediaQuery
+    //     maxWidth={maxWidth}
+    //     onChange={(matches) => {
+    //       onSetSidebarDocked(!matches)
+    //     }}
+    //   >
+    //     {() => {
           if (!sidebarDocked || !onPostPage) return <></>
           return (
             <div style={{
@@ -38,9 +38,9 @@ class ResponsiveSidebar extends Component {
               </div>
             </div>
           )
-        }}
-      </MediaQuery>
-    );
+        // }}
+      // </MediaQuery>
+    // );
   }
 }
 
@@ -53,7 +53,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  onSetSidebarOpen,
   onSetSidebarDocked
 }
 
