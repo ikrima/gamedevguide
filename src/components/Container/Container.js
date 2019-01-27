@@ -13,14 +13,14 @@ class Container extends Component {
     return (
       <div
         style={{
-          position: "fixed",
-          top: (sidebarDocked || !onPostPage) ? headerHeight + 30: headerHeight + 70,
-          left: (sidebarDocked) ? "20%" : 0,
-          right: (sidebarDocked) ? "15%" : 0,
+          position: "absolute",
+          top: (sidebarDocked && onPostPage) ? headerHeight + 70: headerHeight + 30,
+          left: (!sidebarDocked && onPostPage) ? 0 : "20%",
+          right: (!sidebarDocked && onPostPage) ? 0 : "15%",
           bottom: 0,
-          // overflow: !sidebarDocked ? "auto" : "visible",
-          overflowY: "scroll",
-          overflowX: "hidden"
+          overflow: !sidebarDocked ? "auto" : "visible",
+          // overflowY: "scroll",
+          // overflowX: "hidden"
         }}
       >
         <div
