@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Button from 'antd/lib/button'
 import 'antd/lib/button/style/css'
-import { getHeaderHeightState, getSidebarDockedState, getSidebarState, getAnchorState, getContentOnPostPageState } from '../../store/selectors';
+import { getHeaderHeightState, getSidebarState, getAnchorState } from '../../store/selectors';
 import { onSetAnchorOpen, onSetSidebarOpen } from '../../actions/layout'
 import SidebarContents from '../SidebarContents';
 import TableOfContents from '../TableOfContents';
@@ -25,9 +25,8 @@ class ResponsiveTopBar extends Component {
   }
 
   render() {
-    const { headerHeight, siderbarDocked, sidebarOpen, anchorOpen, onPostPage, root } = this.props
+    const { headerHeight, sidebarOpen, anchorOpen, root } = this.props
 
-    if (siderbarDocked || !onPostPage) return <></>
     return (
       <div
         style={{
@@ -110,10 +109,8 @@ class ResponsiveTopBar extends Component {
 const mapStateToProps = (state) => {
   return {
     headerHeight: getHeaderHeightState(state),
-    siderbarDocked: getSidebarDockedState(state),
     sidebarOpen: getSidebarState(state).open,
     anchorOpen: getAnchorState(state).open,
-    onPostPage: getContentOnPostPageState(state),
   }
 }
 

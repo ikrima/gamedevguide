@@ -7,7 +7,6 @@ import {
   SET_POST_PAGE_ON,
   SET_POST_PAGE_OFF
 } from "../actions/actionTypes";
-import { maxWidth } from '../components/ResponsiveSidebar/sidebar-config';
 
 const initialState = {
   header: { height: 0 },
@@ -81,7 +80,7 @@ export default function(state=initialState, action) {
         sidebar: {
           ...state.sidebar,
           docked: (typeof window !== 'undefined') ? 
-            window.matchMedia(`(min-width: ${maxWidth}px)`).matches: false,
+            window.matchMedia(`(min-width: 1000px)`).matches: false,
         },
         content: {
           ...state.content,
