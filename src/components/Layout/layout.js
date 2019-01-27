@@ -13,6 +13,7 @@ import { connect } from 'react-redux'
 import { pathPrefix } from '../../../gatsby-config'
 import MediaQuery from "react-responsive";
 import { onSetSidebarDocked } from "../../actions/layout";
+import { getSidebarDockedState, getContentOnPostPageState } from "../../store/selectors";
 
 const Layout = ({ 
   children,
@@ -20,6 +21,8 @@ const Layout = ({
   setPostPageOff,
   sidebarRoot,
   onSetSidebarDocked,
+  sidebarDocked,
+  onPostPage,
 }) => (
   <StaticQuery
     query={graphql`
@@ -67,9 +70,9 @@ const Layout = ({
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <ResponsiveTopBar root={sidebarRoot}/>
-        <ResponsiveSidebar root={sidebarRoot}/>
-        <ResponsiveAnchor />
+        {(!sidebarDocked && onPostPage) ? <ResponsiveTopBar root={sidebarRoot}/> : null}
+        {(sidebarDocked && onPostPage) ? 
+        <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </>: null }
         <Container>
           {children}
         </Container>
@@ -84,10 +87,17 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
+const mapStateToProps = (state) => {
+  return { 
+    sidebarDocked: getSidebarDockedState(state),
+    onPostPage: getContentOnPostPageState(state),
+  }
+}
+
 const mapDispatchToProps = {
   setPostPageOn,
   setPostPageOff,
   onSetSidebarDocked
 }
 
-export default connect(()=>({}), mapDispatchToProps) (Layout)
+export default connect(mapStateToProps, mapDispatchToProps) (Layout)

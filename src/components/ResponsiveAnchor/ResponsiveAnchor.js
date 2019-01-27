@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import TableOfContents from '../TableOfContents';
 import { connect } from 'react-redux'
-import { getHeaderHeightState, getSidebarDockedState, getContentOnPostPageState } from "../../store/selectors";
+import { getHeaderHeightState } from "../../store/selectors";
 
 class ResponsiveAnchor extends Component {
   render() {
-    const { headerHeight, sidebarDocked, onPostPage } = this.props
-    if (!sidebarDocked || !onPostPage) return <></>
+    const { headerHeight } = this.props
     return (
       <div style={{
       position: "fixed",
@@ -33,8 +32,6 @@ class ResponsiveAnchor extends Component {
 const mapStateToProps = (state) => {
   return {
     headerHeight: getHeaderHeightState(state),
-    sidebarDocked: getSidebarDockedState(state),
-    onPostPage: getContentOnPostPageState(state),
   }
 }
 
