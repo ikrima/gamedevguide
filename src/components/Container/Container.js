@@ -14,7 +14,7 @@ class Container extends Component {
       <div
         style={{
           position: "absolute",
-          top: (sidebarDocked && onPostPage) ? headerHeight + 70: headerHeight + 30,
+          top: (!sidebarDocked && onPostPage) ? headerHeight + 70: headerHeight + 30,
           left: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "20%",
           right: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "15%",
           bottom: 0,
