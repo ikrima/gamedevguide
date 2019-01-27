@@ -13,7 +13,7 @@ const initialState = {
   header: { height: 0 },
   anchor: { open: false },
   sidebar: {
-    docked: true,
+    docked: false,
     open: false,
     expandedKeys: [],
     searchValue: '',
