@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getHeaderHeightState, getContentOnPostPageState } from '../../store/selectors';
+import { getHeaderHeightState } from '../../store/selectors';
 
 class Container extends Component {
   render() {
@@ -39,7 +39,6 @@ class Container extends Component {
 const mapStateToProps = (state) => {
   return { 
     headerHeight: getHeaderHeightState(state),
-    onPostPage: getContentOnPostPageState(state),
   }
 }
 

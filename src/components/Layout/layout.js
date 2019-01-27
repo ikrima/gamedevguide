@@ -21,7 +21,6 @@ const Layout = ({
   setPostPageOff,
   sidebarRoot,
   onSetSidebarDocked,
-  sidebarDocked,
   onPostPage,
 }) => (
   <StaticQuery
@@ -45,10 +44,16 @@ const Layout = ({
     `}
     render={data => {
       const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
+      let onPostPage 
       if (typeof window !== 'undefined') {
         const path = window.location.pathname.replace(pathPrefix.slice(0,-1),"")
-        allPosts.indexOf(path) >= 0 || allPosts.indexOf(path.slice(0,-1)) >= 0 ?
-        setPostPageOn() : setPostPageOff()
+        if (allPosts.indexOf(path) >= 0 || allPosts.indexOf(path.slice(0,-1)) >= 0) {
+          setPostPageOn()
+          onPostPage = true
+        } else {
+          setPostPageOff()
+          onPostPage = false
+        }
       }
       
       return (
@@ -73,7 +78,7 @@ const Layout = ({
         {(matches && onPostPage) ? <ResponsiveTopBar root={sidebarRoot}/> : null}
         {(!matches && onPostPage) ? 
         <><ResponsiveSidebar root={sidebarRoot}/> <ResponsiveAnchor /> </>: null }
-        <Container sidebarDocked={!matches}>
+        <Container sidebarDocked={!matches} onPostPage={onPostPage}>
           {children}
         </Container>
         </>)}
