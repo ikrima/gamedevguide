@@ -10,6 +10,7 @@ import ResponsiveAnchor from '../ResponsiveAnchor';
 import ResponsiveTopBar from '../ResponsiveTopBar';
 import { setPostPageOn, setPostPageOff } from '../../actions/layout'
 import { connect } from 'react-redux'
+import { pathPrefix } from '../../../gatsby-config'
 
 const Layout = ({ 
   children,
@@ -40,7 +41,7 @@ const Layout = ({
       const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
       const getDiff = (string, diffBy) => string.split(diffBy).join('')
       if (typeof window !== 'undefined') {
-        allPosts.indexOf(getDiff(window.location.pathname, "")) >= 0 ?
+        allPosts.indexOf(getDiff(window.location.pathname, pathPrefix)) >= 0 ?
         setPostPageOn() : setPostPageOff()
       }
       
