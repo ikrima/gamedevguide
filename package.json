@@ -23,7 +23,6 @@
     "react-helmet": "^5.2.0",
     "react-redux": "^5.1.0",
     "react-responsive": "^6.0.1",
-    "react-sidebar": "^3.0.2",
     "react-sizeme": "^2.5.2"
   },
   "keywords": [
