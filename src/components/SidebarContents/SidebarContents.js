@@ -6,6 +6,7 @@ import { onSetSidebarOpen } from '../../actions/layout'
 import Menu from 'antd/lib/menu'
 import 'antd/lib/menu/style/css'
 import './SidebarContents.css'
+import { pathPrefix } from '../../../gatsby-config'
 
 const SubMenu = Menu.SubMenu
 
@@ -106,9 +107,10 @@ class SidebarContents extends Component {
               </Menu.Item>
             )
           })
+          const path = window.location.pathname.replace(pathPrefix.slice(0,-1),"")
           const selectedKeys = data.allMarkdownRemark.edges
-            .filter(item => window.location.pathname === item.node.fields.slug ||
-              window.location.pathname+'/' === item.node.fields.slug)
+            .filter(item => path === item.node.fields.slug ||
+              (path.slice(0,-1) === item.node.fields.slug && path.slice(-1) === '/'))
             .length > 0 ? [expandedKeys] : []
           const defaultOpenKeys = dir.map(item => item.key)
           return (

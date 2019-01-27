@@ -41,8 +41,8 @@ const Layout = ({
       const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
       // const getDiff = (string, diffBy) => string.split(diffBy).join('')
       if (typeof window !== 'undefined') {
-      console.log(window.location.pathname.replace("", ''))
-        allPosts.indexOf(window.location.pathname.replace(pathPrefix.slice(0,-1),"")) >= 0 ?
+        const path = window.location.pathname.replace(pathPrefix.slice(0,-1),"")
+        allPosts.indexOf(path) >= 0 || allPosts.indexOf(path.slice(0,-1)) >= 0 ?
         setPostPageOn() : setPostPageOff()
       }
       
