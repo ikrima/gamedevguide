@@ -11,7 +11,7 @@
     "gatsby-plugin-manifest": "^2.0.5",
     "gatsby-plugin-offline": "^2.0.11",
     "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-plugin-sharp": "^2.0.13",
+    "gatsby-plugin-sharp": "^2.0.18",
     "gatsby-remark-autolink-headers": "^2.0.11",
     "gatsby-remark-katex": "^2.0.6",
     "gatsby-source-filesystem": "^2.0.7",
