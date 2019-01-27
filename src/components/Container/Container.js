@@ -15,12 +15,10 @@ class Container extends Component {
         style={{
           position: "absolute",
           top: (sidebarDocked && onPostPage) ? headerHeight + 70: headerHeight + 30,
-          left: (!sidebarDocked && onPostPage) ? 0 : "20%",
-          right: (!sidebarDocked && onPostPage) ? 0 : "15%",
+          left: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "20%",
+          right: ((!sidebarDocked && onPostPage) || !onPostPage) ? 0 : "15%",
           bottom: 0,
           overflow: !sidebarDocked ? "auto" : "visible",
-          // overflowY: "scroll",
-          // overflowX: "hidden"
         }}
       >
         <div
