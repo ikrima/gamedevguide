@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import Sidebar from "react-sidebar";
 import { getHeaderHeightState, getSidebarDockedState, getContentOnPostPageState } from "../../store/selectors";
 import { connect } from "react-redux";
 import { onSetSidebarOpen, onSetSidebarDocked } from "../../actions/layout";
 import MediaQuery from "react-responsive";
-import { maxWidth, styles } from './sidebar-config';
+import { maxWidth } from './sidebar-config';
 import SidebarContents from "../SidebarContents";
 
 class ResponsiveSidebar extends Component {
-
   render() {
     const { onSetSidebarDocked, headerHeight, sidebarDocked, onPostPage, root } = this.props
     return (
@@ -18,23 +16,27 @@ class ResponsiveSidebar extends Component {
           onSetSidebarDocked(!matches)
         }}
       >
-        {(matches) => {
+        {() => {
           if (!sidebarDocked || !onPostPage) return <></>
           return (
-            <Sidebar
-              styles={{
-                ...styles,
-                root: {
-                  ...styles.root,
-                  top: headerHeight + 30
-                }
-              }}
-              sidebar={<SidebarContents root={root}/>}
-              docked={!matches}
-              shadow={false}
-            >
-              <b></b>
-            </Sidebar>
+            <div style={{
+              position: "fixed",
+              top: headerHeight + 30,
+              left: 10,
+              right: "80%",
+              bottom: 0,
+              overflow: "hidden", 
+            }} >
+              <div style={{
+                position:"absolute", 
+                left:0,
+                right:10,
+                top:0,
+                bottom:0
+              }}>
+                <SidebarContents root={root}/>
+              </div>
+            </div>
           )
         }}
       </MediaQuery>
