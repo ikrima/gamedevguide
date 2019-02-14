@@ -114,7 +114,6 @@ class SidebarContents extends Component {
             .length > 0 ? [expandedKeys] : []
           const defaultOpenKeys = dir.map(item => item.key)
           return (
-            <div>
               <Menu 
                 mode="inline"
                 defaultOpenKeys={defaultOpenKeys}
@@ -123,7 +122,6 @@ class SidebarContents extends Component {
               >
                 {loop(tree)}
               </Menu>
-            </div>
           )
         }}
       />

@@ -34,7 +34,7 @@ class ResponsiveTopBar extends Component {
           top: headerHeight,
           width: "100%",
           height: 40,
-          zIndex: 1000,
+          zIndex: 1001,
           background: 'aliceblue',
           marginBottom: '1.45rem'
         }}
@@ -64,6 +64,7 @@ class ResponsiveTopBar extends Component {
                   bottom: 0,
                   left: 0,
                   right: 0,
+                  zIndex: 1000,
                   overflowY: "auto",
                   WebkitOverflowScrolling: "touch",
                   transition: "left .3s ease-out, right .3s ease-out",
@@ -91,6 +92,7 @@ class ResponsiveTopBar extends Component {
                 left: 0,
                 right: 10,
                 bottom: 0,
+                zIndex: 1000,
                 overflowY: "auto",
                 backgroundColor: 'white',
                 WebkitOverflowScrolling: "touch",

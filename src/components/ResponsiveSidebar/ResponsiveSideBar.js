@@ -13,7 +13,7 @@ class ResponsiveSidebar extends Component {
         left: 10,
         right: "80%",
         bottom: 0,
-        overflow: "auto", 
+        overflow: "hidden", 
       }} >
         <div style={{
           position:"absolute", 
