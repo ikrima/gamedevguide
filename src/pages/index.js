@@ -15,7 +15,7 @@ const IndexPage = () => {
           </p>
           <h2>Boilerplate for markdown-based website</h2>
           <br/>
-          <Link to="/docs/test">
+          <Link to="/docs/get-started/introduction">
             <Button type="primary" size="large" style={{marginRight: 10}}>Get Started</Button>
           </Link>
           <Button type="primary" size="large" href="https://github.com/cvluca/gatsby-starter-markdown">Github</Button>

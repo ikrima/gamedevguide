@@ -13,6 +13,7 @@ Boilerplate for markdown-based website (Documentation, Blog, etc.).  Based on [g
 * Footer
 * Optional Sidebar
 * Optional Anchor
+* Demo refresh bug
 
 ## Plugins
 * gatsby-image
