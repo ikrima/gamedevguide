@@ -7,4 +7,6 @@ parents: ["Guide"]
   Sidebar
 </h1>
 
-//TODO
+## Introduction
+
+The sidebar is automatically generated with a given `root` from the current page, which the information are stored in the corresponding markdown file. It will show all the pages under the given `root`. By default, all items will be expanded.
