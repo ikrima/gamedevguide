@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gatsby-starter-markdown",
   "description": "Gatsby default starter",
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
@@ -44,6 +44,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/cvluca/gatsby-starter-markdown"
   }
 }
