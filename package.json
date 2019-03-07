@@ -1,8 +1,8 @@
 {
   "name": "gatsby-starter-markdown",
-  "description": "Gatsby default starter",
+  "description": "Gatsby markdown starter",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Luca(Wei) Chen <wei@cvluca.com>",
   "dependencies": {
     "antd": "^3.10.8",
     "gatsby": "^2.0.19",
