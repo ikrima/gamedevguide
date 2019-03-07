@@ -28,8 +28,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `contents`,
-        path: `${__dirname}/contents`
-      }
+        path: `${__dirname}/contents`,
+      },
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
@@ -53,9 +53,18 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              className: "post-toc-anchor"
-            }
-          }
+              className: 'post-toc-anchor',
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 590,
+            },
+          },
         ],
       },
     },
@@ -64,5 +73,5 @@ module.exports = {
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ],
-  pathPrefix: "/",
+  pathPrefix: '/',
 }
