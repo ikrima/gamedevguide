@@ -8,20 +8,18 @@ import ResponsiveSidebar from '../ResponsiveSidebar';
 import Container from '../Container';
 import ResponsiveAnchor from '../ResponsiveAnchor';
 import ResponsiveTopBar from '../ResponsiveTopBar';
-import { setPostPageOn, setPostPageOff } from '../../actions/layout'
+// import { setPostPageOn, setPostPageOff } from '../../actions/layout'
 import { connect } from 'react-redux'
 import { pathPrefix } from '../../../gatsby-config'
 import MediaQuery from "react-responsive";
 import { onSetSidebarDocked } from "../../actions/layout";
-import { getContentOnPostPageState } from "../../store/selectors";
 
 const Layout = ({ 
   children,
-  setPostPageOn,
-  setPostPageOff,
+  // setPostPageOn,
+  // setPostPageOff,
   sidebarRoot,
   onSetSidebarDocked,
-  onPostPage,
 }) => (
   <StaticQuery
     query={graphql`
@@ -48,10 +46,10 @@ const Layout = ({
       if (typeof window !== 'undefined') {
         const path = window.location.pathname.replace(pathPrefix.slice(0,-1),"")
         if (allPosts.indexOf(path) >= 0 || allPosts.indexOf(path.slice(0,-1)) >= 0) {
-          setPostPageOn()
+          // setPostPageOn()
           onPostPage = true
         } else {
-          setPostPageOff()
+          // setPostPageOff()
           onPostPage = false
         }
       }
@@ -59,9 +57,6 @@ const Layout = ({
       return (
       <MediaQuery
         maxWidth={1000}
-        onChange={(matches) => {
-          onSetSidebarDocked(!matches)
-        }}
       >
         {(matches) => (
           <>
@@ -92,16 +87,11 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-const mapStateToProps = (state) => {
-  return { 
-    onPostPage: getContentOnPostPageState(state),
-  }
-}
 
 const mapDispatchToProps = {
-  setPostPageOn,
-  setPostPageOff,
+  // setPostPageOn,
+  // setPostPageOff,
   onSetSidebarDocked
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (Layout)
+export default connect(()=>({}), mapDispatchToProps) (Layout)

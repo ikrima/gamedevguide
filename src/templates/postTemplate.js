@@ -4,14 +4,19 @@ import Layout from "../components/Layout";
 import { connect } from 'react-redux'
 import { onSidebarContentExpand } from '../actions/layout'
 import "katex/dist/katex.min.css"
+import { getSidebarExpandedKey } from "../store/selectors";
 
 function Template({
   data, // this prop will be injected by the GraphQL query below.
   onSidebarContentExpand,
+  expandedKey,
 }) {
   const { markdownRemark } = data // data.markdownRemark holds our post data
   const { frontmatter, html, id } = markdownRemark
-  onSidebarContentExpand(id)
+  if (expandedKey !== id) {
+    onSidebarContentExpand(id)
+  }
+
   return (
     <Layout sidebarRoot={frontmatter.root}>
     <div className="blog-post-container">
@@ -28,11 +33,17 @@ function Template({
   )
 }
 
+const mapStateToProps = (state) => {
+  return {
+    expandedKey : getSidebarExpandedKey(state)
+  }
+}
+
 const mapDispatchToProps = {
   onSidebarContentExpand,
 }
 
-export default connect(()=>({}), mapDispatchToProps) (Template)
+export default connect(mapStateToProps, mapDispatchToProps) (Template)
 
 export const pageQuery = graphql`
   query($path: String!) {

@@ -65,7 +65,7 @@ class SidebarContents extends Component {
   }
 
   render() {
-    const { expandedKeys } = this.props.sidebar
+    const { expandedKey } = this.props.sidebar
     const { root } = this.props
     return (
       <StaticQuery
@@ -111,7 +111,7 @@ class SidebarContents extends Component {
           const selectedKeys = data.allMarkdownRemark.edges
             .filter(item => path === item.node.fields.slug ||
               (path.slice(0,-1) === item.node.fields.slug && path.slice(-1) === '/'))
-            .length > 0 ? [expandedKeys] : []
+            .length > 0 ? [expandedKey] : []
           const defaultOpenKeys = dir.map(item => item.key)
           return (
               <Menu 

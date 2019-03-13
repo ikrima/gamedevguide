@@ -3,9 +3,9 @@ import {
   SET_ANCHOR_OPEN,
   SET_SIDEBAR_OPEN, 
   SET_SIDEBAR_DOCKED,
-  ON_SIDEBAR_CONTENT_EXPEND,
-  SET_POST_PAGE_ON,
-  SET_POST_PAGE_OFF
+  ON_SIDEBAR_CONTENT_EXPAND,
+  // SET_POST_PAGE_ON,
+  // SET_POST_PAGE_OFF
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -14,7 +14,7 @@ const initialState = {
   sidebar: {
     docked: false,
     open: false,
-    expandedKeys: [],
+    expandedKey: '',
     searchValue: '',
     autoExpandParent: true,
   },
@@ -63,44 +63,44 @@ export default function(state=initialState, action) {
         }
       }
     }
-    case ON_SIDEBAR_CONTENT_EXPEND: {
+    case ON_SIDEBAR_CONTENT_EXPAND: {
       return {
         ...state,
         sidebar: {
           ...state.sidebar,
-          expandedKeys: action.payload.expandedKeys,
+          expandedKey: action.payload.expandedKey,
           autoExpandParent: action.payload.autoExpandParent
         }
       }
     }
     // content
-    case SET_POST_PAGE_ON: {
-      return {
-        ...state,
-        sidebar: {
-          ...state.sidebar,
-          docked: (typeof window !== 'undefined') ? 
-            window.matchMedia(`(min-width: 1000px)`).matches: false,
-        },
-        content: {
-          ...state.content,
-          onPostPage: true
-        },
-      }
-    }
-    case SET_POST_PAGE_OFF: {
-      return {
-        ...state,
-        sidebar: {
-          ...state.sidebar,
-          docked: false
-        },
-        content: {
-          ...state.content,
-          onPostPage: false
-        },
-      }
-    }
+    // case SET_POST_PAGE_ON: {
+    //   return {
+    //     ...state,
+    //     sidebar: {
+    //       ...state.sidebar,
+    //       docked: (typeof window !== 'undefined') ? 
+    //         window.matchMedia(`(min-width: 1000px)`).matches: false,
+    //     },
+    //     content: {
+    //       ...state.content,
+    //       onPostPage: true
+    //     },
+    //   }
+    // }
+    // case SET_POST_PAGE_OFF: {
+    //   return {
+    //     ...state,
+    //     sidebar: {
+    //       ...state.sidebar,
+    //       docked: false
+    //     },
+    //     content: {
+    //       ...state.content,
+    //       onPostPage: false
+    //     },
+    //   }
+    // }
     default: return state
   }
 }
