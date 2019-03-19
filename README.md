@@ -25,6 +25,7 @@ Boilerplate for markdown-based website (Documentation, Blog, etc.).  Based on [g
 * gatsby-plugin-offline
 * gatsby-plugin-react-helmet
 * gatsby-plugin-sharp
+* gatsby-remark-images
 * gatsby-remark-autolink-headers
 * gatsby-remark-katex
 * gatsby-source-filesystem
