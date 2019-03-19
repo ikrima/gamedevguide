@@ -18,7 +18,7 @@ const initialState = {
     searchValue: '',
     autoExpandParent: true,
   },
-  content: { onPostPage: false },
+  // content: { onPostPage: false },
 }
 
 export default function(state=initialState, action) {

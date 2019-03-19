@@ -44,7 +44,12 @@ const Layout = ({
       const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node.fields.slug)
       let onPostPage 
       if (typeof window !== 'undefined') {
-        const path = window.location.pathname.replace(pathPrefix.slice(0,-1),"")
+        let path;
+        if (pathPrefix.endsWith('/')) {
+          path = window.location.pathname.replace(pathPrefix.slice(0,-1),"")
+        } else {
+          path = window.location.pathname.replace(pathPrefix,"")
+        }
         if (allPosts.indexOf(path) >= 0 || allPosts.indexOf(path.slice(0,-1)) >= 0) {
           // setPostPageOn()
           onPostPage = true
