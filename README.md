@@ -14,6 +14,10 @@ Boilerplate for markdown-based website (Documentation, Blog, etc.).  Based on [g
 * Optional Sidebar
 * Optional Anchor
 * Demo refresh bug
+* Sidebar items order
+* Search Funtionality
+* Responsive menuitems
+* More examples
 
 ## Plugins
 * gatsby-image
