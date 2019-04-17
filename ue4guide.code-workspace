@@ -4,5 +4,8 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"eslint.packageManager": "yarn",
+		"npm.packageManager": "yarn"
+	}
 }

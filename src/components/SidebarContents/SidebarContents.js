@@ -8,16 +8,16 @@ import 'antd/lib/menu/style/css'
 import './SidebarContents.css'
 import { pathPrefix } from '../../../gatsby-config'
 
-const path = require('path');
+const fwdSlash = '/';
 
 
 const SubMenu = Menu.SubMenu
 
 const convertToTree = (data) => {
   const list = data.map(edge => {
-      const pathSlugs = edge.node.fields.slug.split(path.sep)
+      const pathSlugs = edge.node.fields.slug.split(fwdSlash)
       const parentSlugs = pathSlugs.slice(2, pathSlugs.length - 1)
-      const parentSlugs = edge.node.frontmatter.parents
+      //const parentSlugs = edge.node.frontmatter.parents
       return ({
         path: edge.node.fields.slug,
         key: edge.node.id,
@@ -57,7 +57,7 @@ const constructTree = (list) => {
 
 const sortTree = tree => {
   tree.sort((a,b)=> {
-    if (((a.children && b.children) || 
+    if (((a.children && b.children) ||
     (!a.children && !b.children)) &&
     a.title > b.title) return 1
     else if (a.children) return 1
@@ -94,8 +94,12 @@ class SidebarContents extends Component {
           }
         `}
         render={data => {
-          const [tree, dir] = convertToTree(data.allMarkdownRemark.edges.filter(node => 
-            node.node.fields.slug.startsWith(root)
+          const curPagePath = window.location.pathname.replace(pathPrefix.slice(0, -1), "")
+          const curPageRoot = (curPagePath && curPagePath.length) ? fwdSlash + curPagePath.split(fwdSlash)[1] : root
+          console.log(curPageRoot)
+          const [tree, dir] = convertToTree(data.allMarkdownRemark.edges.filter(node =>
+            //node.node.fields.slug.startsWith(root)
+            node.node.fields.slug.startsWith(curPageRoot)
           ))
           sortTree(tree)
           const loop = data => data.map((item) => {
@@ -120,7 +124,7 @@ class SidebarContents extends Component {
             .length > 0 ? [expandedKey] : []
           const defaultOpenKeys = dir.map(item => item.key)
           return (
-              <Menu 
+              <Menu
                 mode="inline"
                 defaultOpenKeys={defaultOpenKeys}
                 selectedKeys={selectedKeys}

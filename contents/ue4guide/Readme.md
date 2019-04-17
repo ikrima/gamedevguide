@@ -1,6 +1,6 @@
 ---
-title: Introduction
-root: "/ue4guide"
+title: Intro
+
 parents: ["Get Started"]
 ---
 <h1 align="center">
