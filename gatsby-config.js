@@ -1,27 +1,41 @@
+const config = require("./config")
+const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix
+
 module.exports = {
+  pathPrefix: config.pathPrefix,
   siteMetadata: {
-    title: `K&L/Bebylon Battle Royale: Dev Guide`,
-    description: `A simple starter for Gatsby. That's it.`,
-    author: `@ikrimae`,
+    siteUrl: config.siteUrl + pathPrefix,
+    title: config.siteTitleLong,
+    description: config.siteDescription,
+    author: config.userTwitter,
     logo: {
-      src: 'src/images/bebylon-icon.png',
-      alt: '',
+      src: config.siteLogo,
+      alt: "",
     },
-    logoText: 'hello friend',
-    defaultTheme: 'dark',
-    copyrights: '',
-    postsPerPage: 5,
-    showMenuItems: 4,
-    menuMoreText: 'Show more',
+    logoText:      config.themeLogoText,
+    defaultTheme:  config.themeDefaultTheme,
+    copyrights:    config.themeCopyrights,
+    postsPerPage:  config.themePostsPerPage,
+    showMenuItems: config.themeShowMenuItems,
+    menuMoreText:  config.themeMenuMoreText,
   },
   plugins: [
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-catch-links",
+    "gatsby-plugin-lodash",
+    {
+      resolve: `gatsby-mdx`,
+      options: {
+        extensions: [`.mdx`],
+      },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    'gatsby-plugin-react-helmet',
+    "gatsby-plugin-react-helmet",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -49,18 +63,19 @@ module.exports = {
         path: `${__dirname}/contents`,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'devguide',
-        short_name: 'devguide',
-        start_url: '/',
-        background_color: `#292a2d`,
-        theme_color: `#292a2d`,
-        display: 'minimal-ui',
-        icon: 'src/images/bebylon-icon.png', // This path is relative to the root of the site.
+        name:             config.siteTitleAlt,
+        short_name:       config.siteTitleManifest,
+        description:      config.siteDescription,
+        start_url:        config.pathPrefix,
+        background_color: config.themeBackgroundColor,
+        theme_color:      config.themeColor,
+        display:          config.siteDisplay,
+        icon:             config.favicon,
       },
     },
     {
@@ -68,7 +83,7 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: 'gatsby-remark-embed-video',
+            resolve: "gatsby-remark-embed-video",
             options: {
               related: false,
               noIframeBorder: true,
@@ -77,7 +92,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: 'language-',
+              classPrefix: "language-",
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: false,
@@ -86,13 +101,11 @@ module.exports = {
           },
           `gatsby-remark-smartypants`,
 
-
-
           `gatsby-remark-katex`,
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              className: 'post-toc-anchor',
+              className: "post-toc-anchor",
             },
           },
           {
@@ -101,7 +114,7 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 800
+              maxWidth: 800,
             },
           },
         ],
@@ -110,11 +123,11 @@ module.exports = {
     `gatsby-plugin-remove-trailing-slashes`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
-    'gatsby-plugin-offline',
+    "gatsby-plugin-offline",
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-47614715-1",
+        trackingId: config.googleAnalyticsID,
         // Puts tracking script in the head instead of the body
         head: false,
         // Setting this parameter is optional
@@ -136,5 +149,5 @@ module.exports = {
       },
     },
   ],
-  pathPrefix: '/',
+  pathPrefix: "/",
 }

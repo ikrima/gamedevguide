@@ -16,4 +16,5 @@ antd
 
 
 Useful plugins:
-https://mkdevdiary.netlify.com/gatsby-plugins-seo-and-images
+    - https://mkdevdiary.netlify.com/gatsby-plugins-seo-and-images
+    - gatsby-remark-external-links
