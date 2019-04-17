@@ -24,7 +24,8 @@
     "react-helmet": "^5.2.0",
     "react-redux": "^5.1.0",
     "react-responsive": "^6.0.1",
-    "react-sizeme": "^2.5.2"
+    "react-sizeme": "^2.5.2",
+    "har-validator": "^5.1.3"
   },
   "keywords": [
     "gatsby"
