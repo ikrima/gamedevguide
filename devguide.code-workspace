@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"eslint.packageManager": "npm",
+		"npm.packageManager": "npm",
+		"debug.node.autoAttach": "on"
+	}
+}

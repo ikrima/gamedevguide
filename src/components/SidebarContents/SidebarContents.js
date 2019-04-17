@@ -10,18 +10,19 @@ import { pathPrefix } from '../../../gatsby-config'
 
 const fwdSlash = '/';
 
-
 const SubMenu = Menu.SubMenu
 
 const convertToTree = (data) => {
   const list = data.map(edge => {
       const pathSlugs = edge.node.fields.slug.split(fwdSlash)
       const parentSlugs = pathSlugs.slice(2, pathSlugs.length - 1)
+      const curTitle = pathSlugs[pathSlugs.length-1]
       //const parentSlugs = edge.node.frontmatter.parents
+      //const curTitle = edge.node.frontmatter.title
       return ({
         path: edge.node.fields.slug,
         key: edge.node.id,
-        title: edge.node.frontmatter.title,
+        title: curTitle,
         parents: parentSlugs
       })
     })
@@ -94,9 +95,8 @@ class SidebarContents extends Component {
           }
         `}
         render={data => {
-          const curPagePath = window.location.pathname.replace(pathPrefix.slice(0, -1), "")
+          const curPagePath = window.location.pathname.replace(pathPrefix.endsWith(fwdSlash) ? pathPrefix.slice(0, -1) : pathPrefix, "")
           const curPageRoot = (curPagePath && curPagePath.length) ? fwdSlash + curPagePath.split(fwdSlash)[1] : root
-          console.log(curPageRoot)
           const [tree, dir] = convertToTree(data.allMarkdownRemark.edges.filter(node =>
             //node.node.fields.slug.startsWith(root)
             node.node.fields.slug.startsWith(curPageRoot)
@@ -117,7 +117,7 @@ class SidebarContents extends Component {
               </Menu.Item>
             )
           })
-          const path = window.location.pathname.replace(pathPrefix.slice(0,-1),"")
+          const path = window.location.pathname.replace(pathPrefix.endsWith('/') ? pathPrefix.slice(0, -1) : pathPrefix, "")
           const selectedKeys = data.allMarkdownRemark.edges
             .filter(item => path === item.node.fields.slug ||
               (path.slice(0,-1) === item.node.fields.slug && path.slice(-1) === '/'))
