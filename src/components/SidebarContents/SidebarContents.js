@@ -8,15 +8,21 @@ import 'antd/lib/menu/style/css'
 import './SidebarContents.css'
 import { pathPrefix } from '../../../gatsby-config'
 
+const path = require('path');
+
+
 const SubMenu = Menu.SubMenu
 
 const convertToTree = (data) => {
   const list = data.map(edge => {
+      const pathSlugs = edge.node.fields.slug.split(path.sep)
+      const parentSlugs = pathSlugs.slice(2, pathSlugs.length - 1)
+      const parentSlugs = edge.node.frontmatter.parents
       return ({
         path: edge.node.fields.slug,
         key: edge.node.id,
         title: edge.node.frontmatter.title,
-        parents: edge.node.frontmatter.parents
+        parents: parentSlugs
       })
     })
   return constructTree(list)
