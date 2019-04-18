@@ -4,6 +4,10 @@
     "link":  "/ue4guide/UnrealEngine"
   },
   {
+    "name": "Open Source",
+    "link": "/opensource/Readme.md"
+  },
+  {
     "name": "Blog",
     "link": "/blog"
   }

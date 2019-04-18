@@ -1,4 +1,9 @@
-Install:
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b04d49f2-9006-49ee-9f9a-569f59732aff/deploy-status)](https://app.netlify.com/sites/gamedevguide/deploys)
+
+# Game Development Notes
+
+
+# Install:
 cinst -y mkdocs
 cinst -y mkdocs-material
 pip install pymdown-extensions
