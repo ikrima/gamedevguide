@@ -19,6 +19,13 @@ cinst -y yarn
 npm install -g gatsby-cli
 npm install -g yarn
 
+## OneNote Conversion
+ - cinst -y pandoc
+ - OneNote 2016 + OneNoteBatch to batch export to docx/html
+ - Get-ChildItem -Path "./process_pendingdocx/*.docx" | % {pandoc --extract-media "process_markdown/assets" -s $_.FullName --wrap=none --reference-links -t markdown_strict -o "process_markdown/$($_.BaseName).md" }
+   - Can also use commonmark or gfm as markdown flavors
+ - Typora & StackEdit are great markdown editors
+
 ## Gatsby Notes
 gatsby new gamedevguide https://github.com/ikrima/gamedevguide (or git clone + yarn)
 gatsby develop (yarn develop)
