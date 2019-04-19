@@ -2,17 +2,22 @@
 
 # Game Development Notes
 
+# Roadmap
 
-# Install:
-cinst -y mkdocs
-cinst -y mkdocs-material
-pip install pymdown-extensions
+- [x] Add typescript
+- [x] Remove Redux
+- [x] General simplifications
+- [ ] Host sample
 
-# Gatsby Notes
+# Notes To Myself
+## Bootstrap Install:
 cinst -y nodejs
 cinst -y yarn
 npm install -g gatsby-cli
-gatsby new gatsby-site (or git clone + yarn)
+npm install -g yarn
+
+## Gatsby Notes
+gatsby new gamedevguide https://github.com/ikrima/gamedevguide (or git clone + yarn)
 gatsby develop (yarn develop)
 gatsby build
 gatsby serve
@@ -21,3 +26,24 @@ gatsby serve
 
 # Useful Examples:
   - https://github.com/LekoArts/gatsby-starter-minimal-blog
+  - https://mkdevdiary.netlify.com/gatsby-plugins-seo-and-images
+  - gatsby-remark-external-links
+  - Ant Design Pro: http://pro.ant.design/docs/use-components-alone
+  - Ant Design Kitchen Sink: http://kitchen.alipay.com/
+
+# TODO notes
+check headerHeight
+    \src\components\Container\Container.js
+    \src\components\ResponsiveAnchor\ResponsiveAnchor.js
+    \src\components\ResponsiveSidebar\ResponsiveSidebar.js
+    \src\components\ResponsiveTopBar\ResponsiveTopBar.js
+
+check getHeaderHeightState
+    getFooterHeightState
+
+<div className="container">
+
+tags template
+antd
+.path
+.title
