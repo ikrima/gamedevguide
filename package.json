@@ -1,5 +1,5 @@
 {
-  "name": "devguide",
+  "name": "gamedevguide",
   "description": "K&L/Bebylon Battle Royale: Development Guide",
   "version": "1.0.0",
   "author": "ikrima <hello@kiteandlightning.la>",
@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "build": "gatsby build",
-    "predevelop": "gatsby clean",
     "develop": "gatsby develop",
+    "dev": "gatsby clean && gatsby develop",
     "start": "npm run develop",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
@@ -46,6 +46,7 @@
     "gatsby-remark-images": "^3.0.6",
     "gatsby-remark-katex": "^2.0.6",
     "gatsby-remark-prismjs": "^3.2.0",
+    "gatsby-remark-responsive-iframe": "^2.1.1",
     "gatsby-remark-smartypants": "^2.0.9",
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-json": "^2.1.6",
@@ -100,9 +101,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ikrima/devguide"
+    "url": "https://github.com/ikrima/gamedevguide"
   },
   "bugs": {
-    "url": "https://github.com/ikrima/devguide/issues"
+    "url": "https://github.com/ikrima/gamedevguide/issues"
   }
 }

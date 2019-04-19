@@ -1,37 +1,40 @@
-const siteCfg = require("./config")
+const siteCfg = require("./SiteCfg")
 const pathPrefix = siteCfg.pathPrefix === "/" ? "" : siteCfg.pathPrefix
 
 module.exports = {
   pathPrefix: siteCfg.pathPrefix,
   siteMetadata: {
-    siteUrl: siteCfg.siteUrl + pathPrefix,
-    title: siteCfg.siteTitleLong,
-    description: siteCfg.siteDescription,
-    author: siteCfg.userTwitter,
+    siteUrl:           siteCfg.siteUrl + pathPrefix,
+    siteNavTitle:      siteCfg.siteNavTitle,
+    siteTitleLong:     siteCfg.siteTitleLong,
+    siteDescription:   siteCfg.siteDescription,
+    siteKeywords:      siteCfg.siteKeywords,
+
+    author:        siteCfg.userTwitter,
+    logoText:      siteCfg.siteLogoText,
+    copyrights:    siteCfg.siteCopyrights,
     logo: {
       src: siteCfg.siteLogo,
       alt: "",
     },
-    logoText:      siteCfg.theme.LogoText,
-    defaultTheme:  siteCfg.theme.DefaultTheme,
-    copyrights:    siteCfg.theme.Copyrights,
+
     postsPerPage:  siteCfg.theme.PostsPerPage,
     showMenuItems: siteCfg.theme.ShowMenuItems,
     menuMoreText:  siteCfg.theme.MenuMoreText,
   },
   plugins: [
     {
-      resolve: 'gatsby-plugin-antd',
+      resolve: "gatsby-plugin-antd",
       options: {
-        style: true
-      }
+        style: true,
+      },
     },
     {
       resolve: `gatsby-plugin-less`,
       options: {
         javascriptEnabled: true,
-        modifyVars: siteCfg.theme.modifyVars
-      }
+        modifyVars: siteCfg.theme.modifyVars,
+      },
     },
     "gatsby-plugin-sitemap",
     "gatsby-plugin-catch-links",
@@ -81,14 +84,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name:             siteCfg.siteTitleAlt,
-        short_name:       siteCfg.siteTitleManifest,
-        description:      siteCfg.siteDescription,
-        start_url:        siteCfg.pathPrefix,
+        name: siteCfg.siteTitleAlt,
+        short_name: siteCfg.siteTitleManifest,
+        description: siteCfg.siteDescription,
+        start_url: siteCfg.pathPrefix,
         background_color: siteCfg.theme.BackgroundColor,
-        theme_color:      siteCfg.theme.Color,
-        display:          siteCfg.siteDisplay,
-        icon:             siteCfg.favicon,
+        theme_color: siteCfg.theme.Color,
+        display: siteCfg.siteDisplay,
+        icon: siteCfg.favicon,
       },
     },
     {
@@ -102,6 +105,7 @@ module.exports = {
               noIframeBorder: true,
             },
           },
+          "gatsby-remark-responsive-iframe",
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
