@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const path = require('path')
 
 exports.createPages = ({ actions, graphql }) => {
@@ -5,29 +6,36 @@ exports.createPages = ({ actions, graphql }) => {
 
   const postTemplate = path.resolve('src/templates/postTemplate.js')
 
-  return graphql(`
-    {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
-        edges {
-          node {
-            fields {
-              slug
+  return new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
+          edges {
+            node {
+              fields {
+                slug
+              }
             }
           }
         }
       }
-    }
-  `).then(result => {
-    if (result.errors) {
-      return Promise.reject(result.errors)
-    }
+    `).then(result => {
+      if (result.errors) {
+        console.log(result.errors)
+        // resolve()
+        reject(result.errors)
+      }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      createPage({
-        path: node.fields.slug,
-        component: postTemplate,
-        context: {}, // additional data can be passed via context
+      // Create page templates
+      _.each(result.data.allMarkdownRemark.edges, edge => {
+        createPage({
+          path: edge.node.fields.slug,
+          component: postTemplate,
+          context: {}, // additional data can be passed via context
+        })
       })
+
+      resolve()
     })
   })
 }

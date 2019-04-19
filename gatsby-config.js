@@ -138,7 +138,7 @@ module.exports = {
         ],
       },
     },
-    // 'gatsby-plugin-eslint',
+    'gatsby-plugin-eslint',
     'gatsby-plugin-remove-trailing-slashes',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline

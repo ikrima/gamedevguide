@@ -6,8 +6,22 @@ import { Anchor as AntdAnchor } from 'antd'
 
 const { Link } = AntdAnchor
 
+const constructTree = list => {
+  const deleteNode = []
+  for (let i = 0; i < list.length; i += 1) {
+    for (let j = i + 1; j < list.length; j += 1) {
+      if (list[i].depth + 1 === list[j].depth) {
+        list[i].children.push(list[j])
+        deleteNode.push(j)
+      } else if (list[i].depth >= list[j].depth) break
+    }
+  }
+  deleteNode.sort((a, b) => b - a).forEach(index => list.splice(index, 1))
+}
+
 const filterAnchorDetails = anchors => {
   let lastDepth = 0
+  // eslint-disable-next-line no-param-reassign
   anchors = [].slice.call(anchors).map(anchor => {
     let depth = parseInt(anchor.parentElement.nodeName[1], 10)
     if (lastDepth !== 0 && depth > lastDepth) depth = lastDepth + 1
@@ -21,19 +35,6 @@ const filterAnchorDetails = anchors => {
   })
   constructTree(anchors)
   return anchors
-}
-
-const constructTree = list => {
-  const deleteNode = []
-  for (let i = 0; i < list.length; i += 1) {
-    for (let j = i + 1; j < list.length; j += 1) {
-      if (list[i].depth + 1 === list[j].depth) {
-        list[i].children.push(list[j])
-        deleteNode.push(j)
-      } else if (list[i].depth >= list[j].depth) break
-    }
-  }
-  deleteNode.sort((a, b) => b - a).forEach(index => list.splice(index, 1))
 }
 
 function TableOfContents() {

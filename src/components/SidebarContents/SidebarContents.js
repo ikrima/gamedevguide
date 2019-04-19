@@ -18,25 +18,6 @@ import {
 
 const AntdSubMenu = AntdMenu.SubMenu
 
-const convertToTree = data => {
-  const list = data.map(edge => {
-    const pathSlugs = toRelativeSitePath(edge.node.fields.slug).split('/')
-    const parentSlugs = pathSlugs.slice(1, pathSlugs.length - 1).map(prettifyPath)
-    const curTitle = edge.node.fields.pageTitle
-    // const curTitle = pathSlugs[pathSlugs.length - 1]
-    // const parentSlugs = edge.node.frontmatter.parents
-    // const curTitle = edge.node.frontmatter.title
-
-    return {
-      path: edge.node.fields.slug,
-      key: edge.node.id,
-      title: curTitle,
-      parents: parentSlugs,
-    }
-  })
-  return constructTree(list)
-}
-
 const constructTree = list => {
   const tree = []
   const dir = []
@@ -60,6 +41,25 @@ const constructTree = list => {
     }
   })
   return [tree, dir]
+}
+
+const convertToTree = data => {
+  const list = data.map(edge => {
+    const pathSlugs = toRelativeSitePath(edge.node.fields.slug).split('/')
+    const parentSlugs = pathSlugs.slice(1, pathSlugs.length - 1).map(prettifyPath)
+    const curTitle = edge.node.fields.pageTitle
+    // const curTitle = pathSlugs[pathSlugs.length - 1]
+    // const parentSlugs = edge.node.frontmatter.parents
+    // const curTitle = edge.node.frontmatter.title
+
+    return {
+      path: edge.node.fields.slug,
+      key: edge.node.id,
+      title: curTitle,
+      parents: parentSlugs,
+    }
+  })
+  return constructTree(list)
 }
 
 const sortTree = tree => {
