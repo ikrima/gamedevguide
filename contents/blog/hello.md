@@ -4,6 +4,7 @@ date: "2019-01-17"
 coverImage: "./assets/hello.jpg"
 author: "Elliot"
 excerpt: '"Hello, friend?" That''s lame. Maybe I should give you a name...'
+root: "/blog"
 tags: ["rob____ot", "hello friend"]
 ---
 
