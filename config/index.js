@@ -1,4 +1,4 @@
-module.exports = {
+let siteCfg = {
   pathPrefix:        "/", // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
 
   siteTitle:         "GameDev Guide", // Navigation and Site Title
@@ -21,15 +21,26 @@ module.exports = {
   ogLanguage:        "en_US", // Facebook Language
   googleAnalyticsID: "UA-47614715-1",
 
-  // Manifest and Progress color
-  // See: https://developers.google.com/web/fundamentals/web-app-manifest/
-  themeColor:           "#292a2d",
-  themeBackgroundColor: "#292a2d",
 
-  themeLogoText:      "hello friend",
-  themeDefaultTheme:  "dark",
-  themeCopyrights:    "",
-  themePostsPerPage:  5,
-  themeShowMenuItems: 4,
-  themeMenuMoreText:  "Show more",
+  theme: {
+    // Manifest and Progress color
+    // See: https://developers.google.com/web/fundamentals/web-app-manifest/
+    Color:           "#292a2d",
+    BackgroundColor: "#292a2d",
+    LogoText:        "hello friend",
+    DefaultTheme:    "dark",
+    Copyrights:      "",
+    PostsPerPage:    5,
+    ShowMenuItems:   4,
+    MenuMoreText:    "Show more",
+    modifyVars:      {}
+  }
 }
+
+siteCfg.theme.modifyVars = {
+  "primary-color":          siteCfg.theme.Color,
+  "font-family":            "Arial",
+  "layout-body-background": siteCfg.theme.BackgroundColor,
+}
+
+module.exports = siteCfg

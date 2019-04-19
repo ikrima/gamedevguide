@@ -1,11 +1,15 @@
 [
   {
+    "name": "Open Source",
+    "link": "/opensource/readme"
+  },
+  {
     "name": "UE4 Guide",
     "link":  "/ue4guide/UnrealEngine"
   },
   {
-    "name": "Open Source",
-    "link": "/opensource/Readme.md"
+    "name": "Graphics",
+    "link": "/graphics/readme"
   },
   {
     "name": "Blog",

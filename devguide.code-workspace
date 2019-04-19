@@ -7,6 +7,11 @@
 	"settings": {
 		"eslint.packageManager": "npm",
 		"npm.packageManager": "npm",
-		"debug.node.autoAttach": "on"
+		"debug.node.autoAttach": "on",
+		"files.exclude": {
+			"public": true,
+			"node_modules": true,
+			".cache": true,
+		}
 	}
 }

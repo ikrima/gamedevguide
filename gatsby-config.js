@@ -1,25 +1,38 @@
-const config = require("./config")
-const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix
+const siteCfg = require("./config")
+const pathPrefix = siteCfg.pathPrefix === "/" ? "" : siteCfg.pathPrefix
 
 module.exports = {
-  pathPrefix: config.pathPrefix,
+  pathPrefix: siteCfg.pathPrefix,
   siteMetadata: {
-    siteUrl: config.siteUrl + pathPrefix,
-    title: config.siteTitleLong,
-    description: config.siteDescription,
-    author: config.userTwitter,
+    siteUrl: siteCfg.siteUrl + pathPrefix,
+    title: siteCfg.siteTitleLong,
+    description: siteCfg.siteDescription,
+    author: siteCfg.userTwitter,
     logo: {
-      src: config.siteLogo,
+      src: siteCfg.siteLogo,
       alt: "",
     },
-    logoText:      config.themeLogoText,
-    defaultTheme:  config.themeDefaultTheme,
-    copyrights:    config.themeCopyrights,
-    postsPerPage:  config.themePostsPerPage,
-    showMenuItems: config.themeShowMenuItems,
-    menuMoreText:  config.themeMenuMoreText,
+    logoText:      siteCfg.theme.LogoText,
+    defaultTheme:  siteCfg.theme.DefaultTheme,
+    copyrights:    siteCfg.theme.Copyrights,
+    postsPerPage:  siteCfg.theme.PostsPerPage,
+    showMenuItems: siteCfg.theme.ShowMenuItems,
+    menuMoreText:  siteCfg.theme.MenuMoreText,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-antd',
+      options: {
+        style: true
+      }
+    },
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        javascriptEnabled: true,
+        modifyVars: siteCfg.theme.modifyVars
+      }
+    },
     "gatsby-plugin-sitemap",
     "gatsby-plugin-catch-links",
     "gatsby-plugin-lodash",
@@ -68,14 +81,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name:             config.siteTitleAlt,
-        short_name:       config.siteTitleManifest,
-        description:      config.siteDescription,
-        start_url:        config.pathPrefix,
-        background_color: config.themeBackgroundColor,
-        theme_color:      config.themeColor,
-        display:          config.siteDisplay,
-        icon:             config.favicon,
+        name:             siteCfg.siteTitleAlt,
+        short_name:       siteCfg.siteTitleManifest,
+        description:      siteCfg.siteDescription,
+        start_url:        siteCfg.pathPrefix,
+        background_color: siteCfg.theme.BackgroundColor,
+        theme_color:      siteCfg.theme.Color,
+        display:          siteCfg.siteDisplay,
+        icon:             siteCfg.favicon,
       },
     },
     {
@@ -127,7 +140,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: config.googleAnalyticsID,
+        trackingId: siteCfg.googleAnalyticsID,
         // Puts tracking script in the head instead of the body
         head: false,
         // Setting this parameter is optional

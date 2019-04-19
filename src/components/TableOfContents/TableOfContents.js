@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Anchor from 'antd/lib/anchor'
-import 'antd/lib/anchor/style/css'
+import { Anchor } from 'antd'
 import { onSetAnchorOpen } from '../../actions/layout'
 import { connect } from 'react-redux'
 import './TableOfContents.css'
@@ -32,8 +31,8 @@ const constructTree = list => {
         list[i].children.push(list[j])
         deleteNode.push(j)
       }
-      else if (list[i].depth >= list[j].depth) break 
-    } 
+      else if (list[i].depth >= list[j].depth) break
+    }
   }
   deleteNode.sort((a,b)=>b-a).forEach(index => list.splice(index,1))
 }
@@ -64,7 +63,7 @@ class TableOfContents extends Component {
       if (item.children.length > 0) {
         return (
           <Link href={item.href} title={item.title} key={item.href}>
-            {loop(item.children)} 
+            {loop(item.children)}
           </Link>
         )
       }

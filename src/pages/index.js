@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import Button from 'antd/lib/button'
-import 'antd/lib/button/style/css'
+import { Button } from 'antd'
 import { Link } from "gatsby"
 
 const IndexPage = () => {

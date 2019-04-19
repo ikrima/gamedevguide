@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import Card from 'antd/lib/card'
-import 'antd/lib/card/style/css'
+import { Card } from 'antd'
 
 const PostCard = ({ post }) => (
   <div>
@@ -17,7 +16,7 @@ const PostCard = ({ post }) => (
           {post.frontmatter.date}
         </span>
       </div>
-     } 
+     }
      >
       {post.excerpt}
      </Card>

@@ -1,16 +1,7 @@
 ---
-title: Overview
+title:
 ---
-#
-Overview.docx {#overview-docx}
-
-Overview
-
-Saturday, April 28, 2018
-
-3:43 AM
-
-## Overview {#overview}
+# Overview
 
 | UnrealBuildTool::UnrealTargetConfiguration |
 
@@ -34,12 +25,12 @@ Saturday, April 28, 2018
 
 Reference: D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Source\Programs\UnrealBuildTool\Configuration\UEBuildTarget.cs
 
-## Incredibuild {#incredibuild}
+## Incredibuild
 
 * Make sure Incredibuild agents are installed on your local machine
 * ke sure Coordinator is running on the build server
 
-## Build Automation: {#build-automation}
+## Build Automation:
 
 * **New script for making Installed Builds:** The ‘Rocket’ build process has been re-written using our new BuildGraph script (similar in style to MSBuild scripts), which should make the process easier to follow and modify for other users who want to make their own Installed builds. The main script can be found at Engine/Build/InstalledEngineBuild.xml and can be run using one of the following command lines from AutomationTool:
 * BuildGraph -target=”Make Installed Build Win64” -script=Engine/Build/InstalledEngineBuild.xml
