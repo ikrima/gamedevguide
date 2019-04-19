@@ -1,48 +1,48 @@
-import { 
+import {
   UPDATE_HEADER_HEIGHT,
   SET_ANCHOR_OPEN,
-  SET_SIDEBAR_OPEN, 
-  SET_SIDEBAR_DOCKED, 
-  ON_SIDEBAR_CONTENT_EXPAND, 
-  // SET_POST_PAGE_ON, 
+  SET_SIDEBAR_OPEN,
+  SET_SIDEBAR_DOCKED,
+  ON_SIDEBAR_CONTENT_EXPAND,
+  // SET_POST_PAGE_ON,
   // SET_POST_PAGE_OFF
-} from "./actionTypes";
+} from './actionTypes'
 
 // header
-export const updateHeaderHeight = (height) => ({
+export const updateHeaderHeight = height => ({
   type: UPDATE_HEADER_HEIGHT,
   payload: {
-    headerHeight: height
-  }
+    headerHeight: height,
+  },
 })
 
 // anchor
-export const onSetAnchorOpen = (open) => ({
+export const onSetAnchorOpen = open => ({
   type: SET_ANCHOR_OPEN,
   payload: {
-    anchorOpen: open
-  }
+    anchorOpen: open,
+  },
 })
 
 // sidebar
-export const onSetSidebarOpen = (open) => ({
+export const onSetSidebarOpen = open => ({
   type: SET_SIDEBAR_OPEN,
-  payload: { sidebarOpen: open }
+  payload: { sidebarOpen: open },
 })
 
-export const onSetSidebarDocked = (docked) => ({
+export const onSetSidebarDocked = docked => ({
   type: SET_SIDEBAR_DOCKED,
   payload: {
     sidebarDocked: docked,
-  }
+  },
 })
 
-export const onSidebarContentExpand = (expandedKey) => ({
+export const onSidebarContentExpand = expandedKey => ({
   type: ON_SIDEBAR_CONTENT_EXPAND,
   payload: {
     expandedKey,
-    autoExpandParent: false
-  }
+    autoExpandParent: false,
+  },
 })
 
 // content

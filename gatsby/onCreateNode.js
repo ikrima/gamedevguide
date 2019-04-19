@@ -1,23 +1,27 @@
-const { sanitizePath, removeTrailingFwdSlash, prettifyPath } = require("./utils")
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require('gatsby-source-filesystem')
+const { sanitizePath, removeTrailingFwdSlash, prettifyPath } = require('./utils')
 
-module.exports = exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
-  let pgTitle = ""
-  if (node.internal.type === `MarkdownRemark`) {
-    const nodeFilePath = removeTrailingFwdSlash(createFilePath({ node, getNode, basePath: `pages` }))
+  let pgTitle = ''
+  if (node.internal.type === 'MarkdownRemark') {
+    const nodeFilePath = removeTrailingFwdSlash(
+      createFilePath({ node, getNode, basePath: 'pages' })
+    )
     const slug = sanitizePath(nodeFilePath)
     createNodeField({
       node,
-      name: `slug`,
+      name: 'slug',
       value: slug,
     })
-    pgTitle = prettifyPath(nodeFilePath.split("/").pop())
+    pgTitle = prettifyPath(nodeFilePath.split('/').pop())
   }
   createNodeField({
     node,
-    name: `pageTitle`,
+    name: 'pageTitle',
     value: pgTitle,
   })
 }
+
+module.exports = exports.onCreateNode

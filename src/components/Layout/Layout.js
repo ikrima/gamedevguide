@@ -2,21 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import { Layout as AntdLayout } from 'antd'
 import Header from '../Header/Header'
-//import './Layout.css'
-import ResponsiveSidebar from '../ResponsiveSidebar';
-import Container from '../Container';
-import ResponsiveAnchor from '../ResponsiveAnchor';
-import ResponsiveTopBar from '../ResponsiveTopBar';
+// import './Layout.css'
+// import ResponsiveSidebar from '../ResponsiveSidebar';
+// import Container from '../Container';
+// import ResponsiveAnchor from '../ResponsiveAnchor';
+// import ResponsiveTopBar from '../ResponsiveTopBar';
 // import { setPostPageOn, setPostPageOff } from '../../actions/layout'
-import { connect } from 'react-redux'
-import { pathPrefix } from '../../../gatsby-config'
-import MediaQuery from "react-responsive";
-import { onSetSidebarDocked } from "../../actions/layout";
+// import { connect } from 'react-redux'
+// import { pathPrefix } from '../../../gatsby-config'
+// import MediaQuery from "react-responsive";
+// import { onSetSidebarDocked } from "../../actions/layout";
 
 import SidebarContents from '../SidebarContents'
 import TableOfContents from '../TableOfContents'
-import { Layout as AntdLayout, Breadcrumb as AntdBreadcrumb } from 'antd'
+
 const { Sider: AntdSider, Content: AntdContent } = AntdLayout
 
 const RootLayout = ({
@@ -24,7 +25,7 @@ const RootLayout = ({
   // setPostPageOn,
   // setPostPageOff,
   sidebarRoot,
-  //onSetSidebarDocked,
+  // onSetSidebarDocked,
 }) => (
   <StaticQuery
     query={graphql`
@@ -105,16 +106,16 @@ const RootLayout = ({
       return (
         <div
           style={{
-            display: "grid",
-            gridTemplateRows: "auto 1fr",
-            height: "100vh",
+            display: 'grid',
+            gridTemplateRows: 'auto 1fr',
+            height: '100vh',
           }}
         >
           <Helmet
             title={siteTitleLong}
             meta={[
-              { name: "description", content: siteDescription },
-              { name: "keywords", content: siteKeywords },
+              { name: 'description', content: siteDescription },
+              { name: 'keywords', content: siteKeywords },
             ]}
           >
             <html lang="en" />
@@ -123,9 +124,9 @@ const RootLayout = ({
 
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "auto 1fr auto",
-              height: "100%",
+              display: 'grid',
+              gridTemplateColumns: 'auto 1fr auto',
+              height: '100%',
             }}
           >
             <SidebarContents root={sidebarRoot} />
@@ -143,7 +144,7 @@ const RootLayout = ({
               </Breadcrumb> */}
               <AntdContent
                 style={{
-                  background: "#fff",
+                  background: '#fff',
                   padding: 24,
                   margin: 0,
                 }}
@@ -154,10 +155,7 @@ const RootLayout = ({
             <TableOfContents />
           </div>
           <AntdLayout>
-            <AntdSider
-              width={200}
-              style={{ background: "#fff", height: "100%" }}
-            />
+            <AntdSider width={200} style={{ background: '#fff', height: '100%' }} />
           </AntdLayout>
         </div>
       )
@@ -169,12 +167,11 @@ RootLayout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-
-//const mapDispatchToProps = {
+// const mapDispatchToProps = {
 //  // setPostPageOn,
 //  // setPostPageOff,
 //  onSetSidebarDocked
-//}
+// }
 
-//export default connect(()=>({}), mapDispatchToProps) (RootLayout)
+// export default connect(()=>({}), mapDispatchToProps) (RootLayout)
 export default RootLayout

@@ -1,22 +1,19 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Card } from "antd"
+import React from 'react'
+import { Link } from 'gatsby'
+import { Card } from 'antd'
 
 const PostCard = ({ post }) => (
   <div>
     <Card
       title={
         <div>
-          <Link
-            to={post.fields.slug}
-            style={{ color: "black", fontWeight: "bold" }}
-          >
+          <Link to={post.fields.slug} style={{ color: 'black', fontWeight: 'bold' }}>
             {post.frontmatter.title}
           </Link>
           <span
             style={{
-              float: "right",
-              color: "grey",
+              float: 'right',
+              color: 'grey',
             }}
           >
             {post.frontmatter.date}

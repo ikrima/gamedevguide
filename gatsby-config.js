@@ -1,88 +1,89 @@
-const siteCfg = require("./SiteCfg")
-const pathPrefix = siteCfg.pathPrefix === "/" ? "" : siteCfg.pathPrefix
+const siteCfg = require('./SiteCfg')
+
+const pathPrefix = siteCfg.pathPrefix === '/' ? '' : siteCfg.pathPrefix
 
 module.exports = {
   pathPrefix: siteCfg.pathPrefix,
   siteMetadata: {
-    siteUrl:           siteCfg.siteUrl + pathPrefix,
-    siteNavTitle:      siteCfg.siteNavTitle,
-    siteTitleLong:     siteCfg.siteTitleLong,
-    siteDescription:   siteCfg.siteDescription,
-    siteKeywords:      siteCfg.siteKeywords,
+    siteUrl: siteCfg.siteUrl + pathPrefix,
+    siteNavTitle: siteCfg.siteNavTitle,
+    siteTitleLong: siteCfg.siteTitleLong,
+    siteDescription: siteCfg.siteDescription,
+    siteKeywords: siteCfg.siteKeywords,
 
-    author:        siteCfg.userTwitter,
-    logoText:      siteCfg.siteLogoText,
-    copyrights:    siteCfg.siteCopyrights,
+    author: siteCfg.userTwitter,
+    logoText: siteCfg.siteLogoText,
+    copyrights: siteCfg.siteCopyrights,
     logo: {
       src: siteCfg.siteLogo,
-      alt: "",
+      alt: '',
     },
 
-    postsPerPage:  siteCfg.theme.PostsPerPage,
+    postsPerPage: siteCfg.theme.PostsPerPage,
     showMenuItems: siteCfg.theme.ShowMenuItems,
-    menuMoreText:  siteCfg.theme.MenuMoreText,
+    menuMoreText: siteCfg.theme.MenuMoreText,
   },
   plugins: [
     {
-      resolve: "gatsby-plugin-antd",
+      resolve: 'gatsby-plugin-antd',
       options: {
         style: true,
       },
     },
     {
-      resolve: `gatsby-plugin-less`,
+      resolve: 'gatsby-plugin-less',
       options: {
         javascriptEnabled: true,
         modifyVars: siteCfg.theme.modifyVars,
       },
     },
-    "gatsby-plugin-sitemap",
-    "gatsby-plugin-catch-links",
-    "gatsby-plugin-lodash",
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-lodash',
     {
-      resolve: `gatsby-mdx`,
+      resolve: 'gatsby-mdx',
       options: {
-        extensions: [`.mdx`],
+        extensions: ['.mdx'],
       },
     },
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        pathToConfigModule: 'src/utils/typography',
       },
     },
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
     {
-      resolve: `gatsby-transformer-json`,
+      resolve: 'gatsby-transformer-json',
       options: {
-        typeName: `MenuItems`, // a fixed string
+        typeName: 'MenuItems', // a fixed string
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `menuItems`,
+        name: 'menuItems',
         path: `${__dirname}/src/menuItems`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `contents`,
+        name: 'contents',
         path: `${__dirname}/contents`,
       },
     },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: siteCfg.siteTitleAlt,
         short_name: siteCfg.siteTitleManifest,
@@ -95,38 +96,38 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: "gatsby-remark-embed-video",
+            resolve: 'gatsby-remark-embed-video',
             options: {
               related: false,
               noIframeBorder: true,
             },
           },
-          "gatsby-remark-responsive-iframe",
+          'gatsby-remark-responsive-iframe',
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: 'gatsby-remark-prismjs',
             options: {
-              classPrefix: "language-",
+              classPrefix: 'language-',
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: false,
               noInlineHighlight: false,
             },
           },
-          `gatsby-remark-smartypants`,
+          'gatsby-remark-smartypants',
 
-          `gatsby-remark-katex`,
+          'gatsby-remark-katex',
           {
-            resolve: `gatsby-remark-autolink-headers`,
+            resolve: 'gatsby-remark-autolink-headers',
             options: {
-              className: "post-toc-anchor",
+              className: 'post-toc-anchor',
             },
           },
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
@@ -137,12 +138,13 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-remove-trailing-slashes`,
+    // 'gatsby-plugin-eslint',
+    'gatsby-plugin-remove-trailing-slashes',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
-    "gatsby-plugin-offline",
+    'gatsby-plugin-offline',
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: siteCfg.googleAnalyticsID,
         // Puts tracking script in the head instead of the body
@@ -152,19 +154,18 @@ module.exports = {
         // Setting this parameter is also optional
         respectDNT: true,
         // Avoids sending pageview hits from custom paths
-        exclude: ["/preview/**", "/do-not-track/me/too/"],
+        exclude: ['/preview/**', '/do-not-track/me/too/'],
         // Enables Google Optimize using your container Id
-        //optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
+        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
         // Enables Google Optimize Experiment ID
-        //experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
+        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
         // Set Variation ID. 0 for original 1,2,3....
-        //variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
+        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
         // Any additional create only fields (optional)
         sampleRate: 5,
         siteSpeedSampleRate: 10,
-        //cookieDomain: "example.com",
+        // cookieDomain: "example.com",
       },
     },
   ],
-  pathPrefix: "/",
 }

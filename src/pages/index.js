@@ -1,38 +1,27 @@
 import React from 'react'
+import { Link } from 'gatsby'
+import { Button as AntdButton, PageHeader as AntdPageHeader, Divider as AntdDivider } from 'antd'
 import Layout from '../components/Layout'
-import Header from "../components/Header"
-import { Button } from 'antd'
-import { Link } from "gatsby"
-import { Divider as AntDivider} from 'antd'
-import siteCfg from "../../SiteCfg"
+import siteCfg from '../../SiteCfg'
 
-const IndexPage = () => {
-  return (
-    <Layout>
-      <div>
-        <div align="center">
-          <br />
-          <h2>
-            K&amp;L/Bebylon Battle Royale: GameDev & Unreal Engine Programming
-            Guide
-          </h2>
-          <AntDivider />
-          <Link to="/ue4guide/UnrealEngine">
-            <Button type="primary" size="large" style={{ marginRight: 10 }}>
-              Get Started
-            </Button>
-          </Link>
-          <Button
-            type="primary"
-            size="large"
-            href={siteCfg.repoURL}
-          >
-            Github
-          </Button>
-        </div>
+const IndexPage = () => (
+  <Layout>
+    <div>
+      <div align="center">
+        <br />
+        <AntdPageHeader title="K&amp;L/Bebylon Battle Royale: GameDev &amp; Unreal Engine Programming Guide" />
+        <AntdDivider />
+        <Link to="/ue4guide/UnrealEngine">
+          <AntdButton type="primary" size="large" style={{ marginRight: 10 }}>
+            Get Started
+          </AntdButton>
+        </Link>
+        <AntdButton type="primary" size="large" href={siteCfg.repoURL}>
+          Github
+        </AntdButton>
       </div>
-    </Layout>
-  )
-}
+    </div>
+  </Layout>
+)
 
 export default IndexPage

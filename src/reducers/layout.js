@@ -1,12 +1,12 @@
-import { 
+import {
   UPDATE_HEADER_HEIGHT,
   SET_ANCHOR_OPEN,
-  SET_SIDEBAR_OPEN, 
+  SET_SIDEBAR_OPEN,
   SET_SIDEBAR_DOCKED,
   ON_SIDEBAR_CONTENT_EXPAND,
   // SET_POST_PAGE_ON,
   // SET_POST_PAGE_OFF
-} from "../actions/actionTypes";
+} from '../actions/actionTypes'
 
 const initialState = {
   header: { height: 0 },
@@ -21,26 +21,26 @@ const initialState = {
   // content: { onPostPage: false },
 }
 
-export default function(state=initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     // header
     case UPDATE_HEADER_HEIGHT: {
       return {
         ...state,
-        header: { 
+        header: {
           ...state.header,
-          height: action.payload.headerHeight 
-        }
+          height: action.payload.headerHeight,
+        },
       }
     }
     // anchor
     case SET_ANCHOR_OPEN: {
       return {
         ...state,
-        anchor: { 
+        anchor: {
           ...state.anchor,
-          open: action.payload.anchorOpen 
-        }
+          open: action.payload.anchorOpen,
+        },
       }
     }
     // sidebar
@@ -49,8 +49,8 @@ export default function(state=initialState, action) {
         ...state,
         sidebar: {
           ...state.sidebar,
-          open: action.payload.sidebarOpen
-        }
+          open: action.payload.sidebarOpen,
+        },
       }
     }
     case SET_SIDEBAR_DOCKED: {
@@ -59,8 +59,8 @@ export default function(state=initialState, action) {
         sidebar: {
           ...state.sidebar,
           docked: action.payload.sidebarDocked,
-          open: action.payload.sidebarOpen
-        }
+          open: action.payload.sidebarOpen,
+        },
       }
     }
     case ON_SIDEBAR_CONTENT_EXPAND: {
@@ -69,8 +69,8 @@ export default function(state=initialState, action) {
         sidebar: {
           ...state.sidebar,
           expandedKey: action.payload.expandedKey,
-          autoExpandParent: action.payload.autoExpandParent
-        }
+          autoExpandParent: action.payload.autoExpandParent,
+        },
       }
     }
     // content
@@ -79,7 +79,7 @@ export default function(state=initialState, action) {
     //     ...state,
     //     sidebar: {
     //       ...state.sidebar,
-    //       docked: (typeof window !== 'undefined') ? 
+    //       docked: (typeof window !== 'undefined') ?
     //         window.matchMedia(`(min-width: 1000px)`).matches: false,
     //     },
     //     content: {
@@ -101,6 +101,7 @@ export default function(state=initialState, action) {
     //     },
     //   }
     // }
-    default: return state
+    default:
+      return state
   }
 }

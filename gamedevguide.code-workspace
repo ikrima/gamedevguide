@@ -12,6 +12,7 @@
 			"public": true,
 			"node_modules": true,
 			".cache": true,
+			".vscode/ipch": true,
 		}
 	}
 }

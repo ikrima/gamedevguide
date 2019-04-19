@@ -1,83 +1,88 @@
 {
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "parser": "babel-eslint",
-  "extends": [
-    "google",
-    "eslint:recommended",
-    "plugin:flowtype/recommended",
-    "plugin:react/recommended",
-    "prettier",
-    "prettier/flowtype",
-    "prettier/react"
-  ],
-  "plugins": ["flowtype", "prettier", "react", "filenames"],
   "parserOptions": {
-    "ecmaVersion": 2016,
-    "sourceType": "module",
+    "ecmaVersion": 2017,
     "ecmaFeatures": {
-      "jsx": true
+      "experimentalObjectRestSpread": true,
+      "impliedStrict": true,
+      "classes": true
     }
   },
   "env": {
     "browser": true,
-    "es6": true,
     "node": true,
-    "jest": true
-  },
-  "globals": {
-    "before": true,
-    "spyOn": true,
-    "__PATH_PREFIX__": true
+    "jquery": true
   },
   "rules": {
-    "arrow-body-style": [
-      "error",
-      "as-needed",
-      { "requireReturnForObjectLiteral": true }
+    "react/prop-types": "off",
+    "no-unused-vars": [
+      1,
+      {
+        "argsIgnorePattern": "res|next|stage|^err|on|config"
+      }
+    ],
+    "arrow-body-style": [2, "as-needed"],
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
     ],
     "no-unused-expressions": [
-      "error",
+      1,
       {
         "allowTaggedTemplates": true
       }
     ],
-    "consistent-return": ["error"],
-    "filenames/match-regex": ["error", "^[a-z-\\d\\.]+$", true],
-    "no-console": "off",
-    "no-inner-declarations": "off",
-    "prettier/prettier": "error",
-    "quotes": ["error", "backtick"],
-    "react/display-name": "off",
-    "react/jsx-key": "warn",
-    "react/no-unescaped-entities": "off",
-    "react/prop-types": "off",
-    "require-jsdoc": "off",
-    "valid-jsdoc": "off"
+    "no-console": 0,
+    "no-use-before-define": 0,
+    "no-underscore-dangle": 0,
+    "linebreak-style": 0,
+    "consistent-return": 0,
+    "import": 0,
+    "func-names": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
+    "space-before-function-paren": 0,
+    "import/extensions": 0,
+    "react/no-danger": 0,
+    "react/display-name": 1,
+    "react/react-in-jsx-scope": 0,
+    "react/forbid-prop-types": 0,
+    "react/no-unescaped-entities": 0,
+    "jsx-a11y/accessible-emoji": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "semi": false,
+        "singleQuote": true,
+        "printWidth": 100
+      }
+    ],
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "warn",
+      {
+        "aspects": ["invalidHref"]
+      }
+    ]
   },
-  "overrides": [
-    {
-      "files": [
-        "packages/**/gatsby-browser.js",
-        "packages/gatsby/cache-dir/**/*"
-      ],
-      "env": {
-        "browser": true
-      },
-      "globals": {
-        "___loader": false,
-        "___emitter": false
-      }
-    },
-    {
-      "files": ["**/cypress/integration/**/*", "**/cypress/support/**/*"],
-      "globals": {
-        "cy": false,
-        "Cypress": false
-      }
-    }
-  ],
-  "settings": {
-    "react": {
-      "version": "16.4.2"
-    }
-  }
+  "plugins": ["prettier"]
 }

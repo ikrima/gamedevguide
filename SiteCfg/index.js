@@ -1,3 +1,3 @@
-const siteCfg = require("./SiteCfg");
+const siteCfg = require('./SiteCfg')
 
 module.exports = siteCfg
