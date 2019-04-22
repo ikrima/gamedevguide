@@ -24,7 +24,8 @@ const SiteCfg = {
   ogSiteName: 'KiteLightning', // Facebook Site Name - Optional
   ogLanguage: 'en_US', // Facebook Language
   googleAnalyticsID: 'UA-47614715-1',
-  repoURL: 'https://github.com/ikrima/gamedevguide',
+  repoURL: 'https://github.com/kitelightning/gamedevguide',
+  devRepoURL: 'https://github.com/ikrima/gamedevguide',
 
   theme: {
     // Manifest and Progress color

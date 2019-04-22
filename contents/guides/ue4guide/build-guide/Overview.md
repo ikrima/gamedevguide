@@ -1,3 +1,9 @@
+---
+sideMenuHeading: "Overview (WIP: Coming Soon)"
+---
+
+# WIP COMING SOON: THIS FILE IS MALFORMED. CONVERSION PROCESS STILL NEEDS TO BE IRONED OUT
+
 +--------------------------------------------+--------------------------------------------------------------------------+
 | UnrealBuildTool::UnrealTargetConfiguration | -   Debug                                                                |
 |                                            |                                                                          |
@@ -8,7 +14,7 @@
 |                                            | -   Shipping                                                             |
 |                                            |                                                                          |
 |                                            | -   Test                                                                 |
-                                                                                                                       
+
 +============================================+==========================================================================+
 | BuildConfiguration/TargetPlatformName      | -   NoEditor/WindowsNoEditor/EPlatformType::Game/UE4Game                 |
 |                                            |                                                                          |

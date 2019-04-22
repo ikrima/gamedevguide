@@ -1,3 +1,8 @@
+---
+sideMenuHeading: "Build.Target.cs Demystified (WIP: Coming Soon)"
+---
+# WIP COMING SOON: THIS FILE IS MALFORMED. CONVERSION PROCESS STILL NEEDS TO BE IRONED OUT
+
 Build & Target File Demystified 
 
 <http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified/>

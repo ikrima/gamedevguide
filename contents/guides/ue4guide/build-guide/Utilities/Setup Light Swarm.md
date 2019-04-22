@@ -1,3 +1,9 @@
+---
+sideMenuHeading: "Setting Up Lightswarm (WIP: Coming Soon)"
+---
+
+# WIP COMING SOON: THIS FILE IS MALFORMED. CONVERSION PROCESS STILL NEEDS TO BE IRONED OUT
+
 <http://www.srombauts.fr/2017/11/10/ue4-use-swarm-distribute-lighting-build-network/>
 
  

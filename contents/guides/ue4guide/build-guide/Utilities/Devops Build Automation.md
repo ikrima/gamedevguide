@@ -1,3 +1,9 @@
+---
+sideMenuHeading: "Build Automation (WIP: Coming Soon)"
+---
+
+# WIP COMING SOON: THIS FILE IS MALFORMED. CONVERSION PROCESS STILL NEEDS TO BE IRONED OUT
+
 Some useful flags that we might need when we get Jenkins running:
 
 UBT or RunUAT or AutomationTool.exe

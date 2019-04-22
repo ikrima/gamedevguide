@@ -1,3 +1,9 @@
+---
+sideMenuHeading: "K&L's Automation Scripts (WIP: Coming Soon)"
+---
+
+# WIP COMING SOON: THIS FILE IS MALFORMED. CONVERSION PROCESS STILL NEEDS TO BE IRONED OUT
+
 # **\[Overview\]:**
 
 CLI is like git. It takes the form of \[scriptname.py\] options \<group\> options \<subcommand\>

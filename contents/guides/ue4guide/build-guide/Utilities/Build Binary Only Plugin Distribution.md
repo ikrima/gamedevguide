@@ -1,3 +1,8 @@
+---
+sideMenuHeading: "Build Plugins for Binary Distribution (WIP: Coming Soon)"
+---
+# WIP COMING SOON: THIS FILE IS MALFORMED. CONVERSION PROCESS STILL NEEDS TO BE IRONED OUT
+
 # **Building the plugin**
 
 The first stage is to build the plugin for distribution in the normal manner. This can be done using the UnrealBuildTool with the following command:

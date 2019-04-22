@@ -35,6 +35,7 @@ gatsby serve
 `http://localhost:8000/___graphql`
 
 # Useful Examples:
+  - This theme (already bought) to copy paste styling: http://iarouse.com/dist-react-ant-design/v1.1.4/#/app/layout/page
   - https://using-remark.gatsbyjs.org/ & https://github.com/gatsbyjs/gatsby/tree/master/examples/using-remark
   - https://github.com/LekoArts/gatsby-starter-minimal-blog
   - https://mkdevdiary.netlify.com/gatsby-plugins-seo-and-images
