@@ -1,19 +1,56 @@
-const _ = require('lodash')
 const path = require('path')
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const postTemplate = path.resolve('src/templates/postTemplate.js')
+  const guidePageTemplate = path.resolve('src/templates/guidePageTemplate.js')
+  const blogPostTemplate = path.resolve('src/templates/blogPostTemplate.js')
 
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
+        guides: allFile(
+          filter: {
+            internal: { mediaType: { eq: "text/markdown" } }
+            sourceInstanceName: { eq: "guides" }
+          }
+        ) {
           edges {
             node {
-              fields {
-                slug
+              childMdx {
+                fields {
+                  slug
+                }
+                id
+              }
+              childMarkdownRemark {
+                fields {
+                  slug
+                }
+                id
+              }
+            }
+          }
+        }
+        blogposts: allFile(
+          filter: {
+            internal: { mediaType: { eq: "text/markdown" } }
+            sourceInstanceName: { eq: "blogposts" }
+          }
+        ) {
+          edges {
+            node {
+              childMdx {
+                fields {
+                  slug
+                }
+                id
+              }
+              childMarkdownRemark {
+                fields {
+                  slug
+                }
+                id
               }
             }
           }
@@ -22,16 +59,29 @@ exports.createPages = ({ actions, graphql }) => {
     `).then(result => {
       if (result.errors) {
         console.log(result.errors)
-        // resolve()
         reject(result.errors)
       }
 
       // Create page templates
-      _.each(result.data.allMarkdownRemark.edges, edge => {
+      result.data.guides.edges.forEach(({ node }) => {
+        const mdNode = node.childMdx ? node.childMdx : node.childMarkdownRemark
         createPage({
-          path: edge.node.fields.slug,
-          component: postTemplate,
-          context: {}, // additional data can be passed via context
+          path: mdNode.fields.slug,
+          component: guidePageTemplate,
+          context: {
+            id: node.id,
+          }, // additional data can be passed via context
+        })
+      })
+
+      result.data.blogposts.edges.forEach(({ node }) => {
+        const mdNode = node.childMdx ? node.childMdx : node.childMarkdownRemark
+        createPage({
+          path: mdNode.fields.slug,
+          component: blogPostTemplate,
+          context: {
+            id: node.id,
+          }, // additional data can be passed via context
         })
       })
 

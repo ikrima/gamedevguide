@@ -1,8 +1,8 @@
-const Typography = require('typography')
-const CodePlugin = require('typography-plugin-code').default
-const stAnnesTheme = require('typography-theme-st-annes')
+import Typography from 'typography'
+import stAnnesTheme from 'typography-theme-st-annes'
+// const CodePlugin = require('typography-plugin-code').default
 
-stAnnesTheme.plugins = [new CodePlugin()]
+// stAnnesTheme.plugins = [new CodePlugin()]
 // let theme = {
 //  baseFontSize: `18px`,
 //  headerFontFamily: [`Cooper Hewitt`, `sans-serif`],
@@ -47,4 +47,4 @@ if (process.env.NODE_ENV !== 'production') {
   typography.injectStyles()
 }
 
-module.exports = typography
+export default typography

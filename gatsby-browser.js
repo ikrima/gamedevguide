@@ -5,7 +5,7 @@
  */
 
 // You can delete this file if you're not using it
-import wrapWithProvider from './wrap-with-provider'
+import wrapWithProvider from './gatsby/wrap-with-provider'
 
 require('prismjs/themes/prism-tomorrow.css')
 

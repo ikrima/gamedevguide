@@ -2,6 +2,45 @@ const siteCfg = require('./SiteCfg')
 
 const pathPrefix = siteCfg.pathPrefix === '/' ? '' : siteCfg.pathPrefix
 
+const gbRemarkPluginsList = [
+  {
+    resolve: 'gatsby-remark-embed-video',
+    options: {
+      related: false,
+      noIframeBorder: true,
+    },
+  },
+  'gatsby-remark-responsive-iframe',
+  {
+    resolve: 'gatsby-remark-prismjs',
+    options: {
+      classPrefix: 'language-',
+      inlineCodeMarker: '>',
+      aliases: {},
+      showLineNumbers: false,
+      noInlineHighlight: false,
+    },
+  },
+  'gatsby-remark-smartypants',
+
+  'gatsby-remark-katex',
+  {
+    resolve: 'gatsby-remark-autolink-headers',
+    options: {
+      className: 'post-toc-anchor',
+    },
+  },
+  {
+    resolve: 'gatsby-remark-images',
+    options: {
+      // It's important to specify the maxWidth (in pixels) of
+      // the content container as this plugin uses this as the
+      // base for generating different widths of each image.
+      maxWidth: 800,
+    },
+  },
+]
+
 module.exports = {
   pathPrefix: siteCfg.pathPrefix,
   siteMetadata: {
@@ -43,13 +82,19 @@ module.exports = {
     {
       resolve: 'gatsby-mdx',
       options: {
+        defaultLayouts: {
+          guides: require.resolve('./src/templates/guidePageTemplate.js'),
+          blogposts: require.resolve('./src/templates/blogPostTemplate.js'),
+          default: require.resolve('./src/components/Layout/index.js'),
+        },
         extensions: ['.mdx'],
+        gatsbyRemarkPlugins: gbRemarkPluginsList,
       },
     },
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'src/utils/typography',
+        pathToConfigModule: 'src/utils/typography.js',
       },
     },
     'gatsby-plugin-react-helmet',
@@ -76,8 +121,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'contents',
-        path: `${__dirname}/contents`,
+        name: 'guides',
+        path: `${__dirname}/contents/guides`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'blogposts',
+        path: `${__dirname}/contents/blogposts`,
       },
     },
     'gatsby-transformer-sharp',
@@ -98,44 +150,7 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-embed-video',
-            options: {
-              related: false,
-              noIframeBorder: true,
-            },
-          },
-          'gatsby-remark-responsive-iframe',
-          {
-            resolve: 'gatsby-remark-prismjs',
-            options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: '>',
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
-          },
-          'gatsby-remark-smartypants',
-
-          'gatsby-remark-katex',
-          {
-            resolve: 'gatsby-remark-autolink-headers',
-            options: {
-              className: 'post-toc-anchor',
-            },
-          },
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 800,
-            },
-          },
-        ],
+        plugins: gbRemarkPluginsList,
       },
     },
     'gatsby-plugin-eslint',

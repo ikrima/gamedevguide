@@ -11,17 +11,17 @@ First, if you install adobe stuff, do yourself a favor and remove the 12 service
 ![](https://pbs.twimg.com/media/DuzvOgqVsAAmEEB.jpg)
 
 # Making Windows tolerable
-Now tools I use. * => how must have it is to me
+Now tools I use. ⭐ => how must have it is to me
 
-- ***Chocolatey** - package manager for windows
-- ***Keypirinha** - launcher like alfred/quicksilver
-- ***Cmder** - terminal emulator
-- ***Everything** - fast search
-- ***Rapidee** - environment vars editor
+- **⭐Chocolatey** - package manager for windows
+- **⭐Keypirinha** - launcher like alfred/quicksilver
+- **⭐Cmder** - terminal emulator
+- **⭐Everything** - fast search
+- **⭐Rapidee** - environment vars editor
 - ScreenToGif - screen capture
 - Clover - Tabs in explorer
 - Youtube-dl - download youtube/vimeo files for offline viewing
-- ***Display Fusion** - virtualize desktop; use it to split my 33" monitor into two virtual monitors
+- **⭐Display Fusion** - virtualize desktop; use it to split my 33" monitor into two virtual monitors
 - Remote Desktop Connection Manager
 - Duet + iPad Pro 3rd Gen + Pencil - Turn my iPad Pro into a Cintiq
 - Firefox
@@ -33,8 +33,8 @@ Now tools I use. * => how must have it is to me
 &nbsp;
 
 # DCC:
-- *****Houdini** - Deserves its own post but hands down my favorite program in recent memory. It's more like a platform with a built in DCC app. I use it for prototyping, machine learning, math visualization, everything
-- *****PureRef** - This is a god send for pulling references
+- **⭐⭐⭐Houdini** - Deserves its own post but hands down my favorite program in recent memory. It's more like a platform with a built in DCC app. I use it for prototyping, machine learning, math visualization, everything
+- **⭐⭐⭐PureRef** - This is a god send for pulling references
 - KeyframePro - video player for animators; allows markups and stuff
 - 3D Max - what I started with
 - Maya - only use it enough to get around
@@ -43,32 +43,32 @@ Now tools I use. * => how must have it is to me
 - Photoshop/Premiere
 
 # SysAdmin/Poor man's devops:
-- *****SysInternals** -  Awesome set of windows sys tools
-- ***Rohitab Api Monitor** - Amazingly well written; use it for api hooking
+- **⭐⭐⭐SysInternals** -  Awesome set of windows sys tools
+- **⭐Rohitab Api Monitor** - Amazingly well written; use it for api hooking
 NTLite - I use it to help my ghetto bare metal provisioning for windows
 Powershell - Powershell Desired State Configuration for poor man provisioning
 
 # Research/Personal Productivity
-- *****RescueTime** - Auto track where my time goes
+- **⭐⭐⭐RescueTime** - Auto track where my time goes
 - **Mathematica** - Preferred it over matlab but has annoying learning curve
-- *****Houdini**
+- **⭐⭐⭐Houdini**
 - ~~*OneNote - This was such an amazing program but hasn't seen much innovation in 4 years~~ I've abandoned this since it's been rotting over the last 4 years.
 - Trillium - Currently trying this out as my onenote replacement
 - Notion - Knowledge management alternate since OneNote isnt progressing
-- ***Diigo** - Knowledge repository integrated with google search
+- **⭐Diigo** - Knowledge repository integrated with google search
 - Mendeley - Knowledge repository for papers (where I store all my Siggraph papers)
-- *****Workflowy** - tasking software
+- **⭐⭐⭐Workflowy** - tasking software
 - Desmos/Geogebra - Powerful Math grapher/calculator
 - Matcha - Math notebook bc screw latex. It's 2018. [mathcha.io](https://www.mathcha.io/)
 
 # Programming:
-- *****@liveplusplus** - imho, absolute necessity with UE4. Makes iteration bearable with fast hotreload. With plugin, you can get up & running in 2 mins
+- [**⭐⭐⭐@liveplusplus**](https://molecular-matters.com/products_livepp.html) - imho, absolute necessity with UE4. Makes iteration bearable with fast hotreload. With plugin, you can get up & running in 2 mins
 - BeyondCompare
 - Sublime
 - Sublime Merge/Git Extensions
 - UIForETW - Use this over Very Sleepy; pays dividends
 - VS2017:
-  - *** [**@visualassist**](https://twitter.com/visualassist) - Makes large C++ codebases manageable
+  - [**⭐ @visualassist**](https://twitter.com/visualassist) - Makes large C++ codebases manageable
   - Visual Commander - easy scriptable modification of VS UI (eg: autoattach to ue4 process with a button)
   - Debug Single Thread
 - RenderDoc
@@ -80,10 +80,10 @@ Powershell - Powershell Desired State Configuration for poor man provisioning
 
 # Scripting:
 - Python - MiniConda3 distro. Libs I use as python novice
-  - ***click** - Make easy CLI apps
-  - ***cogapp** - use it for our inline C++ codegen
-  - ***boltons**
-  - ***glom**
+  - **⭐click** - Make easy CLI apps
+  - **⭐cogapp** - use it for our inline C++ codegen
+  - **⭐boltons**
+  - **⭐glom**
   - colorama
   - winregistry
   - requests

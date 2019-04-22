@@ -3,7 +3,6 @@ title: "Example"
 date: "2017-01-02"
 path: "/kitchensink"
 author: "Lorem Ipsum"
-root: "/blog"
 excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec interdum metus. Aenean rutrum ligula sodales ex auctor, sed tempus dui mollis. Curabitur ipsum dui, aliquet nec commodo at, tristique eget ante."
 ---
 

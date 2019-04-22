@@ -15,7 +15,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const parsedFilePath = path.parse(node.absolutePath)
     const slug = `/${parsedFilePath.dir.split(`---`)[1]}/`
     createNodeField({ node, name: `slug`, value: slug })
-  } else if (node.internal.type === `MarkdownRemark` && typeof node.slug === `undefined`) {
+  } else if (
+    (node.internal.type === `MarkdownRemark` || node.internal.type === `Mdx`) &&
+    typeof node.slug === `undefined`
+  ) {
     const nodeFilePath = removeTrailingFwdSlash(
       createFilePath({ node, getNode, basePath: 'pages' })
     )

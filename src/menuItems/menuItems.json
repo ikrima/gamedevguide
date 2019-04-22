@@ -5,11 +5,15 @@
   },
   {
     "name": "UE4 Guide",
-    "link":  "/ue4guide"
+    "link": "/ue4guide"
   },
   {
     "name": "Graphics",
     "link": "/graphics"
+  },
+  {
+    "name": "Houdini",
+    "link": "/houdini"
   },
   {
     "name": "Blog",

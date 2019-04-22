@@ -11,7 +11,7 @@
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "dev": "gatsby clean && gatsby develop",
-    "start": "npm run develop",
+    "serve": "gatsby serve",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
     "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
