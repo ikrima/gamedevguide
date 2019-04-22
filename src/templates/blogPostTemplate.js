@@ -1,9 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-// import { connect } from 'react-redux'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import _ from 'lodash'
 import { PageHeader as AntdPageHeader } from 'antd'
 import Layout from '../components/Layout'
+// import { connect } from 'react-redux'
 // import { onSidebarContentExpand } from '../actions/layout'
 // import { getSidebarExpandedKey } from '../store/selectors'
 import 'katex/dist/katex.min.css'
@@ -22,16 +23,13 @@ function Template({
   // expandedKey,
 }) {
   const {
-    markdownRemark: {
-      fields: { pageTitle },
-      frontmatter,
-      html,
-      // id,
-    },
-  } = data
+    fields: { pageTitle },
+    frontmatter,
+    html,
+  } = data.mdx ? data.mdx : data.markdownRemark
 
   const routes = safeGetRelWindowPathSlugs().map(item => ({
-    path: item,
+    path: null,
     breadcrumbName: prettifyPath(item),
   }))
 
@@ -39,6 +37,13 @@ function Template({
     safeGetWindowPath(),
     frontmatter ? frontmatter.root : null
   )
+
+  let markdownHtml
+  if (data.mdx) {
+    markdownHtml = <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
+  } else {
+    markdownHtml = <div className="guide-content" dangerouslySetInnerHTML={{ __html: html }} />
+  }
 
   return (
     <Layout sidebarRoot={curPageRoot}>
@@ -48,7 +53,7 @@ function Template({
         breadcrumb={{ routes }}
       />
       <div className="guide-container" style={{ maxWidth: siteCfg.theme.guideContentMaxWidth }}>
-        <div className="guide-content" dangerouslySetInnerHTML={{ __html: html }} />
+        {markdownHtml}
       </div>
     </Layout>
   )
@@ -63,13 +68,27 @@ export const pageQuery = graphql`
         slug
         pageTitle
       }
-      id
-      html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
         pageSubTitle
         root
+      }
+      html
+    }
+    mdx(fields: { slug: { eq: $path } }) {
+      fields {
+        slug
+        pageTitle
+      }
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        title
+        pageSubTitle
+        root
+      }
+      code {
+        body
       }
     }
   }

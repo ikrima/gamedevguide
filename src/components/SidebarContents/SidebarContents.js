@@ -36,15 +36,15 @@ const constructTree = list => {
   return [tree, dir]
 }
 
-const convertToTree = data => {
-  const list = data.map(edge => {
-    const pathSlugs = toRelativePathSlugs(edge.node.fields.slug)
+const convertToTree = nodes => {
+  const list = nodes.map(node => {
+    const pathSlugs = toRelativePathSlugs(node.fields.slug)
     const parentSlugs = pathSlugs.slice(1, pathSlugs.length - 1)
-    const curTitle = edge.node.fields.sideMenuHeading
+    const curTitle = node.fields.sideMenuHeading
 
     return {
-      path: edge.node.fields.slug,
-      key: edge.node.id,
+      path: node.fields.slug,
+      key: node.id,
       title: curTitle,
       parents: parentSlugs,
     }
@@ -80,32 +80,48 @@ class SidebarContents extends Component {
       <StaticQuery
         query={graphql`
           query sidebarContentQuery {
-            allMarkdownRemark(sort: { order: ASC, fields: [fields___slug] }) {
+            guides: allFile(
+              filter: { ext: { in: [".md", ".mdx"] }, sourceInstanceName: { eq: "guides" } }
+              sort: { order: ASC, fields: [fields___slug] }
+            ) {
               edges {
                 node {
-                  fields {
-                    slug
-                    pageTitle
-                    sideMenuHeading
+                  childMdx {
+                    fields {
+                      slug
+                      pageTitle
+                      sideMenuHeading
+                    }
+                    id
+                    frontmatter {
+                      title
+                      parents
+                    }
                   }
-                  id
-                  frontmatter {
-                    title
-                    parents
+                  childMarkdownRemark {
+                    fields {
+                      slug
+                      pageTitle
+                      sideMenuHeading
+                    }
+                    id
+                    frontmatter {
+                      title
+                      parents
+                    }
                   }
                 }
               }
             }
           }
         `}
-        render={data => {
+        render={({ guides }) => {
           const { sidebarRoot } = this.props
+          const mdNodes = guides.edges
+            .map(({ node }) => (node.childMdx ? node.childMdx : node.childMarkdownRemark))
+            .filter(node => node.fields.slug.startsWith(sidebarRoot))
 
-          const [tree, dir] = convertToTree(
-            data.allMarkdownRemark.edges.filter(node =>
-              node.node.fields.slug.startsWith(sidebarRoot)
-            )
-          )
+          const [tree, dir] = convertToTree(mdNodes)
 
           sortTree(tree)
           const loop = inTree =>

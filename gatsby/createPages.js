@@ -10,10 +10,7 @@ exports.createPages = ({ actions, graphql }) => {
     graphql(`
       {
         guides: allFile(
-          filter: {
-            internal: { mediaType: { eq: "text/markdown" } }
-            sourceInstanceName: { eq: "guides" }
-          }
+          filter: { ext: { in: [".md", ".mdx"] }, sourceInstanceName: { eq: "guides" } }
         ) {
           edges {
             node {
@@ -33,10 +30,7 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
         blogposts: allFile(
-          filter: {
-            internal: { mediaType: { eq: "text/markdown" } }
-            sourceInstanceName: { eq: "blogposts" }
-          }
+          filter: { ext: { in: [".md", ".mdx"] }, sourceInstanceName: { eq: "blogposts" } }
         ) {
           edges {
             node {

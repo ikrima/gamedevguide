@@ -3,14 +3,14 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
 
-const BlogPage = ({
-  data: {
-    allMarkdownRemark: { edges },
-  },
-}) => {
+const BlogPage = ({ data: { blogposts } }) => {
+  const { edges } = blogposts
+
   const posts = edges
-    .filter(edge => !!edge.node.frontmatter.date)
-    .map(edge => <PostCard key={edge.node.id} post={edge.node} />)
+    .map(({ node }) => (node.childMdx ? node.childMdx : node.childMarkdownRemark))
+    .filter(node => !!node.frontmatter.date)
+    .map(node => <PostCard key={node.id} post={node} />)
+
   return (
     <Layout>
       <div>{posts}</div>
@@ -21,21 +21,33 @@ const BlogPage = ({
 export default BlogPage
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { root: { eq: $path } } }
+  query {
+    blogposts: allFile(
+      filter: { ext: { in: [".md", ".mdx"] }, sourceInstanceName: { eq: "blogposts" } }
     ) {
       edges {
         node {
-          fields {
-            slug
+          childMdx {
+            fields {
+              slug
+            }
+            id
+            excerpt(pruneLength: 250)
+            frontmatter {
+              date(formatString: "MMMM DD, YYYY")
+              title
+            }
           }
-          id
-          excerpt(pruneLength: 250)
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
+          childMarkdownRemark {
+            fields {
+              slug
+            }
+            id
+            excerpt(pruneLength: 250)
+            frontmatter {
+              date(formatString: "MMMM DD, YYYY")
+              title
+            }
           }
         }
       }

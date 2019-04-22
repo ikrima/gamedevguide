@@ -11,11 +11,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   let pgTitle = ''
   let sideMenuHeading = ''
 
-  if (node.internal.type === `File`) {
-    const parsedFilePath = path.parse(node.absolutePath)
-    const slug = `/${parsedFilePath.dir.split(`---`)[1]}/`
-    createNodeField({ node, name: `slug`, value: slug })
-  } else if (
+  if (
     (node.internal.type === `MarkdownRemark` || node.internal.type === `Mdx`) &&
     typeof node.slug === `undefined`
   ) {
@@ -41,6 +37,21 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       const tagSlugs = node.frontmatter.tags.map(tag => `/tags/${_.kebabCase(tag)}/`)
       createNodeField({ node, name: `tagSlugs`, value: tagSlugs })
     }
+  } else if (node.internal.type === `File`) {
+    const pathObj = path.parse(
+      node.relativePath.startsWith('/') ? node.relativePath : `/${node.relativePath}`
+    )
+    const pathDir = sanitizePath(removeTrailingFwdSlash(pathObj.dir)).replace(/\/$/, '')
+    const pathName = sanitizePath(pathObj.name)
+    const pathExt = ['.md', '.mdx', '.js', '.jsx'].includes(pathObj.ext) ? '' : pathObj.ext
+
+    const slug = `${pathDir}/${pathName}${pathExt}`
+    // console.log(`${node.relativePath}::::::::::${slug}`)
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slug,
+    })
   }
 
   createNodeField({

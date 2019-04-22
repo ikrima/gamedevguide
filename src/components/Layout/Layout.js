@@ -25,15 +25,6 @@ const RootLayout = ({ children, sidebarRoot }) => (
             siteKeywords
           }
         }
-        allMarkdownRemark {
-          edges {
-            node {
-              fields {
-                slug
-              }
-            }
-          }
-        }
       }
     `}
     render={data => {
