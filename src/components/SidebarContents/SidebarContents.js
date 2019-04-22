@@ -10,7 +10,7 @@ import siteCfg from '../../../SiteCfg'
 // import _ from "lodash"
 
 import {
-  toRelativeSitePath,
+  toRelativePathSlugs,
   prettifyPath,
   getBreadCrumbRootPrefix,
   safeGetWindowPath,
@@ -45,12 +45,9 @@ const constructTree = list => {
 
 const convertToTree = data => {
   const list = data.map(edge => {
-    const pathSlugs = toRelativeSitePath(edge.node.fields.slug).split('/')
-    const parentSlugs = pathSlugs.slice(1, pathSlugs.length - 1).map(prettifyPath)
-    const curTitle = edge.node.fields.pageTitle
-    // const curTitle = pathSlugs[pathSlugs.length - 1]
-    // const parentSlugs = edge.node.frontmatter.parents
-    // const curTitle = edge.node.frontmatter.title
+    const pathSlugs = toRelativePathSlugs(edge.node.fields.slug)
+    const parentSlugs = pathSlugs.slice(1, pathSlugs.length - 1)
+    const curTitle = edge.node.fields.sideMenuHeading
 
     return {
       path: edge.node.fields.slug,
@@ -59,6 +56,7 @@ const convertToTree = data => {
       parents: parentSlugs,
     }
   })
+
   return constructTree(list)
 }
 
@@ -80,6 +78,7 @@ const SidebarContents = () => (
               fields {
                 slug
                 pageTitle
+                sideMenuHeading
               }
               id
               frontmatter {
@@ -97,6 +96,7 @@ const SidebarContents = () => (
       const [tree, dir] = convertToTree(
         data.allMarkdownRemark.edges.filter(node => node.node.fields.slug.startsWith(curPageRoot))
       )
+
       sortTree(tree)
       const loop = inTree =>
         inTree.map(item => {
@@ -105,7 +105,7 @@ const SidebarContents = () => (
             return (
               <AntdSubMenu
                 key={item.key}
-                title={<span style={{ fontWeight: 900 }}>{item.title}</span>}
+                title={<span style={{ fontWeight: 900 }}>{prettifyPath(item.title)}</span>}
               >
                 {loop(item.children)}
               </AntdSubMenu>
