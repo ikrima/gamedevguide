@@ -38,6 +38,11 @@ const SiteCfg = {
     ShowMenuItems: 4,
     MenuMoreText: 'Show more',
     modifyVars: {},
+
+    sidebarMenuWidth: 300,
+    sidebarIndent: 12,
+    guideContentMaxWidth: 1140,
+    breakpoint: 'lg',
   },
 }
 

@@ -20,13 +20,23 @@ const prettifyPath = inPath => {
   return retPath.replace('Ue 4', 'UE4')
 }
 
-const getBreadCrumbRootPrefix = inPath => {
+const getBreadCrumbRootPrefix = (inPath, frontmatter = null) => {
+  if (frontmatter && frontmatter.root) {
+    return `/${frontmatter.root}`
+  }
   const curSiteRelPagePath = toRelativeSitePath(sanitizePath(inPath))
   return `/${curSiteRelPagePath.split('/')[1]}`
 }
 
 const safeGetWindowPath = () =>
   typeof window !== 'undefined' ? window.location.pathname : 'undefined'
+
+const safeGetRelWindowPath = () =>
+  typeof window !== 'undefined'
+    ? toRelativeSitePath(sanitizePath(window.location.pathname))
+    : 'undefined'
+
+const safeGetRelWindowPathSlugs = () => safeGetRelWindowPath().split('/')
 
 exports.removeTrailingFwdSlash = removeTrailingFwdSlash
 exports.toRelativeSitePath = toRelativeSitePath
@@ -35,3 +45,5 @@ exports.sanitizePath = sanitizePath
 exports.prettifyPath = prettifyPath
 exports.getBreadCrumbRootPrefix = getBreadCrumbRootPrefix
 exports.safeGetWindowPath = safeGetWindowPath
+exports.safeGetRelWindowPath = safeGetRelWindowPath
+exports.safeGetRelWindowPathSlugs = safeGetRelWindowPathSlugs

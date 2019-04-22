@@ -23,7 +23,7 @@ const Menu = ({ siteNavTitle }) => (
       const menuItems = data.allMenuItems.edges.map(edge => edge.node).reverse()
       return (
         <AntdMenu theme={siteCfg.theme.DarkVariant} mode="horizontal">
-          <Link to="/" style={{ textDecoration: 'none' }}>
+          <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
             {siteNavTitle}
           </Link>
           {menuItems.map(item => (

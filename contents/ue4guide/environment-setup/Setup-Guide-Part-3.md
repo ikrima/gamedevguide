@@ -7,7 +7,8 @@ sideMenuHeading: "Part 3: Windows Config"
 
 First, if you install adobe stuff, do yourself a favor and remove the 12 services they install for lulz even when you're not using any adobe product. You can uninstall CreativeCloud desktop app while keeping photoshop/premiere/etc
 
-[Remove Creative Cloud Desktop App](https://helpx.adobe.com/creative-cloud/help/uninstall-creative-cloud-desktop-app.html) ![](https://pbs.twimg.com/media/DuzvOgqVsAAmEEB.jpg)
+[Remove Creative Cloud Desktop App](https://helpx.adobe.com/creative-cloud/help/uninstall-creative-cloud-desktop-app.html) \
+![](https://pbs.twimg.com/media/DuzvOgqVsAAmEEB.jpg)
 
 # Making Windows tolerable
 Now tools I use. * => how must have it is to me
@@ -28,6 +29,8 @@ Now tools I use. * => how must have it is to me
 - Tree Style Tab - Tree column view of all your tabs
 - Stylus - make youtube distraction free and remove notifications/likes showing up on page
 - uBlock Origin - ad block
+
+&nbsp;
 
 # DCC:
 - *****Houdini** - Deserves its own post but hands down my favorite program in recent memory. It's more like a platform with a built in DCC app. I use it for prototyping, machine learning, math visualization, everything

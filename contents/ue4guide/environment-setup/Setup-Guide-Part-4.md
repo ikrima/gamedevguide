@@ -15,18 +15,19 @@ sideMenuHeading: "Part 4: Optimizing UE4 Compile Times"
 # SSD results:
 Here you can see the optane driver really shining with 4k *unthreaded* *single queue depth* random read/write latency. This is just amazing.
 
-However, it performs just ok for high sequential block access (which can be threaded with quedepths of 32 in practice) ![](https://pbs.twimg.com/media/Du5XQgTUUAA4mRX.jpg)
+However, it performs just ok for high sequential block access (which can be threaded with quedepths of 32 in practice) \
+![](https://pbs.twimg.com/media/Du5XQgTUUAA4mRX.jpg)
 
-Here's the SSDx4 in Raid-0 and a single SSD ![](https://pbs.twimg.com/media/Du5YTDwU8AA6f7d.jpg)
-
+Here's the SSDx4 in Raid-0 and a single SSD \
+![](https://pbs.twimg.com/media/Du5YTDwU8AA6f7d.jpg) \
 ![](https://pbs.twimg.com/media/Du5YW7UVYAA21vW.jpg)
 
 # Other benchmarks
 
-Indigo Benchmark
+Indigo Benchmark \
 ![](https://pbs.twimg.com/media/Du5Y5aKUUAAdL5T.jpg)
 
-AIDA Cache & Memtest Benchmark
+AIDA Cache & Memtest Benchmark \
 ![](https://pbs.twimg.com/media/Du5Y6bpUUAIq9ld.jpg)
 
 # UE4 build times:
@@ -55,7 +56,7 @@ I guess if you had enough machines it could win out. Also, probably my fastbuild
 Here's all the results:
 
 
-LLVM: 14min to compile these settings from llvm-project monorepo
+LLVM: 14min to compile these settings from llvm-project monorepo \
 ![](https://pbs.twimg.com/media/Du-I9AXUcAQi_S_.jpg)
 
 UE4 Build Benchmark Results: (a bit disorganized bc I only realized halfway through to save them to post)
@@ -132,7 +133,8 @@ Clean PCH Rebuild + Fasttbuild:
 
 
 
-Fastbuild, ProcMult x2, FBuildCaching, Ryzen2,Ryzen, Talon, bebytal-02, bDisableDebugInfoForGeneratedCode, disablepch, bAdaptiveUnityDisablesPCH=true, (with monitor and upping core counts of slave machines)
+Fastbuild, ProcMult x2, FBuildCaching, Ryzen2,Ryzen, Talon, bebytal-02, bDisableDebugInfoForGeneratedCode, disablepch,
+bAdaptiveUnityDisablesPCH=true, (with monitor and upping core counts of slave machines)
 Full Build:
     2>--- Summary -----------------------------------------------------
     2>                                 /----- Cache -----\

@@ -29,20 +29,19 @@ Ryzen  has lots of PCI lanes but mobo pcie slots are not all x16. Lots of trial 
   - *Why A Second Card?* Mainly for live shader debugging/register inspection on single machine + I had a spare card. Other hopeful benefit is for mgpgpu stuff (houdini cloth sims) but I don't have concrete evidence lots of programs written for that outside of [RedShift + Octane](https://www.pugetsystems.com/labs/articles/GeForce-RTX-2080-Multi-GPU-Scaling-in-OctaneRender-and-Redshift-1258/)
 - ASRock M2 Raid card in slot3 (need x16 for Raid-0 SSD)
 - Optane in bottom
-- Airflow setup in pic![](https://pbs.twimg.com/media/DuVGeo3UwAAAspV.jpg)
+- Airflow setup in pic \
+  ![](https://pbs.twimg.com/media/DuVGeo3UwAAAspV.jpg)
 
 # Compatibility gremlins:
 
 ## HPET
 Disable hpet; it causes inordinate perf problems.
-* Batch command:
-  ```batch
-  bcdedit /deletevalue useplatformclock
-  ```
 
-* Some bios allow you to disable that in bios
+- Batch command: `batch>bcdedit /deletevalue useplatformclock`
 
-* Credit to  [@SebAaltonen](https://twitter.com/SebAaltonen/status/1001045044567126018)  for root causing this.
+- Some bios allow you to disable that in bios
+
+- Credit to  [@SebAaltonen](https://twitter.com/SebAaltonen/status/1001045044567126018)  for root causing this.
   > Finally found a solution to my Threadripper performance woes. If I disable HPET (bcdedit /deletevalue useplatformclock) I get 2x SSD iOPS boost, UE4 editor with RenderDoc plugin active has 4x higher frame rate and VTune becomes usable. Visual Studio stalls are also reduced.
 
 

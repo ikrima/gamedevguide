@@ -7,4 +7,6 @@
 // You can delete this file if you're not using it
 import wrapWithProvider from './wrap-with-provider'
 
+require('prismjs/themes/prism-tomorrow.css')
+
 export const wrapRootElement = wrapWithProvider

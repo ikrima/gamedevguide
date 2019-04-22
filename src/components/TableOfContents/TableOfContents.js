@@ -1,10 +1,9 @@
 import React from 'react'
-import { Anchor as AntdAnchor } from 'antd'
-// import { connect } from "react-redux"
-// import { onSetAnchorOpen } from "../../actions/layout"
-// import "./TableOfContents.css"
+import { Anchor as AntdAnchor, Layout as AntdLayout } from 'antd'
+import siteCfg from '../../../SiteCfg'
 
-const { Link } = AntdAnchor
+const { Link: AntdLink } = AntdAnchor
+const { Sider: AntdSider } = AntdLayout
 
 const constructTree = list => {
   const deleteNode = []
@@ -49,14 +48,24 @@ function TableOfContents() {
     data.map(item => {
       if (item.children.length > 0) {
         return (
-          <Link href={item.href} title={item.title} key={item.href}>
+          <AntdLink href={item.href} title={item.title} key={item.href}>
             {loop(item.children)}
-          </Link>
+          </AntdLink>
         )
       }
-      return <Link href={item.href} title={item.title} key={item.href} />
+      return <AntdLink href={item.href} title={item.title} key={item.href} />
     })
-  return <AntdAnchor style={{ margin: '50px 50px 0px 0px' }}>{loop(anchors)}</AntdAnchor>
+  return (
+    <AntdSider
+      theme={siteCfg.theme.LightVariant}
+      breakpoint={siteCfg.theme.breakpoint}
+      collapsedWidth="0"
+      onBreakpoint={broken => console.log(broken)}
+      onCollapse={(collapsed, type) => console.log(collapsed, type)}
+    >
+      <AntdAnchor style={{ margin: '50px 50px 0px 0px' }}>{loop(anchors)}</AntdAnchor>
+    </AntdSider>
+  )
 }
 
 export default TableOfContents

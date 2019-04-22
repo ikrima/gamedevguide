@@ -14,11 +14,15 @@ Was seeing some very terrible performance behavior on TR2 where it was worse tha
 
 Also bizarre that even in cases where an app/benchmark was using all cores, there was still a noticeable perf improvement.  Not sure about internals of windows scheduler but even in NUMA aware mode, there seems to be a benefit in explicitly pinning PIDS
 
-AMD added ***"Dynamic Local Mode"*** to auto pin threads to the die with fastest local memory access based on CPU usage. Here's the memory layout of TR2 and more details from [AMD on Dynamic Local Mode](https://community.amd.com/community/gaming/blog/2018/10/05/previewing-dynamic-local-mode-for-the-amd-ryzen-threadripper-wx-series-processors) [![](https://pbs.twimg.com/media/DuuS6WaVYAIcBJk.jpg)](https://pbs.twimg.com/media/DuuS6WaVYAIcBJk.jpg)
+AMD added ***"Dynamic Local Mode"*** to auto pin threads to the die with fastest local memory access based on CPU usage. Here's the memory layout of TR2 and more details from [AMD on Dynamic Local Mode](https://community.amd.com/community/gaming/blog/2018/10/05/previewing-dynamic-local-mode-for-the-amd-ryzen-threadripper-wx-series-processors)
+
+[![](https://pbs.twimg.com/media/DuuS6WaVYAIcBJk.jpg)](https://pbs.twimg.com/media/DuuS6WaVYAIcBJk.jpg)
 
 *(Conjecture)* Possible causes for schedule wars: context switches sys calls post-spectre world are expensive (iirc, intel hard flushes l1 cache). Possible that context switching on pinned PIDs does not due this but this is more for [@markrussinovich](https://twitter.com/markrussinovich) or [@BruceDawson0xB](https://twitter.com/BruceDawson0xB) domain
 
-Also interesting seeing the PCIe channel access to the numa nodes. Here's an lstopo diagram (which runs on windows too!)   ![](https://pbs.twimg.com/media/DuuTwiYVYAAFH-R.jpg)
+Also interesting seeing the PCIe channel access to the numa nodes. Here's an lstopo diagram (which runs on windows too!)
+
+![](https://pbs.twimg.com/media/DuuTwiYVYAAFH-R.jpg)
 
 For more detailed deep dives:
 - [CPU 0: Playing Scheduler Wars with AMD’s Threadripper 2990WX](https://www.anandtech.com/show/13446/the-quiz-on-cpu-0-playing-scheduler-wars-with-amds-threadripper-2990wx)

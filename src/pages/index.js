@@ -11,7 +11,7 @@ const IndexPage = () => (
         <br />
         <AntdPageHeader title="K&amp;L/Bebylon Battle Royale: GameDev &amp; Unreal Engine Programming Guide" />
         <AntdDivider />
-        <Link to="/ue4guide/UnrealEngine">
+        <Link to="/ue4guide">
           <AntdButton type="primary" size="large" style={{ marginRight: 10 }}>
             Get Started
           </AntdButton>

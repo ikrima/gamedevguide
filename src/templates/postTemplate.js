@@ -7,6 +7,14 @@ import Layout from '../components/Layout'
 // import { onSidebarContentExpand } from '../actions/layout'
 // import { getSidebarExpandedKey } from '../store/selectors'
 import 'katex/dist/katex.min.css'
+import siteCfg from '../../SiteCfg'
+
+import {
+  prettifyPath,
+  getBreadCrumbRootPrefix,
+  safeGetWindowPath,
+  safeGetRelWindowPathSlugs,
+} from '../../gatsby/utils'
 
 function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -22,37 +30,29 @@ function Template({
     },
   } = data
 
-  // if (expandedKey !== id) {
-  //  onSidebarContentExpand(id)
-  // }
+  const routes = safeGetRelWindowPathSlugs().map(item => ({
+    path: item,
+    breadcrumbName: prettifyPath(item),
+  }))
+
+  const curPageRoot = getBreadCrumbRootPrefix(
+    safeGetWindowPath(),
+    frontmatter ? frontmatter.root : null
+  )
 
   return (
-    <Layout sidebarRoot={frontmatter.root}>
-      <div className="blog-post-container">
-        <div className="blog-post">
-          <AntdPageHeader
-            title={pageTitle + (_.isEmpty(frontmatter.pageSubTitle) ? '' : ':')}
-            subTitle={frontmatter.pageSubTitle}
-          />
-          <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: html }} />
-        </div>
+    <Layout sidebarRoot={curPageRoot}>
+      <AntdPageHeader
+        title={pageTitle + (_.isEmpty(frontmatter.pageSubTitle) ? '' : ':')}
+        subTitle={frontmatter.pageSubTitle}
+        breadcrumb={{ routes }}
+      />
+      <div className="guide-container" style={{ maxWidth: siteCfg.theme.guideContentMaxWidth }}>
+        <div className="guide-content" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </Layout>
   )
 }
-
-// const mapStateToProps = state => ({
-//  expandedKey: getSidebarExpandedKey(state),
-// })
-
-// const mapDispatchToProps = {
-//  onSidebarContentExpand,
-// }
-
-// export default connect(
-//  mapStateToProps,
-//  mapDispatchToProps
-// )(Template)
 
 export default Template
 
