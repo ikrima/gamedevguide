@@ -60,8 +60,8 @@ function TableOfContents() {
       theme={siteCfg.theme.LightVariant}
       breakpoint={siteCfg.theme.breakpoint}
       collapsedWidth="0"
-      onBreakpoint={broken => console.log(broken)}
-      onCollapse={(collapsed, type) => console.log(collapsed, type)}
+      // onBreakpoint={broken => console.log(broken)}
+      // onCollapse={(collapsed, type) => console.log(collapsed, type)}
     >
       <AntdAnchor style={{ margin: '50px 50px 0px 0px' }}>{loop(anchors)}</AntdAnchor>
     </AntdSider>

@@ -20,8 +20,18 @@ const absFilePathToSlug = inFilePath =>
   _pathToSlug(_toRelSitePath(_toNoTrailingSlashSitePath(inFilePath)))
 const relFilePathToSlug = inFilePath => _pathToSlug(_toNoTrailingSlashSitePath(inFilePath))
 const prettifySlug = inSlug => {
-  const retPath = _.startCase(inSlug)
-  return retPath.replace('Ue 4', 'UE4')
+  let retPath = _.startCase(inSlug)
+  const abbrList = ['ue4', 'ubt']
+  const untokenizeList = [['Ue 4', 'UE4']]
+  retPath = abbrList.reduce(
+    (retString, abbr) => retString.replace(new RegExp(`/b${abbr}/b`), String.toUpperCase),
+    retPath
+  )
+  retPath = untokenizeList.reduce(
+    (retString, untoken) => retString.replace(new RegExp(`/b${untoken[0]}/b`), untoken[1]),
+    retPath
+  )
+  return retPath
 }
 
 const separateSlugs = inSlug => inSlug.split('/')

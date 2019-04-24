@@ -17,7 +17,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   ) {
     const nodeFilePath = createFilePath({ node, getNode, basePath: 'pages', trailingSlash: false })
     const slug = relFilePathToSlug(nodeFilePath)
-    console.log(`${nodeFilePath}::${slug}`)
     createNodeField({
       node,
       name: 'slug',
@@ -43,7 +42,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const pathExt = ['.md', '.mdx', '.js', '.jsx'].includes(pathObj.ext) ? '' : pathObj.ext
 
     const slug = `${pathDir}/${pathName}${pathExt}`
-    // console.log(`${node.relativePath}::::::::::${slug}`)
     createNodeField({
       node,
       name: 'slug',

@@ -19,14 +19,13 @@ class SidebarContents extends Component {
     collapsed: false,
   }
 
-  onCollapse = (collapsed, type) => {
-    console.log(collapsed, type)
+  onCollapse = (collapsed /* , type */) => {
     this.setState({ collapsed })
   }
 
-  onBreakpoint = broken => {
-    console.log(broken)
-  }
+  // onBreakpoint = broken => {
+  //   console.log(broken)
+  // }
 
   filterHeadingsTocMV = inTOCModelView => {
     const retTree = {}
@@ -47,12 +46,12 @@ class SidebarContents extends Component {
     return retTree
   }
 
-  getHeadingSlugPrefixes = inTOCModelView => {
-    const _getSlugPrefixes = tocNode =>
-      tocNode.childTOCs
-        ? [tocNode.slugPrefix].concat(_.flatMap(tocNode.childTOCs, _getSlugPrefixes))
+  getHeadingSlugPrefixes = (inTOCModelView, maxDepth=2) => {
+    const _getSlugPrefixes = (curDepth, tocNode) =>
+      tocNode.childTOCs && curDepth < maxDepth
+        ? [tocNode.slugPrefix].concat(_.flatMap(tocNode.childTOCs, o => _getSlugPrefixes(curDepth+1,o)))
         : [tocNode.slugPrefix]
-    return _getSlugPrefixes(inTOCModelView)
+    return _getSlugPrefixes(0, inTOCModelView)
   }
 
   createTOCModelView = inMarkdownNodes => {
@@ -169,7 +168,7 @@ class SidebarContents extends Component {
                 <AntdSubMenu
                   key={tocSubTree.slugPrefix}
                   title={
-                    <span style={{ fontWeight: 900 }}>{prettifySlug(tocSubTree.slugPart)}</span>
+                    <span style={{ fontWeight: 900 }}>{tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}</span>
                   }
                 >
                   {createTOCNodes(tocSubTree)}
@@ -200,7 +199,6 @@ class SidebarContents extends Component {
           const defaultOpenKeys = bDisplaySidebar
             ? this.getHeadingSlugPrefixes(sidebarRootTocMV)
             : []
-          console.log(defaultOpenKeys)
 
           if (bDisplaySidebar) {
             return (
