@@ -1,58 +1,5 @@
-Some useful flags that we might need when we get Jenkins running:
-
-UBT or RunUAT or AutomationTool.exe
-
--   -build
-
--   -compile
-
--   -NoHotReloadFromIDE
-
--   -NoHotReload
-
--   -nocompileeditor
-
--   -nocompile
-
--   -skipcompile
-
--   -NoDDC
-
--   -CleanLocal
-
--   -NoXGE (Just for code analysis)
-
--   -NoSign
-
--   -rununrealcodeanalyzer (BuildConfiguration.bRunUnrealCodeAnalyzer = true;)
-
--   -precompile
-
--   -enablecodeanalysis (BuildConfiguration.bEnableCodeAnalysis = true;)
-
- 
-
-## **BuildGraph**
-
--   -target="Make Installed Build Win64" (with default InstalledEngineBuild.xml)
-
--   -set:HostPlatformOnly=true
-
--   -set:WithWin32=false
-
--   -set:WithIOS=false
-
--   -set:PublishDir="L:\\\_Programming\\RocketBuilds\\"
-
- 
-
- 
-
- 
-
-### ScratchPad Notes:
-
-\*\*Using BuildGraph\*\*
+Using BuildGraph
+----------------
 
  
 
@@ -64,7 +11,8 @@ Create InstalledBuild.txt and place in Engine\\Build
 
  
 
-\*\*Sans BuildGraph\*\*
+Sans BuildGraph
+---------------
 
 D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 UE4Editor -project="D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" -precompile
 
@@ -76,7 +24,8 @@ D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuild
 
  
 
-\*\*Add section to BaseEngine.ini\*\*
+Add section to BaseEngine.ini
+-----------------------------
 
 \[InstalledPlatforms\]
 
@@ -88,46 +37,11 @@ D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuild
 
  
 
-\*\*Generate project files:\*\*
+Generate project files:
+-----------------------
 
 D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProto -project="D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" -useprecompiled -projectfiles -game -engine
 
  
 
 Uncheck ShaderCompilerWorker dependency from BBRProto
-
- 
-
- 
-
- 
-
- 
-
-Problems:
-
-1-ShaderCompilerWorker is generated as a dependency to the GameProject. This causes project build to error out with -useprecompiled:
-
-2&gt;EXEC : error : No modules found to build. All requested binaries were already built.
-
- 
-
- 
-
-2.After VS compile, editor shows dialog error box saying game-dlls have been built with a different version of the engine. It kicks off a compilation that ends very quickly but still shouldn't be there at all
-
- 
-
-Editor Module
-
-Plugin
-
-Editor BP Module
-
- 
-
-3. How do I build all the variants (e.g. a Rocket Build) so that artists can build client/server/game/editor + development/debug/debuggame/shipping/test variants?
-
- 
-
-4. How do I decrease the size of the rocket build?

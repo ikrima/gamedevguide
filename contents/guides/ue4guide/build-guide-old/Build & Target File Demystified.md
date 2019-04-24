@@ -1,3 +1,10 @@
+---
+sideMenuHeading: "Build.Target.cs Demystified (WIP: Coming Soon)"
+---
+# WIP COMING SOON: THIS FILE IS MALFORMED. CONVERSION PROCESS STILL NEEDS TO BE IRONED OUT
+
+Build & Target File Demystified 
+
 <http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified/>
 
 <https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4>
@@ -16,7 +23,7 @@ Visual Studio solution files containing all modules
 
 ## **Project Compilation**
 
-•Visual Studio invokes UBT to...
+•Visual Studio invokes UBT to\...
 
 > • find all \*.Build.cs files
 >
@@ -28,7 +35,7 @@ Visual Studio solution files containing all modules
 >
 > • compile all C++ modules
 
-•A module is compiled if it is...
+•A module is compiled if it is\...
 
 > • a dependency of another module
 >
@@ -42,9 +49,9 @@ Visual Studio solution files containing all modules
 
 > Asked around, got some clarification. At the end of the day, yes both private and public stuff all gets linked when you include a given module. However, it controls include paths and defines available to a module
 >
-> So if \`A\` publicly requires \`B\` but privately requires \`C\`, the Include paths and defines specified by \`C\` don't get added to your module when you include \`A\`
+> So if \`A\` publicly requires \`B\` but privately requires \`C\`, the Include paths and defines specified by \`C\` don\'t get added to your module when you include \`A\`
 >
-> So if you had a plugin that privately included an SDK's include paths/etc., then including that plugin wouldn't make the SDKs include paths as part of your include paths.
+> So if you had a plugin that privately included an SDK\'s include paths/etc., then including that plugin wouldn\'t make the SDKs include paths as part of your include paths.
 >
 > DynamicallyLoadedModuleNames are dynamically linked whereas others are statically/implicitly linked
 
@@ -60,4 +67,8 @@ Visual Studio solution files containing all modules
 
  
 
-*From &lt;<https://wiki.unrealengine.com/An_Introduction_to_UE4_Plugins>&gt;*
+*From \<<https://wiki.unrealengine.com/An_Introduction_to_UE4_Plugins>\>*
+
+ 
+
+ 

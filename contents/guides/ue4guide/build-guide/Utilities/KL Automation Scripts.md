@@ -1,18 +1,12 @@
----
-sideMenuHeading: "K&L's Automation Scripts (WIP: Coming Soon)"
----
+## **\[Overview\]:**
 
-# WIP COMING SOON: THIS FILE IS MALFORMED. CONVERSION PROCESS STILL NEEDS TO BE IRONED OUT
-
-# **\[Overview\]:**
-
-CLI is like git. It takes the form of \[scriptname.py\] options \<group\> options \<subcommand\>
+CLI is like git. It takes the form of \[scriptname.py\] options &lt;group&gt; options &lt;subcommand&gt;
 
 ex: bcr -c debug -r iterate build bbr
 
  
 
-## *\_TLDR:\_*
+*\_TLDR:\_*
 
 After you run through \[Setup\] section, for a full proof Clean, Rebuild, & Cook:
 
@@ -20,25 +14,25 @@ bcr -c debug -r clean script fullbuild
 
 bcr -c debug -r iterate script fullbuild
 
-bcr -c debug -r iterate -t standalone cook bybook \--maps=0-Lobby+U-Master-Goldfingers
+bcr -c debug -r iterate -t standalone cook bybook --maps=0-Lobby+U-Master-Goldfingers
 
-bcr -c debug -r iterate -t server cook bybook \--maps=0-Lobby+U-Master-Goldfingers
+bcr -c debug -r iterate -t server cook bybook --maps=0-Lobby+U-Master-Goldfingers
 
  
 
 ## **\[Setup\]:**
 
-1\. Installation: these libs on your machine from an admin console:
+1. Installation: these libs on your machine from an admin console:
 
 Python is packaged in ThirdParty folder
 
  
 
-ftype Python.File=\"E:\\GameDev\\knl\\src\\Bebylon\\ThirdParty\\Python3\\python.exe\" \"%1\" %\*
+ftype Python.File="E:\\GameDev\\knl\\src\\Bebylon\\ThirdParty\\Python3\\python.exe" "%1" %\*
 
 assoc .py=Python.File
 
-Add PATHEXT system variable and append \".PY\" extension to the list.
+Add PATHEXT system variable and append ".PY" extension to the list.
 
 refreshenv
 
@@ -52,15 +46,15 @@ Here are details how you can use assoc .py & ftype Python.File to set it up
 
  
 
-After setting assoc and ftype via cmd verify it by launching regedit and checking this key\
-Computer\\HKEY\_CLASSES\_ROOT\\Python.File\\shell\\open\\command\
-it should read :\
-\"\<path to Bebylon\>\\ThirdParty\\Python3\\python.exe\" \"%1\" %\*\
-with \<path to Bebylon\> replaced with the correct path for your drive.
+After setting assoc and ftype via cmd verify it by launching regedit and checking this key  
+Computer\\HKEY\_CLASSES\_ROOT\\Python.File\\shell\\open\\command  
+it should read :  
+"&lt;path to Bebylon&gt;\\ThirdParty\\Python3\\python.exe" "%1" %\*  
+with &lt;path to Bebylon&gt; replaced with the correct path for your drive.
 
  
 
-2\. Configure Machine: Go to Bebylon\\Devops\\BuildAutomation\\BuildAutomation\\ in a terminal and execute:
+2. Configure Machine: Go to Bebylon\\Devops\\BuildAutomation\\BuildAutomation\\ in a terminal and execute:
 
 setupmachine config\_envars
 
@@ -72,11 +66,11 @@ setupmachine switch\_engver
 
 ## **\[Help\]:**
 
-Just pass \--help at the end of any command/subcommand string
+Just pass --help at the end of any command/subcommand string
 
-bcr \--help
+bcr --help
 
-bcr build \--help
+bcr build --help
 
 bcr build bbr -help
 
@@ -86,11 +80,11 @@ bcr build bbr -help
 
 3 main targets to build.
 
-1\. tools (usually not necessary)
+1. tools (usually not necessary)
 
-2\. engine aka plain UE4Editor (this is actually what\'s used for cooking & building Game/Server/Client, not BBREditor. This is only needed to build if you make code changes in the base engine)
+2. engine aka plain UE4Editor (this is actually what's used for cooking & building Game/Server/Client, not BBREditor. This is only needed to build if you make code changes in the base engine)
 
-3\. bbr (bebylon specific targets: BBR (standalone game), BBREditor (editor), BBRServer (server), BBRClient(client))
+3. bbr (bebylon specific targets: BBR (standalone game), BBREditor (editor), BBRServer (server), BBRClient(client))
 
  
 
@@ -98,7 +92,7 @@ You can pass a configuration: debug, debuggame, development, test, shipping to b
 
 You can also choose the rebuild method: iterate (incremental), rebuild (clean+rebuild), clean (just deletes the files)
 
-The \'rebuild\' option is still flakey because UAT sometimes deletes downstream dependencies but doesn\'t rebuild them. If you want to do a rebuild, do the command with -r clean and then again with -r iterate
+The 'rebuild' option is still flakey because UAT sometimes deletes downstream dependencies but doesn't rebuild them. If you want to do a rebuild, do the command with -r clean and then again with -r iterate
 
  
 
@@ -116,7 +110,7 @@ bcr -c debug -r iterate -t server build bbr
 
  
 
-Here\'s a script utility that does a full clean + build on all targets:
+Here's a script utility that does a full clean + build on all targets:
 
 bcr -c debug -r clean script fullbuild
 
@@ -126,9 +120,9 @@ bcr -c debug -r iterate script fullbuild
 
 ## **\[Cook\]:**
 
-Here\'s the command for cooking
+Here's the command for cooking
 
-bcr -c debug -r iterate -t standalone cook bybook \--maps=0-Lobby+U-Master-Goldfingers
+bcr -c debug -r iterate -t standalone cook bybook --maps=0-Lobby+U-Master-Goldfingers
 
  
 
