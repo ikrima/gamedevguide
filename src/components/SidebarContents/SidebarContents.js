@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
 import { graphql, StaticQuery, Link } from 'gatsby'
 // import { connect } from 'react-redux'
@@ -30,10 +31,13 @@ class SidebarContents extends Component {
   filterHeadingsTocMV = inTOCModelView => {
     const retTree = {}
     const filterHeadings = (curRetRoot, tocTree) => {
+      // eslint-disable-next-line no-param-reassign
       curRetRoot.slugPart = tocTree.slugPart
+      // eslint-disable-next-line no-param-reassign
       curRetRoot.slugPrefix = tocTree.slugPrefix
 
       if (tocTree.childTOCs) {
+        // eslint-disable-next-line no-param-reassign
         curRetRoot.childTOCs = tocTree.childTOCs.map(childTocTree => filterHeadings(childTocTree))
       }
       return curRetRoot
@@ -46,8 +50,8 @@ class SidebarContents extends Component {
   getHeadingSlugPrefixes = inTOCModelView => {
     const _getSlugPrefixes = tocNode =>
       tocNode.childTOCs
-          ? [tocNode.slugPrefix].concat(_.flatMap(tocNode.childTOCs, _getSlugPrefixes))
-          : [tocNode.slugPrefix]
+        ? [tocNode.slugPrefix].concat(_.flatMap(tocNode.childTOCs, _getSlugPrefixes))
+        : [tocNode.slugPrefix]
     return _getSlugPrefixes(inTOCModelView)
   }
 
@@ -66,6 +70,7 @@ class SidebarContents extends Component {
           return foundChildTOC || leafmostTOC
         }, tocModelView)
 
+        // eslint-disable-next-line no-prototype-builtins
         if (!leafTOCNode.hasOwnProperty('childPages')) {
           leafTOCNode.childPages = []
         }
@@ -80,6 +85,7 @@ class SidebarContents extends Component {
       })
 
       const injectFullSlugPath = (TocSubTree, SlugPrefix) => {
+        // eslint-disable-next-line no-param-reassign
         TocSubTree.slugPrefix = `${SlugPrefix}/${TocSubTree.slugPart}`
         _.forEach(TocSubTree.childTOCs, childTOCTree => {
           injectFullSlugPath(childTOCTree, TocSubTree.slugPrefix)
@@ -92,8 +98,10 @@ class SidebarContents extends Component {
     {
       function sortTOCSubTree(tocNode) {
         if (!tocNode.childPages) {
+          // eslint-disable-next-line no-param-reassign
           tocNode.childPages = []
         }
+        // eslint-disable-next-line no-param-reassign
         tocNode.childPages = _.sortBy(tocNode.childPages, [('sortIndex', 'slug')])
 
         if (tocNode.childTOCs) {
@@ -181,13 +189,14 @@ class SidebarContents extends Component {
             return combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, ', ', curr]) : ''
           }
 
-          const bDisplaySidebar = !!(sidebarRoot && sidebarRoot.length > 1)
           const selectedKeys = [safeGetRelWindowPath()]
+          let bDisplaySidebar = !!(sidebarRoot && sidebarRoot.length > 1)
           const sidebarRootTocMV = bDisplaySidebar
             ? this.createTOCModelView(mdNodes).childTOCs.find(
               o => o.slugPart.toLowerCase() === sidebarRoot.slice(1).toLowerCase()
             )
-            : {}
+            : null
+          bDisplaySidebar = !!sidebarRootTocMV
           const defaultOpenKeys = bDisplaySidebar
             ? this.getHeadingSlugPrefixes(sidebarRootTocMV)
             : []

@@ -2,6 +2,10 @@
   "slugPart": "ue4guide",
   "childTOCs": [
     {
+      "slugPart": "environment-setup",
+      "childTOCs": []
+    },
+    {
       "slugPart": "build-guide",
       "childTOCs": [
         {
@@ -28,10 +32,6 @@
     },
     {
       "slugPart": "build-guide-old",
-      "childTOCs": []
-    },
-    {
-      "slugPart": "environment-setup",
       "childTOCs": []
     },
     {
