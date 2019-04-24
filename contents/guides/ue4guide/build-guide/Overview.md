@@ -23,7 +23,7 @@ Reference: UnrealEngine\\Engine\\Source\\Programs\\UnrealBuildTool\\Configuratio
 
 &nbsp;
 
-# Build Automation:
+# Build Automation
 
 - **New script for making Installed Builds:** The ‘Rocket’ build process has been re-written using our new BuildGraph script (similar in style to MSBuild scripts), which should make the process easier to follow and modify for other users who want to make their own Installed builds. The main script can be found at Engine/Build/InstalledEngineBuild.xml and can be run using one of the following command lines from AutomationTool:
   - BuildGraph -target=”Make Installed Build Win64” -script=Engine/Build/InstalledEngineBuild.xml
@@ -105,7 +105,7 @@ GenerateProjectFiles.bat
 
 &nbsp;
 
-## Explanation of Different Build Configurations:
+## Explanation of Different Build Configurations
 
 Build have 2 parts which you can combine, there also some hiddden options you can set in build script
 
