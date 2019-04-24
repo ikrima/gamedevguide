@@ -6,37 +6,39 @@
       "childTOCs": []
     },
     {
-      "slugPart": "build-guide",
+      "slugPart": "wip",
+      "prettyTitle": "WORK IN PROGRESS",
       "childTOCs": [
         {
-          "slugPart": "plugins-modules",
+          "slugPart": "build-guide",
+          "childTOCs": [
+            {
+              "slugPart": "plugins-modules",
+              "childTOCs": []
+            },
+            {
+              "slugPart": "ubt",
+              "childTOCs": []
+            },
+            {
+              "slugPart": "utilities",
+              "childTOCs": []
+            },
+            {
+              "slugPart": "visual-studio-tips-for-ue4",
+              "childTOCs": []
+            }
+          ]
+        },
+        {
+          "slugPart": "ue4-technical-crash-course",
           "childTOCs": []
         },
         {
-          "slugPart": "ubt",
-          "childTOCs": []
-        },
-        {
-          "slugPart": "utilities",
-          "childTOCs": []
-        },
-        {
-          "slugPart": "visual-studio-tips-for-ue4",
+          "slugPart": "packaging-cooking",
           "childTOCs": []
         }
       ]
-    },
-    {
-      "slugPart": "ue4-technical-crash-course",
-      "childTOCs": []
-    },
-    {
-      "slugPart": "build-guide-old",
-      "childTOCs": []
-    },
-    {
-      "slugPart": "packaging-cooking",
-      "childTOCs": []
     }
   ]
 }

@@ -1,10 +1,10 @@
-import UE4guide from './UE4guide'
-import Houdini from './Houdini'
+import UE4Guide from './UE4Guide.json'
+import Houdini from './Houdini.json'
 
 const allGuideTOCs = {
   slug: '/',
   slugPart: '',
   order: 0,
-  childTOCs: [UE4guide, Houdini],
+  childTOCs: [UE4Guide, Houdini],
 }
 export default allGuideTOCs
