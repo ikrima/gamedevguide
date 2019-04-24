@@ -1,48 +1,50 @@
 const _ = require('lodash')
+const S = require('underscore.string.fp')
 const { pathPrefix } = require('../gatsby-config')
 
 // Replacing '/' would result in empty string which is invalid
-const removeTrailingFwdSlash = inPath => (inPath === '/' ? inPath : inPath.replace(/\/$/, ''))
+const _toNoTrailingSlashSitePath = inPath => (inPath === '/' ? inPath : inPath.replace(/\/$/, ''))
 
-const toRelativeSitePath = inPath => {
-  const splitPath = removeTrailingFwdSlash(inPath).split(removeTrailingFwdSlash(pathPrefix))
+const _toRelSitePath = inPath => {
+  const splitPath = _toNoTrailingSlashSitePath(inPath).split(_toNoTrailingSlashSitePath(pathPrefix))
   return _.isEmpty(splitPath) || splitPath.length < 2 ? '/' : `/${splitPath.slice(1).join('/')}`
 }
 
-const toRelativePathSlugs = inPath => toRelativeSitePath(inPath).split('/')
+const _pathToSlug = inFilePath =>
+  inFilePath
+    .split('/')
+    .map(S.slugify)
+    .join('/')
 
-const sanitizePath = inPath =>
-  // eslint-disable-next-line prettier/prettier
-  removeTrailingFwdSlash(inPath.replace(/[^/a-z0-9]/gi, '-').toLowerCase())
-
-const prettifyPath = inPath => {
-  const retPath = _.startCase(inPath)
+const absFilePathToSlug = inFilePath =>
+  _pathToSlug(_toRelSitePath(_toNoTrailingSlashSitePath(inFilePath)))
+const relFilePathToSlug = inFilePath => _pathToSlug(_toNoTrailingSlashSitePath(inFilePath))
+const prettifySlug = inSlug => {
+  const retPath = _.startCase(inSlug)
   return retPath.replace('Ue 4', 'UE4')
 }
 
-const getBreadCrumbRootPrefix = (inPath, frontmatter = null) => {
+const separateSlugs = inSlug => inSlug.split('/')
+
+const getBreadCrumbRootPrefix = (inRelSitePath, frontmatter = null) => {
   if (frontmatter && frontmatter.root) {
     return `/${frontmatter.root}`
   }
-  const curSiteRelPagePath = toRelativeSitePath(sanitizePath(inPath))
+  const curSiteRelPagePath = relFilePathToSlug(inRelSitePath)
   return `/${curSiteRelPagePath.split('/')[1]}`
 }
-
 const safeGetWindowPath = () =>
   typeof window !== 'undefined' ? window.location.pathname : 'undefined'
 
 const safeGetRelWindowPath = () =>
-  typeof window !== 'undefined'
-    ? toRelativeSitePath(sanitizePath(window.location.pathname))
-    : 'undefined'
+  typeof window !== 'undefined' ? absFilePathToSlug(window.location.pathname) : 'undefined'
 
-const safeGetRelWindowPathSlugs = () => safeGetRelWindowPath().split('/')
+const safeGetRelWindowPathSlugs = () => separateSlugs(safeGetRelWindowPath())
 
-exports.removeTrailingFwdSlash = removeTrailingFwdSlash
-exports.toRelativeSitePath = toRelativeSitePath
-exports.toRelativePathSlugs = toRelativePathSlugs
-exports.sanitizePath = sanitizePath
-exports.prettifyPath = prettifyPath
+exports.separateSlugs = separateSlugs
+exports.prettifySlug = prettifySlug
+exports.absFilePathToSlug = absFilePathToSlug
+exports.relFilePathToSlug = relFilePathToSlug
 exports.getBreadCrumbRootPrefix = getBreadCrumbRootPrefix
 exports.safeGetWindowPath = safeGetWindowPath
 exports.safeGetRelWindowPath = safeGetRelWindowPath

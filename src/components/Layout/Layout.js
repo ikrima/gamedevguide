@@ -9,8 +9,6 @@ import siteCfg from '../../../SiteCfg'
 import SidebarContents from '../SidebarContents'
 import TableOfContents from '../TableOfContents'
 
-// import { prettifyPath, safeGetWindowPath } from '../../../gatsby/utils'
-
 const { Content: AntdContent } = AntdLayout
 
 const RootLayout = ({ children, sidebarRoot }) => (

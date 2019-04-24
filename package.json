@@ -71,7 +71,9 @@
     "typography": "^0.16.19",
     "typography-plugin-code": "^0.16.19",
     "typography-theme-moraga": "^0.16.19",
-    "typography-theme-st-annes": "^0.16.19"
+    "typography-theme-st-annes": "^0.16.19",
+    "underscore.string": "^3.3.5",
+    "underscore.string.fp": "^1.0.4"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
@@ -87,6 +89,7 @@
     "eslint-plugin-flowtype": "^2.50.3",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-lodash-fp": "^2.2.0-a1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.6.0",

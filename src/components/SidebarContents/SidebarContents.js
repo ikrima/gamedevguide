@@ -4,62 +4,14 @@ import { graphql, StaticQuery, Link } from 'gatsby'
 import { Layout as AntdLayout, Menu as AntdMenu } from 'antd'
 // import { getSidebarState } from '../../store/selectors'
 // import { onSetSidebarOpen } from '../../actions/layout'
+import _ from 'lodash'
 import siteCfg from '../../../SiteCfg'
+import allGuideTOCs from '../../../SiteCfg/json/GuideToc'
 
-import { toRelativePathSlugs, prettifyPath, safeGetWindowPath } from '../../../gatsby/utils'
+import { separateSlugs, prettifySlug, safeGetRelWindowPath } from '../../../gatsby/utils'
 
 const { Sider: AntdSider } = AntdLayout
 const AntdSubMenu = AntdMenu.SubMenu
-
-const constructTree = list => {
-  const tree = []
-  const dir = []
-  list.forEach(item => {
-    if (item.parents === [] || item.parents === null) tree.push(item)
-    else {
-      let subtree = tree
-      for (let i = 0; i < item.parents.length; i += 1) {
-        if (subtree.filter(node => node.title === item.parents[i] && node.children).length === 0) {
-          const newNode = {
-            key: `tree/${item.parents[i]}`,
-            title: item.parents[i],
-            children: [],
-          }
-          subtree.push(newNode)
-          dir.push(newNode)
-        }
-        subtree = subtree.find(node => node.title === item.parents[i] && node.children).children
-      }
-      subtree.push(item)
-    }
-  })
-  return [tree, dir]
-}
-
-const convertToTree = nodes => {
-  const list = nodes.map(node => {
-    const pathSlugs = toRelativePathSlugs(node.fields.slug)
-    const parentSlugs = pathSlugs.slice(1, pathSlugs.length - 1)
-    const curTitle = node.fields.sideMenuHeading
-
-    return {
-      path: node.fields.slug,
-      key: node.id,
-      title: curTitle,
-      parents: parentSlugs,
-    }
-  })
-
-  return constructTree(list)
-}
-
-const sortTree = tree => {
-  tree.sort((a, b) => {
-    if (((a.children && b.children) || (!a.children && !b.children)) && a.title > b.title) return 1
-    if (a.children) return 1
-    return -1
-  })
-}
 
 class SidebarContents extends Component {
   state = {
@@ -73,6 +25,86 @@ class SidebarContents extends Component {
 
   onBreakpoint = broken => {
     console.log(broken)
+  }
+
+  filterHeadingsTocMV = inTOCModelView => {
+    const retTree = {}
+    const filterHeadings = (curRetRoot, tocTree) => {
+      curRetRoot.slugPart = tocTree.slugPart
+      curRetRoot.slugPrefix = tocTree.slugPrefix
+
+      if (tocTree.childTOCs) {
+        curRetRoot.childTOCs = tocTree.childTOCs.map(childTocTree => filterHeadings(childTocTree))
+      }
+      return curRetRoot
+    }
+
+    filterHeadings(retTree, inTOCModelView)
+    return retTree
+  }
+
+  getHeadingSlugPrefixes = inTOCModelView => {
+    const _getSlugPrefixes = tocNode =>
+      tocNode.childTOCs
+          ? [tocNode.slugPrefix].concat(_.flatMap(tocNode.childTOCs, _getSlugPrefixes))
+          : [tocNode.slugPrefix]
+    return _getSlugPrefixes(inTOCModelView)
+  }
+
+  createTOCModelView = inMarkdownNodes => {
+    const tocModelView = _.cloneDeep(allGuideTOCs)
+
+    // Add Model View bits
+    {
+      inMarkdownNodes.forEach(node => {
+        const pathSlugParts = separateSlugs(node.fields.slug)
+        const parentSlugParts = _.tail(pathSlugParts)
+        const curTitle = node.fields.sideMenuHeading
+
+        const leafTOCNode = parentSlugParts.reduce((leafmostTOC, nextSlugPart) => {
+          const foundChildTOC = _.find(leafmostTOC.childTOCs, o => o.slugPart === nextSlugPart)
+          return foundChildTOC || leafmostTOC
+        }, tocModelView)
+
+        if (!leafTOCNode.hasOwnProperty('childPages')) {
+          leafTOCNode.childPages = []
+        }
+        leafTOCNode.childPages.push({
+          sortIndex: node.frontmatter.sortIndex || siteCfg.defaultSortIndex,
+          slug: node.fields.slug,
+          nodeId: node.id,
+          title: curTitle,
+          parents: parentSlugParts,
+        })
+        return null
+      })
+
+      const injectFullSlugPath = (TocSubTree, SlugPrefix) => {
+        TocSubTree.slugPrefix = `${SlugPrefix}/${TocSubTree.slugPart}`
+        _.forEach(TocSubTree.childTOCs, childTOCTree => {
+          injectFullSlugPath(childTOCTree, TocSubTree.slugPrefix)
+        })
+      }
+      injectFullSlugPath(tocModelView, '')
+    }
+
+    // Sort
+    {
+      function sortTOCSubTree(tocNode) {
+        if (!tocNode.childPages) {
+          tocNode.childPages = []
+        }
+        tocNode.childPages = _.sortBy(tocNode.childPages, [('sortIndex', 'slug')])
+
+        if (tocNode.childTOCs) {
+          tocNode.childTOCs.map(sortTOCSubTree)
+        }
+      }
+
+      sortTOCSubTree(tocModelView)
+    }
+
+    return tocModelView
   }
 
   render() {
@@ -96,6 +128,7 @@ class SidebarContents extends Component {
                     frontmatter {
                       title
                       parents
+                      sortIndex
                     }
                   }
                   childMarkdownRemark {
@@ -108,6 +141,7 @@ class SidebarContents extends Component {
                     frontmatter {
                       title
                       parents
+                      sortIndex
                     }
                   }
                 }
@@ -121,58 +155,73 @@ class SidebarContents extends Component {
             .map(({ node }) => (node.childMdx ? node.childMdx : node.childMarkdownRemark))
             .filter(node => node.fields.slug.startsWith(sidebarRoot))
 
-          const [tree, dir] = convertToTree(mdNodes)
+          function createTOCNodes(tocTree) {
+            const childSubTreeNodes = tocTree.childTOCs
+              ? tocTree.childTOCs.map(tocSubTree => (
+                <AntdSubMenu
+                  key={tocSubTree.slugPrefix}
+                  title={
+                    <span style={{ fontWeight: 900 }}>{prettifySlug(tocSubTree.slugPart)}</span>
+                  }
+                >
+                  {createTOCNodes(tocSubTree)}
+                </AntdSubMenu>
+              ))
+              : []
 
-          sortTree(tree)
-          const loop = inTree =>
-            inTree.map(item => {
-              if (item.children) {
-                sortTree(item.children)
-                return (
-                  <AntdSubMenu
-                    key={item.key}
-                    title={<span style={{ fontWeight: 900 }}>{prettifyPath(item.title)}</span>}
-                  >
-                    {loop(item.children)}
-                  </AntdSubMenu>
-                )
-              }
-              return (
-                <AntdMenu.Item key={item.path}>
-                  <Link to={item.path}>
-                    <div>{item.title}</div>
-                  </Link>
-                </AntdMenu.Item>
-              )
-            })
+            const leafNodes = _.map(tocTree.childPages, childPage => (
+              <AntdMenu.Item key={childPage.slug}>
+                <Link to={childPage.slug}>
+                  <div>{childPage.title}</div>
+                </Link>
+              </AntdMenu.Item>
+            ))
+            const combinedNodes = _.concat(childSubTreeNodes, leafNodes)
 
-          const selectedKeys = [safeGetWindowPath()]
-          const defaultOpenKeys = dir.map(item => item.key)
-          return (
-            <AntdSider
-              theme={siteCfg.theme.LightVariant}
-              collapsible
-              // eslint-disable-next-line react/destructuring-assignment
-              collapsed={this.state.collapsed}
-              onCollapse={this.onCollapse}
-              trigger={null}
-              breakpoint={siteCfg.theme.breakpoint}
-              collapsedWidth="0"
-              onBreakpoint={this.onBreakpoint}
-              width={siteCfg.theme.sidebarMenuWidth}
-              style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}
-            >
-              <AntdMenu
-                mode="inline"
-                defaultOpenKeys={defaultOpenKeys}
-                selectedKeys={selectedKeys}
-                inlineIndent={siteCfg.theme.sidebarIndent}
+            return combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, ', ', curr]) : ''
+          }
+
+          const bDisplaySidebar = !!(sidebarRoot && sidebarRoot.length > 1)
+          const selectedKeys = [safeGetRelWindowPath()]
+          const sidebarRootTocMV = bDisplaySidebar
+            ? this.createTOCModelView(mdNodes).childTOCs.find(
+              o => o.slugPart.toLowerCase() === sidebarRoot.slice(1).toLowerCase()
+            )
+            : {}
+          const defaultOpenKeys = bDisplaySidebar
+            ? this.getHeadingSlugPrefixes(sidebarRootTocMV)
+            : []
+          console.log(defaultOpenKeys)
+
+          if (bDisplaySidebar) {
+            return (
+              <AntdSider
                 theme={siteCfg.theme.LightVariant}
+                collapsible
+                // eslint-disable-next-line react/destructuring-assignment
+                collapsed={this.state.collapsed}
+                onCollapse={this.onCollapse}
+                trigger={null}
+                breakpoint={siteCfg.theme.breakpoint}
+                collapsedWidth="0"
+                onBreakpoint={this.onBreakpoint}
+                width={siteCfg.theme.sidebarMenuWidth}
+                style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}
               >
-                {loop(tree)}
-              </AntdMenu>
-            </AntdSider>
-          )
+                <AntdMenu
+                  mode="inline"
+                  defaultOpenKeys={defaultOpenKeys}
+                  selectedKeys={selectedKeys}
+                  inlineIndent={siteCfg.theme.sidebarIndent}
+                  theme={siteCfg.theme.LightVariant}
+                >
+                  {createTOCNodes(sidebarRootTocMV)}
+                </AntdMenu>
+              </AntdSider>
+            )
+          }
+
+          return <div />
         }}
       />
     )

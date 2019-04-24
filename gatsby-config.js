@@ -1,3 +1,5 @@
+const path = require(`path`)
+const _ = require('lodash')
 const siteCfg = require('./SiteCfg')
 
 const pathPrefix = siteCfg.pathPrefix === '/' ? '' : siteCfg.pathPrefix
@@ -108,14 +110,21 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-json',
       options: {
-        typeName: 'MenuItems', // a fixed string
+        typeName: ({ node }) => _.last(path.parse(node.absolutePath).dir.split('/')),
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'menuItems',
-        path: `${__dirname}/src/menuItems`,
+        path: `${__dirname}/SiteCfg/json/MenuItems`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'guideTOC',
+        path: `${__dirname}/SiteCfg/json/GuideTOC`,
       },
     },
     {
@@ -153,7 +162,7 @@ module.exports = {
         plugins: gbRemarkPluginsList,
       },
     },
-    'gatsby-plugin-eslint',
+    // 'gatsby-plugin-eslint',
     'gatsby-plugin-remove-trailing-slashes',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline

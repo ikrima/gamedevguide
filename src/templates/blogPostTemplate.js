@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
-import _ from 'lodash'
 import { PageHeader as AntdPageHeader } from 'antd'
 import Layout from '../components/Layout'
 // import { connect } from 'react-redux'
@@ -11,11 +10,13 @@ import 'katex/dist/katex.min.css'
 import siteCfg from '../../SiteCfg'
 
 import {
-  prettifyPath,
+  prettifySlug,
   getBreadCrumbRootPrefix,
-  safeGetWindowPath,
+  safeGetRelWindowPath,
   safeGetRelWindowPathSlugs,
 } from '../../gatsby/utils'
+
+const _ = require('lodash')
 
 function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -30,13 +31,10 @@ function Template({
 
   const routes = safeGetRelWindowPathSlugs().map(item => ({
     path: null,
-    breadcrumbName: prettifyPath(item),
+    breadcrumbName: prettifySlug(item),
   }))
 
-  const curPageRoot = getBreadCrumbRootPrefix(
-    safeGetWindowPath(),
-    frontmatter ? frontmatter.root : null
-  )
+  const curPageRoot = getBreadCrumbRootPrefix(safeGetRelWindowPath(), frontmatter)
 
   let markdownHtml
   if (data.mdx) {

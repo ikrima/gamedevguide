@@ -27,6 +27,8 @@ const SiteCfg = {
   repoURL: 'https://github.com/kitelightning/gamedevguide',
   devRepoURL: 'https://github.com/ikrima/gamedevguide',
 
+  defaultSortIndex: 999,
+
   theme: {
     // Manifest and Progress color
     // See: https://developers.google.com/web/fundamentals/web-app-manifest/

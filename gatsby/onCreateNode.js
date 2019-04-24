@@ -3,7 +3,7 @@ const _ = require('lodash')
 const path = require(`path`)
 
 const { createFilePath } = require('gatsby-source-filesystem')
-const { sanitizePath, removeTrailingFwdSlash, prettifyPath } = require('./utils')
+const { prettifySlug, relFilePathToSlug, absFilePathToSlug } = require('./utils')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -15,23 +15,20 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     (node.internal.type === `MarkdownRemark` || node.internal.type === `Mdx`) &&
     typeof node.slug === `undefined`
   ) {
-    const nodeFilePath = removeTrailingFwdSlash(
-      createFilePath({ node, getNode, basePath: 'pages' })
-    )
-    const slug = sanitizePath(nodeFilePath)
+    const nodeFilePath = createFilePath({ node, getNode, basePath: 'pages', trailingSlash: false })
+    const slug = relFilePathToSlug(nodeFilePath)
+    console.log(`${nodeFilePath}::${slug}`)
     createNodeField({
       node,
       name: 'slug',
       value: slug,
     })
-    const pathSlugsArray = nodeFilePath.split('/')
-    pgTitle = node.frontmatter.title
-      ? node.frontmatter.title
-      : prettifyPath(pathSlugsArray[pathSlugsArray.length - 1])
+    const pathSlugsArray = slug.split('/')
+    pgTitle = node.frontmatter.title ? node.frontmatter.title : prettifySlug(_.last(pathSlugsArray))
 
     sideMenuHeading = node.frontmatter.sideMenuHeading
       ? node.frontmatter.sideMenuHeading
-      : prettifyPath(pathSlugsArray[pathSlugsArray.length - 1])
+      : prettifySlug(_.last(pathSlugsArray))
 
     if (node.frontmatter.tags) {
       const tagSlugs = node.frontmatter.tags.map(tag => `/tags/${_.kebabCase(tag)}/`)
@@ -41,8 +38,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const pathObj = path.parse(
       node.relativePath.startsWith('/') ? node.relativePath : `/${node.relativePath}`
     )
-    const pathDir = sanitizePath(removeTrailingFwdSlash(pathObj.dir)).replace(/\/$/, '')
-    const pathName = sanitizePath(pathObj.name)
+    const pathDir = absFilePathToSlug(pathObj.dir).replace(/\/$/, '')
+    const pathName = absFilePathToSlug(pathObj.name)
     const pathExt = ['.md', '.mdx', '.js', '.jsx'].includes(pathObj.ext) ? '' : pathObj.ext
 
     const slug = `${pathDir}/${pathName}${pathExt}`

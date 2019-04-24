@@ -3,7 +3,7 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 
 import { Menu as AntdMenu } from 'antd'
 import siteCfg from '../../../SiteCfg'
-import { sanitizePath } from '../../../gatsby/utils'
+import { relFilePathToSlug } from '../../../gatsby/utils'
 
 const Menu = ({ siteNavTitle }) => (
   <StaticQuery
@@ -28,7 +28,7 @@ const Menu = ({ siteNavTitle }) => (
           </Link>
           {menuItems.map(item => (
             <AntdMenu.Item key={menuItems.indexOf(item)}>
-              <Link to={sanitizePath(item.link)} style={{ textDecoration: 'none' }}>
+              <Link to={relFilePathToSlug(item.link)} style={{ textDecoration: 'none' }}>
                 {item.name}
               </Link>
             </AntdMenu.Item>

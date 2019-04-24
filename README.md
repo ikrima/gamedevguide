@@ -9,6 +9,8 @@
 - [x] General simplifications
 - [x] Convert all markdown files to kebab case
 - [ ] Add search
+- [ ] Mobile support
+- [ ] Perf: Remove page reload with sidebar
 - [ ] Perf: Use Emotion - https://jenniferwadella.com/blog/all-the-dumb-mistakes-i-made-building-my-first-gatsby-site
 - [ ] Perf: Image Optimization - https://medium.com/@kyle.robert.gill/ridiculously-easy-image-optimization-with-gatsby-js-59d48e15db6e
 
