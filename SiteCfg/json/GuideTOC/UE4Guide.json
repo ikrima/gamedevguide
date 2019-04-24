@@ -6,6 +6,10 @@
       "childTOCs": []
     },
     {
+          "slugPart": "build-guide",
+          "childTOCs": []
+    },
+    {
       "slugPart": "wip",
       "prettyTitle": "WORK IN PROGRESS",
       "childTOCs": [
