@@ -7,7 +7,7 @@ import { Layout as AntdLayout, Menu as AntdMenu } from 'antd'
 // import { onSetSidebarOpen } from '../../actions/layout'
 import _ from 'lodash'
 import siteCfg from '../../../SiteCfg'
-import allGuideTOCs from '../../../SiteCfg/json/GuideToc'
+import allGuideTOCs from '../../../SiteCfg/json/GuideTOC'
 
 import { separateSlugs, prettifySlug, safeGetRelWindowPath } from '../../../gatsby/utils'
 
