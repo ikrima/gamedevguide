@@ -2,6 +2,7 @@
 title:  "Gamedev Development Environment Part 3"
 pageSubTitle: A Yak Shaving for fun & profit series™
 sideMenuHeading: "Part 3: Windows Config"
+sortIndex: 2
 ---
 # Part III: Making Windows Tolerable + software I use + semi-auto imaging dev machines
 

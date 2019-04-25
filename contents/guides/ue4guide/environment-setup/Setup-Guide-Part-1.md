@@ -2,6 +2,7 @@
 title:  "Gamedev Development Environment Part 1"
 pageSubTitle: A Yak Shaving for fun & profit series™
 sideMenuHeading: "Part 1: Hardware"
+sortIndex: 0
 ---
 
 # Part I: Hardware - Extremely Highend
@@ -85,6 +86,8 @@ Dead simple:
 - CPU voltage at 1.25
 - Memory to 2933 with 1.35v
 - *NOTE*: TR has a thermal ceiling of 69° before it'll start throttling
+
+Here's a [beginner's guide to overclocking](https://forums.tomshardware.com/faq/cpu-overclocking-guide-and-tutorial-for-beginners.3347428/)
 
 ## Expert mode:
 Here's a [Overclocking Threadripper Guide](https://www.guru3d.com/articles-pages/amd-ryzen-threadripper-2990wx-review,31.html). Some advanced notes:

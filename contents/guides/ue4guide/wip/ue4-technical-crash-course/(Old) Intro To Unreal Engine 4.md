@@ -1,6 +1,3 @@
----
-sideMenuHeading: "(Old) Intro To Unreal Engine 4"
----
 So if you've been living underneath a rock, Epic decided to open source their entire toolset and engine while offering it for the low price of $20 a user/month + 5% gross fee. Our reaction? That's UNREAL :)
 
  

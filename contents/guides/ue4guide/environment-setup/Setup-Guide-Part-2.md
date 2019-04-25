@@ -2,6 +2,7 @@
 title:  "Gamedev Development Environment Part 2"
 pageSubTitle: A Yak Shaving for fun & profit series™
 sideMenuHeading: "Part 2: OS Config"
+sortIndex: 1
 ---
 # Part II: One weird trick to get a 70% performance boost
 [![](https://pbs.twimg.com/media/DuuPHAbV4AAW5V0.jpg)]

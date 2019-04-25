@@ -30,13 +30,13 @@ Reference: UnrealEngine\\Engine\\Source\\Programs\\UnrealBuildTool\\Configuratio
   - BuildGraph -target=”Make Installed Build Mac” -script=Engine/Build/InstalledEngineBuild.xml
   - If you run one of these **with -listonly added to the command**, you will be able to see what will be built and a list of additional options you can specify. By default it will attempt to build every target platform your host machine is capable of making builds for, except for XboxOne and PS4, which are disabled by default. You can disable target platforms by adding -set:WithWin64=false to the commandline and also skip over the creation of DDC for Engine and Template content by passing -WithDDC=false.
 
-*From &lt;<https://forums.unrealengine.com/showthread.php?119130-Unreal-Engine-4-13-Preview&p=575178&viewfull=1#post575178>&gt;*
+*From <https://forums.unrealengine.com/showthread.php?119130-Unreal-Engine-4-13-Preview&p=575178&viewfull=1#post575178>*
 
 - <https://answers.unrealengine.com/questions/416396/building-binary-editor-from-source-for-artists.html>
 - <https://forums.unrealengine.com/showthread.php?123490-Current-advice-for-distributing-custom-engine-builds-to-team-without-recompiling>
 - New: Using the -precompile option with UnrealBuildTool will now build all engine modules. Overriding the GetModulesToPrecompile() function from a game's target rules is no longer necessary, and has been deprecated.
 
-*From &lt;<https://www.unrealengine.com/blog/unreal-engine-4-11-released>&gt;*
+*From <https://www.unrealengine.com/blog/unreal-engine-4-11-released>*
 
 - BuildGraph system & creating precompiled engine builds/installed builds:
   - <https://docs.unrealengine.com/latest/INT/Programming/Development/InstalledBuildReference/index.html>
@@ -96,7 +96,7 @@ ref CPPEnvironmentConfiguration OutCPPEnvironmentConfiguration
 # Building Lighting from Command Line
 
 `batch>UE4-Editor.exe [Project Folder Path] -run=resavepackages -buildlighting -MapsOnly -ProjectOnly -AllowCommandletRendering -Map=[Name of map]`
-*From &lt;<https://wiki.unrealengine.com/LightingTroubleshootingGuide>&gt;*
+*From <https://wiki.unrealengine.com/LightingTroubleshootingGuide>*
 
 GenerateProjectFiles.bat
 
@@ -124,7 +124,7 @@ First part:
 - Client - Without editor and server code, client only, with this build user wont able to set up server
 - Server - Without editor and client, in other words dedicated server build, but note that other builds (except "Client" ofcorse) can function as dedicated server too
 
-*From &lt;<https://answers.unrealengine.com/questions/194712/differences-between-build-configurations.html>&gt;*
+*From <https://answers.unrealengine.com/questions/194712/differences-between-build-configurations.html>*
 
 &nbsp;
 

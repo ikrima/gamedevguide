@@ -2,6 +2,7 @@
 title:  "Gamedev Development Environment Part 3"
 pageSubTitle: A Yak Shaving for fun & profit series™
 sideMenuHeading: "Part 4: Optimizing UE4 Compile Times"
+sortIndex: 3
 ---
 # Part IV: Optimizing Unreal Engine Builds, Visual Studio, and Final Benchmarks
 
