@@ -13,7 +13,7 @@ const SiteCfg = {
   siteHeadline: 'GameDev & Unreal Engine Programming Guide', // Headline for schema.org JSONLD
   siteBanner: 'src/images/bebylon-icon.png', // Your image for og:image tag. You can find it in the /static folder
   siteLogo: 'src/images/bebylon-icon.png', // Image for schemaORGJSONLD
-  siteDisplay: 'standalone', // "minimal-ui"
+  siteDisplay: 'minimal-ui', // "minimal-ui"
   siteLogoText: 'K&L GameDev Guide',
   siteCopyrights: '',
   favicon: 'src/images/bebylon-icon.png', // Your image for favicons. You can find it in the /src folder
@@ -24,8 +24,11 @@ const SiteCfg = {
   ogSiteName: 'KiteLightning', // Facebook Site Name - Optional
   ogLanguage: 'en_US', // Facebook Language
   googleAnalyticsID: 'UA-47614715-1',
+
+  // Social Media Links
   repoURL: 'https://github.com/kitelightning/gamedevguide',
   devRepoURL: 'https://github.com/ikrima/gamedevguide',
+  twitterURL: 'https://twitter.com/ikrimae',
 
   defaultSortIndex: 999,
 

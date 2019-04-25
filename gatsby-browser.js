@@ -8,5 +8,6 @@
 import wrapWithProvider from './gatsby/wrap-with-provider'
 
 require('prismjs/themes/prism-tomorrow.css')
+require('antd/dist/antd.css')
 
 export const wrapRootElement = wrapWithProvider

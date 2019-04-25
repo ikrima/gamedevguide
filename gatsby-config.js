@@ -146,8 +146,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: siteCfg.siteTitleAlt,
-        short_name: siteCfg.siteTitleManifest,
+        name: siteCfg.siteTitleShort,
+        short_name: siteCfg.siteTitleShort,
         description: siteCfg.siteDescription,
         start_url: siteCfg.pathPrefix,
         background_color: siteCfg.theme.BackgroundColor,
@@ -172,13 +172,13 @@ module.exports = {
       options: {
         trackingId: siteCfg.googleAnalyticsID,
         // Puts tracking script in the head instead of the body
-        head: false,
+        // head: false,
         // Setting this parameter is optional
-        anonymize: true,
+        // anonymize: false,
         // Setting this parameter is also optional
         respectDNT: true,
         // Avoids sending pageview hits from custom paths
-        exclude: ['/preview/**', '/do-not-track/me/too/'],
+        // exclude: ['/preview/**', '/do-not-track/me/too/'],
         // Enables Google Optimize using your container Id
         // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
         // Enables Google Optimize Experiment ID
@@ -186,8 +186,8 @@ module.exports = {
         // Set Variation ID. 0 for original 1,2,3....
         // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
         // Any additional create only fields (optional)
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
+        // sampleRate: 5,
+        // siteSpeedSampleRate: 10,
         // cookieDomain: "example.com",
       },
     },

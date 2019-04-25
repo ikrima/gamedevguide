@@ -46,10 +46,12 @@ class SidebarContents extends Component {
     return retTree
   }
 
-  getHeadingSlugPrefixes = (inTOCModelView, maxDepth=2) => {
+  getHeadingSlugPrefixes = (inTOCModelView, maxDepth = 2) => {
     const _getSlugPrefixes = (curDepth, tocNode) =>
       tocNode.childTOCs && curDepth < maxDepth
-        ? [tocNode.slugPrefix].concat(_.flatMap(tocNode.childTOCs, o => _getSlugPrefixes(curDepth+1,o)))
+        ? [tocNode.slugPrefix].concat(
+          _.flatMap(tocNode.childTOCs, o => _getSlugPrefixes(curDepth + 1, o))
+        )
         : [tocNode.slugPrefix]
     return _getSlugPrefixes(0, inTOCModelView)
   }
@@ -73,8 +75,12 @@ class SidebarContents extends Component {
         if (!leafTOCNode.hasOwnProperty('childPages')) {
           leafTOCNode.childPages = []
         }
+
         leafTOCNode.childPages.push({
-          sortIndex: node.frontmatter.sortIndex || siteCfg.defaultSortIndex,
+          sortIndex:
+            (node.frontmatter.sortIndex === null || node.frontmatter.sortIndex === undefined)
+              ? siteCfg.defaultSortIndex
+              : node.frontmatter.sortIndex,
           slug: node.fields.slug,
           nodeId: node.id,
           title: curTitle,
@@ -101,7 +107,7 @@ class SidebarContents extends Component {
           tocNode.childPages = []
         }
         // eslint-disable-next-line no-param-reassign
-        tocNode.childPages = _.sortBy(tocNode.childPages, [('sortIndex', 'slug')])
+        tocNode.childPages = _.sortBy(tocNode.childPages, ['sortIndex', 'slug'])
 
         if (tocNode.childTOCs) {
           tocNode.childTOCs.map(sortTOCSubTree)
@@ -168,7 +174,9 @@ class SidebarContents extends Component {
                 <AntdSubMenu
                   key={tocSubTree.slugPrefix}
                   title={
-                    <span style={{ fontWeight: 900 }}>{tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}</span>
+                    <span style={{ fontWeight: 900 }}>
+                      {tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}
+                    </span>
                   }
                 >
                   {createTOCNodes(tocSubTree)}

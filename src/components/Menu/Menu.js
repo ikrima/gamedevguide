@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 
-import { Menu as AntdMenu } from 'antd'
+import { Menu as AntdMenu, Icon as AntdIcon } from 'antd'
 import siteCfg from '../../../SiteCfg'
 import { relFilePathToSlug } from '../../../gatsby/utils'
 
@@ -26,6 +26,16 @@ const Menu = ({ siteNavTitle }) => (
           <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
             {siteNavTitle}
           </Link>
+          <AntdMenu.Item>
+            <a href={siteCfg.repoURL}>
+              <AntdIcon type="github" />
+            </a>
+          </AntdMenu.Item>
+          <AntdMenu.Item>
+            <a href={siteCfg.twitterURL}>
+              <AntdIcon type="twitter" />
+            </a>
+          </AntdMenu.Item>
           {menuItems.map(item => (
             <AntdMenu.Item key={menuItems.indexOf(item)}>
               <Link to={relFilePathToSlug(item.link)} style={{ textDecoration: 'none' }}>
