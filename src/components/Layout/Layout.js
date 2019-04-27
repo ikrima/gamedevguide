@@ -49,8 +49,6 @@ const RootLayout = ({ children, sidebarRoot }) => (
                   style={{
                     background: '#fff',
                     padding: 48,
-                    margin: 0,
-                    minHeight: 280,
                   }}
                 >
                   {children}

@@ -23,9 +23,9 @@ const Menu = ({ siteNavTitle }) => (
       const menuItems = data.allMenuItems.edges.map(edge => edge.node).reverse()
       return (
         <AntdMenu theme={siteCfg.theme.DarkVariant} mode="horizontal">
-          <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
-            {siteNavTitle}
-          </Link>
+          <AntdMenu.Item>
+            <Link to="/">{siteNavTitle}</Link>
+          </AntdMenu.Item>
           <AntdMenu.Item>
             <a href={siteCfg.repoURL}>
               <AntdIcon type="github" />
@@ -38,9 +38,7 @@ const Menu = ({ siteNavTitle }) => (
           </AntdMenu.Item>
           {menuItems.map(item => (
             <AntdMenu.Item key={menuItems.indexOf(item)}>
-              <Link to={relFilePathToSlug(item.link)} style={{ textDecoration: 'none' }}>
-                {item.name}
-              </Link>
+              <Link to={relFilePathToSlug(item.link)}>{item.name}</Link>
             </AntdMenu.Item>
           ))}
         </AntdMenu>
