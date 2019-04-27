@@ -168,28 +168,55 @@ module.exports = {
     // To learn more, visit: https://gatsby.app/offline
     'gatsby-plugin-offline',
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: siteCfg.googleAnalyticsID,
-        // Puts tracking script in the head instead of the body
-        // head: false,
-        // Setting this parameter is optional
-        // anonymize: false,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        // exclude: ['/preview/**', '/do-not-track/me/too/'],
-        // Enables Google Optimize using your container Id
-        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
-        // Enables Google Optimize Experiment ID
-        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
-        // Set Variation ID. 0 for original 1,2,3....
-        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
-        // Any additional create only fields (optional)
-        // sampleRate: 5,
-        // siteSpeedSampleRate: 10,
-        // cookieDomain: "example.com",
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          siteCfg.googleAnalyticsID, // Google Analytics / GA
+          // 'AW-CONVERSION_ID', // Google Ads / Adwords / AW
+          // 'DC-FLOODIGHT_ID', // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+        ],
+        // This object gets passed directly to the gtag config command
+        // This config will be shared accross all trackingIds
+        // gtagConfig: {
+        //   optimize_id: 'OPT_CONTAINER_ID',
+        //   anonymize_ip: true,
+        //   cookie_expires: 0,
+        // },
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: false,
+          // Setting this parameter is also optional
+          respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          exclude: ['/preview/**', '/do-not-track/me/too/'],
+        },
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-google-analytics',
+    //   options: {
+    //     trackingId: siteCfg.googleAnalyticsID,
+    //     // Puts tracking script in the head instead of the body
+    //     // head: false,
+    //     // Setting this parameter is optional
+    //     // anonymize: false,
+    //     // Setting this parameter is also optional
+    //     respectDNT: true,
+    //     // Avoids sending pageview hits from custom paths
+    //     // exclude: ['/preview/**', '/do-not-track/me/too/'],
+    //     // Enables Google Optimize using your container Id
+    //     // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
+    //     // Enables Google Optimize Experiment ID
+    //     // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
+    //     // Set Variation ID. 0 for original 1,2,3....
+    //     // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
+    //     // Any additional create only fields (optional)
+    //     // sampleRate: 5,
+    //     // siteSpeedSampleRate: 10,
+    //     // cookieDomain: "example.com",
+    //   },
+    // },
   ],
 }
