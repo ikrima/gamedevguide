@@ -25,7 +25,14 @@ const gbRemarkPluginsList = [
   },
   'gatsby-remark-smartypants',
 
-  'gatsby-remark-katex',
+  {
+    resolve: 'gatsby-remark-katex',
+    options: {
+      // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+      strict: 'warn',
+      // displayMode: true,
+    },
+  },
   {
     resolve: 'gatsby-remark-autolink-headers',
     options: {
