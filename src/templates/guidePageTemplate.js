@@ -2,19 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { PageHeader as AntdPageHeader } from 'antd'
-import Layout from '../components/Layout'
-// import { connect } from 'react-redux'
-// import { onSidebarContentExpand } from '../actions/layout'
-// import { getSidebarExpandedKey } from '../store/selectors'
+import MainLayout from '../components/main-layout'
 import 'katex/dist/katex.min.css'
 import siteCfg from '../../SiteCfg'
 
-import {
-  prettifySlug,
-  getBreadCrumbRootPrefix,
-  safeGetRelWindowPath,
-  safeGetRelWindowPathSlugs,
-} from '../../gatsby/utils'
+import { prettifySlug, safeGetRelWindowPathSlugs } from '../../gatsby/utils'
 
 const _ = require('lodash')
 
@@ -34,7 +26,7 @@ function Template({
     breadcrumbName: prettifySlug(item),
   }))
 
-  const curPageRoot = getBreadCrumbRootPrefix(safeGetRelWindowPath(), frontmatter)
+  // const curPageRoot = getBreadCrumbRootPrefix(safeGetRelWindowPath(), frontmatter)
 
   let markdownHtml
   if (data.mdx) {
@@ -44,7 +36,9 @@ function Template({
   }
 
   return (
-    <Layout sidebarRoot={curPageRoot}>
+    <MainLayout showSidebar showToC sidebarToC>
+      {/* <Layout sidebarRoot={curPageRoot}> */}
+
       <AntdPageHeader
         title={pageTitle + (_.isEmpty(frontmatter.pageSubTitle) ? '' : ':')}
         subTitle={frontmatter.pageSubTitle}
@@ -53,7 +47,8 @@ function Template({
       <div className="guide-container" style={{ maxWidth: siteCfg.theme.guideContentMaxWidth }}>
         {markdownHtml}
       </div>
-    </Layout>
+      {/* </Layout> */}
+    </MainLayout>
   )
 }
 

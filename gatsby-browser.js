@@ -1,14 +1,20 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+// 3rd
+// import './src/styles/antd.less'
+import './src/styles/bootstrap/bootstrap.scss'
+// // custom
+import './src/styles/layout.scss'
+import './src/styles/theme.scss'
+import './src/styles/ui.scss'
+import './src/styles/vendors.scss'
+import './src/styles/custom.scss'
 
-// You can delete this file if you're not using it
-import wrapWithProvider from './gatsby/wrap-with-provider'
+import React from 'react'
+import SidebarContext from './src/contexts/SidebarContext'
+import SearchWrapper from './src/contexts/SearchContext'
 
-require('prismjs/themes/prism-tomorrow.css')
-require('antd/dist/antd.css')
-require('./static/siteStyle.css')
-
-export const wrapRootElement = wrapWithProvider
+const wrapPageElement = ({ element, props }) => (
+  <SearchWrapper {...props}>
+    <SidebarContext>{element}</SidebarContext>
+  </SearchWrapper>
+)
+export { wrapPageElement }

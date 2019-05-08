@@ -59,7 +59,7 @@ class Search extends Component {
       const grpKey = kvp[0]
       const grpValue = kvp[1]
       const optionChildren = grpValue.map(searchResult => (
-        <AntdOption key={searchResult.path} value={searchResult.path}>
+        <AntdOption key={searchResult.slug} value={searchResult.slug}>
           {searchResult.title}
         </AntdOption>
       ))

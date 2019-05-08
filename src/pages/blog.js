@@ -1,6 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+// import Layout from '../components/Layout'
+import MainLayout from '../components/main-layout'
+
 import PostCard from '../components/PostCard'
 
 const BlogPage = ({ data: { blogposts } }) => {
@@ -12,9 +14,9 @@ const BlogPage = ({ data: { blogposts } }) => {
     .map(node => <PostCard key={node.id} post={node} />)
 
   return (
-    <Layout>
+    <MainLayout hideSidebar>
       <div>{posts}</div>
-    </Layout>
+    </MainLayout>
   )
 }
 

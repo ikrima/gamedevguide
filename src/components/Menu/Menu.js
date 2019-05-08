@@ -4,7 +4,6 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 import { Menu as AntdMenu, Icon as AntdIcon } from 'antd'
 import siteCfg from '../../../SiteCfg'
 import { relFilePathToSlug } from '../../../gatsby/utils'
-import Search from '../Search'
 
 const Menu = ({ siteNavTitle }) => (
   <StaticQuery
@@ -17,9 +16,6 @@ const Menu = ({ siteNavTitle }) => (
               link
             }
           }
-        }
-        siteSearchIndex {
-          index
         }
       }
     `}
@@ -39,9 +35,6 @@ const Menu = ({ siteNavTitle }) => (
             <a href={siteCfg.twitterURL}>
               <AntdIcon type="twitter" />
             </a>
-          </AntdMenu.Item>
-          <AntdMenu.Item>
-            <Search searchIndex={data.siteSearchIndex.index} />
           </AntdMenu.Item>
           {menuItems.map(item => (
             <AntdMenu.Item key={menuItems.indexOf(item)}>

@@ -52,6 +52,7 @@ const gbRemarkPluginsList = [
 
 module.exports = {
   pathPrefix: siteCfg.pathPrefix,
+  __experimentalThemes: ['gatsby-theme-defaults'],
   siteMetadata: {
     siteUrl: siteCfg.siteUrl + pathPrefix,
     siteNavTitle: siteCfg.siteNavTitle,
@@ -75,7 +76,15 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-antd',
       options: {
-        style: true,
+        style: false,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Source Serif Pro', 'Source Sans Pro'],
+        },
       },
     },
     {
@@ -94,7 +103,7 @@ module.exports = {
         defaultLayouts: {
           guides: require.resolve('./src/templates/guidePageTemplate.js'),
           blogposts: require.resolve('./src/templates/blogPostTemplate.js'),
-          default: require.resolve('./src/components/Layout/index.js'),
+          default: require.resolve('./src/components/main-layout.js'),
         },
         extensions: ['.mdx'],
         gatsbyRemarkPlugins: gbRemarkPluginsList,
@@ -205,21 +214,21 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        fields: ['title', 'menuTitle', 'path', 'content', 'guideName'],
+        fields: ['title', 'menuTitle', 'slug', 'content', 'guideName'],
         // How to resolve each field`s value for a supported node type
         resolvers: {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
           Mdx: {
             title: node => node.fields.pageTitle,
             menuTitle: node => node.fields.sideMenuHeading,
-            path: node => node.fields.slug,
+            slug: node => node.fields.slug,
             content: node => node.rawBody,
             guideName: node => node.fields.guideName,
           },
           MarkdownRemark: {
             title: node => node.fields.pageTitle,
             menuTitle: node => node.fields.sideMenuHeading,
-            path: node => node.fields.slug,
+            slug: node => node.fields.slug,
             content: node => node.rawMarkdownBody,
             guideName: node => node.fields.guideName,
           },
