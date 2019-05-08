@@ -1,0 +1,91 @@
+
+.blog-card {
+  border: 1px solid rgba(0,0,0,.1);
+  background: $white;
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .blog-card__body {
+    border-radius: 0 0 $border-radius $border-radius;
+    padding: 1.625rem; // 26px
+  }
+
+  .blog-card__date {
+    opacity: .7;
+  }
+
+  .blog-card__title {
+    line-height: 1.625rem;
+    font-size: 1em;
+    margin: 5px 0;
+    font-weight: $font-weight-500;
+    color: $body-color;
+  }
+}
+
+
+// Bootstrap grid is used for screen >= map-get($grid-breakpoints, lg)
+.blog-card-list-v1 {
+  border: 1px solid rgba(0,0,0,.1);
+  background: $white;
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .blog-card__img {
+    padding: 0;
+  }
+
+  .blog-card__body {
+    display: flex;
+    flex-direction: column;
+    padding: 1.625rem;
+  }
+
+  .blog-card__tag {
+    font-size: $font-size-sm;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: $font-weight-500;
+    opacity: .8;
+  }
+
+  .blog-card__title {
+    font-size: 2rem;
+    font-weight: $font-weight-light;
+    line-height: 1.3125;
+    margin: 1rem 0 0.625rem;
+  }
+
+  .blog-card__content {
+    padding: 0 0 .8rem;
+    flex: 1; // so that .blog-card__author behaves like sticky footer
+  }
+
+  .blog-card__author {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0,0,0,.1);
+    padding-top: 1.625rem;
+    font-size: $font-size-sm;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: $font-weight-500;
+  }
+
+  @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+    .blog-card__img img {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+
+  }
+
+}

@@ -1,0 +1,16 @@
+
+.hover-v1 {
+  transition: transform .25s ease;
+  &:hover {
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .15);
+    transform: translate(0px, -6px) scale(1.02);
+  }
+}
+
+.hover-v2 {
+  transition: transform .25s ease;
+  &:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    transform: translate3d(0, -2px, 0);
+  }
+}

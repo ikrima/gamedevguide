@@ -1,0 +1,44 @@
+.cta-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; // vertical
+  font-size: 1.25rem;
+  font-weight: $font-weight-light;
+
+  .cta-lead {
+    margin: 0;
+  }
+}
+
+.cta {
+  .cta-lead {
+    font-size: 1.25rem;
+    font-weight: $font-weight-light;
+  }
+
+  .cta-title {
+    font-size: $h2-font-size;
+    font-weight: $font-weight-200;
+    line-height: $line-height-sm;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-muted {
+    font-size: $font-size-sm;
+    opacity: .7;
+    font-style: italic;
+  }
+}
+
+.cta-bg-img {
+  background-size: cover;
+  background-position: center;
+  color: rgba(#fff, .8);
+  h2 {
+    color: rgba(#fff, .8);
+  }
+  .cta-inner {
+    background-color: rgba(#000, .25);
+  }
+}
+

@@ -1,0 +1,26 @@
+// layout
+// ----------
+.quickview-wrapper{
+  z-index: $l_zindex_quickview;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100vh; // Fix(Safari): Fix sidenav fail to on safari
+  right: -$l_right_quickview_width;
+  width: $l_right_quickview_width;
+  background: $l_white;
+  transition: right .4s $l_transition_ease_out_quickview; 
+  backface-visibility: hidden;
+
+  &.quickview-open {
+      right: 0;
+  }
+}
+
+
+// theme
+// ----------
+.quickview-wrapper {
+  border-left: 1px solid rgba(0,0,0,.05);
+  box-shadow: 0 0 8px rgba(0,0,0,.1);
+}

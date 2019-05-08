@@ -1,0 +1,109 @@
+// make unfixed .app-sidenav full height
+.app-sidenav-container {
+  display: flex;
+}
+
+.app-sidenav {
+  display: flex;
+  flex-direction: column;
+
+  + .ant-layout {
+    transition: all .2s; // same with .ant-layout-sider, so that when sidenavWidth changes, the transition are consistent
+  }
+
+  > .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidenav-header {
+    flex: 0 0 auto;
+    height: $l_header_height;
+  }
+
+  .sidenav-content {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    overflow: auto;
+  }
+
+  // remove ant menu border, and use custom, because antd border only applies to menu
+  .ant-menu-inline,
+  .ant-menu-vertical,
+  .ant-menu-vertical-left {
+    border-right: 0;
+  }
+  // avoid horizontal scrollbar
+  .ant-menu-inline .ant-menu-item,
+  .ant-menu-inline .ant-menu-submenu-title {
+    width: 100%; // orginal: calc(100% + 1px);
+  }
+
+
+  .sidenav-content,
+  .sidenav-footer {
+    border-right: 1px solid rgba(0,0,0,.1);
+  }
+  &.sidenav-bg-dark {
+    .sidenav-content,
+    .sidenav-footer {
+      border-right: 0;
+    }
+  }
+
+
+  .sidenav-footer {
+    flex: 0 0 auto;
+    height: $sidenav_footer_height;
+  }
+}
+
+// Menu Badge
+.ant-menu {
+  .ant-menu-item {
+    a {
+      position: relative;
+    }
+    .nav-badge {
+      margin-left: 5px;
+      position: absolute;
+      right: 2em;
+      top: 12.375px; // (40 - 15.25)/2
+
+      &.badge-right {
+        right: 0;
+      }
+    }
+  }
+}
+
+// 
+.app-sidenav.ant-layout-sider-collapsed {
+  .sidenav-header {
+    padding-left: 27.5px; // same with ant menu icon 32(padding) + 15/2 = 39.5
+  }
+
+  .brand {
+    display: none;
+  }
+
+  .nav-badge {
+    display: none;
+  }
+
+  .sidenav-footer {
+    > a {
+      padding-left: 32px;
+    }
+    .nav-text {
+      display: none;
+    }
+  }
+}
+
+// .ant-menu-inline-collapsed > .ant-menu-item,
+// .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item,
+// .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
+//   padding: 0 22px !important;
+// }

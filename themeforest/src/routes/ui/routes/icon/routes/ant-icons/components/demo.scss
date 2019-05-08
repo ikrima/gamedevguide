@@ -1,0 +1,52 @@
+// ui/icons
+.page-icons {
+  ul.anticons-list {
+    margin: 40px 0;
+    list-style: none;
+    overflow: hidden;
+  }
+
+  ul.anticons-list li {
+    float: left;
+    width: 16.66%;
+    text-align: center;
+    list-style: none;
+    // cursor: pointer;
+    height: 100px;
+    color: #555;
+    position: relative;
+    margin: 3px 0;
+    border-radius: 4px;
+    // background-color: #fff;
+    overflow: hidden;
+    padding: 10px 0 0;
+  }
+
+  ul.anticons-list li:hover {
+    background-color: #108ee9;
+    color: #fff;
+    .ant-badge {
+      color: #fff;
+    }
+  }
+
+  ul.anticons-list li .anticon {
+    font-size: 24px;
+    margin: 12px 0 16px;
+  }
+
+  ul.anticons-list li .anticon,
+  ul.anticons-list li .ant-badge {
+    transition: all .3s;
+  }
+
+
+  ul.anticons-list li .anticon-class {
+    display: block;
+    text-align: center;
+    transform: scale(.83);
+    font-family: Lucida Console,Consolas;
+    white-space: nowrap;
+  }
+
+}

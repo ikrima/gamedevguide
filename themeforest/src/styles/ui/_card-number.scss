@@ -1,0 +1,152 @@
+$number-card-border: rgba(0,0,0,.1);
+
+.number-card-v1 {
+  position: relative;
+  border: 1px solid $number-card-border;
+  border-radius: $border-radius-lg;
+  background-color: $white;
+
+  * {
+    -webkit-backface-visibility: hidden;
+    // -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  }
+
+  .card-top,
+  .card-bottom {
+    display: flex;
+    height: 7rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    font-size: 2.5rem;
+    line-height: 1;
+    font-weight: $font-weight-light;
+    .h5 {
+      font-size: 1.5rem;
+      margin-left: 2px;
+    }
+
+    .anticon,
+    .material-icons {
+      font-size: 3rem;
+    }
+  }
+
+  .card-bottom {
+    border-top: 1px solid $number-card-border;
+  }
+
+  .card-info {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -12px;
+    text-align: center;
+
+    span {
+      display: inline-block;
+      height: 1.5rem;
+      padding: .25rem .625rem;
+      text-transform: uppercase;
+      line-height: 14px;
+      background-color: $white;
+      border: 1px solid $number-card-border;
+      font-size: .75rem;
+      color: $text-muted;
+      border-radius: 1em;
+
+      .material-icons {
+        line-height: .875rem;
+        font-size: .6875rem; //11px
+      }
+    }
+  }
+}
+
+
+// 
+.number-card-v2 {
+  display: flex;
+  min-height: 120px;
+  padding: 1rem;
+  background-color: $white;
+  border-radius: $border-radius-lg;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  * {
+    -webkit-backface-visibility: hidden;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .icon-btn {
+    margin: 0 1rem 0 0;
+  }
+
+  .box-num {
+    font-size: 1.6rem;
+    line-height: 1;
+    margin: 0 0 .25rem;
+  }
+}
+
+
+.number-card-v3 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: $white;
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  * {
+    -webkit-backface-visibility: hidden;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .card-top {
+    padding: 2rem 1rem;
+    font-size: 2.75rem;
+  }
+
+  .card-bottom {
+    padding: 1.8rem 0;
+
+    > ul {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      > li {
+        position: relative;
+        width: 100%;
+        &:not(:last-child) {
+          &:after {
+            content: '';
+            position: absolute;
+            background-color: rgba($dark, .2);
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 1px;
+            margin-top: -15px; // height/2
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  .card-num {
+    font-size: 1.25rem;
+  }
+}

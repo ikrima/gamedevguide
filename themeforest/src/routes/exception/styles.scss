@@ -1,0 +1,46 @@
+@import "../../styles/variables";
+
+.page-err {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem 1rem;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    padding: 7.5rem 0 0;
+  }
+
+  .err-container {
+    padding: 1rem .625rem;
+  }
+
+  .err-code-container {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 2px solid $info;
+    padding: 28px;
+    margin: 0 auto 1.5rem;
+
+    .err-code {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background-color: $info;
+      color: $white;
+    }
+
+    h1 {
+      font-size: 5.625rem;
+      line-height: 220px;
+      font-weight: $font-weight-light;
+    }
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    line-height: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: $font-weight-light;
+    opacity: $text-secondary;
+  }
+}

@@ -1,0 +1,43 @@
+.app-sidenav {
+  .sidenav-header {
+    transition: $l_transition_antd;
+  }
+
+  .sidenav-footer {
+    background-color: $app_footer_bg;
+    border-top: 1px solid rgba(0,0,0,.05);
+
+    // same with antd menu item
+    > a {
+      display: block;
+      padding: 0 16px 0 24px;
+      line-height: $sidenav_footer_height;
+      &:focus {
+        text-decoration: none;
+      }
+      .anticon {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+
+
+.app-sidenav {
+  .sidenav-header {
+    padding: 0 0 0 19px; // padding-left(24px) + width/2 of AntIcon(14px/2) - width/2 of logo(24px/2) = 19
+    line-height: $l_header_height;
+  }
+
+  .logo-img {
+    float: left; // Style: Make logo out of flow so that when it won’t jump when Sider collapses and .brand text `display: none;`
+    margin-top: 18px;
+  }
+
+  .brand {
+    font-size: 20px;
+    margin-left: 13px;
+  }
+}
+

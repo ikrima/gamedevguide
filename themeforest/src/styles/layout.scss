@@ -1,0 +1,26 @@
+// takes advantage of Bootstrap 4 variables, however it's not required for essential layout
+@import "variables";
+
+@import "layout/layout-antd";
+@import "layout/layout-boxed";
+@import "layout/layout-fixed-sidenav";
+@import "layout/layout-fixed-header";
+@import "layout/sidenav-layout-antd";
+@import "layout/sidenav";
+@import "layout/sidenav-mobile";
+@import "layout/sidenav-theme";
+
+@import "layout/logo";
+@import "layout/footer";
+@import "layout/footer-styles";
+@import "layout/header";
+@import "layout/header-theme";
+@import "layout/content";
+@import "layout/content-with-tabs";
+@import "layout/quickview";
+@import "layout/quickview-customizer";
+@import "layout/quickview-customizer-antd";
+@import "layout/flex-items";
+
+// 
+@import "layout/layout-app-v2";

@@ -1,0 +1,61 @@
+
+.divider {
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: transparent;
+  margin-top: .625rem; // 10px
+  margin-bottom: .625rem;
+}
+
+.divider-solid {
+  border-style: solid;
+  border-color: $divider-color;
+}
+.divider-dashed {
+  border-style: dashed;
+  border-color: $divider-color;
+}
+.divider-dotted {
+  border-style: dotted;
+  border-color: $divider-color;
+}
+.divider-double {
+  border-width: 3px 0 0 0;
+  border-style: double;
+  border-color: $divider-color;
+}
+
+.divider-short {
+  width: 2.5rem;
+}
+
+.divider-bold {
+  border-width: 2px 0 0 0;
+}
+
+// .divider-text 
+// .divider-text-left
+// .divider-text-right
+
+.divider-with-content {
+  display: table;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table-cell;
+    position: relative;
+    top: 50%;
+    width: 50%;
+    border-top: 1px solid $divider-color;
+    transform: translateY(50%);
+  }
+
+  .divider-inner-content {
+    display: inline-block;
+    padding: 0 .75rem;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+

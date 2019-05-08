@@ -1,0 +1,29 @@
+
+// Size
+.icon-btn {
+  font-size: 1rem;
+  padding: 0;
+  display: inline-block;
+  text-align: center;
+  border-radius: $border-radius;
+  @include icon-btn-variant(35px);
+}
+.icon-btn-round {
+  border-radius: 50%;
+}
+.icon-btn-sm {
+  font-size: $font-size-base; // 14px
+  @include icon-btn-variant(30px);
+}
+.icon-btn-md {
+  @include icon-btn-variant(45px);
+  font-size: 18px;
+}
+.icon-btn-lg {
+  @include icon-btn-variant(65px);
+  font-size: 28px;
+}
+.icon-btn-xl {
+  @include icon-btn-variant(80px);
+  font-size: 44px;
+}

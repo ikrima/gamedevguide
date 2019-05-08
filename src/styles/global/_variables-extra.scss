@@ -1,0 +1,62 @@
+
+// Assets path
+
+$image_path:            "../assets/images/" !default;
+
+
+
+// Color system
+
+$body-color-reverse:    rgba(255, 255, 255, 0.87) !default; // Text color for dark bg
+$page-bg:               #f5f5f5 !default; // background color of AppContent
+
+
+// Fonts
+$body-color2:                 rgba(0, 0, 0, 0.65) !default; // antd text
+$text-secondary:              .8 !default; // opacity
+$text-inactive:               .6 !default; // opacity
+
+$font-weight-200:             200 !default;
+$font-weight-500:             500 !default;
+$font-weight-600:             600 !default;
+$font-weight-semibold:        600 !default;
+
+$state-default-bg:            rgba(0,0,0, .1) !default; // also: pagination bg
+$state-default-border:        darken(adjust-hue($state-default-bg, -10), 5%) !default; 
+
+
+$border-radius-xxl:           1.5rem !default;
+
+$divider-color:               rgba(0,0,0, .1) !default;
+
+// Box
+$box_border_width:            1px;
+$box_border_color:            rgba(0,0,0,.1);
+
+
+// Hero
+$hero-title-h1:               $h1-font-size;
+$hero-title-h2:               $h2-font-size;
+$hero-title-font-weight:      $font-weight-200;
+
+
+// box shadow
+
+@mixin z-depth-1 {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+@mixin z-depth-1-half {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+@mixin z-depth-2 {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+@mixin z-depth-3 {
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+@mixin z-depth-4 {
+  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+@mixin z-depth-5 {
+  box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}

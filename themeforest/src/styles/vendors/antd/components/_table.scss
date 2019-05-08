@@ -1,0 +1,13 @@
+.ant-table-v1 {
+  table {
+    border-radius: $border-radius;
+    background-color: $white;
+  }
+}
+
+// Use with box
+.box-ant-table-v1 {
+  .ant-pagination {
+    margin-right: 1rem;
+  }
+}

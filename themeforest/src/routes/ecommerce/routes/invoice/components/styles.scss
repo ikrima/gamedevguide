@@ -1,0 +1,28 @@
+@import "../../../../../styles/variables";
+
+.page-invoice {
+  color: $body-color;
+  .invoice-wrapper {
+    padding: 0 0 30px;
+    background-color: $white;
+  }
+
+}
+
+.invoice-inner {
+  padding: 15px 15px 30px;
+  background-color: $white;
+
+  .invoice-sum {
+    li {
+      margin-bottom: 5px;
+      padding: 10px;
+      background-color: rgba(#000, .035);
+      border-radius: $border-radius;
+    }
+  }
+
+  .invoice-table {
+    margin: 30px 0;
+  }
+}

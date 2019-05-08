@@ -1,0 +1,229 @@
+.app-header {
+  padding: 0;
+  border: 0; // no border, otherwise other elements' height can only be ($l_header_height -1)
+
+  &.ant-layout-header {
+    height: $l_header_height;
+    line-height: $l_header_height;
+  }
+
+  .app-header-inner {
+    height: $l_header_height;
+  }
+}
+
+.app-header-inner {
+  display: flex;
+  justify-content: space-between;
+  transition: $l_transition_antd;
+
+  .logo-img {
+    float: left; // fix its position affect other list items
+    margin: 18px 15px 0; // ($l_header_height - height) / 2 = (60 - 24)/2
+  }
+
+  .ant-divider-vertical {
+    background: rgba(222,222,222, .5);
+    top: -2.5px;
+  }
+
+  .header-right {
+    padding-right: 5px;
+  }
+
+  .header-icon {
+    display: inline-block;
+    height: $l_header_height;
+    line-height: $l_header_height;
+    padding: 0 14px;
+    @media only screen and (min-width: $l_screen_md_min) {
+      padding: 0 18px;
+    }
+  }
+
+  .ant-menu-horizontal {
+    line-height: ($l_header_height - 2); // 2px border
+    border-color: transparent;
+  }
+
+  a.list-inline-item {
+    &:hover {
+      background-color: rgba(0,0,0,.05);
+    }
+  }
+  .list-inline-item {
+    padding: 0 .875rem;
+    margin: 0;
+    transition: all .3s;
+
+    .ant-badge {
+      .ant-badge-count {
+        font-size: 10px;
+        line-heigth: 20px;
+        font-weight: $font-weight-light;
+        padding: 0 4px;
+      }
+    }
+
+    .anticon {
+      display: inline-block;
+    }
+    // apply to .list-inline-item icon only
+    .list-icon {
+      font-size: 1rem;
+      line-height: $l_header_height;;
+      padding: 0 4px;
+    }
+    .list-icon-v2 { // with no line-height, for alignment issue
+      font-size: 1rem;
+      padding: 0 4px;
+    }
+    .list-notification-icon {
+      font-size: 1rem;
+      padding: 4px;
+    }
+
+    .avatar-text {
+      margin-left: .5rem;
+    }
+  }
+}
+
+.app-header-dropdown {
+  .ant-dropdown-menu-item {
+    i {
+      margin-right: .5rem;
+    }
+  }
+}
+
+// 
+.app-header-popover {
+  max-width: 300px;
+  @media screen and (min-width: map-get($grid-breakpoints, md)) {
+    max-width: none;
+  }
+
+  .ant-popover-inner-content {
+    padding: 0;
+  }
+}
+.app-header-notifications {
+
+  .ant-tabs-nav .ant-tabs-tab {
+    padding: 1rem;
+  }
+
+  .ant-tabs-bar {
+    margin-bottom: .25rem;
+  }
+
+  .ant-list-item {
+    padding: .75rem 1.5rem;
+    transition: background-color .2s;
+    &:hover {
+      background-color: rgba($info, .08);
+      cursor: pointer;
+    }
+  }
+
+  .ant-list-footer {
+    padding: 0;
+
+    a {
+      display: block;
+      padding: .75rem;
+      text-align: center;
+      color: $body-color2;
+      transition: all .2s;
+
+      &:hover {
+        color: $body-color;
+        background-color: rgba($gray-900, .03);
+      }
+    }
+  }
+}
+
+
+.search-box {
+  max-width: 180px;
+  height: $l_header_height;
+  line-height: 24px;
+
+  &.list-inline-item {
+    padding: 10px 0;
+  }
+
+  // based on Bootstarp .input-group
+  .search-box-inner {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    // align-items: stretch;
+  }
+
+  input {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 7px 10px 5px;
+    width: 1%;
+    margin-bottom: 0;
+    border: none;
+    background: transparent;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .search-box-icon {
+    // display: flex;
+    // align-items: center;
+    padding: 8px 0 4px 10px;
+
+    .anticon {
+      padding: 0;
+    }
+  }
+
+  // 
+  .input-bar { 
+    position: absolute; 
+    display: block; 
+    width: 90%;
+    bottom: 0;
+    left: 5%;
+  }
+  .input-bar:before,
+  .input-bar:after {
+    position: absolute;
+    content: '';
+    height: 1px; 
+    width: 0;
+    bottom: 1px; 
+    background: $body-color; 
+    transition: all .25s;
+  }
+  .input-bar:before {
+    left: 50%;
+  }
+  .input-bar:after {
+    right: 50%; 
+  }  
+  input {
+    &:focus ~ .input-bar:before,
+    &:focus ~ .input-bar:after {
+      width: 50%;
+    }                    
+  }          
+}
+// Hack for vetical centering when .search-box is place on the right
+.seach-box-right {
+  .search-box-icon {
+    position: relative;
+    top: 2px;
+  }
+  input {
+    padding: 9px 10px 3px;
+  }
+}

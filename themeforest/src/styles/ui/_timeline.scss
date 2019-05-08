@@ -1,0 +1,210 @@
+$tl_content_bg:     rgba(255,255,255,.9);
+
+// Two sides
+.ui-timeline {
+  display: table;
+  position: relative;
+  table-layout: fixed; // ensure same width
+  width: 100%;
+  border-spacing: 0;
+  border-collapse:collapse;
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    bottom: 0px;
+    left: 0;
+    top: 0;
+    width: 2px;
+    margin-left: -1px; // width/2
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      left: 50%;
+    }
+  }
+
+  .tl-item {
+    display: table-row;
+    &:before {
+      display: none;
+      content: '';
+      @media (min-width: map-get($grid-breakpoints, md)) {
+        display: block;
+        width: 50%;
+      }
+    }
+
+    .tl-caption {
+      width: 150px;
+      margin-left: -55px;
+      @media (min-width: map-get($grid-breakpoints, md)) {
+        margin-left: -110px;
+      }
+
+    }
+  }
+
+  .tl-body {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+
+    .tl-entry {
+      position: relative;
+      margin: 0 0 15px 36px;
+    }
+    .tl-time {
+      z-index: 1;
+      position: absolute;
+      left: auto;
+      right: 15px;
+      top: 0;
+      width: 150px;
+      line-height: 35px;
+      text-align: right;
+      @media (min-width: map-get($grid-breakpoints, md)) {
+        left: -220px;
+        right: auto;
+      }
+    }
+    .tl-icon {
+      position: absolute;
+      left: -53px;
+      top: 0;
+    }
+  }
+
+  .alt {
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      text-align: right;
+      &:before {
+        display: none;
+      }
+      &:after {
+        content: '';
+        display: block;
+        width: 50%;        
+      }
+
+      .tl-body {
+        .tl-entry {
+          margin: 0 35px 15px 0;
+        }
+        .tl-time {
+          right: -220px;
+          left: auto;
+          text-align: left;
+        }
+        .tl-icon {
+          right: -53px;
+          left: auto;
+        }
+      }
+
+      .tl-content {
+        &:after {
+          right: -16px;
+          left: auto;
+          border: 8px solid transparent;
+          border-left: 8px solid $tl_content_bg;
+          border-top: 8px solid $tl_content_bg;
+        }
+      }
+    }
+  }
+}
+
+
+// 1 remove .alt class from all .tl-item, 
+// 2 add .ui-timline-left to .ui-timeline
+.ui-timline-left {
+  &.ui-timeline {
+    &:before {
+      left: 0;
+    }
+
+    .tl-item {
+      &:before {
+        @media (min-width: map-get($grid-breakpoints, md)) {
+          display: none;
+        }
+      }
+
+      .tl-caption {
+        @media (min-width: map-get($grid-breakpoints, md)) {
+          margin-left: -55px;
+        }
+      }
+
+
+      .tl-body {
+        .tl-time {
+          @media (min-width: map-get($grid-breakpoints, md)) {
+            left: auto;
+            right: 15px;
+            color: $gray-600;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Styles
+.ui-timeline {
+  &:before {
+    background-color: rgba(#000, .1);
+  }
+
+  img {
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+
+  .tl-icon {
+    .material-icons {
+      font-size: 20px;
+    }
+  }
+
+  .tl-time {
+    color: $gray-600;
+  }
+
+  .tl-item {
+  }
+  
+  .tl-title {
+  }
+  
+  .tl-content {
+    position: relative;
+    border-radius: $border-radius;
+    padding: 1rem;
+    background-color: $tl_content_bg;
+    &:after {
+      content: '';
+      position: absolute;
+      line-height: 0;
+      left: -16px;
+      top: 0;
+      border: 8px solid transparent;
+      border-right: 8px solid $tl_content_bg;
+      border-top: 8px solid $tl_content_bg;      
+    }
+
+    h4 {
+      font-size: 18px;
+      line-height: $h4-font-size;
+      line-height: $headings-line-height;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+

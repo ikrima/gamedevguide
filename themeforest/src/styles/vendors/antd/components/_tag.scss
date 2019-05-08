@@ -1,0 +1,22 @@
+.ant-tag-type-primary,
+.ant-tag-type-success,
+.ant-tag-type-info,
+.ant-tag-type-warning,
+.ant-tag-type-danger {
+  font-size: 10px;
+}
+.ant-tag-type-primary {
+  background-color: $primary;
+}
+.ant-tag-type-success {
+  background-color: $success;
+}
+.ant-tag-type-info {
+  background-color: $info;
+}
+.ant-tag-type-warning {
+  background-color: $warning;
+}
+.ant-tag-type-danger {
+  background-color: $danger;
+}

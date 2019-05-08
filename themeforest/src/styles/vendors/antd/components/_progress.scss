@@ -1,0 +1,45 @@
+// Progress
+
+.ant-progress-type-primary,
+.ant-progress-type-secondary,
+.ant-progress-type-success,
+.ant-progress-type-info,
+.ant-progress-type-warning,
+.ant-progress-type-danger {
+  .ant-progress-bg {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  }
+}
+
+.ant-progress-type-primary {
+  .ant-progress-bg {
+    background-color: rgba( $primary, .85);
+  }
+}
+.ant-progress-type-secondary {
+  .ant-progress-bg {
+    background-color: rgba( $secondary, .85);
+  }
+}
+.ant-progress-type-success {
+  .ant-progress-bg {
+    background-color: rgba( $success, .85);
+  }
+}
+.ant-progress-type-info {
+  .ant-progress-bg {
+    background-color: rgba( $info, .85);
+  }
+}
+.ant-progress-type-warning {
+  .ant-progress-bg {
+    background-color: rgba( $warning, .85);
+  }
+}
+.ant-progress-type-danger {
+  .ant-progress-bg {
+    background-color: rgba( $danger, .85);
+  }
+}
+

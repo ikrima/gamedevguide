@@ -1,0 +1,47 @@
+.quickview-wrapper {
+  .layout-setting-item {
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: space-between;
+    font-size: 12px;
+    line-height: 22px;
+
+    .ant-switch {
+      text-align: center;
+    }
+  }
+
+  .ant-switch-checked {
+    background-color: #00D170;
+  }
+
+  .layout-setting-item-slider {
+    margin-top: -5px;
+    font-size: 12px;
+    line-height: 32px;
+
+    .ant-slider {
+      margin-right: 0;
+    }
+  }
+
+  // with tooltip, popover
+  .ant-radio-button-wrapper {
+    padding: 0;
+    .layout-opition {
+      display: inline-block;
+      padding: 0 .9375rem;
+    }
+  }
+}
+
+
+.quickview-wrapper {
+  .link-animated-hover {
+    color: $dark;
+
+    &:after {
+      background: $dark;
+    }
+  }
+}

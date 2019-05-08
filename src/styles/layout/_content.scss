@@ -1,0 +1,118 @@
+#app-content {
+  background-color: $page-bg;
+}
+
+.container-fluid {
+  padding-left: 30px;
+  padding-right: 30px;
+
+  &.container-mw-xxl {
+    max-width: $container_fluid_maxwidth;
+  }
+  &.container-mw-xl {
+    max-width: map-get($container-max-widths, xl);
+  }
+  &.container-mw-lg {
+    max-width: map-get($container-max-widths, lg);
+  }
+  &.container-mw-md {
+    max-width: map-get($container-max-widths, md);
+  }
+  &.container-mw-sm {
+    max-width: map-get($container-max-widths, sm);
+  }
+  &.no-breadcrumb {
+    padding-top: 2em;
+    padding-bottom: 1em;
+  }
+}
+
+// Chapter, Article
+// ------------------------------------
+
+.chapter {
+  // Use with QueueAnim, when article border-top no longer work
+  .article__section {
+    border-top: 1px solid rgba(0, 0, 0, 0.117647);
+    margin-top: 3rem;
+    &:nth-of-type(1) {
+      border-top: 0;
+      margin-top: 0;
+    }
+  }
+
+  .article {
+    padding-bottom: 3rem;
+    &:nth-of-type(1) {
+      .article-title {
+        margin-top: 0;
+        border-top: 0;
+      }
+    }
+
+    &.article-dark {
+      background-color: rgba(0,0,0,.015);
+    }
+
+    &.article-bordered {
+      border-top: 1px solid rgba(0, 0, 0, 0.117647);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.117647);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .article-title {
+    font-size: 1.5rem;
+    padding-top: 5rem;
+    font-weight: normal;
+    line-height: 2rem;
+    margin: 3rem 0 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.117647);
+    color: $primary;
+
+    &.article-title--loose {
+      margin-bottom: 5rem;
+    }
+
+    .badge {
+      position:relative;
+      top: -4px; // hack for vertical centering
+      background-color: $gray-300;
+      font-size: $font-size-sm;
+      padding: .35rem .6rem;
+      color: $body-color;
+    }
+  }
+}
+
+.article-title-style {
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: 2rem;
+  margin: .6em 0;
+  color: $primary;
+}
+
+// 
+// TMPL: <div className="article-title-v2 text-center">Section 1 <span className="triangle triangle-down"></span></div>
+.article-title-v2 {
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 25px;
+  font-weight: $font-weight-600;
+  margin-bottom: .3125rem;
+
+  .triangle-down {
+    position: relative;
+    top: -1.8px;
+    // margin-top: -2px; // hack to make it vertically centered
+  }
+
+  .no-text-transform {
+    text-transform: none;
+  }
+}

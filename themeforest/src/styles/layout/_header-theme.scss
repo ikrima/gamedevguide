@@ -1,0 +1,48 @@
+
+.app-header {
+  // badge
+  .ant-badge { 
+    sup {
+      box-shadow: none;
+    }
+  }
+
+  .bg-dark,
+  .bg-primary,
+  .bg-success,
+  .bg-info,
+  .bg-danger {
+    color: $white;
+    a {
+      color: $white;
+    }
+
+    // badge
+    .ant-badge { 
+      i {
+        color: $white;
+      }
+    }
+
+    // search box
+    .search-box {
+      ::placeholder {
+        color: rgba($white, .65);
+      }
+      .input-bar:before,
+      .input-bar:after {
+        background: $white; 
+      }
+    }
+  }
+
+  .bg-white,
+  .bg-warning {
+    color: $body-color2;
+    a {
+      color: $body-color2;
+    }
+
+  }
+}
+

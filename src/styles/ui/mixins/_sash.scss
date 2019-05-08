@@ -1,0 +1,8 @@
+@mixin sash-variant($color) {
+  background-color: $color;
+  &.sash-triangle-right:after {
+    border-color: $color;
+    border-right-color: transparent;
+  }
+}
+

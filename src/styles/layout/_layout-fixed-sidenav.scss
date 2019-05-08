@@ -1,0 +1,10 @@
+.fixed-sidenav {
+  .app-sidenav-container, // when #app-sidenav is wrapped in a container
+  #app-sidenav {
+    height: 100vh;
+
+    & + .ant-layout {
+      height: 100vh;
+    }
+  }
+}

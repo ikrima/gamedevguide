@@ -1,0 +1,77 @@
+
+// Shared
+.box {
+  position: relative;
+  border: $box_border_width solid $box_border_color;
+  border-radius: $border-radius;
+
+  &.box-transparent {
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .box-light {
+    background-color: rgba(0,0,0,.03);
+  }
+}
+
+.box-divider {
+  height: 1px;
+  background: $box_border_color;
+  margin: 0 $card-spacer-x;
+}
+
+
+// 
+.box-default {
+  background-color: $card-bg; // put color in .box-default, so .bg-xxx can overrides box color easily
+
+  .box-header {
+    padding: $card-spacer-y $card-spacer-x;
+    border-radius: $border-radius $border-radius 0 0;
+    font-size: $font-size-base;
+    border-bottom: 1px solid transparent;
+    font-weight: $font-weight-500;
+  }
+
+  .box-body {
+    padding: $card-spacer-x;
+    border-radius: 0 0 $border-radius $border-radius;
+    @include clearfix;
+  }
+}
+
+
+// 
+.box-v1 {
+  padding: 1.625rem;
+  line-height: 1.85em;
+  background-color: $card-bg;
+
+  > p:last-child {
+    margin-bottom: 0;
+  }
+
+  .box-badge {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    .badge {
+      padding: .375rem .6rem;
+    }
+  }
+
+  .box-header {
+    line-height: 2.15em;
+    font-weight: $font-weight-600;
+  }
+
+  .link-cta {
+    line-height: 2.15em;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-600;
+  }
+}
+

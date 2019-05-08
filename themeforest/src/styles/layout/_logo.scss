@@ -1,0 +1,35 @@
+
+// React logo, #67DAF9
+.logo-img {
+  width: 24px;
+  height: 24px;
+  // .st0 { fill: #fff; }
+  .st1 { opacity: .9; }
+}
+
+.logo-react {
+  .react-dot,
+  .react-curve {
+    opacity: .9;
+  }
+  .react-dot {
+    fill: #fff;
+    transition: $l_transition_antd;
+  }
+  .react-curve {
+    stroke: #fff;
+    transition: $l_transition_antd;
+  }
+}
+
+.bg-warning,
+.bg-white {
+  .logo-react {
+    .react-dot {
+      fill: $body-color;
+    }
+    .react-curve {
+      stroke: $body-color;
+    }
+  }
+}

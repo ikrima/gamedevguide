@@ -1,0 +1,682 @@
+.ant-colors {
+
+  .color-palettes {
+    margin: 0 1%
+  }
+
+  .color-palette {
+    margin: 45px 1%;
+    width: 31%;
+    display: inline-block
+  }
+
+  .color-palette-pick {
+    text-align: center;
+    font-size: 20px;
+    margin: 0 0 20px
+  }
+
+  .color-palette-picker {
+    margin: 24px 0
+  }
+
+  .color-palette-picker-value {
+    font-size: 14px;
+    font-family: Consolas;
+    margin-left: 16px;
+    position: relative;
+    top: -3px
+  }
+
+  .color-palette-picker-validation {
+    font-size: 13px;
+    color: #f5222d;
+    margin-left: 16px;
+    position: relative;
+    top: -3px
+  }
+
+  .main-color {
+    text-align: left
+  }
+
+  .main-color-item {
+    cursor: pointer;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 12px;
+    margin-right: 4px;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    position: relative;
+    font-family: Consolas;
+    font-size: 14px
+  }
+
+  .main-color-item:first-child {
+    border-radius: 4px 4px 0 0
+  }
+
+  .main-color-item:last-child {
+    border-radius: 0 0 4px 4px
+  }
+
+  .main-color-item:hover {
+    margin-right: -8px;
+    border-radius: 0 4px 4px 0
+  }
+
+  .main-color-item .main-color-text {
+    transition: all .3s;
+    float: left
+  }
+
+  .main-color-item .main-color-value {
+    float: right;
+    transform: scale(.85);
+    transform-origin: 100% 50%;
+    opacity: 0;
+    position: relative;
+    left: 3px;
+    transition: all .3s
+  }
+
+  .color-title {
+    margin: 0 0 24px;
+    font-weight: 500;
+    color: #5c6b77;
+    font-size: 22px;
+    text-transform: capitalize;
+    text-align: center
+  }
+
+  .color-description {
+    font-size: 14px;
+    font-weight: lighter;
+    color: #777;
+    display: block
+  }
+
+  .main-color:hover .main-color-value {
+    opacity: .7;
+    left: 0
+  }
+
+  .color-palette-horizontal {
+    width: 100%
+  }
+
+  .color-palette-horizontal .main-color {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+  }
+
+  .color-palette-horizontal .main-color-item {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+    padding: 0;
+    margin-right: 0;
+    border-radius: 0;
+    height: 86px;
+    text-align: center;
+    padding-top: 37px;
+    line-height: normal
+  }
+
+  .color-palette-horizontal .main-color-item .main-color-text {
+    float: none
+  }
+
+  .color-palette-horizontal .main-color-item:hover {
+    margin-top: -10px;
+    height: 96px;
+    border-radius: 4px 4px 0 0
+  }
+
+  .color-palette-horizontal .main-color-value {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    float: none;
+    -webkit-transform-origin: unset;
+    -ms-transform-origin: unset;
+    transform-origin: unset
+  }
+
+  .color-palette-horizontal .main-color:hover .main-color-item {
+    padding-top: 8px
+  }
+
+  .color-palette-horizontal .main-color:hover .main-color-value {
+    opacity: .7;
+    bottom: 8px
+  }
+
+  .main-color .palatte-blue-1 {
+    background: #e6f7ff
+  }
+
+  .main-color .palatte-blue-2 {
+    background: #bae7ff
+  }
+
+  .main-color .palatte-blue-3 {
+    background: #91d5ff
+  }
+
+  .main-color .palatte-blue-4 {
+    background: #69c0ff
+  }
+
+  .main-color .palatte-blue-5 {
+    background: #40a9ff
+  }
+
+  .main-color .palatte-blue-6 {
+    background: #1890ff
+  }
+
+  .main-color .palatte-blue-7 {
+    background: #096dd9
+  }
+
+  .main-color .palatte-blue-8 {
+    background: #0050b3
+  }
+
+  .main-color .palatte-blue-9 {
+    background: #003a8c
+  }
+
+  .main-color .palatte-blue-10 {
+    background: #002766
+  }
+
+  .main-color .palatte-purple-1 {
+    background: #f9f0ff
+  }
+
+  .main-color .palatte-purple-2 {
+    background: #efdbff
+  }
+
+  .main-color .palatte-purple-3 {
+    background: #d3adf7
+  }
+
+  .main-color .palatte-purple-4 {
+    background: #b37feb
+  }
+
+  .main-color .palatte-purple-5 {
+    background: #9254de
+  }
+
+  .main-color .palatte-purple-6 {
+    background: #722ed1
+  }
+
+  .main-color .palatte-purple-7 {
+    background: #531dab
+  }
+
+  .main-color .palatte-purple-8 {
+    background: #391085
+  }
+
+  .main-color .palatte-purple-9 {
+    background: #22075e
+  }
+
+  .main-color .palatte-purple-10 {
+    background: #120338
+  }
+
+  .main-color .palatte-cyan-1 {
+    background: #e6fffb
+  }
+
+  .main-color .palatte-cyan-2 {
+    background: #b5f5ec
+  }
+
+  .main-color .palatte-cyan-3 {
+    background: #87e8de
+  }
+
+  .main-color .palatte-cyan-4 {
+    background: #5cdbd3
+  }
+
+  .main-color .palatte-cyan-5 {
+    background: #36cfc9
+  }
+
+  .main-color .palatte-cyan-6 {
+    background: #13c2c2
+  }
+
+  .main-color .palatte-cyan-7 {
+    background: #08979c
+  }
+
+  .main-color .palatte-cyan-8 {
+    background: #006d75
+  }
+
+  .main-color .palatte-cyan-9 {
+    background: #00474f
+  }
+
+  .main-color .palatte-cyan-10 {
+    background: #002329
+  }
+
+  .main-color .palatte-green-1 {
+    background: #f6ffed
+  }
+
+  .main-color .palatte-green-2 {
+    background: #d9f7be
+  }
+
+  .main-color .palatte-green-3 {
+    background: #b7eb8f
+  }
+
+  .main-color .palatte-green-4 {
+    background: #95de64
+  }
+
+  .main-color .palatte-green-5 {
+    background: #73d13d
+  }
+
+  .main-color .palatte-green-6 {
+    background: #52c41a
+  }
+
+  .main-color .palatte-green-7 {
+    background: #389e0d
+  }
+
+  .main-color .palatte-green-8 {
+    background: #237804
+  }
+
+  .main-color .palatte-green-9 {
+    background: #135200
+  }
+
+  .main-color .palatte-green-10 {
+    background: #092b00
+  }
+
+  .main-color .palatte-magenta-1 {
+    background: #fff0f6
+  }
+
+  .main-color .palatte-magenta-2 {
+    background: #ffd6e7
+  }
+
+  .main-color .palatte-magenta-3 {
+    background: #ffadd2
+  }
+
+  .main-color .palatte-magenta-4 {
+    background: #ff85c0
+  }
+
+  .main-color .palatte-magenta-5 {
+    background: #f759ab
+  }
+
+  .main-color .palatte-magenta-6 {
+    background: #eb2f96
+  }
+
+  .main-color .palatte-magenta-7 {
+    background: #c41d7f
+  }
+
+  .main-color .palatte-magenta-8 {
+    background: #9e1068
+  }
+
+  .main-color .palatte-magenta-9 {
+    background: #780650
+  }
+
+  .main-color .palatte-magenta-10 {
+    background: #520339
+  }
+
+  .main-color .palatte-red-1 {
+    background: #fff1f0
+  }
+
+  .main-color .palatte-red-2 {
+    background: #ffccc7
+  }
+
+  .main-color .palatte-red-3 {
+    background: #ffa39e
+  }
+
+  .main-color .palatte-red-4 {
+    background: #ff7875
+  }
+
+  .main-color .palatte-red-5 {
+    background: #ff4d4f
+  }
+
+  .main-color .palatte-red-6 {
+    background: #f5222d
+  }
+
+  .main-color .palatte-red-7 {
+    background: #cf1322
+  }
+
+  .main-color .palatte-red-8 {
+    background: #a8071a
+  }
+
+  .main-color .palatte-red-9 {
+    background: #820014
+  }
+
+  .main-color .palatte-red-10 {
+    background: #5c0011
+  }
+
+  .main-color .palatte-volcano-1 {
+    background: #fff2e8
+  }
+
+  .main-color .palatte-volcano-2 {
+    background: #ffd8bf
+  }
+
+  .main-color .palatte-volcano-3 {
+    background: #ffbb96
+  }
+
+  .main-color .palatte-volcano-4 {
+    background: #ff9c6e
+  }
+
+  .main-color .palatte-volcano-5 {
+    background: #ff7a45
+  }
+
+  .main-color .palatte-volcano-6 {
+    background: #fa541c
+  }
+
+  .main-color .palatte-volcano-7 {
+    background: #d4380d
+  }
+
+  .main-color .palatte-volcano-8 {
+    background: #ad2102
+  }
+
+  .main-color .palatte-volcano-9 {
+    background: #871400
+  }
+
+  .main-color .palatte-volcano-10 {
+    background: #610b00
+  }
+
+  .main-color .palatte-orange-1 {
+    background: #fff7e6
+  }
+
+  .main-color .palatte-orange-2 {
+    background: #ffe7ba
+  }
+
+  .main-color .palatte-orange-3 {
+    background: #ffd591
+  }
+
+  .main-color .palatte-orange-4 {
+    background: #ffc069
+  }
+
+  .main-color .palatte-orange-5 {
+    background: #ffa940
+  }
+
+  .main-color .palatte-orange-6 {
+    background: #fa8c16
+  }
+
+  .main-color .palatte-orange-7 {
+    background: #d46b08
+  }
+
+  .main-color .palatte-orange-8 {
+    background: #ad4e00
+  }
+
+  .main-color .palatte-orange-9 {
+    background: #873800
+  }
+
+  .main-color .palatte-orange-10 {
+    background: #612500
+  }
+
+  .main-color .palatte-gold-1 {
+    background: #fffbe6
+  }
+
+  .main-color .palatte-gold-2 {
+    background: #fff1b8
+  }
+
+  .main-color .palatte-gold-3 {
+    background: #ffe58f
+  }
+
+  .main-color .palatte-gold-4 {
+    background: #ffd666
+  }
+
+  .main-color .palatte-gold-5 {
+    background: #ffc53d
+  }
+
+  .main-color .palatte-gold-6 {
+    background: #faad14
+  }
+
+  .main-color .palatte-gold-7 {
+    background: #d48806
+  }
+
+  .main-color .palatte-gold-8 {
+    background: #ad6800
+  }
+
+  .main-color .palatte-gold-9 {
+    background: #874d00
+  }
+
+  .main-color .palatte-gold-10 {
+    background: #613400
+  }
+
+  .main-color .palatte-yellow-1 {
+    background: #feffe6
+  }
+
+  .main-color .palatte-yellow-2 {
+    background: #ffffb8
+  }
+
+  .main-color .palatte-yellow-3 {
+    background: #fffb8f
+  }
+
+  .main-color .palatte-yellow-4 {
+    background: #fff566
+  }
+
+  .main-color .palatte-yellow-5 {
+    background: #ffec3d
+  }
+
+  .main-color .palatte-yellow-6 {
+    background: #fadb14
+  }
+
+  .main-color .palatte-yellow-7 {
+    background: #d4b106
+  }
+
+  .main-color .palatte-yellow-8 {
+    background: #ad8b00
+  }
+
+  .main-color .palatte-yellow-9 {
+    background: #876800
+  }
+
+  .main-color .palatte-yellow-10 {
+    background: #614700
+  }
+
+  .main-color .palatte-lime-1 {
+    background: #fcffe6
+  }
+
+  .main-color .palatte-lime-2 {
+    background: #f4ffb8
+  }
+
+  .main-color .palatte-lime-3 {
+    background: #eaff8f
+  }
+
+  .main-color .palatte-lime-4 {
+    background: #d3f261
+  }
+
+  .main-color .palatte-lime-5 {
+    background: #bae637
+  }
+
+  .main-color .palatte-lime-6 {
+    background: #a0d911
+  }
+
+  .main-color .palatte-lime-7 {
+    background: #7cb305
+  }
+
+  .main-color .palatte-lime-8 {
+    background: #5b8c00
+  }
+
+  .main-color .palatte-lime-9 {
+    background: #3f6600
+  }
+
+  .main-color .palatte-lime-10 {
+    background: #254000
+  }
+
+  .main-color .palatte-geekblue-1 {
+    background: #f0f5ff
+  }
+
+  .main-color .palatte-geekblue-2 {
+    background: #d6e4ff
+  }
+
+  .main-color .palatte-geekblue-3 {
+    background: #adc6ff
+  }
+
+  .main-color .palatte-geekblue-4 {
+    background: #85a5ff
+  }
+
+  .main-color .palatte-geekblue-5 {
+    background: #597ef7
+  }
+
+  .main-color .palatte-geekblue-6 {
+    background: #2f54eb
+  }
+
+  .main-color .palatte-geekblue-7 {
+    background: #1d39c4
+  }
+
+  .main-color .palatte-geekblue-8 {
+    background: #10239e
+  }
+
+  .main-color .palatte-geekblue-9 {
+    background: #061178
+  }
+
+  .main-color .palatte-geekblue-10 {
+    background: #030852
+  }
+
+  .main-color .palatte-grey-1 {
+    background: #fff
+  }
+
+  .main-color .palatte-grey-2 {
+    background: #fafafa
+  }
+
+  .main-color .palatte-grey-3 {
+    background: #f5f5f5
+  }
+
+  .main-color .palatte-grey-4 {
+    background: #e8e8e8
+  }
+
+  .main-color .palatte-grey-5 {
+    background: #d9d9d9
+  }
+
+  .main-color .palatte-grey-6 {
+    background: #bfbfbf
+  }
+
+  .main-color .palatte-grey-7 {
+    background: #8c8c8c
+  }
+
+  .main-color .palatte-grey-8 {
+    background: #595959
+  }
+
+  .main-color .palatte-grey-9 {
+    background: #262626
+  }
+
+  .main-color .palatte-grey-10 {
+    background: #000
+  }
+
+}

@@ -1,0 +1,189 @@
+// https://github.com/gudh/ihover
+
+.ih-item {
+  position: relative;
+  border-radius: $border-radius;
+  transition: all 0.35s ease-in-out;
+  a {
+    color: #333;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  img {
+    border-radius: $border-radius;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.ih-item.square {
+  position: relative;
+  margin-bottom: 30px;
+
+  .info {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    text-align: center;
+    backface-visibility: hidden;
+  }
+}
+
+// Material 
+// -------------------------------
+.ih-item.ih-material {
+  overflow: hidden;
+  position: relative;
+  width: 100%; 
+  height: 100%; 
+
+  .info-mask {
+    content: '';
+    position: absolute;
+    top: -25%;
+    left: 0;
+    right: 0;
+    padding-bottom: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all .4s cubic-bezier(.4,0,.2,1);
+  }
+
+  .info-content {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    backface-visibility: hidden;
+    transform: scale(.5);
+    transition: all .3s ease;
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+      margin-left: -0.5em;      
+    }
+
+    .info-inner {
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+      text-align: center;
+      h3 {
+        margin: 0 0 10px;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 18px;
+        line-height: 1;
+      }
+      p {
+        font-style: italic;
+        font-size: 12px;
+        color: $gray-200;
+      }
+    }
+  }
+
+  .bg-white + .info-content,
+  .bg-warning + .info-content {
+    .info-inner {
+      h3 {
+        color: $body-color;
+      }
+      p {
+        color: #999;
+      }
+    }
+  }
+
+  a:hover {
+    .info-content {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .info-mask {
+      opacity: .8;
+      transform: scale(1.21); // for 200*300 images
+    }
+  }
+}
+
+
+// Square
+// -------------------------------
+.ih-item.square.effect3 {
+  overflow: hidden;
+
+  .info {
+    height: 65px;
+    background-color:  rgba(#000, .8);
+    opacity: 0;
+    transition: all .35s ease-in-out;
+
+    h3 {
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      font-size: 17px;
+      line-height: 1;
+      padding: 10px 10px 0 4px;
+      margin: 4px 0 0 0;
+    }
+
+    p {
+      margin: 0;
+      font-style: italic;
+      font-size: 12px;
+      line-height: 20px;
+      position: relative;
+      color: rgba(#fff, .7);
+      padding: 5px;
+      text-align: center;
+    }
+
+    &.bg-primary { background-color: rgba($primary, .8)}
+    &.bg-info { background-color: rgba($info, .8)}
+  }
+
+  a:hover {
+    .info {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+// -------------------------
+.ih-item.square.effect3.bottom_to_top {
+  .info {
+    top: auto;
+    transform: translateY(100%);
+  }
+
+  a:hover {
+    .info {
+      transform: translateY(0);
+    }
+  }
+}
+
+// -------------------------
+.ih-item.square.effect3.top_to_bottom {
+  .info {
+    bottom: auto;
+    transform: translateY(-100%);
+  }
+
+  a:hover {
+    .info {
+      transform: translateY(0);
+    }
+  }
+}

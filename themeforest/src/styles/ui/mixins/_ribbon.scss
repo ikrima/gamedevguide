@@ -1,0 +1,10 @@
+@mixin ribbon-variant($color) {
+  .ribbon {
+    background-color: $color;
+    &:before,
+    &:after {
+      border-top: 2px solid $color;
+    }
+  }
+}
+

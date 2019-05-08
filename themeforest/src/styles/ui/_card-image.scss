@@ -1,0 +1,117 @@
+
+.img-card-v1 {
+  position: relative;
+  min-height: 280px;
+  border-radius: $border-radius;
+  overflow: hidden; // for border-radius
+  color: $body-color;
+
+  .img-card__cover {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .img-card__body {
+    position: relative;
+    z-index: 1;
+    padding: 2em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .img-card__tagline {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: $text-inactive;
+  }
+
+  .img-card__title {
+    font-size: 1.375rem; // 22px
+    margin: .625rem 0;
+    flex: 1; // push .btn-cta to bottom
+    line-height: 2rem;
+  }
+
+  .btn-cta {
+    align-self: flex-start;
+  }
+}
+
+.img-card-v2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 280px;
+  border-radius: $border-radius;
+  overflow: hidden; // for border-radius
+  color: $body-color;
+
+  .img-card__cover {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+  } 
+
+  .img-card__body {
+    position: relative;
+    z-index: 1;
+    padding: 2em;
+    width: 100%;
+    text-align: center;
+
+    h2 {
+      font-weight: $font-weight-200;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+  }
+
+  .img-card__desc {
+    margin: 1.5rem 0 0;
+    opacity: $text-secondary;
+    font-weight: $font-weight-light;
+    font-size: 1.25em;
+    line-height: 1.8;
+  }
+
+  .img-card__body--left {
+    @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+      max-width: 50%;
+      padding: 2.5em 2.5em 2.5em 4em;
+      text-align: left;
+    }
+  }
+
+  .img-card__body--right {
+    @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+      max-width: 50%;
+      padding: 2.5em 4em 2.5em 2.5em;
+      margin-left: auto;
+      text-align: left;
+    }
+  }
+
+  .img-card__body--center {
+    @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+      max-width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+}

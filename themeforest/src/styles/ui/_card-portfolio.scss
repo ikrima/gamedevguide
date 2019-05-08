@@ -1,0 +1,47 @@
+.portfolio-card-v1 {
+  display: block;
+  position: relative;
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  &:hover {
+    .portfolio-card__overlay {
+      opacity: .85;
+    }
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: $border-radius;
+  }
+
+  .portfolio-card__info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 1.857142857142857em; // 26px
+    color: $white;
+
+    h4 {
+      margin: 0;
+      color: $white;
+      font-size: 1.25rem;
+      font-weight: $font-weight-200;
+      letter-spacing: 1px;
+    }
+
+    span {
+      opacity: $text-inactive;
+      font-weight: $font-weight-light;
+      font-size: $font-size-sm;
+    }
+  }
+
+  .overlay-bottom-up + .portfolio-card__info {
+    top: auto;
+    bottom: 0;
+  }
+}

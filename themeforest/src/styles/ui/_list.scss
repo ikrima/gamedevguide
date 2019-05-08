@@ -1,0 +1,54 @@
+
+// Add vertical divider to .list-inline
+.list-inline-split {
+  li {
+    position: relative;
+    &:not(:last-child) {
+      padding-right: $list-inline-padding;
+      &:after {
+        content: '';
+        position: absolute;
+        background-color: rgba($dark, .2);
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 1px;
+        margin-top: -6px; // height/2
+        height: 12px;
+      }
+    }
+  }
+}
+
+.list-style-v1 {
+  width: 100%;
+  .list-item {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .list-item__body {
+    flex: 1;
+  }
+
+  .list-item__title {
+    text-transform: capitalize;
+    .ant-tag {
+      float: right;
+    }
+  }
+
+  .list-item__desc {
+    margin-top: .4rem;
+    opacity: $text-secondary;
+    font-size: $font-size-sm;
+    // white-space: nowrap;
+    // text-overflow: ellipsis;
+  }
+
+  .list-item__datetime {
+    margin-top: 3px;
+    opacity: $text-secondary;
+    font-size: $font-size-sm;
+  }
+}

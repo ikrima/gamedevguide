@@ -1,0 +1,5 @@
+@mixin overlay-opacity($percent) {
+  &:before {
+    opacity: $percent;
+  }
+}

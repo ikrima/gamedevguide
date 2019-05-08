@@ -1,0 +1,32 @@
+.app-footer.app-footer-custom {
+  // make footer same height with sidenav footer
+  padding: 11px $grid-gutter-width 12px;
+  border-top: 1px solid rgba(0,0,0,.05);
+  background-color: $app_footer_bg;
+
+  .small:not(:last-child) {
+    position: relative;
+    padding-right: $list-inline-padding;
+    margin-right: $list-inline-padding;
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: rgba($dark, .2);
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 1px;
+      margin-top: -5px; // height/2
+      height: 10px;
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, md)) {
+      padding-right: 0;
+      margin-right: 0;
+      &:after {
+        content: normal;
+      }
+    }
+  }
+}
+

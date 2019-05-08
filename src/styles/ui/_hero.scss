@@ -1,0 +1,67 @@
+
+
+
+// Hero
+// ------------------------------------
+.hero {
+  position: relative;
+  padding: 5.625rem 0 5.625rem;
+
+  .hero-inner {
+    position: relative;
+  }
+}
+
+.hero-bg-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+
+h1.hero-title {
+  font-size: $hero-title-h1;
+}
+h2.hero-title {
+  font-size:$hero-title-h2;
+}
+.hero-title {
+  line-height: 1.3;
+  color: $body-color;
+  font-weight: $hero-title-font-weight;
+  -webkit-font-smoothing: antialiased;
+  &.text-body-reverse {
+    font-weight: $font-weight-light;
+  }
+}
+
+.hero-lead {
+  font-size: 1.25rem;
+  font-weight: $font-weight-light;
+  margin-bottom: 1.5rem;
+}
+
+.hero-tagline {}
+
+.hero-cta {}
+
+.hero-loose {
+  &.hero {
+    padding: 5.375rem 0 5.6875rem;
+  }
+
+  .hero-title {
+    margin-bottom: 1.625rem;
+  }
+
+  .hero-lead {
+    letter-spacing: .3px;
+    opacity: .9;
+  }
+}
+
+
+

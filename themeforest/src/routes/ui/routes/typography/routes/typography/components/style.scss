@@ -1,0 +1,22 @@
+
+// Just for demo
+
+.typo-styles dt {
+  display: block;
+  float: left;
+  color: #fff;
+  background-color: rgba(0,0,0,.24);
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  line-height: 32px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.typo-styles dd {
+  display: block;
+  margin-left: 80px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,49 @@
+@import "../../../../../styles/variables";
+
+.page-about {
+  .stat-container {
+    margin-bottom: 30px;
+
+    .stat-item {
+      margin-bottom: 20px;
+      border-bottom: 2px solid $page-bg;
+    }
+
+    .stat-num {
+      display: block;
+      color: $primary;
+      font-size: 60px;
+      font-weight: $font-weight-light;
+      line-height: 66px;
+    }
+
+    .stat-desc {
+      display: inline-block;
+      margin-bottom: -2px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid $primary;
+      font-size: 20px;
+      line-height: 22px;
+      font-weight: $font-weight-500;
+    }
+  }
+
+  .article {
+    &:nth-of-type(1) {
+      padding-top: 75px;
+    }
+  }
+
+  .section-culture {
+    .section-title {
+      font-size: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .space-bar {
+      padding: 3px;
+      border-radius: $border-radius;
+      margin-right: 5px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+// BackTop
+.ant-back-top.ant-back-top-v1  {
+  bottom: 100px;
+}
+.ant-back-top-v1 {
+  .ant-back-top-inner {
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border-radius: $border-radius;
+    background-color: $primary;
+    color: $white;
+    text-align: center;
+    font-size: 1rem;
+  }
+}

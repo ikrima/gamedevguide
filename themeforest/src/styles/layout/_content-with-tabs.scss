@@ -1,0 +1,24 @@
+.page-with-tabs {
+  .page-title {
+    padding: 1.875rem 1rem 1.875rem 3rem;
+    // background-color: rgba(#000, .035);
+
+    h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1;
+      font-weight: $font-weight-normal;
+      color: $primary;
+    }
+  }
+
+  .page-tabs {
+    > .ant-tabs-bar {
+      padding-left: 2rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(0,0,0, .08);
+      // background-color: rgba(#000, .035);
+    }
+  }
+
+}

@@ -1,0 +1,46 @@
+
+
+// make sure it overrides material2 styles
+a,
+button {
+  &.btn-w-xs { min-width: 80px; }
+  &.btn-w-sm { min-width: 100px; }
+  &.btn-w-md { min-width: 135px; }
+  &.btn-w-lg { min-width: 160px; }
+
+  &.btn-round { border-radius: 2em; }
+}
+
+.btn-cta.ant-btn, // antd
+.btn-cta {
+  height: auto;
+  padding: .6em 3.5em;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  line-height: 2;
+  font-size: $font-size-sm;
+}
+
+// 
+a.icon-btn-v2,
+.icon-btn-v2 {
+  color: $white;
+  height: auto;
+  padding: .5em 2.5em;
+
+  &:focus,
+  &:active,
+  &:hover {
+    text-decoration: none;
+  }
+
+  i {
+    margin-right: .5rem; 
+  }
+
+  .btn-text {
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-size: $font-size-sm;
+  }
+}

@@ -1,0 +1,82 @@
+
+
+// Gradient text
+.gradient-text {
+  font-size: 150px;
+  font-weight: 300;
+  color: $primary; // fallback
+  background: -webkit-linear-gradient(92deg, #fb83fa, #00aced);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bold {
+  font-weight: $font-weight-500;
+}
+
+h1,
+h2 {
+  .bold,
+  &.bold {
+    font-weight: $font-weight-light;
+  }
+}
+
+
+// Dropcap
+.dropcap,
+.dropcap-square,
+.dropcap-circle {
+  display: block;
+  float: left;
+  font-weight: normal;
+  margin-right: .25em;
+  text-shadow: none;  
+}
+
+.dropcap {
+  font-size: 2em;
+}
+
+.dropcap-square,
+.dropcap-circle {
+  background-color: $gray-200;
+  color: $body-color;
+  width: 36px;
+  text-align: center;
+}
+
+.dropcap-square {
+  border-radius: $border-radius;  
+  font-size: 2.3em;
+}
+
+.dropcap-circle {
+  border-radius: 50%;  
+  font-size: 1.78em;
+}
+
+.dropcap.colored {
+  color: $primary;
+}
+
+.dropcap-square.colored,
+.dropcap-circle.colored {
+  background-color: $primary;
+  color: $white;
+}
+
+
+// Hightlight
+.ui-highlight {
+  background-color: $dark;
+  color: $white;
+  border-radius: $border-radius;  
+  padding: 2px 5px;
+  &.colored {
+    background-color: $primary;
+  }
+}
+
+
+

@@ -1,0 +1,43 @@
+.form-v1-container {
+  width: 100%;
+  h2, p {
+    text-align: center;
+  }
+
+  h2 {
+    font-weight: $font-weight-light;
+    margin-bottom: 1.5rem;
+  }
+
+  .lead {
+    margin-bottom: 1.5rem;
+  }
+
+  h2 + .form-v1,
+  .lead + .form-v1 {
+    margin-top: 2.5rem;
+  }
+
+  .additional-info {
+    font-size: $font-size-sm;
+    margin-bottom: 0;
+    line-height: 1.5rem;
+  }
+
+  a:not(.btn) {
+    color: $body-color;
+    text-decoration: underline;
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.form-v1 {
+  .form-v1__remember {
+    margin-bottom: 1.25rem;
+    .ant-form-item-control {
+      line-height: $line-height-sm;
+    }
+  }
+}

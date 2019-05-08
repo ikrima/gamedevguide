@@ -1,0 +1,142 @@
+
+$icon_card_icon_size: 24px;
+$icon_card_dimension: 60px;
+
+// $icon_card_lg_icon_size: 32px;
+// $icon_card_lg_dimension: 90px;
+
+.icon--plain {
+  i {
+    font-size: 2.75rem; //44px
+    line-height: 1;
+  }
+
+  &.icon--sm {
+    i {
+      font-size: 1.75rem; //28px
+    }
+  }
+}
+
+// Shared
+.icon-card__icon {
+  font-size: $icon_card_icon_size;
+  line-height: $icon_card_dimension;
+  width: $icon_card_dimension;
+  height: $icon_card_dimension;
+  text-align: center;
+
+  i {
+    color: $white;
+    line-height: $icon_card_dimension;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+
+// Styles
+.icon--circle {
+  border-radius: 50%;
+}
+
+.icon--outlined {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  padding: 3px;
+  border-radius: 50%;
+  i {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  i {
+    width: 52px;
+    height: 52px;
+    line-height: 52px;
+    border-radius: 50%;
+  }
+}
+
+.icon--bordered {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  border-radius: 50%;
+  i {
+    border: none;
+    background-color: transparent !important;
+  }
+}
+
+.icon--rounded {
+  border-radius: $border-radius;
+}
+
+
+// 
+// Icon Cards
+// 
+.icon-card-v1 {
+  .icon-card__header {
+    font-size: $font-size-base;
+    font-weight: $font-weight-500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    color: $body-color;
+  }
+
+  .icon-card__content {
+    margin: .5rem 0 0;
+    opacity: .87;
+  }
+
+  &.icon-card--center {
+    text-align: center;
+
+    .icon-card__icon,
+    .icon--plain {
+      margin: 0 auto 1rem;
+    }
+  }
+}
+
+.icon-card-v2 {
+  .icon-card__header {
+    margin: 0;
+    font-size: .9375rem; //15px
+    font-weight: $font-weight-500;
+    line-height: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $body-color;
+  }
+
+  .media {
+    margin-bottom: .625rem;
+  }
+}
+
+.icon-card-v3 {
+  .icon-card__icon,
+  .icon--plain {
+    margin-bottom: 1rem;
+  }
+
+  .icon-card__header {
+    margin: 0;
+    font-size: $font-size-base;
+    font-weight: $font-weight-600;
+    line-height: 1.625rem;
+  }
+
+  .icon-card__content {
+    line-height: 1.625rem;
+  }
+}
+

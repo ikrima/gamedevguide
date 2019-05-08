@@ -1,0 +1,29 @@
+
+
+// social buttons
+.btn-social { @include social-btn-variant($gray-600); }
+.btn-twitter { @include social-btn-variant(#00c7f7); }
+.btn-facebook { @include social-btn-variant(#335397); }
+.btn-gplus,
+.btn-google-plus { @include social-btn-variant(#dd4a38); }
+.btn-instagram { @include social-btn-variant(#82685A); }
+.btn-vimeo { @include social-btn-variant(#63879C); }
+.btn-flickr { @include social-btn-variant(#0061DB); }
+.btn-github { @include social-btn-variant(#3B3B3B); }
+.btn-pinterest { @include social-btn-variant(#D73532); }
+.btn-tumblr { @include social-btn-variant(#586980); }
+.btn-linkedin { @include social-btn-variant(#018FAF); }
+.btn-dribbble { @include social-btn-variant(#EA73A0); }
+.btn-stumbleupon { @include social-btn-variant(#EA4B24); }
+.btn-lastfm { @include social-btn-variant(#B80638); }
+.btn-evernote { @include social-btn-variant(#3BAB27); }
+.btn-skype { @include social-btn-variant(#00B0F6); }
+.btn-soundcloud { @include social-btn-variant(#0066FF); }
+.btn-behance { @include social-btn-variant(#0057ff); }
+.btn-rss { @include social-btn-variant(#F79638); }
+.btn-youtube { @include social-btn-variant(#CC181E); }
+.btn-wechat { @include social-btn-variant(#4caf50); }
+
+.bg-facebook { background-color: #335397; }
+.bg-twitter { background-color: #00c7f7; }
+.bg-instagram { background-color: #82685A; }

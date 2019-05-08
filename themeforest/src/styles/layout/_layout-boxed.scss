@@ -1,0 +1,15 @@
+// Desktop only, for boxed layout
+.app-layout {
+  max-width: 100%;
+  margin: auto; // put it here so that the transition is smooth
+  transition: max-width .35s ease;
+}
+
+@media only screen and (min-width: $l_screen_md_min) {
+  .app-layout {
+    &.boxed-layout {
+      max-width: $l_boxed_layout_max_width;
+      box-shadow: 0 0 1px rgba(0,0,0,.2);
+    }
+  }
+}

@@ -1,0 +1,15 @@
+
+// Themes
+// --------------------------------------------------
+$theme_dark_text_color:       rgba(255,255,255,.7);
+$theme_dark_text_color_light: rgba(255,255,255,.25);
+
+$theme_dark_header_bg_color:  lighten($dark, 6%);
+$theme_dark_page_bg:          lighten($dark, 2.5%);
+$theme_dark_box_bg:           $theme_dark_header_bg_color;
+
+$theme_gray_header_bg_color:  grayscale($theme_dark_header_bg_color); // or #4c4c4c
+$theme_gray_page_bg:          grayscale($theme_dark_page_bg); // #444;
+$theme_gray_text_color:       $theme_dark_text_color;
+$theme_gray_box_bg:           $theme_gray_header_bg_color;
+

@@ -1,0 +1,38 @@
+
+// CSS triangles
+// Use: with section titles
+$triangle-width: 4px;
+$triangle-height: 8px;
+.triangle {
+  display: inline-block;
+  vertical-align: middle;
+}
+.triangle-left {
+  width: $triangle-width;
+  height: $triangle-height;
+  border-right: solid $triangle-width $body-color;
+  border-bottom: solid $triangle-width transparent;
+  border-top: solid $triangle-width transparent;
+}
+.triangle-right {
+  width: $triangle-width;
+  height: $triangle-height;
+  border-left: solid $triangle-width $body-color;
+  border-bottom: solid $triangle-width transparent;
+  border-top: solid $triangle-width transparent;
+}
+.triangle-up {
+  width: $triangle-height;
+  height: $triangle-width;
+  border-bottom: solid $triangle-width $body-color;
+  border-left: solid $triangle-width transparent;
+  border-right: solid $triangle-width transparent;
+}
+.triangle-down {
+  width: $triangle-height;
+  height: $triangle-width;
+  border-top: solid $triangle-width $body-color;
+  border-left: solid $triangle-width transparent;
+  border-right: solid $triangle-width transparent;
+}
+

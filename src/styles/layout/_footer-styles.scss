@@ -1,0 +1,128 @@
+// shared
+.app-footer {
+  line-height: 1.25rem;
+  padding: 1.625rem $grid-gutter-width;
+
+  a {
+    color: $body-color;
+    opacity: .6;
+
+    &:hover {
+      opacity: .87;
+    }
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  .brand {
+    color: $body-color;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    opacity: 1;
+  }
+
+  .small {
+    opacity: .87;
+  }
+
+  .footer-row {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// 
+// Footer Elements
+.footer-link-container {
+  a {
+    color: $body-color;
+    opacity: .54;
+    font-size: $font-size-base;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+
+.footer-megamenu {
+  h6 {
+    font-size: $font-size-base;
+    margin-bottom: 1rem;
+  }
+  a {
+    color: $body-color;
+    opacity: .6;
+    line-height: 2;
+    transition: opacity .2s;
+
+    &:hover {
+      opacity: .9;
+    }
+  }
+}
+
+.footer-copyright {
+  font-size: $font-size-sm;
+  opacity: .6;
+
+  .list-item {
+    color: $body-color;
+    margin-left: 1rem;
+  }
+}
+
+.footer-social-list {
+  @include list-unstyled;
+  margin: 0;
+  line-height: 1.25rem;
+
+  a {
+    color: $body-color;
+    opacity: .54;
+    font-size: 1rem;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  li {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+}
+
+
+// 
+// Footer style
+.footer-inner-v1 {
+  text-align: center;
+  @media screen and (min-width: map-get($grid-breakpoints, md)) {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .social-list {
+    margin-top: 10px;
+    @media screen and (min-width: map-get($grid-breakpoints, md)) {
+      margin-top: 0;
+    }
+  }
+}
+
+.footer-inner-v2 {
+  text-align: center;
+
+  ul {
+    margin-bottom: 10px;
+  }
+}
+

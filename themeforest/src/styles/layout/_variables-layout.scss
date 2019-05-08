@@ -1,0 +1,85 @@
+
+// map Bootstrap variables here so that Bootstrap is not required for essential layout
+// prefix with `l_`
+// Note: '_' and '-' are identical, e.g. if bootstrap _var.scss is loaded, $body_bg will be compiled with value of $body-bg
+
+// color
+$l_body_bg:     $body-bg;
+$l_white:       #fff;       // for app-page-container, quickview, header
+$l_gray_dark:   $gray-800; // for nav
+
+// screen
+$l_screen_md_min: map-get($grid-breakpoints, lg);
+$l_screen_sm_max: (map-get($grid-breakpoints, lg) - 1);
+
+// zindex
+$l_zindex_page_container_mobile: 100;
+$l_zindex_sidenav_mobile:        ($l_zindex_page_container_mobile - 1);
+$l_zindex_navbar:                $zindex-sticky;
+$l_zindex_sidenav:               ($l_zindex_navbar + 1);
+$l_zindex_quickview:             ($l_zindex_navbar + 1);
+$l_zindex_overlay:               $zindex-modal-backdrop;
+
+// Layout
+$l_header_height:               60px;
+$l_mobile_header_height:        48px;
+
+$l_sidenav_width_collapsed:     64px;  // Desktop only: collpased sidenav
+$l_sidenav_width:               250px; // Desktop: sidenav; Mobile: off-canvas sidenav
+
+$l_right_quickview_width:       300px;
+
+$l_boxed_layout_max_width:      1200px;
+$container_fluid_maxwidth:      1400px;
+
+// Motion
+$l_transition_antd:          all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1); // consistent with antd layout
+$l_transition_antd_bezier:   cubic-bezier(0.215, 0.61, 0.355, 1);
+
+$l_transition_bezier: .05, .74, .27, .99; // for nav, quickview
+
+$l_transition_ease:          cubic-bezier(0.4,0.0,0.2,1);
+$l_transition_ease_out:      cubic-bezier(0.0,0.0,0.2,1); // Used on sidenav related
+$l_transition_ease_in:       cubic-bezier(0.4,0.0,1,1);
+
+// $l_transition_ease_out_sidenav:   cubic-bezier(.25,.75,.25,.99);
+$l_sidenav_collpase_duration:    .3s;
+$l_transition_ease_out_quickview: cubic-bezier(.05,.74,.2,.99);
+
+
+
+// Themes
+// --------------------------------------------------
+
+$header_line_height: 24px;
+$header_box_shadow:  0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); // .z-depth-1
+
+$sidenav_footer_height:     44px;
+
+// = Default dark background sidenav =
+$sidenav_bg_color:                    $dark;
+$sidenav_text_color:                  #a1a1a1;
+$nav_link_hover_bg:                   transparent;
+$nav_link_hover_color:                #fafafa;
+
+// the reason .active bg is different from .open bg is becasue there's no border between li
+// if one li is .active, and sibiling is .open, then they have same bg, which is confusing
+$nav_link_active_bg:                  transparent;
+$nav_link_open_bg:                    rgba(0,0,0,.1);
+$nav_link_active_color:               $nav_link_hover_color;
+
+$nav_sub_bg:                          $nav_link_open_bg;
+$nav_sub_link_active_color:           $nav_link_hover_color;
+$nav_sub2_bg:                         rgba(0,0,0,.1);
+$nav_sub3_bg:                         rgba(0,0,0,.1);
+
+// sidenav width, just for demo
+// in real project, simply change '$l_sidenav_width' to any value u want
+$l_sidenav_width_sm:               220px;
+$l_sidenav_width_lg:               280px;
+
+// 
+$app_footer_bg:                    rgba(0,0,0,.01);
+
+
+

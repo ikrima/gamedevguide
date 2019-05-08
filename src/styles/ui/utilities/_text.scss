@@ -1,0 +1,23 @@
+.text-body-reverse { color: $body-color-reverse !important; }
+
+// for `a`
+.no-link-style {
+  text-decoration: none;
+  color: $body-color;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: $body-color;
+  }
+}
+
+.text-dotted {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.text-dashed {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}

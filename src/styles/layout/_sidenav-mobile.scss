@@ -1,0 +1,11 @@
+
+// sidenav inside drawer
+.app-drawer {
+  .ant-drawer-body {
+    padding: 0;
+  }
+
+  .app-sidenav {
+    height: 100vh;
+  }
+}

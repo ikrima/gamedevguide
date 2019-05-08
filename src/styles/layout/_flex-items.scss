@@ -1,0 +1,49 @@
+// on mobile, it's display block
+
+// on tablet, 2 columns
+@media screen and (min-width: map-get($grid-breakpoints, lg)) {
+  .flex-items-container  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .flex-item {
+    flex: 0 1 calc(50% - 1em);
+    margin-left: 1em;
+    margin-right: 1em;
+
+    // so that position start with left 0
+    &:nth-child(2n+1) {
+      margin-left: 0;
+    }
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+}
+@media screen and (min-width: map-get($grid-breakpoints, xl)) {
+  .flex-item {
+    flex: 0 1 calc(33% - 2em);
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+
+    //
+    &:nth-child(2n+1) {
+      margin-left: 1.5em;
+    }
+    &:nth-child(2n) {
+      margin-right: 1.5em;
+    }
+
+    // so that position start with left 0
+    &:nth-child(3n+1) {
+      margin-left: 0;
+    }
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+}
