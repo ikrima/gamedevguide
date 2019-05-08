@@ -1,8 +1,9 @@
 const UE4Guide = require('./UE4Guide.json')
 const Houdini = require('./Houdini.json')
 const Graphics = require('./Graphics.json')
+const OpenSource = require('./OpenSource.json')
 
-const listOfGuideTOCs = [UE4Guide, Houdini, Graphics]
+const listOfGuideTOCs = [UE4Guide, Houdini, Graphics, OpenSource]
 const allGuideTOCs = {
   slug: '/',
   slugPart: '',
