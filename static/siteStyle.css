@@ -1,0 +1,26 @@
+/* h2, h3,h1,h4 {
+  margin-bottom: 0.78125rem;
+  margin-top: 3.125rem;
+}
+p {
+  margin-top: 0.52083rem;
+  margin-bottom: 0.78125rem;
+}
+
+@media screen and (max-width: 995px) {
+  .ant-anchor-wrapper{
+    display: none
+  }
+}
+
+@media screen and (min-width: 996px) {
+  .ant-anchor-wrapper{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .ant-menu-item{
+    font-size: 12px;
+  }
+} */

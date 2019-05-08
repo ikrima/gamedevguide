@@ -41,6 +41,16 @@ import stAnnesTheme from 'typography-theme-st-annes'
 // }
 
 const typography = new Typography(stAnnesTheme)
+typography.overrideThemeStyles = ({ rhythm }, options) => ({
+  'h2,h3,h1,h4': {
+    marginBottom: rhythm(1 / 2),
+    marginTop: rhythm(2),
+  },
+  p: {
+    marginBottom: rhythm(1 / 2),
+    marginTop: rhythm(1 / 3),
+  },
+})
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {
