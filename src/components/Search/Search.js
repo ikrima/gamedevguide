@@ -20,7 +20,11 @@ class Search extends Component {
     }
   }
 
-  getOrCreateIndex = () => (this.index ? this.index : Index.load(this.props.searchIndex)) // Create an elastic lunr index and hydrate with graphql query results
+  // Create an elastic lunr index and hydrate with graphql query results
+  getOrCreateIndex = () => {
+    const { searchIndex } = this.props
+    return this.index ? this.index : Index.load(searchIndex)
+  }
 
   handleInlineSearch = searchQuery => {
     const query = searchQuery
@@ -100,7 +104,11 @@ class Search extends Component {
   }
 }
 
+Search.defaultProps = {
+  searchIndex: null,
+}
 Search.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   searchIndex: PropTypes.object,
 }
 
