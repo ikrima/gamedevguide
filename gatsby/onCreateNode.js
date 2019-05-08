@@ -4,12 +4,14 @@ const path = require(`path`)
 
 const { createFilePath } = require('gatsby-source-filesystem')
 const { prettifySlug, relFilePathToSlug, absFilePathToSlug } = require('./utils')
+const { guideNames } = require('../SiteCfg/json/GuideTOC')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   let pgTitle = ''
   let sideMenuHeading = ''
+  let guideName = 'blog'
 
   if (
     (node.internal.type === `MarkdownRemark` || node.internal.type === `Mdx`) &&
@@ -24,6 +26,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     })
     const pathSlugsArray = slug.split('/')
     pgTitle = node.frontmatter.title ? node.frontmatter.title : prettifySlug(_.last(pathSlugsArray))
+    guideName = _.nth(pathSlugsArray, 1)
+    guideName = guideNames.includes(guideName) ? guideName : guideName
 
     sideMenuHeading = node.frontmatter.sideMenuHeading
       ? node.frontmatter.sideMenuHeading
@@ -58,6 +62,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     node,
     name: 'sideMenuHeading',
     value: sideMenuHeading,
+  })
+  createNodeField({
+    node,
+    name: 'guideName',
+    value: guideName,
   })
 }
 

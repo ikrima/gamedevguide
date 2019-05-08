@@ -22,10 +22,12 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.2.1",
     "@mdx-js/mdx": "^1.0.15",
     "@mdx-js/react": "^1.0.15",
     "@mdx-js/tag": "^0.20.3",
     "antd": "^3.16.6",
+    "elasticlunr": "^0.9.5",
     "gatsby": "^2.3.31",
     "gatsby-awesome-pagination": "^0.3.3",
     "gatsby-cli": "^2.5.12",

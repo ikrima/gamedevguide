@@ -201,6 +201,31 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: ['title', 'menuTitle', 'path', 'content', 'guideName'],
+        // How to resolve each field`s value for a supported node type
+        resolvers: {
+          // For any node of type MarkdownRemark, list how to resolve the fields` values
+          Mdx: {
+            title: node => node.fields.pageTitle,
+            menuTitle: node => node.fields.sideMenuHeading,
+            path: node => node.fields.slug,
+            content: node => node.rawBody,
+            guideName: node => node.fields.guideName,
+          },
+          MarkdownRemark: {
+            title: node => node.fields.pageTitle,
+            menuTitle: node => node.fields.sideMenuHeading,
+            path: node => node.fields.slug,
+            content: node => node.rawMarkdownBody,
+            guideName: node => node.fields.guideName,
+          },
+        },
+      },
+    },
     // {
     //   resolve: 'gatsby-plugin-google-analytics',
     //   options: {
