@@ -7,6 +7,11 @@ import Search from './Search'
 const { Header } = Layout
 
 export default function ContentHeader({ showSidebarBtn, showToC }) {
+  const isBrowser = typeof window !== 'undefined'
+  if (!isBrowser) {
+    return <div />
+  }
+
   const {
     state: { sidebar, toc },
     dispatch,

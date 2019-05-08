@@ -5,6 +5,11 @@ import MainLayout from '../components/main-layout'
 import { SearchContext } from '../contexts/SearchContext'
 
 const SearchPage = ({ location }) => {
+  const isBrowser = typeof window !== 'undefined'
+  if (!isBrowser) {
+    return <div />
+  }
+
   const {
     state: { results, query },
     dispatch,

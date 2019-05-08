@@ -7,6 +7,11 @@ import SidebarToC from './SidebarToC'
 
 const { Sider } = Layout
 const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
+  const isBrowser = typeof window !== 'undefined'
+  if (!isBrowser) {
+    return <div />
+  }
+
   const {
     dispatch,
     state: { drawer, toc, sidebar },
