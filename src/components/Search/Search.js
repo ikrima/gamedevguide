@@ -52,9 +52,9 @@ class Search extends Component {
     })
   }
 
-  renderInlineResultsDataSource = dataSource => {
+  renderInlineResultsDataSource = searchResults => {
     const { results } = this.state
-    const retValsByGuide = _.sortBy(_.toPairs(_.groupBy(dataSource, 'guideName')), kvp => kvp[0])
+    const retValsByGuide = _.sortBy(_.toPairs(_.groupBy(searchResults, 'guideName')), kvp => kvp[0])
     const retVals = _.map(retValsByGuide, kvp => {
       const grpKey = kvp[0]
       const grpValue = kvp[1]
@@ -70,7 +70,7 @@ class Search extends Component {
       )
     })
 
-    if (dataSource.length >= siteCfg.inlineSearchResultMax) {
+    if (searchResults.length >= siteCfg.inlineSearchResultMax) {
       retVals.push(
         <AntdOption disabled key="inlineSearchResultShowMore">
           <Link to="/searchresults" state={{ search: results }} key="showMoreSearchResults">

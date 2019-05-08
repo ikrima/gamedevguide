@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import _ from 'lodash'
 import Layout from '../components/Layout'
 
 const SearchResults = ({ location }) => {
-  if (location.state.search) {
+  if (!(_.isNil(location.sate) || _.isNil(location.state.search))) {
     return (
       <Layout>
         <h1>Search Results</h1>
