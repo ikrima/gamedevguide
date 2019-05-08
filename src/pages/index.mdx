@@ -41,27 +41,31 @@ Github Repo For Guide
 
 ## Webdev bs Pt 1
 
-- [x] Remove Redux
-- [x] General simplifications
-- [x] Convert all markdown files to kebab case
-
-- [ ] Visual: Make sidebar collapsible
-- [ ] Visual: Fix CSS typography for content. Looks like CSS fighting each other. The main guide content should match the styling of the St. Annes preset in https://kyleamathews.github.io/typography.js/
-    - Specifically, the margins around headings & paragraphs is zero on the site
-- [ ] Visual: When you click to another page in a guide, the sidebar menu's headers will reset to their default state (fully toggled open and expanded). Instead, the menu state should persist from page to page. (Ex: click on some of the menu headers to collapse them. Then navigate to another page in the guide. The headers that you collapsed should stay collapsed)
 - [ ] Site should work on mobile
-  - [ ] Left sidebar menu should be collapsed
-  - [ ] Page TOC right sidebar menu should go away
-- [ ] Add search - https://www.gatsbyjs.org/docs/adding-search/
-  - [ ] Use elastic lunr & corresponding gatsby plugin
-  - [ ] Should support partial matches, searching titles, and content of guides md file
-  - [ ] Add Ant design Search react component in header
-    - [ ] First 5 results should show up in a pop up
-    - [ ] Should have button to click it to open to another search results page with all the results
-- [ ] Integrate Ant Admin theme (http://iarouse.com/dist-react-ant-design/v1.1.4/#/app/layout/page)
+  - [x] ~~Left sidebar menu should be collapsed~~
+  - [x] ~~Page TOC right sidebar menu should go away~~
+  - [ ] Button to open Left Sidebar TOC drawer does not appear in mobile view
+- [x] ~~Remove Redux~~
+- [x] ~~General simplifications~~
+- [x] ~~Convert all markdown files to kebab case~~
+- [x] ~~Visual: Make sidebar collapsible~~
+- [x] ~~Visual: Fix CSS typography for content. Looks like CSS fighting each other. The main guide content should match the styling of the St. Annes preset in https://kyleamathews.github.io/typography.js/~~
+    - ~~Specifically, the margins around headings & paragraphs is zero on the site~~
+- [x] Visual: When you click to another page in a guide, the sidebar menu's headers will reset to their default state (fully toggled open and expanded). Instead, the menu state should persist from page to page. (Ex: click on some of the menu headers to collapse them. Then navigate to another page in the guide. The headers that you collapsed should stay collapsed)
+- [x] ~~Add search - https://www.gatsbyjs.org/docs/adding-search/~~
+  - [x] ~~Use elastic lunr & corresponding gatsby plugin~~
+  - [x] ~~Should support partial matches, searching titles, and content of guides md file~~
+  - [x] ~~Add Ant design Search react component in header~~
+    - [x] ~~First 5 results should show up in a pop up~~
+    - [x] ~~Should have button to click it to open to another search results page with all the results~~
+    - [x] ~~Search should groupby guides~~
 
 ## Webdev bs Pt 2
-
+- [ ] Better inline search
+    - [ ] Should show excerpt of highlighted text
+    - [ ] Allow search for specific guides
+- [ ] Perf: When navigating inside of a guide, should not reload the entire page; should update just the main content part.
+    - [ ] This should also not reset the scroll position of the sidebar toc menu
 - [ ] Add autodemarcation of notes still to be fully transitioned
 - [ ] Add search bar on the left column to search headings (example: https://gatsby-docz.netlify.com/docs/)
 - [ ] #Perf: Remove page reload with sidebar when clicking around
@@ -71,3 +75,4 @@ Github Repo For Guide
 - [ ] Add support for ordering between headers and site pages
 - [ ] CSS help: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ http://grid.malven.co/ https://visme.co/blog/layout-design/
 - [ ] Further prettification: Look at css styling from https://casual-effects.com/markdeep/#examples
+- [ ] Integrate Ant Admin theme (http://iarouse.com/dist-react-ant-design/v1.1.4/#/app/layout/page)
