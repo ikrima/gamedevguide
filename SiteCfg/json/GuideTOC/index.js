@@ -10,5 +10,5 @@ const allGuideTOCs = {
   childTOCs: listOfGuideTOCs,
 }
 
-module.exports.default = allGuideTOCs
+module.exports.allGuideTOCs = allGuideTOCs
 module.exports.guideNames = listOfGuideTOCs.map(toc => toc.slugPart)
