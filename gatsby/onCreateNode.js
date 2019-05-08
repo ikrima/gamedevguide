@@ -26,7 +26,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const pathSlugsArray = slug.split('/')
     pgTitle = node.frontmatter.title ? node.frontmatter.title : prettifySlug(_.last(pathSlugsArray))
     if (isGuideName(_.nth(pathSlugsArray, 1))) {
-    guideName = _.nth(pathSlugsArray, 1)
+      guideName = _.nth(pathSlugsArray, 1)
     }
 
     sideMenuHeading = node.frontmatter.sideMenuHeading
