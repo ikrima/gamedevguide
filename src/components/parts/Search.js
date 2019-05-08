@@ -1,15 +1,120 @@
 /* eslint-disable */
-import React, { useContext } from 'react';
-import { Link } from 'gatsby';
-import { List, Icon, Popover } from 'antd';
-import isEmpty from 'lodash/isEmpty';
-import { SearchContext } from '../../contexts/SearchContext';
+import React, { Component, useContext } from "react"
+import { Link, navigate } from "gatsby"
+import {
+  List,
+  Icon,
+  Popover,
+  AutoComplete as AntdAutoComplete,
+  Input as AntdInput,
+  Button as AntdButton,
+} from "antd"
+import { SearchContext } from "../../contexts/SearchContext"
+import _ from "lodash"
 
-export default function Search() {
+import PropTypes from "prop-types"
+import siteCfg from "../../../SiteCfg"
+
+const AntdSearch = AntdInput.Search
+const AntdOption = AntdAutoComplete.Option
+const AntdOptGroup = AntdAutoComplete.OptGroup
+
+// Search component
+export function SearchUsingAutocomplete() {
   const {
     state: { results, query },
     dispatch,
-  } = useContext(SearchContext);
+  } = useContext(SearchContext)
+  const filteredResults = results.slice(0, siteCfg.inlineSearchResultMax)
+
+  // Create an elastic lunr index and hydrate with graphql query searchresults
+  // const getOrCreateIndex = () => {
+  //   const { searchIndex } = this.props
+  //   return this.index ? this.index : Index.load(searchIndex)
+  // }
+
+  const handleInlineSearch = searchQuery => {
+    dispatch({ type: "update", payload: searchQuery })
+
+    // const query = searchQuery
+    // this.index = this.getOrCreateIndex()
+    // this.setState({
+    //   query,
+    //   // Query the index with search string to get an [] of IDs
+    //   filteredResults: this.index
+    //     .search(query, { expand: true })
+    //     .slice(0, siteCfg.inlineSearchResultMax)
+    //     // Map over each ID and return the full document
+    //     .map(({ ref }) => this.index.documentStore.getDoc(ref)),
+    // })
+  }
+
+  const onSelectSearchResult = searchResultPath => {
+    dispatch({ type: "update", payload: "" })
+    navigate(`/${searchResultPath}`)
+  }
+
+  const handleFullSearch = () => {
+    navigate("/searchresults")
+
+    // const { filteredResults } = this.state
+    // navigate('/searchresults', {
+    //   state: { search: filteredResults },
+    // })
+  }
+
+  const renderInlineResultsDataSource = searchResults => {
+    const retValsByGuide = _.sortBy(_.toPairs(_.groupBy(searchResults, "guideName")), kvp => kvp[0])
+    const retVals = _.map(retValsByGuide, kvp => {
+      const grpKey = kvp[0]
+      const grpValue = kvp[1]
+      const optionChildren = grpValue.map(searchResult => (
+        <AntdOption key={searchResult.slug} value={searchResult.slug}>
+          {searchResult.title}
+        </AntdOption>
+      ))
+      return (
+        <AntdOptGroup key={grpKey} label={grpKey}>
+          {optionChildren}
+        </AntdOptGroup>
+      )
+    })
+
+    if (searchResults.length >= siteCfg.inlineSearchResultMax) {
+      retVals.push(
+        <AntdOption disabled key="inlineSearchResultShowMore">
+          <Link to="/search" key="showMoreSearchResults">
+            <AntdButton type="primary">Show More Results</AntdButton>
+          </Link>
+        </AntdOption>
+      )
+    }
+    return retVals
+  }
+
+  return (
+    <AntdAutoComplete
+      dataSource={renderInlineResultsDataSource(filteredResults)}
+      onSearch={handleInlineSearch}
+      onSelect={onSelectSearchResult}
+      optionLabelProp="text"
+    >
+      <AntdSearch
+        placeholder="type search text"
+        value={query}
+        onSearch={handleFullSearch}
+        enterButton
+      />
+    </AntdAutoComplete>
+  )
+}
+
+export function SearchUsingPopover() {
+  const {
+    state: { results, query },
+    dispatch,
+  } = useContext(SearchContext)
+  const filteredResults = results.slice(0, siteCfg.inlineSearchResultMax)
   return (
     <div className="d-inline-block">
       <div className="list-inline-item search-box seach-box-right  d-inline-block">
@@ -19,34 +124,33 @@ export default function Search() {
           </div>
           <Popover
             placement="bottomRight"
-            // visible={results.length > 1}
+            // visible={filteredResults.length > 1}
             trigger="focus"
             // style={{ width: '250px' }}
             content={
               <List
-                style={{ width: '250px' }}
+                style={{ width: "250px" }}
                 footer={
-                  // results.filter(page => !isEmpty(page.title)).length > 5 && (
+                  // filteredResults.length > 5 && (
                   <Link to="/search" className="no-link-style">
                     Read All <Icon type="arrow-right" />
                   </Link>
                   // )
                 }
                 itemLayout="horizontal"
-                // .filter(page => !isEmpty(page.title)).slice(0, 5)
-                dataSource={results}
+                dataSource={filteredResults}
                 renderItem={item => (
                   <List.Item>
-                    <div className="list-style-v1" style={{ width: '300px' }}>
+                    <div className="list-style-v1" style={{ width: "300px" }}>
                       <div className="list-item">
                         <div className="list-item__body">
                           <div className="list-item__title">
                             <Link
                               onClick={() => {
                                 dispatch({
-                                  type: 'update',
-                                  payload: '',
-                                });
+                                  type: "update",
+                                  payload: "",
+                                })
                               }}
                               to={`/${item.slug}`}
                             >
@@ -66,9 +170,9 @@ export default function Search() {
               value={query}
               onChange={e => {
                 dispatch({
-                  type: 'update',
+                  type: "update",
                   payload: e.target.value,
-                });
+                })
               }}
               placeholder="search..."
             />
@@ -77,5 +181,8 @@ export default function Search() {
         </div>
       </div>
     </div>
-  );
+  )
 }
+
+// export default SearchUsingPopover
+export default SearchUsingAutocomplete
