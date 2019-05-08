@@ -1,5 +1,5 @@
 const _ = require('lodash')
-const S = require('underscore.string.fp')
+const S = require('underscore.string')
 const { pathPrefix } = require('../gatsby-config')
 const { guideNames } = require('../SiteCfg/json/GuideTOC')
 
