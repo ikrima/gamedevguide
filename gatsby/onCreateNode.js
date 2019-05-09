@@ -3,14 +3,13 @@ const _ = require('lodash')
 const path = require(`path`)
 
 const { createFilePath } = require('gatsby-source-filesystem')
-const { prettifySlug, relFilePathToSlug, absFilePathToSlug, isGuideName } = require('./utils')
+const { prettifySlug, relFilePathToSlug, absFilePathToSlug } = require('./utils')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   let pgTitle = ''
   let sideMenuHeading = ''
-  let guideName = 'blog'
 
   if (
     (node.internal.type === `MarkdownRemark` || node.internal.type === `Mdx`) &&
@@ -25,9 +24,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     })
     const pathSlugsArray = slug.split('/')
     pgTitle = node.frontmatter.title ? node.frontmatter.title : prettifySlug(_.last(pathSlugsArray))
-    if (isGuideName(_.nth(pathSlugsArray, 1))) {
-      guideName = _.nth(pathSlugsArray, 1)
-    }
 
     sideMenuHeading = node.frontmatter.sideMenuHeading
       ? node.frontmatter.sideMenuHeading
@@ -62,11 +58,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     node,
     name: 'sideMenuHeading',
     value: sideMenuHeading,
-  })
-  createNodeField({
-    node,
-    name: 'guideName',
-    value: guideName,
   })
 }
 

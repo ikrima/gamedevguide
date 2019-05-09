@@ -109,12 +109,6 @@ module.exports = {
         gatsbyRemarkPlugins: gbRemarkPluginsList,
       },
     },
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utils/typography.js',
-      },
-    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -178,18 +172,7 @@ module.exports = {
         plugins: gbRemarkPluginsList,
       },
     },
-    {
-      resolve: 'gatsby-plugin-eslint',
-      options: {
-        test: /\.js$|\.jsx$/,
-        exclude: /(node_modules|.cache|public|themeforest)/,
-        stages: ['develop'],
-        options: {
-          emitWarning: true,
-          failOnError: false,
-        },
-      },
-    },
+    'gatsby-plugin-eslint',
     'gatsby-plugin-remove-trailing-slashes',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
@@ -225,23 +208,18 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        fields: ['title', 'menuTitle', 'slug', 'content', 'guideName'],
-        // How to resolve each field`s value for a supported node type
+        fields: ['title', 'slug', 'content'],
+        // How to resolve each field's value for a supported node type
         resolvers: {
-          // For any node of type MarkdownRemark, list how to resolve the fields` values
           Mdx: {
-            title: node => node.fields.pageTitle,
-            menuTitle: node => node.fields.sideMenuHeading,
+            title: node => node.frontmatter.title,
             slug: node => node.fields.slug,
             content: node => node.rawBody,
-            guideName: node => node.fields.guideName,
           },
           MarkdownRemark: {
-            title: node => node.fields.pageTitle,
-            menuTitle: node => node.fields.sideMenuHeading,
+            title: node => node.frontmatter.title,
             slug: node => node.fields.slug,
             content: node => node.rawMarkdownBody,
-            guideName: node => node.fields.guideName,
           },
         },
       },

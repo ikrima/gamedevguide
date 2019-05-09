@@ -1,5 +1,9 @@
 [
   {
+    "name": "Blog",
+    "link": "/blog"
+  },
+  {
     "name": "Open Source",
     "link": "/opensource"
   },
@@ -14,9 +18,5 @@
   {
     "name": "Houdini",
     "link": "/houdini"
-  },
-  {
-    "name": "Blog",
-    "link": "/blog"
   }
 ]

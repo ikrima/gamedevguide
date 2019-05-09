@@ -18,6 +18,21 @@
 - [ ] Programming
 - [ ] Houdini
 
+## Webdev bullshittery
+- [x] Add typescript
+- [x] Remove Redux
+- [x] General simplifications
+- [x] Convert all markdown files to kebab case
+- [ ] Add autodemarcation of notes still to be fully transitioned
+- [ ] Add search
+- [ ] Mobile support
+- [ ] Add support for ordering between headers and site pages
+- [ ] #Visual: Make sidebar collapsible
+- [ ] #Visual: Find a decent visual theme for markdown
+- [ ] #Perf: Remove page reload with sidebar when clicking around
+- [ ] #Perf: Use Emotion - https://jenniferwadella.com/blog/all-the-dumb-mistakes-i-made-building-my-first-gatsby-site
+- [ ] #Perf: Image Optimization - https://medium.com/@kyle.robert.gill/ridiculously-easy-image-optimization-with-gatsby-js-59d48e15db6e
+
 # Notes To Myself
 ## Bootstrap Install:
 cinst -y nodejs

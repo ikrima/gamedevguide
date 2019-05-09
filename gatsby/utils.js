@@ -1,7 +1,6 @@
 const _ = require('lodash')
-const S = require('underscore.string')
+const S = require('underscore.string.fp')
 const { pathPrefix } = require('../gatsby-config')
-const { guideNames } = require('../SiteCfg/json/GuideTOC')
 
 // Replacing '/' would result in empty string which is invalid
 const _toNoTrailingSlashSitePath = inPath => (inPath === '/' ? inPath : inPath.replace(/\/$/, ''))
@@ -50,18 +49,7 @@ const safeGetWindowPath = () =>
 const safeGetRelWindowPath = () =>
   typeof window !== 'undefined' ? absFilePathToSlug(window.location.pathname) : 'undefined'
 
-const safeGetRelWindowPathSlugs = () => {
-  const retSlugArray = separateSlugs(safeGetRelWindowPath())
-  if (retSlugArray.length > 1 && _.isEmpty(_.first(retSlugArray))) {
-    return retSlugArray.slice(1, retSlugArray.length)
-  }
-  return retSlugArray
-}
-const isGuideName = inName => guideNames.includes(inName)
-const getGuideNameFromWindowPath = () => {
-  const curSlugArray = safeGetRelWindowPathSlugs()
-  return isGuideName(_.first(curSlugArray)) ? _.first(curSlugArray) : 'undefined'
-}
+const safeGetRelWindowPathSlugs = () => separateSlugs(safeGetRelWindowPath())
 
 exports.separateSlugs = separateSlugs
 exports.prettifySlug = prettifySlug
@@ -71,5 +59,3 @@ exports.getBreadCrumbRootPrefix = getBreadCrumbRootPrefix
 exports.safeGetWindowPath = safeGetWindowPath
 exports.safeGetRelWindowPath = safeGetRelWindowPath
 exports.safeGetRelWindowPathSlugs = safeGetRelWindowPathSlugs
-exports.isGuideName = isGuideName
-exports.getGuideNameFromWindowPath = getGuideNameFromWindowPath

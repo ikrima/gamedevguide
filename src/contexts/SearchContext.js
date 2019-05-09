@@ -1,27 +1,27 @@
 /* eslint-disable */
 
-import React, { createContext, useReducer } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { Index } from "elasticlunr"
+import React, { createContext, useReducer } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { Index } from 'elasticlunr';
 
 function reducer(state, action) {
   switch (action.type) {
-    case "update":
+    case 'update':
       return {
         ...state,
         results: state.createdIndex
           .search(action.payload, { expand: true })
           .map(({ ref }) => state.createdIndex.documentStore.getDoc(ref)),
         query: action.payload,
-      }
-    case "reset":
-      return { ...state, results: [], query: "" }
+      };
+    case 'reset':
+      return { ...state, results: [], query: '' };
     default:
-      return state
+      return state;
   }
 }
 
-export const SearchContext = createContext()
+export const SearchContext = createContext({});
 export default function Wrapper({ children }) {
   const {
     siteSearchIndex: { index },
@@ -31,12 +31,12 @@ export default function Wrapper({ children }) {
         index
       }
     }
-  `)
+  `);
   const [state, dispatch] = useReducer(reducer, {
     results: [],
     createdIndex: Index.load(index),
-    query: "",
-  })
+    query: '',
+  });
 
-  return <SearchContext.Provider value={{ state, dispatch }}>{children}</SearchContext.Provider>
+  return <SearchContext.Provider value={{ state, dispatch }}>{children}</SearchContext.Provider>;
 }

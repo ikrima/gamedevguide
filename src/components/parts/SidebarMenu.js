@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
-import { Menu } from 'antd'
+import { Icon, Menu } from 'antd'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { Context as SidebarContext } from '../../contexts/SidebarContext'
 
+const { SubMenu } = Menu
 export default function SidebarMenu() {
   const { dispatch } = useContext(SidebarContext)
   const {

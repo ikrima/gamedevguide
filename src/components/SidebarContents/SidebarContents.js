@@ -7,7 +7,7 @@ import { Layout as AntdLayout, Menu as AntdMenu } from 'antd'
 // import { onSetSidebarOpen } from '../../actions/layout'
 import _ from 'lodash'
 import siteCfg from '../../../SiteCfg'
-import { allGuideTOCs } from '../../../SiteCfg/json/GuideTOC'
+import allGuideTOCs from '../../../SiteCfg/json/GuideTOC'
 
 import { separateSlugs, prettifySlug, safeGetRelWindowPath } from '../../../gatsby/utils'
 
@@ -199,7 +199,7 @@ class SidebarContents extends Component {
           const selectedKeys = [safeGetRelWindowPath()]
           let bDisplaySidebar = !!(sidebarRoot && sidebarRoot.length > 1)
           const sidebarRootTocMV = bDisplaySidebar
-            ? _.find(this.createTOCModelView(mdNodes).childTOCs,
+            ? this.createTOCModelView(mdNodes).childTOCs.find(
               o => o.slugPart.toLowerCase() === sidebarRoot.slice(1).toLowerCase()
             )
             : null

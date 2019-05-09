@@ -1,0 +1,26 @@
+{
+  "slugPart": "example",
+  "childTOCs": [
+    {
+      "prettyTitle": "Light transport",
+      "slugPart": "/example/light-transport/"
+    },
+    {
+      "prettyTitle": "Enter full slug to slugPart",
+      "slugPart": "/example/"
+    },
+    {
+      "prettyTitle": "SubMenu don't slugs",
+      "childTOCs": [
+        {
+          "slugPart": "/example/light-transport/first",
+          "prettyTitle": "Light transport 1"
+        },
+        {
+          "slugPart": "/example/light-transport/second",
+          "prettyTitle": "Light transport 2"
+        }
+      ]
+    }
+  ]
+}

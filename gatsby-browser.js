@@ -12,11 +12,9 @@ import React from 'react'
 import SidebarContext from './src/contexts/SidebarContext'
 import SearchWrapper from './src/contexts/SearchContext'
 
-import 'prismjs/themes/prism-tomorrow.css'
-
 const wrapPageElement = ({ element, props }) => (
   <SearchWrapper {...props}>
-    <SidebarContext>{element}</SidebarContext>
+    <SidebarContext {...props}>{element}</SidebarContext>
   </SearchWrapper>
 )
 export { wrapPageElement }

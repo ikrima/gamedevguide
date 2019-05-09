@@ -31,7 +31,6 @@ const SiteCfg = {
   twitterURL: 'https://twitter.com/ikrimae',
 
   defaultSortIndex: 999,
-  inlineSearchResultMax: 10,
 
   theme: {
     // Manifest and Progress color

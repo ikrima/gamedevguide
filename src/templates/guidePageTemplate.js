@@ -1,14 +1,20 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
-import { PageHeader as AntdPageHeader } from 'antd'
+import { PageHeader as AntdPageHeader, Breadcrumb } from 'antd'
+import Layout from '../components/Layout'
 import MainLayout from '../components/main-layout'
 import 'katex/dist/katex.min.css'
 import siteCfg from '../../SiteCfg'
 
-import { prettifySlug, safeGetRelWindowPathSlugs } from '../../gatsby/utils'
+import {
+  prettifySlug,
+  getBreadCrumbRootPrefix,
+  safeGetRelWindowPath,
+  safeGetRelWindowPathSlugs,
+} from '../../gatsby/utils'
 
-const _ = require('lodash')
+const isEmpty = require('lodash/isEmpty')
 
 function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -16,7 +22,7 @@ function Template({
   // expandedKey,
 }) {
   const {
-    fields: { pageTitle },
+    fields: { pageTitle, slug },
     frontmatter,
     html,
   } = data.mdx ? data.mdx : data.markdownRemark
@@ -26,7 +32,7 @@ function Template({
     breadcrumbName: prettifySlug(item),
   }))
 
-  // const curPageRoot = getBreadCrumbRootPrefix(safeGetRelWindowPath(), frontmatter)
+  const curPageRoot = getBreadCrumbRootPrefix(safeGetRelWindowPath(), frontmatter)
 
   let markdownHtml
   if (data.mdx) {
@@ -40,9 +46,9 @@ function Template({
       {/* <Layout sidebarRoot={curPageRoot}> */}
 
       <AntdPageHeader
-        title={pageTitle + (_.isEmpty(frontmatter.pageSubTitle) ? '' : ':')}
+        title={pageTitle + (isEmpty(frontmatter.pageSubTitle) ? '' : ':')}
         subTitle={frontmatter.pageSubTitle}
-        breadcrumb={{ routes }}
+        // breadcrumb={{ routes }}
       />
       <div className="guide-container" style={{ maxWidth: siteCfg.theme.guideContentMaxWidth }}>
         {markdownHtml}

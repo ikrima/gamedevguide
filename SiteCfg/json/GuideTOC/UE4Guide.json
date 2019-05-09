@@ -3,11 +3,13 @@
   "childTOCs": [
     {
       "slugPart": "environment-setup",
+      "prettyTitle": "environment-setup",
       "childTOCs": []
     },
     {
-          "slugPart": "build-guide",
-          "childTOCs": []
+      "slugPart": "build-guide",
+      "prettyTitle": "build-guide",
+      "childTOCs": []
     },
     {
       "slugPart": "wip",
@@ -15,27 +17,33 @@
       "childTOCs": [
         {
           "slugPart": "build-guide",
+          "prettyTitle": "build-guide",
           "childTOCs": [
             {
               "slugPart": "plugins-modules",
+              "prettyTitle": "plugins-modules",
               "childTOCs": []
             },
             {
               "slugPart": "ubt",
+              "prettyTitle": "ubt",
               "childTOCs": []
             },
             {
               "slugPart": "utilities",
+              "prettyTitle": "utilities",
               "childTOCs": []
             }
           ]
         },
         {
           "slugPart": "ue4-technical-crash-course",
+          "prettyTitle": "ue4-technical-crash-course",
           "childTOCs": []
         },
         {
           "slugPart": "packaging-cooking",
+          "prettyTitle": "packaging-cooking",
           "childTOCs": []
         }
       ]

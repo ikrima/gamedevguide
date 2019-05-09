@@ -1,15 +1,11 @@
-const UE4Guide = require('./UE4Guide.json')
-const Houdini = require('./Houdini.json')
-const Graphics = require('./Graphics.json')
-const OpenSource = require('./OpenSource.json')
+import UE4Guide from './UE4Guide.json'
+import Houdini from './Houdini.json'
+import Graphics from './Graphics.json'
 
-const listOfGuideTOCs = [UE4Guide, Houdini, Graphics, OpenSource]
 const allGuideTOCs = {
   slug: '/',
   slugPart: '',
   order: 0,
-  childTOCs: listOfGuideTOCs,
+  childTOCs: [UE4Guide, Houdini, Graphics],
 }
-
-module.exports.allGuideTOCs = allGuideTOCs
-module.exports.guideNames = listOfGuideTOCs.map(toc => toc.slugPart)
+export default allGuideTOCs

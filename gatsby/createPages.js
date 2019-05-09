@@ -71,7 +71,7 @@ exports.createPages = ({ actions, graphql }) => {
       result.data.blogposts.edges.forEach(({ node }) => {
         const mdNode = node.childMdx ? node.childMdx : node.childMarkdownRemark
         createPage({
-          path: mdNode.fields.slug,
+          path: `${mdNode.fields.slug}`,
           component: blogPostTemplate,
           context: {
             id: node.id,
