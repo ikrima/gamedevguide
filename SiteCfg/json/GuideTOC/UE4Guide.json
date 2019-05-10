@@ -3,10 +3,12 @@
   "childTOCs": [
     {
       "slugPart": "environment-setup",
+      "sortIndex": 2,
       "childTOCs": []
     },
     {
           "slugPart": "build-guide",
+          "sortIndex": 2,
           "childTOCs": []
     },
     {
@@ -15,6 +17,7 @@
       "childTOCs": [
         {
           "slugPart": "build-guide",
+          "sortIndex": 1,
           "childTOCs": [
             {
               "slugPart": "plugins-modules",
@@ -26,6 +29,32 @@
             },
             {
               "slugPart": "utilities",
+              "sortIndex": 4,
+              "childTOCs": []
+            },
+            {
+              "slugPart": "visual-studio-tips-for-ue4",
+              "childTOCs": []
+            }
+          ]
+        },
+        {
+          "slugPart": "application-os-generic-platform",
+          "childTOCs": []
+        },
+        {
+          "slugPart": "engine-programming",
+          "childTOCs": [
+            {
+              "slugPart": "memory",
+              "childTOCs": []
+            },
+            {
+              "slugPart": "uht",
+              "childTOCs": []
+            },
+            {
+              "slugPart": "uobject-ustruct-serialization",
               "childTOCs": []
             }
           ]
@@ -36,6 +65,63 @@
         },
         {
           "slugPart": "packaging-cooking",
+          "sortIndex": 6,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "physics",
+          "sortIndex": 8,
+          "childTOCs": [
+            {
+              "slugPart": "gameplay-framework",
+              "sortIndex": 2,
+              "childTOCs": []
+            },
+            {
+              "slugPart": "gameplay-ability-system",
+              "sortIndex": 4,
+              "childTOCs": []
+            },
+            {
+              "slugPart": "useful-console-commands",
+              "sortIndex": 5,
+              "childTOCs": []
+            }
+          ]
+        },
+        {
+          "slugPart": "general-debugging",
+          "childTOCs": []
+        },
+      {
+        "slugPart": "graphics-development",
+        "childTOCs": [
+          {
+            "slugPart": "custom-passes-extensions",
+            "childTOCs": []
+          },
+          {
+            "slugPart": "how-to",
+            "childTOCs": []
+          },
+          {
+            "slugPart": "lightmass-lightmapping",
+            "childTOCs": []
+          },
+          {
+            "slugPart": "render-architecture",
+            "childTOCs": []
+          },
+          {
+            "slugPart": "shader-development",
+            "childTOCs": []
+          }
+          
+  
+        ]
+      },
+        {
+          "slugPart": "unfinished",
           "childTOCs": []
         }
       ]
