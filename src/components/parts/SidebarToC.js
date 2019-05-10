@@ -197,7 +197,7 @@ export default function SidebarToC() {
     >
       {/* {" "} */}
       {/* <div className="py-3" /> */}
-      {isInBrowser() ? createTOCNodes(guideTocMV) : <div/> }
+      {isInBrowser() ? createTOCNodes(guideTocMV) : <div />}
     </AntdMenu>
   );
 

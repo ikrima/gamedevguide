@@ -8,6 +8,10 @@
     "link": "/ue4guide"
   },
   {
+    "name": "Math",
+    "link": "/math"
+  },
+  {
     "name": "Graphics",
     "link": "/graphics"
   },

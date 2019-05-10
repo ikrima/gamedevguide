@@ -9,8 +9,8 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "develop": "gatsby develop",
-    "dev": "gatsby clean && gatsby develop",
+    "dev": "gatsby develop",
+    "develop": "gatsby clean && gatsby develop",
     "serve": "gatsby serve",
     "lint": "eslint . --ext .js,.jsx --ignore-path .eslintignore",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .eslintignore",
