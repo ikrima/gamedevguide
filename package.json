@@ -16,6 +16,7 @@
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .eslintignore",
     "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
     "format:js": "prettier --write \"**/*.js\"",
+    "format:mdwip": "prettier --parser markdown --write \"contents/guides/ue4guide/wip/**/*.md\"",
     "format:mdx": "prettier --parser mdx --write \"contents/**/*.mdx\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
