@@ -21,7 +21,7 @@ function reducer(state, action) {
   }
 }
 
-export const SearchContext = createContext();
+export const SearchContext = createContext({});
 export default function Wrapper({ children }) {
   const {
     siteSearchIndex: { index },

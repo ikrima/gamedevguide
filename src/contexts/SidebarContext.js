@@ -1,7 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 
 function reducer(state, action) {
-  // const start = (typeof window !== 'undefined' && window.location.pathname.slice('/')[1]) || '/'
   switch (action.type) {
     case 'toggleSidebar':
       return { ...state, sidebar: !state.sidebar };
@@ -20,7 +19,7 @@ function reducer(state, action) {
   }
 }
 
-export const Context = createContext();
+export const Context = createContext({});
 export default function Wrapper({ children }) {
   const [state, dispatch] = useReducer(reducer, {
     sidebar: true,

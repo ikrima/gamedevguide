@@ -200,46 +200,46 @@ export default function SidebarToC() {
   );
 
   // const items = allGuideTOCs
-  // const isBrowser = typeof window !== "undefined"
+  // const isBrowser = typeof window !== 'undefined';
   // function createToC(itms) {
   //   const createItem = ({ prettyTitle, slugPart }) => (
   //     <Menu.Item
   //       key={slugPart}
-  //       className={isBrowser && window.location.pathname === slugPart && "ant-menu-item-selected"}
+  //       className={isBrowser && window.location.pathname === slugPart && 'ant-menu-item-selected'}
   //     >
-  //       <Link to={`${slugPart}`} onClick={() => dispatch({ type: "closeSD" })}>
+  //       <Link to={`${slugPart}`} onClick={() => dispatch({ type: 'closeSD' })}>
   //         <span className="nav-text"> {prettyTitle}</span>
   //       </Link>
   //     </Menu.Item>
-  //   )
+  //   );
   //   return itms.map(item => {
   //     if (!item.items) {
-  //       return createItem(item)
+  //       return createItem(item);
   //     }
   //     return (
   //       <SubMenu key={item.prettyTitle} title={item.prettyTitle}>
   //         {createToC(item.items)}
   //       </SubMenu>
-  //     )
-  //   })
+  //     );
+  //   });
   // }
   // return (
   //   <Menu
   //     mode="inline"
-  //     style={{ minHeight: "100vh" }}
+  //     style={{ minHeight: '100vh' }}
   //     onOpenChange={keys => {
   //       if (openKeys.includes(keys[0])) {
-  //         dispatch({ type: "openKeys", payload: null })
+  //         dispatch({ type: 'openKeys', payload: [] });
   //       } else {
-  //         dispatch({ type: "openKeys", payload: keys[0] })
+  //         dispatch({ type: 'openKeys', payload: [keys[0]] });
   //       }
   //     }}
-  //     openKeys={openKeys}
+  //     defaultOpenKeys={openKeys}
   //     theme="light"
   //   >
-  //     {" "}
+  //     {' '}
   //     <div className="py-3" />
   //     {createToC(items)}
   //   </Menu>
-  // )
+  // );
 }

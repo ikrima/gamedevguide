@@ -199,8 +199,7 @@ class SidebarContents extends Component {
           const selectedKeys = [safeGetRelWindowPath()];
           let bDisplaySidebar = !!(sidebarRoot && sidebarRoot.length > 1);
           const sidebarRootTocMV = bDisplaySidebar
-            ? _.find(
-                this.createTOCModelView(mdNodes).childTOCs,
+            ? this.createTOCModelView(mdNodes).childTOCs.find(
                 o => o.slugPart.toLowerCase() === sidebarRoot.slice(1).toLowerCase()
               )
             : null;

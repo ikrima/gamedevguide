@@ -67,11 +67,4 @@ RootLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-// const mapDispatchToProps = {
-//  // setPostPageOn,
-//  // setPostPageOff,
-//  onSetSidebarDocked
-// }
-
-// export default connect(()=>({}), mapDispatchToProps) (RootLayout)
 export default RootLayout;

@@ -1,5 +1,4 @@
-/* eslint-disable */
-import React, { Component, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link, navigate } from 'gatsby';
 import {
   List,
@@ -9,15 +8,18 @@ import {
   Input as AntdInput,
   Button as AntdButton,
 } from 'antd';
-import { SearchContext } from '../../contexts/SearchContext';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import styled from 'styled-components';
 import _ from 'lodash';
-
-import PropTypes from 'prop-types';
+import { SearchContext } from '../../contexts/SearchContext';
 import siteCfg from '../../../SiteCfg';
 
 const AntdSearch = AntdInput.Search;
 const AntdOption = AntdAutoComplete.Option;
 const AntdOptGroup = AntdAutoComplete.OptGroup;
+
+// eslint-disable-next-line no-unused-vars
+const SearchInput = styled.input``;
 
 // Search component
 export function SearchUsingAutocomplete() {
@@ -119,8 +121,11 @@ export function SearchUsingPopover() {
   } = useContext(SearchContext);
   const filteredResults = results.slice(0, siteCfg.inlineSearchResultMax);
   return (
-    <div className="d-inline-block">
-      <div className="list-inline-item search-box seach-box-right  d-inline-block">
+    <>
+      <div
+        className="list-inline-item search-box seach-box-right d-none  d-sm-inline-block"
+        style={{ maxWidth: '100px' }}
+      >
         <div className="search-box-inner">
           <div className="search-box-icon">
             <Icon type="search" />
@@ -183,9 +188,9 @@ export function SearchUsingPopover() {
           <span className="input-bar" />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
-// export default SearchUsingPopover
+// export default SearchUsingPopover;
 export default SearchUsingAutocomplete;

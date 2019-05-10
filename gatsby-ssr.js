@@ -1,10 +1,20 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+// 3rd
+// import './src/styles/antd.less'
+import './src/styles/bootstrap/bootstrap.scss';
+// // custom
+import './src/styles/layout.scss';
+import './src/styles/theme.scss';
+import './src/styles/ui.scss';
+import './src/styles/vendors.scss';
+import './src/styles/custom.scss';
 
-// You can delete this file if you're not using it
-// import wrapWithProvider from './gatsby/wrap-with-provider'
+import React from 'react';
+import SidebarContext from './src/contexts/SidebarContext';
+import SearchWrapper from './src/contexts/SearchContext';
 
-// export const wrapRootElement = wrapWithProvider
+const wrapPageElement = ({ element, props }) => (
+  <SearchWrapper {...props}>
+    <SidebarContext {...props}>{element}</SidebarContext>
+  </SearchWrapper>
+);
+export { wrapPageElement };

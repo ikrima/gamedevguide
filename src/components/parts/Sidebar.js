@@ -7,11 +7,6 @@ import SidebarToC from './SidebarToC';
 
 const { Sider } = Layout;
 const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
-  const isBrowser = typeof window !== 'undefined';
-  if (!isBrowser) {
-    return <div />;
-  }
-
   const {
     dispatch,
     state: { drawer, toc, sidebar },
@@ -30,7 +25,9 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
       >
         <Sider trigger={null} width={240} id="app-sidenav" className="app-sidenav">
           <div className="sidenav-content">
-            <SidebarMenu />
+            <Sider trigger={null} width={240} id="app-sidenav" className="app-sidenav">
+              <div className="sidenav-content">{sidebarToC && <SidebarToC slug={slug} />}</div>
+            </Sider>
           </div>
         </Sider>
       </Drawer>
@@ -45,7 +42,7 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
         }}
       >
         <Sider trigger={null} width={240} id="app-sidenav" className="app-sidenav">
-          <div className="sidenav-content">{sidebarToC && <SidebarToC slug={slug} />}</div>
+          <SidebarMenu />
         </Sider>
       </Drawer>
 
