@@ -19,10 +19,6 @@ import {
 const AntdSubMenu = AntdMenu.SubMenu;
 
 export default function SidebarToC() {
-  if (!isInBrowser()) {
-    return;
-  }
-
   const {
     state: { openKeys },
     dispatch,
@@ -201,7 +197,7 @@ export default function SidebarToC() {
     >
       {/* {" "} */}
       {/* <div className="py-3" /> */}
-      {createTOCNodes(guideTocMV)}
+      {isInBrowser() ? createTOCNodes(guideTocMV) : <div/> }
     </AntdMenu>
   );
 
