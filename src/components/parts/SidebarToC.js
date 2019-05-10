@@ -13,11 +13,16 @@ import {
   prettifySlug,
   safeGetRelWindowPath,
   getGuideNameFromWindowPath,
+  isInBrowser,
 } from '../../../gatsby/utils';
 
 const AntdSubMenu = AntdMenu.SubMenu;
 
 export default function SidebarToC() {
+  if (!isInBrowser()) {
+    return;
+  }
+
   const {
     state: { openKeys },
     dispatch,

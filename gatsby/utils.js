@@ -64,6 +64,7 @@ const getGuideNameFromWindowPath = () => {
   const curSlugArray = safeGetRelWindowPathSlugs();
   return isGuideName(_.first(curSlugArray)) ? _.first(curSlugArray) : 'undefined';
 };
+const isInBrowser = () => typeof window !== 'undefined';
 
 exports.separateSlugs = separateSlugs;
 exports.prettifySlug = prettifySlug;
@@ -75,3 +76,4 @@ exports.safeGetRelWindowPath = safeGetRelWindowPath;
 exports.safeGetRelWindowPathSlugs = safeGetRelWindowPathSlugs;
 exports.isGuideName = isGuideName;
 exports.getGuideNameFromWindowPath = getGuideNameFromWindowPath;
+exports.isInBrowser = isInBrowser;
