@@ -1,5 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function SidebarHeader() {
-  return <section className="sidenav-header bg-dark">{<span />}</section>
+  return <section className="sidenav-header bg-dark">{<span />}</section>;
 }

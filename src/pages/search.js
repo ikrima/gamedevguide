@@ -1,19 +1,19 @@
-import React, { useContext } from 'react'
-import { Input, List } from 'antd'
-import { Link } from 'gatsby'
-import MainLayout from '../components/main-layout'
-import { SearchContext } from '../contexts/SearchContext'
+import React, { useContext } from 'react';
+import { Input, List } from 'antd';
+import { Link } from 'gatsby';
+import MainLayout from '../components/main-layout';
+import { SearchContext } from '../contexts/SearchContext';
 
 const SearchPage = ({ location }) => {
-  const isBrowser = typeof window !== 'undefined'
+  const isBrowser = typeof window !== 'undefined';
   if (!isBrowser) {
-    return <div />
+    return <div />;
   }
 
   const {
     state: { results, query },
     dispatch,
-  } = useContext(SearchContext)
+  } = useContext(SearchContext);
 
   return (
     <MainLayout hideSidebar>
@@ -24,7 +24,7 @@ const SearchPage = ({ location }) => {
           dispatch({
             type: 'update',
             payload: e.target.value,
-          })
+          });
         }}
         placeholder="search..."
       />
@@ -41,7 +41,7 @@ const SearchPage = ({ location }) => {
         )}
       />
     </MainLayout>
-  )
-}
+  );
+};
 
-export default SearchPage
+export default SearchPage;

@@ -1,6 +1,6 @@
 /* eslint-disable */
-import React, { Component, useContext } from "react"
-import { Link, navigate } from "gatsby"
+import React, { Component, useContext } from 'react';
+import { Link, navigate } from 'gatsby';
 import {
   List,
   Icon,
@@ -8,24 +8,24 @@ import {
   AutoComplete as AntdAutoComplete,
   Input as AntdInput,
   Button as AntdButton,
-} from "antd"
-import { SearchContext } from "../../contexts/SearchContext"
-import _ from "lodash"
+} from 'antd';
+import { SearchContext } from '../../contexts/SearchContext';
+import _ from 'lodash';
 
-import PropTypes from "prop-types"
-import siteCfg from "../../../SiteCfg"
+import PropTypes from 'prop-types';
+import siteCfg from '../../../SiteCfg';
 
-const AntdSearch = AntdInput.Search
-const AntdOption = AntdAutoComplete.Option
-const AntdOptGroup = AntdAutoComplete.OptGroup
+const AntdSearch = AntdInput.Search;
+const AntdOption = AntdAutoComplete.Option;
+const AntdOptGroup = AntdAutoComplete.OptGroup;
 
 // Search component
 export function SearchUsingAutocomplete() {
   const {
     state: { results, query },
     dispatch,
-  } = useContext(SearchContext)
-  const filteredResults = results.slice(0, siteCfg.inlineSearchResultMax)
+  } = useContext(SearchContext);
+  const filteredResults = results.slice(0, siteCfg.inlineSearchResultMax);
 
   // Create an elastic lunr index and hydrate with graphql query searchresults
   // const getOrCreateIndex = () => {
@@ -34,7 +34,7 @@ export function SearchUsingAutocomplete() {
   // }
 
   const handleInlineSearch = searchQuery => {
-    dispatch({ type: "update", payload: searchQuery })
+    dispatch({ type: 'update', payload: searchQuery });
 
     // const query = searchQuery
     // this.index = this.getOrCreateIndex()
@@ -47,38 +47,41 @@ export function SearchUsingAutocomplete() {
     //     // Map over each ID and return the full document
     //     .map(({ ref }) => this.index.documentStore.getDoc(ref)),
     // })
-  }
+  };
 
   const onSelectSearchResult = searchResultPath => {
-    dispatch({ type: "update", payload: "" })
-    navigate(`/${searchResultPath}`)
-  }
+    dispatch({ type: 'update', payload: '' });
+    navigate(`/${searchResultPath}`);
+  };
 
   const handleFullSearch = () => {
-    navigate("/searchresults")
+    navigate('/searchresults');
 
     // const { filteredResults } = this.state
     // navigate('/searchresults', {
     //   state: { search: filteredResults },
     // })
-  }
+  };
 
   const renderInlineResultsDataSource = searchResults => {
-    const retValsByGuide = _.sortBy(_.toPairs(_.groupBy(searchResults, "guideName")), kvp => kvp[0])
+    const retValsByGuide = _.sortBy(
+      _.toPairs(_.groupBy(searchResults, 'guideName')),
+      kvp => kvp[0]
+    );
     const retVals = _.map(retValsByGuide, kvp => {
-      const grpKey = kvp[0]
-      const grpValue = kvp[1]
+      const grpKey = kvp[0];
+      const grpValue = kvp[1];
       const optionChildren = grpValue.map(searchResult => (
         <AntdOption key={searchResult.slug} value={searchResult.slug}>
           {searchResult.title}
         </AntdOption>
-      ))
+      ));
       return (
         <AntdOptGroup key={grpKey} label={grpKey}>
           {optionChildren}
         </AntdOptGroup>
-      )
-    })
+      );
+    });
 
     if (searchResults.length >= siteCfg.inlineSearchResultMax) {
       retVals.push(
@@ -87,10 +90,10 @@ export function SearchUsingAutocomplete() {
             <AntdButton type="primary">Show More Results</AntdButton>
           </Link>
         </AntdOption>
-      )
+      );
     }
-    return retVals
-  }
+    return retVals;
+  };
 
   return (
     <AntdAutoComplete
@@ -106,15 +109,15 @@ export function SearchUsingAutocomplete() {
         enterButton
       />
     </AntdAutoComplete>
-  )
+  );
 }
 
 export function SearchUsingPopover() {
   const {
     state: { results, query },
     dispatch,
-  } = useContext(SearchContext)
-  const filteredResults = results.slice(0, siteCfg.inlineSearchResultMax)
+  } = useContext(SearchContext);
+  const filteredResults = results.slice(0, siteCfg.inlineSearchResultMax);
   return (
     <div className="d-inline-block">
       <div className="list-inline-item search-box seach-box-right  d-inline-block">
@@ -129,7 +132,7 @@ export function SearchUsingPopover() {
             // style={{ width: '250px' }}
             content={
               <List
-                style={{ width: "250px" }}
+                style={{ width: '250px' }}
                 footer={
                   // filteredResults.length > 5 && (
                   <Link to="/search" className="no-link-style">
@@ -141,16 +144,16 @@ export function SearchUsingPopover() {
                 dataSource={filteredResults}
                 renderItem={item => (
                   <List.Item>
-                    <div className="list-style-v1" style={{ width: "300px" }}>
+                    <div className="list-style-v1" style={{ width: '300px' }}>
                       <div className="list-item">
                         <div className="list-item__body">
                           <div className="list-item__title">
                             <Link
                               onClick={() => {
                                 dispatch({
-                                  type: "update",
-                                  payload: "",
-                                })
+                                  type: 'update',
+                                  payload: '',
+                                });
                               }}
                               to={`/${item.slug}`}
                             >
@@ -170,9 +173,9 @@ export function SearchUsingPopover() {
               value={query}
               onChange={e => {
                 dispatch({
-                  type: "update",
+                  type: 'update',
                   payload: e.target.value,
-                })
+                });
               }}
               placeholder="search..."
             />
@@ -181,8 +184,8 @@ export function SearchUsingPopover() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 // export default SearchUsingPopover
-export default SearchUsingAutocomplete
+export default SearchUsingAutocomplete;

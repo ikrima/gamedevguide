@@ -1,5 +1,5 @@
-import React from 'react'
-import { Icon } from 'antd'
+import React from 'react';
+import { Icon } from 'antd';
 
 export default function SidebarFooter() {
   return (
@@ -11,5 +11,5 @@ export default function SidebarFooter() {
         </span>
       </a>
     </div>
-  )
+  );
 }

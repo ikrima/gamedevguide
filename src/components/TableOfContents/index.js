@@ -1,3 +1,3 @@
-import TableOfContents from './TableOfContents'
+import TableOfContents from './TableOfContents';
 
-export default TableOfContents
+export default TableOfContents;

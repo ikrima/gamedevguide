@@ -67,12 +67,9 @@
     ],
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "prettier/prettier": [
-      "error",
+      "error", {},
       {
-        "trailingComma": "es5",
-        "semi": false,
-        "singleQuote": true,
-        "printWidth": 100
+        "usePrettierrc": true
       }
     ],
     "import/prefer-default-export": 0,

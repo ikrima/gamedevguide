@@ -1,8 +1,8 @@
-const path = require(`path`)
-const _ = require('lodash')
-const siteCfg = require('./SiteCfg')
+const path = require(`path`);
+const _ = require('lodash');
+const siteCfg = require('./SiteCfg');
 
-const pathPrefix = siteCfg.pathPrefix === '/' ? '' : siteCfg.pathPrefix
+const pathPrefix = siteCfg.pathPrefix === '/' ? '' : siteCfg.pathPrefix;
 
 const gbRemarkPluginsList = [
   {
@@ -48,7 +48,7 @@ const gbRemarkPluginsList = [
       maxWidth: 800,
     },
   },
-]
+];
 
 module.exports = {
   pathPrefix: siteCfg.pathPrefix,
@@ -271,4 +271,4 @@ module.exports = {
     //   },
     // },
   ],
-}
+};

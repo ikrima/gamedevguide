@@ -6,7 +6,7 @@ import {
   ON_SIDEBAR_CONTENT_EXPAND,
   // SET_POST_PAGE_ON,
   // SET_POST_PAGE_OFF
-} from '../actions/actionTypes'
+} from '../actions/actionTypes';
 
 const initialState = {
   header: { height: 0 },
@@ -19,7 +19,7 @@ const initialState = {
     autoExpandParent: true,
   },
   // content: { onPostPage: false },
-}
+};
 
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -31,7 +31,7 @@ export default function(state = initialState, action) {
           ...state.header,
           height: action.payload.headerHeight,
         },
-      }
+      };
     }
     // anchor
     case SET_ANCHOR_OPEN: {
@@ -41,7 +41,7 @@ export default function(state = initialState, action) {
           ...state.anchor,
           open: action.payload.anchorOpen,
         },
-      }
+      };
     }
     // sidebar
     case SET_SIDEBAR_OPEN: {
@@ -51,7 +51,7 @@ export default function(state = initialState, action) {
           ...state.sidebar,
           open: action.payload.sidebarOpen,
         },
-      }
+      };
     }
     case SET_SIDEBAR_DOCKED: {
       return {
@@ -61,7 +61,7 @@ export default function(state = initialState, action) {
           docked: action.payload.sidebarDocked,
           open: action.payload.sidebarOpen,
         },
-      }
+      };
     }
     case ON_SIDEBAR_CONTENT_EXPAND: {
       return {
@@ -71,7 +71,7 @@ export default function(state = initialState, action) {
           expandedKey: action.payload.expandedKey,
           autoExpandParent: action.payload.autoExpandParent,
         },
-      }
+      };
     }
     // content
     // case SET_POST_PAGE_ON: {
@@ -102,6 +102,6 @@ export default function(state = initialState, action) {
     //   }
     // }
     default:
-      return state
+      return state;
   }
 }

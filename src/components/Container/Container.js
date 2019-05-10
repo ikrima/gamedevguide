@@ -1,6 +1,6 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { getHeaderHeightState } from '../../store/selectors'
+import React from 'react';
+import { connect } from 'react-redux';
+import { getHeaderHeightState } from '../../store/selectors';
 
 const Container = ({ sidebarDocked, headerHeight, onPostPage, children }) => (
   <div
@@ -24,10 +24,10 @@ const Container = ({ sidebarDocked, headerHeight, onPostPage, children }) => (
       {children}
     </div>
   </div>
-)
+);
 
 const mapStateToProps = state => ({
   headerHeight: getHeaderHeightState(state),
-})
+});
 
-export default connect(mapStateToProps)(Container)
+export default connect(mapStateToProps)(Container);

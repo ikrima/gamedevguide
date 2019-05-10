@@ -1,102 +1,102 @@
 /* eslint-disable prettier/prettier */
-import React, { Component } from 'react'
-import { graphql, StaticQuery, Link } from 'gatsby'
+import React, { Component } from 'react';
+import { graphql, StaticQuery, Link } from 'gatsby';
 // import { connect } from 'react-redux'
-import { Layout as AntdLayout, Menu as AntdMenu } from 'antd'
+import { Layout as AntdLayout, Menu as AntdMenu } from 'antd';
 // import { getSidebarState } from '../../store/selectors'
 // import { onSetSidebarOpen } from '../../actions/layout'
-import _ from 'lodash'
-import siteCfg from '../../../SiteCfg'
-import { allGuideTOCs } from '../../../SiteCfg/json/GuideTOC'
+import _ from 'lodash';
+import siteCfg from '../../../SiteCfg';
+import { allGuideTOCs } from '../../../SiteCfg/json/GuideTOC';
 
-import { separateSlugs, prettifySlug, safeGetRelWindowPath } from '../../../gatsby/utils'
+import { separateSlugs, prettifySlug, safeGetRelWindowPath } from '../../../gatsby/utils';
 
-const { Sider: AntdSider } = AntdLayout
-const AntdSubMenu = AntdMenu.SubMenu
+const { Sider: AntdSider } = AntdLayout;
+const AntdSubMenu = AntdMenu.SubMenu;
 
 class SidebarContents extends Component {
   state = {
     collapsed: false,
-  }
+  };
 
   onCollapse = (collapsed /* , type */) => {
-    this.setState({ collapsed })
-  }
+    this.setState({ collapsed });
+  };
 
   // onBreakpoint = broken => {
   //   console.log(broken)
   // }
 
   filterHeadingsTocMV = inTOCModelView => {
-    const retTree = {}
+    const retTree = {};
     const filterHeadings = (curRetRoot, tocTree) => {
       // eslint-disable-next-line no-param-reassign
-      curRetRoot.slugPart = tocTree.slugPart
+      curRetRoot.slugPart = tocTree.slugPart;
       // eslint-disable-next-line no-param-reassign
-      curRetRoot.slugPrefix = tocTree.slugPrefix
+      curRetRoot.slugPrefix = tocTree.slugPrefix;
 
       if (tocTree.childTOCs) {
         // eslint-disable-next-line no-param-reassign
-        curRetRoot.childTOCs = tocTree.childTOCs.map(childTocTree => filterHeadings(childTocTree))
+        curRetRoot.childTOCs = tocTree.childTOCs.map(childTocTree => filterHeadings(childTocTree));
       }
-      return curRetRoot
-    }
+      return curRetRoot;
+    };
 
-    filterHeadings(retTree, inTOCModelView)
-    return retTree
-  }
+    filterHeadings(retTree, inTOCModelView);
+    return retTree;
+  };
 
   getHeadingSlugPrefixes = (inTOCModelView, maxDepth = 2) => {
     const _getSlugPrefixes = (curDepth, tocNode) =>
       tocNode.childTOCs && curDepth < maxDepth
         ? [tocNode.slugPrefix].concat(
-          _.flatMap(tocNode.childTOCs, o => _getSlugPrefixes(curDepth + 1, o))
-        )
-        : [tocNode.slugPrefix]
-    return _getSlugPrefixes(0, inTOCModelView)
-  }
+            _.flatMap(tocNode.childTOCs, o => _getSlugPrefixes(curDepth + 1, o))
+          )
+        : [tocNode.slugPrefix];
+    return _getSlugPrefixes(0, inTOCModelView);
+  };
 
   createTOCModelView = inMarkdownNodes => {
-    const tocModelView = _.cloneDeep(allGuideTOCs)
+    const tocModelView = _.cloneDeep(allGuideTOCs);
 
     // Add Model View bits
     {
       inMarkdownNodes.forEach(node => {
-        const pathSlugParts = separateSlugs(node.fields.slug)
-        const parentSlugParts = _.tail(pathSlugParts)
-        const curTitle = node.fields.sideMenuHeading
+        const pathSlugParts = separateSlugs(node.fields.slug);
+        const parentSlugParts = _.tail(pathSlugParts);
+        const curTitle = node.fields.sideMenuHeading;
 
         const leafTOCNode = parentSlugParts.reduce((leafmostTOC, nextSlugPart) => {
-          const foundChildTOC = _.find(leafmostTOC.childTOCs, o => o.slugPart === nextSlugPart)
-          return foundChildTOC || leafmostTOC
-        }, tocModelView)
+          const foundChildTOC = _.find(leafmostTOC.childTOCs, o => o.slugPart === nextSlugPart);
+          return foundChildTOC || leafmostTOC;
+        }, tocModelView);
 
         // eslint-disable-next-line no-prototype-builtins
         if (!leafTOCNode.hasOwnProperty('childPages')) {
-          leafTOCNode.childPages = []
+          leafTOCNode.childPages = [];
         }
 
         leafTOCNode.childPages.push({
           sortIndex:
-            (node.frontmatter.sortIndex === null || node.frontmatter.sortIndex === undefined)
+            node.frontmatter.sortIndex === null || node.frontmatter.sortIndex === undefined
               ? siteCfg.defaultSortIndex
               : node.frontmatter.sortIndex,
           slug: node.fields.slug,
           nodeId: node.id,
           title: curTitle,
           parents: parentSlugParts,
-        })
-        return null
-      })
+        });
+        return null;
+      });
 
       const injectFullSlugPath = (TocSubTree, SlugPrefix) => {
         // eslint-disable-next-line no-param-reassign
-        TocSubTree.slugPrefix = `${SlugPrefix}/${TocSubTree.slugPart}`
+        TocSubTree.slugPrefix = `${SlugPrefix}/${TocSubTree.slugPart}`;
         _.forEach(TocSubTree.childTOCs, childTOCTree => {
-          injectFullSlugPath(childTOCTree, TocSubTree.slugPrefix)
-        })
-      }
-      injectFullSlugPath(tocModelView, '')
+          injectFullSlugPath(childTOCTree, TocSubTree.slugPrefix);
+        });
+      };
+      injectFullSlugPath(tocModelView, '');
     }
 
     // Sort
@@ -104,21 +104,21 @@ class SidebarContents extends Component {
       function sortTOCSubTree(tocNode) {
         if (!tocNode.childPages) {
           // eslint-disable-next-line no-param-reassign
-          tocNode.childPages = []
+          tocNode.childPages = [];
         }
         // eslint-disable-next-line no-param-reassign
-        tocNode.childPages = _.sortBy(tocNode.childPages, ['sortIndex', 'slug'])
+        tocNode.childPages = _.sortBy(tocNode.childPages, ['sortIndex', 'slug']);
 
         if (tocNode.childTOCs) {
-          tocNode.childTOCs.map(sortTOCSubTree)
+          tocNode.childTOCs.map(sortTOCSubTree);
         }
       }
 
-      sortTOCSubTree(tocModelView)
+      sortTOCSubTree(tocModelView);
     }
 
-    return tocModelView
-  }
+    return tocModelView;
+  };
 
   render() {
     return (
@@ -163,26 +163,26 @@ class SidebarContents extends Component {
           }
         `}
         render={({ guides }) => {
-          const { sidebarRoot } = this.props
+          const { sidebarRoot } = this.props;
           const mdNodes = guides.edges
             .map(({ node }) => (node.childMdx ? node.childMdx : node.childMarkdownRemark))
-            .filter(node => node.fields.slug.startsWith(sidebarRoot))
+            .filter(node => node.fields.slug.startsWith(sidebarRoot));
 
           function createTOCNodes(tocTree) {
             const childSubTreeNodes = tocTree.childTOCs
               ? tocTree.childTOCs.map(tocSubTree => (
-                <AntdSubMenu
-                  key={tocSubTree.slugPrefix}
-                  title={
-                    <span style={{ fontWeight: 900 }}>
-                      {tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}
-                    </span>
-                  }
-                >
-                  {createTOCNodes(tocSubTree)}
-                </AntdSubMenu>
-              ))
-              : []
+                  <AntdSubMenu
+                    key={tocSubTree.slugPrefix}
+                    title={
+                      <span style={{ fontWeight: 900 }}>
+                        {tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}
+                      </span>
+                    }
+                  >
+                    {createTOCNodes(tocSubTree)}
+                  </AntdSubMenu>
+                ))
+              : [];
 
             const leafNodes = _.map(tocTree.childPages, childPage => (
               <AntdMenu.Item key={childPage.slug}>
@@ -190,23 +190,24 @@ class SidebarContents extends Component {
                   <div>{childPage.title}</div>
                 </Link>
               </AntdMenu.Item>
-            ))
-            const combinedNodes = _.concat(childSubTreeNodes, leafNodes)
+            ));
+            const combinedNodes = _.concat(childSubTreeNodes, leafNodes);
 
-            return combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, ', ', curr]) : ''
+            return combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, ', ', curr]) : '';
           }
 
-          const selectedKeys = [safeGetRelWindowPath()]
-          let bDisplaySidebar = !!(sidebarRoot && sidebarRoot.length > 1)
+          const selectedKeys = [safeGetRelWindowPath()];
+          let bDisplaySidebar = !!(sidebarRoot && sidebarRoot.length > 1);
           const sidebarRootTocMV = bDisplaySidebar
-            ? _.find(this.createTOCModelView(mdNodes).childTOCs,
-              o => o.slugPart.toLowerCase() === sidebarRoot.slice(1).toLowerCase()
-            )
-            : null
-          bDisplaySidebar = !!sidebarRootTocMV
+            ? _.find(
+                this.createTOCModelView(mdNodes).childTOCs,
+                o => o.slugPart.toLowerCase() === sidebarRoot.slice(1).toLowerCase()
+              )
+            : null;
+          bDisplaySidebar = !!sidebarRootTocMV;
           const defaultOpenKeys = bDisplaySidebar
             ? this.getHeadingSlugPrefixes(sidebarRootTocMV)
-            : []
+            : [];
 
           if (bDisplaySidebar) {
             return (
@@ -233,13 +234,13 @@ class SidebarContents extends Component {
                   {createTOCNodes(sidebarRootTocMV)}
                 </AntdMenu>
               </AntdSider>
-            )
+            );
           }
 
-          return <div />
+          return <div />;
         }}
       />
-    )
+    );
   }
 }
 
@@ -288,4 +289,4 @@ class SidebarContents extends Component {
 //
 // export default connect(mapStateToProps2)(ResponsiveSidebar)
 
-export default SidebarContents
+export default SidebarContents;

@@ -1,5 +1,5 @@
-import Typography from 'typography'
-import stAnnesTheme from 'typography-theme-st-annes'
+import Typography from 'typography';
+import stAnnesTheme from 'typography-theme-st-annes';
 // const CodePlugin = require('typography-plugin-code').default
 
 // stAnnesTheme.plugins = [new CodePlugin()]
@@ -40,11 +40,11 @@ import stAnnesTheme from 'typography-theme-st-annes'
 //  }),
 // }
 
-const typography = new Typography(stAnnesTheme)
+const typography = new Typography(stAnnesTheme);
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {
-  typography.injectStyles()
+  typography.injectStyles();
 }
 
-export default typography
+export default typography;

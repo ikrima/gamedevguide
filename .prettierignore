@@ -32,3 +32,5 @@ coverage
 
 # forestry files
 .forestry/**/*
+
+themeforest/**/*

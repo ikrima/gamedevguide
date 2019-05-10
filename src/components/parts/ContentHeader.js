@@ -1,21 +1,21 @@
-import React, { useContext } from 'react'
-import { Layout, Icon } from 'antd'
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import { Context } from '../../contexts/SidebarContext'
-import Search from './Search'
+import React, { useContext } from 'react';
+import { Layout, Icon } from 'antd';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import { Context } from '../../contexts/SidebarContext';
+import Search from './Search';
 
-const { Header } = Layout
+const { Header } = Layout;
 
 export default function ContentHeader({ showSidebarBtn, showToC }) {
-  const isBrowser = typeof window !== 'undefined'
+  const isBrowser = typeof window !== 'undefined';
   if (!isBrowser) {
-    return <div />
+    return <div />;
   }
 
   const {
     state: { sidebar, toc },
     dispatch,
-  } = useContext(Context)
+  } = useContext(Context);
 
   const {
     menu: { items },
@@ -34,15 +34,15 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
         searchIndex: index
       }
     }
-  `)
-  const links = []
+  `);
+  const links = [];
   items.forEach(({ item }) => {
     links.unshift(
       <Link key={item.link} className="list-inline-item d-none d-md-inline-block" to={item.link}>
         <span className="nav-text"> {item.name}</span>
       </Link>
-    )
-  })
+    );
+  });
   return (
     <Header className="app-header bg-dark" style={{ padding: '0 20px' }}>
       <div className="app-header-inner  bg-dark">
@@ -56,7 +56,7 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
                 <Icon
                   type="menu-fold"
                   onClick={() => {
-                    dispatch({ type: 'toggleSidebar' })
+                    dispatch({ type: 'toggleSidebar' });
                   }}
                 />
               )}
@@ -64,7 +64,7 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
                 <Icon
                   type="menu-unfold"
                   onClick={() => {
-                    dispatch({ type: 'toggleSidebar' })
+                    dispatch({ type: 'toggleSidebar' });
                   }}
                 />
               )}
@@ -77,7 +77,7 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
                 <Icon
                   type="menu-fold"
                   onClick={() => {
-                    dispatch({ type: 'toggleDrawer' })
+                    dispatch({ type: 'toggleDrawer' });
                   }}
                 />
               )}
@@ -85,7 +85,7 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
                 <Icon
                   type="menu-unfold"
                   onClick={() => {
-                    dispatch({ type: 'toggleDrawer' })
+                    dispatch({ type: 'toggleDrawer' });
                   }}
                 />
               )}
@@ -116,7 +116,7 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
                 <Icon
                   type="menu-unfold"
                   onClick={() => {
-                    dispatch({ type: 'toggleToc' })
+                    dispatch({ type: 'toggleToc' });
                   }}
                 />
               )}
@@ -125,5 +125,5 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
         </div>
       </div>
     </Header>
-  )
+  );
 }

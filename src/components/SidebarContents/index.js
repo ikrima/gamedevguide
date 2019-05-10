@@ -1,3 +1,3 @@
-import SidebarContents from './SidebarContents'
+import SidebarContents from './SidebarContents';
 
-export default SidebarContents
+export default SidebarContents;

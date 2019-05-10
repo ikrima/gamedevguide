@@ -1,10 +1,10 @@
-import React from 'react'
-import { Layout } from 'antd'
-import Sidebar from './parts/Sidebar'
-import ContentHeader from './parts/ContentHeader'
-import TableOfContent from './TableOfContents'
+import React from 'react';
+import { Layout } from 'antd';
+import Sidebar from './parts/Sidebar';
+import ContentHeader from './parts/ContentHeader';
+import TableOfContent from './TableOfContents';
 
-const { Content } = Layout
+const { Content } = Layout;
 const MainLayout = ({ children, showSidebar, showToC, slug, sidebarToC }) => (
   <div id="app">
     <div id="app-layout-container">
@@ -31,6 +31,6 @@ const MainLayout = ({ children, showSidebar, showToC, slug, sidebarToC }) => (
       </Layout>
     </div>
   </div>
-)
+);
 
-export default MainLayout
+export default MainLayout;

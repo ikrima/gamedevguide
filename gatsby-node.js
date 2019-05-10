@@ -1,7 +1,7 @@
-const path = require(`path`)
+const path = require(`path`);
 
-exports.createPages = require('./gatsby/createPages')
-exports.onCreateNode = require('./gatsby/onCreateNode')
+exports.createPages = require('./gatsby/createPages');
+exports.onCreateNode = require('./gatsby/onCreateNode');
 // exports.onCreateBabelConfig = ({ actions }) => {
 //   actions.setBabelPlugin({
 //     name: "babel-plugin-import",
@@ -17,5 +17,5 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },
-  })
-}
+  });
+};

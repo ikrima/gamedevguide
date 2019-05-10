@@ -51,7 +51,7 @@ const SiteCfg = {
     guideContentMaxWidth: 1140,
     breakpoint: 'lg',
   },
-}
+};
 
 SiteCfg.theme.modifyVars = {
   // "font-family":            "Arial",
@@ -69,6 +69,6 @@ SiteCfg.theme.modifyVars = {
   // "border-radius-base":     "4px",                                // major border radius
   // "border-color-base":      "#d9d9d9",                            // major border color
   // "box-shadow-base":        "0 2px 8px rgba(0, 0, 0, .15)",       // major shadow for layers
-}
+};
 
-module.exports = SiteCfg
+module.exports = SiteCfg;

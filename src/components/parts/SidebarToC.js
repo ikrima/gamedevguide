@@ -1,26 +1,26 @@
 /* eslint-disable */
 
-import React, { useContext } from "react"
-import { Menu as AntdMenu } from "antd"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import { Context as SidebarContext } from "../../contexts/SidebarContext"
-import siteCfg from "../../../SiteCfg"
-import { allGuideTOCs } from "../../../SiteCfg/json/GuideTOC"
+import React, { useContext } from 'react';
+import { Menu as AntdMenu } from 'antd';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import { Context as SidebarContext } from '../../contexts/SidebarContext';
+import siteCfg from '../../../SiteCfg';
+import { allGuideTOCs } from '../../../SiteCfg/json/GuideTOC';
 
 import {
   separateSlugs,
   prettifySlug,
   safeGetRelWindowPath,
   getGuideNameFromWindowPath,
-} from "../../../gatsby/utils"
+} from '../../../gatsby/utils';
 
-const AntdSubMenu = AntdMenu.SubMenu
+const AntdSubMenu = AntdMenu.SubMenu;
 
 export default function SidebarToC() {
   const {
     state: { openKeys },
     dispatch,
-  } = useContext(SidebarContext)
+  } = useContext(SidebarContext);
   const { guides } = useStaticQuery(graphql`
     query sidebarToCQuery {
       guides: allFile(
@@ -59,7 +59,7 @@ export default function SidebarToC() {
         }
       }
     }
-  `)
+  `);
 
   const getHeadingSlugPrefixes = (inTOCModelView, maxDepth = 2) => {
     const _getSlugPrefixes = (curDepth, tocNode) =>
@@ -67,28 +67,28 @@ export default function SidebarToC() {
         ? [tocNode.slugPrefix].concat(
             _.flatMap(tocNode.childTOCs, o => _getSlugPrefixes(curDepth + 1, o))
           )
-        : [tocNode.slugPrefix]
-    return _getSlugPrefixes(0, inTOCModelView)
-  }
+        : [tocNode.slugPrefix];
+    return _getSlugPrefixes(0, inTOCModelView);
+  };
 
   const createTOCModelView = inMarkdownNodes => {
-    const tocModelView = _.cloneDeep(allGuideTOCs)
+    const tocModelView = _.cloneDeep(allGuideTOCs);
 
     // Add Model View bits
     {
       inMarkdownNodes.forEach(node => {
-        const pathSlugParts = separateSlugs(node.fields.slug)
-        const parentSlugParts = _.tail(pathSlugParts)
-        const curTitle = node.fields.sideMenuHeading
+        const pathSlugParts = separateSlugs(node.fields.slug);
+        const parentSlugParts = _.tail(pathSlugParts);
+        const curTitle = node.fields.sideMenuHeading;
 
         const leafTOCNode = parentSlugParts.reduce((leafmostTOC, nextSlugPart) => {
-          const foundChildTOC = _.find(leafmostTOC.childTOCs, o => o.slugPart === nextSlugPart)
-          return foundChildTOC || leafmostTOC
-        }, tocModelView)
+          const foundChildTOC = _.find(leafmostTOC.childTOCs, o => o.slugPart === nextSlugPart);
+          return foundChildTOC || leafmostTOC;
+        }, tocModelView);
 
         // eslint-disable-next-line no-prototype-builtins
-        if (!leafTOCNode.hasOwnProperty("childPages")) {
-          leafTOCNode.childPages = []
+        if (!leafTOCNode.hasOwnProperty('childPages')) {
+          leafTOCNode.childPages = [];
         }
 
         leafTOCNode.childPages.push({
@@ -100,18 +100,18 @@ export default function SidebarToC() {
           nodeId: node.id,
           title: curTitle,
           parents: parentSlugParts,
-        })
-        return null
-      })
+        });
+        return null;
+      });
 
       const injectFullSlugPath = (TocSubTree, SlugPrefix) => {
         // eslint-disable-next-line no-param-reassign
-        TocSubTree.slugPrefix = `${SlugPrefix}/${TocSubTree.slugPart}`
+        TocSubTree.slugPrefix = `${SlugPrefix}/${TocSubTree.slugPart}`;
         _.forEach(TocSubTree.childTOCs, childTOCTree => {
-          injectFullSlugPath(childTOCTree, TocSubTree.slugPrefix)
-        })
-      }
-      injectFullSlugPath(tocModelView, "")
+          injectFullSlugPath(childTOCTree, TocSubTree.slugPrefix);
+        });
+      };
+      injectFullSlugPath(tocModelView, '');
     }
 
     // Sort
@@ -119,27 +119,27 @@ export default function SidebarToC() {
       function sortTOCSubTree(tocNode) {
         if (!tocNode.childPages) {
           // eslint-disable-next-line no-param-reassign
-          tocNode.childPages = []
+          tocNode.childPages = [];
         }
         // eslint-disable-next-line no-param-reassign
-        tocNode.childPages = _.sortBy(tocNode.childPages, ["sortIndex", "slug"])
+        tocNode.childPages = _.sortBy(tocNode.childPages, ['sortIndex', 'slug']);
 
         if (tocNode.childTOCs) {
-          tocNode.childTOCs.map(sortTOCSubTree)
+          tocNode.childTOCs.map(sortTOCSubTree);
         }
       }
 
-      sortTOCSubTree(tocModelView)
+      sortTOCSubTree(tocModelView);
     }
 
-    return tocModelView
-  }
+    return tocModelView;
+  };
 
-  const curPageGuideName = getGuideNameFromWindowPath()
-  const curGuideRelRoot = `/${curPageGuideName}`
+  const curPageGuideName = getGuideNameFromWindowPath();
+  const curGuideRelRoot = `/${curPageGuideName}`;
   const mdNodes = guides.edges
     .map(({ node }) => (node.childMdx ? node.childMdx : node.childMarkdownRemark))
-    .filter(node => node.fields.slug.startsWith(curGuideRelRoot))
+    .filter(node => node.fields.slug.startsWith(curGuideRelRoot));
 
   function createTOCNodes(tocTree) {
     const childSubTreeNodes = tocTree.childTOCs
@@ -151,41 +151,41 @@ export default function SidebarToC() {
             {createTOCNodes(tocSubTree)}
           </AntdSubMenu>
         ))
-      : []
+      : [];
 
     const leafNodes = _.map(tocTree.childPages, childPage => (
       <AntdMenu.Item
         key={childPage.slug}
-        className={safeGetRelWindowPath() === childPage.slug && "ant-menu-item-selected"}
+        className={safeGetRelWindowPath() === childPage.slug && 'ant-menu-item-selected'}
       >
-        <Link to={childPage.slug} onClick={() => dispatch({ type: "closeSD" })}>
+        <Link to={childPage.slug} onClick={() => dispatch({ type: 'closeSD' })}>
           <span className="nav-text">{childPage.title}</span>
         </Link>
       </AntdMenu.Item>
-    ))
-    const combinedNodes = _.concat(childSubTreeNodes, leafNodes)
+    ));
+    const combinedNodes = _.concat(childSubTreeNodes, leafNodes);
 
-    return combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, curr]) : ""
+    return combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, curr]) : '';
   }
 
-  const selectedKeys = [safeGetRelWindowPath()]
-  let bDisplaySidebar = !!(curPageGuideName && curPageGuideName.length > 1)
+  const selectedKeys = [safeGetRelWindowPath()];
+  let bDisplaySidebar = !!(curPageGuideName && curPageGuideName.length > 1);
   const guideTocMV = bDisplaySidebar
     ? _.find(
         createTOCModelView(mdNodes).childTOCs,
         o => o.slugPart.toLowerCase() === curPageGuideName.toLowerCase()
       )
-    : null
-  bDisplaySidebar = !!guideTocMV
-  const defaultOpenKeys = bDisplaySidebar ? getHeadingSlugPrefixes(guideTocMV, 2) : []
+    : null;
+  bDisplaySidebar = !!guideTocMV;
+  const defaultOpenKeys = bDisplaySidebar ? getHeadingSlugPrefixes(guideTocMV, 2) : [];
 
   return (
     <AntdMenu
       mode="inline"
-      style={{ minHeight: "100vh" }}
+      style={{ minHeight: '100vh' }}
       onOpenChange={keys => {
         // const flattenedKeys = !(_.isNil(keys) || _.isEmpty(keys)) ? _.uniq(_.flattenDeep(keys)) : []
-        dispatch({ type: "openKeys", payload: keys})
+        dispatch({ type: 'openKeys', payload: keys });
       }}
       openKeys={openKeys}
       theme={siteCfg.theme.LightVariant}
@@ -197,7 +197,7 @@ export default function SidebarToC() {
       {/* <div className="py-3" /> */}
       {createTOCNodes(guideTocMV)}
     </AntdMenu>
-  )
+  );
 
   // const items = allGuideTOCs
   // const isBrowser = typeof window !== "undefined"

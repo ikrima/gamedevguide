@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import { Card } from 'antd'
+import React from 'react';
+import { Link } from 'gatsby';
+import { Card } from 'antd';
 
 const PostCard = ({ post }) => (
   <div>
@@ -25,6 +25,6 @@ const PostCard = ({ post }) => (
     </Card>
     <br />
   </div>
-)
+);
 
-export default PostCard
+export default PostCard;

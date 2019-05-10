@@ -1,14 +1,14 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
-import { PageHeader as AntdPageHeader } from 'antd'
-import MainLayout from '../components/main-layout'
-import 'katex/dist/katex.min.css'
-import siteCfg from '../../SiteCfg'
+import React from 'react';
+import { graphql } from 'gatsby';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import { PageHeader as AntdPageHeader } from 'antd';
+import MainLayout from '../components/main-layout';
+import 'katex/dist/katex.min.css';
+import siteCfg from '../../SiteCfg';
 
-import { prettifySlug, safeGetRelWindowPathSlugs } from '../../gatsby/utils'
+import { prettifySlug, safeGetRelWindowPathSlugs } from '../../gatsby/utils';
 
-const _ = require('lodash')
+const _ = require('lodash');
 
 function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -19,20 +19,20 @@ function Template({
     fields: { pageTitle },
     frontmatter,
     html,
-  } = data.mdx ? data.mdx : data.markdownRemark
+  } = data.mdx ? data.mdx : data.markdownRemark;
 
   const routes = safeGetRelWindowPathSlugs().map(item => ({
     path: null,
     breadcrumbName: prettifySlug(item),
-  }))
+  }));
 
   // const curPageRoot = getBreadCrumbRootPrefix(safeGetRelWindowPath(), frontmatter)
 
-  let markdownHtml
+  let markdownHtml;
   if (data.mdx) {
-    markdownHtml = <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
+    markdownHtml = <MDXRenderer>{data.mdx.code.body}</MDXRenderer>;
   } else {
-    markdownHtml = <div className="guide-content" dangerouslySetInnerHTML={{ __html: html }} />
+    markdownHtml = <div className="guide-content" dangerouslySetInnerHTML={{ __html: html }} />;
   }
 
   return (
@@ -49,10 +49,10 @@ function Template({
       </div>
       {/* </Layout> */}
     </MainLayout>
-  )
+  );
 }
 
-export default Template
+export default Template;
 
 export const pageQuery = graphql`
   query($path: String!) {
@@ -85,4 +85,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

@@ -1,21 +1,21 @@
-import React, { useContext } from 'react'
-import { Layout, Drawer } from 'antd'
+import React, { useContext } from 'react';
+import { Layout, Drawer } from 'antd';
 
-import SidebarMenu from './SidebarMenu'
-import { Context as SidebarContext } from '../../contexts/SidebarContext'
-import SidebarToC from './SidebarToC'
+import SidebarMenu from './SidebarMenu';
+import { Context as SidebarContext } from '../../contexts/SidebarContext';
+import SidebarToC from './SidebarToC';
 
-const { Sider } = Layout
+const { Sider } = Layout;
 const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
-  const isBrowser = typeof window !== 'undefined'
+  const isBrowser = typeof window !== 'undefined';
   if (!isBrowser) {
-    return <div />
+    return <div />;
   }
 
   const {
     dispatch,
     state: { drawer, toc, sidebar },
-  } = useContext(SidebarContext)
+  } = useContext(SidebarContext);
   return (
     <div className={`app-sidenav-container ${className}`}>
       <Drawer
@@ -25,7 +25,7 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
         className="d-md-none app-drawer"
         width={240}
         onClose={() => {
-          dispatch({ type: 'closeSD' })
+          dispatch({ type: 'closeSD' });
         }}
       >
         <Sider trigger={null} width={240} id="app-sidenav" className="app-sidenav">
@@ -41,7 +41,7 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
         className="d-md-none app-drawer"
         width={240}
         onClose={() => {
-          dispatch({ type: 'closeSD' })
+          dispatch({ type: 'closeSD' });
         }}
       >
         <Sider trigger={null} width={240} id="app-sidenav" className="app-sidenav">
@@ -73,6 +73,6 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
         </div>
       </Sider>
     </div>
-  )
-}
-export default Sidebar
+  );
+};
+export default Sidebar;

@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import React from 'react';
+import { Link, graphql, StaticQuery } from 'gatsby';
 
-import { Menu as AntdMenu, Icon as AntdIcon } from 'antd'
-import siteCfg from '../../../SiteCfg'
-import { relFilePathToSlug } from '../../../gatsby/utils'
+import { Menu as AntdMenu, Icon as AntdIcon } from 'antd';
+import siteCfg from '../../../SiteCfg';
+import { relFilePathToSlug } from '../../../gatsby/utils';
 
 const Menu = ({ siteNavTitle }) => (
   <StaticQuery
@@ -20,7 +20,7 @@ const Menu = ({ siteNavTitle }) => (
       }
     `}
     render={data => {
-      const menuItems = data.allMenuItems.edges.map(edge => edge.node).reverse()
+      const menuItems = data.allMenuItems.edges.map(edge => edge.node).reverse();
       return (
         <AntdMenu theme={siteCfg.theme.DarkVariant} mode="horizontal">
           <AntdMenu.Item>
@@ -42,9 +42,9 @@ const Menu = ({ siteNavTitle }) => (
             </AntdMenu.Item>
           ))}
         </AntdMenu>
-      )
+      );
     }}
   />
-)
+);
 
-export default Menu
+export default Menu;

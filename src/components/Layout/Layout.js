@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
-import { Layout as AntdLayout } from 'antd'
-import Header from '../Header/Header'
-import siteCfg from '../../../SiteCfg'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
+import { Layout as AntdLayout } from 'antd';
+import Header from '../Header/Header';
+import siteCfg from '../../../SiteCfg';
 
-import SidebarContents from '../SidebarContents'
-import TableOfContents from '../TableOfContents'
+import SidebarContents from '../SidebarContents';
+import TableOfContents from '../TableOfContents';
 
-const { Content: AntdContent } = AntdLayout
+const { Content: AntdContent } = AntdLayout;
 
 const RootLayout = ({ children, sidebarRoot }) => (
   <StaticQuery
@@ -26,7 +26,7 @@ const RootLayout = ({ children, sidebarRoot }) => (
       }
     `}
     render={data => {
-      const { siteNavTitle, siteTitleLong, siteDescription, siteKeywords } = data.site.siteMetadata
+      const { siteNavTitle, siteTitleLong, siteDescription, siteKeywords } = data.site.siteMetadata;
 
       return (
         <AntdLayout>
@@ -58,14 +58,14 @@ const RootLayout = ({ children, sidebarRoot }) => (
             </AntdLayout>
           </AntdLayout>
         </AntdLayout>
-      )
+      );
     }}
   />
-)
+);
 
 RootLayout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 // const mapDispatchToProps = {
 //  // setPostPageOn,
@@ -74,4 +74,4 @@ RootLayout.propTypes = {
 // }
 
 // export default connect(()=>({}), mapDispatchToProps) (RootLayout)
-export default RootLayout
+export default RootLayout;
