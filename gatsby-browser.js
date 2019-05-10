@@ -14,8 +14,6 @@ import SearchWrapper from './src/contexts/SearchContext';
 
 import 'prismjs/themes/prism-tomorrow.css';
 
-import 'prismjs/themes/prism-tomorrow.css'
-
 const wrapPageElement = ({ element, props }) => (
   <SearchWrapper {...props}>
     <SidebarContext {...props}>{element}</SidebarContext>

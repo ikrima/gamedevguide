@@ -50,8 +50,8 @@ class SidebarContents extends Component {
     const _getSlugPrefixes = (curDepth, tocNode) =>
       tocNode.childTOCs && curDepth < maxDepth
         ? [tocNode.slugPrefix].concat(
-            _.flatMap(tocNode.childTOCs, o => _getSlugPrefixes(curDepth + 1, o))
-          )
+          _.flatMap(tocNode.childTOCs, o => _getSlugPrefixes(curDepth + 1, o))
+        )
         : [tocNode.slugPrefix];
     return _getSlugPrefixes(0, inTOCModelView);
   };
@@ -171,17 +171,17 @@ class SidebarContents extends Component {
           function createTOCNodes(tocTree) {
             const childSubTreeNodes = tocTree.childTOCs
               ? tocTree.childTOCs.map(tocSubTree => (
-                  <AntdSubMenu
-                    key={tocSubTree.slugPrefix}
-                    title={
-                      <span style={{ fontWeight: 900 }}>
-                        {tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}
-                      </span>
-                    }
-                  >
-                    {createTOCNodes(tocSubTree)}
-                  </AntdSubMenu>
-                ))
+                <AntdSubMenu
+                  key={tocSubTree.slugPrefix}
+                  title={
+                    <span style={{ fontWeight: 900 }}>
+                      {tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}
+                    </span>
+                  }
+                >
+                  {createTOCNodes(tocSubTree)}
+                </AntdSubMenu>
+              ))
               : [];
 
             const leafNodes = _.map(tocTree.childPages, childPage => (
@@ -200,8 +200,8 @@ class SidebarContents extends Component {
           let bDisplaySidebar = !!(sidebarRoot && sidebarRoot.length > 1);
           const sidebarRootTocMV = bDisplaySidebar
             ? this.createTOCModelView(mdNodes).childTOCs.find(
-                o => o.slugPart.toLowerCase() === sidebarRoot.slice(1).toLowerCase()
-              )
+              o => o.slugPart.toLowerCase() === sidebarRoot.slice(1).toLowerCase()
+            )
             : null;
           bDisplaySidebar = !!sidebarRootTocMV;
           const defaultOpenKeys = bDisplaySidebar

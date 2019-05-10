@@ -6,6 +6,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby';
 import { Context as SidebarContext } from '../../contexts/SidebarContext';
 import siteCfg from '../../../SiteCfg';
 import { allGuideTOCs } from '../../../SiteCfg/json/GuideTOC';
+import _ from 'lodash';
 
 import {
   separateSlugs,
