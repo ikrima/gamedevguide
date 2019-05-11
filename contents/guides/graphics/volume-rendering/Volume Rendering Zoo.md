@@ -140,7 +140,7 @@ Optimization Reminders
 - Optimizing Graphics Pipeline: <https://www.slideshare.net/gwihlidal/optimizing-the-graphics-pipeline-with-compute-gdc-2016>
   - ~.9 prim/cy is a target. 2 prims/cycle is optimistic
 
-### **Cur Fitting**
+### **Curve Fitting**
 
 - Fast Polynomial Eval
   - Horner form for fast polynomial evaluation:
@@ -151,6 +151,19 @@ Optimization Reminders
     - good measure of accuracy but not of importance of any error
     - Ex: Error of 3 is fine if f(x) returns 38,000. Terrible if function returns 0.0001
   - Relative error metric: 1 - f_approx / f_abs
+- Gaussian Quadrature
+- Spherical Splines/Polynomials
+- Spherical RBFs
+  - Is There Anything Comparable to Spherical Harmonics But Simpler? http://www.cs.cuhk.hk/~ttwong/papers/srbf/srbf.html
+    - http://www.cs.cuhk.hk/~ttwong/demo/srbf/srbf.html
+    - http://www.cs.cuhk.hk/~ttwong/
+  - Von Mises Basis Functions vs Gaussian Spherical Radial Basis Functions:
+    - A Comparison of the von Mises and Gaussian Basis Functions for Approximating Spherical Acoustic Scatter
+    - 3 orders of magnitude better than guassian
+  - Real-time Rendering of Dynamic Scenes under All-frequency Lighting using Integral Spherical Gaussian
+    - All-Frequency Precomputed Radiance Transfer using Spherical RadialBasis Functions and Clustered Tensor Approximation
+    - https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/
+
 
 ### **Promising:**
 
