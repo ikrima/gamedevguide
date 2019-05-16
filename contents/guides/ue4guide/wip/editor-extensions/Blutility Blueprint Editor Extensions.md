@@ -1,6 +1,10 @@
+---
+sortIndex: 4
+---
+
 Check out these classes:
 
-- <https://docs.unrealengine.com/latest/INT/API/Editor/Blutility/index.html>
+<https://docs.unrealengine.com/latest/INT/API/Editor/Blutility/index.html>
 
 <https://forums.unrealengine.com/showthread.php?1954-TUTORIAL-Blutility-Running-Blueprint-functions-inside-Editor>
 

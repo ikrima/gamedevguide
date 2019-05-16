@@ -1,4 +1,6 @@
-    sortIndex: 2
+---
+sortIndex: 2
+---
 
 Dynamic DLL
 <https://wiki.unrealengine.com/Linking_Dlls>
@@ -129,17 +131,17 @@ Structure of Engine Dependencies
 
 •Each has its own Build.cs file
 
-​ • Just like any other module
+ • Just like any other module
 
-​ • Public includes (for headers to be
+ • Public includes (for headers to be
 
-​ compiled into dependent modules)
+ compiled into dependent modules)
 
-​ • Public libraries (for libraries to be
+ • Public libraries (for libraries to be
 
-​ linked into dependent modules)
+ linked into dependent modules)
 
-​ • Optional pre-processor definitions
+ • Optional pre-processor definitions
 
 Building Engine Dependencies
 
@@ -151,11 +153,11 @@ Building Engine Dependencies
 
 •Internally, we pre-compile the libraries using…
 
-​ • BuildThirdPartyLibs UAT script (automated)
+ • BuildThirdPartyLibs UAT script (automated)
 
-​ • Batch files and shell scripts (manual)
+ • Batch files and shell scripts (manual)
 
-​ • Specialized UAT scripts (i.e. for PhysX)
+ • Specialized UAT scripts (i.e. for PhysX)
 
 •Sometimes there are text files with instructions
 
@@ -163,8 +165,8 @@ Building Engine Dependencies
 
 Structure of Plug-in Dependencies
 
-​ •Same as Engine third-party dependencies
+ •Same as Engine third-party dependencies
 
-​ •Same build rules
+ •Same build rules
 
 ![](....\assets\PluginsModules-plugindepend.png)

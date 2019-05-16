@@ -1,24 +1,21 @@
+---
+sortIndex: 2
+---
+
 #### Overview of the reflection system:
 
 <https://www.unrealengine.com/blog/unreal-property-system-reflection>
 
 The type hierarchy for the property system looks like this:
 
-> UField
->
-> UStruct
->
-> UClass (C++ class)
->
-> UScriptStruct (C++ struct)
->
-> UFunction (C++ function)
->
-> UEnum (C++ enumeration)
->
-> UProperty (C++ member variable or function parameter)
->
-> (Many subclasses for different types)
+- UField
+  - UStruct
+    - UClass (C++ class)
+    - UScriptStruct (C++ struct)
+    - UFunction (C++ function)
+  - UEnum (C++ enumeration)
+  - UProperty (C++ member variable or function parameter)
+    - (Many subclasses for different types)
 
 UStruct is the basic type of aggregate structures (anything that contains other members, such as a C++ class, struct, or function), and shouldn’t be confused with a C++ struct (that's UScriptStruct). UClass can contain functions or properties as their children, while UFunction and UScriptStruct are limited to just properties.
 
@@ -36,15 +33,15 @@ UProperty\* Property = \*PropIt;
 
 Each type has a unique set of flags (EClassFlags + HasAnyClassFlags, etc…), as well as a generic metadata storage system inherited from UField.
 
-#### **Look up / Find a property:**
+#### Look up / Find a property:\*\*
 
 FindField&lt;UProperty>(**Struct**, **VarDesc**->**VarName**)
 
-#### **Export/Import text from Uproperty:**
+#### Export/Import text from Uproperty:\*\*
 
 **Property**->ExportText_InContainer(0, **PropertyValue**, **RowData**, **RowData**, nullptr, PPF_None);
 
-#### **Test for UProperty equality or if two properties are identical:**
+#### Test for UProperty equality or if two properties are identical:\*\*
 
 UProperty::Identical( const void\* A, const void\* B, uint32 PortFlags=0 )
 
@@ -58,9 +55,9 @@ In FStructureEditorUtils::CreateUserDefinedStruct():
 
 \* \*
 
-***Hook Into UObject/UProperty change modification delegates:***
+#### Hook Into UObject/UProperty change modification delegates:
 
-> \-[Listen on property changes and notifies/notifications:]
+[Listen on property changes and notifies/notifications:]
 
 **Specific callbacks:**
 
@@ -74,9 +71,7 @@ virtual void PostEditMove(bool bFinished) override;
 
 virtual void PostEditComponentMove(bool bFinished) override;
 
-\* \*
-
-***How to check if a UFunction is latent:***
+#### How to check if a UFunction is latent:
 
 **bIsLatent** = (**Function**->HasMetaData(FBlueprintMetadata::MD_Latent) != false);
 
@@ -104,15 +99,14 @@ UClass\* Result = FindObject&lt;UClass>(ClassPackage, ClassName);
 
 *From &lt;<https://answers.unrealengine.com/questions/92651/get-blueprint-class-by-string-in-c.html>>*
 
-**Useful Utilities:**
+##### Useful Utilities:
 
 Compare if two UStructs (not C++ structs but UE4 USTRUCT meaning class type, property, etc) are the same:
 
 - FStructUtils::ArePropertiesTheSame(PropA, PropB, false)
-
 - FStructUtils::TheSameLayout(const UStruct\* StructA, const UStruct\* StructB, bool bCheckPropertiesNames)
 
-**Parse ufunction / Iterate through function parameters:**
+##### Parse ufunction / Iterate through function parameters:
 
 LISTFUNCS
 

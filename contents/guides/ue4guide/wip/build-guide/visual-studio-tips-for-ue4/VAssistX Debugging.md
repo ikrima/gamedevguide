@@ -1,4 +1,6 @@
-    sortIndex: 2
+---
+sortIndex: 2
+---
 
 # Enable Logging
 

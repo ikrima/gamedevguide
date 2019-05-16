@@ -1,4 +1,6 @@
-    sortIndex: 3
+---
+sortIndex: 3
+---
 
 Seems like this is a recurring question that gets answered partially all the time.
 

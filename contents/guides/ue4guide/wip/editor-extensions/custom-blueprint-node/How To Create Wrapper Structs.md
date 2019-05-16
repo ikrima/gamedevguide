@@ -1,3 +1,8 @@
+---
+sortIndex: 3
+---
+
+```cpp
 USTRUCT()  
 struct FMovieSceneEventParameters  
 {  
@@ -84,3 +89,4 @@ private:
 TWeakObjectPtr&lt;UStruct> StructType;  
         TArray&lt;uint8> StructBytes;  
 };
+```

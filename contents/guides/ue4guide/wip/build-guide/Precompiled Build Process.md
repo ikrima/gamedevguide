@@ -1,4 +1,6 @@
-    sortindex: 8
+---
+sortindex: 8
+---
 
 ## Using BuildGraph
 

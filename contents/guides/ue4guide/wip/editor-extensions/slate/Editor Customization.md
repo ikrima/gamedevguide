@@ -1,4 +1,6 @@
-    sortIndex: 2
+---
+sortIndex: 2
+---
 
 Creating An Editor Module: (<https://wiki.unrealengine.com/Creating_an_Editor_Module>
 

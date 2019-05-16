@@ -1,22 +1,24 @@
-    sortIndex: 1
+---
+sortIndex: 1
+---
 
 # Unreal Engine Git
 
 # Setting Up Engine Github Repo:
 
-​ Add our own private github repo:
+ Add our own private github repo:
 
-​ Our github repo is at <https://github.com/kitelightning/UnrealEngine>
+ Our github repo is at <https://github.com/kitelightning/UnrealEngine>
 
-​ Make sure to add an 'upstream' remote to :
+ Make sure to add an 'upstream' remote to :
 
-​ git remote add upstream <https://github.com/EpicGames/UnrealEngine>
+ git remote add upstream <https://github.com/EpicGames/UnrealEngine>
 
-​ git fetch upstream
+ git fetch upstream
 
-​ git checkout 4.1
+ git checkout 4.1
 
-​ git merge upstream/4.1
+ git merge upstream/4.1
 
 # Updating Engine Version:
 

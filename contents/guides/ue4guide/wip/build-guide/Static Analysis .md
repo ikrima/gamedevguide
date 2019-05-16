@@ -1,4 +1,6 @@
-    sortIndex: 9
+---
+sortIndex: 9
+---
 
 # Manually through UE4:
 
@@ -12,9 +14,9 @@
 
 <WindowsPlatform>
 
-​ <StaticAnalyzer>VisualCpp</StaticAnalyzer>
+ <StaticAnalyzer>VisualCpp</StaticAnalyzer>
 
-​ <!-- <StaticAnalyzer>PVSStudio</StaticAnalyzer> -->
+ <!-- <StaticAnalyzer>PVSStudio</StaticAnalyzer> -->
 
 <WindowsPlatform>
 
@@ -42,16 +44,16 @@ build.py -c development -t editor check pvs
 
 1. (For now, you need to have Incredibuild disabled. )
 
-   ​ Go to BBProto.Build.cs and add BuildConfiguration.bAllowXGE = false;
+   Go to BBProto.Build.cs and add BuildConfiguration.bAllowXGE = false;
 
 1. Open a shell in the PVS Studio folder and run
 
-   ​ CLMonitor.exe monitor
+   CLMonitor.exe monitor
 
 1. Do a full build of BBProto project
 
 1. Go back to the shell, and type
 
-   ​ CLMonitor.exe analyze -l "sample.plog"
+   CLMonitor.exe analyze -l "sample.plog"
 
 1. Double clicking sample.plog should launch the analysis results in PVS Studio.

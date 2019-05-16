@@ -1,6 +1,6 @@
-```js
-sortIndex: 3;
-```
+---
+sortIndex: 3
+---
 
 UEBuildTarget.cs
 

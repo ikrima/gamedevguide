@@ -1,4 +1,6 @@
-    sortIndex: 7
+---
+sortIndex: 7
+---
 
 If you declare a property in a class inside a WITH_EDITORONLY_DATA only block, then the cooker will detect that and not cook it, UNLESS you override the Serialize function, in which case you are taking serialization into your own hands.
 

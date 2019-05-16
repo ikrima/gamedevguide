@@ -1,4 +1,6 @@
-    sortIndex: 2
+---
+sortIndex: 2
+---
 
 If you want the insert/duplicate/delete buttons to appear, you should be using the AddChildProperty() API, rather than AddChildContent(). You can then control whether the insert/duplicate/delete buttons appear on a per-entry basis by using IDetailPropertyRow:: ShowPropertyButtons (this gets you the some of ability to prevent entry deletion that you desire).
 

@@ -1,4 +1,6 @@
-    sortIndex: 5
+---
+sortIndex: 5
+---
 
 **DefaultGame.ini**
 

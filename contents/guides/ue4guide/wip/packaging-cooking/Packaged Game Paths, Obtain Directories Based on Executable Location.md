@@ -1,4 +1,6 @@
-    sortIndex: 9
+---
+sortIndex: 9
+---
 
 # Config File Paths Locations:
 

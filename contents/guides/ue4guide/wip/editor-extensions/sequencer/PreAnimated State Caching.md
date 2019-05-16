@@ -1,4 +1,6 @@
-    sortIndex: 3
+---
+sortIndex: 3
+---
 
 In general, the more robust way to restore state like this is to store pre-animated state tokens for the animation. Using a pre-animated state token is more robust against the sort of issues that TearDown is more fragile, such as deleting tracks, re-assigning objects to tracks, overlapping sections that animate the same object etc etc. It also eliminates the need for the track itself to remember what its previous state was in many circumstances (which also can remove the need for persistent data).
 

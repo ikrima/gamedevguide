@@ -1,4 +1,6 @@
-    sortIndex: 12
+---
+sortIndex: 12
+---
 
 # Editor Session Log
 

@@ -1,18 +1,22 @@
-## **Sequencer Upgrade**
+---
+sortIndex: 6
+---
+
+## Sequencer Upgrade
 
 MovieScene.LegacyConversionFrameRate (Default: 60000fps)
 
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*
+*Reference From <https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>*
 
 LevelSequence.DefaultTickResolution (Default: 24000fps)
 
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*
+*Reference From <https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>*
 
 LevelSequence.DefaultDisplayRate (Default: 30fps
 
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*
+*Reference From <https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>*
 
-## **Time Management**
+## Time Management
 
 - **FFrameNumber** (32 bits): int32 frame/tick number
 
@@ -26,15 +30,11 @@ LevelSequence.DefaultDisplayRate (Default: 30fps
 
 **MovieScene Data**: UMovieScene now contains a tick resolution and display rate, and bolsters the previous ‘Force Fixed Frame Interval’ evaluation with an evaluation type enum.
 
-- **UMovieScene::GetEvaluationType()** - retrieves an enumeration specifying how to
-
-> evaluate this sequence:
+- **UMovieScene::GetEvaluationType()** - retrieves an enumeration specifying how to evaluate this sequence:
 
 - WithSubFrames (default): Evaluate using sub-frame interpolation
 
-- FrameLocked: Lock to the DisplayRate of the sequence, only evaluate
-
-> round frame numbers, no subframes, set t.maxfps during evaluation.
+- FrameLocked: Lock to the DisplayRate of the sequence, only evaluate round frame numbers, no subframes, set t.maxfps during evaluation.
 
 - UMovieScene::GetTickResolution() - retrieves the tick resolution that all FFrameNumbers
 
@@ -42,13 +42,13 @@ LevelSequence.DefaultDisplayRate (Default: 30fps
 
 **FMovieSceneChannelProxy** affords editor and runtime code a common language for interacting with and manipulating keyframes. To this end, **IKeyframeSection&lt;>** has been completely removed and is no longer necessary.
 
-### **FMovieSceneChannel**
+### FMovieSceneChannel
 
 Provides an interface through which all common channel data can be interacted with. All
 
 channels added to the channel proxy must implement this type.
 
-### **ISequencerChannelInterface**
+### ISequencerChannelInterface
 
 An interface to all overloads relating to UI interaction and manipulation required by sequencer
 
@@ -56,7 +56,7 @@ for a given channel. Must be registered through the ISequencerModule class for e
 
 type (normally in your editor module’s StartupModule method).
 
-### **TMovieSceneChannelTraits**
+### TMovieSceneChannelTraits
 
 Specifies compile-time traits for channel types such as extended editor data, and whether the
 
@@ -68,13 +68,13 @@ default templated overloads are incompatible with your channel type, you should 
 
 necessary functions for the specific channel.
 
-### **MovieScene::DiscreteInclusiveLower, DiscreteExclusiveUpper and DiscreteSize** to
+### MovieScene::DiscreteInclusiveLower, DiscreteExclusiveUpper and DiscreteSize to
 
 consistently deal with the various boundary conditions
 
 bSupportsInfiniteRange
 
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*
+*Reference From <https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>*
 
 FMovieSceneChannelProxy
 
@@ -101,6 +101,7 @@ channels as shown in Appendix A.
 
 Sample
 
+```cpp
 class UMySection : public UMovieSceneSection
 
 {
@@ -196,5 +197,6 @@ FMovieSceneFloatChannel FloatChannel3;
 FMovieSceneBoolChannel BoolChannel;
 
 };
+```
 
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*
+*Reference From <https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>*

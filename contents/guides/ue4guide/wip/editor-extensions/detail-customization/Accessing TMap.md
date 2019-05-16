@@ -1,4 +1,6 @@
-    sortIndex: 3
+---
+sortIndex: 3
+---
 
 ```cpp
 FScriptMapHelper Helper(MapProperty, Value);

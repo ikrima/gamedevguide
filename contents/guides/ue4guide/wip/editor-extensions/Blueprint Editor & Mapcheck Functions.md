@@ -1,3 +1,7 @@
+---
+sortIndex: 5
+---
+
 Check KismetEditorUtilities.h/BlueprintEditorUtils.h/BlueprintEditorUtils.cpp/ComponentEditorUtils.h
 
 GetSimpleConstructionScript(USceneComponent const\* **Component**);
@@ -12,50 +16,52 @@ FBlueprintEditorUtils
 
 ===========================================
 
+```cpp
 void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*>> Graphs) const
 
 /\*\* Set of pages that combine into a single uber-graph \*/
 
-> UPROPERTY()
->
-> TArray&lt;class UEdGraph\*> UbergraphPages;
->
-> /\*\* Set of functions implemented for this class graphically \*/
->
-> UPROPERTY()
->
-> TArray&lt;class UEdGraph\*> FunctionGraphs;
->
-> /\*\* Graphs of signatures for delegates \*/
->
-> UPROPERTY()
->
-> TArray&lt;class UEdGraph\*> DelegateSignatureGraphs;
->
-> /\*\* Set of macros implemented for this class \*/
->
-> UPROPERTY()
->
-> TArray&lt;class UEdGraph\*> MacroGraphs;
+ UPROPERTY()
+
+ TArray&lt;class UEdGraph\*> UbergraphPages;
+
+ /\*\* Set of functions implemented for this class graphically \*/
+
+ UPROPERTY()
+
+ TArray&lt;class UEdGraph\*> FunctionGraphs;
+
+ /\*\* Graphs of signatures for delegates \*/
+
+ UPROPERTY()
+
+ TArray&lt;class UEdGraph\*> DelegateSignatureGraphs;
+
+ /\*\* Set of macros implemented for this class \*/
+
+ UPROPERTY()
+
+ TArray&lt;class UEdGraph\*> MacroGraphs;
 
 for (UEdGraph\* CurrentGraph : Blueprint->FunctionGraphs)
 
-> {
->
-> if( CurrentGraph->GetFName() == Schema->FN_UserConstructionScript )
->
-> {
->
-> return CurrentGraph;
->
-> }
->
-> }
+ {
+
+ if( CurrentGraph->GetFName() == Schema->FN_UserConstructionScript )
+ {
+
+ return CurrentGraph;
+
+ }
+
+ }
+```
 
 =========
 
-Find references function/find function
+**Find references function/find function**
 
+```cpp
 GetFindReferenceSearchString
 
 FindInBlueprints.h:
@@ -64,25 +70,27 @@ SFindInBlueprints::MakeSearchQuery() - to comprehensively search blueprint nodes
 
 TSharedPtr&lt; FImaginaryBlueprint> ImaginaryBlueprint(new FImaginaryBlueprint(Blueprint->GetName(), Blueprint->GetPathName(), ParentClass, Interfaces, FFindInBlueprintSearchManager::Get().QuerySingleBlueprint(Blueprint)));
 
-> TSharedPtr&lt; FFiBSearchInstance > SearchInstance(new FFiBSearchInstance);
->
-> FSearchResult SearchResult = RootSearchResult = SearchInstance->StartSearchQuery(SearchValue, ImaginaryBlueprint);
+ TSharedPtr&lt; FFiBSearchInstance > SearchInstance(new FFiBSearchInstance);
+
+ FSearchResult SearchResult = RootSearchResult = SearchInstance->StartSearchQuery(SearchValue, ImaginaryBlueprint);
+```
 
 ========
 
+```cpp
 //Show what objects points to this, using the assetregistry
 
 ObjectTools::ShowReferencers()
 
-> RetrieveReferencers( TArray&lt;FReferencerInformation>\* OutInternalReferencers, TArray&lt;FReferencerInformation>\* OutExternalReferencers);
+ RetrieveReferencers( TArray&lt;FReferencerInformation>\* OutInternalReferencers, TArray&lt;FReferencerInformation>\* OutExternalReferencers);
 
 //Show objects this points to
 
 ObjectTools::ShowReferencedObjs(GetBlueprintObj());
 
-> //To differentiate between what the default class points to vs. the instance
->
-> ObjectTools::ShowReferencedObjs(GetBlueprintObj()->GeneratedClass);
+ //To differentiate between what the default class points to vs. the instance
+
+ ObjectTools::ShowReferencedObjs(GetBlueprintObj()->GeneratedClass);
 
 /\*\* Gather all bps that Blueprint depends on \*/
 
@@ -91,11 +99,12 @@ static void GatherDependencies(const UBlueprint\* Blueprint, TSet&lt;TWeakObject
 /\*\* Returns a list of loaded Blueprints that are dependent on the given Blueprint. \*/
 
 static void GetDependentBlueprints(UBlueprint\* Blueprint, TArray&lt;UBlueprint\*>& DependentBlueprints, bool bRemoveSelf = true);
+```
 
 =========
+**Search Asset Registry**
 
-Search Asset Registry
-
+```cpp
 FAssetRegistryModule\* AssetRegistryModule = &FModuleManager::LoadModuleChecked&lt;FAssetRegistryModule>(TEXT("AssetRegistry"));
 
 TArray&lt;FAssetData> AssetData;
@@ -125,11 +134,13 @@ GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, Asset.AssetName.GetPlain
 }
 
 }
+```
 
 ================================
 
-Check if Actor is a Blueprint
+**Check if Actor is a Blueprint**
 
+```cpp
 UBlueprint::GetBlueprintFromClass(const UClass\* InClass);
 
 BlueprintClass->HasAnyClassFlags(CLASS_CompiledFromBlueprint)
@@ -145,13 +156,16 @@ TArray&lt;UK2Node_CustomEvent\*> BpCustomEvents;
 FBlueprintEditorUtils::GetAllNodesOfClass&lt;UK2Node_CustomEvent>(FuncBlueprint, BpCustomEvents);
 
 static bool GetBlueprintHierarchyFromClass(const UClass\* InClass, TArray&lt;UBlueprint\*>& OutBlueprintParents);
+```
 
 ===============
 
-For finding shit that exists in bad folders:
+**For finding shit that exists in bad folders:**
 
+```cpp
 TFindObjectReferencers
 
 ShowReferencedObjs
 
 UObject::OutputReferencers()/RetrieveReferencers()
+```

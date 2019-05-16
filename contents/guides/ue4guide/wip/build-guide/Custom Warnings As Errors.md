@@ -1,4 +1,6 @@
-    sortindex: 7
+---
+sortindex: 7
+---
 
 Turns out UE4 is manually specifying which warnings to treat as errors in WindowsPlatformCompilerSetup.h
 

@@ -1,4 +1,6 @@
-    sortIndex: 4
+---
+sortIndex: 4
+---
 
 MovieScenePlayer:
 

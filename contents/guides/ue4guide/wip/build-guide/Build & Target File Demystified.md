@@ -1,4 +1,6 @@
-    sortIndex: 2
+---
+sortIndex: 2
+---
 
 <http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified/>
 

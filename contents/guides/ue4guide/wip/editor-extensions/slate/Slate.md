@@ -1,4 +1,6 @@
-    sortindex: 1
+---
+sortindex: 1
+---
 
 Great Overview Doc:
 The Slate UI Framework <https://de45xmedrsdbp.cloudfront.net/Resources/files/slateTutorials_westcoast-1963123470.pdf>

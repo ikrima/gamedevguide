@@ -1,4 +1,6 @@
-    sortIndex: 6
+---
+sortIndex: 6
+---
 
 The clean way to do custom arrangement would be to implement a custom widget based on SPanel and then override OnArrangeChildren to arrange your child slots however you'd like.
 

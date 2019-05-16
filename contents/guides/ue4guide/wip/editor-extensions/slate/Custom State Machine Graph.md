@@ -1,4 +1,6 @@
-    sortIndex: 7
+---
+sortIndex: 7
+---
 
 <https://answers.unrealengine.com/questions/455215/c-plugin-create-unreal-like-graph.html>
 

@@ -1,4 +1,6 @@
-    sortIndex: 1
+---
+sortIndex: 1
+---
 
 #### Reference:
 

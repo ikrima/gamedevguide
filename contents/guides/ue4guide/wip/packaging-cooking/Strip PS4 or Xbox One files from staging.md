@@ -1,4 +1,6 @@
-    sortIndex: 8
+---
+sortIndex: 8
+---
 
 n CopyBuildToStagingDirectory.Automation.cs, a function is called to copy UFS and NonUFS folders to the staging folder (\`SC.StageFiles(...)\`):
 

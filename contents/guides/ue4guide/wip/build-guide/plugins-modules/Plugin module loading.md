@@ -1,6 +1,6 @@
-```javascript
-sortIndex: 1;
-```
+---
+sortIndex: 1
+---
 
 You can configure the module within your uplugin file as "LoadingPhase": "None", which will prevent it from loading at startup even if the plugin itself is enabled.
 

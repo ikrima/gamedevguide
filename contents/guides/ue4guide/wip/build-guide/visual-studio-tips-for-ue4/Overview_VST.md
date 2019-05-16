@@ -1,4 +1,6 @@
-    sortIndex: 1
+---
+sortIndex: 1
+---
 
 - [Adding a button to attach the debugger directly to the UE4 instance][https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/documents/kitelightning/bebylon/unreal.one]
 
