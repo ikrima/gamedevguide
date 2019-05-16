@@ -190,7 +190,7 @@ export default function SidebarToC() {
         dispatch({ type: 'openKeys', payload: keys });
       }}
       openKeys={openKeys}
-      theme={siteCfg.theme.LightVariant}
+      theme={siteCfg.theme.DarkVariant}
       defaultOpenKeys={defaultOpenKeys}
       selectedKeys={selectedKeys}
       inlineIndent={siteCfg.theme.sidebarIndent}
