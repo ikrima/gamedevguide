@@ -14,7 +14,7 @@ virtual bool IsSupportedForNetworking() const;
 
 /\*\* Returns a list of sub-objects that have stable names for networking \*/
 
-virtual void GetSubobjectsWithStableNamesForNetworking(TArray&lt;UObject\*&gt; &ObjList) {}
+virtual void GetSubobjectsWithStableNamesForNetworking(TArray&lt;UObject\*> &ObjList) {}
 
 /\*\* Called right before receiving a bunch \*/
 
@@ -36,7 +36,7 @@ virtual void PreDestroyFromReplication();
 
 /\*\* Returns a constant reference to the replicated components set \*/
 
-const TArray&lt;UActorComponent\*&gt;& GetReplicatedComponents() const
+const TArray&lt;UActorComponent\*>& GetReplicatedComponents() const
 
 /\*\* Get read-only access to current AttachmentReplication. \*/
 

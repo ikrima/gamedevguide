@@ -24,4 +24,4 @@ I mentioned the existence of Aaron's SteamVR debug keys to a few folks and no on
 
 **Other useful notes:** Left click will regain fullscreen exclusive status in the event Windows kicks it out (usually due to another window overlapping onto its part of the desktop).
 
-_From &lt;<http://steamcommunity.com/app/358720/discussions/0/520518053451174524/>&gt;_
+*From &lt;<http://steamcommunity.com/app/358720/discussions/0/520518053451174524/>>*

@@ -6,7 +6,7 @@ Perf Tool
 
     {full_path_to_ue4editor.exe}
     {fullpathto_BBR.uproject {current_map}?Listen -game -Multiprocess -messaging
-    -SessionName="PerfTesting Mode" -MultiprocessSaveConfig -MultiprocessOSS WinX=5 WinY=495 SAVEWINPOS=1 -NoVerifyGC -NoAILogging
+    \-SessionName="PerfTesting Mode" -MultiprocessSaveConfig -MultiprocessOSS WinX=5 WinY=495 SAVEWINPOS=1 -NoVerifyGC -NoAILogging
 
 - Make sure to on launch:
 
@@ -24,7 +24,8 @@ Perf Tool
 
         ViewClient.IsRealtime()
 
-* Try to minimize the editor window.
+
+- Try to minimize the editor window.
 
   - TSharedPtr<SWindow> RootWindow = FGlobalTabmanager::Get()->GetRootWindow();
 
@@ -36,7 +37,7 @@ Perf Tool
 
   }
 
-* For the launched instance(Likely need a command line arg to set a "profiling mode" or parse the -SessionName on-map-load and verify this state):
+- For the launched instance(Likely need a command line arg to set a "profiling mode" or parse the -SessionName on-map-load and verify this state):
 
   - Make sure vsync, frame smoothing, and t.maxfps is off
 
@@ -44,53 +45,56 @@ Perf Tool
 
   - Make sure t.IdleWhenNotForeground=1
 
+
 - Normal Mode options:
 
-  -ResX=2160 -ResY=1200 -nohmd -windowed -ExecCmds="r.screenpercentage 140,r.pd=1"
+  \-ResX=2160 -ResY=1200 -nohmd -windowed -ExecCmds="r.screenpercentage 140,r.pd=1"
 
-* VR Emulation variant options:
 
-  -ResX=2160 -ResY=1200 -nohmd -windowed -emulatestereo -ExecCmds="r.screenpercentage 140,r.pd=1"
+- VR Emulation variant options:
+
+  \-ResX=2160 -ResY=1200 -nohmd -windowed -emulatestereo -ExecCmds="r.screenpercentage 140,r.pd=1"
+
 
 - VR Mode:
 
-  -vr
+  \-vr
 
 - Optional useful Params:
 
-  -Deterministic (shortcut for -fixedtimestep/-fixedseed)
+  \-Deterministic (shortcut for -fixedtimestep/-fixedseed)
 
-  -fixedtimestep
+  \-fixedtimestep
 
-  -FixedSeed
+  \-FixedSeed
 
-  -usefixedtimestep
+  \-usefixedtimestep
 
-  -debug (To Launch In DebugGame)
+  \-debug (To Launch In DebugGame)
 
-  -log or -log LOG=logfile.txt
+  \-log or -log LOG=logfile.txt
 
-  -FORCELOGFLUSH
+  \-FORCELOGFLUSH
 
-  -nologging
+  \-nologging
 
-  -NoTextureStreaming
+  \-NoTextureStreaming
 
-  -nosound
+  \-nosound
 
 D3D Debugging
 
--D3DDEBUG
+\-D3DDEBUG
 
--d3dbreakonwarning
+\-d3dbreakonwarning
 
--ONETHREAD
+\-ONETHREAD
 
--VSPerf
+\-VSPerf
 
--VTune
+\-VTune
 
-For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform](onenote:https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one#Application/OS/Generic Platform&section-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={51DB5F0B-142A-49A0-AA97-77413BA70981}&end)
+For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform]\(onenote:<https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one#Application/OS/Generic> Platform§ion-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={51DB5F0B-142A-49A0-AA97-77413BA70981}&end)
 
 =====================================================================================================================================
 
@@ -100,11 +104,12 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 - Command to build + cook + launch game
 
-  - Click the command =&gt; SWindow Popout with checkboxes+comboboxes to {build|cook} {engine|standalone} {development|debuggame} BBR
+  - Click the command => SWindow Popout with checkboxes+comboboxes to {build|cook} {engine|standalone} {development|debuggame} BBR
 
   - Persist to config (kiteandlightning.py has example of ConfigParser)
 
-* Create new ABBDebugController from ADebugCameraController. This can be our base class for debugging
+
+- Create new ABBDebugController from ADebugCameraController. This can be our base class for debugging
 
   - Add capture debug frustum console command to this class. Easiest way is make a
 
@@ -115,9 +120,10 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
     Also look at Ethan Carter Extension to freeze rendering. Note: this might be not applicable anymore and also single eye frustum culling has been implemented in the engine already
 
-    > _I had added drawing a debug frustum to the FREEZERENDERING command to aid in debugging culling using a joint frustum for both eyes. I had_ [_improved the DrawDebugFrustum() code_](https://github.com/inequation/UnrealEngine/commit/38127610bd153c949213e95564a97b5808e52d5d) _to better handle the_ [_inverse-Z projection_](https://developer.nvidia.com/content/depth-precision-visualized) _matrices that UE4 uses, and also to allow a plane set to be the data source._
+    > *I had added drawing a debug frustum to the FREEZERENDERING command to aid in debugging culling using a joint frustum for both eyes. I had* [*improved the DrawDebugFrustum() code*](https://github.com/inequation/UnrealEngine/commit/38127610bd153c949213e95564a97b5808e52d5d) *to better handle the* [*inverse-Z projection*](https://developer.nvidia.com/content/depth-precision-visualized) *matrices that UE4 uses, and also to allow a plane set to be the data source.*
 
-    From <<https://medium.com/@TheIneQuation/the-vanishing-of-milliseconds-dfe7572d9856>>
+    From [&lt;https://medium.com/@TheIneQuation/the-vanishing-of-milliseconds-dfe7572d9856]\(<https://medium.com/@TheIneQuation/the-vanishing-of-milliseconds-dfe7572d9856)>
+
 
 - Command To Launch Oculus Perf tool:
 
@@ -133,11 +139,12 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 ![Tolva_OculusDebugTool](C:\devguide\conversion\FINISHED\assets\Tolva_OculusDebugTool.png)
 
-https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-lostframes/
+<https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-lostframes/>
 
 - Pause Game Thread: (pause)
 
-* Pause Game Thread Clock update (e.g. slomo = 0)
+
+- Pause Game Thread Clock update (e.g. slomo = 0)
 
   - Game Thread should keep ticking but game engine should not increase the game clock so we can deterministically analyze current frame tick
 
@@ -145,7 +152,7 @@ https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-
 
 - Low-pri: Add Ethan Carter's implementation of STAT RELEVANTLIGHTS:
 
-https://github.com/inequation/UnrealEngine/commit/c986362a92c56b498982b200b0f36a09723202a4
+<https://github.com/inequation/UnrealEngine/commit/c986362a92c56b498982b200b0f36a09723202a4>
 
 - Command to capture ETW tracefile using ovrlog or ovrlog_win10.
 
@@ -153,7 +160,7 @@ https://github.com/inequation/UnrealEngine/commit/c986362a92c56b498982b200b0f36a
 
   - This chapter from this book is another detailed good resource (I have the ebook, ask me when you get to it):
 
-Chapter 2. Understanding, Measuring, and Analyzing VR Graphics Performance (by James Hughes, Reza Nourai, and Ed Hutchins) in the book _GPU Zen: Advanced Rendering Techniques (Wolfgang Engel_, ed)
+Chapter 2. Understanding, Measuring, and Analyzing VR Graphics Performance (by James Hughes, Reza Nourai, and Ed Hutchins) in the book *GPU Zen: Advanced Rendering Techniques (Wolfgang Engel*, ed)
 
 - Grab Individual stat numbers and construct our own groups:
 
@@ -169,61 +176,64 @@ Chapter 2. Understanding, Measuring, and Analyzing VR Graphics Performance (by J
 
 - [Accessing Single Stat Values]
 
-* Command to programmatically capture a frame:
+
+- Command to programmatically capture a frame:
 
   - Use dxcap: <https://msdn.microsoft.com/en-us/library/hh780905.aspx>
 
-    dxcap -c D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\Ikrima\src\Assembla\Bebylon\BBR\BBR.uproject 0-Lobby -log -debug -d3ddebug -game
+    dxcap -c D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\\Ikrima\\src\\Assembla\\Bebylon\\BBR\\BBR.uproject 0-Lobby -log -debug -d3ddebug -game
 
-    dxcap -frame 8s -c D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\Ikrima\src\Assembla\Bebylon\BBR\BBR.uproject 0-Lobby -log -game
+    dxcap -frame 8s -c D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\\Ikrima\\src\\Assembla\\Bebylon\\BBR\\BBR.uproject 0-Lobby -log -game
+
 
 - Programmatic NSight capture would be great too:
 
 **Launch Project with NSight HUD:**
 
-"C:\Program Files (x86)\NVIDIA Corporation\Nsight Visual Studio Edition 5.3\Monitor\Common\Nvda.Launcher.exe" "%1"
+"C:\\Program Files (x86)\\NVIDIA Corporation\\Nsight Visual Studio Edition 5.3\\Monitor\\Common\\Nvda.Launcher.exe" "%1"
 
 Ex:
 
-"C:\Program Files (x86)\NVIDIA Corporation\Nsight Visual Studio Edition 5.3\Monitor\Common\Nvda.Launcher.exe" "C:\UE4Editor.exe" BBR.uproject -log
+"C:\\Program Files (x86)\\NVIDIA Corporation\\Nsight Visual Studio Edition 5.3\\Monitor\\Common\\Nvda.Launcher.exe" "C:\\UE4Editor.exe" BBR.uproject -log
 
 **Launch NSight Monitor**
 
-1.  Make sure to launch nsmonitor with admin priv
+1. Make sure to launch nsmonitor with admin priv
 
-2.  Adjust WDDM TDR for Nsight
+1. Adjust WDDM TDR for Nsight
 
-3.  Enable Driver Instrumentation
+1. Enable Driver Instrumentation
 
-4.  Make sure to warn if these settings arent set:
+1. Make sure to warn if these settings arent set:
 
-    - t.maxfps=0
+   - t.maxfps=0
 
-    - Set BBIsGPUProfiling = true
+   - Set BBIsGPUProfiling = true
 
-5.  Remember to pass -d3ddebug
+1. Remember to pass -d3ddebug
 
-6.  Exhaustive D3D11 shader collection
+1. Exhaustive D3D11 shader collection
 
-7.  Make sure to set shader include paths
+1. Make sure to set shader include paths
 
-8.  Make sure to set application is a launcher
+1. Make sure to set application is a launcher
 
-9.  Set Force Assembly debugging if you cant find source = true
+1. Set Force Assembly debugging if you cant find source = true
 
-10. Set Preferred remote shader debugging mode = Replay-based debugging
+1. Set Preferred remote shader debugging mode = Replay-based debugging
 
 - Tick One Frame Forward at Fixed Interval
 
-* Command to Toggle Determinism (e.g. Fixed Random Seed, Set Fixed Timestep, etc). Look at what these commandline options are and see if it's possible to set them at runtime
 
--Deterministic (shortcut for -fixedtimestep/-fixedseed)
+- Command to Toggle Determinism (e.g. Fixed Random Seed, Set Fixed Timestep, etc). Look at what these commandline options are and see if it's possible to set them at runtime
 
--fixedtimestep
+\-Deterministic (shortcut for -fixedtimestep/-fixedseed)
 
--FixedSeed
+\-fixedtimestep
 
--usefixedtimestep
+\-FixedSeed
+
+\-usefixedtimestep
 
 - Custom Stats Visualizer Widget: Should display window with visualizer for render budget
 
@@ -235,7 +245,8 @@ Ex:
 
   - Slate widget for graphs/charts: <https://www.unrealengine.com/marketplace/datatracker-plugin> or <https://www.unrealengine.com/marketplace/kantan-charts>
 
-* Launcher Mode for Shader Debugging:
+
+- Launcher Mode for Shader Debugging:
 
 ## Commands for toggling debug & perf markers:
 
@@ -317,7 +328,7 @@ ProcessGameThreadTargetTime=.01
 
 ;For XboxOne PIX support
 
-ShaderPDBRoot=D:\DirectoryOfChoice
+ShaderPDBRoot=D:\\DirectoryOfChoice
 
 ## Sanity Checking Commands
 

@@ -1,6 +1,4 @@
-```
-sortIndex: 2
-```
+    sortIndex: 2
 
 UE4 packages everything in the project folder by default.
 
@@ -14,10 +12,9 @@ To build for 64-bit release:
 
 Change this in the source code:
 
-Unfortunately there's no way of switching from the editor UI in the 4.2 build. If you want to change it manually,you can go to FMainFrameActionCallbacks::PackageProject() in Engine\Source\Editor\MainFrame\\Private\Frame\MainFrameActions.cpp, and change this bit of code:
+Unfortunately there's no way of switching from the editor UI in the 4.2 build. If you want to change it manually,you can go to FMainFrameActionCallbacks::PackageProject() in Engine\\Source\\Editor\\MainFrame\\Private\\Frame\\MainFrameActions.cpp, and change this bit of code:
 
 ```cpp
-
 if (PlatformName == "WindowsNoEditor")
 {
 if (PackagingSettings-&gt;BuildConfiguration == PPBC_Shipping)
@@ -33,4 +30,4 @@ OptionalParams += TEXT(" -targetplatform=Win64");
 
 If you get rid of the check for the shipping configuration, it should work.
 
-_Reference From https://answers.unrealengine.com/questions/32490/ue4-editor-64-bit-vs-32-bit-why-does-the-editor-ru.html_
+*Reference From <https://answers.unrealengine.com/questions/32490/ue4-editor-64-bit-vs-32-bit-why-does-the-editor-ru.html>*

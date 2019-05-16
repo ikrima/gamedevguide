@@ -12,9 +12,9 @@ const FString DemoPath = FPaths::Combine(\*FPaths::GameSavedDir(), TEXT("Demos/"
         const FString StreamFullBaseFilename =e FPaths::Combine(\*StreamDirectory, \*ReplayName);  
         const FString InfoFilename = StreamFullBaseFilename + TEXT(".replayinfo");
 
-TUniquePtr&lt;FArchive&gt; InfoFileArchive(IFileManager::Get().CreateFileReader(\*InfoFilename));
+TUniquePtr&lt;FArchive> InfoFileArchive(IFileManager::Get().CreateFileReader(\*InfoFilename));
 
-if (InfoFileArchive.IsValid() && InfoFileArchive-&gt;TotalSize() != 0)  
+if (InfoFileArchive.IsValid() && InfoFileArchive->TotalSize() != 0)  
         {  
                 FString JsonString;  
                 \*InfoFileArchive &lt;&lt; JsonString;
@@ -22,21 +22,21 @@ if (InfoFileArchive.IsValid() && InfoFileArchive-&gt;TotalSize() != 0)
 Info.FromJson(JsonString);  
                 Info.bIsValid = true;
 
-InfoFileArchive-&gt;Close();  
+InfoFileArchive->Close();  
         }
 
 // Set FriendlyName  
         Info.FriendlyName = NewFriendlyReplayName;
 
 // Write File Info  
-        TUniquePtr&lt;FArchive&gt; ReplayInfoFileAr(IFileManager::Get().CreateFileWriter(\*InfoFilename));
+        TUniquePtr&lt;FArchive> ReplayInfoFileAr(IFileManager::Get().CreateFileWriter(\*InfoFilename));
 
 if (ReplayInfoFileAr.IsValid())  
         {  
                 FString JsonString = Info.ToJson();  
                 \*ReplayInfoFileAr &lt;&lt; JsonString;
 
-ReplayInfoFileAr-&gt;Close();  
+ReplayInfoFileAr->Close();  
         }
 
-_From &lt;<https://wiki.unrealengine.com/Replay_System_Tutorial>&gt;_
+*From &lt;<https://wiki.unrealengine.com/Replay_System_Tutorial>>*

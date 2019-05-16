@@ -1,6 +1,6 @@
 Development Debugging:
 
-[Useful Console Commands](onenote:https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one#Useful Console Commands&section-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={25F728ED-B2FE-4B36-8F5E-C7F6F255AF48}&end)
+[Useful Console Commands]\(onenote:<https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one#Useful> Console Commands§ion-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={25F728ED-B2FE-4B36-8F5E-C7F6F255AF48}&end)
 
 Memory Leaking:
 
@@ -50,7 +50,7 @@ Actor Select Relevant Lights
 
 - Go through UDK console commands and make a list of applicable ones:
 
-- - [UDK Console Commands](onenote:#UDK Console Commands&section-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={8E0A0113-FF15-433D-95A7-92451A0EC7E8}&end&base-path=https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one)
+- - [UDK Console Commands]\(onenote:#UDK Console Commands§ion-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={8E0A0113-FF15-433D-95A7-92451A0EC7E8}&end&base-path=<https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one>)
 
 <https://docs.unrealengine.com/udk/Three/GameplayDebugging.html>
 
@@ -85,4 +85,4 @@ Go to bool StaticExec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevice& Ar ) in
   - Also enable UCheatManager() built-in functions on Dev Tool
   - Fixed Random Seed & Set Fixed Timestep dev options
 
-[Networking Tips & Tricks](onenote:Unreal.one#Tips Tricks&section-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={79F41BB9-4B34-43DB-85C3-D97DAB1D900A}&end&base-path=https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon)
+[Networking Tips & Tricks]\(onenote:Unreal.one#Tips Tricks§ion-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={79F41BB9-4B34-43DB-85C3-D97DAB1D900A}&end&base-path=<https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon>)

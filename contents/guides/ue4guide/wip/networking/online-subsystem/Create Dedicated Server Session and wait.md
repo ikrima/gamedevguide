@@ -30,51 +30,51 @@ void UCustomCreateSession::Activate()
 
 {
 
-FCustomOnlineSubsystemBPCallHelper Helper(TEXT("CustomCreateSession"), GEngine-&gt;GetWorldFromContextObject(WorldContextObject));
+FCustomOnlineSubsystemBPCallHelper Helper(TEXT("CustomCreateSession"), GEngine->GetWorldFromContextObject(WorldContextObject));
 
 // !!!CHANGE!!! Get the session interface and set the settings first.
 
-auto Sessions = Helper.OnlineSub-&gt;GetSessionInterface();
+auto Sessions = Helper.OnlineSub->GetSessionInterface();
 
 if (Sessions.IsValid())
 
 {
 
-CreateCompleteDelegateHandle = Sessions-&gt;AddOnCreateSessionCompleteDelegate_Handle(CreateCompleteDelegate);
+CreateCompleteDelegateHandle = Sessions->AddOnCreateSessionCompleteDelegate_Handle(CreateCompleteDelegate);
 
 SessionSettings = MakeShareable(new FOnlineSessionSettings());
 
-SessionSettings-&gt;NumPublicConnections = NumPublicConnections;
+SessionSettings->NumPublicConnections = NumPublicConnections;
 
-SessionSettings-&gt;bShouldAdvertise = true;
+SessionSettings->bShouldAdvertise = true;
 
-SessionSettings-&gt;bAllowJoinInProgress = true;
+SessionSettings->bAllowJoinInProgress = true;
 
-SessionSettings-&gt;bIsLANMatch = bUseLAN;
+SessionSettings->bIsLANMatch = bUseLAN;
 
-SessionSettings-&gt;bUsesPresence = true;
+SessionSettings->bUsesPresence = true;
 
-SessionSettings-&gt;bAllowJoinViaPresence = true;
+SessionSettings->bAllowJoinViaPresence = true;
 
-SessionSettings-&gt;Set("password", DSS_password, EOnlineDataAdvertisementType::ViaOnlineService);
+SessionSettings->Set("password", DSS_password, EOnlineDataAdvertisementType::ViaOnlineService);
 
-SessionSettings-&gt;Set("lobbyName", DSS_lobbyName, EOnlineDataAdvertisementType::ViaOnlineService);
+SessionSettings->Set("lobbyName", DSS_lobbyName, EOnlineDataAdvertisementType::ViaOnlineService);
 
-SessionSettings-&gt;Set("selectedMap", FString("Echo"), EOnlineDataAdvertisementType::ViaOnlineService);
+SessionSettings->Set("selectedMap", FString("Echo"), EOnlineDataAdvertisementType::ViaOnlineService);
 
-// SessionSettings-&gt;Set("currentStatus", FString("ok"), EOnlineDataAdvertisementType::ViaOnlineService);
+// SessionSettings->Set("currentStatus", FString("ok"), EOnlineDataAdvertisementType::ViaOnlineService);
 
-// SessionSettings-&gt;Set("currentBots", FString("5"), EOnlineDataAdvertisementType::ViaOnlineService);
+// SessionSettings->Set("currentBots", FString("5"), EOnlineDataAdvertisementType::ViaOnlineService);
 
-// SessionSettings-&gt;Set("maxPlayers", FString("32"), EOnlineDataAdvertisementType::ViaOnlineService);
+// SessionSettings->Set("maxPlayers", FString("32"), EOnlineDataAdvertisementType::ViaOnlineService);
 
-// SessionSettings-&gt;Set("currentPlayers", FString("1"), EOnlineDataAdvertisementType::ViaOnlineService);
+// SessionSettings->Set("currentPlayers", FString("1"), EOnlineDataAdvertisementType::ViaOnlineService);
 
-// SessionSettings-&gt;Set("motd", FString("Hello World"), EOnlineDataAdvertisementType::ViaOnlineService);
+// SessionSettings->Set("motd", FString("Hello World"), EOnlineDataAdvertisementType::ViaOnlineService);
 
-SessionSettings-&gt;Set("versionNumber", DSS_versionNumber, EOnlineDataAdvertisementType::ViaOnlineService);
+SessionSettings->Set("versionNumber", DSS_versionNumber, EOnlineDataAdvertisementType::ViaOnlineService);
 
-// SessionSettings-&gt;Set("gametype", FString("Normal"), EOnlineDataAdvertisementType::ViaOnlineService);
+// SessionSettings->Set("gametype", FString("Normal"), EOnlineDataAdvertisementType::ViaOnlineService);
 
 Helper.QueryIDFromPlayerController(PlayerControllerWeakPtr.Get());
 
@@ -82,7 +82,7 @@ if (Helper.IsValid())
 
 {
 
-Sessions-&gt;CreateSession(\*Helper.UserID, GameSessionName, \*SessionSettings);
+Sessions->CreateSession(\*Helper.UserID, GameSessionName, \*SessionSettings);
 
 return;
 
@@ -94,7 +94,7 @@ return;
 
 // still be able to handle it (like steam).
 
-else if (Sessions-&gt;CreateSession(0, GameSessionName, \*SessionSettings))
+else if (Sessions->CreateSession(0, GameSessionName, \*SessionSettings))
 
 {
 
@@ -140,10 +140,10 @@ my session variables and settings on
 
 startup?
 
-Take a look at AGameNetworkManager. We use this to access INI settings in multiple places. Basically, we mark the settings up that we need as either Config or GlobalConfig. Then, when we need to access them we do something like this: GetDefault&lt;AGameNetworkManager&gt;()-&gt;bUseDistanceBasedRelevancy
+Take a look at AGameNetworkManager. We use this to access INI settings in multiple places. Basically, we mark the settings up that we need as either Config or GlobalConfig. Then, when we need to access them we do something like this: GetDefault&lt;AGameNetworkManager>()->bUseDistanceBasedRelevancy
 
 What this will do is grab the Class Default Object (CDO) and read the settings from it. In the case where no CDO exists already, one will be created.
 
 If you take the CVar approach, then all it would require would be for you to just query the CVars.
 
-_From &lt;<https://udn.unrealengine.com/questions/410222/specifying-net-session-name-and-other-vars-dedicat.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/410222/specifying-net-session-name-and-other-vars-dedicat.html>>*

@@ -38,27 +38,27 @@ Ex: Dynamic Resource interaction with SkinnedMeshComponent
 
 Gamethread
 
-1.  Initializes RHI
+1. Initializes RHI
 
-2.  Overrides CreateRenderState_Concurrent so that it can create renderstate
+1. Overrides CreateRenderState_Concurrent so that it can create renderstate
 
-    - SkeletalMeshObject manages sending skinned mesh bone xforms, vertex anim state, etc to the render thread
+   - SkeletalMeshObject manages sending skinned mesh bone xforms, vertex anim state, etc to the render thread
 
-3.  TickComponent() updates animations, calls MarkRenderDynamicDataDirty()
+1. TickComponent() updates animations, calls MarkRenderDynamicDataDirty()
 
-4.  MarkRenderDynamicDataDirty() flags this component to be updated at the end of the frame on a thread (can override RequiresGameThreadEndOfFrameUpdates() to specify game thread)
+1. MarkRenderDynamicDataDirty() flags this component to be updated at the end of the frame on a thread (can override RequiresGameThreadEndOfFrameUpdates() to specify game thread)
 
-5.  At the end of the frame, a task job processor calls DoDeferredRenderUpdates_Concurrent() on each actor that needs updates
+1. At the end of the frame, a task job processor calls DoDeferredRenderUpdates_Concurrent() on each actor that needs updates
 
-6.  DoDeferredRenderUpdates_Concurrent -&gt;
+1. DoDeferredRenderUpdates_Concurrent ->
 
-    - (Renderstate_Dirty)=&gt;RecreateRenderState_Concurrent
+   - (Renderstate_Dirty)=>RecreateRenderState_Concurrent
 
-    - (bRenderTransformDirty) =&gt; SendRenderTransform_Concurrent
+   - (bRenderTransformDirty) => SendRenderTransform_Concurrent
 
-    - (bRenderDynamicDataDirty) =&gt; SendRenderDynamicData_Concurrent
+   - (bRenderDynamicDataDirty) => SendRenderDynamicData_Concurrent
 
-7.  SkinnedMeshComponent::SendRenderDynamicData_Concurrent() then is responsible for sending updated render data to the render thread (through Enqueue_Unique_Render_Command)
+1. SkinnedMeshComponent::SendRenderDynamicData_Concurrent() then is responsible for sending updated render data to the render thread (through Enqueue_Unique_Render_Command)
 
 - Uses SkeletalMeshObject as the helper class to manage that
 
@@ -74,7 +74,7 @@ Gamethread
 
 - Enqueues Render Command: Resource::ReleaseResource()
 
-- ReleaseResource() is responsible for deallocating the RHI Resource (e.g. calls VertexBuffer:ReleaseResource-&gt;ReleaseRHI/ReleaseDynamicRHI)
+- ReleaseResource() is responsible for deallocating the RHI Resource (e.g. calls VertexBuffer:ReleaseResource->ReleaseRHI/ReleaseDynamicRHI)
 
 - BeginCleanup(MeshObject) is called to do a deferred deletion of the object
 
@@ -82,25 +82,25 @@ Gamethread
 
 Ex: Static Resource interaction with USkeletalMesh
 
-1.  On Component detachment/destruction, game thread enqueues commands to release all RHI FRenderResources
+1. On Component detachment/destruction, game thread enqueues commands to release all RHI FRenderResources
 
-    a. GC Calls MeshObject::ReleaseResources(). This doesn't immediately destroy anything.
+   a. GC Calls MeshObject::ReleaseResources(). This doesn't immediately destroy anything.
 
-    1.  Calls BeginReleaseResource() to enqueue command on render thread to release RHI resources (e.g. BeginReleaseResource(&ColorVertexBuffer);)
+   1. Calls BeginReleaseResource() to enqueue command on render thread to release RHI resources (e.g. BeginReleaseResource(&ColorVertexBuffer);)
 
-    2.  Game thread creates a fence so it can continue so we don't block on render thread processing the delete
+   1. Game thread creates a fence so it can continue so we don't block on render thread processing the delete
 
-    3.  GC calls USkeletalMesh::IsReadyForFinishDestroy() which checks if the fence is set or not
+   1. GC calls USkeletalMesh::IsReadyForFinishDestroy() which checks if the fence is set or not
 
-    4.  GC calls UObject::FinishDestroy()
+   1. GC calls UObject::FinishDestroy()
 
 [*https://docs.unrealengine.com/latest/INT/Programming/Rendering/ThreadedRendering/index.html*]
 
----
+* * *
 
 FSceneView is per Eye scene view. Calculates offsets & HMD rotation
 
----
+* * *
 
 Depth Priority Groups are deprecated even though they don't show up that way in the API
 
@@ -122,6 +122,6 @@ The HUD Class also contains the events for when you click the Hitboxes that are 
 
 Hopefully this enough to keep you going on working with Blueprint HUD. We're working hard to get more official documentation for both Blueprint HUD and C++ HUD and hope to be able to provide it soon!
 
-_From &lt;<https://wiki.unrealengine.com/Content_example_blueprint_HUD>&gt;_
+*From &lt;<https://wiki.unrealengine.com/Content_example_blueprint_HUD>>*
 
 [*https://docs.unrealengine.com/latest/int/programming/rendering/threadedrendering/index.html*]: https://docs.unrealengine.com/latest/INT/Programming/Rendering/ThreadedRendering/index.html

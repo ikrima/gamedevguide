@@ -1,16 +1,16 @@
 #### **Approach:**
 
-1.  Render a sphere into stencil channel. Goal: In 2-4 hrs, extend UE4 to write to stencil buffer. Non-goal: any generality support, edge cases with drawing arena vs stadium order, etc.
+1. Render a sphere into stencil channel. Goal: In 2-4 hrs, extend UE4 to write to stencil buffer. Non-goal: any generality support, edge cases with drawing arena vs stadium order, etc.
 
-    a. Set render states to stencil buffer
+   a. Set render states to stencil buffer
 
-    b. Render Sphere (hardcoded) into stencil channel
+   b. Render Sphere (hardcoded) into stencil channel
 
-    c. Ensure it doesn't mess with the remaining pipeline
+   c. Ensure it doesn't mess with the remaining pipeline
 
-    i. Test in a simple test level
+   i. Test in a simple test level
 
-    ii. Test in U-Master-GoldFingers
+   ii. Test in U-Master-GoldFingers
 
 
     d. Validate in RenderDoc
@@ -33,7 +33,7 @@
 
 3) Frustum Culling:
 
-   a. Extend FrustumCull&lt;&gt;() to sphere cull arena primitive components from current arena zone
+   a. Extend FrustumCull&lt;>() to sphere cull arena primitive components from current arena zone
 
 4. Finishing pass. Goal: Make feature production ready
 
@@ -107,10 +107,10 @@
 
 **Stadium Scaling Future Work:**
 
-1.  For Stadium primitives: See if we can move them to the static rendering path even though they're dynamic so that we can cache scene traversal as close to RHI level
+1. For Stadium primitives: See if we can move them to the static rendering path even though they're dynamic so that we can cache scene traversal as close to RHI level
 
-    ​ a. If possible, maybe we can add another rendering path instead of static vs. dynamic
+   ​ a. If possible, maybe we can add another rendering path instead of static vs. dynamic
 
-2.  Fixing indirect lighting cache (rotate SH lights for stadium objects)
+1. Fixing indirect lighting cache (rotate SH lights for stadium objects)
 
 [*https://docs.unrealengine.com/latest/int/programming/rendering/overview/index.html*]: https://docs.unrealengine.com/latest/INT/Programming/Rendering/Overview/index.html

@@ -4,8 +4,8 @@ If you are building a large environment you're not going to want to use precompu
 
 Sadly there are no UE4 docs on these systems, but the UE3 docs are mostly relevant:
 
-[[http://udn.epicgames.com/Three/Preco...isibility.html](https://api.unrealengine.com/udk/Three/PrecomputedVisibility.html)]
+\[[http://udn.epicgames.com/Three/Preco...isibility.html](https://api.unrealengine.com/udk/Three/PrecomputedVisibility.html)]
 
 Dynamic occlusion culling is on automatically, it tests the bounding box of each object against the depth buffer from last frame to determine visibility. The default method right now is called HZB (Hierarchical Z Buffer) but there's also the standard occlusion query method if HZB is disabled. You can test efficiency with 'stat sceneocclusion'.
 
-_From &lt;<https://forums.unrealengine.com/showthread.php?18323-Visual-occlusion-and-viz-boxes>&gt;_
+*From &lt;<https://forums.unrealengine.com/showthread.php?18323-Visual-occlusion-and-viz-boxes>>*

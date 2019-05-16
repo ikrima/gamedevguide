@@ -10,4 +10,4 @@ ShowDebug Animation
 
 - Show all animation debug info
 
-- Turn off/on certain categories by ShowDebugToggleSubCategory &lt;categoryname&gt;
+- Turn off/on certain categories by ShowDebugToggleSubCategory &lt;categoryname>

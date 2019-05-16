@@ -6,11 +6,11 @@
 
 The gist is to search for "CustomDepth" and do almost the exact same thing, except bind the main scene depth buffer and your custom color buffer, instead of a custom depth buffer. We use this as a mask to blend a scene capture with the main scene view in a postprocess material, but it should work just as well to sample it in base pass materials.
 
-_From &lt;<https://udn.unrealengine.com/questions/270970/stencil-testing-opaque-pass.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/270970/stencil-testing-opaque-pass.html>>*
 
 - Add a new pass to the deferred shading renderer for setting up this texture. Search for bRenderCustomDepth and CustomDepthSet to use the custom depth rendering pass as an example. You won't need any new drawing policies. While rendering to this target you can bind the scene depth buffer so you can depth test against the main scene.
 
-_From &lt;<https://udn.unrealengine.com/questions/189594/on-using-intermediate-render-targets.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/189594/on-using-intermediate-render-targets.html>>*
 
 **Useful classes:**
 
@@ -36,9 +36,9 @@ static void SetDecalDepthState(FDecalDepthState DecalDepthState, FRHICommand
 
 SetDepthStencilStateForBasePass()
 
-TStaticDepthStencilState&lt;...&gt;::GetStaticState() for the class defining all the stencil op state
+TStaticDepthStencilState&lt;...>::GetStaticState() for the class defining all the stencil op state
 
-TStaticDepthStencilState&lt;&gt;::GetRHI() for getting the default stencil (iirc, stencil expects to be set back to the default but not sure)
+TStaticDepthStencilState&lt;>::GetRHI() for getting the default stencil (iirc, stencil expects to be set back to the default but not sure)
 
 RHICommandSetStencilRef() for setting stencil
 
@@ -65,7 +65,7 @@ EMaterialProperty
 
 FMaterialAttributeDefinitionMap::AddCustomAttribute
 
-RHICmdList.SetDepthStencilState(TStaticDepthStencilState&lt; false, CF_Always &gt;::GetRHI());
+RHICmdList.SetDepthStencilState(TStaticDepthStencilState&lt; false, CF_Always >::GetRHI());
 
 SetUniformBufferParameter
 
@@ -102,7 +102,7 @@ FCableVertexFactory
 Drawing polciies:
 
 Logic to render meshes with pass specific shaders.  
-Takes set of mesh material shaders + vertex factory =&gt; binds vertex factory's buffers to RHI =&gt; binds mesh material shaders to RHI =&gt; sets shader parameters =&gt; issues RHI drawcall
+Takes set of mesh material shaders + vertex factory => binds vertex factory's buffers to RHI => binds mesh material shaders to RHI => sets shader parameters => issues RHI drawcall
 
 - FVertexFactory to itnerface to abstract mesh type
 
@@ -118,7 +118,7 @@ FRenderCommandFence: Used to sync operations from GT & RT
 
 - UPrimitiveComponent::DetachFence used on deleting
 
-\[Great example is USkinnedMeshComponent/USkeletalMesh\]
+\[Great example is USkinnedMeshComponent/USkeletalMesh]
 
 Static Render Resources:
 
@@ -162,7 +162,7 @@ Extend view relevance with new arena bit?
 
 Separate render pass, after all opaque?
 
-Extend FrustumCull&lt;&gt;() to cull objects based on View cone direction
+Extend FrustumCull&lt;>() to cull objects based on View cone direction
 
 # Early-Z/Stencil/Hi-Z/Hi-Stencil/Z-Cull Rules:
 
@@ -174,9 +174,9 @@ TLDR:
 
 - Don't switch depth comparison direction
 
-- Discard + depth writes OFF =&gt; still keeps EarlyZ on
+- Discard + depth writes OFF => still keeps EarlyZ on
 
-- \[earlydepthstencil\] + discard + depth writes =&gt; color will be discarded but depth will get writtten (bc it already got written to in the earlyz test phase before the pixel shader)
+- \[earlydepthstencil] + discard + depth writes => color will be discarded but depth will get writtten (bc it already got written to in the earlyz test phase before the pixel shader)
 
 Resources:
 
@@ -201,14 +201,14 @@ Early Z Hierarchical Z Shader depth output Disabled Disabled Alpha test, alpha t
 /\*  
 \* Stencil layout during basepass / deferred decals:  
 \*                BIT ID    | USE  
-\*                \[0\]       | sandbox bit (bit to be use by any rendering passes, but must be properly reset to 0 after using)  
-\*                \[1\]       | unallocated  
-\*                \[2\]       | unallocated  
-\*                \[3\]       | Temporal AA mask for translucent object.  
-\*                \[4\]       | Lighting channels  
-\*                \[5\]       | Lighting channels  
-\*                \[6\]       | Lighting channels  
-\*                \[7\]       | primitive receive decal bit  
+\*                \[0]       | sandbox bit (bit to be use by any rendering passes, but must be properly reset to 0 after using)  
+\*                \[1]       | unallocated  
+\*                \[2]       | unallocated  
+\*                \[3]       | Temporal AA mask for translucent object.  
+\*                \[4]       | Lighting channels  
+\*                \[5]       | Lighting channels  
+\*                \[6]       | Lighting channels  
+\*                \[7]       | primitive receive decal bit  
 \*  
 \* After deferred decals, stencil is cleared to 0 and no longer packed in this way, to ensure use of fast hardware clears and HiStencil.  
 \*/

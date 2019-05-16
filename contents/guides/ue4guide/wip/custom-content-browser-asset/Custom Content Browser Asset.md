@@ -24,11 +24,11 @@ The AI module provides an example of doing this. See FAIModule::StartupModule 
 
 I notice that tutorial doesn't actually cover creating asset type actions, however they're pretty simple. FAssetTypeActions_Enum provides a pretty basic example, just remember to register them with the AssetTools module (via RegisterAssetTypeActions).
 
-_From &lt;<https://answers.unrealengine.com/questions/337715/custom-asset-category.html>&gt;_
+*From &lt;<https://answers.unrealengine.com/questions/337715/custom-asset-category.html>>*
 
 Create New Asset Type + Asset Editor
 
-1.  Derive UFactory
+1. Derive UFactory
 
 Easy to register custom Ufactory for hooking into overriding new asset creation
 
@@ -38,12 +38,12 @@ Ufactory::ConfigureProperties()
 
 - This is where the custom SClassPickerDialog gets created
 
-1.  Derive from FAssetTypeActions_Base
+1. Derive from FAssetTypeActions_Base
 
 1)  Implement FAssetEditorToolkit
 
-1.  Make sure to override cooking process somehow so that any lazily referenced objects in your new asset are added to the cook & inclusion process
+1. Make sure to override cooking process somehow so that any lazily referenced objects in your new asset are added to the cook & inclusion process
 
 > Look at UDataTable::Serialize() & UWorld::AddReferencedObjects &
 >
-> UWorld::PreSaveRoot(const TCHAR\* **Filename**, TArray&lt;FString&gt;> **AdditionalPackagesToCook**)
+> UWorld::PreSaveRoot(const TCHAR\* **Filename**, TArray&lt;FString>> **AdditionalPackagesToCook**)

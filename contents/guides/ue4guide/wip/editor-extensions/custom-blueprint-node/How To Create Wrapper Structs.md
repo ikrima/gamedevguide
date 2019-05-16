@@ -17,7 +17,7 @@ FMovieSceneEventParameters(const FMovieSceneEventParameters& **RHS**) = defa
 \#if PLATFORM_COMPILER_HAS_DEFAULTED_FUNCTIONS  
         FMovieSceneEventParameters(FMovieSceneEventParameters&&) = default;  
         FMovieSceneEventParameters& operator=(FMovieSceneEventParameters&&) = default;  
-\#else  
+#else  
         FMovieSceneEventParameters(FMovieSceneEventParameters&& **RHS**)  
         {  
                 \*this = MoveTemp(**RHS**);  
@@ -28,9 +28,9 @@ FMovieSceneEventParameters(const FMovieSceneEventParameters& **RHS**) = defa
                 StructBytes = MoveTemp(**RHS**.StructBytes);  
                 return \*this;  
         }  
-\#endif
+#endif
 
-void OverwriteWith(const TArray&lt;uint8&gt;> **Bytes**)  
+void OverwriteWith(const TArray&lt;uint8>> **Bytes**)  
         {  
                 StructBytes = **Bytes**;  
         }
@@ -40,10 +40,10 @@ void GetInstance(FStructOnScope& **OutStruct**) const
                 UStruct\* **StructPtr** = StructType.Get();  
                 **OutStruct**.Initialize(**StructPtr**);  
                 uint8\* **Memory** = **OutStruct**.GetStructMemory();  
-                if (**StructPtr** && **StructPtr**-&gt;GetStructureSize() &gt; 0 >> StructBytes.Num())  
+                if (**StructPtr** && **StructPtr**->GetStructureSize() > 0 >> StructBytes.Num())  
                 {  
                         FMemoryReader **Reader**(StructBytes);  
-                        **StructPtr**-&gt;SerializeTaggedProperties(**Reader**, **Memory**, **StructPtr**, nullptr);  
+                        **StructPtr**->SerializeTaggedProperties(**Reader**, **Memory**, **StructPtr**, nullptr);  
                 }  
         }
 
@@ -73,7 +73,7 @@ bool Serialize(FArchive& **Ar**)
 return true;  
         }
 
-friend FArchive& operator&lt;&lt;(FArchive< **Ar**, FMovieSceneEventParameters& **Payload**)  
+friend FArchive& operator&lt;&lt;(FArchive&lt; **Ar**, FMovieSceneEventParameters& **Payload**)  
         {  
                 **Payload**.Serialize(**Ar**);  
                 return **Ar**;  
@@ -81,6 +81,6 @@ friend FArchive& operator&lt;&lt;(FArchive< **Ar**, FMovieSceneEventParamete
 
 private:
 
-TWeakObjectPtr&lt;UStruct&gt; StructType;  
-        TArray&lt;uint8&gt; StructBytes;  
+TWeakObjectPtr&lt;UStruct> StructType;  
+        TArray&lt;uint8> StructBytes;  
 };

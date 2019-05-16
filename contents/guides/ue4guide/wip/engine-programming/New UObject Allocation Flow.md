@@ -1,8 +1,8 @@
 After tracking debugging, the following analysis of the following related functions:
 
-1.  NewObject
+1. NewObject
 
-template&lt; class T &gt; FUNCTION_NON_NULL_RETURN_START T\* NewObject(UObject\* Outer, FName Name, EObjectFlags Flags = RF_NoFlags, UObject\* Template = nullptr, bool bCopyTransientsFromClassDefaults = false, FObjectInstancingGraph\* InInstanceGraph = nullptr) FUNCTION_NON_NULL_RETURN_END { if (Name == NAME_None)
+template&lt; class T > FUNCTION_NON_NULL_RETURN_START T\* NewObject(UObject\* Outer, FName Name, EObjectFlags Flags = RF_NoFlags, UObject\* Template = nullptr, bool bCopyTransientsFromClassDefaults = false, FObjectInstancingGraph\* InInstanceGraph = nullptr) FUNCTION_NON_NULL_RETURN_END { if (Name == NAME_None)
 
 >
 
@@ -14,21 +14,21 @@ UObject\* StaticConstructObject_Internal ( UClass\* InClass, UObject\* InOuter /
 
 UObject\* StaticAllocateObject ( UClass\* InClass, UObject\* InOuter, FName InName, EObjectFlags InFlags, EInternalObjectFlags InternalSetFlags, bool bCanRecycleSubobjects, bool\* bOutRecycledSubobject )
 
-/\*\* _ Constructor used by StaticAllocateObject _ @param InClass non NULL, this gives the class of the new object, if known at this time _ @param InFlags RF_Flags to assign _ @param InOuter outer for this object _ @param InName name of the new object _ @param InObjectArchetype archetype to assign \*/
+/\*\* * Constructor used by StaticAllocateObject * @param InClass non NULL, this gives the class of the new object, if known at this time * @param InFlags RF_Flags to assign * @param InOuter outer for this object * @param InName name of the new object * @param InObjectArchetype archetype to assign \*/
 
 UObjectBase::UObjectBase(UClass* InClass, EObjectFlags InFlags, EInternalObjectFlags InInternalFlags, UObject *InOuter, FName InName) : ObjectFlags (InFlags)
 
 Create process summary
 
-1.  Quickly find out whether an object with the same name already exists;
+1. Quickly find out whether an object with the same name already exists;
 
-2.  If it exists, then destruct it, and use the memory block m;
+1. If it exists, then destruct it, and use the memory block m;
 
-3.  If there is no object with the same name, the memory block m is allocated according to the Class reflection information;
+1. If there is no object with the same name, the memory block m is allocated according to the Class reflection information;
 
-4.  The constructor ObjectBase is called on memory block m.
+1. The constructor ObjectBase is called on memory block m.
 
-5.  Finally, we call the constructor of the desired class on memory block m where the UObjectBase(UClass\* InClass, EObjectFlags InFlags, EInternalObjectFlags InInternalFlags, UObject \*InOuter, FName InName) functions complete the object registration. The following analysis of the function to understand the object management.
+1. Finally, we call the constructor of the desired class on memory block m where the UObjectBase(UClass\* InClass, EObjectFlags InFlags, EInternalObjectFlags InInternalFlags, UObject \*InOuter, FName InName) functions complete the object registration. The following analysis of the function to understand the object management.
 
 ### **Global object table**
 

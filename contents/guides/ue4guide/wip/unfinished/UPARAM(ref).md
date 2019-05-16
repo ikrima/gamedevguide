@@ -4,11 +4,11 @@ UPARAM(hidden)
 
 UPARAM(DisplayName="X (Roll)")
 
-const bool bMulticastDelegateProp = Property-&gt;IsA(UMulticastDelegateProperty::StaticClass());
+const bool bMulticastDelegateProp = Property->IsA(UMulticastDelegateProperty::StaticClass());
 
-const bool bDelegateProp = (Property-&gt;IsA(UDelegateProperty::StaticClass()) || bMulticastDelegateProp);
+const bool bDelegateProp = (Property->IsA(UDelegateProperty::StaticClass()) || bMulticastDelegateProp);
 
-const bool bShouldShowAsVar = (!Property-&gt;HasAnyPropertyFlags(CPF_Parm) && Property-&gt;HasAllPropertyFlags(CPF_BlueprintVisible)) && !bDelegateProp;
+const bool bShouldShowAsVar = (!Property->HasAnyPropertyFlags(CPF_Parm) && Property->HasAllPropertyFlags(CPF_BlueprintVisible)) && !bDelegateProp;
 
 CPF_DisableEditOnInstance
 

@@ -2,13 +2,14 @@
 
 **Params:**
 
-- Specular = 0.5 by default, \[0,1\]
+- Specular = 0.5 by default, \[0,1]
 
 - GBuffer.SpecularColor = lerp(0.08 \* Specular.xxx, BaseColor, Metallic.xxx); //Think this means index of refraction
 
 - GBuffer.DiffuseColor = BaseColor - BaseColor \* Metallic;
 
-* struct **FDeferredLightData**
+
+- struct **FDeferredLightData**
 
 {
 
@@ -88,13 +89,14 @@ uint ShadowedBits;
 
   DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER(float,LpvBiasMultiplier)
 
-* **View.SkyLightParameters**: X = max mip, Y = 1 if sky light should be rendered, 0 otherwise, Z = 1 if sky light is dynamic, 0 otherwise, W = blend fraction.
 
-* **FMaterialVertexParameters**: Parameters needed by vertex shader material inputs. Are independent of vertex factory.
+- **View.SkyLightParameters**: X = max mip, Y = 1 if sky light should be rendered, 0 otherwise, Z = 1 if sky light is dynamic, 0 otherwise, W = blend fraction.
 
-* **FMaterialPixelParameters**: parameters needed by pixel shader material inputs, related to Geometry.
+- **FMaterialVertexParameters**: Parameters needed by vertex shader material inputs. Are independent of vertex factory.
 
-* **FPixelMaterialInputs:** the result of the calculated per-pixel shared material properties from the material graph. Eg: basecolor, emissive, etc)
+- **FMaterialPixelParameters**: parameters needed by pixel shader material inputs, related to Geometry.
+
+- **FPixelMaterialInputs:** the result of the calculated per-pixel shared material properties from the material graph. Eg: basecolor, emissive, etc)
 
 **Shading Model:**
 
@@ -114,7 +116,9 @@ uint ShadowedBits;
 
     - Responsible for fully initializing FMaterialPixelParameters result
 
-* **If HQ_TEXTURE_LIGHTMAP && USES_AO_MATERIAL_MASK: GetLightMapCoordinates()** && **GetAOMaterialMask()**
+
+- **If HQ_TEXTURE_LIGHTMAP && USES_AO_MATERIAL_MASK: GetLightMapCoordinates()** && **GetAOMaterialMask()**
+
 
 - **CalcMaterialParametersEx**(): Runs the UE4 Node-based Material to calculate material attributes (FPixelMaterialInputs ) like basecolor, emissive, etc
 
@@ -122,11 +126,12 @@ uint ShadowedBits;
 
   - Calculate the Material Input/Attributes and Normal. This is in the generated MaterialTemplate.usf from Material Editor
 
-  - Filled in by _FHLSLMaterialTranslator::GetMaterialShaderCode()_ for each compiled material
+  - Filled in by *FHLSLMaterialTranslator::GetMaterialShaderCode()* for each compiled material
 
   - Output stored in the FPixelMaterialInputs PixelMaterialInputs parameter
 
-* **MaterialTemplate.usf Notes:**
+
+- **MaterialTemplate.usf Notes:**
 
   - CalcMaterialParametersEx() is where the actual shader computation happens and it gets stored in PixelMaterialInputs
 
@@ -137,6 +142,7 @@ uint ShadowedBits;
   - Some functions like GetMaterialTranslucentBackscatteringExponent() just return a hardcoded value for that material
 
   - There's also several helper functions that are implemented like GetObjectWorldPosition() or TransformWorldVectorToLocal()
+
 
 - **ApplyPixelDepthOffsetForBasePass()**
 
@@ -164,7 +170,8 @@ uint ShadowedBits;
 
   - VolumetricLightmapBrickTextureUVs = ComputeVolumetricLightmapBrickTextureUVs(MaterialParameters.AbsoluteWorldPosition);
 
-* Initialize FGBufferData GBuffer struct (even in the forward pass)
+
+- Initialize FGBufferData GBuffer struct (even in the forward pass)
 
   - **GetPrecomputedShadowMasks**(): (deferred only) Gets volumetric shadowing/stationary shadowing from precomputed lighting. Volume LightMap is a 3D texture
 
@@ -180,7 +187,7 @@ uint ShadowedBits;
 
       - **ILCQ:**
 
-        - If UseSingleSampleShadowFromStationaryLights =&gt; use PrecomputedLightingBuffer.DirectionalLightShadowing which is calculated at that location in the LCQ cache (code comment in PrimitiveSceneProxy.h says bSingleSampleShadowFromStationaryLights is only precomputed for stationary directional lights)
+        - If UseSingleSampleShadowFromStationaryLights => use PrecomputedLightingBuffer.DirectionalLightShadowing which is calculated at that location in the LCQ cache (code comment in PrimitiveSceneProxy.h says bSingleSampleShadowFromStationaryLights is only precomputed for stationary directional lights)
 
         - Otherwise it uses the shadowmaps so it returns 1 here (aka no shadowing)
 
@@ -190,9 +197,12 @@ uint ShadowedBits;
 
         - This will only come from stationary directional lights as well
 
+
 - **SetGBufferForShadingModel():** Different MATERIAL_SHADINGMODEL\_\* adjust the gbuffer here and write custom data
 
-* **_(USES_GBUFFER ONLY)_: Velocity calculation**
+
+- ***(USES_GBUFFER ONLY)*: Velocity calculation**
+
 
 - **Adjust GBuffer struct values based on shader:**
 
@@ -200,7 +210,7 @@ uint ShadowedBits;
 
   - **GBuffer.Roughness:** NormalCurvatureToRoughness(MaterialParameters.WorldNormal)
 
-  - **_(Subsurface_Profile && USES_GBUFFER)_ AdjustBaseColorAndSpecularColorForSubsurfaceProfileLighting()**
+  - ***(Subsurface_Profile && USES_GBUFFER)* AdjustBaseColorAndSpecularColorForSubsurfaceProfileLighting()**
 
   - **GBuffer.DiffuseColor** = BaseColor - BaseColor \* Metallic;
 
@@ -228,11 +238,12 @@ Where we compute precalculated **diffuse** lightmap/indirect lighting cache ligh
 
     - Default DiffuseColorForIndirect = GBuffer.DiffuseColor
 
-    - Default SubsurfaceColor= Normal materials =&gt; 0 | Subsurface/skin/twosided_foliage =&gt; SubsurfaceData.rgb
+    - Default SubsurfaceColor= Normal materials => 0 | Subsurface/skin/twosided_foliage => SubsurfaceData.rgb
 
     - Different materials can adjust this (eg MATERIAL_SHADINGMODEL_HAIR)
 
-* **Lightmap Calculation:** Also calculates subsurface indirect lighting
+
+- **Lightmap Calculation:** Also calculates subsurface indirect lighting
 
   - **PRECOMPUTED_IRRADIANCE_VOLUME_LIGHTING:** Used by primitives that have volumetric lightmap data && movable or LightAsIfVolumetric
 
@@ -244,9 +255,11 @@ Where we compute precalculated **diffuse** lightmap/indirect lighting cache ligh
 
     - OutDiffuseLighting = max(float3(0,0,0), DotSH3(IrradianceSH, DiffuseTransferSH)) / PI;
 
+
 - **CACHED_POINT_INDIRECT_LIGHTING/CACHED_VOLUME_INDIRECT_LIGHTING:** This is the old indirect lighting cache. ILCQ setting determines what to use (sample at a single point vs a per object volume texture of interpolated SH samples computed on CPU)
 
-* **HQ_TEXTURE_LIGHTMAP/LQ_TEXTURE_LIGHTMAP: GetLightMapColorHQ:** Static lightmaps. LQ is non-directional and just used for mobile
+
+- **HQ_TEXTURE_LIGHTMAP/LQ_TEXTURE_LIGHTMAP: GetLightMapColorHQ:** Static lightmaps. LQ is non-directional and just used for mobile
 
   - Lightmap data is stored as
 
@@ -256,11 +269,12 @@ Where we compute precalculated **diffuse** lightmap/indirect lighting cache ligh
 
   Sample0.rgb encodes the precomputed lighting color.
 
-* **L1 SH Band Data Reconstruction**
+- **L1 SH Band Data Reconstruction**
 
   Sample1.rgb encodes the L1 SH band data
 
   **NOTE:** SH basis is in the canonical math coordinate frame so you have to swizzle (eg: dot( SH, float4(WorldNormal.yzx, 1) )
+
 
 - Reconstruct primary average color for lightmap texel (aka SH L0 term)
 
@@ -268,7 +282,7 @@ Where we compute precalculated **diffuse** lightmap/indirect lighting cache ligh
 
   - Lightmap chromaticity is in UVW in Lightmap0.xyz (aka RGB \* 1/L)
 
-  - Everything is range/scaled for compression. PrecomputedLightingBuffer.LightMapScale\[0\] & LightMapAdd\[0\] stored the factors for color
+  - Everything is range/scaled for compression. PrecomputedLightingBuffer.LightMapScale\[0] & LightMapAdd\[0] stored the factors for color
 
 - Reconstruct directionality
 
@@ -276,11 +290,12 @@ Where we compute precalculated **diffuse** lightmap/indirect lighting cache ligh
 
   - Also, SH is normalized s.t. L0 factor = 1 (Lightmap1.w would be 1.0); they use this to store residual for Logspace compression compression. Lightmap1.w is not used for SH (happens in LightmapData.cpp:QuantizeLightSamples())
 
-  - PrecomputedLightingBuffer.LightMapScale\[0\] & LightMapAdd\[0\] stores the scale/bias
+  - PrecomputedLightingBuffer.LightMapScale\[0] & LightMapAdd\[0] stores the scale/bias
 
 - All done bc Lightmap0 & Lightmap1 are 32-bit quantized textures (8bits per component)
 
-* The HDR luminance data is only encoded when using HQ lightmaps (see "r.HighQualityLightMaps").
+
+- The HDR luminance data is only encoded when using HQ lightmaps (see "r.HighQualityLightMaps").
 
 This doubles the lightmap sizes but allows smooth gradients and wider range support.
 
@@ -288,9 +303,10 @@ You can look at how the channels are used in LightmapCommon.usf if you want the 
 
 - For shadowmaps, the engine encodes 1 light shadow attenuation per channel, supporting up to 4 precomputed shadows per mesh.
 
-* **GetSkyLighting():** Computes sky diffuse lighting, including precomputed shadowing
 
-  - Retrieves SkyBentNormal and SkyVisibility occlusion from cached volume texture/SkyOcclusionTexture/PrecomputedLightingBuffer.PointSkyBentNormal\]
+- **GetSkyLighting():** Computes sky diffuse lighting, including precomputed shadowing
+
+  - Retrieves SkyBentNormal and SkyVisibility occlusion from cached volume texture/SkyOcclusionTexture/PrecomputedLightingBuffer.PointSkyBentNormal]
 
     - **Dynamic objects using Volumetric Lightmap:**
 
@@ -309,6 +325,7 @@ You can look at how the channels are used in LightmapCommon.usf if you want the 
       - NormalizedBentNormal is coming from uniform parameter PrecomputedLightingBuffer.PointSkyBentNormal
 
       - The same bent normal is used for the entire object
+
 
 - Calculates occlusion from bent normal
 
@@ -334,25 +351,29 @@ You can look at how the channels are used in LightmapCommon.usf if you want the 
 
     - GeometryTerm = lerp(saturate(dot(NormalizedBentNormal, WorldNormal)), 1, BentNormalWeightFactor);
 
-* Calculate Diffuse SH Irradiance:
+
+- Calculate Diffuse SH Irradiance:
 
   - Standard analytical SH cosine clamped convolution with Irradiance SH factors from uniform buffer ( = GetEffectiveSkySHDiffuse(SkyLightingNormal) \* ResolvedView.SkyLightColor.rgb)
 
   - Modulate with Visibility factors (OutDiffuseLighting = DiffuseLookup \* (SkyVisibility \* GeometryTerm)
 
-* Calculate Subsurface Skylighting for certain materials (Foliage):
+- Calculate Subsurface Skylighting for certain materials (Foliage):
 
   - Same calculation as above except with -WorldNormal vs SkyBentNormal
 
   - Modulated by SkyVisibility only
 
+
 - Returns OutDiffuseLighting & OutSubsurfaceLighting
 
-* Returns OutDiffuseLighting, OutSubsurfaceLighting, OutIndirectIrradiance (luminance of OutDiffuseLighting)
+
+- Returns OutDiffuseLighting, OutSubsurfaceLighting, OutIndirectIrradiance (luminance of OutDiffuseLighting)
+
 
 - **Post-amble:** After this function returns back to BasePassPixelShader
 
-  - **_(FORWARD_SHADING && Solid|Masked)_ Calculate IndirectOcclusion**
+  - ***(FORWARD_SHADING && Solid|Masked)* Calculate IndirectOcclusion**
 
     - **IndirectOcclusion = GetIndirectOcclusion()** which pulls from IndirectOcclusionTexture and does some biasing based on HasDynamicIndirectShadowCasterRepresentation()/HasCapsuleShadowRepresentation()
 
@@ -370,7 +391,7 @@ Get's final shaded pixel value from direct lights
 
 - **GetDynamicLighting():** on each light in the light grid cell. Calculates shading from that light
 
-  - If radial light =&gt; GetLocalLightAttenuation()
+  - If radial light => GetLocalLightAttenuation()
 
   - Calculates light contribution (inverse falloff)
 
@@ -402,19 +423,20 @@ Get indirect specular from image based reflection environment.
 
   - Calculate average CompositedAverageBrightness from reflection captures based on view direction
 
-  - Get Skylight specular: (Forward mode) =&gt; GetSkyLightReflection(), (Deferred Mode GetSkyLightReflectionSupportingBlend())
+  - Get Skylight specular: (Forward mode) => GetSkyLightReflection(), (Deferred Mode GetSkyLightReflectionSupportingBlend())
 
     - /\*\* X = max mip, Y = 1 if sky light should be rendered, 0 otherwise, Z = 1 if sky light is dynamic, 0 otherwise, W = blend fraction. \*/
 
       float4 SkyLightParameters;
 
-* For static skylights, modulate based on IndirectIrradiance & CompositedAverageBrightness based on roughness & IndirectSpecularOcclusion (which always seems to be 1 in forward)
 
-* Returns SpecularIBL
+- For static skylights, modulate based on IndirectIrradiance & CompositedAverageBrightness based on roughness & IndirectSpecularOcclusion (which always seems to be 1 in forward)
 
-* EnvBRDFApprox() - analytical approximation instead of using LUT of preconvolved splitsum approximation (<https://www.unrealengine.com/en-US/blog/physically-based-shading-on-mobile>; environment map convolution described here <https://jmonkeyengine.github.io/wiki/jme3/advanced/pbr_part3.html>)
+- Returns SpecularIBL
 
-* GetSimpleForwardLightingDirectionalLight(): For Simple directional lighting only for low-end hw
+- EnvBRDFApprox() - analytical approximation instead of using LUT of preconvolved splitsum approximation (<https://www.unrealengine.com/en-US/blog/physically-based-shading-on-mobile>; environment map convolution described here <https://jmonkeyengine.github.io/wiki/jme3/advanced/pbr_part3.html>)
+
+- GetSimpleForwardLightingDirectionalLight(): For Simple directional lighting only for low-end hw
 
 **Prefiltering/baking:**
 
@@ -432,27 +454,27 @@ ApproximateSpecularIBL()
 
 IntegrateBRDF()
 
-**Common \#if Defines**
+**Common #if Defines**
 
 Below are some common pre-processor defines found in the deferred shading pipeline. I have put together a list of their intended meaning based on what C++ code triggers them. This will hopefully let you figure out which sections of the deferred pipeline apply to your code as you can check the pre-processor define against this list to see what it translates into in terms of UE4 settings.
 
-- \#if NON_DIRECTIONAL_DIRECT_LIGHTING This is found in DeferredLightingCommon.ush but only seems to be defined in ForwardLightingCommon.ush as \#define NON_DIRECTIONAL_DIRECT_LIGHTING (TRANSLUCENCY_LIGHTING_VOLUMETRIC_NONDIRECTIONAL || TRANSLUCENCY_LIGHTING_VOLUMETRIC_PERVERTEX_NONDIRECTIONAL).
+- \#if NON_DIRECTIONAL_DIRECT_LIGHTING This is found in DeferredLightingCommon.ush but only seems to be defined in ForwardLightingCommon.ush as #define NON_DIRECTIONAL_DIRECT_LIGHTING (TRANSLUCENCY_LIGHTING_VOLUMETRIC_NONDIRECTIONAL || TRANSLUCENCY_LIGHTING_VOLUMETRIC_PERVERTEX_NONDIRECTIONAL).
 
 - \#if SUPPORT_CONTACT_SHADOWS provides support for Unreal’s Contact Shadows Feature.
 
 - \#if REFERENCE_QUALITY is defined to 0 at the top of DeferredLightingCommon.ush — might be for cinematic rendering?
 
-- \#if ALLOW_STATIC_LIGHTING is true if the r.AllowStaticLighting console variable is set to 1. This matches the Project Settings &gt; Rendering option for Static Lighting support.
+- \#if ALLOW_STATIC_LIGHTING is true if the r.AllowStaticLighting console variable is set to 1. This matches the Project Settings > Rendering option for Static Lighting support.
 
 - \#if USE_DEVELOPMENT_SHADERS is true if COMPILE_SHADERS_FOR_DEVELOPMENT is true (and the platform supports it). COMPILE_SHADERS_FOR_DEVELOPMENT is true if r.CompileShadersForDevelopment is set.
 
 - \#if TRANSLUCENT_SELF_SHADOWING is defined for objects being rendered with a FSelfShadowedTranslucencyPolicy. I believe this is for Lit Translucency support.
 
-- \#if SIMPLE_FORWARD_DIRECTIONAL_LIGHT and \#if SIMPLE_FORWARD_SHADING seem to be set during Light Map rendering for stationary directional lights.
+- \#if SIMPLE_FORWARD_DIRECTIONAL_LIGHT and #if SIMPLE_FORWARD_SHADING seem to be set during Light Map rendering for stationary directional lights.
 
 - \#if FORWARD_SHADING is set when r.ForwardShading is set to 1.
 
-- \#if IMPORTANCE_SAMPLE =&gt; Doesn't seem to be used
+- \#if IMPORTANCE_SAMPLE => Doesn't seem to be used
 
   - Calls ImageBasedLightingHair() & ImageBasedLightingMIS()
 

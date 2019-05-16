@@ -36,7 +36,7 @@ c. FStatsThreadState& Stats = FStatsThreadState::GetLocalState();
 
 d. int64 Latest = Stats.GetLatestValidFrame();
 
-e. check(Latest &gt; 0);
+e. check(Latest > 0);
 
 f. DumpCPUSummary(Stats, Latest);
 
@@ -68,15 +68,15 @@ Depending on what you want to do, it might be easier to just hack the hud stats 
 
 Let me know if you need more help on this. It is tedious and hard to understand, but you should be able to do anything you like.
 
--Gil
+\-Gil
 
-_From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>>*
 
 The description is part of the stat declaration:
 
-1.  DECLARE_CYCLE_STAT(TEXT("Step: steering"), STAT_AI_Crowd_StepSteeringTime, STATGROUP_AICrowd);
+1. DECLARE_CYCLE_STAT(TEXT("Step: steering"), STAT_AI_Crowd_StepSteeringTime, STATGROUP_AICrowd);
 
-2.
+1.
 
 TEXT("Step: steering") is the description and all stat types have them. This is Item.NameAndInfo.GetDescription().
 
@@ -90,4 +90,4 @@ In all cases, realize that you may be filtering quite a lot of data and string o
 
 DECLARE*FNAME_STAT is something it looks like we use in only one place. That is a stat type that has a FName as the \_payload* (in all other cases it is a number). If you just need a string and no other payload, this might be a winner.
 
-_From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>>*

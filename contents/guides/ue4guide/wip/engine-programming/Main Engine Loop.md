@@ -2,7 +2,7 @@
 
 GaurdedMainLoop
 
----
+* * *
 
 FCoreDelegates::GetPreMainInitDelegate().Broadcast()
 
@@ -46,7 +46,7 @@ LoadStartupModules()
 
 if Running Commandlet
 
-GEngine-&gt;Init() or GEditor-&gt;InitEditor()
+GEngine->Init() or GEditor->InitEditor()
 
 FCoreDelegates::OnPostEngineInit.Broadcast();
 
@@ -56,7 +56,7 @@ IPluginManager::LoadModulesForEnabledPlugins(ELoadingPhase::PostEngineInit))
 
 FEngineLoop.Init() (or call FEngineLoop.EditorInit() in editor mode which basically calls .Init())
 
-GEngine-&gt;Init()
+GEngine->Init()
 
 UBBUnrealEdEngine::Init()
 
@@ -74,13 +74,13 @@ IProjectManager:LoadModulesForProject(ELoadingPhase::PostEngineInit))
 
 IPluginManager::LoadModulesForEnabledPlugins(ELoadingPhase::PostEngineInit))
 
-GEngine-&gt;Start()
+GEngine->Start()
 
-(For game engine Only) GameInstance-&gt;StartGameInstance()
+(For game engine Only) GameInstance->StartGameInstance()
 
-GetMoviePlayer()-&gt;WaitForMovieToFinish();
+GetMoviePlayer()->WaitForMovieToFinish();
 
-GEngine-&gt;StartHardwareSurvey();
+GEngine->StartHardwareSurvey();
 
 FCoreDelegates::StarvedGameLoop.BindStatic(&GameLoopIsStarved);
 
@@ -94,7 +94,7 @@ FThreadHeartBeat::Get().HeartBeat(true);
 
 FGameThreadHitchHeartBeat::Get().FrameStart();
 
-ActiveProfiler-&gt;FrameSync();
+ActiveProfiler->FrameSync();
 
 {
 
@@ -122,9 +122,9 @@ STAT_FrameTime
 
 SlateApp.PollGameDeviceState();
 
-GEngine-&gt;Tick()
+GEngine->Tick()
 
-GDistanceFieldAsyncQueue-&gt;ProcessAsyncTasks();
+GDistanceFieldAsyncQueue->ProcessAsyncTasks();
 
 FSlateApplication::Get().Tick() {
 
@@ -148,7 +148,7 @@ FTicker::GetCoreTicker().Tick(FApp::GetDeltaTime());
 
 FThreadManager::Get().Tick();
 
-GEngine-&gt;TickDeferredCommands();
+GEngine->TickDeferredCommands();
 
 }
 
@@ -202,4 +202,4 @@ FPlatformApplicationMisc::TearDown();
 
 FPlatformMisc::PlatformTearDown();
 
-GLog-&gt;TearDown();
+GLog->TearDown();

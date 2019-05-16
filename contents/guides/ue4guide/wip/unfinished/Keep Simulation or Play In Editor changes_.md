@@ -4,7 +4,7 @@ Keep Simulation or Play In Editor changes:
 
 - Uses UObject CopyProperties()
 
-PerformSetCommand(): Sets values on object or all objects of a class and also updates CDO (through DefaultObject-&gt;SaveConfig()
+PerformSetCommand(): Sets values on object or all objects of a class and also updates CDO (through DefaultObject->SaveConfig()
 
 ​ GlobalSetProperty(): Sets property based on text
 
@@ -32,7 +32,7 @@ const auto CopyOptions = ( EditorUtilities::ECopyOptions::Type )(
 
 const int32 CopiedPropertyCount = EditorUtilities::CopyActorProperties( SimWorldActor, EditorWorldActor, CopyOptions );
 
-if( CopiedPropertyCount &gt; 0 )
+if( CopiedPropertyCount > 0 )
 
 {
 
@@ -44,7 +44,7 @@ if( CopiedPropertyCount &gt; 0 )
 
 ​ {
 
-​ FirstUpdatedActorLabel = EditorWorldActor-&gt;GetActorLabel();
+​ FirstUpdatedActorLabel = EditorWorldActor->GetActorLabel();
 
 ​ }
 
@@ -58,23 +58,23 @@ if( CopiedPropertyCount &gt; 0 )
 
 ​ // The component selection state should be maintained
 
-​ GEditor-&gt;GetSelectedComponents()-&gt;Modify();
+​ GEditor->GetSelectedComponents()->Modify();
 
-​ Actor-&gt;Modify();
+​ Actor->Modify();
 
 ​ // Mark components that are either native or from the SCS as modified so they will be restored
 
-​ const TArray&lt;UActorComponent\*&gt; Components = Actor-&gt;GetComponents();
+​ const TArray&lt;UActorComponent\*> Components = Actor->GetComponents();
 
 ​ for (UActorComponent\* ActorComponent : Components)
 
 {
 
-​ if (ActorComponent-&gt;CreationMethod == EComponentCreationMethod::SimpleConstructionScript || ActorComponent-&gt;CreationMethod == EComponentCreationMethod::Native)
+​ if (ActorComponent->CreationMethod == EComponentCreationMethod::SimpleConstructionScript || ActorComponent->CreationMethod == EComponentCreationMethod::Native)
 
 ​ {
 
-​ ActorComponent-&gt;Modify();
+​ ActorComponent->Modify();
 
 ​ }
 
@@ -84,7 +84,7 @@ if( CopiedPropertyCount &gt; 0 )
 
 ​ {
 
-​ AActor\* BlueprintCDO = Actor-&gt;GetClass()-&gt;GetDefaultObject&lt;AActor&gt;();
+​ AActor\* BlueprintCDO = Actor->GetClass()->GetDefaultObject&lt;AActor>();
 
 ​ if (BlueprintCDO != NULL)
 
@@ -94,19 +94,19 @@ if( CopiedPropertyCount &gt; 0 )
 
 ​ NumChangedProperties = EditorUtilities::CopyActorProperties(Actor, BlueprintCDO, CopyOptions);
 
-​ if (Actor-&gt;GetInstanceComponents().Num() &gt; 0)
+​ if (Actor->GetInstanceComponents().Num() > 0)
 
 ​ {
 
-​ FKismetEditorUtilities::AddComponentsToBlueprint(Blueprint, Actor-&gt;GetInstanceComponents());
+​ FKismetEditorUtilities::AddComponentsToBlueprint(Blueprint, Actor->GetInstanceComponents());
 
-​ NumChangedProperties += Actor-&gt;GetInstanceComponents().Num();
+​ NumChangedProperties += Actor->GetInstanceComponents().Num();
 
-​ Actor-&gt;ClearInstanceComponents(true);
+​ Actor->ClearInstanceComponents(true);
 
 ​ }
 
-​ if (NumChangedProperties &gt; 0)
+​ if (NumChangedProperties > 0)
 
 ​ {
 

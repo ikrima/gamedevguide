@@ -2,19 +2,19 @@
 
 UHT knows about TAssetPtr and allows it to be used in a property even though it isn't declared as a USTRUCT. You can modify UHT to allow your custom asset pointer to work by going to HeaderParser.cpp and finding this line:
 
-1.  const bool bIsAssetPtrTemplate = VarType.Matches(TEXT("TAssetPtr"));
+1. const bool bIsAssetPtrTemplate = VarType.Matches(TEXT("TAssetPtr"));
 
-2.
+1.
 
 ... and then changing it to this:
 
-1.  const bool bIsAssetPtrTemplate = VarType.Matches(TEXT("TAssetPtr")) || VarType.Matches(TEXT("TCustomAssetPtr"));
+1. const bool bIsAssetPtrTemplate = VarType.Matches(TEXT("TAssetPtr")) || VarType.Matches(TEXT("TCustomAssetPtr"));
 
-2.
+1.
 
 Hope that helps.
 
-_From &lt;<https://udn.unrealengine.com/questions/364023/custom-tassetptr.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/364023/custom-tassetptr.html>>*
 
 **Custom UProperties:**
 
@@ -34,4 +34,4 @@ Then you will likely need to look at all uses of TArray in the editor properties
 
 I hope this is sufficient information to get you going,
 
-_From &lt;<https://udn.unrealengine.com/questions/441180/view.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/441180/view.html>>*

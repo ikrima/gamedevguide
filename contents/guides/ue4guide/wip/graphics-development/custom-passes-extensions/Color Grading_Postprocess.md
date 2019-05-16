@@ -6,13 +6,15 @@
 
   - Look at FDecalRendering::BuildVisibleDecalList
 
-* Also look at possibly following UDecalComponent()
+
+- Also look at possibly following UDecalComponent()
 
   - Derive from USceneComponent instead of UPrimitiveComponent and manually add the color grade sphere to a list on FScene in CrateRenderState_Concurrent()
 
+
 - FDeferredShadingSceneRenderer::Render()
 
-  - GCompositionLighting.ProcessAfterBasePass(RHICmdList, Views\[ViewIndex\])
+  - GCompositionLighting.ProcessAfterBasePass(RHICmdList, Views\[ViewIndex])
 
   - FCompositionLighting::ProcessAfterBasePass()
 

@@ -30,7 +30,7 @@ PreEditUndo()
 
 PostEditUndo()
 
-PostEditUndo(TSharedPtr&lt;ITransactionObjectAnnotation&gt; TransactionAnnotation)
+PostEditUndo(TSharedPtr&lt;ITransactionObjectAnnotation> TransactionAnnotation)
 
 EditorApplyTranslation(const FVector& DeltaTranslation, bool bAltDown, bool bShiftDown, bool bCtrlDown)
 
@@ -72,6 +72,6 @@ CheckForDeprecated()
 
 CheckForErrors()
 
-GetReferencedContentObjects( TArray&lt;UObject\*&gt;& Objects ) const
+GetReferencedContentObjects( TArray&lt;UObject\*>& Objects ) const
 
 SetLODParent(UPrimitiveComponent\* InLODParent, float InParentDrawDistance)

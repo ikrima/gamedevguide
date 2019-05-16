@@ -8,7 +8,7 @@ Look for classes that end in Utils()
 
 UEditorEngine::CopyPropertiesForUnrelatedObjects(**OldActor**, **NewActor**);
 
-GEditor-&gt;Exec(**World**, TEXT("MAP CHECKDEP NOCLEARLOG"));
+GEditor->Exec(**World**, TEXT("MAP CHECKDEP NOCLEARLOG"));
 
 TFindObjectReferencers
 
@@ -43,27 +43,27 @@ UObject::CallFunctionByNameWithArguments
 
 Iterate over sublevels:
 
-TArray&lt;FSubLevelStatus&gt; GetSubLevelsStatus( UWorld\* World )
+TArray&lt;FSubLevelStatus> GetSubLevelsStatus( UWorld\* World )
 
 **Load A Class By Name:**
 
 UClass\* Result = StaticLoadClass(UObject::StaticClass(), nullptr, \*ClassName, nullptr, LOAD_None, nullptr);
 
-_From &lt;<https://answers.unrealengine.com/questions/92651/get-blueprint-class-by-string-in-c.html>&gt;_
+*From &lt;<https://answers.unrealengine.com/questions/92651/get-blueprint-class-by-string-in-c.html>>*
 
 **Find a class by name:**
 
-UClass\* Result = FindObject&lt;UClass&gt;(ANY_PACKAGE, \*ClassName)
+UClass\* Result = FindObject&lt;UClass>(ANY_PACKAGE, \*ClassName)
 
-_From &lt;<https://answers.unrealengine.com/questions/92651/get-blueprint-class-by-string-in-c.html>&gt;_
+*From &lt;<https://answers.unrealengine.com/questions/92651/get-blueprint-class-by-string-in-c.html>>*
 
 **Get actor for blueprint editor:**
 
-if (UBlueprintGeneratedClass\* GeneratedClass = Actor-&gt;GetTypedOuter&lt;UBlueprintGeneratedClass&gt;())
+if (UBlueprintGeneratedClass\* GeneratedClass = Actor->GetTypedOuter&lt;UBlueprintGeneratedClass>())
 
 {
 
-return GeneratedClass-&gt;SimpleConstructionScript-&gt;GetComponentEditorActorInstance();
+return GeneratedClass->SimpleConstructionScript->GetComponentEditorActorInstance();
 
 }
 
@@ -75,15 +75,15 @@ EditorUtilities::GetSimWorldCounterpartActor( AActor\* Actor );
 
 **Editor Destroy Actor:**
 
-Normal: GWorld-&gt;DestroyActor(Instance...)
+Normal: GWorld->DestroyActor(Instance...)
 
-In Editor: GetWorld()-&gt;EditorDestroyActor(lcbActor, true);
+In Editor: GetWorld()->EditorDestroyActor(lcbActor, true);
 
 **PostEditChangeProperty()**
 
 - is the function that gets called when editor changes a property. Use it to perform things like position snapping after the user moves a component
 
-> Property-&gt;GetNameCPP() returns the property c++ variable name
+> Property->GetNameCPP() returns the property c++ variable name
 >
 > <https://answers.unrealengine.com/questions/43138/allow-a-material-to-be-changed-from-the-editor-in.html>
 >
@@ -91,17 +91,17 @@ In Editor: GetWorld()-&gt;EditorDestroyActor(lcbActor, true);
 
 **Notification Message Warning To Editor:**
 
-if (**SubstituteNodes**.Num() &gt; 0)  
+if (**SubstituteNodes**.Num() > 0)  
                 {  
                         // Display a notification to inform the user that the variable type was invalid (likely due to corruption), it should no longer appear in the list.  
                         FNotificationInfo **Info**(NSLOCTEXT("EdGraphUtilities", "SubstituteNodesWarning", "Conflicting nodes substituted during paste!"));  
                         **Info**.ExpireDuration = 3.0f;  
                         **Info**.bUseLargeFont = false;  
                         **Info**.Image = FCoreStyle::Get().GetBrush(TEXT("MessageLog.Warning"));  
-                        TSharedPtr&lt;SNotificationItem&gt; **Notification** = FSlateNotificationManager::Get().AddNotification(**Info**);  
+                        TSharedPtr&lt;SNotificationItem> **Notification** = FSlateNotificationManager::Get().AddNotification(**Info**);  
                         if (**Notification**.IsValid())  
                         {  
-                                **Notification**-&gt;SetCompletionState(SNotificationItem::CS_None);  
+                                **Notification**->SetCompletionState(SNotificationItem::CS_None);  
                         }  
                 }
 
@@ -117,9 +117,9 @@ FMessageLog("PIE").Warning(FText::Format(LOCTEXT("AttachToSelfRootWarning", "At
                                 FText::FromString(GetPathName())));
 
 FMessageLog("MapCheck").Warning()  
-                        -&gt;AddToken(FUObjectToken::Create(this))  
-                        -&gt;AddToken(FTextToken::Create(LOCTEXT( "MapCheck_Message_DuplicateLevelInfo", "Duplicate level info" ) ))  
-                        -&gt;AddToken(FMapErrorToken::Create(FMapErrors::DuplicateLevelInfo));
+                        ->AddToken(FUObjectToken::Create(this))  
+                        ->AddToken(FTextToken::Create(LOCTEXT( "MapCheck_Message_DuplicateLevelInfo", "Duplicate level info" ) ))  
+                        ->AddToken(FMapErrorToken::Create(FMapErrors::DuplicateLevelInfo));
 
 Demarcate whether an actor should be listed or hidden in scene outliner or folder :
 
@@ -172,12 +172,12 @@ virtual void EditorApplyRotation(const FRotator& DeltaRotation, bool bAltDown, b
 
 virtual void EditorApplyScale(const FVector& DeltaScale, const FVector\* PivotLocation, bool bAltDown, bool bShiftDown, bool bCtrlDown);
 
-GEditor-&gt;OnBeginObjectMovement().AddRaw( this, &F3DTransformTrackEditor::OnPreTransformChanged );  
-        GEditor-&gt;OnEndObjectMovement().AddRaw( this, &F3DTransformTrackEditor::OnTransformChanged );
+GEditor->OnBeginObjectMovement().AddRaw( this, &F3DTransformTrackEditor::OnPreTransformChanged );  
+        GEditor->OnEndObjectMovement().AddRaw( this, &F3DTransformTrackEditor::OnTransformChanged );
 
 // Listen for the viewport's viewed through camera starts and stops movement  
-        GEditor-&gt;OnBeginCameraMovement().AddRaw( this, &F3DTransformTrackEditor::OnPreTransformChanged );  
-        GEditor-&gt;OnEndCameraMovement().AddRaw( this, &F3DTransformTrackEditor::OnTransformChanged );
+        GEditor->OnBeginCameraMovement().AddRaw( this, &F3DTransformTrackEditor::OnPreTransformChanged );  
+        GEditor->OnEndCameraMovement().AddRaw( this, &F3DTransformTrackEditor::OnTransformChanged );
 
 Save an objects property into the config file:
 
@@ -220,9 +220,9 @@ void SaveConfig( uint64 **Flags**=CPF_Config, const TCHAR\* **Filename**=N
 
 **Load object with path name:**
 
-LoadObject&lt;T&gt;() is a helper for this
+LoadObject&lt;T>() is a helper for this
 
-Cast&lt;UClass&gt;(StaticLoadObject(UClass::StaticClass(), NULL, \*GEngine-&gt;ParticleEventManagerClassPath, NULL, LOAD_NoWarn, NULL));
+Cast&lt;UClass>(StaticLoadObject(UClass::StaticClass(), NULL, \*GEngine->ParticleEventManagerClassPath, NULL, LOAD_NoWarn, NULL));
 
 <https://answers.unrealengine.com/questions/476579/loadobject-vs-staticloadobject.html>
 
@@ -236,16 +236,16 @@ AActor::DebugShowComponentHierarchy
 
 Get actor instance in blueprint component editor from component:
 
-if (AActor\* **Actor** = **ActorSequence**-&gt;GetTypedOuter&lt;AActor&gt;())  
+if (AActor\* **Actor** = **ActorSequence**->GetTypedOuter&lt;AActor>())  
 {  
         return **Actor**;  
 }  
-\#if WITH_EDITOR  
-else if (UBlueprintGeneratedClass\* **GeneratedClass** = **ActorSequence**-&gt;GetTypedOuter&lt;UBlueprintGeneratedClass&gt;())  
+#if WITH_EDITOR  
+else if (UBlueprintGeneratedClass\* **GeneratedClass** = **ActorSequence**->GetTypedOuter&lt;UBlueprintGeneratedClass>())  
 {  
-        return **GeneratedClass**-&gt;SimpleConstructionScript-&gt;GetComponentEditorActorInstance();  
+        return **GeneratedClass**->SimpleConstructionScript->GetComponentEditorActorInstance();  
 }  
-\#endif  
+#endif  
 }
 
 **Asset Registry functions**
@@ -265,7 +265,7 @@ static FAutoConsoleCommand CmdListSceneColorMaterials(
 
 **Find Icon for Class:**
 
-**ActorIcon** = FSlateIconFinder::FindIconForClass(**ActorsValidForPossession**\[0\]-&gt;GetClass());
+**ActorIcon** = FSlateIconFinder::FindIconForClass(**ActorsValidForPossession**\[0]->GetClass());
 
 Create mini scene outliner:
 
@@ -273,7 +273,7 @@ Create mini scene outliner:
 
 Find icon for class:
 
-FSlateIconFinder::FindIconForClass(InSequence-&gt;GetClass());
+FSlateIconFinder::FindIconForClass(InSequence->GetClass());
 
 FPropertyPath get root property:
 
@@ -298,11 +298,11 @@ if (CanKeyPropertyParams.PropertyPath.GetNumProperties() == 0)
 > {
 >
 > const FPropertyInfo& PropertyInfo = CanKeyPropertyParams.PropertyPath.GetPropertyInfo(Index);
-
+>
 > // Add this to our 'potentially truncated' path
 >
 > InOutPropertyPath.AddProperty(PropertyInfo);
-
+>
 > UProperty\* Property = CanKeyPropertyParams.PropertyPath.GetPropertyInfo(Index).Property.Get();
 >
 > if (Property)
@@ -334,12 +334,12 @@ if (CanKeyPropertyParams.PropertyPath.GetNumProperties() == 0)
 > }
 >
 > }
-
-> if (UObjectProperty\* ObjectProperty = Cast&lt;UObjectProperty&gt;(Property))
+>
+> if (UObjectProperty\* ObjectProperty = Cast&lt;UObjectProperty>(Property))
 >
 > {
 >
-> UClass\* ClassType = ObjectProperty-&gt;PropertyClass ? ObjectProperty-&gt;PropertyClass-&gt;GetSuperClass() : nullptr;
+> UClass\* ClassType = ObjectProperty->PropertyClass ? ObjectProperty->PropertyClass->GetSuperClass() : nullptr;
 >
 > while (ClassType)
 >
@@ -361,7 +361,7 @@ if (CanKeyPropertyParams.PropertyPath.GetNumProperties() == 0)
 >
 > }
 >
-> ClassType = ClassType-&gt;GetSuperClass();
+> ClassType = ClassType->GetSuperClass();
 >
 > }
 >
@@ -384,7 +384,7 @@ Look at ControlRig for examples
 
 virtual void RegisterVariableCustomization(UStruct\* **InStruct**, FOnGetVariableCustomizationInstance **InOnGetVariableCustomization**);
 
-virtual TArray&lt;TSharedPtr&lt;IDetailCustomization&gt;&gt; CustomizeVariable(UStruct\* **InStruct**, TSharedPtr&lt;IBlueprintEditor&gt; **InBlueprintEditor**);
+virtual TArray&lt;TSharedPtr&lt;IDetailCustomization>> CustomizeVariable(UStruct\* **InStruct**, TSharedPtr&lt;IBlueprintEditor> **InBlueprintEditor**);
 
 virtual void RegisterSCSEditorCustomization(const FName& **InComponentName**, FSCSEditorCustomizationBuilder **InCustomizationBuilder**);
 

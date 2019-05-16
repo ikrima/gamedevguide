@@ -18,7 +18,7 @@ Draw L1_StencilMesh
 
 : stencil_write = L1_StencilRef
 
-: stencil_cmp &gt;= L0_StencilRef
+: stencil_cmp >= L0_StencilRef
 
 Draw L1_Geo:
 
@@ -38,7 +38,7 @@ Draw L2_StencilMesh
 
 : stencil_write = L2_StencilRef
 
-: stencil_cmp =&gt;
+: stencil_cmp =>
 
 if L2_StencilMesh.bIsScopedToPreviousLayer
 

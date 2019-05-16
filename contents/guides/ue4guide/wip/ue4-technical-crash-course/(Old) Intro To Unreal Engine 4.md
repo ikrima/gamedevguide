@@ -1,42 +1,40 @@
-```
-sortIndex: 2
-```
+    sortIndex: 2
 
-So if you've been living underneath a rock, Epic decided to open source their entire toolset and engine while offering it for the low price of \$20 a user/month + 5% gross fee. Our reaction? That's UNREAL :)
+So if you've been living underneath a rock, Epic decided to open source their entire toolset and engine while offering it for the low price of $20 a user/month + 5% gross fee. Our reaction? That's UNREAL :)
 
 I'm spending the next week doing a self-directed crash course. Here are all my notes as we switch over from Unity to Unreal.
 
 #### General Resource Links:
 
-https://docs.unrealengine.com/latest/INT/
+<https://docs.unrealengine.com/latest/INT/>
 
-https://wiki.unrealengine.com/Main_Page
+<https://wiki.unrealengine.com/Main_Page>
 
-https://answers.unrealengine.com/
+<https://answers.unrealengine.com/>
 
-https://forums.unrealengine.com/
+<https://forums.unrealengine.com/>
 
-All video tutorials: https://www.youtube.com/playlist?list=PLZlv_N0_O1gaCL2XjKluO7N2Pmmw9pvhE
+All video tutorials: <https://www.youtube.com/playlist?list=PLZlv_N0_O1gaCL2XjKluO7N2Pmmw9pvhE>
 
-https://www.unrealengine.com/blog?category=Tutorials&offset=5&max=5
+<https://www.unrealengine.com/blog?category=Tutorials&offset=5&max=5>
 
-https://wiki.unrealengine.com/Category:Tutorials
+<https://wiki.unrealengine.com/Category:Tutorials>
 
-https://wiki.unrealengine.com/Category:Code
+<https://wiki.unrealengine.com/Category:Code>
 
 #### Oculus Rift:
 
-https://wiki.unrealengine.com/Oculus_Rift
+<https://wiki.unrealengine.com/Oculus_Rift>
 
-https://wiki.unrealengine.com/Oculus_Rift_Blueprint
+<https://wiki.unrealengine.com/Oculus_Rift_Blueprint>
 
-https://wiki.unrealengine.com/Oculus_Rift_Separate_View
+<https://wiki.unrealengine.com/Oculus_Rift_Separate_View>
 
 Compiling the source code of the engine. This 10 minute video will walk you through everything:
 
-https://www.youtube.com/watch?v=usjlNHPn-jo&feature=youtu.be
+<https://www.youtube.com/watch?v=usjlNHPn-jo&feature=youtu.be>
 
-https://forums.unrealengine.com/showthread.php?1870-Unreal-Engine-4-Community-Tutorial-Youtube-Catalog
+<https://forums.unrealengine.com/showthread.php?1870-Unreal-Engine-4-Community-Tutorial-Youtube-Catalog>
 
 Projects = Self-contained Game.
 
@@ -80,19 +78,19 @@ ALT+Number: Different viewmodes
 
 0. Lightmap Density: Green is ideal
 
-1. Wireframe
+0. Wireframe
 
-1. Unlit
+0. Unlit
 
-1. Lit
+0. Lit
 
-1. Detail Lighting - Scene rendered with neutral material using normal maps of original material. Used to show interaction between normal maps + lighting
+0. Detail Lighting - Scene rendered with neutral material using normal maps of original material. Used to show interaction between normal maps + lighting
 
-1. Lighting Only (same as Detail but w/o normal maps)
+0. Lighting Only (same as Detail but w/o normal maps)
 
-1. Light Complexity - Number of non-static lights affecting an object. **Note: Only up to 4 lights will cast dynamic shadows**
+0. Light Complexity - Number of non-static lights affecting an object. **Note: Only up to 4 lights will cast dynamic shadows**
 
-1. Shader Complexity - Pink & White are extremely expensive
+0. Shader Complexity - Pink & White are extremely expensive
 
 - Menu Only - Stationary Light Overlap
 
@@ -225,7 +223,7 @@ $$
 
 - Supports material instancing
 
-_Reference From https://docs.unrealengine.com/latest/INT/Engine/Rendering/Materials/PhysicallyBased/index.html_
+*Reference From <https://docs.unrealengine.com/latest/INT/Engine/Rendering/Materials/PhysicallyBased/index.html>*
 
 ## Blue Print:
 
@@ -257,9 +255,9 @@ A special type of Event Dispatcher event can be set up in the Level Blueprint, a
 
 These particular events are unique, and are automatically bound at the start of gameplay. As a result, an **Unbind All** node executed at any point will unbind these events as well. It is possible to rebind them, however, by wiring their delegate pins to **Bind Event** nodes that are executed at other points in gameplay.
 
-_Reference From https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/EventDispatcher/CreatingEvents/index.html_
+*Reference From <https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/EventDispatcher/CreatingEvents/index.html>*
 
-_Reference From https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/EventDispatcher/BindingAndUnbinding/index.html_
+*Reference From <https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/EventDispatcher/BindingAndUnbinding/index.html>*
 
 ## Cascade
 
@@ -275,7 +273,7 @@ As you work with Cascade to create your own particle effects, it is important to
 
 - **Emitter Actor**, which is a placeable object that exists within your level, controlling where and how the particles are used in your scene.
 
-_Reference From https://docs.unrealengine.com/latest/INT/Engine/Rendering/ParticleSystems/Overview/index.html_
+*Reference From <https://docs.unrealengine.com/latest/INT/Engine/Rendering/ParticleSystems/Overview/index.html>*
 
 **Particle Calculation**
 
@@ -285,7 +283,7 @@ It is important to be aware of calculation order when working with particle syst
 
 - Modules are calculated from top to bottom in the stack.
 
-_Reference From https://docs.unrealengine.com/latest/INT/Engine/Rendering/ParticleSystems/Overview/index.html_
+*Reference From <https://docs.unrealengine.com/latest/INT/Engine/Rendering/ParticleSystems/Overview/index.html>*
 
 ## Lighting
 

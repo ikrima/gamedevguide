@@ -18,7 +18,7 @@ if(! [IsRegistered](http://api.unrealengine.com/INT/API/Runtime/Engine/Component
 
 {
 
-UE_LOG(LogActorComponent, [[Log](http://api.unrealengine.com/INT/API/Runtime/Core/Misc/ELogVerbosity__Type/index.html)], TEXT("UpdateComponent: (%s) Not registered, Aborting."), \*[GetPathName][]());
+UE_LOG(LogActorComponent, \[[Log](http://api.unrealengine.com/INT/API/Runtime/Core/Misc/ELogVerbosity__Type/index.html)], TEXT("UpdateComponent: (%s) Not registered, Aborting."), \*[GetPathName][]());
 
 return;
 
@@ -64,7 +64,7 @@ if(bRenderDynamicDataDirty)
 
 }
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Components/UActorComponent/DoDeferredRenderUpdates_Concurre-/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Components/UActorComponent/DoDeferredRenderUpdates_Concurre-/index.html>>*
 
 void [UActorComponent::MarkRenderDynamicDataDirty][]()
 
@@ -72,7 +72,7 @@ void [UActorComponent::MarkRenderDynamicDataDirty][]()
 
 // If registered and has a render state to make as dirty
 
-if([IsRegistered][]() && \[bRenderStateCreated\](API\\Runtime\\Engine\\Components\\UActorComponent\\bRenderStateCreated))
+if([IsRegistered][]() && \[bRenderStateCreated](API\\Runtime\\Engine\\Components\\UActorComponent\\bRenderStateCreated))
 
 {
 
@@ -86,4 +86,4 @@ bRenderDynamicDataDirty = true;
 
 }
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Components/UActorComponent/MarkRenderDynamicDataDirty/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Components/UActorComponent/MarkRenderDynamicDataDirty/index.html>>*

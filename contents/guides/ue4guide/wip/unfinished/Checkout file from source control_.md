@@ -10,19 +10,19 @@ if(SourceControlState.IsValid())
 
 {
 
-if( SourceControlState-&gt;IsCheckedOutOther() )
+if( SourceControlState->IsCheckedOutOther() )
 
 {
 
-UE_LOG(LogContentCommandlet, Warning, TEXT("\[REPORT\] Overwriting package %s (already checked out by someone else), will not submit"), \*Filename);
+UE_LOG(LogContentCommandlet, Warning, TEXT("\[REPORT] Overwriting package %s (already checked out by someone else), will not submit"), \*Filename);
 
 }
 
-else if( !SourceControlState-&gt;IsCurrent() )
+else if( !SourceControlState->IsCurrent() )
 
 {
 
-UE_LOG(LogContentCommandlet, Warning, TEXT("\[REPORT\] Overwriting package %s (not at head), will not submit"), \*Filename);
+UE_LOG(LogContentCommandlet, Warning, TEXT("\[REPORT] Overwriting package %s (not at head), will not submit"), \*Filename);
 
 }
 
@@ -32,7 +32,7 @@ else
 
 VerboseMessage(TEXT("Pre CheckOut"));
 
-SourceControlProvider.Execute(ISourceControlOperation::Create&lt;FCheckOut&gt;(), Package);
+SourceControlProvider.Execute(ISourceControlOperation::Create&lt;FCheckOut>(), Package);
 
 VerboseMessage(TEXT("Post CheckOut"));
 

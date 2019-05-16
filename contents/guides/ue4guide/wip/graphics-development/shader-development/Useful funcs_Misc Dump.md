@@ -26,7 +26,7 @@ int32 UMaterialExpressionConstant::Compile(class FMaterialCompiler\* Compiler, i
 
 {
 
-​ return Compiler-&gt;Constant(R);
+​ return Compiler->Constant(R);
 
 ​ virtual int32 FHLSLMaterialTranslator::Constant(float X) override
 
@@ -38,7 +38,7 @@ int32 UMaterialExpressionConstant::Compile(class FMaterialCompiler\* Compiler, i
 
 int32 UMaterialExpressionTime::Compile(class FMaterialCompiler\* Compiler, int32 OutputIndex)
 
-​ return bIgnorePause ? Compiler-&gt;RealTime(bOverride_Period, Period) : Compiler-&gt;GameTime(bOverride_Period, Period);
+​ return bIgnorePause ? Compiler->RealTime(bOverride_Period, Period) : Compiler->GameTime(bOverride_Period, Period);
 
 virtual int32 FHLSLMaterialTranslator::GameTime(bool bPeriodic, float Period) override
 
@@ -136,7 +136,7 @@ virtual void Serialize(FArchive& Ar)
 
 ​ {
 
-​ return GetType() == OtherExpression-&gt;GetType();
+​ return GetType() == OtherExpression->GetType();
 
 ​ }
 
@@ -174,7 +174,7 @@ public:
 
 ​ Ar &lt;&lt; X;
 
-​ if (Ar.CustomVer(FRenderingObjectVersion::GUID) &gt;= FRenderingObjectVersion::TypeHandlingForMaterialSqrtNodes)
+​ if (Ar.CustomVer(FRenderingObjectVersion::GUID) >= FRenderingObjectVersion::TypeHandlingForMaterialSqrtNodes)
 
 ​ {
 
@@ -190,17 +190,17 @@ public:
 
 ​ FLinearColor ValueX = FLinearColor::Black;
 
-​ X-&gt;GetNumberValue(Context,ValueX);
+​ X->GetNumberValue(Context,ValueX);
 
 ​ check(ValueType & MCT_Float);
 
 ​ float LengthSq = ValueX.R \* ValueX.R;
 
-​ LengthSq += (ValueType &gt;= MCT_Float2) ? ValueX.G \* ValueX.G : 0;
+​ LengthSq += (ValueType >= MCT_Float2) ? ValueX.G \* ValueX.G : 0;
 
-​ LengthSq += (ValueType &gt;= MCT_Float3) ? ValueX.B \* ValueX.B : 0;
+​ LengthSq += (ValueType >= MCT_Float3) ? ValueX.B \* ValueX.B : 0;
 
-​ LengthSq += (ValueType &gt;= MCT_Float4) ? ValueX.A \* ValueX.A : 0;
+​ LengthSq += (ValueType >= MCT_Float4) ? ValueX.A \* ValueX.A : 0;
 
 ​ OutValue.R = OutValue.G = OutValue.B = OutValue.A = FMath::Sqrt(LengthSq);
 
@@ -210,7 +210,7 @@ public:
 
 ​ {
 
-​ return X-&gt;IsConstant();
+​ return X->IsConstant();
 
 ​ }
 
@@ -218,7 +218,7 @@ public:
 
 ​ {
 
-​ return X-&gt;IsChangingPerFrame();
+​ return X->IsChangingPerFrame();
 
 ​ }
 
@@ -226,7 +226,7 @@ public:
 
 ​ {
 
-​ if (GetType() != OtherExpression-&gt;GetType())
+​ if (GetType() != OtherExpression->GetType())
 
 ​ {
 
@@ -236,13 +236,13 @@ public:
 
 ​ FMaterialUniformExpressionLength\* OtherSqrt = (FMaterialUniformExpressionLength\*)OtherExpression;
 
-​ return X-&gt;IsIdentical(OtherSqrt-&gt;X) && ValueType == OtherSqrt-&gt;ValueType;
+​ return X->IsIdentical(OtherSqrt->X) && ValueType == OtherSqrt->ValueType;
 
 ​ }
 
 private:
 
-​ TRefCountPtr&lt;FMaterialUniformExpression&gt; X;
+​ TRefCountPtr&lt;FMaterialUniformExpression> X;
 
 ​ uint32 ValueType;
 

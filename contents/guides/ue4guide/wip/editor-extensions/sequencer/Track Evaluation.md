@@ -1,6 +1,4 @@
-```
-sortIndex: 4
-```
+    sortIndex: 4
 
 MovieScenePlayer:
 
@@ -10,13 +8,15 @@ Low-level call to set the current time of the player by evaluating from the curr
 
 - Triggers events that lie within the evaluated range. Does not alter the persistent playback status of the player (IsPlaying).
 
-* ScrubToFrame
+
+- ScrubToFrame
 
 Low-level call to set the current time of the player by evaluating only the specified time. Will not trigger any events.
 
 - Does not alter the persistent playback status of the player (IsPlaying).
 
-* JumpToFrame
+
+- JumpToFrame
 
 Low-level call to set the current time of the player by evaluating only the specified time, as if scrubbing the timeline. Will trigger only events that exist at the specified time.
 

@@ -18,7 +18,7 @@ NetSerialization.h:
 
 \*        The UActorChannel has 2 ways to decide what properties need to be sent.
 
-\*                The traditional way, which is a flat TArray&lt;uint8&gt; buffer: UActorChannel::Recent. This represents a flat block of the actor properties.
+\*                The traditional way, which is a flat TArray&lt;uint8> buffer: UActorChannel::Recent. This represents a flat block of the actor properties.
 
 \*                This block literally can be cast to an AActor\* and property values can be looked up if you know the UProperty offset.
 
@@ -44,7 +44,7 @@ NetSerialization.h:
 
 \*                Properties that fit into the flat Recent buffer can be serialized entirely with NetSerialize. NetSerialize just reads or writes to an FArchive.
 
-\*                Since the replication can just look at the Recent\[\] buffer and do a direct comparison, it can tell what properties are dirty. NetSerialize just
+\*                Since the replication can just look at the Recent\[] buffer and do a direct comparison, it can tell what properties are dirty. NetSerialize just
 
 \*                reads or writes.
 
@@ -104,7 +104,7 @@ NetSerialization.h:
 
 \*                For example UArrayProperty basically writes:
 
-\*                        "Array has X elements now" -&gt; "Here is element Y" -&gt; Output from UProperty::NetDeltaSerialize -&gt; "Here is element Z" -&gt; etc
+\*                        "Array has X elements now" -> "Here is element Y" -> Output from UProperty::NetDeltaSerialize -> "Here is element Z" -> etc
 
 \*
 
@@ -136,7 +136,7 @@ NetSerialization.h:
 
 \*                FastArrayDeltaSerialize (defined below)
 
-\*                During server serialization (writing), we compare the old base state (e.g, the old ID&lt;-&gt;Key map) with the current state of the array. If items are missing
+\*                During server serialization (writing), we compare the old base state (e.g, the old ID&lt;->Key map) with the current state of the array. If items are missing
 
 \*                we write them out as deletes in the bunch. If they are new or changed, they are written out as changed along with their state, serialized via a NetSerialize call.
 
@@ -144,7 +144,7 @@ NetSerialization.h:
 
 \*                For example, what actually is written may look like:
 
-\*                        "Array has X changed elements, Y deleted elements" -&gt; "element A changed" -&gt; Output from NetSerialize on rest of the struct item -&gt; "Element B was deleted" -&gt; etc
+\*                        "Array has X changed elements, Y deleted elements" -> "element A changed" -> Output from NetSerialize on rest of the struct item -> "Element B was deleted" -> etc
 
 \*
 
@@ -152,7 +152,7 @@ NetSerialization.h:
 
 \*
 
-\*                During client serialization (reading), the client reads in the number of changed and number of deleted elements. It also builds a mapping of ReplicationID -&gt; local index of the current array.
+\*                During client serialization (reading), the client reads in the number of changed and number of deleted elements. It also builds a mapping of ReplicationID -> local index of the current array.
 
 \*                As it deserializes IDs, it looks up the element and then does what it needs to (create if necessary, serialize in the current state, or delete).
 

@@ -1,8 +1,8 @@
 SkeletalMeshComponent.cpp:
 
-TAutoConsoleVariable&lt;int32&gt; CVarUseParallelAnimationEvaluation(TEXT("a.ParallelAnimEvaluation"), 1, TEXT("If 1, animation evaluation will be run across the task graph system. If 0, evaluation will run purely on the game thread"));  
-TAutoConsoleVariable&lt;int32&gt; CVarUseParallelAnimUpdate(TEXT("a.ParallelAnimUpdate"), 1, TEXT("If != 0, then we update animation blend tree, native update, asset players and montages (is possible) on worker threads."));  
-TAutoConsoleVariable&lt;int32&gt; CVarForceUseParallelAnimUpdate(TEXT("a.ForceParallelAnimUpdate"), 1, TEXT("If != 0, then we update animations on worker threads regardless of the setting on the anim blueprint."));
+TAutoConsoleVariable&lt;int32> CVarUseParallelAnimationEvaluation(TEXT("a.ParallelAnimEvaluation"), 1, TEXT("If 1, animation evaluation will be run across the task graph system. If 0, evaluation will run purely on the game thread"));  
+TAutoConsoleVariable&lt;int32> CVarUseParallelAnimUpdate(TEXT("a.ParallelAnimUpdate"), 1, TEXT("If != 0, then we update animation blend tree, native update, asset players and montages (is possible) on worker threads."));  
+TAutoConsoleVariable&lt;int32> CVarForceUseParallelAnimUpdate(TEXT("a.ForceParallelAnimUpdate"), 1, TEXT("If != 0, then we update animations on worker threads regardless of the setting on the anim blueprint."));
 
 void USkinnedMeshComponent::TickComponent(float **DeltaTime**, enum ELevelTick TickType, FActorComponentTickFunction \***ThisTickFunction**)
 

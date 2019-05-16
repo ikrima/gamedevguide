@@ -1,10 +1,10 @@
 Add these settings in the DefaultEditorPerProjectUserSettings.ini:
 
-\[PropertySettings\]
+\[PropertySettings]
 
 ShowHiddenProperties=True
 
-\[/Script/UnrealEd.EditorPerProjectUserSettings\]
+\[/Script/UnrealEd.EditorPerProjectUserSettings]
 
 bShowAllAdvancedDetails=True
 

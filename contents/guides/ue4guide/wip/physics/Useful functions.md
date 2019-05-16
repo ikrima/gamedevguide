@@ -16,15 +16,15 @@ UActorComponent\* CreateComponentFromTemplateData(…);
 
 LoadedLevel will not be set on the ULevelStreaming object until the level is fully loaded. And at that same point the ULevelStreaming.OnLevelLoaded will be broadcast.
 
-_From &lt;<https://udn.unrealengine.com/questions/356697/beginplay-order.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/356697/beginplay-order.html>>*
 
 Duplicate or create an instance of an existing object. Can also be used to create a duplicate new asset that's a subclass of a new asset:
 
-_Bag = (UPEBag\*)StaticConstructObject (BagContentRef-&gt;StaticClass(), GetTransientPackage(), DataAssetTemplate);_
+*Bag = (UPEBag\*)StaticConstructObject (BagContentRef->StaticClass(), GetTransientPackage(), DataAssetTemplate);*
 
 COREUOBJECT_API UObject\* StaticConstructObject( UClass\* Class, UObject\* InOuter=(UObject\*)GetTransientPackage(), FName Name=NAME_None, EObjectFlags SetFlags=RF_NoFlags, UObject\* Template=NULL, bool bCopyTransientsFromClassDefaults=false, struct FObjectInstancingGraph\* InstanceGraph=NULL );
 
-_From &lt;<https://forums.unrealengine.com/showthread.php?4287-creating-instances-for-editor-DataAssets>&gt;_
+*From &lt;<https://forums.unrealengine.com/showthread.php?4287-creating-instances-for-editor-DataAssets>>*
 
 Prevent or Disable creating a default subobject:
 

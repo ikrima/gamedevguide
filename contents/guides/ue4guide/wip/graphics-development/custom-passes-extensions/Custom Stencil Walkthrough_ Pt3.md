@@ -2,7 +2,7 @@
 
 Use proper commenting for editor changes:
 
-// @third party code - BEGIN Bebylon - \#Eng-Feature: ArenaStencilPass - Comment describing specific change
+// @third party code - BEGIN Bebylon - #Eng-Feature: ArenaStencilPass - Comment describing specific change
 
 // @third party code - END Bebylon
 
@@ -30,27 +30,27 @@ SetDepthStencilStateForBasePass(): Is this doing the right thing?
 
 FDeferredShadingSceneRenderer::RenderPrePassView()
 
--Do all the arena static lists & dynamic
+\-Do all the arena static lists & dynamic
 
--Do all the stadium static lists & dynamic
+\-Do all the stadium static lists & dynamic
 
 RenderPrePassViewDynamic()
 
--Change to use viewrelevance instead of materialdomain
+\-Change to use viewrelevance instead of materialdomain
 
 Extend EBasePassDrawListType
 
--FStaticMesh::AddToDrawLists()
+\-FStaticMesh::AddToDrawLists()
 
--Extend \*Factory::AddStaticMesh()
+\-Extend \*Factory::AddStaticMesh()
 
--In this function, you should add
+\-In this function, you should add
 
--\*MeshAction::Process()
+\-\*MeshAction::Process()
 
--Extend: \*Factory::DrawDynamicMesh()
+\-Extend: \*Factory::DrawDynamicMesh()
 
--Rely on viewrelevance instead of material domain
+\-Rely on viewrelevance instead of material domain
 
 To set stencil state: Extend the TBasePassDrawingPolicy:
 

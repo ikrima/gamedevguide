@@ -1,14 +1,14 @@
-# https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/index.html
+# <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/index.html>
 
 <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/QuickReference/index.html>
 
 Engine conceptually divided into 3 Different categories:
 
-1.  Gametype, which creates
+1. Gametype, which creates
 
-2.  Player, which creates
+1. Player, which creates
 
-3.  Interface
+1. Interface
 
 Using hypothetical example of a game where rabbit races snail,
 
@@ -40,13 +40,13 @@ PlayerCameraManager controls changing cameras.
 
 - If it is necessary to subclass the PlayerCameraManager, and you are doing so with Blueprints instead of C++, the BlueprintUpdateCamera function exists to allow custom camera implementations. When using this function, return *true* to use the returned values, or return *false* to ignore them.
 
-_Reference From: <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/Camera/index.html>_
+*Reference From: <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/Camera/index.html>*
 
 ## ViewTarget
 
 The ViewTarget struct, defined in PlayerCameraManager, is responsible for providing the PlayerCameraManager with an ideal Point of View (POV). ViewTarget contains information on the target Actor, the Controller of the target Actor (for non-locally controlled Pawns), and the PlayerState, which is used to follow the same player through Pawn transitions and other changes while spectating. The camera information passed to PlayerCameraManager through the POV property is in the form of a FMinimalViewInfo struct. This struct contains the basic camera information from a CameraComponent, including the location, rotation, projection mode (Perspective or Orthographic), FOV, orthographic width, aspect ratio, and post process effects. Providing the PlayerCameraManager with access to these values allows the PlayerCameraManager to blend between two camera modes during its camera management.
 
-_Reference From: <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/Camera/index.html>_
+*Reference From: <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/Camera/index.html>*
 
 ## Camera Responsibility Chain
 
@@ -80,7 +80,7 @@ The UpdateViewTarget function in PlayerCameraManager queries the ViewTarget and 
 
 A game is made up of a GameMode and GameState. Human players joining the game are associated with PlayerControllers. These PlayerControllers allow players to possess pawns in the game so they can have physical representations in the level. PlayerControllers also give players input controls, a heads-up display, or HUD, and a PlayerCameraManager for handling camera views.
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/index.html>>*
 
 UObject: Base class for all UE4 objects
 
@@ -92,8 +92,8 @@ UObject: Base class for all UE4 objects
   - ooo
     - kkk
 
---Character:
--Humanoid specialized Pawn
+\--Character:
+\-Humanoid specialized Pawn
 
 - CapsuleComponent for collision detection
 - CharacterMovement for movement \* Replicates movement smoothly across network
@@ -110,6 +110,6 @@ UObject: Base class for all UE4 objects
 
   - GameMode: Defines rules of the game
 
-    - GameState: State of the game (\# of players connected, chess piece locations in game, etc)
+    - GameState: State of the game (# of players connected, chess piece locations in game, etc)
 
     - PlayerState: State of each player (name of player, whether they're carrying flag, etc)

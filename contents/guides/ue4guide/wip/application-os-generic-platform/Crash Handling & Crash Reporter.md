@@ -30,7 +30,7 @@ extern CORE_API bool GBBForcePostMortemDebugging;
 
 // @third party code - END Bebylon
 
-extern CORE_API TCHAR MiniDumpFilenameW\[1024\];
+extern CORE_API TCHAR MiniDumpFilenameW\[1024];
 
 **Here is a typical timeline for a single crash:**
 
@@ -62,18 +62,18 @@ When the crash has gone through this chain, developer could go to the crash repo
 
 Note that for **MDD** to symbolize the callstack, a process need to upload the symbols to the server.
 
-_From &lt;<https://wiki.unrealengine.com/Unreal_Engine_Crash_Reporter>&gt;_
+*From &lt;<https://wiki.unrealengine.com/Unreal_Engine_Crash_Reporter>>*
 
 #### **Setup Custom Crash Reporter Client & MinidumpDiagnostics**
 
 <http://www.teal-game.com/blog/customcrashreporter/>
 
-\[Engine.CrashDebugHelper\]  
-DepotRoot=\[PathToSourceCode\]  
-PDBCachePath=\[PathToCacheFolder\]  
+\[Engine.CrashDebugHelper]  
+DepotRoot=\[PathToSourceCode]  
+PDBCachePath=\[PathToCacheFolder]  
 PDBCacheSizeGB=250  
 MinDiskFreeSpaceGB=25  
 DaysToDeleteUnusedFilesFromPDBCache=3  
 PDBCache_0_Branch=++UE4+Release  
-PDBCache_0_ExecutablePathPattern=\[PathToExecutableFolder\]  
-PDBCache_0_SymbolPathPattern=\[PathToPdbFolder\]
+PDBCache_0_ExecutablePathPattern=\[PathToExecutableFolder]  
+PDBCache_0_SymbolPathPattern=\[PathToPdbFolder]

@@ -1,6 +1,4 @@
-```
-sortIndex: 9
-```
+    sortIndex: 9
 
 # Manually through UE4:
 
@@ -26,36 +24,34 @@ build.py -c development -t editor check pvs
 
 # UBT Command line:
 
-```
-UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=pvsstudio
+    UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=pvsstudio
 
-UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodebuginfo
-```
+    UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodebuginfo
 
-_Reference From https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html_
+*Reference From <https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html>*
 
 # Manually setting up PVS Studio for Static Analysis
 
-1.  Download PVS Studio from <http://www.viva64.com/en/pvs-studio/>
+1. Download PVS Studio from <http://www.viva64.com/en/pvs-studio/>
 
-2.  Launch standalone.exe, go to Tools-Options-Registration
+1. Launch standalone.exe, go to Tools-Options-Registration
 
-3.  Name: PVS-Studio Free
+1. Name: PVS-Studio Free
 
-4.  Key: FREE-FREE-FREE-FREE
+1. Key: FREE-FREE-FREE-FREE
 
-5.  (For now, you need to have Incredibuild disabled. )
+1. (For now, you need to have Incredibuild disabled. )
 
-    ​ Go to BBProto.Build.cs and add BuildConfiguration.bAllowXGE = false;
+   ​ Go to BBProto.Build.cs and add BuildConfiguration.bAllowXGE = false;
 
-6.  Open a shell in the PVS Studio folder and run
+1. Open a shell in the PVS Studio folder and run
 
-    ​ CLMonitor.exe monitor
+   ​ CLMonitor.exe monitor
 
-7.  Do a full build of BBProto project
+1. Do a full build of BBProto project
 
-8.  Go back to the shell, and type
+1. Go back to the shell, and type
 
-    ​ CLMonitor.exe analyze -l "sample.plog"
+   ​ CLMonitor.exe analyze -l "sample.plog"
 
-9.  Double clicking sample.plog should launch the analysis results in PVS Studio.
+1. Double clicking sample.plog should launch the analysis results in PVS Studio.

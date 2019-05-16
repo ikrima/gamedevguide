@@ -22,7 +22,7 @@ FLightMapInteraction
 
 ​ -Value struct b/c it gets blitted to the render thread
 
-Registry-&gt;AllocateMeshBuildData
+Registry->AllocateMeshBuildData
 
 ​ -This actually creates the MeshMapBuildData struct
 
@@ -30,21 +30,21 @@ Registry-&gt;AllocateMeshBuildData
 
 FLightMap2D::AllocateLightMap/FLightMap2D::AllocateInstancedLightMap
 
--Seems to be called during light builds only
+\-Seems to be called during light builds only
 
--Actually allocates the lightmap texture
+\-Actually allocates the lightmap texture
 
 Components that require static lighting interaction (ex: landscape or staticmesh) have follow this file convention
 
-​ -\[ComponentName\]Lighting.cpp handles lightmapping functionality
+​ -\[ComponentName]Lighting.cpp handles lightmapping functionality
 
-​ -\[ComponentName\]Rendering.cpp handles rendering
+​ -\[ComponentName]Rendering.cpp handles rendering
 
 High-level process of baking
 
 Start with StaticLightingManager::UpdateBuildLighting
 
-AllocateLightMap populates PendingLightMaps (static array&lt;FlightMapAllocationGroup&gt; that gets procesed during Encode)
+AllocateLightMap populates PendingLightMaps (static array&lt;FlightMapAllocationGroup> that gets procesed during Encode)
 
 ​ FlightMapAllocationGroup: Container of set of FLightMapAllocation
 
@@ -76,11 +76,11 @@ TODO:
 
 ​ store reference to MeshMapBuildDataID for LightmapSetsBelongTo
 
-​ rename references of TArray&lt;FLightMapRef&gt; to typedef TArray&lt;FLightMapRef&gt; Lightmapset
+​ rename references of TArray&lt;FLightMapRef> to typedef TArray&lt;FLightMapRef> Lightmapset
 
 FVector PrecomputedLightVolumeOffset = InWorldOffset - FVector(LightBuildLevelOffset);
 
-PrecomputedLightVolume-&gt;ApplyWorldOffset(PrecomputedLightVolumeOffset);
+PrecomputedLightVolume->ApplyWorldOffset(PrecomputedLightVolumeOffset);
 
 void ULevel::OnApplyNewLightingData(bool bLightingSuccessful)
 
@@ -92,11 +92,11 @@ void ULevel::OnApplyNewLightingData(bool bLightingSuccessful)
 
 ​ LightBuildLevelOffset = FIntVector::ZeroValue;
 
-​ if (bLightingSuccessful && OwningWorld && OwningWorld-&gt;WorldComposition)
+​ if (bLightingSuccessful && OwningWorld && OwningWorld->WorldComposition)
 
 ​ {
 
-​ LightBuildLevelOffset = OwningWorld-&gt;WorldComposition-&gt;GetLevelOffset(this);
+​ LightBuildLevelOffset = OwningWorld->WorldComposition->GetLevelOffset(this);
 
 ​ }
 

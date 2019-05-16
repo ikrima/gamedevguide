@@ -19,7 +19,7 @@ namespace EditorUtilities
 > \*/
 >
 > UNREALED_API AActor\* GetEditorWorldCounterpartActor( AActor\* Actor );
-
+>
 > /\*\*
 >
 > \* Given an actor in the editor world, tries to find a counterpart actor in a Simulation or PIE world
@@ -35,7 +35,7 @@ namespace EditorUtilities
 > \*/
 >
 > UNREALED_API AActor\* GetSimWorldCounterpartActor( AActor\* Actor );
-
+>
 > /\*\*
 >
 > \* Guiven an actor in the editor world, and SourceComponent from Simulation or PIE world
@@ -55,7 +55,7 @@ namespace EditorUtilities
 > \*/
 >
 > UNREALED_API UActorComponent\* FindMatchingComponentInstance( UActorComponent\* SourceComponent, AActor\* TargetActor );
-
+>
 > /\*\* Options for CopyActorProperties \*/
 >
 > namespace ECopyOptions
@@ -69,27 +69,27 @@ namespace EditorUtilities
 > /\*\* Default copy options \*/
 >
 > Default = 0,
-
+>
 > /\*\* Set this option to preview the changes and not actually copy anything. This will count the number of properties that would be copied. \*/
 >
 > PreviewOnly = 1 &lt;&lt; 0,
-
+>
 > /\*\* Call PostEditChangeProperty for each modified property \*/
 >
 > CallPostEditChangeProperty = 1 &lt;&lt; 1,
-
+>
 > /\*\* Call PostEditMove if we detect that a transform property was changed \*/
 >
 > CallPostEditMove = 1 &lt;&lt; 2,
-
+>
 > /\*\* Copy only Edit and Interp properties. Otherwise we copy all properties by default \*/
 >
 > OnlyCopyEditOrInterpProperties = 1 &lt;&lt; 3,
-
+>
 > /\*\* Propagate property changes to archetype instances if the target actor is a CDO \*/
 >
 > PropagateChangesToArchetypeInstances = 1 &lt;&lt; 4,
-
+>
 > /\*\* Filters out Blueprint Read-only properties \*/
 >
 > FilterBlueprintReadOnly = 1 &lt;&lt; 5,
@@ -97,7 +97,7 @@ namespace EditorUtilities
 > };
 >
 > }
-
+>
 > /\*\* Copy options structure for CopyActorProperties \*/
 >
 > struct FCopyOptions
@@ -107,7 +107,7 @@ namespace EditorUtilities
 > /\*\* Implicit construction for an options enumeration \*/
 >
 > FCopyOptions(const ECopyOptions::Type InFlags) : Flags(InFlags) {}
-
+>
 > /\*\* Check whether we can copy the specified property \*/
 >
 > bool CanCopyProperty(UProperty& Property, UObject& Object) const
@@ -117,21 +117,21 @@ namespace EditorUtilities
 > return !PropertyFilter || PropertyFilter(Property, Object);
 >
 > }
-
+>
 > /\*\* User-specified flags for the copy \*/
 >
 > ECopyOptions::Type Flags;
-
+>
 > /\*\* User-specified custom property filter predicate \*/
 >
-> TFunction&lt;bool(UProperty<, UObject<)&gt; PropertyFilter;
+> TFunction&lt;bool(UProperty&lt;, UObject&lt;)> PropertyFilter;
 >
 > };
-
+>
 > /\*\* Helper function for CopyActorProperties(). Copies a single property form a source object to a target object. \*/
 >
 > UNREALED_API void CopySingleProperty(const UObject\* const InSourceObject, UObject\* const InTargetObject, UProperty\* const InProperty);
-
+>
 > /\*\*
 >
 > \* Copies properties from one actor to another. Designed for propagating changes made to PIE actors back to their EditorWorld

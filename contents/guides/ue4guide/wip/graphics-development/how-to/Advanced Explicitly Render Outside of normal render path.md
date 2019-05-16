@@ -36,7 +36,7 @@ SCOPED_DRAW_EVENT(RHICmdList, SlateUI_Composition);
 
 static const FName RendererModuleName("Renderer");
 
-IRendererModule& RendererModule = FModuleManager::GetModuleChecked&lt;IRendererModule&gt;(RendererModuleName);
+IRendererModule& RendererModule = FModuleManager::GetModuleChecked&lt;IRendererModule>(RendererModuleName);
 
 const auto FeatureLevel = GMaxRHIFeatureLevel;
 
@@ -54,17 +54,17 @@ FGraphicsPipelineStateInitializer GraphicsPSOInit;
 
 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
 
-GraphicsPSOInit.BlendState = TStaticBlendState&lt;&gt;::GetRHI();
+GraphicsPSOInit.BlendState = TStaticBlendState&lt;>::GetRHI();
 
-GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;&gt;::GetRHI();
+GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;>::GetRHI();
 
-GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always&gt;::GetRHI();
+GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always>::GetRHI();
 
-TShaderMapRef&lt;FWriteToSliceVS&gt; VertexShader(ShaderMap);
+TShaderMapRef&lt;FWriteToSliceVS> VertexShader(ShaderMap);
 
-TOptionalShaderMapRef&lt;FWriteToSliceGS&gt; GeometryShader(ShaderMap);
+TOptionalShaderMapRef&lt;FWriteToSliceGS> GeometryShader(ShaderMap);
 
-TShaderMapRef&lt;FCompositeLUTGenerationPS&gt; PixelShader(ShaderMap);
+TShaderMapRef&lt;FCompositeLUTGenerationPS> PixelShader(ShaderMap);
 
 const FVolumeBounds VolumeBounds(CompositionLUTSize);
 
@@ -80,17 +80,17 @@ GraphicsPSOInit.PrimitiveType = PT_TriangleStrip;
 
 SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
 
-VertexShader-&gt;SetParameters(RHICmdList, VolumeBounds, FIntVector(VolumeBounds.MaxX - VolumeBounds.MinX));
+VertexShader->SetParameters(RHICmdList, VolumeBounds, FIntVector(VolumeBounds.MaxX - VolumeBounds.MinX));
 
 if(GeometryShader.IsValid())
 
 {
 
-GeometryShader-&gt;SetParameters(RHICmdList, VolumeBounds.MinZ);
+GeometryShader->SetParameters(RHICmdList, VolumeBounds.MinZ);
 
 }
 
-PixelShader-&gt;SetParameters(RHICmdList);
+PixelShader->SetParameters(RHICmdList);
 
 RasterizeToVolumeTexture(RHICmdList, VolumeBounds);
 
@@ -114,13 +114,13 @@ FGraphicsPipelineStateInitializer GraphicsPSOInit;
 
 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
 
-GraphicsPSOInit.BlendState = TStaticBlendState&lt;&gt;::GetRHI();
+GraphicsPSOInit.BlendState = TStaticBlendState&lt;>::GetRHI();
 
-GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;&gt;::GetRHI();
+GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;>::GetRHI();
 
-GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always&gt;::GetRHI();
+GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always>::GetRHI();
 
-TShaderMapRef&lt;FScreenVS&gt; VertexShader(ShaderMap);
+TShaderMapRef&lt;FScreenVS> VertexShader(ShaderMap);
 
 if (HDROutputDevice == 5 || HDROutputDevice == 6)
 
@@ -128,7 +128,7 @@ if (HDROutputDevice == 5 || HDROutputDevice == 6)
 
 // ScRGB encoding
 
-TShaderMapRef&lt;FCompositePS&lt;1&gt;&gt; PixelShader(ShaderMap);
+TShaderMapRef&lt;FCompositePS&lt;1>> PixelShader(ShaderMap);
 
 GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = RendererModule.GetFilterVertexDeclaration().VertexDeclarationRHI;
 
@@ -140,7 +140,7 @@ GraphicsPSOInit.PrimitiveType = PT_TriangleList;
 
 SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
 
-PixelShader-&gt;SetParameters(RHICmdList, ViewportInfo.UITargetSRV, ViewportInfo.HDRSourceSRV, ViewportInfo.ColorSpaceLUTSRV);
+PixelShader->SetParameters(RHICmdList, ViewportInfo.UITargetSRV, ViewportInfo.HDRSourceSRV, ViewportInfo.ColorSpaceLUTSRV);
 
 }
 
@@ -150,7 +150,7 @@ else
 
 // ST2084 (PQ) encoding
 
-TShaderMapRef&lt;FCompositePS&lt;0&gt;&gt; PixelShader(ShaderMap);
+TShaderMapRef&lt;FCompositePS&lt;0>> PixelShader(ShaderMap);
 
 GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = RendererModule.GetFilterVertexDeclaration().VertexDeclarationRHI;
 
@@ -162,7 +162,7 @@ GraphicsPSOInit.PrimitiveType = PT_TriangleList;
 
 SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
 
-PixelShader-&gt;SetParameters(RHICmdList, ViewportInfo.UITargetSRV, ViewportInfo.HDRSourceSRV, ViewportInfo.ColorSpaceLUTSRV);
+PixelShader->SetParameters(RHICmdList, ViewportInfo.UITargetSRV, ViewportInfo.HDRSourceSRV, ViewportInfo.ColorSpaceLUTSRV);
 
 }
 

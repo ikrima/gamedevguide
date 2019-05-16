@@ -12,7 +12,7 @@ Key functions:
 
 ​ This allows packing into an 8 bit format
 
-​ [-1, 1\] Normalization factors derived from SHBasisFunction
+​ \[-1, 1] Normalization factors derived from SHBasisFunction
 
 ​ Result.V0.x = 0.282095f;
 
@@ -62,27 +62,27 @@ Key functions:
 
 ​ {
 
-​ const float InvAmbient = 1.0f / FMath::Max(Sample.HighQualityCoefficients\[0\]\[ChannelIndex\], .0001f);
+​ const float InvAmbient = 1.0f / FMath::Max(Sample.HighQualityCoefficients\[0]\[ChannelIndex], .0001f);
 
 const FLinearColor Vector0Normalized =
 
-​ FLinearColor(Sample.HighQualityCoefficients\[1\]\[ChannelIndex\], Sample.HighQualityCoefficients\[2\]\[ChannelIndex\], Sample.HighQualityCoefficients\[3\]\[ChannelIndex\], Sample.HighQualityCoefficients\[4\]\[ChannelIndex\])
+​ FLinearColor(Sample.HighQualityCoefficients\[1]\[ChannelIndex], Sample.HighQualityCoefficients\[2]\[ChannelIndex], Sample.HighQualityCoefficients\[3]\[ChannelIndex], Sample.HighQualityCoefficients\[4]\[ChannelIndex])
 
 ​ \* CoefficientNormalizationScale0
 
 ​ \*FLinearColor(InvAmbient, InvAmbient, InvAmbient, InvAmbient);
 
-​ SHCoefficients\[ChannelIndex \* 2 + 0\]\[Index\] = (Vector0Normalized \* FLinearColor(.5f, .5f, .5f, .5f) + FLinearColor(.5f, .5f, .5f, .5f)).QuantizeRound();
+​ SHCoefficients\[ChannelIndex \* 2 + 0]\[Index] = (Vector0Normalized \* FLinearColor(.5f, .5f, .5f, .5f) + FLinearColor(.5f, .5f, .5f, .5f)).QuantizeRound();
 
 const FLinearColor Vector1Normalized =
 
-FLinearColor(Sample.HighQualityCoefficients\[5\]\[ChannelIndex\], Sample.HighQualityCoefficients\[6\]\[ChannelIndex\], Sample.HighQualityCoefficients\[7\]\[ChannelIndex\], Sample.HighQualityCoefficients\[8\]\[ChannelIndex\])
+FLinearColor(Sample.HighQualityCoefficients\[5]\[ChannelIndex], Sample.HighQualityCoefficients\[6]\[ChannelIndex], Sample.HighQualityCoefficients\[7]\[ChannelIndex], Sample.HighQualityCoefficients\[8]\[ChannelIndex])
 
 \* CoefficientNormalizationScale1
 
 \* FLinearColor(InvAmbient, InvAmbient, InvAmbient, InvAmbient);
 
-SHCoefficients\[ChannelIndex \* 2 + 1\]\[Index\] = (Vector1Normalized \* FLinearColor(.5f, .5f, .5f, .5f) + FLinearColor(.5f, .5f, .5f, .5f)).QuantizeRound();
+SHCoefficients\[ChannelIndex \* 2 + 1]\[Index] = (Vector1Normalized \* FLinearColor(.5f, .5f, .5f, .5f) + FLinearColor(.5f, .5f, .5f, .5f)).QuantizeRound();
 
 }
 
@@ -100,7 +100,7 @@ SHCoefficients\[ChannelIndex \* 2 + 1\]\[Index\] = (Vector1Normalized \* FLinear
 
 \*/
 
-TArray&lt;const FPrecomputedLightVolume\*&gt; PrecomputedLightVolumes;
+TArray&lt;const FPrecomputedLightVolume\*> PrecomputedLightVolumes;
 
 /\*\* Interpolates and caches indirect lighting for dynamic objects. \*/
 
@@ -124,7 +124,7 @@ class FPrecomputedVolumetricLightmap
 
 \*/
 
-template &lt;int32 SHOrder&gt;
+template &lt;int32 SHOrder>
 
 class TGatheredLightSample
 
@@ -142,11 +142,11 @@ FVector4 PositionAndRadius;
 
 /\*\* SH coefficients used with high quality lightmaps. \*/
 
-float HighQualityCoefficients\[LM_NUM_SH_COEFFICIENTS\]\[3\];
+float HighQualityCoefficients\[LM_NUM_SH_COEFFICIENTS]\[3];
 
 /\*\* SH coefficients used with low quality lightmaps. \*/
 
-float LowQualityCoefficients\[LM_NUM_SH_COEFFICIENTS\]\[3\];
+float LowQualityCoefficients\[LM_NUM_SH_COEFFICIENTS]\[3];
 
 FVector SkyBentNormal;
 

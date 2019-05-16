@@ -1,6 +1,4 @@
-```
-sortindex: 1
-```
+    sortindex: 1
 
 #### Useful classes
 

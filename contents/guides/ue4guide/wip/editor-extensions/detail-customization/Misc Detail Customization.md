@@ -1,6 +1,4 @@
-```
-sortIndex: 4
-```
+    sortIndex: 4
 
 ## Refresh customization on hot reload:
 

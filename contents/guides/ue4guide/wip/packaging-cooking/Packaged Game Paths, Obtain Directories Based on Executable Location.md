@@ -1,6 +1,4 @@
-```
-sortIndex: 9
-```
+    sortIndex: 9
 
 # Config File Paths Locations:
 
@@ -18,7 +16,7 @@ Staged or Packaged Builds:
 
 //InstallDir/WindowsNoEditor/GameName/Binaries/Win64
 
-```c++
+```cpp
 const FString ThePath = FString(FPlatformProcess::BaseDir());
 ```
 
@@ -26,7 +24,7 @@ const FString ThePath = FString(FPlatformProcess::BaseDir());
 
 //InstallDir/WindowsNoEditor/
 
-```c++
+```cpp
 const FString ThePath = FPaths::ConvertRelativePathToFull(FPaths::RootDir());
 ```
 
@@ -34,7 +32,7 @@ const FString ThePath = FPaths::ConvertRelativePathToFull(FPaths::RootDir());
 
 //InstallDir/WindowsNoEditor/GameName
 
-```c++
+```cpp
 const FString ThePath = FPaths::ConvertRelativePathToFull(FPaths::GameDir());
 ```
 
@@ -42,7 +40,7 @@ const FString ThePath = FPaths::ConvertRelativePathToFull(FPaths::GameDir());
 
 //InstallDir/WindowsNoEditor/GameName/
 
-```c++
+```cpp
 const FString ThePath = FPaths::ConvertRelativePathToFull(FPaths::GameUserDir());
 ```
 
@@ -50,7 +48,7 @@ const FString ThePath = FPaths::ConvertRelativePathToFull(FPaths::GameUserDir())
 
 //InstallDir/WindowsNoEditor/GameName/Saved
 
-```c++
+```cpp
 const FString ThePath = FPaths::ConvertRelativePathToFull(FPaths::GameSavedDir());
 ```
 
@@ -58,7 +56,7 @@ const FString ThePath = FPaths::ConvertRelativePathToFull(FPaths::GameSavedDir()
 
 //InstallDir/WindowsNoEditor/GameName/Saved/Logs
 
-```c++
+```cpp
 const FString ThePath = FPaths::ConvertRelativePathToFull(FPaths::GameLogDir());
 ```
 
@@ -72,4 +70,4 @@ FPlatformMisc::EngineDir()
 
 FPlatformMisc::LaunchDir()
 
-_Reference From [https://wiki.unrealengine.com/Packaged_Game_Paths,\_Obtain_Directories_Based_on_Executable_Location](https://wiki.unrealengine.com/Packaged_Game_Paths,_Obtain_Directories_Based_on_Executable_Location)_
+*Reference From <https://wiki.unrealengine.com/Packaged_Game_Paths,_Obtain_Directories_Based_on_Executable_Location>*

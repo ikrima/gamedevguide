@@ -44,7 +44,7 @@ TG_PostUpdateWork - any item that needs the update work to be done before being 
 
 TG_NewlySpawned - Special tick group that is not actually a tick group. After every tick group this is repeatedly re-run until there are no more newly spawned items to run
 
-_From &lt;<https://answers.unrealengine.com/questions/231386/tickgroup-how-to-understand-that.html>&gt;_
+*From &lt;<https://answers.unrealengine.com/questions/231386/tickgroup-how-to-understand-that.html>>*
 
 Actor Tick():
 
@@ -84,7 +84,7 @@ Notes:
 
 >
 
-_From &lt;<https://udn.unrealengine.com/questions/285100/component-creation-overview.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/285100/component-creation-overview.html>>*
 
 >
 
@@ -109,7 +109,7 @@ PostInitProperties()
 
 - Gets called after the UPROPERTY member variables have been initialized for a class from the instance data/CDO
 
-- Good place to put computed values (e.g. Designer sets Damage & DamageTime =&gt; Computed DamagePerSecond)
+- Good place to put computed values (e.g. Designer sets Damage & DamageTime => Computed DamagePerSecond)
 
 Actor::SpawnActor
 

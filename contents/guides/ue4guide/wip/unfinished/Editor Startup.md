@@ -49,11 +49,11 @@ FEditorFileUtils :: LoadMap // Load DefaultMap (See Chapter 3.
 UEngine :: Start  
 FWindowsPlatformSplash :: Hide // Hide Splash
 
-_From &lt;<https://qiita.com/donbutsu17/items/be66551c48360d7b0864>&gt;_
+*From &lt;<https://qiita.com/donbutsu17/items/be66551c48360d7b0864>>*
 
 <table><thead><tr class="header"><th><strong>#</strong></th><th><strong>Progress</strong></th><th><strong>Work</strong></th></tr></thead><tbody><tr class="odd"><td>1</td><td>00-09</td><td><p>Load TargetPlatformModule Load </p><p>Target Platform Module</p></td></tr><tr class="even"><td>2</td><td>10-39</td><td><p>Load </p><p>shader (.usf) included in compiled Enigne content of GlobalShaderMap</p></td></tr><tr class="odd"><td>3</td><td>40-44</td><td><p>Load AssetRegistry Load </p><p>all compiled properties (UStruct etc)</p></td></tr><tr class="even"><td>Four</td><td>45-49</td><td>Load resident object for DisregardForGC</td></tr><tr class="odd"><td>Five</td><td>50-59</td><td><p>Generation of LoadEngine </p><p>definition object of StartupCoreModule</p></td></tr><tr class="even"><td>6</td><td>60-69</td><td>Loading Loading Screen Module</td></tr><tr class="odd"><td>7</td><td>70-74</td><td><p>Generation of </p><p>object of load project definition of StartupModule</p></td></tr><tr class="even"><td>8</td><td>75-79</td><td>Initialization of HighResScreenshotMaterial</td></tr><tr class="odd"><td>9</td><td>80-89</td><td><p>Loading EngineLoop initialization </p><p>configuration file, etc.</p></td></tr><tr class="even"><td>Ten</td><td>90-100</td><td>Load other initialization boot map</td></tr></tbody></table>
 
-_From &lt;<https://qiita.com/donbutsu17/items/be66551c48360d7b0864>&gt;_
+*From &lt;<https://qiita.com/donbutsu17/items/be66551c48360d7b0864>>*
 
 ### **LevelOpen processing**
 
@@ -102,7 +102,7 @@ SContentBrowser :: OnAssetsActivated
  UEditorEngine :: Map_Check  
  ContentBrowserUtils :: OpenEditorForAsset
 
-_From &lt;<https://qiita.com/donbutsu17/items/be66551c48360d7b0864>&gt;_
+*From &lt;<https://qiita.com/donbutsu17/items/be66551c48360d7b0864>>*
 
 ### **PIE Processing**
 
@@ -152,4 +152,4 @@ UActorComponent::RegisterAllComponentTickFunctions
 UActorComponent::BeginPlay
 AActor::ReceiveBeginPlay
 
-From <<https://qiita.com/donbutsu17/items/be66551c48360d7b0864>>
+From [&lt;https://qiita.com/donbutsu17/items/be66551c48360d7b0864]\(<https://qiita.com/donbutsu17/items/be66551c48360d7b0864)>

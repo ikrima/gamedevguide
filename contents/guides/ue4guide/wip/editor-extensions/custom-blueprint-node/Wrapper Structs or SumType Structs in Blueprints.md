@@ -6,4 +6,4 @@ In C++, reference **UK2Node_GetDataTableRow**. I think of particular interest fo
 
 Depending on how you do it, it may also be useful to use a UK2Node_CallFunction, which you can see an example of in **ExpandNode** where we use **GetDataTableRowFromName** . Here it's used to transform the row name, but you may find a similar use for this elsewhere.
 
-_From &lt;<https://udn.unrealengine.com/questions/458599/view.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/458599/view.html>>*

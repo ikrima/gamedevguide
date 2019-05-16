@@ -128,13 +128,13 @@ Non-VR Client: UE4Editor.exe MPRepro 127.0.0.1 -game -nohmd
 
 VR Client: UE4Editor.exe MPRepro 127.0.0.1 -game -vr
 
-https://udn.unrealengine.com/questions/307536/debugging-multiplayer-vr.html>
+<https://udn.unrealengine.com/questions/307536/debugging-multiplayer-vr.html>>
 
 # Getting around breakpoint timeouts
 
 You should be able to launch with -notimeouts as a cmdline option
 
-_From &lt;<https://udn.unrealengine.com/questions/283473/multiplayer-breakpoints.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/283473/multiplayer-breakpoints.html>>*
 
 Networking:
 
@@ -144,7 +144,7 @@ If your project is a code project with a \*.Build.cs file, you'll need a depende
 
 For both code and blueprint projects, you also need to set the DefaultPlatformService in your DefaultEngine.ini file, like this:
 
-\[OnlineSubsystem\]
+\[OnlineSubsystem]
 
 DefaultPlatformService=Null
 
@@ -171,7 +171,7 @@ IsRunningGame()
 
 IsRunningClientOnly()
 
-#UE_SERVER for compile time check of server build
+\#UE_SERVER for compile time check of server build
 
 /\*\* Returns whether script is executing within the editor. \*/
 
@@ -194,7 +194,7 @@ bool IsPlayInEditor() const;
 /\*\* Returns true if this world is a preview game world (blueprint editor) \*/  
         bool IsPreviewWorld() const;
 
-GetWorld()-&gt;WorldType
+GetWorld()->WorldType
 
 namespace EWorldType  
 {  
@@ -248,14 +248,14 @@ NM_MAX,
 
 Client Authoritative
 
-There is a config option for "ClientAuthorativePosition" \[sic, I know it's misspelled\] on the GameNetworkManager that changes the rules: the server will accept client movement as authoritative and not force a correction if it's within a squared distance (MAXPOSITIONERRORSQUARED) from where the server last saw it. So in this case, the server would warp the character to where the client tried to move, and the client's position is the authority. The server can still replicate movement to the client normally, this just handles rogue client movements.
+There is a config option for "ClientAuthorativePosition" \[sic, I know it's misspelled] on the GameNetworkManager that changes the rules: the server will accept client movement as authoritative and not force a correction if it's within a squared distance (MAXPOSITIONERRORSQUARED) from where the server last saw it. So in this case, the server would warp the character to where the client tried to move, and the client's position is the authority. The server can still replicate movement to the client normally, this just handles rogue client movements.
 
 You set this in your game ini settings:
 
-1. \[/Script/Engine.GameNetworkManager\]
+1. \[/Script/Engine.GameNetworkManager]
 
-2. MAXPOSITIONERRORSQUARED=625
+1. MAXPOSITIONERRORSQUARED=625
 
-3. ClientAuthorativePosition=true
+1. ClientAuthorativePosition=true
 
-_From &lt;<https://answers.unrealengine.com/questions/26116/able-to-replicate-movement-when-using-addmovement.html>&gt;_
+*From &lt;<https://answers.unrealengine.com/questions/26116/able-to-replicate-movement-when-using-addmovement.html>>*

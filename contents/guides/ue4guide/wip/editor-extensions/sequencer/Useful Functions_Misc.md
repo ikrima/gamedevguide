@@ -1,8 +1,8 @@
 > **Call property setter in sequencer:**
 >
-> There's a bit of a trick in Sequencer that works both in C++ and Blueprints where if a function exists called Set\[varname\] then the function will be called with the new value as an argument instead of directly setting the variable. For example, if you have a float variable called 'myFloat' and expose it to cinematics, you can also add a function called 'SetMyFloat' with a float input and that function will be called whenever the value is changed. This way, you can react to the variable changing and update whatever you need to on the actor. It sounds like that's the functionality you're looking for, but let me know if I've misunderstood.
+> There's a bit of a trick in Sequencer that works both in C++ and Blueprints where if a function exists called Set\[varname] then the function will be called with the new value as an argument instead of directly setting the variable. For example, if you have a float variable called 'myFloat' and expose it to cinematics, you can also add a function called 'SetMyFloat' with a float input and that function will be called whenever the value is changed. This way, you can react to the variable changing and update whatever you need to on the actor. It sounds like that's the functionality you're looking for, but let me know if I've misunderstood.
 >
-> _From &lt;<https://udn.unrealengine.com/questions/419570/sequencer-not-rerunning-construction-script-at-run.html?childToView=420115#answer-420115>&gt;_
+> *From &lt;<https://udn.unrealengine.com/questions/419570/sequencer-not-rerunning-construction-script-at-run.html?childToView=420115#answer-420115>>*
 >
 > **Check if sequencer is active:**
 >
@@ -68,7 +68,7 @@
 >
 > /\*\* Selects property tracks by property path \*/
 >
-> virtual void SelectByPropertyPaths(const TArray&lt;FString&gt;& InPropertyPaths) = 0;
+> virtual void SelectByPropertyPaths(const TArray&lt;FString>& InPropertyPaths) = 0;
 >
 > /\*\* Gets a multicast delegate which is executed whenever the global time changes. \*/
 >
@@ -86,13 +86,13 @@
 >
 > We don't currently have any callbacks related to adding actors to sequencer, but there is a callback when any sequence data changes ISequencer::OnMovieSceneDataChanged which you could use. This can end up getting called quite frequently when doing a drag operation, so you may need to defer handling it to one a frame to avoid performance issues. Another option would be to monitor the level editor selection because any time an actor is added it is selected in the level editor.
 >
-> _From &lt;<https://udn.unrealengine.com/questions/314123/working-with-sequencer-from-code-in-editor-plugin.html>&gt;_
+> *From &lt;<https://udn.unrealengine.com/questions/314123/working-with-sequencer-from-code-in-editor-plugin.html>>*
 >
 > **Creating/Deleting/Modifying tracks and keys from code**
 >
 > We have a config based solution for adding tracks automatically when an actor it added to sequencer. You can find the config information under: Engine\\Config\\BaseEditorPerProjectUserSettings.ini
 >
-> \[/Script/LevelSequenceEditor.LevelSequenceEditorSettings\]
+> \[/Script/LevelSequenceEditor.LevelSequenceEditorSettings]
 >
 > An example is: +TrackSettings=(MatchingActorClass=/Script/Engine.CameraActor,DefaultTracks=(/Script/MovieSceneTracks.MovieScene3DTransformTrack),DefaultPropertyTracks=((ComponentPath="CameraComponent",PropertyPath="FieldOfView")))
 >
@@ -100,31 +100,33 @@
 >
 > You can then use the ISequencerTrackEditor::AddTrack() method in your track editor class to set up appropriate default key frames for the track.
 >
-> _From &lt;<https://udn.unrealengine.com/questions/314123/working-with-sequencer-from-code-in-editor-plugin.html>&gt;_
+> *From &lt;<https://udn.unrealengine.com/questions/314123/working-with-sequencer-from-code-in-editor-plugin.html>>*
 >
 > \* \*
 >
 > **How to set parameter values on struct parameter to event in sequence from c++?**
 >
-> _From &lt;<https://udn.unrealengine.com/questions/418282/how-to-set-parameter-values-on-struct-parameter-to.html>&gt;_
+> *From &lt;<https://udn.unrealengine.com/questions/418282/how-to-set-parameter-values-on-struct-parameter-to.html>>*
 
 - FEventPayload Event(\*TrackName);
 
 -
 
-* UObject\* Object = LoadObject&lt;UObject&gt;(NULL, TEXT("/Game/Sequences/MyStruct1.MyStruct1"));
 
-* UScriptStruct\* Struct = nullptr;
+- UObject\* Object = LoadObject&lt;UObject>(NULL, TEXT("/Game/Sequences/MyStruct1.MyStruct1"));
 
-* if (Object)
+- UScriptStruct\* Struct = nullptr;
 
-* {
+- if (Object)
 
-* Struct = Cast&lt;UScriptStruct&gt;(Object);
+- {
 
-* }
+- Struct = Cast&lt;UScriptStruct>(Object);
 
-*
+- }
+
+-
+
 
 - if (Struct)
 
@@ -142,10 +144,10 @@
 
 - Payload.VectorVelocity - FVector(.5f, .5f, .0f);
 
-- Event.OverwriteWith(static_cast&lt;uint8\*&gt;(&Payload));
+- Event.OverwriteWith(static_cast&lt;uint8\*>(&Payload));
 
 -
 
-> _From &lt;<https://udn.unrealengine.com/questions/418282/how-to-set-parameter-values-on-struct-parameter-to.html>&gt;_
+> *From &lt;<https://udn.unrealengine.com/questions/418282/how-to-set-parameter-values-on-struct-parameter-to.html>>*
 >
-> &gt;
+> \>

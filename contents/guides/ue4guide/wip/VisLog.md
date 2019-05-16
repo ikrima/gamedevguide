@@ -12,7 +12,7 @@ FDebugRenderSceneProxy: Debug Render primitive that extends FPrimitiveSceneProxy
 
 Serialize ue4 data to binary blob with memory compression:
 
-void UEnvQueryDebugHelpers::DebugDataToBlobArray(EQSDebug::FQueryData& EQSLocalData, TArray&lt;uint8&gt;& BlobArray, bool bUseCompression)
+void UEnvQueryDebugHelpers::DebugDataToBlobArray(EQSDebug::FQueryData& EQSLocalData, TArray&lt;uint8>& BlobArray, bool bUseCompression)
 
 {
 
@@ -30,7 +30,7 @@ else
 
 {
 
-TArray&lt;uint8&gt; UncompressedBuffer;
+TArray&lt;uint8> UncompressedBuffer;
 
 FMemoryWriter ArWriter(UncompressedBuffer);
 
@@ -58,7 +58,7 @@ BlobArray.SetNum(CompressedSize + HeaderSize, false);
 
 }
 
-void UEnvQueryDebugHelpers::BlobArrayToDebugData(const TArray&lt;uint8&gt;& BlobArray, EQSDebug::FQueryData& EQSLocalData, bool bUseCompression)
+void UEnvQueryDebugHelpers::BlobArrayToDebugData(const TArray&lt;uint8>& BlobArray, EQSDebug::FQueryData& EQSLocalData, bool bUseCompression)
 
 {
 
@@ -76,7 +76,7 @@ else
 
 {
 
-TArray&lt;uint8&gt; UncompressedBuffer;
+TArray&lt;uint8> UncompressedBuffer;
 
 int32 UncompressedSize = 0;
 
@@ -104,11 +104,11 @@ ArReader &lt;&lt; EQSLocalData;
 
 Register Visual Logger Drawing Extension:
 
-#if WITH_EDITOR && ENABLE_VISUAL_LOG
+\#if WITH_EDITOR && ENABLE_VISUAL_LOG
 
 FVisualLogger::Get().RegisterExtension(\*EVisLogTags::TAG_EQS, &VisualLoggerExtension);
 
-#endif
+\#endif
 
 class FVisualLoggerExtension : public FVisualLogExtensionInterface
 
@@ -148,7 +148,7 @@ It can happen we want logs of one actor to be associated with logs of another, l
 
 A tool has been created to enable users (not only programmers) to view gathered information. It’s a very basic implementation that will be developed further, but it’s already usable and supplies basic functionality. The name is LogVisualizer and here is roughly what it does:
 
-![image1 (C:\devguide\conversion\FINISHED\assets\image1 (2).png)](C:\devguide\conversion\INPROG\assets\media\image1 (2).png)
+![image1 (C:\devguide\conversion\FINISHED\assets\image1 (2).png)]\(C:\\devguide\\conversion\\INPROG\\assets\\media\\image1 (2).png)
 
 - Recording start/stop button
 
@@ -200,4 +200,4 @@ There are a number of features that are missing to claim Visual Log a full featu
 
 - Future feature: filtering log entries with string so that we can instantly see which entries contain requested text. There’s also a huge list of features I hadn’t come up with yet, so if you have any idea just let me know!
 
-_From &lt;<https://answers.unrealengine.com/questions/3675/enable-visual-log-grabdebugsnapsho.html>&gt;_
+*From &lt;<https://answers.unrealengine.com/questions/3675/enable-visual-log-grabdebugsnapsho.html>>*

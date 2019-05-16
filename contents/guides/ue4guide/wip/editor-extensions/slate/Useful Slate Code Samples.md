@@ -1,10 +1,8 @@
-```
-sortIndex: 4
-```
+    sortIndex: 4
 
 ### Widget Gallery/Slate Test Suite:
 
-Go to Window -&gt; Developer Tools -&gt; Debug Tools -&gt; Test Suite. Shows all the different widgets
+Go to Window -> Developer Tools -> Debug Tools -> Test Suite. Shows all the different widgets
 
 ![Useful_Slate_Code_Samples](....\assets\Useful_Slate_Code_Samples.png)
 
@@ -59,7 +57,7 @@ MenuBuilder.AddWidget(SNew(SVolumeControl), TEXT("Volume"));
 }
 ```
 
-_Reference From https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html_
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html>*
 
 ### Drop down pulldown/combo toolbar button:
 
@@ -71,7 +69,7 @@ FText(),
 LOCTEXT("PIEComboToolTip", "Play-In-Editor options") );
 ```
 
-_Reference From https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html_
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html>*
 
 ### Create Property Table:
 
@@ -117,10 +115,9 @@ Module.CreatePropertyTableWidget( Table )
 ]
 
 );
-
 ```
 
-**Custom Complex Widget UI:** https://github.com/ue4plugins/ObjectBrowser
+**Custom Complex Widget UI:** <https://github.com/ue4plugins/ObjectBrowser>
 
 **Focus keyboard window to specific widget:**
 

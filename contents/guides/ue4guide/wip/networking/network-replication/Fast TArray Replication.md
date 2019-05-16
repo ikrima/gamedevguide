@@ -1,4 +1,4 @@
-_From &lt;<https://udn.unrealengine.com/questions/164217/how-can-i-improve-performance-of-tarray-replicatio.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/164217/how-can-i-improve-performance-of-tarray-replicatio.html>>*
 
 \*\*
 
@@ -20,79 +20,79 @@ _From &lt;<https://udn.unrealengine.com/questions/164217/how-can-i-improve-perfo
 
 1. /\*\* Step 1: Make your struct inherit from FFastArraySerializerItem \*/
 
-2. USTRUCT()
+1. USTRUCT()
 
-3. struct FExampleItemEntry : public FFastArraySerializerItem
+1. struct FExampleItemEntry : public FFastArraySerializerItem
 
-4. {
+1. {
 
-5. GENERATED_USTRUCT_BODY()
+1. GENERATED_USTRUCT_BODY()
 
-6. // Your data:
+1. // Your data:
 
-7. UPROPERTY()
+1. UPROPERTY()
 
-8. int32 ExampleIntProperty;
+1. int32 ExampleIntProperty;
 
-9. UPROPERTY()
+1. UPROPERTY()
 
-10. float ExampleFloatProperty;
+1. float ExampleFloatProperty;
 
-11. /\*\* Optional functions you can implement for client side notification of changes to items \*/
+1. /\*\* Optional functions you can implement for client side notification of changes to items \*/
 
-12. void PreReplicatedRemove();
+1. void PreReplicatedRemove();
 
-13. void PostReplicatedAdd();
+1. void PostReplicatedAdd();
 
-14. void PostReplicatedChange();
+1. void PostReplicatedChange();
 
-15. };
+1. };
 
-16. /\*\* Step 2: You MUST wrap your TArray in another struct that inherits from FFastArraySerializer \*/
+1. /\*\* Step 2: You MUST wrap your TArray in another struct that inherits from FFastArraySerializer \*/
 
-17. USTRUCT()
+1. USTRUCT()
 
-18. struct FExampleArray: public FFastArraySerializer
+1. struct FExampleArray: public FFastArraySerializer
 
-19. {
+1. {
 
-20. GENERATED_USTRUCT_BODY()
+1. GENERATED_USTRUCT_BODY()
 
-21. UPROPERTY()
+1. UPROPERTY()
 
-22. TArray&lt;FExampleItemEntry&gt; Items; /\*\* Step 3: You MUST have a TArray named Items of the struct you made in step 1. \*/
+1. TArray&lt;FExampleItemEntry> Items; /\*\* Step 3: You MUST have a TArray named Items of the struct you made in step 1. \*/
 
-23. /\*\* Step 4: Copy this, replace example with your names \*/
+1. /\*\* Step 4: Copy this, replace example with your names \*/
 
-24. bool NetDeltaSerialize(FNetDeltaSerializeInfo & DeltaParms)
+1. bool NetDeltaSerialize(FNetDeltaSerializeInfo & DeltaParms)
 
-25. {
+1. {
 
-26. return FastArrayDeltaSerialize&lt;FExampleItemEntry&gt;( Items, DeltaParms );
+1. return FastArrayDeltaSerialize&lt;FExampleItemEntry>( Items, DeltaParms );
 
-27. }
+1. }
 
-28. };
+1. };
 
-29. /\*\* Step 5: Copy and paste this struct trait, replacing FExampleArray with your Step 2 struct. \*/
+1. /\*\* Step 5: Copy and paste this struct trait, replacing FExampleArray with your Step 2 struct. \*/
 
-30. template&lt;&gt;
+1. template&lt;>
 
-31. struct TStructOpsTypeTraits&lt; FExampleArray &gt; : public TStructOpsTypeTraitsBase
+1. struct TStructOpsTypeTraits&lt; FExampleArray > : public TStructOpsTypeTraitsBase
 
-32. {
+1. {
 
-33. enum
+1. enum
 
-34. {
+1. {
 
-35. WithNetDeltaSerializer = true,
+1. WithNetDeltaSerializer = true,
 
-36. };
+1. };
 
-37. };
+1. };
 
-38.
+1.
 
 
     Now to use, just:

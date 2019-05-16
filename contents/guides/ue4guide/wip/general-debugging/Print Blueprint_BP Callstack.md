@@ -8,7 +8,7 @@ and just
 
 ::PrintScriptCallstack()
 
-_From &lt;<https://www.unrealengine.com/en-US/blog/debugging-ufunction-invoke>&gt;_
+*From &lt;<https://www.unrealengine.com/en-US/blog/debugging-ufunction-invoke>>*
 
 Print Blueprint CallStack from Visual Studio
 

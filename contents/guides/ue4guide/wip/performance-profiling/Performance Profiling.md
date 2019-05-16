@@ -10,19 +10,19 @@ Make sure to perf profile under the right conditions:
 
 ## Controlling Quality Settings:
 
-1.  **r.ScreenPercentage 25**
+1. **r.ScreenPercentage 25**
 
-2.  **r.ViewDistanceScale 0.4**
+1. **r.ViewDistanceScale 0.4**
 
-3.  **r.PostProcessAAQuality 0**
+1. **r.PostProcessAAQuality 0**
 
-4.  r.PostProcessingQuality 0
+1. r.PostProcessingQuality 0
 
-5.  r.ShadowQuality 0
+1. r.ShadowQuality 0
 
-6.  r.TextureQuality 0
+1. r.TextureQuality 0
 
-7.  r.EffectsQuality 0
+1. r.EffectsQuality 0
 
 1)  **sg.ResolutionQuality 25**
 
@@ -40,11 +40,11 @@ Make sure to perf profile under the right conditions:
 
 hmd vsync on/off/reset: Self-explanatory
 
-_From &lt;<https://answers.unrealengine.com/questions/23023/trouble-configuring-game-settings.html>&gt;_
+*From &lt;<https://answers.unrealengine.com/questions/23023/trouble-configuring-game-settings.html>>*
 
 Texture Quality Settings
 
-\[SystemSettings\]/\[SystemSettingsEditor\]  
+\[SystemSettings]/\[SystemSettingsEditor]  
 ; NOTE THAT ANY ITEMS IN THIS SECTION WILL AFFECT ALL PLATFORMS!!!
 
 TEXTUREGROUP_World=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
@@ -72,7 +72,7 @@ TEXTUREGROUP_Terrain_Heightmap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFil
 TEXTUREGROUP_Terrain_Weightmap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_Bokeh=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=linear,MipFilter=linear)
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Engine/Content/Types/Textures/SupportAndSettings/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/Engine/Content/Types/Textures/SupportAndSettings/index.html>>*
 
 ![PerformanceProfiling_CPUProfiling](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_CPUProfiling.png)
 

@@ -1,39 +1,44 @@
 ## **Gameplay Debugging**
 
-- [[Gameplay Debugging]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Gameplay%20Debugging)
-- [[Overview]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Overview)
+- [\[Gameplay Debugging\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Gameplay%20Debugging)
 
-- [[Remote Control]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Remote%20Control)
+- [\[Overview\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Overview)
 
-- [[Property Inspection and Manipulation]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Property%20Inspection%20and%20Manipulation)
+- [\[Remote Control\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Remote%20Control)
 
-  - [[Object Data Manipulation]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Object%20Data%20Manipulation)
-  - [[EditActor]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditActor)
+- [\[Property Inspection and Manipulation\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Property%20Inspection%20and%20Manipulation)
 
-  - [[EditObject]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditObject)
+  - [\[Object Data Manipulation\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Object%20Data%20Manipulation)
 
-  - [[EditDefault]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditDefault)
+  - [\[EditActor\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditActor)
 
-  - [[EditArchetype]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditArchetype)
+  - [\[EditObject\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditObject)
 
-  - [[Static Object Data Inspection]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Static%20Object%20Data%20Inspection)
-  - [[GetAll]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#GetAll)
+  - [\[EditDefault\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditDefault)
 
-  - [[GetAllState]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#GetAllState)
+  - [\[EditArchetype\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditArchetype)
 
-  - [[Dynamic Object Data Inspection]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Dynamic%20Object%20Data%20Inspection)
-  - [[DisplayAll]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll)
+  - [\[Static Object Data Inspection\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Static%20Object%20Data%20Inspection)
 
-  - [[DisplayAllState]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState)
+  - [\[GetAll\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#GetAll)
 
-  - [[DisplayClear]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayClear)
+  - [\[GetAllState\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#GetAllState)
 
-  - [[Object Data Modification]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Object%20Data%20Modification)
-  - [[Set]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Set)
+  - [\[Dynamic Object Data Inspection\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Dynamic%20Object%20Data%20Inspection)
 
-  - [[Gameplay Code Profiling]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Gameplay%20Code%20Profiling)
+  - [\[DisplayAll\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll)
 
-  - [[STAT Commands]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#STAT%20Commands)
+  - [\[DisplayAllState\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState)
+
+  - [\[DisplayClear\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayClear)
+
+  - [\[Object Data Modification\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Object%20Data%20Modification)
+
+  - [\[Set\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Set)
+
+  - [\[Gameplay Code Profiling\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Gameplay%20Code%20Profiling)
+
+  - [\[STAT Commands\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#STAT%20Commands)
 
 ## Overview
 
@@ -179,7 +184,7 @@ Once you are satisfied with the settings, press the ![saveButton](C:\devguide\co
 
 ### Static Object Data Inspection
 
-These [[console commands]](https://api.unrealengine.com/udk/Three/ConsoleCommands.html) are useful for inspecting a static snapshot of object data while the game is running. They will capture the values of the specified data at the time the command is executed and display that data in the console and output it to the log as well.
+These [\[console commands\]](https://api.unrealengine.com/udk/Three/ConsoleCommands.html) are useful for inspecting a static snapshot of object data while the game is running. They will capture the values of the specified data at the time the command is executed and display that data in the console and output it to the log as well.
 
 #### GetAll
 
@@ -231,7 +236,7 @@ This gives you a quick overview of what the UTPawns in the game are doing. It ca
 
 ## Dynamic Object Data Inspection
 
-These [[console commands]](https://api.unrealengine.com/udk/Three/ConsoleCommands.html) are useful for inspecting object data as it changes over time. They will display a set of data which dynamically updates each frame directly on the screen overlaying the game as part of the HUD.
+These [\[console commands\]](https://api.unrealengine.com/udk/Three/ConsoleCommands.html) are useful for inspecting object data as it changes over time. They will display a set of data which dynamically updates each frame directly on the screen overlaying the game as part of the HUD.
 
 ### DisplayAll
 
@@ -269,7 +274,7 @@ The displayclear console command clears all object data currently being displaye
 
 displayclear
 
-This will clear the object data being displayed on the screen from a previous [[DisplayAll]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll) or [[DisplayAllState]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState) command.
+This will clear the object data being displayed on the screen from a previous [\[DisplayAll\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll) or [\[DisplayAllState\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState) command.
 
 ![UDKGameplay_Debugging_DisplayClear](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_DisplayClear.jpg)
 
@@ -299,9 +304,9 @@ The Gameplay Profiler is a tool that provides a detailed breakdown of where time
 
 ![UDKGameplay_Debugging_GameplayProfiling](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_GameplayProfiling.jpg)
 
-For a detailed overview, see the [[Gameplay Profiler]](https://api.unrealengine.com/udk/Three/GameplayProfiler.html) page.
+For a detailed overview, see the [\[Gameplay Profiler\]](https://api.unrealengine.com/udk/Three/GameplayProfiler.html) page.
 
-For more information on the command line arguments useful for profiling gameplay, see the [[Gameplay Profiling]](https://api.unrealengine.com/udk/Three/GameplayProfiling) page.
+For more information on the command line arguments useful for profiling gameplay, see the [\[Gameplay Profiling\]](https://api.unrealengine.com/udk/Three/GameplayProfiling) page.
 
 ### STAT Commands
 
@@ -309,4 +314,4 @@ The STAT commands can be useful in getting a quick look at how much time certain
 
 ![UDKGameplay_Debugging_STATCOMMANDS](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_STATCOMMANDS.jpg)
 
-For more information on this and other STAT commands, see the [[Stats Description]](https://api.unrealengine.com/udk/Three/StatsDescriptions.html) page.
+For more information on this and other STAT commands, see the [\[Stats Description\]](https://api.unrealengine.com/udk/Three/StatsDescriptions.html) page.

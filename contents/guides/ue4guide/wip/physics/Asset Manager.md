@@ -62,7 +62,7 @@ Monday, October 2, 2017
 
 Override UAssetManager::ShouldSetManager for your project, this is the function that figures out what Primary Assets "manage" other things. You could add a specific check where if your main menu primary asset is asking it it should reference Map primary assets, return DoNotSet. Fortnite does this so our "list of maps to display" asset doesn't acquire management over specific maps
 
-_From &lt;<https://udn.unrealengine.com/questions/452756/view.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/452756/view.html>>*
 
 /\*\*
 
@@ -76,7 +76,7 @@ _From &lt;<https://udn.unrealengine.com/questions/452756/view.html>&gt;_
 
 UPROPERTY(Transient)
 
-TArray&lt;UObject\*&gt;                                                        PerModuleDataObjects;
+TArray&lt;UObject\*>                                                        PerModuleDataObjects;
 
 **Primary Asset Picker:**
 
@@ -87,7 +87,7 @@ TArray&lt;UObject\*&gt;                            �
          \* @param bAllowClear If true, add None option to top  
          \* @param bAlowAll If true, add All Types option to bottom, returns AllPrimaryAssetTypes if selected  
          \*/  
-        static TSharedRef&lt;SWidget&gt; MakePrimaryAssetTypeSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetType OnSetType, bool bAllowClear = true, bool bAllowAll = false);
+        static TSharedRef&lt;SWidget> MakePrimaryAssetTypeSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetType OnSetType, bool bAllowClear = true, bool bAllowAll = false);
 
 /\*\*   
          \* Creates a simple version of a Primary Asset Id selector, not bound to a PropertyHandle  
@@ -95,7 +95,7 @@ TArray&lt;UObject\*&gt;                            �
          \* @param OnSetId Delegate called when id is changed  
          \* @param bAllowClear If true, add None option to top  
          \*/  
-        static TSharedRef&lt;SWidget&gt; MakePrimaryAssetIdSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetId OnSetId, bool bAllowClear = true, TArray&lt;FPrimaryAssetType&gt; AllowedTypes = TArray&lt;FPrimaryAssetType&gt;());
+        static TSharedRef&lt;SWidget> MakePrimaryAssetIdSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetId OnSetId, bool bAllowClear = true, TArray&lt;FPrimaryAssetType> AllowedTypes = TArray&lt;FPrimaryAssetType>());
 
 /\*\* Called to get list of valid primary asset types \*/  
-        static void GeneratePrimaryAssetTypeComboBoxStrings(TArray&lt; TSharedPtr&lt;FString&gt; &gt;> OutComboBoxStrings, TArray&lt;TSharedPtr&lt;SToolTip&gt;&gt;> OutToolTips, TArray&lt;bool&gt;> OutRestrictedItems, bool bAllowClear, bool bAllowAll);
+        static void GeneratePrimaryAssetTypeComboBoxStrings(TArray&lt; TSharedPtr&lt;FString> >> OutComboBoxStrings, TArray&lt;TSharedPtr&lt;SToolTip>>> OutToolTips, TArray&lt;bool>> OutRestrictedItems, bool bAllowClear, bool bAllowAll);

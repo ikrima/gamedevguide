@@ -26,7 +26,7 @@ DepthEnable: {True, False}
 
 DepthWriteMask: 8bits
 
-Cmp: {False, True, !=, ==, &lt;, &lt;=, &gt;, &gt;= }
+Cmp: {False, True, !=, ==, &lt;, &lt;=, >, >= }
 
 StencilEnable: {True, False}
 
@@ -50,4 +50,4 @@ StencilPass_DepthFail: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, 
 
 StencilPass_DepthPass: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP_INVERT, OP_INCR, OP_DECR}
 
----
+* * *

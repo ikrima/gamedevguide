@@ -5,9 +5,9 @@ Pass -lanplay command arg to use lan bandwidth settings
 enum { MAX_PACKET_SIZE = 1024 }; // MTU for the connection  
 enum { LAN_BEACON_MAX_PACKET_SIZE = 1024 }; // MTU for the connection
 
-enum { RELIABLE_BUFFER = 256 }; // Power of 2 &gt;= 1.  
-enum { MAX_PACKETID = 16384 };  // Power of 2 &gt;= 1, covering guaranteed loss/misorder time.  
-enum { MAX_CHSEQUENCE = 1024 }; // Power of 2 &gt;RELIABLE_BUFFER, covering loss/misorder time.  
+enum { RELIABLE_BUFFER = 256 }; // Power of 2 >= 1.  
+enum { MAX_PACKETID = 16384 };  // Power of 2 >= 1, covering guaranteed loss/misorder time.  
+enum { MAX_CHSEQUENCE = 1024 }; // Power of 2 >RELIABLE_BUFFER, covering loss/misorder time.  
 enum { MAX_BUNCH_HEADER_BITS = 64 };  
 enum { MAX_PACKET_HEADER_BITS = 15 }; // = FMath::CeilLogTwo(MAX_PACKETID) + 1 (IsAck)  
 enum { MAX_PACKET_TRAILER_BITS = 1 };
@@ -44,12 +44,12 @@ UPlayer/UNetConnection:
 
 ### Ini Config:
 
-\[/Script/Engine.Player\]  
+\[/Script/Engine.Player]  
 ; Bandwidth Settings For Client  
 ConfiguredInternetSpeed=10000  
 ConfiguredLanSpeed=20000
 
-\[/Script/OnlineSubsystemUtils.IpNetDriver\]  
+\[/Script/OnlineSubsystemUtils.IpNetDriver]  
 ; Not used  
 ;MaxDownloadSize  
 ; Clamp maxtickrate if listenserver by using NetServerMaxTickRate; Not needed bc we have our own custom GetMaxTickRate()  
@@ -85,7 +85,7 @@ MaxPortCountToTry=512
 ;ClientDesiredSocketReceiveBufferBytes  
 ;ClientDesiredSocketSendBufferBytes
 
-\[/Script/Engine.GameNetworkManager\]  
+\[/Script/Engine.GameNetworkManager]  
 ; Looks like a lot of this isnt actually used wrt to setting bandwidth limits  
 ; CharacterMovementComponent seems to be the only main thing using this class  
 ; ----------------------------  

@@ -8,7 +8,7 @@ UnrealBuildTool reads settings from XML configuration files in the following loc
 
 \* Engine/Saved/UnrealBuildTool/BuildConfiguration.xml \* \*User Folder/AppData\*/Roaming/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml \* \*My Documents\*/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml
 
-_Reference From https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/Configuration/index.html_
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/Configuration/index.html>*
 
 ```cpp
 <?xml version="1.0" encoding="utf-8" ?>
@@ -88,5 +88,4 @@ _Reference From https://docs.unrealengine.com/latest/INT/Programming/UnrealBuild
 </WindowsPlatform>
 
 </Configuration>
-
 ```

@@ -1,4 +1,4 @@
-###### [epicnick](https://ue4vr.slack.com/team/epicnick) [*[*8:54 PM*\]*]
+###### [epicnick](https://ue4vr.slack.com/team/epicnick) \[*\[*8:54 PM*]*]
 
 with respect to blueprints, the only strong refs
 are the variables you create, and references to components
@@ -29,4 +29,4 @@ All EXCEPT TWeakObjPtr UPROPERTIES
 
 but yup, that is correct
 
-_From &lt;<https://ue4vr.slack.com/messages/techtalk/search/garbage/>&gt;_
+*From &lt;<https://ue4vr.slack.com/messages/techtalk/search/garbage/>>*

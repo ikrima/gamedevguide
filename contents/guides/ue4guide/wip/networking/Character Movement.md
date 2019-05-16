@@ -8,15 +8,15 @@ and then calls PerformMovement() (for locally controlled Characters), or Replica
 
 - Root Motion is calculated inside of PerformMovement()
 
-  if (CharacterMesh-&gt;ShouldTickPose())
+  if (CharacterMesh->ShouldTickPose())
 
   {
 
   // Keep track of if we're playing root motion, just in case the root motion montage ends this frame.
 
-  const bool bWasPlayingRootMotion = CharacterOwner-&gt;IsPlayingRootMotion();
+  const bool bWasPlayingRootMotion = CharacterOwner->IsPlayingRootMotion();
 
-​ CharacterMesh-&gt;TickPose(DeltaTime, true);
+​ CharacterMesh->TickPose(DeltaTime, true);
 
 ReplicateMoveToServer() saves the move (in the PendingMove list), calls PerformMovement(), and then replicates the move
 

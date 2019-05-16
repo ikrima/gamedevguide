@@ -4,73 +4,70 @@ sortIndex: 3;
 
 UEBuildTarget.cs
 
-```
-/// The name of the application the target is part of. For targets with bUseSharedBuildEnvironment = true, this is typically the name of the base application, eg. UE4Editor for any game editor.
+    /// The name of the application the target is part of. For targets with bUseSharedBuildEnvironment = true, this is typically the name of the base application, eg. UE4Editor for any game editor.
 
-AppName
+    AppName
 
-TargetName
+    TargetName
 
-//Root directory for the active project. Typically contains the .uproject file, or the engine root.
+    //Root directory for the active project. Typically contains the .uproject file, or the engine root.
 
-ProjectDirectory
+    ProjectDirectory
 
-TargetRules.cs
+    TargetRules.cs
 
-LaunchModuleName
+    LaunchModuleName
 
-SolutionDirectory
+    SolutionDirectory
 
-OutputPaths
+    OutputPaths
 
-.ueprojectdirs
+    .ueprojectdirs
 
-SharedBuildIdFile
+    SharedBuildIdFile
 
-PreBuildStepScripts
+    PreBuildStepScripts
 
-PostBuildStepScripts
+    PostBuildStepScripts
 
-.uproject (C# is ProjectDescriptor.cs)
+    .uproject (C# is ProjectDescriptor.cs)
 
- PreBuildSteps
+     PreBuildSteps
 
- PostBuildSteps
+     PostBuildSteps
 
- AdditionalPluginDirectories
+     AdditionalPluginDirectories
 
- PreBuildSteps
+     PreBuildSteps
 
- PostBuildSteps
+     PostBuildSteps
 
- Modules (C# is ModuleDescriptor.cs)
+     Modules (C# is ModuleDescriptor.cs)
 
- Type = { Default, Runtime, RuntimeNoCommandlet, RuntimeAndProgram, CookedOnly, Developer, Editor, EditorNoCommandlet, Program, ServerOnly, ClientOnly }
+     Type = { Default, Runtime, RuntimeNoCommandlet, RuntimeAndProgram, CookedOnly, Developer, Editor, EditorNoCommandlet, Program, ServerOnly, ClientOnly }
 
- WhitelistPlatforms/BlacklistPlatforms = { Win32, Win64, Mac, etc }
+     WhitelistPlatforms/BlacklistPlatforms = { Win32, Win64, Mac, etc }
 
- WhitelistTargets/BlacklistTargets = { Game, Editor, Client, Server, Program }
+     WhitelistTargets/BlacklistTargets = { Game, Editor, Client, Server, Program }
 
- LoadingPhase
+     LoadingPhase
 
- Plugins (C# is PluginReferenceDescriptor)
+     Plugins (C# is PluginReferenceDescriptor)
 
- Name
+     Name
 
- Enabled
+     Enabled
 
- Optional
+     Optional
 
- WhitelistPlatforms/BlacklistPlatforms = { Win32, Win64, Mac, etc }
+     WhitelistPlatforms/BlacklistPlatforms = { Win32, Win64, Mac, etc }
 
- WhitelistTargets/BlacklistTargets = { Game, Editor, Client, Server, Program }
+     WhitelistTargets/BlacklistTargets = { Game, Editor, Client, Server, Program }
 
-.uplugin
+    .uplugin
 
-"CanBeUsedWithUnrealHeaderTool" : true,
+    "CanBeUsedWithUnrealHeaderTool" : true,
 
--basedir=
+    -basedir=
 
-"-BaseFromWorkingDir")))
-
-```
+    "-BaseFromWorkingDir")))

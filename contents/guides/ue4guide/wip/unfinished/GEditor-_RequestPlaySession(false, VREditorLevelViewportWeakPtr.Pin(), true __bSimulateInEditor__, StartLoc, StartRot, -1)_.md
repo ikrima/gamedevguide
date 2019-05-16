@@ -1,10 +1,10 @@
-GEditor-&gt;RequestPlaySession(false, VREditorLevelViewportWeakPtr.Pin(), true /\*bSimulateInEditor\*/, StartLoc, StartRot, -1);
+GEditor->RequestPlaySession(false, VREditorLevelViewportWeakPtr.Pin(), true /\*bSimulateInEditor\*/, StartLoc, StartRot, -1);
 
 \#if WITH_EDITOR
 
 ​ extern UNREALED_API UEditorEngine\* GEditor;
 
-​ return GIsEditor && (GEditor-&gt;bIsSimulateInEditorQueued || GEditor-&gt;bIsSimulatingInEditor);
+​ return GIsEditor && (GEditor->bIsSimulateInEditorQueued || GEditor->bIsSimulatingInEditor);
 
 \#endif
 

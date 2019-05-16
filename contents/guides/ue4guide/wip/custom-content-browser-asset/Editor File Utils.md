@@ -46,7 +46,7 @@ static void ResetLevelFilenames();
 
 // Loading
 
-DECLARE_DELEGATE_OneParam(FOnLevelsChosen, const TArray&lt;FAssetData&gt;& /\*SelectedLevels\*/);
+DECLARE_DELEGATE_OneParam(FOnLevelsChosen, const TArray&lt;FAssetData>& /\*SelectedLevels\*/);
 
 DECLARE_DELEGATE(FOnLevelPickingCancelled);
 
@@ -176,7 +176,7 @@ static UNREALED_API void SaveMapDataPackages(UWorld\* World, bool bCheckDirty);
 
 \*/
 
-UNREALED_API static void SaveAssetsAs(const TArray&lt;UObject\*&gt;& Assets, TArray&lt;UObject\*&gt;& OutSavedAssets);
+UNREALED_API static void SaveAssetsAs(const TArray&lt;UObject\*>& Assets, TArray&lt;UObject\*>& OutSavedAssets);
 
 /\*\*
 
@@ -210,7 +210,7 @@ UNREALED_API static bool SaveLevelAs(ULevel\* Level, FString\* OutSavedFilename 
 
 \*/
 
-static bool AutosaveMap(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage&gt; &gt;& DirtyPackagesForAutoSave);
+static bool AutosaveMap(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage> >& DirtyPackagesForAutoSave);
 
 /\*\*
 
@@ -228,7 +228,7 @@ static bool AutosaveMap(const FString& AbsoluteAutosaveDir, const int32 Autosave
 
 \*/
 
-static EAutosaveContentPackagesResult::Type AutosaveMapEx(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage&gt; &gt;& DirtyPackagesForAutoSave);
+static EAutosaveContentPackagesResult::Type AutosaveMapEx(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage> >& DirtyPackagesForAutoSave);
 
 /\*\*
 
@@ -250,7 +250,7 @@ static EAutosaveContentPackagesResult::Type AutosaveMapEx(const FString& Absolut
 
 \*/
 
-static bool AutosaveContentPackages(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage&gt; &gt;& DirtyPackagesForAutoSave);
+static bool AutosaveContentPackages(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage> >& DirtyPackagesForAutoSave);
 
 /\*\*
 
@@ -272,7 +272,7 @@ static bool AutosaveContentPackages(const FString& AbsoluteAutosaveDir, const in
 
 \*/
 
-static EAutosaveContentPackagesResult::Type AutosaveContentPackagesEx(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage&gt; &gt;& DirtyPackagesForAutoSave);
+static EAutosaveContentPackagesResult::Type AutosaveContentPackagesEx(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage> >& DirtyPackagesForAutoSave);
 
 /\*\*
 
@@ -320,7 +320,7 @@ UNREALED_API static bool SaveDirtyPackages(const bool bPromptUserToSave, const b
 
 \*/
 
-UNREALED_API static bool SaveDirtyContentPackages(TArray&lt;UClass\*&gt;& SaveContentClasses, const bool bPromptUserToSave, const bool bFastSave = false, const bool bNotifyNoPackagesSaved = false, const bool bCanBeDeclined = true);
+UNREALED_API static bool SaveDirtyContentPackages(TArray&lt;UClass\*>& SaveContentClasses, const bool bPromptUserToSave, const bool bFastSave = false, const bool bNotifyNoPackagesSaved = false, const bool bCanBeDeclined = true);
 
 /\*\*
 
@@ -332,7 +332,7 @@ UNREALED_API static bool SaveDirtyContentPackages(TArray&lt;UClass\*&gt;& SaveCo
 
 \*/
 
-UNREALED_API static void GetDirtyWorldPackages(TArray&lt;UPackage\*&gt;& OutDirtyPackages);
+UNREALED_API static void GetDirtyWorldPackages(TArray&lt;UPackage\*>& OutDirtyPackages);
 
 /\*\*
 
@@ -344,7 +344,7 @@ UNREALED_API static void GetDirtyWorldPackages(TArray&lt;UPackage\*&gt;& OutDirt
 
 \*/
 
-UNREALED_API static void GetDirtyContentPackages(TArray&lt;UPackage\*&gt;& OutDirtyPackages);
+UNREALED_API static void GetDirtyContentPackages(TArray&lt;UPackage\*>& OutDirtyPackages);
 
 /\*\*
 
@@ -396,7 +396,7 @@ PR_Cancelled /\*\* The user has cancelled out of a prompt; the caller should abo
 
 \* @param bPromptToSave If true the user will be prompted with a list of packages to save, otherwise all passed in packages are saved
 
-\* @param OutFailedPackages \[out\] If specified, will be filled in with all of the packages that failed to save successfully
+\* @param OutFailedPackages \[out] If specified, will be filled in with all of the packages that failed to save successfully
 
 \* @param bAlreadyCheckedOut If true, the user will not be prompted with the source control dialog
 
@@ -416,7 +416,7 @@ PR_Cancelled /\*\* The user has cancelled out of a prompt; the caller should abo
 
 \*/
 
-UNREALED_API static EPromptReturnCode PromptForCheckoutAndSave( const TArray&lt;UPackage\*&gt;& PackagesToSave, bool bCheckDirty, bool bPromptToSave, TArray&lt;UPackage\*&gt;\* OutFailedPackages = NULL, bool bAlreadyCheckedOut = false, bool bCanBeDeclined = true );
+UNREALED_API static EPromptReturnCode PromptForCheckoutAndSave( const TArray&lt;UPackage\*>& PackagesToSave, bool bCheckDirty, bool bPromptToSave, TArray&lt;UPackage\*>\* OutFailedPackages = NULL, bool bAlreadyCheckedOut = false, bool bCanBeDeclined = true );
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -466,7 +466,7 @@ UNREALED_API static void Export(bool bExportSelectedActorsOnly); // prompts user
 
 \*/
 
-UNREALED_API static bool PromptToCheckoutPackages(bool bCheckDirty, const TArray&lt;UPackage\*&gt;& PackagesToCheckOut, TArray&lt; UPackage\* &gt;\* OutPackagesCheckedOutOrMadeWritable = NULL, TArray&lt; UPackage\* &gt;\* OutPackagesNotNeedingCheckout = NULL, const bool bPromptingAfterModify = false );
+UNREALED_API static bool PromptToCheckoutPackages(bool bCheckDirty, const TArray&lt;UPackage\*>& PackagesToCheckOut, TArray&lt; UPackage\* >\* OutPackagesCheckedOutOrMadeWritable = NULL, TArray&lt; UPackage\* >\* OutPackagesNotNeedingCheckout = NULL, const bool bPromptingAfterModify = false );
 
 /\*\*
 
@@ -486,7 +486,7 @@ UNREALED_API static bool PromptToCheckoutPackages(bool bCheckDirty, const TArray
 
 \*/
 
-UNREALED_API static ECommandResult::Type CheckoutPackages(const TArray&lt;UPackage\*&gt;& PkgsToCheckOut, TArray&lt;UPackage\*&gt;\* OutPackagesCheckedOut = NULL, const bool bErrorIfAlreadyCheckedOut = true);
+UNREALED_API static ECommandResult::Type CheckoutPackages(const TArray&lt;UPackage\*>& PkgsToCheckOut, TArray&lt;UPackage\*>\* OutPackagesCheckedOut = NULL, const bool bErrorIfAlreadyCheckedOut = true);
 
 /\*\*
 
@@ -506,7 +506,7 @@ UNREALED_API static ECommandResult::Type CheckoutPackages(const TArray&lt;UPacka
 
 \*/
 
-UNREALED_API static ECommandResult::Type CheckoutPackages(const TArray&lt;FString&gt;& PkgsToCheckOut, TArray&lt;FString&gt;\* OutPackagesCheckedOut = NULL, const bool bErrorIfAlreadyCheckedOut = true);
+UNREALED_API static ECommandResult::Type CheckoutPackages(const TArray&lt;FString>& PkgsToCheckOut, TArray&lt;FString>\* OutPackagesCheckedOut = NULL, const bool bErrorIfAlreadyCheckedOut = true);
 
 /\*\*
 
@@ -534,7 +534,7 @@ UNREALED_API static ECommandResult::Type CheckoutPackages(const TArray&lt;FStrin
 
 \*/
 
-UNREALED_API static bool PromptToCheckoutLevels(bool bCheckDirty, const TArray&lt;ULevel\*&gt;& SpecificLevelsToCheckOut, TArray&lt;UPackage\*&gt;\* OutPackagesNotNeedingCheckout = NULL);
+UNREALED_API static bool PromptToCheckoutLevels(bool bCheckDirty, const TArray&lt;ULevel\*>& SpecificLevelsToCheckOut, TArray&lt;UPackage\*>\* OutPackagesNotNeedingCheckout = NULL);
 
 /\*\*
 
@@ -602,7 +602,7 @@ UNREALED_API static void LoadDefaultMapAtStartup();
 
 \*/
 
-static bool SaveWorlds(UWorld\* InWorld, const FString& RootPath, const TCHAR\* Prefix, TArray&lt;FString&gt;& OutFilenames);
+static bool SaveWorlds(UWorld\* InWorld, const FString& RootPath, const TCHAR\* Prefix, TArray&lt;FString>& OutFilenames);
 
 /\*\* Whether or not we're in the middle of loading the simple startup map \*/
 
@@ -632,7 +632,7 @@ UNREALED_API static FString GetFilterString(EFileInteraction Interaction);
 
 \*/
 
-UNREALED_API static void FindAllPackageFiles(TArray&lt;FString&gt;& OutPackages);
+UNREALED_API static void FindAllPackageFiles(TArray&lt;FString>& OutPackages);
 
 /\*\*
 
@@ -646,7 +646,7 @@ UNREALED_API static void FindAllPackageFiles(TArray&lt;FString&gt;& OutPackages)
 
 \*/
 
-UNREALED_API static void FindAllSubmittablePackageFiles(TMap&lt;FString, FSourceControlStatePtr&gt;& OutPackages, const bool bIncludeMaps);
+UNREALED_API static void FindAllSubmittablePackageFiles(TMap&lt;FString, FSourceControlStatePtr>& OutPackages, const bool bIncludeMaps);
 
 /\*\*
 
@@ -658,7 +658,7 @@ UNREALED_API static void FindAllSubmittablePackageFiles(TMap&lt;FString, FSource
 
 \*/
 
-UNREALED_API static void FindAllConfigFiles(TArray&lt;FString&gt;& OutConfigFiles);
+UNREALED_API static void FindAllConfigFiles(TArray&lt;FString>& OutConfigFiles);
 
 /\*\*
 
@@ -670,7 +670,7 @@ UNREALED_API static void FindAllConfigFiles(TArray&lt;FString&gt;& OutConfigFile
 
 \*/
 
-UNREALED_API static void FindAllSubmittableConfigFiles(TMap&lt;FString, FSourceControlStatePtr&gt;& OutConfigFiles);
+UNREALED_API static void FindAllSubmittableConfigFiles(TMap&lt;FString, FSourceControlStatePtr>& OutConfigFiles);
 
 /\*\*
 

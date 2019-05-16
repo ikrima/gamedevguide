@@ -1,4 +1,4 @@
-https://forums.unrealengine.com/development-discussion/vr-ar-development/1371458-make-maintain-framerate-technical-postmortem-for-robo-recall-and-beyond-by-nick-whiting>
+<https://forums.unrealengine.com/development-discussion/vr-ar-development/1371458-make-maintain-framerate-technical-postmortem-for-robo-recall-and-beyond-by-nick-whiting>>
 
 ![RoboRecall_UnderstandingThreadingModel](C:\devguide\conversion\FINISHED\assets\RoboRecall_UnderstandingThreadingModel.png)
 
@@ -6,11 +6,15 @@ https://forums.unrealengine.com/development-discussion/vr-ar-development/1371458
 
 - The Game Thread handles updates for gameplay, animation, physics, networking, etc., and most importantly, Actor ticking.
 
-* TickGroups control Tick order but do not give parallelism
+
+- TickGroups control Tick order but do not give parallelism
+
 
 - Physics use tasks within the game thread to perform their work
 
-* AnimGraphs can do parallel evaluation
+
+- AnimGraphs can do parallel evaluation
+
 
 - **Trick:** Can hide some of your tick work by moving Actors to TG_DuringPhysics, shortening your overall Game thread time
 
@@ -52,7 +56,7 @@ https://forums.unrealengine.com/development-discussion/vr-ar-development/1371458
 
 # Debug HMD Performance:
 
--emulatestereo
+\-emulatestereo
 
 r.setres 2160x1200
 
@@ -84,9 +88,9 @@ Give BP compiler hints on inlining functions. Look at KismetMathLibrary.h for de
 
 Game Thread Optimization:
 
-- Reduce \# ticking actors
+- Reduce # ticking actors
 
-- Reduce \# colliders
+- Reduce # colliders
 
 - Hide work in TG_DuringPhysics
 

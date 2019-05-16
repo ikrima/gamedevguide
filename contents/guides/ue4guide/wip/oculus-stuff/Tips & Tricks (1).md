@@ -10,17 +10,20 @@ Registry Key developer settings:
 
   HKLM\\Software\\WOW6432Node\\Oculus: AllowScreenBurnIn = 1
 
-* Debug console:
+
+- Debug console:
 
   HKLM\\Software\\WOW6432Node\\Oculus: ShowServiceConsole = 1
+
 
 - Disable Oculus Home from auto-launching:
 
   Rename the .exe (C:\\Program Files (x86)\\Oculus\\Support\\oculus-home\\PC_OculusHome.exe)
 
-* Disable updates
 
-  \[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Oculus VR, LLC\\Oculus\\Config\]
+- Disable updates
+
+  \[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Oculus VR, LLC\\Oculus\\Config]
 
   "CoreChannel"="Rift18" (change it to LIVE to continue updates)
 
@@ -30,14 +33,14 @@ r.XGEShaderCompile=1
 
 Enable HMD head tracking without being in VR mode:
 
-Set Editor Settings-&gt;Player-&gt;ViewportGetsHMDControl to true & console command "hmdpos enforce on" to enable head tracking in Unreal's Viewport or PIE mode without enabling stereo. Very useful for debugging multiplayer or testing hmd functionality like avatars.
+Set Editor Settings->Player->ViewportGetsHMDControl to true & console command "hmdpos enforce on" to enable head tracking in Unreal's Viewport or PIE mode without enabling stereo. Very useful for debugging multiplayer or testing hmd functionality like avatars.
 
 Don't minimize the editor window while in VR Mode
 
 - You can maintain the Editor window during VR Preview mode by commenting out this line in PlayLevel.cpp:
 
 //TODO: ikrimae: Pipe disabling this based on a config variable. Not sure if this will crash the editor & also it's a perf hit  
-//RootWindow-&gt;Minimize();
+//RootWindow->Minimize();
 
 Rename Oculus Home exe to get rid of it (C:\\Program Files (x86)\\Oculus\\Support\\oculus-home\\PC_OculusHome.exe)
 
@@ -47,19 +50,19 @@ Get rid of purgatory UI (L,C,F):
 
 How to detect if VR Headset is Vive or Oculus
 
-if (GEngine-&gt;HMDDevice.IsValid() && GEngine-&gt;HMDDevice-&gt;IsHMDEnabled())  
+if (GEngine->HMDDevice.IsValid() && GEngine->HMDDevice->IsHMDEnabled())  
         {  
-                if (GEngine-&gt;HMDDevice-&gt;GetHMDDeviceType() == EHMDDeviceType::DT_SteamVR)  
+                if (GEngine->HMDDevice->GetHMDDeviceType() == EHMDDeviceType::DT_SteamVR)  
                 {  
                         // BLAH!
 
-_From &lt;<https://forums.unrealengine.com/showthread.php?87727-How-to-Detect-if-using-Rift-or-Vive>&gt;_
+*From &lt;<https://forums.unrealengine.com/showthread.php?87727-How-to-Detect-if-using-Rift-or-Vive>>*
 
 Useful Oculus console commands:
 
 Stereo/HMD Configuration
 
----
+* * *
 
 stereo on|off|toggle                Stereo mode on/off
 
@@ -73,13 +76,13 @@ hmd sp 125                                   
 
 hmd sp reset                                Resets to original r.ScreenPercentage value. Deprecated, use 'hmd pd 1' instead.
 
-hmd mirror \[on|off|toggle\]        Enables/disables/toggles mirroring in a window (for "Application Only" mode only).
+hmd mirror \[on|off|toggle]        Enables/disables/toggles mirroring in a window (for "Application Only" mode only).
 
 hmd mirror 800x600                        Sets mirror window dimension (for Direct mode only).
 
 hmd mirror mode 0|1|2                Sets mirror window mode: 0 - standard stereo distorted view, 1 - stereo undistorted view, 2 - mono viewa (a single eye)
 
-hmd qahead \[on|off\]                        Turns QueueAhead on / off or toggles it. Use 'hmd stats' to check its current state.
+hmd qahead \[on|off]                        Turns QueueAhead on / off or toggles it. Use 'hmd stats' to check its current state.
 
 stereo e=0.064                                Eye distance (m). Use 'stereo reset' to restore original value.
 
@@ -103,7 +106,7 @@ hmdpos enforce                                To
 
 Stereo/HMD Internals
 
----
+* * *
 
 hmdmag on|off                                Turns magnetometer on/off
 
@@ -111,19 +114,19 @@ hmdmag show                                  �
 
 Misc
 
----
+* * *
 
 hmd stats                                        Shows HMD-related stats.
 
 hmd grid                                        Toggles lens-centered grid.
 
-hmd setint PerfHudMode \[0..4\]                         Turns on \[1..x\] or off \[0\] builtin Performance HUD, modes 1-4.
+hmd setint PerfHudMode \[0..4]                         Turns on \[1..x] or off \[0] builtin Performance HUD, modes 1-4.
 
-hmd setint DebugHudStereoMode \[0..3\]         Turns on \[1..x\] or off \[0\] builtin debug stereo HUD, modes 1-3.
+hmd setint DebugHudStereoMode \[0..3]         Turns on \[1..x] or off \[0] builtin debug stereo HUD, modes 1-3.
 
-hmddbg showcamera \[off | toggle\] Draws a tracking camera frustum in the game's world.
+hmddbg showcamera \[off | toggle] Draws a tracking camera frustum in the game's world.
 
-hmddbg cubes \[on | off | toggle\] Draws a 'sea of cubes' over the existing scene.
+hmddbg cubes \[on | off | toggle] Draws a 'sea of cubes' over the existing scene.
 
 hmd updateongt on|off                Turns on/off update-on-gamethread mode (for debugging). On by default.
 
@@ -131,4 +134,4 @@ hmd updateonrt on|off                Turns on/off update-on-rend
 
 hmdversion                                        Prints Oculus SDK version used and Oculus Plugin info
 
-uncapfps                                         Uncaps FPS (allows FPS &gt; 62); to restore cap - "set Engine bSmoothFrameRate 1"; t.maxfps could also be used for the same purpose.
+uncapfps                                         Uncaps FPS (allows FPS > 62); to restore cap - "set Engine bSmoothFrameRate 1"; t.maxfps could also be used for the same purpose.

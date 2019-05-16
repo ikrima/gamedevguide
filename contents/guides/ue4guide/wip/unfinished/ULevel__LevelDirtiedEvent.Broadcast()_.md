@@ -8,17 +8,17 @@ ULevel::LevelDirtiedEvent.Broadcast();
 
 ================
 
-GEngine-&gt;RedrawLevelEditingViewports();
+GEngine->RedrawLevelEditingViewports();
 
 FEditorSupportDelegates::UpdateUI.Broadcast();
 
-GWorld-&gt;BroadcastLevelsChanged();
+GWorld->BroadcastLevelsChanged();
 
 ULevel::LevelDirtiedEvent.Broadcast();
 
-GEngine-&gt;BroadcastLevelActorListChanged();
+GEngine->BroadcastLevelActorListChanged();
 
-GEngine-&gt;BroadcastLevelActorDeleted();
+GEngine->BroadcastLevelActorDeleted();
 
 GLevelEditorModeTools().DeactivateAllModes();
 
@@ -110,7 +110,7 @@ Add Slate Window To Game:
 
 ​ .ClientSize(FVector2D(400,600))
 
-​ .Title( FText::FromString( Object-&gt;GetName() ) )
+​ .Title( FText::FromString( Object->GetName() ) )
 
 ​ \[
 
@@ -130,23 +130,23 @@ Add Slate Window To Game:
 
 ​ DetailsView.ToSharedRef()
 
-​ \]
+​ ]
 
-​ \]
+​ ]
 
-​ \]
+​ ]
 
 ​ );
 
 Create Detail View of all properties in an object:
 
-FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked&lt;FPropertyEditorModule&gt;("PropertyEditor");
+FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked&lt;FPropertyEditorModule>("PropertyEditor");
 
-​ TSharedPtr&lt;IDetailsView&gt; DetailsView = PropertyModule.CreateDetailView(Args);
+​ TSharedPtr&lt;IDetailsView> DetailsView = PropertyModule.CreateDetailView(Args);
 
-​ DetailsView-&gt;SetIsPropertyVisibleDelegate(FIsPropertyVisible::CreateStatic(&Local::IsPropertyVisible, bShouldShowNonEditable));
+​ DetailsView->SetIsPropertyVisibleDelegate(FIsPropertyVisible::CreateStatic(&Local::IsPropertyVisible, bShouldShowNonEditable));
 
-​ DetailsView-&gt;SetObject(Object);
+​ DetailsView->SetObject(Object);
 
 ​
 
@@ -160,7 +160,7 @@ FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked&lt;FPr
 
 ​ .ClientSize(FVector2D(400,600))
 
-​ .Title( FText::FromString( Object-&gt;GetName() ) )
+​ .Title( FText::FromString( Object->GetName() ) )
 
 ​ \[
 
@@ -180,13 +180,13 @@ FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked&lt;FPr
 
 ​ DetailsView.ToSharedRef()
 
-​ \]
+​ ]
 
-​ \]
+​ ]
 
-​ \]
+​ ]
 
-​ \;
+​ \\;
 
 ================
 

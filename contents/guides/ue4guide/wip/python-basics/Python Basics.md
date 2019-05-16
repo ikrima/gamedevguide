@@ -2,11 +2,11 @@
 
 import pprint
 
-pprint.pprint(randomObj.\_\_dict\_\_)          =&gt;     Prints all the attributes & their values in an object
+pprint.pprint(randomObj.\_\_dict\_\_)          =>     Prints all the attributes & their values in an object
 
-dir(randomObj)                                   =&gt;     enumerates attributes & methods in an object
+dir(randomObj)                                   =>     enumerates attributes & methods in an object
 
-inspect(module)                                 =&gt;     Allows you to inspect a module
+inspect(module)                                 =>     Allows you to inspect a module
 
 ## **Import statements:**
 
@@ -16,17 +16,18 @@ Absolute vs. Relative Import
 
 - A relative import uses the relative path (starting from the path of the current module) to the desired desired module to import. There are two types of relative imports:
 
-  - explicit relative import follows the format from .&lt;module/package&gt; import X, where &lt;module/package&gt; is prefixed by dots . that indicate how many directories upwards to traverse. A single dot . corresponds to the current directory; two dots .. indicate one folder up; etc.
+  - explicit relative import follows the format from .&lt;module/package> import X, where &lt;module/package> is prefixed by dots . that indicate how many directories upwards to traverse. A single dot . corresponds to the current directory; two dots .. indicate one folder up; etc.
 
   - Implicit: deprecated. Don't use
 
-* Use absolute imports rooted at the test/ directory (i.e. middle column in the table above). This guarantees that running start.py directly will always work. In order to run a2.py directly, we can modify sys.path in a2.py to include test/packA/, before sa2 is imported.
+
+- Use absolute imports rooted at the test/ directory (i.e. middle column in the table above). This guarantees that running start.py directly will always work. In order to run a2.py directly, we can modify sys.path in a2.py to include test/packA/, before sa2 is imported.
 
 ​ import os, sys
 
 ​ sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(\_\_file\_\_))))
 
-​ \# now this works, even when a2.py is run directly
+​ # now this works, even when a2.py is run directly
 
 ​ from packA.subA import sa2
 
@@ -38,7 +39,7 @@ print("")
 
 import os
 
-os.environ\['HOME'\] will retrieve the environment variable. os.environ is a dictionary
+os.environ\['HOME'] will retrieve the environment variable. os.environ is a dictionary
 
 os.environ.get('KEY') will return None if the key doesn't exist instead of raising KeyError
 
@@ -73,9 +74,9 @@ print os.path.join(root, file)
 
 List immediate child subdirectories:
 
-next(os.walk('.'))\[1\]
+next(os.walk('.'))\[1]
 
-_From &lt;<https://stackoverflow.com/questions/973473/getting-a-list-of-all-subdirectories-in-the-current-directory>&gt;_
+*From &lt;<https://stackoverflow.com/questions/973473/getting-a-list-of-all-subdirectories-in-the-current-directory>>*
 
 ### **Convert Path:**
 
@@ -89,19 +90,19 @@ files.sort()
 
 for i in xrange(0, len(files)):
 
-filename,ext = os.path.splitext(os.path.basename(files\[i\]))
+filename,ext = os.path.splitext(os.path.basename(files\[i]))
 
-os.rename(files\[i\], os.path.join(os.path.dirname(files\[i\]), filename + ".%07d" % i + ext))
+os.rename(files\[i], os.path.join(os.path.dirname(files\[i]), filename + ".%07d" % i + ext))
 
 #### **Executing shell commands**
 
 os.system("some_command with args")
 
-_From &lt;<http://stackoverflow.com/questions/89228/calling-an-external-command-in-python>&gt;_
+*From &lt;<http://stackoverflow.com/questions/89228/calling-an-external-command-in-python>>*
 
 import subprocess
 
-proc = subprocess.Popen(\["cat", "/tmp/baz"\], stdout=subprocess.PIPE)  
+proc = subprocess.Popen(\["cat", "/tmp/baz"], stdout=subprocess.PIPE)  
 (out, err) = proc.communicate()  
 print "program output:", out
 
@@ -119,7 +120,7 @@ dict(obj)
 
 #### **Unzip List of Tuples:**
 
-zipper_list = \[(1, 'a'), (2, 'b'), (3, 'c')\]
+zipper_list = \[(1, 'a'), (2, 'b'), (3, 'c')]
 
 list_a, list_b = zip(\*zipper_list)
 
@@ -133,23 +134,23 @@ f'This is inline string interpolation {bla:10}'
 
 Examples:
 
-f'{a:02}' =&gt; '01'S
+f'{a:02}' => '01'S
 
 <https://www.programiz.com/python-programming/methods/string/format#numbers>
 
 The general form of a standard format specifier is:
 
-\[\[fill\]align\]\[sign\]\[\#\]\[0\]\[minimumwidth\]\[.precision\]\[type\]
+\[\[fill]align]\[sign]\[#]\[0]\[minimumwidth]\[.precision]\[type]
 
-_From &lt;<https://www.python.org/dev/peps/pep-3101/#standard-format-specifiers>&gt;_
+*From &lt;<https://www.python.org/dev/peps/pep-3101/#standard-format-specifiers>>*
 
-\[\[fill\]align\]\[sign\]\[\#\]\[0\]\[width\]\[,\]\[.precision\]\[type\]  
+\[\[fill]align]\[sign]\[#]\[0]\[width]\[,]\[.precision]\[type]  
 where, the options are  
 fill ::= any character  
-align ::= "&lt;" | "&gt;" | "=" | "^"  
+align ::= "&lt;" | ">" | "=" | "^"  
 sign ::= "+" | "-" | " "  
 width ::= integer  
 precision ::= integer  
 type ::= "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X" | "%"
 
-_From &lt;<https://www.programiz.com/python-programming/methods/built-in/format>&gt;_
+*From &lt;<https://www.programiz.com/python-programming/methods/built-in/format>>*

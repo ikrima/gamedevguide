@@ -6,7 +6,7 @@ sortIndex: 3
 
 The first stage is to build the plugin for distribution in the normal manner. This can be done using the UnrealBuildTool with the following command:
 
-_UE4Dir_\\Engine\\Build\\BatchFiles\\RunUAT.bat BuildPlugin -Rocket -Plugin=_Plugin_.uplugin -TargetPlatforms=Win64 -Package=_OutputDir_
+*UE4Dir*\\Engine\\Build\\BatchFiles\\RunUAT.bat BuildPlugin -Rocket -Plugin=*Plugin*.uplugin -TargetPlatforms=Win64 -Package=*OutputDir*
 
 where UE4Dir is the directory where UE4 is installed and OutputDir is the name of the directory you want the resulting build to be placed. The OutputDir will contain the source code, binaries, intermediate files and any extra required content your plugin needs to run. You would normally distribute this entire folder to users.
 
@@ -48,10 +48,10 @@ Finally we zip up the directory, ready to be still to users to try out Mercuna. 
 
 Since you are not supplying the source that UE4 expects, there are several limitations of this method to be aware of:
 
-1.  **This approach has been only tested on Windows**, and resulting the compiled binaries are Windows only. This is not a problem for us, as restricting our evaluation version to Windows only is what we want.
+1. **This approach has been only tested on Windows**, and resulting the compiled binaries are Windows only. This is not a problem for us, as restricting our evaluation version to Windows only is what we want.
 
-2.  **The resulting binary plugin can only be used as an Engine plugin**. If the plugin is used as a Game plugin then UE4 will try to build it when compiling the game and fail. _Actually a bug in the UnrealBuildTool for versions before UE4.20 meant that using it as a game plugin worked, sadly this has been fixed._
+1. **The resulting binary plugin can only be used as an Engine plugin**. If the plugin is used as a Game plugin then UE4 will try to build it when compiling the game and fail. *Actually a bug in the UnrealBuildTool for versions before UE4.20 meant that using it as a game plugin worked, sadly this has been fixed.*
 
-3.  **The binary plugin only works with the same version of the engine it was compiled with.** If you build your plugin using the Epic launcher version of UE4, then it doesn’t work with custom versions of the engine or people that have built the engine from source code. Thankfully it does work for all minor point releases, e.g. 4.20.X, so we only have to release an update when major UE4 versions are released.
+1. **The binary plugin only works with the same version of the engine it was compiled with.** If you build your plugin using the Epic launcher version of UE4, then it doesn’t work with custom versions of the engine or people that have built the engine from source code. Thankfully it does work for all minor point releases, e.g. 4.20.X, so we only have to release an update when major UE4 versions are released.
 
-_Reference From: https://mercuna.com/building-binary-plugins-in-unreal-engine-4/_
+*Reference From: <https://mercuna.com/building-binary-plugins-in-unreal-engine-4/>*

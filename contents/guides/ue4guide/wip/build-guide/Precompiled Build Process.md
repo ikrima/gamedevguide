@@ -1,6 +1,4 @@
-```
-sortindex: 8
-```
+    sortindex: 8
 
 ## Using BuildGraph
 
@@ -20,9 +18,9 @@ D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuild
 
 ## Add section to BaseEngine.ini
 
-\[InstalledPlatforms\]
+\[InstalledPlatforms]
 
-+InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Editor")
+\+InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Editor")
 
 ;+InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Game")
 

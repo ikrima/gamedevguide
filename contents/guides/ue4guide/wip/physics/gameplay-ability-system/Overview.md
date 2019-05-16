@@ -4,7 +4,7 @@
 
 <table><thead><tr class="header"><th><strong>Function Name</strong></th><th><strong>Purpose</strong></th></tr></thead><tbody><tr class="odd"><td>PreAttributeChange / PreAttributeBaseChange</td><td>These functions are called just before modifications to an Attribute. They are intended to enforce rules on the Attribute's value, such as "Health must be between 0 and MaxHealth", and should not trigger in-game reactions to Attribute changes.</td></tr><tr class="even"><td>PreGameplayEffectExecute</td><td>Just before modifying an Attribute's value, this function can reject or alter the proposed modification.</td></tr><tr class="odd"><td>PostGameplayEffectExecute</td><td>Immediately after modifying an Attribute's value, this function can react to the change. This often includes clamping the final value of the Attribute, or triggering an in-game reaction to the new value, like dying when the "health" Attribute falls to zero.</td></tr></tbody></table>
 
-_From &lt;<https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAttributesAndGameplayEffects>&gt;_
+*From &lt;<https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAttributesAndGameplayEffects>>*
 
 #### **UGameplayEffect:**
 
@@ -30,7 +30,7 @@ _From &lt;<https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/Ga
 
     - **UGameplayEffectCustomApplicationRequirement**: For more complex rules\\
 
-  - **Granted Abilities**: Effecsts can grant abilities, not just tags. Useful to be used with executions: Ex: Actor gets bomb Gameplay Effect and actor has tag: CoveredInOil =&gt; grant OnFireAoT
+  - **Granted Abilities**: Effecsts can grant abilities, not just tags. Useful to be used with executions: Ex: Actor gets bomb Gameplay Effect and actor has tag: CoveredInOil => grant OnFireAoT
 
   - **Stacking**
 
@@ -64,7 +64,7 @@ _From &lt;<https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/Ga
 
 - Gameplay Cues are basically events. They are events with a Target, Tag, Type (OnActive/WhileActive/OnExecute/OnRemoved), and parameters (instigator, hit location, etc). Those events can come from Gameplay Effects, Abilities directly, or anywhere really. On Paragon our projectile code emits gameplay cues on their own for example.
 
-_From &lt;<https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>>*
 
 Old:
 
@@ -72,7 +72,7 @@ Overview tutorial:
 
 UDN Answer Overview: <https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>
 
-Overview \#2: <https://udn.unrealengine.com/questions/315010/view.html>
+Overview #2: <https://udn.unrealengine.com/questions/315010/view.html>
 
 Target Data: <https://udn.unrealengine.com/questions/273352/abilitysystem-targeting-how-to-fetch-custom-target.html>
 
@@ -82,4 +82,4 @@ Sample Repo: <https://github.com/daveratti/GameplayAbilitiesSample/tree/release/
 
 Older Doc:
 
-&lt;&lt;AbilitySystemK&L (1).docx&gt;&gt;
+&lt;&lt;AbilitySystemK&L (1).docx>>

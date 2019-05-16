@@ -8,11 +8,11 @@ If you split the path using dot as delimiter you will get:
 
 1. /Game/MyGame/MyAsset
 
-2. MyAsset
+1. MyAsset
 
-3. ASubObjectOfMyAsset
+1. ASubObjectOfMyAsset
 
-4. AnotherObject
+1. AnotherObject
 
 Outer most object is awlays a UPackage
 
@@ -20,27 +20,27 @@ Outer most object is awlays a UPackage
 
 Object flags: Tell us the state of the object
 
-- RF_Public =&gt; this object is visible outside of its package
+- RF_Public => this object is visible outside of its package
 
   - Example of non-public object is a sub-object
 
   - Every object you can see in editor is Public
 
-- RF_Standalone =&gt; Doesn’t need to be referenced to not be garbage collected
+- RF_Standalone => Doesn’t need to be referenced to not be garbage collected
 
   - If containing package gets unloaded, then it gets GC'ed
 
-- RF_Transactional =&gt; property changes are recorded and can be reverted
+- RF_Transactional => property changes are recorded and can be reverted
 
 Class flags: tell about the object's UClass
 
-- CLASS_Abstract =&gt; Class can't be instantiated
+- CLASS_Abstract => Class can't be instantiated
 
-- CLASS_Native =&gt; Native class
+- CLASS_Native => Native class
 
 - CLASS_Constructed
 
-All native classes get populated in /Script/\[ModuleName\].
+All native classes get populated in /Script/\[ModuleName].
 
 Native classes do not get a PostLoad
 

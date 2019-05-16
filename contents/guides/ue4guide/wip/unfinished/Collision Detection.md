@@ -24,11 +24,11 @@ Collision:
 
   - Block + block = block
 
-  - \[Block + sim generates hit events\] + block = Hit Event on 1st actor + block
+  - \[Block + sim generates hit events] + block = Hit Event on 1st actor + block
 
-  - \[overlap+ disabled generate overlapevents\] + block = nothing
+  - \[overlap+ disabled generate overlapevents] + block = nothing
 
-  - \[overlap + generate overlap events\] + block = overlap event on 1st actor
+  - \[overlap + generate overlap events] + block = overlap event on 1st actor
 
 - After first blocking collision, collision system stops looking for collisions
 
@@ -52,10 +52,10 @@ Thread & Sample showing how to update collision at runtime:
 
 Turn On Drawing For Traces/Geometry Sweeps
 
-- **World**-&gt;DebugDrawTraceTag
+- **World**->DebugDrawTraceTag
 
 - DrawGeomSweeps
 
 - DrawGeomOverlaps
 
-There's a Collision Analyzer Tool for debugging Developer Tools-&gt;Collision Analyzer
+There's a Collision Analyzer Tool for debugging Developer Tools->Collision Analyzer

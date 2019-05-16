@@ -6,45 +6,45 @@ Some useful flags that we might need when we get Jenkins running:
 
 UBT or RunUAT or AutomationTool.exe
 
-- -build
+- \-build
 
-- -compile
+- \-compile
 
-- -NoHotReloadFromIDE
+- \-NoHotReloadFromIDE
 
-- -NoHotReload
+- \-NoHotReload
 
-- -nocompileeditor
+- \-nocompileeditor
 
-- -nocompile
+- \-nocompile
 
-- -skipcompile
+- \-skipcompile
 
-- -NoDDC
+- \-NoDDC
 
-- -CleanLocal
+- \-CleanLocal
 
-- -NoXGE (Just for code analysis)
+- \-NoXGE (Just for code analysis)
 
-- -NoSign
+- \-NoSign
 
-- -rununrealcodeanalyzer (BuildConfiguration.bRunUnrealCodeAnalyzer = true;)
+- \-rununrealcodeanalyzer (BuildConfiguration.bRunUnrealCodeAnalyzer = true;)
 
-- -precompile
+- \-precompile
 
-- -enablecodeanalysis (BuildConfiguration.bEnableCodeAnalysis = true;)
+- \-enablecodeanalysis (BuildConfiguration.bEnableCodeAnalysis = true;)
 
 ## BuildGraph
 
-- -target="Make Installed Build Win64" (with default InstalledEngineBuild.xml)
+- \-target="Make Installed Build Win64" (with default InstalledEngineBuild.xml)
 
-- -set:HostPlatformOnly=true
+- \-set:HostPlatformOnly=true
 
-- -set:WithWin32=false
+- \-set:WithWin32=false
 
-- -set:WithIOS=false
+- \-set:WithIOS=false
 
-- -set:PublishDir="L:\\\_Programming\\RocketBuilds\\"
+- \-set:PublishDir="L:\\\_Programming\\RocketBuilds\\"
 
 ### ScratchPad Notes:
 
@@ -66,9 +66,9 @@ D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuild
 
 **Add section to BaseEngine.ini**
 
-[InstalledPlatforms\]
+\[InstalledPlatforms]
 
-+InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Editor")
+\+InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Editor")
 
 ;+InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Game")
 
@@ -94,4 +94,4 @@ Editor BP Module
 
 3. How do I build all the variants (e.g. a Rocket Build) so that artists can build client/server/game/editor + development/debug/debuggame/shipping/test variants?
 
-4. How do I decrease the size of the rocket build?
+3. How do I decrease the size of the rocket build?

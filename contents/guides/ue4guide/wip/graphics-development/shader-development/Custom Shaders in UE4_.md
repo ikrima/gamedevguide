@@ -30,17 +30,17 @@ VertexFactory:
 
 - FLocalVertexFactory::InitRHI is where all the magic happens. It actually sets everything
 
-1.  Set the uniform buffers
+1. Set the uniform buffers
 
-2.  Modify localvertexfactory.usf
+1. Modify localvertexfactory.usf
 
-3.  Checkout PreRenderView to update constantbuffers
+1. Checkout PreRenderView to update constantbuffers
 
-    A. PreRenderView is deprecated
+   A. PreRenderView is deprecated
 
----
+* * *
 
-1.  Add ResourceRelease for all the uniformbuffers/vertexfactories
+1. Add ResourceRelease for all the uniformbuffers/vertexfactories
 
 Interesting code to look at to directly render stuff, create uniform constant buffers, and create a custom vertex declaration:
 
@@ -72,7 +72,7 @@ BEGIN_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters, )
         DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, InvDeltaSeconds, EShaderPrecisionModifier::Half )  
         DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector2D, PivotOffset, EShaderPrecisionModifier::Half )  
 END_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters )  
-typedef TUniformBufferRef&lt;FParticleSpriteUniformParameters&gt; FParticleSpriteUniformBufferRef;
+typedef TUniformBufferRef&lt;FParticleSpriteUniformParameters> FParticleSpriteUniformBufferRef;
 
 FParticleVertexFactoryBase
 
@@ -99,27 +99,27 @@ FillDeclElements(Elements, Offset);
 
 1. Need to run with -d3ddebug in order to set debug flag to device. Now I have informative errors descriptions.
 
-2. float3 to float4 conversion is automatic for position elements, so thats why its defined as a float3 in code and float4 in the shader, And of course it's legal to use VET_Float4 for initialization.
+1. float3 to float4 conversion is automatic for position elements, so thats why its defined as a float3 in code and float4 in the shader, And of course it's legal to use VET_Float4 for initialization.
 
-3. this Data.PositionComponent = FVertexStreamComponent actually says which field in vertex structure points to which field in the stream. The actual binding of \*.usf and code fields are done, for example, in FLocalVertexFactory::InitRHI - attribute index is plays main role.
+1. this Data.PositionComponent = FVertexStreamComponent actually says which field in vertex structure points to which field in the stream. The actual binding of \*.usf and code fields are done, for example, in FLocalVertexFactory::InitRHI - attribute index is plays main role.
 
-4. Similar way other attributes initialized in appropriate classes. In FInstancedStaticMeshVertexFactory::InitRHI, for example.
+1. Similar way other attributes initialized in appropriate classes. In FInstancedStaticMeshVertexFactory::InitRHI, for example.
 
-_From &lt;<https://forums.unrealengine.com/showthread.php?15761-How-does-FVertexFactoryInput-works>&gt;_
+*From &lt;<https://forums.unrealengine.com/showthread.php?15761-How-does-FVertexFactoryInput-works>>*
 
-FSkeletalMeshObject:Update -&gt; Calculates new bones
+FSkeletalMeshObject:Update -> Calculates new bones
 
 - Calls on RenderThread UpdateDynamicData_RenderThread
 
-  - UpdateBoneData() -&gt; RHICreateUniformBuffer and stores locally to Uniform buffer
+  - UpdateBoneData() -> RHICreateUniformBuffer and stores locally to Uniform buffer
 
 UpdateData_RenderThread calls CreateRenderThreadResources which calls UpdateRenderThraedResourcesEmitter
 
-- FDynamicMeshEmitter::UpdateRenderThreadResourcesEmitter -&gt; CreateUniformBufferImmediate and stores it in the class instance
+- FDynamicMeshEmitter::UpdateRenderThreadResourcesEmitter -> CreateUniformBufferImmediate and stores it in the class instance
 
 During FParticleSystemSceneProxy::GetDynamicMeshElements
 
-- GetDynamicMeshElementsEmitter-&gt; Allocates Per Frame structure and sets a reference to the FDynamicMeshEmitter::UniformBuffer
+- GetDynamicMeshElementsEmitter-> Allocates Per Frame structure and sets a reference to the FDynamicMeshEmitter::UniformBuffer
 
 HLSL
 
@@ -149,4 +149,4 @@ OutEnvironment.CompilerFlags.Add(CFLAG_PreferFlowControl);
 
 \* In UE4 we compile the shaders in a different app (ShaderCompileWorker) which allows making use of all your cores. However tools like NSight don't know about this other app and they only hook the compile calls in the main executable. If you open BaseEngine.ini and set bAllowCompilingThroughWorkers=False, any future shaders will be compiled from the main executable. Of course, this will make compiling super slow.
 
-_From &lt;<https://forums.unrealengine.com/showthread.php?6719-Debugging-USF-(Unreal-Shader-Files)>&gt;_
+*From &lt;<https://forums.unrealengine.com/showthread.php?6719-Debugging-USF-(Unreal-Shader-Files)>>*

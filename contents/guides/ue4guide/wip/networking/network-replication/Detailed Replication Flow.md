@@ -1,6 +1,6 @@
 UNetDriver::ServerReplicateActors. This is where the server will gather all of the actors that it has determined to be relevant for each client, and send any properties that have changed since the last time each connected client was updated.
 
-_From &lt;<https://docs.unrealengine.com/en-us/Gameplay/Networking/Actors/ReplicationFlow>&gt;_
+*From &lt;<https://docs.unrealengine.com/en-us/Gameplay/Networking/Actors/ReplicationFlow>>*
 
 Important functions for how actors are updated:
 
@@ -74,7 +74,7 @@ The high level flow looks like this:
 
     - For any actor that passes all of the above, the actor is replicated to the connection by calling UChannel::ReplicateActor
 
-_From &lt;<https://docs.unrealengine.com/en-us/Gameplay/Networking/Actors/ReplicationFlow>&gt;_
+*From &lt;<https://docs.unrealengine.com/en-us/Gameplay/Networking/Actors/ReplicationFlow>>*
 
 **Replicating an Actor to a Connection**
 
@@ -94,4 +94,4 @@ UChannel::ReplicateActor is the workhorse for replicating an actor and all of it
 
 - For any deleted components, send special delete command
 
-_From &lt;<https://docs.unrealengine.com/en-us/Gameplay/Networking/Actors/ReplicationFlow>&gt;_
+*From &lt;<https://docs.unrealengine.com/en-us/Gameplay/Networking/Actors/ReplicationFlow>>*

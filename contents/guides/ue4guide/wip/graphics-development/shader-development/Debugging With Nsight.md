@@ -28,7 +28,7 @@ To debug the Unity Project:
 
 - Select the Launch External Program option and set the path to your Unity project
 
-- **Problem:** For some reason, when the file gets sync'ed over, the app bitches when it gets launched on the target machine, saying it can't find the \[project\]\_Data folder. Still investigating this, but for now, workaround is to just manually copy over the project directory to the target machine.  (Default: C:\\Users\\\[current-user-on-target\]\\AppData\\Roaming\\NVIDIA Corporation\\Nsight\\Monitor\\Mirror\\\[hostname\]\\\[host-outdir\] so for example
+- **Problem:** For some reason, when the file gets sync'ed over, the app bitches when it gets launched on the target machine, saying it can't find the \[project]\_Data folder. Still investigating this, but for now, workaround is to just manually copy over the project directory to the target machine.  (Default: C:\\Users\\\[current-user-on-target]\\AppData\\Roaming\\NVIDIA Corporation\\Nsight\\Monitor\\Mirror\\\[hostname]\\\[host-outdir] so for example
 
 ![Debugging_wNsight_NVidiaInsight](C:\devguide\conversion\FINISHED\assets\Debugging_wNsight_NVidiaInsight.jpg)
 
@@ -42,7 +42,7 @@ All the Paths you specify are relative to the target machine's synchronization d
 
 - **Problem:** In full screen mode, the Unity Oculus app won't release the hardware cursor to allow you to click around the Nvidia Nsight graphs. Just alt-tab in and out of the app and that should fix your problem.
 
-- **CTRL+D** will give you a depth complexity test. Test to see if you're getting a lot of overdraw =&gt; do better culling, render front to back, z-only pass
+- **CTRL+D** will give you a depth complexity test. Test to see if you're getting a lot of overdraw => do better culling, render front to back, z-only pass
 
 - **CTRL+M** will give you minimum geometry
 

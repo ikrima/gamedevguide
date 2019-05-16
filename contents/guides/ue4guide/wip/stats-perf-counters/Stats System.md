@@ -1,26 +1,26 @@
 Enable Stats from Command Line:
 
--StatCmds="startfile"
+\-StatCmds="startfile"
 
-_From &lt;<https://udn.unrealengine.com/questions/445587/long-initial-load-times.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/445587/long-initial-load-times.html>>*
 
 Description of stats: <https://docs.unrealengine.com/udk/Three/StatsDescriptions.html>
 
-Common options: \[-ms=5.0\] \[-root=None\] \[leaf=None\] \[-depth=maxint\] \[-nodisplay\]
+Common options: \[-ms=5.0] \[-root=None] \[leaf=None] \[-depth=maxint] \[-nodisplay]
 
-stat groupname\[+\] - toggles displaying stats group, + enables hierarchical display
+stat groupname\[+] - toggles displaying stats group, + enables hierarchical display
 
-stat group list|listall|enable name|disable name|none|all|default - manages enabling/disabling recording of the stats groups. Doing stat \[groupname\] automatically enables that group
+stat group list|listall|enable name|disable name|none|all|default - manages enabling/disabling recording of the stats groups. Doing stat \[groupname] automatically enables that group
 
-- Also supports \[-group=groupname\] \[-sortby=name\] \[-maxhistoryframes=60\] \[-reset\] \[-maxdepth=4\] \[-root=None\] \[-ms=0.2\] \[-reset\]
+- Also supports \[-group=groupname] \[-sortby=name] \[-maxhistoryframes=60] \[-reset] \[-maxdepth=4] \[-root=None] \[-ms=0.2] \[-reset]
 
-stat namedmarker \#markername\# - adds a custom marker to the stats stream
+stat namedmarker #markername# - adds a custom marker to the stats stream
 
 stat none - disables drawing all stats groups
 
-stat display -font=small\[tiny\] - Changes stats rendering display options
+stat display -font=small\[tiny] - Changes stats rendering display options
 
-stat slow \[-ms=1.0\] \[-depth=4\] - toggles displaying the game and render thread stats
+stat slow \[-ms=1.0] \[-depth=4] - toggles displaying the game and render thread stats
 
 stat dumpframe - dumps a frame of stats
 
@@ -28,17 +28,17 @@ stat dumpframe -ms=.001 -root=initviews
 
 stat dumpframe -ms=.001 -root=shadow
 
-stat dumpave|dumpmax|dumpsum \[-start | -stop | -num=30\] - aggregate stats over multiple frames
+stat dumpave|dumpmax|dumpsum \[-start | -stop | -num=30] - aggregate stats over multiple frames
 
-stat dumphitches \[-start | -stop | empty toggles\] - toggles dumping hitches
+stat dumphitches \[-start | -stop | empty toggles] - toggles dumping hitches
 
-stat dumpevents \[-ms=0.2\] \[-all\] - dumps events history for slow events, -all adds other threads besides game and render
+stat dumpevents \[-ms=0.2] \[-all] - dumps events history for slow events, -all adds other threads besides game and render
 
 stat dumpcpu - dumps cpu stats
 
-stat dumpnonframe \[groupname\] - dumps non-frame stats, usually memory stats
+stat dumpnonframe \[groupname] - dumps non-frame stats, usually memory stats
 
-stat hier -group=groupname \[-sortby=name\] \[-maxhistoryframes=60\] \[-reset\] \[-maxdepth=4\] \[-root=None\] \[-ms=0.2\] \[-reset\]
+stat hier -group=groupname \[-sortby=name] \[-maxhistoryframes=60] \[-reset] \[-maxdepth=4] \[-root=None] \[-ms=0.2] \[-reset]
 
 \- groupname is a stat group like initviews or statsystem
 
@@ -242,11 +242,11 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* Header file.
 
-\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Physical Memory Pool \[Physical\]"), MCR_Physical, STATGROUP_Memory, FPlatformMemory::MCR_Physical, CORE_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Physical Memory Pool \[Physical]"), MCR_Physical, STATGROUP_Memory, FPlatformMemory::MCR_Physical, CORE_API);
 
-\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("GPU Memory Pool \[GPU\]"), MCR_GPU, STATGROUP_Memory, FPlatformMemory::MCR_GPU, CORE_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("GPU Memory Pool \[GPU]"), MCR_GPU, STATGROUP_Memory, FPlatformMemory::MCR_GPU, CORE_API);
 
-\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Texture Memory Pool \[Texture\]"), MCR_TexturePool, STATGROUP_Memory, FPlatformMemory::MCR_TexturePool,CORE_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Texture Memory Pool \[Texture]"), MCR_TexturePool, STATGROUP_Memory, FPlatformMemory::MCR_TexturePool,CORE_API);
 
 \*
 

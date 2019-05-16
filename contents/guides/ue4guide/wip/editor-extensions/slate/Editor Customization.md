@@ -1,16 +1,14 @@
-```
-sortIndex: 2
-```
+    sortIndex: 2
 
-Creating An Editor Module: (https://wiki.unrealengine.com/Creating_an_Editor_Module
+Creating An Editor Module: (<https://wiki.unrealengine.com/Creating_an_Editor_Module>
 
-Customize Detail Pane: https://wiki.unrealengine.com/Customizing_detail_panels
+Customize Detail Pane: <https://wiki.unrealengine.com/Customizing_detail_panels>
 
-Component Visualizer: https://wiki.unrealengine.com/Component_Visualizers
+Component Visualizer: <https://wiki.unrealengine.com/Component_Visualizers>
 
 Custom Asset Picker:
 
-https://kasundevblog.wordpress.com/2015/10/07/creating-assets-with-support-of-a-custom-class-picker-unreal-engine-4/
+<https://kasundevblog.wordpress.com/2015/10/07/creating-assets-with-support-of-a-custom-class-picker-unreal-engine-4/>
 
 Console command "testprops" will bring up UPropertyEditorTestObject that contains all base properties and the corresponding slate widgets
 
@@ -22,7 +20,7 @@ DetailCustomization is the property sheet customization
 
 Editor has Extender / extensibility hooks to plug into to expand functionality. To expose these points in the UI:
 
-- Editor Preferences -&gt; General -&gt; Miscellaneous
+- Editor Preferences -> General -> Miscellaneous
 
 - Check Developer Tools | Display UI Extension Points
 

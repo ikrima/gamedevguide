@@ -4,7 +4,7 @@
 
 1. Display RenderBudget:
 
-2. - Budget BebylonPerf
+1. - Budget BebylonPerf
 
 2) Freeze Game Thread
 
@@ -12,7 +12,7 @@
 
 3. Check Game Thread Perf
 
-1. - stat Game
+3. - stat Game
 
 4) Pause Rendering
 
@@ -66,7 +66,7 @@ FreezeFrame 0.5 - Freezes/Pauses game after a delay. Custom function in UCheatMa
 
 1. Test if GPU Bottleneck:
 
-2. - r.screenpercentage=20 => fast test to see if GPU is bottleneck
+1. - r.screenpercentage=20 => fast test to see if GPU is bottleneck
    - show Rendering **(verify this this actually disables rendering)**
 
 2) Test if Texture Bandwidth is problem:
@@ -81,16 +81,17 @@ Visualize UV scale
 
 4. Test quad overdraw/small triangle size
 
-1. - Show QuadOverdraw
+4. - Show QuadOverdraw
 
 5) Test Overdraw is problem
 
 1) - Show Translucency
-   - Show SeparateTranslucency
+
+- Show SeparateTranslucency
 
 6. Test Meshes bottleneck
 
-1. - Show StaticMeshes
+6. - Show StaticMeshes
 
    - Show InstancedStaticMeshes
 
@@ -108,9 +109,10 @@ Visualize UV scale
 1) a. Toggle All Lighting
 
 1) 1. - Show Lighting **(verify this this actually disables rendering)**
-   - ToggleLight **(verify this this actually disables rendering)**
-   - show DeferredLighting **(verify this this actually disables rendering)**
-   - Show VisualizeLightCulling
+
+- ToggleLight **(verify this this actually disables rendering)**
+- show DeferredLighting **(verify this this actually disables rendering)**
+- Show VisualizeLightCulling
 
 ​ b. Toggle Static Lighting
 
@@ -128,7 +130,7 @@ Visualize UV scale
 
 1. I. Direct Lighting
 
-2. 1. - show DirectLighting
+1. 1. - show DirectLighting
    - r.SimpleDynamicLighting
 
 ​ II. Ambient Occlusion
@@ -137,11 +139,11 @@ Visualize UV scale
    - Show Diffuse
    - Show Specular
 
-2. - III. Global Illumination
+1. - III. Global Illumination
 
-3. - Show GlobalIllumination
+1. - Show GlobalIllumination
 
-4. - Show SubsurfaceScattering
+1. - Show SubsurfaceScattering
 
    - IV. Indirect Lighting Cache
 
@@ -156,11 +158,12 @@ Visualize UV scale
 8) Test if Shader Complexity Bound:
 
 1) - ToggleForceDefaultMaterial
-   - Show Materials
+
+- Show Materials
 
 9. Test FX System
 
-1. a. Toggle Particles
+9. a. Toggle Particles
 
 **(find all commands to turn them off completely)**
 
@@ -186,46 +189,46 @@ Visualize UV scale
 
 10. Test If Post Processing
 
-1. - Show PostProcessing
-   - Show PostProcessMaterial (this is for toggling custom postprocessing materials which are usually very expensive)
-   - Show AntiAliasing
-   - Show Decals
+10. - Show PostProcessing
+    - Show PostProcessMaterial (this is for toggling custom postprocessing materials which are usually very expensive)
+    - Show AntiAliasing
+    - Show Decals
 
 11) Disable rendering features in order of priority by r.LimitRenderingFeatures=FeatureLevel. Feature Levels:
 
 1) 1. AntiAliasing
-   2. EyeAdaptation
-   3. SeparateTranslucency
-   4. DepthOfField
-   5. AmbientOcclusion
-   6. CameraImperfections
-   7. Decals
-   8. LensFlares
-   9. Bloom
-   10. ColorGrading
-   11. Tonemapper
-   12. Refraction
-   13. ReflectionEnvironment
-   14. AmbientCubemap
-   15. MotionBlur
-   16. DirectLighting
-   17. Lighting
-   18. Translucency
-   19. TextRender
-   20. Particles
-   21. SkeletalMeshes
-   22. StaticMeshes
-   23. BSP
-   24. Paper2DSprites
+   2\. EyeAdaptation
+   3\. SeparateTranslucency
+   4\. DepthOfField
+   5\. AmbientOcclusion
+   6\. CameraImperfections
+   7\. Decals
+   8\. LensFlares
+   9\. Bloom
+   10\. ColorGrading
+   11\. Tonemapper
+   12\. Refraction
+   13\. ReflectionEnvironment
+   14\. AmbientCubemap
+   15\. MotionBlur
+   16\. DirectLighting
+   17\. Lighting
+   18\. Translucency
+   19\. TextRender
+   20\. Particles
+   21\. SkeletalMeshes
+   22\. StaticMeshes
+   23\. BSP
+   24\. Paper2DSprites
 
 ## Profiling Draw Thread Performance:
 
-1.  Look at Draw Call Counter and make sure it's within budget
+1. Look at Draw Call Counter and make sure it's within budget
 
-    - Stat RHI
+   - Stat RHI
 
 - Stat SceneRendering
-  - Look at triangle counts. You can do show \[object category\] to turn off big groups of objects to see where triangle counts are coming from
+  - Look at triangle counts. You can do show \[object category] to turn off big groups of objects to see where triangle counts are coming from
     - Show shadows
     - Show dynamicshadows
 
@@ -261,7 +264,8 @@ Visualize UV scale
    - Show bounds
 
 5) Check if driver overhead is cause
-   - stat d3d11rhi
+
+- stat d3d11rhi
 
 6. GPU/CPU Stalls or Pipeline Bubbles
 
@@ -339,7 +343,7 @@ stat startfileraw - starts dumping a raw capture
 
 1. Game Thread:
 
-2. - stat Game
+1. - stat Game
    - tick.LogTicks
    - dumpticks
    - tick.ShowPrerequistes
@@ -347,26 +351,28 @@ stat startfileraw - starts dumping a raw capture
 2) Threading Stalls
 
 1) - stat Threading
-   - stat CPUStalls
+
+- stat CPUStalls
 
 3. Engine UObject System/Constructing UObjects/PostInit/Allocation/etc:
 
-1. - stat Object
+3. - stat Object
    - stat ObjectVerbose
    - stat GC
 
 4) Game Thread Scene Update:
 
 1) - stat Component
-   - stat UObjects
-   - Stat SceneUpdate (only the GT timers)
-   - stat Character
-   - stat Tickables (things like movieplayer, timermanager, etc)
-   - Tick.LogTicks = 1 or dumpticks
+
+- stat UObjects
+- Stat SceneUpdate (only the GT timers)
+- stat Character
+- stat Tickables (things like movieplayer, timermanager, etc)
+- Tick.LogTicks = 1 or dumpticks
 
 5. Triangle Count/Frame/Render/Game/GPU timings:
 
-1. - stat Engine
+5. - stat Engine
 
    - stat RHI
 
@@ -378,26 +384,28 @@ stat startfileraw - starts dumping a raw capture
 6) Inspect CPU:
 
 1) - stat dumpcpu
-   - stat ServerCPU
-   - stat CPUStalls
+
+- stat ServerCPU
+- stat CPUStalls
 
 7. Perf By Tick Functions/Tasks/"Job System":
 
-1. - stat TaskGraphTasks
+7. - stat TaskGraphTasks
    - stat Tickables
    - stat TickGroups
 
 8) Animation:
 
 1) - stat Anim
-   - stat MorphTarget
-   - stat MovieSceneEval
-   - stat GPUSkinCache
-   - ANIMSEQSTATS
+
+- stat MorphTarget
+- stat MovieSceneEval
+- stat GPUSkinCache
+- ANIMSEQSTATS
 
 9. Physics:
 
-1. - stat Physics
+9. - stat Physics
    - stat PhysXTasks
    - stat Collision
    - stat CollisionVerbose
@@ -408,26 +416,27 @@ stat startfileraw - starts dumping a raw capture
 10) FX
 
 1) - stat Particles
-   - stat ParticleMem
-   - stat GPUParticles
-   - stat Emitters
-   - stat BeamParticles
-   - stat MeshParticles
-   - stat TrailParticles
-   - DUMPPARTICLECOUNTS
-   - DUMPPARTICLEMEM
-   - PARTICLEMESHUSAGE
+
+- stat ParticleMem
+- stat GPUParticles
+- stat Emitters
+- stat BeamParticles
+- stat MeshParticles
+- stat TrailParticles
+- DUMPPARTICLECOUNTS
+- DUMPPARTICLEMEM
+- PARTICLEMESHUSAGE
 
 11. Misc
 
-1. - stat Quick
-   - r.DisplayInternals
+11. - stat Quick
+    - r.DisplayInternals
 
 **Render Thread:**
 
 1. DrawThread/Scene Update Stalls:
 
-2. - stat SceneRendering
+1. - stat SceneRendering
    - Stat SceneUpdate
 
 2) D3D Driver overhead:
@@ -436,7 +445,7 @@ stat startfileraw - starts dumping a raw capture
 
 3. Render Thread Command Marshalling from Game Thread
 
-1. - stat RenderThreadCommands
+3. - stat RenderThreadCommands
    - stat RHICmdList
    - stat CommandListMarkers
    - stat ParallelCommandListMarkers
@@ -452,7 +461,7 @@ DumpShaderPipelineStats: Dump shader pipeline information
 
 5. Visibility Culling & Primitive Component count:
 
-1. - stat initviews -
+5. - stat initviews -
    - Displays information on how long visibility culling took and how effective it was. Visible section count is the single most important stat with respect to rendering thread performance, and that is dominated by Visible Static Mesh Elements under STAT INITVIEWS, but Visible Dynamic Primitives also factors in.
 
 - show camerafrustums
@@ -462,20 +471,21 @@ DumpShaderPipelineStats: Dump shader pipeline information
 
 1. GPU
 
-2. - stat GPU
+1. - stat GPU
    - stat RHI (GPU Memory Pressure)
 
 2) Texture Bandwidth
 
 1) - ShowMipLevels
-   - VisRT
-   - r.VisualizeTexturePool
-   - ListTextures
-   - ListStreamingTextures
+
+- VisRT
+- r.VisualizeTexturePool
+- ListTextures
+- ListStreamingTextures
 
 3. GI
 
-1. - r.Cache.DrawInterpolationPoints
+3. - r.Cache.DrawInterpolationPoints
    - r.Cache.DrawDirectionalShadowing
    - r.Cache.DrawLightingSamples
 
@@ -495,7 +505,7 @@ r.GPUBusyWait
 
 SynthBenchmark
 
-> ---
+> * * *
 
 ### Advanced:
 
@@ -505,7 +515,8 @@ SynthBenchmark
 
   CauseHitches
 
-* **Memory:**
+
+- **Memory:**
 
   Button to explain how to Launch MTuner
 
@@ -542,6 +553,7 @@ SynthBenchmark
   Stat SceneMemory
 
   memreport -fullprof
+
 
 - **Misc:**
 
@@ -586,21 +598,23 @@ SynthBenchmark
    - DbgCmd('tick.AllowAsyncTickCleanup'),
 
 2) Toggle Occlusion Queries
-   - r.AllowOcclusionQueries
-   - r.DownsampledOcclusionQueries
-   - r.NumBufferedOcclusionQueries
-   - r.OcclusionQueryLocation (Does nothing in forward)
+
+- r.AllowOcclusionQueries
+- r.DownsampledOcclusionQueries
+- r.NumBufferedOcclusionQueries
+- r.OcclusionQueryLocation (Does nothing in forward)
 
 3. Toggle HZB:
    - r.HZBOcclusion=0
    - **EXPERIMENTAL!!** r.DoInitViewsLightingAfterPrepass
 
 4) Toggle EarlyZPass settings:
-   - r.EarlyZPass=1
-   - r.EarlyZPassMovable=True
-   - r.EarlyZPassOnlyMaterialMasking
-   - r.MinScreenRadiusForDepthPrepass=0.3
-   - r.CustomDepth.Order
+
+- r.EarlyZPass=1
+- r.EarlyZPassMovable=True
+- r.EarlyZPassOnlyMaterialMasking
+- r.MinScreenRadiusForDepthPrepass=0.3
+- r.CustomDepth.Order
 
 5. Animation Update and Evaluation
 
@@ -612,19 +626,19 @@ SynthBenchmark
 
 6) Compute Skinning
 
-   - r.SkinCache.Mode=1
+- r.SkinCache.Mode=1
 
-   - r.SkinCache.CompileShaders=1
+- r.SkinCache.CompileShaders=1
 
-   - r.MorphTarget.Mode=1
+- r.MorphTarget.Mode=1
 
-   - r.SkinCache.MaxGPUElementsPerFrame (can't find this)
+- r.SkinCache.MaxGPUElementsPerFrame (can't find this)
 
-   - r.SkinCache.BufferSize (can't find this)
+- r.SkinCache.BufferSize (can't find this)
 
-   - r.SkinCache.NumTangentIntermediateBuffers
+- r.SkinCache.NumTangentIntermediateBuffers
 
-   - r.SkinCache.SceneMemoryLimitInMB
+- r.SkinCache.SceneMemoryLimitInMB
 
 7. FX
 
@@ -700,9 +714,11 @@ SynthBenchmark
 
   (Inner & Outer distance are the ones to change for getting around the popping)
 
-* Toggle Custom Depth:
+
+- Toggle Custom Depth:
 
   r.CustomDepth=0
+
 
 - Toggle Separate Translucency:
 
@@ -716,7 +732,8 @@ SynthBenchmark
 
   r.SeparateTranslucencyDurationUpsampleThreshold=0.25
 
-* RenderTargets & PostProcessing
+
+- RenderTargets & PostProcessing
 
   r.DBuffer
 
@@ -727,6 +744,7 @@ SynthBenchmark
   r.ContactShadows
 
   DbgCmd('r.HighQualityLightMaps'),
+
 
 - AA:
 
@@ -740,7 +758,9 @@ SynthBenchmark
 
   DbgCmd('r.DoTiledReflections'),
 
-* DBuffer: r.DBuffer=False
+
+- DBuffer: r.DBuffer=False
+
 
 - GI
 
@@ -748,7 +768,8 @@ SynthBenchmark
 
   r.Cache.SampleTransitionSpeed
 
-* Misc Graphics Quality:
+
+- Misc Graphics Quality:
 
   r.FastBlurThreshold=0
 
@@ -758,13 +779,15 @@ SynthBenchmark
 
   DbgCmd('r.LightFunctionQuality'),
 
+
 - Skinning:
 
   r.GPUSkin.Limit2BoneInfluences
 
   r.SkinCache.RecomputeTangents
 
-* FX:
+
+- FX:
 
   FX.GPUCollisionDepthBounds=250
 
@@ -781,6 +804,7 @@ SynthBenchmark
   DbgCmd('r.GPUParticle.MaxNumIterations'),
 
   DbgCmd('r.ParticleLightQuality'),
+
 
 - Reflection Captures
 

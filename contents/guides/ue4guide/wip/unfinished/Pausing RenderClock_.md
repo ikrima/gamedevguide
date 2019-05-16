@@ -6,7 +6,7 @@ GPauseRenderingRealtimeClock controlled in UGameEngine.Tick.
 
 - Uses fixeddelta time correctly
 
-- But always ticks even when Gworld-&gt;IsPaused() == true
+- But always ticks even when Gworld->IsPaused() == true
 
 - Ticking occurs based on GPauseRenderingRealtimeClock
 

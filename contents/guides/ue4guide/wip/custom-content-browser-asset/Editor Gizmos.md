@@ -30,15 +30,15 @@ ACameraRig_Rail
 
 // overrides CameraComponent's camera mesh
 
-static ConstructorHelpers::FObjectFinder&lt;UStaticMesh&gt; EditorCameraMesh(TEXT("/Engine/EditorMeshes/Camera/SM_CineCam.SM_CineCam"));
+static ConstructorHelpers::FObjectFinder&lt;UStaticMesh> EditorCameraMesh(TEXT("/Engine/EditorMeshes/Camera/SM_CineCam.SM_CineCam"));
 
 CameraMesh = EditorCameraMesh.Object;
 
-static ConstructorHelpers::FObjectFinder&lt;UStaticMesh&gt; PlaneMesh(TEXT("/Engine/ArtTools/RenderToTexture/Meshes/S_1_Unit_Plane.S_1_Unit_Plane"));
+static ConstructorHelpers::FObjectFinder&lt;UStaticMesh> PlaneMesh(TEXT("/Engine/ArtTools/RenderToTexture/Meshes/S_1_Unit_Plane.S_1_Unit_Plane"));
 
 DebugFocusPlaneMesh = PlaneMesh.Object;
 
-static ConstructorHelpers::FObjectFinder&lt;UMaterial&gt; PlaneMat(TEXT("/Engine/EngineDebugMaterials/M_SimpleTranslucent.M_SimpleTranslucent"));
+static ConstructorHelpers::FObjectFinder&lt;UMaterial> PlaneMat(TEXT("/Engine/EngineDebugMaterials/M_SimpleTranslucent.M_SimpleTranslucent"));
 
 DebugFocusPlaneMaterial = PlaneMat.Object;
 
@@ -48,7 +48,7 @@ UStaticMesh\* UniformScaleMesh = nullptr;
 
 {
 
-> static ConstructorHelpers::FObjectFinder&lt;UStaticMesh&gt; ObjectFinder( TEXT( "/Engine/VREditor/TransformGizmo/UniformScaleHandle" ) );
+> static ConstructorHelpers::FObjectFinder&lt;UStaticMesh> ObjectFinder( TEXT( "/Engine/VREditor/TransformGizmo/UniformScaleHandle" ) );
 >
 > UniformScaleMesh = ObjectFinder.Object;
 >
@@ -61,39 +61,39 @@ class UGizmoHandleMeshComponent\* UGizmoHandleGroup::CreateMeshHandle( class USt
 {
 
 > const bool bAllowGizmoLighting = false;        // @todo vreditor: Not sure if we want this for gizmos or not yet. Needs feedback. Also they're translucent right now.
-
-> UGizmoHandleMeshComponent\* HandleComponent = CreateDefaultSubobject&lt;UGizmoHandleMeshComponent&gt;( \*ComponentName );
+>
+> UGizmoHandleMeshComponent\* HandleComponent = CreateDefaultSubobject&lt;UGizmoHandleMeshComponent>( \*ComponentName );
 >
 > check( HandleComponent != nullptr );
-
-> HandleComponent-&gt;SetStaticMesh( HandleMesh );
 >
-> HandleComponent-&gt;SetMobility( EComponentMobility::Movable );
+> HandleComponent->SetStaticMesh( HandleMesh );
 >
-> HandleComponent-&gt;SetupAttachment( this );
-
-> HandleComponent-&gt;SetCollisionEnabled( ECollisionEnabled::QueryOnly );
+> HandleComponent->SetMobility( EComponentMobility::Movable );
 >
-> HandleComponent-&gt;SetCollisionResponseToAllChannels( ECR_Ignore );
+> HandleComponent->SetupAttachment( this );
 >
-> HandleComponent-&gt;SetCollisionResponseToChannel( COLLISION_GIZMO, ECollisionResponse::ECR_Block );
+> HandleComponent->SetCollisionEnabled( ECollisionEnabled::QueryOnly );
 >
-> HandleComponent-&gt;SetCollisionObjectType( COLLISION_GIZMO );
-
-> HandleComponent-&gt;bGenerateOverlapEvents = false;
+> HandleComponent->SetCollisionResponseToAllChannels( ECR_Ignore );
 >
-> HandleComponent-&gt;SetCanEverAffectNavigation( false );
+> HandleComponent->SetCollisionResponseToChannel( COLLISION_GIZMO, ECollisionResponse::ECR_Block );
 >
-> HandleComponent-&gt;bCastDynamicShadow = bAllowGizmoLighting;
+> HandleComponent->SetCollisionObjectType( COLLISION_GIZMO );
 >
-> HandleComponent-&gt;bCastStaticShadow = false;
+> HandleComponent->bGenerateOverlapEvents = false;
 >
-> HandleComponent-&gt;bAffectDistanceFieldLighting = bAllowGizmoLighting;
+> HandleComponent->SetCanEverAffectNavigation( false );
 >
-> HandleComponent-&gt;bAffectDynamicIndirectLighting = bAllowGizmoLighting;
+> HandleComponent->bCastDynamicShadow = bAllowGizmoLighting;
 >
-> //HandleComponent-&gt;bUseEditorCompositing = true;
-
+> HandleComponent->bCastStaticShadow = false;
+>
+> HandleComponent->bAffectDistanceFieldLighting = bAllowGizmoLighting;
+>
+> HandleComponent->bAffectDynamicIndirectLighting = bAllowGizmoLighting;
+>
+> //HandleComponent->bUseEditorCompositing = true;
+>
 > return HandleComponent;
 
 }

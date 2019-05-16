@@ -1,6 +1,6 @@
 One of the challenges in game development is pre-computing static lighting. Emulating photons bouncing around in a virtual environment can require legions of compute cycles. This process is called baking. The end result is a lightmap, a compact data structure that represents the way static objects are lit.
 
-The [[Unreal Engine]](https://www.unrealengine.com/en-US/) suite provides software that makes baking lightmaps easy and fast. There are three components involved:
+The [\[Unreal Engine\]](https://www.unrealengine.com/en-US/) suite provides software that makes baking lightmaps easy and fast. There are three components involved:
 
 - **Unreal Lightmass**: the app that does the actual lighting computations. It’s designed to run on many different PCs simultaneously.
 
@@ -12,7 +12,7 @@ To build lighting, anybody running the Unreal Editor can kick off a bake by sel
 
 By running Swarm Agents on many computers on your local network, lighting builds can be performed very quickly. What might take hours on a single machine takes only a few minutes with Swarm.
 
-The documentation on [[Swarm]](https://api.unrealengine.com/udk/Three/Swarm.html) and [[Lightmass]](https://docs.unrealengine.com/en-us/Engine/Rendering/LightingAndShadows/Lightmass) is sparse. The best reference is a single Unreal AnswerHub [[post](https://answers.unrealengine.com/questions/27550/swarm-what-is-it-and-how-to-use-it.html)].
+The documentation on [\[Swarm\]](https://api.unrealengine.com/udk/Three/Swarm.html) and [\[Lightmass\]](https://docs.unrealengine.com/en-us/Engine/Rendering/LightingAndShadows/Lightmass) is sparse. The best reference is a single Unreal AnswerHub \[[post](https://answers.unrealengine.com/questions/27550/swarm-what-is-it-and-how-to-use-it.html)].
 
 Where I work at HBO, only a subset of employees use Unreal. However, we want every machine on our network to participate in lighting builds — without the hassle of installing Unreal. That goal turned into an interesting adventure. Although Epic recommends copying the Engine\\Binaries\\DotNET folder to install Swarm, that alone is insufficient.
 
@@ -62,7 +62,7 @@ Swarm Agent is designed to run on multiple machines across your network, buildin
 
 - SwarmAgent.exe runs on Windows XP and up. It does not run on MacOS or Linux (as of 4.9).
 
-- Swarm is built with C\# using the .NET 4.0 framework
+- Swarm is built with C# using the .NET 4.0 framework
 
 - SwarmAgent.exe and its associated DLLs are 32-bit images
 
@@ -110,7 +110,7 @@ Swarm Agent is designed to run on multiple machines across your network, buildin
 
 - To view the Swarm Agent interface, locate the app in the system tray (yellow and black S icon) and double click the icon.
 
-- SwarmAgent.exe does not respond to WM_CLOSE. To close it manually, you must choose File-&gt;Exit from the main menu. To close it programatically, you can run taskkill.exe SwarmAgent.exe.
+- SwarmAgent.exe does not respond to WM_CLOSE. To close it manually, you must choose File->Exit from the main menu. To close it programatically, you can run taskkill.exe SwarmAgent.exe.
 
 - Empirically (using Microsoft Message Analyzer) SwarmAgent and SwarmCoordinator use the following protocols and ports:
 
@@ -120,9 +120,9 @@ Swarm Agent is designed to run on multiple machines across your network, buildin
 
 - Some ports are configurable. For instance, SwarmCoordinator.exe.config allow you to remap port 8009.
 
-- Swarm will not activate on sleeping PCs. I recommend that if you always want your Swarm Agents to be available, those PCs should not enter power-saving sleep states. Alternatively, you can use Windows Task Scheduler to wake machines at the appropriate times to run your bakes. See [[powercfg](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-vista/cc748940(v=ws.10)>)] command line tool for details. We’ve found that not all machines have BIOS configurations that support powercfg, so your mileage may vary.
+- Swarm will not activate on sleeping PCs. I recommend that if you always want your Swarm Agents to be available, those PCs should not enter power-saving sleep states. Alternatively, you can use Windows Task Scheduler to wake machines at the appropriate times to run your bakes. See \[[powercfg](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-vista/cc748940(v=ws.10))] command line tool for details. We’ve found that not all machines have BIOS configurations that support powercfg, so your mileage may vary.
 
-- Until we explored the issue in detail, the most common Swarm problem was blocked communication between different Swarm agents. Firewalls are the culprits. Windows Firewall will block Swarm by default, even if the user chooses to allow Swarm to do outbound communications. Because Swarm communicates in a peer-to-peer fashion, it must also be configured to allow _inbound_ communication from other agents.
+- Until we explored the issue in detail, the most common Swarm problem was blocked communication between different Swarm agents. Firewalls are the culprits. Windows Firewall will block Swarm by default, even if the user chooses to allow Swarm to do outbound communications. Because Swarm communicates in a peer-to-peer fashion, it must also be configured to allow *inbound* communication from other agents.
 
 - Programmatically, the Windows Firewall can be configured to permit Swarm usage with the following commands. We also do IP filtering to make sure these firewall exceptions only happen on our local network — replace x.y with your actual leading IP octets.
 
@@ -140,7 +140,7 @@ This diagram shows a scenario where the PC in the bottom center has kicked off a
 
 Many elements of how Swarm operates can be modified. The Settings tab in Swarm Agent allows you to change settings. Configuration information is stored in SwarmAgent.Options.xml and SwarmCoordinator.exe.config. Here are some of the most interesting elements, in order of importance.
 
-- **CoordinatorRemotingHost**: must match the Swarm Coordinator Computer name from Control Panel-&gt;System
+- **CoordinatorRemotingHost**: must match the Swarm Coordinator Computer name from Control Panel->System
 
 - **CacheFolder**: where Swarm caches job information. At install time, we set this to the equivalent of %temp%/SwarmCache
 
@@ -156,31 +156,31 @@ Many elements of how Swarm operates can be modified. The Settings tab in Swarm 
 
 - **LocalJobsDefaultProcessorCount** and **RemoteJobsDefaultProcessorCount** (developer settings): the number of CPU cores used by Lightmass for local and remote bakes. These are set automatically to reasonable values, but can be reduced to lessen CPU impact at the cost of bake speed.
 
-###
+### 
 
 ### **Swarm Installer**
 
-To make life easier for our extended team, I wrote a Windows installer that handles the complexity described above. The installer uses the [[WiX Toolset]](http://wixtoolset.org/) to generate a standard Windows MSI file. Notes about the installer:
+To make life easier for our extended team, I wrote a Windows installer that handles the complexity described above. The installer uses the [\[WiX Toolset\]](http://wixtoolset.org/) to generate a standard Windows MSI file. Notes about the installer:
 
 - The installer is a 64-bit package. This addresses: 1) Unreal’s recommendation that Lightmass run on 64-bit systems only, 2) a limitation of WiX that doesn’t allow 32-bit packages to include/install 64-bit binaries, plus 3) the fact that everybody in our office is running 64-bit Windows anyway
 
-- The following DirectX v9 files must be installed: dxsetup.exe, dxupdate.cab, dsetup.dll, dsetup32.dll, Jun2010_d3dx9_43_x64.cab and Apr2007_XInput_x64.cab. You can grab these files from the DirectX SDK. The WiX toolset page has [[good instructions](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/install_directx9.html)] for installing DX extensions.
+- The following DirectX v9 files must be installed: dxsetup.exe, dxupdate.cab, dsetup.dll, dsetup32.dll, Jun2010_d3dx9_43_x64.cab and Apr2007_XInput_x64.cab. You can grab these files from the DirectX SDK. The WiX toolset page has \[[good instructions](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/install_directx9.html)] for installing DX extensions.
 
 - In addition to the normal installer-y stuff (copying files and updating the registry), the installer:
 
   - Places a shortcut to SwarmAgent.exe in the Startup folder
 
-  - [[Configures the Swarm cache folder]](https://pkisensee.wordpress.com/2015/09/08/windows-installer-modify-config-files/) in SwarmAgent.Options.xml
+  - [\[Configures the Swarm cache folder\]](https://pkisensee.wordpress.com/2015/09/08/windows-installer-modify-config-files/) in SwarmAgent.Options.xml
 
-  - [[Punches holes in the firewall]](https://pkisensee.wordpress.com/2015/09/22/windows-installer-firewall-settings/)
+  - [\[Punches holes in the firewall\]](https://pkisensee.wordpress.com/2015/09/22/windows-installer-firewall-settings/)
 
 - For uninstalls, in addition to nuking the right files, the installer:
 
-  - [[Shuts down Swarm]](https://pkisensee.wordpress.com/2015/09/02/windows-installer-shut-down-system-tray-apps/)
+  - [\[Shuts down Swarm\]](https://pkisensee.wordpress.com/2015/09/02/windows-installer-shut-down-system-tray-apps/)
 
-  - [[Nukes the cache folder]](https://pkisensee.wordpress.com/2015/10/06/windows-installer-removing-folders/)
+  - [\[Nukes the cache folder\]](https://pkisensee.wordpress.com/2015/10/06/windows-installer-removing-folders/)
 
-  - [[Restores the firewall]](https://pkisensee.wordpress.com/2015/09/22/windows-installer-firewall-settings/)
+  - [\[Restores the firewall\]](https://pkisensee.wordpress.com/2015/09/22/windows-installer-firewall-settings/)
 
 The Swarm requirements we publish to our team:
 
@@ -192,4 +192,4 @@ The Swarm requirements we publish to our team:
 
 We recommend that everybody on the team with machines that meet the spec — including people that already have Unreal installed — install Swarm Agent.
 
-_From &lt;<https://pkisensee.wordpress.com/2015/11/06/baking-with-swarm/>&gt;_
+*From &lt;<https://pkisensee.wordpress.com/2015/11/06/baking-with-swarm/>>*

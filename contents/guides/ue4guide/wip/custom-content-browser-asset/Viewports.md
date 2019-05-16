@@ -62,18 +62,18 @@ virtual void PostEditComponentMove(bool bFinished) override;
 
 - /\*\* The "manager" of all the layers for the UWorld currently being edited \*/
 
-> GEditor-&gt;Layers;
+> GEditor->Layers;
 
 - /\*\* List of all viewport clients \*/
 
-> GEditor-&gt;AllViewportClients;
+> GEditor->AllViewportClients;
 
 - /\*\* List of level editor viewport clients for level specific actions \*/
 
-> GEditor-&gt;LevelViewportClients;
+> GEditor->LevelViewportClients;
 
 **Viewport Toggle RealTime:**
 
-viewportClient-&gt;ToggleRealtime()
+viewportClient->ToggleRealtime()
 
-viewportClient-&gt;IsRealTime()
+viewportClient->IsRealTime()

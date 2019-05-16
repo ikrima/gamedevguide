@@ -1,10 +1,10 @@
 #### **1. Master Pose Component**
 
-\- This is Blueprint callable action that you set **_Child-&gt;SetMasterPoseComponent(Body)_**, then **Body** becomes the master of **Child**, which means **Child** will follow whatever **Body** does.
+\- This is Blueprint callable action that you set ***Child->SetMasterPoseComponent(Body)***, then **Body** becomes the master of **Child**, which means **Child** will follow whatever **Body** does.
 
 \- Behind of scene, **Child** does not have any bone transform buffer and it doesn't run any animation system even if you set AnimBP on the **Child**, and it just uses **Body's** bone transform buffer when rendered. This makes very light weight attachment system. Only component that has to run animation is **Body**, and all attachment will just use **Body's** bone transform.
 
-\- This does not reduce render cost. You still render \# of components separate (and more drawcalls if you have more sections for each), but this reduces game thread cost.
+\- This does not reduce render cost. You still render # of components separate (and more drawcalls if you have more sections for each), but this reduces game thread cost.
 
 \- Limitation
 
@@ -44,4 +44,4 @@
 
 \- You only run one animation on the merged mesh.
 
-_From &lt;<https://iluvanimation.blogspot.com/2017/04/master-pose-vs-copy-pose-vs-mesh-merge.html>&gt;_
+*From &lt;<https://iluvanimation.blogspot.com/2017/04/master-pose-vs-copy-pose-vs-mesh-merge.html>>*

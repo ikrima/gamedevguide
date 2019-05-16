@@ -36,7 +36,7 @@ Component Register
 
         - Each DrawPolicyFactory::AddStaticMesh() creates a Drawing Policy for the specific mesh and TStaticMeshDrawlist::AddMesh() it to the corresponding list. Drawing Policies define specific parameters on how to draw this mesh in this specific pass, e.g. DepthDrawingPolicy. They're sorted based on state to minimize state changes
 
-        - FBasePassOpaqueDrawingPolicyFactory::AddStaticMesh() is the main responsible BasePass factory. TBasePassDrawingPolicy&lt;LightMapPolicyType&gt; is the main draw policy
+        - FBasePassOpaqueDrawingPolicyFactory::AddStaticMesh() is the main responsible BasePass factory. TBasePassDrawingPolicy&lt;LightMapPolicyType> is the main draw policy
 
     - Update PrimitiveOctree
 
@@ -70,7 +70,8 @@ Component Transform Update
 
       - PrimitiveSceneInfo::AddToScene(): Cross reference list above
 
-* Same things happens when render state is marked dirty (gets recreated with remove/add) or render dynamic data gets marked as dirty (SendRenderDynamicData_Concurrent()
+
+- Same things happens when render state is marked dirty (gets recreated with remove/add) or render dynamic data gets marked as dirty (SendRenderDynamicData_Concurrent()
 
 For other render components not deriving from UPrimitiveComponent (e.g. Lights/Decals),
 

@@ -46,7 +46,7 @@ The StartGame and Matchmake calls return the information for the server instance
 
 \* \*
 
-_From &lt;<https://community.playfab.com/questions/5530/can-i-get-a-conceptual-explanation-of-how-a-custom.html>&gt;_
+*From &lt;<https://community.playfab.com/questions/5530/can-i-get-a-conceptual-explanation-of-how-a-custom.html>>*
 
 The way the PlayFab matchmaker works is that it finds all sessions that have available slots, which match the "must have" criteria - Build Version, Game Mode, and Region - and filters that based on Tags. If there's no statistic provided for the match, it just picks randomly from that list. If there is a statistic provided, it orders the available sessions by the ABS difference between the input statistic, and that of the active session, returning a session from the top of the list (closest to the input score). But it never waits - it always immediately returns the closest match, or if one cannot be found, either "no match found" or a new session, depending on whether you start sessions on calls to matchmake or not.
 
@@ -54,4 +54,4 @@ I can think of somewhat convoluted schemes that would allow you to use our match
 
 What you're really looking for is "queue" matchmaking, in which the player asks for a match and waits for one to be found that's within the range requested - the match call doesn't return until it finds one, or hits a timeout. We do have a backlog item for such a matchmaker, but it is not something that's on our schedule for the near-term. For now, if you have a requirement for this type of matchmaking, I would have to recommend using a custom matchmaker.
 
-_From &lt;<https://community.playfab.com/questions/969/211662267-Matchmaking-for-racing-games.html>&gt;_
+*From &lt;<https://community.playfab.com/questions/969/211662267-Matchmaking-for-racing-games.html>>*

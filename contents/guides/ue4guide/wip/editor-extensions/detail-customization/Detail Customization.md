@@ -1,6 +1,4 @@
-```
-sortIndex: 1
-```
+    sortIndex: 1
 
 # Overview:
 
@@ -154,7 +152,7 @@ For most cases, using dynamic updates as above is the easiest. Once in a while t
 
 DetailBuilder.ForceRefreshDetails();
 
-_Reference From http://kantandev.com/articles/details-panel-customization_
+*Reference From <http://kantandev.com/articles/details-panel-customization>*
 
 #### Create a widget for a particular property on a uobject inside detail customization:
 
@@ -277,7 +275,6 @@ objReflWidget-&gt;SetIsPropertyVisibleDelegate(FIsPropertyVisible::CreateLambda(
 ### Create Dynamic Property/Struct detail view customization:
 
 ```cpp
-
 /\*\* Specific details customization for the event track \*/
 
         class FEventTrackCustomization : public IDetailCustomization
@@ -335,7 +332,6 @@ TSharedRef&lt;IDetailsView&gt; **DetailsView** = **PropertyEditor**.CreateDet
 // Add it to the menu
                 **SubMenuBuilder**.AddWidget(**DetailsView**, FText(), true, false);
         };
-
 ```
 
 [also fcoreuobjectdelegates in uobjectglobals:]: onenote:#Core%20Events\Delegates&section-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={52C48550-D9C3-4CB4-9C71-6D4A7CB88779}&object-id={893127CB-E7B4-0DE3-0927-A79D8F5559BE}&9C&base-path=https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one

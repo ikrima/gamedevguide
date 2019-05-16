@@ -2,15 +2,15 @@ bUseEditorCompositing = true;
 
 bIsEditorOnly = true;
 
-this-&gt;bTickInEditor
+this->bTickInEditor
 
-this-&gt;bSelectable
+this->bSelectable
 
-this-&gt;GetHiddenEditorViews()
+this->GetHiddenEditorViews()
 
-this-&gt;IsSelectedInEditor()
+this->IsSelectedInEditor()
 
-this-&gt;IsVisibleInEditor()
+this->IsVisibleInEditor()
 
 // Supplies the editor with a view specific to this component (think a view
 

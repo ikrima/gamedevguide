@@ -1,16 +1,17 @@
 - Config files are key-value pairs
 
-* Config sections are stored as \[(package).(modulename).(classname)\] . Ex: \[/Script/ModuleName.ExampleClass\]
 
-* Classes can be decorated with UCLASS(Config=Game) to specify their variables can be read from config
+- Config sections are stored as \[(package).(modulename).(classname)] . Ex: \[/Script/ModuleName.ExampleClass]
 
-* Calling SaveConfig() on a class will write all property values to the corresponding config file
+- Classes can be decorated with UCLASS(Config=Game) to specify their variables can be read from config
 
-* Demarcate config properties with UPROPERTY(Config)
+- Calling SaveConfig() on a class will write all property values to the corresponding config file
 
-* Derived classes can write/read config properties from parent
+- Demarcate config properties with UPROPERTY(Config)
 
-* Per class instance config can also be saved with the UCLASS(PerObjectConfig) stored in config as \[ObjectName ClassName\]
+- Derived classes can write/read config properties from parent
+
+- Per class instance config can also be saved with the UCLASS(PerObjectConfig) stored in config as \[ObjectName ClassName]
 
 #### **Configuration Ini Names**
 
@@ -18,21 +19,21 @@
 
 **UCLASS**:
 
-config=… =&gt; Ini to use
+config=… => Ini to use
 
-defaultconfig =&gt; store in default/base ini
+defaultconfig => store in default/base ini
 
-perObjectConfig =&gt; Handle object configuration on a per-object basis, rather than per-class.
+perObjectConfig => Handle object configuration on a per-object basis, rather than per-class.
 
-Configdonotcheckdefaults =&gt; Determine whether on serialize to configs a check should be done on the base/defaults ini's
+Configdonotcheckdefaults => Determine whether on serialize to configs a check should be done on the base/defaults ini's
 
 **UPROP:**
 
-config =&gt; serialize property to config
+config => serialize property to config
 
-gobalconfig =&gt; load ini from baseclass only
+gobalconfig => load ini from baseclass only
 
-ConfigHierarchyEditable =&gt; Edit the values for the config hierarchy
+ConfigHierarchyEditable => Edit the values for the config hierarchy
 
 #### **Configuration Categories**
 
@@ -92,7 +93,7 @@ GGameIni | Game /\* Game ini filename \*/
 
 GGameUserSettingsIni | GameUserSettings /\* User Game Settings ini filename \*/
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>>*
 
 **Custom config file name for a class:**
 
@@ -100,45 +101,46 @@ _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/Configura
 
   UCLASS(config=GameplayTags, defaultconfig, notplaceable)
 
-* Get the name by this:
 
-  GetClass()-&gt;GetDefaultConfigFilename()
+- Get the name by this:
+
+  GetClass()->GetDefaultConfigFilename()
 
   **or**
 
-  ConfigFileName = uobj-&gt;GetDefaultConfigFilename();
+  ConfigFileName = uobj->GetDefaultConfigFilename();
 
-* Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
+- Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
 
 **Override Config Ini files with command line argument:**
 
 <table><thead><tr class="header"><th><strong>Commandline Argument</strong></th><th><strong>INI Override</strong></th></tr></thead><tbody><tr class="odd"><td>DEFEDITORINI=</td><td>Default Editor</td></tr><tr class="even"><td>EDITORINI=</td><td>Editor</td></tr><tr class="odd"><td>DEFEDITORUSERSETTINGSINI=</td><td>Default EditorUserSettings</td></tr><tr class="even"><td>EDITORUSERSETTINGSINI=</td><td>EditorUserSettings</td></tr><tr class="odd"><td>DEFCOMPATINI=</td><td>Default Compat</td></tr><tr class="even"><td>COMPATINI=</td><td>Compat</td></tr><tr class="odd"><td>DEFLIGHTMASSINI=</td><td>Default Lightmass</td></tr><tr class="even"><td>LIGHTMASSINI=</td><td>Lightmass</td></tr><tr class="odd"><td>DEFENGINEINI=</td><td>Default Engine</td></tr><tr class="even"><td>ENGINEINI=</td><td>Engine</td></tr><tr class="odd"><td>DEFGAMEINI=</td><td>Default Game</td></tr><tr class="even"><td>GAMEINI=</td><td>Game</td></tr><tr class="odd"><td>DEFINPUTINI=</td><td>Default Input</td></tr><tr class="even"><td>INPUTINI=</td><td>Input</td></tr><tr class="odd"><td>DEFUIINI=</td><td>Default UI</td></tr><tr class="even"><td>UIINI=</td><td>UI</td></tr></tbody></table>
 
-_From &lt;<https://docs.unrealengine.com/en-us/Programming/Basics/CommandLineArguments>&gt;_
+*From &lt;<https://docs.unrealengine.com/en-us/Programming/Basics/CommandLineArguments>>*
 
 ### **File Hierarchy**
 
-The configuration file hierarchy is read in starting with Base.ini, with values in later files in the hierarchy overriding earlier values. All files in the Engine folder will be applied to all projects, while project-specific settings should be in files in the project directory. Finally, all project-specific and platform-specific differences are saved out to \[ProjectDirectory\]/Saved/Config/\[Platform\]/\[Category\].ini
+The configuration file hierarchy is read in starting with Base.ini, with values in later files in the hierarchy overriding earlier values. All files in the Engine folder will be applied to all projects, while project-specific settings should be in files in the project directory. Finally, all project-specific and platform-specific differences are saved out to \[ProjectDirectory]/Saved/Config/\[Platform]/\[Category].ini
 
 The below file hierarchy example is for the Engine category of configuration files.
 
-1.  Engine/Config/Base.ini
+1. Engine/Config/Base.ini
 
 Base.ini is usually empty.
 
-2.  Engine/Config/BaseEngine.ini
+2. Engine/Config/BaseEngine.ini
 
-3.  Engine/Config/\[Platform\]/\[Platform\]Engine.ini
+2. Engine/Config/\[Platform]/\[Platform]Engine.ini
 
-4.  \[ProjectDirectory\]/Config/DefaultEngine.ini
+2. \[ProjectDirectory]/Config/DefaultEngine.ini
 
-5.  \[ProjectDirectory\]/Config/\[Platform\]/\[Platform\]Engine.ini
+2. \[ProjectDirectory]/Config/\[Platform]/\[Platform]Engine.ini
 
-6.  \[ProjectDirectory\]/Saved/Config/\[Platform\]/Engine.ini
+2. \[ProjectDirectory]/Saved/Config/\[Platform]/Engine.ini
 
-    The configuration file in the Saved directory only stores the project-specific and platform-specific differences in the stack of configuration files.
+   The configuration file in the Saved directory only stores the project-specific and platform-specific differences in the stack of configuration files.
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>>*
 
 ### **File Format**
 
@@ -146,7 +148,7 @@ _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/Configura
 
 Typical configuration files consist of sections of key-value pairs, arranged as follows:
 
-\[Section\]  
+\[Section]  
 Key=Value
 
 **Special Characters**
@@ -159,9 +161,9 @@ Key=Value
 
 - *!* - Removes a property; but you don't have to have an exact match, just the name of the property.
 
-**Note**: **._ is like _+** except it will potentially add a duplicate line. This is useful for the bindings (as seen in DefaultInput.ini), for instance, where the bottom-most binding takes effect, so if you add something like:
+**Note**: **.* is like *+** except it will potentially add a duplicate line. This is useful for the bindings (as seen in DefaultInput.ini), for instance, where the bottom-most binding takes effect, so if you add something like:
 
-[/Script/Engine.PlayerInput\]  
+\[/Script/Engine.PlayerInput]  
 Bindings=(Name="Q",Command="Foo")  
 .Bindings=(Name="Q",Command="Bar")  
 .Bindings=(Name="Q",Command="Foo")
@@ -179,4 +181,4 @@ Most people seem to be under the impression that the semicolon denotes comments 
 ; This is a Comment  
 ; So is this!
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>>*

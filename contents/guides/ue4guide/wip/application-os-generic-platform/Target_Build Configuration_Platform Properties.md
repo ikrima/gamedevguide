@@ -12,13 +12,13 @@ ITargetPlatformManagerModule\* TPM = GetTargetPlatformManager();
 
 ​ {
 
-​ const TArray&lt;ITargetPlatform\*&gt;& Platforms = TPM-&gt;GetActiveTargetPlatforms();
+​ const TArray&lt;ITargetPlatform\*>& Platforms = TPM->GetActiveTargetPlatforms();
 
 ​ for (int32 Index = 0; Index &lt; Platforms.Num(); ++Index)
 
 ​ {
 
-​ if (Platforms\[Index\]-&gt;PackageBuild(SourceDir))
+​ if (Platforms\[Index]->PackageBuild(SourceDir))
 
 ​ }
 

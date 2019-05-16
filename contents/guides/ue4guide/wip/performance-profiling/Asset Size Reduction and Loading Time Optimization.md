@@ -56,7 +56,7 @@ Can also verify by looking at the cooked asset’s size, and the size in memory 
 
 1. #### **Load to Memory from Storage**
 
-2. #### **AddToWorld (hitches when streaming)**
+1. #### **AddToWorld (hitches when streaming)**
 
 - ### **Load To Memory Profiling**
 
@@ -97,7 +97,8 @@ Can also verify by looking at the cooked asset’s size, and the size in memory 
 
   -
 
-* #### **Profiling AddToWorld**
+
+- #### **Profiling AddToWorld**
 
   - Enable this define **PERF_TRACK_DETAILED_ASYNC_STATS (AsyncLoading.h)**
 
@@ -177,9 +178,10 @@ Initialize : 0.08 m
 
   So UE4 disregards this option when cooking for console
 
-* Preloading with Asset Manager
 
-* Simplify logic in BeginPlay
+- Preloading with Asset Manager
+
+- Simplify logic in BeginPlay
 
   - BeginPlay runs during AddToWorld()
 
@@ -187,9 +189,10 @@ Initialize : 0.08 m
 
     - Construction Script runs at cook time. Construction scripts are evaluated at cook time, and the post-construction script object state is serialized
 
-* #### **Garbage Collection**
+- #### **Garbage Collection**
 
   - Noticeable and unacceptable hitches due to GC
+
 
 - You might see hitches when streaming levels, because..
 
@@ -236,7 +239,7 @@ You can see the Checking cost and the deletion cost are printed out in this mann
 
    - Use normal UE4 Profiler
 
-4. CBD Profiling Tools
+3. CBD Profiling Tools
 
 \#define PROFILE_ConditionalBeginDestory
 
@@ -296,7 +299,7 @@ ObjectProperty 3251
 
 ![PerformanceProfiling_AssetSize_DisregardGCObject](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_DisregardGCObject.png)
 
-1.  **Enable DisregardGCObject\*\***
+1. **Enable DisregardGCObject\*\***
 
 [/Script/Engine.GarbageCollectionSettings]
 

@@ -4,11 +4,11 @@ FWIW, the way we handle crossplatform on Paragon and Fortnite is using a Single 
 
 For example, if you take a look at FOnlineSubsystemPS4, you'll notice there are a bunch of flags like bAreRoomsEnabled, bAreAchievementsEnabled, etc:
 
-1.  /\*\* true by default, this enables room creation. Can be disabled to use third party matchmaking. \*/
+1. /\*\* true by default, this enables room creation. Can be disabled to use third party matchmaking. \*/
 
-2.  bool bAreRoomsEnabled;
+1. bool bAreRoomsEnabled;
 
-3.
+1.
 
 Then, in the OSS we've just guard any calls into related methods.
 
@@ -16,13 +16,13 @@ We haven't done anything cross platform with Oculus internally, and we don't cur
 
 So, the process for us would look a bit more like this:
 
-1.  Create OSSPlayFab.
+1. Create OSSPlayFab.
 
-2.  Grab the platform specific backend / NetDriver.
+1. Grab the platform specific backend / NetDriver.
 
-3.  Disable any features we don't want to use.
+1. Disable any features we don't want to use.
 
-_From &lt;<https://udn.unrealengine.com/questions/404339/accessing-oculussteam-apis-without-respective-oss.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/404339/accessing-oculussteam-apis-without-respective-oss.html>>*
 
 To do this, it sounds like we need to create a custom OSS that communicates with PlayFab for match making, make calls into Steam/Oculus APIs for handling stuff like Friend Invites/Authentication, and use GameNetDriver for clients to join servers via IPs?
 
@@ -36,13 +36,13 @@ As I already pointed out, we do this in our games. We use our internal OSS for h
 
 ; Here, I'll just have them all enabled.
 
-\[OnlineSubsystemSteam\]
+\[OnlineSubsystemSteam]
 
 bEnabled=true
 
 ; other options
 
-\[OnlineSubsystemOculus\]
+\[OnlineSubsystemOculus]
 
 bEnabled=true
 
@@ -50,7 +50,7 @@ bEnabled=true
 
 ; You'd need to create this, or another OSS.
 
-\[OnlineSubsystemPlayFab\]
+\[OnlineSubsystemPlayFab]
 
 bEnabled=true
 
@@ -60,7 +60,7 @@ bEnabled=true
 
 ; Also, you specify which OSS will be the default.
 
-\[OnlineSubsystem\]
+\[OnlineSubsystem]
 
 ; This is going to be the default OSS used.
 

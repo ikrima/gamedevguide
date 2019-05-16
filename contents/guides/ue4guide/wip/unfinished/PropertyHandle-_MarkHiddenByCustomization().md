@@ -1,3 +1,3 @@
-PropertyHandle-&gt;MarkHiddenByCustomization()
+PropertyHandle->MarkHiddenByCustomization()
 
-_From &lt;<https://forums.unrealengine.com/development-discussion/c-gameplay-programming/106787-detailcustomization-only-show-specific-properties-isinglepropertyview>&gt;_
+*From &lt;<https://forums.unrealengine.com/development-discussion/c-gameplay-programming/106787-detailcustomization-only-show-specific-properties-isinglepropertyview>>*

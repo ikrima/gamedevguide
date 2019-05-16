@@ -2,13 +2,13 @@
 
 Have a look at UStaticMeshComponent::GetComponentInstanceData and UStaticMeshComponent::ApplyComponentInstanceData. This is where lightmap data for components created in a construction script are supposed to backup and then restore their static lighting. Most likely something is happening causing the lightmaps to not be restored properly. Otherwise, look for a later call to InvalidateLightingCache and see why that is happening.
 
-_From &lt;<https://udn.unrealengine.com/questions/163437/lightasifstatic-with-mf-dynamic-resulting-in-too-m.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/163437/lightasifstatic-with-mf-dynamic-resulting-in-too-m.html>>*
 
 Finally, is there a way to disable these static lights insertions without side effects? (without having to rebuild all the lighting without issues)
 
 You can disregard all unbuilt interactions by modifying FLightPrimitiveInteraction::Create, however that's not addressing the root cause.
 
-_From &lt;<https://udn.unrealengine.com/questions/245332/ue4-static-light-building-issues.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/245332/ue4-static-light-building-issues.html>>*
 
 bool FLightSceneInfo::ShouldRenderLight(const FViewInfo& View) const
 
@@ -18,11 +18,11 @@ bool ShouldRenderLightViewIndependent() const
 
 {
 
-return !Proxy-&gt;GetColor().IsAlmostBlack()
+return !Proxy->GetColor().IsAlmostBlack()
 
 // Only render lights with dynamic lighting or unbuilt static lights
 
-&& (!Proxy-&gt;HasStaticLighting() || !IsPrecomputedLightingValid());
+&& (!Proxy->HasStaticLighting() || !IsPrecomputedLightingValid());
 
 }
 
@@ -36,7 +36,7 @@ void ApplyLightMapping(FStaticLightingTextureMapping_InstancedStaticMesh\* InMap
 
 FStaticMeshStaticLightingTextureMapping
 
-void FStaticMeshStaticLightingTextureMapping::Apply(FQuantizedLightmapData\* QuantizedData, const TMap&lt;ULightComponent\*,FShadowMapData2D\*&gt;& ShadowMapData, ULevel\* LightingScenario)
+void FStaticMeshStaticLightingTextureMapping::Apply(FQuantizedLightmapData\* QuantizedData, const TMap&lt;ULightComponent\*,FShadowMapData2D\*>& ShadowMapData, ULevel\* LightingScenario)
 
 UInstancedStaticMeshComponent() as reference for applying custom render/lightmap data based on another primitive
 
@@ -74,22 +74,23 @@ ISceneViewExtension
 
 - FLandscapeGrassLightMap()
 
-* // Make sure root is a StaticMeshComponent:
 
-* USCS_Node\* RootNode = SCS-&gt;GetAllNodes()\[0\];
+- // Make sure root is a StaticMeshComponent:
 
-* check(RootNode && "SCS Root node was null!");
+- USCS_Node\* RootNode = SCS->GetAllNodes()\[0];
 
-* UStaticMeshComponent\* SMC = Cast&lt;UStaticMeshComponent&gt;(RootNode-&gt;ComponentTemplate);
+- check(RootNode && "SCS Root node was null!");
 
-* check(SMC && "Root was not a static mesh component!");
+- UStaticMeshComponent\* SMC = Cast&lt;UStaticMeshComponent>(RootNode->ComponentTemplate);
 
-* USCS_Node\* MyComponentNode = SCS-&gt;CreateNode(UMyComponent::StaticClass());
+- check(SMC && "Root was not a static mesh component!");
 
-* MyComponentNode-&gt;ComponentTemplate-&gt;CreationMethod = EComponentCreationMethod::Native;;
+- USCS_Node\* MyComponentNode = SCS->CreateNode(UMyComponent::StaticClass());
 
-* RootNode-&gt;AddChildNode(MyComponentNode, false);
+- MyComponentNode->ComponentTemplate->CreationMethod = EComponentCreationMethod::Native;;
 
-* FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(Blueprint);
+- RootNode->AddChildNode(MyComponentNode, false);
 
-_From &lt;<https://udn.unrealengine.com/questions/413898/attaching-component-to-a-blueprint-asset-in-c.html>&gt;_
+- FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(Blueprint);
+
+*From &lt;<https://udn.unrealengine.com/questions/413898/attaching-component-to-a-blueprint-asset-in-c.html>>*

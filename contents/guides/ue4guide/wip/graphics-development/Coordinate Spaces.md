@@ -2,15 +2,15 @@
 
 **Coordinate System: **Left handed, Z-Up, X-axis is forward, Y-axis is right
 
-- UV (0,0) =&gt; is Top Left corner of image
+- UV (0,0) => is Top Left corner of image
 
 - **NOTE:** UVs get flipped on import from FBX files
 
 **Matrix**
 
-- Row addressable M\[RowIndex\]\[ColumnIndex\]
+- Row addressable M\[RowIndex]\[ColumnIndex]
 
-- Matrix stored as row major m\[0\]-m\[3\] = first row, m\[4\]-m\[7\] = second row
+- Matrix stored as row major m\[0]-m\[3] = first row, m\[4]-m\[7] = second row
 
 - Matrices are post multiplied (x \* M \* V \* P)
 
@@ -22,7 +22,7 @@
 
 **Space Transformations**
 
-Transformation between spaces should always be named using the form **_X To Y_**.
+Transformation between spaces should always be named using the form ***X To Y***.
 
 **Examples:**
 
@@ -32,4 +32,4 @@ Transformation between spaces should always be named using the form **_X To Y_**
 
 - TangentToWorld
 
-_From &lt;<https://docs.unrealengine.com/en-us/Engine/Basics/CoordinateSpace>&gt;_
+*From &lt;<https://docs.unrealengine.com/en-us/Engine/Basics/CoordinateSpace>>*

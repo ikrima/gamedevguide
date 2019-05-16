@@ -18,7 +18,7 @@ KeyFrameAlgorithms::Translate
 
 ## Structs:
 
-TNumericLimits&lt;&gt;
+TNumericLimits&lt;>
 
 TScopedCallback - Helper obj for batching callback requests
 
@@ -60,9 +60,10 @@ Stack trace/Call Stack/Stack Capturing + Symbol Debug ties :
 
   - StackWalkAndDump
 
-* FProgramCounterSymbolInfo
 
-* FStackWalkModuleInfo
+- FProgramCounterSymbolInfo
+
+- FStackWalkModuleInfo
 
 ## Useful Containers
 
@@ -78,7 +79,7 @@ FBinaryHeap
 
 TArrayView: Statically sized view of an array. Allows functions to take either fixed C array or a TArray with arbittrary allocator when function doesn’t add or remove elements. Treat TArrayView as a ref
 
-\* int32 SumAll(TArrayView&lt;const int32&gt; array)
+\* int32 SumAll(TArrayView&lt;const int32> array)
 
 \* {
 

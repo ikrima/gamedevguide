@@ -24,7 +24,7 @@ PossessingController.ActorTick
 
   - MovementComponent.UpdatedComponent (e.g. Capsule component of ACharacter)
 
-World-&gt;EndPhysicsTickFunction
+World->EndPhysicsTickFunction
 
 - SkeletalMeshComponent.EndPhysicsTickFunction
 
@@ -32,7 +32,7 @@ MasterPoseComponentTick.Primary
 
 - SkinnedMeshComponent.PrimaryComponent
 
-{PrimitiveComponent.Primary && World-&gt;EndPhysicsTickFunction}
+{PrimitiveComponent.Primary && World->EndPhysicsTickFunction}
 
 - PostPhysicsComponentTick
 
@@ -46,13 +46,13 @@ FEngineLoop::TotalTickTime
 
 World::Tick()
 
-\[TG_PrePhysics, TG_PostPhysics\]
+\[TG_PrePhysics, TG_PostPhysics]
 
 ProcessLatentActions
 
 FTickableObjects::Tick
 
-\[TG_PostUpdateWork, TG_LastDemotable\]
+\[TG_PostUpdateWork, TG_LastDemotable]
 
 FXSystem
 

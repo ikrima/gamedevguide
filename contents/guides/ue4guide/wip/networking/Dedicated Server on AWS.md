@@ -4,19 +4,19 @@ The trick with this sort of approach is properly routing connections to the righ
 
 Now, this does mean that you'll need enough IO / Memory to support this, but those are typically cheaper and easier to scale.
 
-_From &lt;<https://udn.unrealengine.com/questions/440313/multiple-game-instances-on-one-server.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/440313/multiple-game-instances-on-one-server.html>>*
 
 The nomenclature below is my own, nothing official really
 
-1.  VM Instance - Third party service (AWS/GCE) hosting a game.
+1. VM Instance - Third party service (AWS/GCE) hosting a game.
 
-2.  Dedicated Server Instance - a single running executable of the Unreal Engine dedicated server
+1. Dedicated Server Instance - a single running executable of the Unreal Engine dedicated server
 
-3.  Game Instance - a single instance of the game rules / etc (1 World)
+1. Game Instance - a single instance of the game rules / etc (1 World)
 
-4.  Forked Instance - one dedicated server instance (2) that hosts multiple game instances in multiple sub processes
+1. Forked Instance - one dedicated server instance (2) that hosts multiple game instances in multiple sub processes
 
-5.  MultiWorld Instance - one dedicated server instance (2) that hosts multiple game instances in one process
+1. MultiWorld Instance - one dedicated server instance (2) that hosts multiple game instances in one process
 
 Right now (2) and (3) are 1:1 as Jon describes. Fortnite is working on (4) for a 1:N ratio. We are not trying (5) because the engine doesn't work this way at present and if anything crashed it would bring down all the games inside.
 
@@ -26,4 +26,4 @@ Forking is being evaluated based on the idea that it shares memory between the s
 
 As another data point, Gears of War was actually 7 instances per core. I don't have Fortnite specific details, but it depends on our Save the World and Battle Royale modes. Clearly it is based on the game CPU demands. You may have a simpler/faster/better game that can run more instances.
 
-_From &lt;<https://udn.unrealengine.com/questions/440313/multiple-game-instances-on-one-server.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/440313/multiple-game-instances-on-one-server.html>>*

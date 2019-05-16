@@ -1,6 +1,4 @@
-```
-sortIndex: 3
-```
+    sortIndex: 3
 
 Use this as reference:
 

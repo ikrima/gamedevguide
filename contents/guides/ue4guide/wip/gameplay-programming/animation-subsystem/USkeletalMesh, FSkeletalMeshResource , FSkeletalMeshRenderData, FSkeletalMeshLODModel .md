@@ -4,4 +4,4 @@ So when you are updating your code, the main question is - "is this runtime or e
 
 I hope that helps!
 
-_From &lt;<https://forums.unrealengine.com/development-discussion/c-gameplay-programming/1446998-what-happened-to-uskeletalmesh-in-ue-4-19>&gt;_
+*From &lt;<https://forums.unrealengine.com/development-discussion/c-gameplay-programming/1446998-what-happened-to-uskeletalmesh-in-ue-4-19>>*

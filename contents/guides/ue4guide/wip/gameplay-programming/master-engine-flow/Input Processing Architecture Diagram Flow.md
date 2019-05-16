@@ -28,7 +28,7 @@ UInputComponent
 
 Input Processing Loop:
 
-1.  FEngineLoop::Tick() process input
+1. FEngineLoop::Tick() process input
 
 - FPlatformMisc::PumpMessages() processes mouse & keyboard while SlateApp.PollGameDeviceState() process gamepad
 
@@ -36,7 +36,7 @@ Input Processing Loop:
 
 - Gamepad input always happens inside the main loop
 
-- Actual Input keys are recorded in a side band channel through WindowsMsgPmp-&gt;SceneViewport-&gt;GameViewport
+- Actual Input keys are recorded in a side band channel through WindowsMsgPmp->SceneViewport->GameViewport
 
   - Calls into PlayerController::InputKey() to give PlayerController a chance to add logic around input capture (e.g. execute custom debug binds)
 
@@ -46,11 +46,11 @@ Input Processing Loop:
 
 >
 
-- Input is polled in FEngineLoop.Tick() by calling which is before GEngine-&gt;Tick()
+- Input is polled in FEngineLoop.Tick() by calling which is before GEngine->Tick()
 
-2. World::Tick()=&gt; Process Input & Fire Bindings on components (during PlayerController's tick group, default PrePhysics
+2. World::Tick()=> Process Input & Fire Bindings on components (during PlayerController's tick group, default PrePhysics
 
-- PlayerController::TickActor() calls PlayerController::PlayerTick() **_only on local PlayerController that has PlayerInput object so not servers. Won't be called on servers for nonlocal PCs_**
+- PlayerController::TickActor() calls PlayerController::PlayerTick() ***only on local PlayerController that has PlayerInput object so not servers. Won't be called on servers for nonlocal PCs***
 
 - PlayerController::PlayerTick()
 
@@ -60,7 +60,7 @@ Input Processing Loop:
 
 - PlayerController::ProcessPlayerInput
 
-  - PlayerController::BuildInputStack() =&gt; Adds InputComponents in a stack that defines priority of what components get access to inputs first. Order from lowest priority to highest:
+  - PlayerController::BuildInputStack() => Adds InputComponents in a stack that defines priority of what components get access to inputs first. Order from lowest priority to highest:
 
     - ControlledPawn (if input enabled)
 
@@ -76,7 +76,7 @@ Input Processing Loop:
 
     - virtual PlayerController::PreProcessInput() - can be overridden for work before firing input delegates
 
-    - PlayerInput::ProcessInputStack() =&gt; Processes all the input delegate binds
+    - PlayerInput::ProcessInputStack() => Processes all the input delegate binds
 
     - virtual PlayerController::PostProcessInput() - can be overridden for work post firing input delegates
 

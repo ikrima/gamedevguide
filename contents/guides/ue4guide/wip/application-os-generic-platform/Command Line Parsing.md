@@ -1,4 +1,4 @@
-TArray&lt;FString&gt; Tokens, Switches;
+TArray&lt;FString> Tokens, Switches;
 
 ParseCommandLine(FCommandLine::Get(), Tokens, Switches);
 

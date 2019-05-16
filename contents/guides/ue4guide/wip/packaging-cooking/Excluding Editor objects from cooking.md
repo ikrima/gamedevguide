@@ -1,6 +1,4 @@
-```
-sortIndex: 3
-```
+    sortIndex: 3
 
 Seems like this is a recurring question that gets answered partially all the time.
 
@@ -8,7 +6,7 @@ I'm updating this reply with answers I'm gleaning from my investigation while th
 
 #### WITH_EDITORONLY_DATA vs WITH_EDITOR
 
-_WITH_EDITORONLY_DATA is a superset of WITH_EDITOR_
+*WITH_EDITORONLY_DATA is a superset of WITH_EDITOR*
 
 **WITH_EDITOR** means we are going to compile editor code.
 
@@ -34,7 +32,7 @@ There's a NeedsLoadForClient(), virtual bool NeedsLoadForEditorGame() const over
 
 Also To exclude stuff from dedicated client:
 
-\[CookSettings\]
+\[CookSettings]
 
 DedicatedClientExclusion
 
@@ -50,27 +48,27 @@ You can add a PakBlackList-Debug.txt in Root/Build/Win64/ to exclude directories
 
 <https://answers.unrealengine.com/questions/364659/pakblacklist-developmenttxt.html>
 
-https://docs.unrealengine.com/latest/INT/Platforms/Android/ReducingAPKSize/index.html#packageblacklist
+<https://docs.unrealengine.com/latest/INT/Platforms/Android/ReducingAPKSize/index.html#packageblacklist>
 
 **[Undocumented Magic Folders That Get Cooked:][https://github.com/epicgames/unrealengine/blob/76085d1106078d8988e4404391428252ba1eb9a7/engine/source/editor/unrealed/private/cookontheflyserver.cpp#l5321]**
 
-If you have blueprints here, they & their dependencies will force get added (https://udn.unrealengine.com/questions/351014/packaging-always-includes-content.html)
+If you have blueprints here, they & their dependencies will force get added (<https://udn.unrealengine.com/questions/351014/packaging-always-includes-content.html>)
 
 Conversely, if you cook without Pak option on windows, UAT's stager will strip content in folders named UWP, XboxOne, PS4, etc (<https://answers.unrealengine.com/questions/241947/additional-asset-directories-not-copied-to-package.html>)
 
 [UI]
 
-+ContentDirectories=/Game/UI
+\+ContentDirectories=/Game/UI
 
-+ContentDirectories=/Game/Widget
+\+ContentDirectories=/Game/Widget
 
-+ContentDirectories=/Game/Widgets
+\+ContentDirectories=/Game/Widgets
 
-+ContentDirectories=/Engine/MobileResources
+\+ContentDirectories=/Engine/MobileResources
 
 **Set CanSkipEditorReferencedPackagesWhenCooking to true**
 
-The way the referenced by editor only packages works is that the package is attempted to be saved, then at save time flags are checked on the package to find out if it's been referenced only by editor only properties (properties within a WITH_EDITORONLY_DATA \#ifdef and UObjects that return IsEditorOnly() to true)
+The way the referenced by editor only packages works is that the package is attempted to be saved, then at save time flags are checked on the package to find out if it's been referenced only by editor only properties (properties within a WITH_EDITORONLY_DATA #ifdef and UObjects that return IsEditorOnly() to true)
 
 \*\*BUT\*\*, some operations will clear the isreferencedbyeditoronlyproperties flag on a package. Ex: Calling \*\*LoadObject(asset)\*\* in a class constructor because it makes sense the loader doesn't know that package is being loaded into an editor only property. Similarly, loading an asset from a config ini will do the same (\*\*LoadConfig()\*\*)
 
@@ -100,16 +98,16 @@ You can use this to add extra packages to your cook and possibly filter existing
 
 [CookSettings]
 
-+ConfigSettingBlacklist=\*.EditorKeyBindings
+\+ConfigSettingBlacklist=\*.EditorKeyBindings
 
-+ConfigSettingBlacklist=\*.SourceControlSettings
+\+ConfigSettingBlacklist=\*.SourceControlSettings
 
-+ConfigSettingBlacklist=\*.SourceControl.SourceControlSettings
+\+ConfigSettingBlacklist=\*.SourceControl.SourceControlSettings
 
 - Use these settings to increase cooking performance and remove -FORCELOGFLUSH from the cook commandlet param
 
-\[1\]: <https://github.com/EpicGames/UnrealEngine/blob/76085d1106078d8988e4404391428252ba1eb9a7/Engine/Source/Editor/UnrealEd/Private/CookOnTheFlyServer.cpp#L5321>
+\[1]: <https://github.com/EpicGames/UnrealEngine/blob/76085d1106078d8988e4404391428252ba1eb9a7/Engine/Source/Editor/UnrealEd/Private/CookOnTheFlyServer.cpp#L5321>
 
-\[2\]: <https://udn.unrealengine.com/users/5613/daniellamb.html?answerPage=1&answerPageSize=15&answerSort=active>
+\[2]: <https://udn.unrealengine.com/users/5613/daniellamb.html?answerPage=1&answerPageSize=15&answerSort=active>
 
 <https://udn.unrealengine.com/answers/375077/edit.html>

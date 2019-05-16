@@ -56,51 +56,51 @@ Histogram.h
 
 MallocProfiler
 
-for( TArray&lt;ULevel\*&gt;::TConstIterator **it** = GetWorld()-&gt;GetLevels().CreateConstIterator(); **it**; ++**it** )  
+for( TArray&lt;ULevel\*>::TConstIterator **it** = GetWorld()->GetLevels().CreateConstIterator(); **it**; ++**it** )  
 {  
         ULevel\* **CurLevel** = \***it**;  
-        if( **CurLevel** && **CurLevel**-&gt;bIsVisible )  
+        if( **CurLevel** && **CurLevel**->bIsVisible )  
         {  
-                ALevelScriptActor\* **LSA** = **CurLevel**-&gt;GetLevelScriptActor();
+                ALevelScriptActor\* **LSA** = **CurLevel**->GetLevelScriptActor();
 
 ### Changing Component Ownership:
 
 1. void RegisterTImelineWithActor(UTimelineComponent\* Timeline, AActor\* Actor)
 
-2. {
+1. {
 
-3. // Might want to save this if it's not the TransientPackage / World.
+1. // Might want to save this if it's not the TransientPackage / World.
 
-4. UObject\* OriginalOwner = Timeline-&gt;GetOuter();
+1. UObject\* OriginalOwner = Timeline->GetOuter();
 
-5. FString OriginalName = Timeline-&gt;GetName();
+1. FString OriginalName = Timeline->GetName();
 
-6. // We can leave the name alone.
+1. // We can leave the name alone.
 
-7. Timeline-&gt;Rename( \*OriginalName, Actor );
+1. Timeline->Rename( \*OriginalName, Actor );
 
-8. Actor-&gt;AddInstancedComponent(Timeline);
+1. Actor->AddInstancedComponent(Timeline);
 
-9. Timeline-&gt;RegisterAllTickFunctions(true);
+1. Timeline->RegisterAllTickFunctions(true);
 
-10. // At this point, you can perform any other setup / re-initialization needed on the
+1. // At this point, you can perform any other setup / re-initialization needed on the
 
-11. // timeline. Also, GetOwner in the Timeline should now return the passed in
+1. // timeline. Also, GetOwner in the Timeline should now return the passed in
 
-12. // Actor.
+1. // Actor.
 
-13. }
+1. }
 
-14. void UnregisterTimelineComponent(UTimelineComponent\* Timeline)
+1. void UnregisterTimelineComponent(UTimelineComponent\* Timeline)
 
-15. {
+1. {
 
-16. AActor\* Actor = Timeline-&gt;GetOwner();
+1. AActor\* Actor = Timeline->GetOwner();
 
-17. // This will unregister tick functions.
+1. // This will unregister tick functions.
 
-18. Timeline-&gt;Rename(\*OriginalName, OriginalOuter);
+1. Timeline->Rename(\*OriginalName, OriginalOuter);
 
-19. }
+1. }
 
-_From &lt;<https://answers.unrealengine.com/questions/539437/temporarily-adding-ticking-actorcomponents-to-acto.html>&gt;_
+*From &lt;<https://answers.unrealengine.com/questions/539437/temporarily-adding-ticking-actorcomponents-to-acto.html>>*

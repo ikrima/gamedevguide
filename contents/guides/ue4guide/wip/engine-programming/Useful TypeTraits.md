@@ -1,12 +1,12 @@
-template &lt;&gt; struct TIsWeakPointerType&lt;FLazyObjectPtr&gt; { enum { Value = TIsWeakPointerType&lt;TPersistentObjectPtr&lt;FUniqueObjectGuid&gt; &gt;::Value }; };
+template &lt;> struct TIsWeakPointerType&lt;FLazyObjectPtr> { enum { Value = TIsWeakPointerType&lt;TPersistentObjectPtr&lt;FUniqueObjectGuid> >::Value }; };
 
-template &lt;&gt; struct THasGetTypeHash&lt;FLazyObjectPtr&gt; { enum { Value = THasGetTypeHash&lt;TPersistentObjectPtr&lt;FUniqueObjectGuid&gt; &gt;::Value }; };
+template &lt;> struct THasGetTypeHash&lt;FLazyObjectPtr> { enum { Value = THasGetTypeHash&lt;TPersistentObjectPtr&lt;FUniqueObjectGuid> >::Value }; };
 
 For UStruct()
 
 /\*\* type traits to cover the custom aspects of a script struct \*\*/
 
-template &lt;class CPPSTRUCT&gt;
+template &lt;class CPPSTRUCT>
 
 struct TStructOpsTypeTraitsBase2
 
@@ -60,21 +60,21 @@ WithSerializeFromMismatchedTag = false, // struct has a SerializeFromMismatchedT
 
 \* Examples:
 
-\* TIsBitwiseConstructible&lt;PODType, PODType &gt;::Value == true // PODs can be trivially copied
+\* TIsBitwiseConstructible&lt;PODType, PODType >::Value == true // PODs can be trivially copied
 
-\* TIsBitwiseConstructible&lt;const int\*, int\* &gt;::Value == true // a non-const Derived pointer is trivially copyable as a const Base pointer
+\* TIsBitwiseConstructible&lt;const int\*, int\* >::Value == true // a non-const Derived pointer is trivially copyable as a const Base pointer
 
-\* TIsBitwiseConstructible&lt;int\*, const int\*&gt;::Value == false // not legal the other way because it would be a const-correctness violation
+\* TIsBitwiseConstructible&lt;int\*, const int\*>::Value == false // not legal the other way because it would be a const-correctness violation
 
-\* TIsBitwiseConstructible&lt;int32, uint32 &gt;::Value == true // signed integers can be memcpy'd as unsigned integers
+\* TIsBitwiseConstructible&lt;int32, uint32 >::Value == true // signed integers can be memcpy'd as unsigned integers
 
-\* TIsBitwiseConstructible&lt;uint32, int32 &gt;::Value == true // and vice versa
+\* TIsBitwiseConstructible&lt;uint32, int32 >::Value == true // and vice versa
 
 \*/
 
-template &lt;&gt;
+template &lt;>
 
-struct TIsBitwiseConstructible&lt;Name, TRangeBound&lt;ElementType&gt;&gt;
+struct TIsBitwiseConstructible&lt;Name, TRangeBound&lt;ElementType>>
 
 {
 

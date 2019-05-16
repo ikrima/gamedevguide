@@ -18,7 +18,7 @@ if (UWorld\* MyWorld = GetWorld()) // GetWorld will return nullptr on CDO, FYI
 
 {
 
-MyWorld-&gt;AddNetworkActor(this);
+MyWorld->AddNetworkActor(this);
 
 }
 
@@ -70,6 +70,7 @@ NetUpdate() & NetUpdateFrequency()
 
 Called from UWorld:Tick() in LevelTick.cpp:
 
-- Top of tick -&gt; BroadcastTickDispatch()/TickNetClient() is where client receives all network requests
+- Top of tick -> BroadcastTickDispatch()/TickNetClient() is where client receives all network requests
 
-* Bottom of tick-&gt; UNetDriver::TickFlush() where all the Replication magic happens from client to everywhere else
+
+- Bottom of tick-> UNetDriver::TickFlush() where all the Replication magic happens from client to everywhere else

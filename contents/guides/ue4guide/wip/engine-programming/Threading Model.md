@@ -1,6 +1,6 @@
 ![ThreadingModel_GameGPU](C:\devguide\conversion\FINISHED\assets\ThreadingModel_GameGPU.png)
 
-_From &lt;<https://software.intel.com/en-us/articles/intel-software-engineers-assist-with-unreal-engine-419-optimizations>&gt;_
+*From &lt;<https://software.intel.com/en-us/articles/intel-software-engineers-assist-with-unreal-engine-419-optimizations>>*
 
 - Game thread runs ahead of everything else
 
@@ -10,7 +10,8 @@ _From &lt;<https://software.intel.com/en-us/articles/intel-software-engineers-as
 
 - Whatever is displayed thus runs two frames behind.
 
-* Tick Groups: control order of ticking of objects but is not parallel
+
+- Tick Groups: control order of ticking of objects but is not parallel
 
 **Render Thread:**
 

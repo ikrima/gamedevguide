@@ -29,9 +29,9 @@ sortIndex: 7
 
 ## Export documentation for build config/targetrules.cs/modulerules.cs props
 
--buildconfigurationdoc=D:\\buildcfgdoc.txt
+\-buildconfigurationdoc=D:\\buildcfgdoc.txt
 
--modulerulesdoc=D:\\modulerulesdoc.txt -
+\-modulerulesdoc=D:\\modulerulesdoc.txt -
 
 targetrulesdoc=D:\\targetrulesdoc.txt
 
@@ -53,7 +53,7 @@ If you run UBT with the -verbose option, it should print out a message showing t
 
 ## Build & Environment variables:
 
-Build steps can use $(EngineDir), $(ProjectDir), $(TargetName), $(TargetPlatform), $(TargetConfiguration), $(TargetType), \$(ProjectFile).
+Build steps can use $(EngineDir),$(ProjectDir), $(TargetName),$(TargetPlatform), $(TargetConfiguration),$(TargetType), $(ProjectFile).
 
 ## Debugging compile flags & link switches
 
@@ -67,7 +67,7 @@ In 4.19, you should be able to add the "-verbose -log=D:\\Log.txt" arguments to 
 
 The other option would be to look at the ActionGraph.IsActionOutdated() function in UBT. This function contains all the log output we're looking for - if you change all the Log.TraceLog() calls to Log.TraceInformation(), it will output the messages to stdout. You may have to place a breakpoint in this function to be able to debug what is changing.
 
-_Reference From https://udn.unrealengine.com/questions/436096/frequent-ubt-code-rebuilds.html_
+*Reference From <https://udn.unrealengine.com/questions/436096/frequent-ubt-code-rebuilds.html>*
 
 ## Module Include/Header Paths:
 
@@ -81,7 +81,7 @@ _Reference From https://udn.unrealengine.com/questions/436096/frequent-ubt-code-
 
   `RunUAT.bat RebasePublicIncludePaths -Project="path/to/temp-project.uproject" -UpdateDir="path/to/temp-project/Plugins" -write`
 
-  _Reference From https://twitter.com/kantandev/status/1020017126806032384_
+  *Reference From <https://twitter.com/kantandev/status/1020017126806032384>*
 
 ## How UBT Builds RulesObjects, Modules, Targets:
 
@@ -94,4 +94,4 @@ _Reference From https://udn.unrealengine.com/questions/436096/frequent-ubt-code-
 
 - RulesAssembly.cs
 
-http://system.io ]: https://t.co/RMAGwHWMg1
+<http://system.io> ]: <https://t.co/RMAGwHWMg1>

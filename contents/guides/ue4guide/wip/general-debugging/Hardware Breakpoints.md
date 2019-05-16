@@ -26,4 +26,4 @@ A processor breakpoint is triggered when a specific memory location is accessed.
 
 <table><thead><tr class="header"><th><strong>Breakpoint type</strong></th><th><strong>Action</strong></th></tr></thead><tbody><tr class="odd"><td><strong>e</strong> (execute)</td><td>Triggered when the processor retrieves an instruction from the specified address.</td></tr><tr class="even"><td><strong>r</strong> (read/write)</td><td>Triggered when the processor reads or writes memory at the specified address.</td></tr><tr class="odd"><td><strong>w</strong> (write)</td><td>Triggered when the processor writes memory at the specified address.</td></tr><tr class="even"><td><strong>i</strong> (i/o)</td><td>Triggered when the I/O port at the specified <em>Address</em> is accessed.</td></tr></tbody></table>
 
-_From &lt;<https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/processor-breakpoints---ba-breakpoints->&gt;_
+*From &lt;<https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/processor-breakpoints---ba-breakpoints->>*

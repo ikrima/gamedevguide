@@ -20,11 +20,11 @@ Texel debugging steps
 
 - Now launch lightmass manually as above, you should be able to hit breakpoints at the various 'bDebugThisTexel = true;' lines in lightmass
 
-_From &lt;<https://udn.unrealengine.com/questions/171210/view.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/171210/view.html>>*
 
 Debug lightmass:
 
-1.  lightmassdebug command
+1. lightmassdebug command
 
 ![DebuggingLightmass_LightmassdebugCOMMAND](C:\devguide\conversion\FINISHED\assets\DebuggingLightmass_LightmassdebugCOMMAND.png)
 

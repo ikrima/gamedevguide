@@ -1,12 +1,12 @@
 Notes: STATIC PATH FOR STATICMESHCOMPONENT
 
-AddPrimitive-&gt;
+AddPrimitive->
 
-AddPrimitiveSceneInfo_RenderThread-&gt;
+AddPrimitiveSceneInfo_RenderThread->
 
-FPrimitiveSceneInfo::AddToScene-&gt;
+FPrimitiveSceneInfo::AddToScene->
 
-FPrimitiveSceneInfo::AddStaticMeshes-&gt;
+FPrimitiveSceneInfo::AddStaticMeshes->
 
 SceneProxy::DrawStaticElements
 
@@ -18,17 +18,17 @@ bSafeToUseUnifiedMesh =
 
 !(bAnySectionUsesDitheredLODTransition && !bAllSectionsUseDitheredLODTransition) // can't use a single section if they are not homogeneous
 
-&& Material-&gt;WritesEveryPixel()
+&& Material->WritesEveryPixel()
 
-&& !Material-&gt;IsTwoSided()
+&& !Material->IsTwoSided()
 
-&& !IsTranslucentBlendMode(Material-&gt;GetBlendMode())
+&& !IsTranslucentBlendMode(Material->GetBlendMode())
 
-&& !Material-&gt;MaterialModifiesMeshPosition_RenderThread()
+&& !Material->MaterialModifiesMeshPosition_RenderThread()
 
-&& Material-&gt;GetMaterialDomain() == MD_Surface;
+&& Material->GetMaterialDomain() == MD_Surface;
 
-NOTE: Check everywhere in the code you have (Material-&gt;GetMaterialDomain() == MD_Surface)
+NOTE: Check everywhere in the code you have (Material->GetMaterialDomain() == MD_Surface)
 
 NOTE: Re-eval this line of code (StaticMeshRender.cpp)
 
@@ -48,7 +48,7 @@ FBasePassOpaqueDrawingPolicyFactory::AddStaticMesh(RHICmdList, Scene, this);
 
 FBasePassOpaqueDrawingPolicyFactory::AddStaticMesh
 
-Static (not movable) StaticMeshComponent gets added iff ShouldIncludeDomainInMeshPass(Material-&gt;GetMaterialDomain()) && !IsTranslucentBlendMode(BlendMode)
+Static (not movable) StaticMeshComponent gets added iff ShouldIncludeDomainInMeshPass(Material->GetMaterialDomain()) && !IsTranslucentBlendMode(BlendMode)
 
 FBasePassOpaqueDrawingPolicyFactory::ProcessBasePassMesh() - this function stores the renderstate for this mesh batch
 
@@ -56,7 +56,7 @@ NOTE: If we want to piggy back off the existing drawingpolicies & existing basep
 
 and set the correct stencil render state
 
-NOTE: JACKPOT: Also might be able to expand BasePassDrawListTYpe in FDrawBasePassStaticMeshAction::Process&lt;&gt;
+NOTE: JACKPOT: Also might be able to expand BasePassDrawListTYpe in FDrawBasePassStaticMeshAction::Process&lt;>
 
 enum EBasePassDrawListType
 
@@ -74,7 +74,7 @@ Which means add BasePassUniformLightMapPolicyDrawList, BasePassSelfShadowedTrans
 
 variables to FScene as drawlists for our custom geo
 
-And extend Scene-&gt;GetBasePassDrawList&lt;LightMapPolicyType&gt;(DrawType);
+And extend Scene->GetBasePassDrawList&lt;LightMapPolicyType>(DrawType);
 
 BaseDrawingPolicy::
 

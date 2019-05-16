@@ -6,7 +6,7 @@
 
 ## Coding Standard:
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>>*
 
 - Classes should have public interface methods declared first
 
@@ -75,20 +75,20 @@ General
 - Comment third party code with special comments
 
 // @third party code - BEGIN PhysX
-#include <PhysX.h>
+\#include &lt;PhysX.h>
 // @third party code - END PhysX
 
 - Braces should be on a new line
 
 - Minimize file-coupling by using forward declarations instead of include headers when possible
 
-- Use \#pragma once
+- Use #pragma once
 
 - Fine-grained header inclusion: Include every header you need directl. **Don't rely on a header that is included indirectly by another header you include**
 
 - Place definitions needed by other modules in the Public directory of a module. Everything else should be in the Private directory. (Old UE modules use Src/Inc for this distinction).
 
-- _Never allow float to implicit convert to int32 b/c it's slow._ Always use the appTrunc() function to convert to int32. This will ensure cross-compiler compatibility as well as generate faster code.
+- *Never allow float to implicit convert to int32 b/c it's slow.* Always use the appTrunc() function to convert to int32. This will ensure cross-compiler compatibility as well as generate faster code.
 
 - Interface classes (prefixed with "I") should always be abstract and must not have member variables. Interfaces are allowed to contain methods that are not pure-virtual, and even methods that are non-virtual or static, as long as they are implemented inline.
 
@@ -108,13 +108,14 @@ You can use namespaces to organize your classes, functions and variables where a
 
 - You can use "using" inside of another namespace or inside functions
 
-* Note that if you put "using" within a namespace, it will carry over to other occurrences of that namespace in the same translation unit. As long as you're consistent it will be fine, though.
 
-* You can only use "using" in header files safely if you follow the above rules.
+- Note that if you put "using" within a namespace, it will carry over to other occurrences of that namespace in the same translation unit. As long as you're consistent it will be fine, though.
 
-* Enums must be wrapped in their own namespace b/c C++ Enum values have the same scope. Ex:
+- You can only use "using" in header files safely if you follow the above rules.
 
-> /\*\* Defining a enumeration within a namespace to achieve C\#-style enum scoping \*/  
+- Enums must be wrapped in their own namespace b/c C++ Enum values have the same scope. Ex:
+
+> /\*\* Defining a enumeration within a namespace to achieve C#-style enum scoping \*/  
 > namespace EColorChannel  
 > {  
 > /\*\* Declare EColorChannel::Type as the actual type for this enum \*/  
@@ -157,13 +158,11 @@ You can use namespaces to organize your classes, functions and variables where a
 > /\*\* Construct an FObjectMover with the specified movement direction \*/  
 > FObjectMover( const EMoveDirection::Type Direction );
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>>*
 
 >
 
 -
-
->
 
 >
 
@@ -185,11 +184,11 @@ There are several functions that can be used to create new UObject instances a
 
 <table><thead><tr class="header"><th><strong>Method</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><a href="https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#newobject">NewObject&lt;class&gt;()</a></td><td>Creates a new instance with an automatically generated name. Best practice to use for simple cases.</td></tr><tr class="even"><td><a href="https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#newnamedobject">NewNamedObject&lt;class&gt;()</a></td><td>Creates a new instance using a specified name along with a few other optional parameters. Asserts if the name conflicts within the new instance's Outer.</td></tr><tr class="odd"><td><a href="https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#constructobject">ConstructObject&lt;class&gt;()</a></td><td>Creates a new instance providing all available creation options. Use only when flexibility is required.</td></tr><tr class="even"><td>new</td><td>Use to construct objects in certain low level circumstances, such as when the constructor requires arguments.</td></tr></tbody></table>
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html>&gt;_
+*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html>>*
 
 - Tick is the Update() per frame update function.
 
-- Must derive from _FTickableGameObject_ to make a class tickable
+- Must derive from *FTickableGameObject* to make a class tickable
 
 UClass System notes:
 
@@ -203,7 +202,7 @@ UClass System notes:
 
 - Automatic editor integration
 
-- Simple RTTI (can do typecasting IsA&lt;T&gt;() or Cast&lt;T&gt;()
+- Simple RTTI (can do typecasting IsA&lt;T>() or Cast&lt;T>()
 
 - Supports network replication (can tag UFUNCTIONS for RPC & UPROPERTIES for replication)
 
@@ -271,7 +270,7 @@ UClass System notes:
 
 <table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>UActorComponent::OnUnRegister()</td><td>Event to allow for additional actions when unregistering a component, if necessary.</td></tr><tr class="even"><td>UActorComponent::DestroyRenderState()</td><td>Uninitializes the render state for the component.</td></tr><tr class="odd"><td>UActorComponent::DestroyPhysicsState()</td><td>Uninitializes the physics state for the component.</td></tr></tbody></table>
 
-> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>&gt;_
+> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>>*
 >
 > **Component Transforms**
 
@@ -291,7 +290,7 @@ UClass System notes:
 
 <table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>SceneComponent::SetWorldLocation()</td><td>Set the relative translation of this component to put it at the supplied location in world space.</td></tr><tr class="even"><td>SceneComponent::SetWorldRotation()</td><td>Set the relative rotation of this component to put it at the supplied orientation in world space.</td></tr></tbody></table>
 
-> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>&gt;_
+> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>>*
 >
 > **Delegates**
 >
@@ -311,9 +310,12 @@ UClass System notes:
 
 > See the [Delegates] page for reference and usage information.
 >
-> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>&gt;_
+> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>>*
 
 [multi-cast]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Multicast/index.html
+
 [events]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Events/index.html
+
 [dynamic (uobject, serializable)]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Dynamic/index.html
+
 [delegates]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/index.html

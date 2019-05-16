@@ -6,13 +6,13 @@ uint32 MemoryGuard1 = 0xaffec7ed;
 
 // Load the renderermodule on the main thread, as the module manager is not thread-safe, and copy the ptr into the render command, along with 'this' (which is protected by BlockUntilAvailable in ~FViewportSurfaceReader())
 
-IRendererModule\* RendererModule = &FModuleManager::GetModuleChecked&lt;IRendererModule&gt;(RendererModuleName);
+IRendererModule\* RendererModule = &FModuleManager::GetModuleChecked&lt;IRendererModule>(RendererModuleName);
 
 uint32 MemoryGuard2 = 0xaffec7ed;
 
 IRendererModule\* RendererModuleDebug = RendererModule;
 
-auto RenderCommand = \[=\](FRHICommandListImmediate& RHICmdList){
+auto RenderCommand = \[=](FRHICommandListImmediate& RHICmdList){
 
 // @todo: JIRA UE-41879 and UE-43829. If any of these ensures go off, something has overwritten the memory for this render command (buffer underflow/overflow?)
 
@@ -30,19 +30,19 @@ if (bMemoryTrample)
 
 // In the hope that 'this' is still ok, triggering the event will prevent a deadlock. If it's not ok, this may crash, but it was going to crash anyway
 
-AvailableEvent-&gt;Trigger();
+AvailableEvent->Trigger();
 
 return;
 
 }
 
-const FIntPoint TargetSize(ReadbackTexture-&gt;GetSizeX(), ReadbackTexture-&gt;GetSizeY());
+const FIntPoint TargetSize(ReadbackTexture->GetSizeX(), ReadbackTexture->GetSizeY());
 
 FPooledRenderTargetDesc OutputDesc = FPooledRenderTargetDesc::Create2DDesc(
 
 TargetSize,
 
-ReadbackTexture-&gt;GetFormat(),
+ReadbackTexture->GetFormat(),
 
 FClearValueBinding::None,
 
@@ -68,19 +68,19 @@ if (bMemoryTrample)
 
 // In the hope that 'this' is still ok, triggering the event will prevent a deadlock. If it's not ok, this may crash, but it was going to crash anyway
 
-AvailableEvent-&gt;Trigger();
+AvailableEvent->Trigger();
 
 return;
 
 }
 
-TRefCountPtr&lt;IPooledRenderTarget&gt; ResampleTexturePooledRenderTarget;
+TRefCountPtr&lt;IPooledRenderTarget> ResampleTexturePooledRenderTarget;
 
-RendererModule-&gt;RenderTargetPoolFindFreeElement(RHICmdList, OutputDesc, ResampleTexturePooledRenderTarget, TEXT("ResampleTexture"));
+RendererModule->RenderTargetPoolFindFreeElement(RHICmdList, OutputDesc, ResampleTexturePooledRenderTarget, TEXT("ResampleTexture"));
 
 check(ResampleTexturePooledRenderTarget);
 
-const FSceneRenderTargetItem& DestRenderTarget = ResampleTexturePooledRenderTarget-&gt;GetRenderTargetItem();
+const FSceneRenderTargetItem& DestRenderTarget = ResampleTexturePooledRenderTarget->GetRenderTargetItem();
 
 SetRenderTarget(RHICmdList, DestRenderTarget.TargetableTexture, FTextureRHIRef());
 
@@ -90,21 +90,21 @@ FGraphicsPipelineStateInitializer GraphicsPSOInit;
 
 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
 
-GraphicsPSOInit.BlendState = TStaticBlendState&lt;&gt;::GetRHI();
+GraphicsPSOInit.BlendState = TStaticBlendState&lt;>::GetRHI();
 
-GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;&gt;::GetRHI();
+GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;>::GetRHI();
 
-GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false,CF_Always&gt;::GetRHI();
+GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false,CF_Always>::GetRHI();
 
 const ERHIFeatureLevel::Type FeatureLevel = GMaxRHIFeatureLevel;
 
-TShaderMap&lt;FGlobalShaderType&gt;\* ShaderMap = GetGlobalShaderMap(FeatureLevel);
+TShaderMap&lt;FGlobalShaderType>\* ShaderMap = GetGlobalShaderMap(FeatureLevel);
 
-TShaderMapRef&lt;FScreenVS&gt; VertexShader(ShaderMap);
+TShaderMapRef&lt;FScreenVS> VertexShader(ShaderMap);
 
-TShaderMapRef&lt;FScreenPS&gt; PixelShader(ShaderMap);
+TShaderMapRef&lt;FScreenPS> PixelShader(ShaderMap);
 
-GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = RendererModule-&gt;GetFilterVertexDeclaration().VertexDeclarationRHI;
+GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = RendererModule->GetFilterVertexDeclaration().VertexDeclarationRHI;
 
 GraphicsPSOInit.BoundShaderState.VertexShaderRHI = GETSAFERHISHADER_VERTEX(\*VertexShader);
 
@@ -116,11 +116,11 @@ SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
 
 FTexture2DRHIRef SourceBackBuffer = RHICmdList.GetViewportBackBuffer(ViewportRHI);
 
-if (TargetSize.X != SourceBackBuffer-&gt;GetSizeX() || TargetSize.Y != SourceBackBuffer-&gt;GetSizeY())
+if (TargetSize.X != SourceBackBuffer->GetSizeX() || TargetSize.Y != SourceBackBuffer->GetSizeY())
 
 {
 
-PixelShader-&gt;SetParameters(RHICmdList, TStaticSamplerState&lt;SF_Bilinear&gt;::GetRHI(), SourceBackBuffer);
+PixelShader->SetParameters(RHICmdList, TStaticSamplerState&lt;SF_Bilinear>::GetRHI(), SourceBackBuffer);
 
 }
 
@@ -128,19 +128,19 @@ else
 
 {
 
-PixelShader-&gt;SetParameters(RHICmdList, TStaticSamplerState&lt;SF_Point&gt;::GetRHI(), SourceBackBuffer);
+PixelShader->SetParameters(RHICmdList, TStaticSamplerState&lt;SF_Point>::GetRHI(), SourceBackBuffer);
 
 }
 
-float U = float(CaptureRect.Min.X) / float(SourceBackBuffer-&gt;GetSizeX());
+float U = float(CaptureRect.Min.X) / float(SourceBackBuffer->GetSizeX());
 
-float V = float(CaptureRect.Min.Y) / float(SourceBackBuffer-&gt;GetSizeY());
+float V = float(CaptureRect.Min.Y) / float(SourceBackBuffer->GetSizeY());
 
-float SizeU = float(CaptureRect.Max.X) / float(SourceBackBuffer-&gt;GetSizeX()) - U;
+float SizeU = float(CaptureRect.Max.X) / float(SourceBackBuffer->GetSizeX()) - U;
 
-float SizeV = float(CaptureRect.Max.Y) / float(SourceBackBuffer-&gt;GetSizeY()) - V;
+float SizeV = float(CaptureRect.Max.Y) / float(SourceBackBuffer->GetSizeY()) - V;
 
-RendererModule-&gt;DrawRectangle(
+RendererModule->DrawRectangle(
 
 RHICmdList,
 
@@ -186,7 +186,7 @@ Callback((FColor\*)ColorDataBuffer, Width, Height);
 
 RHICmdList.UnmapStagingSurface(ReadbackTexture);
 
-AvailableEvent-&gt;Trigger();
+AvailableEvent->Trigger();
 
 };
 
@@ -194,7 +194,7 @@ ENQUEUE_UNIQUE_RENDER_COMMAND_ONEPARAMETER(
 
 ResolveCaptureFrameTexture,
 
-TFunction&lt;void(FRHICommandListImmediate<)&gt;, InRenderCommand, RenderCommand,
+TFunction&lt;void(FRHICommandListImmediate&lt;)>, InRenderCommand, RenderCommand,
 
 {
 

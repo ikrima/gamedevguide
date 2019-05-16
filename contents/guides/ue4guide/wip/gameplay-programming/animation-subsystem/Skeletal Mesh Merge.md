@@ -6,23 +6,23 @@ Morph Mesh Merge:
 
 Morphtarget is very simple.
 
-UMorphTarget -&gt; FMorphTargetLODModel (per LOD) -&gt; FMorphTargetDelta
+UMorphTarget -> FMorphTargetLODModel (per LOD) -> FMorphTargetDelta
 
 This delta stores vertex index, and delta of position and normal.
 
 Mesh merge code is
 
-bool FSkeletalMeshMerge::DoMerge(TArray\* RefPoseOverrides / _= nullptr_ /)
+bool FSkeletalMeshMerge::DoMerge(TArray\* RefPoseOverrides / *= nullptr* /)
 
-1.  /\*\* Destination merged mesh \*/
+1. /\*\* Destination merged mesh \*/
 
-2.  USkeletalMesh\* MergeMesh;
+1. USkeletalMesh\* MergeMesh;
 
-3.  /\*\* Array of source skeletal meshes \*/
+1. /\*\* Array of source skeletal meshes \*/
 
-4.  TArray&lt;USkeletalMesh\*&gt; SrcMeshList;
+1. TArray&lt;USkeletalMesh\*> SrcMeshList;
 
-5.
+1.
 
 You have SrcMeshList, and at the end,
 
@@ -44,10 +44,10 @@ We create Morphtarget with internal object of USkeletalMesh, meaning you'll have
 
 MorphTarget = NewObject(BaseSkelMesh, FName(\*ShapeName));
 
-_From &lt;<https://udn.unrealengine.com/questions/397831/adding-morph-targets-to-skeletal-mesh-merge.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/397831/adding-morph-targets-to-skeletal-mesh-merge.html>>*
 
-bool FLODUtilities::RegenerateLOD(USkeletalMesh\* SkeletalMesh, int32 NewLODCount /_= 0_/, bool bRegenerateEvenIfImported /_= false_/)
+bool FLODUtilities::RegenerateLOD(USkeletalMesh\* SkeletalMesh, int32 NewLODCount /*= 0*/, bool bRegenerateEvenIfImported /*= false*/)
 
 Usually this is utility function for doing so.
 
-_From &lt;<https://udn.unrealengine.com/questions/456237/crash-skeletal-mesh-merge-output-has-no-lodrenderd.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/456237/crash-skeletal-mesh-merge-output-has-no-lodrenderd.html>>*

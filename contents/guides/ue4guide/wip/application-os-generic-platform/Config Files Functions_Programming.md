@@ -1,6 +1,6 @@
 **Wait on this delegate for using Config:**
 
-GConfig-&gt;bIsReadyForUse = true;
+GConfig->bIsReadyForUse = true;
 
 FCoreDelegates::ConfigReadyForUse.Broadcast();
 
@@ -12,11 +12,11 @@ FCoreDelegates::ConfigReadyForUse.Broadcast();
 
 - Get the name by this:
 
-  GetClass()-&gt;GetDefaultConfigFilename()
+  GetClass()->GetDefaultConfigFilename()
 
   **or**
 
-  ConfigFileName = uobj-&gt;GetDefaultConfigFilename();
+  ConfigFileName = uobj->GetDefaultConfigFilename();
 
 - Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
 
@@ -40,41 +40,41 @@ void SaveConfig() const
 
 {
 
-GConfig-&gt;SetString(STR_ConfigSection, STR_ConfigDirectoryKey, \*LastDirectory, ConfigFilename);
+GConfig->SetString(STR_ConfigSection, STR_ConfigDirectoryKey, \*LastDirectory, ConfigFilename);
 
-FConfigSection\* Sec = GConfig-&gt;GetSectionPrivate(STR_ConfigSection, true, false, ConfigFilename);
+FConfigSection\* Sec = GConfig->GetSectionPrivate(STR_ConfigSection, true, false, ConfigFilename);
 
 if (Sec)
 
 {
 
-Sec-&gt;Remove(NAME_ConfigRecentsFilesyKey);
+Sec->Remove(NAME_ConfigRecentsFilesyKey);
 
-for (int32 Index = RecentsFiles.Num() - 1; Index &gt;= 0; --Index)
+for (int32 Index = RecentsFiles.Num() - 1; Index >= 0; --Index)
 
 {
 
-Sec-&gt;Add(NAME_ConfigRecentsFilesyKey, \*RecentsFiles\[Index\]);
+Sec->Add(NAME_ConfigRecentsFilesyKey, \*RecentsFiles\[Index]);
 
 }
 
 }
 
-GConfig-&gt;EmptySection(TEXT("Internationalization.AssetGroupCultures"), GGameUserSettingsIni);
+GConfig->EmptySection(TEXT("Internationalization.AssetGroupCultures"), GGameUserSettingsIni);
 
-GConfig-&gt;Flush(false, GGameUserSettingsIni);
+GConfig->Flush(false, GGameUserSettingsIni);
 
-GConfig-&gt;Flush(false);
+GConfig->Flush(false);
 
 }
 
 **Get value from Config:**
 
-GConfig-&gt;GetBool(TEXT("/Script/UnrealEd.EditorLoadingSavingSettings"), TEXT("bForceCompilationAtStartup"), bNeedCompile, GEditorPerProjectIni)
+GConfig->GetBool(TEXT("/Script/UnrealEd.EditorLoadingSavingSettings"), TEXT("bForceCompilationAtStartup"), bNeedCompile, GEditorPerProjectIni)
 
 static const FBoolConfigValueHelper DisplayPrintStringSource(TEXT("Kismet"), TEXT("bLogPrintStringSource"), GEngineIni);
 
-GConfig-&gt;GetString(\*IniSection, \*(InConfigKey + TEXT(".EditorShowFlags")), ViewportInstanceSettings.EditorShowFlagsString, GEditorPerProjectIni);
+GConfig->GetString(\*IniSection, \*(InConfigKey + TEXT(".EditorShowFlags")), ViewportInstanceSettings.EditorShowFlagsString, GEditorPerProjectIni);
 
 **Save UProperties manually to config:**
 
@@ -102,7 +102,7 @@ const bool bIsPropertyInherited = Property->GetOwnerClass() != GetClass();
 
 UObject\* SuperClassDefaultObject = GetClass()->GetSuperClass()->GetDefaultObject();
 
-UArrayProperty* Array = dynamic_cast<UArrayProperty*>(Property);
+UArrayProperty* Array = dynamic_cast&lt;UArrayProperty*>(Property);
 
 if (Array)
 
@@ -116,7 +116,7 @@ Sec->Remove(\*Key);
 
 FScriptArrayHelper_InContainer ArrayHelper(Array, this);
 
-for (int32 i = 0; i < ArrayHelper.Num(); i++)
+for (int32 i = 0; i &lt; ArrayHelper.Num(); i++)
 
 {
 
@@ -136,7 +136,7 @@ else
 
 TCHAR TempKey[MAX_SPRINTF] = TEXT("");
 
-for (int32 Index = 0; Index < Property->ArrayDim; Index++)
+for (int32 Index = 0; Index &lt; Property->ArrayDim; Index++)
 
 {
 
@@ -172,7 +172,7 @@ GConfig->Flush(0);
 
 ​ // Look for the first matching INI file entry
 
-​ for (TMap&lt;FString, FConfigFile&gt;::TIterator It(\*GConfig); It; ++It)
+​ for (TMap&lt;FString, FConfigFile>::TIterator It(\*GConfig); It; ++It)
 
 ​ {
 
@@ -190,13 +190,13 @@ GConfig->Flush(0);
 
 ​ check(ConfigFile != nullptr);
 
-​ FConfigSection\* Section = ConfigFile-&gt;Find(TEXT("/Script/Engine.PlayerInput"));
+​ FConfigSection\* Section = ConfigFile->Find(TEXT("/Script/Engine.PlayerInput"));
 
 ​ if (Section != nullptr)
 
 ​ {
 
-​ Section-&gt;HandleAddCommand(TEXT("DebugExecBindings"), TEXT(" (Key=F12,Command=\\"RenderDoc.CaptureFrame\\", Alt=true)"), true);
+​ Section->HandleAddCommand(TEXT("DebugExecBindings"), TEXT(" (Key=F12,Command=\\"RenderDoc.CaptureFrame\\", Alt=true)"), true);
 
 ​ }
 
@@ -206,11 +206,11 @@ void UFbxAssetImportData::LoadOptions() {}
 
 **Main Structs:**
 
-class FConfigFile : public TMap&lt;FString,FConfigSection&gt;
+class FConfigFile : public TMap&lt;FString,FConfigSection>
 
 FConfigFile PlatformIniFile;
 
-​ LocalConfigCache-&gt;LoadLocalIniFile(PlatformIniFile, \*ClassConfigName, true, \*SelectedTargetPlatform);
+​ LocalConfigCache->LoadLocalIniFile(PlatformIniFile, \*ClassConfigName, true, \*SelectedTargetPlatform);
 
 /\*\*
 
@@ -230,7 +230,7 @@ FConfigFile PlatformIniFile;
 
 \*
 
-\* @param FinalIniFilename The output name of the generated .ini file (in Game\Saved\Config)
+\* @param FinalIniFilename The output name of the generated .ini file (in Game\\Saved\\Config)
 
 \* @param BaseIniName The "base" ini name, with no extension (ie, Engine, Game, etc)
 

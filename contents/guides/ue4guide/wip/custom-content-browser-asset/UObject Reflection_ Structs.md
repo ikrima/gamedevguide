@@ -1,32 +1,32 @@
 Initialize Struct:
 
----
+* * *
 
-StructMemory = (uint8\*)FMemory::Malloc(ActualStruct-&gt;GetStructureSize());
+StructMemory = (uint8\*)FMemory::Malloc(ActualStruct->GetStructureSize());
 
-ActualStruct-&gt;InitializeStruct(StructMemory);
+ActualStruct->InitializeStruct(StructMemory);
 
 Copy struct:
 
----
+* * *
 
 if (ProcAnimComponent && OutInitValueStore)
 
 {
 
-void\* RowPtr = Table-&gt;FindRowUnchecked(RowName);
+void\* RowPtr = Table->FindRowUnchecked(RowName);
 
 if (RowPtr != NULL)
 
 {
 
-UScriptStruct\* StructType = Table-&gt;RowStruct;
+UScriptStruct\* StructType = Table->RowStruct;
 
 if (StructType != NULL)
 
 {
 
-StructType-&gt;CopyScriptStruct(OutRowPtr, RowPtr);
+StructType->CopyScriptStruct(OutRowPtr, RowPtr);
 
 bFoundRow = true;
 
@@ -38,11 +38,11 @@ bFoundRow = true;
 
 Destroy Struct:
 
----
+* * *
 
 UScriptStruct\* structType = FESCompSumType::GetStructType(CompStructType);
 
-structType-&gt;DestroyStruct(StructData);
+structType->DestroyStruct(StructData);
 
 Reflection through struct params apart:
 
@@ -56,8 +56,8 @@ FMovieSceneEvalTemplatePtr& operator=(const FMovieSceneEvalTemplatePtr& RHS)
 >
 > {
 >
-> UScriptStruct::ICppStructOps& StructOps = \*RHS-&gt;GetScriptStruct().GetCppStructOps();
-
+> UScriptStruct::ICppStructOps& StructOps = \*RHS->GetScriptStruct().GetCppStructOps();
+>
 > void\* Allocation = Reserve(StructOps.GetSize(), StructOps.GetAlignment());
 >
 > StructOps.Construct(Allocation);
@@ -65,7 +65,7 @@ FMovieSceneEvalTemplatePtr& operator=(const FMovieSceneEvalTemplatePtr& RHS)
 > StructOps.Copy(Allocation, &RHS.GetValue(), 1);
 >
 > }
-
+>
 > return \*this;
 >
 > }

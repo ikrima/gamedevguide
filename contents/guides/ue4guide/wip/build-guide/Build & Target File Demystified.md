@@ -1,10 +1,8 @@
-```
-sortIndex: 2
-```
+    sortIndex: 2
 
-http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified/
+<http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified/>
 
-https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4
+<https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4>
 
 ## Project Generation
 
@@ -44,4 +42,4 @@ Visual Studio solution files containing all modules
 
 - Dynamically loaded modules do not include the header files at link time, and instead should be treated as an external dll, loaded when needed. The key difference is that because of the static linking, if the module is missing your code will fail out.
 
-_Reference From https://wiki.unrealengine.com/An_Introduction_to_UE4_Plugins_
+*Reference From <https://wiki.unrealengine.com/An_Introduction_to_UE4_Plugins>*

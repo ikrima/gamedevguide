@@ -48,7 +48,7 @@ r.CompileShadersForDevelopment=1
 
 r.MaterialEditor.UseDevShaders=1
 
-[DevOptions.Shaders\]
+\[DevOptions.Shaders]
 
 ; See FShaderCompilingManager for documentation on what these do
 
@@ -152,7 +152,7 @@ bb.perf.SetShaderCompileMode 0
 
 - This is equivalent to at runtime doing:
 
-[DevOptions.Shaders\]
+\[DevOptions.Shaders]
 
 ; See FShaderCompilingManager for documentation on what these do
 
@@ -196,12 +196,12 @@ A lot of these are now configurable through environment flags/switches:
 
 - Rejoice at seeing the source code for your shaders show up in GPU PerfStudio 2.
 
-_From &lt;<https://udn.unrealengine.com/questions/166316/dx11-hlsl-shader-debugging.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/166316/dx11-hlsl-shader-debugging.html>>*
 
 <https://udn.unrealengine.com/questions/166316/dx11-hlsl-shader-debugging.html>
 
 <https://www.unrealengine.com/blog/debugging-the-shader-compiling-process>
 
-https://wiki.unrealengine.com/Debugging_Renderer_Code>
+<https://wiki.unrealengine.com/Debugging_Renderer_Code>>
 
-https://forums.unrealengine.com/showthread.php?6719-Debugging-USF-(Unreal-Shader-Files)>
+<https://forums.unrealengine.com/showthread.php?6719-Debugging-USF-(Unreal-Shader-Files)>>

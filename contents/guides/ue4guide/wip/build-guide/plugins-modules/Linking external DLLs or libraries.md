@@ -1,26 +1,24 @@
-```
-sortIndex: 2
-```
+    sortIndex: 2
 
 Dynamic DLL
-https://wiki.unrealengine.com/Linking_Dlls
+<https://wiki.unrealengine.com/Linking_Dlls>
 
 Plugins Overview & Third Party Overview:
-https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4
+<https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4>
 
 Add header only (no dll/lib) third party stuff:
 
 - Have to make a module (look at SDL2.build.cs or Leap.Build.cs)
 
-- https://forums.unrealengine.com/development-discussion/engine-source-github/36571-how-do-i-add-dynamic-libraries-to-the-engine-plugins?p=383246#post383246
+- <https://forums.unrealengine.com/development-discussion/engine-source-github/36571-how-do-i-add-dynamic-libraries-to-the-engine-plugins?p=383246#post383246>
 
 Linking 3rd Third Party Static Library:
 
-https://wiki.unrealengine.com/Linking_Static_Libraries_Using_The_Build_System
+<https://wiki.unrealengine.com/Linking_Static_Libraries_Using_The_Build_System>
 
-https://answers.unrealengine.com/questions/243103/how-to-i-link-a-third-party-library-using-the-unre.html
+<https://answers.unrealengine.com/questions/243103/how-to-i-link-a-third-party-library-using-the-unre.html>
 
-https://wiki.unrealengine.com/Integrating_OpenCV_Into_Unreal_Engine_4
+<https://wiki.unrealengine.com/Integrating_OpenCV_Into_Unreal_Engine_4>
 PublicDelayLoadDLLs.Add("opencv_calib3d2410d.dll");
 PublicAdditionalLibraries.Add("opencv_video2410d.lib");
 
@@ -37,7 +35,7 @@ PublicAdditionalLibraries.Add("opencv_video2410d.lib");
 •Runtime – for anything
 •Programs – for standalone programs
 •Third Party – for external code & libs
-_Note: The UE4 EULA prohibits inclusion of Editor modules in shipping games_
+*Note: The UE4 EULA prohibits inclusion of Editor modules in shipping games*
 
 **Structure of Modules**
 
@@ -74,7 +72,8 @@ PublicDependencyModuleNames
 
 - Modules that your module’s public interface requires for compiling and linking DynamicallyLoadedModuleNames
 
-* Modules that are loaded at run-time via ModuleManager (this is to ensure that they get compiled)
+
+- Modules that are loaded at run-time via ModuleManager (this is to ensure that they get compiled)
 
 More options in RulesCompiler.cs
 
@@ -106,11 +105,14 @@ Structure of Plug-ins
 
 - One or more modules
 
-* Plug-in descriptor
+
+- Plug-in descriptor
+
 
 - Content (optional)
 
-* Resources (optional)
+
+- Resources (optional)
   - Plug-in Descriptor
   - Json file {PluginName.uplugin}
   - Inside root of plug-in directory

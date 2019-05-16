@@ -56,17 +56,17 @@ Triangles&lt;=92
 
 Triangles&lt;:92
 
-Greater (Binary) &gt; Tests the value returned for the given key to see if
+Greater (Binary) > Tests the value returned for the given key to see if
 
 it is larger than the given value (numeric types
 
 only).
 
-Triangles&gt;92
+Triangles>92
 
-GreaterOrEqual (Binary) &gt;=
+GreaterOrEqual (Binary) >=
 
-&gt;:
+\>:
 
 Tests the value returned for the given key to see if
 
@@ -74,15 +74,15 @@ it is larger than, or equal to, the given value
 
 (numeric types only).
 
-Triangles&gt;=92
+Triangles>=92
 
-Triangles&gt;:92
+Triangles>:92
 
 Or (Binary) OR
 
-||
+\|\|
 
-|
+\|
 
 Tests two operands and returns true if either
 
@@ -126,17 +126,17 @@ TextCmpInvert (Pre-Unary) - Modifies a text operand so that it will return the
 
 inverted result of the operation it is involved in.
 
--Blast
+\-Blast
 
--”Blast”
+\-”Blast”
 
 TextCmpExact (Pre-Unary) + Modifies a text operand so that it will perform an
 
 “exact” text comparison.
 
-+Blast
+\+Blast
 
-+”Blast”
+\+”Blast”
 
 TextCmpAnchor (Pre-Unary) ... Modifies a text operand so that it will perform an ...ast
 

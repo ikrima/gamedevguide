@@ -1,20 +1,20 @@
 # 3 classes of lights:
 
-1.  Static: Precomputed lighting & shadowing stored in the lightmap for static objects.
+1. Static: Precomputed lighting & shadowing stored in the lightmap for static objects.
 
-2.  Stationary: Lights can't move but color & brightness can change.
+1. Stationary: Lights can't move but color & brightness can change.
 
-    - Indirect is baked through Lightmass **(and always used even if the Light visibility is off; can control though through IndirectLightingIntensity)**
+   - Indirect is baked through Lightmass **(and always used even if the Light visibility is off; can control though through IndirectLightingIntensity)**
 
-    - Direct lighting is calculated as normal using deferred shading
+   - Direct lighting is calculated as normal using deferred shading
 
-    - Static Object Shadowing is stored in distance field shadow maps (crisp even at low resolution)
+   - Static Object Shadowing is stored in distance field shadow maps (crisp even at low resolution)
 
-    - Dynamic Object Shadowing uses two dynamic lights: one to create distance field shadows for casting shadows from dynamic objects to static objects, the other to cast shadows from world onto objects
+   - Dynamic Object Shadowing uses two dynamic lights: one to create distance field shadows for casting shadows from dynamic objects to static objects, the other to cast shadows from world onto objects
 
-    - **Directional Stationary Lights:** Special case that uses Cascaded Shadow Maps as well as static shadows. Has ability to define a smaller cascade and blend between CSM to Distance Field Shadows
+   - **Directional Stationary Lights:** Special case that uses Cascaded Shadow Maps as well as static shadows. Has ability to define a smaller cascade and blend between CSM to Distance Field Shadows
 
-3.  Movable: Fully dynamic lights
+1. Movable: Fully dynamic lights
 
 ## Sky Lights
 
@@ -48,7 +48,7 @@
 
 - Lightmass Importance Volume controls photon distribution. Movable objects outside of Lightmass Importance Volume get zero indirect. Static geo gets one bounce indirect
 
-- _Static Lighting Level Scale:_ Set physical scale of the world for baking (adjusts heuristics for photon firing)
+- *Static Lighting Level Scale:* Set physical scale of the world for baking (adjusts heuristics for photon firing)
 
 ## Reflection Capture
 
@@ -88,4 +88,4 @@ There are a few performance hazards that happen with movable objects and station
 
 - 'profilegpu' - measures GPU execution time
 
-_From &lt;<https://answers.unrealengine.com/questions/3438/large-actor-receives-a-pre-shadow-and-will-cause-a.html>&gt;_
+*From &lt;<https://answers.unrealengine.com/questions/3438/large-actor-receives-a-pre-shadow-and-will-cause-a.html>>*

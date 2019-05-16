@@ -16,9 +16,9 @@ if (Canvas == nullptr)
 
 {
 
-Canvas = NewObject&lt;UCanvas&gt;(GetTransientPackage(), CanvasName);
+Canvas = NewObject&lt;UCanvas>(GetTransientPackage(), CanvasName);
 
-Canvas-&gt;AddToRoot();
+Canvas->AddToRoot();
 
 }
 
@@ -26,13 +26,13 @@ Canvas-&gt;AddToRoot();
 
 const UWorld\* WorldPtr = World.Get();
 
-const ERHIFeatureLevel::Type FeatureLevel = WorldPtr != nullptr ? World-&gt;FeatureLevel : GMaxRHIFeatureLevel;
+const ERHIFeatureLevel::Type FeatureLevel = WorldPtr != nullptr ? World->FeatureLevel : GMaxRHIFeatureLevel;
 
 FCanvas RenderCanvas(GameThread_GetRenderTargetResource(), nullptr, FApp::GetCurrentTime() - GStartTime, FApp::GetDeltaTime(), FApp::GetCurrentTime() - GStartTime, FeatureLevel);
 
-Canvas-&gt;Init(GetSurfaceWidth(), GetSurfaceHeight(), nullptr, &RenderCanvas);
+Canvas->Init(GetSurfaceWidth(), GetSurfaceHeight(), nullptr, &RenderCanvas);
 
-Canvas-&gt;Update();
+Canvas->Update();
 
 // Update the resource immediately to remove it from the deferred resource update list. This prevents the texture
 
@@ -56,9 +56,9 @@ TextureRenderTarget,
 
 {
 
-SetRenderTarget(RHICmdList, TextureRenderTarget-&gt;GetRenderTargetTexture(), FTexture2DRHIRef(), true);
+SetRenderTarget(RHICmdList, TextureRenderTarget->GetRenderTargetTexture(), FTexture2DRHIRef(), true);
 
-RHICmdList.SetViewport(0, 0, 0.0f, TextureRenderTarget-&gt;GetSizeXY().X, TextureRenderTarget-&gt;GetSizeXY().Y, 1.0f);
+RHICmdList.SetViewport(0, 0, 0.0f, TextureRenderTarget->GetSizeXY().X, TextureRenderTarget->GetSizeXY().Y, 1.0f);
 
 }
 
@@ -76,7 +76,7 @@ ReceiveUpdate(Canvas, GetSurfaceWidth(), GetSurfaceHeight());
 
 // Clean up and flush the rendering canvas.
 
-Canvas-&gt;Canvas = nullptr;
+Canvas->Canvas = nullptr;
 
 RenderCanvas.Flush_GameThread();
 
@@ -98,7 +98,7 @@ GameThread_GetRenderTargetResource(),
 
 {
 
-RHICmdList.CopyToResolveTarget(RenderTargetResource-&gt;GetRenderTargetTexture(), RenderTargetResource-&gt;TextureRHI, true, FResolveParams());
+RHICmdList.CopyToResolveTarget(RenderTargetResource->GetRenderTargetTexture(), RenderTargetResource->TextureRHI, true, FResolveParams());
 
 ​ }
 
@@ -122,11 +122,11 @@ bool FCanvasTriangleRendererItem::Render_GameThread(const FCanvas\* Canvas)
 
 ​ {
 
-​ CurrentRealTime = Canvas-&gt;GetCurrentRealTime();
+​ CurrentRealTime = Canvas->GetCurrentRealTime();
 
-​ CurrentWorldTime = Canvas-&gt;GetCurrentWorldTime();
+​ CurrentWorldTime = Canvas->GetCurrentWorldTime();
 
-​ DeltaWorldTime = Canvas-&gt;GetCurrentDeltaWorldTime();
+​ DeltaWorldTime = Canvas->GetCurrentDeltaWorldTime();
 
 }
 
@@ -134,21 +134,21 @@ bool FCanvasTriangleRendererItem::Render_GameThread(const FCanvas\* Canvas)
 
 ​ // current render target set for the canvas
 
-​ const FRenderTarget\* CanvasRenderTarget = Canvas-&gt;GetRenderTarget();
+​ const FRenderTarget\* CanvasRenderTarget = Canvas->GetRenderTarget();
 
 ​ FSceneViewFamily\* ViewFamily = new FSceneViewFamily(FSceneViewFamily::ConstructionValues(
 
 ​ CanvasRenderTarget,
 
-​ Canvas-&gt;GetScene(),
+​ Canvas->GetScene(),
 
 ​ FEngineShowFlags(ESFIM_Game))
 
 ​ .SetWorldTimes(CurrentWorldTime, DeltaWorldTime, CurrentRealTime)
 
-​ .SetGammaCorrection(CanvasRenderTarget-&gt;GetDisplayGamma()));
+​ .SetGammaCorrection(CanvasRenderTarget->GetDisplayGamma()));
 
-​ FIntRect ViewRect(FIntPoint(0, 0), CanvasRenderTarget-&gt;GetSizeXY());
+​ FIntRect ViewRect(FIntPoint(0, 0), CanvasRenderTarget->GetSizeXY());
 
 // make a temporary view
 
@@ -162,7 +162,7 @@ ViewInitOptions.ViewOrigin = FVector::ZeroVector;
 
 ViewInitOptions.ViewRotationMatrix = FMatrix::Identity;
 
-ViewInitOptions.ProjectionMatrix = Data-&gt;Transform.GetMatrix();
+ViewInitOptions.ProjectionMatrix = Data->Transform.GetMatrix();
 
 ViewInitOptions.BackgroundColor = FLinearColor::Black;
 
@@ -170,7 +170,7 @@ ViewInitOptions.OverlayColor = FLinearColor::White;
 
 FSceneView\* View = new FSceneView(ViewInitOptions);
 
-bool bNeedsToSwitchVerticalAxis = RHINeedsToSwitchVerticalAxis(Canvas-&gt;GetShaderPlatform()) && XOR(IsMobileHDR(),Canvas-&gt;GetAllowSwitchVerticalAxis());
+bool bNeedsToSwitchVerticalAxis = RHINeedsToSwitchVerticalAxis(Canvas->GetShaderPlatform()) && XOR(IsMobileHDR(),Canvas->GetAllowSwitchVerticalAxis());
 
 struct FDrawTriangleParameters
 
@@ -194,19 +194,19 @@ struct FDrawTriangleParameters
 
 ​ Data,
 
-​ (uint32)Canvas-&gt;IsHitTesting(),
+​ (uint32)Canvas->IsHitTesting(),
 
-​ Canvas-&gt;GetAllowedModes()
+​ Canvas->GetAllowedModes()
 
 };
 
-​ InitTriangleBuffers(&Data-&gt;VertexFactory, Data-&gt;Triangles, \*View, bNeedsToSwitchVerticalAxis);
+​ InitTriangleBuffers(&Data->VertexFactory, Data->Triangles, \*View, bNeedsToSwitchVerticalAxis);
 
 ​ FDrawTriangleParameters Parameters = DrawTriangleParameters;
 
 ​ ENQUEUE_RENDER_COMMAND(DrawTriangleCommand)(
 
-​ [Parameters\](FRHICommandListImmediate& RHICmdList)
+​ \[Parameters](FRHICommandListImmediate& RHICmdList)
 
 ​ {
 
@@ -214,41 +214,41 @@ struct FDrawTriangleParameters
 
 // disable depth test & writes
 
-DrawRenderState.SetDepthStencilState(TStaticDepthStencilState&lt;false, CF_Always&gt;::GetRHI());
+DrawRenderState.SetDepthStencilState(TStaticDepthStencilState&lt;false, CF_Always>::GetRHI());
 
 ​ SCOPED_DRAW_EVENT(RHICmdList, CanvasDrawTriangle);
 
-​ for (int32 TriIdx = 0; TriIdx &lt; Parameters.RenderData-&gt;Triangles.Num(); TriIdx++)
+​ for (int32 TriIdx = 0; TriIdx &lt; Parameters.RenderData->Triangles.Num(); TriIdx++)
 
 ​ {
 
-​ const FRenderData::FTriangleInst& Tri = Parameters.RenderData-&gt;Triangles\[TriIdx\];
+​ const FRenderData::FTriangleInst& Tri = Parameters.RenderData->Triangles\[TriIdx];
 
 ​ // update the FMeshBatch
 
-​ FMeshBatch& TriMesh = Parameters.RenderData-&gt;TriMesh.TriMeshElement;
+​ FMeshBatch& TriMesh = Parameters.RenderData->TriMesh.TriMeshElement;
 
-​ TriMesh.VertexFactory = &Parameters.RenderData-&gt;VertexFactory;
+​ TriMesh.VertexFactory = &Parameters.RenderData->VertexFactory;
 
-​ TriMesh.MaterialRenderProxy = Parameters.RenderData-&gt;MaterialRenderProxy;
+​ TriMesh.MaterialRenderProxy = Parameters.RenderData->MaterialRenderProxy;
 
-​ TriMesh.Elements\[0\].BaseVertexIndex = 3 \* TriIdx;
+​ TriMesh.Elements\[0].BaseVertexIndex = 3 \* TriIdx;
 
 GetRendererModule().DrawTileMesh(RHICmdList, DrawRenderState, \*Parameters.View, TriMesh, Parameters.bIsHitTesting, Tri.HitProxyId);
 
 ​ }
 
-​ Parameters.RenderData-&gt;StaticMeshVertexBuffers.PositionVertexBuffer.ReleaseResource();
+​ Parameters.RenderData->StaticMeshVertexBuffers.PositionVertexBuffer.ReleaseResource();
 
-​ Parameters.RenderData-&gt;StaticMeshVertexBuffers.StaticMeshVertexBuffer.ReleaseResource();
+​ Parameters.RenderData->StaticMeshVertexBuffers.StaticMeshVertexBuffer.ReleaseResource();
 
-​ Parameters.RenderData-&gt;StaticMeshVertexBuffers.ColorVertexBuffer.ReleaseResource();
+​ Parameters.RenderData->StaticMeshVertexBuffers.ColorVertexBuffer.ReleaseResource();
 
-​ Parameters.RenderData-&gt;TriMesh.ReleaseResource();
+​ Parameters.RenderData->TriMesh.ReleaseResource();
 
-​ Parameters.RenderData-&gt;VertexFactory.ReleaseResource();
+​ Parameters.RenderData->VertexFactory.ReleaseResource();
 
-​ delete Parameters.View-&gt;Family;
+​ delete Parameters.View->Family;
 
 ​ delete Parameters.View;
 
@@ -262,7 +262,7 @@ GetRendererModule().DrawTileMesh(RHICmdList, DrawRenderState, \*Parameters.View,
 
 });
 
-if (Canvas-&gt;GetAllowedModes() & FCanvas::Allow_DeleteOnRender)
+if (Canvas->GetAllowedModes() & FCanvas::Allow_DeleteOnRender)
 
 ​ {
 

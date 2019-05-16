@@ -8,7 +8,7 @@ There are three basic ways to allocate or free memory within the Unreal Engine 4
 
 - **Global new and delete operators**. By default they a only defined in the modules in ModuleBoilerplate.h which means that many calls to new and delete were not being handled within the Unreal Engine 4 memory system. The overloaded operators actually call the FMemory functions.
 
-_From &lt;<https://pzurita.wordpress.com/>&gt;_
+*From &lt;<https://pzurita.wordpress.com/>>*
 
 \* \*
 
@@ -51,4 +51,4 @@ Ultimately they call through to FMemory::Malloc, which will forward it onto whic
 
 I tried allocating 0x7fffffffffffffff bytes. With a debugger attached, it broke into the debugger on the failed allocation; without a debugger attached, the application just quit.
 
-_From &lt;<https://wiki.unrealengine.com/Garbage_Collection_%26*Dynamic_Memory_Allocation>&gt;*
+*From &lt;&lt;<https://wiki.unrealengine.com/Garbage_Collection>*%26*Dynamic_Memory_Allocation>>*

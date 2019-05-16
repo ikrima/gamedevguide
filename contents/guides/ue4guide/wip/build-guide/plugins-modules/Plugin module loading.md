@@ -6,4 +6,4 @@ You can configure the module within your uplugin file as "LoadingPhase": "None",
 
 Then call FModuleManager::LoadModule in your code to load it by name when you need it.
 
-_Reference From https://forums.unrealengine.com/development-discussion/c-gameplay-programming/87848-plug-in-versus-modules_
+*Reference From <https://forums.unrealengine.com/development-discussion/c-gameplay-programming/87848-plug-in-versus-modules>*

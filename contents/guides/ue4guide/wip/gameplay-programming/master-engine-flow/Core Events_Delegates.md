@@ -59,7 +59,7 @@ struct ENGINE_API FEditorSupportDelegates
 > /\*\* delegate type for scalar parameter default change event \*/
 >
 > DECLARE_MULTICAST_DELEGATE_ThreeParams(FOnScalarParameterDefaultChanged, class UMaterialExpression\*, FName, float);
-
+>
 > /\*\* Called when all viewports need to be redrawn \*/
 >
 > static FSimpleMulticastDelegate RedrawAllViewports;
@@ -219,27 +219,27 @@ DEFINE_GAME_DELEGATE_TYPED(PostCommitMapChangeDelegate, FSimpleMulticastDelegate
 > // Called when a property is changed
 >
 > static FOnObjectPropertyChanged OnObjectPropertyChanged;
-
+>
 > // Set of objects modified this frame, to prevent multiple triggerings of the OnObjectModified delegate.
 >
-> static TSet&lt;UObject\*&gt; ObjectsModifiedThisFrame;
+> static TSet&lt;UObject\*> ObjectsModifiedThisFrame;
 
 // Sent at the very beginning of LoadMap
 
 > DECLARE_MULTICAST_DELEGATE_OneParam(FPreLoadMapDelegate, const FString& /\* MapName \*/);
 >
 > static FPreLoadMapDelegate PreLoadMap;
-
+>
 > // Sent at the \_successful\_ end of LoadMap
 >
 > DECLARE_MULTICAST_DELEGATE_OneParam(FPostLoadMapDelegate, UWorld\* /\* LoadedWorld \*/);
 >
 > static FPostLoadMapDelegate PostLoadMapWithWorld;
-
+>
 > DEPRECATED(4.16, "Use PostLoadMapWithWorld instead.")
 >
 > static FSimpleMulticastDelegate PostLoadMap;
-
+>
 > // Sent at the \_successful\_ end of LoadMap
 
 ## Also FWorldDelegates in World.h:
@@ -269,7 +269,7 @@ static FOnWorldTickStart OnWorldTickStart;
 > // Post duplication event.
 >
 > static FWorldPostDuplicateEvent OnPostDuplicate;
-
+>
 > // Callback for world cleanup
 >
 > static FWorldCleanupEvent OnWorldCleanup;
@@ -277,15 +277,15 @@ static FOnWorldTickStart OnWorldTickStart;
 > // Callback for world cleanup end
 >
 > static FWorldCleanupEvent OnPostWorldCleanup;
-
+>
 > // Callback for world destruction (only called for initialized worlds)
 >
 > static FWorldEvent OnPreWorldFinishDestroy;
-
+>
 > // Sent when a ULevel is added to the world via UWorld::AddToWorld
 >
 > static FOnLevelChanged                        LevelAddedToWorld;
-
+>
 > // Sent when a ULevel is removed from the world via UWorld::RemoveFromWorld or
 >
 > // LoadMap (a NULL object means the LoadMap case, because all levels will be
@@ -305,7 +305,7 @@ static FLevelOffsetEvent                PostApplyLevelOffset;
 > // Delegate called when levelscript actions need refreshing
 >
 > DECLARE_MULTICAST_DELEGATE_OneParam(FRefreshLevelScriptActionsEvent, UWorld\*);
-
+>
 > // Called when changes in the levels require blueprint actions to be refreshed.
 >
 > static FRefreshLevelScriptActionsEvent RefreshLevelScriptActions;
@@ -319,7 +319,7 @@ static FLevelOffsetEvent                PostApplyLevelOffset;
 /\*\* Broadcasts when a world is added. \*/
 
 > FWorldAddedEvent                        WorldAddedEvent;
-
+>
 > /\*\* Broadcasts when a world is destroyed. \*/
 >
 > FWorldDestroyedEvent                WorldDestroyedEvent;
@@ -331,39 +331,39 @@ private:
 > /\*\* Broadcasts whenever a world's actor list changes in a way not specifiable through other LevelActor\_\_Events \*/
 >
 > FLevelActorListChangedEvent LevelActorListChangedEvent;
-
+>
 > /\*\* Broadcasts whenever an actor is added. \*/
 >
 > FLevelActorAddedEvent LevelActorAddedEvent;
-
+>
 > /\*\* Broadcasts whenever an actor is removed. \*/
 >
 > FLevelActorDeletedEvent LevelActorDeletedEvent;
-
+>
 > /\*\* Broadcasts whenever an actor is attached. \*/
 >
 > FLevelActorAttachedEvent LevelActorAttachedEvent;
-
+>
 > /\*\* Broadcasts whenever an actor is detached. \*/
 >
 > FLevelActorDetachedEvent LevelActorDetachedEvent;
-
+>
 > /\*\* Broadcasts whenever an actor's folder has changed. \*/
 >
 > FLevelActorFolderChangedEvent LevelActorFolderChangedEvent;
-
+>
 > /\*\* Broadcasts whenever an actor is being renamed \*/
 >
 > FLevelActorRequestRenameEvent LevelActorRequestRenameEvent;
-
+>
 > /\*\* Broadcasts whenever a component is being renamed \*/
 >
 > FLevelComponentRequestRenameEvent LevelComponentRequestRenameEvent;
-
+>
 > /\*\* Broadcasts after an actor has been moved, rotated or scaled \*/
 >
 > FOnActorMovedEvent                OnActorMovedEvent;
-
+>
 > /\*\* Broadcasts after a component has been moved, rotated or scaled \*/
 >
 > FOnComponentTransformChangedEvent OnComponentTransformChangedEvent;
@@ -371,7 +371,7 @@ private:
 > /\*\* Delegate broadcast after UEditorEngine::Tick has been called (or UGameEngine::Tick in standalone) \*/
 >
 > FPostEditorTick PostEditorTickEvent;
-
+>
 > /\*\* Delegate broadcast when the editor is closing \*/
 >
 > FEditorCloseEvent EditorCloseEvent;

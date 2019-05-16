@@ -6,11 +6,11 @@ hit pause to see if the gamethread is causing problems (hit pause key
 
 0.6.0 has Oculus
 
-IF RT was over 3 or 4 =&gt; causes problems
+IF RT was over 3 or 4 => causes problems
 
 stat scenerendering (gives good overview)
 
-NickP -&gt; Send code changes to read stats
+NickP -> Send code changes to read stats
 
 TiledDeferredRendering is 2 ms overhead
 
@@ -60,7 +60,7 @@ Show flags
 
 Use layers
 
-Show \[layer name\]
+Show \[layer name]
 
 hit pause
 

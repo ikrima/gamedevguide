@@ -1,6 +1,4 @@
-```
-sortIndex: 1
-```
+    sortIndex: 1
 
 # Overview
 
@@ -30,25 +28,26 @@ Reference: D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Source\\Pr
 
   - If you run one of these **with -listonly added to the command**, you will be able to see what will be built and a list of additional options you can specify. By default it will attempt to build every target platform your host machine is capable of making builds for, except for XboxOne and PS4, which are disabled by default. You can disable target platforms by adding -set:WithWin64=false to the commandline and also skip over the creation of DDC for Engine and Template content by passing -WithDDC=false.
 
-_Reference From https://forums.unrealengine.com/showthread.php?119130-Unreal-Engine-4-13-Preview&p=575178&viewfull=1#post575178_
+*Reference From <https://forums.unrealengine.com/showthread.php?119130-Unreal-Engine-4-13-Preview&p=575178&viewfull=1#post575178>*
 
 - <https://answers.unrealengine.com/questions/416396/building-binary-editor-from-source-for-artists.html>
 
 - <https://forums.unrealengine.com/showthread.php?123490-Current-advice-for-distributing-custom-engine-builds-to-team-without-recompiling>
 
-* New: Using the -precompile option with UnrealBuildTool will now build all engine modules. Overriding the GetModulesToPrecompile() function from a game's target rules is no longer necessary, and has been deprecated.
 
-_Reference From https://www.unrealengine.com/blog/unreal-engine-4-11-released_
+- New: Using the -precompile option with UnrealBuildTool will now build all engine modules. Overriding the GetModulesToPrecompile() function from a game's target rules is no longer necessary, and has been deprecated.
+
+*Reference From <https://www.unrealengine.com/blog/unreal-engine-4-11-released>*
 
 - BuildGraph system & creating precompiled engine builds/installed builds:
 
-  - https://docs.unrealengine.com/latest/INT/Programming/Development/InstalledBuildReference/index.html
+  - <https://docs.unrealengine.com/latest/INT/Programming/Development/InstalledBuildReference/index.html>
 
-  - https://docs.unrealengine.com/latest/INT/Programming/Development/BuildGraph/index.html
+  - <https://docs.unrealengine.com/latest/INT/Programming/Development/BuildGraph/index.html>
 
-  - http://jackknobel.com/How-To/BuildGraph
+  - <http://jackknobel.com/How-To/BuildGraph>
 
-  - http://jackknobel.com/BuildGraph/Building-an-installed-ue4/
+  - <http://jackknobel.com/BuildGraph/Building-an-installed-ue4/>
 
 - (4.13 Deprecated) Coherent explanation on Rocket build process/GUBP: <https://github.com/Kalmalyzer/UE4RocketBuild>
 
@@ -68,7 +67,7 @@ _Reference From https://www.unrealengine.com/blog/unreal-engine-4-11-released_
 
 ## Building Configuration With Custom Build Compiler Flags
 
-- Reference: https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/TargetFiles/
+- Reference: <https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/TargetFiles/>
 
 - Your Game.target.cs file configures the build environment and flags
 
@@ -109,21 +108,19 @@ OutCPPEnvironmentConfiguration.AdditionalArguments = "/Zm46";
 
 **DEPRECATED**
 
-```
-//public override bool ShouldUseSharedBuildEnvironment(TargetInfo Target)
+    //public override bool ShouldUseSharedBuildEnvironment(TargetInfo Target)
 
-//{
+    //{
 
-// return false;
+    // return false;
 
-//}
-```
+    //}
 
 ## Building Lighting from Command Line
 
-UE4-Editor.exe \[Project Folder Path\] -run=resavepackages -buildlighting -MapsOnly -ProjectOnly -AllowCommandletRendering -Map=\[Name of map\]
+UE4-Editor.exe \[Project Folder Path] -run=resavepackages -buildlighting -MapsOnly -ProjectOnly -AllowCommandletRendering -Map=\[Name of map]
 
-_Reference From https://wiki.unrealengine.com/LightingTroubleshootingGuide_
+*Reference From <https://wiki.unrealengine.com/LightingTroubleshootingGuide>*
 
 GenerateProjectFiles.bat
 
@@ -157,7 +154,7 @@ Builds have 2 parts which you can combine, there also some hiddden options you c
 
 - Server - Without editor and client, in other words dedicated server build, but note that other builds (except "Client" ofcorse) can function as dedicated server too
 
-_Reference From https://answers.unrealengine.com/questions/194712/differences-between-build-configurations.html_
+*Reference From <https://answers.unrealengine.com/questions/194712/differences-between-build-configurations.html>*
 
 ## Derived Data Cache
 
@@ -167,9 +164,9 @@ The Derived Data Cache (DDC) stores versions of assets in the formats used by 
 
 Studios should use a shared DDC that all users in a particular location can access. This way, only one person needs to build the derived asset format(s) and they are automatically available to all other users. There will occasionally be stalls when assets need to be processed, but the results are remembered and shared. So with a handful of developers or more, most people will not notice any impact.
 
-To set up a shared DDC, override the paths for the \[DerivedDataBackendGraph\] by declaring this section in your game's **DefaultEngine.ini**. This section is originally declared in the **BaseEngine.ini** where the paths are set to Epic's internal DDC share. Re-declare the section and change the paths to point to a share on your network (e.g. Path=\\\\mystudio.net\\DDC):
+To set up a shared DDC, override the paths for the \[DerivedDataBackendGraph] by declaring this section in your game's **DefaultEngine.ini**. This section is originally declared in the **BaseEngine.ini** where the paths are set to Epic's internal DDC share. Re-declare the section and change the paths to point to a share on your network (e.g. Path=\\\\mystudio.net\\DDC):
 
-\[DerivedDataBackendGraph\]
+\[DerivedDataBackendGraph]
 MinimumDaysToKeepFile=7
 Root=(Type=KeyLength, Length=120, Inner=AsyncPut)
 AsyncPut=(Type=AsyncPut, Inner=Hierarchy)
@@ -195,4 +192,4 @@ You can fill your derived data caches at any time by passing the arguments below
 
 `UE4\\Engine\\Binaries\\Win64\\UE4Editor.exe MyGame -run=DerivedDataCache -fill`
 
-https://docs.unrealengine.com/latest/INT/Engine/Basics/DerivedDataCache/index.html
+<https://docs.unrealengine.com/latest/INT/Engine/Basics/DerivedDataCache/index.html>

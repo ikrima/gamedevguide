@@ -4,20 +4,20 @@ Things to note:
 
 - Make sure DefaultEngine.ini config has these settings:
 
-  \[SystemSettingsEditor\]
+  \[SystemSettingsEditor]
 
   TEXTUREGROUP_RenderTarget=(MinLODSize=1,MaxLODSize=4096,LODBias=0)
 
-​ [SystemSettings\]
+​ \[SystemSettings]
 
 ​ TEXTUREGROUP_RenderTarget=(MinLODSize=1,MaxLODSize=4096,LODBias=0)
 
 ​ r.SceneRenderTargetResizeMethod=2
 
-//NOTE: ikrimae: Ensure that the main gameview is &gt; CaptureWidth x CaptureHeight. Bug in UE4 that won't re-alloc scene render targets to the correct size  
-//               when the scenecapture component &gt; current window render target. <https://answers.unrealengine.com/questions/80531/scene-capture-2d-max-resolution.html>
+//NOTE: ikrimae: Ensure that the main gameview is > CaptureWidth x CaptureHeight. Bug in UE4 that won't re-alloc scene render targets to the correct size  
+//               when the scenecapture component > current window render target. <https://answers.unrealengine.com/questions/80531/scene-capture-2d-max-resolution.html>
 
-- Launch with console command: SP.PanoramicMovie 0 \[EndFrame\]
+- Launch with console command: SP.PanoramicMovie 0 \[EndFrame]
 
 ![img](file:///C:/Users/KITELI~1/AppData/Local/Temp/msohtmlclip1/02/clip_image001.png)
 

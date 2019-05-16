@@ -96,8 +96,8 @@ END_UNIFORM_BUFFER_STRUCT(FPrimitiveUniformShaderParameters)
         VIEW_UNIFORM_BUFFER_MEMBER_EX(float, UnlitViewmodeMask, EShaderPrecisionModifier::Half) \\  
         VIEW_UNIFORM_BUFFER_MEMBER_EX(FLinearColor, DirectionalLightColor, EShaderPrecisionModifier::Half) \\  
         VIEW_UNIFORM_BUFFER_MEMBER_EX(FVector, DirectionalLightDirection, EShaderPrecisionModifier::Half) \\  
-        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, TranslucencyLightingVolumeMin, \[TVC_MAX\]) \\  
-        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, TranslucencyLightingVolumeInvSize, \[TVC_MAX\]) \\  
+        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, TranslucencyLightingVolumeMin, \[TVC_MAX]) \\  
+        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, TranslucencyLightingVolumeInvSize, \[TVC_MAX]) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(FVector4, TemporalAAParams) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(FVector4, CircleDOFParams) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(float, DepthOfFieldSensorWidth) \\  
@@ -134,7 +134,7 @@ END_UNIFORM_BUFFER_STRUCT(FPrimitiveUniformShaderParameters)
         VIEW_UNIFORM_BUFFER_MEMBER(float, AmbientCubemapIntensity) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(float, SkyLightParameters) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(FLinearColor, SkyLightColor) \\  
-        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, SkyIrradianceEnvironmentMap, \[7\]) \\  
+        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, SkyIrradianceEnvironmentMap, \[7]) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(float, MobilePreviewMode) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(float, HMDEyePaddingOffset) \\  
         VIEW_UNIFORM_BUFFER_MEMBER_EX(float, ReflectionCubemapMaxMip, EShaderPrecisionModifier::Half) \\  
@@ -143,8 +143,8 @@ END_UNIFORM_BUFFER_STRUCT(FPrimitiveUniformShaderParameters)
         VIEW_UNIFORM_BUFFER_MEMBER(float, IndirectCapsuleSelfShadowingIntensity) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(FVector, ReflectionEnvironmentRoughnessMixingScaleBiasAndLargestWeight) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(int32, StereoPassIndex) \\  
-        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, GlobalVolumeCenterAndExtent, \[GMaxGlobalDistanceFieldClipmaps\]) \\  
-        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, GlobalVolumeWorldToUVAddAndMul, \[GMaxGlobalDistanceFieldClipmaps\]) \\  
+        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, GlobalVolumeCenterAndExtent, \[GMaxGlobalDistanceFieldClipmaps]) \\  
+        VIEW_UNIFORM_BUFFER_MEMBER_ARRAY(FVector4, GlobalVolumeWorldToUVAddAndMul, \[GMaxGlobalDistanceFieldClipmaps]) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(float, GlobalVolumeDimension) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(float, GlobalVolumeTexelSize) \\  
         VIEW_UNIFORM_BUFFER_MEMBER(float, MaxGlobalDistance) \\  
@@ -168,7 +168,7 @@ VIEW_UNIFORM_BUFFER_MEMBER_TABLE
         UNIFORM_MEMBER_SAMPLER(SamplerState, MaterialTextureBilinearWrapedSampler)  
         UNIFORM_MEMBER_SAMPLER(SamplerState, MaterialTextureBilinearClampedSampler)
 
-UNIFORM_MEMBER_TEXTURE(Texture3D&lt;uint4&gt;, VolumetricLightmapIndirectionTexture) // FPrecomputedVolumetricLightmapLightingPolicy  
+UNIFORM_MEMBER_TEXTURE(Texture3D&lt;uint4>, VolumetricLightmapIndirectionTexture) // FPrecomputedVolumetricLightmapLightingPolicy  
         UNIFORM_MEMBER_TEXTURE(Texture3D, VolumetricLightmapBrickAmbientVector) // FPrecomputedVolumetricLightmapLightingPolicy  
         UNIFORM_MEMBER_TEXTURE(Texture3D, VolumetricLightmapBrickSHCoefficients0) // FPrecomputedVolumetricLightmapLightingPolicy  
         UNIFORM_MEMBER_TEXTURE(Texture3D, VolumetricLightmapBrickSHCoefficients1) // FPrecomputedVolumetricLightmapLightingPolicy  
@@ -208,7 +208,7 @@ UNIFORM_MEMBER_TEXTURE(Texture2D, AtmosphereTransmittanceTexture)
         UNIFORM_MEMBER_SAMPLER(SamplerState, PerlinNoiseGradientTextureSampler)  
         UNIFORM_MEMBER_TEXTURE(Texture3D, PerlinNoise3DTexture)  
         UNIFORM_MEMBER_SAMPLER(SamplerState, PerlinNoise3DTextureSampler)  
-        UNIFORM_MEMBER_TEXTURE(Texture2D&lt;uint&gt;, SobolSamplingTexture)  
+        UNIFORM_MEMBER_TEXTURE(Texture2D&lt;uint>, SobolSamplingTexture)  
         UNIFORM_MEMBER_SAMPLER(SamplerState, SharedPointWrappedSampler)  
         UNIFORM_MEMBER_SAMPLER(SamplerState, SharedPointClampedSampler)  
         UNIFORM_MEMBER_SAMPLER(SamplerState, SharedBilinearWrappedSampler)  

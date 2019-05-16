@@ -2,7 +2,7 @@ public WindowsStaticAnalyzer StaticAnalyzer = WindowsStaticAnalyzer.None;
 
 StencilingGeometry::DrawSphere
 
--nothreadtimeout
+\-nothreadtimeout
 
 r.RHIThread.Enable
 

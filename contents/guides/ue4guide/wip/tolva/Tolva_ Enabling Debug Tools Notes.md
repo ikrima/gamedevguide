@@ -1,16 +1,16 @@
 Commands to set on launch:
 
--t.maxfps=1000
+\-t.maxfps=1000
 
--r.ForceDebugViewModes=1
+\-r.ForceDebugViewModes=1
 
 renderdoc capture command:
 
--rRHISetGPUCaptureOptions on
+\-rRHISetGPUCaptureOptions on
 
--capture
+\-capture
 
--restore rRHISetGPUCaptureOptions
+\-restore rRHISetGPUCaptureOptions
 
 Memory:
 
@@ -34,9 +34,9 @@ DUMPALLOCS
 
 IGMEMTrace
 
--Enable by BB_MEMTRACE_ENABLE=1 in Core.Build.cs (disabled by default)
+\-Enable by BB_MEMTRACE_ENABLE=1 in Core.Build.cs (disabled by default)
 
--Start by:
+\-Start by:
 
 \*passing -memtraceip=127.0.0.1 at command line
 
@@ -44,15 +44,15 @@ IGMEMTrace
 
 FMallocLeakDetectionProxy
 
--MALLOC_LEAKDETECTION
+\-MALLOC_LEAKDETECTION
 
 Enabling StompAllocator
 
--USE_MALLOC_STOMP
+\-USE_MALLOC_STOMP
 
 FMallocPoisonProxy
 
--UE_USE_MALLOC_FILL_BYTES
+\-UE_USE_MALLOC_FILL_BYTES
 
 FMallocProfiler
 
@@ -62,17 +62,17 @@ CPU
 
 Profiler:
 
--VTune
+\-VTune
 
--VSPerf
+\-VSPerf
 
 use Stat Namedevents or -statnamedevents in commandline to export markers to VTune. Not implemented for VSPerf
 
 Microprofile:
 
--Compile with BB_DEV_TOOLS_MICROPROFILE=1 in Build_BBR.h (enabled by default)
+\-Compile with BB_DEV_TOOLS_MICROPROFILE=1 in Build_BBR.h (enabled by default)
 
--Enable by -mpenable=1 in commandline
+\-Enable by -mpenable=1 in commandline
 
 FramePro:
 

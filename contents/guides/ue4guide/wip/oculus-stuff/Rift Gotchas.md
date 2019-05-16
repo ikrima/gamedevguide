@@ -34,7 +34,7 @@
 
   - stereo reset: Resets IPD and clears stereo overrides
 
-  - stereo e=&lt;value&gt;: Sets IPD
+  - stereo e=&lt;value>: Sets IPD
 
   - hmd enable/disable: Enable/Disable HMD
 
@@ -48,9 +48,10 @@
 
   void FOculusRiftHMD::LoadFromIni()
 
-* Oculus Config settings are in the DefaultEngine.ini file (\[root\]/Config/DefaultEngine.ini)
 
-​ [Oculus.Settings\]  
+- Oculus Config settings are in the DefaultEngine.ini file (\[root]/Config/DefaultEngine.ini)
+
+​ \[Oculus.Settings]  
 ​ ; In meters, not Unreal Units (cm)  
 ​ ; Recommended for true first person viewpoint  
 ​ ; since you are simulating the head.  
@@ -78,7 +79,7 @@
 ​ bVSync=true
 
 ​ bOverrideScreenPercentage=false  
-​ ; Value is out of range \[30..300\]  
+​ ; Value is out of range \[30..300]  
 ​ ScreenPercentage=100.0
 
 ​ bAllowFinishCurrentFrame=false  
@@ -93,15 +94,17 @@
 ​ ; Depending on how you control a players view rotation, you may need to disable this.  
 ​ bUpdateOnRT=true
 
-- World Scale can be changed in Window-&gt;World Settings. Default is 100 uu =&gt; 1m (i.e. 1 uu = 1cm)
+- World Scale can be changed in Window->World Settings. Default is 100 uu => 1m (i.e. 1 uu = 1cm)
 
   ![Oculus_RiftGotchas_worldsettings](C:\devguide\conversion\FINISHED\assets\Oculus_RiftGotchas_worldsettings.jpg)
 
-* Player Settings: Can be changed in the Defaults or Components of your characters BluePrint
+
+- Player Settings: Can be changed in the Defaults or Components of your characters BluePrint
 
   ![Oculus_RiftGotchas_Playersettings](C:\devguide\conversion\FINISHED\assets\Oculus_RiftGotchas_Playersettings.jpg)
 
   ![Oculus_RiftGotchas_playersettings2](C:\devguide\conversion\FINISHED\assets\Oculus_RiftGotchas_playersettings2.jpg)
+
 
 - Height & Width are based off Capsule Half Height & Capsule Radius
 
@@ -117,29 +120,29 @@ Similarly so for most third person viewpoints.
 
 The dimensions of this virtual head model are determined by the HeadModel_v2 config setting.
 
-1.  First of all, be sure to use the rift as recommand (by Oculus VR) as an extended monitor (not in clone mode, as it breaks things like vsync).
+1. First of all, be sure to use the rift as recommand (by Oculus VR) as an extended monitor (not in clone mode, as it breaks things like vsync).
 
-2.  [[Disable the "Aero" Windows desktop composition engine. Right-click on your desktop, click "Personalize" and then select one of the "Basic" or "Classic" themes instead of an "Aero" theme.](https://wiki.teamfortress.com/wiki/Oculus_Rift_User_Guide)] I did not bother to measure impact about this; does anyone did?
+1. \[[Disable the "Aero" Windows desktop composition engine. Right-click on your desktop, click "Personalize" and then select one of the "Basic" or "Classic" themes instead of an "Aero" theme.](https://wiki.teamfortress.com/wiki/Oculus_Rift_User_Guide)] I did not bother to measure impact about this; does anyone did?
 
-3.  Then, launch the game in standalone mode, without opening the Editor. Right click in you project ".uproject" file and hit "Launch game". This helps a lot!
+1. Then, launch the game in standalone mode, without opening the Editor. Right click in you project ".uproject" file and hit "Launch game". This helps a lot!
 
-4.  By then, you would run the game in default graphic config, that is "Epic mode"! This is a big problem here! You should tweak scalability parameters from Epic to High, at least. Read [this official post to learn about its effect on Editor mode] then read [my expl\`\`anation on how to make this dynamic into your standalone game using blueprints]
+1. By then, you would run the game in default graphic config, that is "Epic mode"! This is a big problem here! You should tweak scalability parameters from Epic to High, at least. Read [this official post to learn about its effect on Editor mode] then read [my expl\`\`anation on how to make this dynamic into your standalone game using blueprints]
 
-_From &lt;<https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>&gt;_
+*From &lt;<https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>>*
 
 Regarding cloning multiple monitors, I personally had the **best performance with cloning enabled, and my game running in fullscreen mode**, instead of running with my desktop extended and the game running in a "fullscreen" window.
 
-But to make vsync work (so that the Rift doesn't inherit the vsync timing of your primary monitor), at least with an Nvidia card, you can **set the Rift as your clone source** in the Nvidia Control Panel (\#3 is my Rift in the screenshot below). This way the Rift's refresh timing will be used for vsync and you won't see any tearing on your headset, although if you primary monitor timing is even slightly different (probably the case) you will still see tearing on the primary monitor. Of course this shouldn't be a problem since only other people in the room will see your primary monitor while your Rift is on your head.
+But to make vsync work (so that the Rift doesn't inherit the vsync timing of your primary monitor), at least with an Nvidia card, you can **set the Rift as your clone source** in the Nvidia Control Panel (#3 is my Rift in the screenshot below). This way the Rift's refresh timing will be used for vsync and you won't see any tearing on your headset, although if you primary monitor timing is even slightly different (probably the case) you will still see tearing on the primary monitor. Of course this shouldn't be a problem since only other people in the room will see your primary monitor while your Rift is on your head.
 
 ![Oculus_RiftGotchas_CloningMultiMonitor](C:\devguide\conversion\FINISHED\assets\Oculus_RiftGotchas_CloningMultiMonitor.png)
 
-_From &lt;<https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>&gt;_
+*From &lt;<https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>>*
 
 # Guide to getting good FPS and quality in UE4 demos using DistortionScale and ScreenPercentage
 
 **tl;dr: The DistortionScale parameter trades off FOV and image quality. The ScreenPercentage parameter trades off FPS and image quality. Here's how to set them both.**
 
-**UPDATE: Now available in video form, see:[[/r/oculus/comments/24lkxz/getting_good_fps_and_quality_in_ue4_demos_on/]](https://www.reddit.com/r/oculus/comments/24lkxz/getting_good_fps_and_quality_in_ue4_demos_on/)**
+**UPDATE: Now available in video form, see:[\[/r/oculus/comments/24lkxz/getting_good_fps_and_quality_in_ue4_demos_on/\]](https://www.reddit.com/r/oculus/comments/24lkxz/getting_good_fps_and_quality_in_ue4_demos_on/)**
 
 I did some digging into the Oculus plugin in the UE4 source, and came up with the following strategy which will enable you to get a rock-solid 60 FPS in UE4 demos, while also getting the highest visual fidelity your GPU can handle. Be careful to follow the steps and not skip any.
 
@@ -187,4 +190,4 @@ If you close the demo normally, it will save your modified ScreenPercentage to y
 
 That's it! I've tried this on both the Starship Bridge Demo (for which I got ScreenPercentage up to 250 on my GTX 780 Ti) and UE4EffectsCave (I got up to 130). Let me know what kind of results you get!
 
-_From &lt;<http://www.reddit.com/r/oculus/comments/24g92u/guide_to_getting_good_fps_and_quality_in_ue4/>&gt;_
+*From &lt;<http://www.reddit.com/r/oculus/comments/24g92u/guide_to_getting_good_fps_and_quality_in_ue4/>>*

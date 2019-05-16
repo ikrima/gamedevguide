@@ -1,6 +1,6 @@
 Overview Documentation:
 
-https://docs.unrealengine.com/latest/INT/Programming/Online/index.html>
+<https://docs.unrealengine.com/latest/INT/Programming/Online/index.html>>
 
 Getting PS4 Online Subsystem To Work (only needed to network multiple devkits through PSN):
 
@@ -26,7 +26,7 @@ The LocalPlayer was chosen as the location for the OnlineSession due to its life
 
 These classes will be maintained and expanded as we introduce the OSS into our games here. Any feedback is appreciated.
 
-From &lt;<https://udn.unrealengine.com/questions/168944/best-way-to-interface-with-onlinesubsystem.html>&gt;\*
+From &lt;<https://udn.unrealengine.com/questions/168944/best-way-to-interface-with-onlinesubsystem.html>>\*
 
 **Here's our current layout (in broad strokes):**
 
@@ -44,7 +44,7 @@ Dedicated Server: Needs a custom AGameSession which handles the "game" session. 
 
 Is my understanding correct? As far as I can tell, there is no reason for the DedicatedServer to worry about the OnlineSessionInterface in my case, as the Dedicated Server doesn't care about the matching server information. I need to be able to handle seamless travels that persist the session-specific information on both client and server (the client's infor is authenticated with the server's).
 
-_From &lt;<https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>>*
 
 It sounds like you've worked out the basics, but your code doesn't have to follow such a rigid pattern. Online games will typically create a custom class derived from UOnlineSessionClient, but my first thought on how to implement this would be to implement IOnlineSession::FindSessions() and the related functions in your custom online subsystem such that that's where the communication with your matchmaking server takes place. But if it makes more sense for your use case to do that in a UOnlineSession subclass, then no, you probably don't need a custom OnlineSessionInterface.
 
@@ -54,7 +54,7 @@ You will want a custom AGameSession, but you can probably use the same class on 
 
 Typically in our games the dedicated server does maintain a session with the OnlineSessionInterface, but I suppose this doesn't have to be the case if your matching server maintains the state you need.
 
-_From &lt;<https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>>*
 
 Rationalize between Steam & Oculus Online Subsystem or Platform Services:
 

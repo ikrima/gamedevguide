@@ -4,7 +4,7 @@ sortIndex: 4
 
 # Overview of Engine Versioning:
 
-https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Versioning-of-Assets-and-Packages
+<https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Versioning-of-Assets-and-Packages>
 
 - ## Engine version
 
@@ -58,7 +58,7 @@ Anyway, the problem you're seeing is that you're using the local iteration workf
 
 I would encourage you to actually submit correctly versioned binaries to avoid accidental data loss due to the reasons I mentioned at the top though.
 
-https://udn.unrealengine.com/questions/310062/creating-a-custom-engine-build-for-internal-projec.html
+<https://udn.unrealengine.com/questions/310062/creating-a-custom-engine-build-for-internal-projec.html>
 
 ## Build ID
 
@@ -72,4 +72,4 @@ At build time, every output directory containing at least one compiled DLL recei
 
 It is possible to force your Build ID to a specific value. This can be accomplished by adding a “BuildId” line to your “Build/Build.version” file, but it is not recommended, as it removes the check to prevent using incompatible Modules. It is particularly easy to run outdated code if using a forced Build ID with Plugins that may be shared between multiple projects.
 
-_Reference From https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Versioning-of-Assets-and-Packages_
+*Reference From <https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Versioning-of-Assets-and-Packages>*

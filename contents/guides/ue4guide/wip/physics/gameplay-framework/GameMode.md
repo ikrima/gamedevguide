@@ -8,29 +8,29 @@ GameMode contains a state machine that tracks the state of the Match
 
 - Managed in GameMode but then set in the GameState class
 
-1.  EnteringMap = initial state. Actors not yet ticking & world not initialized. Transition on =&gt;
+1. EnteringMap = initial state. Actors not yet ticking & world not initialized. Transition on =>
 
-    a) things are fully loaded
+   a) things are fully loaded
 
-2) WaitingToStart: HandleMatchIsWaitingToStart() called when entering this state. Actors are ticking, players have not yet spawned. Transitions on =&gt;
+2) WaitingToStart: HandleMatchIsWaitingToStart() called when entering this state. Actors are ticking, players have not yet spawned. Transitions on =>
 
    a) ReadyToStartMatch() returns true
 
    b) Someone calls StartMatch()
 
-3. InProgress: HandleMatchHasStarted called on enter. Calls BeginPlay() on all Actors just incase it wasn’t called in HandleMatchIsWaitingToStart(). Normal gameplay. Transitions on =&gt;
+3. InProgress: HandleMatchHasStarted called on enter. Calls BeginPlay() on all Actors just incase it wasn’t called in HandleMatchIsWaitingToStart(). Normal gameplay. Transitions on =>
 
    a) ReadyToEndMatch() == true
 
    b) Someone calls EndMatch()
 
-4) WaitingPostMatch: HandleMatchHasEnded() on enter. Actors still ticking but new players not accepted. Transitions on =&gt;
+4) WaitingPostMatch: HandleMatchHasEnded() on enter. Actors still ticking but new players not accepted. Transitions on =>
 
    ​ a) Map transfer starts
 
 5. LeavingMap: HandleLeavingMap() on enter. Match stays in this state while transferring to a new map
 
-6. Aborted: failure state. Started from AbortMatch()
+5. Aborted: failure state. Started from AbortMatch()
 
 Events that are fired:
 
@@ -58,7 +58,7 @@ PlayerState: holds current information about the current Player
 
 - Replicated to everyone so other clients can know details about the Player
 
-- GameState-&gt;PlayerArray\[\] easy way to access all PlayerStates
+- GameState->PlayerArray\[] easy way to access all PlayerStates
 
 - Example of things to store: PlayerName, Score, Ping, GuildID
 
@@ -76,15 +76,15 @@ Pawns
 
 AActor::IsNetRelevantFor() - Determines relevancy for a playercontroller/actor
 
-1.  If the Actor is 'bAlwaysRelevant', is owned by the Pawn or PlayerController, is the Pawn, or the Pawn is the Instigator of some action like noise or damage, it is relevant
+1. If the Actor is 'bAlwaysRelevant', is owned by the Pawn or PlayerController, is the Pawn, or the Pawn is the Instigator of some action like noise or damage, it is relevant
 
-2.  If the Actor is 'bNetUserOwnerRelevancy' and has an Owner, use the Owner's relevancy
+1. If the Actor is 'bNetUserOwnerRelevancy' and has an Owner, use the Owner's relevancy
 
-3.  If the Actor is 'bOnlyRelevantToOwner', and does not pass the first check, it is not relevant
+1. If the Actor is 'bOnlyRelevantToOwner', and does not pass the first check, it is not relevant
 
-4.  If the Actor is attached to the Skeleton of another Actor, then its relevancy is determined by the relevancy of its base
+1. If the Actor is attached to the Skeleton of another Actor, then its relevancy is determined by the relevancy of its base
 
-5.  if the Actor is hidden ('bHidden == true') and the root component does not collide then the Actor is not relevant
+1. if the Actor is hidden ('bHidden == true') and the root component does not collide then the Actor is not relevant
 
 - If there is no root component, 'AActor::IsNetRelevantFor()' will log a warning and ask if
 
@@ -92,15 +92,15 @@ the Actor should be set to 'bAlwaysRelevant = true'
 
 6. If 'AGameNetworkManager' is set to use distance based relevancy, the Actor is relevant if it is closer than the net cull distance
 
-AActor::GetNetPriority()- determines how much relative bandwidth actor receives compared to others. NetPriority=2.0 =&gt; 2x more bandwidth
+AActor::GetNetPriority()- determines how much relative bandwidth actor receives compared to others. NetPriority=2.0 => 2x more bandwidth
 
-- Actor-&gt;NetPriority is the base net priority
+- Actor->NetPriority is the base net priority
 
 - GetNetPriority() multiplies NetPriority property based on time since last replication and relative location/distance between Actor & Viewer to avoid starvation
 
 - You can override GetNetPriority()
 
-AActor-&gt;NetUpdateFrequency determines replication update frequency
+AActor->NetUpdateFrequency determines replication update frequency
 
 - ROLE_SimulatedProxy: Client will extrapolate actor position based on last known velocity
 

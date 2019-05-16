@@ -4,7 +4,7 @@ sortIndex: 1
 
 Command params are parsed in:
 
-protected virtual void ConfigureProjectFileGeneration( String\[\] Arguments, ref bool IncludeAllPlatforms )
+protected virtual void ConfigureProjectFileGeneration( String\[] Arguments, ref bool IncludeAllPlatforms )
 
 abstract class ProjectFileGenerator
 

@@ -1,4 +1,4 @@
-[[Building Paragon in UE4 | GDC 2016 Event Coverage | Unreal Engine]](https://www.youtube.com/watch?v=BXcw2IrIinc)
+[\[Building Paragon in UE4 | GDC 2016 Event Coverage | Unreal Engine\]](https://www.youtube.com/watch?v=BXcw2IrIinc)
 
 ![Video web content titled: Building Paragon in UE4 | GDC 2016 Event Coverage | Unreal Engine](file:///C:/Users/KITELI~1/AppData/Local/Temp/msohtmlclip1/02/clip_image001.png)
 

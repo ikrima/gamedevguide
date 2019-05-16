@@ -4,7 +4,7 @@ sortIndex: 5
 
 ## 1. Use IWYU:
 
-https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/IWYUReferenceGuide/index.html
+<https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/IWYUReferenceGuide/index.html>
 
 This means forward declaring everything, moving everything into implementation files as much as possible. For templated things, we forward declare them and then declare explicit template specializations. Obv not a good practice for library code, but for our own modules, it's fine.
 
@@ -38,31 +38,31 @@ You'll run into issues forward declaring references to structs in blueprint call
 
 **Automation running:**
 
--skipserver
+\-skipserver
 
--noclient
+\-noclient
 
--noserver
+\-noserver
 
--device
+\-device
 
--serverdevice
+\-serverdevice
 
--numclients=n
+\-numclients=n
 
--nullrhi
+\-nullrhi
 
--addcmdline
+\-addcmdline
 
--servercmdline
+\-servercmdline
 
--logwindow
+\-logwindow
 
 the nuclear option is bOmitPCDebugInfoInDevelopment if you're iterating. For dev+debug, I turn on fastpdblinking & useUHTMakeFiles & bUseIncrementalLinking. In VS2017, it should be even faster
 
 Just be careful with fastlinked PDBs if you share them with other devs bc that'll break. Build machine should also not use fastlinked pdbs
 
-Also, bUseUBTMakefiles = true =&gt; means you have to force regenerate UBT Makefiles when you invalidate them.
+Also, bUseUBTMakefiles = true => means you have to force regenerate UBT Makefiles when you invalidate them.
 
 /// Events that can invalidate the 'UBT Makefile':
 

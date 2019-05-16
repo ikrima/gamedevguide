@@ -18,7 +18,7 @@ void AActor::DisplayDebug(UCanvas\* Canvas, const FDebugDisplayInfo& DebugDispla
 
 {
 
-​ FDisplayDebugManager& DisplayDebugManager = Canvas-&gt;DisplayDebugManager;
+​ FDisplayDebugManager& DisplayDebugManager = Canvas->DisplayDebugManager;
 
 ​ DisplayDebugManager.SetDrawColor(FColor(255, 0, 0));
 
@@ -28,9 +28,9 @@ GEngine:bool IsStereoscopic3D(FViewport\* InViewport = nullptr);
 
 // Render CPU thread and GPU frame times.
 
-​ const bool bStereoRendering = GEngine-&gt;IsStereoscopic3D(InViewport);
+​ const bool bStereoRendering = GEngine->IsStereoscopic3D(InViewport);
 
-​ UFont\* Font = (!FPlatformProperties::SupportsWindowedMode() && GEngine-&gt;GetMediumFont()) ? GEngine-&gt;GetMediumFont() : GEngine-&gt;GetSmallFont();
+​ UFont\* Font = (!FPlatformProperties::SupportsWindowedMode() && GEngine->GetMediumFont()) ? GEngine->GetMediumFont() : GEngine->GetSmallFont();
 
 ​ // Note InX should already be within the safe zone
 
@@ -54,15 +54,15 @@ Rendering
 
 Gameplay
 
--Show bounds
+\-Show bounds
 
--Other useful show flags (ShowFlagsValues.inl)
+\-Other useful show flags (ShowFlagsValues.inl)
 
 Game Controls
 
--Look at UBBCheat Manager & UCheatManager to expose all those functions
+\-Look at UBBCheat Manager & UCheatManager to expose all those functions
 
--Transition to next zone
+\-Transition to next zone
 
 Editor Tab:
 
@@ -90,7 +90,7 @@ void AActor::DisplayDebug(UCanvas\* Canvas, const FDebugDisplayInfo& DebugDispla
 
 {
 
-​ FDisplayDebugManager& DisplayDebugManager = Canvas-&gt;DisplayDebugManager;
+​ FDisplayDebugManager& DisplayDebugManager = Canvas->DisplayDebugManager;
 
 ​ DisplayDebugManager.SetDrawColor(FColor(255, 0, 0));
 
@@ -100,9 +100,9 @@ GEngine:bool IsStereoscopic3D(FViewport\* InViewport = nullptr);
 
 // Render CPU thread and GPU frame times.
 
-​ const bool bStereoRendering = GEngine-&gt;IsStereoscopic3D(InViewport);
+​ const bool bStereoRendering = GEngine->IsStereoscopic3D(InViewport);
 
-​ UFont\* Font = (!FPlatformProperties::SupportsWindowedMode() && GEngine-&gt;GetMediumFont()) ? GEngine-&gt;GetMediumFont() : GEngine-&gt;GetSmallFont();
+​ UFont\* Font = (!FPlatformProperties::SupportsWindowedMode() && GEngine->GetMediumFont()) ? GEngine->GetMediumFont() : GEngine->GetSmallFont();
 
 ​ // Note InX should already be within the safe zone
 
@@ -122,7 +122,7 @@ ENUM_RANGE_BY_VALUES()
 
 ENUM_CLASS_FLAGS(EPropertyLocalizationGathererTextFlags);
 
-for (ECountedThing Val : TEnumRange&lt;ECountedThing&gt;())
+for (ECountedThing Val : TEnumRange&lt;ECountedThing>())
 
 \* {
 
@@ -156,7 +156,7 @@ if (P1ShowDebugClasses & (1 &lt;&lt; (int32)EBBShowDebugClasses::Avatar))
 
 TActorRange
 
-for( ALight\* Light : TActorRange&lt;ALight&gt;(GetWorld()) )
+for( ALight\* Light : TActorRange&lt;ALight>(GetWorld()) )
 
 =============
 
@@ -246,41 +246,41 @@ FORCEINLINE void DrawDebugCanvasWireCone(UCanvas\* Ca
 
 \#if WITH_EDITORONLY_DATA
 
-​ if (bVisualizeComponent && SpriteComponent == nullptr && GetOwner() && !GetWorld()-&gt;IsGameWorld() )
+​ if (bVisualizeComponent && SpriteComponent == nullptr && GetOwner() && !GetWorld()->IsGameWorld() )
 
 ​ {
 
 ​ // Create a new billboard component to serve as a visualization of the actor until there is another primitive component
 
-​ SpriteComponent = NewObject&lt;UBillboardComponent&gt;(GetOwner(), NAME_None, RF_Transactional | RF_Transient | RF_TextExportTransient);
+​ SpriteComponent = NewObject&lt;UBillboardComponent>(GetOwner(), NAME_None, RF_Transactional | RF_Transient | RF_TextExportTransient);
 
-​ BillboardComponent-&gt;SetFlags(RF_Transactional);
+​ BillboardComponent->SetFlags(RF_Transactional);
 
-​ BillboardComponent-&gt;CreationMethod = EComponentCreationMethod::SimpleConstructionScript;
+​ BillboardComponent->CreationMethod = EComponentCreationMethod::SimpleConstructionScript;
 
-SpriteComponent-&gt;Sprite = LoadObject&lt;UTexture2D&gt;(nullptr, TEXT("/Engine/EditorResources/EmptyActor.EmptyActor"));
+SpriteComponent->Sprite = LoadObject&lt;UTexture2D>(nullptr, TEXT("/Engine/EditorResources/EmptyActor.EmptyActor"));
 
-SpriteComponent-&gt;RelativeScale3D = FVector(0.5f, 0.5f, 0.5f);
+SpriteComponent->RelativeScale3D = FVector(0.5f, 0.5f, 0.5f);
 
-SpriteComponent-&gt;Mobility = EComponentMobility::Movable;
+SpriteComponent->Mobility = EComponentMobility::Movable;
 
-SpriteComponent-&gt;AlwaysLoadOnClient = false;
+SpriteComponent->AlwaysLoadOnClient = false;
 
-SpriteComponent-&gt;bIsEditorOnly = true;
+SpriteComponent->bIsEditorOnly = true;
 
-SpriteComponent-&gt;SpriteInfo.Category = TEXT("Misc");
+SpriteComponent->SpriteInfo.Category = TEXT("Misc");
 
-SpriteComponent-&gt;SpriteInfo.DisplayName = NSLOCTEXT( "SpriteCategory", "Misc", "Misc" );
+SpriteComponent->SpriteInfo.DisplayName = NSLOCTEXT( "SpriteCategory", "Misc", "Misc" );
 
-SpriteComponent-&gt;CreationMethod = CreationMethod;
+SpriteComponent->CreationMethod = CreationMethod;
 
-SpriteComponent-&gt;bIsScreenSizeScaled = true;
+SpriteComponent->bIsScreenSizeScaled = true;
 
-SpriteComponent-&gt;bUseInEditorScaling = true;
+SpriteComponent->bUseInEditorScaling = true;
 
-SpriteComponent-&gt;SetupAttachment(this);
+SpriteComponent->SetupAttachment(this);
 
-SpriteComponent-&gt;RegisterComponent();
+SpriteComponent->RegisterComponent();
 
 ​ }
 
@@ -298,13 +298,13 @@ ExtractRootTrackTransform(
 
 GetBoneTransform(RootTransform, 0, Pos, bUseRawDataOnly);
 
-const FReferenceSkeleton& RefSkeleton = MySkeleton-&gt;GetReferenceSkeleton();
+const FReferenceSkeleton& RefSkeleton = MySkeleton->GetReferenceSkeleton();
 
-​ if( RefSkeleton.GetNum() &gt; 0 )
+​ if( RefSkeleton.GetNum() > 0 )
 
 ​ {
 
-​ return RefSkeleton.GetRefBonePose()\[0\];
+​ return RefSkeleton.GetRefBonePose()\[0];
 
 ​ }
 

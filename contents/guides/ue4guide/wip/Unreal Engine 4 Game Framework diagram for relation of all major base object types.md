@@ -6,7 +6,7 @@ Unreal Engine 4 Game Framework diagram for relation of all major base object typ
 
 [Everything you should know about replication]
 
-_From &lt;<https://forums.unrealengine.com/showthread.php?43714-Multicast-not-showing-on-Server>&gt;_
+*From &lt;<https://forums.unrealengine.com/showthread.php?43714-Multicast-not-showing-on-Server>>*
 
 Useful Debug Commands:
 
@@ -20,17 +20,17 @@ Physics Replication:
 
 Handling replication for an actor that is simulating physics on the client side is done in OnRep_ReplicatedMovement() in /Engine/Source/Runtime/Engine/Private/ActorReplication.cpp. If you follow the chain you'll see the actual adjustments are done in ApplyRigidBodyState() in PrimitiveComponentPhysics.cpp. If you want to see how the server replicates the Actor's properties take a look at ServerReplicateActors() in NetworkDriver.cpp and its call to ReplicateActor() in DataChannel.cpp.
 
-_From &lt;<https://forums.unrealengine.com/showthread.php?18789-Physics-replication-walkthrough>&gt;_
+*From &lt;<https://forums.unrealengine.com/showthread.php?18789-Physics-replication-walkthrough>>*
 
 Look into these classes for gameplay:
 
 - UGameplayTask
 
-https://docs.unrealengine.com/latest/INT/API/Runtime/GameplayTasks/UGameplayTask/index.html>
+<https://docs.unrealengine.com/latest/INT/API/Runtime/GameplayTasks/UGameplayTask/index.html>>
 
 - UAbilityTask
 
-https://docs.unrealengine.com/latest/INT/API/Runtime/GameplayAbilities/Abilities/Tasks/UAbilityTask/index.html
+<https://docs.unrealengine.com/latest/INT/API/Runtime/GameplayAbilities/Abilities/Tasks/UAbilityTask/index.html>
 
 - UGameplayEffect <https://docs.unrealengine.com/latest/INT/API/Runtime/GameplayAbilities/UGameplayEffect/index.html>
 
@@ -46,4 +46,4 @@ https://docs.unrealengine.com/latest/INT/API/Runtime/GameplayAbilities/Abilities
 
   <https://docs.unrealengine.com/latest/INT/API/Runtime/GameplayAbilities/index.html>
 
-Doing detail customization/PostEditChangeProperty in [[@UnrealEngine]](https://twitter.com/UnrealEngine)? Use GET_MEMBER_NAME_CHECKED instead of a string for future-proofing
+Doing detail customization/PostEditChangeProperty in [\[@UnrealEngine\]](https://twitter.com/UnrealEngine)? Use GET_MEMBER_NAME_CHECKED instead of a string for future-proofing

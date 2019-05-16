@@ -8,7 +8,7 @@ Note that [Weak Pointers](https://docs.unrealengine.com/latest/INT/Programming/U
 
 Object destruction is handled automatically by the garbage collection system when an Object is no longer referenced. This means that no UPROPERTY pointers, or engine containers or [smart pointer](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/SmartPointerLibrary/index.html) class instances should have any strong references to it. When the garbage collector runs, unreferenced Objects that are found will be deleted. In addition, the function MarkPendingKill() can be called directly on an Object, and this function will set all pointers to the Object to NULL, as well as remove the Object from global searches. Once again, the Object will be fully deleted on the next garbage collection pass.
 
-From <<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html>>
+From [&lt;https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html]\(<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html)>
 
 Immediate destruction:
 
@@ -20,8 +20,8 @@ Immediate destruction:
 
 - Destroy()
 
-  - Calls World-&gt;DestroyActor()
+  - Calls World->DestroyActor()
 
-- In Editor: GetWorld()-&gt;EditorDestroyActor(lcbActor, true);
+- In Editor: GetWorld()->EditorDestroyActor(lcbActor, true);
 
 - ConditionalBeginDestroy()

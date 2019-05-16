@@ -2,7 +2,7 @@ What does HiddenIngame - Hidden In Game will hide the object from the rendering 
 
 bOwnerNoSee and bOnlyOwnerSee work as you would expect. An object marked 'bOwnerNoSee' will not render in the 'owning' view. 'Ownership' is determined by walking up the Ownership chain from the actor when creating the scene proxy. You can see this in the FPrimitiveSceneProxy constructor.
 
-_From &lt;<https://udn.unrealengine.com/questions/349480/mesh-visibility-parameters-explanation.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/349480/mesh-visibility-parameters-explanation.html>>*
 
 Print debugging:
 

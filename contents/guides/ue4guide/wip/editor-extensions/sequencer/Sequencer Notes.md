@@ -1,18 +1,16 @@
-```
-sortIndex: 1
-```
+    sortIndex: 1
 
 #### Reference:
 
-https://udn.unrealengine.com/questions/348861/creating-custom-sequencer-tracks-sub-sequence-star.html
+<https://udn.unrealengine.com/questions/348861/creating-custom-sequencer-tracks-sub-sequence-star.html>
 
 #### Pre-Animated State, Caching Execute & Produce Tokens, Evaluation, Initialize & TearDown:
 
-https://udn.unrealengine.com/questions/356242/sequencer-custom-track-414-415.html
+<https://udn.unrealengine.com/questions/356242/sequencer-custom-track-414-415.html>
 
-https://udn.unrealengine.com/questions/399357/shouldnt-teardown-be-called-on-moviesceneevaltempl.html
+<https://udn.unrealengine.com/questions/399357/shouldnt-teardown-be-called-on-moviesceneevaltempl.html>
 
-https://udn.unrealengine.com/questions/404800/sequencer-template-interrogate.html
+<https://udn.unrealengine.com/questions/404800/sequencer-template-interrogate.html>
 
 #### Data:
 
@@ -34,20 +32,24 @@ https://udn.unrealengine.com/questions/404800/sequencer-template-interrogate.htm
 
 - FMovieSceneEvalTemplate - Core runtime class which implements runtime behavior of custom sections. This is what actually handles evaluating the section and generates the tracks interpolation values as Execution Tokens (i.e. the color value in a color property track)
 
-* IMovieSceneExecutionToken - Actually ends up applying the interpolated values to your object (e.g. apply animation or updating properties)
+
+- IMovieSceneExecutionToken - Actually ends up applying the interpolated values to your object (e.g. apply animation or updating properties)
 
 #### UI:
 
 - ISequencerSection - UI for rendering the sections. Defines the editor behavior for your custom section.
 
-* FMovieSceneTrackEditor - Creates sequencer sections for your custom section data, and exposes extension points for sequencer track and object menus. Handles injecting buttons/ui/actions into the sequencer UI to create your custom tracks or add keys to your tracks. Defined for each track s.t. Transform, CameraAnim, Single Property types
+
+- FMovieSceneTrackEditor - Creates sequencer sections for your custom section data, and exposes extension points for sequencer track and object menus. Handles injecting buttons/ui/actions into the sequencer UI to create your custom tracks or add keys to your tracks. Defined for each track s.t. Transform, CameraAnim, Single Property types
 
   - Needs to be registered with the sequencer system module.
+
   - Ex: ISequencerModule& SequencerModule = FModuleManager::Get().LoadModuleChecked<ISequencerModule>("Sequencer");
 
     - TrackEditorHandle = SequencerModule.RegisterTrackEditor_Handle(FOnCreateTrackEditor::CreateStatic(&FFaceFXAnimationTrackEditor::CreateTrackEditor));
 
   - Some useful TrackEditor functionality: Register a track editor's custom property types for animation:
+
   - ProcAnimTrackEditorHandle = SequencerModule.RegisterPropertyTrackEditor<FBBProcAnimTrackEditor>();
 
 #### Misc:
@@ -58,7 +60,7 @@ https://udn.unrealengine.com/questions/404800/sequencer-template-interrogate.htm
 
 - Blending happens through accumulations, templating, etc. Must specify that you support it in UMovieSceneNameableTrack() constructor
 
-  - Grep for GetBlendingDataType&lt;&gt;() & TBlendableTokenTraits&lt;&gt;, MultiChannelFromData, ResolveChannelsToData
+  - Grep for GetBlendingDataType&lt;>() & TBlendableTokenTraits&lt;>, MultiChannelFromData, ResolveChannelsToData
 
 Spawning: happens through a struct called
 
@@ -74,15 +76,15 @@ Spawning: happens through a struct called
 
     - You can initialize the editor sequencer (e.g. actor sequencers) with other spawnregisters/parameters by
 
-    Sequencer = FModuleManager::LoadModuleChecked&lt;ISequencerModule&gt;("Sequencer").CreateSequencer(SequencerInitParams);
+    Sequencer = FModuleManager::LoadModuleChecked&lt;ISequencerModule>("Sequencer").CreateSequencer(SequencerInitParams);
 
 - **ISequencerEditorObjectBinding:** Extensible mechanism that the editor uses to add bindable objects to a sequence
 
-  - **FLevelSequenceEditorActorBinding:** The main level one for adding bindable actors. Calls Sequencer-&gt;AddActors(actorToBind)
+  - **FLevelSequenceEditorActorBinding:** The main level one for adding bindable actors. Calls Sequencer->AddActors(actorToBind)
 
-  - **FControlRigEditorObjectBinding** is a good example of adding custom spawnables. Calls Sequencer-&gt;MakeNewSpawnable()
+  - **FControlRigEditorObjectBinding** is a good example of adding custom spawnables. Calls Sequencer->MakeNewSpawnable()
 
-- **IMovieSceneObjectSpawner:** This is what actually handles UObject creation e.g. NewObject&lt;&gt;/DestroyObject&lt;&gt; calls to the engine.
+- **IMovieSceneObjectSpawner:** This is what actually handles UObject creation e.g. NewObject&lt;>/DestroyObject&lt;> calls to the engine.
 
   - Can override and has extensibility for managing your own cache of objects
 
@@ -105,7 +107,6 @@ Spawning: happens through a struct called
 \* This allows blending of any arbitrary type into the WorkingDataType.
 
 ```cpp
-
 namespace MovieScene
 
 {
@@ -277,7 +278,6 @@ ProcAnimators.Add(procAnimSection-&gt;ProcAnimCompClass);
 }
 
 }
-
 ```
 
 ##### Possessables/Spawnables
@@ -415,7 +415,6 @@ auto GeneratePropertyPath = \[this\](UImagePlateComponent\* ImagePlateComponent)
 ##### Stateless Token Producer:
 
 ```cpp
-
 /\*\* Stateless pre-animated state token producer that simply calls a static function as the token \*/
 
 struct FStatelessPreAnimatedTokenProducer : IMovieScenePreAnimatedTokenProducer

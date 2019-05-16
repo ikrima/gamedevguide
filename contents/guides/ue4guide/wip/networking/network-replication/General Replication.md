@@ -4,7 +4,8 @@ Object reference replication:
 
 - Server is in charge of assinging this ID and then notifying all connected clients of assignment
 
-* For objects to be referenced, they have to return Uobject::IsSupportedForNetworking() which passes if:
+
+- For objects to be referenced, they have to return Uobject::IsSupportedForNetworking() which passes if:
 
   - Any replicated actor can be replicated as a reference
 
@@ -15,6 +16,7 @@ Object reference replication:
   - Any non-replicated component that is stably named (UObject::IsNameStableForNetworking() == true)
 
   - All UObjects loaded from packagese
+
 
 - Stably Named (aka UObject::IsNameStableForNetworking() default implementation)
 

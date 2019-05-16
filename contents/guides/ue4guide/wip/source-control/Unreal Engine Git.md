@@ -1,6 +1,4 @@
-```
-sortIndex: 1
-```
+    sortIndex: 1
 
 # Unreal Engine Git
 
@@ -40,9 +38,9 @@ sortIndex: 1
 
    git branch -D tmpsquash
 
-   git diff 4.19.0-release bebylon &gt; my_new_patch.diff
+   git diff 4.19.0-release bebylon > my_new_patch.diff
 
-   git format-patch 4.19.0-release..bebylon --stdout &gt; my_new_patch.patch  
+   git format-patch 4.19.0-release..bebylon --stdout > my_new_patch.patch  
    git am &lt; my_new_patch.patch
 
    git apply my_new_patch.diff
@@ -67,49 +65,49 @@ Using git apply provides the patch as unstaged changes in your branch. If you wa
    - git checkout Bebylon
    - git merge bebylon-4.20.2-merged4.19
 
-_Reference From https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git_
+*Reference From <https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git>*
 
 5. Create tag at merge point bebylon-4.20.2-merged4.19
 
-6. Now you can push Bebylon up to github
+5. Now you can push Bebylon up to github
 
-7. Reconcile for perforce:
+5. Reconcile for perforce:
 
 Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs
 
 Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
 
-http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch
+<http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch>
 
 # Building The Source
 
 1. **Download the source** and unzip it to a folder, or [**create a fork**] and **clone the repository**. If you clone, don't forget to switch to the correct branch for this release! (The 'master' branch has unstable code, so you will want to make sure to choose a release branch.)
 
-2. You should now have an *UnrealEngine* folder on your computer. All of the source and dependencies will go into this folder. The folder name might have a branch suffix (such as *UnrealEngine-4.1*), but that's totally fine.
+1. You should now have an *UnrealEngine* folder on your computer. All of the source and dependencies will go into this folder. The folder name might have a branch suffix (such as *UnrealEngine-4.1*), but that's totally fine.
 
-3. Download the **required dependencies** files for the [latest release][]: [Required\_1of2.zip], [Required\_2of2.zip].
+1. Download the **required dependencies** files for the [latest release][]: [Required\_1of2.zip], [Required\_2of2.zip].
 
-4. Unzip the dependencies into the *UnrealEngine* folder alongside the source. Be careful to make sure the folders are merged together correctly. On Mac, we recommend **Option + dragging** the unzipped files into the *UnrealEngine* folder, then selecting **Keep Newer** if prompted.
+1. Unzip the dependencies into the *UnrealEngine* folder alongside the source. Be careful to make sure the folders are merged together correctly. On Mac, we recommend **Option + dragging** the unzipped files into the *UnrealEngine* folder, then selecting **Keep Newer** if prompted.
 
-5. Okay, platform stuff comes next. Depending on whether you are on Windows or Mac, follow one of the sections below:
+1. Okay, platform stuff comes next. Depending on whether you are on Windows or Mac, follow one of the sections below:
 
 ### Windows
 
 6. Be sure to have [Visual Studio 2013][] installed. You can use any desktop version of Visual Studio 2013, including the free version: [Visual Studio 2013 Express for Windows Desktop][visual studio 2013]
 
-7. Make sure you have [June 2010 DirectX runtime][] installed. You don't need the SDK, just the runtime.
+6. Make sure you have [June 2010 DirectX runtime][] installed. You don't need the SDK, just the runtime.
 
-8. You'll need project files in order to compile. In the *UnrealEngine* folder, double-click on**GenerateProjectFiles.bat**. It should take less than a minute to complete. On Windows 8, a warning from SmartScreen may appear. Click "More info", then "Run anyway" to continue.
+6. You'll need project files in order to compile. In the *UnrealEngine* folder, double-click on**GenerateProjectFiles.bat**. It should take less than a minute to complete. On Windows 8, a warning from SmartScreen may appear. Click "More info", then "Run anyway" to continue.
 
-9. Load the project into Visual Studio by double-clicking on the **UE4.sln** file.
+6. Load the project into Visual Studio by double-clicking on the **UE4.sln** file.
 
-10. It's time to **compile the editor**! In Visual Studio, make sure your solution configuration is set to**Development Editor**, and your solution platform is set to **Win64**. Right click on the **UE4** target and select**Build**. It will take between 15 and 40 minutes to finish compiling, depending on your system specs.
+6. It's time to **compile the editor**! In Visual Studio, make sure your solution configuration is set to**Development Editor**, and your solution platform is set to **Win64**. Right click on the **UE4** target and select**Build**. It will take between 15 and 40 minutes to finish compiling, depending on your system specs.
 
-11. After compiling finishes, you can **load the editor** from Visual Studio by setting your startup project to **UE4**and pressing **F5** to debug.
+6. After compiling finishes, you can **load the editor** from Visual Studio by setting your startup project to **UE4**and pressing **F5** to debug.
 
-12. One last thing. You'll want to setup your Windows shell so that you can interact with .uproject files. Find the file named **UnrealVersionSelector-Win64-Shippping.exe** in the *UnrealEngine/Engine/Binaries/Win64/*folder and run it. Now, you'll be able to double-click .uproject files to load the project, or right click them to quickly update Visual Studio files.
+6. One last thing. You'll want to setup your Windows shell so that you can interact with .uproject files. Find the file named **UnrealVersionSelector-Win64-Shippping.exe** in the *UnrealEngine/Engine/Binaries/Win64/*folder and run it. Now, you'll be able to double-click .uproject files to load the project, or right click them to quickly update Visual Studio files.
 
-_Reference From https://github.com/EpicGames/UnrealEngine/_
+*Reference From <https://github.com/EpicGames/UnrealEngine/>*
 
 # Visual Studio Customization:
 
@@ -117,11 +115,11 @@ Generate VS2013 project files by running GenerateProjectFiles.bat
 
 Command line parameters for Generate Project Files:
 
-https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/ProjectFileGenerator/index.html
+<https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/ProjectFileGenerator/index.html>
 
 Customize Toolbar to showcase UE4 Build Profiles/Targets:
 
-http://youtu.be/usjlNHPn-jo?t=6m46s
+<http://youtu.be/usjlNHPn-jo?t=6m46s>
 
 Install the UnrealVS extension for UnrealVS Toolbar:
 
@@ -129,7 +127,7 @@ C:\\Users\\ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Extras\\Unreal
 
 Install Visual Studio Unreal Extensions:
 
-\Engine\\Extras\\VisualStudioDebugging\\InstallVisualizers.bat
+\\Engine\\Extras\\VisualStudioDebugging\\InstallVisualizers.bat
 
 Run the UnrealVersion Selector:
 
@@ -137,7 +135,7 @@ Run the UnrealVersion Selector:
 
 Configure Visual Studio for Unreal Project:
 
-https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup/index.html
+<https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup/index.html>
 
 # Build Configuration
 
@@ -173,4 +171,4 @@ The available configurations:
 | **Shipping**            | This is the configuration for optimal performance and shipping your game. This configuration strips out console commands, stats, and profiling tools. |
 | **Test**                | This configuration is the **Shipping** configuration, but with some console commands, stats, and profiling tools enabled.                             |
 
-_Reference From: https://docs.unrealengine.com/latest/INT/Programming/Development/BuildingUnrealEngine/index.html_
+*Reference From: <https://docs.unrealengine.com/latest/INT/Programming/Development/BuildingUnrealEngine/index.html>*

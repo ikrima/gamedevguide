@@ -2,15 +2,15 @@
 
 MovieScene.LegacyConversionFrameRate (Default: 60000fps)
 
-_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_
+*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*
 
 LevelSequence.DefaultTickResolution (Default: 24000fps)
 
-_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_
+*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*
 
 LevelSequence.DefaultDisplayRate (Default: 30fps
 
-_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_
+*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*
 
 ## **Time Management**
 
@@ -38,9 +38,9 @@ _From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-techni
 
 - UMovieScene::GetTickResolution() - retrieves the tick resolution that all FFrameNumbers
 
-- UMovieScene::GetDisplayRate() - playback rate (EvalType==FrameLocked =&gt; this is what t.maxfps is set to)
+- UMovieScene::GetDisplayRate() - playback rate (EvalType==FrameLocked => this is what t.maxfps is set to)
 
-**FMovieSceneChannelProxy** affords editor and runtime code a common language for interacting with and manipulating keyframes. To this end, **IKeyframeSection&lt;&gt;** has been completely removed and is no longer necessary.
+**FMovieSceneChannelProxy** affords editor and runtime code a common language for interacting with and manipulating keyframes. To this end, **IKeyframeSection&lt;>** has been completely removed and is no longer necessary.
 
 ### **FMovieSceneChannel**
 
@@ -74,7 +74,7 @@ consistently deal with the various boundary conditions
 
 bSupportsInfiniteRange
 
-_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_
+*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*
 
 FMovieSceneChannelProxy
 
@@ -84,19 +84,20 @@ channels as shown in Appendix A.
 
 - Channels are stored by their base FMovieSceneChannel\* in buckets by derived type. With this in mind, any reallocation of channels should be immediately followed by a re-creation of the channel proxy; doing so will invalidate any pointers and handles to the channels stored in the old proxy.
 
-* All interaction with channels is through either the FMovieSceneChannel interface directly, or ISequencerChannelInterface, depending on context. The latter is registered per-type through the sequencer module **ISequencerModule::RegisterChannelEditor**
 
-* A templated helper is provided through **TSequencerChannelInterface** which allows single-concept overloading for any given channel type, resolved through ADL. This allows customization of specific behavior without having to re-implement the entire interface if the defaults are suitable for most channels.
+- All interaction with channels is through either the FMovieSceneChannel interface directly, or ISequencerChannelInterface, depending on context. The latter is registered per-type through the sequencer module **ISequencerModule::RegisterChannelEditor**
 
-* It also means that core sequencer code can automatically populate UI for channel data without having to manually define **ISequencerSection** interfaces and manually defining the channel layout in the editor as well as in the runtime.
+- A templated helper is provided through **TSequencerChannelInterface** which allows single-concept overloading for any given channel type, resolved through ADL. This allows customization of specific behavior without having to re-implement the entire interface if the defaults are suitable for most channels.
 
-* Default implementation functions for **ISequencerChannelInterface** are defined in the Sequencer namespace, but overloads should be added either to your channel’s namespace, or the global namespace if it’s not in one
+- It also means that core sequencer code can automatically populate UI for channel data without having to manually define **ISequencerSection** interfaces and manually defining the channel layout in the editor as well as in the runtime.
 
-* It is recommended that custom channels follow the pattern of storing times and values in parallel arrays, and provide a **TMovieSceneChannelData&lt;T&gt; GetData()** method for interacting with the keys.
+- Default implementation functions for **ISequencerChannelInterface** are defined in the Sequencer namespace, but overloads should be added either to your channel’s namespace, or the global namespace if it’s not in one
 
-* The majority of FMovieSceneChannel’s interface directly maps to functions callable on **TMovieSceneChannelData**
+- It is recommended that custom channels follow the pattern of storing times and values in parallel arrays, and provide a **TMovieSceneChannelData&lt;T> GetData()** method for interacting with the keys.
 
-* In order for an **ISequencerChannelInterface** to be registered for custom channel types, you need to call **ISequencerModule::RegisterChannelInterface&lt;ChannelType&gt;();**
+- The majority of FMovieSceneChannel’s interface directly maps to functions callable on **TMovieSceneChannelData**
+
+- In order for an **ISequencerChannelInterface** to be registered for custom channel types, you need to call **ISequencerModule::RegisterChannelInterface&lt;ChannelType>();**
 
 Sample
 
@@ -126,7 +127,7 @@ FloatChannel1,
 
 FMovieSceneChannelMetaData("Float1", LOCTEXT("Float1Text", "Float 1")),
 
-TMovieSceneExternalValue&lt;float&gt;()
+TMovieSceneExternalValue&lt;float>()
 
 );
 
@@ -138,7 +139,7 @@ FloatChannel2,
 
 FMovieSceneChannelMetaData("Float2", LOCTEXT("Float2Text", "Float 2")),
 
-TMovieSceneExternalValue&lt;float&gt;()
+TMovieSceneExternalValue&lt;float>()
 
 );
 
@@ -150,7 +151,7 @@ FloatChannel3,
 
 FMovieSceneChannelMetaData("Float3", LOCTEXT("Float3Text", "Float 3")),
 
-TMovieSceneExternalValue&lt;float&gt;()
+TMovieSceneExternalValue&lt;float>()
 
 );
 
@@ -162,7 +163,7 @@ BoolChannel,
 
 FMovieSceneChannelMetaData("Bool", LOCTEXT("BoolText", "Bool")),
 
-TMovieSceneExternalValue&lt;bool&gt;()
+TMovieSceneExternalValue&lt;bool>()
 
 );
 
@@ -180,7 +181,7 @@ Channels.Add(BoolChannel);
 
 \#endif
 
-ChannelProxy = MakeShared&lt;FMovieSceneChannelProxy&gt;(MoveTemp(Channels));
+ChannelProxy = MakeShared&lt;FMovieSceneChannelProxy>(MoveTemp(Channels));
 
 }
 
@@ -196,4 +197,4 @@ FMovieSceneBoolChannel BoolChannel;
 
 };
 
-_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_
+*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>>*

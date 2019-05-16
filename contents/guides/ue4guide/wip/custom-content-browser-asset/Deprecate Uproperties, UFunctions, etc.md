@@ -6,25 +6,25 @@
 
 - Spec­i­fy DeprecatedProperty and DeprecationMessage in the UPROPERTY() macro for some ad­di­tion in­for­ma­tion to the us­er.
 
-_UPROPERTY(EditAnywhere)_
+*UPROPERTY(EditAnywhere)*
 
-_int32 Count;_
+*int32 Count;*
 
-_UPROPERTY(meta=(DeprecatedProperty, DeprecationMessage="Use Size instead."))_
+*UPROPERTY(meta=(DeprecatedProperty, DeprecationMessage="Use Size instead."))*
 
-_int32 Count_DEPRECATED;_
+*int32 Count_DEPRECATED;*
 
 **UFUNC­TION**
 
 - Adding the meta spec­i­fiers. You do not need to re­move the oth­er spec­i­fiers here nor re­name the func­tion.
 
-_UPROPERTY(BlueprintPure)_
+*UPROPERTY(BlueprintPure)*
 
-_int GetAnswerToEverything() const {…}_
+*int GetAnswerToEverything() const {…}*
 
-_UPROPERTY(BlueprintPure, meta=(DeprecatedFunction, DeprecationMessage="Use GetEarth() and GetAnswer() instead."))_
+*UPROPERTY(BlueprintPure, meta=(DeprecatedFunction, DeprecationMessage="Use GetEarth() and GetAnswer() instead."))*
 
-_int GetAnswerToEverything() const {…}_
+*int GetAnswerToEverything() const {…}*
 
 **UCLASS**
 
@@ -32,25 +32,25 @@ _int GetAnswerToEverything() const {…}_
 
 - You will need to re­name it:
 
-_UCLASS()_
+*UCLASS()*
 
-_class UMyObject : public UObject {_
+*class UMyObject : public UObject {*
 
-_GENERATED_BODY()_
+*GENERATED_BODY()*
 
-_/\* ... \*/_
+*/\* ... \*/*
 
-_};_
+*};*
 
-_UCLASS(Deprecated)_
+*UCLASS(Deprecated)*
 
-_class UDEPRECATED_MyObject : public UObject {_
+*class UDEPRECATED_MyObject : public UObject {*
 
-_GENERATED_BODY()_
+*GENERATED_BODY()*
 
-_/\* ... \*/_
+*/\* ... \*/*
 
-_};_
+*};*
 
 **UENUM**
 
@@ -60,92 +60,92 @@ _};_
 
 - That is not nec­es­sar­i­ly “grace­ful” on its own, as in it isn’t picked up by the blue­print sys­tem and will cause com­pile er­rors there.
 
-_UENUM()_
+*UENUM()*
 
-_enum class EMyEnum : uint32 {_
+*enum class EMyEnum : uint32 {*
 
-_MyValue = 0,_
+*MyValue = 0,*
 
-_YourValue = 1,_
+*YourValue = 1,*
 
-_/\* ... \*/_
+*/\* ... \*/*
 
-_};_
+*};*
 
-_// After_
+*// After*
 
-_/\* @deprecated This was removed in version XY \*/_
+*/\* @deprecated This was removed in version XY \*/*
 
-_UENUM()_
+*UENUM()*
 
-_enum class EMyEnum_DEPRECATED : uint32 {_
+*enum class EMyEnum_DEPRECATED : uint32 {*
 
-_/\* @deprecated This was removed in version XY \*/_
+*/\* @deprecated This was removed in version XY \*/*
 
-_MyValue_DEPRECATED = 0,_
+*MyValue_DEPRECATED = 0,*
 
-_/\* @deprecated This was removed in version XY \*/_
+*/\* @deprecated This was removed in version XY \*/*
 
-_YourValue_DEPRECATED = 1,_
+*YourValue_DEPRECATED = 1,*
 
-_/\* ... \*/_
+*/\* ... \*/*
 
-_};_
+*};*
 
 - To en­sure blue­prints keep com­pil­ing, you can add redi­rects, e.g. in your DefaultEngine.ini:
 
-_+EnumRedirects=(OldName="/Script/MyGame.EMyEnum",_
+*+EnumRedirects=(OldName="/Script/MyGame.EMyEnum",*
 
-_NewName="/Script/MyGame.EMyEnum_DEPRECATED",_
+*NewName="/Script/MyGame.EMyEnum_DEPRECATED",*
 
-_ValueChanges=(("MyValue","MyValue_DEPRECATED"), ("YourValue","YourValue_DEPRECATED")))_
+*ValueChanges=(("MyValue","MyValue_DEPRECATED"), ("YourValue","YourValue_DEPRECATED")))*
 
 - Blue­prints will not is­sue a warn­ing, the us­er will at least see that \_DEPRECATED suf­fix. hope­ful­ly hov­er over some­thing that shows the code com­ments in a tooltip and make nec­es­sary changes.
 
-- Un­re­al En­gine Doc­u­men­ta­tion &gt; Pro­gram­ming Guide &gt; Core Re­di­rects for more in­for­ma­tion on redi­rects.
+- Un­re­al En­gine Doc­u­men­ta­tion > Pro­gram­ming Guide > Core Re­di­rects for more in­for­ma­tion on redi­rects.
 
 **US­TRUCT**
 
 - Don’t seem to have grace­ful means of dep­re­ca­tion ei­ther. I sug­gest to ei­ther dep­re­cate the C++ side grace­ful­ly (see Non-Blue­print Types) and then dep­re­cate all the at­tributes:
 
-_// Before_
+*// Before*
 
-_USTRUCT()_
+*USTRUCT()*
 
-_struct FMyStruct {_
+*struct FMyStruct {*
 
-_GENERATED_BODY()_
+*GENERATED_BODY()*
 
-_/\* ... \*/_
+*/\* ... \*/*
 
-_UPROPERTY()_
+*UPROPERTY()*
 
-_FString Name;_
+*FString Name;*
 
-_};_
+*};*
 
-> _// After_
+> *// After*
 >
-> _USTRUCT()_
+> *USTRUCT()*
 >
-> _struct DEPRECATED(4.20, "MyStruct is deprecated, use YourStruct instead.") FMyStruct {_
+> *struct DEPRECATED(4.20, "MyStruct is deprecated, use YourStruct instead.") FMyStruct {*
 >
-> _GENERATED_BODY()_
+> *GENERATED_BODY()*
 >
-> _/\* ... \*/_
+> */\* ... \*/*
 >
-> _UPROPERTY(meta=(Deprecated, DeprecationMessage="MyStruct is deprecated, use YourStruct instead."))_
+> *UPROPERTY(meta=(Deprecated, DeprecationMessage="MyStruct is deprecated, use YourStruct instead."))*
 >
-> _FString Name_DEPRECATED;_
+> *FString Name_DEPRECATED;*
 >
-> _};_
+> *};*
 
 **Non-Blue­print Types**
 
 - DEPRECATED(version, message) macro:
 
-> _virtual void foo();_
+> *virtual void foo();*
 >
-> _DEPRECATED(4.20, "Use bar() instead.")_
+> *DEPRECATED(4.20, "Use bar() instead.")*
 >
-> _virtual void foo();_
+> *virtual void foo();*

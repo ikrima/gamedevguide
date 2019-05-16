@@ -1,6 +1,6 @@
 bOverrideScreenPercentage=false
 
-; Value is out of range \[30..300\]
+; Value is out of range \[30..300]
 
 ScreenPercentage=100.0
 

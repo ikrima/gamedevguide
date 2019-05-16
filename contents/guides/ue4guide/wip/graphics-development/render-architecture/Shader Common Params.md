@@ -36,14 +36,17 @@ this is not relative to the current viewport. RelativePixelPosition = MaterialPa
 
 - **WorldPosition_CamRelative:** This is just absoluteworldposition - WorldCameraOrigin. Not rotation adjusted in viewspace
 
-* **PreViewTranslation** = -ViewOrigin
 
-* ViewRotationMatrix = FInverseRotationMatrix(ViewRotation) \* ViewPlanesMatrix;
+- **PreViewTranslation** = -ViewOrigin
 
-* **TranslatedViewMatrix** = ViewRotationMatrix;
+- ViewRotationMatrix = FInverseRotationMatrix(ViewRotation) \* ViewPlanesMatrix;
 
-* ViewMatrix = FTranslationMatrix(-ViewLocation) \* ViewRotationMatrix;
+- **TranslatedViewMatrix** = ViewRotationMatrix;
 
-- WorldPosition_CamRelative =&gt; PixelPosWS - CameraOrigina1\`
+- ViewMatrix = FTranslationMatrix(-ViewLocation) \* ViewRotationMatrix;
 
-* GetMaterialSharedSampler(Material.Texture2D_0Sampler,Material.Clamp_WorldGroupSettings)
+
+- WorldPosition_CamRelative => PixelPosWS - CameraOrigina1\`
+
+
+- GetMaterialSharedSampler(Material.Texture2D_0Sampler,Material.Clamp_WorldGroupSettings)

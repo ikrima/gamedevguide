@@ -1,20 +1,18 @@
-```
-sortIndex: 2
-```
+    sortIndex: 2
 
 # Connect To Epic Perforce Depot/Downloading Epic Engine Source Code:
 
-https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/index.html
+<https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/index.html>
 
-https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/index.html
+<https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/index.html>
 
-https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/setup/index.html
+<https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/setup/index.html>
 
-https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/VPNSetup/index.html
+<https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/VPNSetup/index.html>
 
-https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/Syncing/index.html
+<https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/Syncing/index.html>
 
-https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/Integration/index.html
+<https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/Integration/index.html>
 
 # Setting Up Perforce Source Control:
 
@@ -38,21 +36,21 @@ Disable user account creation for anyone but you:
 
 ##### Checking out a project:
 
-1.  Open p4v and enter credentials to connect
+1. Open p4v and enter credentials to connect
 
-2.  Go to Connection &gt; New Workspace
+1. Go to Connection > New Workspace
 
-3.  Give the workspace a reasonable name, lowercase, no spaces (for working on command line later). Workspaces are stored per user so two users should be able to use the same workspace name without a conflict.
+1. Give the workspace a reasonable name, lowercase, no spaces (for working on command line later). Workspaces are stored per user so two users should be able to use the same workspace name without a conflict.
 
-4.  Put it in a folder near the root of the drive (I have mine in C:\\Perforce\\\[ClientName\]\\\[WorkspaceName\]
+1. Put it in a folder near the root of the drive (I have mine in C:\\Perforce\\\[ClientName]\\\[WorkspaceName]
 
-5.  Right click on the folder in the depot that represents the project and choose "Include Tree". Right click on other projects and choose "Exclude Tree" (it doesn't work to just whitelist with "include tree", which seems silly -- is it configurable?).
+1. Right click on the folder in the depot that represents the project and choose "Include Tree". Right click on other projects and choose "Exclude Tree" (it doesn't work to just whitelist with "include tree", which seems silly -- is it configurable?).
 
-6.  Check the box to automatically get latest revisions, otherwise you'll have to do it manually after the workspace is created.
+1. Check the box to automatically get latest revisions, otherwise you'll have to do it manually after the workspace is created.
 
 ##### Deleting a workspace:
 
-If you screw up you can delete a workspace. Go to Connection -&gt; Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type p4 client -d \[workspace-name\]
+If you screw up you can delete a workspace. Go to Connection -> Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type p4 client -d \[workspace-name]
 
 Useful commands:
 
@@ -78,15 +76,15 @@ Useful commands:
 
 - **Note: Using -m might skip files if you copied over stuff recently**
 
-- -a Added files: Find files in the workspace that have no corresponding files in the depot and delete them.
+- \-a Added files: Find files in the workspace that have no corresponding files in the depot and delete them.
 
-- -d Deleted files: Find those files in the depot that do not exist in your workspace and add them to the workspace.
+- \-d Deleted files: Find those files in the depot that do not exist in your workspace and add them to the workspace.
 
-- -e Edited files: Find files in the workspace that have been modified and restore them to the last file version that has synced from the depot.
+- \-e Edited files: Find files in the workspace that have been modified and restore them to the last file version that has synced from the depot.
 
-- (p4 clean =&gt; p4 reconcile -w)
+- (p4 clean => p4 reconcile -w)
 
-_Reference From https://www.perforce.com/perforce/doc.current/manuals/cmdref/Content/CmdRef/p4_clean.html?Highlight=clean_
+*Reference From <https://www.perforce.com/perforce/doc.current/manuals/cmdref/Content/CmdRef/p4_clean.html?Highlight=clean>*
 
 **Set editor:**
 
@@ -96,17 +94,17 @@ p4 set P4Editor="C:/Program Files/Sublime Text 3/subl.exe --wait"
 
 Here's how:
 
-1.  Note the last changelist synced
+1. Note the last changelist synced
 
-2.  Copy/move the folder to the new location
+1. Copy/move the folder to the new location
 
-3.  Update your workspace (either the root, or the depot mapping) to point at the new location
+1. Update your workspace (either the root, or the depot mapping) to point at the new location
 
-4.  Run p4 flush //depot/path/to/folder/...@&lt;last_changelist&gt;
+1. Run p4 flush //depot/path/to/folder/...@&lt;last_changelist>
 
 The [flush] command tells the server that you have the files at the path specified, at the changelist specified. It's a synonym for p4 sync -k.
 
-_Reference From https://stackoverflow.com/questions/7030296/how-do-i-move-a-perforce-workspace-folder_
+*Reference From <https://stackoverflow.com/questions/7030296/how-do-i-move-a-perforce-workspace-folder>*
 
 **Create fast branch stream:**
 
@@ -117,20 +115,20 @@ p4 populate -r -S //stream/mynewtask01
 p4 client -s -S //stream/mynewtask01
 p4 sync
 
-_Assuming you're starting with a synced workspace. If you're creating a brand new workspace for the new stream, then part of creating the new workspace is going to be syncing the files; I'd expect that to take about as long as the submit did since it's the same amount of data being transferred._
+*Assuming you're starting with a synced workspace. If you're creating a brand new workspace for the new stream, then part of creating the new workspace is going to be syncing the files; I'd expect that to take about as long as the submit did since it's the same amount of data being transferred.*
 
-_Make sure when creating a new stream that you're not creating a new workspace. In the visual client there's an option to "create a workspace"; make sure to uncheck that box or it'll make a new workspace and then sync it, which is the part that'll take an hour._
+*Make sure when creating a new stream that you're not creating a new workspace. In the visual client there's an option to "create a workspace"; make sure to uncheck that box or it'll make a new workspace and then sync it, which is the part that'll take an hour.*
 
-_From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:_
+*From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:*
 
 \_p4 stream -t task -P //stream/parent //stream/mynewtask01
 p4 populate -r -S //stream/mynewtask01
 p4 client -s -S //stream/mynewtask01
 p4 sync\_\_
 
-_The "stream" and "client" commands don't actually operate on any files, so they'll be really quick no matter what. The "populate" will branch all 10k files, but it does it on the back end without actually moving any content around, so it'll also be really quick (if you got up into the millions or billions it might take an appreciable amount of time depending on the server hardware, but 10k is nothing). The "sync" will be very quick if you were already synced to //stream/parent, because all the files are already there; again, it's just moving pointers around on the server side rather than transferring the file content._
+*The "stream" and "client" commands don't actually operate on any files, so they'll be really quick no matter what. The "populate" will branch all 10k files, but it does it on the back end without actually moving any content around, so it'll also be really quick (if you got up into the millions or billions it might take an appreciable amount of time depending on the server hardware, but 10k is nothing). The "sync" will be very quick if you were already synced to //stream/parent, because all the files are already there; again, it's just moving pointers around on the server side rather than transferring the file content.*
 
-_Reference From https://stackoverflow.com/questions/32697907/how-to-efficiently-work-with-a-task-stream_
+*Reference From <https://stackoverflow.com/questions/32697907/how-to-efficiently-work-with-a-task-stream>*
 
 **Merge from parent stream:**
 
@@ -140,7 +138,7 @@ While we’re working on features in //Ace/DEV, other changes are being submitte
 % p4 resolve
 % p4 submit -d ”Merged latest changes”
 
-_Reference From https://www.perforce.com/blog/streams-tiny-tutorial_
+*Reference From <https://www.perforce.com/blog/streams-tiny-tutorial>*
 
 **Push stream changes back to mainline:**
 
@@ -163,15 +161,15 @@ Finally, we copy content from the //Ace/DEV stream to its parent:
 
 % p4 sync
 
-_Et voilà_ -- our work in the //Ace/DEV stream has just been promoted to //Ace/MAIN.
+*Et voilà* -- our work in the //Ace/DEV stream has just been promoted to //Ace/MAIN.
 
-_Reference From https://www.perforce.com/blog/streams-tiny-tutorial_
+*Reference From <https://www.perforce.com/blog/streams-tiny-tutorial>*
 
 **Set global property settings:**
 
-p4 property -a -n **_name_** -v **_value_**
+p4 property -a -n ***name*** -v ***value***
 
-_Reference From https://community.perforce.com/s/article/1273_
+*Reference From <https://community.perforce.com/s/article/1273>*
 
 **Assemble performance optimizations:**
 
@@ -225,10 +223,10 @@ binary+l //depot/....upk
 binary+l //depot/....udk
 ```
 
-_Reference From https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceControl/Perforce/index.html_
+*Reference From <https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceControl/Perforce/index.html>*
 
 ## Diff
 
 You can diff Blueprints using built-in diffing tool
 
-- <https://www.unrealengine.com/blog/diffing-blueprints
+- &lt;<https://www.unrealengine.com/blog/diffing-blueprints>

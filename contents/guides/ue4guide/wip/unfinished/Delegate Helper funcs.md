@@ -12,7 +12,7 @@ myDelegate.BindSP
 
 myDelegate.BindUObject
 
-myDelegate = OnModifiedDelegate::CreateLambda(\[\]() {…})
+myDelegate = OnModifiedDelegate::CreateLambda(\[]() {…})
 
 myDelegate = OnModifiedDelegate::CreateRaw
 
@@ -28,7 +28,7 @@ Something defined as a
 
 Can be bound with:
 
-​ .ContentPadding_Lambda(\[\](){…})
+​ .ContentPadding_Lambda(\[](){…})
 
 Also any of these:
 
@@ -40,7 +40,7 @@ AttrName_Static
 
 AttrName_UObject
 
-AttrName(TSharedRef&lt;obj&gt;)
+AttrName(TSharedRef&lt;obj>)
 
 Same with SLATE_EVENTS:
 

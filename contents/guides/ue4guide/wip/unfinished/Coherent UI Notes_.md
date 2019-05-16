@@ -8,22 +8,22 @@ Set focus back to game: FSlateApplication::Get().SetFocusToGameViewport()
 
 Show mouse cursor: FSlateApplication::Get().ResetToDefaultInputSettings()
 
-CoherentUIGTHUD-&gt;ReadyForBindings.AddDynamic(this, &ACoUIGTTestFPSHUD::BindUI);
+CoherentUIGTHUD->ReadyForBindings.AddDynamic(this, &ACoUIGTTestFPSHUD::BindUI);
 
 void ACoUIGTTestFPSHUD::BindUI(int32 frameid, const FString& path, bool isMain)  
 {  
-CoherentUIGTHUD-&gt;GetView()-&gt;BindCall("CallFromJavaScript",  
+CoherentUIGTHUD->GetView()->BindCall("CallFromJavaScript",  
 Coherent::UI::MakeHandler(&CalledFromJSSampleDelegate,  
 &(FCalledFromJSSample::ExecuteIfBound)));  
-CoherentUIGTHUD-&gt;GetView()-&gt;BindCall("CalledFromJSString",  
+CoherentUIGTHUD->GetView()->BindCall("CalledFromJSString",  
 Coherent::UI::MakeHandler(this,  
 &ACoUIGTTestFPSHUD::CalledFromJSStringHandler));  
-CoherentUIGTHUD-&gt;GetView()-&gt;RegisterForEvent(  
+CoherentUIGTHUD->GetView()->RegisterForEvent(  
 "CalledFromJSUStruct",  
 Coherent::UIGT::MakeHandler(this, &ACoUIGTTestFPSHUD::CalledFromJSUStructHandler));  
 }
 
-\_From &lt;<http://coherent-labs.com/Documentation/UnrealEngine4-GT/d2/df6/_coherent__g_t_for__unreal__engine_4_plugin.html#Input__C___>&gt;\_
+\_From &lt;[http://coherent-labs.com/Documentation/UnrealEngine4-GT/d2/df6/\_coherent\_\_g_t_for\_\_unreal\_\_engine_4_plugin.html#Input\_\_C\_\_\_](http://coherent-labs.com/Documentation/UnrealEngine4-GT/d2/df6/_coherent__g_t_for__unreal__engine_4_plugin.html#Input__C___)>\_
 
 engine.call
 
@@ -63,7 +63,7 @@ virtual void OnReadyForBindings()
 
 {
 
-m_View-&gt;RegisterForEvent("OnQuitClicked",
+m_View->RegisterForEvent("OnQuitClicked",
 
 Coherent::UI::MakeHandler(&g_Game, &Game::Quit));
 
@@ -79,7 +79,7 @@ ShowMessage('Bye');
 
 // using jQuery to simplify the sample
 
-\$('\#QuitButton').click(function () {
+$('#QuitButton').click(function () {
 
 // this will execute both Game::Quit in C++
 
@@ -89,4 +89,4 @@ engine.trigger('OnQuitClicked');
 
 });
 
-_From &lt;<http://coherent-labs.com/Documentation/cpp-gt/dc/dc7/_binding_cxx.html#CPP2JavaScript>&gt;_
+*From &lt;<http://coherent-labs.com/Documentation/cpp-gt/dc/dc7/_binding_cxx.html#CPP2JavaScript>>*

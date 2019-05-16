@@ -1,13 +1,11 @@
-```
-sortIndex: 8
-```
+    sortIndex: 8
 
 n CopyBuildToStagingDirectory.Automation.cs, a function is called to copy UFS and NonUFS folders to the staging folder (\`SC.StageFiles(...)\`):
 
 The final argument passed to the function is a bool called bStripFilesForOtherPlatforms that is determined using:
 
-1.  !Params.UsePak(SC.StageTargetPlatform)
-2.  So basically if you aren't using a pakfile, bStripFilesForOtherPlatforms will be true and you're in danger of getting the same behavior I describe.
+1. !Params.UsePak(SC.StageTargetPlatform)
+1. So basically if you aren't using a pakfile, bStripFilesForOtherPlatforms will be true and you're in danger of getting the same behavior I describe.
 
 1)  public bool UsePak(Platform PlatformToCheck)
 2)  {
@@ -17,4 +15,4 @@ The final argument passed to the function is a bool called bStripFilesForOtherP
 
 For future generations, strategically use platform names in your build folders: Win32 Win64 WinRT WinRT_ARM UWP Mac XboxOne PS4 IOS Android HTML5 Linux AllDesktop
 
-_Reference From https://answers.unrealengine.com/questions/241947/additional-asset-directories-not-copied-to-package.html_
+*Reference From <https://answers.unrealengine.com/questions/241947/additional-asset-directories-not-copied-to-package.html>*

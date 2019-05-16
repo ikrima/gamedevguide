@@ -1,12 +1,12 @@
 ### UE4 Tangent Space Normal Calculation
 
-1.  Step one: Retrieve the normals from VS Shader Interpolants
+1. Step one: Retrieve the normals from VS Shader Interpolants
 
 ​ BasePixelShader::GetMaterialPixelParameters
 
 ​ KABCRigid::GetMaterialPixelParameters
 
-​ -&gt; MaterialTemplate::AssembleTangentToWorld
+​ -> MaterialTemplate::AssembleTangentToWorld
 
 2. Step 2: Calculate the world space normals (optionally using the normal map)
 
@@ -42,4 +42,4 @@ vNout = normalize( vNt.x \* vT + vNt.y \* vB + vNt.z \* vN );
 
 The key to get flawless results is that the baker is designed to do the EXACT inverse of this very transformation allowing the pixel shader to remain fast and simple.
 
-_From &lt;<http://wiki.blender.org/index.php/Dev:Shading/Tangent_Space_Normal_Maps>&gt;_
+*From &lt;<http://wiki.blender.org/index.php/Dev:Shading/Tangent_Space_Normal_Maps>>*

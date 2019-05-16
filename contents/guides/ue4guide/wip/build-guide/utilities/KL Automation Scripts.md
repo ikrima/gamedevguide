@@ -4,13 +4,13 @@ sortIndex: 1
 
 ## Overview
 
-CLI is like git. It takes the form of \[scriptname.py\] options &lt;group&gt; options &lt;subcommand&gt;
+CLI is like git. It takes the form of \[scriptname.py] options &lt;group> options &lt;subcommand>
 
 ex: bcr -c debug -r iterate build bbr
 
-_TLDR_:
+*TLDR*:
 
-After you run through \[Setup\] section, for a full proof Clean, Rebuild, & Cook:
+After you run through \[Setup] section, for a full proof Clean, Rebuild, & Cook:
 
 bcr -c debug -r clean script fullbuild
 
@@ -34,7 +34,7 @@ Add PATHEXT system variable and append ".PY" extension to the list.
 
 refreshenv
 
-_Optional: I have explorer set so that running launching a python script will automatically open it through the terminal._
+*Optional: I have explorer set so that running launching a python script will automatically open it through the terminal.*
 
 Here are details how you can use assoc .py & ftype Python.File to set it up
 
@@ -43,8 +43,8 @@ Here are details how you can use assoc .py & ftype Python.File to set it up
 After setting assoc and ftype via cmd verify it by launching regedit and checking this key
 Computer\\HKEY_CLASSES_ROOT\\Python.File\\shell\\open\\command
 it should read :
-"&lt;path to Bebylon&gt;\\ThirdParty\\Python3\\python.exe" "%1" %\*
-with &lt;path to Bebylon&gt; replaced with the correct path for your drive.
+"&lt;path to Bebylon>\\ThirdParty\\Python3\\python.exe" "%1" %\*
+with &lt;path to Bebylon> replaced with the correct path for your drive.
 
 2. Configure Machine: Go to Bebylon\\Devops\\BuildAutomation\\BuildAutomation\\ in a terminal and execute:
 
@@ -56,13 +56,11 @@ setupmachine switch_engver
 
 Just pass --help at the end of any command/subcommand string
 
-```
-bcr --help
+    bcr --help
 
-bcr build --help
+    bcr build --help
 
-bcr build bbr -help
-```
+    bcr build bbr -help
 
 ## Build
 
@@ -70,13 +68,13 @@ bcr build bbr -help
 
 1. tools (usually not necessary)
 
-2. engine aka plain UE4Editor (this is actually what's used for cooking & building Game/Server/Client, not BBREditor. This is only needed to build if you make code changes in the base engine)
+1. engine aka plain UE4Editor (this is actually what's used for cooking & building Game/Server/Client, not BBREditor. This is only needed to build if you make code changes in the base engine)
 
-3. bbr (bebylon specific targets: BBR (standalone game), BBREditor (editor), BBRServer (server), BBRClient(client))
+1. bbr (bebylon specific targets: BBR (standalone game), BBREditor (editor), BBRServer (server), BBRClient(client))
 
 You can pass a configuration: debug, debuggame, development, test, shipping to build the corresponding variant
 
-You can also choose the rebuild method: iterate (incremental), rebuild (clean+rebuild), clean (just deletes the files)\
+You can also choose the rebuild method: iterate (incremental), rebuild (clean+rebuild), clean (just deletes the files)\\
 
 The 'rebuild' option is still flakey because UAT sometimes deletes downstream dependencies but doesn't rebuild them. If you want to do a rebuild, do the command with -r clean and then again with -r iterate
 

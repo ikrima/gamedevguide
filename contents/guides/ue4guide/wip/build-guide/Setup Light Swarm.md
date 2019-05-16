@@ -4,7 +4,7 @@ sortIndex: 3
 
 ### Setup Swarm
 
-http://www.srombauts.fr/2017/11/10/ue4-use-swarm-distribute-lighting-build-network/
+<http://www.srombauts.fr/2017/11/10/ue4-use-swarm-distribute-lighting-build-network/>
 
 If you use Lightmass and/or Precomputed Visibility, you can notice that map build takes a long time.
 
@@ -103,4 +103,4 @@ Also, try to install agents only on powerful computers, it will prevent build de
 
 Good luck!
 
-_Reference From https://forums.epicgames.com/threads/965487-Setup-Swarm_
+*Reference From <https://forums.epicgames.com/threads/965487-Setup-Swarm>*

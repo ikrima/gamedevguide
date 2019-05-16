@@ -4,7 +4,7 @@ Monday, June 19, 2017
 
 4:22 PM
 
-gr\_\_busy_pct signal on the graph. High percentage =&gt; GPU bound
+gr\_\_busy_pct signal on the graph. High percentage => GPU bound
 
 <img src="process_markdown/assets/media/image1.png" alt="Machine generated alternative text: &quot;Speed of Light&quot; Metrics SOL - &quot;Speed of Light&quot; - peak throughput of a given piece of hardware max instructions per cycle, max bytes per cycle, etc. SOL% = achieved throughput, as % of the peak; &quot;how close are you to perfection?&quot; Unit SOL% takes the max across sub-unit SOL%s. SM, partition, sub-partition, ALU Example: the SM SOL% is the max of Instruction Issue utilization ALU utilization Shared memory utilization Texture/L1 utilization Image of Maxwell SM sub-partition from NVIDIA GeForce GTX 750 Ti Whitepaper 4 nVIDIA " style="width:7.78125in;height:4.54167in" />
 

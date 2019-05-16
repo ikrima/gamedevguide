@@ -20,7 +20,7 @@ C++ Macros:
 
 Class Declaration
 
-UCLASS(\[specifier, specifier, ...\], \[meta(key=value, key=value, ...)\])  
+UCLASS(\[specifier, specifier, ...], \[meta(key=value, key=value, ...)])  
 class ClassName : ParentName  
 {  
 GENERATED_UCLASS_BODY()  
@@ -109,7 +109,7 @@ Constructors:
 // Structure to hold one-time initialization  
                 struct FConstructorStatics  
                 {  
-                        ConstructorHelpers::FObjectFinderOptional&lt;UTexture2D&gt; SpriteTexture;  
+                        ConstructorHelpers::FObjectFinderOptional&lt;UTexture2D> SpriteTexture;  
                         FName ID_Wind;  
                         FText NAME_Wind;  
                         FConstructorStatics()  
@@ -123,24 +123,24 @@ Constructors:
 
 if (ArrowComponent)  
                 {  
-                        ArrowComponent-&gt;ArrowColor = FColor(150, 200, 255);  
-                        ArrowComponent-&gt;bTreatAsASprite = true;  
-                        ArrowComponent-&gt;SpriteInfo.Category = ConstructorStatics.ID_Wind;  
-                        ArrowComponent-&gt;SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
-                        ArrowComponent-&gt;AttachParent = Component;  
-                        ArrowComponent-&gt;bIsScreenSizeScaled = true;  
-                        ArrowComponent-&gt;bUseInEditorScaling = true;  
+                        ArrowComponent->ArrowColor = FColor(150, 200, 255);  
+                        ArrowComponent->bTreatAsASprite = true;  
+                        ArrowComponent->SpriteInfo.Category = ConstructorStatics.ID_Wind;  
+                        ArrowComponent->SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
+                        ArrowComponent->AttachParent = Component;  
+                        ArrowComponent->bIsScreenSizeScaled = true;  
+                        ArrowComponent->bUseInEditorScaling = true;  
                 }
 
 if (SpriteComponent)  
                 {  
-                        SpriteComponent-&gt;Sprite = ConstructorStatics.SpriteTexture.Get();  
-                        SpriteComponent-&gt;SpriteInfo.Category = ConstructorStatics.ID_Wind;  
-                        SpriteComponent-&gt;SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
-                        SpriteComponent-&gt;AttachParent = Component;  
+                        SpriteComponent->Sprite = ConstructorStatics.SpriteTexture.Get();  
+                        SpriteComponent->SpriteInfo.Category = ConstructorStatics.ID_Wind;  
+                        SpriteComponent->SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
+                        SpriteComponent->AttachParent = Component;  
                 }
 
-- Create components in the constructor using ConstructorHelpers::CreateComponent&lt;&gt;()
+- Create components in the constructor using ConstructorHelpers::CreateComponent&lt;>()
 
 > ##### **Function Specifiers**
 >
@@ -174,8 +174,8 @@ if (SpriteComponent)
 
 - [Unreliable]
 
-> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>&gt;_
-
+> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>>*
+>
 > **Delegates**
 >
 > Delegates allow you to call member functions on C++ objects in a generic, yet type-safe way. Using delegates, you can dynamically bind to a member function of an arbitrary object, then call functions on the object, even if the caller does not know the object's type.
@@ -194,7 +194,7 @@ if (SpriteComponent)
 
 > See the [Delegates] page for reference and usage information.
 >
-> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>&gt;_
+> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>>*
 
 **Timer Management**
 

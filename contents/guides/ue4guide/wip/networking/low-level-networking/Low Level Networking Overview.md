@@ -26,7 +26,8 @@ UNetDriver: contains list of connections to Tick
 
 - Client: 1 connection
 
-* UNetConnection: Contains list of channels to replicate
+
+- UNetConnection: Contains list of channels to replicate
 
   - UChannel: Logical construct to route data to proper object
 

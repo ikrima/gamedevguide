@@ -1,4 +1,4 @@
-_From &lt;<https://udn.unrealengine.com/questions/225812/debugging-ue4editor-cmdexe.html>&gt;_
+*From &lt;<https://udn.unrealengine.com/questions/225812/debugging-ue4editor-cmdexe.html>>*
 
 ![GeneralDebug_DebugExternalProcess](C:\devguide\conversion\FINISHED\assets\GeneralDebug_DebugExternalProcess.png)
 

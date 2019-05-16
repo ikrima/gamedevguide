@@ -12,37 +12,37 @@ FBlueprintEditorUtils
 
 ===========================================
 
-void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*&gt;> Graphs) const
+void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*>> Graphs) const
 
 /\*\* Set of pages that combine into a single uber-graph \*/
 
 > UPROPERTY()
 >
-> TArray&lt;class UEdGraph\*&gt; UbergraphPages;
-
+> TArray&lt;class UEdGraph\*> UbergraphPages;
+>
 > /\*\* Set of functions implemented for this class graphically \*/
 >
 > UPROPERTY()
 >
-> TArray&lt;class UEdGraph\*&gt; FunctionGraphs;
-
+> TArray&lt;class UEdGraph\*> FunctionGraphs;
+>
 > /\*\* Graphs of signatures for delegates \*/
 >
 > UPROPERTY()
 >
-> TArray&lt;class UEdGraph\*&gt; DelegateSignatureGraphs;
-
+> TArray&lt;class UEdGraph\*> DelegateSignatureGraphs;
+>
 > /\*\* Set of macros implemented for this class \*/
 >
 > UPROPERTY()
 >
-> TArray&lt;class UEdGraph\*&gt; MacroGraphs;
+> TArray&lt;class UEdGraph\*> MacroGraphs;
 
-for (UEdGraph\* CurrentGraph : Blueprint-&gt;FunctionGraphs)
+for (UEdGraph\* CurrentGraph : Blueprint->FunctionGraphs)
 
 > {
 >
-> if( CurrentGraph-&gt;GetFName() == Schema-&gt;FN_UserConstructionScript )
+> if( CurrentGraph->GetFName() == Schema->FN_UserConstructionScript )
 >
 > {
 >
@@ -62,11 +62,11 @@ FindInBlueprints.h:
 
 SFindInBlueprints::MakeSearchQuery() - to comprehensively search blueprint nodes (e.g. parameters, comments, etc)
 
-TSharedPtr&lt; FImaginaryBlueprint&gt; ImaginaryBlueprint(new FImaginaryBlueprint(Blueprint-&gt;GetName(), Blueprint-&gt;GetPathName(), ParentClass, Interfaces, FFindInBlueprintSearchManager::Get().QuerySingleBlueprint(Blueprint)));
+TSharedPtr&lt; FImaginaryBlueprint> ImaginaryBlueprint(new FImaginaryBlueprint(Blueprint->GetName(), Blueprint->GetPathName(), ParentClass, Interfaces, FFindInBlueprintSearchManager::Get().QuerySingleBlueprint(Blueprint)));
 
-> TSharedPtr&lt; FFiBSearchInstance &gt; SearchInstance(new FFiBSearchInstance);
+> TSharedPtr&lt; FFiBSearchInstance > SearchInstance(new FFiBSearchInstance);
 >
-> FSearchResult SearchResult = RootSearchResult = SearchInstance-&gt;StartSearchQuery(SearchValue, ImaginaryBlueprint);
+> FSearchResult SearchResult = RootSearchResult = SearchInstance->StartSearchQuery(SearchValue, ImaginaryBlueprint);
 
 ========
 
@@ -74,7 +74,7 @@ TSharedPtr&lt; FImaginaryBlueprint&gt; ImaginaryBlueprint(new FImaginaryBlueprin
 
 ObjectTools::ShowReferencers()
 
-> RetrieveReferencers( TArray&lt;FReferencerInformation&gt;\* OutInternalReferencers, TArray&lt;FReferencerInformation&gt;\* OutExternalReferencers);
+> RetrieveReferencers( TArray&lt;FReferencerInformation>\* OutInternalReferencers, TArray&lt;FReferencerInformation>\* OutExternalReferencers);
 
 //Show objects this points to
 
@@ -82,45 +82,45 @@ ObjectTools::ShowReferencedObjs(GetBlueprintObj());
 
 > //To differentiate between what the default class points to vs. the instance
 >
-> ObjectTools::ShowReferencedObjs(GetBlueprintObj()-&gt;GeneratedClass);
+> ObjectTools::ShowReferencedObjs(GetBlueprintObj()->GeneratedClass);
 
 /\*\* Gather all bps that Blueprint depends on \*/
 
-static void GatherDependencies(const UBlueprint\* Blueprint, TSet&lt;TWeakObjectPtr&lt;UBlueprint&gt;&gt;& OutDependencies, TSet&lt;TWeakObjectPtr&lt;UStruct&gt;&gt;& OutUDSDependencies);
+static void GatherDependencies(const UBlueprint\* Blueprint, TSet&lt;TWeakObjectPtr&lt;UBlueprint>>& OutDependencies, TSet&lt;TWeakObjectPtr&lt;UStruct>>& OutUDSDependencies);
 
 /\*\* Returns a list of loaded Blueprints that are dependent on the given Blueprint. \*/
 
-static void GetDependentBlueprints(UBlueprint\* Blueprint, TArray&lt;UBlueprint\*&gt;& DependentBlueprints, bool bRemoveSelf = true);
+static void GetDependentBlueprints(UBlueprint\* Blueprint, TArray&lt;UBlueprint\*>& DependentBlueprints, bool bRemoveSelf = true);
 
 =========
 
 Search Asset Registry
 
-FAssetRegistryModule\* AssetRegistryModule = &FModuleManager::LoadModuleChecked&lt;FAssetRegistryModule&gt;(TEXT("AssetRegistry"));
+FAssetRegistryModule\* AssetRegistryModule = &FModuleManager::LoadModuleChecked&lt;FAssetRegistryModule>(TEXT("AssetRegistry"));
 
-TArray&lt;FAssetData&gt; AssetData;
+TArray&lt;FAssetData> AssetData;
 
 FARFilter Filter;
 
-Filter.ClassNames.Add( UBlueprint::StaticClass()-&gt;GetFName() ); //get blueprints
+Filter.ClassNames.Add( UBlueprint::StaticClass()->GetFName() ); //get blueprints
 
 Filter.PackagePaths.Add("/Game/Blueprints/RoomModel"); //from location
 
-AssetRegistryModule-&gt;Get().GetAssets(Filter, AssetData);
+AssetRegistryModule->Get().GetAssets(Filter, AssetData);
 
-//AssetRegistryModule-&gt;Get().GetAssetsByClass(Class-&gt;GetFName(), AssetData);
+//AssetRegistryModule->Get().GetAssetsByClass(Class->GetFName(), AssetData);
 
-for (TArray&lt;FAssetData&gt;::TConstIterator PkgIter = AssetData.CreateConstIterator(); PkgIter; ++PkgIter)
+for (TArray&lt;FAssetData>::TConstIterator PkgIter = AssetData.CreateConstIterator(); PkgIter; ++PkgIter)
 
 {
 
 FAssetData Asset = \*PkgIter;
 
-UBlueprint\* BlueAsset = Cast&lt;UBlueprint&gt;(Asset.GetAsset());
+UBlueprint\* BlueAsset = Cast&lt;UBlueprint>(Asset.GetAsset());
 
-if (BlueAsset-&gt;ParentClass == ARoomConnection::StaticClass()){
+if (BlueAsset->ParentClass == ARoomConnection::StaticClass()){
 
-GEngine-&gt;AddOnScreenDebugMessage(-1, 10.f, FColor::Red, Asset.AssetName.GetPlainNameString());
+GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, Asset.AssetName.GetPlainNameString());
 
 }
 
@@ -132,19 +132,19 @@ Check if Actor is a Blueprint
 
 UBlueprint::GetBlueprintFromClass(const UClass\* InClass);
 
-BlueprintClass-&gt;HasAnyClassFlags(CLASS_CompiledFromBlueprint)
+BlueprintClass->HasAnyClassFlags(CLASS_CompiledFromBlueprint)
 
-UObject-&gt;IsA(UBlueprintGeneratedClass::StaticClass())
+UObject->IsA(UBlueprintGeneratedClass::StaticClass())
 
-UClass-&gt;IsChildOf(UBlueprintGeneratedClass::StaticClass())
+UClass->IsChildOf(UBlueprintGeneratedClass::StaticClass())
 
 Find all nodes of type
 
-TArray&lt;UK2Node_CustomEvent\*&gt; BpCustomEvents;
+TArray&lt;UK2Node_CustomEvent\*> BpCustomEvents;
 
-FBlueprintEditorUtils::GetAllNodesOfClass&lt;UK2Node_CustomEvent&gt;(FuncBlueprint, BpCustomEvents);
+FBlueprintEditorUtils::GetAllNodesOfClass&lt;UK2Node_CustomEvent>(FuncBlueprint, BpCustomEvents);
 
-static bool GetBlueprintHierarchyFromClass(const UClass\* InClass, TArray&lt;UBlueprint\*&gt;& OutBlueprintParents);
+static bool GetBlueprintHierarchyFromClass(const UClass\* InClass, TArray&lt;UBlueprint\*>& OutBlueprintParents);
 
 ===============
 
