@@ -36,8 +36,6 @@ Menu/UI creation proceeds as normal Slate UI.
 
 - Look at Paper2D as samples as well (everything related to it is a plugin & not core to the engine)
 
-
-
 **References:**
 
 For a great reference point, start at:

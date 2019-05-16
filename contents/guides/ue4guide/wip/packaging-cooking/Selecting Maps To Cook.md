@@ -28,5 +28,4 @@ bCookSinglePackage: affects MapsToCook behaviour (and nothing else), see below.
 
 If you want to make a selection of maps that should really always be cooked, use AlwaysCookMaps. I would not recommend using either AllMaps or MapsToCook, since their behaviour depends on other environment variables which makes them prone to unexpected breakage. If you want you can set MapsToCook, but be aware that if you specify maps on the command line this setting will be ignored.
 
-*Reference From https://forums.unrealengine.com/development-discussion/c-gameplay-programming/72687-list-of-maps-to-cook*
-
+_Reference From https://forums.unrealengine.com/development-discussion/c-gameplay-programming/72687-list-of-maps-to-cook_

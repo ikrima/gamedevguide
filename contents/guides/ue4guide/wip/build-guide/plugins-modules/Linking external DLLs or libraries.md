@@ -21,16 +21,12 @@ https://wiki.unrealengine.com/Linking_Static_Libraries_Using_The_Build_System
 https://answers.unrealengine.com/questions/243103/how-to-i-link-a-third-party-library-using-the-unre.html
 
 https://wiki.unrealengine.com/Integrating_OpenCV_Into_Unreal_Engine_4
-	
 PublicDelayLoadDLLs.Add("opencv_calib3d2410d.dll");
 PublicAdditionalLibraries.Add("opencv_video2410d.lib");
 
-
-**NOTE: IF YOU NEED TO JUST LINK AGAINST AN EXTERNAL SET OF HEADER FILES, USE** PrivateIncludePathModuleNames OR PublicIncludePathModuleNames. 
+**NOTE: IF YOU NEED TO JUST LINK AGAINST AN EXTERNAL SET OF HEADER FILES, USE** PrivateIncludePathModuleNames OR PublicIncludePathModuleNames.
 
 **IF A HEADER NEEDS TO INCLUDE EXTERNAL HEADER AND THE HEADER IS IN A PUBLIC FOLDER, YOU HAVE TO USE** PublicIncludePathModuleNames
-
-
 
 ### Notes:
 
@@ -41,13 +37,11 @@ PublicAdditionalLibraries.Add("opencv_video2410d.lib");
 •Runtime – for anything
 •Programs – for standalone programs
 •Third Party – for external code & libs
-*Note: The UE4 EULA prohibits inclusion of Editor modules in shipping games*
-
-
+_Note: The UE4 EULA prohibits inclusion of Editor modules in shipping games_
 
 **Structure of Modules**
 
-- Private folder 
+- Private folder
 - Internal implementation
 - Module initialization
 - Pre-compiled header
@@ -58,19 +52,13 @@ PublicAdditionalLibraries.Add("opencv_video2410d.lib");
 
 Https
 
-
-
 PrivateIncludePaths
 
 - Sub-folders inside your module’s Private folder
 
-
-
 PublicIncludePaths
 
 - Sub-folders inside your module’s Public folder (not needed)
-
-
 
 PrivateIncludePathModuleNames
 
@@ -78,88 +66,58 @@ PrivateIncludePathModuleNames
 
 - Modules whose public headers your module’s public interface includes, but doesn’t link to
 
-
-
 PrivateDependencyModuleNames
 
 - Modules that your module’s private implementation requires for compiling and linking
 
-
-
 PublicDependencyModuleNames
 
-- Modules that your module’s public interface requires for compiling and linking DynamicallyLoadedModuleNames 
+- Modules that your module’s public interface requires for compiling and linking DynamicallyLoadedModuleNames
 
-
-- Modules that are loaded at run-time via ModuleManager (this is to ensure that they get compiled)
-
+* Modules that are loaded at run-time via ModuleManager (this is to ensure that they get compiled)
 
 More options in RulesCompiler.cs
-
-
 
 PublicLibraryPaths
 
 - Paths to folders containing additional libraries
 
-
-
-
 PublicAdditionalLibraries
 
 - Additional libraries (.lib or .a files) to link against
-
-
-
 
 PublicFrameworks
 
 - Additional XCode frameworks (iOS, macOS only)
 
-
-
-
 PublicWeakFrameworks
 
 - Weak frameworks (for OS transition)
-
-
-
 
 PublicAdditionalShadowFiles
 
 - Files that need to be copied for remote compilation
 
-
-
 RuntimeDependencies
 
 - Runtime dependencies to be staged for a packaged build
-
-
-
 
 Structure of Plug-ins
 
 - One or more modules
 
-
-- Plug-in descriptor
-
+* Plug-in descriptor
 
 - Content (optional)
 
-
-- Resources (optional)
+* Resources (optional)
   - Plug-in Descriptor
   - Json file {PluginName.uplugin}
   - Inside root of plug-in directory
     - Contains:
       - Version information
       - User friendly description
-      -  Module loading rules
-
-
+      - Module loading rules
 
 **Third-Party Libraries**
 
@@ -169,19 +127,17 @@ Structure of Engine Dependencies
 
 •Each has its own Build.cs file
 
-​	• Just like any other module
+​ • Just like any other module
 
-​	• Public includes (for headers to be
+​ • Public includes (for headers to be
 
-​	compiled into dependent modules)
+​ compiled into dependent modules)
 
-​	• Public libraries (for libraries to be
+​ • Public libraries (for libraries to be
 
-​	linked into dependent modules)
+​ linked into dependent modules)
 
-​	• Optional pre-processor definitions
-
-
+​ • Optional pre-processor definitions
 
 Building Engine Dependencies
 
@@ -193,22 +149,20 @@ Building Engine Dependencies
 
 •Internally, we pre-compile the libraries using…
 
-​	• BuildThirdPartyLibs UAT script (automated)
+​ • BuildThirdPartyLibs UAT script (automated)
 
-​	• Batch files and shell scripts (manual)
+​ • Batch files and shell scripts (manual)
 
-​	• Specialized UAT scripts (i.e. for PhysX)
+​ • Specialized UAT scripts (i.e. for PhysX)
 
 •Sometimes there are text files with instructions
 
 ![](../../assets/PluginsModules-Linking.png)
 
-
-
 Structure of Plug-in Dependencies
 
-​	•Same as Engine third-party dependencies
+​ •Same as Engine third-party dependencies
 
-​	•Same build rules
+​ •Same build rules
 
-![](..\..\assets\PluginsModules-plugindepend.png)
+![](....\assets\PluginsModules-plugindepend.png)

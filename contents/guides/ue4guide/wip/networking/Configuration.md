@@ -1,65 +1,53 @@
 Pass -lanplay command arg to use lan bandwidth settings
 
- 
-
 ### Low Level Constants:
 
-enum { MAX\_PACKET\_SIZE = 1024 }; // MTU for the connection  
-enum { LAN\_BEACON\_MAX\_PACKET\_SIZE = 1024 }; // MTU for the connection
+enum { MAX_PACKET_SIZE = 1024 }; // MTU for the connection  
+enum { LAN_BEACON_MAX_PACKET_SIZE = 1024 }; // MTU for the connection
 
- 
-
-enum { RELIABLE\_BUFFER = 256 }; // Power of 2 &gt;= 1.  
-enum { MAX\_PACKETID = 16384 };  // Power of 2 &gt;= 1, covering guaranteed loss/misorder time.  
-enum { MAX\_CHSEQUENCE = 1024 }; // Power of 2 &gt;RELIABLE\_BUFFER, covering loss/misorder time.  
-enum { MAX\_BUNCH\_HEADER\_BITS = 64 };  
-enum { MAX\_PACKET\_HEADER\_BITS = 15 }; // = FMath::CeilLogTwo(MAX\_PACKETID) + 1 (IsAck)  
-enum { MAX\_PACKET\_TRAILER\_BITS = 1 };
-
- 
+enum { RELIABLE_BUFFER = 256 }; // Power of 2 &gt;= 1.  
+enum { MAX_PACKETID = 16384 };  // Power of 2 &gt;= 1, covering guaranteed loss/misorder time.  
+enum { MAX_CHSEQUENCE = 1024 }; // Power of 2 &gt;RELIABLE_BUFFER, covering loss/misorder time.  
+enum { MAX_BUNCH_HEADER_BITS = 64 };  
+enum { MAX_PACKET_HEADER_BITS = 15 }; // = FMath::CeilLogTwo(MAX_PACKETID) + 1 (IsAck)  
+enum { MAX_PACKET_TRAILER_BITS = 1 };
 
 ### Runtime lag bandwidth data:
 
 UPlayer/UNetConnection:
 
--   CurrentNetSpeed: Actual net speed that gets updated
+- CurrentNetSpeed: Actual net speed that gets updated
 
--   MaxPacket: Maximum packet size.
+- MaxPacket: Maximum packet size.
 
--   LastReceiveTime; // Last time a packet was received, for timeout checking.
+- LastReceiveTime; // Last time a packet was received, for timeout checking.
 
--   LastReceiveRealtime; // Last time a packet was received, using real time seconds (FPlatformTime::Seconds)
+- LastReceiveRealtime; // Last time a packet was received, using real time seconds (FPlatformTime::Seconds)
 
--   LastGoodPacketRealtime; // Last real time a packet was considered valid
+- LastGoodPacketRealtime; // Last real time a packet was considered valid
 
--   LastSendTime; // Last time a packet was sent, for keepalives.
+- LastSendTime; // Last time a packet was sent, for keepalives.
 
--   LastTickTime; // Last time of polling.
+- LastTickTime; // Last time of polling.
 
--   QueuedBits; // Bits assumed to be queued up.
+- QueuedBits; // Bits assumed to be queued up.
 
--   TickCount; // Count of ticks.
+- TickCount; // Count of ticks.
 
--   LastRecvAckTime; // The last time an ack was received \*/
-
- 
-
- 
+- LastRecvAckTime; // The last time an ack was received \*/
 
 **Misc Details:**
 
--   **NetClientTicksPerSecond:** is actually how many client connections the server will tick on each of its frames. Similar for the NetUpdateFrequency values, those control how often the server will consider the actor's properties for replication.
+- **NetClientTicksPerSecond:** is actually how many client connections the server will tick on each of its frames. Similar for the NetUpdateFrequency values, those control how often the server will consider the actor's properties for replication.
 
--   **bClampListenServerTickRate:** Clamp maxtickrate if listenserver by using NetServerMaxTickRate
-
- 
+- **bClampListenServerTickRate:** Clamp maxtickrate if listenserver by using NetServerMaxTickRate
 
 ### Ini Config:
 
 \[/Script/Engine.Player\]  
 ; Bandwidth Settings For Client  
 ConfiguredInternetSpeed=10000  
-ConfiguredLanSpeed=20000  
+ConfiguredLanSpeed=20000
 
 \[/Script/OnlineSubsystemUtils.IpNetDriver\]  
 ; Not used  
@@ -96,8 +84,6 @@ MaxPortCountToTry=512
 ;ServerDesiredSocketSendBufferBytes  
 ;ClientDesiredSocketReceiveBufferBytes  
 ;ClientDesiredSocketSendBufferBytes
-
- 
 
 \[/Script/Engine.GameNetworkManager\]  
 ; Looks like a lot of this isnt actually used wrt to setting bandwidth limits  

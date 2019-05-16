@@ -1,6 +1,6 @@
 /\*\*
 
-> * Delegate fires whenever a client cheater is detected in the networking code
+> - Delegate fires whenever a client cheater is detected in the networking code
 >
 > \*
 >
@@ -14,11 +14,9 @@
 >
 > \*/
 >
-> DECLARE\_DELEGATE\_FourParams(FNetworkCheatDetected, const class FUniqueNetId& /\*PlayerId\*/, ECheatPunishType /\*PunishType\*/, const FString& /\*ReasonStr\*/, const FString& /\*InfoStr\*/);
+> DECLARE_DELEGATE_FourParams(FNetworkCheatDetected, const class FUniqueNetId& /\*PlayerId\*/, ECheatPunishType /\*PunishType\*/, const FString& /\*ReasonStr\*/, const FString& /\*InfoStr\*/);
 >
 > static FNetworkCheatDetected OnNetworkCheatDetected;
-
- 
 
 > /\*\*
 >
@@ -30,6 +28,6 @@
 >
 > \*/
 >
-> DECLARE\_MULTICAST\_DELEGATE\_OneParam(FOnPendingNetGameConnectionCreated, UPendingNetGame\* /\*PendingNetGame\*/);
+> DECLARE_MULTICAST_DELEGATE_OneParam(FOnPendingNetGameConnectionCreated, UPendingNetGame\* /\*PendingNetGame\*/);
 >
 > static FOnPendingNetGameConnectionCreated OnPendingNetGameConnectionCreated;

@@ -1,8 +1,9 @@
 ```js
-sortIndex: 3
+sortIndex: 3;
 ```
 
 UEBuildTarget.cs
+
 ```
 /// The name of the application the target is part of. For targets with bUseSharedBuildEnvironment = true, this is typically the name of the base application, eg. UE4Editor for any game editor.
 

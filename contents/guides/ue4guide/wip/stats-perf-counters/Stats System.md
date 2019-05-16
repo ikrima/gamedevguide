@@ -2,15 +2,9 @@ Enable Stats from Command Line:
 
 -StatCmds="startfile"
 
- 
-
-*From &lt;<https://udn.unrealengine.com/questions/445587/long-initial-load-times.html>&gt;*
-
-  
+_From &lt;<https://udn.unrealengine.com/questions/445587/long-initial-load-times.html>&gt;_
 
 Description of stats: <https://docs.unrealengine.com/udk/Three/StatsDescriptions.html>
-
- 
 
 Common options: \[-ms=5.0\] \[-root=None\] \[leaf=None\] \[-depth=maxint\] \[-nodisplay\]
 
@@ -18,19 +12,13 @@ stat groupname\[+\] - toggles displaying stats group, + enables hierarchical dis
 
 stat group list|listall|enable name|disable name|none|all|default - manages enabling/disabling recording of the stats groups. Doing stat \[groupname\] automatically enables that group
 
--   Also supports \[-group=groupname\] \[-sortby=name\] \[-maxhistoryframes=60\] \[-reset\] \[-maxdepth=4\] \[-root=None\] \[-ms=0.2\] \[-reset\]
-
- 
+- Also supports \[-group=groupname\] \[-sortby=name\] \[-maxhistoryframes=60\] \[-reset\] \[-maxdepth=4\] \[-root=None\] \[-ms=0.2\] \[-reset\]
 
 stat namedmarker \#markername\# - adds a custom marker to the stats stream
 
 stat none - disables drawing all stats groups
 
 stat display -font=small\[tiny\] - Changes stats rendering display options
-
- 
-
- 
 
 stat slow \[-ms=1.0\] \[-depth=4\] - toggles displaying the game and render thread stats
 
@@ -50,10 +38,6 @@ stat dumpcpu - dumps cpu stats
 
 stat dumpnonframe \[groupname\] - dumps non-frame stats, usually memory stats
 
- 
-
- 
-
 stat hier -group=groupname \[-sortby=name\] \[-maxhistoryframes=60\] \[-reset\] \[-maxdepth=4\] \[-root=None\] \[-ms=0.2\] \[-reset\]
 
 \- groupname is a stat group like initviews or statsystem
@@ -66,8 +50,6 @@ stat hier -group=groupname \[-sortby=name\] \[-maxhistoryframes=60\] \[-reset\] 
 
 \- maxdepth (default 4, maximum depth for the hierarchy)
 
- 
-
 stat startfile - starts dumping a capture
 
 stat stopfile - stops dumping a capture (regular, raw, memory)
@@ -76,21 +58,13 @@ stat startfileraw - starts dumping a raw capture
 
 stat toggledebug - toggles tracking the most memory expensive stats
 
- 
-
 add -memoryprofiler in the command line to enable the memory profiling
 
 stat stopfile - stops tracking all memory operations and writes the results to the file
 
 stat testfile - loads the last saved capture and dumps first, middle and last frame
 
- 
-
- 
-
 Details from Stats.h: Implementing custom stats or cycle counters
-
- 
 
 /\*\*
 
@@ -128,11 +102,11 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* To define a stat group you need to use one of the following methods:
 
-\* DECLARE\_STATS\_GROUP(GroupDesc,GroupId,GroupCat) - declares a stats group which is enabled by default
+\* DECLARE_STATS_GROUP(GroupDesc,GroupId,GroupCat) - declares a stats group which is enabled by default
 
-\* DECLARE\_STATS\_GROUP\_VERBOSE(GroupDesc,GroupId,GroupCat) - declares a stats group which is disabled by default
+\* DECLARE_STATS_GROUP_VERBOSE(GroupDesc,GroupId,GroupCat) - declares a stats group which is disabled by default
 
-\* DECLARE\_STATS\_GROUP\_MAYBE\_COMPILED\_OUT(GroupDesc,GroupId,GroupCat) - declares a stats group which is disabled by default and may be stripped by the compiler
+\* DECLARE_STATS_GROUP_MAYBE_COMPILED_OUT(GroupDesc,GroupId,GroupCat) - declares a stats group which is disabled by default and may be stripped by the compiler
 
 \*
 
@@ -154,9 +128,9 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* Examples:
 
-\* DECLARE\_STATS\_GROUP(TEXT("Threading"), STATGROUP\_Threading, STATCAT\_Advanced);
+\* DECLARE_STATS_GROUP(TEXT("Threading"), STATGROUP_Threading, STATCAT_Advanced);
 
-\* DECLARE\_STATS\_GROUP\_VERBOSE(TEXT("Linker Load"), STATGROUP\_LinkerLoad, STATCAT\_Advanced);
+\* DECLARE_STATS_GROUP_VERBOSE(TEXT("Linker Load"), STATGROUP_LinkerLoad, STATCAT_Advanced);
 
 \*
 
@@ -168,29 +142,29 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* For one file scope you need to use one of the following methods depending on the stat type.
 
-\* DECLARE\_CYCLE\_STAT(CounterName,StatId,GroupId) - declares a cycle counter stat
+\* DECLARE_CYCLE_STAT(CounterName,StatId,GroupId) - declares a cycle counter stat
 
 \*
 
-\* DECLARE\_SCOPE\_CYCLE\_COUNTER(CounterName,StatId,GroupId) - declares a cycle counter stat and uses it at the same time, it is limited to one function scope
+\* DECLARE_SCOPE_CYCLE_COUNTER(CounterName,StatId,GroupId) - declares a cycle counter stat and uses it at the same time, it is limited to one function scope
 
-\* QUICK\_SCOPE\_CYCLE\_COUNTER(StatId) - declares a cycle counter stat that will belong to stat group called 'Quick'
+\* QUICK_SCOPE_CYCLE_COUNTER(StatId) - declares a cycle counter stat that will belong to stat group called 'Quick'
 
-\* RETURN\_QUICK\_DECLARE\_CYCLE\_STAT(StatId,GroupId) - returns a cycle counter, used by a few specialized classes, more information later
+\* RETURN_QUICK_DECLARE_CYCLE_STAT(StatId,GroupId) - returns a cycle counter, used by a few specialized classes, more information later
 
 \*
 
-\* DECLARE\_FLOAT\_COUNTER\_STAT(CounterName,StatId,GroupId) - declares a float counter, technically speaking it's based on the double type, 8 bytes
+\* DECLARE_FLOAT_COUNTER_STAT(CounterName,StatId,GroupId) - declares a float counter, technically speaking it's based on the double type, 8 bytes
 
-\* DECLARE\_DWORD\_COUNTER\_STAT(CounterName,StatId,GroupId) - declared a dword counter, technically speaking it's based on the qword type, 8 bytes
+\* DECLARE_DWORD_COUNTER_STAT(CounterName,StatId,GroupId) - declared a dword counter, technically speaking it's based on the qword type, 8 bytes
 
-\* DECLARE\_FLOAT\_ACCUMULATOR\_STAT(CounterName,StatId,GroupId) - declares a float accumulator
+\* DECLARE_FLOAT_ACCUMULATOR_STAT(CounterName,StatId,GroupId) - declares a float accumulator
 
-\* DECLARE\_DWORD\_ACCUMULATOR\_STAT(CounterName,StatId,GroupId) - declares a dword accumulator
+\* DECLARE_DWORD_ACCUMULATOR_STAT(CounterName,StatId,GroupId) - declares a dword accumulator
 
-\* DECLARE\_MEMORY\_STAT(CounterName,StatId,GroupId) - declares a memory counter, same as the dword accumulator, but will be displayed with memory specific units
+\* DECLARE_MEMORY_STAT(CounterName,StatId,GroupId) - declares a memory counter, same as the dword accumulator, but will be displayed with memory specific units
 
-\* DECLARE\_MEMORY\_STAT\_POOL(CounterName,StatId,GroupId,Pool) - declares a memory counter with a pool
+\* DECLARE_MEMORY_STAT_POOL(CounterName,StatId,GroupId,Pool) - declares a memory counter with a pool
 
 \*
 
@@ -198,25 +172,25 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* These methods are the same as the previously mentioned but with \_EXTERN and the end of the name, here is the list:
 
-\* DECLARE\_CYCLE\_STAT\_EXTERN(CounterName,StatId,GroupId, API)
+\* DECLARE_CYCLE_STAT_EXTERN(CounterName,StatId,GroupId, API)
 
-\* DECLARE\_FLOAT\_COUNTER\_STAT\_EXTERN(CounterName,StatId,GroupId, API)
+\* DECLARE_FLOAT_COUNTER_STAT_EXTERN(CounterName,StatId,GroupId, API)
 
-\* DECLARE\_DWORD\_COUNTER\_STAT\_EXTERN(CounterName,StatId,GroupId, API)
+\* DECLARE_DWORD_COUNTER_STAT_EXTERN(CounterName,StatId,GroupId, API)
 
-\* DECLARE\_FLOAT\_ACCUMULATOR\_STAT\_EXTERN(CounterName,StatId,GroupId, API)
+\* DECLARE_FLOAT_ACCUMULATOR_STAT_EXTERN(CounterName,StatId,GroupId, API)
 
-\* DECLARE\_DWORD\_ACCUMULATOR\_STAT\_EXTERN(CounterName,StatId,GroupId, API)
+\* DECLARE_DWORD_ACCUMULATOR_STAT_EXTERN(CounterName,StatId,GroupId, API)
 
-\* DECLARE\_MEMORY\_STAT\_EXTERN(CounterName,StatId,GroupId, API)
+\* DECLARE_MEMORY_STAT_EXTERN(CounterName,StatId,GroupId, API)
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(CounterName,StatId,GroupId,Pool, API)
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(CounterName,StatId,GroupId,Pool, API)
 
 \*
 
 \* Then in the source file you need to define those stats.
 
-\* DEFINE\_STAT(CounterName) - defines stats declared with \_EXTERN
+\* DEFINE_STAT(CounterName) - defines stats declared with \_EXTERN
 
 \*
 
@@ -226,7 +200,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* StatId is an UNIQUE id of the stat
 
-\* GroupId is an id of the group that the stat will belong to, the GroupId from DECLARE\_STATS\_GROUP\*
+\* GroupId is an id of the group that the stat will belong to, the GroupId from DECLARE_STATS_GROUP\*
 
 \* Pool is a platform specific memory pool, more details later
 
@@ -246,53 +220,53 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* {
 
-\* MCR\_Invalid, // not memory
+\* MCR_Invalid, // not memory
 
-\* MCR\_Physical, // main system memory
+\* MCR_Physical, // main system memory
 
-\* MCR\_GPU, // memory directly a GPU (graphics card, etc)
+\* MCR_GPU, // memory directly a GPU (graphics card, etc)
 
-\* MCR\_GPUSystem, // system memory directly accessible by a GPU
+\* MCR_GPUSystem, // system memory directly accessible by a GPU
 
-\* MCR\_TexturePool,// presized texture pools
+\* MCR_TexturePool,// presized texture pools
 
-\* MCR\_MAX
+\* MCR_MAX
 
 \* };
 
 \*
 
-\* This is an example that will allow using the pools every where, see CORE\_API.
+\* This is an example that will allow using the pools every where, see CORE_API.
 
 \* THE NAME OF THE POOL MUST START WITH MCR\_
 
 \* Header file.
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(TEXT("Physical Memory Pool \[Physical\]"), MCR\_Physical, STATGROUP\_Memory, FPlatformMemory::MCR\_Physical, CORE\_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Physical Memory Pool \[Physical\]"), MCR_Physical, STATGROUP_Memory, FPlatformMemory::MCR_Physical, CORE_API);
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(TEXT("GPU Memory Pool \[GPU\]"), MCR\_GPU, STATGROUP\_Memory, FPlatformMemory::MCR\_GPU, CORE\_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("GPU Memory Pool \[GPU\]"), MCR_GPU, STATGROUP_Memory, FPlatformMemory::MCR_GPU, CORE_API);
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(TEXT("Texture Memory Pool \[Texture\]"), MCR\_TexturePool, STATGROUP\_Memory, FPlatformMemory::MCR\_TexturePool,CORE\_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Texture Memory Pool \[Texture\]"), MCR_TexturePool, STATGROUP_Memory, FPlatformMemory::MCR_TexturePool,CORE_API);
 
 \*
 
 \* Source file.
 
-\* DEFINE\_STAT(MCR\_Physical);
+\* DEFINE_STAT(MCR_Physical);
 
-\* DEFINE\_STAT(MCR\_GPU);
+\* DEFINE_STAT(MCR_GPU);
 
-\* DEFINE\_STAT(MCR\_TexturePool);
+\* DEFINE_STAT(MCR_TexturePool);
 
 \*
 
 \* This is a pool, so it needs to be initialized. Usually in the F\*PlatformMemory::Init()
 
-\* SET\_MEMORY\_STAT(MCR\_Physical, PhysicalPoolLimit);
+\* SET_MEMORY_STAT(MCR_Physical, PhysicalPoolLimit);
 
-\* SET\_MEMORY\_STAT(MCR\_GPU, GPUPoolLimit);
+\* SET_MEMORY_STAT(MCR_GPU, GPUPoolLimit);
 
-\* SET\_MEMORY\_STAT(MCR\_TexturePool, TexturePoolLimit);
+\* SET_MEMORY_STAT(MCR_TexturePool, TexturePoolLimit);
 
 \*
 
@@ -300,47 +274,47 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* Accessible everywhere.
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(TEXT("Index buffer memory"), STAT\_IndexBufferMemory, STATGROUP\_RHI, FPlatformMemory::MCR\_GPU, RHI\_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Index buffer memory"), STAT_IndexBufferMemory, STATGROUP_RHI, FPlatformMemory::MCR_GPU, RHI_API);
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(TEXT("Vertex buffer memory"), STAT\_VertexBufferMemory, STATGROUP\_RHI, FPlatformMemory::MCR\_GPU, RHI\_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Vertex buffer memory"), STAT_VertexBufferMemory, STATGROUP_RHI, FPlatformMemory::MCR_GPU, RHI_API);
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(TEXT("Structured buffer memory"), STAT\_StructuredBufferMemory,STATGROUP\_RHI, FPlatformMemory::MCR\_GPU, RHI\_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Structured buffer memory"), STAT_StructuredBufferMemory,STATGROUP_RHI, FPlatformMemory::MCR_GPU, RHI_API);
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(TEXT("Pixel buffer memory"), STAT\_PixelBufferMemory, STATGROUP\_RHI, FPlatformMemory::MCR\_GPU, RHI\_API);
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Pixel buffer memory"), STAT_PixelBufferMemory, STATGROUP_RHI, FPlatformMemory::MCR_GPU, RHI_API);
 
 \*
 
 \* Accessible only in the module where defined.
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(TEXT("Pool Memory Size"), STAT\_TexturePoolSize, STATGROUP\_Streaming, FPlatformMemory::MCR\_TexturePool, );
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Pool Memory Size"), STAT_TexturePoolSize, STATGROUP_Streaming, FPlatformMemory::MCR_TexturePool, );
 
-\* DECLARE\_MEMORY\_STAT\_POOL\_EXTERN(TEXT("Pool Memory Used"), STAT\_TexturePoolAllocatedSize, STATGROUP\_Streaming, FPlatformMemory::MCR\_TexturePool, );
+\* DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Pool Memory Used"), STAT_TexturePoolAllocatedSize, STATGROUP_Streaming, FPlatformMemory::MCR_TexturePool, );
 
 \*
 
 \* And the last thing, updating the memory stats.
 
-\* INC\_MEMORY\_STAT\_BY(STAT\_PixelBufferMemory,NumBytes) - increases a memory stat by the specified value
+\* INC_MEMORY_STAT_BY(STAT_PixelBufferMemory,NumBytes) - increases a memory stat by the specified value
 
-\* DEC\_MEMORY\_STAT\_BY(STAT\_PixelBufferMemory,NumBytes) - decreases a memory stat by the specified value
+\* DEC_MEMORY_STAT_BY(STAT_PixelBufferMemory,NumBytes) - decreases a memory stat by the specified value
 
-\* SET\_MEMORY\_STAT(STAT\_PixelBufferMemory,NumBytes) - sets a memory stat to the specified value
+\* SET_MEMORY_STAT(STAT_PixelBufferMemory,NumBytes) - sets a memory stat to the specified value
 
 \*
 
 \* Regular memory stats, without pools
 
-\* DECLARE\_MEMORY\_STAT(TEXT("Total Physical"), STAT\_TotalPhysical, STATGROUP\_MemoryPlatform);
+\* DECLARE_MEMORY_STAT(TEXT("Total Physical"), STAT_TotalPhysical, STATGROUP_MemoryPlatform);
 
-\* DECLARE\_MEMORY\_STAT(TEXT("Total Virtual"), STAT\_TotalVirtual, STATGROUP\_MemoryPlatform);
+\* DECLARE_MEMORY_STAT(TEXT("Total Virtual"), STAT_TotalVirtual, STATGROUP_MemoryPlatform);
 
-\* DECLARE\_MEMORY\_STAT(TEXT("Page Size"), STAT\_PageSize, STATGROUP\_MemoryPlatform);
+\* DECLARE_MEMORY_STAT(TEXT("Page Size"), STAT_PageSize, STATGROUP_MemoryPlatform);
 
-\* DECLARE\_MEMORY\_STAT(TEXT("Total Physical GB"), STAT\_TotalPhysicalGB, STATGROUP\_MemoryPlatform);
+\* DECLARE_MEMORY_STAT(TEXT("Total Physical GB"), STAT_TotalPhysicalGB, STATGROUP_MemoryPlatform);
 
 \*
 
-\* Or DECLARE\_MEMORY\_STAT\_EXTERN in the header file and then DEFINE\_STAT in the source file.
+\* Or DECLARE_MEMORY_STAT_EXTERN in the header file and then DEFINE_STAT in the source file.
 
 \* Updating the memory stats is done the same way as in the version with pools.
 
@@ -352,13 +326,13 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* First you need to add cycle counters.
 
-\* DECLARE\_CYCLE\_STAT(TEXT("Broadcast"), STAT\_StatsBroadcast,STATGROUP\_StatSystem);
+\* DECLARE_CYCLE_STAT(TEXT("Broadcast"), STAT_StatsBroadcast,STATGROUP_StatSystem);
 
-\* DECLARE\_CYCLE\_STAT(TEXT("Condense"), STAT\_StatsCondense, STATGROUP\_StatSystem);
+\* DECLARE_CYCLE_STAT(TEXT("Condense"), STAT_StatsCondense, STATGROUP_StatSystem);
 
 \*
 
-\* Or DECLARE\_CYCLE\_STAT\_EXTERN in the header file and then DEFINE\_STAT in the source file.
+\* Or DECLARE_CYCLE_STAT_EXTERN in the header file and then DEFINE_STAT in the source file.
 
 \*
 
@@ -370,7 +344,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* {
 
-\* SCOPE\_CYCLE\_COUNTER(STAT\_StatsBroadcast);
+\* SCOPE_CYCLE_COUNTER(STAT_StatsBroadcast);
 
 \* ...
 
@@ -394,7 +368,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* {
 
-\* CONDITIONAL\_SCOPE\_CYCLE\_COUNTER(STAT\_StatsBroadcast,bSomeCondition);
+\* CONDITIONAL_SCOPE_CYCLE_COUNTER(STAT_StatsBroadcast,bSomeCondition);
 
 \* ...
 
@@ -414,7 +388,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* {
 
-\* DECLARE\_SCOPE\_CYCLE\_COUNTER(TEXT("Broadcast"), STAT\_StatsBroadcast, STATGROUP\_StatSystem);
+\* DECLARE_SCOPE_CYCLE_COUNTER(TEXT("Broadcast"), STAT_StatsBroadcast, STATGROUP_StatSystem);
 
 \* ...
 
@@ -434,7 +408,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* {
 
-\* QUICK\_SCOPE\_CYCLE\_COUNTER(TEXT("Stats::Broadcast"));
+\* QUICK_SCOPE_CYCLE_COUNTER(TEXT("Stats::Broadcast"));
 
 \* ...
 
@@ -470,7 +444,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* const uint32 BroadcastEndTime = FPlatformTime::Cycles();
 
-\* SET\_CYCLE\_COUNTER(STAT\_StatsBroadcast, BroadcastEndTime-BroadcastBeginTime);
+\* SET_CYCLE_COUNTER(STAT_StatsBroadcast, BroadcastEndTime-BroadcastBeginTime);
 
 \* }
 
@@ -498,7 +472,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* {
 
-\* RETURN\_QUICK\_DECLARE\_CYCLE\_STAT(FParallelAnimationCompletionTask, STATGROUP\_TaskGraphTasks);
+\* RETURN_QUICK_DECLARE_CYCLE_STAT(FParallelAnimationCompletionTask, STATGROUP_TaskGraphTasks);
 
 \* }
 
@@ -516,35 +490,33 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* First you need to add a few counters.
 
-\* DECLARE\_FLOAT\_COUNTER\_STAT\_EXTERN(STAT\_FloatCounter,StatId,STATGROUP\_TestGroup, CORE\_API)
+\* DECLARE_FLOAT_COUNTER_STAT_EXTERN(STAT_FloatCounter,StatId,STATGROUP_TestGroup, CORE_API)
 
-\* DECLARE\_DWORD\_COUNTER\_STAT\_EXTERN(STAT\_DwordCounter,StatId,STATGROUP\_TestGroup, CORE\_API)
+\* DECLARE_DWORD_COUNTER_STAT_EXTERN(STAT_DwordCounter,StatId,STATGROUP_TestGroup, CORE_API)
 
-\* DECLARE\_FLOAT\_ACCUMULATOR\_STAT\_EXTERN(STAT\_FloatAccumulator,StatId,STATGROUP\_TestGroup, CORE\_API)
+\* DECLARE_FLOAT_ACCUMULATOR_STAT_EXTERN(STAT_FloatAccumulator,StatId,STATGROUP_TestGroup, CORE_API)
 
-\* DECLARE\_DWORD\_ACCUMULATOR\_STAT\_EXTERN(STAT\_DwordAccumulator,StatId,STATGROUP\_TestGroup, CORE\_API)
+\* DECLARE_DWORD_ACCUMULATOR_STAT_EXTERN(STAT_DwordAccumulator,StatId,STATGROUP_TestGroup, CORE_API)
 
 \*
 
 \* Updating counters.
 
-\* INC\_DWORD\_STAT(StatId) - increases a dword stat by 1
+\* INC_DWORD_STAT(StatId) - increases a dword stat by 1
 
-\* DEC\_DWORD\_STAT(StatId) - decreases a dword stat by 1
+\* DEC_DWORD_STAT(StatId) - decreases a dword stat by 1
 
-\* INC\_DWORD\_STAT\_BY(StatId,Amount) - increases a dword stat by the specified value
+\* INC_DWORD_STAT_BY(StatId,Amount) - increases a dword stat by the specified value
 
-\* DEC\_DWORD\_STAT\_BY(StatId,Amount) - decreases a dword stat by the specified value
+\* DEC_DWORD_STAT_BY(StatId,Amount) - decreases a dword stat by the specified value
 
-\* SET\_DWORD\_STAT(StatId,Value) - sets a dword stat to the specified value
+\* SET_DWORD_STAT(StatId,Value) - sets a dword stat to the specified value
 
- 
+\* INC_FLOAT_STAT_BY(StatId,Amount) - increases a float stat by the specified value
 
-\* INC\_FLOAT\_STAT\_BY(StatId,Amount) - increases a float stat by the specified value
+\* DEC_FLOAT_STAT_BY(StatId,Amount) - decreases a float stat by the specified value
 
-\* DEC\_FLOAT\_STAT\_BY(StatId,Amount) - decreases a float stat by the specified value
-
-\* SET\_FLOAT\_STAT(StatId,Value) - sets a float stat to the specified value
+\* SET_FLOAT_STAT(StatId,Value) - sets a float stat to the specified value
 
 \*
 
@@ -552,9 +524,9 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* A few helper methods
 
-\* GET\_STATID(StatId) - returns an instance of the TStatId of the stat, ADVANCED
+\* GET_STATID(StatId) - returns an instance of the TStatId of the stat, ADVANCED
 
-\* GET\_STATDESCRIPTION(StatId) - returns a description of the stat
+\* GET_STATDESCRIPTION(StatId) - returns a description of the stat
 
 \*
 
@@ -564,7 +536,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \*
 
-\* SCOPE\_SECONDS\_COUNTER(double&Seconds) - captures time passed in seconds, adding delta time to passed in variable
+\* SCOPE_SECONDS_COUNTER(double&Seconds) - captures time passed in seconds, adding delta time to passed in variable
 
 \*
 
@@ -576,7 +548,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* {
 
-\* SCOPE\_SECONDS\_COUNTER(ThisTime);
+\* SCOPE_SECONDS_COUNTER(ThisTime);
 
 \* ...
 
@@ -586,7 +558,7 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* }
 
-\* UE\_LOG(LogTemp, Log, TEXT("Stats::Broadcast %.2f"), ThisTime );
+\* UE_LOG(LogTemp, Log, TEXT("Stats::Broadcast %.2f"), ThisTime );
 
 \* }
 
@@ -596,15 +568,15 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \*
 
-\* SCOPE\_LOG\_TIME(Name,CumulativePtr) - using the given name prints the performance data and gathers cumulative stats
+\* SCOPE_LOG_TIME(Name,CumulativePtr) - using the given name prints the performance data and gathers cumulative stats
 
-\* SCOPE\_LOG\_TIME\_IN\_SECONDS(Name,CumulativePtr) - the same as above, but prints in seconds
+\* SCOPE_LOG_TIME_IN_SECONDS(Name,CumulativePtr) - the same as above, but prints in seconds
 
 \*
 
-\* SCOPE\_LOG\_TIME\_FUNC() - using the funcion name prints the performance data, cannot be nested
+\* SCOPE_LOG_TIME_FUNC() - using the funcion name prints the performance data, cannot be nested
 
-\* SCOPE\_LOG\_TIME\_FUNC\_WITH\_GLOBAL(CumulativePtr), same as above, but gather cumulative stats
+\* SCOPE_LOG_TIME_FUNC_WITH_GLOBAL(CumulativePtr), same as above, but gather cumulative stats
 
 \*
 
@@ -618,9 +590,9 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* {
 
-\* SCOPE\_LOG\_TIME("Stats::Broadcast", &GMyBroadcastTime );
+\* SCOPE_LOG_TIME("Stats::Broadcast", &GMyBroadcastTime );
 
-\* SCOPE\_LOG\_TIME\_IN\_SECONDS("Stats::Broadcast (sec)", &GMyBroadcastTime );
+\* SCOPE_LOG_TIME_IN_SECONDS("Stats::Broadcast (sec)", &GMyBroadcastTime );
 
 \* ...
 
@@ -636,9 +608,9 @@ Details from Stats.h: Implementing custom stats or cycle counters
 
 \* {
 
-\* SCOPE\_LOG\_TIME\_FUNC(); // The name should be "Stats::Condense()", may differ across compilers
+\* SCOPE_LOG_TIME_FUNC(); // The name should be "Stats::Condense()", may differ across compilers
 
-\* SCOPE\_LOG\_TIME\_FUNC\_WITH\_GLOBAL(&GMyBroadcastTime);
+\* SCOPE_LOG_TIME_FUNC_WITH_GLOBAL(&GMyBroadcastTime);
 
 \* ...
 

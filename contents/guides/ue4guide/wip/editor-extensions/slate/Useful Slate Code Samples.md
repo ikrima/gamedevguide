@@ -6,9 +6,7 @@ sortIndex: 4
 
 Go to Window -&gt; Developer Tools -&gt; Debug Tools -&gt; Test Suite. Shows all the different widgets
 
-![Useful_Slate_Code_Samples](..\..\assets\Useful_Slate_Code_Samples.png)
-
-
+![Useful_Slate_Code_Samples](....\assets\Useful_Slate_Code_Samples.png)
 
 ### Writing Custom Slate Widgets:
 
@@ -33,12 +31,13 @@ More slate samples: SWidgetGallery.h & AppFramework/STestSuite/SWizard/STableVie
 - SCollisionAnalyzer shows how to implement sorting
 
 ### Menu Builder & Pulldown Menu & Submenu:
+
 ```cpp
-FMenuBarBuilder MenuBarBuilder( CommandList ); 
-{ 
+FMenuBarBuilder MenuBarBuilder( CommandList );
+{
 MenuBarBuilder.AddPullDownMenu( TEXT("Menu 1"), TEXT("Opens Menu 1"), FNewMenuDelegate::CreateRaw( &FMenus::FillMenu1Entries ) );
 
-MenuBarBuilder.AddPullDownMenu( TEXT("Menu 2"), TEXT("Opens Menu 2"), FNewMenuDelegate::CreateRaw( &FMenus::FillMenu2Entries ) ); 
+MenuBarBuilder.AddPullDownMenu( TEXT("Menu 2"), TEXT("Opens Menu 2"), FNewMenuDelegate::CreateRaw( &FMenus::FillMenu2Entries ) );
 }
 
 return MenuBarBuilder.MakeWidget();
@@ -59,20 +58,23 @@ MenuBuilder.AddWidget(SNew(SVolumeControl), TEXT("Volume"));
 
 }
 ```
-*Reference From https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html*
+
+_Reference From https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html_
 
 ### Drop down pulldown/combo toolbar button:
-``` cpp
-GameToolBarBuilder.AddComboButton( 
-SpecialPIEOptionsMenuAction, 
-FOnGetContent::CreateRaw( &FLevelEditorToolBar::GeneratePIEMenuContent, InCommandList ), 
-FText(), 
+
+```cpp
+GameToolBarBuilder.AddComboButton(
+SpecialPIEOptionsMenuAction,
+FOnGetContent::CreateRaw( &FLevelEditorToolBar::GeneratePIEMenuContent, InCommandList ),
+FText(),
 LOCTEXT("PIEComboToolTip", "Play-In-Editor options") );
 ```
 
-*Reference From https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html*
+_Reference From https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html_
 
 ### Create Property Table:
+
 ```cpp
 // TableView
 
@@ -121,7 +123,8 @@ Module.CreatePropertyTableWidget( Table )
 **Custom Complex Widget UI:** https://github.com/ue4plugins/ObjectBrowser
 
 **Focus keyboard window to specific widget:**
-```cpp 
+
+```cpp
 FWidgetPath WidgetPath;
 
  bool bFound = FSlateApplication::Get().FindPathToWidget(DetailsView, WidgetPath);
@@ -137,29 +140,29 @@ FWidgetPath WidgetPath;
 
 #### Asset Picker:
 
-``` cpp
-FAssetPickerConfig **AssetPickerConfig**;  
-        **AssetPickerConfig**.OnAssetDoubleClicked = FOnAssetDoubleClicked::CreateStatic(&SBlutilityShelf::OnBlutilityDoubleClicked);  
-        **AssetPickerConfig**.OnGetAssetContextMenu = FOnGetAssetContextMenu::CreateSP(this, &SBlutilityShelf::OnBlutilityGetContextMenu);  
-        **AssetPickerConfig**.InitialAssetViewType = EAssetViewType::Tile;  
-        **AssetPickerConfig**.bAllowNullSelection = false;  
-        **AssetPickerConfig**.bShowBottomToolbar = false;  
+```cpp
+FAssetPickerConfig **AssetPickerConfig**;
+        **AssetPickerConfig**.OnAssetDoubleClicked = FOnAssetDoubleClicked::CreateStatic(&SBlutilityShelf::OnBlutilityDoubleClicked);
+        **AssetPickerConfig**.OnGetAssetContextMenu = FOnGetAssetContextMenu::CreateSP(this, &SBlutilityShelf::OnBlutilityGetContextMenu);
+        **AssetPickerConfig**.InitialAssetViewType = EAssetViewType::Tile;
+        **AssetPickerConfig**.bAllowNullSelection = false;
+        **AssetPickerConfig**.bShowBottomToolbar = false;
         **AssetPickerConfig**.bAutohideSearchBar = bInFavoritesMode ? true : false;
 
-**AssetPickerConfig**.Filter.ClassNames.Add(UEditorUtilityBlueprint::StaticClass()-&gt;GetFName());  
-        if (bInFavoritesMode)  
-        {  
-                new (**AssetPickerConfig**.Collections) FCollectionNameType(BlutilityModule::**BlutilityShelfCollectionName**, ECollectionShareType::CST_Local);  
+**AssetPickerConfig**.Filter.ClassNames.Add(UEditorUtilityBlueprint::StaticClass()-&gt;GetFName());
+        if (bInFavoritesMode)
+        {
+                new (**AssetPickerConfig**.Collections) FCollectionNameType(BlutilityModule::**BlutilityShelfCollectionName**, ECollectionShareType::CST_Local);
         }
 
-ChildSlot  
-        \[  
-                SNew(SVerticalBox)  
-                +SVerticalBox::Slot()  
-                .FillHeight(1.0f)  
-                \[  
-                        **ContentBrowserModule**.Get().CreateAssetPicker(**AssetPickerConfig**)  
-                \]  
+ChildSlot
+        \[
+                SNew(SVerticalBox)
+                +SVerticalBox::Slot()
+                .FillHeight(1.0f)
+                \[
+                        **ContentBrowserModule**.Get().CreateAssetPicker(**AssetPickerConfig**)
+                \]
         \];
 ```
 
@@ -174,25 +177,25 @@ TSharedRef&lt;SWidget&gt; ClassViewer = ClassViewerModule.CreateClassViewer(Opti
 
 Create Dynamic Context Menu:
 
-FLevelEditorModule& **LevelEditorModule** = FModuleManager::GetModuleChecked&lt;FLevelEditorModule&gt;( "LevelEditor");  
+FLevelEditorModule& **LevelEditorModule** = FModuleManager::GetModuleChecked&lt;FLevelEditorModule&gt;( "LevelEditor");
         TSharedPtr&lt; ILevelEditor &gt; **LevelEditor** = **LevelEditorModule**.GetFirstLevelEditor();
 
 TSharedPtr&lt;SWidget&gt; **MenuWidget**;
 
-if (**ComponentsWithSockets**.Num() &gt; 1)  
-        {                          
-                **MenuWidget** =   
-                        SNew(SComponentChooserPopup)  
-                        .Actor(**ParentActor**)  
+if (**ComponentsWithSockets**.Num() &gt; 1)
+        {                        
+                **MenuWidget** = 
+                        SNew(SComponentChooserPopup)
+                        .Actor(**ParentActor**)
                         .**OnComponentChosen**(this, &FActorPickerTrackEditor::ActorComponentPicked, **ParentActor**, **ObjectGuid**, **Section**);
 
-// Create as context menu  
-                FSlateApplication::Get().PushMenu(  
-                        **LevelEditor**.ToSharedRef(),  
-                        FWidgetPath(),  
-                        **MenuWidget**.ToSharedRef(),  
-                        FSlateApplication::Get().GetCursorPos(),  
-                        FPopupTransitionEffect( FPopupTransitionEffect::ContextMenu )  
-                        );  
+// Create as context menu
+                FSlateApplication::Get().PushMenu(
+                        **LevelEditor**.ToSharedRef(),
+                        FWidgetPath(),
+                        **MenuWidget**.ToSharedRef(),
+                        FSlateApplication::Get().GetCursorPos(),
+                        FPopupTransitionEffect( FPopupTransitionEffect::ContextMenu )
+                        );
         }
 ```

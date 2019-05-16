@@ -31,4 +31,3 @@ D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuild
 D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProto -project="D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" -useprecompiled -projectfiles -game -engine
 
 Uncheck ShaderCompilerWorker dependency from BBRProto
-

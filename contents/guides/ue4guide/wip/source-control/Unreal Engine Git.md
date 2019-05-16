@@ -6,19 +6,19 @@ sortIndex: 1
 
 # Setting Up Engine Github Repo:
 
-​	Add our own private github repo:
+​ Add our own private github repo:
 
-​	Our github repo is at <https://github.com/kitelightning/UnrealEngine>
+​ Our github repo is at <https://github.com/kitelightning/UnrealEngine>
 
-​	Make sure to add an 'upstream' remote to :
+​ Make sure to add an 'upstream' remote to :
 
-​	git remote add upstream <https://github.com/EpicGames/UnrealEngine>
+​ git remote add upstream <https://github.com/EpicGames/UnrealEngine>
 
-​	git fetch upstream
+​ git fetch upstream
 
-​	git checkout 4.1
+​ git checkout 4.1
 
-​	git merge upstream/4.1
+​ git merge upstream/4.1
 
 # Updating Engine Version:
 
@@ -47,37 +47,27 @@ sortIndex: 1
 
    git apply my_new_patch.diff
 
-   
-
-   Using git apply provides the patch as unstaged changes in your branch. If you want to apply the patches as commits, you can use git am.
-
-   
+Using git apply provides the patch as unstaged changes in your branch. If you want to apply the patches as commits, you can use git am.
 
 2. Create a new branch at the sync off point off of the new engine release branch (e.g. branch: release, tag: 4.20.2-release). Call it bebylon-{new engine version}-merge{oldversion} (eg bebylon-4.20.2-merged4.19)
 
    git checkout -f -b bebylon-4.20.2-merged4.19.0 4.20.2-release
 
-   
-
-3. Apply patch to new said branch & Manually resolve the changes
+3) Apply patch to new said branch & Manually resolve the changes
 
    git am --3way --signoff 0001-Squashed-4.19-to-Bebylon-commits.patch
-
-   
 
 4. Merge bebylon into the new branch with merge override from the new branch. We want to merge Bebylon with bebylon-4.20.2-merged4.19.0 but not actually do any merging but instead take bebylon-4.20.2-merged4.19.0 as authoritative.
 
    **Note:** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict
-   
-   Use these commands to do that: 
-   
-   - git merge -s ours Bebylon 
-   - git checkout Bebylon 
+
+   Use these commands to do that:
+
+   - git merge -s ours Bebylon
+   - git checkout Bebylon
    - git merge bebylon-4.20.2-merged4.19
 
-*Reference From https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git*
-
-
+_Reference From https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git_
 
 5. Create tag at merge point bebylon-4.20.2-merged4.19
 
@@ -85,15 +75,11 @@ sortIndex: 1
 
 7. Reconcile for perforce:
 
-   
+Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs
 
-   Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs
+Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
 
-   Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
-
-   http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch
-
-   
+http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch
 
 # Building The Source
 
@@ -107,9 +93,7 @@ sortIndex: 1
 
 5. Okay, platform stuff comes next. Depending on whether you are on Windows or Mac, follow one of the sections below:
 
-   
-
-   ### Windows
+### Windows
 
 6. Be sure to have [Visual Studio 2013][] installed. You can use any desktop version of Visual Studio 2013, including the free version: [Visual Studio 2013 Express for Windows Desktop][visual studio 2013]
 
@@ -125,9 +109,7 @@ sortIndex: 1
 
 12. One last thing. You'll want to setup your Windows shell so that you can interact with .uproject files. Find the file named **UnrealVersionSelector-Win64-Shippping.exe** in the *UnrealEngine/Engine/Binaries/Win64/*folder and run it. Now, you'll be able to double-click .uproject files to load the project, or right click them to quickly update Visual Studio files.
 
-*Reference From https://github.com/EpicGames/UnrealEngine/*
-
-
+_Reference From https://github.com/EpicGames/UnrealEngine/_
 
 # Visual Studio Customization:
 
@@ -157,47 +139,38 @@ Configure Visual Studio for Unreal Project:
 
 https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup/index.html
 
-
-
 # Build Configuration
 
 Unreal Engine 4 and the UnrealBuildTool use different build configurations to determine how the engine is compiled. Which configuration you use will be determined by the purposes of the build you want to create.
 
 Each build configuration contains two keywords. The first of these indicates the state of the engine and your game project. For instance, if you compile using a **Debug** configuration, you will be able to debug your game's code. The second keyword indicates the target you are building for. If you would like to open a project in Rocket, you need to build with the **Editor** target keyword, but if you are building an executable version of your game, you would need to build using the **empty** target keyword.
 
-| Build Configuration - State | Description                                                  |
-| --------------------------- | ------------------------------------------------------------ |
+| Build Configuration - State | Description                                                                                                                                                                                                                                                       |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Debug**                   | This configuration contains symbols for debugging. If you compile your project using the **Debug** configuration and want to open the project with the Rocket Editor, you must use the "-debug" flag in order to see your code changes reflected in your project. |
-| **Development**             | This configuration is equivalent to Release. In order to see your project's code changes reflected when you open the project later in the Rocket Editor, you must compile in the **Development** configuration. |
-| **Shipping**                | This is the configuration for optimal performance and shipping your game. This configuration strips out console commands, stats, and profiling tools. |
+| **Development**             | This configuration is equivalent to Release. In order to see your project's code changes reflected when you open the project later in the Rocket Editor, you must compile in the **Development** configuration.                                                   |
+| **Shipping**                | This is the configuration for optimal performance and shipping your game. This configuration strips out console commands, stats, and profiling tools.                                                                                                             |
 
-| **Build Configuration - Target** | **Description**                                              |
-| -------------------------------- | ------------------------------------------------------------ |
-| [empty]                          | This configuration builds a stand-alone executable version of your project, but requires cooked content specific to the platform. |
-| **Editor**                       | To be able to open a project in Unreal Editor and see all code changes reflected, the project must be built in an **Editor** configuration. |
+| **Build Configuration - Target** | **Description**                                                                                                                                                                                                                                                              |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [empty]                          | This configuration builds a stand-alone executable version of your project, but requires cooked content specific to the platform.                                                                                                                                            |
+| **Editor**                       | To be able to open a project in Unreal Editor and see all code changes reflected, the project must be built in an **Editor** configuration.                                                                                                                                  |
 | **Uncooked**                     | Projects built using configurations that have an **Uncooked** type should be opened in Unreal Editor with the "-game" flag. This runs your game with uncooked content, in a new window, and is equivalent to **Play in > New Window at Default Player Start** in the editor. |
-
-
-
-
 
 # Build Configuration
 
-Not all configurations will appear by default. Edit the [GenerateProjectFiles.bat][https://docs.unrealengine.com/en-us/Programming/BuildTools/UnrealBuildTool/ProjectFilesForIDEs] file in the main UE4 directory to generate the project files for additional configurations as needed.
+Not all configurations will appear by default. Edit the [GenerateProjectFiles.bat][https://docs.unrealengine.com/en-us/programming/buildtools/unrealbuildtool/projectfilesforides] file in the main UE4 directory to generate the project files for additional configurations as needed.
 
 Unreal Engine 4 and the UnrealBuildTool use different build configurations to determine how the engine is compiled. Which configuration you use will be determined by the purposes of the build you want to create.
 
 The available configurations:
 
-| **Build Configuration** | **Description**                                              |
-| ----------------------- | ------------------------------------------------------------ |
-| **Debug**               | This configuration builds both engine and game code in debug configuration. |
-| **DebugGame**           | This configuration builds the engine as optimized, but leaves the game code debuggable. This configuration is ideal for debugging only game modules. |
-| **Development**         | This configuration is equivalent to Release. Both engine and game code will be built in this configuration. |
+| **Build Configuration** | **Description**                                                                                                                                       |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Debug**               | This configuration builds both engine and game code in debug configuration.                                                                           |
+| **DebugGame**           | This configuration builds the engine as optimized, but leaves the game code debuggable. This configuration is ideal for debugging only game modules.  |
+| **Development**         | This configuration is equivalent to Release. Both engine and game code will be built in this configuration.                                           |
 | **Shipping**            | This is the configuration for optimal performance and shipping your game. This configuration strips out console commands, stats, and profiling tools. |
-| **Test**                | This configuration is the **Shipping** configuration, but with some console commands, stats, and profiling tools enabled. |
+| **Test**                | This configuration is the **Shipping** configuration, but with some console commands, stats, and profiling tools enabled.                             |
 
-
-
-*Reference From: https://docs.unrealengine.com/latest/INT/Programming/Development/BuildingUnrealEngine/index.html*
-
+_Reference From: https://docs.unrealengine.com/latest/INT/Programming/Development/BuildingUnrealEngine/index.html_

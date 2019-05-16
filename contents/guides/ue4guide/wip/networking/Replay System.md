@@ -1,6 +1,4 @@
- <https://udn.unrealengine.com/questions/403084/some-guidance-on-the-replay-system.html>
-
- 
+<https://udn.unrealengine.com/questions/403084/some-guidance-on-the-replay-system.html>
 
 <https://udn.unrealengine.com/questions/395835/replay-playback-stuck-at-origin.html>
 
@@ -11,10 +9,6 @@
 <https://udn.unrealengine.com/questions/332388/getting-an-instant-replay-in-a-network-game.html>
 
 <https://udn.unrealengine.com/questions/379831/cant-get-replay-to-work-in-415.html>
-
- 
-
- 
 
 ## Duplicating Levels:
 
@@ -38,8 +32,8 @@ Generally speaking, the process looks like this.
 
 4.  Detect once the replay has actually begin (via a PostLoadMap).
 
-5.  Grab the demo time, and track it.  
-    
+5.  Grab the demo time, and track it.
+
     The comments imply TimeBufferHintSeconds determines how long the replay will be
 
 Actually, that has nothing to do with how long the replay is. It's to help limit memory usage. In other ReplayStreamers, we just read the data directly from disk and don't keep anything in persistent memory (except for some buffered up packets).
@@ -50,6 +44,4 @@ However, the memory streamer will try to keep things loaded up. The problem is t
 
 How are you Teleporting? There are explicit Teleport functions on AActor (TeleportTo) that should play nice with movement components. When it detects a teleport (via TeleportSucceeded) the Character Movement Component code should detect this and set the mode appropriately. I would expect that to work in replays.
 
- 
-
-*From &lt;<https://udn.unrealengine.com/questions/417480/finmemorynetworkreplaystreamer-killcam.html>&gt;*
+_From &lt;<https://udn.unrealengine.com/questions/417480/finmemorynetworkreplaystreamer-killcam.html>&gt;_

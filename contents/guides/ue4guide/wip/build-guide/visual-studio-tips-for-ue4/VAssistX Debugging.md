@@ -22,5 +22,4 @@ If you cannot open the options dialog of Visual Assist or are so directed by cus
 
 2.  set the value of Logging to 1
 
-*Reference From https://support.wholetomato.com/default.asp?W305*
-
+_Reference From https://support.wholetomato.com/default.asp?W305_

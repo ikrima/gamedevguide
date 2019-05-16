@@ -20,8 +20,6 @@ For example, in our main Mercuna module we have several custom actor types and c
 
 Finally, you will need to leave the **\*.build.cs** file intact for UE4 to be able to recognise the module.
 
-
-
 # Editor Only
 
 In our case we go an extra step and also delete the non-editor binaries (Binaries\\Win64\\\*.lib) and non-editor intermediate files (Intermediate\\Build\\Win64\\UE4). This allows users to run the plugin in the Unreal editor, but prevents them from creating a package game. This is perfect for us as we want users to be able to integrate the Mercuna evaluation into their active game projects and try it out, but we don’t want them to be able to create an actual game build that they could sell/distribute. Once they have purchased a licence from us we will supply either the missing files, or more commonly share with them the full source.
@@ -46,8 +44,6 @@ Finally we zip up the directory, ready to be still to users to try out Mercuna. 
 
 - Mercuna.uplugin
 
-
-
 # Limitations
 
 Since you are not supplying the source that UE4 expects, there are several limitations of this method to be aware of:
@@ -58,4 +54,4 @@ Since you are not supplying the source that UE4 expects, there are several limit
 
 3.  **The binary plugin only works with the same version of the engine it was compiled with.** If you build your plugin using the Epic launcher version of UE4, then it doesn’t work with custom versions of the engine or people that have built the engine from source code. Thankfully it does work for all minor point releases, e.g. 4.20.X, so we only have to release an update when major UE4 versions are released.
 
-*Reference From: https://mercuna.com/building-binary-plugins-in-unreal-engine-4/*
+_Reference From: https://mercuna.com/building-binary-plugins-in-unreal-engine-4/_

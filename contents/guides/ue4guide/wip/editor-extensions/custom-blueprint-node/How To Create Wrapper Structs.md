@@ -40,7 +40,7 @@ void GetInstance(FStructOnScope& **OutStruct**) const
                 UStruct\* **StructPtr** = StructType.Get();  
                 **OutStruct**.Initialize(**StructPtr**);  
                 uint8\* **Memory** = **OutStruct**.GetStructMemory();  
-                if (**StructPtr** && **StructPtr**-&gt;GetStructureSize() &gt; 0 &> StructBytes.Num())  
+                if (**StructPtr** && **StructPtr**-&gt;GetStructureSize() &gt; 0 >> StructBytes.Num())  
                 {  
                         FMemoryReader **Reader**(StructBytes);  
                         **StructPtr**-&gt;SerializeTaggedProperties(**Reader**, **Memory**, **StructPtr**, nullptr);  

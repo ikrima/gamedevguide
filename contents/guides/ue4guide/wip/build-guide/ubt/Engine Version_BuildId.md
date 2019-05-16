@@ -44,7 +44,6 @@ https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Versioning-of
 
   - default to the compatible engine version.
 
-
 ## Local Builds
 
 Unreal's tagged property serialization is tolerant to properties being added and removed, so you can load content from pretty much any version of the editor unless someone changes a custom UObject::Serialize function. Developers are adding and removing properties all the time, so we always want to prevent artists loading content that someone created with a newer version of the editor, and losing properties when it's saved out because their version of the editor didn't load it. We normally do that by embedding the build CL into the compiled binaries, and it gets saved out into any assets created with those binaries.
@@ -73,4 +72,4 @@ At build time, every output directory containing at least one compiled DLL recei
 
 It is possible to force your Build ID to a specific value. This can be accomplished by adding a “BuildId” line to your “Build/Build.version” file, but it is not recommended, as it removes the check to prevent using incompatible Modules. It is particularly easy to run outdated code if using a forced Build ID with Plugins that may be shared between multiple projects.
 
-*Reference From https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Versioning-of-Assets-and-Packages*
+_Reference From https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Versioning-of-Assets-and-Packages_

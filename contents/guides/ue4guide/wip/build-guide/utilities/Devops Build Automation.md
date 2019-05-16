@@ -34,8 +34,6 @@ UBT or RunUAT or AutomationTool.exe
 
 - -enablecodeanalysis (BuildConfiguration.bEnableCodeAnalysis = true;)
 
-
-
 ## BuildGraph
 
 - -target="Make Installed Build Win64" (with default InstalledEngineBuild.xml)
@@ -48,8 +46,6 @@ UBT or RunUAT or AutomationTool.exe
 
 - -set:PublishDir="L:\\\_Programming\\RocketBuilds\\"
 
-
-
 ### ScratchPad Notes:
 
 **Using BuildGraph**
@@ -57,8 +53,6 @@ UBT or RunUAT or AutomationTool.exe
 "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Build\\BatchFiles\\RunUAT.bat" BuildGraph -script="D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Build\\InstalledEngineBuild.xml" -target="Make Installed Build Win64" -set:HostPlatformOnly=true -set:WithWin32=false -set:WithIOS=false
 
 Create InstalledBuild.txt and place in Engine\\Build
-
-
 
 **Sans BuildGraph**
 
@@ -70,8 +64,6 @@ D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuild
 
 D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProtoEditorBP -project="D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" -useprecompiled
 
-
-
 **Add section to BaseEngine.ini**
 
 [InstalledPlatforms\]
@@ -79,8 +71,6 @@ D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuild
 +InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Editor")
 
 ;+InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Game")
-
-
 
 **Generate project files:**
 

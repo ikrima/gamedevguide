@@ -2,25 +2,21 @@
 sortIndex: 5
 ---
 
-## 1.  Use IWYU:
+## 1. Use IWYU:
 
 https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/IWYUReferenceGuide/index.html
 
- This means forward declaring everything, moving everything into implementation files as much as possible. For templated things, we forward declare them and then declare explicit template specializations. Obv not a good practice for library code, but for our own modules, it's fine.
+This means forward declaring everything, moving everything into implementation files as much as possible. For templated things, we forward declare them and then declare explicit template specializations. Obv not a good practice for library code, but for our own modules, it's fine.
 
 You'll run into issues forward declaring references to structs in blueprint callable functions because of the generated thunk code from UHT so that's unavoidable. Also, inlined functions need to be in the header.
 
-
-
-
-## 2.  Useful build switches
+## 2. Useful build switches
 
 - clean
 
 - CleanLocal
 
 - unattended
-
 
 **Cooking:**
 
@@ -34,14 +30,11 @@ You'll run into issues forward declaring references to structs in blueprint call
 
 - IterateSharedCookedBuild
 
-
 **Staging:**
 
 - prereqs
 
 - iterativedeploy
-
-
 
 **Automation running:**
 

@@ -19,8 +19,6 @@ GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to C
 - Plugins: Extensions for Editor and/or Games. Should not have dependencies on other plugins
 - Programs: Standalone apps & tools
 
-
-
 **Important Modules:**
 
 - Core: fundamental types & functions
@@ -28,8 +26,6 @@ GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to C
 - Engine: Game & engine framework classes
 - OnlineSubsystem: Online & social networking features
 - Slate: Widget library & high level UI functionality
-
-
 
 **Modules for Advanced Functionality:**
 
@@ -47,15 +43,11 @@ GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to C
 - AssetRegistry: Asset database functionality for UnrealEd
 - JsonUtilities & XmlParser: Parsing json/xml files
 
-
-
 # Deep Dive Technical Course:
 
 <http://nikoladimitroff.github.io/Game-Engine-Architecture/>
 
 <https://www.blaenkdenum.com/notes/unreal-engine/>
-
-
 
 # Rendering:
 
@@ -66,8 +58,6 @@ GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to C
 - <http://gregory-igehy.hatenadiary.com/entry/2018/02/24/023251>
 
 - <http://gregory-igehy.hatenadiary.com/entry/2017/12/28/002645>
-
-
 
 # Python:
 

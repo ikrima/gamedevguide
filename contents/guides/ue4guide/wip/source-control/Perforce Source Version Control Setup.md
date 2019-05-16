@@ -16,19 +16,13 @@ https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine
 
 https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/Integration/index.html
 
-
-
 # Setting Up Perforce Source Control:
 
 Make Sure p Service is running:
 
 - Run as root: /volume1/KnL/Perforce/start.sh
 
-
-
 Set up ignore [file:p4] set P4IGNORE=.gitignore
-
-
 
 ##### Setting up new user:
 
@@ -41,8 +35,6 @@ Disable user account creation for anyone but you:
 - Open terminal in perforce workspace directory from super user account
 
 - p4 configure set dm.user.noautocreate=2
-
-
 
 ##### Checking out a project:
 
@@ -58,13 +50,9 @@ Disable user account creation for anyone but you:
 
 6.  Check the box to automatically get latest revisions, otherwise you'll have to do it manually after the workspace is created.
 
-
-
 ##### Deleting a workspace:
 
 If you screw up you can delete a workspace. Go to Connection -&gt; Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type p4 client -d \[workspace-name\]
-
-
 
 Useful commands:
 
@@ -98,15 +86,11 @@ Useful commands:
 
 - (p4 clean =&gt; p4 reconcile -w)
 
-*Reference From https://www.perforce.com/perforce/doc.current/manuals/cmdref/Content/CmdRef/p4_clean.html?Highlight=clean*
-
-
+_Reference From https://www.perforce.com/perforce/doc.current/manuals/cmdref/Content/CmdRef/p4_clean.html?Highlight=clean_
 
 **Set editor:**
 
 p4 set P4Editor="C:/Program Files/Sublime Text 3/subl.exe --wait"
-
-
 
 **Tell P4 That Local Files Are Already Synced:**
 
@@ -122,86 +106,72 @@ Here's how:
 
 The [flush] command tells the server that you have the files at the path specified, at the changelist specified. It's a synonym for p4 sync -k.
 
-*Reference From https://stackoverflow.com/questions/7030296/how-do-i-move-a-perforce-workspace-folder*
-
-
+_Reference From https://stackoverflow.com/questions/7030296/how-do-i-move-a-perforce-workspace-folder_
 
 **Create fast branch stream:**
 
 From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:
 
-p4 stream -t task -P //stream/parent //stream/mynewtask01 
-p4 populate -r -S //stream/mynewtask01 
-p4 client -s -S //stream/mynewtask01 
+p4 stream -t task -P //stream/parent //stream/mynewtask01
+p4 populate -r -S //stream/mynewtask01
+p4 client -s -S //stream/mynewtask01
 p4 sync
 
-*Assuming you're starting with a synced workspace. If you're creating a brand new workspace for the new stream, then part of creating the new workspace is going to be syncing the files; I'd expect that to take about as long as the submit did since it's the same amount of data being transferred.*
+_Assuming you're starting with a synced workspace. If you're creating a brand new workspace for the new stream, then part of creating the new workspace is going to be syncing the files; I'd expect that to take about as long as the submit did since it's the same amount of data being transferred._
 
-*Make sure when creating a new stream that you're not creating a new workspace. In the visual client there's an option to "create a workspace"; make sure to uncheck that box or it'll make a new workspace and then sync it, which is the part that'll take an hour.*
+_Make sure when creating a new stream that you're not creating a new workspace. In the visual client there's an option to "create a workspace"; make sure to uncheck that box or it'll make a new workspace and then sync it, which is the part that'll take an hour._
 
-*From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:*
+_From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:_
 
-*p4 stream -t task -P //stream/parent //stream/mynewtask01 
-p4 populate -r -S //stream/mynewtask01 
-p4 client -s -S //stream/mynewtask01 
-p4 sync_*
+_p4 stream -t task -P //stream/parent //stream/mynewtask01
+p4 populate -r -S //stream/mynewtask01
+p4 client -s -S //stream/mynewtask01
+p4 sync\__
 
-*The "stream" and "client" commands don't actually operate on any files, so they'll be really quick no matter what. The "populate" will branch all 10k files, but it does it on the back end without actually moving any content around, so it'll also be really quick (if you got up into the millions or billions it might take an appreciable amount of time depending on the server hardware, but 10k is nothing). The "sync" will be very quick if you were already synced to //stream/parent, because all the files are already there; again, it's just moving pointers around on the server side rather than transferring the file content.*
+_The "stream" and "client" commands don't actually operate on any files, so they'll be really quick no matter what. The "populate" will branch all 10k files, but it does it on the back end without actually moving any content around, so it'll also be really quick (if you got up into the millions or billions it might take an appreciable amount of time depending on the server hardware, but 10k is nothing). The "sync" will be very quick if you were already synced to //stream/parent, because all the files are already there; again, it's just moving pointers around on the server side rather than transferring the file content._
 
-*Reference From https://stackoverflow.com/questions/32697907/how-to-efficiently-work-with-a-task-stream*
-
-
+_Reference From https://stackoverflow.com/questions/32697907/how-to-efficiently-work-with-a-task-stream_
 
 **Merge from parent stream:**
 
 While we’re working on features in //Ace/DEV, other changes are being submitted to //Ace/MAIN. Here’s how we merge those changes into the //Ace/DEV branch:
 
-% p4 merge -S //Ace/DEV -r 
-% p4 resolve 
+% p4 merge -S //Ace/DEV -r
+% p4 resolve
 % p4 submit -d ”Merged latest changes”
 
-*Reference From https://www.perforce.com/blog/streams-tiny-tutorial*
-
-
+_Reference From https://www.perforce.com/blog/streams-tiny-tutorial_
 
 **Push stream changes back to mainline:**
 
 “Promote” is simply another way of saying “copy up after merging everything down”. So let’s make sure we’ve merged everything down first:
 
-% p4 merge -S //Ace/DEV -r 
+% p4 merge -S //Ace/DEV -r
 All revisions already integrated.
-
-
 
 Switch to main workspace:
 
-% p4 workspace -s -S //Ace/MAIN 
+% p4 workspace -s -S //Ace/MAIN
 % p4 sync
 
 We run **p4 sync** after switching the workspace, because both streams have files in them at this point. (You'll be happy to know that **p4 sync** will be smart enough to swap out only the files that aren't the same in both streams.)
 
-
-
 Finally, we copy content from the //Ace/DEV stream to its parent:
 
-% p4 -I copy -S //Ace/DEV -v 
+% p4 -I copy -S //Ace/DEV -v
 % p4 submit -d ”Here’s our new feature”
 
 % p4 sync
 
-*Et voilà* -- our work in the //Ace/DEV stream has just been promoted to //Ace/MAIN.
+_Et voilà_ -- our work in the //Ace/DEV stream has just been promoted to //Ace/MAIN.
 
-*Reference From https://www.perforce.com/blog/streams-tiny-tutorial*
-
-
+_Reference From https://www.perforce.com/blog/streams-tiny-tutorial_
 
 **Set global property settings:**
 
 p4 property -a -n **_name_** -v **_value_**
 
-*Reference From https://community.perforce.com/s/article/1273*
-
-
+_Reference From https://community.perforce.com/s/article/1273_
 
 **Assemble performance optimizations:**
 
@@ -215,49 +185,47 @@ p4 property -a -n filesys.bufsize -v 2M
 
 p4 property -a -n net.tcpsize -v 2M
 
-
-
 **Setup the typemap:**
+
 ```js
 p4 typemap
 
-\# Perforce File Type Mapping Specifications. 
-\# 
-\# TypeMap: a list of filetype mappings; one per line. 
-\# Each line has two elements: 
-\#  
-\# Filetype: The filetype to use on 'p4 add'.  
-\#  
-\# Path: File pattern which will use this filetype.  
-\#  
+\# Perforce File Type Mapping Specifications.
+\#
+\# TypeMap: a list of filetype mappings; one per line.
+\# Each line has two elements:
+\#
+\# Filetype: The filetype to use on 'p4 add'.
+\#
+\# Path: File pattern which will use this filetype.
+\#
 \# See 'p4 help typemap' for more information.
 
-TypeMap:  
-binary+w //depot/....exe  
-binary+w //depot/....dll  
-binary+w //depot/....lib  
-binary+w //depot/....app  
-binary+w //depot/....dylib  
-binary+w //depot/....stub  
-binary+w //depot/....ipa  
-binary //depot/....bmp  
-text //depot/....ini  
-text //depot/....config  
-text //depot/....cpp  
-text //depot/....h  
-text //depot/....c  
-text //depot/....cs  
-text //depot/....m  
-text //depot/....mm  
-text //depot/....py  
-binary+l //depot/....uasset  
-binary+l //depot/....umap  
-binary+l //depot/....upk  
+TypeMap:
+binary+w //depot/....exe
+binary+w //depot/....dll
+binary+w //depot/....lib
+binary+w //depot/....app
+binary+w //depot/....dylib
+binary+w //depot/....stub
+binary+w //depot/....ipa
+binary //depot/....bmp
+text //depot/....ini
+text //depot/....config
+text //depot/....cpp
+text //depot/....h
+text //depot/....c
+text //depot/....cs
+text //depot/....m
+text //depot/....mm
+text //depot/....py
+binary+l //depot/....uasset
+binary+l //depot/....umap
+binary+l //depot/....upk
 binary+l //depot/....udk
 ```
-*Reference From https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceControl/Perforce/index.html*
 
-
+_Reference From https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceControl/Perforce/index.html_
 
 ## Diff
 

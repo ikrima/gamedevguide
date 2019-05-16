@@ -18,19 +18,19 @@ Unfortunately there's no way of switching from the editor UI in the 4.2 build. I
 
 ```cpp
 
-if (PlatformName == "WindowsNoEditor") 
-{ 
-if (PackagingSettings-&gt;BuildConfiguration == PPBC_Shipping) 
-{ 
-OptionalParams += TEXT(" -targetplatform=Win32"); 
-} 
-else 
-{ 
-OptionalParams += TEXT(" -targetplatform=Win64"); 
-} 
+if (PlatformName == "WindowsNoEditor")
+{
+if (PackagingSettings-&gt;BuildConfiguration == PPBC_Shipping)
+{
+OptionalParams += TEXT(" -targetplatform=Win32");
+}
+else
+{
+OptionalParams += TEXT(" -targetplatform=Win64");
+}
 }
 ```
+
 If you get rid of the check for the shipping configuration, it should work.
 
-*Reference From https://answers.unrealengine.com/questions/32490/ue4-editor-64-bit-vs-32-bit-why-does-the-editor-ru.html*
-
+_Reference From https://answers.unrealengine.com/questions/32490/ue4-editor-64-bit-vs-32-bit-why-does-the-editor-ru.html_

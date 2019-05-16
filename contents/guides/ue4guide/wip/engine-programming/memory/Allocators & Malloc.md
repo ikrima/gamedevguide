@@ -51,4 +51,4 @@ Ultimately they call through to FMemory::Malloc, which will forward it onto whic
 
 I tried allocating 0x7fffffffffffffff bytes. With a debugger attached, it broke into the debugger on the failed allocation; without a debugger attached, the application just quit.
 
-_From &lt;<https://wiki.unrealengine.com/Garbage_Collection_%26_Dynamic_Memory_Allocation>&gt;_
+_From &lt;<https://wiki.unrealengine.com/Garbage_Collection_%26*Dynamic_Memory_Allocation>&gt;*

@@ -6,12 +6,9 @@ Located at: UnrealEngine\\Engine\\Saved\\UnrealBuildTool\\BuildConfiguration.xml
 
 UnrealBuildTool reads settings from XML configuration files in the following locations:
 
-\* Engine/Saved/UnrealBuildTool/BuildConfiguration.xml 
-\* \*User Folder/AppData\*/Roaming/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml 
-\* \*My Documents\*/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml
+\* Engine/Saved/UnrealBuildTool/BuildConfiguration.xml \* \*User Folder/AppData\*/Roaming/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml \* \*My Documents\*/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml
 
-*Reference From https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/Configuration/index.html*
-
+_Reference From https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/Configuration/index.html_
 
 ```cpp
 <?xml version="1.0" encoding="utf-8" ?>
@@ -37,7 +34,7 @@ UnrealBuildTool reads settings from XML configuration files in the following loc
 <ProcessorCountMultiplier>1</ProcessorCountMultiplier>                              <!-- d=1     -->
 
  <!--***
-<MinFilesUsingPrecompiledHeaderOverride>1</MinFilesUsingPrecompiledHeaderOverride>  /* d=0    
+<MinFilesUsingPrecompiledHeaderOverride>1</MinFilesUsingPrecompiledHeaderOverride>  /* d=0
 */ -->
 
  <!--<bFasterWithoutUnity>true</bFasterWithoutUnity>

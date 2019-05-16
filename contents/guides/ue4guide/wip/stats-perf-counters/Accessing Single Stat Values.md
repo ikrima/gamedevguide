@@ -1,20 +1,16 @@
 Look at
 
--   DumpFrame(int64 Frame)
+- DumpFrame(int64 Frame)
 
--   DumpHistoryFrame(Stats, Latest, DumpCull, MaxDepth, \*NameFilter);
+- DumpHistoryFrame(Stats, Latest, DumpCull, MaxDepth, \*NameFilter);
 
--   DumpCPUSummary()
+- DumpCPUSummary()
 
--   GetPermanentStats()
-
- 
+- GetPermanentStats()
 
 Detailed UDN Answer:
 
--   <https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>
-
-
+- <https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>
 
 Well, you will have to do a bit of threading work. This is a good thing if you plan on doing "a bit of analysis" because this tends to be a firehose of data.
 
@@ -24,17 +20,13 @@ You can use the same approach and just not block for the results; this is what D
 
 For example, one simple command is "stat dumpcu". That ends up calling this on the stats thread:
 
- 
-
 a. StatsMasterEnableAdd(); // make sure we are collecting data
 
 b. DumpCPUDelegateHandle = Stats.NewFrameDelegate.AddStatic(&DumpCPU);
 
-c. 
+c.
 
 And that registers a call back on the stats thread so whenever a frame happens, you are informed. This is a fairly simple command, which does this on every frame....which turns out to be only one frame:
-
- 
 
 a. static void DumpCPU(int64 Frame)
 
@@ -60,19 +52,17 @@ Actually parsing the stats is fairly complicated, but there are lots of examples
 
 If you need to get your data back to the game thread (as opposed to just logging some stuff), then send a task back to the game thread like the "HUD stats" do:
 
- 
-
 a. FSimpleDelegateGraphTask::CreateAndDispatchWhenReady
 
 b. (
 
 c. FSimpleDelegateGraphTask::FDelegate::CreateRaw(&FHUDGroupGameThreadRenderer::Get(), &FHUDGroupGameThreadRenderer::NewData, ToGame),
 
-d. GET\_STATID(STAT\_FSimpleDelegateGraphTask\_StatsHierToGame), nullptr, ENamedThreads::GameThread
+d. GET_STATID(STAT_FSimpleDelegateGraphTask_StatsHierToGame), nullptr, ENamedThreads::GameThread
 
 e. );
 
-f. 
+f.
 
 Depending on what you want to do, it might be easier to just hack the hud stats to display what you want instead setting up a different display from scratch.
 
@@ -80,35 +70,24 @@ Let me know if you need more help on this. It is tedious and hard to understand,
 
 -Gil
 
- 
-
-*From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>&gt;*
-
- 
+_From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>&gt;_
 
 The description is part of the stat declaration:
 
- 
+1.  DECLARE_CYCLE_STAT(TEXT("Step: steering"), STAT_AI_Crowd_StepSteeringTime, STATGROUP_AICrowd);
 
-1.  DECLARE\_CYCLE\_STAT(TEXT("Step: steering"), STAT\_AI\_Crowd\_StepSteeringTime, STATGROUP\_AICrowd);
-
-2.   
+2.
 
 TEXT("Step: steering") is the description and all stat types have them. This is Item.NameAndInfo.GetDescription().
 
-Another potential way to find what you are looking for is to put that stuff in a special (hardcoded) group....that is STATGROUP\_AICrowd. Item.NameAndInfo.GetGroupName().
+Another potential way to find what you are looking for is to put that stuff in a special (hardcoded) group....that is STATGROUP_AICrowd. Item.NameAndInfo.GetGroupName().
 
-And you can also look at the short name of the stat: STAT\_AI\_Crowd\_StepSteeringTime. Item.NameAndInfo.GetShortName().
+And you can also look at the short name of the stat: STAT_AI_Crowd_StepSteeringTime. Item.NameAndInfo.GetShortName().
 
 The "RawName" is an FName that encodes all of these things, which is why you don't see it in the AddMessage stuff. FStatId is just the raw name with some other junk encoded in there. This complexity is related to making stat messages small and fast.
 
 In all cases, realize that you may be filtering quite a lot of data and string operations could be slow.
 
-DECLARE\_FNAME\_STAT is something it looks like we use in only one place. That is a stat type that has a FName as the *payload* (in all other cases it is a number). If you just need a string and no other payload, this might be a winner.
+DECLARE_FNAME_STAT is something it looks like we use in only one place. That is a stat type that has a FName as the _payload_ (in all other cases it is a number). If you just need a string and no other payload, this might be a winner.
 
- 
-
-*From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>&gt;*
-
-
-
+_From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>&gt;_

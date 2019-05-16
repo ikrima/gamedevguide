@@ -11,4 +11,3 @@ Look for classes that end in Utils or EditorUtils e.g. FBlueprintEditorUtils or 
 | FBlueprintEditorUtils | Useful for blueprints         |
 | --------------------- | ----------------------------- |
 | FActorEditorUtils     | Functions for managing actors |
-

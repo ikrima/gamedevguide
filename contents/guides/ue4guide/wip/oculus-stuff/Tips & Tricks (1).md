@@ -1,91 +1,65 @@
- Registry Key developer settings:
+Registry Key developer settings:
 
 - Obscurely worded, but this seems to disable the Health and safety warning:
 
   HKLM\\Software\\WOW6432Node\\Oculus DWORD: ShowStartupPanelBackup = 1
 
- 
-
-​	HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Oculus VR, LLC\\LibOVR\\PurgatoryHudEnabled", REG\_DWORD or REG\_SZ values of 0 or 1.
-
- 
+​ HKEY_LOCAL_MACHINE\\SOFTWARE\\Oculus VR, LLC\\LibOVR\\PurgatoryHudEnabled", REG_DWORD or REG_SZ values of 0 or 1.
 
 - Keep the screen on (may cause burn in):
 
   HKLM\\Software\\WOW6432Node\\Oculus: AllowScreenBurnIn = 1
 
- 
-
-- Debug console:
+* Debug console:
 
   HKLM\\Software\\WOW6432Node\\Oculus: ShowServiceConsole = 1
 
- 
-
 - Disable Oculus Home from auto-launching:
 
-  Rename the .exe (C:\\Program Files (x86)\\Oculus\\Support\\oculus-home\\PC\_OculusHome.exe)
+  Rename the .exe (C:\\Program Files (x86)\\Oculus\\Support\\oculus-home\\PC_OculusHome.exe)
 
- 
+* Disable updates
 
-- Disable updates
-
-  \[HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Oculus VR, LLC\\Oculus\\Config\]
+  \[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Oculus VR, LLC\\Oculus\\Config\]
 
   "CoreChannel"="Rift18" (change it to LIVE to continue updates)
 
-
-
-Distributed Shader Compilation
-------------------------------
+## Distributed Shader Compilation
 
 r.XGEShaderCompile=1
-
- 
 
 Enable HMD head tracking without being in VR mode:
 
 Set Editor Settings-&gt;Player-&gt;ViewportGetsHMDControl to true & console command "hmdpos enforce on" to enable head tracking in Unreal's Viewport or PIE mode without enabling stereo. Very useful for debugging multiplayer or testing hmd functionality like avatars.
 
- 
-
 Don't minimize the editor window while in VR Mode
 
--   You can maintain the Editor window during VR Preview mode by commenting out this line in PlayLevel.cpp:
+- You can maintain the Editor window during VR Preview mode by commenting out this line in PlayLevel.cpp:
 
 //TODO: ikrimae: Pipe disabling this based on a config variable. Not sure if this will crash the editor & also it's a perf hit  
 //RootWindow-&gt;Minimize();
 
-  
+Rename Oculus Home exe to get rid of it (C:\\Program Files (x86)\\Oculus\\Support\\oculus-home\\PC_OculusHome.exe)
 
-Rename Oculus Home exe to get rid of it (C:\\Program Files (x86)\\Oculus\\Support\\oculus-home\\PC\_OculusHome.exe)
+Get rid of purgatory UI (L,C,F):
 
- 
-
-Get rid of purgatory UI (L,C,F):  
-- HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Oculus VR, LLC\\LibOVR\\PurgatoryHudEnabled", REG\_DWORD or REG\_SZ values of 0 or 1.
-
-
+- HKEY_LOCAL_MACHINE\\SOFTWARE\\Oculus VR, LLC\\LibOVR\\PurgatoryHudEnabled", REG_DWORD or REG_SZ values of 0 or 1.
 
 How to detect if VR Headset is Vive or Oculus
 
 if (GEngine-&gt;HMDDevice.IsValid() && GEngine-&gt;HMDDevice-&gt;IsHMDEnabled())  
         {  
-                if (GEngine-&gt;HMDDevice-&gt;GetHMDDeviceType() == EHMDDeviceType::DT\_SteamVR)  
+                if (GEngine-&gt;HMDDevice-&gt;GetHMDDeviceType() == EHMDDeviceType::DT_SteamVR)  
                 {  
-                        // BLAH! 
+                        // BLAH!
 
-*From &lt;<https://forums.unrealengine.com/showthread.php?87727-How-to-Detect-if-using-Rift-or-Vive>&gt;*
-
- 
-
- 
+_From &lt;<https://forums.unrealengine.com/showthread.php?87727-How-to-Detect-if-using-Rift-or-Vive>&gt;_
 
 Useful Oculus console commands:
 
 Stereo/HMD Configuration
 
-------------------------
+---
 
 stereo on|off|toggle                Stereo mode on/off
 
@@ -117,8 +91,6 @@ stereo show                                  �
 
 stereo reset                                Resets stereo settings
 
- 
-
 hmdpos on|off                                Enables/disables positional tracking.
 
 hmdpos reset                                Resets forward direction and 'zero' position
@@ -129,21 +101,17 @@ hmdpos show                                  �
 
 hmdpos enforce                                Toggles head tracking even if not in stereo (for testing purposes).
 
- 
-
 Stereo/HMD Internals
 
---------------------
+---
 
 hmdmag on|off                                Turns magnetometer on/off
 
 hmdmag show                                        Shows state of magnetometer
 
- 
-
 Misc
 
-----
+---
 
 hmd stats                                        Shows HMD-related stats.
 
@@ -156,8 +124,6 @@ hmd setint DebugHudStereoMode \[0..3\]         Turns on \[1..x\] or off 
 hmddbg showcamera \[off | toggle\] Draws a tracking camera frustum in the game's world.
 
 hmddbg cubes \[on | off | toggle\] Draws a 'sea of cubes' over the existing scene.
-
- 
 
 hmd updateongt on|off                Turns on/off update-on-gamethread mode (for debugging). On by default.
 

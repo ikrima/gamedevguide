@@ -1,10 +1,8 @@
- Commands to set on launch:
+Commands to set on launch:
 
 -t.maxfps=1000
 
 -r.ForceDebugViewModes=1
-
- 
 
 renderdoc capture command:
 
@@ -13,8 +11,6 @@ renderdoc capture command:
 -capture
 
 -restore rRHISetGPUCaptureOptions
-
- 
 
 Memory:
 
@@ -26,8 +22,6 @@ listtextures
 
 stat llm/llmfull
 
- 
-
 Stat Memory
 
 Stat MemoryPlatform
@@ -36,13 +30,11 @@ Stat MemoryStaticMesh
 
 memreport & memreport -full
 
- 
-
 DUMPALLOCS
 
 IGMEMTrace
 
--Enable by BB\_MEMTRACE\_ENABLE=1 in Core.Build.cs (disabled by default)
+-Enable by BB_MEMTRACE_ENABLE=1 in Core.Build.cs (disabled by default)
 
 -Start by:
 
@@ -50,25 +42,21 @@ IGMEMTrace
 
 \*using bb.mem.ToggleTrace to enable/disable at runtime & bb.mem.UserMark
 
- 
-
 FMallocLeakDetectionProxy
 
--MALLOC\_LEAKDETECTION
+-MALLOC_LEAKDETECTION
 
 Enabling StompAllocator
 
--USE\_MALLOC\_STOMP
+-USE_MALLOC_STOMP
 
 FMallocPoisonProxy
 
--UE\_USE\_MALLOC\_FILL\_BYTES
+-UE_USE_MALLOC_FILL_BYTES
 
 FMallocProfiler
 
 \- in BuildConfiguration.xml, set bUseMallocProfiler to true, and bOmitFramePointers to false
-
- 
 
 CPU
 
@@ -80,22 +68,18 @@ Profiler:
 
 use Stat Namedevents or -statnamedevents in commandline to export markers to VTune. Not implemented for VSPerf
 
- 
-
 Microprofile:
 
--Compile with BB\_DEV\_TOOLS\_MICROPROFILE=1 in Build\_BBR.h (enabled by default)
+-Compile with BB_DEV_TOOLS_MICROPROFILE=1 in Build_BBR.h (enabled by default)
 
 -Enable by -mpenable=1 in commandline
 
- 
-
 FramePro:
 
--   Compile with FRAMEPRO\_ENABLED=1 (enable experimental features to auto turn on
+- Compile with FRAMEPRO_ENABLED=1 (enable experimental features to auto turn on
 
--   framepro.enable=1
+- framepro.enable=1
 
--   Framepro.startrec
+- Framepro.startrec
 
--   Framepro.endrec
+- Framepro.endrec

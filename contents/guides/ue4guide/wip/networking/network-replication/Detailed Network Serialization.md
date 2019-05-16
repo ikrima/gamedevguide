@@ -2,7 +2,7 @@ NetSerialization.h:
 
 /\*\*
 
-\*        
+\*
 
 \*        =========== An Overview of Net Serialization and how this all works============
 
@@ -58,7 +58,7 @@ NetSerialization.h:
 
 \*                send.
 
-\*        
+\*
 
 \*        Base States and dynamic properties replication.
 
@@ -76,7 +76,7 @@ NetSerialization.h:
 
 \*                it needs to send.
 
-\*                
+\*
 
 \*                The INetDeltaBaseStates are created within the NetDeltaSerialize functions. The replication system / UActorChannel does not know about the details.
 
@@ -86,7 +86,7 @@ NetSerialization.h:
 
 \*
 
-\*        
+\*
 
 \*        Generic Delta Replication
 

@@ -6,15 +6,11 @@ If you declare a property in a class inside a WITH_EDITORONLY_DATA only block, t
 
 If you specifically serialize content which is WITH_EDITORONLY_DATA though then it will get put in the package. You would need to handle the FArchive.IsFilterEditorOnly() case to have the custom serialize code handle this case.
 
-*Reference From https://udn.unrealengine.com/questions/337026/does-with-editoronly-data-get-cooked.html*
-
-
+_Reference From https://udn.unrealengine.com/questions/337026/does-with-editoronly-data-get-cooked.html_
 
 They are both similar but not identical. In some cases they overlap but they actually mean different things: WITH_EDITORONLY_DATA means that the current build supports editor-only data, i.e can load it. WITH_EDITOR means that the current build has editor functionality. Obviously in some cases one can not exist without the other, but you can have a non-editor builds that can load editor-only data (some of the programs in Engine/Source/Programs work like that) but not the other way around.
 
-*Reference From https://udn.unrealengine.com/questions/204595/with-editoronly-data-vs-with-editor-and-serializat.html*
-
-
+_Reference From https://udn.unrealengine.com/questions/204595/with-editoronly-data-vs-with-editor-and-serializat.html_
 
 **WITH_EDITOR** means we are going to compile editor code.
 
@@ -28,18 +24,16 @@ CoreMiscDefines.h will set WITH_EDITORONLY_DATA to true if it is able (not alrea
 
 UEBuildTarget.cs does most of the decision making regarding these defines.Notice that WITH_EDITORONLY_DATA is conditionally defined here GlobalCompileEnvironment.Config.Definitions.Add("WITH_EDITORONLY_DATA=0"); which short circuits the definition in CoreMiscDefines.h.
 
-*Reference From https://udn.unrealengine.com/questions/304659/the-difference-between-with-editoronly-data-and-wi.html*
-
-
+_Reference From https://udn.unrealengine.com/questions/304659/the-difference-between-with-editoronly-data-and-wi.html_
 
 To exclude from dedicated server:
 
 Implement NeedsLoadForServer() and return false
 
-*Reference From https://udn.unrealengine.com/questions/365330/determining-references-in-the-cooking-time-for-ded.html*
+_Reference From https://udn.unrealengine.com/questions/365330/determining-references-in-the-cooking-time-for-ded.html_
 
 To exclude stuff from dedicated client:
 
 \[CookerSettings\]DedicatedClientExclusion
 
-*Reference From https://udn.unrealengine.com/questions/355061/is-there-existing-functionality-to-remove-server-b.html*
+_Reference From https://udn.unrealengine.com/questions/355061/is-there-existing-functionality-to-remove-server-b.html_

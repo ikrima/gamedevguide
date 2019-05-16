@@ -1,18 +1,14 @@
 <https://udn.unrealengine.com/questions/404339/accessing-oculussteam-apis-without-respective-oss.html>
 
- 
-
 FWIW, the way we handle crossplatform on Paragon and Fortnite is using a Single backend (like I mentioned before) for the match making / connection stuff. This is implemented as an OSS. Then, on platforms we will still enable the necessary subsystems, but disable stuff.
 
 For example, if you take a look at FOnlineSubsystemPS4, you'll notice there are a bunch of flags like bAreRoomsEnabled, bAreAchievementsEnabled, etc:
-
- 
 
 1.  /\*\* true by default, this enables room creation. Can be disabled to use third party matchmaking. \*/
 
 2.  bool bAreRoomsEnabled;
 
-3.   
+3.
 
 Then, in the OSS we've just guard any calls into related methods.
 
@@ -26,11 +22,7 @@ So, the process for us would look a bit more like this:
 
 3.  Disable any features we don't want to use.
 
- 
-
-*From &lt;<https://udn.unrealengine.com/questions/404339/accessing-oculussteam-apis-without-respective-oss.html>&gt;*
-
- 
+_From &lt;<https://udn.unrealengine.com/questions/404339/accessing-oculussteam-apis-without-respective-oss.html>&gt;_
 
 To do this, it sounds like we need to create a custom OSS that communicates with PlayFab for match making, make calls into Steam/Oculus APIs for handling stuff like Friend Invites/Authentication, and use GameNetDriver for clients to join servers via IPs?
 
@@ -38,11 +30,7 @@ Yes, that's probably going to be the easiest way to do it. Then, you could direc
 
 Additionally, is there a way to dynamically switch OSS? Sometimes we might not want to use PlayFab's matchmaker, and switch to say Steam matchmaker. So we will need to dynamically switch OSS in game. Is this possible?
 
- 
-
 As I already pointed out, we do this in our games. We use our internal OSS for handling matchmaking, etc. Then we have the PS4 / XBoxLive OSSs enabled. You can do the same thing by specifying which OSSs to use in your Engine.ini file.
-
- 
 
 ; In your case, you may want to have some other way (like packaging specific scripts / inis) that enable / disable OSS.
 
@@ -78,11 +66,7 @@ bEnabled=true
 
 DefaultPlatformService=PlayFab
 
- 
-
 In the scenario where you want to use a different OSS at runtime, you'd just interact with the FOnlineSubsystemModule normally. I'll point out that the interface is set up so you can pass in the name of OSS you want. E.G.:
-
- 
 
 /\*\*
 
@@ -102,7 +86,7 @@ In the scenario where you want to use a different OSS at runtime, you'd just int
 
 \*/
 
-virtual class IOnlineSubsystem\* GetOnlineSubsystem(const FName InSubsystemName = NAME\_None);
+virtual class IOnlineSubsystem\* GetOnlineSubsystem(const FName InSubsystemName = NAME_None);
 
 /\*\*
 
@@ -119,7 +103,5 @@ virtual class IOnlineSubsystem\* GetOnlineSubsystem(const FName InSubsystemName 
 \*/
 
 virtual void DestroyOnlineSubsystem(const FName InSubsystemName);
-
- 
 
 If you wrapped your calls to the Online Subsystem stuff in some other manager class, it should be fairly easy to have multiple enabled and use different backend services without much hassle. Like I said, for games like Fortnite we take a similar approach so that we can use our OSS for match making and still use features like invitations, voice, friends, etc. from the underlying platform.

@@ -16,17 +16,16 @@ sortIndex: 7
 
 - **Useful command line flags** (put these in one line: -verbose -log=D:\\Log.txt )
 
-	UE4Editor Win64 Development -WaitMutex -FromMsBuild -DEPLOY
-	-Verbose or -VeryVerbose
-	-log=D:\\Log.txt
-	-xgeexport
-	-noxge
-	-installed
+      	UE4Editor Win64 Development -WaitMutex -FromMsBuild -DEPLOY
+      	-Verbose or -VeryVerbose
+      	-log=D:\\Log.txt
+      	-xgeexport
+      	-noxge
+      	-installed
 
 - Add <bPrintDebugInfo>true<bPrintDebugInfo>
 
 - Also make sure to set working directory to Engine/Source for development profile project in vs
-
 
 ## Export documentation for build config/targetrules.cs/modulerules.cs props
 
@@ -54,7 +53,7 @@ If you run UBT with the -verbose option, it should print out a message showing t
 
 ## Build & Environment variables:
 
-Build steps can use $(EngineDir), $(ProjectDir), $(TargetName), $(TargetPlatform), $(TargetConfiguration), $(TargetType), $(ProjectFile).
+Build steps can use $(EngineDir), $(ProjectDir), $(TargetName), $(TargetPlatform), $(TargetConfiguration), $(TargetType), \$(ProjectFile).
 
 ## Debugging compile flags & link switches
 
@@ -68,7 +67,7 @@ In 4.19, you should be able to add the "-verbose -log=D:\\Log.txt" arguments to 
 
 The other option would be to look at the ActionGraph.IsActionOutdated() function in UBT. This function contains all the log output we're looking for - if you change all the Log.TraceLog() calls to Log.TraceInformation(), it will output the messages to stdout. You may have to place a breakpoint in this function to be able to debug what is changing.
 
-*Reference From https://udn.unrealengine.com/questions/436096/frequent-ubt-code-rebuilds.html*
+_Reference From https://udn.unrealengine.com/questions/436096/frequent-ubt-code-rebuilds.html_
 
 ## Module Include/Header Paths:
 
@@ -79,12 +78,10 @@ The other option would be to look at the ActionGraph.IsActionOutdated() function
 - All entries in Public/PrivateIncludePaths are full paths, most easily done with "using [http://System.IO ];" at the top, then Path.Combine(ModuleDirectory, "relative/path")
 
 - Commandlet to migrate old codebase to full path header includes:
-  
+
   `RunUAT.bat RebasePublicIncludePaths -Project="path/to/temp-project.uproject" -UpdateDir="path/to/temp-project/Plugins" -write`
-  
-  *Reference From https://twitter.com/kantandev/status/1020017126806032384*
-  
-  
+
+  _Reference From https://twitter.com/kantandev/status/1020017126806032384_
 
 ## How UBT Builds RulesObjects, Modules, Targets:
 
@@ -92,7 +89,7 @@ The other option would be to look at the ActionGraph.IsActionOutdated() function
 
 - RulesCompiler.cs, CreateProjectRulesAssembly(),
 
-  CreateEngineRulesAssembly(), FindAllRulesFiles(), 
+  CreateEngineRulesAssembly(), FindAllRulesFiles(),
   CreateTarget(), CreateTargetRules(), CreateTargetRulesAssembly()
 
 - RulesAssembly.cs

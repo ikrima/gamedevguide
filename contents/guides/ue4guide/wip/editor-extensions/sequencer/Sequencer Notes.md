@@ -42,14 +42,13 @@ https://udn.unrealengine.com/questions/404800/sequencer-template-interrogate.htm
 
 * FMovieSceneTrackEditor - Creates sequencer sections for your custom section data, and exposes extension points for sequencer track and object menus. Handles injecting buttons/ui/actions into the sequencer UI to create your custom tracks or add keys to your tracks. Defined for each track s.t. Transform, CameraAnim, Single Property types
 
-  - Needs to be registered with the sequencer system module. 
+  - Needs to be registered with the sequencer system module.
   - Ex: ISequencerModule& SequencerModule = FModuleManager::Get().LoadModuleChecked<ISequencerModule>("Sequencer");
+
     - TrackEditorHandle = SequencerModule.RegisterTrackEditor_Handle(FOnCreateTrackEditor::CreateStatic(&FFaceFXAnimationTrackEditor::CreateTrackEditor));
 
   - Some useful TrackEditor functionality: Register a track editor's custom property types for animation:
   - ProcAnimTrackEditorHandle = SequencerModule.RegisterPropertyTrackEditor<FBBProcAnimTrackEditor>();
-  
-
 
 #### Misc:
 
@@ -60,8 +59,6 @@ https://udn.unrealengine.com/questions/404800/sequencer-template-interrogate.htm
 - Blending happens through accumulations, templating, etc. Must specify that you support it in UMovieSceneNameableTrack() constructor
 
   - Grep for GetBlendingDataType&lt;&gt;() & TBlendableTokenTraits&lt;&gt;, MultiChannelFromData, ResolveChannelsToData
-
-
 
 Spawning: happens through a struct called
 
@@ -96,10 +93,6 @@ Spawning: happens through a struct called
   - do the actual spawn request creation/destructionby directly calling the GetSpawnRegister()'s functions
 
   - Also manage override binding
-
-  
-
-
 
 #### Custom Blending:
 
@@ -287,8 +280,6 @@ ProcAnimators.Add(procAnimSection-&gt;ProcAnimCompClass);
 
 ```
 
-
-
 ##### Possessables/Spawnables
 
 ```cpp
@@ -343,8 +334,6 @@ return FMovieSceneObjectBindingID(possessable.GetGuid(), MovieSceneSequenceID::R
 }
 ```
 
-
-
 ##### Resolve object binding ID:
 
 ```cpp
@@ -395,8 +384,6 @@ return FMovieSceneObjectBindingID(possessable.GetGuid(), MovieSceneSequenceID::R
 //}
 ```
 
-
-
 ##### Generate Property Path:
 
 ```cpp
@@ -424,8 +411,6 @@ auto GeneratePropertyPath = \[this\](UImagePlateComponent\* ImagePlateComponent)
 
  };
 ```
-
-
 
 ##### Stateless Token Producer:
 
@@ -472,11 +457,9 @@ struct FStatelessPreAnimatedTokenProducer : IMovieScenePreAnimatedTokenProducer
 };
 ```
 
-
-
 ##### Blend/accumulator sample:
 
-```cpp 
+```cpp
 FMovieSceneSkeletalAnimationSectionTemplate::Evaluate() for plugging into the blending/accumulater code to support interpolation section overlap
 
 Integral Discrete keyframe curve:
@@ -501,11 +484,11 @@ Params.BlendWeight.ShiftCurve(**DeltaTime**, **KeyHandles**);
 
 Params.BlendWeight.ScaleCurve(**Origin**, **DilationFactor**, **KeyHandles**);
 
-Track Editor Helpers:  
-virtual UMovieSceneSequence\* GetRootMovieSceneSequence() const = 0;  
-virtual UMovieSceneSequence\* GetFocusedMovieSceneSequence() const = 0;  
-virtual FMovieSceneSequenceIDRef GetRootTemplateID() const = 0;  
-virtual FMovieSceneSequenceIDRef GetFocusedTemplateID() const = 0;  
+Track Editor Helpers:
+virtual UMovieSceneSequence\* GetRootMovieSceneSequence() const = 0;
+virtual UMovieSceneSequence\* GetFocusedMovieSceneSequence() const = 0;
+virtual FMovieSceneSequenceIDRef GetRootTemplateID() const = 0;
+virtual FMovieSceneSequenceIDRef GetFocusedTemplateID() const = 0;
 TArrayView&lt;TWeakObjectPtr&lt;&gt;&gt; FindObjectsInCurrentSequence(const FGuid> **InObjectBinding**)
 
 UMovieScene\* **FocusedMovieScene** = GetFocusedMovieScene();
@@ -516,24 +499,22 @@ FNameCurve, FRichRuve, FIntegralCurve, FStringCurve
 
 ##### TrackEditor Find Objects In Current Sequence/Add new ones to it:
 
-TArray&lt;TWeakObjectPtr&lt;&gt;&gt; **OutObjects**;  
-for (TWeakObjectPtr&lt;&gt; **Object** : GetSequencer()-&gt;FindObjectsInCurrentSequence(**ObjectGuid**))  
-{  
-        **OutObjects**.Add(**Object**);  
+TArray&lt;TWeakObjectPtr&lt;&gt;&gt; **OutObjects**;
+for (TWeakObjectPtr&lt;&gt; **Object** : GetSequencer()-&gt;FindObjectsInCurrentSequence(**ObjectGuid**))
+{
+        **OutObjects**.Add(**Object**);
 }
 ```
 
-
-
 ##### Extend the actor reference binding submenu/add custom object bind types:
 
-```cpp 
-class FControlRigEditorObjectBinding : public ISequencerEditorObjectBinding  
-{  
-public:  
-        FControlRigEditorObjectBinding(TSharedRef&lt;ISequencer&gt; **InSequencer**);  
-        static TSharedRef&lt;ISequencerEditorObjectBinding&gt; CreateEditorObjectBinding(TSharedRef&lt;ISequencer&gt; **InSequencer**);  
-        // ISequencerEditorObjectBinding interface  
+```cpp
+class FControlRigEditorObjectBinding : public ISequencerEditorObjectBinding
+{
+public:
+        FControlRigEditorObjectBinding(TSharedRef&lt;ISequencer&gt; **InSequencer**);
+        static TSharedRef&lt;ISequencerEditorObjectBinding&gt; CreateEditorObjectBinding(TSharedRef&lt;ISequencer&gt; **InSequencer**);
+        // ISequencerEditorObjectBinding interface
         virtual void BuildSequencerAddMenu(FMenuBuilder& **MenuBuilder**) override;
 
 Look at TransformTrackEditor/MovieScene3DTransformSection for how to do a lot of more complicated things in the sequencer UI

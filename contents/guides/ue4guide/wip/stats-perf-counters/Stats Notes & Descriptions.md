@@ -1,51 +1,39 @@
-\* STAT\_FrameSyncTime =&gt; GT waiting on RT
-
- 
-
- 
+\* STAT_FrameSyncTime =&gt; GT waiting on RT
 
 TaskGraph:
 
 TaskGraphThreadBP
 
-&gt; TPri\_Lowest
+&gt; TPri_Lowest
 
 TaskGraphThreadNP
 
-&gt; TPri\_BelowNormal: 8 (FPlatformMisc::NumberOfCores())
+&gt; TPri_BelowNormal: 8 (FPlatformMisc::NumberOfCores())
 
 TaskGraphThreadHP
 
-&gt; TPri\_SlightlyBelowNormal
-
- 
+&gt; TPri_SlightlyBelowNormal
 
 StatsThread:
-
- 
 
 FQueuedThreadPool:
 
 GThreadPool:
 
-&gt; TPri\_SlightlyBelowNormal: 14
+&gt; TPri_SlightlyBelowNormal: 14
 
 GBackgroundPriorityThreadPool:
 
-&gt; TPri\_Lowest: 2
+&gt; TPri_Lowest: 2
 
 GLargeThreadPool: (Editor Only for building lighting etc)
 
-&gt; TPri\_Normal: 14
+&gt; TPri_Normal: 14
 
 GIOThreadPool: FPlatformMisc::NumberOfIOWorkerThreadsToSpawn()
-
- 
 
 GImgMediaThreadPoolSlow
 
 FQueuedThreadPool::Allocate();
-
- 
 
 FEventPayload

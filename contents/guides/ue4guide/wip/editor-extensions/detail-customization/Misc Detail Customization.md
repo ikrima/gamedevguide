@@ -3,16 +3,19 @@ sortIndex: 4
 ```
 
 ## Refresh customization on hot reload:
+
 ```cpp
 FPropertyEditorModule::NotifyCustomizationModuleChanged()
 ```
 
 ## Getting default widget:
+
 ```cpp
 IDetailPropertyRow::GetDefaultWidgets()
 ```
 
 ## DetailRow:
+
 ```cpp
 FNiagaraEmitterDetails::OnGenerateEventReceiverEntry(TSharedRef&lt;IPropertyHandle&gt; ElementProperty, int32 ElementIndex, IDetailChildrenBuilder& ChildrenBuilder)
 

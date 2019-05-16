@@ -18,16 +18,15 @@ Timeline scrubbers:
 
 Simple
 
- SScrubControlPanel
+SScrubControlPanel
 
- SScrubWidget
+SScrubWidget
 
 Manual Complex control:
 
- FEditorWidgetsModule::CreateTransportControl
+FEditorWidgetsModule::CreateTransportControl
 
 - Look at FSequencer::MakeTransportControls(bool bExtended) for example
-
 
 SLevelOfDetailBranchNode
 

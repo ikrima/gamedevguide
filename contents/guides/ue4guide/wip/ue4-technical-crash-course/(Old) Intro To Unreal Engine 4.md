@@ -24,8 +24,6 @@ https://wiki.unrealengine.com/Category:Tutorials
 
 https://wiki.unrealengine.com/Category:Code
 
-
-
 #### Oculus Rift:
 
 https://wiki.unrealengine.com/Oculus_Rift
@@ -44,11 +42,7 @@ Projects = Self-contained Game.
 
 Levels = Scenes
 
-
-
 **Actors** = Any object that is placable in a scene (it's a base class that has an xform on it)
-
-
 
 ##### Editor:
 
@@ -86,19 +80,19 @@ ALT+Number: Different viewmodes
 
 0. Lightmap Density: Green is ideal
 
-1.  Wireframe
+1. Wireframe
 
-2.  Unlit
+1. Unlit
 
-3.  Lit
+1. Lit
 
-4.  Detail Lighting - Scene rendered with neutral material using normal maps of original material. Used to show interaction between normal maps + lighting
+1. Detail Lighting - Scene rendered with neutral material using normal maps of original material. Used to show interaction between normal maps + lighting
 
-5.  Lighting Only (same as Detail but w/o normal maps)
+1. Lighting Only (same as Detail but w/o normal maps)
 
-6.  Light Complexity - Number of non-static lights affecting an object. **Note: Only up to 4 lights will cast dynamic shadows**
+1. Light Complexity - Number of non-static lights affecting an object. **Note: Only up to 4 lights will cast dynamic shadows**
 
-7.  Shader Complexity - Pink & White are extremely expensive
+1. Shader Complexity - Pink & White are extremely expensive
 
 - Menu Only - Stationary Light Overlap
 
@@ -132,8 +126,6 @@ ALT+Number: Different viewmodes
 
 - Menu Only - Ambient Occlusion
 
-
-
 F11: Immersive Mode
 
 Ctrl+R: Toggle Real Time Playback
@@ -162,8 +154,6 @@ Hold L + Drag: In Material editor, moves the light around
 
 Drag Select Nodes + C: Create Comment box
 
-
-
 ## Source Control:
 
 Assets are stored in .uasset files which should contain a single asset. Each asset reference uses directory styled path to uniquely identify any asset in the game
@@ -173,8 +163,6 @@ FBX Workflow:
 <https://docs.unrealengine.com/latest/INT/Engine/Content/FBX/BestPractices/index.html>
 
 Can layer different materials together
-
-
 
 ## Shading Model:
 
@@ -193,7 +181,7 @@ $$
 - Specular - IOR used to determine incident specular (combined with Fresnel). Leave at default of 0.5. Not used for metallic surfaces
 
   - If you really want to tweak or mute the Specular, it's generally because of small-scale microshadowing from cracks. Use a cavity map (AO with short trace distance). Modify shader as following:
-  
+
     BaseColor = Cavity\*OldBaseColor, Specular = Cavity\*oldSpecular.
 
 | Material       | BaseColor Intensity |
@@ -207,8 +195,6 @@ $$
 | Fresh Concrete | 0.51                |
 | Ocean Ice      | 0.56                |
 | Fresh Snow     | 0.81                |
-
-
 
 **Measured BaseColors for metals:**
 
@@ -239,9 +225,7 @@ $$
 
 - Supports material instancing
 
-*Reference From https://docs.unrealengine.com/latest/INT/Engine/Rendering/Materials/PhysicallyBased/index.html*
-
-
+_Reference From https://docs.unrealengine.com/latest/INT/Engine/Rendering/Materials/PhysicallyBased/index.html_
 
 ## Blue Print:
 
@@ -267,21 +251,15 @@ Each event can be bound only once, even if the **Bind Event** node is executed
 
 - Game mode defines the rules of the game and the default classes for Pawns, Player Controllers, etc
 
-
-
 **In Level Blueprints**
 
 A special type of Event Dispatcher event can be set up in the Level Blueprint, and it is the one case where an event is automatically bound to the Event Dispatcher. These events are created with the same steps as the default events such as **OnClicked** or **OnOverlap** events. The [Level Blueprint documentation]provides a walkthrough for this process.
 
 These particular events are unique, and are automatically bound at the start of gameplay. As a result, an **Unbind All** node executed at any point will unbind these events as well. It is possible to rebind them, however, by wiring their delegate pins to **Bind Event** nodes that are executed at other points in gameplay.
 
-*Reference From https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/EventDispatcher/CreatingEvents/index.html*
+_Reference From https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/EventDispatcher/CreatingEvents/index.html_
 
-
-
-*Reference From https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/EventDispatcher/BindingAndUnbinding/index.html*
-
-
+_Reference From https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/EventDispatcher/BindingAndUnbinding/index.html_
 
 ## Cascade
 
@@ -297,9 +275,7 @@ As you work with Cascade to create your own particle effects, it is important to
 
 - **Emitter Actor**, which is a placeable object that exists within your level, controlling where and how the particles are used in your scene.
 
-*Reference From https://docs.unrealengine.com/latest/INT/Engine/Rendering/ParticleSystems/Overview/index.html*
-
-
+_Reference From https://docs.unrealengine.com/latest/INT/Engine/Rendering/ParticleSystems/Overview/index.html_
 
 **Particle Calculation**
 
@@ -309,9 +285,7 @@ It is important to be aware of calculation order when working with particle syst
 
 - Modules are calculated from top to bottom in the stack.
 
-*Reference From https://docs.unrealengine.com/latest/INT/Engine/Rendering/ParticleSystems/Overview/index.html*
-
-
+_Reference From https://docs.unrealengine.com/latest/INT/Engine/Rendering/ParticleSystems/Overview/index.html_
 
 ## Lighting
 

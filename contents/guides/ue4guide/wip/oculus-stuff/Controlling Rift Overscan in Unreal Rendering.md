@@ -4,7 +4,4 @@ bOverrideScreenPercentage=false
 
 ScreenPercentage=100.0
 
- 
-
 Higher values create a larger rendering buffer prior to distortion.
-

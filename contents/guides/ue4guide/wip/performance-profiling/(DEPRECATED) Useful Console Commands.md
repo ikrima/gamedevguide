@@ -1,27 +1,17 @@
 **VIEWMODE \[Mode\]**
 
-​	Sets the rendering mode of the game viewport to the specified mode. The available modes are:
+​ Sets the rendering mode of the game viewport to the specified mode. The available modes are:
 
 <table><thead><tr class="header"><th><strong>Mode</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>WIREFRAME</td><td>Shows the wireframe of all meshes.</td></tr><tr class="even"><td>UNLIT</td><td>Renders meshes using only the diffuse channel of materials.</td></tr><tr class="odd"><td>LIT</td><td>Default. Renders meshes using their materials being affected by lighting.</td></tr><tr class="even"><td>DETAILLIGHTING</td><td>Renders meshes using a neutral-colored material with normals being affected by lighting.</td></tr><tr class="odd"><td>LIGHTINGONLY</td><td>Renders meshes using a neutral-colored material without normals being affected by lighting.</td></tr><tr class="even"><td>LIGHTCOMPLEXITY</td><td>Renders meshes using a solid color based on the number of dynamic lights affecting the mesh. Black means no dynamic lights affect the mesh. As more lights affect the mesh, the color goes from green to red.</td></tr><tr class="odd"><td>SHADERCOMPLEXITY</td><td>Renders meshes using solid colors based on the number of shader instructions executed by the material applied to the surface. The colors range from green (0) to red (300) to pink (600) to white (900).</td></tr></tbody></table>
 
- 
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/GettingStarted/RunningUnrealEngine/index.html>&gt;*
-
- 
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/GettingStarted/RunningUnrealEngine/index.html>&gt;_
 
 <table><thead><tr class="header"><th><strong>Console Command</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>'stat unit'</td><td>Shows overall frame time as well as the game thread, rendering thread and GPU times. Whichever is the longest is the bottleneck. However GPU time contains idle time, so is only the bottleneck if it is the longest and stands alone.</td></tr><tr class="even"><td>Ctrl+Shift+. or 'recompileshaders changed'</td><td>Recompile shaders that have changed since you last saved the .usf file. This will automatically happen on load.</td></tr><tr class="odd"><td>Ctrl+Shift+; or 'profilegpu'</td><td>Measure GPU timings for the view being rendered. You can view the results in the UI that pops up or in the engine log.</td></tr><tr class="even"><td>'Vis' or 'VisualizeTexture'</td><td>Visualize the contents of various render targets with the ability to save as bmp.</td></tr><tr class="odd"><td>'show x'</td><td>Toggles specified show flag. Use 'show' to get the list of showflags and their current state. In the editor, use the viewport UI instead.</td></tr><tr class="even"><td>'pause'</td><td>Pauses the game, but continues rendering. Any simulation rendering work will stop.</td></tr><tr class="odd"><td>'slomo x'</td><td>changes the game speed. Can be very useful for slowing down time without skipping simulation work, when profiling. For example 'slomo .01'</td></tr><tr class="even"><td>'debugcreateplayer 1'</td><td>For testing splitscreen.</td></tr><tr class="odd"><td>'r.CompositionGraphDebug'</td><td>Execute to get a single frame dump of the composition graph of one frame (post processing and lighting).</td></tr><tr class="even"><td>'r.DumpShaderDebugInfo'</td><td>When set to 1, will cause any shaders that are then compiled to dump debug info to GameName/Saved/ShaderDebugInfo</td></tr><tr class="odd"><td>'r.RenderTargetPoolTest'</td><td>Clears the texture returned by the rendertarget pool with a special color to track down color leaking bugs.</td></tr><tr class="even"><td>'r.SetRes'</td><td>Set the display resolution for the current game view. Has no effect in the editor.</td></tr><tr class="odd"><td>'r.ViewportTest'</td><td>Allows to test different viewport rectangle configuations (in game only) as they can happen when using Matinee/Editor.</td></tr><tr class="even"><td>ToggleDrawEvents</td><td>Emits helpful draw event markers for use with GPU Capture/PIX</td></tr></tbody></table>
-
- 
 
 Useful command lines when working on rendering:
 
 <table><thead><tr class="header"><th><strong>Commandline</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>-d3ddebug</td><td>Enables the D3D11 debug layer, useful for catching API errors.</td></tr><tr class="even"><td>-sm4</td><td>Forces Feature Level SM4 with the D3D11 RHI.</td></tr><tr class="odd"><td>-opengl3 / -opengl4</td><td>Forces use of OpenGL RHI at the specified feature level.</td></tr><tr class="even"><td>-ddc=noshared</td><td>Prevents the use of network (shared) Derived Data Cache. Can be useful when debugging shader caching issues.</td></tr><tr class="odd"><td>-VSPerf</td><td>- Enables external VS Perf Profiler hooks</td></tr><tr class="even"><td>-VTune</td><td>- Enables external VTune Profiler hooks</td></tr></tbody></table>
 
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>&gt;_
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>&gt;*
-
-\* *
+\* \*

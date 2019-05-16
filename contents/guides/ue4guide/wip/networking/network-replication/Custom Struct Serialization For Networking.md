@@ -1,17 +1,13 @@
- Using netserialize for custom struct serialization
+Using netserialize for custom struct serialization
 
 <http://www.aclockworkberry.com/custom-struct-serialization-for-networking-in-unreal-engine/>
 
- 
-
--   To define your own NetSerialize and NetDeltaSerialize on a structure:
+- To define your own NetSerialize and NetDeltaSerialize on a structure:
 
 - GameplayDebuggerCategoryReplicator.h, FGameplayDebuggerNetPack, and AGameplayDebuggerCategoryReplicator  are good examples of full netserialization
 
   struct FGameplayDebuggerNetPack  
-  class GAMEPLAYDEBUGGER\_API AGameplayDebuggerCategoryReplicator : public Aactor
-
- 
+  class GAMEPLAYDEBUGGER_API AGameplayDebuggerCategoryReplicator : public Aactor
 
 **NetSerialization.h has lots of comments:**
 
@@ -38,10 +34,6 @@
 > \*/
 >
 > bool NetSerialize(FArchive& Ar, class UPackageMap\* Map, bool& bOutSuccess)
-
- 
-
- 
 
 /\*\*
 

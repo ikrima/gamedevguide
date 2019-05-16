@@ -30,6 +30,4 @@
 
 -&gt; Set World-&gt;NextSwitchCountdown = 0 so that switch happens immediately on next Tick in TickWorldTravel()
 
- 
-
-After the TickWorldTravelI(), the PlayerControllers ClientRestart() and ClientRestart\_Implementation get called
+After the TickWorldTravelI(), the PlayerControllers ClientRestart() and ClientRestart_Implementation get called
