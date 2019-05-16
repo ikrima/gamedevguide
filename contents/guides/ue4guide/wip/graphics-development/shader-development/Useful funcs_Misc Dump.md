@@ -1,4 +1,4 @@
- /\*\*   
+/\*\*   
          \* Called during the visibility and shadow setup for each primitives with either static or dynamic relevancy, so we can store custom data for the frame that can be reused later.   
          \* Keep in mind this can be called in multihread as it's called during the InitViews()  
          \* This will only be called if bUseCustomViewData is true in the GetViewRelevance()  
@@ -9,11 +9,7 @@
             \* @param InVisiblePrimitiveLODMask - Calculated LODMask for visibile primitive in static relevancy  
             \* @param InMeshScreenSizeSquared - Computed mesh batch screen size, passed to prevent recalculation  
          \*/  
-        ENGINE\_API virtual void\* InitViewCustomData(const FSceneView& InView, float InViewLODScale, FMemStackBase& InCustomDataMemStack, bool InIsStaticRelevant = false, const struct FLODMask\* InVisiblePrimitiveLODMask = nullptr, float InMeshScreenSizeSquared = -1.0f) { return nullptr; }
-
- 
-
- 
+        ENGINE_API virtual void\* InitViewCustomData(const FSceneView& InView, float InViewLODScale, FMemStackBase& InCustomDataMemStack, bool InIsStaticRelevant = false, const struct FLODMask\* InVisiblePrimitiveLODMask = nullptr, float InMeshScreenSizeSquared = -1.0f) { return nullptr; }
 
 /\*\*  
          \* Called during post visibility and shadow setup, just before the frame is rendered. It can be used to update custom data that had a dependency between them.  
@@ -22,41 +18,27 @@
          \* @param InView - Current View  
           \* @param InViewCustomData - Custom data to update  
          \*/          
-        ENGINE\_API virtual void PostInitViewCustomData(const FSceneView& InView, void\* InViewCustomData) { }
-
- 
-
-
+        ENGINE_API virtual void PostInitViewCustomData(const FSceneView& InView, void\* InViewCustomData) { }
 
 **Uniform expressions:**
-
- 
 
 int32 UMaterialExpressionConstant::Compile(class FMaterialCompiler\* Compiler, int32 OutputIndex)
 
 {
 
-​	return Compiler-&gt;Constant(R);
+​ return Compiler-&gt;Constant(R);
 
- 
+​ virtual int32 FHLSLMaterialTranslator::Constant(float X) override
 
-​	virtual int32 FHLSLMaterialTranslator::Constant(float X) override
+​ {
 
-​	{
+​ return AddUniformExpression(new FMaterialUniformExpressionConstant(FLinearColor(X,X,X,X),MCT_Float),MCT_Float,TEXT("%0.8f"),X);
 
-​	return AddUniformExpression(new FMaterialUniformExpressionConstant(FLinearColor(X,X,X,X),MCT\_Float),MCT\_Float,TEXT("%0.8f"),X);
-
-​	}
-
- 
-
- 
+​ }
 
 int32 UMaterialExpressionTime::Compile(class FMaterialCompiler\* Compiler, int32 OutputIndex)
 
-​	return bIgnorePause ? Compiler-&gt;RealTime(bOverride\_Period, Period) : Compiler-&gt;GameTime(bOverride\_Period, Period);
-
- 
+​ return bIgnorePause ? Compiler-&gt;RealTime(bOverride_Period, Period) : Compiler-&gt;GameTime(bOverride_Period, Period);
 
 virtual int32 FHLSLMaterialTranslator::GameTime(bool bPeriodic, float Period) override
 
@@ -66,15 +48,13 @@ new FMaterialUniformExpressionFmod(
 
 new FMaterialUniformExpressionTime(),
 
-new FMaterialUniformExpressionConstant(FLinearColor(Period, Period, Period, Period), MCT\_Float)
+new FMaterialUniformExpressionConstant(FLinearColor(Period, Period, Period, Period), MCT_Float)
 
 ),
 
-MCT\_Float, TEXT("")
+MCT_Float, TEXT("")
 
 );
-
- 
 
 **Implement them as:**
 
@@ -91,8 +71,6 @@ class FMaterialUniformExpression : public FRefCountedObject
 public:
 
 virtual ~FMaterialUniformExpression() {}
-
- 
 
 virtual FMaterialUniformExpressionType\* GetType() const = 0;
 
@@ -112,21 +90,15 @@ virtual bool IsIdentical(const FMaterialUniformExpression\* OtherExpression) con
 
 };
 
- 
-
 \*/
 
 class FMaterialUniformExpressionRealTime: public FMaterialUniformExpression
 
 {
 
-DECLARE\_MATERIALUNIFORMEXPRESSION\_TYPE(FMaterialUniformExpressionRealTime);
-
-
+DECLARE_MATERIALUNIFORMEXPRESSION_TYPE(FMaterialUniformExpressionRealTime);
 
 public:
-
-
 
 // FMaterialUniformExpression interface.
 
@@ -134,45 +106,41 @@ virtual void Serialize(FArchive& Ar)
 
 {
 
-​	}
+​ }
 
-​	virtual void GetNumberValue(const FMaterialRenderContext& Context,FLinearColor& OutValue) const
+​ virtual void GetNumberValue(const FMaterialRenderContext& Context,FLinearColor& OutValue) const
 
-​	{
+​ {
 
-​	OutValue.R = Context.RealTime;
+​ OutValue.R = Context.RealTime;
 
-​	OutValue.G = Context.RealTime;
+​ OutValue.G = Context.RealTime;
 
-​	OutValue.B = Context.RealTime;
+​ OutValue.B = Context.RealTime;
 
-​	OutValue.A = Context.RealTime;
+​ OutValue.A = Context.RealTime;
 
-​	}
+​ }
 
-​	virtual bool IsConstant() const
+​ virtual bool IsConstant() const
 
-​	{
+​ {
 
-​	return false;
+​ return false;
 
-​	}
+​ }
 
-​	virtual bool IsChangingPerFrame() const { return true; }
+​ virtual bool IsChangingPerFrame() const { return true; }
 
-​	virtual bool IsIdentical(const FMaterialUniformExpression\* OtherExpression) const
+​ virtual bool IsIdentical(const FMaterialUniformExpression\* OtherExpression) const
 
-​	{
+​ {
 
-​	return GetType() == OtherExpression-&gt;GetType();
+​ return GetType() == OtherExpression-&gt;GetType();
 
-​	}
+​ }
 
 };
-
- 
-
-  
 
 /\*\*
 
@@ -182,118 +150,102 @@ class FMaterialUniformExpressionLength: public FMaterialUniformExpression
 
 {
 
-​	DECLARE\_MATERIALUNIFORMEXPRESSION\_TYPE(FMaterialUniformExpressionLength);
+​ DECLARE_MATERIALUNIFORMEXPRESSION_TYPE(FMaterialUniformExpressionLength);
 
 public:
 
- 
+​ FMaterialUniformExpressionLength() : ValueType(MCT_Float) {}
 
-​	FMaterialUniformExpressionLength() : ValueType(MCT\_Float) {}
+​ FMaterialUniformExpressionLength(FMaterialUniformExpression\* InX, uint32 InValueType = MCT_Float):
 
-​	FMaterialUniformExpressionLength(FMaterialUniformExpression\* InX, uint32 InValueType = MCT\_Float):
+​ X(InX),
 
-​	X(InX),
-
-​	ValueType(InValueType)
+​ ValueType(InValueType)
 
 {}
 
- 
+​ // FMaterialUniformExpression interface.
 
-​	// FMaterialUniformExpression interface.
+​ virtual void Serialize(FArchive& Ar)
 
-​	virtual void Serialize(FArchive& Ar)
+​ {
 
-​	{
+​ Ar.UsingCustomVersion(FRenderingObjectVersion::GUID);
 
-​	Ar.UsingCustomVersion(FRenderingObjectVersion::GUID);
+​ Ar &lt;&lt; X;
 
-​	Ar &lt;&lt; X;
+​ if (Ar.CustomVer(FRenderingObjectVersion::GUID) &gt;= FRenderingObjectVersion::TypeHandlingForMaterialSqrtNodes)
 
- 
+​ {
 
-​	if (Ar.CustomVer(FRenderingObjectVersion::GUID) &gt;= FRenderingObjectVersion::TypeHandlingForMaterialSqrtNodes)
+​ Ar &lt;&lt; ValueType;
 
-​	{
+​ }
 
-​	Ar &lt;&lt; ValueType;
+​ }
 
-​	}        
+​ virtual void GetNumberValue(const FMaterialRenderContext& Context,FLinearColor& OutValue) const
 
-​	}
+​ {
 
-​	virtual void GetNumberValue(const FMaterialRenderContext& Context,FLinearColor& OutValue) const
+​ FLinearColor ValueX = FLinearColor::Black;
 
-​	{
+​ X-&gt;GetNumberValue(Context,ValueX);
 
-​	FLinearColor ValueX = FLinearColor::Black;
+​ check(ValueType & MCT_Float);
 
-​	X-&gt;GetNumberValue(Context,ValueX);
+​ float LengthSq = ValueX.R \* ValueX.R;
 
- 
+​ LengthSq += (ValueType &gt;= MCT_Float2) ? ValueX.G \* ValueX.G : 0;
 
-​	check(ValueType & MCT\_Float);
+​ LengthSq += (ValueType &gt;= MCT_Float3) ? ValueX.B \* ValueX.B : 0;
 
-​	float LengthSq = ValueX.R \* ValueX.R;
+​ LengthSq += (ValueType &gt;= MCT_Float4) ? ValueX.A \* ValueX.A : 0;
 
-​	LengthSq += (ValueType &gt;= MCT\_Float2) ? ValueX.G \* ValueX.G : 0;
+​ OutValue.R = OutValue.G = OutValue.B = OutValue.A = FMath::Sqrt(LengthSq);
 
-​	LengthSq += (ValueType &gt;= MCT\_Float3) ? ValueX.B \* ValueX.B : 0;
+​ }
 
-​	LengthSq += (ValueType &gt;= MCT\_Float4) ? ValueX.A \* ValueX.A : 0;
+​ virtual bool IsConstant() const
 
- 
+​ {
 
-​	OutValue.R = OutValue.G = OutValue.B = OutValue.A = FMath::Sqrt(LengthSq);
+​ return X-&gt;IsConstant();
 
-​	}
+​ }
 
-​	virtual bool IsConstant() const
+​ virtual bool IsChangingPerFrame() const
 
-​	{
+​ {
 
-​	return X-&gt;IsConstant();
+​ return X-&gt;IsChangingPerFrame();
 
-​	}
+​ }
 
-​	virtual bool IsChangingPerFrame() const
+​ virtual bool IsIdentical(const FMaterialUniformExpression\* OtherExpression) const
 
-​	{
+​ {
 
-​	return X-&gt;IsChangingPerFrame();
+​ if (GetType() != OtherExpression-&gt;GetType())
 
-​	}
+​ {
 
-​	virtual bool IsIdentical(const FMaterialUniformExpression\* OtherExpression) const
+​ return false;
 
-​	{
+​ }
 
-​	if (GetType() != OtherExpression-&gt;GetType())
+​ FMaterialUniformExpressionLength\* OtherSqrt = (FMaterialUniformExpressionLength\*)OtherExpression;
 
-​	{
+​ return X-&gt;IsIdentical(OtherSqrt-&gt;X) && ValueType == OtherSqrt-&gt;ValueType;
 
-​	return false;
-
-​	}
-
-​	FMaterialUniformExpressionLength\* OtherSqrt = (FMaterialUniformExpressionLength\*)OtherExpression;
-
-​	return X-&gt;IsIdentical(OtherSqrt-&gt;X) && ValueType == OtherSqrt-&gt;ValueType;
-
-​	}
-
- 
+​ }
 
 private:
 
-​	TRefCountPtr&lt;FMaterialUniformExpression&gt; X;
+​ TRefCountPtr&lt;FMaterialUniformExpression&gt; X;
 
-​	uint32 ValueType;
+​ uint32 ValueType;
 
 };
-
- 
-
- 
 
 class FMaterialUniformExpressionScalarParameter: public FMaterialUniformExpression

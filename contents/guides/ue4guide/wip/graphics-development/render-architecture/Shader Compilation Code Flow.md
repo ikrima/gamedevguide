@@ -1,75 +1,63 @@
 FMaterial::BeginCompileShaderMap
 
--   Initializes **FHLSLMaterialTranslator**()
+- Initializes **FHLSLMaterialTranslator**()
 
-    - Set up which material properties are shared (ex: SharedPixelProperties\[MP\_Normal\] = true;)
-    
-      
+  - Set up which material properties are shared (ex: SharedPixelProperties\[MP_Normal\] = true;)
 
--   Calls **FHLSLMaterialTranslator::Translate():** Translate from Material Node graph into textual shader code representation
+* Calls **FHLSLMaterialTranslator::Translate():** Translate from Material Node graph into textual shader code representation
 
-    -   Material-&gt;GatherExpressionsForCustomInterpolators(Expressions);
+  - Material-&gt;GatherExpressionsForCustomInterpolators(Expressions);
 
-    -   GatherCustomVertexInterpolators(Expressions);
+  - GatherCustomVertexInterpolators(Expressions);
 
-    -   Material-&gt;GatherCustomOutputExpressions(CustomOutputExpressions);
+  - Material-&gt;GatherCustomOutputExpressions(CustomOutputExpressions);
 
-    -   CompileCustomOutputs(CustomOutputExpressions, SeenCustomOutputExpressionsClases, true);                        
+  - CompileCustomOutputs(CustomOutputExpressions, SeenCustomOutputExpressionsClases, true);
 
-    -   Material-&gt;CompilePropertyAndSetMaterialProperty() on MP\_Normal, MP\_DiffuseColor, MP\_Specular, MP\_Roughness, etc
+  - Material-&gt;CompilePropertyAndSetMaterialProperty() on MP_Normal, MP_DiffuseColor, MP_Specular, MP_Roughness, etc
 
-    -   Determines if properties are actually used && validation checking. Eg:
+  - Determines if properties are actually used && validation checking. Eg:
 
-bUsesEmissiveColor = IsMaterialPropertyUsed(MP\_EmissiveColor, Chunk\[MP\_EmissiveColor\], FLinearColor(0, 0, 0, 0), 3);
+bUsesEmissiveColor = IsMaterialPropertyUsed(MP_EmissiveColor, Chunk\[MP_EmissiveColor\], FLinearColor(0, 0, 0, 0), 3);
 
--   Determines number of vertex interpolators/uv tex coords/etc
+- Determines number of vertex interpolators/uv tex coords/etc
 
--   MaterialCompilationOutput.UniformExpressionSet.SetParameterCollections(ParameterCollections);
+- MaterialCompilationOutput.UniformExpressionSet.SetParameterCollections(ParameterCollections);
 
--   MaterialCompilationOutput.UniformExpressionSet.CreateBufferStruct();
+- MaterialCompilationOutput.UniformExpressionSet.CreateBufferStruct();
 
- 
+* Calls **FHLSLMaterialTranslator::GetMaterialEnvironment()**
 
+  - Sets more fundamental defines such as: NEEDS_PARTICLE_POSITION, NEEDS_SCENE_TEXTURES, USES_TRANSFORM_VECTOR, USES_EMISSIVE_COLOR
 
-
--   Calls **FHLSLMaterialTranslator::GetMaterialEnvironment()**
-
-    -   Sets more fundamental defines such as: NEEDS\_PARTICLE\_POSITION, NEEDS\_SCENE\_TEXTURES, USES\_TRANSFORM\_VECTOR, USES\_EMISSIVE\_COLOR
-
-    -   Add uniform buffer declarations for any parameter collections referenced
+  - Add uniform buffer declarations for any parameter collections referenced
 
 const FString CollectionName = FString::Printf(TEXT("MaterialCollection%u"), CollectionIndex);
 
 FShaderUniformBufferParameter::ModifyCompilationEnvironment(\*CollectionName, ParameterCollections\[CollectionIndex\]-&gt;GetUniformBufferStruct(), InPlatform, OutEnvironment);
 
- 
+- Calls **FHLSLMaterialTranslator::GetMaterialShaderCode():**
 
--   Calls **FHLSLMaterialTranslator::GetMaterialShaderCode():**
+  - Responsible for compiling and filling MaterialTemplate.ush
 
-    -   Responsible for compiling and filling MaterialTemplate.ush
+  - Uses **LazyPrintf.PushParam()** and Printf() to stringify everything into the generated Material.ush file
 
-    -   Uses **LazyPrintf.PushParam()** and Printf() to stringify everything into the generated Material.ush file
+  - **GetSharedInputsMaterialCode**():
 
-    -   **GetSharedInputsMaterialCode**():
+    - Generates the fields for FPixelMaterialInputs which are shared properties across the shader (like MP_Normal, MP_BaseColor, MP_Roughness, etc)
 
-        -   Generates the fields for FPixelMaterialInputs which are shared properties across the shader (like MP\_Normal, MP\_BaseColor, MP\_Roughness, etc)
+    - Generates initializers for them too
 
-        -   Generates initializers for them too
+* Calls main compilation in **NewShaderMap-&gt;Compile():**
 
-  
+  - **Material-&gt;SetupMaterialEnvironment()**: Sets majority of shader defines (including material specific ones like staticswitches, etc) by calling. Ex:
 
--   Calls main compilation in **NewShaderMap-&gt;Compile():**
+    - Defines from the umaterial uproperties such as: MATERIAL_TWOSIDED, MATERIAL_NONMETAL, MATERIAL_HQ_FORWARD_REFLECTIONS
 
-    -   **Material-&gt;SetupMaterialEnvironment()**: Sets majority of shader defines (including material specific ones like staticswitches, etc) by calling. Ex:
+    - Defines from the material itself such as: GetBlendMode() =&gt; MATERIALBLENDING_MASKED|MATERIALBLENDING_SOLID, MATERIAL_FULLY_ROUGH
 
-        -   Defines from the umaterial uproperties such as: MATERIAL\_TWOSIDED, MATERIAL\_NONMETAL, MATERIAL\_HQ\_FORWARD\_REFLECTIONS
+    - Defines also fundamental things such as MATERIAL_DOMAIN_SURFACE|MATERIAL_DOMAIN_DEFERREDDECAL|… & MATERIAL_SHADINGMODEL_UNLIT|MATERIAL_SHADINGMODEL_DEFAULT_LIT|…
 
-        -   Defines from the material itself such as: GetBlendMode() =&gt; MATERIALBLENDING\_MASKED|MATERIALBLENDING\_SOLID, MATERIAL\_FULLY\_ROUGH
+    - Also uses cvar values to determine whether to set defines or not: r.StencilForLODDither =&gt; USE_STENCIL_LOD_DITHER_DEFAULT
 
-        -   Defines also fundamental things such as MATERIAL\_DOMAIN\_SURFACE|MATERIAL\_DOMAIN\_DEFERREDDECAL|… & MATERIAL\_SHADINGMODEL\_UNLIT|MATERIAL\_SHADINGMODEL\_DEFAULT\_LIT|…
-
-        -   Also uses cvar values to determine whether to set defines or not: r.StencilForLODDither =&gt; USE\_STENCIL\_LOD\_DITHER\_DEFAULT
-
-
-
--   Iterate over all vertex factories and materials and compile them together if this material applies
+- Iterate over all vertex factories and materials and compile them together if this material applies

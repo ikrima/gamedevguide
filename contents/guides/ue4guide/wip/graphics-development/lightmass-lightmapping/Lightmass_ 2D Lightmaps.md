@@ -1,16 +1,14 @@
 **ConvertToLightSampleHelper:**
 
--   Calculate Luma L1SH vector
+- Calculate Luma L1SH vector
 
--   Apply SH Normalization to factor out L0 term
+- Apply SH Normalization to factor out L0 term
 
 float DirCorrection = 1.0f / FMath::Max( 0.0001f, InGatheredLightSample.SHCorrection );
 
 DirLuma\[i\] \*= DirCorrection / PI;
 
- 
-
--   SHCorrection is a normalization factor. Done to normalize SH vector s.t. luminance(irradiance) (Not radiance) at smoothed vertex normal = 1
+- SHCorrection is a normalization factor. Done to normalize SH vector s.t. luminance(irradiance) (Not radiance) at smoothed vertex normal = 1
 
 // Evaluate lighting along the smoothed vertex normal direction, so that later we can guarantee an SH intensity of 1 along the normal
 
@@ -26,15 +24,11 @@ Result.SHCorrection = Color.GetLuminance() \* (0.282095f \* SH.V\[0\] + 0.325735
 
 Result.IncidentLighting = Color \* FMath::Max(0.0f, TangentDirection.Z);
 
- 
-
--   Apply SH scale/bias normalization so that L0 == 1
+- Apply SH scale/bias normalization so that L0 == 1
 
 float DirScale = 1.0f / FMath::Max( 0.0001f, DirLuma\[0\] );
 
 float ColorScale = DirLuma\[0\];
-
- 
 
 // IncidentLighting is ground truth for a representative direction, the vertex normal
 
@@ -44,8 +38,6 @@ OutCoefficients\[0\]\[1\] = ColorScale \* InGatheredLightSample.IncidentLighting
 
 OutCoefficients\[0\]\[2\] = ColorScale \* InGatheredLightSample.IncidentLighting.B;
 
- 
-
 // Will force DirLuma\[0\] to 0.282095f
 
 OutCoefficients\[1\]\[0\] = -0.325735f \* DirLuma\[1\] \* DirScale;
@@ -54,45 +46,33 @@ OutCoefficients\[1\]\[1\] = 0.325735f \* DirLuma\[2\] \* DirScale;
 
 OutCoefficients\[1\]\[2\] = -0.325735f \* DirLuma\[3\] \* DirScale;
 
- 
-
- 
-
 **GetLightMapColorHQ: L1 SH Band Data Reconstruction**
 
 Sample1.rgb encodes the L1 SH band data
 
 **NOTE:** SH basis is in the canonical math coordinate frame so you have to swizzle (eg: dot( SH, float4(WorldNormal.yzx, 1) )
 
--   ***Reconstruct primary average color for lightmap texel (aka SH L0 term)***
+- **_Reconstruct primary average color for lightmap texel (aka SH L0 term)_**
 
-    -   Luma is stored in Lightmap0.w in Log space
+  - Luma is stored in Lightmap0.w in Log space
 
-    -   Lightmap chromaticity is in UVW in Lightmap0.xyz (aka RGB \* 1/L)
+  - Lightmap chromaticity is in UVW in Lightmap0.xyz (aka RGB \* 1/L)
 
-    -   Everything is range/scaled for compression. PrecomputedLightingBuffer.LightMapScale\[0\] & LightMapAdd\[0\] stored the factors for color
+  - Everything is range/scaled for compression. PrecomputedLightingBuffer.LightMapScale\[0\] & LightMapAdd\[0\] stored the factors for color
 
+* **_Reconstruct directionality_**
 
+  - SH is in Lightmap1. But Lightmap1 is encoded specially in reverse order (L0 term is in Lightmap1.w; L1 terms are in zyx)
 
--   ***Reconstruct directionality***
+  - Also, SH is normalized s.t. L0 factor = 1 (Lightmap1.w would be 1.0); they use this to store residual for Logspace compression compression. Lightmap1.w is not used for SH (happens in LightmapData.cpp:**QuantizeLightSamples**())
 
-    -   SH is in Lightmap1. But Lightmap1 is encoded specially in reverse order (L0 term is in Lightmap1.w; L1 terms are in zyx)
+  - PrecomputedLightingBuffer.LightMapScale\[0\] & LightMapAdd\[0\] stores the scale/bias
 
-    -   Also, SH is normalized s.t. L0 factor = 1 (Lightmap1.w would be 1.0); they use this to store residual for Logspace compression compression. Lightmap1.w is not used for SH (happens in LightmapData.cpp:**QuantizeLightSamples**())
-
-    -   PrecomputedLightingBuffer.LightMapScale\[0\] & LightMapAdd\[0\] stores the scale/bias
-
--   All done bc Lightmap0 & Lightmap1 are 32-bit quantized textures (8bits per component)
-
- 
+* All done bc Lightmap0 & Lightmap1 are 32-bit quantized textures (8bits per component)
 
 //==================================================================
 
-
-
 Key Data Structures:
-
- 
 
 class FGatheredLightMapSample
 
@@ -112,8 +92,6 @@ FLightSample ConvertToLightSample(bool bDebugThisSample) const;
 
 }
 
- 
-
 FGatheredLightMapData2D::ConvertToLightmap2D()
 
 Data\[SampleIndex\].ConvertToLightSample(bDebugThisSample);
@@ -126,7 +104,7 @@ NewSample.bIsMapped = bIsMapped;
 
 ConvertToLightSampleHelper(HighQuality, &NewSample.Coefficients\[0\]);
 
-ConvertToLightSampleHelper(LowQuality, &NewSample.Coefficients\[ LM\_LQ\_LIGHTMAP\_COEF\_INDEX \]);
+ConvertToLightSampleHelper(LowQuality, &NewSample.Coefficients\[ LM_LQ_LIGHTMAP_COEF_INDEX \]);
 
 static void ConvertToLightSampleHelper(const FGatheredLightSample& InGatheredLightSample, float OutCoefficients\[2\]\[3\]):
 
@@ -188,10 +166,6 @@ NewSample.AOMaterialMask = HighQuality.AOMaterialMask;
 
 }
 
- 
-
- 
-
 /\*\*
 
 \* Incident lighting for a single sample, as produced by a lighting build.
@@ -214,25 +188,17 @@ struct FLightSampleData
 
 \*/
 
-float Coefficients\[LM\_NUM\_STORED\_LIGHTMAP\_COEF\]\[3\];
-
- 
+float Coefficients\[LM_NUM_STORED_LIGHTMAP_COEF\]\[3\];
 
 float SkyOcclusion\[3\];
 
- 
-
 float AOMaterialMask;
-
- 
 
 /\*\* True if this sample maps to a valid point on a triangle. This is only meaningful for texture lightmaps. \*/
 
 bool bIsMapped;
 
 }
-
- 
 
 /\*\*
 
@@ -246,7 +212,7 @@ struct FQuantizedLightSampleData
 
 uint8 Coverage;
 
-uint8 Coefficients\[LM\_NUM\_STORED\_LIGHTMAP\_COEF\]\[4\];
+uint8 Coefficients\[LM_NUM_STORED_LIGHTMAP_COEF\]\[4\];
 
 uint8 SkyOcclusion\[4\];
 
@@ -254,27 +220,19 @@ uint8 AOMaterialMask;
 
 };
 
- 
-
 /\*\* The number of coefficients that are stored for each light sample. \*/
 
-static const int32 LM\_NUM\_STORED\_LIGHTMAP\_COEF = 4;
+static const int32 LM_NUM_STORED_LIGHTMAP_COEF = 4;
 
 /\*\* The number of high quality coefficients which the lightmap stores for each light sample. \*/
 
-static const int32 LM\_NUM\_HQ\_LIGHTMAP\_COEF = 2;
+static const int32 LM_NUM_HQ_LIGHTMAP_COEF = 2;
 
-/\*\* The index at which low quality coefficients are stored in any array containing all LM\_NUM\_STORED\_LIGHTMAP\_COEF coefficients. \*/
+/\*\* The index at which low quality coefficients are stored in any array containing all LM_NUM_STORED_LIGHTMAP_COEF coefficients. \*/
 
-static const int32 LM\_LQ\_LIGHTMAP\_COEF\_INDEX = 2;
+static const int32 LM_LQ_LIGHTMAP_COEF_INDEX = 2;
 
- 
-
-\#define LM\_NUM\_SH\_COEFFICIENTS 9
-
- 
-
- 
+\#define LM_NUM_SH_COEFFICIENTS 9
 
 struct FLightMapDataBase
 
@@ -284,27 +242,19 @@ struct FLightMapDataBase
 
 uint32 CompressedDataSize;
 
- 
-
 /\*\* Size of uncompressed lightmap data \*/
 
 uint32 UncompressedDataSize;
 
- 
-
 /\*\* Scale applied to the quantized light samples \*/
 
-float Multiply\[LM\_NUM\_STORED\_LIGHTMAP\_COEF\]\[4\];
-
- 
+float Multiply\[LM_NUM_STORED_LIGHTMAP_COEF\]\[4\];
 
 /\*\* Bias applied to the quantized light samples \*/
 
-float Add\[LM\_NUM\_STORED\_LIGHTMAP\_COEF\]\[4\];
+float Add\[LM_NUM_STORED_LIGHTMAP_COEF\]\[4\];
 
 };
-
- 
 
 /\*\* LightMap data 2D \*/
 
@@ -324,8 +274,6 @@ bHasSkyShadowing(false)
 
 }
 
- 
-
 /\*\* The width of the light-map. \*/
 
 uint32 SizeX;
@@ -338,10 +286,6 @@ bool bHasSkyShadowing;
 
 };
 
- 
-
- 
-
 static void GetLUVW( const float RGB\[3\], float& L, float& U, float& V, float& W )
 
 {
@@ -351,8 +295,6 @@ float R = FMath::Max( 0.0f, RGB\[0\] );
 float G = FMath::Max( 0.0f, RGB\[1\] );
 
 float B = FMath::Max( 0.0f, RGB\[2\] );
-
- 
 
 L = 0.3f \* R + 0.59f \* G + 0.11f \* B;
 
@@ -414,9 +356,9 @@ TArray&lt;FLightSample&gt;& InLightSamples,
 
 TArray&lt;FQuantizedLightSampleData&gt;& OutLightSamples,
 
-float OutMultiply\[LM\_NUM\_STORED\_LIGHTMAP\_COEF\]\[4\],
+float OutMultiply\[LM_NUM_STORED_LIGHTMAP_COEF\]\[4\],
 
-float OutAdd\[LM\_NUM\_STORED\_LIGHTMAP\_COEF\]\[4\],
+float OutAdd\[LM_NUM_STORED_LIGHTMAP_COEF\]\[4\],
 
 int32 DebugSampleIndex,
 
@@ -425,8 +367,6 @@ bool bUseMappedFlag)
 {
 
 //Looks like SH is stored in reverse order L1.zyxL0
-
- 
 
 //Scale/Bias made so that SH term is 0.282095
 
@@ -442,15 +382,9 @@ OutAdd\[3\]\[3\] = 0.282095f;
 
 ..
 
- 
-
 }
 
- 
-
 //==================================================================
-
- 
 
 /\*\* A sample of the visibility factor between a light and a single point. \*/
 
@@ -465,8 +399,6 @@ float Visibility;
 /\*\* True if this sample maps to a valid point on a surface. \*/
 
 bool bIsMapped;
-
- 
 
 /\*\*
 
@@ -488,11 +420,7 @@ return FColor(Gray, Gray, Gray, 0);
 
 }
 
- 
-
 };
-
- 
 
 /\*\* The quantized value for a single shadowmap texel \*/
 
@@ -505,8 +433,6 @@ uint8 Visibility;
 uint8 Coverage;
 
 };
-
- 
 
 /\*\* ShadowMap data 2D \*/
 
@@ -523,8 +449,6 @@ SizeY(InSizeY)
 {
 
 }
-
- 
 
 /\*\* The width of the shadow-map. \*/
 

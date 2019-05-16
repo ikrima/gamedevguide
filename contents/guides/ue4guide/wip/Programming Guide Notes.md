@@ -1,141 +1,118 @@
- ![PorgrammingGuideNotes_ProjectModuleClassOrg](C:\devguide\conversion\FINISHED\assets\PorgrammingGuideNotes_ProjectModuleClassOrg.jpg)
+![PorgrammingGuideNotes_ProjectModuleClassOrg](C:\devguide\conversion\FINISHED\assets\PorgrammingGuideNotes_ProjectModuleClassOrg.jpg)
 
--   AActor is base class Spawnable class
+- AActor is base class Spawnable class
 
--   Component model: To Instantiate camera, can add CameraComponent to Actor object
+- Component model: To Instantiate camera, can add CameraComponent to Actor object
 
-  
+## Coding Standard:
 
-Coding Standard:
-----------------
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>&gt;_
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>&gt;*
+- Classes should have public interface methods declared first
 
- 
+- Capitalize first letter of each word in variables
 
--   Classes should have public interface methods declared first
+- Types are prefixed with an additional capital letter (e.g. AActor):
 
--   Capitalize first letter of each word in variables
+  - T: Templates
 
--   Types are prefixed with an additional capital letter (e.g. AActor):
+  - U: Classes inheriting from Uobject
 
-    -   T: Templates
+  - A: Classes inheriting from Aactor
 
-    -   U: Classes inheriting from Uobject
+  - S: Classes inheriting from Swidget
 
-    -   A: Classes inheriting from Aactor
+  - I: Abstract interfaces
 
-    -   S: Classes inheriting from Swidget
+  - F: Most other classes
 
-    -   I: Abstract interfaces
+  - E: Enums
 
-    -   F: Most other classes
+- Types/variables are nouns
 
-    -   E: Enums
+- Variables should be declared one at a time
 
--   Types/variables are nouns
+- Booleans should be prefixed with b
 
--   Variables should be declared one at a time
+- Methods are verbs that describe method's effect or describe return value of method that has no effect. Strong verb followed by object (e.g. IsTeaFresh())
 
--   Booleans should be prefixed with b
-
--   Methods are verbs that describe method's effect or describe return value of method that has no effect. Strong verb followed by object (e.g. IsTeaFresh())
-
--   Prefix function parameters with Out if they are going to be modified. Const religion!
-
- 
+- Prefix function parameters with Out if they are going to be modified. Const religion!
 
 **Portable Aliases for Basic C++ Types**
 
--   bool for boolean values (NEVER assume the size of bool). BOOL will not compile.
+- bool for boolean values (NEVER assume the size of bool). BOOL will not compile.
 
--   TCHAR for a character (NEVER assume the size of TCHAR)
+- TCHAR for a character (NEVER assume the size of TCHAR)
 
--   uint8 for unsigned bytes (1 byte)
+- uint8 for unsigned bytes (1 byte)
 
--   int8 for signed bytes (1 byte)
+- int8 for signed bytes (1 byte)
 
--   uint16 for unsigned "shorts" (2 bytes)
+- uint16 for unsigned "shorts" (2 bytes)
 
--   int16 for signed "shorts" (2 bytes)
+- int16 for signed "shorts" (2 bytes)
 
--   uint32 for unsigned ints (4 bytes)
+- uint32 for unsigned ints (4 bytes)
 
--   int32 for signed ints (4 bytes)
+- int32 for signed ints (4 bytes)
 
--   uint64 for unsigned "quad words" (8 bytes)
+- uint64 for unsigned "quad words" (8 bytes)
 
--   int64 for signed "quad words" (8 bytes)
+- int64 for signed "quad words" (8 bytes)
 
--   float for single precision floating point (4 bytes)
+- float for single precision floating point (4 bytes)
 
--   double for double precision floating point (8 bytes)
+- double for double precision floating point (8 bytes)
 
--   PTRINT for an integer that may hold a pointer (NEVER assume the size of PTRINT)
+- PTRINT for an integer that may hold a pointer (NEVER assume the size of PTRINT)
 
 Don't use the C++ int type in portable code, since it's dependent on the compiler how large it is.
 
-
-
-\* *
+\* \*
 
 General
 
--   Comment third party code with special comments  
-    
-     
+- Comment third party code with special comments
 
 // @third party code - BEGIN PhysX
 #include <PhysX.h>
 // @third party code - END PhysX
 
+- Braces should be on a new line
 
+- Minimize file-coupling by using forward declarations instead of include headers when possible
 
--   Braces should be on a new line
+- Use \#pragma once
 
--   Minimize file-coupling by using forward declarations instead of include headers when possible
+- Fine-grained header inclusion: Include every header you need directl. **Don't rely on a header that is included indirectly by another header you include**
 
--   Use \#pragma once
+- Place definitions needed by other modules in the Public directory of a module. Everything else should be in the Private directory. (Old UE modules use Src/Inc for this distinction).
 
--   Fine-grained header inclusion: Include every header you need directl. **Don't rely on a header that is included indirectly by another header you include**
+- _Never allow float to implicit convert to int32 b/c it's slow._ Always use the appTrunc() function to convert to int32. This will ensure cross-compiler compatibility as well as generate faster code.
 
--   Place definitions needed by other modules in the Public directory of a module. Everything else should be in the Private directory. (Old UE modules use Src/Inc for this distinction).
+- Interface classes (prefixed with "I") should always be abstract and must not have member variables. Interfaces are allowed to contain methods that are not pure-virtual, and even methods that are non-virtual or static, as long as they are implemented inline.
 
--   *Never allow float to implicit convert to int32 b/c it's slow.* Always use the appTrunc() function to convert to int32. This will ensure cross-compiler compatibility as well as generate faster code.
+- *Use const wherever possible.* Particularly on reference parameters and class methods. const is documentation as much as it is a compiler directive.
 
--   Interface classes (prefixed with "I") should always be abstract and must not have member variables. Interfaces are allowed to contain methods that are not pure-virtual, and even methods that are non-virtual or static, as long as they are implemented inline.
+- Pointers & references declared with one space. Ex: FShaderType\* Type
 
--   *Use const wherever possible.* Particularly on reference parameters and class methods. const is documentation as much as it is a compiler directive.
+- Use virtual & OVERRIDE when defining derived functions.
 
--   Pointers & references declared with one space. Ex: FShaderType\* Type
-
--   Use virtual & OVERRIDE when defining derived functions.
-
--   Leave a blank line at the end of the file. All .cpp and .h files for gcc
-
-
-
- 
+- Leave a blank line at the end of the file. All .cpp and .h files for gcc
 
 **Namespaces**
 
 You can use namespaces to organize your classes, functions and variables where appropriate, as long as you follow the rules below.
 
- 
+- Don't use "using" declarations in the global scope, even in .cpp files
 
--   Don't use "using" declarations in the global scope, even in .cpp files
+- You can use "using" inside of another namespace or inside functions
 
--   You can use "using" inside of another namespace or inside functions
+* Note that if you put "using" within a namespace, it will carry over to other occurrences of that namespace in the same translation unit. As long as you're consistent it will be fine, though.
 
- 
+* You can only use "using" in header files safely if you follow the above rules.
 
--   Note that if you put "using" within a namespace, it will carry over to other occurrences of that namespace in the same translation unit. As long as you're consistent it will be fine, though.
-
--   You can only use "using" in header files safely if you follow the above rules.
-
--   Enums must be wrapped in their own namespace b/c C++ Enum values have the same scope. Ex:
-
- 
+* Enums must be wrapped in their own namespace b/c C++ Enum values have the same scope. Ex:
 
 > /\*\* Defining a enumeration within a namespace to achieve C\#-style enum scoping \*/  
 > namespace EColorChannel  
@@ -161,160 +138,121 @@ You can use namespaces to organize your classes, functions and variables where a
 > }  
 > }
 
--   Note that for locally-declared enums, you won't be able to use a namespace for scoping. In these cases, we opt to declare a local struct with no member variables, only a local enum type and use that struct for scoping.  
-    > /\*\* Defining a locally-scoped enumeration using structs\*/  
-    > class FObjectMover  
-    > {  
-    > public:  
-    >   
-    > /\*\* Direction to move \*/  
-    > struct EMoveDirection  
-    > {  
-    > enum Type  
-    > {  
-    > Forward,  
-    > Reverse,  
-    > };  
-    > };
+- Note that for locally-declared enums, you won't be able to use a namespace for scoping. In these cases, we opt to declare a local struct with no member variables, only a local enum type and use that struct for scoping.
+  > /\*\* Defining a locally-scoped enumeration using structs\*/  
+  > class FObjectMover  
+  > {  
+  > public:
+  >
+  > /\*\* Direction to move \*/  
+  > struct EMoveDirection  
+  > {  
+  > enum Type  
+  > {  
+  > Forward,  
+  > Reverse,  
+  > };  
+  > };
 
 > /\*\* Construct an FObjectMover with the specified movement direction \*/  
 > FObjectMover( const EMoveDirection::Type Direction );
+
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>&gt;_
+
 >
->  
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>&gt;*
+-
 
->  
-
- 
-
- 
-
--    
-
->  
-
- 
-
->  
 >
->  
 
-Object Handling
-===============
+>
 
- 
+# Object Handling
 
 UCLASS() macro tags classes into the Uobject handling system:
 
--   Gives class a reference to UClass object
+- Gives class a reference to UClass object
 
--   UClass Object is UE4 C++ implementation of attribute decorators/rtti
+- UClass Object is UE4 C++ implementation of attribute decorators/rtti
 
--   UClass Object contains reference to CDO, class default object.
+- UClass Object contains reference to CDO, class default object.
 
--   UClass macros also used to decorate functions & properties
+- UClass macros also used to decorate functions & properties
 
- 
-
- 
-
-Object Creation
----------------
+## Object Creation
 
 There are several functions that can be used to create new UObject instances as well as the standard new operator; each of which have their own use case:
 
 <table><thead><tr class="header"><th><strong>Method</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><a href="https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#newobject">NewObject&lt;class&gt;()</a></td><td>Creates a new instance with an automatically generated name. Best practice to use for simple cases.</td></tr><tr class="even"><td><a href="https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#newnamedobject">NewNamedObject&lt;class&gt;()</a></td><td>Creates a new instance using a specified name along with a few other optional parameters. Asserts if the name conflicts within the new instance's Outer.</td></tr><tr class="odd"><td><a href="https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#constructobject">ConstructObject&lt;class&gt;()</a></td><td>Creates a new instance providing all available creation options. Use only when flexibility is required.</td></tr><tr class="even"><td>new</td><td>Use to construct objects in certain low level circumstances, such as when the constructor requires arguments.</td></tr></tbody></table>
 
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html>&gt;_
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html>&gt;*
+- Tick is the Update() per frame update function.
 
- 
-
--   Tick is the Update() per frame update function.
-
--   Must derive from *FTickableGameObject* to make a class tickable
-
- 
-
- 
+- Must derive from _FTickableGameObject_ to make a class tickable
 
 UClass System notes:
 
--   UClass is the C++ class that contains the RTTI info
+- UClass is the C++ class that contains the RTTI info
 
--   UE4 implements a Garbage collection system
+- UE4 implements a Garbage collection system
 
--   Auto-initialization for properties
+- Auto-initialization for properties
 
--   Auto-serialization. Will auto-update values in the level if they've not been manually overridden in the CDO
+- Auto-serialization. Will auto-update values in the level if they've not been manually overridden in the CDO
 
--   Automatic editor integration
+- Automatic editor integration
 
--   Simple RTTI (can do typecasting IsA&lt;T&gt;() or Cast&lt;T&gt;()
+- Simple RTTI (can do typecasting IsA&lt;T&gt;() or Cast&lt;T&gt;()
 
--   Supports network replication (can tag UFUNCTIONS for RPC & UPROPERTIES for replication)
+- Supports network replication (can tag UFUNCTIONS for RPC & UPROPERTIES for replication)
 
- 
+# Misc
 
-Misc
-====
+- Frameroot smoothing = Sets MaxTick() to be running average of last 300 frames, clamped to MinSmoothFramerate & MaxSmoothFramerate
 
--   Frameroot smoothing = Sets MaxTick() to be running average of last 300 frames, clamped to MinSmoothFramerate & MaxSmoothFramerate
+# Actors
 
- 
+- Not garbage collected (b/c World object holds references to all actors)
 
-Actors
-======
+- Can be explicitly destroyed by calling Destroy()
 
--   Not garbage collected (b/c World object holds references to all actors)
+- Creating new actors done with SpawnActor()
 
--   Can be explicitly destroyed by calling Destroy()
+- Handles replication of properties & functions
 
--   Creating new actors done with SpawnActor()
+- Functionality exposed through component pattern. Actors contain no xform or basic data
 
--   Handles replication of properties & functions
+- Tick function is TickActor()
 
--   Functionality exposed through component pattern. Actors contain no xform or basic data
+- Spawned with UWorld::SpawnActor()
 
--   Tick function is TickActor()
+  - More spawning helper functions @ <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Spawning/index.html>
 
--   Spawned with UWorld::SpawnActor()
-
-    -   More spawning helper functions @ <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Spawning/index.html>
-
->  
-
-Components
-==========
-
--   UActorComponent: Base class for components
-
--   USceneComponent: Base component that contains xform
-
--   UPrimitiveComponent: Component made up of other things (mesh, particles, etc)
-
-    -   CapsuleComponents generate geometry for collision detection
-
-    -   StaticMeshComponents for static geo
-
-    -   SkeletalMeshComponents for collision detection
-
--   Components must be registered UActorComponent::RegisterComponent()
-
--   Components tick through TickComponent() (Ex: SkeletalMesh calls TickComponent() to update animation & skeletal controllers)
-
--   RenderState manages rendering for a component
-
--   PhysicsState manages physics for a component
-
->  
 >
->  
->
->  
->
+
+# Components
+
+- UActorComponent: Base class for components
+
+- USceneComponent: Base component that contains xform
+
+- UPrimitiveComponent: Component made up of other things (mesh, particles, etc)
+
+  - CapsuleComponents generate geometry for collision detection
+
+  - StaticMeshComponents for static geo
+
+  - SkeletalMeshComponents for collision detection
+
+- Components must be registered UActorComponent::RegisterComponent()
+
+- Components tick through TickComponent() (Ex: SkeletalMesh calls TickComponent() to update animation & skeletal controllers)
+
+- RenderState manages rendering for a component
+
+- PhysicsState manages physics for a component
+
 > **Register Events**
 >
 > When a component is registered, the events below are fired off.
@@ -333,45 +271,27 @@ Components
 
 <table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>UActorComponent::OnUnRegister()</td><td>Event to allow for additional actions when unregistering a component, if necessary.</td></tr><tr class="even"><td>UActorComponent::DestroyRenderState()</td><td>Uninitializes the render state for the component.</td></tr><tr class="odd"><td>UActorComponent::DestroyPhysicsState()</td><td>Uninitializes the physics state for the component.</td></tr></tbody></table>
 
->  
->
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>&gt;*
->
->  
->
->  
->
->  
+> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>&gt;_
 >
 > **Component Transforms**
 
--   **FTransform** struct contains a **Translation vector, a Rotation quaternion, and a Scale3D vector**.
+- **FTransform** struct contains a **Translation vector, a Rotation quaternion, and a Scale3D vector**.
 
--   They also have an additional **RelativeLocation vector**,**RelativeRotation rotator**, and **RelativeScale3D vector**
+- They also have an additional **RelativeLocation vector**,**RelativeRotation rotator**, and **RelativeScale3D vector**
 
-    -   Can be relative to world or parent
+  - Can be relative to world or parent
 
-    -   Generally used for getting & setting transform for a component
+  - Generally used for getting & setting transform for a component
 
-    -   Default relative to AttachParent. Control relative by setting **bAbsoluteLocation, bAbsoluteRotation, and bAbsoluteScale properties**
+  - Default relative to AttachParent. Control relative by setting **bAbsoluteLocation, bAbsoluteRotation, and bAbsoluteScale properties**
 
-    -   Can also set the absolute world position (internally converted to relative xform) by these functions
+  - Can also set the absolute world position (internally converted to relative xform) by these functions
 
->  
+>
 
 <table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>SceneComponent::SetWorldLocation()</td><td>Set the relative translation of this component to put it at the supplied location in world space.</td></tr><tr class="even"><td>SceneComponent::SetWorldRotation()</td><td>Set the relative rotation of this component to put it at the supplied orientation in world space.</td></tr></tbody></table>
 
->  
->
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>&gt;*
->
->  
->
->  
->
->  
->
->  
+> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>&gt;_
 >
 > **Delegates**
 >
@@ -381,25 +301,19 @@ Components
 >
 > Both single-cast and multi-cast delegates are supported, as well as "dynamic" delegates which can be safely serialized to disk.
 
--   Single-cast
+- Single-cast
 
--   [Multi-cast]
+- [Multi-cast]
 
--   [Events]
+- [Events]
 
--   [Dynamic (UObject, serializable)]
+- [Dynamic (UObject, serializable)]
 
 > See the [Delegates] page for reference and usage information.
 >
->  
->
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>&gt;*
->
->  
->
->  
+> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>&gt;_
 
-[Multi-cast]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Multicast/index.html
-[Events]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Events/index.html
-[Dynamic (UObject, serializable)]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Dynamic/index.html
-[Delegates]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/index.html
+[multi-cast]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Multicast/index.html
+[events]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Events/index.html
+[dynamic (uobject, serializable)]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Dynamic/index.html
+[delegates]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/index.html

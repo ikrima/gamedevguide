@@ -68,10 +68,6 @@ LaunchFileInDefaultExternalApplication()
 
 ResolveNetworkPath()
 
- 
-
- 
-
 FPlatformProcess::ExecutableName()
 
 GenerateApplicationPath()
@@ -97,7 +93,5 @@ GetBinariesSubdirectory
 GetModulesDirectory
 
 GetGameBundleId
-
- 
 
 FSlateApplication::Get().GetActiveTopLevelWindow();

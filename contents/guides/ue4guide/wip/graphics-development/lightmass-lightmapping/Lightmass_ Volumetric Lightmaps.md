@@ -1,98 +1,78 @@
 Key functions:
 
--   **CalculateVolumeSampleIncidentRadiance():** Main function
+- **CalculateVolumeSampleIncidentRadiance():** Main function
 
 **For volumetric irradience brick:**
-
- 
 
 **SetFromVolumeLightingSample():** Defines spherical harmonic encoding of what gets stored in the lightmap
 
 /\*
 
-​	SH directional coefficients can be normalized by their ambient term, and then ranges can be derived from SH projection
+​ SH directional coefficients can be normalized by their ambient term, and then ranges can be derived from SH projection
 
-​	This allows packing into an 8 bit format
+​ This allows packing into an 8 bit format
 
-​	[-1, 1\] Normalization factors derived from SHBasisFunction
+​ [-1, 1\] Normalization factors derived from SHBasisFunction
 
- 
+​ Result.V0.x = 0.282095f;
 
-​	Result.V0.x = 0.282095f;
+​ Result.V0.y = -0.488603f \* InputVector.y;
 
-​	Result.V0.y = -0.488603f \* InputVector.y;
+​ Result.V0.z = 0.488603f \* InputVector.z;
 
-​	Result.V0.z = 0.488603f \* InputVector.z;
+​ Result.V0.w = -0.488603f \* InputVector.x;
 
-​	Result.V0.w = -0.488603f \* InputVector.x;
+​ half3 VectorSquared = InputVector \* InputVector;
 
- 
+​ Result.V1.x = 1.092548f \* InputVector.x \* InputVector.y;
 
-​	half3 VectorSquared = InputVector \* InputVector;
+​ Result.V1.y = -1.092548f \* InputVector.y \* InputVector.z;
 
-​	Result.V1.x = 1.092548f \* InputVector.x \* InputVector.y;
+​ Result.V1.z = 0.315392f \* (3.0f \* VectorSquared.z - 1.0f);
 
-​	Result.V1.y = -1.092548f \* InputVector.y \* InputVector.z;
+​ Result.V1.w = -1.092548f \* InputVector.x \* InputVector.z;
 
-​	Result.V1.z = 0.315392f \* (3.0f \* VectorSquared.z - 1.0f);
+​ Result.V2 = 0.546274f \* (VectorSquared.x - VectorSquared.y);
 
-​	Result.V1.w = -1.092548f \* InputVector.x \* InputVector.z;
+​ \*/
 
-​	Result.V2 = 0.546274f \* (VectorSquared.x - VectorSquared.y);
+​ // Note: encoding behavior has to match CPU decoding in InterpolateVolumetricLightmap and GPU decoding in GetVolumetricLightmapSH3
 
-​	*/
+​ FLinearColor CoefficientNormalizationScale0(
 
- 
+​ 0.282095f / 0.488603f,
 
-​	// Note: encoding behavior has to match CPU decoding in InterpolateVolumetricLightmap and GPU decoding in GetVolumetricLightmapSH3
+​ 0.282095f / 0.488603f,
 
- 
+​ 0.282095f / 0.488603f,
 
-​	FLinearColor CoefficientNormalizationScale0(
+​ 0.282095f / 1.092548f);
 
-​	0.282095f / 0.488603f,
+​ FLinearColor CoefficientNormalizationScale1(
 
-​	0.282095f / 0.488603f,
+​ 0.282095f / 1.092548f,
 
-​	0.282095f / 0.488603f,
+​ 0.282095f / (4.0f \* 0.315392f),
 
-​	0.282095f / 1.092548f);
+​ 0.282095f / 1.092548f,
 
- 
+​ 0.282095f / (2.0f \* 0.546274f));
 
-​	FLinearColor CoefficientNormalizationScale1(
+​ for (int32 ChannelIndex = 0; ChannelIndex &lt; 3; ChannelIndex++)
 
-​	0.282095f / 1.092548f,
+​ {
 
-​	0.282095f / (4.0f \* 0.315392f),
-
-​	0.282095f / 1.092548f,
-
-​	0.282095f / (2.0f \* 0.546274f));
-
- 
-
-​	for (int32 ChannelIndex = 0; ChannelIndex &lt; 3; ChannelIndex++)
-
-​	{
-
-​	const float InvAmbient = 1.0f / FMath::Max(Sample.HighQualityCoefficients\[0\]\[ChannelIndex\], .0001f);
-
- 
+​ const float InvAmbient = 1.0f / FMath::Max(Sample.HighQualityCoefficients\[0\]\[ChannelIndex\], .0001f);
 
 const FLinearColor Vector0Normalized =
 
-​	FLinearColor(Sample.HighQualityCoefficients\[1\]\[ChannelIndex\], Sample.HighQualityCoefficients\[2\]\[ChannelIndex\], Sample.HighQualityCoefficients\[3\]\[ChannelIndex\], Sample.HighQualityCoefficients\[4\]\[ChannelIndex\])
+​ FLinearColor(Sample.HighQualityCoefficients\[1\]\[ChannelIndex\], Sample.HighQualityCoefficients\[2\]\[ChannelIndex\], Sample.HighQualityCoefficients\[3\]\[ChannelIndex\], Sample.HighQualityCoefficients\[4\]\[ChannelIndex\])
 
-​	* CoefficientNormalizationScale0
+​ \* CoefficientNormalizationScale0
 
-​	*FLinearColor(InvAmbient, InvAmbient, InvAmbient, InvAmbient);
+​ \*FLinearColor(InvAmbient, InvAmbient, InvAmbient, InvAmbient);
 
- 
-
-​	SHCoefficients\[ChannelIndex \* 2 + 0\]\[Index\] = (Vector0Normalized \* FLinearColor(.5f, .5f, .5f, .5f) + FLinearColor(.5f, .5f, .5f, .5f)).QuantizeRound();
-
- 
+​ SHCoefficients\[ChannelIndex \* 2 + 0\]\[Index\] = (Vector0Normalized \* FLinearColor(.5f, .5f, .5f, .5f) + FLinearColor(.5f, .5f, .5f, .5f)).QuantizeRound();
 
 const FLinearColor Vector1Normalized =
 
@@ -102,23 +82,15 @@ FLinearColor(Sample.HighQualityCoefficients\[5\]\[ChannelIndex\], Sample.HighQua
 
 \* FLinearColor(InvAmbient, InvAmbient, InvAmbient, InvAmbient);
 
- 
-
 SHCoefficients\[ChannelIndex \* 2 + 1\]\[Index\] = (Vector1Normalized \* FLinearColor(.5f, .5f, .5f, .5f) + FLinearColor(.5f, .5f, .5f, .5f)).QuantizeRound();
 
 }
 
+- GatherVolumeImportancePhotonDirections()
 
+- CalculateApproximateDirectLighting()
 
- 
-
--   GatherVolumeImportancePhotonDirections()
-
--   CalculateApproximateDirectLighting()
-
--   IncomingRadianceAdaptive()
-
- 
+- IncomingRadianceAdaptive()
 
 /\*\*
 
@@ -130,19 +102,11 @@ SHCoefficients\[ChannelIndex \* 2 + 1\]\[Index\] = (Vector1Normalized \* FLinear
 
 TArray&lt;const FPrecomputedLightVolume\*&gt; PrecomputedLightVolumes;
 
- 
-
 /\*\* Interpolates and caches indirect lighting for dynamic objects. \*/
 
 FIndirectLightingCache IndirectLightingCache;
 
- 
-
 FVolumetricLightmapSceneData VolumetricLightmapSceneData;
-
- 
-
- 
 
 /\*\*
 
@@ -151,10 +115,6 @@ FVolumetricLightmapSceneData VolumetricLightmapSceneData;
 \*/
 
 class FPrecomputedVolumetricLightmap
-
- 
-
- 
 
 /\*\*
 
@@ -168,10 +128,6 @@ template &lt;int32 SHOrder&gt;
 
 class TGatheredLightSample
 
- 
-
- 
-
 /\*\* Lighting for a point in space. \*/
 
 class FVolumeLightingSampleData
@@ -184,23 +140,15 @@ public:
 
 FVector4 PositionAndRadius;
 
- 
-
 /\*\* SH coefficients used with high quality lightmaps. \*/
 
-float HighQualityCoefficients\[LM\_NUM\_SH\_COEFFICIENTS\]\[3\];
-
- 
+float HighQualityCoefficients\[LM_NUM_SH_COEFFICIENTS\]\[3\];
 
 /\*\* SH coefficients used with low quality lightmaps. \*/
 
-float LowQualityCoefficients\[LM\_NUM\_SH\_COEFFICIENTS\]\[3\];
-
- 
+float LowQualityCoefficients\[LM_NUM_SH_COEFFICIENTS\]\[3\];
 
 FVector SkyBentNormal;
-
- 
 
 /\*\* Shadow factor for the stationary directional light. \*/
 

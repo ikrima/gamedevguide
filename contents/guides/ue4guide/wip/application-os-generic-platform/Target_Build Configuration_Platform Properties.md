@@ -1,135 +1,113 @@
 Get build configuration & UBT settings from C++
 
- 
-
 FGenericPlatformProperties, FWindowsPlatformProperties, FPlatformProperties
 
--   FPlatformProperties::IniPlatformName()
+- FPlatformProperties::IniPlatformName()
 
--   FPlatformProperties::PlatformName()
-
- 
+- FPlatformProperties::PlatformName()
 
 ITargetPlatformManagerModule\* TPM = GetTargetPlatformManager();
 
- 
+​ if (TPM)
 
-​	if (TPM)
+​ {
 
-​	{
+​ const TArray&lt;ITargetPlatform\*&gt;& Platforms = TPM-&gt;GetActiveTargetPlatforms();
 
-​	const TArray&lt;ITargetPlatform\*&gt;& Platforms = TPM-&gt;GetActiveTargetPlatforms();
+​ for (int32 Index = 0; Index &lt; Platforms.Num(); ++Index)
 
- 
+​ {
 
-​	for (int32 Index = 0; Index &lt; Platforms.Num(); ++Index)
+​ if (Platforms\[Index\]-&gt;PackageBuild(SourceDir))
 
-​	{
+​ }
 
-​	if (Platforms\[Index\]-&gt;PackageBuild(SourceDir))
+​ }
 
-​	}
-
-​	}
-
-​	}
-
- 
+​ }
 
 Get build configuration & UBT settings from C++ at runtime:
 
-​	EBuildConfigurations::Type FApp::GetBuildConfiguration()
+​ EBuildConfigurations::Type FApp::GetBuildConfiguration()
 
-​	{
+​ {
 
-​	#if UE\_BUILD\_DEBUG
+​ #if UE_BUILD_DEBUG
 
-​		return EBuildConfigurations::Debug;
+​ return EBuildConfigurations::Debug;
 
- 
+​ #elif UE_BUILD_DEVELOPMENT
 
-​	#elif UE\_BUILD\_DEVELOPMENT
+​ // Detect DebugGame using an extern variable in monolithic configurations, or a command line argument in modular configurations.
 
-​	// Detect DebugGame using an extern variable in monolithic configurations, or a command line argument in modular configurations.
+​ #if IS_MONOLITHIC
 
-​	#if IS\_MONOLITHIC
+​ extern const bool GIsDebugGame;
 
-​		extern const bool GIsDebugGame;
+​ return GIsDebugGame? EBuildConfigurations::DebugGame : EBuildConfigurations::Development;
 
-​			return GIsDebugGame? EBuildConfigurations::DebugGame : EBuildConfigurations::Development;
+​ #else
 
-​		#else
+​ return IsRunningDebug() ? EBuildConfigurations::DebugGame : EBuildConfigurations::Development;
 
-​			return IsRunningDebug() ? EBuildConfigurations::DebugGame : EBuildConfigurations::Development;
+​ #endif
 
-​		#endif
+​ #elif UE_BUILD_SHIPPING
 
- 
+​ return EBuildConfigurations::Shipping;
 
-​		#elif UE\_BUILD\_SHIPPING
+​ #elif UE_BUILD_TEST
 
-​		return EBuildConfigurations::Shipping;
+​ return EBuildConfigurations::Test;
 
- 
+​ #else
 
-​	#elif UE\_BUILD\_TEST
+​ return EBuildConfigurations::Unknown;
 
-​	return EBuildConfigurations::Test;
+​ #endif
 
- 
-
-​	#else
-
-​	return EBuildConfigurations::Unknown;
-
-​	#endif
-
-​	}
-
- 
+​ }
 
 Other useful functions:
 
--   FApp::GetBuildVersion
+- FApp::GetBuildVersion
 
--   FApp::GetBuildDate
+- FApp::GetBuildDate
 
--   FApp::GetEpicProductIdentifier
+- FApp::GetEpicProductIdentifier
 
--   FApp::GetBranchName
+- FApp::GetBranchName
 
--   FApp::GetProjectName
+- FApp::GetProjectName
 
--   FApp::GetName() - Name of application ie UE4, Rocket, BBR
+- FApp::GetName() - Name of application ie UE4, Rocket, BBR
 
--   FPlatformMisc::GetUBTPlatform()
+- FPlatformMisc::GetUBTPlatform()
 
--   FPlatformMisc::GetUBTTarget()
+- FPlatformMisc::GetUBTTarget()
 
--   FPlatformMisc::ProjectDir()
+- FPlatformMisc::ProjectDir()
 
--   FPlatformMisc::RootDir()
+- FPlatformMisc::RootDir()
 
--   FPlatformMisc::EngineDir()
+- FPlatformMisc::EngineDir()
 
--   FPlatformMisc::LaunchDir()
+- FPlatformMisc::LaunchDir()
 
--   BuildSettings::IsLicenseeVersion()
+- BuildSettings::IsLicenseeVersion()
 
--   BuildSettings::GetCurrentChangelist()
+- BuildSettings::GetCurrentChangelist()
 
--   BuildSettings::GetCompatibleChangelist()
+- BuildSettings::GetCompatibleChangelist()
 
--   BuildSettings::GetBranchName()
+- BuildSettings::GetBranchName()
 
--   BuildSettings::GetBuildVersion()
+- BuildSettings::GetBuildVersion()
 
 - Also available in FBuildVersion struct
 
-  -   Fill it by calling:  
-      
-      ​	FBuildVersion::TryRead(FBuildVersion::GetDefaultFileName(), outBldVersion)
+  - Fill it by calling:
 
--   Also can use FEngineVersion::Current().GetChangelist())
+    ​ FBuildVersion::TryRead(FBuildVersion::GetDefaultFileName(), outBldVersion)
 
-
+- Also can use FEngineVersion::Current().GetChangelist())

@@ -12,7 +12,6 @@
 
     ii. Test in U-Master-GoldFingers
 
-    
 
     d. Validate in RenderDoc
 
@@ -21,8 +20,6 @@
     ​	i. Try with Opaque
 
     ​	ii. Try with Translucent for shits & giggles
-
-
 
 2. Integrate stenciling for all materials on Material Domain BBArena. Goal: Only support happy path (opaque objects + ground floor within arena sphere. Non-goal: fixing any problems with objects in the arena edge, translucency, particles if they don't work
 
@@ -34,13 +31,9 @@
 
    d. Might need to extend PrimitiveViewRelevance for arena (avoid at this stage if you can easily hardcode around it)
 
-
-
-3. Frustum Culling:
+3) Frustum Culling:
 
    a. Extend FrustumCull&lt;&gt;() to sphere cull arena primitive components from current arena zone
-
-
 
 4. Finishing pass. Goal: Make feature production ready
 
@@ -54,8 +47,6 @@
 
    e. Test with laser special that has full-dome portal
 
- 
-
 **Documentation:**
 
 [*https://docs.unrealengine.com/latest/INT/Programming/Rendering/Overview/index.html*]
@@ -64,76 +55,62 @@
 
 <https://medium.com/@lordned/unreal-engine-4-rendering-overview-part-1-c47f2da65346>
 
-
-
- 
-
 **Helpful areas for reference:**
 
--   SceneVisibility.cpp
+- SceneVisibility.cpp
 
-    -   FSceneRenderer::PreVisibilityFrameSetup()
+  - FSceneRenderer::PreVisibilityFrameSetup()
 
-    -   OcclusionCull()
+  - OcclusionCull()
 
-    -   FSceneRenderer::ComputeViewVisibility()
+  - FSceneRenderer::ComputeViewVisibility()
 
--   **Custom Depth/Custom Stencil feature:**
+- **Custom Depth/Custom Stencil feature:**
 
-    -   bool FCustomDepthPrimSet::DrawPrims(FRHICommandListImmediate& RHICmdList, const FViewInfo& View, FDrawingPolicyRenderState& DrawRenderState, bool bWriteCustomStencilValues)
+  - bool FCustomDepthPrimSet::DrawPrims(FRHICommandListImmediate& RHICmdList, const FViewInfo& View, FDrawingPolicyRenderState& DrawRenderState, bool bWriteCustomStencilValues)
 
--   Understanding PrimitivecOmponents:
+- Understanding PrimitivecOmponents:
 
-    -   CableComponent
+  - CableComponent
 
-    -   CustomMeshComponent
+  - CustomMeshComponent
 
-    -   GetDynamicMeshElements()/DrawStaticMeshElements()
+  - GetDynamicMeshElements()/DrawStaticMeshElements()
 
--   **ESceneDepthPriorityGroup**
+- **ESceneDepthPriorityGroup**
 
-    -   False hope - just used for Editor compositing
+  - False hope - just used for Editor compositing
 
--   **EBasePassDrawListType**
+- **EBasePassDrawListType**
 
-    -   seems we might be able to sort arena & stadium primitives by extending this enum
+  - seems we might be able to sort arena & stadium primitives by extending this enum
 
--   **FPrimitiveSceneInfo::AddToScene()**
+- **FPrimitiveSceneInfo::AddToScene()**
 
-    -   Sets lots of OcclusionFlags (CanBeOccluded, HasPrecomputedVisibility, etc)
+  - Sets lots of OcclusionFlags (CanBeOccluded, HasPrecomputedVisibility, etc)
 
-    -   Might be a good place to add ArenaOcclusion flag
+  - Might be a good place to add ArenaOcclusion flag
 
-    -   Also look at FPrimitiveSceneInfo::AddStaticMeshes()
+  - Also look at FPrimitiveSceneInfo::AddStaticMeshes()
 
--   Decals
+- Decals
 
--   UE4 Git repo commits related to BB Custom Materials
+- UE4 Git repo commits related to BB Custom Materials
 
-    -   BBArenaSurface
+  - BBArenaSurface
 
-    -   BBFakeSSShadingMode
+  - BBFakeSSShadingMode
 
--   <https://docs.unrealengine.com/latest/INT/Programming/Rendering/Overview/index.html>
+- <https://docs.unrealengine.com/latest/INT/Programming/Rendering/Overview/index.html>
 
--   void FDeferredShadingSceneRenderer::Render(FRHICommandListImmediate& RHICmdList)
-
- 
-
- 
+- void FDeferredShadingSceneRenderer::Render(FRHICommandListImmediate& RHICmdList)
 
 **Stadium Scaling Future Work:**
 
 1.  For Stadium primitives: See if we can move them to the static rendering path even though they're dynamic so that we can cache scene traversal as close to RHI level
 
-    ​	a. If possible, maybe we can add another rendering path instead of static vs. dynamic
+    ​ a. If possible, maybe we can add another rendering path instead of static vs. dynamic
 
-2. Fixing indirect lighting cache (rotate SH lights for stadium objects)
+2.  Fixing indirect lighting cache (rotate SH lights for stadium objects)
 
- 
-
-
-
- 
-
-[*https://docs.unrealengine.com/latest/INT/Programming/Rendering/Overview/index.html*]: https://docs.unrealengine.com/latest/INT/Programming/Rendering/Overview/index.html
+[*https://docs.unrealengine.com/latest/int/programming/rendering/overview/index.html*]: https://docs.unrealengine.com/latest/INT/Programming/Rendering/Overview/index.html

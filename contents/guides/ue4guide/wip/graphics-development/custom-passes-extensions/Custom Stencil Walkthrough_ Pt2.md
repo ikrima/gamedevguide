@@ -2,7 +2,7 @@ Notes: STATIC PATH FOR STATICMESHCOMPONENT
 
 AddPrimitive-&gt;
 
-AddPrimitiveSceneInfo\_RenderThread-&gt;
+AddPrimitiveSceneInfo_RenderThread-&gt;
 
 FPrimitiveSceneInfo::AddToScene-&gt;
 
@@ -11,8 +11,6 @@ FPrimitiveSceneInfo::AddStaticMeshes-&gt;
 SceneProxy::DrawStaticElements
 
 Collects FMeshBatch elemets and sets flags on them:
-
- 
 
 NOTE: need to update this line
 
@@ -26,13 +24,11 @@ bSafeToUseUnifiedMesh =
 
 && !IsTranslucentBlendMode(Material-&gt;GetBlendMode())
 
-&& !Material-&gt;MaterialModifiesMeshPosition\_RenderThread()
+&& !Material-&gt;MaterialModifiesMeshPosition_RenderThread()
 
-&& Material-&gt;GetMaterialDomain() == MD\_Surface;
+&& Material-&gt;GetMaterialDomain() == MD_Surface;
 
-NOTE: Check everywhere in the code you have (Material-&gt;GetMaterialDomain() == MD\_Surface)
-
- 
+NOTE: Check everywhere in the code you have (Material-&gt;GetMaterialDomain() == MD_Surface)
 
 NOTE: Re-eval this line of code (StaticMeshRender.cpp)
 
@@ -50,23 +46,15 @@ Ex: FDepthDrawingPolicyFactory::AddStaticMesh() &
 
 FBasePassOpaqueDrawingPolicyFactory::AddStaticMesh(RHICmdList, Scene, this);
 
- 
-
 FBasePassOpaqueDrawingPolicyFactory::AddStaticMesh
 
 Static (not movable) StaticMeshComponent gets added iff ShouldIncludeDomainInMeshPass(Material-&gt;GetMaterialDomain()) && !IsTranslucentBlendMode(BlendMode)
 
- 
-
 FBasePassOpaqueDrawingPolicyFactory::ProcessBasePassMesh() - this function stores the renderstate for this mesh batch
-
- 
 
 NOTE: If we want to piggy back off the existing drawingpolicies & existing basepasses, extend TBasePassDrawingPolicy() to handle arenamaterial domain
 
 and set the correct stencil render state
-
- 
 
 NOTE: JACKPOT: Also might be able to expand BasePassDrawListTYpe in FDrawBasePassStaticMeshAction::Process&lt;&gt;
 
@@ -74,27 +62,19 @@ enum EBasePassDrawListType
 
 {
 
-EBasePass\_Default=0,
+EBasePass_Default=0,
 
-EBasePass\_Masked,
+EBasePass_Masked,
 
-EBasePass\_MAX
+EBasePass_MAX
 
 };
-
- 
 
 Which means add BasePassUniformLightMapPolicyDrawList, BasePassSelfShadowedTranslucencyDrawList, BasePassSelfShadowedCachedPointIndirectTranslucencyDrawList
 
 variables to FScene as drawlists for our custom geo
 
- 
-
 And extend Scene-&gt;GetBasePassDrawList&lt;LightMapPolicyType&gt;(DrawType);
-
- 
-
- 
 
 BaseDrawingPolicy::
 

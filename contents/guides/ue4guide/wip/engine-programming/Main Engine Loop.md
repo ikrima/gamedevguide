@@ -2,11 +2,9 @@
 
 GaurdedMainLoop
 
--------------------------------------------
+---
 
 FCoreDelegates::GetPreMainInitDelegate().Broadcast()
-
- 
 
 FEngineLoop::PreInit: Sets up lots of init like project paths and parses commandline
 
@@ -56,8 +54,6 @@ IProjectManager:LoadModulesForProject(ELoadingPhase::PostEngineInit))
 
 IPluginManager::LoadModulesForEnabledPlugins(ELoadingPhase::PostEngineInit))
 
- 
-
 FEngineLoop.Init() (or call FEngineLoop.EditorInit() in editor mode which basically calls .Init())
 
 GEngine-&gt;Init()
@@ -78,8 +74,6 @@ IProjectManager:LoadModulesForProject(ELoadingPhase::PostEngineInit))
 
 IPluginManager::LoadModulesForEnabledPlugins(ELoadingPhase::PostEngineInit))
 
- 
-
 GEngine-&gt;Start()
 
 (For game engine Only) GameInstance-&gt;StartGameInstance()
@@ -94,8 +88,6 @@ FThreadHeartBeat::Get().Start();
 
 FCoreDelegates::OnFEngineLoopInitComplete.Broadcast();
 
- 
-
 FEngineLoop::Tick()
 
 FThreadHeartBeat::Get().HeartBeat(true);
@@ -104,19 +96,13 @@ FGameThreadHitchHeartBeat::Get().FrameStart();
 
 ActiveProfiler-&gt;FrameSync();
 
- 
-
 {
 
-STAT\_FrameTime
-
- 
+STAT_FrameTime
 
 FCoreDelegates::OnBeginFrame.Broadcast();
 
- 
-
-ENQUEUE\_BeginFrame {
+ENQUEUE_BeginFrame {
 
 FRealtimeGPUProfiler::BeginFrame/FD3DGPUProfiler.BeginFrame()
 
@@ -128,17 +114,11 @@ FCoreDelegates::OnBeginFrameRT.Broadcast();
 
 }
 
- 
-
 FStats::AdvanceFrame
-
- 
 
 {
 
-STAT\_FrameTime
-
- 
+STAT_FrameTime
 
 SlateApp.PollGameDeviceState();
 
@@ -148,27 +128,21 @@ GDistanceFieldAsyncQueue-&gt;ProcessAsyncTasks();
 
 FSlateApplication::Get().Tick() {
 
-STAT\_SlateTickTime
-
- 
+STAT_SlateTickTime
 
 TickPlatform/TickApplication/DrawWindows
 
-ENQUEUE\_SlateDrawWindowsCommand {
+ENQUEUE_SlateDrawWindowsCommand {
 
-DrawWindow\_RenderThread
-
-}
+DrawWindow_RenderThread
 
 }
 
- 
+}
 
 {
 
-STAT\_DeferredTickTime
-
- 
+STAT_DeferredTickTime
 
 FTicker::GetCoreTicker().Tick(FApp::GetDeltaTime());
 
@@ -178,25 +152,17 @@ GEngine-&gt;TickDeferredCommands();
 
 }
 
- 
-
 FCoreDelegates::OnEndFrame.Broadcast();
 
- 
-
-ENQUEUE\_EndFrame {
+ENQUEUE_EndFrame {
 
 FCoreDelegates::OnEndFrameRT.Broadcast();
 
 FRealtimeGPUProfiler::EndFrame()/FD3DGPUProfiler.EndFrame()
 
- 
-
 }
 
 }
-
- 
 
 FEngineLoop::Exit()
 
@@ -229,8 +195,6 @@ FTaskGraphInterface::Shutdown();
 IStreamingManager::Shutdown();
 
 FPlatformMisc::ShutdownTaggedStorage();
-
- 
 
 FEngineLoop::AppExit()
 

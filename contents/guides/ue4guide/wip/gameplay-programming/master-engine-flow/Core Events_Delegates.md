@@ -1,7 +1,4 @@
-Editor Delegates are in FEditorDelegates
-----------------------------------------
-
- 
+## Editor Delegates are in FEditorDelegates
 
 /\*\* Sent when a PIE session is beginning (before we decide if PIE can run - allows clients to avoid blocking PIE) \*/
 
@@ -23,10 +20,6 @@ Editor Delegates are in FEditorDelegates
 >
 > static FOnPIEEvent EndPIE;
 
- 
-
- 
-
 /\*\* Called before SaveWorld is processed \*/
 
 static FOnPreSaveWorld PreSaveWorld;
@@ -35,43 +28,37 @@ static FOnPreSaveWorld PreSaveWorld;
 
 static FOnPostSaveWorld PostSaveWorld;
 
- 
-
- 
-
-struct ENGINE\_API FEditorSupportDelegates
+struct ENGINE_API FEditorSupportDelegates
 
 {
 
 > /\*\* delegate type for when the editor is about to cleanse an object that \*must\* be purged ( Params: UObject\* Object ) \*/
 >
-> DECLARE\_MULTICAST\_DELEGATE\_OneParam(FPrepareToCleanseEditorObject, UObject\*);
+> DECLARE_MULTICAST_DELEGATE_OneParam(FPrepareToCleanseEditorObject, UObject\*);
 >
 > /\*\* delegate type for force property window rebuild events ( Params: UObject\* Object ) \*/
 >
-> DECLARE\_MULTICAST\_DELEGATE\_OneParam(FOnForcePropertyWindowRebuild, UObject\*);
+> DECLARE_MULTICAST_DELEGATE_OneParam(FOnForcePropertyWindowRebuild, UObject\*);
 >
 > /\*\* delegate type for material texture setting change events ( Params: UMaterialIterface\* Material ) \*/
 >
-> DECLARE\_MULTICAST\_DELEGATE\_OneParam(FOnMaterialTextureSettingsChanged, class UMaterialInterface\*);        
+> DECLARE_MULTICAST_DELEGATE_OneParam(FOnMaterialTextureSettingsChanged, class UMaterialInterface\*);
 >
 > /\*\* delegate type for windows messageing events ( Params: FViewport\* Viewport, uint32 Message )\*/
 >
-> DECLARE\_MULTICAST\_DELEGATE\_TwoParams(FOnWindowsMessage, class FViewport\*, uint32);
+> DECLARE_MULTICAST_DELEGATE_TwoParams(FOnWindowsMessage, class FViewport\*, uint32);
 >
 > /\*\* delegate type for material usage flags change events ( Params: UMaterial\* material, int32 FlagThatChanged ) \*/
 >
-> DECLARE\_MULTICAST\_DELEGATE\_TwoParams(FOnMaterialUsageFlagsChanged, class UMaterial\*, int32);
+> DECLARE_MULTICAST_DELEGATE_TwoParams(FOnMaterialUsageFlagsChanged, class UMaterial\*, int32);
 >
 > /\*\* delegate type for vector parameter default change event \*/
 >
-> DECLARE\_MULTICAST\_DELEGATE\_ThreeParams(FOnVectorParameterDefaultChanged, class UMaterialExpression\*, FName, const FLinearColor&);
+> DECLARE_MULTICAST_DELEGATE_ThreeParams(FOnVectorParameterDefaultChanged, class UMaterialExpression\*, FName, const FLinearColor&);
 >
 > /\*\* delegate type for scalar parameter default change event \*/
 >
-> DECLARE\_MULTICAST\_DELEGATE\_ThreeParams(FOnScalarParameterDefaultChanged, class UMaterialExpression\*, FName, float);
-
- 
+> DECLARE_MULTICAST_DELEGATE_ThreeParams(FOnScalarParameterDefaultChanged, class UMaterialExpression\*, FName, float);
 
 > /\*\* Called when all viewports need to be redrawn \*/
 >
@@ -126,17 +113,10 @@ struct ENGINE\_API FEditorSupportDelegates
 > /\*\* Sent after scalar param default changed \*/
 >
 > static FOnScalarParameterDefaultChanged ScalarParameterDefaultChanged;
->
->  
 
 };
 
- 
-
- 
-
-Look at FCoreDelegates in CoreDelegates.h:
-------------------------------------------
+## Look at FCoreDelegates in CoreDelegates.h:
 
 // Called at the beginning of a frame
 
@@ -164,35 +144,23 @@ static FSimpleMulticastDelegate OnPostEngineInit;
 
 static FSimpleMulticastDelegate OnFEngineLoopInitComplete;
 
- 
-
 **Rendering:**
 
 // Called at the beginning of a frame
 
 static FSimpleMulticastDelegate OnBeginFrame;
 
- 
-
 // Called at the end of a frame
 
 static FSimpleMulticastDelegate OnEndFrame;
-
- 
 
 // Called at the beginning of a frame on the renderthread
 
 static FSimpleMulticastDelegate OnBeginFrameRT;
 
- 
-
 // Called at the end of a frame on the renderthread
 
 static FSimpleMulticastDelegate OnEndFrameRT;
-
- 
-
- 
 
 **VR Specific:**
 
@@ -200,71 +168,49 @@ static FSimpleMulticastDelegate OnEndFrameRT;
 
 static FVRHeadsetTrackingInitializingAndNeedsHMDToBeTrackedDelegate VRHeadsetTrackingInitializingAndNeedsHMDToBeTrackedDelegate;
 
- 
-
 /\*\* Sent when the platform finds that needed headset tracking on startup has completed (PS4 Morpheus only) \*/
 
 static FVRHeadsetTrackingInitializedDelegate VRHeadsetTrackingInitializedDelegate;
-
- 
 
 /\*\* Sent when the platform requests a low-level VR recentering \*/
 
 static FVRHeadsetRecenter VRHeadsetRecenter;
 
- 
-
 /\*\* Sent when connection to VR HMD is lost \*/
 
 static FVRHeadsetLost VRHeadsetLost;
-
- 
 
 /\*\* Sent when connection to VR HMD is restored \*/
 
 static FVRHeadsetReconnected VRHeadsetReconnected;
 
- 
-
 /\*\* Sent when connection to VR HMD connection is refused by the player \*/
 
 static FVRHeadsetConnectCanceled VRHeadsetConnectCanceled;
-
- 
 
 /\*\* Sent when the VR HMD detects that it has been put on by the player. \*/
 
 static FVRHeadsetPutOnHead VRHeadsetPutOnHead;
 
- 
-
 /\*\* Sent when the VR HMD detects that it has been taken off by the player. \*/
 
 static FVRHeadsetRemovedFromHead VRHeadsetRemovedFromHead;
 
- 
+## FGameDelegates:
 
-FGameDelegates:
----------------
+DEFINE_GAME_DELEGATE_TYPED(EndPlayMapDelegate, FSimpleMulticastDelegate);
 
-DEFINE\_GAME\_DELEGATE\_TYPED(EndPlayMapDelegate, FSimpleMulticastDelegate);
+DEFINE_GAME_DELEGATE_TYPED(PendingConnectionLostDelegate, FSimpleMulticastDelegate);
 
-DEFINE\_GAME\_DELEGATE\_TYPED(PendingConnectionLostDelegate, FSimpleMulticastDelegate);
+DEFINE_GAME_DELEGATE(PreCommitMapChangeDelegate);
 
-DEFINE\_GAME\_DELEGATE(PreCommitMapChangeDelegate);
+DEFINE_GAME_DELEGATE_TYPED(PostCommitMapChangeDelegate, FSimpleMulticastDelegate);
 
-DEFINE\_GAME\_DELEGATE\_TYPED(PostCommitMapChangeDelegate, FSimpleMulticastDelegate);
-
- 
-
-Also FCoreUObjectDelegates in UObjectGlobals:
----------------------------------------------
+## Also FCoreUObjectDelegates in UObjectGlobals:
 
 // Called when any object is modified at all
 
 > static FOnObjectModified OnObjectModified;
->
->  
 >
 > // Called before a property is changed
 >
@@ -273,10 +219,6 @@ Also FCoreUObjectDelegates in UObjectGlobals:
 > // Called when a property is changed
 >
 > static FOnObjectPropertyChanged OnObjectPropertyChanged;
->
->  
-
- 
 
 > // Set of objects modified this frame, to prevent multiple triggerings of the OnObjectModified delegate.
 >
@@ -284,96 +226,65 @@ Also FCoreUObjectDelegates in UObjectGlobals:
 
 // Sent at the very beginning of LoadMap
 
-> DECLARE\_MULTICAST\_DELEGATE\_OneParam(FPreLoadMapDelegate, const FString& /\* MapName \*/);
+> DECLARE_MULTICAST_DELEGATE_OneParam(FPreLoadMapDelegate, const FString& /\* MapName \*/);
 >
 > static FPreLoadMapDelegate PreLoadMap;
 
- 
-
 > // Sent at the \_successful\_ end of LoadMap
 >
-> DECLARE\_MULTICAST\_DELEGATE\_OneParam(FPostLoadMapDelegate, UWorld\* /\* LoadedWorld \*/);
+> DECLARE_MULTICAST_DELEGATE_OneParam(FPostLoadMapDelegate, UWorld\* /\* LoadedWorld \*/);
 >
 > static FPostLoadMapDelegate PostLoadMapWithWorld;
-
- 
 
 > DEPRECATED(4.16, "Use PostLoadMapWithWorld instead.")
 >
 > static FSimpleMulticastDelegate PostLoadMap;
 
- 
-
 > // Sent at the \_successful\_ end of LoadMap
 
- 
-
-Also FWorldDelegates in World.h:
---------------------------------
+## Also FWorldDelegates in World.h:
 
 static FOnWorldTickStart OnWorldTickStart;
-
- 
 
 > // Callback for world creation
 >
 > static FWorldEvent OnPostWorldCreation;
 >
->  
->
 > // Callback for world initialization (pre)
 >
 > static FWorldInitializationEvent OnPreWorldInitialization;
->
->  
 >
 > // Callback for world initialization (post)
 >
 > static FWorldInitializationEvent OnPostWorldInitialization;
 
- 
-
-\#if WITH\_EDITOR
+\#if WITH_EDITOR
 
 > // Callback for world rename event (pre)
 >
 > static FWorldRenameEvent OnPreWorldRename;
 
-\#endif // WITH\_EDITOR
-
- 
+\#endif // WITH_EDITOR
 
 > // Post duplication event.
 >
 > static FWorldPostDuplicateEvent OnPostDuplicate;
 
- 
-
 > // Callback for world cleanup
 >
 > static FWorldCleanupEvent OnWorldCleanup;
 >
->  
->
 > // Callback for world cleanup end
 >
 > static FWorldCleanupEvent OnPostWorldCleanup;
->
->  
-
- 
 
 > // Callback for world destruction (only called for initialized worlds)
 >
 > static FWorldEvent OnPreWorldFinishDestroy;
 
- 
-
 > // Sent when a ULevel is added to the world via UWorld::AddToWorld
 >
 > static FOnLevelChanged                        LevelAddedToWorld;
-
- 
 
 > // Sent when a ULevel is removed from the world via UWorld::RemoveFromWorld or
 >
@@ -383,25 +294,17 @@ static FOnWorldTickStart OnWorldTickStart;
 >
 > static FOnLevelChanged                        LevelRemovedFromWorld;
 
- 
-
 static FLevelOffsetEvent                PostApplyLevelOffset;
-
- 
 
 > // called by UWorld::GetAssetRegistryTags()
 >
 > static FWorldGetAssetTags GetAssetTags;
 
- 
-
-\#if WITH\_EDITOR
+\#if WITH_EDITOR
 
 > // Delegate called when levelscript actions need refreshing
 >
-> DECLARE\_MULTICAST\_DELEGATE\_OneParam(FRefreshLevelScriptActionsEvent, UWorld\*);
-
- 
+> DECLARE_MULTICAST_DELEGATE_OneParam(FRefreshLevelScriptActionsEvent, UWorld\*);
 
 > // Called when changes in the levels require blueprint actions to be refreshed.
 >
@@ -409,17 +312,13 @@ static FLevelOffsetEvent                PostApplyLevelOffset;
 
 \#endif
 
-
 -
 
-Engine Delegates in Engine.h:
------------------------------
+## Engine Delegates in Engine.h:
 
 /\*\* Broadcasts when a world is added. \*/
 
 > FWorldAddedEvent                        WorldAddedEvent;
-
- 
 
 > /\*\* Broadcasts when a world is destroyed. \*/
 >
@@ -427,77 +326,51 @@ Engine Delegates in Engine.h:
 
 private:
 
- 
-
-\#if WITH\_EDITOR
-
- 
+\#if WITH_EDITOR
 
 > /\*\* Broadcasts whenever a world's actor list changes in a way not specifiable through other LevelActor\_\_Events \*/
 >
 > FLevelActorListChangedEvent LevelActorListChangedEvent;
 
- 
-
 > /\*\* Broadcasts whenever an actor is added. \*/
 >
 > FLevelActorAddedEvent LevelActorAddedEvent;
-
- 
 
 > /\*\* Broadcasts whenever an actor is removed. \*/
 >
 > FLevelActorDeletedEvent LevelActorDeletedEvent;
 
- 
-
 > /\*\* Broadcasts whenever an actor is attached. \*/
 >
 > FLevelActorAttachedEvent LevelActorAttachedEvent;
-
- 
 
 > /\*\* Broadcasts whenever an actor is detached. \*/
 >
 > FLevelActorDetachedEvent LevelActorDetachedEvent;
 
- 
-
 > /\*\* Broadcasts whenever an actor's folder has changed. \*/
 >
 > FLevelActorFolderChangedEvent LevelActorFolderChangedEvent;
-
- 
 
 > /\*\* Broadcasts whenever an actor is being renamed \*/
 >
 > FLevelActorRequestRenameEvent LevelActorRequestRenameEvent;
 
- 
-
 > /\*\* Broadcasts whenever a component is being renamed \*/
 >
 > FLevelComponentRequestRenameEvent LevelComponentRequestRenameEvent;
-
- 
 
 > /\*\* Broadcasts after an actor has been moved, rotated or scaled \*/
 >
 > FOnActorMovedEvent                OnActorMovedEvent;
 
- 
-
 > /\*\* Broadcasts after a component has been moved, rotated or scaled \*/
 >
 > FOnComponentTransformChangedEvent OnComponentTransformChangedEvent;
 >
->  
->
 > /\*\* Delegate broadcast after UEditorEngine::Tick has been called (or UGameEngine::Tick in standalone) \*/
 >
 > FPostEditorTick PostEditorTickEvent;
-
- 
 
 > /\*\* Delegate broadcast when the editor is closing \*/
 >

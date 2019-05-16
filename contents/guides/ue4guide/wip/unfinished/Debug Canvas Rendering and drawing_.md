@@ -4,47 +4,37 @@ UCanvasRenderTarget2
 
 OnCanvasRenderTargetUpdate
 
- 
-
 UCanvas.DrawDebugGraph
 
-.K2\_DrawText
+.K2_DrawText
 
-.K2\_DrawTriangle
+.K2_DrawTriangle
 
-.K2\_DrawMaterialTriangle
+.K2_DrawMaterialTriangle
 
-.K2\_DrawBox
-
- 
+.K2_DrawBox
 
 void AActor::DisplayDebug(UCanvas\* Canvas, const FDebugDisplayInfo& DebugDisplay, float& YL, float& YPos)
 
 {
 
-​	FDisplayDebugManager& DisplayDebugManager = Canvas-&gt;DisplayDebugManager;
+​ FDisplayDebugManager& DisplayDebugManager = Canvas-&gt;DisplayDebugManager;
 
-​	DisplayDebugManager.SetDrawColor(FColor(255, 0, 0));
+​ DisplayDebugManager.SetDrawColor(FColor(255, 0, 0));
 
-​	DrawString
-
- 
-
- 
+​ DrawString
 
 GEngine:bool IsStereoscopic3D(FViewport\* InViewport = nullptr);
 
 // Render CPU thread and GPU frame times.
 
-​	const bool bStereoRendering = GEngine-&gt;IsStereoscopic3D(InViewport);
+​ const bool bStereoRendering = GEngine-&gt;IsStereoscopic3D(InViewport);
 
-​	UFont\* Font = (!FPlatformProperties::SupportsWindowedMode() && GEngine-&gt;GetMediumFont()) ? GEngine-&gt;GetMediumFont() : GEngine-&gt;GetSmallFont();
+​ UFont\* Font = (!FPlatformProperties::SupportsWindowedMode() && GEngine-&gt;GetMediumFont()) ? GEngine-&gt;GetMediumFont() : GEngine-&gt;GetSmallFont();
 
- 
+​ // Note InX should already be within the safe zone
 
-​	// Note InX should already be within the safe zone
-
-​	int32 X3 = InX \* (bStereoRendering ? 0.5f : 1.0f);
+​ int32 X3 = InX \* (bStereoRendering ? 0.5f : 1.0f);
 
 ==================================
 
@@ -52,13 +42,9 @@ Perf Tab:
 
 Look at stat <https://docs.unrealengine.com/latest/INT/Engine/Performance/StatCommands/>
 
- 
-
 Debug Tab:
 
 Dev Settings
-
- 
 
 Useful Commands
 
@@ -66,17 +52,11 @@ Rendering
 
 \-
 
- 
-
 Gameplay
 
 -Show bounds
 
 -Other useful show flags (ShowFlagsValues.inl)
-
- 
-
- 
 
 Game Controls
 
@@ -84,15 +64,11 @@ Game Controls
 
 -Transition to next zone
 
- 
-
 Editor Tab:
 
-​	-bShowFrameRateAndMemory
+​ -bShowFrameRateAndMemory
 
-​	-ULevelEditorPlaySettings.EnableSound
-
- 
+​ -ULevelEditorPlaySettings.EnableSound
 
 ======================
 
@@ -100,65 +76,51 @@ UCanvasRenderTarget2
 
 OnCanvasRenderTargetUpdate
 
- 
-
 UCanvas.DrawDebugGraph
 
-.K2\_DrawText
+.K2_DrawText
 
-.K2\_DrawTriangle
+.K2_DrawTriangle
 
-.K2\_DrawMaterialTriangle
+.K2_DrawMaterialTriangle
 
-.K2\_DrawBox
-
- 
+.K2_DrawBox
 
 void AActor::DisplayDebug(UCanvas\* Canvas, const FDebugDisplayInfo& DebugDisplay, float& YL, float& YPos)
 
 {
 
-​	FDisplayDebugManager& DisplayDebugManager = Canvas-&gt;DisplayDebugManager;
+​ FDisplayDebugManager& DisplayDebugManager = Canvas-&gt;DisplayDebugManager;
 
-​	DisplayDebugManager.SetDrawColor(FColor(255, 0, 0));
+​ DisplayDebugManager.SetDrawColor(FColor(255, 0, 0));
 
-​	DrawString
-
- 
-
- 
+​ DrawString
 
 GEngine:bool IsStereoscopic3D(FViewport\* InViewport = nullptr);
 
 // Render CPU thread and GPU frame times.
 
-​	const bool bStereoRendering = GEngine-&gt;IsStereoscopic3D(InViewport);
+​ const bool bStereoRendering = GEngine-&gt;IsStereoscopic3D(InViewport);
 
-​	UFont\* Font = (!FPlatformProperties::SupportsWindowedMode() && GEngine-&gt;GetMediumFont()) ? GEngine-&gt;GetMediumFont() : GEngine-&gt;GetSmallFont();
+​ UFont\* Font = (!FPlatformProperties::SupportsWindowedMode() && GEngine-&gt;GetMediumFont()) ? GEngine-&gt;GetMediumFont() : GEngine-&gt;GetSmallFont();
 
- 
+​ // Note InX should already be within the safe zone
 
-​	// Note InX should already be within the safe zone
-
-​	int32 X3 = InX \* (bStereoRendering ? 0.5f : 1.0f);
+​ int32 X3 = InX \* (bStereoRendering ? 0.5f : 1.0f);
 
 ==================================
 
 ENUM
 
-ENUM\_RANGE\_BY\_FIRST\_AND\_LAST()
+ENUM_RANGE_BY_FIRST_AND_LAST()
 
-ENUM\_RANGE\_BY\_COUNT()
+ENUM_RANGE_BY_COUNT()
 
-ENUM\_RANGE\_BY\_VALUES()
-
- 
+ENUM_RANGE_BY_VALUES()
 
 //IMPORTANT! Different than exposing enums to bitflags for the engine
 
-ENUM\_CLASS\_FLAGS(EPropertyLocalizationGathererTextFlags);
-
- 
+ENUM_CLASS_FLAGS(EPropertyLocalizationGathererTextFlags);
 
 for (ECountedThing Val : TEnumRange&lt;ECountedThing&gt;())
 
@@ -167,8 +129,6 @@ for (ECountedThing Val : TEnumRange&lt;ECountedThing&gt;())
 \* ...
 
 \* }
-
-  
 
 UENUM(BlueprintType, meta=(Bitflags))
 
@@ -184,33 +144,19 @@ StateMachine,
 
 };
 
- 
-
 UENUM(BlueprintType, meta=(Bitflags))
 
 UPROPERTY(EditAnywhere, config, Category=Debug, meta=(Bitmask, BitmaskEnum="EBBShowDebugClasses"))
 
 int32 P1ShowDebugClasses;
 
- 
-
 if (P1ShowDebugClasses & (1 &lt;&lt; (int32)EBBShowDebugClasses::Avatar))
-
- 
-
- 
 
 ===================
 
 TActorRange
 
- 
-
 for( ALight\* Light : TActorRange&lt;ALight&gt;(GetWorld()) )
-
- 
-
- 
 
 =============
 
@@ -222,17 +168,9 @@ bHiddenEd = true;
 
 bEditable = false;
 
- 
-
- 
-
 ====================
 
 FDebugRenderSceneProxy
-
- 
-
- 
 
 FORCEINLINE void FlushPersistentDebugLines(const UWo
 
@@ -306,21 +244,19 @@ FORCEINLINE void DrawDebugCanvasWireCone(UCanvas\* Ca
 
 **---------------------------------------------------------**
 
-\#if WITH\_EDITORONLY\_DATA
+\#if WITH_EDITORONLY_DATA
 
-​	if (bVisualizeComponent && SpriteComponent == nullptr && GetOwner() && !GetWorld()-&gt;IsGameWorld() )
+​ if (bVisualizeComponent && SpriteComponent == nullptr && GetOwner() && !GetWorld()-&gt;IsGameWorld() )
 
-​	{
+​ {
 
-​	// Create a new billboard component to serve as a visualization of the actor until there is another primitive component
+​ // Create a new billboard component to serve as a visualization of the actor until there is another primitive component
 
-​	SpriteComponent = NewObject&lt;UBillboardComponent&gt;(GetOwner(), NAME\_None, RF\_Transactional | RF\_Transient | RF\_TextExportTransient);
+​ SpriteComponent = NewObject&lt;UBillboardComponent&gt;(GetOwner(), NAME_None, RF_Transactional | RF_Transient | RF_TextExportTransient);
 
-​	BillboardComponent-&gt;SetFlags(RF\_Transactional);
+​ BillboardComponent-&gt;SetFlags(RF_Transactional);
 
-​	BillboardComponent-&gt;CreationMethod = EComponentCreationMethod::SimpleConstructionScript;
-
- 
+​ BillboardComponent-&gt;CreationMethod = EComponentCreationMethod::SimpleConstructionScript;
 
 SpriteComponent-&gt;Sprite = LoadObject&lt;UTexture2D&gt;(nullptr, TEXT("/Engine/EditorResources/EmptyActor.EmptyActor"));
 
@@ -342,19 +278,13 @@ SpriteComponent-&gt;bIsScreenSizeScaled = true;
 
 SpriteComponent-&gt;bUseInEditorScaling = true;
 
- 
-
 SpriteComponent-&gt;SetupAttachment(this);
 
 SpriteComponent-&gt;RegisterComponent();
 
-​	}
+​ }
 
 \#endif
-
- 
-
- 
 
 **Anim Sequence:**
 
@@ -368,22 +298,14 @@ ExtractRootTrackTransform(
 
 GetBoneTransform(RootTransform, 0, Pos, bUseRawDataOnly);
 
- 
-
- 
-
 const FReferenceSkeleton& RefSkeleton = MySkeleton-&gt;GetReferenceSkeleton();
 
-​	if( RefSkeleton.GetNum() &gt; 0 )
+​ if( RefSkeleton.GetNum() &gt; 0 )
 
-​	{
+​ {
 
-​	return RefSkeleton.GetRefBonePose()\[0\];
+​ return RefSkeleton.GetRefBonePose()\[0\];
 
-​	}
-
- 
-
-
+​ }
 
 FAnimationRuntime::AdvanceTime(false, DesiredDeltaMove, CurrentPosition, SequenceLength);

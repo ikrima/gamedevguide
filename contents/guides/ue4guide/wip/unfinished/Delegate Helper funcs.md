@@ -1,12 +1,8 @@
 Delegate Helper funcs
 
- 
-
-DECLARE\_DELEGAETE(OnModifiedDelegate)
+DECLARE_DELEGAETE(OnModifiedDelegate)
 
 OnModifiedDelegate myDelegate;
-
- 
 
 myDelegate.BindLambda
 
@@ -16,10 +12,6 @@ myDelegate.BindSP
 
 myDelegate.BindUObject
 
- 
-
- 
-
 myDelegate = OnModifiedDelegate::CreateLambda(\[\]() {…})
 
 myDelegate = OnModifiedDelegate::CreateRaw
@@ -28,48 +20,36 @@ myDelegate = OnModifiedDelegate::CreateSP
 
 myDelegate = OnModifiedDelegate::CreateUObject
 
- 
-
- 
-
 SLATE ATTRIBUTES:
 
 Something defined as a
 
-​	SLATE\_ATTRIBUTE( FMargin, ContentPadding )
-
- 
+​ SLATE_ATTRIBUTE( FMargin, ContentPadding )
 
 Can be bound with:
 
-​	.ContentPadding\_Lambda(\[\](){…})
-
- 
+​ .ContentPadding_Lambda(\[\](){…})
 
 Also any of these:
 
-AttrName\_Lambda
+AttrName_Lambda
 
-AttrName\_Raw
+AttrName_Raw
 
-AttrName\_Static
+AttrName_Static
 
-AttrName\_UObject
+AttrName_UObject
 
 AttrName(TSharedRef&lt;obj&gt;)
 
- 
+Same with SLATE_EVENTS:
 
-Same with SLATE\_EVENTS:
-
-​	SLATE\_EVENT( FOnClicked, OnValueCommitted )
+​ SLATE_EVENT( FOnClicked, OnValueCommitted )
 
 Can be bound with:
 
-​	.OnClicked\_Lambda(**execFuncWithBool**)
-
- 
+​ .OnClicked_Lambda(**execFuncWithBool**)
 
 Can also be set with a delegate:
 
-​	.OnClicked( FOnClicked::CreateLambda(..))
+​ .OnClicked( FOnClicked::CreateLambda(..))

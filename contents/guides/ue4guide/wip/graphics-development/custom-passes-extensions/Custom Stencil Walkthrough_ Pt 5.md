@@ -1,10 +1,8 @@
-
-
 DONE: LODDither not tested.
 
 DONE: Parallel render paths need updated to work.
 
-DONE: bSafeToUseUnifiedMesh needs to be looked at, using any MD\_ArenaSurface objects in it causes issues.
+DONE: bSafeToUseUnifiedMesh needs to be looked at, using any MD_ArenaSurface objects in it causes issues.
 
 DONE: There is a single viewport stencil clear used in FSceneRenderTargets::BeginRenderingTranslucency that needs commented out to work in VR mode.
 
@@ -12,21 +10,15 @@ DONE: Current implementation will result in higher layers stomping over lower on
 
 TODO: TemporalAA not tested.
 
- 
+Generate_StencilMask_DepthTest: {T,F}
 
- 
-
-Generate\_StencilMask\_DepthTest: {T,F}
-
-Composite\_StencilMask\_Func:
+Composite_StencilMask_Func:
 
 PrvLayerMask: {Ignore|Invert|Src}
 
 CurLayerMask:
 
-MaskOp: MaskStencilPass\_MaskDepthPass, MaskStencilPass\_MaskDepthPass
-
- 
+MaskOp: MaskStencilPass_MaskDepthPass, MaskStencilPass_MaskDepthPass
 
 ====================
 
@@ -44,20 +36,18 @@ StencilWriteMask: 8bits
 
 FrontFacingPoly:
 
-StencilFail\_Depth\*: {OP\_KEEP, OP\_ZERO, OP\_REPLACE, OP\_INCR\_SAT, OP\_DECR\_SAT, OP\_INVERT, OP\_INCR, OP\_DECR}
+StencilFail_Depth\*: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP_INVERT, OP_INCR, OP_DECR}
 
-StencilPass\_DepthFail: {OP\_KEEP, OP\_ZERO, OP\_REPLACE, OP\_INCR\_SAT, OP\_DECR\_SAT, OP\_INVERT, OP\_INCR, OP\_DECR}
+StencilPass_DepthFail: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP_INVERT, OP_INCR, OP_DECR}
 
-StencilPass\_DepthPass: {OP\_KEEP, OP\_ZERO, OP\_REPLACE, OP\_INCR\_SAT, OP\_DECR\_SAT, OP\_INVERT, OP\_INCR, OP\_DECR}
+StencilPass_DepthPass: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP_INVERT, OP_INCR, OP_DECR}
 
 BackFacingPoly:
 
-StencilFail\_Depth\*: {OP\_KEEP, OP\_ZERO, OP\_REPLACE, OP\_INCR\_SAT, OP\_DECR\_SAT, OP\_INVERT, OP\_INCR, OP\_DECR}
+StencilFail_Depth\*: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP_INVERT, OP_INCR, OP_DECR}
 
-StencilPass\_DepthFail: {OP\_KEEP, OP\_ZERO, OP\_REPLACE, OP\_INCR\_SAT, OP\_DECR\_SAT, OP\_INVERT, OP\_INCR, OP\_DECR}
+StencilPass_DepthFail: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP_INVERT, OP_INCR, OP_DECR}
 
-StencilPass\_DepthPass: {OP\_KEEP, OP\_ZERO, OP\_REPLACE, OP\_INCR\_SAT, OP\_DECR\_SAT, OP\_INVERT, OP\_INCR, OP\_DECR}
+StencilPass_DepthPass: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP_INVERT, OP_INCR, OP_DECR}
 
- 
-
---------------------------------
+---

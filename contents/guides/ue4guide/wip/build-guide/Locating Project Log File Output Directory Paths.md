@@ -1,4 +1,4 @@
-## Editor Session Log**
+## Editor Session Log\*\*
 
 This log will be generated while running UE4Editor.exe or in a specific project. This file is almost always going to be included when needing a log.
 
@@ -26,6 +26,4 @@ These are the logs that created and uploaded to CrashReporter.
 
 Any time a compile fails in Visual Studio or Xcode, copy all of the Output and paste into a txt file. Often times we only copy the last few lines that say it failed, which really doesn’t give the information that devs need.
 
- 
-
-*From &lt;<https://wiki.unrealengine.com/Locating_Project_Logs>&gt;*
+_From &lt;<https://wiki.unrealengine.com/Locating_Project_Logs>&gt;_

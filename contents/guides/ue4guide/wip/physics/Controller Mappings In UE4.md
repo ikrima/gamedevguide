@@ -1,15 +1,12 @@
 ---
 sortIndex: 6
 ---
+
 Controller Mappings In UE4
 
 Wednesday, September 7, 2016
 
 3:21 PM
-
- 
-
- 
 
 Vive Controller Mappings
 

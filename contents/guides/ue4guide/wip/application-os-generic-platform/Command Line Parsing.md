@@ -1,8 +1,6 @@
- TArray&lt;FString&gt; Tokens, Switches;
+TArray&lt;FString&gt; Tokens, Switches;
 
 ParseCommandLine(FCommandLine::Get(), Tokens, Switches);
-
- 
 
 FCommandLine::GetForLogging()
 

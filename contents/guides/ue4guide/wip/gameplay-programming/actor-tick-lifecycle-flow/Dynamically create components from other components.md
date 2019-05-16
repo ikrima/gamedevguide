@@ -2,25 +2,23 @@ Your component isn't being serialized properly because you're not telling the en
 
 Using the following implementation for FindOrCreateStaticLodMesh I was able to have cooking succeed and have the component be preserved across level changes ( LodComponent is the name of my private UStaticMeshComponent marked with UPROPERTY()):
 
-
-
 1.  UStaticMeshComponent \*UDestructibleComponent::FindOrCreateStaticLodMesh()
 
 2.  {
 
-3.  static const FName NAME\_StaticMeshComponent = TEXT("StaticLodMesh");
+3.  static const FName NAME_StaticMeshComponent = TEXT("StaticLodMesh");
 
-4.   
+4.
 
-5.  if (HasAnyFlags(RF\_ClassDefaultObject | RF\_ArchetypeObject))
+5)  if (HasAnyFlags(RF_ClassDefaultObject | RF_ArchetypeObject))
 
-6.  {
+6)  {
 
-7.  return nullptr;
+7)  return nullptr;
 
-8.  }
+8)  }
 
-9.   
+9)
 
 10. // If we have a reference to the component, just return it
 
@@ -32,25 +30,25 @@ Using the following implementation for FindOrCreateStaticLodMesh I was able to h
 
 14. }
 
-15.  
+15.
 
-16. // Try to find the component on the owner actor
+16) // Try to find the component on the owner actor
 
-17. LodComponent = GetOwner()-&gt;FindComponentByClass&lt;UStaticMeshComponent&gt;();
+17) LodComponent = GetOwner()-&gt;FindComponentByClass&lt;UStaticMeshComponent&gt;();
 
-18. if (LodComponent)
+18) if (LodComponent)
 
-19. {
+19) {
 
-20. return LodComponent;
+20) return LodComponent;
 
-21. }
+21) }
 
-22.  
+22)
 
 23. // Now create the component
 
-24. LodComponent = NewObject&lt;UStaticMeshComponent&gt;(GetOwner(), NAME\_StaticMeshComponent);
+24. LodComponent = NewObject&lt;UStaticMeshComponent&gt;(GetOwner(), NAME_StaticMeshComponent);
 
 25. LodComponent-&gt;SetupAttachment(GetOwner()-&gt;GetRootComponent());
 
@@ -62,22 +60,12 @@ Using the following implementation for FindOrCreateStaticLodMesh I was able to h
 
 29. }
 
->  
->
-> *From &lt;<https://udn.unrealengine.com/questions/457850/view.html>&gt;*
->
->  
+> _From &lt;<https://udn.unrealengine.com/questions/457850/view.html>&gt;_
 >
 > [gerardo.perez]  ( Disruptive Games Inc. ) 3 days ago Newest
 >
 > We ended up adding it to the actor's InstanceComponents list, which is serialized. Using a uproperty on the component alone was not working at some point but I'm not aware of the details. Anyway, thank you. Our problem is resolved.
 >
->  
->
-> *From &lt;<https://udn.unrealengine.com/questions/457850/view.html>&gt;*
->
->  
->
->  
+> _From &lt;<https://udn.unrealengine.com/questions/457850/view.html>&gt;_
 
 [gerardo.perez]: https://udn.unrealengine.com/users/14846/view.html

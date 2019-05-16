@@ -20,10 +20,8 @@ this-&gt;IsVisibleInEditor()
 
 virtual bool GetEditorPreviewInfo(float DeltaTime, FMinimalViewInfo& ViewOut) override { return false; }
 
- 
-
 ///\*\* Override delegate used for checking the selection state of a component \*/
 
-DECLARE\_DELEGATE\_RetVal\_OneParam(bool, FSelectionOverride, const UPrimitiveComponent\*);
+DECLARE_DELEGATE_RetVal_OneParam(bool, FSelectionOverride, const UPrimitiveComponent\*);
 
 FSelectionOverride SelectionOverrideDelegate;

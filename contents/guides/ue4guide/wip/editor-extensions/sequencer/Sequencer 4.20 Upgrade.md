@@ -2,67 +2,45 @@
 
 MovieScene.LegacyConversionFrameRate (Default: 60000fps)
 
- 
-
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;*
-
- 
+_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_
 
 LevelSequence.DefaultTickResolution (Default: 24000fps)
 
- 
-
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;*
-
- 
+_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_
 
 LevelSequence.DefaultDisplayRate (Default: 30fps
 
- 
-
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;*
-
- 
+_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_
 
 ## **Time Management**
 
+- **FFrameNumber** (32 bits): int32 frame/tick number
 
+- **FFrameTime** (64 bits): FFrameNumber + float. Primarily used during evaluation.
 
--   **FFrameNumber** (32 bits): int32 frame/tick number
+- **FFrameRate** (64 bits): fractional frame rate stored as int numerator & denominator
 
--   **FFrameTime** (64 bits): FFrameNumber + float. Primarily used during evaluation.
+- **FQualifiedFrameTime** (128 bits): A composition of FFrameTime and FFrameRate
 
--   **FFrameRate** (64 bits): fractional frame rate stored as int numerator & denominator
-
--   **FQualifiedFrameTime** (128 bits): A composition of FFrameTime and FFrameRate
-
--   **FTimecode** (20 bytes) : A timecode representation
-
- 
+- **FTimecode** (20 bytes) : A timecode representation
 
 **MovieScene Data**: UMovieScene now contains a tick resolution and display rate, and bolsters the previous ‘Force Fixed Frame Interval’ evaluation with an evaluation type enum.
 
--   **UMovieScene::GetEvaluationType()** - retrieves an enumeration specifying how to
+- **UMovieScene::GetEvaluationType()** - retrieves an enumeration specifying how to
 
 > evaluate this sequence:
 
--   WithSubFrames (default): Evaluate using sub-frame interpolation
+- WithSubFrames (default): Evaluate using sub-frame interpolation
 
--   FrameLocked: Lock to the DisplayRate of the sequence, only evaluate
+- FrameLocked: Lock to the DisplayRate of the sequence, only evaluate
 
 > round frame numbers, no subframes, set t.maxfps during evaluation.
 
--   UMovieScene::GetTickResolution() - retrieves the tick resolution that all FFrameNumbers
+- UMovieScene::GetTickResolution() - retrieves the tick resolution that all FFrameNumbers
 
--   UMovieScene::GetDisplayRate() - playback rate (EvalType==FrameLocked =&gt; this is what t.maxfps is set to)
-
-
-
-
+- UMovieScene::GetDisplayRate() - playback rate (EvalType==FrameLocked =&gt; this is what t.maxfps is set to)
 
 **FMovieSceneChannelProxy** affords editor and runtime code a common language for interacting with and manipulating keyframes. To this end, **IKeyframeSection&lt;&gt;** has been completely removed and is no longer necessary.
-
- 
 
 ### **FMovieSceneChannel**
 
@@ -94,25 +72,9 @@ necessary functions for the specific channel.
 
 consistently deal with the various boundary conditions
 
- 
-
- 
-
-
-
- 
-
- 
-
- 
-
 bSupportsInfiniteRange
 
- 
-
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;*
-
- 
+_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_
 
 FMovieSceneChannelProxy
 
@@ -120,25 +82,21 @@ Stored on UMovieSceneSection: derived types should populate this structure with 
 
 channels as shown in Appendix A.
 
--   Channels are stored by their base FMovieSceneChannel\* in buckets by derived type. With this in mind, any reallocation of channels should be immediately followed by a re-creation of the channel proxy; doing so will invalidate any pointers and handles to the channels stored in the old proxy.
+- Channels are stored by their base FMovieSceneChannel\* in buckets by derived type. With this in mind, any reallocation of channels should be immediately followed by a re-creation of the channel proxy; doing so will invalidate any pointers and handles to the channels stored in the old proxy.
 
- 
+* All interaction with channels is through either the FMovieSceneChannel interface directly, or ISequencerChannelInterface, depending on context. The latter is registered per-type through the sequencer module **ISequencerModule::RegisterChannelEditor**
 
--   All interaction with channels is through either the FMovieSceneChannel interface directly, or ISequencerChannelInterface, depending on context. The latter is registered per-type through the sequencer module **ISequencerModule::RegisterChannelEditor**
+* A templated helper is provided through **TSequencerChannelInterface** which allows single-concept overloading for any given channel type, resolved through ADL. This allows customization of specific behavior without having to re-implement the entire interface if the defaults are suitable for most channels.
 
--   A templated helper is provided through **TSequencerChannelInterface** which allows single-concept overloading for any given channel type, resolved through ADL. This allows customization of specific behavior without having to re-implement the entire interface if the defaults are suitable for most channels.
+* It also means that core sequencer code can automatically populate UI for channel data without having to manually define **ISequencerSection** interfaces and manually defining the channel layout in the editor as well as in the runtime.
 
--   It also means that core sequencer code can automatically populate UI for channel data without having to manually define **ISequencerSection** interfaces and manually defining the channel layout in the editor as well as in the runtime.
+* Default implementation functions for **ISequencerChannelInterface** are defined in the Sequencer namespace, but overloads should be added either to your channel’s namespace, or the global namespace if it’s not in one
 
--   Default implementation functions for **ISequencerChannelInterface** are defined in the Sequencer namespace, but overloads should be added either to your channel’s namespace, or the global namespace if it’s not in one
+* It is recommended that custom channels follow the pattern of storing times and values in parallel arrays, and provide a **TMovieSceneChannelData&lt;T&gt; GetData()** method for interacting with the keys.
 
--   It is recommended that custom channels follow the pattern of storing times and values in parallel arrays, and provide a **TMovieSceneChannelData&lt;T&gt; GetData()** method for interacting with the keys.
+* The majority of FMovieSceneChannel’s interface directly maps to functions callable on **TMovieSceneChannelData**
 
--   The majority of FMovieSceneChannel’s interface directly maps to functions callable on **TMovieSceneChannelData**
-
--   In order for an **ISequencerChannelInterface** to be registered for custom channel types, you need to call **ISequencerModule::RegisterChannelInterface&lt;ChannelType&gt;();**
-
- 
+* In order for an **ISequencerChannelInterface** to be registered for custom channel types, you need to call **ISequencerModule::RegisterChannelInterface&lt;ChannelType&gt;();**
 
 Sample
 
@@ -154,7 +112,7 @@ UMySection(const FObjectInitializer& ObjInit)
 
 FMovieSceneChannelProxyData Channels;
 
-\#if WITH\_EDITOR
+\#if WITH_EDITOR
 
 // In editor proxies mandate extra information pertaining to the channels, including
 
@@ -238,6 +196,4 @@ FMovieSceneBoolChannel BoolChannel;
 
 };
 
- 
-
-*From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;*
+_From &lt;<https://udn.unrealengine.com/storage/temp/323036-sequencer-420-technical-upgrade-notes.pdf>&gt;_

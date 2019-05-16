@@ -2,39 +2,29 @@
 
 Go to Window -&gt; Developer Tools -&gt; Debug Tools -&gt; Test Suite. Shows all the different widgets
 
-
-
-![Useful_Slate_Code_Samples](C:\devguide\conversion\FINISHED\assets\Useful_Slate_Code_Samples.png) 
-
-
+![Useful_Slate_Code_Samples](C:\devguide\conversion\FINISHED\assets\Useful_Slate_Code_Samples.png)
 
 ### **Writing Custom Slate Widgets:**
 
 **UWidgetBlueprintLibrary** & **UWiddgetLayoutLibrary**, & **USlateBlueprintLibrary** great reference for looking at slate drawing functions & helpers
 
--   Ends up calling FSlateDrawElement::MakeBox or FSlateDrawElement::MakeLine
-
- 
+- Ends up calling FSlateDrawElement::MakeBox or FSlateDrawElement::MakeLine
 
 ### **Slate Examples:**
 
 Console command "testprops" will bring up UPropertyEditorTestObject that contains all base properties and the corresponding slate widgets
 
--   testprops tree
+- testprops tree
 
--   testprops table
+- testprops table
 
 More slate samples: SWidgetGallery.h & AppFramework/STestSuite/SWizard/STableViewTesting/SLayoutExample
 
- 
-
 ### **Slate ListView Example:**
 
--   SModuleUI is a great simple listview example with text search and multicolumns
+- SModuleUI is a great simple listview example with text search and multicolumns
 
--   SCollisionAnalyzer shows how to implement sorting
-
- 
+- SCollisionAnalyzer shows how to implement sorting
 
 ### **Menu Builder & Pulldown Menu & Submenu:**
 
@@ -47,13 +37,11 @@ MenuBarBuilder.AddPullDownMenu( TEXT("Menu 2"), TEXT("Opens Menu 2"), FNewMenuDe
 
 return MenuBarBuilder.MakeWidget();
 
- 
-
 static void FillMenu1Entries( FMenuBuilder& MenuBuilder )
 
 {
 
-MenuBuilder.AddEditableText( TEXT( "Editable Item" ), TEXT( "You can edit this item's text" ), NAME\_None, TEXT( "Edit Me!" ) );
+MenuBuilder.AddEditableText( TEXT( "Editable Item" ), TEXT( "You can edit this item's text" ), NAME_None, TEXT( "Edit Me!" ) );
 
 MenuBuilder.AddMenuEntry( FMultiBoxTestCommandList::Get().EighthCommandInfo );
 
@@ -65,9 +53,7 @@ MenuBuilder.AddWidget(SNew(SVolumeControl), TEXT("Volume"));
 
 }
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html>&gt;*
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html>&gt;_
 
 ### **Drop down pulldown/combo toolbar button :**
 
@@ -77,11 +63,7 @@ FOnGetContent::CreateRaw( &FLevelEditorToolBar::GeneratePIEMenuContent, InComman
 FText(),  
 LOCTEXT("PIEComboToolTip", "Play-In-Editor options") );
 
- 
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html>&gt;*
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html>&gt;_
 
 ### **Create Property Table:**
 
@@ -89,11 +71,7 @@ LOCTEXT("PIEComboToolTip", "Play-In-Editor options") );
 
 > const TSharedRef&lt; IPropertyTable &gt; Table = Module.CreatePropertyTable();
 
- 
-
 > TArray&lt; UObject\* &gt; Objects;
-
- 
 
 > for (int Count = 0; Count &lt; 50; Count++)
 >
@@ -103,11 +81,7 @@ LOCTEXT("PIEComboToolTip", "Play-In-Editor options") );
 >
 > }
 
- 
-
 > Table-&gt;SetObjects( Objects );
-
- 
 
 > for (TFieldIterator&lt;UProperty&gt; PropertyIter( UPropertyEditorTestObject::StaticClass(), EFieldIteratorFlags::IncludeSuper); PropertyIter; ++PropertyIter)
 >
@@ -118,8 +92,6 @@ LOCTEXT("PIEComboToolTip", "Play-In-Editor options") );
 > Table-&gt;AddColumn( Property );
 >
 > }
-
- 
 
 > Window-&gt;SetContent
 >
@@ -137,13 +109,7 @@ LOCTEXT("PIEComboToolTip", "Play-In-Editor options") );
 >
 > );
 
- 
-
- 
-
 **Custom Complex Widget UI:** <https://github.com/ue4plugins/ObjectBrowser>
-
- 
 
 **Focus keyboard window to specific widget:**
 
@@ -159,10 +125,6 @@ FWidgetPath WidgetPath;
 >
 > }
 
- 
-
- 
-
 #### **Asset Picker:**
 
 FAssetPickerConfig **AssetPickerConfig**;  
@@ -171,15 +133,15 @@ FAssetPickerConfig **AssetPickerConfig**;
         **AssetPickerConfig**.InitialAssetViewType = EAssetViewType::Tile;  
         **AssetPickerConfig**.bAllowNullSelection = false;  
         **AssetPickerConfig**.bShowBottomToolbar = false;  
-        **AssetPickerConfig**.bAutohideSearchBar = bInFavoritesMode ? true : false;  
+        **AssetPickerConfig**.bAutohideSearchBar = bInFavoritesMode ? true : false;
 
-        **AssetPickerConfig**.Filter.ClassNames.Add(UEditorUtilityBlueprint::StaticClass()-&gt;GetFName());  
+**AssetPickerConfig**.Filter.ClassNames.Add(UEditorUtilityBlueprint::StaticClass()-&gt;GetFName());  
         if (bInFavoritesMode)  
         {  
-                new (**AssetPickerConfig**.Collections) FCollectionNameType(BlutilityModule::**BlutilityShelfCollectionName**, ECollectionShareType::CST\_Local);  
-        }  
+                new (**AssetPickerConfig**.Collections) FCollectionNameType(BlutilityModule::**BlutilityShelfCollectionName**, ECollectionShareType::CST_Local);  
+        }
 
-        ChildSlot  
+ChildSlot  
         \[  
                 SNew(SVerticalBox)  
                 +SVerticalBox::Slot()  
@@ -189,10 +151,6 @@ FAssetPickerConfig **AssetPickerConfig**;
                 \]  
         \];
 
- 
-
- 
-
 #### **Class Picker/Class Viewer:**
 
 const bool bPressedOk = SClassPickerDialog::PickClass(TitleText, Options, ChosenClass, UDataAsset::StaticClass());
@@ -201,25 +159,21 @@ FClassViewerModule& ClassViewerModule = FModuleManager::LoadModuleChecked&lt;FCl
 
 TSharedRef&lt;SWidget&gt; ClassViewer = ClassViewerModule.CreateClassViewer(Options, FOnClassPicked::CreateRaw(this, &FBBProcSeqCapObjEditorBinding::HandleProcSeqContextClassPicked));
 
- 
-
- 
-
 Create Dynamic Context Menu:
 
 FLevelEditorModule& **LevelEditorModule** = FModuleManager::GetModuleChecked&lt;FLevelEditorModule&gt;( "LevelEditor");  
-        TSharedPtr&lt; ILevelEditor &gt; **LevelEditor** = **LevelEditorModule**.GetFirstLevelEditor();  
+        TSharedPtr&lt; ILevelEditor &gt; **LevelEditor** = **LevelEditorModule**.GetFirstLevelEditor();
 
-        TSharedPtr&lt;SWidget&gt; **MenuWidget**;  
+TSharedPtr&lt;SWidget&gt; **MenuWidget**;
 
-        if (**ComponentsWithSockets**.Num() &gt; 1)  
+if (**ComponentsWithSockets**.Num() &gt; 1)  
         {                          
                 **MenuWidget** =   
                         SNew(SComponentChooserPopup)  
                         .Actor(**ParentActor**)  
-                        .**OnComponentChosen**(this, &FActorPickerTrackEditor::ActorComponentPicked, **ParentActor**, **ObjectGuid**, **Section**);                  
+                        .**OnComponentChosen**(this, &FActorPickerTrackEditor::ActorComponentPicked, **ParentActor**, **ObjectGuid**, **Section**);
 
-                // Create as context menu  
+// Create as context menu  
                 FSlateApplication::Get().PushMenu(  
                         **LevelEditor**.ToSharedRef(),  
                         FWidgetPath(),  

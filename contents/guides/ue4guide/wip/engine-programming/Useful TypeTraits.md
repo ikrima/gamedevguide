@@ -2,8 +2,6 @@ template &lt;&gt; struct TIsWeakPointerType&lt;FLazyObjectPtr&gt; { enum { Value
 
 template &lt;&gt; struct THasGetTypeHash&lt;FLazyObjectPtr&gt; { enum { Value = THasGetTypeHash&lt;TPersistentObjectPtr&lt;FUniqueObjectGuid&gt; &gt;::Value }; };
 
- 
-
 For UStruct()
 
 /\*\* type traits to cover the custom aspects of a script struct \*\*/
@@ -18,39 +16,37 @@ enum
 
 {
 
-WithZeroConstructor            = false,                         // struct can be constructed as a valid object by filling its memory footprint with zeroes.
+WithZeroConstructor = false, // struct can be constructed as a valid object by filling its memory footprint with zeroes.
 
-WithNoInitConstructor          = false,                         // struct has a constructor which takes an EForceInit parameter which will force the constructor to perform initialization, where the default constructor performs 'uninitialization'.
+WithNoInitConstructor = false, // struct has a constructor which takes an EForceInit parameter which will force the constructor to perform initialization, where the default constructor performs 'uninitialization'.
 
-WithNoDestructor               = false,                         // struct will not have its destructor called when it is destroyed.
+WithNoDestructor = false, // struct will not have its destructor called when it is destroyed.
 
-WithCopy                       = !TIsPODType<CPPSTRUCT>::Value, // struct can be copied via its copy assignment operator.
+WithCopy = !TIsPODType<CPPSTRUCT>::Value, // struct can be copied via its copy assignment operator.
 
-WithIdenticalViaEquality       = false,                         // struct can be compared via its operator==.  This should be mutually exclusive with WithIdentical.
+WithIdenticalViaEquality = false, // struct can be compared via its operator==. This should be mutually exclusive with WithIdentical.
 
-WithIdentical                  = false,                         // struct can be compared via an Identical(const T* Other, uint32 PortFlags) function.  This should be mutually exclusive with WithIdenticalViaEquality.
+WithIdentical = false, // struct can be compared via an Identical(const T\* Other, uint32 PortFlags) function. This should be mutually exclusive with WithIdenticalViaEquality.
 
-WithExportTextItem             = false,                         // struct has an ExportTextItem function used to serialize its state into a string.
+WithExportTextItem = false, // struct has an ExportTextItem function used to serialize its state into a string.
 
-WithImportTextItem             = false,                         // struct has an ImportTextItem function used to deserialize a string into an object of that class.
+WithImportTextItem = false, // struct has an ImportTextItem function used to deserialize a string into an object of that class.
 
-WithAddStructReferencedObjects = false,                         // struct has an AddStructReferencedObjects function which allows it to add references to the garbage collector.
+WithAddStructReferencedObjects = false, // struct has an AddStructReferencedObjects function which allows it to add references to the garbage collector.
 
-WithSerializer                 = false,                         // struct has a Serialize function for serializing its state to an FArchive.
+WithSerializer = false, // struct has a Serialize function for serializing its state to an FArchive.
 
-WithPostSerialize              = false,                         // struct has a PostSerialize function which is called after it is serialized
+WithPostSerialize = false, // struct has a PostSerialize function which is called after it is serialized
 
-WithNetSerializer              = false,                         // struct has a NetSerialize function for serializing its state to an FArchive used for network replication.
+WithNetSerializer = false, // struct has a NetSerialize function for serializing its state to an FArchive used for network replication.
 
-WithNetDeltaSerializer         = false,                         // struct has a NetDeltaSerialize function for serializing differences in state from a previous NetSerialize operation.
+WithNetDeltaSerializer = false, // struct has a NetDeltaSerialize function for serializing differences in state from a previous NetSerialize operation.
 
-WithSerializeFromMismatchedTag = false,                         // struct has a SerializeFromMismatchedTag function for converting from other property tags.
-
-};
+WithSerializeFromMismatchedTag = false, // struct has a SerializeFromMismatchedTag function for converting from other property tags.
 
 };
 
- 
+};
 
 /\*\*
 
@@ -75,8 +71,6 @@ WithSerializeFromMismatchedTag = false,                         // struct has a 
 \* TIsBitwiseConstructible&lt;uint32, int32 &gt;::Value == true // and vice versa
 
 \*/
-
- 
 
 template &lt;&gt;
 

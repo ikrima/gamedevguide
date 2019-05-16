@@ -1,22 +1,20 @@
- Coordinate Spaces:
+Coordinate Spaces:
 
--   Camera Space: X+ gets mapped to Z+, Y+ gets mapped to X+, Z+ gets mapped to Y+. Basically Right handed Y-up
+- Camera Space: X+ gets mapped to Z+, Y+ gets mapped to X+, Z+ gets mapped to Y+. Basically Right handed Y-up
 
--   View Space: Same as camera space except in shadow rendering
+- View Space: Same as camera space except in shadow rendering
 
--   PreViewTranslation/etc is confusing. Here's the math:
+- PreViewTranslation/etc is confusing. Here's the math:
 
-    -   ViewMatrix = PreViewTranslation \* ViewRotationMatrix
+  - ViewMatrix = PreViewTranslation \* ViewRotationMatrix
 
-    -   It's just separating out camera translation from rotation for accuracy
+  - It's just separating out camera translation from rotation for accuracy
 
-    -   **"Translated"** prefix means camera relative space (aka 0,0,0 is camera position in world space) aka it's WorldPos \* TranslationMatrix(-CameraOrigin)
+  - **"Translated"** prefix means camera relative space (aka 0,0,0 is camera position in world space) aka it's WorldPos \* TranslationMatrix(-CameraOrigin)
 
-    -   **"PreViewTranslation**" prefix just means before this translation happened so in actual world space
+  - **"PreViewTranslation**" prefix just means before this translation happened so in actual world space
 
--   TranslatedWorldToCameraView = TranslatedWorldToView = TranslatedViewMatrix = Inverse of camera rotation matrix
-
-
+- TranslatedWorldToCameraView = TranslatedWorldToView = TranslatedViewMatrix = Inverse of camera rotation matrix
 
 TranslatedWorldCameraOrigin = 0,0,0 (post -vieworigin translation)
 
@@ -26,35 +24,26 @@ WorldViewOrigin = Camera Position (different during shadow pass)
 
 PreViewTranslation = -CameraPosition
 
- 
+- TranslatedWorldToView = TranslatedViewMatrix
 
--   TranslatedWorldToView = TranslatedViewMatrix
+- FMaterialPixelParameters
 
--   FMaterialPixelParameters
-
-    -   **SvPosition**: Like SV\_Position (.xy is pixel position at pixel center, z:DeviceZ, .w:SceneDepth)
+  - **SvPosition**: Like SV_Position (.xy is pixel position at pixel center, z:DeviceZ, .w:SceneDepth)
 
 this is not relative to the current viewport. RelativePixelPosition = MaterialParameters.SvPosition.xy - View.ViewRectMin.xy;
 
--   **ScreenPosition**: Post projection position reconstructed from SvPosition, before the divide by W. left..top -1..1, bottom..top -1..1 within the viewport, W is the SceneDepth
+- **ScreenPosition**: Post projection position reconstructed from SvPosition, before the divide by W. left..top -1..1, bottom..top -1..1 within the viewport, W is the SceneDepth
 
-- **WorldPosition\_CamRelative:** This is just absoluteworldposition - WorldCameraOrigin. Not rotation adjusted in viewspace
+- **WorldPosition_CamRelative:** This is just absoluteworldposition - WorldCameraOrigin. Not rotation adjusted in viewspace
 
-   
+* **PreViewTranslation** = -ViewOrigin
 
--   **PreViewTranslation** = -ViewOrigin
+* ViewRotationMatrix = FInverseRotationMatrix(ViewRotation) \* ViewPlanesMatrix;
 
--   ViewRotationMatrix = FInverseRotationMatrix(ViewRotation) \* ViewPlanesMatrix;
+* **TranslatedViewMatrix** = ViewRotationMatrix;
 
--   **TranslatedViewMatrix** = ViewRotationMatrix;
+* ViewMatrix = FTranslationMatrix(-ViewLocation) \* ViewRotationMatrix;
 
--   ViewMatrix = FTranslationMatrix(-ViewLocation) \* ViewRotationMatrix;
+- WorldPosition_CamRelative =&gt; PixelPosWS - CameraOrigina1\`
 
-
-
--   WorldPosition\_CamRelative =&gt; PixelPosWS - CameraOrigina1\`
-
-
-
--   GetMaterialSharedSampler(Material.Texture2D\_0Sampler,Material.Clamp\_WorldGroupSettings)
-
+* GetMaterialSharedSampler(Material.Texture2D_0Sampler,Material.Clamp_WorldGroupSettings)

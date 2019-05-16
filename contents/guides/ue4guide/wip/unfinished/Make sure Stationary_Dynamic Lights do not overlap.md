@@ -1,5 +1,3 @@
- 
-
 Make sure Stationary/Dynamic Lights do not overlap
 
 One dynamic shadow
@@ -11,4 +9,3 @@ Reflection Probes
 Set Reflection Capture resolution limits
 
 Use HLOD & LOD
-

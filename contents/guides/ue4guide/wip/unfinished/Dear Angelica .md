@@ -1,12 +1,6 @@
- 
-
 ![DearAngelica_1](C:\devguide\conversion\FINISHED\assets\DearAngelica_1.png)
 
-![DearAngelica_2](C:\devguide\conversion\FINISHED\assets\DearAngelica_2.png) 
-
- 
-
- 
+![DearAngelica_2](C:\devguide\conversion\FINISHED\assets\DearAngelica_2.png)
 
 Oculus HMD Emulation
 

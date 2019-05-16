@@ -1,13 +1,12 @@
-Manually through UE4:
-=====================
+# Manually through UE4:
 
--   Pass -StaticAnalyzer=VisualCPP (or PVSStudio) to UBT.exe build
+- Pass -StaticAnalyzer=VisualCPP (or PVSStudio) to UBT.exe build
 
--   Make sure to Do full build of project (clean then build)
+- Make sure to Do full build of project (clean then build)
 
--   Also make sure to disable XGE
+- Also make sure to disable XGE
 
--   Can also modify buildconfiguration.xml:
+- Can also modify buildconfiguration.xml:
 
 > &lt;WindowsPlatform&gt;
 >
@@ -17,36 +16,19 @@ Manually through UE4:
 >
 > &lt;/WindowsPlatform&gt;
 
- 
-
-Devops script:
-==============
+# Devops script:
 
 build.py -c development -t editor check pvs
 
- 
-
- 
-
-UBT Command line:
-=================
+# UBT Command line:
 
 UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=pvsstudio
 
 UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodebuginfo
 
- 
+_From &lt;<https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html>&gt;_
 
-*From &lt;<https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html>&gt;*
-
- 
-
- 
-
- 
-
-Manually setting up PVS Studio for Static Analysis
-==================================================
+# Manually setting up PVS Studio for Static Analysis
 
 1.  Download PVS Studio from <http://www.viva64.com/en/pvs-studio/>
 

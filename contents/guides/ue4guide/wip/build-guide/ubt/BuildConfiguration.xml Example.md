@@ -1,62 +1,58 @@
+---
+sortIndex: 3
+---
+
 Located at: UnrealEngine\\Engine\\Saved\\UnrealBuildTool\\BuildConfiguration.xml
 
 UnrealBuildTool reads settings from XML configuration files in the following locations:
 
-\* Engine/Saved/UnrealBuildTool/BuildConfiguration.xml  
-\* \*User Folder/AppData\*/Roaming/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml  
+\* Engine/Saved/UnrealBuildTool/BuildConfiguration.xml 
+\* \*User Folder/AppData\*/Roaming/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml 
 \* \*My Documents\*/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml
 
- 
+*Reference From https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/Configuration/index.html*
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/Configuration/index.html>&gt;*
 
- 
 
- 
+<?xml version="1.0" encoding="utf-8" ?>
 
- 
+<Configuration xmlns="https://www.unrealengine.com/BuildConfiguration">
 
-&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+<BuildConfiguration>
 
-&lt;Configuration xmlns="https://www.unrealengine.com/BuildConfiguration"&gt;
+<!-- Debug -->
 
-&lt;BuildConfiguration&gt;
+<!-- &lt;bSupportEditAndContinue&gt;false&lt;/bSupportEditAndContinue&gt; /\* d=false \*/ -->
 
-&lt;!-- Debug --&gt;
+<!--***<bOmitPCDebugInfoInDevelopment&gt;true&lt;/bOmitPCDebugInfoInDevelopment&gt; /\* d=false */ -->
 
-&lt;!-- &lt;bSupportEditAndContinue&gt;false&lt;/bSupportEditAndContinue&gt; /\* d=false \*/ --&gt;
+<!-- &lt;bDisableDebugInfoForGeneratedCode&gt;false&lt;/bDisableDebugInfoForGeneratedCode&gt;--&gt; &lt;!-- /* d=true \*/ -->
 
-&lt;!--\*\*\*&lt;bOmitPCDebugInfoInDevelopment&gt;true&lt;/bOmitPCDebugInfoInDevelopment&gt; /\* d=false \*/ --&gt;
+<!-- &lt;bAllowLTCG&gt;false&lt;/bAllowLTCG&gt; /\* d=false */ -->
 
-&lt;!-- &lt;bDisableDebugInfoForGeneratedCode&gt;false&lt;/bDisableDebugInfoForGeneratedCode&gt;--&gt; &lt;!-- /\* d=true \*/ --&gt;
+<!-- Build -->
 
-&lt;!-- &lt;bAllowLTCG&gt;false&lt;/bAllowLTCG&gt; /\* d=false \*/ --&gt;
+ <bAdaptiveUnityDisablesPCH>false</bAdaptiveUnityDisablesPCH>                        <!-- d=false -->
 
- 
+<ProcessorCountMultiplier>1</ProcessorCountMultiplier>                              <!-- d=1     -->
 
-&lt;!-- Build --&gt;
+ <!--***
+<MinFilesUsingPrecompiledHeaderOverride>1</MinFilesUsingPrecompiledHeaderOverride>  /* d=0    
+*/ -->
 
-&lt;bAdaptiveUnityDisablesPCH&gt;false&lt;/bAdaptiveUnityDisablesPCH&gt; &lt;!-- d=false --&gt;
+ <!--<bFasterWithoutUnity>true</bFasterWithoutUnity>
 
-&lt;ProcessorCountMultiplier&gt;1&lt;/ProcessorCountMultiplier&gt; &lt;!-- d=1 --&gt;
+<!--*\*\* &lt;bAllowRemotelyCompiledPCHs&gt;true&lt;/bAllowRemotelyCompiledPCHs&gt; /\* d=false \*/ -->
 
-&lt;!--\*\*\* &lt;MinFilesUsingPrecompiledHeaderOverride&gt;1&lt;/MinFilesUsingPrecompiledHeaderOverride&gt; /\* d=0 \*/ --&gt;
+<!-- &lt;bUseIncrementalLinking&gt;true&lt;/bUseIncrementalLinking&gt; /\* d=false */ -->
 
-&lt;!-- &lt;bFasterWithoutUnity&gt;true&lt;/bFasterWithoutUnity&gt; /\* d=false \*/ --&gt;
+<!--**\* &lt;bUseFastPDBLinking&gt;true&lt;/bUseFastPDBLinking&gt; /\* d=false */ -->
 
-&lt;!--\*\*\* &lt;bAllowRemotelyCompiledPCHs&gt;true&lt;/bAllowRemotelyCompiledPCHs&gt; /\* d=false \*/ --&gt;
+<!--*** <bAddFastPDBToProjects&gt;true&lt;/bAddFastPDBToProjects&gt; /\* d=false */ -->
 
- 
+<!-- <bUseUBTMakefiles>true</bUseUBTMakefiles> /\* d=true */ -->
 
-&lt;!-- &lt;bUseIncrementalLinking&gt;true&lt;/bUseIncrementalLinking&gt; /\* d=false \*/ --&gt;
-
-&lt;!--\*\*\* &lt;bUseFastPDBLinking&gt;true&lt;/bUseFastPDBLinking&gt; /\* d=false \*/ --&gt;
-
-&lt;!--\*\*\* &lt;bAddFastPDBToProjects&gt;true&lt;/bAddFastPDBToProjects&gt; /\* d=false \*/ --&gt;
-
-&lt;!-- &lt;bUseUBTMakefiles&gt;true&lt;/bUseUBTMakefiles&gt; /\* d=true \*/ --&gt;
-
-&lt;!--\*\*\*&lt;bUseUHTMakefiles&gt;true&lt;/bUseUHTMakefiles&gt; /\* d=false \*/ --&gt;
+<!--***<bUseUHTMakefiles>true</bUseUHTMakefiles&gt; /* d=false */ -->
 
 &lt;!-- &lt;bUsePCHFiles&gt;true&lt;/bUsePCHFiles&gt; /\* d=true \*/ --&gt;
 
@@ -67,8 +63,6 @@ UnrealBuildTool reads settings from XML configuration files in the following loc
 &lt;!-- &lt;bUseAdaptiveUnityBuild&gt;true&lt;/bUseAdaptiveUnityBuild&gt; /\* d=true \*/ --&gt;
 
 &lt;!-- &lt;bForcePrecompiledHeaderForGameModules&gt;true&lt;/bForcePrecompiledHeaderForGameModules&gt; /\* d=true \*/ --&gt;
-
- 
 
 &lt;!-- Debug --&gt;
 

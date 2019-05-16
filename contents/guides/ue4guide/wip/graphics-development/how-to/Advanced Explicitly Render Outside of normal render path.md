@@ -1,36 +1,24 @@
 **Also take a look at SceneCaptureRenderer,** which creates a separate renderer to do captures
 
- 
-
 RHICreateTargetableShaderResource3D
 
- 
-
-DrawWindow\_RenderThread
+DrawWindow_RenderThread
 
 FTexture2DRHIRef ViewportRT = bRenderedStereo ? nullptr : ViewportInfo.GetRenderTargetTexture();
 
 FTexture2DRHIRef BackBuffer = (ViewportRT) ? ViewportRT : RHICmdList.GetViewportBackBuffer(ViewportInfo.ViewportRHI);
 
- 
-
 FResolveParams ResolveParams;
 
 bClear = true; // Force a clear of the UI buffer to black
-
- 
 
 // Grab HDR backbuffer
 
 RHICmdList.CopyToResolveTarget(FinalBuffer, ViewportInfo.HDRSourceRT, false, ResolveParams);
 
- 
-
 // UI backbuffer is temp target
 
 BackBuffer = ViewportInfo.UITargetRT;
-
- 
 
 // Reset the backbuffer as our color render target and also set a depth stencil buffer
 
@@ -40,31 +28,19 @@ FRHIDepthRenderTargetView DepthStencilView(ViewportInfo.DepthStencil, ERenderTar
 
 FRHISetRenderTargetsInfo Info(1, &ColorView, DepthStencilView);
 
- 
-
 // Clear the stencil buffer
 
 RHICmdList.SetRenderTargetsAndClear(Info);
 
- 
-
-
-
-SCOPED\_DRAW\_EVENT(RHICmdList, SlateUI\_Composition);
-
- 
+SCOPED_DRAW_EVENT(RHICmdList, SlateUI_Composition);
 
 static const FName RendererModuleName("Renderer");
 
 IRendererModule& RendererModule = FModuleManager::GetModuleChecked&lt;IRendererModule&gt;(RendererModuleName);
 
- 
-
 const auto FeatureLevel = GMaxRHIFeatureLevel;
 
 auto ShaderMap = GetGlobalShaderMap(FeatureLevel);
-
- 
 
 // Generate composition LUT
 
@@ -74,8 +50,6 @@ if (bLUTStale)
 
 SetRenderTarget(RHICmdList, ViewportInfo.ColorSpaceLUTRT, FTextureRHIRef());
 
- 
-
 FGraphicsPipelineStateInitializer GraphicsPSOInit;
 
 RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
@@ -84,9 +58,7 @@ GraphicsPSOInit.BlendState = TStaticBlendState&lt;&gt;::GetRHI();
 
 GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;&gt;::GetRHI();
 
-GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF\_Always&gt;::GetRHI();
-
- 
+GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always&gt;::GetRHI();
 
 TShaderMapRef&lt;FWriteToSliceVS&gt; VertexShader(ShaderMap);
 
@@ -96,21 +68,17 @@ TShaderMapRef&lt;FCompositeLUTGenerationPS&gt; PixelShader(ShaderMap);
 
 const FVolumeBounds VolumeBounds(CompositionLUTSize);
 
- 
-
 GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = GScreenVertexDeclaration.VertexDeclarationRHI;
 
-GraphicsPSOInit.BoundShaderState.VertexShaderRHI = GETSAFERHISHADER\_VERTEX(\*VertexShader);
+GraphicsPSOInit.BoundShaderState.VertexShaderRHI = GETSAFERHISHADER_VERTEX(\*VertexShader);
 
-GraphicsPSOInit.BoundShaderState.GeometryShaderRHI = GETSAFERHISHADER\_GEOMETRY(\*GeometryShader);
+GraphicsPSOInit.BoundShaderState.GeometryShaderRHI = GETSAFERHISHADER_GEOMETRY(\*GeometryShader);
 
-GraphicsPSOInit.BoundShaderState.PixelShaderRHI = GETSAFERHISHADER\_PIXEL(\*PixelShader);
+GraphicsPSOInit.BoundShaderState.PixelShaderRHI = GETSAFERHISHADER_PIXEL(\*PixelShader);
 
-GraphicsPSOInit.PrimitiveType = PT\_TriangleStrip;
+GraphicsPSOInit.PrimitiveType = PT_TriangleStrip;
 
 SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
-
- 
 
 VertexShader-&gt;SetParameters(RHICmdList, VolumeBounds, FIntVector(VolumeBounds.MaxX - VolumeBounds.MinX));
 
@@ -124,19 +92,13 @@ GeometryShader-&gt;SetParameters(RHICmdList, VolumeBounds.MinZ);
 
 PixelShader-&gt;SetParameters(RHICmdList);
 
- 
-
 RasterizeToVolumeTexture(RHICmdList, VolumeBounds);
-
- 
 
 FResolveParams ResolveParams;
 
 RHICmdList.CopyToResolveTarget(ViewportInfo.ColorSpaceLUTRT, ViewportInfo.ColorSpaceLUTSRV, false, ResolveParams);
 
 }
-
- 
 
 // Composition pass
 
@@ -146,11 +108,7 @@ FResolveParams ResolveParams;
 
 RHICmdList.CopyToResolveTarget(ViewportInfo.UITargetRT, ViewportInfo.UITargetSRV, false, ResolveParams);
 
- 
-
 SetRenderTarget(RHICmdList, FinalBuffer, FTextureRHIRef());
-
- 
 
 FGraphicsPipelineStateInitializer GraphicsPSOInit;
 
@@ -160,13 +118,9 @@ GraphicsPSOInit.BlendState = TStaticBlendState&lt;&gt;::GetRHI();
 
 GraphicsPSOInit.RasterizerState = TStaticRasterizerState&lt;&gt;::GetRHI();
 
-GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF\_Always&gt;::GetRHI();
-
- 
+GraphicsPSOInit.DepthStencilState = TStaticDepthStencilState&lt;false, CF_Always&gt;::GetRHI();
 
 TShaderMapRef&lt;FScreenVS&gt; VertexShader(ShaderMap);
-
- 
 
 if (HDROutputDevice == 5 || HDROutputDevice == 6)
 
@@ -176,21 +130,15 @@ if (HDROutputDevice == 5 || HDROutputDevice == 6)
 
 TShaderMapRef&lt;FCompositePS&lt;1&gt;&gt; PixelShader(ShaderMap);
 
- 
-
 GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = RendererModule.GetFilterVertexDeclaration().VertexDeclarationRHI;
 
-GraphicsPSOInit.BoundShaderState.VertexShaderRHI = GETSAFERHISHADER\_VERTEX(\*VertexShader);
+GraphicsPSOInit.BoundShaderState.VertexShaderRHI = GETSAFERHISHADER_VERTEX(\*VertexShader);
 
-GraphicsPSOInit.BoundShaderState.PixelShaderRHI = GETSAFERHISHADER\_PIXEL(\*PixelShader);
+GraphicsPSOInit.BoundShaderState.PixelShaderRHI = GETSAFERHISHADER_PIXEL(\*PixelShader);
 
-GraphicsPSOInit.PrimitiveType = PT\_TriangleList;
-
- 
+GraphicsPSOInit.PrimitiveType = PT_TriangleList;
 
 SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
-
- 
 
 PixelShader-&gt;SetParameters(RHICmdList, ViewportInfo.UITargetSRV, ViewportInfo.HDRSourceSRV, ViewportInfo.ColorSpaceLUTSRV);
 
@@ -204,27 +152,19 @@ else
 
 TShaderMapRef&lt;FCompositePS&lt;0&gt;&gt; PixelShader(ShaderMap);
 
- 
-
 GraphicsPSOInit.BoundShaderState.VertexDeclarationRHI = RendererModule.GetFilterVertexDeclaration().VertexDeclarationRHI;
 
-GraphicsPSOInit.BoundShaderState.VertexShaderRHI = GETSAFERHISHADER\_VERTEX(\*VertexShader);
+GraphicsPSOInit.BoundShaderState.VertexShaderRHI = GETSAFERHISHADER_VERTEX(\*VertexShader);
 
-GraphicsPSOInit.BoundShaderState.PixelShaderRHI = GETSAFERHISHADER\_PIXEL(\*PixelShader);
+GraphicsPSOInit.BoundShaderState.PixelShaderRHI = GETSAFERHISHADER_PIXEL(\*PixelShader);
 
-GraphicsPSOInit.PrimitiveType = PT\_TriangleList;
-
- 
+GraphicsPSOInit.PrimitiveType = PT_TriangleList;
 
 SetGraphicsPipelineState(RHICmdList, GraphicsPSOInit);
-
- 
 
 PixelShader-&gt;SetParameters(RHICmdList, ViewportInfo.UITargetSRV, ViewportInfo.HDRSourceSRV, ViewportInfo.ColorSpaceLUTSRV);
 
 }
-
- 
 
 RendererModule.DrawRectangle(
 
@@ -244,10 +184,8 @@ FIntPoint(ViewportWidth, ViewportHeight),
 
 \*VertexShader,
 
-EDRF\_UseTriangleOptimization);
+EDRF_UseTriangleOptimization);
 
 }
-
- 
 
 RHICmdList.TransitionResource(EResourceTransitionAccess::EReadable, BackBuffer);

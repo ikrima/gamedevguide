@@ -1,4 +1,4 @@
- *Helpful bits &gt;
+\*Helpful bits &gt;
 
 SetDepthStencilStateForBasePass()
 
@@ -14,13 +14,9 @@ Decals
 
 Decals:PostProcessing
 
- 
-
 FTranslucentPrimSet
 
 FCustomDepthPrimSet
-
- 
 
 StencilDithering for LOD transitoins
 
@@ -34,11 +30,7 @@ virtual bool CanBeOccluded() const override
 
 -Gets Called in FPrimitiveSceneInfo::AddToScene() & setting FScene.PrimitiveOcclusionFlags
 
- 
-
 FrustumCull&lt;true, true&gt;(Scene, View);
-
- 
 
 FViewInfo
 
@@ -48,8 +40,6 @@ ICustomVisibilityQuery\* CustomVisibilityQuery
 
 There's a separation between PrimitiveBounds & PrimitiveOcclusionBounds
 
- 
-
 \* ------------------------------------------------
 
 GOAL/Endresult:
@@ -58,63 +48,43 @@ GOAL/Endresult:
 
 -Expected result: they get culled out through a hardcoded stencil sphere
 
- 
-
 Two cases:
 
-1) Normal gameboard arena
+1. Normal gameboard arena
 
-2) Half-dome portal gameboard
-
- 
+2. Half-dome portal gameboard
 
 StencilMaskVal: 1 =&gt;
 
-arena: allowed to write: stencil\_val == 1 && depth\_near
+arena: allowed to write: stencil_val == 1 && depth_near
 
-stadium: allowed to write: && depth\_near
-
- 
+stadium: allowed to write: && depth_near
 
 StencilMaskVal: 2 =&gt;
 
-arena: allowed to write: stencil\_val == 2 && depth\_near
+arena: allowed to write: stencil_val == 2 && depth_near
 
-stadium: allowed to write: stencil\_val != 2 && depth\_near
-
- 
-
- 
+stadium: allowed to write: stencil_val != 2 && depth_near
 
 Steps:
 
-Sphere write out stencil\_val = 1
-
- 
+Sphere write out stencil_val = 1
 
 Draw Arena:
 
 StencilOp = &lt; 3
 
-DepthOp = depth\_near
-
- 
+DepthOp = depth_near
 
 Draw Stadium:
 
 StencilOp != 2
 
-DepthOp = depth\_near
-
- 
-
- 
+DepthOp = depth_near
 
 Highlevel implementation tasks:
 
 1. Hardcode render two spheres as the stencil geo into stencil buffer (just piggy back on custom depth)
-
- 
 
 Case: Normal gameboard
 
@@ -122,13 +92,9 @@ Case: Portal gameboard
 
 Case: Special (space tear)
 
- 
-
 A)Sphere one writes stencil value that masks arena geo
 
 B)Sphere two writes stencil value that masks stadium geo
-
- 
 
 //Nongoal: Exact stencil operations/mask bits unimportant; figure them out later. Just need to make sure it doesn't get stomped
 
@@ -152,25 +118,15 @@ B)Render everything else as normal
 
 Possible Issues: Filtering out arena geo from the normal execution flow
 
- 
-
- 
-
 Approaches:
 
- 
-
 1 - MaterialDomain + ViewRelevance as the extension point
-
- 
 
 GT:
 
 CreateSceneProxies/Renderstate
 
 Sometimes dirty it/recreate it for dynamic stuff
-
- 
 
 RT:
 
@@ -188,13 +144,9 @@ the material (e.g. if the material is translucent=&gt;viewrelevance for transluc
 
 NOTE: Look at how custom depth property in the component is percolated all the way to the RT and how it gets added to custom depth primset
 
- 
-
 -Extend SetPrimitiveViewRelevance(FPrimitiveViewRelevance& OutViewRelevance) const
 
--If MaterialDomain == MD\_BBArena, outviewrelevance.arenarelevance = 1
-
- 
+-If MaterialDomain == MD_BBArena, outviewrelevance.arenarelevance = 1
 
 Render Side:
 
@@ -210,30 +162,23 @@ FRelevancePacket::ComputeRelevance() is where it updatees them (in parallel way)
 
 FRelevancePacket::RenderThreadFinalize() is where it writes them back out to FSceneView/FScene
 
- 
-
 -REFERENCES: PositionOnlyDepthDrawList, DepthDrawList, BasePassUniformLightMapPolicyDrawList
 
 Here's where we create the drawlists:
 
 void FStaticMesh::AddToDrawLists(FRHICommandListImmediate& RHICmdList, FScene\* Scene)
 
- 
-
 -Depth: Prepass Render Arena
 
--Prepass arena geo with stencil ops: Depth Test, Depth Write, Stencil=Keep (do not write), Stencil Test  
-- This is done in FDeferredShadingSceneRenderer::RenderPrePassView
+-Prepass arena geo with stencil ops: Depth Test, Depth Write, Stencil=Keep (do not write), Stencil Test
 
- 
+- This is done in FDeferredShadingSceneRenderer::RenderPrePassView
 
 -Base Pass:
 
 -Custom Function to render our arnea-&gt; ?????
 
 -Make sure it doesn't get rendered in normal pass -&gt; ????
-
- 
 
 primitivecomponent.bRenderinmainpass
 
@@ -243,13 +188,9 @@ ShouldRenderInMainPass()
 
 -Looks like it's used alongside ShouldIncludeDomainInMeshPass
 
- 
-
 GetMaterialRelevance
 
 ShouldIncludeDomainInMeshPass()
-
- 
 
 FMeshBatch.UseDynamicData
 
@@ -259,10 +200,6 @@ FMeshBatch.CastShadow
 
 FMeshBatch.bUseAsOccluder
 
- 
-
- 
-
 2. Create separate primsets like custom depth and add our arena components to that
 
 Advnatages: Might be simpler
@@ -271,12 +208,6 @@ Disadvantage: Might be rigid and inflexible with lots of edge cases
 
 Ex: What happens when we need to draw things that are in both stadium & arena? viewrelevance bitmask sounds better
 
- 
-
- 
-
 3. Just take a look at decals/mesh decals
 
- 
-
----------------------------------------------------------------------------
+---

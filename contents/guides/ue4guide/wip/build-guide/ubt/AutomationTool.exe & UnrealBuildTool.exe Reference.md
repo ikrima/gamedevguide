@@ -1,11 +1,10 @@
-AutomationTool.exe Reference:
-=============================
+# AutomationTool.exe Reference:
 
--   Most of the command-line options/tools are done through engine commandlets
+- Most of the command-line options/tools are done through engine commandlets
 
--   AutomationTool.exe is what RunUAT.exe calls to cook/package, etc
+- AutomationTool.exe is what RunUAT.exe calls to cook/package, etc
 
--   "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\DotNET\\AutomationTool.exe" -help will dump
+- "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\DotNET\\AutomationTool.exe" -help will dump
 
 > Automation.ParseCommandLine: Parsing command line: -Help
 >
@@ -13,19 +12,11 @@ AutomationTool.exe Reference:
 >
 > Automation Help:
 >
->  
->
 > Executes scripted commands
->
->  
 >
 > AutomationTool.exe \[-verbose\] \[-compileonly\] \[-p4\] Command0 \[-Arg0 -Arg1 -Arg2 .\] Command1 \[-Arg0 -Arg1 .\] Command2 \[-Arg0 .\] Commandn . \[EnvVar0=MyValue0 . EnvVarn=MyValuen\]
 >
->  
->
 > Parameters:
->
->  
 >
 > -verbose Enables verbose logging
 >
@@ -52,10 +43,8 @@ AutomationTool.exe Reference:
 > -ignorejunk Prevents UBT from cleaning junk files
 >
 > -UseLocalBuildStorage Allows you to use local storage for your root build storage dir (default of P:\\Builds (on PC) is changed to Engine\\Saved\\LocalBuilds). Used for local testing.
->
->  
 
--   AutomationTool.exe -list will dump Available commands:
+- AutomationTool.exe -list will dump Available commands:
 
 > AnalyzeThirdPartyLibs
 >
@@ -97,7 +86,7 @@ AutomationTool.exe Reference:
 >
 > StageTargetCommand
 >
-> TestP4\_Info
+> TestP4_Info
 >
 > GitPullRequest
 >
@@ -113,13 +102,13 @@ AutomationTool.exe Reference:
 >
 > TestMacZip
 >
-> TestP4\_CreateChangelist
+> TestP4_CreateChangelist
 >
-> TestP4\_StrandCheckout
+> TestP4_StrandCheckout
 >
-> TestP4\_LabelDescription
+> TestP4_LabelDescription
 >
-> TestP4\_ClientOps
+> TestP4_ClientOps
 >
 > CleanDDC
 >
@@ -204,15 +193,12 @@ AutomationTool.exe Reference:
 > GUBP
 >
 > TestTempStorage
->
->  
 
--   AutomationTool.exe -Help \[Commandlet\] will dump the help for that commandlet. Example dump listed below  
-    
-    >  
+- AutomationTool.exe -Help \[Commandlet\] will dump the help for that commandlet. Example dump listed below
 
-AutomationTool.exe -help BuildCookRun/UnrealBuildTool Reference
-===============================================================
+  >
+
+# AutomationTool.exe -help BuildCookRun/UnrealBuildTool Reference
 
 > Automation.ParseCommandLine: Parsing command line: -help BuildCookRun
 >
@@ -230,11 +216,7 @@ AutomationTool.exe -help BuildCookRun/UnrealBuildTool Reference
 >
 > BuildCookRun Help:
 >
->  
->
 > ## Builds/Cooks/Runs a project.
->
->  
 >
 > For non-uprojects project targets are discovered by compiling target rule files found in the project folder.
 >
@@ -242,11 +224,7 @@ AutomationTool.exe -help BuildCookRun/UnrealBuildTool Reference
 >
 > If no DefaultMap can be found, the command falls back to /Engine/Maps/Entry.
 >
->  
->
 > Parameters:
->
->  
 >
 > -project=Path Project path (required), i.e: -project=QAGame, -project=Samples\\BlackJack\\BlackJack.uproject, -project=D:\\Projects\\MyProject.uproject
 >
@@ -421,7 +399,5 @@ AutomationTool.exe -help BuildCookRun/UnrealBuildTool Reference
 > -Licensee If set, this build is being compiled by a licensee
 >
 > -NoSign Skips signing of code/content files.
->
->  
 
--   D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Source\\Programs\\AutomationTool\\AutomationUtils\\**ProjectParams.cs** lists all of the parameters/options
+- D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Source\\Programs\\AutomationTool\\AutomationUtils\\**ProjectParams.cs** lists all of the parameters/options

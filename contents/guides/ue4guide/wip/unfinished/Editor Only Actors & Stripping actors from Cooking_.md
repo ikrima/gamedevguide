@@ -9,4 +9,3 @@ Editor Only Actors & Stripping actors from Cooking:
 <https://udn.unrealengine.com/questions/173080/actor-visualisation-in-editor-only.html>
 
 <https://udn.unrealengine.com/questions/7035/editor-only-objects.html>
-

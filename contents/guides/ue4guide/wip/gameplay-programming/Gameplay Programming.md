@@ -1,196 +1,180 @@
 C++ Macros:
 
--   UCLASS()
+- UCLASS()
 
--   UFUNCTION()
+- UFUNCTION()
 
--   USTRUCT()
+- USTRUCT()
 
--   UPROPERTY()
+- UPROPERTY()
 
--   UINTERFACE()
+- UINTERFACE()
 
--   GENERATED\_UCLASS\_BODY()
+- GENERATED_UCLASS_BODY()
 
--   GENERATED\_USTRUCT\_BODY()
+- GENERATED_USTRUCT_BODY()
 
--   IMPLEMENT\_CLASS ()
+- IMPLEMENT_CLASS ()
 
--   IMPLEMENT\_MODULE()
-
- 
+- IMPLEMENT_MODULE()
 
 Class Declaration
 
 UCLASS(\[specifier, specifier, ...\], \[meta(key=value, key=value, ...)\])  
 class ClassName : ParentName  
 {  
-GENERATED\_UCLASS\_BODY()  
+GENERATED_UCLASS_BODY()  
 }
-
- 
 
 ### **Class Specifiers**
 
 When declaring classes, specifiers can be added to the declaration to control how the class behaves with various aspects of the engine and editor.
 
--   [Abstract]
+- [Abstract]
 
--   [AdvancedClassDisplay]
+- [AdvancedClassDisplay]
 
--   [AssetRegistrySearchable]
+- [AssetRegistrySearchable]
 
--   [AutoCollapseCategories]
+- [AutoCollapseCategories]
 
--   [AutoExpandCategories]
+- [AutoExpandCategories]
 
--   [Blueprintable]
+- [Blueprintable]
 
--   [BlueprintType]
+- [BlueprintType]
 
--   [ClassGroup]
+- [ClassGroup]
 
--   [CollapseCategories]
+- [CollapseCategories]
 
--   [Config]
+- [Config]
 
--   [Const]
+- [Const]
 
--   [ConversionRoot]
+- [ConversionRoot]
 
--   [CustomConstructor]
+- [CustomConstructor]
 
--   [DefaultToInstanced]
+- [DefaultToInstanced]
 
--   [DependsOn]
+- [DependsOn]
 
--   [Deprecated]
+- [Deprecated]
 
--   [DontAutoCollapseCategories]
+- [DontAutoCollapseCategories]
 
--   [DontCollapseCategories]
+- [DontCollapseCategories]
 
--   [EditInlineNew]
+- [EditInlineNew]
 
--   [HeaderGroup]
+- [HeaderGroup]
 
--   [HideCategories]
+- [HideCategories]
 
--   [HideDropdown]
+- [HideDropdown]
 
--   [HideFunctions]
+- [HideFunctions]
 
--   [Intrinsic]
+- [Intrinsic]
 
--   [MinimalAPI]
+- [MinimalAPI]
 
--   [NoExport]
+- [NoExport]
 
--   [NonTranisent]
+- [NonTranisent]
 
--   [NotBlueprintable]
+- [NotBlueprintable]
 
--   [NotPlaceable]
+- [NotPlaceable]
 
--   [PerObjectConfig]
+- [PerObjectConfig]
 
--   [Placeable]
+- [Placeable]
 
--   [ShowCategories]
+- [ShowCategories]
 
--   [ShowFunctions]
+- [ShowFunctions]
 
--   [Transient]
+- [Transient]
 
--   [Within]
-
- 
+- [Within]
 
 Constructors:
 
--   FPostConstructInitializeProperties initializes class properties after constructor has been called
+- FPostConstructInitializeProperties initializes class properties after constructor has been called
 
--   Pattern of using static function scoped structs for complex one-time initialization in class constructors. ConstructorHelpers namespace has helpers to use in these situations
-
- 
+- Pattern of using static function scoped structs for complex one-time initialization in class constructors. ConstructorHelpers namespace has helpers to use in these situations
 
 // Structure to hold one-time initialization  
                 struct FConstructorStatics  
                 {  
                         ConstructorHelpers::FObjectFinderOptional&lt;UTexture2D&gt; SpriteTexture;  
-                        FName ID\_Wind;  
-                        FText NAME\_Wind;  
+                        FName ID_Wind;  
+                        FText NAME_Wind;  
                         FConstructorStatics()  
-                                : SpriteTexture(TEXT("/Engine/EditorResources/S\_WindDirectional"))  
-                                , ID\_Wind(TEXT("Wind"))  
-                                , NAME\_Wind(NSLOCTEXT("SpriteCategory", "Wind", "Wind"))  
+                                : SpriteTexture(TEXT("/Engine/EditorResources/S_WindDirectional"))  
+                                , ID_Wind(TEXT("Wind"))  
+                                , NAME_Wind(NSLOCTEXT("SpriteCategory", "Wind", "Wind"))  
                         {  
                         }  
                 };  
-                static FConstructorStatics ConstructorStatics;  
+                static FConstructorStatics ConstructorStatics;
 
-                if (ArrowComponent)  
+if (ArrowComponent)  
                 {  
                         ArrowComponent-&gt;ArrowColor = FColor(150, 200, 255);  
                         ArrowComponent-&gt;bTreatAsASprite = true;  
-                        ArrowComponent-&gt;SpriteInfo.Category = ConstructorStatics.ID\_Wind;  
-                        ArrowComponent-&gt;SpriteInfo.DisplayName = ConstructorStatics.NAME\_Wind;  
+                        ArrowComponent-&gt;SpriteInfo.Category = ConstructorStatics.ID_Wind;  
+                        ArrowComponent-&gt;SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
                         ArrowComponent-&gt;AttachParent = Component;  
                         ArrowComponent-&gt;bIsScreenSizeScaled = true;  
                         ArrowComponent-&gt;bUseInEditorScaling = true;  
-                }  
+                }
 
-                if (SpriteComponent)  
+if (SpriteComponent)  
                 {  
                         SpriteComponent-&gt;Sprite = ConstructorStatics.SpriteTexture.Get();  
-                        SpriteComponent-&gt;SpriteInfo.Category = ConstructorStatics.ID\_Wind;  
-                        SpriteComponent-&gt;SpriteInfo.DisplayName = ConstructorStatics.NAME\_Wind;  
+                        SpriteComponent-&gt;SpriteInfo.Category = ConstructorStatics.ID_Wind;  
+                        SpriteComponent-&gt;SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
                         SpriteComponent-&gt;AttachParent = Component;  
                 }
 
- 
-
--   Create components in the constructor using ConstructorHelpers::CreateComponent&lt;&gt;()
-
- 
+- Create components in the constructor using ConstructorHelpers::CreateComponent&lt;&gt;()
 
 > ##### **Function Specifiers**
 >
 > When declaring functions, specifiers can be added to the declaration to control how the function behaves with various aspects of the engine and editor.
 
--   [BlueprintAuthorityOnly]
+- [BlueprintAuthorityOnly]
 
--   [BlueprintCallable]
+- [BlueprintCallable]
 
--   [BlueprintCosmetic]
+- [BlueprintCosmetic]
 
--   [BlueprintImplementableEvent]
+- [BlueprintImplementableEvent]
 
--   [BlueprintNativeEvent]
+- [BlueprintNativeEvent]
 
--   [BlueprintPure]
+- [BlueprintPure]
 
--   [Category]
+- [Category]
 
--   [Client]
+- [Client]
 
--   [CustomThunk]
+- [CustomThunk]
 
--   [Exec]
+- [Exec]
 
--   [NetMulticast]
+- [NetMulticast]
 
--   [Reliable]
+- [Reliable]
 
--   [Server]
+- [Server]
 
--   [Unreliable]
+- [Unreliable]
 
->  
->
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>&gt;*
-
- 
+> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>&gt;_
 
 > **Delegates**
 >
@@ -200,27 +184,20 @@ Constructors:
 >
 > Both single-cast and multi-cast delegates are supported, as well as **"dynamic" delegates which can be safely serialized to disk.**
 
--   Single-cast
+- Single-cast
 
--   [Multi-cast]
+- [Multi-cast]
 
--   [Events]
+- [Events]
 
--   [Dynamic (UObject, serializable)]
+- [Dynamic (UObject, serializable)]
 
 > See the [Delegates] page for reference and usage information.
 >
->  
->
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>&gt;*
-
- 
+> _From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>&gt;_
 
 **Timer Management**
 
 Timers are managed in a global FTimerManager, outside the confines of AActor, and can have any of the full range of delegate types assigned. There are several functions in FTimerManager available for managing timers. It is safe to use these functions inside of a timer delegate as the system is ok with manipulating timers while handling a timer. This means, for example, it is ok to set or clear timers inside a timer delegate.
 
 The AActor::GetWorldTimerManager() function is used to access the timer manager instance for the current world.
-
- 
-

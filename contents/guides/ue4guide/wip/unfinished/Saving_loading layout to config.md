@@ -8,7 +8,7 @@ TSharedRef&lt;FTabManager::FLayout&gt; LoadedLayout = FLayoutSaveRestore::LoadFr
 
 // The asset editors currently do not get saved.
 
-FTabManager::NewLayout( "UnrealEd\_Layout\_v1.4" )
+FTabManager::NewLayout( "UnrealEd_Layout_v1.4" )
 
 -&gt;AddArea
 
@@ -64,7 +64,7 @@ FTabManager::NewStack()
 
 FTabManager::NewArea(WindowSize)
 
--&gt;SetOrientation(Orient\_Vertical)
+-&gt;SetOrientation(Orient_Vertical)
 
 -&gt;Split
 
@@ -119,8 +119,6 @@ FTabManager::NewStack()
 )
 
 );
-
- 
 
 MainFrameContent = FGlobalTabmanager::Get()-&gt;RestoreFrom( LoadedLayout, RootWindow, bEmbedTitleAreaContent );
 

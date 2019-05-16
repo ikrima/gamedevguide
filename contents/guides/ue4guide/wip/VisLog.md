@@ -2,19 +2,13 @@
 
 Visual Log has been implemented as a helper in debugging gameplay issues by gathering information and presenting it in a visual manner. This approach proved to be very powerful while developing and shipping Bulletstorm. It’s remarkable how simply seeing logged data in a spatial context speeds up debugging.
 
- 
-
 ## **Misc:**
 
 FDebugRenderSceneProxy: Debug Render primitive that extends FPrimitiveSceneProxy:
 
--   Look at FVisualLoggerSceneProxy for simple extension
+- Look at FVisualLoggerSceneProxy for simple extension
 
--   UDebugDrawService
-
-
-
- 
+- UDebugDrawService
 
 Serialize ue4 data to binary blob with memory compression:
 
@@ -42,15 +36,11 @@ FMemoryWriter ArWriter(UncompressedBuffer);
 
 ArWriter &lt;&lt; EQSLocalData;
 
- 
-
 const int32 UncompressedSize = UncompressedBuffer.Num();
 
 const int32 HeaderSize = sizeof(int32);
 
 BlobArray.Init(0, HeaderSize + FMath::TruncToInt(1.1f \* UncompressedSize));
-
- 
 
 int32 CompressedSize = BlobArray.Num() - HeaderSize;
 
@@ -60,21 +50,13 @@ FMemory::Memcpy(DestBuffer, &UncompressedSize, HeaderSize);
 
 DestBuffer += HeaderSize;
 
- 
-
-FCompression::CompressMemory((ECompressionFlags)(COMPRESS\_ZLIB | COMPRESS\_BiasMemory), (void\*)DestBuffer, CompressedSize, (void\*)UncompressedBuffer.GetData(), UncompressedSize);
-
- 
+FCompression::CompressMemory((ECompressionFlags)(COMPRESS_ZLIB | COMPRESS_BiasMemory), (void\*)DestBuffer, CompressedSize, (void\*)UncompressedBuffer.GetData(), UncompressedSize);
 
 BlobArray.SetNum(CompressedSize + HeaderSize, false);
 
 }
 
 }
-
- 
-
- 
 
 void UEnvQueryDebugHelpers::BlobArrayToDebugData(const TArray&lt;uint8&gt;& BlobArray, EQSDebug::FQueryData& EQSLocalData, bool bUseCompression)
 
@@ -108,17 +90,11 @@ SrcBuffer += HeaderSize;
 
 const int32 CompressedSize = BlobArray.Num() - HeaderSize;
 
- 
-
 UncompressedBuffer.AddZeroed(UncompressedSize);
 
- 
-
-FCompression::UncompressMemory((ECompressionFlags)(COMPRESS\_ZLIB), (void\*)UncompressedBuffer.GetData(), UncompressedSize, SrcBuffer, CompressedSize);
+FCompression::UncompressMemory((ECompressionFlags)(COMPRESS_ZLIB), (void\*)UncompressedBuffer.GetData(), UncompressedSize, SrcBuffer, CompressedSize);
 
 FMemoryReader ArReader(UncompressedBuffer);
-
- 
 
 ArReader &lt;&lt; EQSLocalData;
 
@@ -126,13 +102,11 @@ ArReader &lt;&lt; EQSLocalData;
 
 }
 
- 
-
 Register Visual Logger Drawing Extension:
 
-#if WITH\_EDITOR && ENABLE\_VISUAL\_LOG
+#if WITH_EDITOR && ENABLE_VISUAL_LOG
 
-FVisualLogger::Get().RegisterExtension(\*EVisLogTags::TAG\_EQS, &VisualLoggerExtension);
+FVisualLogger::Get().RegisterExtension(\*EVisLogTags::TAG_EQS, &VisualLoggerExtension);
 
 #endif
 
@@ -140,29 +114,25 @@ class FVisualLoggerExtension : public FVisualLogExtensionInterface
 
 {}
 
- 
-
- 
-
 ## **Logging**
 
 Visual Log gathers data in two ways:
 
--   Actors request logging of data
+- Actors request logging of data
 
--   VisualLog asking Actors’ status at the time logging request is made
+- VisualLog asking Actors’ status at the time logging request is made
 
 So, whenever an Actor wants to log something, Visual Log checks whether there was already anything logged for that actor within current frame. If there was, then data being logged is simply added to current log entry. If not then actor is first asked to supply a “snapshot” of its current state (by calling GrabDebugSnapshot)
 
 Couple of macros has been supplied to make using visual log easier, and similar to using regular log. These are:
 
--   UE\_VLOG(Actor, CategoryName, Verbosity, Format, ...) – similar to UE\_LOG, the only difference is the new first parameter that’s the actor that we want to log data for
+- UE_VLOG(Actor, CategoryName, Verbosity, Format, ...) – similar to UE_LOG, the only difference is the new first parameter that’s the actor that we want to log data for
 
--   UE\_CVLOG – similar to UE\_CLOG with addition mentioned above
+- UE_CVLOG – similar to UE_CLOG with addition mentioned above
 
 There are other structures that can be logged with Visual Log, other than plain strings. You can log paths, segments, points, all of them with an optional label. For now there’s only a macro for logging segments, others to come in future.
 
-UE\_VLOG\_SEGMENT(Actor, SegmentStart, SegmentEnd, Color, DescriptionFormat, ...)
+UE_VLOG_SEGMENT(Actor, SegmentStart, SegmentEnd, Color, DescriptionFormat, ...)
 
 “Spatial” information logged with Visual Log will be presented along with any other data logged within that frame when viewing log.
 
@@ -170,11 +140,9 @@ UE\_VLOG\_SEGMENT(Actor, SegmentStart, SegmentEnd, Color, DescriptionFormat, ...
 
 It can happen we want logs of one actor to be associated with logs of another, like for example we’d like to have Weapon’s logs to be added to Pawn’s log. It’s possible and can be done by using these two macros:
 
--   REDIRECT\_TO\_VLOG(OtherActor) – makes logs of “this” actor to be added to OtherActor’s
+- REDIRECT_TO_VLOG(OtherActor) – makes logs of “this” actor to be added to OtherActor’s
 
--   REDIRECT\_ACTOR\_TO\_VLOG(SrcActor, OtherActor) – makes logs of SrcActor to be added to OtherActor’s
-
-
+- REDIRECT_ACTOR_TO_VLOG(SrcActor, OtherActor) – makes logs of SrcActor to be added to OtherActor’s
 
 ### **Viewing Log**
 
@@ -182,43 +150,39 @@ A tool has been created to enable users (not only programmers) to view gathered 
 
 ![image1 (C:\devguide\conversion\FINISHED\assets\image1 (2).png)](C:\devguide\conversion\INPROG\assets\media\image1 (2).png)
 
+- Recording start/stop button
 
+- Toggles game’s pause
 
--   Recording start/stop button
+- Toggles Log Visualizer’s debug camera. This camera allows user to move around in game viewport and click actors. If there’s a log corresponding to clicked actor then it will be selected in Log Visualizer and its entries will start to be drawn.
 
--   Toggles game’s pause
+- Toggles whether to draw a path composed of all logged locations of an actor
 
--   Toggles Log Visualizer’s debug camera. This camera allows user to move around in game viewport and click actors. If there’s a log corresponding to clicked actor then it will be selected in Log Visualizer and its entries will start to be drawn.
+- Toggles whether to ignore logs that have only one entry
 
--   Toggles whether to draw a path composed of all logged locations of an actor
+- List of all available logs with a textfield for filtering logs by name
 
--   Toggles whether to ignore logs that have only one entry
+- Currently viewed log is marked orange
 
--   List of all available logs with a textfield for filtering logs by name
+- This is the “current time” line.
 
--   Currently viewed log is marked orange
+- Currently views log entry
 
--   This is the “current time” line.
+- Time scale of current view
 
--   Currently views log entry
+- Zoom slider
 
--   Time scale of current view
+- Debug snapshot of log owner and all actors that have been redirected to this log
 
--   Zoom slider
-
--   Debug snapshot of log owner and all actors that have been redirected to this log
-
--   Log lines stored in current log entry
+- Log lines stored in current log entry
 
 - Totally temporary status bar
 
   To run Log Visualizer just type **VisLog** in console.
 
-  
+### **Limitations and Future plans**
 
-  ### **Limitations and Future plans**
-
-  There are a number of features that are missing to claim Visual Log a full featured tool (although it can already be a huge help!). Here’s a brief list:
+There are a number of features that are missing to claim Visual Log a full featured tool (although it can already be a huge help!). Here’s a brief list:
 
 - Currently one needs to manually start and stop log “recording” – ideally, in the future, Visual Log will be efficient enough so that it can be “on” all the time. It’s awesome when you can just walk over to an LD having an issue with the game and have already enough data ready to do decent debugging.
 
@@ -236,6 +200,4 @@ A tool has been created to enable users (not only programmers) to view gathered 
 
 - Future feature: filtering log entries with string so that we can instantly see which entries contain requested text. There’s also a huge list of features I hadn’t come up with yet, so if you have any idea just let me know!
 
-
-
-*From &lt;<https://answers.unrealengine.com/questions/3675/enable-visual-log-grabdebugsnapsho.html>&gt;*
+_From &lt;<https://answers.unrealengine.com/questions/3675/enable-visual-log-grabdebugsnapsho.html>&gt;_

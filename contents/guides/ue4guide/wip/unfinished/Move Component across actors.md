@@ -6,6 +6,4 @@ I don't think that the order of renames should matter. The rename on the ActorCo
 
 Similarly the order of doing the rename vs. attachment shouldn't matter because the attachment will update transforms while the rename changes ownership, but neither should impact the other. (Though this all assumes no unique overrides of virtuals that do unusual actions).
 
- 
-
-*From &lt;<https://udn.unrealengine.com/questions/423433/moving-components-between-actors.html>&gt;*
+_From &lt;<https://udn.unrealengine.com/questions/423433/moving-components-between-actors.html>&gt;_

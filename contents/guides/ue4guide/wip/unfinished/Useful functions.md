@@ -8,43 +8,25 @@ GetWorldTimerManager().SetTimerForNextTick(this, &AUTGameMode::StartMatch);
 
 UShooterGameViewportClient::ShowDialog()
 
- 
-
 Dodging:
 
 bool UUTCharacterMovement::PerformDodge(FVector &**DodgeDir**, FVector &**DodgeCross**)
 
 bool AUTCharacter::Dodge(FVector **DodgeDir**, FVector **DodgeCross**)
 
- 
-
- 
-
 Fapp::UseVRFocus
-
- 
-
- 
 
 Set Maximum Delta Time between frames; helpful for debugging by t.OverrideFPS or UGameEngine::MaxDeltaTime
 
--   MaxDeltaTime is unusable in network games (look at UpdateTimeAndHandleMaxTickRate)
+- MaxDeltaTime is unusable in network games (look at UpdateTimeAndHandleMaxTickRate)
 
 FixupDeltaSeconds(**DeltaSeconds**, **RealDeltaSeconds**);
 
 APawn::MoveIgnoreActorAdd()
 
- 
-
- \* Handles game-specific networking management (cheat detection, bandwidth management, etc.).
+\* Handles game-specific networking management (cheat detection, bandwidth management, etc.).
 
 AGameNetworkManager
-
- 
-
- 
-
- 
 
 For both Actors & Components
 
@@ -52,31 +34,17 @@ virtual void CheckForErrors();
 
 virtual void CheckForDeprecated();
 
- 
-
 SGenericDialogWidget::OpenDialog()
-
- 
-
-
-
- 
 
 AActor::DisplayDebug(
 
- 
-
 Unreal Tournament Good References:
 
--   UUTAnnouncer class for announcer
+- UUTAnnouncer class for announcer
 
--   UUTProfileSettings
-
- 
+- UUTProfileSettings
 
 DisplayInternals()
-
- 
 
 ProfilingDebugging
 
@@ -88,18 +56,12 @@ Histogram.h
 
 MallocProfiler
 
- 
-
 for( TArray&lt;ULevel\*&gt;::TConstIterator **it** = GetWorld()-&gt;GetLevels().CreateConstIterator(); **it**; ++**it** )  
 {  
         ULevel\* **CurLevel** = \***it**;  
         if( **CurLevel** && **CurLevel**-&gt;bIsVisible )  
         {  
                 ALevelScriptActor\* **LSA** = **CurLevel**-&gt;GetLevelScriptActor();
-
-
-
- 
 
 ### Changing Component Ownership:
 
@@ -141,6 +103,4 @@ for( TArray&lt;ULevel\*&gt;::TConstIterator **it** = GetWorld()-&gt;GetLevel
 
 19. }
 
-
-
-*From &lt;<https://answers.unrealengine.com/questions/539437/temporarily-adding-ticking-actorcomponents-to-acto.html>&gt;* 
+_From &lt;<https://answers.unrealengine.com/questions/539437/temporarily-adding-ticking-actorcomponents-to-acto.html>&gt;_

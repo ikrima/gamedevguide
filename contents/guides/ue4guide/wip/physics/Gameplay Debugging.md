@@ -1,21 +1,20 @@
 ---
 sortIndex: 7
 ---
+
 Gameplay Debugging
 
 Wednesday, February 10, 2016
 
 1:23 PM
 
- 
-
 Gameplay Debugger Capabilities:
 
--   Look at FGameplayDebugger module
+- Look at FGameplayDebugger module
 
--   Contains GameplayDebuggingComponent, GameplayDebuggingControllerComponent, GameplayDebuggingReplicator, GameplayDebuggingHUDComponent
+- Contains GameplayDebuggingComponent, GameplayDebuggingControllerComponent, GameplayDebuggingReplicator, GameplayDebuggingHUDComponent
 
--   You can specify debug bindings by adding this to DefaultInput.ini
+- You can specify debug bindings by adding this to DefaultInput.ini
 
 > \[/Script/Engine.PlayerInput\]
 >
@@ -27,34 +26,23 @@ Gameplay Debugger Capabilities:
 >
 > +DebugExecBindings=(Key=T, Command="ForceMatchStart", Control=True)
 
--   BaseInput.ini has debugexecbindings that control the debug viewmodes through the F1-F7 keys
+- BaseInput.ini has debugexecbindings that control the debug viewmodes through the F1-F7 keys
 
--   You can extend GameplayDebugger: <https://docs.unrealengine.com/latest/INT/Gameplay/Tools/GameplayDebugger/index.html>
+- You can extend GameplayDebugger: <https://docs.unrealengine.com/latest/INT/Gameplay/Tools/GameplayDebugger/index.html>
 
--   Turn off/on the GameDebugger by the ' key or by EnableGDT cheat
+- Turn off/on the GameDebugger by the ' key or by EnableGDT cheat
 
--   Console command "cheat " allows you to enable a bunch of server cheats
+- Console command "cheat " allows you to enable a bunch of server cheats
 
-    -   Roll your own by extending UCheatManager
+  - Roll your own by extending UCheatManager
 
- 
-
- 
-
-Useful Gameplay Debugging Console Commands:
-===========================================
-
- 
+# Useful Gameplay Debugging Console Commands:
 
 ViewSelf / ViewActor
-
- 
 
 Debug Collision:
 
 > show collision
-
- 
 
 ShowDebug …
 
@@ -64,17 +52,10 @@ ShowDebug DebugType
 
 Show … /ShowFlag …
 
- 
-
- 
-
 ToggleDebugCamera
-
- 
 
 Debug Input:
 
 > showdebug input.
-
 
 =

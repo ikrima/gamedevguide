@@ -7,7 +7,7 @@ UClassOfTheComponent\* Component;
 
 Then you want to create component:
 
-Component = ConstructObject&lt;UClassOfTheComponent&gt;(UClassOfTheComponent::StaticClass(), GetOwner(), NAME\_None, RF\_Transient);
+Component = ConstructObject&lt;UClassOfTheComponent&gt;(UClassOfTheComponent::StaticClass(), GetOwner(), NAME_None, RF_Transient);
 
 Then set up variables that set up the component (in case of UChildActorComponent you set ChildActorClass which will spawn actor, or ChildActor if you got ready one). If you deal with SceneComponent you need to attach it to something, so you can copy rama code here:
 
@@ -17,11 +17,7 @@ And with every component you need to register it
 
 Component-&gt;RegisterComponent();
 
- 
-
-*From &lt;<https://answers.unrealengine.com/questions/221783/add-child-actor-component-in-c.html>&gt;*
-
- 
+_From &lt;<https://answers.unrealengine.com/questions/221783/add-child-actor-component-in-c.html>&gt;_
 
 Spawn/respawn/Create/recreate/modify Component at runtime:
 
@@ -32,11 +28,11 @@ TArray&lt;UActorComponent\*&gt; MyComponents;
 GetComponents(MyComponents);
 
 //Get the name of the property that was changed  
-FName PropertyName = (PropertyChangedEvent.Property != nullptr) ? PropertyChangedEvent.Property-&gt;GetFName() : NAME\_None;
+FName PropertyName = (PropertyChangedEvent.Property != nullptr) ? PropertyChangedEvent.Property-&gt;GetFName() : NAME_None;
 
-// We test using GET\_MEMBER\_NAME\_CHECKED so that if someone changes the property name  
+// We test using GET_MEMBER_NAME_CHECKED so that if someone changes the property name  
 // in the future this will fail to compile and we can update it.  
-if ((PropertyName == GET\_MEMBER\_NAME\_CHECKED(AMyComponentSpawner, MyMesh)))  
+if ((PropertyName == GET_MEMBER_NAME_CHECKED(AMyComponentSpawner, MyMesh)))  
 {  
 FMultiComponentReregisterContext ReregisterContext(MyComponents);
 
@@ -54,6 +50,4 @@ Super::PostEditChangeProperty(PropertyChangedEvent);
 }  
 \#endif
 
- 
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/GameFramework/AActor/PostEditChangeProperty/>&gt;*
+_From &lt;<https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/GameFramework/AActor/PostEditChangeProperty/>&gt;_

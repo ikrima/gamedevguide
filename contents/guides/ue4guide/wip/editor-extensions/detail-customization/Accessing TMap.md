@@ -3,10 +3,10 @@ FScriptMapHelper Helper(MapProperty, Value);
         {  
             if (Helper.IsValidIndex(i))  
             {  
-                TSharedRef&lt;FPropertyPath&gt; dmgTag = rootMapPath-&gt;ExtendPath(FPropertyInfo(MapProperty-&gt;ValueProp));  
+                TSharedRef&lt;FPropertyPath&gt; dmgTag = rootMapPath-&gt;ExtendPath(FPropertyInfo(MapProperty-&gt;ValueProp));
 
-                TSharedPtr&lt;FJsonValue&gt; KeyElement = FJsonObjectConverter::UPropertyToJsonValue(MapProperty-&gt;KeyProp, Helper.GetKeyPtr(i), CheckFlags & (~CPF\_ParmFlags), SkipFlags, ExportCb);  
-                TSharedPtr&lt;FJsonValue&gt; ValueElement = FJsonObjectConverter::UPropertyToJsonValue(MapProperty-&gt;ValueProp, Helper.GetValuePtr(i), CheckFlags & (~CPF\_ParmFlags), SkipFlags, ExportCb);  
+TSharedPtr&lt;FJsonValue&gt; KeyElement = FJsonObjectConverter::UPropertyToJsonValue(MapProperty-&gt;KeyProp, Helper.GetKeyPtr(i), CheckFlags > (~CPF_ParmFlags), SkipFlags, ExportCb);  
+                TSharedPtr&lt;FJsonValue&gt; ValueElement = FJsonObjectConverter::UPropertyToJsonValue(MapProperty-&gt;ValueProp, Helper.GetValuePtr(i), CheckFlags > (~CPF_ParmFlags), SkipFlags, ExportCb);  
                 if (KeyElement.IsValid() && ValueElement.IsValid())  
                 {  
                     FString KeyString = KeyElement-&gt;AsString();  
@@ -15,17 +15,17 @@ FScriptMapHelper Helper(MapProperty, Value);
                         MapProperty-&gt;KeyProp-&gt;ExportTextItem(KeyString, Helper.GetKeyPtr(i), nullptr, nullptr, 0);  
                         if (KeyString.IsEmpty())  
                         {  
-                            UE\_LOG(LogJson, Error, TEXT("Unable to convert key to string for property %s."), \*MapProperty-&gt;GetName())  
+                            UE_LOG(LogJson, Error, TEXT("Unable to convert key to string for property %s."), \*MapProperty-&gt;GetName())  
                                 KeyString = FString::Printf(TEXT("Unparsed Key %d"), i);  
                         }  
-                    }  
+                    }
 
-                    Out-&gt;SetField(KeyString, ValueElement);  
+Out-&gt;SetField(KeyString, ValueElement);  
                 }  
             }  
-        }  
+        }
 
-        if (const UStructProperty\* KeyStructProperty = Cast&lt;const UStructProperty&gt;(MapProperty-&gt;KeyProp))  
+if (const UStructProperty\* KeyStructProperty = Cast&lt;const UStructProperty&gt;(MapProperty-&gt;KeyProp))  
         {  
             if (const UStruct\* Struct = KeyStructProperty-&gt;Struct)  
             {  
@@ -39,7 +39,7 @@ FScriptMapHelper Helper(MapProperty, Value);
                         for (UProperty\* StructProp = Struct-&gt;RefLink; StructProp; StructProp = StructProp-&gt;NextRef)  
                         {  
                             PropertyPath.Push(KeyStructProperty, ElementIndex);  
-                            GetInstancedSubObjects\_Inner(PropertyPath, KeyAddress, OutObjects);  
+                            GetInstancedSubObjects_Inner(PropertyPath, KeyAddress, OutObjects);  
                             PropertyPath.Pop();  
                         }  
                     }  

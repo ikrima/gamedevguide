@@ -8,83 +8,65 @@ static FOnHandleSystemEnsure OnHandleSystemEnsure;
 
 static FOnHandleSystemError OnHandleSystemError;
 
- 
-
 **Useful Functions:**
 
 /\*\* Whether we should generate crash reports even if the debugger is attached. \*/
 
-extern CORE\_API bool GAlwaysReportCrash;
-
- 
+extern CORE_API bool GAlwaysReportCrash;
 
 /\*\* Whether to use ClientReportClient rather than AutoReporter. \*/
 
-extern CORE\_API bool GUseCrashReportClient;
-
- 
+extern CORE_API bool GUseCrashReportClient;
 
 /\*\* Whether we should ignore the attached debugger. \*/
 
-extern CORE\_API bool GIgnoreDebugger;
-
- 
+extern CORE_API bool GIgnoreDebugger;
 
 // @third party code - BEGIN Bebylon
 
 //Force no-handleing of exceptions so standard WER dialog comes up
 
-extern CORE\_API bool GBBForcePostMortemDebugging;
+extern CORE_API bool GBBForcePostMortemDebugging;
 
 // @third party code - END Bebylon
 
- 
-
-extern CORE\_API TCHAR MiniDumpFilenameW\[1024\];
-
- 
+extern CORE_API TCHAR MiniDumpFilenameW\[1024\];
 
 **Here is a typical timeline for a single crash:**
 
--   An exception (or an assert) is triggered while running game application on the target system.
+- An exception (or an assert) is triggered while running game application on the target system.
 
--   A crash folder is generated with log and dump files
+- A crash folder is generated with log and dump files
 
--   CrashReportClient(**CRC**) is launched
+- CrashReportClient(**CRC**) is launched
 
--   **CRC** sends HTTP request to the crash report server with crash files
+- **CRC** sends HTTP request to the crash report server with crash files
 
--   The crash files are received by CrashReportReceiver(**CRR**) on the server
+- The crash files are received by CrashReportReceiver(**CRR**) on the server
 
--   The crash files are written to the LandingZone folder
+- The crash files are written to the LandingZone folder
 
--   CrashReportProcess(**CRP**) scans Landing Zone Folder and discover \*new\* crash folders
+- CrashReportProcess(**CRP**) scans Landing Zone Folder and discover \*new\* crash folders
 
--   For every crash **CRP**:
+- For every crash **CRP**:
 
-    -   If callstack is not symbolized, CRP executes the request to MinidumpDiagnostics (**MDD**)
+  - If callstack is not symbolized, CRP executes the request to MinidumpDiagnostics (**MDD**)
 
-    -   Make an HTTP request to CrashReportWebsite(**CRW**) to add the crash
+  - Make an HTTP request to CrashReportWebsite(**CRW**) to add the crash
 
-    -   CRW add the crash to the CrashReportDatabase (**CRD**)
+  - CRW add the crash to the CrashReportDatabase (**CRD**)
 
-    -   Move the crash report files to Processed Folder
+  - Move the crash report files to Processed Folder
 
 When the crash has gone through this chain, developer could go to the crash report website in the browser and find the crash.
 
 Note that for **MDD** to symbolize the callstack, a process need to upload the symbols to the server.
 
- 
-
-*From &lt;<https://wiki.unrealengine.com/Unreal_Engine_Crash_Reporter>&gt;*
-
- 
+_From &lt;<https://wiki.unrealengine.com/Unreal_Engine_Crash_Reporter>&gt;_
 
 #### **Setup Custom Crash Reporter Client & MinidumpDiagnostics**
 
 <http://www.teal-game.com/blog/customcrashreporter/>
-
- 
 
 \[Engine.CrashDebugHelper\]  
 DepotRoot=\[PathToSourceCode\]  
@@ -92,6 +74,6 @@ PDBCachePath=\[PathToCacheFolder\]
 PDBCacheSizeGB=250  
 MinDiskFreeSpaceGB=25  
 DaysToDeleteUnusedFilesFromPDBCache=3  
-PDBCache\_0\_Branch=++UE4+Release  
-PDBCache\_0\_ExecutablePathPattern=\[PathToExecutableFolder\]  
-PDBCache\_0\_SymbolPathPattern=\[PathToPdbFolder\]
+PDBCache_0_Branch=++UE4+Release  
+PDBCache_0_ExecutablePathPattern=\[PathToExecutableFolder\]  
+PDBCache_0_SymbolPathPattern=\[PathToPdbFolder\]

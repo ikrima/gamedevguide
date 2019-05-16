@@ -2,7 +2,4 @@ The clean way to do custom arrangement would be to implement a custom widget bas
 
 SBoxPanel provides a simple example of setting up slots and arranging them
 
- 
-
-*From &lt;<https://answers.unrealengine.com/questions/203320/slate-advanced-layout.html>&gt;*
-
+_From &lt;<https://answers.unrealengine.com/questions/203320/slate-advanced-layout.html>&gt;_

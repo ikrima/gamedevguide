@@ -1,5 +1,4 @@
-Commands for toggling debug & perf markers:
--------------------------------------------
+## Commands for toggling debug & perf markers:
 
 ToggleDrawEvents: Emits helpful draw event markers for use with GPU Capture/PIX
 
@@ -23,8 +22,6 @@ r.ProfileGPU.AssetSummaryCallOuts
 
 r.ProfileGPU.Sort
 
- 
-
 r.RHICmdUseThread=0
 
 r.RHICmdBypass=1
@@ -33,21 +30,15 @@ r.RHICmdUseParallelAlgorithms=1
 
 ToggleRHIThread
 
-r.ParallelTranslucency 
+r.ParallelTranslucency
 
- 
-
-Commands for debug logging
---------------------------
+## Commands for debug logging
 
 r.D3DDumpAMDCodeXLFile
 
 r.D3DDumpD3DAsm
 
- 
-
-General:
---------
+## General:
 
 ; Uncomment to get detailed logs on shader compiles and the opportunity to retry on errors
 
@@ -56,8 +47,6 @@ r.ShaderDevelopmentMode=1
 r.CompileShadersForDevelopment=1
 
 r.MaterialEditor.UseDevShaders=1
-
- 
 
 [DevOptions.Shaders\]
 
@@ -91,19 +80,13 @@ ProcessGameThreadTargetTime=.01
 
 ShaderPDBRoot=D:\\DirectoryOfChoice
 
- 
-
-Sanity Checking Commands
-------------------------
+## Sanity Checking Commands
 
 r.ShowShaderCompilerWarnings=1
 
 r.D3DCheckShadersForDouble=1
 
- 
-
-Debug Logging
--------------
+## Debug Logging
 
 ; Uncomment to dump shaders in the Saved folder
 
@@ -119,11 +102,7 @@ r.DumpShaderDebugShortNames=1
 
 r.DumpShaderDebugWorkerCommandLine=1
 
-
-
-
-Add these when running with a graphical debugger like NSight (but not when profiling)
--------------------------------------------------------------------------------------
+## Add these when running with a graphical debugger like NSight (but not when profiling)
 
 r.Shaders.Optimize=0
 
@@ -167,11 +146,11 @@ r.RHICmdBypass=1
 
 bb.IsGPUProfiling=1
 
--   Prevents render heartbeat thread from reporting a deadlock if we're in a debugger and paused
+- Prevents render heartbeat thread from reporting a deadlock if we're in a debugger and paused
 
 bb.perf.SetShaderCompileMode 0
 
--   This is equivalent to at runtime doing:
+- This is equivalent to at runtime doing:
 
 [DevOptions.Shaders\]
 
@@ -181,8 +160,6 @@ bAllowCompilingThroughWorkers=False
 
 bAllowAsynchronousShaderCompiling=False
 
-
-
 **Launch Project with NSight HUD:**
 
 "C:\\Program Files (x86)\\NVIDIA Corporation\\Nsight Visual Studio Edition 5.3\\Monitor\\Common\\Nvda.Launcher.exe" "%1"
@@ -191,44 +168,35 @@ Ex:
 
 "C:\\Program Files (x86)\\NVIDIA Corporation\\Nsight Visual Studio Edition 5.3\\Monitor\\Common\\Nvda.Launcher.exe" "C:\\UE4Editor.exe" BBR.uproject -log
 
- 
-
-
-
-Guidance Tips on how to debug UE4 USF shaders
----------------------------------------------
+## Guidance Tips on how to debug UE4 USF shaders
 
 A lot of these are now configurable through environment flags/switches:
 
--   D3D11ShaderCompiler.cpp: Set DEBUG\_SHADERS to 1.
+- D3D11ShaderCompiler.cpp: Set DEBUG_SHADERS to 1.
 
--   D3D11ShaderCompiler.cpp: Force TranslateCompilerFlagD3D11 to always return D3D10\_SHADER\_DEBUG | D3D10\_SHADER\_SKIP\_OPTIMIZATION
+- D3D11ShaderCompiler.cpp: Force TranslateCompilerFlagD3D11 to always return D3D10_SHADER_DEBUG | D3D10_SHADER_SKIP_OPTIMIZATION
 
--   D3D11ShaderCompiler.cpp: Force the fxc command line to contain "/Gfp /Zi /Od", and comment out the usage of /O1 and /O3
+- D3D11ShaderCompiler.cpp: Force the fxc command line to contain "/Gfp /Zi /Od", and comment out the usage of /O1 and /O3
 
--   D3D11ShaderCompiler.cpp: Remove the "Strip shader reflection" step in CompileD3DShader()
+- D3D11ShaderCompiler.cpp: Remove the "Strip shader reflection" step in CompileD3DShader()
 
--   ShaderCompiler.cpp: Force bAllowCompilingThroughWorkers and bAllowAsynchronousShaderCompiling to be false
+- ShaderCompiler.cpp: Force bAllowCompilingThroughWorkers and bAllowAsynchronousShaderCompiling to be false
 
--   Sacrifice a chicken to the dark lords of GPU debugging
+- Sacrifice a chicken to the dark lords of GPU debugging
 
--   Delete any .shaderbin files that you want to be rebuilt
+- Delete any .shaderbin files that you want to be rebuilt
 
--   Delete the entire contents of your DerivedDataCache folders (in both Engine and your game-specific subdirectory)
+- Delete the entire contents of your DerivedDataCache folders (in both Engine and your game-specific subdirectory)
 
--   Start Unreal Editor. It should sit on the splash screen for around 45 minutes while it rebuilds the shaders, rather than going directly into the editor and showing the "Compiling Shaders" notification in the lower-right corner of your screen.
+- Start Unreal Editor. It should sit on the splash screen for around 45 minutes while it rebuilds the shaders, rather than going directly into the editor and showing the "Compiling Shaders" notification in the lower-right corner of your screen.
 
--   Suggestions on things to do while waiting for the shaders to rebuild: Watch your favorite TV show, eat a sandwich, enjoy a leisurely glass of soda, annoy the QA department, spin around in a circle for 45 minutes
+- Suggestions on things to do while waiting for the shaders to rebuild: Watch your favorite TV show, eat a sandwich, enjoy a leisurely glass of soda, annoy the QA department, spin around in a circle for 45 minutes
 
--   Fire up GPU PerfStudio 2 and run UE4
+- Fire up GPU PerfStudio 2 and run UE4
 
--   Rejoice at seeing the source code for your shaders show up in GPU PerfStudio 2.
+- Rejoice at seeing the source code for your shaders show up in GPU PerfStudio 2.
 
- 
-
-*From &lt;<https://udn.unrealengine.com/questions/166316/dx11-hlsl-shader-debugging.html>&gt;*
-
- 
+_From &lt;<https://udn.unrealengine.com/questions/166316/dx11-hlsl-shader-debugging.html>&gt;_
 
 <https://udn.unrealengine.com/questions/166316/dx11-hlsl-shader-debugging.html>
 
@@ -237,4 +205,3 @@ A lot of these are now configurable through environment flags/switches:
 https://wiki.unrealengine.com/Debugging_Renderer_Code>
 
 https://forums.unrealengine.com/showthread.php?6719-Debugging-USF-(Unreal-Shader-Files)>
-

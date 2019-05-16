@@ -2,17 +2,14 @@
 
 Get Current Thread ID:
 
--   FPlatformTLS::GetCurrentThreadId()
-
- 
+- FPlatformTLS::GetCurrentThreadId()
 
 Deal with Thread Local Storage/TLS: FGenericPlatformTLS()
 
--   Provides allocation, deallocation, etc
+- Provides allocation, deallocation, etc
 
--   TlsSlot = FPlatformTLS::AllocTlsSlot()
+- TlsSlot = FPlatformTLS::AllocTlsSlot()
 
--   Reinterpret\_cast&lt;bla\*&gt;(FPlatformTLS::GetTlsValue(TlsSlot))
+- Reinterpret_cast&lt;bla\*&gt;(FPlatformTLS::GetTlsValue(TlsSlot))
 
--   FPlatformTLS::SetTlsValue(TlsSlot, bladata);
-
+- FPlatformTLS::SetTlsValue(TlsSlot, bladata);

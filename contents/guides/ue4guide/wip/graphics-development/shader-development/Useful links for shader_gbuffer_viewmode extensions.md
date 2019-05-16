@@ -8,10 +8,6 @@
 
 <https://forums.unrealengine.com/development-discussion/rendering/113855-extending-custom-hlsl-custom-expressions>
 
- 
-
- 
-
 <https://wiki.unrealengine.com/HLSL_Shaders>
 
 <https://forums.unrealengine.com/showthread.php?71334-Anybody-written-a-Plugin-that-adds-Material-Nodes>
@@ -23,10 +19,6 @@
 Compute and pixel shader: <https://github.com/sp0lsh/UE4ShaderPluginDemo/>
 
 <https://github.com/slomp/UE4RenderDocPlugin>
-
- 
-
- 
 
 Custom Material/Shading Model:
 

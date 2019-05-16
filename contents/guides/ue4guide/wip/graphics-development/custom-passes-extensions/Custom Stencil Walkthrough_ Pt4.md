@@ -1,83 +1,66 @@
-Stencil Layers
-==============
-
- 
+# Stencil Layers
 
 Properties to expose:
 
-L1\_StencilMesh.twosided (Handled
+L1_StencilMesh.twosided (Handled
 
-L1\_StencilMesh.reverse
-
- 
+L1_StencilMesh.reverse
 
 Prepass:
 
-Draw L0\_Geo
+Draw L0_Geo
 
- 
+Draw L1_StencilMesh
 
-Draw L1\_StencilMesh
+: depth cmp &lt;= L1_StencilMesh.bNotInDbgForceAlways ? near : always
 
-: depth cmp &lt;= L1\_StencilMesh.bNotInDbgForceAlways ? near : always
+: depth write = L1_StencilMesh.bIsAnotherWorldPorthole ? infinity : keep
 
-: depth write = L1\_StencilMesh.bIsAnotherWorldPorthole ? infinity : keep
+: stencil_write = L1_StencilRef
 
-: stencil\_write = L1\_StencilRef
+: stencil_cmp &gt;= L0_StencilRef
 
-: stencil\_cmp &gt;= L0\_StencilRef
-
- 
-
-Draw L1\_Geo:
+Draw L1_Geo:
 
 : depth cmp &lt;= near
 
-: depth\_write = fragment\_depth
+: depth_write = fragment_depth
 
-: stencil cmp == StencilRef\_L1
+: stencil cmp == StencilRef_L1
 
-: stencil\_write = Keep
+: stencil_write = Keep
 
- 
+Draw L2_StencilMesh
 
-Draw L2\_StencilMesh
+: depth cmp &lt;= L2_StencilMesh.bNotInDbgForceAlways ? near : always
 
-: depth cmp &lt;= L2\_StencilMesh.bNotInDbgForceAlways ? near : always
+: depth_write = L2_StencilMesh.bIsAnotherWorldPorthole ? infinity : keep
 
-: depth\_write = L2\_StencilMesh.bIsAnotherWorldPorthole ? infinity : keep
+: stencil_write = L2_StencilRef
 
-: stencil\_write = L2\_StencilRef
+: stencil_cmp =&gt;
 
-: stencil\_cmp =&gt;
+if L2_StencilMesh.bIsScopedToPreviousLayer
 
-if L2\_StencilMesh.bIsScopedToPreviousLayer
-
-? GreaterOrEq to StencilRef\_L2
+? GreaterOrEq to StencilRef_L2
 
 : Always
 
- 
-
-Draw L2\_Geo:
+Draw L2_Geo:
 
 : depth cmp &lt;= near
 
-: depth\_write = fragment\_depth
+: depth_write = fragment_depth
 
-: stencil cmp == StencilRef\_L2
+: stencil cmp == StencilRef_L2
 
-: stencil\_write = Keep
-
-  
+: stencil_write = Keep
 
 FINAL LAYER:
 
 : depth cmp &lt;= near
 
 : Avatar/Asteroids
-
- 
 
 Question:
 
@@ -87,12 +70,9 @@ Question:
 
 : Objects that cross the boundary of portal
 
- 
-
 Basepass:
 
-Draw everything with depth\_cmp = equal  
+Draw everything with depth_cmp = equal
 
 Translucents:  
-Draw everything in its already sorted back-to-front order, Because this pass hasn't primed the depth we can't use depth\_cmd = equal to scope. We need to just let these draw and rely on artist constraints to stop particles/transparents from crossing the portal boundaries unless intended that way (smoke pouring out a hell portal for example).
-
+Draw everything in its already sorted back-to-front order, Because this pass hasn't primed the depth we can't use depth_cmd = equal to scope. We need to just let these draw and rely on artist constraints to stop particles/transparents from crossing the portal boundaries unless intended that way (smoke pouring out a hell portal for example).

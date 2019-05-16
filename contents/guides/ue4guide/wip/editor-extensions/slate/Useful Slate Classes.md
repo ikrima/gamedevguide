@@ -4,19 +4,11 @@ SWidgetCarouselWithNavigation
 
 SAddContentWidget
 
- 
-
 FEditorWidgetsModule
-
- 
 
 FEditorWidgetsModule::CreateObjectNameEditableTextBox
 
- 
-
 SSingleObjectDetailsPanel
-
- 
 
 Timeline scrubbers:
 
@@ -30,14 +22,10 @@ Manual Complex control:
 
 > FEditorWidgetsModule::CreateTransportControl
 
--   Look at FSequencer::MakeTransportControls(bool bExtended) for example
+- Look at FSequencer::MakeTransportControls(bool bExtended) for example
 
->  
 >
->  
 
 SLevelOfDetailBranchNode
-
- 
 
 SExpandableArea

@@ -1,12 +1,8 @@
- Useful properties that expose FilePickers:
+Useful properties that expose FilePickers:
 
 FFilePath (can use meta property to filter by asset type meta=(FilePathFilter="py"))
 
 FDirectoryPath
-
- 
-
- 
 
 // Get File Info  
         FNullReplayInfo Info;
@@ -43,6 +39,4 @@ if (ReplayInfoFileAr.IsValid())
 ReplayInfoFileAr-&gt;Close();  
         }
 
- 
-
-*From &lt;<https://wiki.unrealengine.com/Replay_System_Tutorial>&gt;*
+_From &lt;<https://wiki.unrealengine.com/Replay_System_Tutorial>&gt;_

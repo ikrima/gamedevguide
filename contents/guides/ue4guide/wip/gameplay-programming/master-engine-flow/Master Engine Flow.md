@@ -1,52 +1,47 @@
 Numbers signify steps not necessarily at the same class nesting
 
- 
+- UGameEngine::Init
 
-  
+  - UGameInstance::InitializeStandalone()
 
--   UGameEngine::Init
+    - UGameInstance::Init() - CreateUOnlineSession and Register Delegates()
 
-    -   UGameInstance::InitializeStandalone()
+- UGameEngine::Start
 
-        -   UGameInstance::Init() - CreateUOnlineSession and Register Delegates()
+  - UGameInstance::StartGameInstance()=&gt;
 
--   UGameEngine::Start
+    - UEngine::LoadMap()
 
-    -   UGameInstance::StartGameInstance()=&gt;
+      1.  UWorld::InitializeActorsForPlay() - Call register components on all actor components in all levels. Note: Construction scripts are rerun in uncooked mode
 
-        -   UEngine::LoadMap()
+          - UActorComponent::RegisterComponent() - Adding itself to its owner and inside owner's world, possibly creating rendering/physics state
 
-            1.  UWorld::InitializeActorsForPlay() - Call register components on all actor components in all levels. Note: Construction scripts are rerun in uncooked mode
+      2.  ABBGameModeBase::InitGame - Create the Game Session and register FGameDelegates (ex: PreCommitMapChangeDelegate, HandleDisconnectDelegate)
 
-                -   UActorComponent::RegisterComponent() - Adding itself to its owner and inside owner's world, possibly creating rendering/physics state
+      3.  Ulevel::RouteActorInitialize() -
 
-            2.  ABBGameModeBase::InitGame - Create the Game Session and register FGameDelegates (ex: PreCommitMapChangeDelegate, HandleDisconnectDelegate)
+          - a) Actor::PreInitializeComponents() - On all actors in the level
 
-            3.  Ulevel::RouteActorInitialize() -
+            - **Side Note:** AGameModeBase::PreInitializeComponents() creates
 
-                -   a) Actor::PreInitializeComponents() - On all actors in the level
+              - AGameStateBase and calls InitGameState()
 
-                    -   **Side Note:** AGameModeBase::PreInitializeComponents() creates
+              - AGameNetworkManager which handles game-specific networking management (cheat detection, bandwidth management, etc)
 
-                        -   AGameStateBase and calls InitGameState()
+          - b) Iterate through Ulevel::Actors\[\] and call these functions on them one at a time
 
-                        -   AGameNetworkManager which handles game-specific networking management (cheat detection, bandwidth management, etc)
+            - Actor::InitializeComponents()
 
-                -   b) Iterate through Ulevel::Actors\[\] and call these functions on them one at a time
+              - UActorComponent::Activate() - Sets Component Tick To Be Enables & bIsActive = true
 
-                    -   Actor::InitializeComponents()
+              - UActorComponent::InitializeComponent() - Place for components to Initialize themselves before BeginPlay (Actor or Component for anything in the world)
 
-                        -   UActorComponent::Activate() - Sets Component Tick To Be Enables & bIsActive = true
+            - PostInitializeComponents() - Code that can run after gaurantee that all components have been initialized
 
-                        -   UActorComponent::InitializeComponent() - Place for components to Initialize themselves before BeginPlay (Actor or Component for anything in the world)
+          - c) Iterate through all Ulevel::ActorsToBeginPlay\[\] and call BeginPlay() to allows code to run with assumption that all other level actors have been PostInitializeComponents()
 
-                    -   PostInitializeComponents() - Code that can run after gaurantee that all components have been initialized
+            - Not sure why this is here instead of the main call to BeginPlay(possibly for networked late joins?)
 
-                -   c) Iterate through all Ulevel::ActorsToBeginPlay\[\] and call BeginPlay() to allows code to run with assumption that all other level actors have been PostInitializeComponents()
-
-                    -   Not sure why this is here instead of the main call to BeginPlay(possibly for networked late joins?)
-
-            
 
             4. Uworld::BeginPlay()
 
@@ -60,47 +55,35 @@ Numbers signify steps not necessarily at the same class nesting
 
                             -   Actor::BeginPlay(), for alla ctors
 
+- UActorComponent::RegisterAllComponentTickFunctions() - Allows components to register multiple tick functions (ex: Physics tick, cloth tick in skeletalmeshcomponent)
 
-
--   UActorComponent::RegisterAllComponentTickFunctions() - Allows components to register multiple tick functions (ex: Physics tick, cloth tick in skeletalmeshcomponent)
-
--   UActorComponent::BeginPlay()
-
- 
+- UActorComponent::BeginPlay()
 
 FEngineLoop::Tick()
 
--   UGameEngine::Tick()
+- UGameEngine::Tick()
 
-    -   Uworld::Tick()
+  - Uworld::Tick()
 
-        -   FTiskTaskManagerInterface::StartFrame()
+    - FTiskTaskManagerInterface::StartFrame()
 
-            -   Queues up all the TickFunctions according to their dependency graph & TickGroup
+      - Queues up all the TickFunctions according to their dependency graph & TickGroup
 
-            -   Ticking within each group is done by a dependency graph (AddTickPrerequisite) of tick functions of various objects during TickFunction registration
+      - Ticking within each group is done by a dependency graph (AddTickPrerequisite) of tick functions of various objects during TickFunction registration
 
-            -   This function might change what TickGroup something runs in according to the prerequisite tick function's tickgroup
+      - This function might change what TickGroup something runs in according to the prerequisite tick function's tickgroup
 
-            -   Actor Components do not necessarily tick after their owner Actor
+      - Actor Components do not necessarily tick after their owner Actor
 
-        -   Calls RunTickGroup() for various tick groups which ticks components
+    - Calls RunTickGroup() for various tick groups which ticks components
 
-        -   FTickableGameObject::TickObjects() - ticks UObjects or anything that derives from FTickableGameObject (e.g. SceneCapturerCubes or LevelSequencePlayers )
+    - FTickableGameObject::TickObjects() - ticks UObjects or anything that derives from FTickableGameObject (e.g. SceneCapturerCubes or LevelSequencePlayers )
 
- 
+* FTicker::GetCoreTicker().Tick(FApp::GetDeltaTime()) - Ticks all objects of type FTickerObjectBase. Ex: FHttpManager, FAvfMediaPlayer, FVoiceCapture, FSteamSocketSubsystem)
 
--   FTicker::GetCoreTicker().Tick(FApp::GetDeltaTime()) - Ticks all objects of type FTickerObjectBase. Ex: FHttpManager, FAvfMediaPlayer, FVoiceCapture, FSteamSocketSubsystem)
+  - This would be great place to add Objects that need to tick at the end of the frame that are engine/world agnostic
 
-    -   This would be great place to add Objects that need to tick at the end of the frame that are engine/world agnostic
-
-    -   Good possible place for our own UDP network ticking replication
-
-
-
- 
-
-
+  - Good possible place for our own UDP network ticking replication
 
 GameMode Flow:
 
@@ -110,19 +93,16 @@ InitGameState()
 
 PostInitializeComponents()
 
-ChoosePlayerStart\_Implementation()
+ChoosePlayerStart_Implementation()
 
 PostLogin()
 
-HandleStartingNewPlayer\_Implementation()
+HandleStartingNewPlayer_Implementation()
 
-ChoosePlayerStart\_Implementation()
+ChoosePlayerStart_Implementation()
 
 SetPlayerDefaults()
 
 RestartPlayerAtPlayerStart()
 
 StartPlay()
-
-
-

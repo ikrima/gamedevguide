@@ -2,23 +2,19 @@
 
 **Coordinate System: **Left handed, Z-Up, X-axis is forward, Y-axis is right
 
--   UV (0,0) =&gt; is Top Left corner of image
+- UV (0,0) =&gt; is Top Left corner of image
 
--   **NOTE:** UVs get flipped on import from FBX files
+- **NOTE:** UVs get flipped on import from FBX files
 
 **Matrix**
 
--   Row addressable M\[RowIndex\]\[ColumnIndex\]
+- Row addressable M\[RowIndex\]\[ColumnIndex\]
 
--   Matrix stored as row major m\[0\]-m\[3\] = first row, m\[4\]-m\[7\] = second row
+- Matrix stored as row major m\[0\]-m\[3\] = first row, m\[4\]-m\[7\] = second row
 
--   Matrices are post multiplied (x \* M \* V \* P)
+- Matrices are post multiplied (x \* M \* V \* P)
 
-    -   Which basically just means you can treat everything as column addressable, column major and pretending matrices are pre-multiplied
-
- 
-
-
+  - Which basically just means you can treat everything as column addressable, column major and pretending matrices are pre-multiplied
 
 **Spaces**
 
@@ -26,16 +22,14 @@
 
 **Space Transformations**
 
-Transformation between spaces should always be named using the form ***X To Y***.
+Transformation between spaces should always be named using the form **_X To Y_**.
 
 **Examples:**
 
--   WorldToView
+- WorldToView
 
--   TranslatedWorldToView
+- TranslatedWorldToView
 
--   TangentToWorld
+- TangentToWorld
 
- 
-
-*From &lt;<https://docs.unrealengine.com/en-us/Engine/Basics/CoordinateSpace>&gt;*
+_From &lt;<https://docs.unrealengine.com/en-us/Engine/Basics/CoordinateSpace>&gt;_

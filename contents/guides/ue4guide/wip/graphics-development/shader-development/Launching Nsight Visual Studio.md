@@ -6,15 +6,11 @@ Ex:
 
 "C:\\Program Files (x86)\\NVIDIA Corporation\\Nsight Visual Studio Edition 5.3\\Monitor\\Common\\Nvda.Launcher.exe" "C:\\UE4Editor.exe" BBR.uproject -log
 
- 
-
 How to: Debug an Executable Not Part of a Visual Studio Solution
 
 **Visual Studio 2013**
 
 [[Other Versions]](https://visualstudio.microsoft.com/vs/preview/?OCID=AID2318528_SEM_QoTudcuQ&MarinID=QoTudcuQ_79096203770970_visual%20studio_be_c__1265538242518805_kwd-79096372770821:loc-190_)
-
- 
 
 4 out of 5 rated this helpful - [[Rate this topic]](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-debug-an-executable-not-part-of-a-visual-studio-solution?view=vs-2015#feedback)
 
@@ -30,21 +26,15 @@ To create an EXE project for an existing executable
 
 2.  In the **Open Project** dialog box, click the drop-down list next to the **File name** box, and select **All Project Files**.
 
-3.  Locate the executable, and click **OK**.  
-    
+3.  Locate the executable, and click **OK**.
+
     This creates a temporary solution that contains the executable.
 
- 
-
-*From &lt;<http://msdn.microsoft.com/en-us/library/0bxe8ytt.aspx>&gt;*
-
-
+_From &lt;<http://msdn.microsoft.com/en-us/library/0bxe8ytt.aspx>&gt;_
 
 ## Debugging External Applications
 
-NVIDIA® Nsight™ Development Platform, Visual Studio Edition 4.2 User Guide 
-
- 
+NVIDIA® Nsight™ Development Platform, Visual Studio Edition 4.2 User Guide
 
 Early versions of NVIDIA Nsight were only able to debug projects built in Visual C++. However, with NVIDIA Nsight 4.2, CUDA and graphics debugging are now supported for both C++ and C\# projects.
 
@@ -54,41 +44,28 @@ Using NVIDIA Nsight Debugging with Other Project Types
 
 1.  In Visual Studio, create a "dummy" project by going to **File** &gt; **New** &gt; **Project**.
 
-2.  On the node for **Visual C++** templates, select **Empty Project**.   
-    
-    Enter the name for your project and click OK. 
+2.  On the node for **Visual C++** templates, select **Empty Project**.
+
+    Enter the name for your project and click OK.
 
 ![LaunchingNsight_2DebuggingExternal](C:\devguide\conversion\FINISHED\assets\LaunchingNsight_2DebuggingExternal.png)
-
-
-
-
 
 3. Select the project's **Nsight User Properties** to edit the default settings. (As an alternative, you can also go to the **Project** menu &gt; **Nsight User Properties**.)
 
 ![LaunchingNsight_SolutionExplorer](C:\devguide\conversion\FINISHED\assets\LaunchingNsight_SolutionExplorer.png)
 
-
-
-4. Select **Launch external program**, and enter the path to the external program for the application that is to be debugged. 
+4. Select **Launch external program**, and enter the path to the external program for the application that is to be debugged.
 
 ![LaunchingNsight_4Launch](C:\devguide\conversion\FINISHED\assets\LaunchingNsight_4Launch.png)
 
+5. Configure any other launch options or file synchronization settings which may be necessary for your particular debugging environment.
 
-
-5. Configure any other launch options or file synchronization settings which may be necessary for your particular debugging environment.   
-
-(For assistance, refer to [[Host Basics]](https://docs.nvidia.com/gameworks/content/developertools/desktop/host_basics.htm) and [[Synchronization]](https://docs.nvidia.com/gameworks/content/developertools/desktop/synchronization.htm).) 
+(For assistance, refer to [[Host Basics]](https://docs.nvidia.com/gameworks/content/developertools/desktop/host_basics.htm) and [[Synchronization]](https://docs.nvidia.com/gameworks/content/developertools/desktop/synchronization.htm).)
 
 6. Click OK to save your settings.
 
-7. You can now begin debugging your application with NVIDIA Nsight.   
+7. You can now begin debugging your application with NVIDIA Nsight.
 
 To do so, go to the **Nsight** menu or right-click on your project, then select the appropriate activity (**Start CUDA Debugging**, **Start Graphics Debugging**, etc.).
 
- 
-
-*From &lt;<http://docs.nvidia.com/gameworks/content/developertools/desktop/debug_external_applications.htm>&gt;*
-
- 
-
+_From &lt;<http://docs.nvidia.com/gameworks/content/developertools/desktop/debug_external_applications.htm>&gt;_

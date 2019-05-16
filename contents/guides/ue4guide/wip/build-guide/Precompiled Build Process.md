@@ -1,18 +1,10 @@
-Using BuildGraph
-----------------
-
- 
+## Using BuildGraph
 
 "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Build\\BatchFiles\\RunUAT.bat" BuildGraph -script="D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Build\\InstalledEngineBuild.xml" -target="Make Installed Build Win64" -set:HostPlatformOnly=true -set:WithWin32=false -set:WithIOS=false
 
- 
-
 Create InstalledBuild.txt and place in Engine\\Build
 
- 
-
-Sans BuildGraph
----------------
+## Sans BuildGraph
 
 D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 UE4Editor -project="D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" -precompile
 
@@ -22,10 +14,7 @@ D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuild
 
 D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProtoEditorBP -project="D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" -useprecompiled
 
- 
-
-Add section to BaseEngine.ini
------------------------------
+## Add section to BaseEngine.ini
 
 \[InstalledPlatforms\]
 
@@ -33,15 +22,8 @@ Add section to BaseEngine.ini
 
 ;+InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Game")
 
- 
-
- 
-
-Generate project files:
------------------------
+## Generate project files:
 
 D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProto -project="D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" -useprecompiled -projectfiles -game -engine
-
- 
 
 Uncheck ShaderCompilerWorker dependency from BBRProto

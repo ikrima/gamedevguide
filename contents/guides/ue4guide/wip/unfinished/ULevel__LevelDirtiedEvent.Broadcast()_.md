@@ -1,18 +1,12 @@
- 
-
 ULevel::LevelDirtiedEvent.Broadcast();
 
-​	FEditorSupportDelegates::RefreshPropertyWindows.Broadcast();
+​ FEditorSupportDelegates::RefreshPropertyWindows.Broadcast();
 
-​	FEditorDelegates::RefreshEditor.Broadcast();
+​ FEditorDelegates::RefreshEditor.Broadcast();
 
- 
-
-​	RedrawLevelEditingViewports( true );
+​ RedrawLevelEditingViewports( true );
 
 ================
-
- 
 
 GEngine-&gt;RedrawLevelEditingViewports();
 
@@ -26,8 +20,6 @@ GEngine-&gt;BroadcastLevelActorListChanged();
 
 GEngine-&gt;BroadcastLevelActorDeleted();
 
- 
-
 GLevelEditorModeTools().DeactivateAllModes();
 
 FAssetRegistryModule::AssetCreated(NewLevelWorld);
@@ -36,11 +28,9 @@ FAssetRegistryModule::AssetCreated(NewLevelWorld);
 
 UnrealEdSrv.cpp/EditorServer.cpp/UEditorEngine/UUnrealEdEngine is good place to see commands and what things need to be broadcast
 
--   Also useful for most editor actions (like building map, rebuilding volumes, cooking, replaceactors, etc etc )
+- Also useful for most editor actions (like building map, rebuilding volumes, cooking, replaceactors, etc etc )
 
--   edact prefixed things are editor actions (e.g. edactCopySelected, edactPasteSelected, etc)
-
- 
+- edact prefixed things are editor actions (e.g. edactCopySelected, edactPasteSelected, etc)
 
 ConvertLightActors/ReplaceActors/ConvertActors
 
@@ -58,8 +48,6 @@ EditorLevelUtils::MakeLevelCurrent( LevelToMakeCurrent );
 
 UEditorLevelUtils::MoveSelectedActorsToLevel()
 
- 
-
 MoveActorInFrontOfCamera
 
 MoveViewportCamerasToActor
@@ -74,19 +62,13 @@ GetPIEViewport/GetActiveViewport
 
 SpawnPlayFromHereStart
 
- 
-
 ParseMapSectionIni/LoadMapListFromIni
 
 PackageUsingExternalObjects
 
- 
-
 FindReferencesToActorFromLevelScript/ModifyActorReferencedGraphNodes
 
 FindActorsThatReferenceActor/GetActorReferenceMap/ReplaceAllActorRefrences
-
- 
 
 **FBlueprintEditorUtils:** Lots of useful blueprint nodes
 
@@ -98,19 +80,13 @@ OpenReparentBlueprintMenu
 
 FSelfRegisteringExec for POD structs to register for console commands
 
- 
-
- 
-
 FStringOutputDevice Archive;
 
 const FExportObjectInnerContext Context;
 
-UExporter::ExportToOutputDevice(&Context, Object, NULL, Archive, TEXT("copy"), 0, PPF\_Copy | PPF\_DebugDump, false);
+UExporter::ExportToOutputDevice(&Context, Object, NULL, Archive, TEXT("copy"), 0, PPF_Copy | PPF_DebugDump, false);
 
 Archive.Log(TEXT("\\r\\n\\r\\n"));
-
- 
 
 FString ExportedText;
 
@@ -126,97 +102,91 @@ GetCurrentViewportPlacementTransform
 
 Add Slate Window To Game:
 
- 
+​ FSlateApplication::Get().AddWindow
 
-​	FSlateApplication::Get().AddWindow
+​ (
 
-​	(
+​ SNew(SWindow)
 
-​	SNew(SWindow)
+​ .ClientSize(FVector2D(400,600))
 
-​	.ClientSize(FVector2D(400,600))
+​ .Title( FText::FromString( Object-&gt;GetName() ) )
 
-​	.Title( FText::FromString( Object-&gt;GetName() ) )
+​ \[
 
-​	\[
+​ SNew(SBorder)
 
-​	SNew(SBorder)
-
-​	.BorderImage(FEditorStyle::GetBrush("ToolPanel.GroupBorder"))
+​ .BorderImage(FEditorStyle::GetBrush("ToolPanel.GroupBorder"))
 
 \[
 
-​	SNew(SVerticalBox)
+​ SNew(SVerticalBox)
 
-​	+SVerticalBox::Slot()
+​ +SVerticalBox::Slot()
 
-​	.FillHeight(1)
+​ .FillHeight(1)
 
-​	\[
+​ \[
 
-​	DetailsView.ToSharedRef()
+​ DetailsView.ToSharedRef()
 
-​			\]
+​ \]
 
-​			\]
+​ \]
 
-​		\]
+​ \]
 
-​	);
-
- 
-
- 
+​ );
 
 Create Detail View of all properties in an object:
 
 FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked&lt;FPropertyEditorModule&gt;("PropertyEditor");
 
-​	TSharedPtr&lt;IDetailsView&gt; DetailsView = PropertyModule.CreateDetailView(Args);
+​ TSharedPtr&lt;IDetailsView&gt; DetailsView = PropertyModule.CreateDetailView(Args);
 
-​	DetailsView-&gt;SetIsPropertyVisibleDelegate(FIsPropertyVisible::CreateStatic(&Local::IsPropertyVisible, bShouldShowNonEditable));
+​ DetailsView-&gt;SetIsPropertyVisibleDelegate(FIsPropertyVisible::CreateStatic(&Local::IsPropertyVisible, bShouldShowNonEditable));
 
-​	DetailsView-&gt;SetObject(Object);
+​ DetailsView-&gt;SetObject(Object);
 
-​	 
+​
 
-​	// create Slate property window
+​ // create Slate property window
 
-​	FSlateApplication::Get().AddWindow
+​ FSlateApplication::Get().AddWindow
 
-​	(
+​ (
 
-​	SNew(SWindow)
+​ SNew(SWindow)
 
-​	.ClientSize(FVector2D(400,600))
+​ .ClientSize(FVector2D(400,600))
 
-​	.Title( FText::FromString( Object-&gt;GetName() ) )
+​ .Title( FText::FromString( Object-&gt;GetName() ) )
 
-​	\[
+​ \[
 
-​	SNew(SBorder)
+​ SNew(SBorder)
 
-​	.BorderImage(FEditorStyle::GetBrush("ToolPanel.GroupBorder"))
+​ .BorderImage(FEditorStyle::GetBrush("ToolPanel.GroupBorder"))
 
-​	\[
+​ \[
 
-​	SNew(SVerticalBox)
+​ SNew(SVerticalBox)
 
-​	+SVerticalBox::Slot()
+​ +SVerticalBox::Slot()
 
-​	.FillHeight(1)
+​ .FillHeight(1)
 
-​	\[
+​ \[
 
-​	DetailsView.ToSharedRef()
+​ DetailsView.ToSharedRef()
 
-​	\]
+​ \]
 
-​	\]
+​ \]
 
-​	\]
+​ \]
 
-​	\;
+​ \;
 
 ================
 
@@ -226,7 +196,7 @@ FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked&lt;FPr
 
 // Step 1)
 
-// Set WITH\_VERY\_VERBOSE\_SLATE\_STATS to 1.
+// Set WITH_VERY_VERBOSE_SLATE_STATS to 1.
 
 //
 
@@ -242,4 +212,4 @@ FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked&lt;FPr
 
 // stat group enable slateveryverbose
 
-// stat dumpave -root=stat\_slate -num=120 -ms=0
+// stat dumpave -root=stat_slate -num=120 -ms=0

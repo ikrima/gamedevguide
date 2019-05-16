@@ -2,31 +2,25 @@
 
 Drawing policies contain the logic to render meshes with pass specific shaders. They use the FVertexFactory interface to abstract the mesh type, and the FMaterial interface to abstract the material details. At the lowest level, a drawing policy takes a set of mesh material shaders and a vertex factory, binds the vertex factory's buffers to the RHI, binds the mesh material shaders to the RHI, sets the appropriate shader parameters, and issues the RHI draw call.
 
- 
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>&gt;*
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>&gt;_
 
 **rawing Policy methods**
 
 <table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>Constructor</td><td>Finds the appropriate shader from the given vertex factory and material shader map, stores these references.</td></tr><tr class="even"><td>CreateBoundShaderState</td><td>Creates an RHI bound shader state for the drawing policy.</td></tr><tr class="odd"><td>Matches/Compare</td><td>Provides methods to sort the drawing policy with others in the static draw lists. Matches must compare on all the factors that DrawShared depends on.</td></tr><tr class="even"><td>DrawShared</td><td>Sets RHI state that is constant between drawing policies that return true from Matches. For example, most drawing policies sort on material and vertex factory, so shader parameters depending only on the material can be set, and the vertex buffers specific to the vertex factory can be bound. State should always be set here if possible instead of SetMeshRenderState, since DrawShared is called less times in the static rendering path.</td></tr><tr class="odd"><td>SetMeshRenderState</td><td>Sets RHI state that is specific to this mesh, or anything not set in DrawShared. This is called many more times than DrawShared so performance is especially critical here.</td></tr><tr class="even"><td>DrawMesh</td><td>Actually issues the RHI draw call.</td></tr></tbody></table>
 
- 
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>&gt;*
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>&gt;_
 
 ### **Rendering paths**
 
 UE4 has a dynamic path which provides more control but is slower to traverse, and a static rendering path which caches scene traversal as close to the RHI level as possible. The difference is mostly high level, since they both use drawing policies at the lowest level. Each rendering pass (drawing policy) needs to be sure to handle both rendering paths if needed.
 
-### ***Dynamic rendering path***
+### **_Dynamic rendering path_**
 
 The dynamic rendering path uses TDynamicPrimitiveDrawer and calls DrawDynamicElements on each primitive scene proxy to render. The set of primitives that need to use the dynamic path to be rendered is tracked by FViewInfo::VisibleDynamicPrimitives. Each rendering pass needs to iterate over this array, and call DrawDynamicElements on each primitive's proxy. DrawDynamicElements of the proxy then needs to assemble as many FMeshElements as it needs and submit them with DrawRichMesh or TDynamicPrimitiveDrawer::DrawMesh. This ends up creating a new temporary drawing policy, calling CreateBoundShaderState, DrawShared, SetMeshRenderState, and finally DrawMesh.
 
 The dynamic rendering path provides a lot of flexibility because each proxy has a callback in DrawDynamicElements where it can execute logic specific to that component type. It also has minimal insertion cost but high traversal cost, because there is no state sorting, and nothing is cached.
 
-### ***Static rendering path***
+### **_Static rendering path_**
 
 The static rendering path is implemented through static draw lists. Meshes are inserted into the draw lists when they are attached to the scene. During this insertion, DrawStaticElements on the proxy is called to collect the FStaticMeshElements. A drawing policy instance is then created and stored, along with the result of CreateBoundShaderState. The new drawing policy is sorted based on its Compare and Matches functions and inserted into the appropriate place in the draw list (see TStaticMeshDrawList::AddMesh). In InitViews, a bitarray containing visibility data for the static draw list is initialized and passed into TStaticMeshDrawList::DrawVisible where the draw list is actually drawn. DrawShared is only called once for all the drawing policies that match each other, while SetMeshRenderState and DrawMesh are called for each FStaticMeshElement (see TStaticMeshDrawList::DrawElement).
 
@@ -34,15 +28,9 @@ The static rendering path moves a lot of work to attach time, which significantl
 
 The static rendering path can expose bugs because of the way it only calls DrawShared once per state bucket. These bugs can be difficult to detect, since they depend on the rendering order and the attach order of meshes in the scene. Special viewmodes such as lighting only, unlit, etc will force all primitives to use the dynamic path, so if a bug goes away when forcing the dynamic rendering path, there is a good chance it is due to an incorrect implementation of a drawing policy's DrawShared and/or the Matches function.
 
- 
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>&gt;*
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>&gt;_
 
 **Look at Fluid Surface Plugin that has a custom shader/draw path** <https://github.com/Ehamloptiran/UnrealEngine/releases>
-
- 
 
 **Global shaders**
 
@@ -58,11 +46,7 @@ Materials have to support being applied to different mesh types, and this is acc
 
 <table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>FVertexFactoryInput</td><td>Defines what the vertex factory needs as input to the vertex shader. These must match the vertex declaration in the C++ side FVertexFactory. For example, LocalVertexFactory's FVertexFactoryInput has float4 Position : POSITION;, which corresponds to the position stream declaration in FStaticMeshLODResources::SetupVertexFactory.</td></tr><tr class="even"><td>FVertexFactoryIntermediates</td><td>Used to store cached intermediate data that will be used in multiple vertex factory functions. A common example is the TangentToLocal matrix, which had to be computed from unpacked vertex inputs.</td></tr><tr class="odd"><td>FVertexFactoryInterpolantsVSToPS</td><td>Vertex factory data to be passed from the vertex shader to the pixel shader.</td></tr><tr class="even"><td>VertexFactoryGetWorldPosition</td><td>This is called from the vertex shader to get the world space vertex position. For Static Meshes this merely transforms the local space positions from the vertex buffer into world space using the LocalToWorld matrix. For GPU skinned meshes, the position is skinned first and then transformed to world space.</td></tr><tr class="odd"><td>VertexFactoryGetInterpolantsVSToPS</td><td>Transforms the FVertexFactoryInput to FVertexFactoryInterpolants, which will be interpolated by the graphics hardware before getting passed into the pixel shader.</td></tr><tr class="even"><td>GetMaterialPixelParameters</td><td>This is called in the pixel shader and converts vertex factory specific interpolants (FVertexFactoryInterpolants) to the FMaterialPixelParameters structure which is used by the pass pixel shaders.</td></tr></tbody></table>
 
- 
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;*
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;_
 
 #### **Material Shaders**
 
@@ -83,41 +67,33 @@ Etc
 FGPUSkinVertexFactory - FVertexFactoryType  
 Etc
 
-
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;*
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;_
 
 #### **Creating a material shader**
 
-A material shader type is created with the DECLARE\_SHADER\_TYPE macro:
+A material shader type is created with the DECLARE_SHADER_TYPE macro:
 
-**class** FLightFunctionPixelShader : **public** FShader { DECLARE\_SHADER\_TYPE(FLightFunctionPixelShader,Material);
+**class** FLightFunctionPixelShader : **public** FShader { DECLARE_SHADER_TYPE(FLightFunctionPixelShader,Material);
 
-This declares the necessary metadata and functions for a material shader type. The material shader type is instantiated with IMPLEMENT\_MATERIAL\_SHADER\_TYPE:
+This declares the necessary metadata and functions for a material shader type. The material shader type is instantiated with IMPLEMENT_MATERIAL_SHADER_TYPE:
 
-IMPLEMENT\_MATERIAL\_SHADER\_TYPE(,FLightFunctionPixelShader,TEXT("LightFunctionPixelShader")
+IMPLEMENT_MATERIAL_SHADER_TYPE(,FLightFunctionPixelShader,TEXT("LightFunctionPixelShader")
 
 This generates the material shader type's global metadata, which allows us to do things like iterate through all shaders using a given shader type at runtime.
 
 A typical material pixel shader type will first create a FMaterialPixelParameters struct by calling the GetMaterialPixelParameters vertex factoryfunction. GetMaterialPixelParameters transforms the vertex factory specific inputs into properties like WorldPosition, TangentNormal, etc that any pass might want to access. Then a material shader will call CalcMaterialParameters, which writes out the rest of the members of FMaterialPixelParameters, after which FMaterialPixelParameters is fully initialized. The material shader will then access some of the material's inputs through functions in MaterialTemplate.usf (GetMaterialEmissive for the material's emissive input for example), do some shading and output a final color for that pass.
 
-
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;*
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;_
 
 #### **Special Engine Materials**
 
 UMaterial has a setting called bUsedAsSpecialEngineMaterial that allows the material to be used with any vertex factory type. This means all vertex factories are compiled with the material, which will be a very large set. bUsedAsSpecialEngineMaterial is useful for:
 
--   Materials used with rendering viewmodes like lighting only.
+- Materials used with rendering viewmodes like lighting only.
 
--   Materials used as fallbacks when there is a compilation error (DefaultDecalMaterial, DefaultMaterial, etc).
+- Materials used as fallbacks when there is a compilation error (DefaultDecalMaterial, DefaultMaterial, etc).
 
--   Materials whose shaders are used when rendering other materials in order to cut down on the number of shaders that have to be cached. For example, an opaque material's depth-only shaders will produce the same depth output as the DefaultMaterial, so the DefaultMaterial's shaders are used instead and the opaque material skips caching the depth-only shader.
+- Materials whose shaders are used when rendering other materials in order to cut down on the number of shaders that have to be cached. For example, an opaque material's depth-only shaders will produce the same depth output as the DefaultMaterial, so the DefaultMaterial's shaders are used instead and the opaque material skips caching the depth-only shader.
 
 **Shader compilation**
 
@@ -125,11 +101,7 @@ UE4 compiles shaders asynchronously using a streaming system. Compile requests a
 
 The actual compiling work is done in helper processes called the Shader Compile Workers, because the platform shader compile functions (D3DCompile) often contain critical sections within them that prevent multi-core scaling within a single process.
 
- 
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;*
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;_
 
 **Debugging shader compilers**
 
@@ -147,28 +119,20 @@ In debug, with the debugger attached, you will hit a breakpoint and get the comp
 
 ![DrawingPolicies_Shaders](C:\devguide\conversion\FINISHED\assets\DrawingPolicies_Shaders.jpg)
 
-
-
 Otherwise you will get a Yes/No dialog
 
 ![DrawingPolicies_ErrorMessage](C:\devguide\conversion\FINISHED\assets\DrawingPolicies_ErrorMessage.jpg)
 
-
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;*
-
- 
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;_
 
 **Dumping debug info**
 
 You can also use *r.DumpShaderDebugInfo=1* to get files saved out to disk for all the shaders that get compiled. It can be useful to set this inConsoleVariables.ini just like r.ShaderDevelopmentMode. Files are saved to *GameName/Saved/ShaderDebugInfo*, including
 
--   Source files and includes
+- Source files and includes
 
--   A preprocessed version of the shader
+- A preprocessed version of the shader
 
--   A batch file to compile the preprocessed version with equivalent commandline options to the compiler that were used
+- A batch file to compile the preprocessed version with equivalent commandline options to the compiler that were used
 
- 
-
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;*
+_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>&gt;_

@@ -1,7 +1,5 @@
 **Add Custom InitView data (used by Landscape Component):**
 
- 
-
 /\*\*   
          \* Called during the visibility and shadow setup for each primitives with either static or dynamic relevancy, so we can store custom data for the frame that can be reused later.   
          \* Keep in mind this can be called in multihread as it's called during the InitViews()  
@@ -13,13 +11,7 @@
             \* @param InVisiblePrimitiveLODMask - Calculated LODMask for visibile primitive in static relevancy  
             \* @param InMeshScreenSizeSquared - Computed mesh batch screen size, passed to prevent recalculation  
          \*/  
-        ENGINE\_API virtual void\* InitViewCustomData(const FSceneView& InView, float InViewLODScale, FMemStackBase& InCustomDataMemStack, bool InIsStaticRelevant = false, const struct FLODMask\* InVisiblePrimitiveLODMask = nullptr, float InMeshScreenSizeSquared = -1.0f) { return nullptr; }
-
- 
-
- 
-
- 
+        ENGINE_API virtual void\* InitViewCustomData(const FSceneView& InView, float InViewLODScale, FMemStackBase& InCustomDataMemStack, bool InIsStaticRelevant = false, const struct FLODMask\* InVisiblePrimitiveLODMask = nullptr, float InMeshScreenSizeSquared = -1.0f) { return nullptr; }
 
 /\*\*  
          \* Called during post visibility and shadow setup, just before the frame is rendered. It can be used to update custom data that had a dependency between them.  
@@ -28,4 +20,4 @@
          \* @param InView - Current View  
           \* @param InViewCustomData - Custom data to update  
          \*/          
-        ENGINE\_API virtual void PostInitViewCustomData(const FSceneView& InView, void\* InViewCustomData) { }
+        ENGINE_API virtual void PostInitViewCustomData(const FSceneView& InView, void\* InViewCustomData) { }

@@ -1,10 +1,10 @@
 ReleaseMouseCursor
 
-SetInputMode\_UIOnlyEx
+SetInputMode_UIOnlyEx
 
-SetInputMode\_GameAndUIEx
+SetInputMode_GameAndUIEx
 
-SetInputMode\_GameOnly
+SetInputMode_GameOnly
 
 SetFocusToGameViewport
 

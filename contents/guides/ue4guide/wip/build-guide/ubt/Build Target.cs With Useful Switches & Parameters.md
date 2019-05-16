@@ -1,8 +1,10 @@
+---
+sortIndex: 2
+---
+
 /// Enabled for builds that need to initialize the ApplicationCore module. Command line utilities do not normally need this.
 
 bCompileAgainstApplicationCore
-
- 
 
 /// Specifies whether to share engine binaries and intermediates with other projects, or to create project-specific versions. By default,
 
@@ -20,8 +22,6 @@ bCompileAgainstApplicationCore
 
 //LinkType = TargetLinkType.Modular;
 
- 
-
 Type = TargetType.Game;
 
 ExtraModuleNames.Add("BBR");
@@ -36,13 +36,9 @@ ExtraModuleNames.Add("BBR");
 
 //}
 
- 
-
 //For program targets, specify the module to launch
 
 //LaunchModuleName = "..."
-
- 
 
 //--------------------------------------------------------------
 
@@ -54,8 +50,6 @@ ExtraModuleNames.Add("BBR");
 
 //RelativeEnginePath = /\* ...\*/;
 
- 
-
 //Debug
 
 //bOmitPCDebugInfoInDevelopment = true /\* d=false \*/;
@@ -66,13 +60,9 @@ ExtraModuleNames.Add("BBR");
 
 //bAllowLTCG = false /\* d=false \*/;
 
- 
-
 //Build
 
 //bAllowRemotelyCompiledPCHs = true /\* d=false \*/;
-
- 
 
 //bUseIncrementalLinking = true /\* d=false \*/;
 
@@ -84,8 +74,6 @@ ExtraModuleNames.Add("BBR");
 
 //bAdaptiveUnityDisablesOptimizations = true /\* d=false \*/;
 
- 
-
 //bUsePCHFiles = true /\* d=true \*/;
 
 //bUseUnityBuild = true /\* d=true \*/;
@@ -96,15 +84,11 @@ ExtraModuleNames.Add("BBR");
 
 //bForcePrecompiledHeaderForGameModules = true /\* d=true \*/;
 
- 
-
 //Debug
 
 //bStopXGECompilationAfterErrors = false /\* d=true \*/;
 
 //bDebugBuildsActuallyUseDebugCRT = false /\* d=false \*/;
-
- 
 
 //OutCPPEnvironmentConfiguration.AdditionalArguments = "/Zm850";
 
@@ -116,6 +100,6 @@ ExtraModuleNames.Add("BBR");
 
 //OutLinkEnvironment.AdditionalArguments = "/time" or "/time+" or /d2:-cgsummary
 
-//GlobalDefinitions.Add("ALLOW\_LOG\_FILE=0");
+//GlobalDefinitions.Add("ALLOW_LOG_FILE=0");
 
 //OutCPPEnvironmentConfiguration.bOptimizeCode = false;

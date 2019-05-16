@@ -2,8 +2,6 @@
 
 PostEditComponentMove(bool bFinished) {}
 
- 
-
 **AActors:**
 
 AActor::PreEditChange(UProperty\* PropertyThatWillChange)
@@ -20,15 +18,11 @@ DebugShowComponentHierarchy( const TCHAR\* Info, bool bShowPosition )
 
 DebugShowOneComponentHierarchy( USceneComponent\* SceneComp, int32& NestLevel, bool bShowPosition )
 
- 
-
 FActorTransactionAnnotation(const AActor\* Actor, const bool bCacheRootComponentData) : ComponentInstanceData(Actor)
 
 AddReferencedObjects(FReferenceCollector& Collector)
 
 HasInstanceData() const
-
- 
 
 GetTransactionAnnotation() const
 
@@ -37,10 +31,6 @@ PreEditUndo()
 PostEditUndo()
 
 PostEditUndo(TSharedPtr&lt;ITransactionObjectAnnotation&gt; TransactionAnnotation)
-
- 
-
- 
 
 EditorApplyTranslation(const FVector& DeltaTranslation, bool bAltDown, bool bShiftDown, bool bCtrlDown)
 
@@ -76,7 +66,7 @@ GetFolderPath() const
 
 SetFolderPath(const FName& NewFolderPath)
 
-SetFolderPath\_Recursively(const FName& NewFolderPath)
+SetFolderPath_Recursively(const FName& NewFolderPath)
 
 CheckForDeprecated()
 

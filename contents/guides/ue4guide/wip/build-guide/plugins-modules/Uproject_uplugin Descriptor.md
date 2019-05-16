@@ -16,8 +16,6 @@ LaunchModuleName
 
 SolutionDirectory
 
- 
-
 OutputPaths
 
 .ueprojectdirs
@@ -28,59 +26,43 @@ PreBuildStepScripts
 
 PostBuildStepScripts
 
- 
-
- 
-
 .uproject (C# is ProjectDescriptor.cs)
 
-​    PreBuildSteps
+​ PreBuildSteps
 
-​    PostBuildSteps
+​ PostBuildSteps
 
-​    AdditionalPluginDirectories
+​ AdditionalPluginDirectories
 
-​    PreBuildSteps
+​ PreBuildSteps
 
-​    PostBuildSteps
+​ PostBuildSteps
 
-​    Modules (C# is ModuleDescriptor.cs)
+​ Modules (C# is ModuleDescriptor.cs)
 
-​        Type = { Default, Runtime, RuntimeNoCommandlet, RuntimeAndProgram, CookedOnly, Developer, Editor, EditorNoCommandlet, Program, ServerOnly, ClientOnly }
+​ Type = { Default, Runtime, RuntimeNoCommandlet, RuntimeAndProgram, CookedOnly, Developer, Editor, EditorNoCommandlet, Program, ServerOnly, ClientOnly }
 
-​        WhitelistPlatforms/BlacklistPlatforms = { Win32, Win64, Mac, etc }
+​ WhitelistPlatforms/BlacklistPlatforms = { Win32, Win64, Mac, etc }
 
-​        WhitelistTargets/BlacklistTargets = { Game, Editor, Client, Server, Program }
+​ WhitelistTargets/BlacklistTargets = { Game, Editor, Client, Server, Program }
 
-​        LoadingPhase
+​ LoadingPhase
 
-​        Plugins (C# is PluginReferenceDescriptor)
+​ Plugins (C# is PluginReferenceDescriptor)
 
-​            Name
+​ Name
 
-​            Enabled
+​ Enabled
 
-​            Optional
+​ Optional
 
-​            WhitelistPlatforms/BlacklistPlatforms = { Win32, Win64, Mac, etc }
+​ WhitelistPlatforms/BlacklistPlatforms = { Win32, Win64, Mac, etc }
 
-​            WhitelistTargets/BlacklistTargets = { Game, Editor, Client, Server, Program }
-
- 
-
- 
-
- 
-
- 
+​ WhitelistTargets/BlacklistTargets = { Game, Editor, Client, Server, Program }
 
 .uplugin
 
 "CanBeUsedWithUnrealHeaderTool" : true,
-
- 
-
- 
 
 -basedir=
 
