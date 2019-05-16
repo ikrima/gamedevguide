@@ -1,0 +1,11 @@
+**RPC invoked from the server**
+
+<table><thead><tr class="header"><th><strong>Actor ownership</strong></th><th><strong>Not replicated</strong></th><th><strong>NetMulticast</strong></th><th><strong>Server</strong></th><th><strong>Client</strong></th></tr></thead><tbody><tr class="odd"><td><strong>Client-owned actor</strong></td><td>Runs on server</td><td>Runs on server and all clients</td><td>Runs on server</td><td>Runs on actor's owning client</td></tr><tr class="even"><td><strong>Server-owned actor</strong></td><td>Runs on server</td><td>Runs on server and all clients</td><td>Runs on server</td><td>Runs on server</td></tr><tr class="odd"><td><strong>Unowned actor</strong></td><td>Runs on server</td><td>Runs on server and all clients</td><td>Runs on server</td><td>Runs on server</td></tr></tbody></table>
+
+**RPC invoked from a client**
+
+<table><thead><tr class="header"><th><strong>Actor ownership</strong></th><th><strong>Not replicated</strong></th><th><strong>NetMulticast</strong></th><th><strong>Server</strong></th><th><strong>Client</strong></th></tr></thead><tbody><tr class="odd"><td><strong>Owned by invoking client</strong></td><td>Runs on invoking client</td><td>Runs on invoking client</td><td>Runs on server</td><td>Runs on invoking client</td></tr><tr class="even"><td><strong>Owned by a different client</strong></td><td>Runs on invoking client</td><td>Runs on invoking client</td><td>Dropped</td><td>Runs on invoking client</td></tr><tr class="odd"><td><strong>Server-owned actor</strong></td><td>Runs on invoking client</td><td>Runs on invoking client</td><td>Dropped</td><td>Runs on invoking client</td></tr><tr class="even"><td><strong>Unowned actor</strong></td><td>Runs on invoking client</td><td>Runs on invoking client</td><td>Dropped</td><td>Runs on invoking client</td></tr></tbody></table>
+
+ 
+
+*From &lt;<https://docs.unrealengine.com/latest/INT/Gameplay/Networking/Actors/RPCs/index.html>&gt;*

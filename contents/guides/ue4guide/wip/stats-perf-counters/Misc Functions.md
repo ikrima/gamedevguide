@@ -1,0 +1,67 @@
+**FStatsUtils::DebugPrint(FStatMessage const& Item)**
+
+ 
+
+ 
+
+**Compute Stat Scope Cycle duration**
+
+**static FStatMessage ComputeCall(FStatMessage const& ScopeStart, FStatMessage const& ScopeEnd)**
+
+{
+
+checkStats(ScopeStart.NameAndInfo.GetField&lt;EStatOperation&gt;() == EStatOperation::CycleScopeStart);
+
+checkStats(ScopeEnd.NameAndInfo.GetField&lt;EStatOperation&gt;() == EStatOperation::CycleScopeEnd);
+
+FStatMessage Result(ScopeStart);
+
+Result.NameAndInfo.SetField&lt;EStatOperation&gt;(EStatOperation::Set);
+
+Result.NameAndInfo.SetFlag(EStatMetaFlags::IsPackedCCAndDuration, true);
+
+checkStats(ScopeEnd.NameAndInfo.GetFlag(EStatMetaFlags::IsCycle));
+
+ 
+
+// cycles can wrap and are actually uint32's so we do something special here
+
+int64 Delta = int32(uint32(ScopeEnd.GetValue\_int64()) - uint32(ScopeStart.GetValue\_int64()));
+
+checkStats(Delta &gt;= 0);
+
+Result.GetValue\_int64() = ToPackedCallCountDuration(1, uint32(Delta));
+
+return Result;
+
+}
+
+ 
+
+### Examples of parsing stats:
+
+**FStatsThreadState::GetRawStackStats(int64 TargetFrame, FRawStatStackNode& Root, TArray&lt;FStatMessage&gt;\* OutNonStackStats)**
+
+ 
+
+**FRawProfilerSession::ProcessStatPacketArray**( const FStatPacketArray& StatPacketArray, FProfilerFrame& out\_ProfilerFrame, int32 FrameIndex )
+
+ 
+
+**static void DumpCPU(int64 Frame)**
+
+{
+
+​	FStatsThreadState& Stats = FStatsThreadState::GetLocalState();
+
+​	int64 Latest = Stats.GetLatestValidFrame();
+
+​	check(Latest &gt; 0);
+
+​	DumpCPUSummary(Stats, Latest);
+
+​	Stats.NewFrameDelegate.Remove(DumpCPUDelegateHandle);
+
+​	StatsMasterEnableSubtract();
+
+}

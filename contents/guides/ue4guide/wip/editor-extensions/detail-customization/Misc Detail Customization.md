@@ -1,34 +1,30 @@
-## **Refresh customization on hot reload:**
+```
+sortIndex: 4
+```
 
+## Refresh customization on hot reload:
+```cpp
 FPropertyEditorModule::NotifyCustomizationModuleChanged()
+```
 
- 
-
- 
-
-## **Getting default widget:**
-
+## Getting default widget:
+```cpp
 IDetailPropertyRow::GetDefaultWidgets()
+```
 
- 
-
-## **DetailRow:**
-
+## DetailRow:
+```cpp
 FNiagaraEmitterDetails::OnGenerateEventReceiverEntry(TSharedRef&lt;IPropertyHandle&gt; ElementProperty, int32 ElementIndex, IDetailChildrenBuilder& ChildrenBuilder)
 
 {
 
-TSharedPtr&lt;IPropertyHandle&gt; NameProperty = ElementProperty-&gt;GetChildHandle(GET\_MEMBER\_NAME\_CHECKED(FNiagaraEventReceiverProperties, Name));
+TSharedPtr&lt;IPropertyHandle&gt; NameProperty = ElementProperty-&gt;GetChildHandle(GET_MEMBER_NAME_CHECKED(FNiagaraEventReceiverProperties, Name));
 
- 
+FName DisplayName;
 
-        FName DisplayName;
-
-        NameProperty-&gt;GetValue(DisplayName);
+NameProperty-&gt;GetValue(DisplayName);
 
 //         ChildrenBuilder.AddChildProperty(ElementProperty).DisplayName(FText::FromName(DisplayName));
-
- 
 
 IDetailGroup& Group = ChildrenBuilder.AddGroup(DisplayName, FText::FromName(DisplayName));
 
@@ -46,7 +42,7 @@ TSharedPtr&lt;IPropertyHandle&gt; Child = ElementProperty-&gt;GetChildHandle(i);
 
 //Dont add the ID. We just grab it's name for the name region of this property.
 
-if (Child.IsValid() && Child-&gt;GetProperty()-&gt;GetName() != GET\_MEMBER\_NAME\_CHECKED(FNiagaraEventReceiverProperties, Name).ToString())
+if (Child.IsValid() && Child-&gt;GetProperty()-&gt;GetName() != GET_MEMBER_NAME_CHECKED(FNiagaraEventReceiverProperties, Name).ToString())
 
 {
 
@@ -55,8 +51,6 @@ TSharedPtr&lt;SWidget&gt; NameWidget;
 TSharedPtr&lt;SWidget&gt; ValueWidget;
 
 FDetailWidgetRow DefaultDetailRow;
-
- 
 
 IDetailPropertyRow& Row = Group.AddPropertyRow(Child.ToSharedRef());
 
@@ -87,3 +81,4 @@ ValueWidget.ToSharedRef()
 }
 
 }
+```

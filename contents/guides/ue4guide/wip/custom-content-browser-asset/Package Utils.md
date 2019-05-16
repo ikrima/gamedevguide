@@ -14,9 +14,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API void GetFilteredPackageList(TSet&lt;UPackage\*&gt;& OutFilteredPackageMap);
->
->  
+> UNREALED_API void GetFilteredPackageList(TSet&lt;UPackage\*&gt;& OutFilteredPackageMap);
 >
 > /\*\*
 >
@@ -32,9 +30,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API void GetObjectsInPackages( const TArray&lt;UPackage\*&gt;\* InPackages, TArray&lt;UObject\*&gt;& OutObjects );
-
- 
+> UNREALED_API void GetObjectsInPackages( const TArray&lt;UPackage\*&gt;\* InPackages, TArray&lt;UObject\*&gt;& OutObjects );
 
 > /\*\*
 >
@@ -52,11 +48,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API bool HandleFullyLoadingPackages( const TArray&lt;UPackage\*&gt;& TopLevelPackages, const FText& OperationText );
-
- 
-
- 
+> UNREALED_API bool HandleFullyLoadingPackages( const TArray&lt;UPackage\*&gt;& TopLevelPackages, const FText& OperationText );
 
 > /\*\*
 >
@@ -72,9 +64,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API UPackage\* LoadPackage( FString InFilename );
-
- 
+> UNREALED_API UPackage\* LoadPackage( FString InFilename );
 
 > /\*\*
 >
@@ -90,9 +80,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API bool UnloadPackages( const TArray&lt;UPackage\*&gt;& PackagesToUnload );
-
- 
+> UNREALED_API bool UnloadPackages( const TArray&lt;UPackage\*&gt;& PackagesToUnload );
 
 > /\*\*
 >
@@ -110,9 +98,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API bool UnloadPackages( const TArray&lt;UPackage\*&gt;& PackagesToUnload, FText& OutErrorMessage );
-
- 
+> UNREALED_API bool UnloadPackages( const TArray&lt;UPackage\*&gt;& PackagesToUnload, FText& OutErrorMessage );
 
 > /\*\*
 >
@@ -128,9 +114,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API bool ReloadPackages( const TArray&lt;UPackage\*&gt;& PackagesToReload );
-
- 
+> UNREALED_API bool ReloadPackages( const TArray&lt;UPackage\*&gt;& PackagesToReload );
 
 > /\*\*
 >
@@ -150,9 +134,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API bool ReloadPackages( const TArray&lt;UPackage\*&gt;& PackagesToReload, FText& OutErrorMessage, const bool bInteractive = true );
-
- 
+> UNREALED_API bool ReloadPackages( const TArray&lt;UPackage\*&gt;& PackagesToReload, FText& OutErrorMessage, const bool bInteractive = true );
 
 > /\*\*
 >
@@ -168,9 +150,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API void ExportPackages( const TArray&lt;UPackage\*&gt;& PackagesToExport, FString\* ExportPath=NULL, bool bUseProvidedExportPath = false );
-
- 
+> UNREALED_API void ExportPackages( const TArray&lt;UPackage\*&gt;& PackagesToExport, FString\* ExportPath=NULL, bool bUseProvidedExportPath = false );
 
 > /\*\*
 >
@@ -192,17 +172,11 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API FString DoBulkExport(const TArray&lt;UPackage\*&gt;& TopLevelPackages, FString LastExportPath, const TSet&lt;UClass\*&gt;\* FilteredClasses = NULL, bool bUseProvidedExportPath = false );
-
- 
+> UNREALED_API FString DoBulkExport(const TArray&lt;UPackage\*&gt;& TopLevelPackages, FString LastExportPath, const TSet&lt;UClass\*&gt;\* FilteredClasses = NULL, bool bUseProvidedExportPath = false );
 
 > /\*\* Helper function that attempts to check out the specified top-level packages. \*/
 >
-> UNREALED\_API void CheckOutRootPackages( const TArray&lt;UPackage\*&gt;& Packages );
-
- 
-
- 
+> UNREALED_API void CheckOutRootPackages( const TArray&lt;UPackage\*&gt;& Packages );
 
 > /\*\*
 >
@@ -216,9 +190,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API bool IsPackagePathExternal(const FString& PackagePath);
-
- 
+> UNREALED_API bool IsPackagePathExternal(const FString& PackagePath);
 
 > /\*\*
 >
@@ -232,9 +204,7 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API bool IsPackageExternal(const UPackage& Package);
-
- 
+> UNREALED_API bool IsPackageExternal(const UPackage& Package);
 
 > /\*\*
 >
@@ -254,15 +224,11 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API bool CheckForReferencesToExternalPackages(const TArray&lt;UPackage\*&gt;\* PackagesToCheck, TArray&lt;UPackage\*&gt;\* OutPackagesWithExternalRefs, ULevel\* LevelToCheck=NULL, TArray&lt;UObject\*&gt;\* OutObjectsWithExternalRefs=NULL );
-
- 
+> UNREALED_API bool CheckForReferencesToExternalPackages(const TArray&lt;UPackage\*&gt;\* PackagesToCheck, TArray&lt;UPackage\*&gt;\* OutPackagesWithExternalRefs, ULevel\* LevelToCheck=NULL, TArray&lt;UObject\*&gt;\* OutObjectsWithExternalRefs=NULL );
 
 > /\*\* Saves all the dirty packages for the specified objects\*/
 >
-> UNREALED\_API bool SavePackagesForObjects(const TArray&lt;UObject\*&gt;& ObjectsToSave);
-
- 
+> UNREALED_API bool SavePackagesForObjects(const TArray&lt;UObject\*&gt;& ObjectsToSave);
 
 > /\*\*
 >
@@ -276,12 +242,10 @@ namespace PackageTools
 >
 > \*/
 >
-> UNREALED\_API bool IsSingleAssetPackage (const FString& Package);
-
- 
+> UNREALED_API bool IsSingleAssetPackage (const FString& Package);
 
 > /\*\* Replaces all invalid package name characters with \_ \*/
 >
-> UNREALED\_API FString SanitizePackageName(const FString& InPackageName);
+> UNREALED_API FString SanitizePackageName(const FString& InPackageName);
 
 }

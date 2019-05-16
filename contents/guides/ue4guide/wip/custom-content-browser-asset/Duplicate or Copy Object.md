@@ -1,20 +1,16 @@
 1.  Generic object copy
 
 > UEngine::CopyPropertiesForUnrelatedObjects(ObjectTemplate, SpawnedActor, CopyParams);
->
 
-2. Fast copy of specific class  
+2. Fast copy of specific class
 
-> StaticDuplicateObject(Instance, &OwnerMovieScene, TemplateName, RF\_AllFlags & ~RF\_Transient);
+> StaticDuplicateObject(Instance, &OwnerMovieScene, TemplateName, RF_AllFlags & ~RF_Transient);
 
 3. For actors:
 
 > EditorUtilities::CopySingleProperty()
 >
 > EditorUtilities::CopyActorProperties()
->
->  
->
 
 NOTE: You can pass a template object but Subobject Instancing needs a special case:
 
@@ -24,9 +20,7 @@ class UDuplicateTestSubObject : public UObject
 
 {
 
-GENERATED\_BODY()
-
- 
+GENERATED_BODY()
 
 public:
 
@@ -36,17 +30,13 @@ int32 TestValue;
 
 };
 
- 
-
 UCLASS()
 
 class UDuplicateTestObject : public UObject
 
 {
 
-GENERATED\_BODY()
-
- 
+GENERATED_BODY()
 
 public:
 
@@ -56,17 +46,13 @@ UDuplicateTestSubObject\* SubObject;
 
 };
 
- 
-
 UCLASS()
 
 class ADuplicateTestActor : public AActor
 
 {
 
-GENERATED\_BODY()
-
- 
+GENERATED_BODY()
 
 virtual void BeginPlay() override
 
@@ -74,17 +60,11 @@ virtual void BeginPlay() override
 
 Super::BeginPlay();
 
- 
-
 UDuplicateTestObject\* SrcObject = NewObject&lt;UDuplicateTestObject&gt;();
 
 SrcObject-&gt;SubObject = NewObject&lt;UDuplicateTestSubObject&gt;(SrcObject);
 
- 
-
 UDuplicateTestObject\* DestObject = NewObject&lt;UDuplicateTestObject&gt;();
-
- 
 
 for (int32 i = 0; i &lt; 100; ++i)
 
@@ -92,9 +72,7 @@ for (int32 i = 0; i &lt; 100; ++i)
 
 SrcObject-&gt;SubObject-&gt;TestValue = i;
 
- 
-
-DestObject = NewObject&lt;UDuplicateTestObject&gt;(DestObject-&gt;GetOuter(), DestObject-&gt;GetFName(), RF\_NoFlags, SrcObject);
+DestObject = NewObject&lt;UDuplicateTestObject&gt;(DestObject-&gt;GetOuter(), DestObject-&gt;GetFName(), RF_NoFlags, SrcObject);
 
 // DestObject = DuplicateObject(SrcObject, DestObject-&gt;GetOuter(), DestObject-&gt;GetFName());
 
@@ -112,8 +90,6 @@ check(DestObject-&gt;SubObject-&gt;TestValue == i);
 
 };
 
- 
-
 > void UDuplicateTestObject::BeginDestroy()
 >
 > {
@@ -129,10 +105,6 @@ check(DestObject-&gt;SubObject-&gt;TestValue == i);
 > Super::BeginDestroy();
 >
 > }
-
- 
-
- 
 
 <https://udn.unrealengine.com/questions/458532/view.html>
 

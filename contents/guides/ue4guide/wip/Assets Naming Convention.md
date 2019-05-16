@@ -1,57 +1,60 @@
-UPDATED VERSION HERE: <https://github.com/Allar/ue4-style-guide>
-================================================================
+---
+sortIndex: 1
+---
 
-> *-------------------------------------------------------------------------------------------------------------------*
+# UPDATED VERSION HERE: <https://github.com/Allar/ue4-style-guide>
+
+> _-------------------------------------------------------------------------------------------------------------------_
 >
-> *From &lt;<http://www.tomlooman.com/ue4-naming-convention/>&gt;*
+> _From &lt;<http://www.tomlooman.com/ue4-naming-convention/>&gt;_
 >
 > # Unreal Engine 4: Naming Convention
 >
 > The goal of this document is to share our internal naming conventions with the community to give everyone something to start out with. Using and getting comfortable with  a strict naming convention is essential before your projects grows beyond a few dozen files.
 >
-> ***Disclaimer**: This document is a constant work in progress, more asset types are added over time as we start using them with our game projects. If you have suggestions or comments you can leave them at the bottom of this page. Feedback is appreciated to improve this page.*
+> **\*Disclaimer**: This document is a constant work in progress, more asset types are added over time as we start using them with our game projects. If you have suggestions or comments you can leave them at the bottom of this page. Feedback is appreciated to improve this page.\*
 >
-> Last Revision: ***July 15, 2014***
+> Last Revision: **_July 15, 2014_**
 >
 > **Contents **\[[hide]\]
 
--   [1 General Naming]
+- [1 General Naming]
 
--   [2 Prefixes]
+- [2 Prefixes]
 
--   [3 Suffixes]
+- [3 Suffixes]
 
--   [3.1 Textures]
+- [3.1 Textures]
 
--   [3.2 Animation]
+- [3.2 Animation]
 
--   [4 Texture Masks]
+- [4 Texture Masks]
 
--   [5 Content Directories]
+- [5 Content Directories]
 
--   [6 Coding Standards]
+- [6 Coding Standards]
 
 > ## **General Naming**
 
--   All names in English.
+- All names in English.
 
--   All asset dependencies should be in the same folder. (except for shared assets)
+- All asset dependencies should be in the same folder. (except for shared assets)
 
--   Asset type determines prefix.
+- Asset type determines prefix.
 
--   *Blueprint is** BP\_**assetname\_01*
+- _Blueprint is** BP\_**assetname_01_
 
--   Certain types (eg. textures) use a suffix to specify sub-types.* *
+- Certain types (eg. textures) use a suffix to specify sub-types.\* \*
 
--   *T\_Grass\_01**\_N **for normal maps*
+- _T_Grass_01**\_N **for normal maps_
 
--   Use underscores to split type from identifier and numeric values.
+- Use underscores to split type from identifier and numeric values.
 
--   *SM**\_**DoorHandle**\_**01*
+- _SM**\_**DoorHandle**\_**01_
 
--   Use numeric values with 2 digits.
+- Use numeric values with 2 digits.
 
--   *SM\_Pipe\_**01***
+- \*SM_Pipe\_**01\***
 
 > **Prefixes**
 
@@ -75,11 +78,11 @@ UPDATED VERSION HERE: <https://github.com/Allar/ue4-style-guide>
 >
 > RGB Mask for environment:
 
--   R = Metallic
+- R = Metallic
 
--   G = Roughness
+- G = Roughness
 
--   B = Ambient Occlusion
+- B = Ambient Occlusion
 
 > **Content Directories**
 
@@ -91,45 +94,33 @@ UPDATED VERSION HERE: <https://github.com/Allar/ue4-style-guide>
 >
 > Parts of this document were taken and/or modified from the [naming convention page] over at Unreal’s wiki.
 
- 
-
 > **Old Asset Naming Convention**
->
->  
->
->  
 >
 > **Contents**
 >
->  \[[hide][naming convention page]\] 
+> \[[hide][naming convention page]\]
 
--   [[1 Overview]](https://wiki.unrealengine.com/Assets_Naming_Convention#Overview)
+- [[1 Overview]](https://wiki.unrealengine.com/Assets_Naming_Convention#Overview)
 
--   [[2 Basics]](https://wiki.unrealengine.com/Assets_Naming_Convention#Basics)
+- [[2 Basics]](https://wiki.unrealengine.com/Assets_Naming_Convention#Basics)
 
--   [[3 Assets folders]](https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_folders)
+- [[3 Assets folders]](https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_folders)
 
--   [[4 Folders by categories]](https://wiki.unrealengine.com/Assets_Naming_Convention#Folders_by_categories)
+- [[4 Folders by categories]](https://wiki.unrealengine.com/Assets_Naming_Convention#Folders_by_categories)
 
--   [[5 Assets names]](https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_names)
+- [[5 Assets names]](https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_names)
 
--   [[6 Texture Masks]](https://wiki.unrealengine.com/Assets_Naming_Convention#Texture_Masks)
-
-
+- [[6 Texture Masks]](https://wiki.unrealengine.com/Assets_Naming_Convention#Texture_Masks)
 
 ### Overview
 
 This article contains ideas for assets naming convention and content folders structure.
-
-
 
 ### Basics
 
 1. All names in **English**.
 
 2. All asset dependencies should be in it’s folder (instead of some shared assets).
-
-
 
 ### Assets folders
 
@@ -141,31 +132,23 @@ This article contains ideas for assets naming convention and content folders str
 
 <table><thead><tr class="header"><th><strong>Content\Base</strong></th><th>basic materials, material functions and other “foundation” assets</th></tr></thead><tbody><tr class="odd"><td><strong>Content\Characters</strong></td><td>folder for characters</td></tr><tr class="even"><td>............ <strong>Characters\NPC</strong></td><td>NPCs</td></tr><tr class="odd"><td>............ <strong>Characters\Player</strong></td><td>player character(s)</td></tr><tr class="even"><td><strong>Content\Dev</strong></td><td>development assets, like objects icons, special meshes and textures, etc</td></tr><tr class="odd"><td><strong>Content\Effects</strong></td><td>various shared effects</td></tr><tr class="even"><td><strong>Content\Environment</strong></td><td>environment assets</td></tr><tr class="odd"><td>............ <strong>Environment\Background</strong></td><td>backgrounds</td></tr><tr class="even"><td>............ <strong>Environment\Buildings</strong></td><td>buildings (simple or procedural)</td></tr><tr class="odd"><td>............ <strong>Environment\Foliage</strong></td><td>foliage</td></tr><tr class="even"><td>............ <strong>Environment\Props</strong></td><td>various props</td></tr><tr class="odd"><td>............ <strong>Environment\Sky</strong></td><td>skies</td></tr><tr class="even"><td>............ <strong>Environment\Landscape</strong></td><td>terrains assets</td></tr><tr class="odd"><td>............ <strong>Environment\Water</strong></td><td>water meshes and materials</td></tr><tr class="even"><td><strong>Content\Gameplay</strong></td><td>assets for various gameplay purposes</td></tr><tr class="odd"><td><strong>Content\PostProcess</strong></td><td>post process chains and it’s assets</td></tr><tr class="even"><td><strong>Content\Sound</strong></td><td>sounds and sound cues</td></tr><tr class="odd"><td><strong>Content\UI</strong></td><td>UI assets</td></tr><tr class="even"><td><strong>Content\Vehicles</strong></td><td>vehicles with effects</td></tr><tr class="odd"><td><strong>Content\Weapons</strong></td><td>weapons with effects</td></tr></tbody></table>
 
->  
->
 > Folders by categories
 
 <table><thead><tr class="header"><th><strong>Blueprints</strong></th><th>blueprints</th></tr></thead><tbody><tr class="odd"><td><strong>Meshes</strong></td><td>static and skeletal meshes, physical assets</td></tr><tr class="even"><td><strong>Materials</strong></td><td>materials and instances</td></tr><tr class="odd"><td><strong>Textures</strong></td><td>textures</td></tr><tr class="even"><td><strong>Animations</strong></td><td>animations</td></tr><tr class="odd"><td><strong>Particles</strong></td><td>particle systems</td></tr><tr class="even"><td><strong>LensFlares</strong></td><td>flares</td></tr><tr class="odd"><td><strong>Sounds</strong></td><td>sounds + cues</td></tr><tr class="even"><td><strong>Morphs</strong></td><td>morphs</td></tr><tr class="odd"><td><strong>FaceFX</strong></td><td>FaceFX assets</td></tr></tbody></table>
-
-
 
 ### Assets names
 
 **Form:**
 
-(Prefix_)AssetName(_Number)(_Suffix)
+(Prefix\_)AssetName(\_Number)(\_Suffix)
 
 Example:
 
 T_Rock_01_D
 
- 
-
 **Prefixes:** (optional because of filters in content browser)
 
 (by usage)
-
-
 
 <table><thead><tr class="header"><th>CH_</th><th>Characters</th></tr></thead><tbody><tr class="odd"><td>UI_</td><td>User Interface</td></tr><tr class="even"><td>VH_</td><td>Vehicles</td></tr><tr class="odd"><td>WP_</td><td>Weapons</td></tr></tbody></table>
 
@@ -189,13 +172,11 @@ T_Rock_01_D
 
 Texture Masks
 
-RGB Mask for characters: 
+RGB Mask for characters:
 
 - R = Metallic
 - G = Roughness
 - B = Subsurface Opacity
-
- 
 
 RGB Mask for character's Hair:
 
@@ -203,34 +184,28 @@ RGB Mask for character's Hair:
 - G = Specular/Roughness map
 - B = Anisotropic direction map
 
- 
-
 RGB Mask for environment:
 
 - R = Metallic
 - G = Roughness
 - B = Ambient Occlusion
 
- 
-
-From <<https://wiki.unrealengine.com/Assets_Naming_Convention>> 
-
-
+From <<https://wiki.unrealengine.com/Assets_Naming_Convention>>
 
 [hide]: http://www.tomlooman.com/ue4-naming-convention/
-[1 General Naming]: http://www.tomlooman.com/ue4-naming-convention/#General_Naming
-[2 Prefixes]: http://www.tomlooman.com/ue4-naming-convention/#Prefixes
-[3 Suffixes]: http://www.tomlooman.com/ue4-naming-convention/#Suffixes
-[3.1 Textures]: http://www.tomlooman.com/ue4-naming-convention/#Textures
-[3.2 Animation]: http://www.tomlooman.com/ue4-naming-convention/#Animation
-[4 Texture Masks]: http://www.tomlooman.com/ue4-naming-convention/#Texture_Masks
-[5 Content Directories]: http://www.tomlooman.com/ue4-naming-convention/#Content_Directories
-[6 Coding Standards]: http://www.tomlooman.com/ue4-naming-convention/#Coding_Standards
-[Coding Standards]: https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html
+[1 general naming]: http://www.tomlooman.com/ue4-naming-convention/#General_Naming
+[2 prefixes]: http://www.tomlooman.com/ue4-naming-convention/#Prefixes
+[3 suffixes]: http://www.tomlooman.com/ue4-naming-convention/#Suffixes
+[3.1 textures]: http://www.tomlooman.com/ue4-naming-convention/#Textures
+[3.2 animation]: http://www.tomlooman.com/ue4-naming-convention/#Animation
+[4 texture masks]: http://www.tomlooman.com/ue4-naming-convention/#Texture_Masks
+[5 content directories]: http://www.tomlooman.com/ue4-naming-convention/#Content_Directories
+[6 coding standards]: http://www.tomlooman.com/ue4-naming-convention/#Coding_Standards
+[coding standards]: https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html
 [naming convention page]: https://wiki.unrealengine.com/Assets_Naming_Convention
-[1 Overview]: https://wiki.unrealengine.com/Assets_Naming_Convention#Overview
-[2 Basics]: https://wiki.unrealengine.com/Assets_Naming_Convention#Basics
-[3 Assets folders]: https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_folders
-[4 Folders by categories]: https://wiki.unrealengine.com/Assets_Naming_Convention#Folders_by_categories
-[5 Assets names]: https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_names
-[6 Texture Masks]: https://wiki.unrealengine.com/Assets_Naming_Convention#Texture_Masks
+[1 overview]: https://wiki.unrealengine.com/Assets_Naming_Convention#Overview
+[2 basics]: https://wiki.unrealengine.com/Assets_Naming_Convention#Basics
+[3 assets folders]: https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_folders
+[4 folders by categories]: https://wiki.unrealengine.com/Assets_Naming_Convention#Folders_by_categories
+[5 assets names]: https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_names
+[6 texture masks]: https://wiki.unrealengine.com/Assets_Naming_Convention#Texture_Masks

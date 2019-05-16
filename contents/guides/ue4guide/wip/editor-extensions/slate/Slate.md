@@ -1,35 +1,34 @@
-Great Overview Doc:  
+```
+sortindex: 1
+```
+
+Great Overview Doc: 
 The Slate UI Framework <https://de45xmedrsdbp.cloudfront.net/Resources/files/slateTutorials_westcoast-1963123470.pdf>
 
- 
+- Immediate mode with rare use of coarse-grained cache invalidation (e.g. Blueprint graph editor caches layout of all the nodes but as soon as there's a change, it rebuilds everything)
 
--   Immediate mode with rare use of coarse-grained cache invalidation (e.g. Blueprint graph editor caches layout of all the nodes but as soon as there's a change, it rebuilds everything)
+- 2 pass approach:
+- 1st Pass Bottom Up: Determine each widget's size using CacheDesiredSize & ComputeDesiredSize
+  
+- 2nd Pass Top Down: Layout
+  
+- 3 widget types
 
--   2 pass approach:
+  - Leaf: No children e.g. STextBox
 
-    -   1st Pass Bottom Up: Determine each widget's size using CacheDesiredSize & ComputeDesiredSize
+  - Compound: Fixed number of children/slots e.g. Sbutton
 
-    -   2nd Pass Top Down: Layout
+  - Panel: Dynamic number of children e.g. SverticalPanel
 
--   3 widget types
+- SWidget Components
 
-    -   Leaf: No children e.g. STextBox
+  - ComputeDesiredSize()
 
-    -   Compound: Fixed number of children/slots e.g. Sbutton
+  - ArrangeChildren()
 
-    -   Panel: Dynamic number of children e.g. SverticalPanel
+  - OnPaint()
 
--   SWidget Components
+  - EventHandlers
 
-    -   ComputeDesiredSize()
-
-    -   ArrangeChildren()
-
-    -   OnPaint()
-
-    -   EventHandlers
-
-
-
--   SLATE\_ARGUMENT similar to SLATE\_ATTRIBUTE, except it can only contain value
+* SLATE_ARGUMENT similar to SLATE_ATTRIBUTE, except it can only contain value
 

@@ -1,7 +1,12 @@
-<https://answers.unrealengine.com/questions/455215/c-plugin-create-unreal-like-graph.html>
+```
+sortIndex: 7
+```
 
-<https://forums.unrealengine.com/showthread.php?116032-UFSM-Finite-State-Machine>
+https://answers.unrealengine.com/questions/455215/c-plugin-create-unreal-like-graph.html
 
-<https://www.unrealengine.com/marketplace/dialogue-plugin>
+https://forums.unrealengine.com/showthread.php?116032-UFSM-Finite-State-Machine
 
-<https://gitlab.com/NotYetGames/DlgSystem>
+https://www.unrealengine.com/marketplace/dialogue-plugin
+
+https://gitlab.com/NotYetGames/DlgSystem
+

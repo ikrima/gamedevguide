@@ -1,52 +1,42 @@
 Animation Subsystem
 
- 
-
 AnimInstance is the runtime animation class that maintains runtime data & plays shit
 
--   This is the parent class of the animation blueprint
+- This is the parent class of the animation blueprint
 
--   Get Bone Transforms from a specific time t:
+- Get Bone Transforms from a specific time t:
 
-    -   Sequence-&gt;GetAnimationPose(Output.Pose, Output.Curve, FAnimExtractContext(CurrentTime, Sequence-&gt;bEnableRootMotion));
-
-
-
-
+  - Sequence-&gt;GetAnimationPose(Output.Pose, Output.Curve, FAnimExtractContext(CurrentTime, Sequence-&gt;bEnableRootMotion));
 
 UAnimationAsset is the classes that contain the actual data and also calculates bones & curves
 
--   UAnimSequence
+- UAnimSequence
 
--   UAnimComposite
+- UAnimComposite
 
-    -   UAnimMontage
-
- 
+  - UAnimMontage
 
 Two classes for each Anim Node; separated for optimization b/c node construction is expensive
 
--   UAnimGraphNode\_Base: Anim Graph Node that's shown in editor
+- UAnimGraphNode_Base: Anim Graph Node that's shown in editor
 
-    -   Only exist in editor
+  - Only exist in editor
 
-    -   One way relationship with corresponding FAnimNode\_Base counterpart
+  - One way relationship with corresponding FAnimNode_Base counterpart
 
--   FAnimNode\_Base: Anim Behavior node that is run time
+- FAnimNode_Base: Anim Behavior node that is run time
 
-    -   Initialize: Called whenever need to initialize/reinitialize (e.g. changing mesh instance)
+  - Initialize: Called whenever need to initialize/reinitialize (e.g. changing mesh instance)
 
-    -   Update: Called to update current state (such as advancing playtime or updating blend weights)
+  - Update: Called to update current state (such as advancing playtime or updating blend weights)
 
-        -   Takes FAnimationUpdateContext that knows the delta time for the update & the current nodes blend weight
+    - Takes FAnimationUpdateContext that knows the delta time for the update & the current nodes blend weight
 
-        -   Might be where we hook in to do the forward time projection intersection
+    - Might be where we hook in to do the forward time projection intersection
 
-    -   Evaluate/EvaluateComponentSpace: Generates a 'pose' i.e. list of bone transforms
+  - Evaluate/EvaluateComponentSpace: Generates a 'pose' i.e. list of bone transforms
 
--   FAnimationRuntime has lots of good functions to look at and utility/helper functions
-
- 
+- FAnimationRuntime has lots of good functions to look at and utility/helper functions
 
 Sequence:
 
@@ -54,93 +44,71 @@ Update Functions:
 
 *\[Should be called before RefreshBoneTransforms\]*USkinnedMeshComponent::TickPose()
 
-*\[Should be atomic & not rely on Tick()\]* USkinnedMeshComponent::RefreshBoneTransforms()
+_\[Should be atomic & not rely on Tick()\]_ USkinnedMeshComponent::RefreshBoneTransforms()
 
 USkinnedMeshComponent::FinalizeBoneTransform()
 
- 
-
- 
-
 USkeletalMeshComponent::InitAnim: Called when component needs to initialize or reinitialize eg InitializeComponent() or SetSkeletalMesh()
 
--   USkeletalMeshComponent::InitializeAnimScriptInstance
+- USkeletalMeshComponent::InitializeAnimScriptInstance
 
-    -   AnimInstance::InitializeAnimation
+  - AnimInstance::InitializeAnimation
 
-        -   AnimInstance::NativeInitializeAnimation()
+    - AnimInstance::NativeInitializeAnimation()
 
-        -   AnimInstance::BlueprintInitializeAnimation()
-
- 
-
- 
-
- 
+    - AnimInstance::BlueprintInitializeAnimation()
 
 USkinnedMeshComponent::TickComponent()
 
--   USkinnedMeshComponent::TickPose()
+- USkinnedMeshComponent::TickPose()
 
-    -   USkeletalMeshComponent::TickAnimation
+  - USkeletalMeshComponent::TickAnimation
 
-        -   AnimInstance::UpdateAnimation
+    - AnimInstance::UpdateAnimation
 
-            -   *\[Default does nothing\]* NativeUpdateAnimation: Only does something for UAnimSingleNodeInstance
+      - _\[Default does nothing\]_ NativeUpdateAnimation: Only does something for UAnimSingleNodeInstance
 
-            -   BlueprintUpdateAnimation: Main AnimBP entry point
+      - BlueprintUpdateAnimation: Main AnimBP entry point
 
-            -   FAnimNode\_Base::Update()
+      - FAnimNode_Base::Update()
 
-            -   UAnimInstance::Montage\_Advance()
+      - UAnimInstance::Montage_Advance()
 
-            -   UAnimInstance::TriggerAnimNotifies
+      - UAnimInstance::TriggerAnimNotifies
 
-            -   UAnimInstance::TriggerQueuedMontageEvents
+      - UAnimInstance::TriggerQueuedMontageEvents
 
->  
+>
 
--   USkinnedMeshComponent::RefreshBoneTransforms()
+- USkinnedMeshComponent::RefreshBoneTransforms()
 
-    -   USkinnedMeshComponent::PerformAnimationEvaluation()
+  - USkinnedMeshComponent::PerformAnimationEvaluation()
 
-        -   *\[Evaluate Animation System\]* USkeletalMeshComponent::EvaluateAnimation()
+    - _\[Evaluate Animation System\]_ USkeletalMeshComponent::EvaluateAnimation()
 
-            -   AnimInstance::EvaluateAnimation()
+      - AnimInstance::EvaluateAnimation()
 
-                -   *\[Default does nothing\]* UAnimInstance::NativeEvaluateAnimation() AnimInstance can override animgraph evaluation completely. Ex: AnimSingleNodeInstance() doesn't eval the animgraph
+        - _\[Default does nothing\]_ UAnimInstance::NativeEvaluateAnimation() AnimInstance can override animgraph evaluation completely. Ex: AnimSingleNodeInstance() doesn't eval the animgraph
 
-                -   FAnimNode\_Base::Evaluate(): This is the root of the anim graph. Called if NativeEvaluateAnimation returns false
+        - FAnimNode_Base::Evaluate(): This is the root of the anim graph. Called if NativeEvaluateAnimation returns false
 
- 
+* USkeletalMeshComponent::PostAnimEvaluation
 
--   USkeletalMeshComponent::PostAnimEvaluation
+  - AnimInstance::UpdateCurves
 
-    -   AnimInstance::UpdateCurves
+  - USkinnedMeshComponent::FinalizeBoneTransform()
 
-    -   USkinnedMeshComponent::FinalizeBoneTransform()
+    - AnimInstance::PostEvaluateAnimation
 
-        -   AnimInstance::PostEvaluateAnimation
+      - _\[Does nothing by default but virtual\]_ AnimInstance::NativePostEvaluateAnimation
 
-            -   *\[Does nothing by default but virtual\]* AnimInstance::NativePostEvaluateAnimation
+      - BlueprintPostEvaluateAnimation
 
-            -   BlueprintPostEvaluateAnimation
+  - UpdateComponentToWorld()
 
-    -   UpdateComponentToWorld()
+  - UpdateOverlaps()
 
-    -   UpdateOverlaps()
-
-
-
--   *\[If RefreshBoneTransforms() not called from Tick()\]* USkinnedMeshComponent::FinalizeBoneTransform
-
- 
-
-
-
- 
-
-
+- _\[If RefreshBoneTransforms() not called from Tick()\]_ USkinnedMeshComponent::FinalizeBoneTransform
 
 Useful CPU Skinning stuff:
 
@@ -154,12 +122,8 @@ GetBoneNames
 
 GetBoneTransform
 
- 
-
 Function to update physics data from animated data
 
-USkeletalMeshComponent::UpdateKinematicBonesToAnim(const TArray&lt;FTransform&gt;& **InSpaceBases**, ETeleportType **Teleport**, bool **bNeedsSkinning**)
+USkeletalMeshComponent::UpdateKinematicBonesToAnim(const TArray&lt;FTransform&gt;> **InSpaceBases**, ETeleportType **Teleport**, bool **bNeedsSkinning**)
 
- 
-
-USkeletalMeshComponent::PerformBlendPhysicsBones(const TArray&lt;FBoneIndexType&gt;& **InRequiredBones**, TArray&lt;FTransform&gt;& **InLocalAtoms**)
+USkeletalMeshComponent::PerformBlendPhysicsBones(const TArray&lt;FBoneIndexType&gt;> **InRequiredBones**, TArray&lt;FTransform&gt;> **InLocalAtoms**)

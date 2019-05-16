@@ -1,54 +1,49 @@
-1.  Use IWYU:  
-    
-    > <https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/IWYUReferenceGuide/index.html>
+---
+sortIndex: 5
+---
 
- 
+## 1.  Use IWYU:
 
-> This means forward declaring everything, moving everything into implementation files as much as possible. For templated things, we forward declare them and then declare explicit template specializations. Obv not a good practice for library code, but for our own modules, it's fine.
->
->  
->
-> You'll run into issues forward declaring references to structs in blueprint callable functions because of the generated thunk code from UHT so that's unavoidable. Also, inlined functions need to be in the header.
+https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/IWYUReferenceGuide/index.html
 
- 
+ This means forward declaring everything, moving everything into implementation files as much as possible. For templated things, we forward declare them and then declare explicit template specializations. Obv not a good practice for library code, but for our own modules, it's fine.
 
->  
->
->  
+You'll run into issues forward declaring references to structs in blueprint callable functions because of the generated thunk code from UHT so that's unavoidable. Also, inlined functions need to be in the header.
 
-1.  Useful build switches
 
--clean
 
--CleanLocal
 
--unattended
+## 2.  Useful build switches
 
- 
+- clean
 
-Cooking:
+- CleanLocal
 
--DirectoriesToCook
+- unattended
 
--Compressed
 
--UnversionedCookedContent
+**Cooking:**
 
--NumCookersToSpawn
+- DirectoriesToCook
 
--IterateSharedCookedBuild
+- Compressed
 
- 
+- UnversionedCookedContent
 
-Staging
+- NumCookersToSpawn
 
--prereqs
+- IterateSharedCookedBuild
 
--iterativedeploy
 
- 
+**Staging:**
 
-Automation running:
+- prereqs
+
+- iterativedeploy
+
+
+
+**Automation running:**
 
 -skipserver
 
@@ -70,21 +65,11 @@ Automation running:
 
 -logwindow
 
- 
-
- 
-
 the nuclear option is bOmitPCDebugInfoInDevelopment if you're iterating. For dev+debug, I turn on fastpdblinking & useUHTMakeFiles & bUseIncrementalLinking. In VS2017, it should be even faster
-
- 
 
 Just be careful with fastlinked PDBs if you share them with other devs bc that'll break. Build machine should also not use fastlinked pdbs
 
- 
-
 Also, bUseUBTMakefiles = true =&gt; means you have to force regenerate UBT Makefiles when you invalidate them.
-
- 
 
 /// Events that can invalidate the 'UBT Makefile':
 
@@ -98,21 +83,13 @@ Also, bUseUBTMakefiles = true =&gt; means you have to force regenerate UBT Makef
 
 ///                - Changed code that affects how Unreal Header Tool works
 
-///        
-
- 
+///
 
 You can force regeneration of the 'UBT Makefile' by passing the '-gather' argument, or simply regenerating project files
-
- 
-
- 
 
 //Config
 
 //BuildConfiguration.RelativeEnginePath = /\* ...\*/;
-
- 
 
 //Debug
 
@@ -123,8 +100,6 @@ You can force regeneration of the 'UBT Makefile' by passing the '-gather' argume
 //BuildConfiguration.bDisableDebugInfoForGeneratedCode = true /\* d=true \*/;
 
 //BuildConfiguration.bAllowLTCG = false /\* d=false \*/;
-
- 
 
 //Build
 
@@ -160,10 +135,6 @@ BuildConfiguration.bUseUHTMakefiles = true /\* d=false \*/;
 
 //BuildConfiguration.bForcePrecompiledHeaderForGameModules = true /\* d=true \*/;
 
- 
-
- 
-
 BuildConfiguration.bPrintDebugInfo = true /\* d=false \*/;
 
 BuildConfiguration.bPrintPerformanceInfo = true /\* d=false \*/;
@@ -171,10 +142,6 @@ BuildConfiguration.bPrintPerformanceInfo = true /\* d=false \*/;
 BuildConfiguration.bStopXGECompilationAfterErrors = false /\* d=true \*/;
 
 BuildConfiguration.bPrintToolChainTimingInfo = true /\* d=false (adds /bt+ &/time & /d2cgsummary) \*/
-
- 
-
- 
 
 //BuildConfiguration.bEnableCodeAnalysis = true /\* d=false \*/;
 

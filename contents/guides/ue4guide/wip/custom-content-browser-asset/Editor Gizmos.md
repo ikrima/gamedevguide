@@ -4,8 +4,6 @@ ABaseTransformGizmo
 
 APivotTransformGizmo
 
- 
-
 UGizmoHandleMeshComponent
 
 Result.bEditorPrimitiveRelevance = true;
@@ -20,37 +18,29 @@ UStretchGizmoHandleGroup
 
 UStretchGizmoHandleGroup
 
- 
-
 **PreviewMeshes:**
 
-ACameraRig\_Rail
+ACameraRig_Rail
 
--   USplineComponent
+- USplineComponent
 
--   USplineMeshComponent
+- USplineMeshComponent
 
--   USplineMeshComponent\* CreateSplinePreviewSegment();
+- USplineMeshComponent\* CreateSplinePreviewSegment();
 
 // overrides CameraComponent's camera mesh
 
-static ConstructorHelpers::FObjectFinder&lt;UStaticMesh&gt; EditorCameraMesh(TEXT("/Engine/EditorMeshes/Camera/SM\_CineCam.SM\_CineCam"));
+static ConstructorHelpers::FObjectFinder&lt;UStaticMesh&gt; EditorCameraMesh(TEXT("/Engine/EditorMeshes/Camera/SM_CineCam.SM_CineCam"));
 
 CameraMesh = EditorCameraMesh.Object;
 
- 
-
-static ConstructorHelpers::FObjectFinder&lt;UStaticMesh&gt; PlaneMesh(TEXT("/Engine/ArtTools/RenderToTexture/Meshes/S\_1\_Unit\_Plane.S\_1\_Unit\_Plane"));
+static ConstructorHelpers::FObjectFinder&lt;UStaticMesh&gt; PlaneMesh(TEXT("/Engine/ArtTools/RenderToTexture/Meshes/S_1_Unit_Plane.S_1_Unit_Plane"));
 
 DebugFocusPlaneMesh = PlaneMesh.Object;
 
- 
-
-static ConstructorHelpers::FObjectFinder&lt;UMaterial&gt; PlaneMat(TEXT("/Engine/EngineDebugMaterials/M\_SimpleTranslucent.M\_SimpleTranslucent"));
+static ConstructorHelpers::FObjectFinder&lt;UMaterial&gt; PlaneMat(TEXT("/Engine/EngineDebugMaterials/M_SimpleTranslucent.M_SimpleTranslucent"));
 
 DebugFocusPlaneMaterial = PlaneMat.Object;
-
- 
 
 // Setup uniform scaling
 
@@ -66,21 +56,15 @@ UStaticMesh\* UniformScaleMesh = nullptr;
 
 }
 
- 
-
 class UGizmoHandleMeshComponent\* UGizmoHandleGroup::CreateMeshHandle( class UStaticMesh\* HandleMesh, const FString& ComponentName )
 
 {
 
 > const bool bAllowGizmoLighting = false;        // @todo vreditor: Not sure if we want this for gizmos or not yet. Needs feedback. Also they're translucent right now.
 
- 
-
 > UGizmoHandleMeshComponent\* HandleComponent = CreateDefaultSubobject&lt;UGizmoHandleMeshComponent&gt;( \*ComponentName );
 >
 > check( HandleComponent != nullptr );
-
- 
 
 > HandleComponent-&gt;SetStaticMesh( HandleMesh );
 >
@@ -88,17 +72,13 @@ class UGizmoHandleMeshComponent\* UGizmoHandleGroup::CreateMeshHandle( class USt
 >
 > HandleComponent-&gt;SetupAttachment( this );
 
- 
-
 > HandleComponent-&gt;SetCollisionEnabled( ECollisionEnabled::QueryOnly );
 >
-> HandleComponent-&gt;SetCollisionResponseToAllChannels( ECR\_Ignore );
+> HandleComponent-&gt;SetCollisionResponseToAllChannels( ECR_Ignore );
 >
-> HandleComponent-&gt;SetCollisionResponseToChannel( COLLISION\_GIZMO, ECollisionResponse::ECR\_Block );
+> HandleComponent-&gt;SetCollisionResponseToChannel( COLLISION_GIZMO, ECollisionResponse::ECR_Block );
 >
-> HandleComponent-&gt;SetCollisionObjectType( COLLISION\_GIZMO );
-
- 
+> HandleComponent-&gt;SetCollisionObjectType( COLLISION_GIZMO );
 
 > HandleComponent-&gt;bGenerateOverlapEvents = false;
 >
@@ -113,8 +93,6 @@ class UGizmoHandleMeshComponent\* UGizmoHandleGroup::CreateMeshHandle( class USt
 > HandleComponent-&gt;bAffectDynamicIndirectLighting = bAllowGizmoLighting;
 >
 > //HandleComponent-&gt;bUseEditorCompositing = true;
-
- 
 
 > return HandleComponent;
 

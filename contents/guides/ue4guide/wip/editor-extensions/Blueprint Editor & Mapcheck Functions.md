@@ -1,38 +1,18 @@
 Check KismetEditorUtilities.h/BlueprintEditorUtils.h/BlueprintEditorUtils.cpp/ComponentEditorUtils.h
 
- 
-
 GetSimpleConstructionScript(USceneComponent const\* **Component**);
 
 FindCorrespondingSCSNode(USceneComponent const\* **ComponentObj**);
 
- 
-
- 
-
 virtual void EditorReplacedActor(AActor\* **OldActor**) {}
-
- 
-
- 
 
 Useful editor tool class:
 
 FBlueprintEditorUtils
 
- 
-
- 
-
 ===========================================
 
- 
-
- 
-
-void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*&gt;& Graphs) const
-
- 
+void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*&gt;> Graphs) const
 
 /\*\* Set of pages that combine into a single uber-graph \*/
 
@@ -40,15 +20,11 @@ void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*&gt;& Graphs) const
 >
 > TArray&lt;class UEdGraph\*&gt; UbergraphPages;
 
- 
-
 > /\*\* Set of functions implemented for this class graphically \*/
 >
 > UPROPERTY()
 >
 > TArray&lt;class UEdGraph\*&gt; FunctionGraphs;
-
- 
 
 > /\*\* Graphs of signatures for delegates \*/
 >
@@ -56,21 +32,17 @@ void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*&gt;& Graphs) const
 >
 > TArray&lt;class UEdGraph\*&gt; DelegateSignatureGraphs;
 
- 
-
 > /\*\* Set of macros implemented for this class \*/
 >
 > UPROPERTY()
 >
 > TArray&lt;class UEdGraph\*&gt; MacroGraphs;
 
- 
-
 for (UEdGraph\* CurrentGraph : Blueprint-&gt;FunctionGraphs)
 
 > {
 >
-> if( CurrentGraph-&gt;GetFName() == Schema-&gt;FN\_UserConstructionScript )
+> if( CurrentGraph-&gt;GetFName() == Schema-&gt;FN_UserConstructionScript )
 >
 > {
 >
@@ -84,11 +56,7 @@ for (UEdGraph\* CurrentGraph : Blueprint-&gt;FunctionGraphs)
 
 Find references function/find function
 
- 
-
 GetFindReferenceSearchString
-
- 
 
 FindInBlueprints.h:
 
@@ -100,8 +68,6 @@ TSharedPtr&lt; FImaginaryBlueprint&gt; ImaginaryBlueprint(new FImaginaryBlueprin
 >
 > FSearchResult SearchResult = RootSearchResult = SearchInstance-&gt;StartSearchQuery(SearchValue, ImaginaryBlueprint);
 
- 
-
 ========
 
 //Show what objects points to this, using the assetregistry
@@ -109,8 +75,6 @@ TSharedPtr&lt; FImaginaryBlueprint&gt; ImaginaryBlueprint(new FImaginaryBlueprin
 ObjectTools::ShowReferencers()
 
 > RetrieveReferencers( TArray&lt;FReferencerInformation&gt;\* OutInternalReferencers, TArray&lt;FReferencerInformation&gt;\* OutExternalReferencers);
-
- 
 
 //Show objects this points to
 
@@ -120,25 +84,17 @@ ObjectTools::ShowReferencedObjs(GetBlueprintObj());
 >
 > ObjectTools::ShowReferencedObjs(GetBlueprintObj()-&gt;GeneratedClass);
 
- 
-
 /\*\* Gather all bps that Blueprint depends on \*/
 
 static void GatherDependencies(const UBlueprint\* Blueprint, TSet&lt;TWeakObjectPtr&lt;UBlueprint&gt;&gt;& OutDependencies, TSet&lt;TWeakObjectPtr&lt;UStruct&gt;&gt;& OutUDSDependencies);
-
- 
 
 /\*\* Returns a list of loaded Blueprints that are dependent on the given Blueprint. \*/
 
 static void GetDependentBlueprints(UBlueprint\* Blueprint, TArray&lt;UBlueprint\*&gt;& DependentBlueprints, bool bRemoveSelf = true);
 
- 
-
 =========
 
 Search Asset Registry
-
- 
 
 FAssetRegistryModule\* AssetRegistryModule = &FModuleManager::LoadModuleChecked&lt;FAssetRegistryModule&gt;(TEXT("AssetRegistry"));
 
@@ -172,35 +128,25 @@ GEngine-&gt;AddOnScreenDebugMessage(-1, 10.f, FColor::Red, Asset.AssetName.GetPl
 
 ================================
 
- 
-
 Check if Actor is a Blueprint
 
 UBlueprint::GetBlueprintFromClass(const UClass\* InClass);
 
-BlueprintClass-&gt;HasAnyClassFlags(CLASS\_CompiledFromBlueprint)
+BlueprintClass-&gt;HasAnyClassFlags(CLASS_CompiledFromBlueprint)
 
 UObject-&gt;IsA(UBlueprintGeneratedClass::StaticClass())
 
 UClass-&gt;IsChildOf(UBlueprintGeneratedClass::StaticClass())
 
- 
-
 Find all nodes of type
 
-TArray&lt;UK2Node\_CustomEvent\*&gt; BpCustomEvents;
+TArray&lt;UK2Node_CustomEvent\*&gt; BpCustomEvents;
 
-FBlueprintEditorUtils::GetAllNodesOfClass&lt;UK2Node\_CustomEvent&gt;(FuncBlueprint, BpCustomEvents);
+FBlueprintEditorUtils::GetAllNodesOfClass&lt;UK2Node_CustomEvent&gt;(FuncBlueprint, BpCustomEvents);
 
 static bool GetBlueprintHierarchyFromClass(const UClass\* InClass, TArray&lt;UBlueprint\*&gt;& OutBlueprintParents);
 
- 
-
 ===============
-
- 
-
- 
 
 For finding shit that exists in bad folders:
 

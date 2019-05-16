@@ -10,21 +10,17 @@ class FEditorFileUtils
 
 public:
 
- 
-
 /\*\* Used to decide how to handle garbage collection. \*/
 
 enum EGarbageCollectionOption
 
 {
 
-GCO\_SkipGarbageCollection = 0,
+GCO_SkipGarbageCollection = 0,
 
-GCO\_CollectGarbage = 1,
+GCO_CollectGarbage = 1,
 
 };
-
- 
 
 /\*\* Sets the active level filename so that "Save" operates on this file and "SaveAs" must be used on others \*/
 
@@ -33,8 +29,6 @@ static void RegisterLevelFilename(UObject\* Object, const FString& NewLevelFilen
 ////////////////////////////////////////////////////////////////////////////
 
 // ResetLevelFilenames
-
- 
 
 /\*\*
 
@@ -48,19 +42,13 @@ static void RegisterLevelFilename(UObject\* Object, const FString& NewLevelFilen
 
 static void ResetLevelFilenames();
 
- 
-
 ////////////////////////////////////////////////////////////////////////////
 
 // Loading
 
- 
+DECLARE_DELEGATE_OneParam(FOnLevelsChosen, const TArray&lt;FAssetData&gt;& /\*SelectedLevels\*/);
 
-DECLARE\_DELEGATE\_OneParam(FOnLevelsChosen, const TArray&lt;FAssetData&gt;& /\*SelectedLevels\*/);
-
-DECLARE\_DELEGATE(FOnLevelPickingCancelled);
-
- 
+DECLARE_DELEGATE(FOnLevelPickingCancelled);
 
 /\*\*
 
@@ -76,9 +64,7 @@ DECLARE\_DELEGATE(FOnLevelPickingCancelled);
 
 \*/
 
-static UNREALED\_API void OpenLevelPickingDialog(const FOnLevelsChosen& OnLevelsChosen, const FOnLevelPickingCancelled& OnLevelPickingCancelled, bool bAllowMultipleSelection);
-
- 
+static UNREALED_API void OpenLevelPickingDialog(const FOnLevelsChosen& OnLevelsChosen, const FOnLevelPickingCancelled& OnLevelPickingCancelled, bool bAllowMultipleSelection);
 
 /\*\*
 
@@ -88,9 +74,7 @@ static UNREALED\_API void OpenLevelPickingDialog(const FOnLevelsChosen& OnLevels
 
 \*/
 
-static UNREALED\_API bool IsValidMapFilename(const FString& MapFilename, FText& OutErrorMessage);
-
- 
+static UNREALED_API bool IsValidMapFilename(const FString& MapFilename, FText& OutErrorMessage);
 
 /\*\*
 
@@ -100,9 +84,7 @@ static UNREALED\_API bool IsValidMapFilename(const FString& MapFilename, FText& 
 
 \*/
 
-static UNREALED\_API bool AttemptUnloadInactiveWorldPackage(UPackage\* PackageToUnload, FText& OutErrorMessage);
-
- 
+static UNREALED_API bool AttemptUnloadInactiveWorldPackage(UPackage\* PackageToUnload, FText& OutErrorMessage);
 
 /\*\*
 
@@ -112,9 +94,7 @@ static UNREALED\_API bool AttemptUnloadInactiveWorldPackage(UPackage\* PackageTo
 
 \*/
 
-static UNREALED\_API bool LoadMap();
-
- 
+static UNREALED_API bool LoadMap();
 
 /\*\*
 
@@ -136,15 +116,11 @@ static UNREALED\_API bool LoadMap();
 
 \*/
 
-static UNREALED\_API bool LoadMap(const FString& Filename, bool LoadAsTemplate = false, const bool bShowProgress=true);
-
- 
+static UNREALED_API bool LoadMap(const FString& Filename, bool LoadAsTemplate = false, const bool bShowProgress=true);
 
 ////////////////////////////////////////////////////////////////////////////
 
 // Saving
-
- 
 
 /\*\*
 
@@ -164,8 +140,6 @@ static UNREALED\_API bool LoadMap(const FString& Filename, bool LoadAsTemplate =
 
 static bool SaveMap(UWorld\* World, const FString& Filename );
 
- 
-
 /\*\*
 
 \* Saves the specified level. SaveAs is performed as necessary.
@@ -184,15 +158,11 @@ static bool SaveMap(UWorld\* World, const FString& Filename );
 
 \*/
 
-static UNREALED\_API bool SaveLevel(ULevel\* Level, const FString& DefaultFilename = TEXT( "" ), FString\* OutSavedFilename = nullptr );
-
- 
+static UNREALED_API bool SaveLevel(ULevel\* Level, const FString& DefaultFilename = TEXT( "" ), FString\* OutSavedFilename = nullptr );
 
 /\*\* Saves packages which contain map data but are not map packages themselves. \*/
 
-static UNREALED\_API void SaveMapDataPackages(UWorld\* World, bool bCheckDirty);
-
- 
+static UNREALED_API void SaveMapDataPackages(UWorld\* World, bool bCheckDirty);
 
 /\*\*
 
@@ -206,9 +176,7 @@ static UNREALED\_API void SaveMapDataPackages(UWorld\* World, bool bCheckDirty);
 
 \*/
 
-UNREALED\_API static void SaveAssetsAs(const TArray&lt;UObject\*&gt;& Assets, TArray&lt;UObject\*&gt;& OutSavedAssets);
-
- 
+UNREALED_API static void SaveAssetsAs(const TArray&lt;UObject\*&gt;& Assets, TArray&lt;UObject\*&gt;& OutSavedAssets);
 
 /\*\*
 
@@ -224,9 +192,7 @@ UNREALED\_API static void SaveAssetsAs(const TArray&lt;UObject\*&gt;& Assets, TA
 
 \*/
 
-UNREALED\_API static bool SaveLevelAs(ULevel\* Level, FString\* OutSavedFilename = nullptr);
-
- 
+UNREALED_API static bool SaveLevelAs(ULevel\* Level, FString\* OutSavedFilename = nullptr);
 
 /\*\*
 
@@ -246,8 +212,6 @@ UNREALED\_API static bool SaveLevelAs(ULevel\* Level, FString\* OutSavedFilename
 
 static bool AutosaveMap(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage&gt; &gt;& DirtyPackagesForAutoSave);
 
- 
-
 /\*\*
 
 \* Saves all levels to the specified directory.
@@ -265,8 +229,6 @@ static bool AutosaveMap(const FString& AbsoluteAutosaveDir, const int32 Autosave
 \*/
 
 static EAutosaveContentPackagesResult::Type AutosaveMapEx(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage&gt; &gt;& DirtyPackagesForAutoSave);
-
- 
 
 /\*\*
 
@@ -290,8 +252,6 @@ static EAutosaveContentPackagesResult::Type AutosaveMapEx(const FString& Absolut
 
 static bool AutosaveContentPackages(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage&gt; &gt;& DirtyPackagesForAutoSave);
 
- 
-
 /\*\*
 
 \* Saves all asset packages to the specified directory.
@@ -313,8 +273,6 @@ static bool AutosaveContentPackages(const FString& AbsoluteAutosaveDir, const in
 \*/
 
 static EAutosaveContentPackagesResult::Type AutosaveContentPackagesEx(const FString& AbsoluteAutosaveDir, const int32 AutosaveIndex, const bool bForceIfNotInList, const TSet&lt; TWeakObjectPtr&lt;UPackage&gt; &gt;& DirtyPackagesForAutoSave);
-
- 
 
 /\*\*
 
@@ -340,9 +298,7 @@ static EAutosaveContentPackagesResult::Type AutosaveContentPackagesEx(const FStr
 
 \*/
 
-UNREALED\_API static bool SaveDirtyPackages(const bool bPromptUserToSave, const bool bSaveMapPackages, const bool bSaveContentPackages, const bool bFastSave = false, const bool bNotifyNoPackagesSaved = false, const bool bCanBeDeclined = true, bool\* bOutPackagesNeededSaving = NULL);
-
- 
+UNREALED_API static bool SaveDirtyPackages(const bool bPromptUserToSave, const bool bSaveMapPackages, const bool bSaveContentPackages, const bool bFastSave = false, const bool bNotifyNoPackagesSaved = false, const bool bCanBeDeclined = true, bool\* bOutPackagesNeededSaving = NULL);
 
 /\*\*
 
@@ -364,9 +320,7 @@ UNREALED\_API static bool SaveDirtyPackages(const bool bPromptUserToSave, const 
 
 \*/
 
-UNREALED\_API static bool SaveDirtyContentPackages(TArray&lt;UClass\*&gt;& SaveContentClasses, const bool bPromptUserToSave, const bool bFastSave = false, const bool bNotifyNoPackagesSaved = false, const bool bCanBeDeclined = true);
-
- 
+UNREALED_API static bool SaveDirtyContentPackages(TArray&lt;UClass\*&gt;& SaveContentClasses, const bool bPromptUserToSave, const bool bFastSave = false, const bool bNotifyNoPackagesSaved = false, const bool bCanBeDeclined = true);
 
 /\*\*
 
@@ -378,9 +332,7 @@ UNREALED\_API static bool SaveDirtyContentPackages(TArray&lt;UClass\*&gt;& SaveC
 
 \*/
 
-UNREALED\_API static void GetDirtyWorldPackages(TArray&lt;UPackage\*&gt;& OutDirtyPackages);
-
- 
+UNREALED_API static void GetDirtyWorldPackages(TArray&lt;UPackage\*&gt;& OutDirtyPackages);
 
 /\*\*
 
@@ -392,9 +344,7 @@ UNREALED\_API static void GetDirtyWorldPackages(TArray&lt;UPackage\*&gt;& OutDir
 
 \*/
 
-UNREALED\_API static void GetDirtyContentPackages(TArray&lt;UPackage\*&gt;& OutDirtyPackages);
-
- 
+UNREALED_API static void GetDirtyContentPackages(TArray&lt;UPackage\*&gt;& OutDirtyPackages);
 
 /\*\*
 
@@ -406,11 +356,7 @@ UNREALED\_API static void GetDirtyContentPackages(TArray&lt;UPackage\*&gt;& OutD
 
 \*/
 
-UNREALED\_API static bool SaveCurrentLevel();
-
- 
-
- 
+UNREALED_API static bool SaveCurrentLevel();
 
 /\*\* Enum used for prompt returns \*/
 
@@ -418,17 +364,15 @@ enum EPromptReturnCode
 
 {
 
-PR\_Success, /\*\* The user has answered in the affirmative to all prompts, and execution succeeded \*/
+PR_Success, /\*\* The user has answered in the affirmative to all prompts, and execution succeeded \*/
 
-PR\_Failure, /\*\* The user has answered in the affirmative to prompts, but an operation(s) has failed during execution \*/
+PR_Failure, /\*\* The user has answered in the affirmative to prompts, but an operation(s) has failed during execution \*/
 
-PR\_Declined, /\*\* The user has declined out of the prompt; the caller should continue whatever it was doing \*/
+PR_Declined, /\*\* The user has declined out of the prompt; the caller should continue whatever it was doing \*/
 
-PR\_Cancelled /\*\* The user has cancelled out of a prompt; the caller should abort whatever it was doing \*/
+PR_Cancelled /\*\* The user has cancelled out of a prompt; the caller should abort whatever it was doing \*/
 
 };
-
- 
 
 /\*\*
 
@@ -472,15 +416,11 @@ PR\_Cancelled /\*\* The user has cancelled out of a prompt; the caller should ab
 
 \*/
 
-UNREALED\_API static EPromptReturnCode PromptForCheckoutAndSave( const TArray&lt;UPackage\*&gt;& PackagesToSave, bool bCheckDirty, bool bPromptToSave, TArray&lt;UPackage\*&gt;\* OutFailedPackages = NULL, bool bAlreadyCheckedOut = false, bool bCanBeDeclined = true );
-
- 
+UNREALED_API static EPromptReturnCode PromptForCheckoutAndSave( const TArray&lt;UPackage\*&gt;& PackagesToSave, bool bCheckDirty, bool bPromptToSave, TArray&lt;UPackage\*&gt;\* OutFailedPackages = NULL, bool bAlreadyCheckedOut = false, bool bCanBeDeclined = true );
 
 ////////////////////////////////////////////////////////////////////////////
 
 // Import/Export
-
- 
 
 /\*\*
 
@@ -490,19 +430,15 @@ UNREALED\_API static EPromptReturnCode PromptForCheckoutAndSave( const TArray&lt
 
 \*/
 
-UNREALED\_API static void Import();
+UNREALED_API static void Import();
 
-UNREALED\_API static void Import(const FString& InFilename);
+UNREALED_API static void Import(const FString& InFilename);
 
-UNREALED\_API static void Export(bool bExportSelectedActorsOnly); // prompts user for file etc.
-
- 
+UNREALED_API static void Export(bool bExportSelectedActorsOnly); // prompts user for file etc.
 
 ////////////////////////////////////////////////////////////////////////////
 
 // Source Control
-
- 
 
 /\*\*
 
@@ -530,7 +466,7 @@ UNREALED\_API static void Export(bool bExportSelectedActorsOnly); // prompts use
 
 \*/
 
-UNREALED\_API static bool PromptToCheckoutPackages(bool bCheckDirty, const TArray&lt;UPackage\*&gt;& PackagesToCheckOut, TArray&lt; UPackage\* &gt;\* OutPackagesCheckedOutOrMadeWritable = NULL, TArray&lt; UPackage\* &gt;\* OutPackagesNotNeedingCheckout = NULL, const bool bPromptingAfterModify = false );
+UNREALED_API static bool PromptToCheckoutPackages(bool bCheckDirty, const TArray&lt;UPackage\*&gt;& PackagesToCheckOut, TArray&lt; UPackage\* &gt;\* OutPackagesCheckedOutOrMadeWritable = NULL, TArray&lt; UPackage\* &gt;\* OutPackagesNotNeedingCheckout = NULL, const bool bPromptingAfterModify = false );
 
 /\*\*
 
@@ -550,9 +486,7 @@ UNREALED\_API static bool PromptToCheckoutPackages(bool bCheckDirty, const TArra
 
 \*/
 
-UNREALED\_API static ECommandResult::Type CheckoutPackages(const TArray&lt;UPackage\*&gt;& PkgsToCheckOut, TArray&lt;UPackage\*&gt;\* OutPackagesCheckedOut = NULL, const bool bErrorIfAlreadyCheckedOut = true);
-
- 
+UNREALED_API static ECommandResult::Type CheckoutPackages(const TArray&lt;UPackage\*&gt;& PkgsToCheckOut, TArray&lt;UPackage\*&gt;\* OutPackagesCheckedOut = NULL, const bool bErrorIfAlreadyCheckedOut = true);
 
 /\*\*
 
@@ -572,9 +506,7 @@ UNREALED\_API static ECommandResult::Type CheckoutPackages(const TArray&lt;UPack
 
 \*/
 
-UNREALED\_API static ECommandResult::Type CheckoutPackages(const TArray&lt;FString&gt;& PkgsToCheckOut, TArray&lt;FString&gt;\* OutPackagesCheckedOut = NULL, const bool bErrorIfAlreadyCheckedOut = true);
-
- 
+UNREALED_API static ECommandResult::Type CheckoutPackages(const TArray&lt;FString&gt;& PkgsToCheckOut, TArray&lt;FString&gt;\* OutPackagesCheckedOut = NULL, const bool bErrorIfAlreadyCheckedOut = true);
 
 /\*\*
 
@@ -602,9 +534,7 @@ UNREALED\_API static ECommandResult::Type CheckoutPackages(const TArray&lt;FStri
 
 \*/
 
-UNREALED\_API static bool PromptToCheckoutLevels(bool bCheckDirty, const TArray&lt;ULevel\*&gt;& SpecificLevelsToCheckOut, TArray&lt;UPackage\*&gt;\* OutPackagesNotNeedingCheckout = NULL);
-
- 
+UNREALED_API static bool PromptToCheckoutLevels(bool bCheckDirty, const TArray&lt;ULevel\*&gt;& SpecificLevelsToCheckOut, TArray&lt;UPackage\*&gt;\* OutPackagesNotNeedingCheckout = NULL);
 
 /\*\*
 
@@ -628,15 +558,13 @@ UNREALED\_API static bool PromptToCheckoutLevels(bool bCheckDirty, const TArray&
 
 \*/
 
-UNREALED\_API static bool PromptToCheckoutLevels(bool bCheckDirty, ULevel\* SpecificLevelToCheckOut);
-
- 
+UNREALED_API static bool PromptToCheckoutLevels(bool bCheckDirty, ULevel\* SpecificLevelToCheckOut);
 
 /\*\*
 
 \* Checks to see if a filename is valid for saving.
 
-\* A filename must be under MAX\_UNREAL\_FILENAME\_LENGTH to be saved
+\* A filename must be under MAX_UNREAL_FILENAME_LENGTH to be saved
 
 \*
 
@@ -646,13 +574,11 @@ UNREALED\_API static bool PromptToCheckoutLevels(bool bCheckDirty, ULevel\* Spec
 
 \*/
 
-UNREALED\_API static bool IsFilenameValidForSaving( const FString& Filename, FText& OutError );
-
- 
+UNREALED_API static bool IsFilenameValidForSaving( const FString& Filename, FText& OutError );
 
 /\*\* Loads a simple example map \*/
 
-UNREALED\_API static void LoadDefaultMapAtStartup();
+UNREALED_API static void LoadDefaultMapAtStartup();
 
 /\*\*
 
@@ -678,13 +604,9 @@ UNREALED\_API static void LoadDefaultMapAtStartup();
 
 static bool SaveWorlds(UWorld\* InWorld, const FString& RootPath, const TCHAR\* Prefix, TArray&lt;FString&gt;& OutFilenames);
 
- 
-
 /\*\* Whether or not we're in the middle of loading the simple startup map \*/
 
 static bool IsLoadingStartupMap() {return bIsLoadingDefaultStartupMap;}
-
- 
 
 /\*\*
 
@@ -698,9 +620,7 @@ static bool IsLoadingStartupMap() {return bIsLoadingDefaultStartupMap;}
 
 \*/
 
-UNREALED\_API static FString GetFilterString(EFileInteraction Interaction);
-
- 
+UNREALED_API static FString GetFilterString(EFileInteraction Interaction);
 
 /\*\*
 
@@ -712,9 +632,7 @@ UNREALED\_API static FString GetFilterString(EFileInteraction Interaction);
 
 \*/
 
-UNREALED\_API static void FindAllPackageFiles(TArray&lt;FString&gt;& OutPackages);
-
- 
+UNREALED_API static void FindAllPackageFiles(TArray&lt;FString&gt;& OutPackages);
 
 /\*\*
 
@@ -728,9 +646,7 @@ UNREALED\_API static void FindAllPackageFiles(TArray&lt;FString&gt;& OutPackages
 
 \*/
 
-UNREALED\_API static void FindAllSubmittablePackageFiles(TMap&lt;FString, FSourceControlStatePtr&gt;& OutPackages, const bool bIncludeMaps);
-
- 
+UNREALED_API static void FindAllSubmittablePackageFiles(TMap&lt;FString, FSourceControlStatePtr&gt;& OutPackages, const bool bIncludeMaps);
 
 /\*\*
 
@@ -742,9 +658,7 @@ UNREALED\_API static void FindAllSubmittablePackageFiles(TMap&lt;FString, FSourc
 
 \*/
 
-UNREALED\_API static void FindAllConfigFiles(TArray&lt;FString&gt;& OutConfigFiles);
-
- 
+UNREALED_API static void FindAllConfigFiles(TArray&lt;FString&gt;& OutConfigFiles);
 
 /\*\*
 
@@ -756,9 +670,7 @@ UNREALED\_API static void FindAllConfigFiles(TArray&lt;FString&gt;& OutConfigFil
 
 \*/
 
-UNREALED\_API static void FindAllSubmittableConfigFiles(TMap&lt;FString, FSourceControlStatePtr&gt;& OutConfigFiles);
-
- 
+UNREALED_API static void FindAllSubmittableConfigFiles(TMap&lt;FString, FSourceControlStatePtr&gt;& OutConfigFiles);
 
 /\*\*
 
@@ -772,9 +684,7 @@ UNREALED\_API static void FindAllSubmittableConfigFiles(TMap&lt;FString, FSource
 
 \*/
 
-UNREALED\_API static bool IsMapPackageAsset(const FString& ObjectPath);
-
- 
+UNREALED_API static bool IsMapPackageAsset(const FString& ObjectPath);
 
 /\*\*
 
@@ -790,9 +700,7 @@ UNREALED\_API static bool IsMapPackageAsset(const FString& ObjectPath);
 
 \*/
 
-UNREALED\_API static bool IsMapPackageAsset(const FString& ObjectPath, FString& MapFilePath);
-
- 
+UNREALED_API static bool IsMapPackageAsset(const FString& ObjectPath, FString& MapFilePath);
 
 /\*\*
 
@@ -806,20 +714,14 @@ UNREALED\_API static bool IsMapPackageAsset(const FString& ObjectPath, FString& 
 
 \*/
 
-UNREALED\_API static FString ExtractPackageName(const FString& ObjectPath);\\
-
- 
+UNREALED_API static FString ExtractPackageName(const FString& ObjectPath);\\
 
 ////////////////////////////////////////////////////////////////////////////
 
 // File
 
- 
+UNREALED_API static FString GetFilename(const FName& PackageName);
 
-UNREALED\_API static FString GetFilename(const FName& PackageName);
-
- 
-
-UNREALED\_API static FString GetFilename(UObject\* LevelObject);
+UNREALED_API static FString GetFilename(UObject\* LevelObject);
 
 };

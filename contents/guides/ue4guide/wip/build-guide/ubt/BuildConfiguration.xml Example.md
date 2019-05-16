@@ -1,99 +1,95 @@
+---
+sortIndex: 3
+---
+
 Located at: UnrealEngine\\Engine\\Saved\\UnrealBuildTool\\BuildConfiguration.xml
 
 UnrealBuildTool reads settings from XML configuration files in the following locations:
 
-\* Engine/Saved/UnrealBuildTool/BuildConfiguration.xml  
-\* \*User Folder/AppData\*/Roaming/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml  
+\* Engine/Saved/UnrealBuildTool/BuildConfiguration.xml 
+\* \*User Folder/AppData\*/Roaming/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml 
 \* \*My Documents\*/Unreal Engine/UnrealBuildTool/BuildConfiguration.xml
 
- 
+*Reference From https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/Configuration/index.html*
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/Configuration/index.html>&gt;*
 
- 
+```cpp
+<?xml version="1.0" encoding="utf-8" ?>
 
- 
+<Configuration xmlns="https://www.unrealengine.com/BuildConfiguration">
 
- 
+<BuildConfiguration>
 
-&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+<!-- Debug -->
 
-&lt;Configuration xmlns="https://www.unrealengine.com/BuildConfiguration"&gt;
+<!-- <bSupportEditAndContinue>false</bSupportEditAndContinue> /\* d=false \*/ -->
 
-&lt;BuildConfiguration&gt;
+<!--***<bOmitPCDebugInfoInDevelopment&gt;true&lt;/bOmitPCDebugInfoInDevelopment> /\* d=false */ -->
 
-&lt;!-- Debug --&gt;
+<!-- <bDisableDebugInfoForGeneratedCode>false</bDisableDebugInfoForGeneratedCode>--> <!-- /* d=true \*/ -->
 
-&lt;!-- &lt;bSupportEditAndContinue&gt;false&lt;/bSupportEditAndContinue&gt; /\* d=false \*/ --&gt;
+<!-- <bAllowLTCG>false</bAllowLTCG> /\* d=false */ -->
 
-&lt;!--\*\*\*&lt;bOmitPCDebugInfoInDevelopment&gt;true&lt;/bOmitPCDebugInfoInDevelopment&gt; /\* d=false \*/ --&gt;
+<!-- Build -->
 
-&lt;!-- &lt;bDisableDebugInfoForGeneratedCode&gt;false&lt;/bDisableDebugInfoForGeneratedCode&gt;--&gt; &lt;!-- /\* d=true \*/ --&gt;
+ <bAdaptiveUnityDisablesPCH>false</bAdaptiveUnityDisablesPCH>                        <!-- d=false -->
 
-&lt;!-- &lt;bAllowLTCG&gt;false&lt;/bAllowLTCG&gt; /\* d=false \*/ --&gt;
+<ProcessorCountMultiplier>1</ProcessorCountMultiplier>                              <!-- d=1     -->
 
- 
+ <!--***
+<MinFilesUsingPrecompiledHeaderOverride>1</MinFilesUsingPrecompiledHeaderOverride>  /* d=0    
+*/ -->
 
-&lt;!-- Build --&gt;
+ <!--<bFasterWithoutUnity>true</bFasterWithoutUnity>
 
-&lt;bAdaptiveUnityDisablesPCH&gt;false&lt;/bAdaptiveUnityDisablesPCH&gt; &lt;!-- d=false --&gt;
+<!--*\*\* <bAllowRemotelyCompiledPCHs>true</bAllowRemotelyCompiledPCHs> /\* d=false \*/ -->
 
-&lt;ProcessorCountMultiplier&gt;1&lt;/ProcessorCountMultiplier&gt; &lt;!-- d=1 --&gt;
+<!-- <bUseIncrementalLinking>true</bUseIncrementalLinking> /\* d=false */ -->
 
-&lt;!--\*\*\* &lt;MinFilesUsingPrecompiledHeaderOverride&gt;1&lt;/MinFilesUsingPrecompiledHeaderOverride&gt; /\* d=0 \*/ --&gt;
+<!--**\* <bUseFastPDBLinking>true</bUseFastPDBLinking> /\* d=false */ -->
 
-&lt;!-- &lt;bFasterWithoutUnity&gt;true&lt;/bFasterWithoutUnity&gt; /\* d=false \*/ --&gt;
+<!--*** <bAddFastPDBToProjects>true</bAddFastPDBToProjects> /\* d=false */ -->
 
-&lt;!--\*\*\* &lt;bAllowRemotelyCompiledPCHs&gt;true&lt;/bAllowRemotelyCompiledPCHs&gt; /\* d=false \*/ --&gt;
+<!-- <bUseUBTMakefiles>true</bUseUBTMakefiles> /\* d=true */ -->
 
- 
+<!--***<bUseUHTMakefiles>true</bUseUHTMakefiles&gt; /* d=false */ -->
 
-&lt;!-- &lt;bUseIncrementalLinking&gt;true&lt;/bUseIncrementalLinking&gt; /\* d=false \*/ --&gt;
+<!-- <bUsePCHFiles&gt;true&lt;/bUsePCHFiles&gt; /\* d=true \*/ -->
 
-&lt;!--\*\*\* &lt;bUseFastPDBLinking&gt;true&lt;/bUseFastPDBLinking&gt; /\* d=false \*/ --&gt;
+<!-- &lt;bUseUnityBuild&gt;true&lt;/bUseUnityBuild&gt; /\* d=true */ -->
 
-&lt;!--\*\*\* &lt;bAddFastPDBToProjects&gt;true&lt;/bAddFastPDBToProjects&gt; /\* d=false \*/ --&gt;
+<!-- <bForceUnityBuild&gt;false&lt;/bForceUnityBuild&gt; /\* d=false */ -->
 
-&lt;!-- &lt;bUseUBTMakefiles&gt;true&lt;/bUseUBTMakefiles&gt; /\* d=true \*/ --&gt;
+<!-- <bUseAdaptiveUnityBuild&gt;true&lt;/bUseAdaptiveUnityBuild&gt; /\* d=true \*/ -->
 
-&lt;!--\*\*\*&lt;bUseUHTMakefiles&gt;true&lt;/bUseUHTMakefiles&gt; /\* d=false \*/ --&gt;
+<!-- bForcePrecompiledHeaderForGameModules>true</bForcePrecompiledHeaderForGameModules> /* d=true \*/ -->
 
-&lt;!-- &lt;bUsePCHFiles&gt;true&lt;/bUsePCHFiles&gt; /\* d=true \*/ --&gt;
+<!-- Debug -->
 
-&lt;!-- &lt;bUseUnityBuild&gt;true&lt;/bUseUnityBuild&gt; /\* d=true \*/ --&gt;
+<bPrintDebugInfo>true</bPrintDebugInfo> <!-- d=false -->
 
-&lt;!-- &lt;bForceUnityBuild&gt;false&lt;/bForceUnityBuild&gt; /\* d=false \*/ --&gt;
+<bPrintPerformanceInfo>true</bPrintPerformanceInfo> <!-- d=false -->
 
-&lt;!-- &lt;bUseAdaptiveUnityBuild&gt;true&lt;/bUseAdaptiveUnityBuild&gt; /\* d=true \*/ --&gt;
+<bStopXGECompilationAfterErrors>true</bStopXGECompilationAfterErrors><!-- d=true -->
 
-&lt;!-- &lt;bForcePrecompiledHeaderForGameModules&gt;true&lt;/bForcePrecompiledHeaderForGameModules&gt; /\* d=true \*/ --&gt;
+<!-- <bPrintToolChainTimingInfo>true</bPrintToolChainTimingInfo> --> <!-- d=false --> <!-- Passes /bt+ & /time+ -->
 
- 
+<!-- <bDebugBuildsActuallyUseDebugCRT>false</bDebugBuildsActuallyUseDebugCRT> /\* d=false \*/ -->
 
-&lt;!-- Debug --&gt;
+</BuildConfiguration>
 
-&lt;bPrintDebugInfo&gt;true&lt;/bPrintDebugInfo&gt; &lt;!-- d=false --&gt;
+<WindowsPlatform>
 
-&lt;bPrintPerformanceInfo&gt;true&lt;/bPrintPerformanceInfo&gt; &lt;!-- d=false --&gt;
+<!-- \*\*\*<bStrictConformanceMode>true</bStrictConformanceMode> -->
 
-&lt;bStopXGECompilationAfterErrors&gt;true&lt;/bStopXGECompilationAfterErrors&gt; &lt;!-- d=true --&gt;
+<!-- \*\*\*<StaticAnalyzer>VisualCpp</StaticAnalyzer> -->
 
-&lt;!-- &lt;bPrintToolChainTimingInfo&gt;true&lt;/bPrintToolChainTimingInfo&gt; --&gt;&lt;!-- d=false --&gt; &lt;!-- Passes /bt+ & /time+ --&gt;
+<!-- \*\*\*<StaticAnalyzer>PVSStudio</StaticAnalyzer> -->
 
-&lt;!-- &lt;bDebugBuildsActuallyUseDebugCRT&gt;false&lt;/bDebugBuildsActuallyUseDebugCRT&gt; /\* d=false \*/ --&gt;
+<!-- <Compiler>VisualStudio2017</Compiler> -->
 
-&lt;/BuildConfiguration&gt;
+</WindowsPlatform>
 
-&lt;WindowsPlatform&gt;
+</Configuration>
 
-&lt;!-- \*\*\*&lt;bStrictConformanceMode&gt;true&lt;/bStrictConformanceMode&gt; --&gt;
-
-&lt;!-- \*\*\*&lt;StaticAnalyzer&gt;VisualCpp&lt;/StaticAnalyzer&gt; --&gt;
-
-&lt;!-- \*\*\*&lt;StaticAnalyzer&gt;PVSStudio&lt;/StaticAnalyzer&gt; --&gt;
-
-&lt;!-- &lt;Compiler&gt;VisualStudio2017&lt;/Compiler&gt; --&gt;
-
-&lt;/WindowsPlatform&gt;
-
-&lt;/Configuration&gt;
+```

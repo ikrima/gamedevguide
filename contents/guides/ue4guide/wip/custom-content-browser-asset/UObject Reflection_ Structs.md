@@ -1,16 +1,14 @@
 Initialize Struct:
 
--------------------------------------
+---
 
 StructMemory = (uint8\*)FMemory::Malloc(ActualStruct-&gt;GetStructureSize());
 
 ActualStruct-&gt;InitializeStruct(StructMemory);
 
- 
-
 Copy struct:
 
--------------------------------------
+---
 
 if (ProcAnimComponent && OutInitValueStore)
 
@@ -38,29 +36,17 @@ bFoundRow = true;
 
 }
 
- 
-
 Destroy Struct:
 
--------------------------------------
-
- 
+---
 
 UScriptStruct\* structType = FESCompSumType::GetStructType(CompStructType);
 
 structType-&gt;DestroyStruct(StructData);
 
- 
-
- 
-
 Reflection through struct params apart:
 
 <https://forums.unrealengine.com/community/community-content-tools-and-tutorials/27351-tutorial-how-to-accept-wildcard-structs-in-your-ufunctions>
-
- 
-
- 
 
 FMovieSceneEvalTemplatePtr& operator=(const FMovieSceneEvalTemplatePtr& RHS)
 
@@ -72,8 +58,6 @@ FMovieSceneEvalTemplatePtr& operator=(const FMovieSceneEvalTemplatePtr& RHS)
 >
 > UScriptStruct::ICppStructOps& StructOps = \*RHS-&gt;GetScriptStruct().GetCppStructOps();
 
- 
-
 > void\* Allocation = Reserve(StructOps.GetSize(), StructOps.GetAlignment());
 >
 > StructOps.Construct(Allocation);
@@ -81,8 +65,6 @@ FMovieSceneEvalTemplatePtr& operator=(const FMovieSceneEvalTemplatePtr& RHS)
 > StructOps.Copy(Allocation, &RHS.GetValue(), 1);
 >
 > }
-
- 
 
 > return \*this;
 >
