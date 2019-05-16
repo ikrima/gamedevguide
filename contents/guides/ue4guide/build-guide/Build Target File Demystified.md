@@ -4,7 +4,7 @@ sortIndex: 1
 
 # Useful Links
 
-<http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified/> \
+<http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified/>
 <https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4>
 
 ## **Project Generation**
@@ -41,4 +41,4 @@ DynamicallyLoadedModuleNames are dynamically linked whereas others are staticall
 - Public implies that you may also expose such functionality to whatever tools, editors or plugins are dependent on your game/module. It is also important to keep in mind that with the static linking, the header files are included.
 - Dynamically loaded modules do not include the header files at link time, and instead should be treated as an external dll, loaded when needed. The key difference is that because of the static linking, if the module is missing your code will fail out.
 
-_From <https://wiki.unrealengine.com/An_Introduction_to_UE4_Plugins>_
+*From <https://wiki.unrealengine.com/An_Introduction_to_UE4_Plugins>*

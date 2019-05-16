@@ -14,14 +14,10 @@ sortIndex: 0
 Reference: UnrealEngine\\Engine\\Source\\Programs\\UnrealBuildTool\\Configuration\\UEBuildTarget.cs
 ```
 
-&nbsp;
-
 # Incredibuild
 
 - Make sure Incredibuild agents are installed on your local machine
 - Make sure Coordinator is running on the build server
-
-&nbsp;
 
 # Build Automation
 
@@ -30,13 +26,13 @@ Reference: UnrealEngine\\Engine\\Source\\Programs\\UnrealBuildTool\\Configuratio
   - BuildGraph -target=”Make Installed Build Mac” -script=Engine/Build/InstalledEngineBuild.xml
   - If you run one of these **with -listonly added to the command**, you will be able to see what will be built and a list of additional options you can specify. By default it will attempt to build every target platform your host machine is capable of making builds for, except for XboxOne and PS4, which are disabled by default. You can disable target platforms by adding -set:WithWin64=false to the commandline and also skip over the creation of DDC for Engine and Template content by passing -WithDDC=false.
 
-_From <https://forums.unrealengine.com/showthread.php?119130-Unreal-Engine-4-13-Preview&p=575178&viewfull=1#post575178>_
+*From <https://forums.unrealengine.com/showthread.php?119130-Unreal-Engine-4-13-Preview&p=575178&viewfull=1#post575178>*
 
 - <https://answers.unrealengine.com/questions/416396/building-binary-editor-from-source-for-artists.html>
 - <https://forums.unrealengine.com/showthread.php?123490-Current-advice-for-distributing-custom-engine-builds-to-team-without-recompiling>
 - New: Using the -precompile option with UnrealBuildTool will now build all engine modules. Overriding the GetModulesToPrecompile() function from a game's target rules is no longer necessary, and has been deprecated.
 
-_From <https://www.unrealengine.com/blog/unreal-engine-4-11-released>_
+*From <https://www.unrealengine.com/blog/unreal-engine-4-11-released>*
 
 - BuildGraph system & creating precompiled engine builds/installed builds:
   - <https://docs.unrealengine.com/latest/INT/Programming/Development/InstalledBuildReference/index.html>
@@ -52,13 +48,9 @@ _From <https://www.unrealengine.com/blog/unreal-engine-4-11-released>_
 | SourceDistribution.txt | Whether it's a github source build?                                   |
 | PerforceBuild.txt      | Whether Perfroce is building the engine (disables launcher autostart) |
 
-&nbsp;
-
 # Swarm
 
 - Copy the /Engine/Binaries/DotNET/ directory from an existing UE4 installation to a your computer
-
-&nbsp;
 
 # Building Configuration With Custom Build Compiler Flags
 
@@ -91,19 +83,15 @@ ref CPPEnvironmentConfiguration OutCPPEnvironmentConfiguration
 //}
 ```
 
-&nbsp;
-
 # Building Lighting from Command Line
 
 `batch>UE4-Editor.exe [Project Folder Path] -run=resavepackages -buildlighting -MapsOnly -ProjectOnly -AllowCommandletRendering -Map=[Name of map]`
-_From <https://wiki.unrealengine.com/LightingTroubleshootingGuide>_
+*From <https://wiki.unrealengine.com/LightingTroubleshootingGuide>*
 
 GenerateProjectFiles.bat
 
 - Can take arguments to specify which version of visual studio. Ex to force generate VS 2013 / VS 2015 (use when you have multiple versions of Visual Studio):
   `batch>GenerateProjectFiles.exe - 2017`
-
-&nbsp;
 
 ## Explanation of Different Build Configurations
 
@@ -124,21 +112,17 @@ First part:
 - Client - Without editor and server code, client only, with this build user wont able to set up server
 - Server - Without editor and client, in other words dedicated server build, but note that other builds (except "Client" ofcorse) can function as dedicated server too
 
-_From <https://answers.unrealengine.com/questions/194712/differences-between-build-configurations.html>_
-
-&nbsp;
+*From <https://answers.unrealengine.com/questions/194712/differences-between-build-configurations.html>*
 
 # Derived Data Cache
 
 The Derived Data Cache (DDC) stores versions of assets in the formats used by the engine and its target platforms, as opposed to the source formats artists create that are imported into the editor and stored in .uasset files. Content stored in the DDC is disposable in that it can always be regenerated at any time using the data stored in the .uasset file. Storing these derived formats externally makes it possible to easily add or change the formats used by the engine without needing to modify the source asset file.
 
-&nbsp;
-
 ## Using a Shared DDC
 
 Studios should use a shared DDC that all users in a particular location can access. This way, only one person needs to build the derived asset format(s) and they are automatically available to all other users. There will occasionally be stalls when assets need to be processed, but the results are remembered and shared. So with a handful of developers or more, most people will not notice any impact.
 
-To set up a shared DDC, override the paths for the \[DerivedDataBackendGraph\] by declaring this section in your game's **DefaultEngine.ini**. This section is originally declared in the **BaseEngine.ini** where the paths are set to Epic's internal DDC share. Re-declare the section and change the paths to point to a share on your network (e.g. Path=\\\\mystudio.net\\DDC):
+To set up a shared DDC, override the paths for the \[DerivedDataBackendGraph] by declaring this section in your game's **DefaultEngine.ini**. This section is originally declared in the **BaseEngine.ini** where the paths are set to Epic's internal DDC share. Re-declare the section and change the paths to point to a share on your network (e.g. Path=\\\\mystudio.net\\DDC):
 
 ```ini
 [DerivedDataBackendGraph]
@@ -157,8 +141,6 @@ EnginePak=(Type=ReadPak, Filename=../../../Engine/DerivedDataCache/DDC.ddp)
 Satellite studios working out of a single shared code base can set the **UE-SharedDataCachePath** environment variable to a path that all users at each location can read and write to. This allows each location to have its own shared DDC.
 
 For example: `batch>UE-SharedDataCachePath=\\mystudio.net\DDC`
-
-&nbsp;
 
 ## Building Derived Data
 

@@ -9,7 +9,7 @@ sortIndex: 2
 
 First, if you install adobe stuff, do yourself a favor and remove the 12 services they install for lulz even when you're not using any adobe product. You can uninstall CreativeCloud desktop app while keeping photoshop/premiere/etc
 
-[Remove Creative Cloud Desktop App](https://helpx.adobe.com/creative-cloud/help/uninstall-creative-cloud-desktop-app.html) \
+[Remove Creative Cloud Desktop App](https://helpx.adobe.com/creative-cloud/help/uninstall-creative-cloud-desktop-app.html)
 ![](https://pbs.twimg.com/media/DuzvOgqVsAAmEEB.jpg)
 
 # Making Windows tolerable
@@ -32,8 +32,6 @@ Now tools I use. ⭐ => how must have it is to me
 - Tree Style Tab - Tree column view of all your tabs
 - Stylus - make youtube distraction free and remove notifications/likes showing up on page
 - uBlock Origin - ad block
-
-&nbsp;
 
 # DCC:
 
@@ -99,6 +97,6 @@ Now tools I use. ⭐ => how must have it is to me
   - hsluv
   - p4python
 - Powershell
-- Shadershop - Dont use it bc its proof of concept but wanted to sneak it here so _someone_ can fully flesh it out. Silly in 2018 we still have to do this in our heads (but real motivation is my brain is getting older and can't do it as well anymore #MathIsASportForTheYoung)
+- Shadershop - Dont use it bc its proof of concept but wanted to sneak it here so *someone* can fully flesh it out. Silly in 2018 we still have to do this in our heads (but real motivation is my brain is getting older and can't do it as well anymore #MathIsASportForTheYoung)
 
 Credit to [@kenpex](https://twitter.com/kenpex) where I discovered some of these tools. Here's his [list](https://c0de517e.blogspot.com/2011/04/2011-tools-that-i-use.html)

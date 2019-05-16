@@ -29,7 +29,7 @@ UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=pvsstudio
 UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodebuginfo
 ```
 
-_From <https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html>_
+*From <https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html>*
 
 # Manually setting up PVS Studio for Static Analysis
 

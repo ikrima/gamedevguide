@@ -17,7 +17,7 @@ Here's everything that finally worked together: [PC PartPicker Hardware List](ht
 - 64 gb RAM overclocked to 2933
 - Main drive: Intel Optane
   - If money isn’t an issue, I can’t recommend enough the intel optane drive for main + ssd raid for second drive. It’s like an order of mag faster and makes day to day feel transformative
-  - _What're the build improvements for optane?_
+  - *What're the build improvements for optane?*
     - I'd say depends on what baseline is. Assuming src is built on optane drive: Optane vs HD - massive benefit Optane vs. SSD vs Raid-0 SSD - hard to say sans measuring. I noticed a massive improvement but that's colored by the terrible amd raid driver issue
     - Also depends on CPU (32-core beast vs 4 core) & how multi-threaded your build is (msvc 2015 horrible, msvc2017 decent, fastbuild/incredibuild is great) That would all affect how much of a bottleneck your disk is going to be but really would need to measure since too many factors
     - Biggest benefit of optane is insanely fast (3x more than next fastest ssd) random access read/writes with 4k blocks, 1 thread, quedepth 1. Net result is making it the primary drive makes windows "feel" a lot snappier
@@ -27,10 +27,10 @@ Ryzen has lots of PCI lanes but mobo pcie slots are not all x16. Lots of trial &
 
 - 2080ti goes in top PCIe
 - 1070 goes in 2nd PCIe
-  - _Why A Second Card?_ Mainly for live shader debugging/register inspection on single machine + I had a spare card. Other hopeful benefit is for mgpgpu stuff (houdini cloth sims) but I don't have concrete evidence lots of programs written for that outside of [RedShift + Octane](https://www.pugetsystems.com/labs/articles/GeForce-RTX-2080-Multi-GPU-Scaling-in-OctaneRender-and-Redshift-1258/)
+  - *Why A Second Card?* Mainly for live shader debugging/register inspection on single machine + I had a spare card. Other hopeful benefit is for mgpgpu stuff (houdini cloth sims) but I don't have concrete evidence lots of programs written for that outside of [RedShift + Octane](https://www.pugetsystems.com/labs/articles/GeForce-RTX-2080-Multi-GPU-Scaling-in-OctaneRender-and-Redshift-1258/)
 - ASRock M2 Raid card in slot3 (need x16 for Raid-0 SSD)
 - Optane in bottom
-- Airflow setup in pic \
+- Airflow setup in pic
   ![](https://pbs.twimg.com/media/DuVGeo3UwAAAspV.jpg)
 
 # Compatibility gremlins:
@@ -58,12 +58,12 @@ Details: [ASRock Ultra Quad M.2 Card & AMD RAIDXpert Benchmark](https://www.twea
 
 # Memory
 
-- Rule of thumb is 2gb per core. For building UE4, I have to limit number of threads < 64 as I run out of memory and stuff starts paging out to disk
+- Rule of thumb is 2gb per core. For building UE4, I have to limit number of threads &lt; 64 as I run out of memory and stuff starts paging out to disk
 - Intel Optane drive is so fast it took me a bit to discover since the perf didn't tank an order of magnitude
 - Get Samsung B-Die & buy kits together as mfg only guarantees timings for kits (eg get a kit of 16gbx4 vs 4 separate 16gb of same model) ([benzhaomin.github.io/bdiefinder/](https://benzhaomin.github.io/bdiefinder/))
 - TR needs fast memory (also NUMA arch with only 4 mem channels for 8 dies)
 - Reliably can only OC up to 2933mhz (officially 2133 iirc)
-- _conjecture_ Past certain point, pushing memspeed is net loss esp. since hw errors induced from very tight memory/CPU timings >> latency stalls from CPU requesting memory in a Quad Channel config
+- *conjecture* Past certain point, pushing memspeed is net loss esp. since hw errors induced from very tight memory/CPU timings >> latency stalls from CPU requesting memory in a Quad Channel config
 
 # Overclocking
 
@@ -73,7 +73,7 @@ AMD made it really easy with [RyzenMaster](https://www.amd.com/en/technologies/r
 
 - Allows you to control clock settings
 - Whether to force turn on or use Precision Boost Override 2 and define range of dynamic scaling
-- _NOTE_: Some settings dont persist on restart
+- *NOTE*: Some settings dont persist on restart
 
 [**Precision Boost Overdrive 2**](https://community.amd.com/community/gaming/blog/2018/08/13/understanding-precision-boost-overdrive-in-three-easy-steps) seems pretty great and allows for dynamic scaling switching at a much granular timeslice
 
@@ -88,7 +88,7 @@ Dead simple:
 - Just set clock multiplier to 38
 - CPU voltage at 1.25
 - Memory to 2933 with 1.35v
-- _NOTE_: TR has a thermal ceiling of 69° before it'll start throttling
+- *NOTE*: TR has a thermal ceiling of 69° before it'll start throttling
 
 Here's a [beginner's guide to overclocking](https://forums.tomshardware.com/faq/cpu-overclocking-guide-and-tutorial-for-beginners.3347428/)
 

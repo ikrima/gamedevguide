@@ -16,7 +16,7 @@ This log will be generated while running a Cooked/Packaged Project (ProjectName.
 
 # **Build/Cook/Package Logs**
 
-These logs are generated any time you Build/Cook/Package a project. File &gt;Package &gt; Platform, Editor Launch On, UFE sessions.
+These logs are generated any time you Build/Cook/Package a project. File >Package > Platform, Editor Launch On, UFE sessions.
 
 <table><thead><tr class="header"><th><strong>Log Name</strong></th><th><strong>Windows location</strong></th><th><strong>Mac Location</strong></th></tr></thead><tbody><tr class="odd"><td><p>Cook.txt</p><p>UAT_Log.txt UnrealBuildTool-YYYY.MM.DD-HH.mm.ss.txt</p></td><td><p><strong>P4</strong> - Engine\Programs\AutomationTool\Saved\Logs</p><p><strong>Binary</strong> - %USERPROFILE%\AppData\Roaming\Unreal Engine\AutomationTool\Logs\</p></td><td>~/Library/Logs/Unreal Engine/LocalBuildLogs/</td></tr></tbody></table>
 
@@ -30,4 +30,4 @@ These are the logs that created and uploaded to CrashReporter.
 
 Any time a compile fails in Visual Studio or Xcode, copy all of the Output and paste into a txt file. Often times we only copy the last few lines that say it failed, which really doesn’t give the information that devs need.
 
-_From <https://wiki.unrealengine.com/Locating_Project_Logs>_
+*From <https://wiki.unrealengine.com/Locating_Project_Logs>*
