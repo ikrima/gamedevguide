@@ -123,10 +123,10 @@ _Make sure when creating a new stream that you're not creating a new workspace. 
 
 _From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:_
 
-_p4 stream -t task -P //stream/parent //stream/mynewtask01
+\_p4 stream -t task -P //stream/parent //stream/mynewtask01
 p4 populate -r -S //stream/mynewtask01
 p4 client -s -S //stream/mynewtask01
-p4 sync\__
+p4 sync\_\_
 
 _The "stream" and "client" commands don't actually operate on any files, so they'll be really quick no matter what. The "populate" will branch all 10k files, but it does it on the back end without actually moving any content around, so it'll also be really quick (if you got up into the millions or billions it might take an appreciable amount of time depending on the server hardware, but 10k is nothing). The "sync" will be very quick if you were already synced to //stream/parent, because all the files are already there; again, it's just moving pointers around on the server side rather than transferring the file content._
 

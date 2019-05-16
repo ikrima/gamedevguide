@@ -1,4 +1,5 @@
 # Cliff Notes
+
 Condensed cheat sheet/mnemonics of stuff I forget
 
 Measure => Size

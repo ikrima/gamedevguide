@@ -1,20 +1,23 @@
 ---
-title:  "Gamedev Development Environment Part 3"
+title: 'Gamedev Development Environment Part 3'
 pageSubTitle: A Yak Shaving for fun & profit series™
-sideMenuHeading: "Part 4: Optimizing UE4 Compile Times"
+sideMenuHeading: 'Part 4: Optimizing UE4 Compile Times'
 sortIndex: 3
 ---
+
 # Part IV: Optimizing Unreal Engine Builds, Visual Studio, and Final Benchmarks
 
-***TLDR***: Optimal config for UE4:
+**_TLDR_**: Optimal config for UE4:
+
 - [2990WX|Optane|Stashed]::UBT Parallel Executor
-[UE4|DevEditor]
+  [UE4|DevEditor]
 - Clean: 720s
 - Build (no changes): 5.3s (wtf)
 - Clean + Rebuild (with caching): 120s
 
 # SSD results:
-Here you can see the optane driver really shining with 4k *unthreaded* *single queue depth* random read/write latency. This is just amazing.
+
+Here you can see the optane driver really shining with 4k _unthreaded_ _single queue depth_ random read/write latency. This is just amazing.
 
 However, it performs just ok for high sequential block access (which can be threaded with quedepths of 32 in practice) \
 ![](https://pbs.twimg.com/media/Du5XQgTUUAA4mRX.jpg)
@@ -32,12 +35,15 @@ AIDA Cache & Memtest Benchmark \
 ![](https://pbs.twimg.com/media/Du5Y6bpUUAIq9ld.jpg)
 
 # UE4 build times:
+
 Machines:
+
 - 2990WX: -3.8ghz -64gb
 - 1950: -3.8ghz -32GB
 - i7-5960X: -3.0ghz -64gb
 
 Configs tested:
+
 - {UBT, Fastbuild}
 - {PCH,NoPCH}
 - {NonUnity, AdaptiveUnity, Unity}
@@ -52,15 +58,15 @@ I guess if you had enough machines it could win out. Also, probably my fastbuild
 
 [stashed.io](http://stashed.io) doesn't distribute its compiler cache without some extra work (have fun symlinking everything so paths match). BUT, by far this is the biggest win especially since it's ZERO config. Literally three clicks and you're automatically running
 
-***So for optimal(simplicity x build times), I just use my single threadripper machine + local compiler caching on my raid-0 4x SSD.*** I also love this because rolling it out to distributed team and we don't have to wrestle with how to get them multiple machines.
+**_So for optimal(simplicity x build times), I just use my single threadripper machine + local compiler caching on my raid-0 4x SSD._** I also love this because rolling it out to distributed team and we don't have to wrestle with how to get them multiple machines.
 
 Here's all the results:
-
 
 LLVM: 14min to compile these settings from llvm-project monorepo \
 ![](https://pbs.twimg.com/media/Du-I9AXUcAQi_S_.jpg)
 
 UE4 Build Benchmark Results: (a bit disorganized bc I only realized halfway through to save them to post)
+
 ```
 Optane Drive
 Full Build:

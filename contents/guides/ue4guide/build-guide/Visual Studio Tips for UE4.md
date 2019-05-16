@@ -7,6 +7,7 @@ sortIndex: 8
 - [Adding a button to attach the debugger directly to the UE4 instance](/ue4guide/vs-autoattach-to-ue4-button)
 - [Print Blueprint/BP Callstack](/print-blueprint-callstack)
 - Crash Course Visual Assist Shortcuts:
+
   - ALT+G - Context menu to go to places where a function/variable/class is referenced
   - ALT+SHIFT+G - Context menu to see the declaration/implementation of a function, see instances of a type, see base symbols (classes/function/variables it might be inherting from)
   - ALT+O - Toggle Header/Code file
@@ -22,7 +23,7 @@ sortIndex: 8
   - Screenshot: [](/assets/media/image1.jpg)
 - Setting up Visual Studio with UE4: <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup/>
 - Enable Visual Assist support for UE4 C++ support <https://docs.wholetomato.com/default.asp?W763>
-- Add va\_stdafx.h file in directory of one of your sln or vcxproj files: <https://support.wholetomato.com/default.asp?W783>
+- Add va_stdafx.h file in directory of one of your sln or vcxproj files: <https://support.wholetomato.com/default.asp?W783>
 - VassistX/Intellisense/Visual Assist X Performance Optimization:
   - Disable intellisense browse database <https://support.wholetomato.com/default.asp?W133>
   - Disable enumerate references <https://support.wholetomato.com/default.asp?W664>
@@ -57,4 +58,4 @@ If you cannot open the options dialog of Visual Assist or are so directed by cus
 1. Navigate to HKCU\\Software\\Whole Tomato
 1. set the value of Logging to 1
 
-*From <https://support.wholetomato.com/default.asp?W305>*
+_From <https://support.wholetomato.com/default.asp?W305>_

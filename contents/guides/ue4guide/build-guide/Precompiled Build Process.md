@@ -2,18 +2,17 @@
 sortIndex: 6
 ---
 
-Using BuildGraph
-----------------
+## Using BuildGraph
 
 1. Create the installed build
+
 ```batch
 "UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" BuildGraph -script="UnrealEngine\Engine\Build\InstalledEngineBuild.xml" -target="Make Installed Build Win64" -set:HostPlatformOnly=true -set:WithWin32=false -set:WithIOS=false
 ```
 
 1. Create InstalledBuild.txt and place in UnrealEngine\\Engine\\Build
 
-Sans BuildGraph
----------------
+## Sans BuildGraph
 
 ```batch
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 UE4Editor -project="BBRProto\BBRProto.uproject" -precompile
@@ -22,8 +21,7 @@ UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRPro
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProtoEditorBP -project="BBRProto\BBRProto.uproject" -useprecompiled
 ```
 
-Add section to BaseEngine.ini
------------------------------
+## Add section to BaseEngine.ini
 
 ```ini
 [InstalledPlatforms]
@@ -31,8 +29,7 @@ Add section to BaseEngine.ini
 ;+InstalledPlatformConfigurations=(PlatformName="Win64", Configuration="Development", PlatformType="Game")
 ```
 
-Generate project files
------------------------
+## Generate project files
 
 ```batch
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProto -project="UnrealEngine\BBRProto\BBRProto.uproject" -useprecompiled -projectfiles -game -engine

@@ -88,6 +88,6 @@ The "RawName" is an FName that encodes all of these things, which is why you don
 
 In all cases, realize that you may be filtering quite a lot of data and string operations could be slow.
 
-DECLARE_FNAME_STAT is something it looks like we use in only one place. That is a stat type that has a FName as the _payload_ (in all other cases it is a number). If you just need a string and no other payload, this might be a winner.
+DECLARE*FNAME_STAT is something it looks like we use in only one place. That is a stat type that has a FName as the \_payload* (in all other cases it is a number). If you just need a string and no other payload, this might be a winner.
 
 _From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>&gt;_

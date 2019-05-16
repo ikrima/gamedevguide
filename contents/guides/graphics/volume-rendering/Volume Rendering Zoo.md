@@ -164,7 +164,6 @@ Optimization Reminders
     - All-Frequency Precomputed Radiance Transfer using Spherical RadialBasis Functions and Clustered Tensor Approximation
     - https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/
 
-
 ### **Promising:**
 
 - Quantization baking: Noise-Resistant Fitting for Spherical Harmonics
