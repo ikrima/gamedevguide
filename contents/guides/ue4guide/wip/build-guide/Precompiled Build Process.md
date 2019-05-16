@@ -1,3 +1,7 @@
+```
+sortindex: 8
+```
+
 ## Using BuildGraph
 
 "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Build\\BatchFiles\\RunUAT.bat" BuildGraph -script="D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Build\\InstalledEngineBuild.xml" -target="Make Installed Build Win64" -set:HostPlatformOnly=true -set:WithWin32=false -set:WithIOS=false
@@ -27,3 +31,4 @@ D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuild
 D:/Ikrima/src/Public-Development/UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProto -project="D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" -useprecompiled -projectfiles -game -engine
 
 Uncheck ShaderCompilerWorker dependency from BBRProto
+

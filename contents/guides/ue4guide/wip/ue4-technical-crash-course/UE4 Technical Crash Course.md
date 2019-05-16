@@ -1,70 +1,61 @@
+```
+sortIndex: 1
+```
+
 # Overview Of Engine:
 
-<https://docs.unrealengine.com/latest/INT/Programming/Introduction/index.html>
+https://docs.unrealengine.com/latest/INT/Programming/Introduction/index.html
 
-GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to Come: <http://www.slideshare.net/GerkeMaxPreussner/gdc-europe-2014>
+GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to Come: http://www.slideshare.net/GerkeMaxPreussner/gdc-europe-2014
 
 ## Modules
 
-Types:
+**Types:**
 
 - Developer: Used by Editor & Programs, but not games
-
 - Editor: Used by UnrealEditor Only
-
 - Runtime: Used by Editor, Games, & Programs
-
 - ThirdParty: External third party libs/code
-
 - Plugins: Extensions for Editor and/or Games. Should not have dependencies on other plugins
-
 - Programs: Standalone apps & tools
 
-Important Modules:
+
+
+**Important Modules:**
 
 - Core: fundamental types & functions
-
 - CoreUObject: Implements Uobject reflection system
-
 - Engine: Game & engine framework classes
-
 - OnlineSubsystem: Online & social networking features
-
 - Slate: Widget library & high level UI functionality
 
-Modules for Advanced Functionality:
+
+
+**Modules for Advanced Functionality:**
 
 - DesktopPlatform: Modules for OS function calls (e.g. filesystem, etc)
-
 - DetailCustomization: Editor Detail panel customizations
-
 - Launch: Main loop classes & functions
-
 - Messaging: Message passing subsystem
-
 - Sockets: Network socket implementation
-
 - Settings: Editor & Project settings API
-
 - SlateCore: Low level UI functionality
-
 - TargetPlatform: Platform abstraction layer
-
 - UMG: WYSIWYG UI system (Unreal Motion Graphics)
-
 - UnrealEd: Unreal Editor main frame & features
-
 - Analytics: Analytics functionality
-
 - AssetRegistry: Asset database functionality for UnrealEd
-
 - JsonUtilities & XmlParser: Parsing json/xml files
+
+
 
 # Deep Dive Technical Course:
 
 <http://nikoladimitroff.github.io/Game-Engine-Architecture/>
 
 <https://www.blaenkdenum.com/notes/unreal-engine/>
+
+
 
 # Rendering:
 
@@ -75,6 +66,8 @@ Modules for Advanced Functionality:
 - <http://gregory-igehy.hatenadiary.com/entry/2018/02/24/023251>
 
 - <http://gregory-igehy.hatenadiary.com/entry/2017/12/28/002645>
+
+
 
 # Python:
 

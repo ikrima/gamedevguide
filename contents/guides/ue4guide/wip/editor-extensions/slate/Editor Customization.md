@@ -1,12 +1,16 @@
-Creating An Editor Module: <https://wiki.unrealengine.com/Creating_an_Editor_Module>
+```
+sortIndex: 2
+```
 
-Customize Detail Pane: <https://wiki.unrealengine.com/Customizing_detail_panels>
+Creating An Editor Module: (https://wiki.unrealengine.com/Creating_an_Editor_Module
 
-Component Visualizer: <https://wiki.unrealengine.com/Component_Visualizers>
+Customize Detail Pane: https://wiki.unrealengine.com/Customizing_detail_panels
+
+Component Visualizer: https://wiki.unrealengine.com/Component_Visualizers
 
 Custom Asset Picker:
 
-<https://kasundevblog.wordpress.com/2015/10/07/creating-assets-with-support-of-a-custom-class-picker-unreal-engine-4/>
+https://kasundevblog.wordpress.com/2015/10/07/creating-assets-with-support-of-a-custom-class-picker-unreal-engine-4/
 
 Console command "testprops" will bring up UPropertyEditorTestObject that contains all base properties and the corresponding slate widgets
 
@@ -31,6 +35,8 @@ Menu/UI creation proceeds as normal Slate UI.
 - Look at Sequencer.cpp for samples
 
 - Look at Paper2D as samples as well (everything related to it is a plugin & not core to the engine)
+
+
 
 **References:**
 

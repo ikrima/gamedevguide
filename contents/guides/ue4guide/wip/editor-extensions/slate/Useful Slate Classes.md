@@ -1,3 +1,7 @@
+```
+sortIndex: 5
+```
+
 SWidgetCarousel
 
 SWidgetCarouselWithNavigation
@@ -14,17 +18,16 @@ Timeline scrubbers:
 
 Simple
 
-> SScrubControlPanel
->
-> SScrubWidget
+ SScrubControlPanel
+
+ SScrubWidget
 
 Manual Complex control:
 
-> FEditorWidgetsModule::CreateTransportControl
+ FEditorWidgetsModule::CreateTransportControl
 
 - Look at FSequencer::MakeTransportControls(bool bExtended) for example
 
->
 
 SLevelOfDetailBranchNode
 

@@ -1,3 +1,7 @@
+```
+sortIndex: 9
+```
+
 # Manually through UE4:
 
 - Pass -StaticAnalyzer=VisualCPP (or PVSStudio) to UBT.exe build
@@ -8,25 +12,31 @@
 
 - Can also modify buildconfiguration.xml:
 
-> &lt;WindowsPlatform&gt;
->
-> &lt;StaticAnalyzer&gt;VisualCpp&lt;/StaticAnalyzer&gt;
->
-> &lt;!-- &lt;StaticAnalyzer&gt;PVSStudio&lt;/StaticAnalyzer&gt; --&gt;
->
-> &lt;/WindowsPlatform&gt;
+<WindowsPlatform>
+
+​	<StaticAnalyzer>VisualCpp</StaticAnalyzer>
+
+​	<!-- <StaticAnalyzer>PVSStudio</StaticAnalyzer> -->
+
+<WindowsPlatform>
 
 # Devops script:
 
 build.py -c development -t editor check pvs
 
+
+
 # UBT Command line:
 
+```
 UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=pvsstudio
 
 UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodebuginfo
+```
 
-_From &lt;<https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html>&gt;_
+*Reference From https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html*
+
+
 
 # Manually setting up PVS Studio for Static Analysis
 
@@ -38,18 +48,18 @@ _From &lt;<https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-st
 
 4.  Key: FREE-FREE-FREE-FREE
 
-5.  (For now, you need to have Incredibuild disabled. )
+5. (For now, you need to have Incredibuild disabled. )
 
-> Go to BBProto.Build.cs and add BuildConfiguration.bAllowXGE = false;
+   ​	Go to BBProto.Build.cs and add BuildConfiguration.bAllowXGE = false;
 
-1.  Open a shell in the PVS Studio folder and run
+6. Open a shell in the PVS Studio folder and run
 
-> CLMonitor.exe monitor
+   ​	CLMonitor.exe monitor
 
-1.  Do a full build of BBProto project
+7. Do a full build of BBProto project
 
-2.  Go back to the shell, and type
+8. Go back to the shell, and type
 
-> CLMonitor.exe analyze -l "sample.plog"
+   ​	CLMonitor.exe analyze -l "sample.plog"
 
-1.  Double clicking sample.plog should launch the analysis results in PVS Studio.
+9. Double clicking sample.plog should launch the analysis results in PVS Studio.

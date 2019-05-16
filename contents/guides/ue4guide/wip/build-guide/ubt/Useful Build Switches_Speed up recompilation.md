@@ -1,40 +1,49 @@
-1.  Use IWYU:
+---
+sortIndex: 5
+---
 
-    > <https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/IWYUReferenceGuide/index.html>
+## 1.  Use IWYU:
 
-> This means forward declaring everything, moving everything into implementation files as much as possible. For templated things, we forward declare them and then declare explicit template specializations. Obv not a good practice for library code, but for our own modules, it's fine.
->
-> You'll run into issues forward declaring references to structs in blueprint callable functions because of the generated thunk code from UHT so that's unavoidable. Also, inlined functions need to be in the header.
+https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/IWYUReferenceGuide/index.html
 
->
+ This means forward declaring everything, moving everything into implementation files as much as possible. For templated things, we forward declare them and then declare explicit template specializations. Obv not a good practice for library code, but for our own modules, it's fine.
 
-1.  Useful build switches
+You'll run into issues forward declaring references to structs in blueprint callable functions because of the generated thunk code from UHT so that's unavoidable. Also, inlined functions need to be in the header.
 
--clean
 
--CleanLocal
 
--unattended
 
-Cooking:
+## 2.  Useful build switches
 
--DirectoriesToCook
+- clean
 
--Compressed
+- CleanLocal
 
--UnversionedCookedContent
+- unattended
 
--NumCookersToSpawn
 
--IterateSharedCookedBuild
+**Cooking:**
 
-Staging
+- DirectoriesToCook
 
--prereqs
+- Compressed
 
--iterativedeploy
+- UnversionedCookedContent
 
-Automation running:
+- NumCookersToSpawn
+
+- IterateSharedCookedBuild
+
+
+**Staging:**
+
+- prereqs
+
+- iterativedeploy
+
+
+
+**Automation running:**
 
 -skipserver
 

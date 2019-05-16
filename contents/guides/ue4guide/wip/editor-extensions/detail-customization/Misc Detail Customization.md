@@ -1,13 +1,19 @@
-## **Refresh customization on hot reload:**
+```
+sortIndex: 4
+```
 
+## Refresh customization on hot reload:
+```cpp
 FPropertyEditorModule::NotifyCustomizationModuleChanged()
+```
 
-## **Getting default widget:**
-
+## Getting default widget:
+```cpp
 IDetailPropertyRow::GetDefaultWidgets()
+```
 
-## **DetailRow:**
-
+## DetailRow:
+```cpp
 FNiagaraEmitterDetails::OnGenerateEventReceiverEntry(TSharedRef&lt;IPropertyHandle&gt; ElementProperty, int32 ElementIndex, IDetailChildrenBuilder& ChildrenBuilder)
 
 {
@@ -75,3 +81,4 @@ ValueWidget.ToSharedRef()
 }
 
 }
+```

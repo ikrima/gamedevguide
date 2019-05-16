@@ -1,16 +1,22 @@
-### **Widget Gallery/Slate Test Suite:**
+```
+sortIndex: 4
+```
+
+### Widget Gallery/Slate Test Suite:
 
 Go to Window -&gt; Developer Tools -&gt; Debug Tools -&gt; Test Suite. Shows all the different widgets
 
-![Useful_Slate_Code_Samples](C:\devguide\conversion\FINISHED\assets\Useful_Slate_Code_Samples.png)
+![Useful_Slate_Code_Samples](..\..\assets\Useful_Slate_Code_Samples.png)
 
-### **Writing Custom Slate Widgets:**
+
+
+### Writing Custom Slate Widgets:
 
 **UWidgetBlueprintLibrary** & **UWiddgetLayoutLibrary**, & **USlateBlueprintLibrary** great reference for looking at slate drawing functions & helpers
 
 - Ends up calling FSlateDrawElement::MakeBox or FSlateDrawElement::MakeLine
 
-### **Slate Examples:**
+### Slate Examples:
 
 Console command "testprops" will bring up UPropertyEditorTestObject that contains all base properties and the corresponding slate widgets
 
@@ -20,19 +26,19 @@ Console command "testprops" will bring up UPropertyEditorTestObject that contain
 
 More slate samples: SWidgetGallery.h & AppFramework/STestSuite/SWizard/STableViewTesting/SLayoutExample
 
-### **Slate ListView Example:**
+### Slate ListView Example:
 
 - SModuleUI is a great simple listview example with text search and multicolumns
 
 - SCollisionAnalyzer shows how to implement sorting
 
-### **Menu Builder & Pulldown Menu & Submenu:**
-
-FMenuBarBuilder MenuBarBuilder( CommandList );  
-{  
+### Menu Builder & Pulldown Menu & Submenu:
+```cpp
+FMenuBarBuilder MenuBarBuilder( CommandList ); 
+{ 
 MenuBarBuilder.AddPullDownMenu( TEXT("Menu 1"), TEXT("Opens Menu 1"), FNewMenuDelegate::CreateRaw( &FMenus::FillMenu1Entries ) );
 
-MenuBarBuilder.AddPullDownMenu( TEXT("Menu 2"), TEXT("Opens Menu 2"), FNewMenuDelegate::CreateRaw( &FMenus::FillMenu2Entries ) );  
+MenuBarBuilder.AddPullDownMenu( TEXT("Menu 2"), TEXT("Opens Menu 2"), FNewMenuDelegate::CreateRaw( &FMenus::FillMenu2Entries ) ); 
 }
 
 return MenuBarBuilder.MakeWidget();
@@ -52,81 +58,86 @@ MenuBuilder.AddSubMenu( TEXT("Sub Menu"), TEXT("Opens a submenu"), FNewMenuDeleg
 MenuBuilder.AddWidget(SNew(SVolumeControl), TEXT("Volume"));
 
 }
+```
+*Reference From https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html*
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html>&gt;_
-
-### **Drop down pulldown/combo toolbar button :**
-
-GameToolBarBuilder.AddComboButton(  
-SpecialPIEOptionsMenuAction,  
-FOnGetContent::CreateRaw( &FLevelEditorToolBar::GeneratePIEMenuContent, InCommandList ),  
-FText(),  
+### Drop down pulldown/combo toolbar button:
+``` cpp
+GameToolBarBuilder.AddComboButton( 
+SpecialPIEOptionsMenuAction, 
+FOnGetContent::CreateRaw( &FLevelEditorToolBar::GeneratePIEMenuContent, InCommandList ), 
+FText(), 
 LOCTEXT("PIEComboToolTip", "Play-In-Editor options") );
+```
 
-_From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html>&gt;_
+*Reference From https://docs.unrealengine.com/latest/INT/Programming/Slate/Widgets/index.html*
 
-### **Create Property Table:**
-
+### Create Property Table:
+```cpp
 // TableView
 
-> const TSharedRef&lt; IPropertyTable &gt; Table = Module.CreatePropertyTable();
+const TSharedRef&lt; IPropertyTable &gt; Table = Module.CreatePropertyTable();
 
-> TArray&lt; UObject\* &gt; Objects;
+TArray&lt; UObject\* &gt; Objects;
 
-> for (int Count = 0; Count &lt; 50; Count++)
->
-> {
->
-> Objects.Add(NewObject&lt;UPropertyEditorTestObject&gt;());
->
-> }
+for (int Count = 0; Count &lt; 50; Count++)
 
-> Table-&gt;SetObjects( Objects );
+{
 
-> for (TFieldIterator&lt;UProperty&gt; PropertyIter( UPropertyEditorTestObject::StaticClass(), EFieldIteratorFlags::IncludeSuper); PropertyIter; ++PropertyIter)
->
-> {
->
-> const TWeakObjectPtr&lt; UProperty &gt;& Property = \*PropertyIter;
->
-> Table-&gt;AddColumn( Property );
->
-> }
+Objects.Add(NewObject&lt;UPropertyEditorTestObject&gt;());
 
-> Window-&gt;SetContent
->
-> (
->
-> SNew(SBorder)
->
-> .BorderImage(FEditorStyle::GetBrush("ToolPanel.GroupBorder"))
->
-> \[
->
-> Module.CreatePropertyTableWidget( Table )
->
-> \]
->
-> );
+}
 
-**Custom Complex Widget UI:** <https://github.com/ue4plugins/ObjectBrowser>
+Table-&gt;SetObjects( Objects );
+
+for (TFieldIterator&lt;UProperty&gt; PropertyIter( UPropertyEditorTestObject::StaticClass(), EFieldIteratorFlags::IncludeSuper); PropertyIter; ++PropertyIter)
+
+{
+
+const TWeakObjectPtr&lt; UProperty &gt;& Property = \*PropertyIter;
+
+Table-&gt;AddColumn( Property );
+
+}
+
+Window-&gt;SetContent
+
+(
+
+SNew(SBorder)
+
+.BorderImage(FEditorStyle::GetBrush("ToolPanel.GroupBorder"))
+
+[
+
+Module.CreatePropertyTableWidget( Table )
+
+]
+
+);
+
+```
+
+**Custom Complex Widget UI:** https://github.com/ue4plugins/ObjectBrowser
 
 **Focus keyboard window to specific widget:**
-
+```cpp 
 FWidgetPath WidgetPath;
 
-> bool bFound = FSlateApplication::Get().FindPathToWidget(DetailsView, WidgetPath);
->
-> if (bFound)
->
-> {
->
-> FSlateApplication::Get().SetAllUserFocus(WidgetPath, EFocusCause::SetDirectly);
->
-> }
+ bool bFound = FSlateApplication::Get().FindPathToWidget(DetailsView, WidgetPath);
 
-#### **Asset Picker:**
+ if (bFound)
 
+ {
+
+ FSlateApplication::Get().SetAllUserFocus(WidgetPath, EFocusCause::SetDirectly);
+
+ }
+```
+
+#### Asset Picker:
+
+``` cpp
 FAssetPickerConfig **AssetPickerConfig**;  
         **AssetPickerConfig**.OnAssetDoubleClicked = FOnAssetDoubleClicked::CreateStatic(&SBlutilityShelf::OnBlutilityDoubleClicked);  
         **AssetPickerConfig**.OnGetAssetContextMenu = FOnGetAssetContextMenu::CreateSP(this, &SBlutilityShelf::OnBlutilityGetContextMenu);  
@@ -150,9 +161,11 @@ ChildSlot
                         **ContentBrowserModule**.Get().CreateAssetPicker(**AssetPickerConfig**)  
                 \]  
         \];
+```
 
-#### **Class Picker/Class Viewer:**
+#### Class Picker/Class Viewer:
 
+```js
 const bool bPressedOk = SClassPickerDialog::PickClass(TitleText, Options, ChosenClass, UDataAsset::StaticClass());
 
 FClassViewerModule& ClassViewerModule = FModuleManager::LoadModuleChecked&lt;FClassViewerModule&gt;("ClassViewer");
@@ -182,3 +195,4 @@ if (**ComponentsWithSockets**.Num() &gt; 1)
                         FPopupTransitionEffect( FPopupTransitionEffect::ContextMenu )  
                         );  
         }
+```

@@ -1,16 +1,20 @@
+```
+sortIndex: 1
+```
+
 #### Reference:
 
-<https://udn.unrealengine.com/questions/348861/creating-custom-sequencer-tracks-sub-sequence-star.html>
+https://udn.unrealengine.com/questions/348861/creating-custom-sequencer-tracks-sub-sequence-star.html
 
-#### **Pre-Animated State, Caching Execute & Produce Tokens, Evaluation, Initialize & TearDown:**
+#### Pre-Animated State, Caching Execute & Produce Tokens, Evaluation, Initialize & TearDown:
 
-<https://udn.unrealengine.com/questions/356242/sequencer-custom-track-414-415.html>
+https://udn.unrealengine.com/questions/356242/sequencer-custom-track-414-415.html
 
-<https://udn.unrealengine.com/questions/399357/shouldnt-teardown-be-called-on-moviesceneevaltempl.html>
+https://udn.unrealengine.com/questions/399357/shouldnt-teardown-be-called-on-moviesceneevaltempl.html
 
-<https://udn.unrealengine.com/questions/404800/sequencer-template-interrogate.html>
+https://udn.unrealengine.com/questions/404800/sequencer-template-interrogate.html
 
-#### **Data:**
+#### Data:
 
 - UMovieSceneTrack - The track (e.g. Transform, Path, attach) that contains sections. Can have multiple rows. This is a container for you custom sections, and it also defines which runtime classes are created for your custom track.
 
@@ -22,33 +26,32 @@
 
     - UMovieSceneSpawnSection
 
-#### **Editor:**
+#### Editor:
 
 - Check if sequencer is active: BB::IsSequencerModeActive() which does GLevelEditorModeTools().IsModeActive(EM_SequencerMode)
 
-#### **Runtime:**
+#### Runtime:
 
 - FMovieSceneEvalTemplate - Core runtime class which implements runtime behavior of custom sections. This is what actually handles evaluating the section and generates the tracks interpolation values as Execution Tokens (i.e. the color value in a color property track)
 
 * IMovieSceneExecutionToken - Actually ends up applying the interpolated values to your object (e.g. apply animation or updating properties)
 
-#### **UI:**
+#### UI:
 
 - ISequencerSection - UI for rendering the sections. Defines the editor behavior for your custom section.
 
 * FMovieSceneTrackEditor - Creates sequencer sections for your custom section data, and exposes extension points for sequencer track and object menus. Handles injecting buttons/ui/actions into the sequencer UI to create your custom tracks or add keys to your tracks. Defined for each track s.t. Transform, CameraAnim, Single Property types
 
-  - Needs to be registered with the sequencer system module. Ex:
-
-  ISequencerModule& SequencerModule = FModuleManager::Get().LoadModuleChecked<ISequencerModule>("Sequencer");
-
-  TrackEditorHandle = SequencerModule.RegisterTrackEditor_Handle(FOnCreateTrackEditor::CreateStatic(&FFaceFXAnimationTrackEditor::CreateTrackEditor));
+  - Needs to be registered with the sequencer system module. 
+  - Ex: ISequencerModule& SequencerModule = FModuleManager::Get().LoadModuleChecked<ISequencerModule>("Sequencer");
+    - TrackEditorHandle = SequencerModule.RegisterTrackEditor_Handle(FOnCreateTrackEditor::CreateStatic(&FFaceFXAnimationTrackEditor::CreateTrackEditor));
 
   - Some useful TrackEditor functionality: Register a track editor's custom property types for animation:
+  - ProcAnimTrackEditorHandle = SequencerModule.RegisterPropertyTrackEditor<FBBProcAnimTrackEditor>();
+  
 
-  ProcAnimTrackEditorHandle = SequencerModule.RegisterPropertyTrackEditor<FBBProcAnimTrackEditor>();
 
-#### **Misc:**
+#### Misc:
 
 - FMovieSceneAnimTypeID: uniquely defines animation type that sequencer is applying (eg spawn, changing transform, property, etc)
 
@@ -57,6 +60,8 @@
 - Blending happens through accumulations, templating, etc. Must specify that you support it in UMovieSceneNameableTrack() constructor
 
   - Grep for GetBlendingDataType&lt;&gt;() & TBlendableTokenTraits&lt;&gt;, MultiChannelFromData, ResolveChannelsToData
+
+
 
 Spawning: happens through a struct called
 
@@ -72,7 +77,7 @@ Spawning: happens through a struct called
 
     - You can initialize the editor sequencer (e.g. actor sequencers) with other spawnregisters/parameters by
 
-    > Sequencer = FModuleManager::LoadModuleChecked&lt;ISequencerModule&gt;("Sequencer").CreateSequencer(SequencerInitParams);
+    Sequencer = FModuleManager::LoadModuleChecked&lt;ISequencerModule&gt;("Sequencer").CreateSequencer(SequencerInitParams);
 
 - **ISequencerEditorObjectBinding:** Extensible mechanism that the editor uses to add bindable objects to a sequence
 
@@ -92,11 +97,11 @@ Spawning: happens through a struct called
 
   - Also manage override binding
 
-  -
+  
 
-#### **Custom Blending:**
 
-/\*\*
+
+#### Custom Blending:
 
 \* Implementation of custom blend logic should be as follows (using doubles as an example).
 
@@ -106,109 +111,111 @@ Spawning: happens through a struct called
 
 \* This allows blending of any arbitrary type into the WorkingDataType.
 
-> namespace MovieScene
->
-> {
->
-> // Define a custom namespaced type that will be used to calculate blends between doubles
->
-> struct FBlendableDouble
->
-> {
->
-> FBlendableDouble()
->
-> : AbsoluteTotal(0.0), AdditiveTotal(0.0)
->
-> {}
->
-> double AbsoluteTotal;
->
-> double AdditiveTotal;
->
-> TOptional<float> TotalWeight;
->
-> double Resolve(TMovieSceneInitialValueStore<int32>& InitialValueStore)
->
-> {
->
-> if (TotalWeight.IsSet())
->
-> {
->
-> if (TotalWeight.GetValue() == 0.f)
->
-> {
->
-> AbsoluteTotal = InitialValueStore.GetInitialValue();
->
-> }
->
-> else
->
-> {
->
-> AbsoluteTotal /= TotalWeight.GetValue();
->
-> }
->
-> }
->
-> return AbsoluteTotal + AdditiveTotal;
->
-> }
->
-> };
->
-> void BlendValue(FBlendableDouble& OutBlend, double InValue, float Weight, EMovieSceneBlendType BlendType, TMovieSceneInitialValueStore<double>& InitialValueStore)
->
-> {
->
-> if (BlendType == EMovieSceneBlendType::Absolute || BlendType == EMovieSceneBlendType::Relative)
->
-> {
->
-> if (BlendType == EMovieSceneBlendType::Relative)
->
-> {
->
-> OutBlend.AbsoluteTotal += (InitialValueStore.GetInitialValue() + InValue) \* Weight;
->
-> }
->
-> else
->
-> {
->
-> OutBlend.AbsoluteTotal += InValue \* Weight;
->
-> }
->
-> OutBlend.TotalWeight = OutBlend.TotalWeight.Get(0.f) + Weight;
->
-> }
->
-> else if (BlendType == EMovieSceneBlendType::Additive)
->
-> {
->
-> OutBlend.AdditiveTotal += InValue \* Weight;
->
-> }
->
-> }
->
-> }
->
-> template<> struct TBlendableTokenTraits<double> { typedef MovieScene::FBlendableDouble WorkingDataType; };
->
-> \*/
->
-> Useful Tip: Can call PerformanceCapture event on sequencer to log perf capture events
->
-> Useful Sequencer Functions:
->
-> Get Sequence Instance ID:
+```cpp
+
+namespace MovieScene
+
+{
+
+ // Define a custom namespaced type that will be used to calculate blends between doubles
+
+ struct FBlendableDouble
+
+ {
+
+ FBlendableDouble()
+
+ : AbsoluteTotal(0.0), AdditiveTotal(0.0)
+
+{}
+
+double AbsoluteTotal;
+
+ double AdditiveTotal;
+
+ TOptional<float> TotalWeight;
+
+ double Resolve(TMovieSceneInitialValueStore<int32>& InitialValueStore)
+
+ {
+
+ if (TotalWeight.IsSet())
+
+{
+
+ if (TotalWeight.GetValue() == 0.f)
+
+ {
+
+ AbsoluteTotal = InitialValueStore.GetInitialValue();
+
+ }
+
+ else
+
+ {
+
+ AbsoluteTotal /= TotalWeight.GetValue();
+
+ }
+
+ }
+
+ return AbsoluteTotal + AdditiveTotal;
+
+ }
+
+ };
+
+ void BlendValue(FBlendableDouble& OutBlend, double InValue, float Weight, EMovieSceneBlendType BlendType, TMovieSceneInitialValueStore<double>& InitialValueStore)
+
+ {
+
+ if (BlendType == EMovieSceneBlendType::Absolute || BlendType == EMovieSceneBlendType::Relative)
+
+ {
+
+ if (BlendType == EMovieSceneBlendType::Relative)
+
+ {
+
+ OutBlend.AbsoluteTotal += (InitialValueStore.GetInitialValue() + InValue) \* Weight;
+
+ }
+
+ else
+
+ {
+
+ OutBlend.AbsoluteTotal += InValue \* Weight;
+
+ }
+
+ OutBlend.TotalWeight = OutBlend.TotalWeight.Get(0.f) + Weight;
+
+ }
+
+ else if (BlendType == EMovieSceneBlendType::Additive)
+
+ {
+
+ OutBlend.AdditiveTotal += InValue \* Weight;
+
+ }
+
+ }
+
+ }
+
+ template<> struct TBlendableTokenTraits<double> { typedef MovieScene::FBlendableDouble WorkingDataType; };
+
+ \*/
+
+ Useful Tip: Can call PerformanceCapture event on sequencer to log perf capture events
+
+ Useful Sequencer Functions:
+
+ Get Sequence Instance ID:
 
 ---
 
@@ -278,8 +285,13 @@ ProcAnimators.Add(procAnimSection-&gt;ProcAnimCompClass);
 
 }
 
+```
+
+
+
 ##### Possessables/Spawnables
 
+```cpp
 ---
 
 // Add all spawnables first (since possessables can be children of spawnables)
@@ -329,9 +341,13 @@ return FMovieSceneObjectBindingID(possessable.GetGuid(), MovieSceneSequenceID::R
 }
 
 }
+```
+
+
 
 ##### Resolve object binding ID:
 
+```cpp
 ---
 
 // Resolve event contexts to trigger the event on
@@ -377,34 +393,43 @@ return FMovieSceneObjectBindingID(possessable.GetGuid(), MovieSceneSequenceID::R
 // }
 
 //}
+```
+
+
 
 ##### Generate Property Path:
 
+```cpp
 auto GeneratePropertyPath = \[this\](UImagePlateComponent\* ImagePlateComponent)
 
-> {
->
-> check(ImagePlateComponent);
+{
 
-> UStructProperty\* ImagePlateProperty = ImagePlateComponent-&gt;GetImagePlateProperty();
->
-> UProperty\* RenderTargetProperty = FindField&lt;UProperty&gt;(FImagePlateParameters::StaticStruct(), GET_MEMBER_NAME_CHECKED(FImagePlateParameters, RenderTexture));
+ check(ImagePlateComponent);
 
-> check(ImagePlateProperty);
->
-> check(RenderTargetProperty);
+ UStructProperty\* ImagePlateProperty = ImagePlateComponent-&gt;GetImagePlateProperty();
 
-> TSharedRef&lt;FPropertyPath&gt; Path = FPropertyPath::CreateEmpty();
->
-> Path-&gt;AddProperty(FPropertyInfo(ImagePlateProperty));
->
-> Path-&gt;AddProperty(FPropertyInfo(RenderTargetProperty));
+ UProperty\* RenderTargetProperty = FindField&lt;UProperty&gt;(FImagePlateParameters::StaticStruct(), GET_MEMBER_NAME_CHECKED(FImagePlateParameters, RenderTexture));
 
-> return Path;
->
-> };
+ check(ImagePlateProperty);
+
+ check(RenderTargetProperty);
+
+ TSharedRef&lt;FPropertyPath&gt; Path = FPropertyPath::CreateEmpty();
+
+ Path-&gt;AddProperty(FPropertyInfo(ImagePlateProperty));
+
+ Path-&gt;AddProperty(FPropertyInfo(RenderTargetProperty));
+
+ return Path;
+
+ };
+```
+
+
 
 ##### Stateless Token Producer:
+
+```cpp
 
 /\*\* Stateless pre-animated state token producer that simply calls a static function as the token \*/
 
@@ -412,42 +437,46 @@ struct FStatelessPreAnimatedTokenProducer : IMovieScenePreAnimatedTokenProducer
 
 {
 
-> typedef void (\*StaticFunction)(UObject&, IMovieScenePlayer&);
+ typedef void (\*StaticFunction)(UObject&, IMovieScenePlayer&);
 
-> FStatelessPreAnimatedTokenProducer(StaticFunction InFunction) : Function(InFunction) {}
+ FStatelessPreAnimatedTokenProducer(StaticFunction InFunction) : Function(InFunction) {}
 
-> virtual IMovieScenePreAnimatedTokenPtr CacheExistingState(UObject& Object) const override
->
-> {
->
-> return FToken(Function);
->
-> }
->
-> struct FToken : IMovieScenePreAnimatedToken
->
-> {
->
-> FToken(StaticFunction InFunctionPtr) : FunctionPtr(InFunctionPtr) {}
+ virtual IMovieScenePreAnimatedTokenPtr CacheExistingState(UObject& Object) const override
 
-> virtual void RestoreState(UObject& Object, IMovieScenePlayer& Player) override
->
-> {
->
-> (\*FunctionPtr)(Object, Player);
->
-> }
+ {
 
-> StaticFunction FunctionPtr;
->
-> };
->
-> StaticFunction Function;
+ return FToken(Function);
+
+ }
+
+ struct FToken : IMovieScenePreAnimatedToken
+
+ {
+
+ FToken(StaticFunction InFunctionPtr) : FunctionPtr(InFunctionPtr) {}
+
+ virtual void RestoreState(UObject& Object, IMovieScenePlayer& Player) override
+
+ {
+
+ (\*FunctionPtr)(Object, Player);
+
+ }
+
+ StaticFunction FunctionPtr;
+
+ };
+
+ StaticFunction Function;
 
 };
+```
+
+
 
 ##### Blend/accumulator sample:
 
+```cpp 
 FMovieSceneSkeletalAnimationSectionTemplate::Evaluate() for plugging into the blending/accumulater code to support interpolation section overlap
 
 Integral Discrete keyframe curve:
@@ -492,9 +521,13 @@ for (TWeakObjectPtr&lt;&gt; **Object** : GetSequencer()-&gt;FindObjectsInCur
 {  
         **OutObjects**.Add(**Object**);  
 }
+```
+
+
 
 ##### Extend the actor reference binding submenu/add custom object bind types:
 
+```cpp 
 class FControlRigEditorObjectBinding : public ISequencerEditorObjectBinding  
 {  
 public:  
@@ -523,18 +556,19 @@ void FEventTrackEditor::BuildTrackContextMenu(FMenuBuilder& MenuBuilder, UMovieS
 
   - NotifyBindingsChanged()
 
-> /\*\*
->
-> \* Called whenever an object binding has been resolved to give the player a chance to interact with the objects before they are animated
->
-> \*
->
-> \* @param InGuid                The guid of the object binding that has been resolved
->
-> \* @param InSequenceID        The ID of the sequence in which the object binding resides
->
-> \* @param Objects                The array of objects that were resolved
->
-> \*/
->
-> virtual void NotifyBindingUpdate(const FGuid& InGuid, FMovieSceneSequenceIDRef InSequenceID, TArrayView&lt;TWeakObjectPtr&lt;&gt;&gt; Objects) { NotifyBindingsChanged(); }
+ /\*\*
+
+ \* Called whenever an object binding has been resolved to give the player a chance to interact with the objects before they are animated
+
+ \*
+
+ \* @param InGuid                The guid of the object binding that has been resolved
+
+ \* @param InSequenceID        The ID of the sequence in which the object binding resides
+
+ \* @param Objects                The array of objects that were resolved
+
+ \*/
+
+ virtual void NotifyBindingUpdate(const FGuid& InGuid, FMovieSceneSequenceIDRef InSequenceID, TArrayView&lt;TWeakObjectPtr&lt;&gt;&gt; Objects) { NotifyBindingsChanged(); }
+```

@@ -49,6 +49,8 @@ it should read :
 "&lt;path to Bebylon&gt;\\ThirdParty\\Python3\\python.exe" "%1" %\* 
 with &lt;path to Bebylon&gt; replaced with the correct path for your drive.
 
+
+
 2. Configure Machine: Go to Bebylon\\Devops\\BuildAutomation\\BuildAutomation\\ in a terminal and execute:
 
 setupmachine config_envars
