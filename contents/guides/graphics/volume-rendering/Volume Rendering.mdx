@@ -3,6 +3,7 @@ sortIndex: 0
 ---
 
 # Overview
+
 ![Jarosz 2008, Radiance Caching For Participating Media](../assets/rte-diagram1.png)
 ![Jarosz 2008, Radiance Caching For Participating Media](../assets/rte-diagram2.png)
 ![Jarosz 2008, Radiance Caching For Participating Media](../assets/rte-diagram3.png)
@@ -51,7 +52,8 @@ L(\boldsymbol{x} ,\ \boldsymbol{\vec{w}}_{o} ) & \ \Longrightarrow \ Light\ radi
 \end{aligned}
 $$
 
-## Implementation Details: We are using several key assumptions:
+## Implementation Details: We are using several key assumptions
+
 - Important! When we calculate transmittence during raymarch in $\Delta s$ steps, we assume several properties are constant across the ray segment
   - the $\sigma _{t}(\boldsymbol{x})$ extinction coefficient
   - density
@@ -63,60 +65,57 @@ $$
 - We usually assume an *isotropic* medium aka the collision coefficients do not depend on the direction of light propagation and the phase function is only parameterized by angle between incoming light and scattered outgoing light. **NOTE:** The phase function itself can still be anisotropic
 - **Nerd-out assumptions:** Also assuming elastic scattering where photon packet can only change direction (and not energy/wavelength) at scattering events. So we can't simulate flourescene/phosphorescence but allows us to simulate individual wavelengths of light independently of each other. What does this mean in practice in 2019 for realtime rendering? Nothing other than providing fodder for people who like to "Well actually..." derail conversation threads.
 
-
-
-
-
-
 # Derivation of lambert-beer
 
 <https://patapom.com/topics/Revision2013/Revision%202013%20-%20Real-time%20Volumetric%20Rendering%20Course%20Notes.pdf>
 
 # Mean Free Path
 
-# Implementation details: One little trick...
+# Implementation details: One little trick
 
 - Removing the optically thin density assumption
   - Most papers assume optically thin density aka density across a short path segment is relatively small
   - Still assumes color field is constant across length of a short path segment
 
-
 # Art Directability
 
 ## Contrast adjustment
-[Wrenninge 2013, Art-Directable Multiple Volumetric Scattering]
+
+\[Wrenninge 2013, Art-Directable Multiple Volumetric Scattering]
 
 - Main idea is to reduce extinction coefficient $\sigma _{t}$ along shadow ray to let more light reach shaded point
 - But instead of fixed scaling factor, use a summation over several scales
 - Also adjust phase function and local scattering coefficient $\sigma _{s}$
 
-$$ 
+$$
 L=\sum ^{N-1}_{i=0} L_{i}
 $$
+
 $$
 L_{i} =\sigma _{s} b^{i} L_{light} (\omega _{i} )p\left( \omega _{i} ,\omega _{o} ,c^{i} g\right) e^{-a^{i}\int ^{t}_{0} \sigma _{t} (s)ds}
 $$
 
 where
-* N = Octaves
-* a = attenuation
-* b = contribution
 
-&nbsp;
+- N = Octaves
+- a = attenuation
+- b = contribution
 
 Notes:
-* Good defaults: N=8, a=b=c=1/2
-* Can be used to fake multiple scattering
+
+- Good defaults: N=8, a=b=c=1/2
+- Can be used to fake multiple scattering
 
 ## Adjusting mean-free path
 
-[2011, Production Volume Rendering at Weta Digital]
+\[2011, Production Volume Rendering at Weta Digital]
 
-Premise: each order of scattering can be computed separately or in discrete groups rather than to be considered as either single scattering or multiple scat- tering. Moreover the multiple scattering studies done in [Bou08] show that higher orders of scattering display a behavior similar to that of single scattering
+Premise: each order of scattering can be computed separately or in discrete groups rather than to be considered as either single scattering or multiple scat- tering. Moreover the multiple scattering studies done in \[Bou08] show that higher orders of scattering display a behavior similar to that of single scattering
 
 - Lengthen mean-free path and make the phase function more isotropic for each higher order bounce
 - Can also blur the deep shadow map
-asdf
+  asdf
+
 ## Higher order approximations of multiple scattering
 
-http://evasion.imag.fr/~Antoine.Bouthors/research/phd/
+<http://evasion.imag.fr/~Antoine.Bouthors/research/phd/>

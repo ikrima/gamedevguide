@@ -64,18 +64,18 @@ Laplacian => Avg of neighbors at a point - point value
 
 # RBF
 
-- INTEGRATION BY RBF OVER THE SPHERE: https://www.math.unipd.it/~marcov/pdf/AMR05_17.pdf
-- RBF for Scientific computing: https://math.boisestate.edu/~wright/montestigliano/RBFsForScientificComputingPartOne.pdf
-- Interpolation and Best Approximation for Spherical Radial Basis Function Networks: https://www.hindawi.com/journals/aaa/2013/206265/
+- INTEGRATION BY RBF OVER THE SPHERE: <https://www.math.unipd.it/~marcov/pdf/AMR05_17.pdf>
+- RBF for Scientific computing: <https://math.boisestate.edu/~wright/montestigliano/RBFsForScientificComputingPartOne.pdf>
+- Interpolation and Best Approximation for Spherical Radial Basis Function Networks: <https://www.hindawi.com/journals/aaa/2013/206265/>
 - Spherical Radial Basis Functions, Theory and Applications (SpringerBriefs in Mathematics)
-- Transport schemes on a sphere using radial basis functions: https://www.math.utah.edu/~wright/misc/msFinal_Grady.pdf
-- On choosing a radial basis function and a shape parameterwhen solving a convective PDE on a sphere: https://amath.colorado.edu/faculty/fornberg/Docs/Fornberg_Piret_2.pdf
-- A FAST ALGORITHM FOR SPHERICAL BASISAPPROXIMATION: https://www.math.uni-luebeck.de/mitarbeiter/prestin/ps/sharma.pdf
+- Transport schemes on a sphere using radial basis functions: <https://www.math.utah.edu/~wright/misc/msFinal_Grady.pdf>
+- On choosing a radial basis function and a shape parameterwhen solving a convective PDE on a sphere: <https://amath.colorado.edu/faculty/fornberg/Docs/Fornberg_Piret_2.pdf>
+- A FAST ALGORITHM FOR SPHERICAL BASISAPPROXIMATION: <https://www.math.uni-luebeck.de/mitarbeiter/prestin/ps/sharma.pdf>
 
 # Spherical Splines
 
-- Spline Representations of Functions on a Sphere forGeopotential Modeling: https://kb.osu.edu/bitstream/handle/1811/78653/1/SES_GeodeticScience_Report_475.pdf
-- Fitting scattered data on sphere-like surfaces using spherical splines: https://math.vanderbilt.edu/schumake/ans4.pdf
-- Bernstein-Bézier polynomials on spheres and sphere-like surfaces: https://math.vanderbilt.edu/neamtum/papers/ans2.pdf
-- Survey on Spherical Spline Approximation: https://pdfs.semanticscholar.org/63eb/efb9cbdc248371e2fe4f09fa7e70b89c5008.pdf
+- Spline Representations of Functions on a Sphere forGeopotential Modeling: <https://kb.osu.edu/bitstream/handle/1811/78653/1/SES_GeodeticScience_Report_475.pdf>
+- Fitting scattered data on sphere-like surfaces using spherical splines: <https://math.vanderbilt.edu/schumake/ans4.pdf>
+- Bernstein-Bézier polynomials on spheres and sphere-like surfaces: <https://math.vanderbilt.edu/neamtum/papers/ans2.pdf>
+- Survey on Spherical Spline Approximation: <https://pdfs.semanticscholar.org/63eb/efb9cbdc248371e2fe4f09fa7e70b89c5008.pdf>
 - scattered data fitting on the sphere: scattered data fitting on the sphere

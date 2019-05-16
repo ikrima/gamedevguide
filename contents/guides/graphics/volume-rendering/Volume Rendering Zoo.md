@@ -16,18 +16,18 @@
   - Spherical Harmonics
   - Spherical Gaussians
   - Fourier Opacity Maps
-  - Extinction Transmittance Maps \[Extinction Transmittance Maps\]
+  - Extinction Transmittance Maps \[Extinction Transmittance Maps]
 - Precomputed Radiance Transfer for Volume Rendering
   - Do it inside the volume
   - Can also do it on the surface and tangent basis (use burley's normalized diffusion profile as it provides super simple artistic control)
     - Reference: Approximate Reflectance Profiles for Efficient Subsurface Scattering
-    - Reference: _Extending the Disney BRDF to a BSDF with Integrated Subsurface Scattering_
+    - Reference: *Extending the Disney BRDF to a BSDF with Integrated Subsurface Scattering*
 - Multiple Scattering approximations
   - Contrast approximation for art directable multiple scattering
     - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf>
     - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf>
     - Technique is basically exponentiation of single scattering with multiple octaves
-    - Must make sure a <= b to be energy conserving
+    - Must make sure a &lt;= b to be energy conserving
 
 ![](../assets/vol-render-zoo-ms-eq.png)
 
@@ -35,7 +35,7 @@
   - The scattering mean free path is the average distance between scattering events (in biological tissues around 100 μm)
   - The transport mean free path can be thought of as the mean distance after which a photon’s direction becomes random (in biological tissues around 1 mm)
   - The **transport length** in a strongly diffusing medium (noted l\*) is the length over which the direction of propagation of the [photon](https://www.wikiwand.com/en/Photon) is randomized. It is related to the [mean free path](https://www.wikiwand.com/en/Mean_free_path) l by the relation
-- #nicetohave Incorporate Baked VLM
+- \#nicetohave Incorporate Baked VLM
   - VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);
   - Radiance caching gradients
   - A Novel Sampling Algorithm for Fast and Stable Real-Time Volume Rendering: <https://github.com/huwb/volsample>
@@ -57,6 +57,7 @@ Tasks
   - Houdini modify to export 3 lighting channels + density
   - Modify shader to take channel ramps into account
   - Make pretty visuals
+
 - Create ShowcaseZoo
 
   - IsoSurface Tracking
@@ -69,11 +70,12 @@ Tasks
   - Basis Functions
     - Spherical Harmonics
     - Spherical Gaussians
-    - #nicetohave Incorporate Baked VLM
+    - \#nicetohave Incorporate Baked VLM
       - VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);
 
 - Basic Scaffolding
-  - Make a simple houdini <> ue4 plugin then iterate.
+  - Make a simple houdini &lt;> ue4 plugin then iterate.
+
 - Houdini:
   - create voxel grid
   - create attribs (bakedirect,scatter,env)
@@ -88,6 +90,7 @@ Tasks
     - render fbx of isosurface
   - Bake thickness
     - Bake to SH
+
 - UE4:
   - import voltex
   - import mesh
@@ -105,19 +108,21 @@ Tasks
     - Support exporting to tangents basis
     - Support for skinned meshes
     - Remove 'houdinispace' swizzle and properly export out of houdini
+
 - Debugging
   - VLM UE4 Debug
     - Peek Texel
   - Basis Func UE4 Debug Visualization
     - Peak basis function
+
 - Nice2Have:
   - make a UE4 HDA
   - incorporate UE4 VLM
   - PRT Compression: Manny Ko - Practical Spherical Harmonics Based PRT Methods
   - Sloan - Efficient Spherical Harmonic Evaluation
   - Noise-Resistant Fitting for Spherical Harmonics
-  - #nicetohave Volume Filtering with mips
-  - #nicetohave linear regression on basis function
+  - \#nicetohave Volume Filtering with mips
+  - \#nicetohave linear regression on basis function
 
 # **Notes:**
 
@@ -128,8 +133,8 @@ Tasks
   - Optimized: Avg = lerp(avg, NewVal, rcp(NewSampleCount))
   - For calculating variance as well: <https://www.wikiwand.com/en/Algorithms\_for\_calculating\_variance#/Online\_algorithm>
 - Closest Point Transform
-  - ∇_sdf() is always unit vector. (SDF is 3D levleset of function embedded in 4D so all level set rules apply)
-  - Xcpt(x) = x - sdf(x) \* ∇_sdf(x)
+  - ∇\_sdf() is always unit vector. (SDF is 3D levleset of function embedded in 4D so all level set rules apply)
+  - Xcpt(x) = x - sdf(x) \* ∇\_sdf(x)
   - Xcpt(x) => is a conservative field
     - Xcpt(x) = ∇U(x)
     - U(x) = 0.5 \* (|x|^2 - f^2(x))
@@ -154,15 +159,15 @@ Optimization Reminders
 - Gaussian Quadrature
 - Spherical Splines/Polynomials
 - Spherical RBFs
-  - Is There Anything Comparable to Spherical Harmonics But Simpler? http://www.cs.cuhk.hk/~ttwong/papers/srbf/srbf.html
-    - http://www.cs.cuhk.hk/~ttwong/demo/srbf/srbf.html
-    - http://www.cs.cuhk.hk/~ttwong/
+  - Is There Anything Comparable to Spherical Harmonics But Simpler? <http://www.cs.cuhk.hk/~ttwong/papers/srbf/srbf.html>
+    - <http://www.cs.cuhk.hk/~ttwong/demo/srbf/srbf.html>
+    - <http://www.cs.cuhk.hk/~ttwong/>
   - Von Mises Basis Functions vs Gaussian Spherical Radial Basis Functions:
     - A Comparison of the von Mises and Gaussian Basis Functions for Approximating Spherical Acoustic Scatter
     - 3 orders of magnitude better than guassian
   - Real-time Rendering of Dynamic Scenes under All-frequency Lighting using Integral Spherical Gaussian
     - All-Frequency Precomputed Radiance Transfer using Spherical RadialBasis Functions and Clustered Tensor Approximation
-    - https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/
+    - <https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/>
 
 ### **Promising:**
 
