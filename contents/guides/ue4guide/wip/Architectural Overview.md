@@ -1,5 +1,4 @@
-https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/index.html>
-------------------------------------------------------------------------------------
+# https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/index.html
 
  
 
@@ -33,16 +32,12 @@ Using hypothetical example of a game where rabbit races snail,
 
     -   **PlayerCameraManager** defines the camera view for the player controller
 
->  
->
->  
->
->  
 
- 
 
-Camera:
-=======
+
+
+
+# Camera
 
  
 
@@ -60,39 +55,38 @@ PlayerCameraManager controls changing cameras.
 
 -   If it is necessary to subclass the PlayerCameraManager, and you are doing so with Blueprints instead of C++, the BlueprintUpdateCamera function exists to allow custom camera implementations. When using this function, return *true* to use the returned values, or return *false* to ignore them.
 
->  
+ 
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/Camera/index.html>&gt;*
+*Reference From: <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/Camera/index.html>*
 
->  
->
->  
 
-**ViewTarget**
+
+
+## ViewTarget
 
 The ViewTarget struct, defined in PlayerCameraManager, is responsible for providing the PlayerCameraManager with an ideal Point of View (POV). ViewTarget contains information on the target Actor, the Controller of the target Actor (for non-locally controlled Pawns), and the PlayerState, which is used to follow the same player through Pawn transitions and other changes while spectating. The camera information passed to PlayerCameraManager through the POV property is in the form of a FMinimalViewInfo struct. This struct contains the basic camera information from a CameraComponent, including the location, rotation, projection mode (Perspective or Orthographic), FOV, orthographic width, aspect ratio, and post process effects. Providing the PlayerCameraManager with access to these values allows the PlayerCameraManager to blend between two camera modes during its camera management.
 
  
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/Camera/index.html>&gt;*
+*Reference From: <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/Camera/index.html>*
 
  
 
  
 
-**Camera Responsibility Chain**
+## Camera Responsibility Chain
 
 Game-specific camera behavior can be provided at any point along the camera "responsibility chain", which flows from top to bottom through the following classes before passing to ALocalPlayer and ending with rendering, scene view, and other related systems:
 
  
 
-**CameraComponent**
+## CameraComponent
 
 A CameraComponent will provide information about the camera's properties if the ViewTarget is a CameraActor or an Actor that contains a CameraComponent and has bFindCameraComponentWhenViewTarget set to true. A related property that can be set for any Pawn isbTakeCameraControlWhenPossessed, where the Pawn will automatically become the ViewTarget upon possession by the PlayerController.
 
  
 
-**Actor or PlayerController**
+## Actor or PlayerController
 
 Both PlayerControllers and Actors contain a CalcCamera function. An Actor's CalcCamera function returns the camera view of the first CameraComponent in the Actor, if bFindCameraComponentWhenViewTarget is true and a CameraComponent is present.
 
@@ -100,7 +94,7 @@ Otherwise, it gets the Actor's location and rotation. In PlayerController, the C
 
  
 
-**PlayerCameraManager**
+## PlayerCameraManager
 
 The UpdateViewTarget function in PlayerCameraManager queries the ViewTarget and returns that ViewTarget's Point Of View. This function is also what calls BlueprintUpdateCamera if you have subclassed APlayerCameraManager and are not looking through a CameraComponent.
 
@@ -113,7 +107,7 @@ Engine Game Flow
 
 
 
-![GameFlowChart](C:\devguide\conversion\FINISHED\assets\GameFlowChart.png)
+![GameFlowChart](/assets/GameFlowChart.png)
 
 
 
@@ -122,15 +116,14 @@ Engine Game Flow
 <https://docs.unrealengine.com/latest/INT/Gameplay/Framework/GameFlow/index.html>
 
 
-=
 
 
-=
 
-Fast Architectural Summary
-==========================
 
-![Fast_Architectural_Summary](C:\devguide\conversion\FINISHED\assets\Fast_Architectural_Summary.png)
+
+# Fast Architectural Summary
+
+![Fast_Architectural_Summary](/assets/Fast_Architectural_Summary.png)
 
  
 
@@ -148,17 +141,19 @@ Fast Architectural Summary
 
 UObject: Base class for all UE4 objects
 
--   Actor: Base spawnable class
+- Actor: Base spawnable class
+- Pawns: 
+  - Can be possessed by Controller. 
+  - Pawn not assumed to be humanoid
+- weee
+  - ooo
+    - kkk
 
-    -   Pawns:  
-        > \* Can be possessed by Controller.  
-        > \* Pawn not assumed to be humanoid
-
-    -   Character:  
-        > \* Humanoid specialized Pawn  
-        > \* CapsuleComponent for collision detection  
-        > \* CharacterMovement for movement  
-        > \* Replicates movement smoothly across network
+--Character: 
+  -Humanoid specialized Pawn 
+  - CapsuleComponent for collision detection 
+  - CharacterMovement for movement 
+         \* Replicates movement smoothly across network
 
     -   Controller: Actors that possesses/control pawns
 

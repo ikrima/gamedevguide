@@ -1,3 +1,7 @@
+---
+sortIndex: 1
+---
+
 UPDATED VERSION HERE: <https://github.com/Allar/ue4-style-guide>
 ================================================================
 
