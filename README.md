@@ -21,13 +21,34 @@
 
 # Notes To Myself
 
-## Bootstrap Install:
+## Bootstrap Install
+- Installing
 
 ```shell
 cinst -y nodejs
 cinst -y yarn
 npm install -g gatsby-cli
 npm install -g yarn
+```
+
+- Building
+
+```shell
+npm run dev
+npm run develop ; clean & start develop environment
+npm run build & npm run serve
+```
+
+- Misc commands
+
+```shell
+npm run lint
+npm run lint:fix
+npm run format:js
+npm run format:md
+npm run format:mdx
+npm run formatp:md   ; this uses prettier which isnt as configurable
+npm run formatp:mdx  ; this uses prettier which isnt as configurable
 ```
 
 ## OneNote Conversion
