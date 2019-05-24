@@ -1,20 +1,24 @@
-/\*\*
+---
+sortIndex: 2
+---
+```cpp
+/**
 
-\* Called from within SavePackage on the passed in base/ root. The return value of this function will be passed to
+* Called from within SavePackage on the passed in base/ root. The return value of this function will be passed to
 
-\* PostSaveRoot. This is used to allow objects used as base to perform required actions before saving and cleanup
+* PostSaveRoot. This is used to allow objects used as base to perform required actions before saving and cleanup
 
-\* afterwards.
+* afterwards.
 
-\* @param Filename: Name of the file being saved to (includes path)
+* @param Filename: Name of the file being saved to (includes path)
 
-\* @param AdditionalPackagesToCook [out] Array of other packages the Root wants to make sure are cooked when this is cooked
+* @param AdditionalPackagesToCook [out] Array of other packages the Root wants to make sure are cooked when this is cooked
 
-\*
+*
 
-\* @return Whether PostSaveRoot needs to perform internal cleanup
+* @return Whether PostSaveRoot needs to perform internal cleanup
 
-\*/
+*/
 
 virtual bool PreSaveRoot(const TCHAR\* Filename, TArray<FString>& AdditionalPackagesToCook)
 
@@ -24,17 +28,17 @@ return false;
 
 }
 
-/\*\*
+/**
 
-\* Presave function. Gets called once before an object gets serialized for saving. This function is necessary
+* Presave function. Gets called once before an object gets serialized for saving. This function is necessary
 
-\* for save time computation as Serialize gets called three times per object from within SavePackage.
+* for save time computation as Serialize gets called three times per object from within SavePackage.
 
-\*
+*
 
-\* @warning: Objects created from within PreSave will NOT have PreSave called on them!!!
+* @warning: Objects created from within PreSave will NOT have PreSave called on them!!!
 
-\*/
+*/
 
 virtual void PreSave(const class ITargetPlatform\* TargetPlatform);
 
@@ -45,3 +49,4 @@ Look at UDataTable::Serialize() & UWorld::AddReferencedObjects &
 UWorld::PreSaveRoot(const TCHAR\* **Filename**, TArray<FString>& **AdditionalPackagesToCook**)
 
 virtual void CookAdditionalFiles( const TCHAR* PackageFilename, const ITargetPlatform* TargetPlatform ) { }
+```

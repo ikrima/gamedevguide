@@ -1,34 +1,40 @@
+---
+sortIndex: 2
+---
 # Guides:
 
-### **Lightmass Deep Dive:**
+### Lightmass Deep Dive:
 
-[\[Lightmass Deep Dive 2018 Vol.1: Lightmass 内部アルゴリズム概要(Lightmap 編)\]](https://www.slideshare.net/EpicGamesJapan/lightmass-deep-dive-2018-vol1-lightmasslightmap)
+[Lightmass Deep Dive 2018 Vol.1: Lightmass 内部アルゴリズム概要(Lightmap 編)\]](https://www.slideshare.net/EpicGamesJapan/lightmass-deep-dive-2018-vol1-lightmasslightmap)
 
 <img src="process_markdown/assets/media/image1.png" alt="Machine generated alternative text: " style="width:4.42708in;height:3.69792in" />
 
 ![Machine generated alternative text:  ](file:///C:/Users/KITELI~1/AppData/Local/Temp/msohtmlclip1/02/clip_image001.png)
 
-[\[Lightmass Deep Dive 2018 Vol. 2: Lightmap 作成のための Lightmass 設定方法\]](https://www.slideshare.net/EpicGamesJapan/lightmass-deep-dive-2018-vol-2-lightmaplightmass)
+[Lightmass Deep Dive 2018 Vol. 2: Lightmap 作成のための Lightmass 設定方法](https://www.slideshare.net/EpicGamesJapan/lightmass-deep-dive-2018-vol-2-lightmaplightmass)
 
 <img src="process_markdown/assets/media/image2.png" alt="Liľltrna;s Deeo Dve XII 8 " style="width:4.42708in;height:3.69792in" />
 
 ![image1](C:\devguide\conversion\FINISHED\assets\image1-1556561794310.png)
 
-### **Taming lightmass guide/Lightmass For Large Console Games**
 
-[\[UE4 Lightmass for Large Console Games (UE4 Lightmass Deep Dive)\]](https://www.slideshare.net/EpicGamesJapan/ue4-lightmass-for-large-console-games)
+
+### Taming lightmass guide/Lightmass For Large Console Games
+
+[UE4 Lightmass for Large Console Games (UE4 Lightmass Deep Dive)](https://www.slideshare.net/EpicGamesJapan/ue4-lightmass-for-large-console-games)
 
 ![image2](C:\devguide\conversion\FINISHED\assets\image2.png)
 
 <img src="process_markdown/assets/media/image3.png" alt="Rich web content titled: UE4 Lightmass for Large Console Games (UE4 Lightmass Deep Dive)" style="width:4.42708in;height:3.69792in" />
 
-[\[Practical usage of Lightmass in Architectural Visualization (UE4 Lightmass Deep Dive)\]](https://www.slideshare.net/EpicGamesJapan/practical-usage-of-lightmass-in-architectural-visualization-ue4-lightmass-deep-dive)
+[Practical usage of Lightmass in Architectural Visualization (UE4 Lightmass Deep Dive)](https://www.slideshare.net/EpicGamesJapan/practical-usage-of-lightmass-in-architectural-visualization-ue4-lightmass-deep-dive)
 
 (<https://www.slideshare.net/EpicGamesJapan/practical-usage-of-lightmass-in-architectural-visualization-ue4-lightmass-deep-dive>)
 
 <img src="process_markdown/assets/media/image4.png" alt="Rich web content titled: Practical usage of Lightmass in Architectural Visualization (UE4 Lightmass Deep Dive)" style="width:4.42708in;height:3.69792in" />
 
-# Making Lightmass Understandable:
+
+## Making Lightmass Understandable:
 
 <https://forums.unrealengine.com/development-discussion/architectural-and-design-visualization/60547-lets-make-lightmass-epic-and-understandable?88952-Lets-make-Lightmass-EPIC-(and-understandable)=&highlight=swarm>
 
@@ -36,7 +42,8 @@ First, there are two completely separate paths for punctual lights (directional,
 
 Lightmass is heavily optimized around solving indirect lighting from punctual lights with high quality. In particular, the case where you have bright sunlight coming in a small window and hitting the wall/floor, lighting up the whole room, is what I would consider the primary use case. Lighting with sky lights / HDRI is a much more recent implementation and honestly it's not very high quality.
 
-#### **Punctual light method:**
+
+#### Punctual light method:
 
 The short summary is that Final gathering is used to solve the first lighting bounce, and photons are used for bounces after that along with guiding the final gather.
 
@@ -60,7 +67,7 @@ As to the Lightmass WorldSettings options, IndirectLightingSmoothness operates o
 
 IndirectLightingQuality increases the number of samples and depth of refinement in steps 5-7, the final gathering.
 
-#### **Sky light method (assuming static skylight, stationary is a bit different):**
+#### Sky light method (assuming static skylight, stationary is a bit different):
 
 1. The sky light HDR texture is exported to Lightmass as an 3 band spherical harmonic, which you can think of as an extremely low resolution cubemap (2x2 on each face approx). So if you have a very bright spot in the sky cubemap it will be spread out over a large region. This is basically prefiltering to avoid noise.
 
@@ -70,20 +77,22 @@ IndirectLightingQuality increases the number of samples and depth of refinement 
 
 So now you can see why static sky lights have limited quality and only support one indirect lighting bounce. This is something we could improve, but it's a lot of work and complexity. Specifically, we should actually export a cubemap to Lightmass, and do importance sampling of the cubemap's contents (trace more rays to the brighter texels).
 
-*From &lt;<https://forums.unrealengine.com/development-discussion/architectural-and-design-visualization/60547-lets-make-lightmass-epic-and-understandable?88952-Lets-make-Lightmass-EPIC-(and-understandable)=&highlight=swarm>>*
+*Reference From <https://forums.unrealengine.com/development-discussion/architectural-and-design-visualization/60547-lets-make-lightmass-epic-and-understandable?88952-Lets-make-Lightmass-EPIC-(and-understandable)=&highlight=swarm>*
 
-# Lightmass Lightmap Config
+
+
+## Lightmass Lightmap Config
 
 Most common settings to tweak:
-
-\[DevOptions.PrecomputedDynamicObjectLighting]  
+```
+[DevOptions.PrecomputedDynamicObjectLighting]  
 SurfaceLightSampleSpacing=300  
 FirstSurfaceSampleLayerHeight=50  
 SurfaceSampleLayerHeightSpacing=250  
 NumSurfaceSampleLayers=2
-
+```
 Look at BaseLightmass.ini for all of the settings to tweak baking lightmaps
 
 Tweak multiple skybounce lighting
 
-&lt;<https://forums.unrealengine.com/development-discussion/rendering/112827-lightmass-multi-bounced-sky-lighting/page17>
+*Reference From <https://forums.unrealengine.com/development-discussion/rendering/112827-lightmass-multi-bounced-sky-lighting/page17>*

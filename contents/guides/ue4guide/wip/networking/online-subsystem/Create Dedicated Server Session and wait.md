@@ -1,3 +1,7 @@
+---
+sortIndex: 3
+---
+
 We have a dedicated server for our game, and want to specify the session name, number of players, Is LAN, and some custom variables like password, game version, and selected map.
 
 The best way would be with DefaultGame.ini or DefaultEngine.ini
@@ -26,6 +30,7 @@ In UCreateSessionCallbackProxy and your UCustomCreateSession, the call to QueryI
 
 What I'd suggest trying is modifying your code like this:
 
+```cpp
 void UCustomCreateSession::Activate()
 
 {
@@ -82,7 +87,7 @@ if (Helper.IsValid())
 
 {
 
-Sessions->CreateSession(\*Helper.UserID, GameSessionName, \*SessionSettings);
+Sessions->CreateSession(*Helper.UserID, GameSessionName, *SessionSettings);
 
 return;
 
@@ -94,7 +99,7 @@ return;
 
 // still be able to handle it (like steam).
 
-else if (Sessions->CreateSession(0, GameSessionName, \*SessionSettings))
+else if (Sessions->CreateSession(0, GameSessionName, *SessionSettings))
 
 {
 
@@ -125,25 +130,22 @@ FFrame::KismetExecutionMessage(TEXT("Sessions not supported by Online Subsystem"
 OnFailure.Broadcast();
 
 }
+```
 
-How do I find the current session
+**How do I find the current session created by the dedicated server?**
 
-created by the dedicated server?
-
-You can try IOnlineSession::GetNamedSession. Unfortunately, that will only return the session if you already know the name. Usually, calling DestroySession should be enough (it will use GetNamedSession under the hood to grab the correct one).
-
+- You can try IOnlineSession::GetNamedSession. Unfortunately, that will only return the session if you already know the name. Usually, calling DestroySession should be enough (it will use GetNamedSession under the hood to grab the correct one). 
 What I'd recommend is actually debugging to see whether or not any sessions actually do exist. All OSSs should have some array or map so they can implement GetNamedSession. For example, in FOnlineSessionSteam there's a Sessions array. Putting a breakpoint somewhere in the interface and then inspecting that list would tell you for certain whether or not something was created.
 
-How do I get dedicated server to use
 
-my session variables and settings on
 
-startup?
+**How do I get dedicated server to use my session variables and settings on startup?**
 
-Take a look at AGameNetworkManager. We use this to access INI settings in multiple places. Basically, we mark the settings up that we need as either Config or GlobalConfig. Then, when we need to access them we do something like this: GetDefault&lt;AGameNetworkManager>()->bUseDistanceBasedRelevancy
+- Take a look at AGameNetworkManager. We use this to access INI settings in multiple places. Basically, we mark the settings up that we need as either Config or GlobalConfig. Then, when we need to access them we do something like this: 
 
-What this will do is grab the Class Default Object (CDO) and read the settings from it. In the case where no CDO exists already, one will be created.
+  GetDefault&lt;AGameNetworkManager>()->bUseDistanceBasedRelevancy
 
-If you take the CVar approach, then all it would require would be for you to just query the CVars.
+  What this will do is grab the Class Default Object (CDO) and read the settings from it. In the case where no CDO exists already, one will be created.
+  If you take the CVar approach, then all it would require would be for you to just query the CVars.
 
 *From &lt;<https://udn.unrealengine.com/questions/410222/specifying-net-session-name-and-other-vars-dedicat.html>>*

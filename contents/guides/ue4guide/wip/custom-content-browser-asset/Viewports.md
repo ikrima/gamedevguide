@@ -1,3 +1,7 @@
+---
+sortIndex: 13
+---
+
 **Useful Classes:**
 
 **FLevelEditorModule** has a lot of useful entry points like
@@ -22,11 +26,15 @@
 
 FLevelEditorViewportClient & FEditorViewportClient
 
+
+
 **Main class for Editor Viewports:**
 
 FEditorViewportClient
 
 - Also handles most of the viewport UI actions e.g. SetRealtimePreview(), SetShowStats(), SetCameraLock()
+
+
 
 **Viewport Manipulation:**
 
@@ -46,6 +54,8 @@ GCurrentLevelEditingViewportClient
 
 GLastKeyLevelEditingViewportClient
 
+
+
 **Callbacks on viewport manipulation:**
 
 virtual void EditorApplyTranslation(const FVector& DeltaTranslation, bool bAltDown, bool bShiftDown, bool bCtrlDown) override;
@@ -58,19 +68,23 @@ virtual void PostEditMove(bool bFinished) override;
 
 virtual void PostEditComponentMove(bool bFinished) override;
 
+
+
 **Get All Viewports:**
 
 - /\*\* The "manager" of all the layers for the UWorld currently being edited \*/
 
-> GEditor->Layers;
+  GEditor->Layers;
 
 - /\*\* List of all viewport clients \*/
 
-> GEditor->AllViewportClients;
+  GEditor->AllViewportClients;
 
 - /\*\* List of level editor viewport clients for level specific actions \*/
 
-> GEditor->LevelViewportClients;
+  GEditor->LevelViewportClients;
+
+
 
 **Viewport Toggle RealTime:**
 

@@ -1,3 +1,7 @@
+---
+sortIndex: 5
+---
+
 HasNetOwner
 
 GetNetOwner
@@ -7,6 +11,8 @@ GetNetConnection
 GetNetOwningPlayer
 
 <https://udn.unrealengine.com/questions/192402/rmi-on-non-controlled-actors.html>
+
+
 
 **These are the functions to change client vs server networking checks**:
 
@@ -18,10 +24,15 @@ GetNetOwningPlayer
 
 - UObject::CallRemoteFunction
 
+
+
 Look at GameplayAbility.cpp & GameplayDebugger
 
-​ You can also turn on LogNet verbose logging and follow the output messages when you try to call a non- owned object server function
+You can also turn on LogNet verbose logging and follow the output messages when you try to call a non- owned object server function
+
+
 
 Other useful functions:
 
 - virtual void PostNetReceive() override;
+

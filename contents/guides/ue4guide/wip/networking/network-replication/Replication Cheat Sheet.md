@@ -1,9 +1,23 @@
+---
+sortIndex: 9
+---
 **RPC invoked from the server**
 
-<table><thead><tr class="header"><th><strong>Actor ownership</strong></th><th><strong>Not replicated</strong></th><th><strong>NetMulticast</strong></th><th><strong>Server</strong></th><th><strong>Client</strong></th></tr></thead><tbody><tr class="odd"><td><strong>Client-owned actor</strong></td><td>Runs on server</td><td>Runs on server and all clients</td><td>Runs on server</td><td>Runs on actor's owning client</td></tr><tr class="even"><td><strong>Server-owned actor</strong></td><td>Runs on server</td><td>Runs on server and all clients</td><td>Runs on server</td><td>Runs on server</td></tr><tr class="odd"><td><strong>Unowned actor</strong></td><td>Runs on server</td><td>Runs on server and all clients</td><td>Runs on server</td><td>Runs on server</td></tr></tbody></table>
+| **Actor ownership**    | **Not replicated** | **NetMulticast**               | **Server**     | **Client**                    |
+| ---------------------- | ------------------ | ------------------------------ | -------------- | ----------------------------- |
+| **Client-owned actor** | Runs on server     | Runs on server and all clients | Runs on server | Runs on actor's owning client |
+| **Server-owned actor** | Runs on server     | Runs on server and all clients | Runs on server | Runs on server                |
+| **Unowned actor**      | Runs on server     | Runs on server and all clients | Runs on server | Runs on server                |
 
 **RPC invoked from a client**
 
-<table><thead><tr class="header"><th><strong>Actor ownership</strong></th><th><strong>Not replicated</strong></th><th><strong>NetMulticast</strong></th><th><strong>Server</strong></th><th><strong>Client</strong></th></tr></thead><tbody><tr class="odd"><td><strong>Owned by invoking client</strong></td><td>Runs on invoking client</td><td>Runs on invoking client</td><td>Runs on server</td><td>Runs on invoking client</td></tr><tr class="even"><td><strong>Owned by a different client</strong></td><td>Runs on invoking client</td><td>Runs on invoking client</td><td>Dropped</td><td>Runs on invoking client</td></tr><tr class="odd"><td><strong>Server-owned actor</strong></td><td>Runs on invoking client</td><td>Runs on invoking client</td><td>Dropped</td><td>Runs on invoking client</td></tr><tr class="even"><td><strong>Unowned actor</strong></td><td>Runs on invoking client</td><td>Runs on invoking client</td><td>Dropped</td><td>Runs on invoking client</td></tr></tbody></table>
+| **Actor ownership**             | **Not replicated**     | **NetMulticast** | **Server** | **Client** |
+| ------------------------------- | ---------------------- | ---------------- | ---------- | ---------- |
+| **Owned by invoking client**    | Runs on invoking client | Runs on invoking client | Runs on server | Runs on invoking client |
+| **Owned by a different client** | Runs on invoking client | Runs on invoking client | Dropped | Runs on invoking client |
+| **Server-owned actor**          | Runs on invoking client | Runs on invoking client | Dropped | Runs on invoking client |
+| **Unowned actor**               | Runs on invoking client | Runs on invoking client | Dropped | Runs on invoking client |
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Gameplay/Networking/Actors/RPCs/index.html>>*
+
+
+*Reference From <https://docs.unrealengine.com/latest/INT/Gameplay/Networking/Actors/RPCs/index.html>*

@@ -1,12 +1,15 @@
+---
+sortIndex: 10
+---
 # Common Info:
 
-**Params:**
-
+### Params:
+```cpp
 - Specular = 0.5 by default, \[0,1]
 
-- GBuffer.SpecularColor = lerp(0.08 \* Specular.xxx, BaseColor, Metallic.xxx); //Think this means index of refraction
+- GBuffer.SpecularColor = lerp(0.08 * Specular.xxx, BaseColor, Metallic.xxx); //Think this means index of refraction
 
-- GBuffer.DiffuseColor = BaseColor - BaseColor \* Metallic;
+- GBuffer.DiffuseColor = BaseColor - BaseColor * Metallic;
 
 
 - struct **FDeferredLightData**
@@ -33,23 +36,25 @@ float2 DistanceFadeMAD;
 
 float4 ShadowMapChannelMask;
 
-/\*\* Whether to use inverse squared falloff. \*/
+/** Whether to use inverse squared falloff. */
 
 bool bInverseSquared;
 
-/\*\* Whether this is a light with radial attenuation, aka point or spot light. \*/
+/** Whether this is a light with radial attenuation, aka point or spot light. */
 
 bool bRadialLight;
 
-/\*\* Whether this light needs spotlight attenuation. \*/
+/** Whether this light needs spotlight attenuation. */
 
 bool bSpotLight;
 
-/\*\* Whether the light should apply shadowing. \*/
+/** Whether the light should apply shadowing. */
 
 uint ShadowedBits;
 
 };
+```
+
 
 - **Primitive Uniform Buffer:**
 
@@ -100,9 +105,11 @@ uint ShadowedBits;
 
 **Shading Model:**
 
-- Microfacet specular = D\*G\*F / (4\*NoL\*NoV) = D\*Vis\*F
+- Microfacet specular = D*G*F / (4*NoL*NoV) = D*Vis*F
 
-- Vis = G / (4\*NoL\*NoV)
+- Vis = G / (4*NoL*NoV)
+
+
 
 # Base Pass Pixel Shader.usf::FPixelShaderInOut_MainPS(): 
 
@@ -156,9 +163,9 @@ uint ShadowedBits;
 
   half Specular = GetMaterialSpecular(PixelMaterialInputs);
 
-​ float MaterialAO = GetMaterialAmbientOcclusion(PixelMaterialInputs);
+ float MaterialAO = GetMaterialAmbientOcclusion(PixelMaterialInputs);
 
-​ float Roughness = GetMaterialRoughness(PixelMaterialInputs);
+ float Roughness = GetMaterialRoughness(PixelMaterialInputs);
 
 - Other Misc Stuff:
 
@@ -198,7 +205,7 @@ uint ShadowedBits;
         - This will only come from stationary directional lights as well
 
 
-- **SetGBufferForShadingModel():** Different MATERIAL_SHADINGMODEL\_\* adjust the gbuffer here and write custom data
+- **SetGBufferForShadingModel():** Different MATERIAL_SHADINGMODEL_* adjust the gbuffer here and write custom data
 
 
 - ***(USES_GBUFFER ONLY)*: Velocity calculation**
@@ -206,13 +213,13 @@ uint ShadowedBits;
 
 - **Adjust GBuffer struct values based on shader:**
 
-  - **GBuffer.SpecularColor:** lerp(0.08 \* Specular.xxx, BaseColor, Metallic.xxx); //Think this means index of refraction
+  - **GBuffer.SpecularColor:** lerp(0.08 * Specular.xxx, BaseColor, Metallic.xxx); //Think this means index of refraction
 
   - **GBuffer.Roughness:** NormalCurvatureToRoughness(MaterialParameters.WorldNormal)
 
   - ***(Subsurface_Profile && USES_GBUFFER)* AdjustBaseColorAndSpecularColorForSubsurfaceProfileLighting()**
 
-  - **GBuffer.DiffuseColor** = BaseColor - BaseColor \* Metallic;
+  - **GBuffer.DiffuseColor** = BaseColor - BaseColor * Metallic;
 
   - **FORCE_FULLY_ROUGH** optimization
 
@@ -224,7 +231,9 @@ uint ShadowedBits;
 
   - **GBuffer.GBufferAO** = AOMultiBounce()
 
-**GetPrecomputedIndirectLightingAndSkyLight(): Indirect Diffuse Lighting**
+
+
+### GetPrecomputedIndirectLightingAndSkyLight(): Indirect Diffuse Lighting
 
 Where we compute precalculated **diffuse** lightmap/indirect lighting cache light contribution. Specular comes from GetImageBasedReflectionLighting()
 
@@ -263,7 +272,7 @@ Where we compute precalculated **diffuse** lightmap/indirect lighting cache ligh
 
   - Lightmap data is stored as
 
-  2 samples from the same texture:
+    2 samples from the same texture:
 
   Sample0.a and Sample1.a encodes the precomputed HDR luminance in LogL space
 
@@ -383,7 +392,9 @@ You can look at how the channels are used in LightmapCommon.usf if you want the 
 
 **NOTE: DiffuseColor in FPixelShaderInOut_MainPS is actually indirect diffuse contribution. Direct Dynamic Lighting is accumulated directly into Color variable**
 
-#### **GetForwardDirectLighting():**
+
+
+#### GetForwardDirectLighting():
 
 Get's final shaded pixel value from direct lights
 
@@ -413,7 +424,9 @@ Get's final shaded pixel value from direct lights
 
   - LightAccumulator_Add()/LightAccumulator_GetResult(): Simple accumulator/return. Apply light falloff attenuation. Only does something special for subsurface models
 
-#### **GetImageBasedReflectionLighting():**
+
+
+#### GetImageBasedReflectionLighting():
 
 Get indirect specular from image based reflection environment.
 
@@ -425,7 +438,7 @@ Get indirect specular from image based reflection environment.
 
   - Get Skylight specular: (Forward mode) => GetSkyLightReflection(), (Deferred Mode GetSkyLightReflectionSupportingBlend())
 
-    - /\*\* X = max mip, Y = 1 if sky light should be rendered, 0 otherwise, Z = 1 if sky light is dynamic, 0 otherwise, W = blend fraction. \*/
+    - /*\* X = max mip, Y = 1 if sky light should be rendered, 0 otherwise, Z = 1 if sky light is dynamic, 0 otherwise, W = blend fraction. */
 
       float4 SkyLightParameters;
 
@@ -437,6 +450,8 @@ Get indirect specular from image based reflection environment.
 - EnvBRDFApprox() - analytical approximation instead of using LUT of preconvolved splitsum approximation (<https://www.unrealengine.com/en-US/blog/physically-based-shading-on-mobile>; environment map convolution described here <https://jmonkeyengine.github.io/wiki/jme3/advanced/pbr_part3.html>)
 
 - GetSimpleForwardLightingDirectionalLight(): For Simple directional lighting only for low-end hw
+
+  
 
 **Prefiltering/baking:**
 
@@ -453,6 +468,8 @@ PrefilterEnvMap()
 ApproximateSpecularIBL()
 
 IntegrateBRDF()
+
+
 
 **Common #if Defines**
 
@@ -477,6 +494,8 @@ Below are some common pre-processor defines found in the deferred shading pipeli
 - \#if IMPORTANCE_SAMPLE => Doesn't seem to be used
 
   - Calls ImageBasedLightingHair() & ImageBasedLightingMIS()
+
+
 
 **Misc funcs:**
 

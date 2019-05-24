@@ -1,72 +1,77 @@
-Get build configuration & UBT settings from C++
+---
+sortIndex: 2
+---
 
+Get build configuration & UBT settings from C++
+```cpp
 FGenericPlatformProperties, FWindowsPlatformProperties, FPlatformProperties
 
 - FPlatformProperties::IniPlatformName()
 
 - FPlatformProperties::PlatformName()
 
-ITargetPlatformManagerModule\* TPM = GetTargetPlatformManager();
+ITargetPlatformManagerModule* TPM = GetTargetPlatformManager();
 
-​ if (TPM)
+ if (TPM)
 
-​ {
+ {
 
-​ const TArray&lt;ITargetPlatform\*>& Platforms = TPM->GetActiveTargetPlatforms();
+ const TArray<ITargetPlatform\*>& Platforms = TPM->GetActiveTargetPlatforms();
 
-​ for (int32 Index = 0; Index &lt; Platforms.Num(); ++Index)
+ for (int32 Index = 0; Index < Platforms.Num(); ++Index)
 
-​ {
+ {
 
-​ if (Platforms\[Index]->PackageBuild(SourceDir))
+ if (Platforms\[Index]->PackageBuild(SourceDir))
 
-​ }
+ }
 
-​ }
+ }
 
-​ }
-
+ }
+```
 Get build configuration & UBT settings from C++ at runtime:
+```cpp
+ EBuildConfigurations::Type FApp::GetBuildConfiguration()
 
-​ EBuildConfigurations::Type FApp::GetBuildConfiguration()
+ {
 
-​ {
+ #if UE_BUILD_DEBUG
 
-​ #if UE_BUILD_DEBUG
+ return EBuildConfigurations::Debug;
 
-​ return EBuildConfigurations::Debug;
+ #elif UE_BUILD_DEVELOPMENT
 
-​ #elif UE_BUILD_DEVELOPMENT
+ // Detect DebugGame using an extern variable in monolithic configurations, or a command line argument in modular configurations.
 
-​ // Detect DebugGame using an extern variable in monolithic configurations, or a command line argument in modular configurations.
+ #if IS_MONOLITHIC
 
-​ #if IS_MONOLITHIC
+ extern const bool GIsDebugGame;
 
-​ extern const bool GIsDebugGame;
+ return GIsDebugGame? EBuildConfigurations::DebugGame : EBuildConfigurations::Development;
 
-​ return GIsDebugGame? EBuildConfigurations::DebugGame : EBuildConfigurations::Development;
+ #else
 
-​ #else
+ return IsRunningDebug() ? EBuildConfigurations::DebugGame : EBuildConfigurations::Development;
 
-​ return IsRunningDebug() ? EBuildConfigurations::DebugGame : EBuildConfigurations::Development;
+ #endif
 
-​ #endif
+ #elif UE_BUILD_SHIPPING
 
-​ #elif UE_BUILD_SHIPPING
+ return EBuildConfigurations::Shipping;
 
-​ return EBuildConfigurations::Shipping;
+ #elif UE_BUILD_TEST
 
-​ #elif UE_BUILD_TEST
+ return EBuildConfigurations::Test;
 
-​ return EBuildConfigurations::Test;
+ #else
 
-​ #else
+ return EBuildConfigurations::Unknown;
 
-​ return EBuildConfigurations::Unknown;
+ #endif
 
-​ #endif
-
-​ }
+ }
+```
 
 Other useful functions:
 
@@ -108,6 +113,6 @@ Other useful functions:
 
   - Fill it by calling:
 
-    ​ FBuildVersion::TryRead(FBuildVersion::GetDefaultFileName(), outBldVersion)
+     FBuildVersion::TryRead(FBuildVersion::GetDefaultFileName(), outBldVersion)
 
 - Also can use FEngineVersion::Current().GetChangelist())

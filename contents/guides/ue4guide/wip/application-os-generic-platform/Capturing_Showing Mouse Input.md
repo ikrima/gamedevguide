@@ -1,3 +1,7 @@
+---
+sortIndex: 5
+---
+
 ReleaseMouseCursor
 
 SetInputMode_UIOnlyEx
@@ -23,3 +27,4 @@ ReleaseJoystickCapture
 ClearUserFocus
 
 SetUserFocus
+

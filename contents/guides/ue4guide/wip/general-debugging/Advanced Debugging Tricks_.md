@@ -1,3 +1,7 @@
+---
+sortIndex: 5
+---
+
 ## Advanced Debugging Tricks:
 
 Common Visual Studio Commands: <https://docs.microsoft.com/en-us/visualstudio/ide/reference/visual-studio-commands>
@@ -12,16 +16,16 @@ Ex: >Debug.AttachDetach
 
 Execute code in a macro:
 
-DTE.Debugger.ExecuteStatement("variable_name=0")
+```DTE.Debugger.ExecuteStatement("variable_name=0")```
 
-*Reference From &lt;<http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value>*
+*Reference From <http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value>*
 
 Can execute code in Action:print message section of breakpoint settings by wrapping the value in textfield with {}. Ex: { variable_name=0} will set variable_name=0
 
 You can also concatenate several instructions on the same line. They simply have to be separated by curly braces:
 *i.e. { {done = (i == 100);} { object.x -= 1.0f; } { data\[15] = 3; } }*
 
-*From <https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints/>*
+*Reference From <https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints/>*
 
 Tools
 
@@ -44,3 +48,4 @@ Windows Performance Toolkit
 - Driverquery |find "driverdllname" to find info about a driver (don't use
 
 - strings binary.exe: >bla.txt sysinternals tool to produce all string parameters for a binary
+

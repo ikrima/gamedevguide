@@ -1,8 +1,12 @@
+---
+sortIndex: 6
+---
+
 <https://docs.unrealengine.com/en-us/Engine/Animation/Working-with-Modular-Characters>
 
 <https://forums.unrealengine.com/unreal-engine/feedback-for-epic/5101-content-and-documentation-for-customizable-characters-using-fskeletalmeshmerge?5665-Content-and-Documentation-for-Customizable-characters-using-FSkeletalMeshMerge=>
 
-Morph Mesh Merge:
+#### Morph Mesh Merge:
 
 Morphtarget is very simple.
 
@@ -11,18 +15,17 @@ UMorphTarget -> FMorphTargetLODModel (per LOD) -> FMorphTargetDelta
 This delta stores vertex index, and delta of position and normal.
 
 Mesh merge code is
-
+```cpp
 bool FSkeletalMeshMerge::DoMerge(TArray\* RefPoseOverrides / *= nullptr* /)
 
-1. /\*\* Destination merged mesh \*/
+ /** Destination merged mesh */
 
-1. USkeletalMesh\* MergeMesh;
+ USkeletalMesh* MergeMesh;
 
-1. /\*\* Array of source skeletal meshes \*/
+ /** Array of source skeletal meshes */
 
-1. TArray&lt;USkeletalMesh\*> SrcMeshList;
-
-1.
+ TArray<USkeletalMesh*> SrcMeshList;
+```
 
 You have SrcMeshList, and at the end,
 
@@ -44,10 +47,12 @@ We create Morphtarget with internal object of USkeletalMesh, meaning you'll have
 
 MorphTarget = NewObject(BaseSkelMesh, FName(\*ShapeName));
 
-*From &lt;<https://udn.unrealengine.com/questions/397831/adding-morph-targets-to-skeletal-mesh-merge.html>>*
+*Reference From <https://udn.unrealengine.com/questions/397831/adding-morph-targets-to-skeletal-mesh-merge.html>*
+
+
 
 bool FLODUtilities::RegenerateLOD(USkeletalMesh\* SkeletalMesh, int32 NewLODCount /*= 0*/, bool bRegenerateEvenIfImported /*= false*/)
 
 Usually this is utility function for doing so.
 
-*From &lt;<https://udn.unrealengine.com/questions/456237/crash-skeletal-mesh-merge-output-has-no-lodrenderd.html>>*
+*Reference From <https://udn.unrealengine.com/questions/456237/crash-skeletal-mesh-merge-output-has-no-lodrenderd.html>*

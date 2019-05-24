@@ -1,3 +1,7 @@
+---
+sortIndex: 6
+---
+
 A lot of these aren't specified in ObjectMacros.h
 
 UPARAM(ref)
@@ -6,39 +10,57 @@ UPARAM(hidden)
 
 UPARAM(DisplayName="X (Roll)")
 
+
+
 **Get MetaData from a variable or uproperty:**
 
 Property->HasMetaData(AnimationInputMetadataName)
 
+
+
 **Blueprint Private/Protected:**
 
-> You should be able to add BlueprintPrivate/Protected meta data to you UPROPERTY() decl, like this:
->
-> UPROPERTY(..., meta=(BlueprintPrivate="true"))
->
-> To Mark blueprint properties as protected, just declare them natively inside of protected access specifier
->
-> For functions, you can do meta=(BlueprintProtected)
+ You should be able to add BlueprintPrivate/Protected meta data to you UPROPERTY() decl, like this:
+
+ ```cpp
+ UPROPERTY(..., meta=(BlueprintPrivate="true"))
+ ```
+
+ To Mark blueprint properties as protected, just declare them natively inside of protected access specifier
+
+ For functions, you can do meta=(BlueprintProtected)
+
+
 
 **BlueprintThreadSafe/NotBlueprintThreadSafe:**
 
-> Only valid on Blueprint Function Libraries. This specifier marks the functions in this class as callable on non-game threads in Animation Blueprints.
+ Only valid on Blueprint Function Libraries. This specifier marks the functions in this class as callable on non-game threads in Animation Blueprints.
+
+
 
 **RestrictedToClasses**
 
 Used by Blueprint Function Library classes to restrict usage to the classes named in the list.
 
+
+
 **CallableWithoutWorldContext:**
 
 Used for BlueprintCallable functions that have a WorldContext pin to indicate that the function can be called even if its class does not implement the GetWorld function.
+
+
 
 **KismetHideOverrides="Event1, Event2, .."**
 
 List of blueprint events that are not be allowed to be overridden.
 
+
+
 **UsesHierarchy**
 
 Indicates the class uses hierarchical data. Used to instantiate hierarchical editing features in Details panels.
+
+
 
 **HiddenByDefault**
 
@@ -46,95 +68,150 @@ Pins in Make Struct and Break Struct nodes are hidden by default.
 
 <table><thead><tr class="header"><th><p><strong>AdvancedDisplay</strong>="Parameter1, Parameter2, .."</p><p>The comma-separated list of parameters will show up as advanced pins (requiring UI expansion).</p></th><th> </th></tr></thead><tbody><tr class="odd"><td><p><strong>AdvancedDisplay</strong>=N</p><p>Replace N with a number, and all parameters after the Nth will show up as advanced pins (requiring UI expansion). E.g. 'AdvancedDisplay=2' will mark all but the first two parameters as advanced).</p></td><td> </td></tr></tbody></table>
 
+
+
 **ArrayParm="Parameter1, Parameter2, .."**
 
 Indicates that a BlueprintCallable function should use a Call Array Function node and that the listed parameters should be treated as wild card array properties.
+
+
 
 **ArrayTypeDependentParams="Parameter"**
 
 When ArrayParm is used, this specifier indicates one parameter which will determine the types of all parameters in the ArrayParm list.
 
+
+
 **BlueprintAutocast**
 
 Used only by static BlueprintPure functions from a Blueprint Function Library. A Cast node will be automatically added for the return type and the type of the first parameter of the function.
+
+
 
 **CallableWithoutWorldContext**
 
 Used for BlueprintCallable functions that have a WorldContext pin to indicate that the function can be called even if its class does not implement the GetWorld function.
 
+
+
 **CommutativeAssociativeBinaryOperator**
 
 Indicates that a BlueprintCallable function should use the Commutative Associative Binary node. This node lacks pin names, but features an "Add Pin" button that creates additional input pins.
+
+
 
 **DefaultToSelf**
 
 For BlueprintCallable functions, this indicates that the Object property's named default value should be the self context of the node.
 
+
+
 **ExpandEnumAsExecs="Parameter"**
 
 For BlueprintCallable functions, this indicates that one input execution pin should be created for each entry in the enum used by the parameter. That the named parameter must be of an enumerated type recognized by the Engine via the UENUM tag.
+
+
 
 **HidePin="Parameter"**
 
 For BlueprintCallable functions, this indicates that the parameter pin should be hidden from the user's view. Note that only one parameter pin per function can be hidden in this manner.
 
+
+
 **UnsafeDuringActorConstruction**
 
 This function is not safe to call during Actor construction.
+
+
 
 **WorldContext="Parameter"**
 
 Used by BlueprintCallable functions to indicate which parameter determines the World that the operation is occurring within.
 
+
+
 **CustomStructureParam="Parameter1, Parameter2, ..")**
 
 The listed parameters are all treated as wildcards. This specifier requires the UFUNCTION-level specifier, CustomThunk, which will require the user to provide a custom exec function. In this function, the parameter types can be checked and the appropriate function calls can be made based on those parameter types. The base UFUNCTION should never be called, and should assert or log an error if it is.
 
-### **Enum Bitflags/Bitmasks**
+
+
+### Enum Bitflags/Bitmasks
 
 By default, UENUM Bitflags use the enum value as the bit index. To change it to use the value as a mask,
 
 Create the UENUM like this:
+```cpp
+ UENUM(BlueprintType, meta=(Bitflags, UseEnumValuesAsMaskValuesInEditor="true"))
 
-> UENUM(BlueprintType, meta=(Bitflags, UseEnumValuesAsMaskValuesInEditor="true"))
->
-> enum class EBBCombatMovementPhase : uint8
->
-> {
->
-> StartPhase = 0x01,
->
-> ChargePhase = 0x02,
->
-> ActivePhase = 0x04,
->
-> ImpactStallPhase = 0x08,
->
-> RecoveryPhase = 0x10,
->
-> All = 0xff,
->
-> };
+ enum class EBBCombatMovementPhase : uint8
 
+ {
+
+ StartPhase = 0x01,
+
+ ChargePhase = 0x02,
+
+ ActivePhase = 0x04,
+
+ ImpactStallPhase = 0x08,
+
+ RecoveryPhase = 0x10,
+
+ All = 0xff,
+
+ };
+```
 The property needs to be specified as:
+```cpp
+ UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Moveset, meta=(Bitmask, BitmaskEnum="EBBCombatMovementPhase"))
 
-> UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Moveset, meta=(Bitmask, BitmaskEnum="EBBCombatMovementPhase"))
->
-> int32 AllowedMovement = int32(EBBCombatMovementPhase::StartPhase | EBBCombatMovementPhase::ChargePhase | EBBCombatMovementPhase::ActivePhase);
+ int32 AllowedMovement = int32(EBBCombatMovementPhase::StartPhase | EBBCombatMovementPhase::ChargePhase | EBBCombatMovementPhase::ActivePhase);
+```
+### Property Metadata Specifiers
 
-### **Property Metadata Specifiers**
+| Property Meta Tag                                   | Effect                                                       |
+| --------------------------------------------------- | ------------------------------------------------------------ |
+| AllowAbstract="true/false"                          | Used for Subclass and SoftClass properties. Indicates whether abstract class types should be shown in the class picker. |
+| AllowedClasses="Class1, Class2, .."                 | Used for FSoftObjectPath properties. Comma delimited list that indicates the class type(s) of assets to be displayed in the Asset picker. |
+| AllowPreserveRatio                                  | Used for FVector properties. It causes a ratio lock to be added when displaying this property in details panels. |
+| ArrayClamp="ArrayProperty"                          | Used for integer properties. Clamps the valid values that can be entered in the UI to be between 0 and the length of the array property named. |
+| AssetBundles                                        | Used for SoftObjectPtr or SoftObjectPath properties. List of Bundle names used inside Primary Data Assets to specify which Bundles this reference is part of. |
+| BlueprintBaseOnly                                   | Used for Subclass and SoftClass properties. Indicates whether only Blueprint classes should be shown in the class picker. |
+| BlueprintCompilerGeneratedDefaults                  | Property defaults are generated by the Blueprint compiler and will not be copied when the CopyPropertiesForUnrelatedObjects function is called post-compile. |
+| ClampMin="N"                                        | Used for float and integer properties. Specifies the minimum value N that may be entered for the property. |
+| ClampMax="N"                                        | Used for float and integer properties. Specifies the maximum value N that may be entered for the property. |
+| ConfigHierarchyEditable                             | This property is serialized to a config (.ini) file, and can be set anywhere in the config hierarchy. |
+| ContentDir                                          | Used by FDirectoryPath properties. Indicates that the path will be picked using the Slate-style directory picker inside the Content folder. |
+| DisplayName="Property Name"                         | The name to display for this property, instead of the code-generated name. |
+| DisplayThumbnail="true"                             | Indicates that the property is an Asset type and it should display the thumbnail of the selected Asset. |
+| EditCondition="BooleanPropertyName"                 | Names a boolean property that is used to indicate whether editing of this property is disabled. Putting "!" before the property name inverts the test. |
+| EditFixedOrder                                      | Keeps the elements of an array from being reordered by dragging. |
+| ExactClass="true"                                   | Used for FSoftObjectPath properties in conjunction with AllowedClasses. Indicates whether only the exact classes specified in AllowedClasses can be used, or if subclasses are also valid. |
+| ExposeFunctionCategories="Category1, Category2, .." | Specifies a list of categories whose functions should be exposed when building a function list in the Blueprint Editor. |
+| ExposeOnSpawn="true"                                | Specifies whether the property should be exposed on a Spawn Actor node for this class type. |
+| FilePathFilter="filetype"                           | Used by FFilePath properties. Indicates the path filter to display in the file picker. Common values include "uasset" and "umap", but these are not the only possible values. |
+| HideAlphaChannel                                    | Used for FColor and FLinearColor properties. Indicates that the Alpha property should be hidden when displaying the property widget in the details. |
+| HideViewOptions                                     | Used for Subclass and SoftClass properties. Hides the ability to change view options in the class picker. |
+| InlineEditConditionToggle                           | Signifies that the boolean property is only displayed inline as an edit condition toggle in other properties, and should not be shown on its own row. |
+| LongPackageName                                     | Used by FDirectoryPath properties. Converts the path to a long package name. |
+| MakeEditWidget                                      | Used for Transform or Rotator properties, or Arrays of Transforms or Rotators. Indicates that the property should be exposed in the viewport as a movable widget. |
 
-<table><thead><tr class="header"><th><strong>Property Meta Tag</strong></th><th><strong>Effect</strong></th></tr></thead><tbody><tr class="odd"><td>AllowAbstract="true/false"</td><td>Used for Subclass and SoftClass properties. Indicates whether abstract class types should be shown in the class picker.</td></tr><tr class="even"><td>AllowedClasses="Class1, Class2, .."</td><td>Used for FSoftObjectPath properties. Comma delimited list that indicates the class type(s) of assets to be displayed in the Asset picker.</td></tr><tr class="odd"><td>AllowPreserveRatio</td><td>Used for FVector properties. It causes a ratio lock to be added when displaying this property in details panels.</td></tr><tr class="even"><td>ArrayClamp="ArrayProperty"</td><td>Used for integer properties. Clamps the valid values that can be entered in the UI to be between 0 and the length of the array property named.</td></tr><tr class="odd"><td>AssetBundles</td><td>Used for SoftObjectPtr or SoftObjectPath properties. List of Bundle names used inside Primary Data Assets to specify which Bundles this reference is part of.</td></tr><tr class="even"><td>BlueprintBaseOnly</td><td>Used for Subclass and SoftClass properties. Indicates whether only Blueprint classes should be shown in the class picker.</td></tr><tr class="odd"><td>BlueprintCompilerGeneratedDefaults</td><td>Property defaults are generated by the Blueprint compiler and will not be copied when the CopyPropertiesForUnrelatedObjects function is called post-compile.</td></tr><tr class="even"><td>ClampMin="N"</td><td>Used for float and integer properties. Specifies the minimum value N that may be entered for the property.</td></tr><tr class="odd"><td>ClampMax="N"</td><td>Used for float and integer properties. Specifies the maximum value N that may be entered for the property.</td></tr><tr class="even"><td>ConfigHierarchyEditable</td><td>This property is serialized to a config (.ini) file, and can be set anywhere in the config hierarchy.</td></tr><tr class="odd"><td>ContentDir</td><td>Used by FDirectoryPath properties. Indicates that the path will be picked using the Slate-style directory picker inside the Content folder.</td></tr><tr class="even"><td>DisplayName="Property Name"</td><td>The name to display for this property, instead of the code-generated name.</td></tr><tr class="odd"><td>DisplayThumbnail="true"</td><td>Indicates that the property is an Asset type and it should display the thumbnail of the selected Asset.</td></tr><tr class="even"><td>EditCondition="BooleanPropertyName"</td><td>Names a boolean property that is used to indicate whether editing of this property is disabled. Putting "!" before the property name inverts the test.</td></tr><tr class="odd"><td>EditFixedOrder</td><td>Keeps the elements of an array from being reordered by dragging.</td></tr><tr class="even"><td>ExactClass="true"</td><td>Used for FSoftObjectPath properties in conjunction with AllowedClasses. Indicates whether only the exact classes specified in AllowedClasses can be used, or if subclasses are also valid.</td></tr><tr class="odd"><td>ExposeFunctionCategories="Category1, Category2, .."</td><td>Specifies a list of categories whose functions should be exposed when building a function list in the Blueprint Editor.</td></tr><tr class="even"><td>ExposeOnSpawn="true"</td><td>Specifies whether the property should be exposed on a Spawn Actor node for this class type.</td></tr><tr class="odd"><td>FilePathFilter="filetype"</td><td>Used by FFilePath properties. Indicates the path filter to display in the file picker. Common values include "uasset" and "umap", but these are not the only possible values.</td></tr><tr class="even"><td>HideAlphaChannel</td><td>Used for FColor and FLinearColor properties. Indicates that the Alpha property should be hidden when displaying the property widget in the details.</td></tr><tr class="odd"><td>HideViewOptions</td><td>Used for Subclass and SoftClass properties. Hides the ability to change view options in the class picker.</td></tr><tr class="even"><td>InlineEditConditionToggle</td><td>Signifies that the boolean property is only displayed inline as an edit condition toggle in other properties, and should not be shown on its own row.</td></tr><tr class="odd"><td>LongPackageName</td><td>Used by FDirectoryPath properties. Converts the path to a long package name.</td></tr><tr class="even"><td>MakeEditWidget</td><td>Used for Transform or Rotator properties, or Arrays of Transforms or Rotators. Indicates that the property should be exposed in the viewport as a movable widget.</td></tr></tbody></table>
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Metadata/>>*
+
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Metadata/>*
 
 /// \[PropertyMetadata] Used for Subclass and StringClassReference properties. Shows the picker as a tree view instead of as a list
 
-ShowTreeView
+
+
+**ShowTreeView**
 
 /// \[PropertyMetadata] Used by FDirectoryPath properties. Indicates that the directory dialog will output a relative path when setting the property.
 
-RelativePath
+
+
+**RelativePath**
 
 /// \[PropertyMetadata] Used by FDirectoryPath properties. Indicates that the directory dialog will output a path relative to the game content directory when setting the property.
 
@@ -149,9 +226,13 @@ Default function parameter values:
 UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\\"AssetTag.Item\\")",GameplayTagFilter="AssetTag.Item"))  
 UBBItemVisualCfg\* GetItemVisualCfg(FBBAssetTag ItemVisualStyle) const;
 
+
+
 Restrict types of classes selectable in fstringassetreference properties: meta=(AllowedClasses="LevelSequence")
 
 - Restrict to exact classes: ExactClass
+
+
 
 Execute in Editor: CallInEditor
 
@@ -159,78 +240,86 @@ Execute in Editor: CallInEditor
 
 - TGuardValue&lt;bool> AutoRestore(GAllowActorScriptExecutionInEditor, true);
 
-Customize Array Of Structs header with TitleProperty meta tag:
 
-> USTRUCT(BlueprintType)
->
-> struct FTestStructInner
->
-> {
->
-> GENERATED_USTRUCT_BODY()
->
-> UPROPERTY(EditAnywhere)
->
-> float Value1;
->
-> UPROPERTY(EditAnywhere)
->
-> float Value2;
->
-> UPROPERTY(EditAnywhere)
->
-> FString Value3;
->
-> };
->
-> USTRUCT(BlueprintType)
->
-> struct FTestStructOuter
->
-> {
->
-> GENERATED_USTRUCT_BODY()
->
-> UPROPERTY(EditAnywhere, meta = (TitleProperty = "Value2"))
->
-> TArray&lt;FTestStructInner> TestArray;
->
-> };
+
+**Customize Array Of Structs header with TitleProperty meta tag:**
+
+ USTRUCT(BlueprintType)
+
+ struct FTestStructInner
+
+ {
+
+ GENERATED_USTRUCT_BODY()
+
+ UPROPERTY(EditAnywhere)
+
+ float Value1;
+
+ UPROPERTY(EditAnywhere)
+
+ float Value2;
+
+ UPROPERTY(EditAnywhere)
+
+ FString Value3;
+
+ };
+
+ USTRUCT(BlueprintType)
+
+ struct FTestStructOuter
+
+ {
+
+ GENERATED_USTRUCT_BODY()
+
+ UPROPERTY(EditAnywhere, meta = (TitleProperty = "Value2"))
+
+ TArray&lt;FTestStructInner> TestArray;
+
+ };
 
 a.
 
-![Useful_Metadata_Decorators_defaultvalue](C:\devguide\conversion\FINISHED\assets\Useful_Metadata_Decorators_defaultvalue.png)
+![Useful_Metadata_Decorators_defaultvalue](.../../../../assets/Useful_Metadata_Decorators_defaultvalue.png)
 
-*From &lt;<https://udn.unrealengine.com/questions/279525/create-custom-view-in-ue-for-tarray-of-ustructs.html>>*
+*Reference From <https://udn.unrealengine.com/questions/279525/create-custom-view-in-ue-for-tarray-of-ustructs.html>*
+
+
 
 **Create Console Variable out of UPROPERTY:**
 
 UPROPERTY(config, EditAnywhere, Category = "Advanced Settings", meta = (
 
-> ConsoleVariable = "renderdoc.BinaryPath", DisplayName = "RenderDoc executable path",
->
-> ToolTip = "Path to the main RenderDoc executable to use.",
->
-> ConfigRestartRequired = true))
+ ConsoleVariable = "renderdoc.BinaryPath", DisplayName = "RenderDoc executable path",
+
+ ToolTip = "Path to the main RenderDoc executable to use.",
+
+ ConfigRestartRequired = true))
 
 FString RenderDocBinaryPath;
+
+
 
 **Force a uproperty to not be clearable:**
 
 UPROPERTY(EditAnywhere, NoClear, BlueprintReadOnly)
 
+
+
 **EditCondition**: EditCondition & InlineEditConditionToggle & PinHiddenByDefault
 
-UPROPERTY(VisibleAnywhere, meta=(EditCondition="bIsSet"))
+​	UPROPERTY(VisibleAnywhere, meta=(EditCondition="bIsSet"))
 
-FBBDamageEffect Value;
+​	FBBDamageEffect Value;
 
-UPROPERTY(VisibleAnywhere, meta=(InlineEditConditionToggle))
+​	UPROPERTY(VisibleAnywhere, meta=(InlineEditConditionToggle))
 
-bool bIsSet;
+​	bool bIsSet;
 
 Deprecate functions in UE4: a Blueprint exposed function by adding \_DEPRECATED to its name along with DeprecatedFunction metadata:
-
+```cpp
 struct BLUEPRINTGRAPH_API FBlueprintMetadata  
 {  
 public:  
@@ -386,3 +475,4 @@ static const FName MD_ArrayParam;
         static const FName MD_Bitflags;  
         /\*\* Metadata that signals to the editor that enum values correspond to mask values instead of bitshift (index) values. \*/  
         static const FName MD_UseEnumValuesAsMaskValuesInEditor;
+```

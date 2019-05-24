@@ -1,3 +1,7 @@
+---
+sortIndex: 1
+---
+
 C++ Macros:
 
 - UCLASS()
@@ -20,85 +24,85 @@ C++ Macros:
 
 Class Declaration
 
-UCLASS(\[specifier, specifier, ...], \[meta(key=value, key=value, ...)])  
-class ClassName : ParentName  
-{  
-GENERATED_UCLASS_BODY()  
+UCLASS(\[specifier, specifier, ...], \[meta(key=value, key=value, ...)]) 
+class ClassName : ParentName 
+{ 
+GENERATED_UCLASS_BODY() 
 }
 
-### **Class Specifiers**
+### Class Specifiers
 
 When declaring classes, specifiers can be added to the declaration to control how the class behaves with various aspects of the engine and editor.
 
-- [Abstract]
+- [Abstract](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/Abstract/index.html)
 
-- [AdvancedClassDisplay]
+- [AdvancedClassDisplay](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/S)
 
-- [AssetRegistrySearchable]
+- [AssetRegistrySearchable](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/AssetRegistrySearchable/index.html)
 
-- [AutoCollapseCategories]
+- [AutoCollapseCategories](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/AutoCollapseCategories/index.html)
 
-- [AutoExpandCategories]
+- [AutoExpandCategories](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/AutoExpandCategories/index.html)
 
-- [Blueprintable]
+- [Blueprintable](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/Blueprintable/index.html)
 
-- [BlueprintType]
+- [BlueprintType](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/BlueprintType/index.html)
 
-- [ClassGroup]
+- [ClassGroup](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/ClassGroup/index.html)
 
-- [CollapseCategories]
+- [CollapseCategories](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/CollapseCategories/index.html)
 
-- [Config]
+- [Config](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/Config/index.html)
 
-- [Const]
+- [Const](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/Const/index.html)
 
-- [ConversionRoot]
+- [ConversionRoot](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/ConversionRoot/index.html)
 
-- [CustomConstructor]
+- [CustomConstructor](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/CustomConstructor/index.html)
 
-- [DefaultToInstanced]
+- [DefaultToInstanced](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/DefaultToInstanced/index.html)
 
-- [DependsOn]
+- [DependsOn](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/DependsOn/index.html)
 
-- [Deprecated]
+- [Deprecated](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/Deprecated/index.html)
 
-- [DontAutoCollapseCategories]
+- [DontAutoCollapseCategories](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/DontAutoCollapseCategories/index.html)
 
-- [DontCollapseCategories]
+- [DontCollapseCategories](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/DontCollapseCategories/index.html)
 
-- [EditInlineNew]
+- [EditInlineNew](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/EditInlineNew/index.html)
 
-- [HeaderGroup]
+- [HeaderGroup](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/HeaderGroup/index.html)
 
-- [HideCategories]
+- [HideCategories](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/HideCategories/index.html)
 
-- [HideDropdown]
+- [HideDropdown](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/HideDropdown/index.html)
 
-- [HideFunctions]
+- [HideFunctions](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/HideFunctions/index.html)
 
-- [Intrinsic]
+- [Intrinsic](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/Intrinsic/index.html)
 
-- [MinimalAPI]
+- [MinimalAPI](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/MinimalAPI/index.html)
 
-- [NoExport]
+- [NoExport](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/NoExport/index.html)
 
-- [NonTranisent]
+- [NonTranisent](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/NonTransient/index.html)
 
-- [NotBlueprintable]
+- [NotBlueprintable](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/NotBlueprintable/index.html)
 
-- [NotPlaceable]
+- [NotPlaceable](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/NotPlaceable/index.html)
 
-- [PerObjectConfig]
+- [PerObjectConfig](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/PerObjectConfig/index.html)
 
-- [Placeable]
+- [Placeable](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/Placeable/index.html)
 
-- [ShowCategories]
+- [ShowCategories](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/ShowCategories/index.html)
 
-- [ShowFunctions]
+- [ShowFunctions](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/ShowFunctions/index.html)
 
-- [Transient]
+- [Transient](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/Transient/index.html)
 
-- [Within]
+- [Within](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Classes/Specifiers/Within/index.html)
 
 Constructors:
 
@@ -106,6 +110,7 @@ Constructors:
 
 - Pattern of using static function scoped structs for complex one-time initialization in class constructors. ConstructorHelpers namespace has helpers to use in these situations
 
+```cpp
 // Structure to hold one-time initialization  
                 struct FConstructorStatics  
                 {  
@@ -139,65 +144,72 @@ if (SpriteComponent)
                         SpriteComponent->SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
                         SpriteComponent->AttachParent = Component;  
                 }
+```
 
 - Create components in the constructor using ConstructorHelpers::CreateComponent&lt;>()
 
-> ##### **Function Specifiers**
->
-> When declaring functions, specifiers can be added to the declaration to control how the function behaves with various aspects of the engine and editor.
+ ##### Function Specifiers
 
-- [BlueprintAuthorityOnly]
+ When declaring functions, specifiers can be added to the declaration to control how the function behaves with various aspects of the engine and editor.
 
-- [BlueprintCallable]
+- [BlueprintAuthorityOnly](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/BlueprintAuthorityOnly/index.html)
 
-- [BlueprintCosmetic]
+- [BlueprintCallable](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/BlueprintCallable/index.html)
 
-- [BlueprintImplementableEvent]
+- [BlueprintCosmetic](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/BlueprintCosmetic/index.html)
 
-- [BlueprintNativeEvent]
+- [BlueprintImplementableEvent](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/BlueprintImplementableEvent/index.html)
 
-- [BlueprintPure]
+- [BlueprintNativeEvent](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/BlueprintNativeEvent/index.html)
 
-- [Category]
+- [BlueprintPure](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/BlueprintPure/index.html)
 
-- [Client]
+- [Category](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/Category/index.html)
 
-- [CustomThunk]
+- [Client](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/Client/index.html)
 
-- [Exec]
+- [CustomThunk](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/CustomThunk/index.html)
 
-- [NetMulticast]
+- [Exec](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/Exec/index.html)
 
-- [Reliable]
+- [NetMulticast](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/NetMulticast/index.html)
 
-- [Server]
+- [Reliable](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/Reliable/index.html)
 
-- [Unreliable]
+- [Server](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/Server/index.html)
 
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>>*
->
-> **Delegates**
->
-> Delegates allow you to call member functions on C++ objects in a generic, yet type-safe way. Using delegates, you can dynamically bind to a member function of an arbitrary object, then call functions on the object, even if the caller does not know the object's type.
->
-> It is perfectly safe to copy delegate objects. Delegates can be passed around by value but this is generally not recommended since they do have to allocate memory on the heap. **You should always pass delegates by reference when possible.**
->
-> Both single-cast and multi-cast delegates are supported, as well as **"dynamic" delegates which can be safely serialized to disk.**
+- [Unreliable](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/Unreliable/index.html)
+
+ *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>*
+
+
+
+#### Delegates
+
+ Delegates allow you to call member functions on C++ objects in a generic, yet type-safe way. Using delegates, you can dynamically bind to a member function of an arbitrary object, then call functions on the object, even if the caller does not know the object's type.
+
+ It is perfectly safe to copy delegate objects. Delegates can be passed around by value but this is generally not recommended since they do have to allocate memory on the heap. **You should always pass delegates by reference when possible.**
+
+ Both single-cast and multi-cast delegates are supported, as well as **"dynamic" delegates which can be safely serialized to disk.**
 
 - Single-cast
 
-- [Multi-cast]
+- [Multi-cast](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates/Multicast)
 
-- [Events]
+- [Events](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates/Events)
 
-- [Dynamic (UObject, serializable)]
+- [Dynamic (UObject, serializable)](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates/Dynamic)
 
-> See the [Delegates] page for reference and usage information.
->
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>>*
+ See the [Delegates](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates) page for reference and usage information.
 
-**Timer Management**
+ *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>*
+
+
+
+#### Timer Management
 
 Timers are managed in a global FTimerManager, outside the confines of AActor, and can have any of the full range of delegate types assigned. There are several functions in FTimerManager available for managing timers. It is safe to use these functions inside of a timer delegate as the system is ok with manipulating timers while handling a timer. This means, for example, it is ok to set or clear timers inside a timer delegate.
 
 The AActor::GetWorldTimerManager() function is used to access the timer manager instance for the current world.
+
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Timers/index.html>*

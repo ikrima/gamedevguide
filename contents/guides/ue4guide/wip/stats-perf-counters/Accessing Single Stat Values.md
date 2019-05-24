@@ -1,3 +1,7 @@
+---
+sortIndex: 3
+---
+
 Look at
 
 - DumpFrame(int64 Frame)
@@ -25,6 +29,8 @@ a. StatsMasterEnableAdd(); // make sure we are collecting data
 b. DumpCPUDelegateHandle = Stats.NewFrameDelegate.AddStatic(&DumpCPU);
 
 c.
+
+
 
 And that registers a call back on the stats thread so whenever a frame happens, you are informed. This is a fairly simple command, which does this on every frame....which turns out to be only one frame:
 
@@ -68,17 +74,17 @@ Depending on what you want to do, it might be easier to just hack the hud stats 
 
 Let me know if you need more help on this. It is tedious and hard to understand, but you should be able to do anything you like.
 
-\-Gil
+-Gil
 
-*From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>>*
+*Reference From <https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>*
 
 The description is part of the stat declaration:
 
 1. DECLARE_CYCLE_STAT(TEXT("Step: steering"), STAT_AI_Crowd_StepSteeringTime, STATGROUP_AICrowd);
 
-1.
+2. TEXT("Step: steering") is the description and all stat types have them. This is Item.NameAndInfo.GetDescription().
 
-TEXT("Step: steering") is the description and all stat types have them. This is Item.NameAndInfo.GetDescription().
+
 
 Another potential way to find what you are looking for is to put that stuff in a special (hardcoded) group....that is STATGROUP_AICrowd. Item.NameAndInfo.GetGroupName().
 
@@ -90,4 +96,4 @@ In all cases, realize that you may be filtering quite a lot of data and string o
 
 DECLARE*FNAME_STAT is something it looks like we use in only one place. That is a stat type that has a FName as the \_payload* (in all other cases it is a number). If you just need a string and no other payload, this might be a winner.
 
-*From &lt;<https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>>*
+*Reference From <https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>*

@@ -1,13 +1,18 @@
-*Physics simulation is run on both the client and the server. Updates are sent to the client from the server. The following struct is used to describe the physical state of a rigid body, and is replicated (as defined in **Actor**):*
+---
+sortIndex: 4
+---
 
-struct RigidBodyState  
-{  
-var vector Position;  
-var Quat Quaternion;  
-var vector LinVel; // RBSTATE_LINVELSCALE times actual (precision reasons)  
-var vector AngVel; // RBSTATE_ANGVELSCALE times actual (precision reasons)  
-var int bNewData;  
+*Physics simulation is run on both the client and the server. Updates are sent to the client from the server. The following struct is used to describe the physical state of a rigid body, and is replicated (as defined in **Actor**):*
+```cpp
+struct RigidBodyState 
+{ 
+var vector Position; 
+var Quat Quaternion; 
+var vector LinVel; // RBSTATE_LINVELSCALE times actual (precision reasons) 
+var vector AngVel; // RBSTATE_ANGVELSCALE times actual (precision reasons) 
+var int bNewData; 
 };
+```
 
 *A struct used so that all properties change at the same time*. The vectors are compressed to integer resolution, so that they are scaled before sending. Quats are compressed to only send 3 values; the 4th value is inferred from the other 3.
 
@@ -17,11 +22,13 @@ var int bNewData;
 
 - *Large correction or object stopped: 100% position adjust*
 
-Simulation
+
+
+#### Simulation
 
 The following scenarios describe physics simulation:
 
-- **\*ROLE_SimulatedProxy** Actor simulation\*
+- ***ROLE_SimulatedProxy** Actor simulation*
 
   - *The client continuously updates the simulated actor position based on the received position and velocity.*
 
@@ -55,4 +62,4 @@ The following scenarios describe physics simulation:
 
 1. *Update vehicle on server and client; use outputs (OutputBrake, OutputGas, etc.) to apply forces/torques to wheels/vehicle - **UpdateVehicle()** called on client and server*
 
-*From &lt;<https://udn.epicgames.com/Three/NetworkingOverview.html#Physics>>*
+*Reference From <https://udn.epicgames.com/Three/NetworkingOverview.html#Physics>*

@@ -1,3 +1,7 @@
+---
+sortIndex: 1
+---
+
 Overview Documentation:
 
 <https://docs.unrealengine.com/latest/INT/Programming/Online/index.html>>
@@ -8,11 +12,11 @@ Getting PS4 Online Subsystem To Work (only needed to network multiple devkits th
 
 - <https://forums.unrealengine.com/showthread.php?82928-Setup-UE4-game-for-PS4-online-multiplayer&highlight=networking>
 
-**How to show Steam Login UI or external UI**
+### How to show Steam Login UI or external UI
 
 Register with IOnlineExternalUI
 
-**Overview:**
+#### Overview:
 
 The online subsystem is meant, as you know, as an abstraction layer between all the common services available from all the major platforms, both PC and console. In UE3, much of the hookup code sat inside the GameInfo and PlayerController. Nothing inherently wrong with that, except that there was a bunch of network/online related code intertwined with the rest of the gameplay. A more subtle problem was the lifespan of the PlayerController and the need to talk between the online system and the game during times when the PlayerController may be out of scope (level loads and such).
 
@@ -26,9 +30,11 @@ The LocalPlayer was chosen as the location for the OnlineSession due to its life
 
 These classes will be maintained and expanded as we introduce the OSS into our games here. Any feedback is appreciated.
 
-From &lt;<https://udn.unrealengine.com/questions/168944/best-way-to-interface-with-onlinesubsystem.html>>\*
+*Reference From <https://udn.unrealengine.com/questions/168944/best-way-to-interface-with-onlinesubsystem.html>*
 
-**Here's our current layout (in broad strokes):**
+
+
+#### Here's our current layout (in broad strokes):
 
 - Matching Server M, which does matching making but also player lobbies
 
@@ -36,7 +42,7 @@ From &lt;<https://udn.unrealengine.com/questions/168944/best-way-to-interface-wi
 
 - Clients C, which communicate with the Matching Server and the connect to the DS based on the info the matching server passes back
 
-so until M has matched players, the players are not "connected" to the DS or anyone else. As far as I can tell:
+So until M has matched players, the players are not "connected" to the DS or anyone else. As far as I can tell:
 
 Client: Needs a custom UOnlineSession which has a "loginToMatchingServer()", "BeginMatching()" and such. This would interact with our custom IOnlineSessionInterface which would communicate with the M's APIs. Q: since I don't care about the platform-specific session things for the client (I will always go through M), do I even need a custom OnlineSessionInterface?
 
@@ -44,7 +50,9 @@ Dedicated Server: Needs a custom AGameSession which handles the "game" session. 
 
 Is my understanding correct? As far as I can tell, there is no reason for the DedicatedServer to worry about the OnlineSessionInterface in my case, as the Dedicated Server doesn't care about the matching server information. I need to be able to handle seamless travels that persist the session-specific information on both client and server (the client's infor is authenticated with the server's).
 
-*From &lt;<https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>>*
+*Reference From <https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>*
+
+
 
 It sounds like you've worked out the basics, but your code doesn't have to follow such a rigid pattern. Online games will typically create a custom class derived from UOnlineSessionClient, but my first thought on how to implement this would be to implement IOnlineSession::FindSessions() and the related functions in your custom online subsystem such that that's where the communication with your matchmaking server takes place. But if it makes more sense for your use case to do that in a UOnlineSession subclass, then no, you probably don't need a custom OnlineSessionInterface.
 
@@ -54,7 +62,9 @@ You will want a custom AGameSession, but you can probably use the same class on 
 
 Typically in our games the dedicated server does maintain a session with the OnlineSessionInterface, but I suppose this doesn't have to be the case if your matching server maintains the state you need.
 
-*From &lt;<https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>>*
+*Reference From <https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>*
+
+
 
 Rationalize between Steam & Oculus Online Subsystem or Platform Services:
 

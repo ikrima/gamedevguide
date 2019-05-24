@@ -1,1 +1,6 @@
-![image1](C:\devguide\conversion\FINISHED\assets\image1.png)
+---
+sortIndex: 2
+---
+
+![](.../../.././assets\statsperfcounters-tracingstats.png)
+

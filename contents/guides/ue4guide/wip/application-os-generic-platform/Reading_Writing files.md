@@ -1,5 +1,9 @@
-Useful properties that expose FilePickers:
+---
+sortIndex: 4
+---
 
+#### Useful properties that expose FilePickers:
+```cpp
 FFilePath (can use meta property to filter by asset type meta=(FilePathFilter="py"))
 
 FDirectoryPath
@@ -7,17 +11,17 @@ FDirectoryPath
 // Get File Info  
         FNullReplayInfo Info;
 
-const FString DemoPath = FPaths::Combine(\*FPaths::GameSavedDir(), TEXT("Demos/"));  
-        const FString StreamDirectory = FPaths::Combine(\*DemoPath, \*ReplayName);  
-        const FString StreamFullBaseFilename =e FPaths::Combine(\*StreamDirectory, \*ReplayName);  
+const FString DemoPath = FPaths::Combine(*FPaths::GameSavedDir(), TEXT("Demos/"));  
+        const FString StreamDirectory = FPaths::Combine(*DemoPath, *ReplayName);  
+        const FString StreamFullBaseFilename =e FPaths::Combine(*StreamDirectory, *ReplayName);  
         const FString InfoFilename = StreamFullBaseFilename + TEXT(".replayinfo");
 
-TUniquePtr&lt;FArchive> InfoFileArchive(IFileManager::Get().CreateFileReader(\*InfoFilename));
+TUniquePtr<FArchive> InfoFileArchive(IFileManager::Get().CreateFileReader(*InfoFilename));
 
 if (InfoFileArchive.IsValid() && InfoFileArchive->TotalSize() != 0)  
         {  
                 FString JsonString;  
-                \*InfoFileArchive &lt;&lt; JsonString;
+                *InfoFileArchive << JsonString;
 
 Info.FromJson(JsonString);  
                 Info.bIsValid = true;
@@ -29,14 +33,15 @@ InfoFileArchive->Close();
         Info.FriendlyName = NewFriendlyReplayName;
 
 // Write File Info  
-        TUniquePtr&lt;FArchive> ReplayInfoFileAr(IFileManager::Get().CreateFileWriter(\*InfoFilename));
+        TUniquePtr<FArchive> ReplayInfoFileAr(IFileManager::Get().CreateFileWriter(*InfoFilename));
 
 if (ReplayInfoFileAr.IsValid())  
         {  
                 FString JsonString = Info.ToJson();  
-                \*ReplayInfoFileAr &lt;&lt; JsonString;
+                *ReplayInfoFileAr << JsonString;
 
 ReplayInfoFileAr->Close();  
         }
+```
+*Reference From <https://wiki.unrealengine.com/Replay_System_Tutorial>*
 
-*From &lt;<https://wiki.unrealengine.com/Replay_System_Tutorial>>*

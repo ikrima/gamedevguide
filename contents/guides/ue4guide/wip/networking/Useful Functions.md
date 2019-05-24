@@ -1,3 +1,8 @@
+---
+sortIndex: 14
+---
+
+```cpp
 FHttpModule/IHttpRequest/IHttpResponse: Wrapper to easily make http requests
 
 // Add a new actor for replication programmatically
@@ -14,7 +19,7 @@ if (bReplicates == false && bInReplicates == true)
 
 {
 
-if (UWorld\* MyWorld = GetWorld()) // GetWorld will return nullptr on CDO, FYI
+if (UWorld* MyWorld = GetWorld()) // GetWorld will return nullptr on CDO, FYI
 
 {
 
@@ -34,20 +39,23 @@ else
 
 {
 
-UE_LOG(LogActor, Warning, TEXT("SetReplicates called on actor '%s' that is not valid for having its role modified."), \*GetName());
+UE_LOG(LogActor, Warning, TEXT("SetReplicates called on actor '%s' that is not valid for having its role modified."), *GetName());
 
 }
 
 }
+```
 
-JSON
 
-/\*\* Class that handles converting Json objects to and from UStructs \*/  
+**JSON**
+
+```json
+/** Class that handles converting Json objects to and from UStructs */  
 class JSONUTILITIES_API FJsonObjectConverter
 
-/\*\*  
- \* Base class for a JSON serializable object. Derive from this to make your object serializable  
- \*/  
+/**  
+ * Base class for a JSON serializable object. Derive from this to make your object serializable  
+ */  
 struct FJsonSerializable
 
 // FJsonSerializable  
@@ -63,14 +71,15 @@ struct FJsonSerializable
                 JSON_SERIALIZE( "Changelist",        **Changelist** );  
                 JSON_SERIALIZE( "shouldKeep",        **bShouldKeep** );  
         END_JSON_SERIALIZER
-
+```
 JSON documentation: <http://www.wraiyth.com/?p=198>
+
+
 
 NetUpdate() & NetUpdateFrequency()
 
 Called from UWorld:Tick() in LevelTick.cpp:
 
 - Top of tick -> BroadcastTickDispatch()/TickNetClient() is where client receives all network requests
-
 
 - Bottom of tick-> UNetDriver::TickFlush() where all the Replication magic happens from client to everywhere else

@@ -1,7 +1,10 @@
+---
+sortIndex: 10
+---
+
 - Config files are key-value pairs
 
-
-- Config sections are stored as \[(package).(modulename).(classname)] . Ex: \[/Script/ModuleName.ExampleClass]
+- Config sections are stored as [(package).(modulename).(classname)] . Ex: [/Script/ModuleName.ExampleClass]
 
 - Classes can be decorated with UCLASS(Config=Game) to specify their variables can be read from config
 
@@ -13,9 +16,10 @@
 
 - Per class instance config can also be saved with the UCLASS(PerObjectConfig) stored in config as \[ObjectName ClassName]
 
-#### **Configuration Ini Names**
+#### Configuration Ini Names
 
-#### **Metadata**
+#### Metadata
+
 
 **UCLASS**:
 
@@ -93,32 +97,53 @@ GGameIni | Game /\* Game ini filename \*/
 
 GGameUserSettingsIni | GameUserSettings /\* User Game Settings ini filename \*/
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>>*
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*
+
+
 
 **Custom config file name for a class:**
 
 - Specify by this:
 
-  UCLASS(config=GameplayTags, defaultconfig, notplaceable)
+  ```UCLASS(config=GameplayTags, defaultconfig, notplaceable)```
 
 
 - Get the name by this:
 
-  GetClass()->GetDefaultConfigFilename()
+  ```GetClass()->GetDefaultConfigFilename()```
 
   **or**
 
-  ConfigFileName = uobj->GetDefaultConfigFilename();
+ ``` ConfigFileName = uobj->GetDefaultConfigFilename();```
 
 - Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
 
+
+
 **Override Config Ini files with command line argument:**
 
-<table><thead><tr class="header"><th><strong>Commandline Argument</strong></th><th><strong>INI Override</strong></th></tr></thead><tbody><tr class="odd"><td>DEFEDITORINI=</td><td>Default Editor</td></tr><tr class="even"><td>EDITORINI=</td><td>Editor</td></tr><tr class="odd"><td>DEFEDITORUSERSETTINGSINI=</td><td>Default EditorUserSettings</td></tr><tr class="even"><td>EDITORUSERSETTINGSINI=</td><td>EditorUserSettings</td></tr><tr class="odd"><td>DEFCOMPATINI=</td><td>Default Compat</td></tr><tr class="even"><td>COMPATINI=</td><td>Compat</td></tr><tr class="odd"><td>DEFLIGHTMASSINI=</td><td>Default Lightmass</td></tr><tr class="even"><td>LIGHTMASSINI=</td><td>Lightmass</td></tr><tr class="odd"><td>DEFENGINEINI=</td><td>Default Engine</td></tr><tr class="even"><td>ENGINEINI=</td><td>Engine</td></tr><tr class="odd"><td>DEFGAMEINI=</td><td>Default Game</td></tr><tr class="even"><td>GAMEINI=</td><td>Game</td></tr><tr class="odd"><td>DEFINPUTINI=</td><td>Default Input</td></tr><tr class="even"><td>INPUTINI=</td><td>Input</td></tr><tr class="odd"><td>DEFUIINI=</td><td>Default UI</td></tr><tr class="even"><td>UIINI=</td><td>UI</td></tr></tbody></table>
+| **Commandline Argument**  | **INI Override**           |
+| ------------------------- | -------------------------- |
+| DEFEDITORINI=             | Default Editor             |
+| EDITORINI=                | Editor                     |
+| DEFEDITORUSERSETTINGSINI= | Default EditorUserSettings |
+| EDITORUSERSETTINGSINI=    | EditorUserSettings         |
+| DEFCOMPATINI=             | Default Compat             |
+| COMPATINI=                | Compat                     |
+| DEFLIGHTMASSINI=          | Default Lightmass          |
+| LIGHTMASSINI=             | Lightmass                  |
+| DEFENGINEINI=             | Default Engine             |
+| ENGINEINI=                | Engine                     |
+| DEFGAMEINI=               | Default Game               |
+| GAMEINI=                  | Game                       |
+| DEFINPUTINI=              | Default Input              |
+| INPUTINI=                 | Input                      |
+| DEFUIINI=                 | Default UI                 |
+| UIINI=                    | UI                         |
 
-*From &lt;<https://docs.unrealengine.com/en-us/Programming/Basics/CommandLineArguments>>*
+*Reference From <https://docs.unrealengine.com/en-us/Programming/Basics/CommandLineArguments>*
 
-### **File Hierarchy**
+### File Hierarchy
 
 The configuration file hierarchy is read in starting with Base.ini, with values in later files in the hierarchy overriding earlier values. All files in the Engine folder will be applied to all projects, while project-specific settings should be in files in the project directory. Finally, all project-specific and platform-specific differences are saved out to \[ProjectDirectory]/Saved/Config/\[Platform]/\[Category].ini
 
@@ -126,21 +151,21 @@ The below file hierarchy example is for the Engine category of configuration f
 
 1. Engine/Config/Base.ini
 
-Base.ini is usually empty.
+   Base.ini is usually empty.
 
 2. Engine/Config/BaseEngine.ini
 
-2. Engine/Config/\[Platform]/\[Platform]Engine.ini
+3. Engine/Config/\[Platform]/\[Platform]Engine.ini
 
-2. \[ProjectDirectory]/Config/DefaultEngine.ini
+4. \[ProjectDirectory]/Config/DefaultEngine.ini
 
-2. \[ProjectDirectory]/Config/\[Platform]/\[Platform]Engine.ini
+5. \[ProjectDirectory]/Config/\[Platform]/\[Platform]Engine.ini
 
-2. \[ProjectDirectory]/Saved/Config/\[Platform]/Engine.ini
+6. \[ProjectDirectory]/Saved/Config/\[Platform]/Engine.ini
 
    The configuration file in the Saved directory only stores the project-specific and platform-specific differences in the stack of configuration files.
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>>*
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*
 
 ### **File Format**
 
@@ -148,7 +173,7 @@ Base.ini is usually empty.
 
 Typical configuration files consist of sections of key-value pairs, arranged as follows:
 
-\[Section]  
+\[Section] 
 Key=Value
 
 **Special Characters**
@@ -163,22 +188,24 @@ Key=Value
 
 **Note**: **.* is like *+** except it will potentially add a duplicate line. This is useful for the bindings (as seen in DefaultInput.ini), for instance, where the bottom-most binding takes effect, so if you add something like:
 
-\[/Script/Engine.PlayerInput]  
-Bindings=(Name="Q",Command="Foo")  
-.Bindings=(Name="Q",Command="Bar")  
+\[/Script/Engine.PlayerInput] 
+Bindings=(Name="Q",Command="Foo") 
+.Bindings=(Name="Q",Command="Bar") 
 .Bindings=(Name="Q",Command="Foo")
 
 It will work appropriately. Using a *+* there would fail to add the last line, and your bindings would be incorrect. Due to configuration file combining, the above usage pattern can happen.
 
 - Escape a quote character: ~Quote~, ~OpenBracket~. Ex:
 
+```
 UserDefinedChords=~OpenBracket~~Quote~BindingContext~Quote~:~Quote~PlayWorld~Quote~,~Quote~CommandName~Quote~:~Quote~PausePlaySession~Quote~,~Quote~ChordIndex~Quote~:1,~Quote~Control~Quote~:false,~Quote~Alt~Quote~:false,~Quote~Shift~Quote~:false,~Quote~Command~Quote~:false,~Quote~Key~Quote~:~Quote~None~Quote~~CloseBracket~
+```
 
 **Comments**
 
 Most people seem to be under the impression that the semicolon denotes comments in configuration files, but they aren't (FConfigFile::ProcessInputFileContents doesn't actually treat them, or any other string, as a comment delimiter). This behavior is intentional. Technically any character can represent a different key-value pair. Typically, a semicolon is placed at the beginning of a new line. It works like a comment, but it's not actually.
 
-; This is a Comment  
+; This is a Comment 
 ; So is this!
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>>*
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*

@@ -1,4 +1,7 @@
-## **Simple Way For Tracking UObject Memory Use**
+---
+sortIndex: 2
+---
+## Simple Way For Tracking UObject Memory Use
 
 Details: <https://www.unrealengine.com/en-US/blog/debugging-and-optimizing-memory>
 
@@ -23,11 +26,13 @@ Stat MemoryPlatform
 
 Stat MemoryStaticMesh
 
-## **Low Level Memory Tracker (LLM)**
+
+## Low Level Memory Tracker (LLM)
 
 <https://qiita.com/donbutsu17/items/dd410cd6ee53b0b348ca>
 
-## **Malloc Profiler**
+
+## Malloc Profiler
 
 Detailed explanation: <https://qiita.com/donbutsu17/items/a72a282587390f43d12d>
 
@@ -48,7 +53,7 @@ The malloc profiler is currently best supported on Windows, but Linux, iOS and M
 1. On the timeline view you can also create Custom Mark Points by clicking on a specific point on the timeline. If you then reopen the profile a second time those mark points will be available in the start/end drop downs. This can be useful for investigating specific increases in memory
 1. Also, the filter options can be useful to help investigate issues. You should experiment by filtering certain classes or text strings in/out and then hitting the Go button to refresh the view.
 
-From [&lt;https://udn.unrealengine.com/questions/383200/how-do-you-use-the-malloc-profiler-to-find-memory.html]\(<https://udn.unrealengine.com/questions/383200/how-do-you-use-the-malloc-profiler-to-find-memory.html)>
+*Reference From <https://udn.unrealengine.com/questions/383200/how-do-you-use-the-malloc-profiler-to-find-memory.html)>*
 
 For most memory issues, internally we use all of the following to try to track them down:
 
@@ -60,6 +65,6 @@ For most memory issues, internally we use all of the following to try to track t
 
 Your best bet for finding fragmentation is either 2 or 3 as they can give you a more complete picture of the current state of memory.
 
-\-Pete
+-Pete
 
-From [&lt;https://udn.unrealengine.com/questions/393847/tools-for-looking-at-memory-fragmentation.html]\(<https://udn.unrealengine.com/questions/393847/tools-for-looking-at-memory-fragmentation.html)>
+*Reference From <https://udn.unrealengine.com/questions/393847/tools-for-looking-at-memory-fragmentation.html>*

@@ -1,44 +1,47 @@
-## **Gameplay Debugging**
+---
+sortIndex: 4
+---
 
-- [\[Gameplay Debugging\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Gameplay%20Debugging)
+## Gameplay Debugging
 
-- [\[Overview\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Overview)
+- [Gameplay Debugging](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Gameplay%20Debugging)
 
-- [\[Remote Control\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Remote%20Control)
+- [Overview](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Overview)
 
-- [\[Property Inspection and Manipulation\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Property%20Inspection%20and%20Manipulation)
+- [Remote Control](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Remote%20Control)
 
-  - [\[Object Data Manipulation\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Object%20Data%20Manipulation)
-
-  - [\[EditActor\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditActor)
-
-  - [\[EditObject\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditObject)
-
-  - [\[EditDefault\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditDefault)
-
-  - [\[EditArchetype\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditArchetype)
-
-  - [\[Static Object Data Inspection\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Static%20Object%20Data%20Inspection)
-
-  - [\[GetAll\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#GetAll)
-
-  - [\[GetAllState\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#GetAllState)
-
-  - [\[Dynamic Object Data Inspection\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Dynamic%20Object%20Data%20Inspection)
-
-  - [\[DisplayAll\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll)
-
-  - [\[DisplayAllState\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState)
-
-  - [\[DisplayClear\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayClear)
-
-  - [\[Object Data Modification\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Object%20Data%20Modification)
-
-  - [\[Set\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Set)
-
-  - [\[Gameplay Code Profiling\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Gameplay%20Code%20Profiling)
-
-  - [\[STAT Commands\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#STAT%20Commands)
+- [Property Inspection and Manipulation](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Property%20Inspection%20and%20Manipulation)
+- [Object Data Manipulation](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Object%20Data%20Manipulation)
+  
+- [EditActor](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditActor)
+  
+- [EditObject](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditObject)
+  
+- [EditDefault](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditDefault)
+  
+- [EditArchetype](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#EditArchetype)
+  
+- [Static Object Data Inspection](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Static%20Object%20Data%20Inspection)
+  
+- [GetAll](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#GetAll)
+  
+- [GetAllState](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#GetAllState)
+  
+- [Dynamic Object Data Inspection](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Dynamic%20Object%20Data%20Inspection)
+  
+- [DisplayAll](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll)
+  
+- [DisplayAllState](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState)
+  
+- [DisplayClear](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayClear)
+  
+- [Object Data Modification](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Object%20Data%20Modification)
+  
+- [Set](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Set)
+  
+- [Gameplay Code Profiling](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#Gameplay%20Code%20Profiling)
+  
+- [STAT Commands](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#STAT%20Commands)
 
 ## Overview
 
@@ -50,9 +53,9 @@ This is a quick guide to using some of UE3's runtime gameplay debugging features
 
 The RemoteControl is a special window that can be opened while the game is running to provide information and control over certain aspects of the game.
 
-As this window is external to the game window and is created using wxWindows, it is unavailable if wxWindows is disabled, which it is by default except when running a [Play In Editor] game session from within UnrealEd. To enable wxWindows and the RemoteControl, the game must be run with the -wxwindows [command line argument].
+As this window is external to the game window and is created using wxWindows, it is unavailable if wxWindows is disabled, which it is by default except when running a [Play In Editor](<https://api.unrealengine.com/udk/Three/PlayInEditor.html>) game session from within UnrealEd. To enable wxWindows and the RemoteControl, the game must be run with the -wxwindows [command line argument](<https://api.unrealengine.com/udk/Three/CommandLineArguments.html>).
 
-For more information and a complete guide to using this feature, see the [Remote Control][1] page.
+For more information and a complete guide to using this feature, see the [Remote Control](<https://api.unrealengine.com/udk/Three/RemoteControl.html>) page.
 
 #### Property Inspection and Manipulation
 
@@ -60,11 +63,13 @@ Inspecting properties of Actors in the game and being able to modify them on the
 
 #### Object Data Manipulation
 
-These [console commands] allow you to open a property window for an in-game object or even for the class default object, which can then be viewed or modified at runtime. Note that there is a None category that contains all the variables that have not been declared with var(), giving you complete access to all of the object's data.
+These [console commands](<https://api.unrealengine.com/udk/Three/ConsoleCommands.html>) allow you to open a property window for an in-game object or even for the class default object, which can then be viewed or modified at runtime. Note that there is a None category that contains all the variables that have not been declared with var(), giving you complete access to all of the object's data.
 
-As these commands rely on property windows external to the game window which are created using wxWindows, these commands are unavailable if wxWindows is disabled, which it is by default. To enable wxWindows and thus these console commands, the game must be run with the -wxwindows [command line argument].
+As these commands rely on property windows external to the game window which are created using wxWindows, these commands are unavailable if wxWindows is disabled, which it is by default. To enable wxWindows and thus these console commands, the game must be run with the -wxwindows [command line argument](<https://api.unrealengine.com/udk/Three/CommandLineArguments.html>).
 
-**Note:** This will also enable the [Remote Control][2]. You can also add the -norc [command line argument] to disable the [Remote Control][2] window if you like.
+**Note:** This will also enable the [Remote Control](<https://api.unrealengine.com/udk/Three/GameplayDebugging.html#RemoteControl>). You can also add the -norc [command line argument](<https://api.unrealengine.com/udk/Three/CommandLineArguments.html>) to disable the [Remote Control](<https://api.unrealengine.com/udk/Three/GameplayDebugging.html#RemoteControl>) window if you like.
+
+
 
 #### EditActor
 
@@ -96,9 +101,9 @@ The simplest method here is probably to use the trace argument and just aim at t
 
 For vehicles, it may be unlikely you will know the exact name of the vehicle as they are usually spawned dynamically from factories and not placed directly in a map.
 
-![UDKGameplay_Debugging_ExampleUsage_EditActor](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_ExampleUsage_EditActor.jpg)
+![UDKGameplay_Debugging_ExampleUsage_EditActor](.../../../../assets/UDKGameplay_Debugging_ExampleUsage_EditActor.jpg)
 
-![UDKGameplay_Debugging_Scorpion](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_Scorpion.jpg)
+![UDKGameplay_Debugging_Scorpion](...\..\..\..\assets\UDKGameplay_Debugging_Scorpion.jpg)
 
 ### EditObject
 
@@ -130,9 +135,9 @@ editobject class=UDNCameraModule
 
 This will open the property window for the camera module currently in use.
 
-![UDKGameplay_Debugging_UDNCameraModule](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_UDNCameraModule.jpg)
+![UDKGameplay_Debugging_UDNCameraModule](...\..\..\..\assets\UDKGameplay_Debugging_UDNCameraModule.jpg)
 
-![UDKGameplay_Debugging_CameraMod_TopDown](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_CameraMod_TopDown.jpg)
+![UDKGameplay_Debugging_CameraMod_TopDown](...\..\..\..\assets\UDKGameplay_Debugging_CameraMod_TopDown.jpg)
 
 ### EditDefault
 
@@ -152,39 +157,39 @@ editdefault class=UTProj_LinkPlasma
 
 Both of these are functionally identical and will display the default properties of the UTProj_LinkPlasma class which can then be modified allowing you to adjust the behavior of all future instances of that class.
 
-![UDKGameplay_Debugging_UTProj_Linkplasma](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_UTProj_Linkplasma.jpg)
+![UDKGameplay_Debugging_UTProj_Linkplasma](...\..\..\..\assets\UDKGameplay_Debugging_UTProj_Linkplasma.jpg)
 
 ### EditArchetype
 
 The editarchetype console command makes the properties of an archetype available. The archetype to edit is specified by passing the path (Package.Group.Name) to the archetype following the command. Like the editdefault command, this command is also extremely useful for archetypes that are used as templates for objects that are frequently spawned, such as projectiles or units in a real-time strategy game, or for archetypes used as data definitions or content holders.
 
-In addition to being able to edit the properties of the archetype, the settings can be saved to the archetype in the package using the ![saveButton](C:\devguide\conversion\FINISHED\assets\saveButton.jpg) button in the properties window so they are not lost.
+In addition to being able to edit the properties of the archetype, the settings can be saved to the archetype in the package using the ![saveButton](...\..\..\..\assets\saveButton.jpg) button in the properties window so they are not lost.
 
 **Note:** This command is not allowed when running a map from within UnrealEd through a Play In Editor session.
 
-#### **Example Usage:**
+#### Example Usage:
 
 Say you have a weapon class set up to use archetypes as templates for its projectiles. This allows the look and behavior of the projectiles to easily be tweaked without having to modify and recompile the scripts. However, it would also usually require running the game and testing, closing the game and making changes, running the game and testing, etc. By using the editarchetype command, the modifications can be made while the game is running for an easy and efficient workflow.
 
 The projectile using the current settings of the archetype:
 
-![UDKGameplay_Debugging_Editarchetype](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_Editarchetype.jpg)
+![UDKGameplay_Debugging_Editarchetype](...\..\..\../assets\UDKGameplay_Debugging_Editarchetype.jpg)
 
 Simply use the editarchetype command and pass it the path of the archetype:
 
 editarchetype UDNProjectiles.RedPlasma
 
-![UDKGameplay_Debugging_Redplasma](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_Redplasma.jpg)
+![UDKGameplay_Debugging_Redplasma](...\..\..\..\assets\UDKGameplay_Debugging_Redplasma.jpg)
 
 By modifying the proeprties, the look and behavior of the projectiles is changed in realtime:
 
-![UDKGameplay_Debugging_Editarchetype_Realtime](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_Editarchetype_Realtime.jpg)
+![UDKGameplay_Debugging_Editarchetype_Realtime](...\..\..\..\assets\UDKGameplay_Debugging_Editarchetype_Realtime.jpg)
 
-Once you are satisfied with the settings, press the ![saveButton](C:\devguide\conversion\FINISHED\assets\saveButton.jpg)button in the proeperties window to save the current settings to the archetype.
+Once you are satisfied with the settings, press the ![saveButton](...\..\..\..\assets\saveButton.jpg)button in the proeperties window to save the current settings to the archetype.
 
 ### Static Object Data Inspection
 
-These [\[console commands\]](https://api.unrealengine.com/udk/Three/ConsoleCommands.html) are useful for inspecting a static snapshot of object data while the game is running. They will capture the values of the specified data at the time the command is executed and display that data in the console and output it to the log as well.
+These [console commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html) are useful for inspecting a static snapshot of object data while the game is running. They will capture the values of the specified data at the time the command is executed and display that data in the console and output it to the log as well.
 
 #### GetAll
 
@@ -200,7 +205,7 @@ getall UDNPlayerController PlayerCamera
 
 This will list out the Name and PlayerCamera of every UDNPlayerController actor in memory in the console in-game.
 
-![UDKGameplay_Debugging_GetAll](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_GetAll.jpg)
+![UDKGameplay_Debugging_GetAll](...\..\..\..\assets\UDKGameplay_Debugging_GetAll.jpg)
 
 Since the PlayerCamera has a value and not None, you know the camera is being assigned properly.
 
@@ -230,13 +235,13 @@ getallstate UTPawn
 
 This will list the current state of every UTPawn in memory in the console in-game.
 
-![UDKGameplay_Debugging_GodModeOn](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_GodModeOn.jpg)
+![UDKGameplay_Debugging_GodModeOn](...\..\..\..\assets\UDKGameplay_Debugging_GodModeOn.jpg)
 
 This gives you a quick overview of what the UTPawns in the game are doing. It can quickly point out an anomaly, such as you see in the screenshot as this snapshot was taken at the time the bots were spawning and yet one UTPawn is in the Dying state.
 
 ## Dynamic Object Data Inspection
 
-These [\[console commands\]](https://api.unrealengine.com/udk/Three/ConsoleCommands.html) are useful for inspecting object data as it changes over time. They will display a set of data which dynamically updates each frame directly on the screen overlaying the game as part of the HUD.
+These [console commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html) are useful for inspecting object data as it changes over time. They will display a set of data which dynamically updates each frame directly on the screen overlaying the game as part of the HUD.
 
 ### DisplayAll
 
@@ -248,7 +253,7 @@ displayall UTPawn Location
 
 This will list the Name and Location of every UTPawn on the screen, updated every frame.
 
-![UDKGameplay_Debugging_DisplayAll](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_DisplayAll.jpg)
+![UDKGameplay_Debugging_DisplayAll](...\..\..\..\assets\UDKGameplay_Debugging_DisplayAll.jpg)
 
 ### DisplayAllState
 
@@ -264,7 +269,7 @@ displayallstate UTBot
 
 This will list the current state of every UTBot in memory on the screen, updated every frame, making it extremely easy to see exactly what each bot is doing.
 
-![UDKGameplay_Debugging_DisplayALLSTATE](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_DisplayALLSTATE.jpg)
+![UDKGameplay_Debugging_DisplayALLSTATE](...\..\..\..\assets\UDKGameplay_Debugging_DisplayALLSTATE.jpg)
 
 ### DisplayClear
 
@@ -274,11 +279,11 @@ The displayclear console command clears all object data currently being displaye
 
 displayclear
 
-This will clear the object data being displayed on the screen from a previous [\[DisplayAll\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll) or [\[DisplayAllState\]](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState) command.
+This will clear the object data being displayed on the screen from a previous [DisplayAll](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll) or [DisplayAllState](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState) command.
 
 ![UDKGameplay_Debugging_DisplayClear](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_DisplayClear.jpg)
 
-![UDKGameplay_Debugging_DisplayClear2](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_DisplayClear2.jpg)
+![UDKGameplay_Debugging_DisplayClear2](...\..\..\..\assets\UDKGameplay_Debugging_DisplayClear2.jpg)
 
 ### Object Data Modification Set
 
@@ -296,22 +301,23 @@ set utweap_linkgun maxammocount 150
 
 This will increase the maximum ammo count that all link guns can hold.
 
-![UDKGameplay_Debugging_Objectmodificatiohn](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_Objectmodificatiohn.jpg)
+![UDKGameplay_Debugging_Objectmodificatiohn](...\..\..\..\assets\UDKGameplay_Debugging_Objectmodificatiohn.jpg)
 
 ### Gameplay Code Profiling 
 
 The Gameplay Profiler is a tool that provides a detailed breakdown of where time is being spent when executing UnrealScript gameplay code.
 
-![UDKGameplay_Debugging_GameplayProfiling](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_GameplayProfiling.jpg)
+![UDKGameplay_Debugging_GameplayProfiling](...\..\..\..\assets\UDKGameplay_Debugging_GameplayProfiling.jpg)
 
-For a detailed overview, see the [\[Gameplay Profiler\]](https://api.unrealengine.com/udk/Three/GameplayProfiler.html) page.
+For a detailed overview, see the [Gameplay Profiler](https://api.unrealengine.com/udk/Three/GameplayProfiler.html) page.
 
-For more information on the command line arguments useful for profiling gameplay, see the [\[Gameplay Profiling\]](https://api.unrealengine.com/udk/Three/GameplayProfiling) page.
+For more information on the command line arguments useful for profiling gameplay, see the [Gameplay Profiling](https://api.unrealengine.com/udk/Three/GameplayProfiling) page.
 
 ### STAT Commands
 
 The STAT commands can be useful in getting a quick look at how much time certain aspects of your code are taking to execute. The STAT GAME command is especially useful as it shows the cumulative time your scripts are taking to update each tick.
 
-![UDKGameplay_Debugging_STATCOMMANDS](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_STATCOMMANDS.jpg)
+![UDKGameplay_Debugging_STATCOMMANDS](...\..\..\..\assets\UDKGameplay_Debugging_STATCOMMANDS.jpg)
 
-For more information on this and other STAT commands, see the [\[Stats Description\]](https://api.unrealengine.com/udk/Three/StatsDescriptions.html) page.
+For more information on this and other STAT commands, see the [Stats Description](https://api.unrealengine.com/udk/Three/StatsDescriptions.html) page.
+

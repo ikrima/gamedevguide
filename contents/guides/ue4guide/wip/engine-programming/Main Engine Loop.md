@@ -1,9 +1,11 @@
-==========================================
+---
+sortIndex: 1
+---
 
 GaurdedMainLoop
 
 * * *
-
+```cpp
 FCoreDelegates::GetPreMainInitDelegate().Broadcast()
 
 FEngineLoop::PreInit: Sets up lots of init like project paths and parses commandline
@@ -203,3 +205,4 @@ FPlatformApplicationMisc::TearDown();
 FPlatformMisc::PlatformTearDown();
 
 GLog->TearDown();
+```

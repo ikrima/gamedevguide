@@ -12,25 +12,24 @@ GameMode contains a state machine that tracks the state of the Match
 
    a) things are fully loaded
 
-2) WaitingToStart: HandleMatchIsWaitingToStart() called when entering this state. Actors are ticking, players have not yet spawned. Transitions on =>
+2.  WaitingToStart: HandleMatchIsWaitingToStart() called when entering this state. Actors are ticking, players have not yet spawned. Transitions on =>
 
-   a) ReadyToStartMatch() returns true
-
-   b) Someone calls StartMatch()
+1. ReadyToStartMatch() returns true
+   2. Someone calls StartMatch()
 
 3. InProgress: HandleMatchHasStarted called on enter. Calls BeginPlay() on all Actors just incase it wasn’t called in HandleMatchIsWaitingToStart(). Normal gameplay. Transitions on =>
 
-   a) ReadyToEndMatch() == true
+   1. ReadyToEndMatch() == true
+   2. Someone calls EndMatch()
 
-   b) Someone calls EndMatch()
-
-4) WaitingPostMatch: HandleMatchHasEnded() on enter. Actors still ticking but new players not accepted. Transitions on =>
-
-   ​ a) Map transfer starts
+4. WaitingPostMatch: HandleMatchHasEnded() on enter. Actors still ticking but new players not accepted. Transitions on =>
+   1. Map transfer starts
 
 5. LeavingMap: HandleLeavingMap() on enter. Match stays in this state while transferring to a new map
 
 5. Aborted: failure state. Started from AbortMatch()
+
+
 
 Events that are fired:
 
@@ -39,6 +38,8 @@ Events that are fired:
   - Passes valid PlayerController owned by connecting Player's connection
 
   - Can be used to Spawn new player pawn
+
+
 
 OptionsString: contains options, delimetted by ?, that can be passed via OpenLevel() or ServerTravel()
 
@@ -54,6 +55,8 @@ GameState maintains list of connected Players (PlayerState)
 
 - AuthorityGameMode (only server has this)
 
+
+
 PlayerState: holds current information about the current Player
 
 - Replicated to everyone so other clients can know details about the Player
@@ -68,6 +71,8 @@ PlayerState: holds current information about the current Player
 
   - Override CopyProperties() & OverrideWith()
 
+
+
 Pawns
 
 - Possession only happens on the server
@@ -77,20 +82,17 @@ Pawns
 AActor::IsNetRelevantFor() - Determines relevancy for a playercontroller/actor
 
 1. If the Actor is 'bAlwaysRelevant', is owned by the Pawn or PlayerController, is the Pawn, or the Pawn is the Instigator of some action like noise or damage, it is relevant
-
 1. If the Actor is 'bNetUserOwnerRelevancy' and has an Owner, use the Owner's relevancy
-
 1. If the Actor is 'bOnlyRelevantToOwner', and does not pass the first check, it is not relevant
-
 1. If the Actor is attached to the Skeleton of another Actor, then its relevancy is determined by the relevancy of its base
-
 1. if the Actor is hidden ('bHidden == true') and the root component does not collide then the Actor is not relevant
-
-- If there is no root component, 'AActor::IsNetRelevantFor()' will log a warning and ask if
+   1. If there is no root component, 'AActor::IsNetRelevantFor()' will log a warning and ask if
 
 the Actor should be set to 'bAlwaysRelevant = true'
 
 6. If 'AGameNetworkManager' is set to use distance based relevancy, the Actor is relevant if it is closer than the net cull distance
+
+
 
 AActor::GetNetPriority()- determines how much relative bandwidth actor receives compared to others. NetPriority=2.0 => 2x more bandwidth
 

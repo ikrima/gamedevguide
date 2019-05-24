@@ -1,6 +1,10 @@
-Animation:
+---
+sortIndex: 2
+---
 
-![AnimationSubsystem_Overview_AnimationDiagram](C:\devguide\conversion\FINISHED\assets\AnimationSubsystem_Overview_AnimationDiagram.jpg)
+# Animation:
+
+![AnimationSubsystem_Overview_AnimationDiagram](/..\..\..\assets\AnimationSubsystem_Overview_AnimationDiagram.jpg)
 
 ShowDebug Bones to show debug view of animation bones
 
@@ -11,3 +15,4 @@ ShowDebug Animation
 - Show all animation debug info
 
 - Turn off/on certain categories by ShowDebugToggleSubCategory &lt;categoryname>
+

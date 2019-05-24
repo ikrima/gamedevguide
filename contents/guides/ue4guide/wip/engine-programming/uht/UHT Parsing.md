@@ -1,3 +1,7 @@
+---
+sortIndex: 1
+---
+
 Adding a new property specifier is non trivial. :-) And it cannot be done from within a plugin.
 
 First, it'll depend on what you want your specifier to do. If it's to add new metadata to the property, then you probably enough to take a look at GetMetadataKeyword() in BaseParser.cpp. It defines which metadata actions will occur when a specifier is seen. Bear in mind that metadata specifiers can be applied to everything: functions, classes, structs etc., and that metadata is only available in editor builds.
@@ -14,4 +18,5 @@ This will result in the right code being generated, but now it needs to be taken
 
 I think that's all there is to it. ;-) As I say, it's not a trivial process, and you'll end up having to port your changes across to newer engine versions.
 
-*From &lt;<https://udn.unrealengine.com/questions/401535/add-custom-property-flag.html>>*
+*Reference From https://udn.unrealengine.com/questions/401535/add-custom-property-flag.html>*
+

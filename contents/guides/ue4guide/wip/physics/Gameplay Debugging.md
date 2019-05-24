@@ -2,13 +2,8 @@
 sortIndex: 7
 ---
 
-Gameplay Debugging
 
-Wednesday, February 10, 2016
-
-1:23 PM
-
-Gameplay Debugger Capabilities:
+## Gameplay Debugger Capabilities:
 
 - Look at FGameplayDebugger module
 
@@ -16,15 +11,15 @@ Gameplay Debugger Capabilities:
 
 - You can specify debug bindings by adding this to DefaultInput.ini
 
-> \[/Script/Engine.PlayerInput]
->
-> \+DebugExecBindings=(Key=L,Command="ToggleInfiniteAmmo")
->
-> \+DebugExecBindings=(Key=L,Command="ToggleInfiniteClip", Control=True)
->
-> \+DebugExecBindings=(Key=T,Command="ToggleMatchTimer")
->
-> \+DebugExecBindings=(Key=T, Command="ForceMatchStart", Control=True)
+ \[/Script/Engine.PlayerInput]
+
+ \+DebugExecBindings=(Key=L,Command="ToggleInfiniteAmmo")
+
+ \+DebugExecBindings=(Key=L,Command="ToggleInfiniteClip", Control=True)
+
+ \+DebugExecBindings=(Key=T,Command="ToggleMatchTimer")
+
+ \+DebugExecBindings=(Key=T, Command="ForceMatchStart", Control=True)
 
 - BaseInput.ini has debugexecbindings that control the debug viewmodes through the F1-F7 keys
 
@@ -36,13 +31,15 @@ Gameplay Debugger Capabilities:
 
   - Roll your own by extending UCheatManager
 
-# Useful Gameplay Debugging Console Commands:
+
+
+## Useful Gameplay Debugging Console Commands:
 
 ViewSelf / ViewActor
 
 Debug Collision:
 
-> show collision
+	show collision
 
 ShowDebug …
 
@@ -56,6 +53,5 @@ ToggleDebugCamera
 
 Debug Input:
 
-> showdebug input.
+	showdebug input.
 
-=

@@ -1,5 +1,5 @@
 ---
-sortIndex: 2
+sortIndex: 4
 ---
 
 #### Overview of the reflection system:
@@ -20,7 +20,7 @@ The type hierarchy for the property system looks like this:
 UStruct is the basic type of aggregate structures (anything that contains other members, such as a C++ class, struct, or function), and shouldn’t be confused with a C++ struct (that's UScriptStruct). UClass can contain functions or properties as their children, while UFunction and UScriptStruct are limited to just properties.
 
 To iterate over all members of a UStruct, use a TFieldIterator:
-
+```cpp
 for (TFieldIterator&lt;UProperty> PropIt(GetClass()); PropIt; ++PropIt)
 
 {
@@ -30,37 +30,37 @@ UProperty\* Property = \*PropIt;
 // Do something with the property
 
 }
-
+```
 Each type has a unique set of flags (EClassFlags + HasAnyClassFlags, etc…), as well as a generic metadata storage system inherited from UField.
 
 #### Look up / Find a property:\*\*
-
+```cpp
 FindField&lt;UProperty>(**Struct**, **VarDesc**->**VarName**)
-
+```
 #### Export/Import text from Uproperty:\*\*
-
+```cpp
 **Property**->ExportText_InContainer(0, **PropertyValue**, **RowData**, **RowData**, nullptr, PPF_None);
-
+```
 #### Test for UProperty equality or if two properties are identical:\*\*
-
+```cpp
 UProperty::Identical( const void\* A, const void\* B, uint32 PortFlags=0 )
 
 UProperty::Identical_InContainer()
-
+```
 #### **Change UUserDefinedStruct's parent structure:**
-
+```cpp
 In FStructureEditorUtils::CreateUserDefinedStruct():
 
 ((UUserDefinedStructEditorData\*)(Struct->EditorData))->NativeBase = FNativeBaseS::StaticStruct();
 
 \* \*
-
+```
 #### Hook Into UObject/UProperty change modification delegates:
 
 [Listen on property changes and notifies/notifications:]
 
 **Specific callbacks:**
-
+```cpp
 virtual void EditorApplyTranslation(const FVector& DeltaTranslation, bool bAltDown, bool bShiftDown, bool bCtrlDown) override;
 
 virtual void EditorApplyRotation(const FRotator& DeltaRotation, bool bAltDown, bool bShiftDown, bool bCtrlDown) override;
@@ -70,9 +70,9 @@ virtual void EditorApplyScale(const FVector& DeltaScale, const FVector\* PivotLo
 virtual void PostEditMove(bool bFinished) override;
 
 virtual void PostEditComponentMove(bool bFinished) override;
-
+```
 #### How to check if a UFunction is latent:
-
+```cpp
 **bIsLatent** = (**Function**->HasMetaData(FBlueprintMetadata::MD_Latent) != false);
 
 **Export UStruct to text or ToString**
@@ -89,15 +89,15 @@ if( **EventTarget** && **EventTarget**->NumParms == 0)
         **LSA**->ProcessEvent(**EventTarget**, *NULL*);  
         **bFoundEvent** = true;  
 }
-
+```
 **Find Class or Ustruct by name:**
-
+```cpp
 FClass\* FClasses::FindClass(const TCHAR\* ClassName) const  
 UObject\* ClassPackage = ANY_PACKAGE;
 
 UClass\* Result = FindObject&lt;UClass>(ClassPackage, ClassName);
-
-*From &lt;<https://answers.unrealengine.com/questions/92651/get-blueprint-class-by-string-in-c.html>>*
+```
+*Reference From <https://answers.unrealengine.com/questions/92651/get-blueprint-class-by-string-in-c.html>*
 
 ##### Useful Utilities:
 
@@ -117,49 +117,48 @@ You can also use a field iterator (look at UFunction::IsSignatureCompatibleWith)
 TFieldIterator&lt;UProperty> **IteratorA**(ufunc);
 
 Iterate through functions/fields:
-
+```cpp
 for (TFieldIterator&lt;UFunction> **FunctionIt**(this->GetClass(), EFieldIteratorFlags::ExcludeSuper); **FunctionIt**; ++**FunctionIt**)  
     {  
         UFunction\* **Function** = \***FunctionIt**;  
     }
-
+```
 **Iterate through all classes to find subclass:**
-
+```cpp
 // Construct list of non-abstract sound node classes.
 
-> for(TObjectIterator&lt;UClass> It; It; ++It)
->
-> {
->
-> if(It->IsChildOf(USoundNode::StaticClass())
->
-> && !It->HasAnyClassFlags(CLASS_Abstract))
->
-> {
->
-> SoundNodeClasses.Add(\*It);
->
-> }
->
-> }
+ for(TObjectIterator&lt;UClass> It; It; ++It)
 
+ {
+
+ if(It->IsChildOf(USoundNode::StaticClass())
+
+ && !It->HasAnyClassFlags(CLASS_Abstract))
+
+ {
+
+ SoundNodeClasses.Add(\*It);
+
+ }
+
+ }
+```
 **Compare two UFunctions for signatures:**
-
+```cpp
 UFunction::IsSignatureCompatibleWith(const UFunction\* OtherFunction, uint64 IgnoreFlags) const
-
+```
 **Programmatically Create UUserDefinedStruct:**
-
+```cpp
 return FStructureEditorUtils::CreateUserDefinedStruct(**InParent**, **Name**, **Flags**);
 
 FStructureEditorUtils::AddVariable(**StructureDetailsSP**->GetUserDefinedStruct(), **InitialPinType**);
-
+```
 **Programmatically Construct Struct/UScriptStruct**
-
+```cpp
 template&lt;typename T>  
 T ConstructTInlineValue(UScriptStruct\* **Struct**)
 
 static void SetStructurePropertyByName(UObject\* **Object**, FName **PropertyName**, const T& **Value**)
 
 UKismetSystemLibrary::Generic_SetStructurePropertyByName(**Object**, **PropertyName**, &**Value**);
-
-[listen on property changes and notifies/notifications:]: onenote:#Detail%20Customization&section-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={C8BFDFFE-D107-4D63-936B-E81D8492F144}&object-id={9A92F9E1-B7DA-0D9A-1A24-63E7F8972A9A}&30&base-path=https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one
+```

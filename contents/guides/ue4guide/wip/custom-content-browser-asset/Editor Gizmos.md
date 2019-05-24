@@ -1,4 +1,8 @@
-Editor Gizmos:
+---
+sortIndex: 14
+---
+
+**Editor Gizmos:**
 
 ABaseTransformGizmo
 
@@ -17,6 +21,8 @@ UAxisGizmoHandleGroup
 UStretchGizmoHandleGroup
 
 UStretchGizmoHandleGroup
+
+
 
 **PreviewMeshes:**
 
@@ -48,11 +54,11 @@ UStaticMesh\* UniformScaleMesh = nullptr;
 
 {
 
-> static ConstructorHelpers::FObjectFinder&lt;UStaticMesh> ObjectFinder( TEXT( "/Engine/VREditor/TransformGizmo/UniformScaleHandle" ) );
->
-> UniformScaleMesh = ObjectFinder.Object;
->
-> check( UniformScaleMesh != nullptr );
+ static ConstructorHelpers::FObjectFinder&lt;UStaticMesh> ObjectFinder( TEXT( "/Engine/VREditor/TransformGizmo/UniformScaleHandle" ) );
+
+ UniformScaleMesh = ObjectFinder.Object;
+
+ check( UniformScaleMesh != nullptr );
 
 }
 
@@ -60,40 +66,41 @@ class UGizmoHandleMeshComponent\* UGizmoHandleGroup::CreateMeshHandle( class USt
 
 {
 
-> const bool bAllowGizmoLighting = false;        // @todo vreditor: Not sure if we want this for gizmos or not yet. Needs feedback. Also they're translucent right now.
->
-> UGizmoHandleMeshComponent\* HandleComponent = CreateDefaultSubobject&lt;UGizmoHandleMeshComponent>( \*ComponentName );
->
-> check( HandleComponent != nullptr );
->
-> HandleComponent->SetStaticMesh( HandleMesh );
->
-> HandleComponent->SetMobility( EComponentMobility::Movable );
->
-> HandleComponent->SetupAttachment( this );
->
-> HandleComponent->SetCollisionEnabled( ECollisionEnabled::QueryOnly );
->
-> HandleComponent->SetCollisionResponseToAllChannels( ECR_Ignore );
->
-> HandleComponent->SetCollisionResponseToChannel( COLLISION_GIZMO, ECollisionResponse::ECR_Block );
->
-> HandleComponent->SetCollisionObjectType( COLLISION_GIZMO );
->
-> HandleComponent->bGenerateOverlapEvents = false;
->
-> HandleComponent->SetCanEverAffectNavigation( false );
->
-> HandleComponent->bCastDynamicShadow = bAllowGizmoLighting;
->
-> HandleComponent->bCastStaticShadow = false;
->
-> HandleComponent->bAffectDistanceFieldLighting = bAllowGizmoLighting;
->
-> HandleComponent->bAffectDynamicIndirectLighting = bAllowGizmoLighting;
->
-> //HandleComponent->bUseEditorCompositing = true;
->
-> return HandleComponent;
+ const bool bAllowGizmoLighting = false;        // @todo vreditor: Not sure if we want this for gizmos or not yet. Needs feedback. Also they're translucent right now.
+
+ UGizmoHandleMeshComponent\* HandleComponent = CreateDefaultSubobject&lt;UGizmoHandleMeshComponent>( \*ComponentName );
+
+ check( HandleComponent != nullptr );
+
+ HandleComponent->SetStaticMesh( HandleMesh );
+
+ HandleComponent->SetMobility( EComponentMobility::Movable );
+
+ HandleComponent->SetupAttachment( this );
+
+ HandleComponent->SetCollisionEnabled( ECollisionEnabled::QueryOnly );
+
+ HandleComponent->SetCollisionResponseToAllChannels( ECR_Ignore );
+
+ HandleComponent->SetCollisionResponseToChannel( COLLISION_GIZMO, ECollisionResponse::ECR_Block );
+
+ HandleComponent->SetCollisionObjectType( COLLISION_GIZMO );
+
+ HandleComponent->bGenerateOverlapEvents = false;
+
+ HandleComponent->SetCanEverAffectNavigation( false );
+
+ HandleComponent->bCastDynamicShadow = bAllowGizmoLighting;
+
+ HandleComponent->bCastStaticShadow = false;
+
+ HandleComponent->bAffectDistanceFieldLighting = bAllowGizmoLighting;
+
+ HandleComponent->bAffectDynamicIndirectLighting = bAllowGizmoLighting;
+
+ //HandleComponent->bUseEditorCompositing = true;
+
+ return HandleComponent;
 
 }
+

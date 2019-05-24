@@ -1,3 +1,6 @@
+---
+sortIndex: 1
+---
 Numbers signify steps not necessarily at the same class nesting
 
 - UGameEngine::Init
@@ -43,21 +46,22 @@ Numbers signify steps not necessarily at the same class nesting
            - Not sure why this is here instead of the main call to BeginPlay(possibly for networked late joins?)
 
 
-            4. Uworld::BeginPlay()
+  4. Uworld::BeginPlay()
 
-            -   a) GameMode::StartPlay()
+      - a) GameMode::StartPlay()
 
-                -   GameMode::StartMatch()
+         - GameMode::StartMatch()
 
-                    -   GameState::HandleBeginPlay()
+            - GameState::HandleBeginPlay()
 
-                        -   AWorldSettings::NotifyBeginPlay()
+               - AWorldSettings::NotifyBeginPlay()
 
-                            -   Actor::BeginPlay(), for alla ctors
+                  - Actor::BeginPlay(), for all actors
 
-- UActorComponent::RegisterAllComponentTickFunctions() - Allows components to register multiple tick functions (ex: Physics tick, cloth tick in skeletalmeshcomponent)
+                     - UActorComponent::RegisterAllComponentTickFunctions() - Allows components to register multiple tick functions (ex: Physics tick, cloth tick in skeletalmeshcomponent)
+                     - UActorComponent::BeginPlay()
 
-- UActorComponent::BeginPlay()
+
 
 FEngineLoop::Tick()
 
@@ -85,6 +89,7 @@ FEngineLoop::Tick()
   - This would be great place to add Objects that need to tick at the end of the frame that are engine/world agnostic
 
   - Good possible place for our own UDP network ticking replication
+
 
 GameMode Flow:
 

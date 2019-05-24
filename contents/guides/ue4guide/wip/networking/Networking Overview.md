@@ -1,8 +1,15 @@
+---
+sortIndex: 1
+---
 <https://udn.unrealengine.com/questions/446465/expense-analysis-for-networkingvariable-replicatio.html>
+
+
 
 Networking Guide Compendium
 
 <http://cedric.bnslv.de/Downloads/UE4_Network_Compendium_by_Cedric_eXi_Neukirchen.pdf>
+
+
 
 Networking Replication Guide:
 
@@ -12,11 +19,15 @@ Networking Replication Guide:
 
 <https://wiki.beyondunreal.com/What_happens_at_map_startup>
 
+
+
 Survival Game - C++ Networking Sample
 
 <https://wiki.unrealengine.com/Survival_Sample_Game:_Section_5>
 
-Different types of replication:
+
+
+#### Different types of replication:
 
 - Actor Replication
 
@@ -28,7 +39,9 @@ Different types of replication:
 
 - Event Replication
 
-Gamestate vs Game Instance
+
+
+#### Gamestate vs Game Instance
 
 - Gamestate is replicated extension of GameMode b/c GameMode only exists on the server for security. GameMode contains the win/loss rules of the games. Should not hav emuch data that changes during Play
 
@@ -38,11 +51,15 @@ Gamestate vs Game Instance
 
 - GameInstance is data that's persisted between levels. E.g. You want to keep track of what a player did in this level to affect the next level
 
+
+
 Gamemode contains rules/logic e.g. conditions for a touchdown, first down in football. Gamestate is state that's replicated to everyone freely e.g. the scoreboard
 
 Playercontroller/playerstate is the equivelent. E.g. playerstate contains score, name, etc while setting those variables and when and routing input is through Playercontroller
 
 GameSession is meant to handle interactions with OnlineSubsystem like accepting login, checking ban lists/server capacity, spectator permissions, starting/ending session with platform
+
+
 
 ## Objects Can Be In One of these Categories
 
@@ -54,11 +71,12 @@ GameSession is meant to handle interactions with OnlineSubsystem like accepting 
 
 - Owning Client
 
-![NetworkingOverview_ObjectsCategories](C:\devguide\conversion\FINISHED\assets\NetworkingOverview_ObjectsCategories.png)
+![NetworkingOverview_ObjectsCategories](...\..\..\.\assets\NetworkingOverview_ObjectsCategories.png)
 
-![NetworkOverview_VennDiagram](C:\devguide\conversion\FINISHED\assets\NetworkOverview_VennDiagram.png)
+![NetworkOverview_VennDiagram](...\..\..\.\assets\NetworkOverview_VennDiagram.png)
 
 #### Engine Practicalities:
+
 
 - Network debugging/testing - Launch network version of game through command line shortcut: <https://docs.unrealengine.com/latest/INT/Programming/Basics/CommandLineArguments/index.html>
 
@@ -66,12 +84,14 @@ GameSession is meant to handle interactions with OnlineSubsystem like accepting 
 
   "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor.exe" "D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" -Game 192.168.0.17
 
-​ "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor.exe"
+ "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor.exe"
 
-​ "D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" 0-LevelLockArena?listen -Game
+ "D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" 0-LevelLockArena?listen -Game
 
-​ "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe" "D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" 1-SimpleMasterArenaFlow?listen -Game -log
+ "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe" "D:\\Ikrima\\src\\Assembla\\Bebylon\\BBRProto\\BBRProto.uproject" 1-SimpleMasterArenaFlow?listen -Game -log
 
-​ Launch server mode in standalone build:
 
-​ ?listen -server
+
+Launch server mode in standalone build:
+
+ ?listen -server

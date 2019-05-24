@@ -2,13 +2,9 @@
 sortIndex: 10
 ---
 
-Logging Commands
-
-Friday, May 26, 2017
-
-6:16 PM
-
 showlog - will toggle output terminal
+
+
 
 Log list - list all log categories
 
@@ -26,6 +22,8 @@ Log \[cat] \[level] - set the verbosity level of the category \[cat]
 
 Log \[cat] break - toggle the debug break on display of the category \[cat]
 
+
+
 Log Levels
 
 Fatal
@@ -42,9 +40,13 @@ Verbose
 
 VeryVerbose
 
+
+
 Command line to stream log output to file
 
 \-log LOG=Logfile.txt
+
+
 
 Log categories to separate files
 

@@ -1,3 +1,7 @@
+---
+sortIndex: 1
+---
+
 Object reference replication:
 
 - References are sent over with a special ID (FnetworkGUID).

@@ -1,3 +1,7 @@
+---
+sortIndex: 6
+---
+```cpp
 template &lt;> struct TIsWeakPointerType&lt;FLazyObjectPtr> { enum { Value = TIsWeakPointerType&lt;TPersistentObjectPtr&lt;FUniqueObjectGuid> >::Value }; };
 
 template &lt;> struct THasGetTypeHash&lt;FLazyObjectPtr> { enum { Value = THasGetTypeHash&lt;TPersistentObjectPtr&lt;FUniqueObjectGuid> >::Value }; };
@@ -48,29 +52,29 @@ WithSerializeFromMismatchedTag = false, // struct has a SerializeFromMismatchedT
 
 };
 
-/\*\*
+/**
 
-\* Tests if a type T is bitwise-constructible from a given argument type U. That is, whether or not
+* Tests if a type T is bitwise-constructible from a given argument type U. That is, whether or not
 
-\* the U can be memcpy'd in order to produce an instance of T, rather than having to go
+* the U can be memcpy'd in order to produce an instance of T, rather than having to go
 
-\* via a constructor.
+* via a constructor.
 
-\*
+*
 
-\* Examples:
+* Examples:
 
-\* TIsBitwiseConstructible&lt;PODType, PODType >::Value == true // PODs can be trivially copied
+* TIsBitwiseConstructible&lt;PODType, PODType >::Value == true // PODs can be trivially copied
 
-\* TIsBitwiseConstructible&lt;const int\*, int\* >::Value == true // a non-const Derived pointer is trivially copyable as a const Base pointer
+* TIsBitwiseConstructible&lt;const int\*, int\* >::Value == true // a non-const Derived pointer is trivially copyable as a const Base pointer
 
-\* TIsBitwiseConstructible&lt;int\*, const int\*>::Value == false // not legal the other way because it would be a const-correctness violation
+* TIsBitwiseConstructible&lt;int\*, const int\*>::Value == false // not legal the other way because it would be a const-correctness violation
 
-\* TIsBitwiseConstructible&lt;int32, uint32 >::Value == true // signed integers can be memcpy'd as unsigned integers
+* TIsBitwiseConstructible&lt;int32, uint32 >::Value == true // signed integers can be memcpy'd as unsigned integers
 
-\* TIsBitwiseConstructible&lt;uint32, int32 >::Value == true // and vice versa
+* TIsBitwiseConstructible&lt;uint32, int32 >::Value == true // and vice versa
 
-\*/
+*/
 
 template &lt;>
 
@@ -81,3 +85,4 @@ struct TIsBitwiseConstructible&lt;Name, TRangeBound&lt;ElementType>>
 enum { Value = true };
 
 };
+```

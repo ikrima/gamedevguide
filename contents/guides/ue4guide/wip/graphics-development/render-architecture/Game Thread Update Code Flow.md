@@ -1,8 +1,14 @@
+---
+sortIndex: 6
+---
+
 For UPrimitiveComponent:
 
 PostLoad()
 
 - BeginInitResources(): Create static render resources (e.g. index/vertex buffer)
+
+
 
 Component Register
 
@@ -36,7 +42,7 @@ Component Register
 
         - Each DrawPolicyFactory::AddStaticMesh() creates a Drawing Policy for the specific mesh and TStaticMeshDrawlist::AddMesh() it to the corresponding list. Drawing Policies define specific parameters on how to draw this mesh in this specific pass, e.g. DepthDrawingPolicy. They're sorted based on state to minimize state changes
 
-        - FBasePassOpaqueDrawingPolicyFactory::AddStaticMesh() is the main responsible BasePass factory. TBasePassDrawingPolicy&lt;LightMapPolicyType> is the main draw policy
+        - FBasePassOpaqueDrawingPolicyFactory::AddStaticMesh() is the main responsible BasePass factory. TBasePassDrawingPolicy<LightMapPolicyType> is the main draw policy
 
     - Update PrimitiveOctree
 
@@ -45,6 +51,8 @@ Component Register
     - Loop through Light Octree and create LightPrimitiveInteractions for each Light affecting this Primitive
 
       - PrimitiveSceneProxy::GetLightRelevance() based on FlightInteraction for primitive (retrieved through PrimitiveSceneProxy::GetInteraction())
+
+
 
 Component Transform Update
 

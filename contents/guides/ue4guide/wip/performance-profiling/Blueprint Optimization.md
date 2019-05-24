@@ -1,6 +1,11 @@
+---
+sortIndex: 12
+---
 **Inline Blueprint functions:**
 
 Give BP compiler hints on inlining functions. Look at KismetMathLibrary.h for details:
+
+```cpp
 
 // Conditionally inlined
 
@@ -9,3 +14,4 @@ Give BP compiler hints on inlining functions. Look at KismetMathLibrary.h for de
 \#include "KismetMathLibrary.inl"
 
 \#endif
+```

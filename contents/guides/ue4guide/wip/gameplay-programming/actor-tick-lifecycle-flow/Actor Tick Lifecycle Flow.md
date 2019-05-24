@@ -1,4 +1,8 @@
-Actor Tick Lifecycle Flow
+---
+sortIndex: 1
+---
+
+### Actor Tick Lifecycle Flow
 
 The functions of interest to initialization order for an Actor is roughly as follows:
 
@@ -13,6 +17,8 @@ The functions of interest to initialization order for an Actor is roughly as fol
 - AActor::PostInitializeComponents - Called after the actor's components have been initialized
 
 - AActor::BeginPlay - Called when the level is started
+
+
 
 Ticks are executed asynchronously in tick groups
 
@@ -44,9 +50,11 @@ TG_PostUpdateWork - any item that needs the update work to be done before being 
 
 TG_NewlySpawned - Special tick group that is not actually a tick group. After every tick group this is repeatedly re-run until there are no more newly spawned items to run
 
-*From &lt;<https://answers.unrealengine.com/questions/231386/tickgroup-how-to-understand-that.html>>*
+*Reference From <https://answers.unrealengine.com/questions/231386/tickgroup-how-to-understand-that.html>*
 
-Actor Tick():
+
+
+#### Actor Tick():
 
 - Object ticking is done by registering a function delegate (FTickFunction) to the engine which is responsible for executing it. Ex: For Actors, FActorTickFunction::ExecuteTick() calls TickActor()
 
@@ -70,7 +78,9 @@ Actor Tick():
 
   - Afterwards, calls ProcessLatentActions() to process BP latent actions like delay events
 
-Notes:
+
+
+#### Notes:
 
 - ActorComponent's are not necessarily ticked in any order in relation to their owner Actor. Everything is just added onto the task graph. You have to use AddActorPrerequisite or AddActorComponentPrerequisite to define dependencies
 
@@ -82,12 +92,13 @@ Notes:
 
 - IntializeComponent and BeginPlay are only called in game worlds, not the editor world, so that may be why you aren't seeing them called. Like bWantsBeginPlay you also need bWantsInitializeComponent. Both BeginPlay and InitializeComponent will get called as part of calling RegisterComponent if the owning Actor has been initialized/begun play respectively.
 
->
 
-*From &lt;<https://udn.unrealengine.com/questions/285100/component-creation-overview.html>>*
 
->
+*Reference From <https://udn.unrealengine.com/questions/285100/component-creation-overview.html>*
 
+
+
+```cpp
 // General flow here is like so  
         // - Actor sets up the basics.  
         // - Actor gets PreInitializeComponents()  
@@ -104,6 +115,7 @@ Notes:
         // This should be the same sequence for deferred or nondeferred spawning.
 
 // It's not safe to call UWorld accessor functions till the world info has been spawned.
+```
 
 PostInitProperties()
 

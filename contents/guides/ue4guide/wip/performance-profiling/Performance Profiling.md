@@ -1,3 +1,7 @@
+---
+sortIndex: 1
+---
+
 Make sure to perf profile under the right conditions:
 
 - Never "Debug". "Development" is convenient, but "Test" is closer to shipping
@@ -40,14 +44,19 @@ Make sure to perf profile under the right conditions:
 
 hmd vsync on/off/reset: Self-explanatory
 
-*From &lt;<https://answers.unrealengine.com/questions/23023/trouble-configuring-game-settings.html>>*
+*Reference From <https://answers.unrealengine.com/questions/23023/trouble-configuring-game-settings.html>*
+
+
 
 Texture Quality Settings
 
 \[SystemSettings]/\[SystemSettingsEditor]  
 ; NOTE THAT ANY ITEMS IN THIS SECTION WILL AFFECT ALL PLATFORMS!!!
 
-TEXTUREGROUP_World=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
+TEXTUREGROUP_World=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point) 
+
+
+
 TEXTUREGROUP_WorldNormalMap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_WorldSpecular=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_Character=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
@@ -65,17 +74,18 @@ TEXTUREGROUP_EffectsNotFiltered=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFi
 TEXTUREGROUP_Skybox=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_UI=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_Lightmap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
-TEXTUREGROUP_Shadowmap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point,NumStreamedMips=3)  
+TEXTUREGROUP_Shadowmap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point,NumStreamedMips=3) 
+
 TEXTUREGROUP_RenderTarget=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_MobileFlattened=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_Terrain_Heightmap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_Terrain_Weightmap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_Bokeh=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=linear,MipFilter=linear)
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Engine/Content/Types/Textures/SupportAndSettings/index.html>>*
+*Reference From <https://docs.unrealengine.com/latest/INT/Engine/Content/Types/Textures/SupportAndSettings/index.html>*
 
-![PerformanceProfiling_CPUProfiling](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_CPUProfiling.png)
+![PerformanceProfiling_CPUProfiling](...\..\..\..\assets\PerformanceProfiling_CPUProfiling.png)
 
-![PerformanceProfiling_RenderThread](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_RenderThread.png)
+![PerformanceProfiling_RenderThread](...\..\..\..\assets\PerformanceProfiling_RenderThread.png)
 
-![PerformanceProfiling_GPUVisualizer](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_GPUVisualizer.png)
+![PerformanceProfiling_GPUVisualizer](...\..\..\..\assets\PerformanceProfiling_GPUVisualizer.png)

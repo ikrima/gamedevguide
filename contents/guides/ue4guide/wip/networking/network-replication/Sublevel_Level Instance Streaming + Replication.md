@@ -1,4 +1,8 @@
-**Sublevels aren't directly associated with ULevels. Instead, they are associated with UWorlds**. See UWorld::StreamingLevels.
+---
+sortindex: 10
+---
+
+#### Sublevels aren't directly associated with ULevels. Instead, they are associated with UWorlds. See UWorld::StreamingLevels.
 
 Because of that, when you load in a Sublevel, there's no way to know what it's Sublevels are (unless you figure out the owning UPackage, load that, grab the UWorld, and then grab the levels).
 
@@ -24,21 +28,24 @@ When the Client / Server loads a Sublevel, that Manager would then be responsibl
 
 You also need to be careful with naming, making sure that the Server and Client have consistent names for the sublevels without clashing. Also, be careful of circular nested sublevels.
 
-*From &lt;<https://udn.unrealengine.com/questions/426339/stream-sublevels-of-a-streamed-level.html>>*
+*Reference From <https://udn.unrealengine.com/questions/426339/stream-sublevels-of-a-streamed-level.html>*
 
-**Fortnite detailed approach:**
+
+Fortnite detailed approach:
 
 <https://udn.unrealengine.com/questions/399764/load-level-instance-with-replicated-actors.html>
 
-**Multiplayer issues with sublevel streaming/toggling visibility:**
 
-​ [Level streaming client crash]
 
-​ [Network streaming level visibility, disconnect]
+#### Multiplayer issues with sublevel streaming/toggling visibility:
 
-​ There is also an unresolved ticket related to this issue:
+ [Level streaming client crash](https://udn.unrealengine.com/questions/365920/level-streaming-client-crash.html)
 
-​ [Toggling ULevelStreaming::bShouldBeVisible causes replication errors]
+ [Network streaming level visibility, disconnect](https://udn.unrealengine.com/questions/350813/network-streaming-level-visibility-disconnect.html)
+
+ There is also an unresolved ticket related to this issue:
+
+ [Toggling ULevelStreaming::bShouldBeVisible causes replication errors](https://issues.unrealengine.com/issue/UE-43042)
 
 Level streaming definitely should (and does generally) work with Multiplayer. For example, we use Level Streaming in Fortnite. That said, there are a few important things to note (I'll try not to rehash too much of what was in those tickets).
 
@@ -48,7 +55,7 @@ If the level is completely unloaded before the close bunches occur, there's no r
 
 The other problem is that you could still end up in situations where the Server quickly "toggles" level visibility in a few frames, sends multiple RPCs to the client, as well as those close bunches. In that case, what can happen is the client may process the RPCs on the same frame, not change level status at all, but still end up destroying all of those actors.
 
-​ Another important thing to note is that I have not been able to reproduce this issue using level streaming volumes.
+ Another important thing to note is that I have not been able to reproduce this issue using level streaming volumes.
 
 Streaming volumes use the same streaming systems underneath. The key differences are that *they* manage when levels stream in and out instead of it being up to game code.
 
@@ -66,9 +73,11 @@ TL;DR:
 
 Streaming should definitely work in multiplayer, and using BP vs. Streaming Volumes vs. Something else doesn't *really* matter. The biggest thing to make sure is that the Server doesn't unload levels Clients may need (which Streaming Volumes does inherently).
 
-*From &lt;<https://udn.unrealengine.com/questions/429527/issue-with-level-streaming-in-multiplayer.html>>*
+*Reference From <https://udn.unrealengine.com/questions/429527/issue-with-level-streaming-in-multiplayer.html>*
 
-**Notification (in C++) on all Streaming Levels loaded via World Composition in a multiplayer scenario**
+
+
+#### Notification (in C++) on all Streaming Levels loaded via World Composition in a multiplayer scenario
 
 Whenever Clients have loaded levels (their persistent level, sublevels loaded via World Composition, or sublevels loaded in other ways), they have to notify the server via APlayerController::ServerUpdateLevelVisibility (and ServerUpdateMultipleLevelsVisibility in newer versions).
 
@@ -76,10 +85,5 @@ I'll point out that it's a SealedEvent, meaning that it cannot be overridden in 
 
 Depending on what you're actually trying to do, though, there may be better alternatives to getting around this type of thing. Are you trying to do this to control game state, to trigger events, something else?
 
-*From &lt;<https://udn.unrealengine.com/questions/443407/notification-in-c-on-all-streaming-levels-loaded-v.html>>*
+*Reference From <https://udn.unrealengine.com/questions/443407/notification-in-c-on-all-streaming-levels-loaded-v.html>*
 
-[level streaming client crash]: https://udn.unrealengine.com/questions/365920/level-streaming-client-crash.html
-
-[network streaming level visibility, disconnect]: https://udn.unrealengine.com/questions/350813/network-streaming-level-visibility-disconnect.html
-
-[toggling ulevelstreaming::bshouldbevisible causes replication errors]: https://issues.unrealengine.com/issue/UE-43042

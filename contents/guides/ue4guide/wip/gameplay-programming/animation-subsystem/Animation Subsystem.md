@@ -1,12 +1,17 @@
-Animation Subsystem
+---
+sortIndex: 1
+---
+
+# Animation Subsystem
 
 AnimInstance is the runtime animation class that maintains runtime data & plays shit
 
 - This is the parent class of the animation blueprint
-
 - Get Bone Transforms from a specific time t:
 
   - Sequence->GetAnimationPose(Output.Pose, Output.Curve, FAnimExtractContext(CurrentTime, Sequence->bEnableRootMotion));
+
+
 
 UAnimationAsset is the classes that contain the actual data and also calculates bones & curves
 
@@ -15,6 +20,8 @@ UAnimationAsset is the classes that contain the actual data and also calculates 
 - UAnimComposite
 
   - UAnimMontage
+
+
 
 Two classes for each Anim Node; separated for optimization b/c node construction is expensive
 
@@ -37,6 +44,8 @@ Two classes for each Anim Node; separated for optimization b/c node construction
   - Evaluate/EvaluateComponentSpace: Generates a 'pose' i.e. list of bone transforms
 
 - FAnimationRuntime has lots of good functions to look at and utility/helper functions
+
+
 
 Sequence:
 
@@ -78,7 +87,7 @@ USkinnedMeshComponent::TickComponent()
 
       - UAnimInstance::TriggerQueuedMontageEvents
 
->
+
 
 - USkinnedMeshComponent::RefreshBoneTransforms()
 
@@ -126,6 +135,9 @@ GetBoneTransform
 
 Function to update physics data from animated data
 
+```cpp
+
 USkeletalMeshComponent::UpdateKinematicBonesToAnim(const TArray&lt;FTransform>> **InSpaceBases**, ETeleportType **Teleport**, bool **bNeedsSkinning**)
 
 USkeletalMeshComponent::PerformBlendPhysicsBones(const TArray&lt;FBoneIndexType>> **InRequiredBones**, TArray&lt;FTransform>> **InLocalAtoms**)
+```

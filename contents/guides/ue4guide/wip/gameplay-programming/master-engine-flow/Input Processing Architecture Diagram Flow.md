@@ -1,8 +1,12 @@
-![InputProcessingArchitectureDiagram_Flow](C:\devguide\conversion\FINISHED\assets\InputProcessingArchitectureDiagram_Flow.jpg)
+---
+sortIndex: 4
+---
+
+![InputProcessingArchitectureDiagram_Flow](..\..\..\assets\InputProcessingArchitectureDiagram_Flow.jpg)
 
 <https://docs.unrealengine.com/latest/INT/Gameplay/Input/index.html>
 
-Input Processing
+#### Input Processing
 
 UPlayerInput:
 
@@ -20,13 +24,15 @@ UPlayerInput:
 
 - InputCoreTypes.cpp contains the hardware button definition mappings to keys
 
-UInputComponent
+
+#### UInputComponent
 
 - Contains all the input delegate \***bindings\*** for an Actor
 
 - Links AxisMappings/ActionMappings to game actions/functions
 
-Input Processing Loop:
+
+#### Input Processing Loop:
 
 1. FEngineLoop::Tick() process input
 
@@ -44,9 +50,10 @@ Input Processing Loop:
 
     - PlayerInput::InputKey() - record the key events in PlayerInput::KeyStateMap. This is where you can add smoothing or custom input history
 
->
 
 - Input is polled in FEngineLoop.Tick() by calling which is before GEngine->Tick()
+
+
 
 2. World::Tick()=> Process Input & Fire Bindings on components (during PlayerController's tick group, default PrePhysics
 
@@ -80,6 +87,6 @@ Input Processing Loop:
 
     - virtual PlayerController::PostProcessInput() - can be overridden for work post firing input delegates
 
->
+
 
 3. Tick Player Controller Actor

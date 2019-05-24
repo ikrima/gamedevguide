@@ -1,3 +1,7 @@
+---
+sortIndex: 15
+---
+
 <https://udn.unrealengine.com/questions/403084/some-guidance-on-the-replay-system.html>
 
 <https://udn.unrealengine.com/questions/395835/replay-playback-stuck-at-origin.html>
@@ -10,6 +14,7 @@
 
 <https://udn.unrealengine.com/questions/379831/cant-get-replay-to-work-in-415.html>
 
+
 ## Duplicating Levels:
 
 <https://udn.unrealengine.com/questions/417480/finmemorynetworkreplaystreamer-killcam.html>
@@ -17,6 +22,7 @@
 Yes, this is likely a known issue. <https://issues.unrealengine.com/issue/UE-48320>
 
 The ticket doesn't elaborate heavily, but it comes down to how we manage level collections. Basically, if you try to start / stop / playback recording at certain times the underlying NetDriver may get switched out from underneath you.
+
 
 ###### How can I stay connected with the same controller?
 
@@ -44,4 +50,4 @@ However, the memory streamer will try to keep things loaded up. The problem is t
 
 How are you Teleporting? There are explicit Teleport functions on AActor (TeleportTo) that should play nice with movement components. When it detects a teleport (via TeleportSucceeded) the Character Movement Component code should detect this and set the mode appropriately. I would expect that to work in replays.
 
-*From &lt;<https://udn.unrealengine.com/questions/417480/finmemorynetworkreplaystreamer-killcam.html>>*
+*Reference From <https://udn.unrealengine.com/questions/417480/finmemorynetworkreplaystreamer-killcam.html>*

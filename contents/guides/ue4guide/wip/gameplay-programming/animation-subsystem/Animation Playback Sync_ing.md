@@ -1,5 +1,9 @@
-SkeletalMeshComponent.cpp:
+---
+sortIndex: 3
+---
 
+SkeletalMeshComponent.cpp:
+```cpp
 TAutoConsoleVariable&lt;int32> CVarUseParallelAnimationEvaluation(TEXT("a.ParallelAnimEvaluation"), 1, TEXT("If 1, animation evaluation will be run across the task graph system. If 0, evaluation will run purely on the game thread"));  
 TAutoConsoleVariable&lt;int32> CVarUseParallelAnimUpdate(TEXT("a.ParallelAnimUpdate"), 1, TEXT("If != 0, then we update animation blend tree, native update, asset players and montages (is possible) on worker threads."));  
 TAutoConsoleVariable&lt;int32> CVarForceUseParallelAnimUpdate(TEXT("a.ForceParallelAnimUpdate"), 1, TEXT("If != 0, then we update animations on worker threads regardless of the setting on the anim blueprint."));
@@ -15,6 +19,7 @@ void USkeletalMeshComponent::RefreshBoneTransforms(FActorComponentTickFunction\
 USkeletalMeshComponent::TickPose(float **DeltaTime**, bool **bNeedsValidRootMotion**)
 
 void USkeletalMeshComponent::TickAnimation(float **DeltaTime**, bool **bNeedsValidRootMotion**)
+```
 
 For evaluating animation sequence:
 
@@ -24,6 +29,7 @@ For evaluating animation sequence:
 
 <https://forums.unrealengine.com/showthread.php?56356-How-to-get-a-bone-location-for-the-first-frame-of-an-AnimMontage>
 
+```cpp
 FAnimInstanceProxy::SlotEvaluatePose(FName **SlotNodeName**, const FCompactPose& **SourcePose**, const FBlendedCurve& **SourceCurve**, float **InSourceWeight**, FCompactPose& **BlendedPose**, FBlendedCurve& **BlendedCurve**, float **InBlendWeight**, float **InTotalNodeWeight**)
 
 FTransform UAnimSequence::ExtractRootMotion(float StartTime, float DeltaTime, bool bAllowLooping) const
@@ -39,3 +45,4 @@ void GetBoneTransform(FTransform& **OutAtom**, int32 **TrackIndex**, float�
 int32 USkinnedMeshComponent::GetBoneIndex( FName **BoneName**) const
 
 USkinnedMeshComponent::GetSocketTransform(FName **InSocketName**, ERelativeTransformSpace **TransformSpace**) const
+```

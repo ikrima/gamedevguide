@@ -1,6 +1,10 @@
-![ThreadingModel_GameGPU](C:\devguide\conversion\FINISHED\assets\ThreadingModel_GameGPU.png)
+---
+sortIndex: 2
+---
 
-*From &lt;<https://software.intel.com/en-us/articles/intel-software-engineers-assist-with-unreal-engine-419-optimizations>>*
+![ThreadingModel_GameGPU](...\..\..\..\assets\ThreadingModel_GameGPU.png)
+
+*Reference From <https://software.intel.com/en-us/articles/intel-software-engineers-assist-with-unreal-engine-419-optimizations>*
 
 - Game thread runs ahead of everything else
 
@@ -12,6 +16,8 @@
 
 
 - Tick Groups: control order of ticking of objects but is not parallel
+
+
 
 **Render Thread:**
 
@@ -33,7 +39,9 @@ Those get serialized back and used to generate draw calls.
 
 Engine doesn’t join worker threads at the call site, but instead joins at sync points (end of phases), or at the point where they are used if fast enough.
 
-### **Audio thread**
+
+
+### Audio Thread
 
 The main audio thread is analogous to the render thread, and acts as the interface for the lower-level mixing functions by performing the following tasks:
 
@@ -57,4 +65,4 @@ two types of tasks—decoding and source worker.
 
   - The Source Worker is highly parallelizable, so you can increase the number if you have more processor power.
 
-\* \*
+

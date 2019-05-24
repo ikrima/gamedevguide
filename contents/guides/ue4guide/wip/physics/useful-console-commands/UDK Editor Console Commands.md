@@ -1,28 +1,33 @@
+---
+sortIndex: 3
+---
+
 <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html>
 
 ## Unreal Editor Console Commands
 
-- [\[Unreal Editor Console Commands\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Unreal%20Editor%20Console%20Commands)
+- [Unreal Editor Console Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Unreal%20Editor%20Console%20Commands)
 
-- [\[Overview\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Overview)
+- [Overview](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Overview)
 
-- [\[Command List\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Command%20List)
+- [Command List](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Command%20List)
 
-  - [\[General Commands\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#General%20Commands)
+  - [General Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#General%20Commands)
 
-  - [\[Actor Commands\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Actor%20Commands)
+  - [Actor Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Actor%20Commands)
 
-  - [\[Editor Mode Commands\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Editor%20Mode%20Commands)
+  - [Editor Mode Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Editor%20Mode%20Commands)
 
-  - [\[Map Commands\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Map%20Commands)
+  - [Map Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Map%20Commands)
 
-  - [\[CSG Brush Commands\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#CSG%20Brush%20Commands)
+  - [CSG Brush Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#CSG%20Brush%20Commands)
 
-  - [\[Static Mesh Commands\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Static%20Mesh%20Commands)
+  - [Static Mesh Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#Static%20Mesh%20Commands)
 
-  - [\[CSG Surface Commands\]](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#CSG%20Surface%20Commands)
+  - [CSG Surface Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#CSG%20Surface%20Commands)
 
-### **Overview** 
+
+### Overview
 
 Console commands are string-based commands that you can run in the game or in the editor. They are also known as *exec commands*.
 
@@ -30,11 +35,11 @@ To use the editor console commands, type them into the editor command line input
 
 Lists of commands can also be stored in text files in the system directory and executed by typing exec \[filename] at the console.
 
-## **Command List**
+## Command List
 
-In addition to the general engine [\[console commands\]](https://api.unrealengine.com/udk/Three/ConsoleCommands.html), the following is a list of engine supported editor console commands...
+In addition to the general engine [console commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html), the following is a list of engine supported editor console commands...
 
-### **General Commands**
+### General Commands
 
 - **BAKEANIMSETS** – Iterates over all animation sets used in the level, creates copies of them, removes all unused animation sequences in the duplicates, and assigns the duplicates in place of the originals.
 
@@ -206,7 +211,8 @@ In addition to the general engine [\[console commands\]](https://api.unrealengin
 
 - **UNMOUNTALLFACEFX** – Unmounts all FaceFX assets unless currently open in the FaceFX editor.
 
-### **Actor Commands**
+
+### Actor Commands
 
 - **ACTOR** – General actor commands
 
@@ -322,7 +328,9 @@ In addition to the general engine [\[console commands\]](https://api.unrealengin
 
 - **UPDATE** – Updates the selected actors.
 
-### **Editor Mode Commands**
+
+
+### Editor Mode Commands
 
 - **MODE** – General mode commands
 - **ALWAYSSHOWTERRAIN=** - Enables or disables always rendering terrain in the overhead 2D view.
@@ -345,7 +353,8 @@ In addition to the general engine [\[console commands\]](https://api.unrealengin
   - **WIDGETCOORDSYSTEMCYCLE** –Cycles through the available coordinate systems, i.e. Local and World.
 - **WIDGETMODECYCLE** - Cycles the transform widget through the available options.
 
-### **Map Commands**
+
+### Map Commands
 
 - **MAP** – General map commands
 
@@ -403,7 +412,8 @@ In addition to the general engine [\[console commands\]](https://api.unrealengin
 
   - **SETBRUSH**
 
-### **CSG Brush Commands**
+
+### CSG Brush Commands
 
 - **BRUSH** - General CSG brush commands
 
@@ -435,7 +445,9 @@ In addition to the general engine [\[console commands\]](https://api.unrealengin
 - **SEPARATEPOLYS** – Separates the selected faces from the current brush.
   - **SUBTRACT** – Create a new subtractive brush.
 
-### **Static Mesh Commands**
+
+
+### Static Mesh Commands
 
 - **STATICMESH** – General static mesh commands
 
@@ -447,7 +459,9 @@ In addition to the general engine [\[console commands\]](https://api.unrealengin
 - **TO BRUSH** – Uses first selected static mesh to create a new builder brush shape.
   - **UNSMOOTH** – Sets the smoothing mask of all triangles in the selected static mesh to 0.
 
-### **CSG Surface Commands**
+
+
+### CSG Surface Commands
 
 - **POLY** – CSG surface commands
 
@@ -519,17 +533,3 @@ In addition to the general engine [\[console commands\]](https://api.unrealengin
 
     - **RELATIVE** – Scales relative to current values.
 
-[Unreal Editor Console Commands]&#x3A; <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#Unreal> Editor Console Commands
-
-[Overview]: https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#Overview
-
-[Command List]&#x3A; <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#Command> List
-[General Commands]&#x3A; <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#General> Commands
-[Actor Commands]&#x3A; <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#Actor> Commands
-[Editor Mode Commands]&#x3A; <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#Editor> Mode Commands
-[Map Commands]&#x3A; <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#Map> Commands
-[CSG Brush Commands]&#x3A; <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#CSG> Brush Commands
-[Static Mesh Commands]&#x3A; <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#Static> Mesh Commands
-[CSG Surface Commands]&#x3A; <https://docs.unrealengine.com/udk/Three/EditorConsoleCommands.html#CSG> Surface Commands
-
-[console commands]: https://docs.unrealengine.com/udk/Three/ConsoleCommands.html

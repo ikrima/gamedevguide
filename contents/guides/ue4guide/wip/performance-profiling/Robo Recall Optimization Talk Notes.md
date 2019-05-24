@@ -1,6 +1,10 @@
-<https://forums.unrealengine.com/development-discussion/vr-ar-development/1371458-make-maintain-framerate-technical-postmortem-for-robo-recall-and-beyond-by-nick-whiting>>
+---
+sortIndex: 15
+---
 
-![RoboRecall_UnderstandingThreadingModel](C:\devguide\conversion\FINISHED\assets\RoboRecall_UnderstandingThreadingModel.png)
+<https://forums.unrealengine.com/development-discussion/vr-ar-development/1371458-make-maintain-framerate-technical-postmortem-for-robo-recall-and-beyond-by-nick-whiting>
+
+![RoboRecall_UnderstandingThreadingModel](...\..\..\..\assets\RoboRecall_UnderstandingThreadingModel.png)
 
 # Ticking is not multithreaded
 
@@ -20,23 +24,23 @@
 
 - **Rule Of Thumb: Move things that don’t affect velocity or position of Actors, or generate overlap events into TG_DuringPhysics.**
 
-> A few of the heavier classes that we moved to TG_DuringPhysics in Robo Recall are:
->
-> OdinAIManager
->
-> OdinSpeechManager
->
-> OdinWaveSpawner
->
-> OdinPhysicalAudioComponent
->
-> OdinGameMode
->
-> OdinScoreManager
->
-> OdinPopulationManager
->
-> ![RoboRecall_TG_DuringPhysics](C:\devguide\conversion\FINISHED\assets\RoboRecall_TG_DuringPhysics.png)
+A few of the heavier classes that we moved to TG_DuringPhysics in Robo Recall are:
+
+OdinAIManager
+
+OdinSpeechManager
+
+OdinWaveSpawner
+
+OdinPhysicalAudioComponent
+
+OdinGameMode
+
+OdinScoreManager
+
+OdinPopulationManager
+
+![RoboRecall_TG_DuringPhysics](...\..\..\..\assets\RoboRecall_TG_DuringPhysics.png)
 
 # Render Thread:
 
@@ -68,7 +72,7 @@ Use stat physics & stat anim
 
 Forward Renderer
 
-![RoboRecall_ForwardRenderer](C:\devguide\conversion\FINISHED\assets\RoboRecall_ForwardRenderer.png)
+![RoboRecall_ForwardRenderer](...\..\..\..\assets\RoboRecall_ForwardRenderer.png)
 
 Can do 70%-90% scale down with MSAA 2x/4x
 

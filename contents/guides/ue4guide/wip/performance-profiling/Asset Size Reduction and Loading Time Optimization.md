@@ -1,22 +1,26 @@
+---
+sortIndex: 2
+---
+
 UnrealFest Europe 2018: Introduction to UE4 Asset Reduction Tools and Optimization Tips for Load Times and GC
 
-**Find objects that take a lot of time to do vertex calculations** **using Graphics Debugger**
+**Find objects that take a lot of time to do vertex calculations using Graphics Debugger**
 
 Example:
 
 1. To Eliminate pixel shader costs,
-
-set r.screenpacentage to a very low value.
+   - set r.screenpacentage to a very low value.
 
 2. Capture and check cost of each draw call with GD
+   - (Set r.RHISetGPUGaptureOptions to 1, and then “ProfileGPU”)
 
-\- (Set r.RHISetGPUGaptureOptions to 1, and then “ProfileGPU”)
 
 - SkeletalMesh
 
   - r.skeletalmeshlodbias: add/subtract LOD levels
 
   - r.skeletalmeshlodscale: Scale LOD distances
+
 
 - Static Mesh
 
@@ -26,9 +30,9 @@ set r.screenpacentage to a very low value.
 
 These commands affects all objects and can’t target individual objects specifically, but can use them to do a quick check of the whole scene
 
-**Using “\*\*\*\***CompressAnimations\***\*” **Commandlet,\*\*
 
-**You can compress all animation sequences in your project.**
+
+**Using “CompressAnimations” Commandlet, You can compress all animation sequences in your project.**
 
 - Example)
 
@@ -40,11 +44,13 @@ These commands affects all objects and can’t target individual objects specifi
 
 - - “Do not override compression” option
 
-![PerformanceProfiling_AssetSize_DoNotOverrideCompression](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_DoNotOverrideCompression.png)
+![PerformanceProfiling_AssetSize_DoNotOverrideCompression](...\..\..\..\assets\PerformanceProfiling_AssetSize_DoNotOverrideCompression.png)
 
 ### **Animation Compression**
 
 **How to check the compressed asset data size 1**
+
+![](...\..\..\assets\perfprofile-assetsizered.png)
 
 You can see sizes and compressed ratios
 
@@ -62,24 +68,24 @@ Can also verify by looking at the cooked asset’s size, and the size in memory 
 
   - Stat Levels
 
-- ![PerformanceProfiling_AssetSize_LoadtoMemoryProfiling](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_LoadtoMemoryProfiling.png)
+- ![PerformanceProfiling_AssetSize_LoadtoMemoryProfiling](...\..\..\..\assets\PerformanceProfiling_AssetSize_LoadtoMemoryProfiling.png)
 
 
     -   Gray ＝ Persistent Level
-
+    
     -   Red ＝ Unloaded
-
+    
     -   Purple = Loading
-
+    
     -   Orange＝ AddToWorld
-
+    
     -   Green ＝ Finished Loading
-
+    
     -   The stat levels console command will show you a list of the current levels in your game, colored by their current load status
-
+    
     -   You can see their state, whether it be unloaded (red), loading(purple), loaded to memory but still adding objects to the world (orange), and finally done loading (green)
-
-        -   Can use this as a quick way to see which levels are taking the longest to load
+    
+    -   Can use this as a quick way to see which levels are taking the longest to load
 
 - Loadtimes.DumpReport (Loadtimes.reset): Dive deeper
 
@@ -95,7 +101,7 @@ Can also verify by looking at the cooked asset’s size, and the size in memory 
 
   - You have to call this command before stating load levels you want to profile.
 
-  -
+  
 
 
 - #### **Profiling AddToWorld**
@@ -126,7 +132,9 @@ Init Actors : 0.00 ms
 
 Initialize : 0.08 m
 
-### **Optimization**
+
+
+- ### **Optimization**
 
 - Pak file should be used for load-time.
 
@@ -146,7 +154,7 @@ Initialize : 0.08 m
 
     - You have to play game and get file open order logs in advance
 
-    - Detailed explanation in the official docs [Packaging Projects]
+    - Detailed explanation in the official docs [Packaging Projects](<https://docs.unrealengine.com/en-us/Engine/Basics/Projects/Packaging>)
 
   - It is effective on SSDs too Due to block read size in file system
 
@@ -200,13 +208,15 @@ Initialize : 0.08 m
 
   - Many objects are deleted at once
 
-![PerformanceProfiling_AssetSize_RoughGCAlgorithm](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_RoughGCAlgorithm.png)
+![PerformanceProfiling_AssetSize_RoughGCAlgorithm](...\..\..\..\assets\PerformanceProfiling_AssetSize_RoughGCAlgorithm.png)
 
 **GC Cost** **=** **Checking cost** **+** **Deletion Cost** is not entirely accurate
 
 **Deletion Cost** = **Detaching Dependencies** **+** **Deleting actual objects (**can be distributed to other frames )
 
 **Cost at the frame GC is called** **=** **Checking cost** **+** **Detaching Dependencies cost**
+
+
 
 GC implementation
 
@@ -215,7 +225,9 @@ GC implementation
 - So, there are two types of costs here, the costs of checking each object in the array (marking), and the costs of deleting each unreferenced object (sweeping)
 - Means it is possible to see hitching even if no objects are actually being deleted if the number of UObjects is high
 
-**How to profile GC costs**
+
+
+### How to profile GC costs
 
 1. ##### Log loggarbage log (Log loggarbage verbose)
 
@@ -227,13 +239,13 @@ You can also do “log LogGarbage verbose” to see more log messages
 
 You can see the Checking cost and the deletion cost are printed out in this manner
 
-![PerformanceProfiling_AssetSize_GCCosts](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_GCCosts.png)
+![PerformanceProfiling_AssetSize_GCCosts](...\..\..\..\assets\PerformanceProfiling_AssetSize_GCCosts.png)
 
 2. ##### Stat dumphitches
 
-![PerformanceProfiling_AssetSize_DumpHitches](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_DumpHitches.png)
+![PerformanceProfiling_AssetSize_DumpHitches](...\..\..\..\assets\PerformanceProfiling_AssetSize_DumpHitches.png)
 
-![PerformanceProfiling_AssetSize_ProfilingGCVerify](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_ProfilingGCVerify.png)
+![PerformanceProfiling_AssetSize_ProfilingGCVerify](...\..\..\..\assets\PerformanceProfiling_AssetSize_ProfilingGCVerify.png)
 
 3. (Stat Startfile/Stopfile)
 
@@ -241,9 +253,9 @@ You can see the Checking cost and the deletion cost are printed out in this mann
 
 3. CBD Profiling Tools
 
-\#define PROFILE_ConditionalBeginDestory
+#define PROFILE_ConditionalBeginDestory
 
-\#define PROFILE_GCConditionalBeginDestroyByClass
+#define PROFILE_GCConditionalBeginDestroyByClass
 
 These defines dump delete costs per each assets as below.
 
@@ -256,6 +268,8 @@ LogTemp: 698 cnt 2.11us per 1.48ms total /Game/Blueprints/Character/CCCCCCCCCC
 LogTemp: 489 cnt 2.64us per 1.29ms total /Game/Blueprints/Gimmick/GimmickAAAAA
 
 LogTemp: 261 cnt 4.22us per 1.10ms total /Game/Maps/MAPMAPMAP
+
+
 
 5. Obj list / Blueprint Stats
 
@@ -279,9 +293,11 @@ FloatProperty 3788
 
 ObjectProperty 3251
 
+
+
 **5/5 Command to output number of UObjects per Blueprint**
 
-![PerformanceProfiling_AssetSize_BlueprintStats](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_BlueprintStats.png)
+![PerformanceProfiling_AssetSize_BlueprintStats](...\..\..\..\assets\PerformanceProfiling_AssetSize_BlueprintStats.png)
 
 - As you might have noticed on the previous slide, there were a lot of UProperties like Bool or Float Properties
 
@@ -297,9 +313,11 @@ ObjectProperty 3251
 
 - DisregardGCObject
 
-![PerformanceProfiling_AssetSize_DisregardGCObject](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_DisregardGCObject.png)
+![PerformanceProfiling_AssetSize_DisregardGCObject](...\..\..\..\assets\PerformanceProfiling_AssetSize_DisregardGCObject.png)
 
-1. **Enable DisregardGCObject\*\***
+
+
+**1. Enable DisregardGCObject**
 
 [/Script/Engine.GarbageCollectionSettings]
 
@@ -323,7 +341,7 @@ gc.SizeOfPermanentObjectPool= **9937152**
 
 - GC Clustering
 
-![1556152930143](C:\devguide\conversion\FINISHED\assets\1556152930143.png)
+![1556152930143](...\..\..\..\assets\1556152930143.png)
 
 Concept:
 
@@ -338,7 +356,7 @@ Actor Clustering
 - Actors can be put in a cluster with the level they belong to, and just removed when the level is removed
 - There is a setting for this, which is only enabled by default for static meshes and reflection captures
 
-![PerformanceProfiling_AssetSize_Clustering](C:\devguide\conversion\FINISHED\assets\PerformanceProfiling_AssetSize_Clustering.png)
+![PerformanceProfiling_AssetSize_Clustering](...\..\..\..\assets\PerformanceProfiling_AssetSize_Clustering.png)
 
 - Clustering runs when actors are added to the scene (during AddtoWorld()), so new references to this object can’t be added afterwards
 - This can happen, for example, if you later load a sequencer sequence that references a static mesh

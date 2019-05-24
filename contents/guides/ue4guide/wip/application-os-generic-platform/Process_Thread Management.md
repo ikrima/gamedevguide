@@ -1,8 +1,13 @@
-#### **Threads:**
+---
+sortIndex: 7
+---
+#### Threads:
 
 Get Current Thread ID:
 
 - FPlatformTLS::GetCurrentThreadId()
+
+
 
 Deal with Thread Local Storage/TLS: FGenericPlatformTLS()
 

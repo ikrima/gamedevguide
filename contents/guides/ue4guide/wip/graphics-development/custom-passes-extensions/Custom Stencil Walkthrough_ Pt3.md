@@ -1,4 +1,8 @@
-=================Review:
+---
+sortIndex: 5
+---
+
+**Review:**
 
 Use proper commenting for editor changes:
 
@@ -8,53 +12,53 @@ Use proper commenting for editor changes:
 
 Why BBArenaStencilMD? Overkill just to specify a couple of spheres
 
-\- Use custom property on static mesh components similar to custom depth/stencil properties
+- Use custom property on static mesh components similar to custom depth/stencil properties
 
-\- FStaticMesh::AddToDrawLists(), add a check against stencil geo and don't add it to the basedrawlists
+- FStaticMesh::AddToDrawLists(), add a check against stencil geo and don't add it to the basedrawlists
 
-Are these being used? Remove
+
+**Are these being used? Remove**
 
 BeginRenderingCustomPrePass()
-
 FinishRenderingCustomPrePass()
-
 DrawPrimsStencilOnly()
-
 DrawPrimsStencilWriteOnlyOnDepthPass()
+
 
 Fold RenderCustomDepthStencilPrePass() implementation into RenderPrePass()
 
 SetDepthStencilStateForBasePass(): Is this doing the right thing?
 
-\- Revert this back to normal and verify it doesn't break
+- Revert this back to normal and verify it doesn't break
+
 
 FDeferredShadingSceneRenderer::RenderPrePassView()
 
-\-Do all the arena static lists & dynamic
+-Do all the arena static lists & dynamic
 
-\-Do all the stadium static lists & dynamic
+-Do all the stadium static lists & dynamic
 
 RenderPrePassViewDynamic()
 
-\-Change to use viewrelevance instead of materialdomain
+-Change to use viewrelevance instead of materialdomain
 
 Extend EBasePassDrawListType
 
-\-FStaticMesh::AddToDrawLists()
+-FStaticMesh::AddToDrawLists()
 
-\-Extend \*Factory::AddStaticMesh()
+-Extend \*Factory::AddStaticMesh()
 
-\-In this function, you should add
+-In this function, you should add
 
-\-\*MeshAction::Process()
+-*MeshAction::Process()
 
-\-Extend: \*Factory::DrawDynamicMesh()
+-Extend: *Factory::DrawDynamicMesh()
 
-\-Rely on viewrelevance instead of material domain
+-Rely on viewrelevance instead of material domain
 
 To set stencil state: Extend the TBasePassDrawingPolicy:
 
-\- SetSharedState() & SetMeshRenderState()
+- SetSharedState() & SetMeshRenderState()
 
 Render Pass Order is incorrect in FDeferredShadingSceneRenderer::RenderBasePassView():
 
@@ -64,7 +68,8 @@ Draw Static stadium , dynamic Static
 
 Perf degredation setting stencil state over and over
 
-=================Follow-up
+
+Follow-up
 
 Tested in VR?
 

@@ -1,3 +1,6 @@
+---
+sortIndex: 8
+---
 Coordinate Spaces:
 
 - Camera Space: X+ gets mapped to Z+, Y+ gets mapped to X+, Z+ gets mapped to Y+. Basically Right handed Y-up
@@ -6,15 +9,16 @@ Coordinate Spaces:
 
 - PreViewTranslation/etc is confusing. Here's the math:
 
-  - ViewMatrix = PreViewTranslation \* ViewRotationMatrix
+  - ViewMatrix = PreViewTranslation * ViewRotationMatrix
 
   - It's just separating out camera translation from rotation for accuracy
 
-  - **"Translated"** prefix means camera relative space (aka 0,0,0 is camera position in world space) aka it's WorldPos \* TranslationMatrix(-CameraOrigin)
+  - **"Translated"** prefix means camera relative space (aka 0,0,0 is camera position in world space) aka it's WorldPos * TranslationMatrix(-CameraOrigin)
 
   - **"PreViewTranslation**" prefix just means before this translation happened so in actual world space
 
 - TranslatedWorldToCameraView = TranslatedWorldToView = TranslatedViewMatrix = Inverse of camera rotation matrix
+
 
 TranslatedWorldCameraOrigin = 0,0,0 (post -vieworigin translation)
 
@@ -37,16 +41,17 @@ this is not relative to the current viewport. RelativePixelPosition = MaterialPa
 - **WorldPosition_CamRelative:** This is just absoluteworldposition - WorldCameraOrigin. Not rotation adjusted in viewspace
 
 
+
 - **PreViewTranslation** = -ViewOrigin
 
-- ViewRotationMatrix = FInverseRotationMatrix(ViewRotation) \* ViewPlanesMatrix;
+- ViewRotationMatrix = FInverseRotationMatrix(ViewRotation) * ViewPlanesMatrix;
 
 - **TranslatedViewMatrix** = ViewRotationMatrix;
 
-- ViewMatrix = FTranslationMatrix(-ViewLocation) \* ViewRotationMatrix;
+- ViewMatrix = FTranslationMatrix(-ViewLocation) * ViewRotationMatrix;
 
 
-- WorldPosition_CamRelative => PixelPosWS - CameraOrigina1\`
+- WorldPosition_CamRelative => PixelPosWS - CameraOrigina1`
 
 
 - GetMaterialSharedSampler(Material.Texture2D_0Sampler,Material.Clamp_WorldGroupSettings)

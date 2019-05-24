@@ -1,18 +1,23 @@
-Commands to set on launch:
+---
+sortIndex: 3
+---
 
-\-t.maxfps=1000
+##### Commands to set on launch:
 
-\-r.ForceDebugViewModes=1
+-t.maxfps=1000
+
+-r.ForceDebugViewModes=1
 
 renderdoc capture command:
 
-\-rRHISetGPUCaptureOptions on
+-rRHISetGPUCaptureOptions on
 
-\-capture
+-capture
 
-\-restore rRHISetGPUCaptureOptions
+-restore rRHISetGPUCaptureOptions
 
-Memory:
+
+##### Memory:
 
 –LLM to enable low level memory tracker
 
@@ -34,45 +39,45 @@ DUMPALLOCS
 
 IGMEMTrace
 
-\-Enable by BB_MEMTRACE_ENABLE=1 in Core.Build.cs (disabled by default)
+-Enable by BB_MEMTRACE_ENABLE=1 in Core.Build.cs (disabled by default)
 
-\-Start by:
+-Start by:
 
-\*passing -memtraceip=127.0.0.1 at command line
+* passing -memtraceip=127.0.0.1 at command line
 
-\*using bb.mem.ToggleTrace to enable/disable at runtime & bb.mem.UserMark
+* using bb.mem.ToggleTrace to enable/disable at runtime & bb.mem.UserMark
 
 FMallocLeakDetectionProxy
 
-\-MALLOC_LEAKDETECTION
+-MALLOC_LEAKDETECTION
 
 Enabling StompAllocator
 
-\-USE_MALLOC_STOMP
+-USE_MALLOC_STOMP
 
 FMallocPoisonProxy
 
-\-UE_USE_MALLOC_FILL_BYTES
+-UE_USE_MALLOC_FILL_BYTES
 
 FMallocProfiler
 
-\- in BuildConfiguration.xml, set bUseMallocProfiler to true, and bOmitFramePointers to false
+- in BuildConfiguration.xml, set bUseMallocProfiler to true, and bOmitFramePointers to false
 
-CPU
 
-Profiler:
+CPU Profiler:
 
-\-VTune
+-VTune
 
-\-VSPerf
+-VSPerf
 
 use Stat Namedevents or -statnamedevents in commandline to export markers to VTune. Not implemented for VSPerf
 
 Microprofile:
 
-\-Compile with BB_DEV_TOOLS_MICROPROFILE=1 in Build_BBR.h (enabled by default)
+-Compile with BB_DEV_TOOLS_MICROPROFILE=1 in Build_BBR.h (enabled by default)
 
-\-Enable by -mpenable=1 in commandline
+-Enable by -mpenable=1 in commandline
+
 
 FramePro:
 

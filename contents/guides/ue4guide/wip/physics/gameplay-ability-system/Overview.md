@@ -1,12 +1,22 @@
-####  **FGameplayAttributeData /UAttributeSet:**
+---
+sortIndex: 1
+---
+
+####  FGameplayAttributeData /UAttributeSet:
 
 - Define what can be changed
 
-<table><thead><tr class="header"><th><strong>Function Name</strong></th><th><strong>Purpose</strong></th></tr></thead><tbody><tr class="odd"><td>PreAttributeChange / PreAttributeBaseChange</td><td>These functions are called just before modifications to an Attribute. They are intended to enforce rules on the Attribute's value, such as "Health must be between 0 and MaxHealth", and should not trigger in-game reactions to Attribute changes.</td></tr><tr class="even"><td>PreGameplayEffectExecute</td><td>Just before modifying an Attribute's value, this function can reject or alter the proposed modification.</td></tr><tr class="odd"><td>PostGameplayEffectExecute</td><td>Immediately after modifying an Attribute's value, this function can react to the change. This often includes clamping the final value of the Attribute, or triggering an in-game reaction to the new value, like dying when the "health" Attribute falls to zero.</td></tr></tbody></table>
+| Function Name                             | **Purpose**                                                  |
+| ----------------------------------------- | ------------------------------------------------------------ |
+| PreAttributeChange PreAttributeBaseChange | These functions are called just before modifications to an Attribute. They are intended to enforce rules on the Attribute's value, such as "Health must be between 0 and MaxHealth", and should not trigger in-game reactions to Attribute changes. |
+| PreGameplayEffectExecute                  | Just before modifying an Attribute's value, this function can reject or alter the proposed modification. |
+| PostGameplayEffectExecute                 | Immediately after modifying an Attribute's value, this function can react to the change. This often includes clamping the final value of the Attribute, or triggering an in-game reaction to the new value, like dying when the "health" Attribute falls to zero. |
 
-*From &lt;<https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAttributesAndGameplayEffects>>*
 
-#### **UGameplayEffect:**
+
+*Reference From <https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAttributesAndGameplayEffects>*
+
+#### UGameplayEffect:
 
 - Describe way to change attributes
 
@@ -44,7 +54,7 @@
 
     - **Standalone Gameplay Cue Notify Blueprints:** can also respond to Gameplay Cues.
 
-#### **Gameplay Ability:** <https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAbility>
+#### [Gameplay Ability:][https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAbility]
 
 - defines what an in-game ability does, what (if anything) it costs to use, when or under what conditions it can be used, and so on.
 
@@ -60,11 +70,13 @@
 
   - Can be passed around to trigger Gameplay Abilities directly, sending a data payload for context, without going through the normal channels.
 
-#### **GameplayCue:**
+#### GameplayCue:
 
 - Gameplay Cues are basically events. They are events with a Target, Tag, Type (OnActive/WhileActive/OnExecute/OnRemoved), and parameters (instigator, hit location, etc). Those events can come from Gameplay Effects, Abilities directly, or anywhere really. On Paragon our projectile code emits gameplay cues on their own for example.
 
-*From &lt;<https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>>*
+*Reference From <https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>*
+
+
 
 Old:
 
@@ -82,4 +94,4 @@ Sample Repo: <https://github.com/daveratti/GameplayAbilitiesSample/tree/release/
 
 Older Doc:
 
-&lt;&lt;AbilitySystemK&L (1).docx>>
+<<AbilitySystemK&L (1).docx>>
