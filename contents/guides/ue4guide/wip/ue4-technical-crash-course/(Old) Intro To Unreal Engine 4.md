@@ -173,10 +173,7 @@ Can layer different materials together
 - Micro-facet Cook-Torrence for specular
 
 - GGX for Normal Distribution Function
-
-$$
-(a=〖Roughnesss〗^2)
-$$
+  $a=\mathrm{Roughnesss}^{2}$
 
 - Specular - IOR used to determine incident specular (combined with Fresnel). Leave at default of 0.5. Not used for metallic surfaces
 
