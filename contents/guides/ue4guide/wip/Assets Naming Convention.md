@@ -300,4 +300,4 @@ RGB Mask for environment:
 - G = Roughness
 - B = Ambient Occlusion
 
-*Reference From [\[https://wiki.unrealengine.com/Assets_Naming_Convention\]\\(&lt;https://wiki.unrealengine.com/Assets_Naming_Convention)]([https://wiki.unrealengine.com/Assets_Naming_Convention]\(<https://wiki.unrealengine.com/Assets_Naming_Convention))*
+*Reference From <https://wiki.unrealengine.com/Assets_Naming_Convention>*

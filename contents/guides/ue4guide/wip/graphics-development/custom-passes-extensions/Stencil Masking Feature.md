@@ -34,7 +34,7 @@ sortIndex: 1
 
 3. Frustum Culling:
 
-     a. Extend FrustumCull&lt;>() to sphere cull arena primitive components from current arena zone
+   a. Extend FrustumCull&lt;>() to sphere cull arena primitive components from current arena zone
 
 
 4. Finishing pass. Goal: Make feature production ready

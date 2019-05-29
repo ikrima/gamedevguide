@@ -7,13 +7,13 @@ sortIndex: 12
 
 1. Fast copy of specific class
 
-    StaticDuplicateObject(Instance, &OwnerMovieScene, TemplateName, RF_AllFlags & ~RF_Transient);
+   StaticDuplicateObject(Instance, &OwnerMovieScene, TemplateName, RF_AllFlags & ~RF_Transient);
 
 1. For actors:
 
-    EditorUtilities::CopySingleProperty()
+   EditorUtilities::CopySingleProperty()
 
-    EditorUtilities::CopyActorProperties()
+   EditorUtilities::CopyActorProperties()
 
 NOTE: You can pass a template object but Subobject Instancing needs a special case:
 

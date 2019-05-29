@@ -8,41 +8,32 @@ LightaMapRendering (in Renderer Module): Handles render thread side of lightmaps
 
 FLightmap/FlightMap2D
 
- \-GameThread struct containing lightmap data
-
- \-Contains a reference (LightmapSetBelongsTo) to the lightmap set this lightmap refers to
-
- \-LightmapSetBelongsTo set when FLightMap struct is allocated
-
- \-Components handle allocating the FLightmap bookkepping data
-
- \-Stores references to actual textures for the lightmaps
+- GameThread struct containing lightmap data
+- Contains a reference (LightmapSetBelongsTo) to the lightmap set this lightmap refers to
+- LightmapSetBelongsTo set when FLightMap struct is allocated
+- Components handle allocating the FLightmap bookkepping data
+- Stores references to actual textures for the lightmaps
 
 FLightMapInteraction
 
- \-Defines interaction between mesh & lightmap
-
- \-Just stores references to the textures in FlightMap + coefficients
-
- \-Value struct b/c it gets blitted to the render thread
+- Defines interaction between mesh & lightmap
+- Just stores references to the textures in FlightMap + coefficients
+- Value struct b/c it gets blitted to the render thread
 
 Registry->AllocateMeshBuildData
 
- \-This actually creates the MeshMapBuildData struct
-
- \-This gets written out to a sideband package next to the level (ex: MyHellzoneLevel_BuildData)
+- This actually creates the MeshMapBuildData struct
+- This gets written out to a sideband package next to the level (ex: MyHellzoneLevel_BuildData)
 
 FLightMap2D::AllocateLightMap/FLightMap2D::AllocateInstancedLightMap
 
-\-Seems to be called during light builds only
-
-\-Actually allocates the lightmap texture
+- Seems to be called during light builds only
+- Actually allocates the lightmap texture
 
 Components that require static lighting interaction (ex: landscape or staticmesh) have follow this file convention
 
- \-[ComponentName]Lighting.cpp handles lightmapping functionality
-
- \-[ComponentName]Rendering.cpp handles rendering
+- [ComponentName]Lighting.cpp handles lightmapping functionality
+- [ComponentName]Rendering.cpp handles rendering
 
 High-level process of baking
 
