@@ -26,15 +26,11 @@ sortIndex: 13
 
 FLevelEditorViewportClient & FEditorViewportClient
 
-
-
 **Main class for Editor Viewports:**
 
 FEditorViewportClient
 
 - Also handles most of the viewport UI actions e.g. SetRealtimePreview(), SetShowStats(), SetCameraLock()
-
-
 
 **Viewport Manipulation:**
 
@@ -54,8 +50,6 @@ GCurrentLevelEditingViewportClient
 
 GLastKeyLevelEditingViewportClient
 
-
-
 **Callbacks on viewport manipulation:**
 
 virtual void EditorApplyTranslation(const FVector& DeltaTranslation, bool bAltDown, bool bShiftDown, bool bCtrlDown) override;
@@ -67,8 +61,6 @@ virtual void EditorApplyScale(const FVector& DeltaScale, const FVector\* PivotLo
 virtual void PostEditMove(bool bFinished) override;
 
 virtual void PostEditComponentMove(bool bFinished) override;
-
-
 
 **Get All Viewports:**
 
@@ -83,8 +75,6 @@ virtual void PostEditComponentMove(bool bFinished) override;
 - /\*\* List of level editor viewport clients for level specific actions \*/
 
   GEditor->LevelViewportClients;
-
-
 
 **Viewport Toggle RealTime:**
 

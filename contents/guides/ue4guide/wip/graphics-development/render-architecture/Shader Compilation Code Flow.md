@@ -32,20 +32,15 @@ FMaterial::BeginCompileShaderMap
   - MaterialCompilationOutput.UniformExpressionSet.CreateBufferStruct();
 
 
-
-
 - Calls **FHLSLMaterialTranslator::GetMaterialEnvironment()**
 
   - Sets more fundamental defines such as: NEEDS_PARTICLE_POSITION, NEEDS_SCENE_TEXTURES, USES_TRANSFORM_VECTOR, USES_EMISSIVE_COLOR
 
   - Add uniform buffer declarations for any parameter collections referenced
-  
+
     const FString CollectionName = FString::Printf(TEXT("MaterialCollection%u"), CollectionIndex);
-  
+
     FShaderUniformBufferParameter::ModifyCompilationEnvironment(\*CollectionName, ParameterCollections\[CollectionIndex]->GetUniformBufferStruct(), InPlatform, OutEnvironment);
-  
-  
-  
 - Calls **FHLSLMaterialTranslator::GetMaterialShaderCode():**
 
   - Responsible for compiling and filling MaterialTemplate.ush
@@ -59,17 +54,15 @@ FMaterial::BeginCompileShaderMap
     - Generates initializers for them too
 
 
-
-
 - Calls main compilation in **NewShaderMap->Compile():**
 - **Material->SetupMaterialEnvironment()**: Sets majority of shader defines (including material specific ones like staticswitches, etc) by calling. Ex:
-  
+
   - Defines from the umaterial uproperties such as: MATERIAL_TWOSIDED, MATERIAL_NONMETAL, MATERIAL_HQ_FORWARD_REFLECTIONS
-  
+
   - Defines from the material itself such as: GetBlendMode() => MATERIALBLENDING_MASKED|MATERIALBLENDING_SOLID, MATERIAL_FULLY_ROUGH
-  
+
   - Defines also fundamental things such as MATERIAL_DOMAIN_SURFACE|MATERIAL_DOMAIN_DEFERREDDECAL|… & MATERIAL_SHADINGMODEL_UNLIT|MATERIAL_SHADINGMODEL_DEFAULT_LIT|…
-  
+
   - Also uses cvar values to determine whether to set defines or not: r.StencilForLODDither => USE_STENCIL_LOD_DITHER_DEFAULT
 
 

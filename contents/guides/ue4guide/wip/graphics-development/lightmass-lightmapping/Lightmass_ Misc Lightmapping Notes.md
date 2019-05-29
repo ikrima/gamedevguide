@@ -8,47 +8,41 @@ LightaMapRendering (in Renderer Module): Handles render thread side of lightmaps
 
 FLightmap/FlightMap2D
 
- -GameThread struct containing lightmap data
+ \-GameThread struct containing lightmap data
 
- -Contains a reference (LightmapSetBelongsTo) to the lightmap set this lightmap refers to
+ \-Contains a reference (LightmapSetBelongsTo) to the lightmap set this lightmap refers to
 
- -LightmapSetBelongsTo set when FLightMap struct is allocated
+ \-LightmapSetBelongsTo set when FLightMap struct is allocated
 
- -Components handle allocating the FLightmap bookkepping data
+ \-Components handle allocating the FLightmap bookkepping data
 
- -Stores references to actual textures for the lightmaps
-
+ \-Stores references to actual textures for the lightmaps
 
 FLightMapInteraction
 
- -Defines interaction between mesh & lightmap
+ \-Defines interaction between mesh & lightmap
 
- -Just stores references to the textures in FlightMap + coefficients
+ \-Just stores references to the textures in FlightMap + coefficients
 
- -Value struct b/c it gets blitted to the render thread
-
+ \-Value struct b/c it gets blitted to the render thread
 
 Registry->AllocateMeshBuildData
 
- -This actually creates the MeshMapBuildData struct
+ \-This actually creates the MeshMapBuildData struct
 
- -This gets written out to a sideband package next to the level (ex: MyHellzoneLevel_BuildData)
-
+ \-This gets written out to a sideband package next to the level (ex: MyHellzoneLevel_BuildData)
 
 FLightMap2D::AllocateLightMap/FLightMap2D::AllocateInstancedLightMap
 
--Seems to be called during light builds only
+\-Seems to be called during light builds only
 
--Actually allocates the lightmap texture
-
+\-Actually allocates the lightmap texture
 
 Components that require static lighting interaction (ex: landscape or staticmesh) have follow this file convention
 
- -[ComponentName]Lighting.cpp handles lightmapping functionality
+ \-[ComponentName]Lighting.cpp handles lightmapping functionality
 
- -[ComponentName]Rendering.cpp handles rendering
-
-
+ \-[ComponentName]Rendering.cpp handles rendering
 
 High-level process of baking
 
@@ -63,9 +57,6 @@ AllocateLightMap populates PendingLightMaps (static array&lt;FlightMapAllocation
 EncodeTextures() takes all the data in the PendingLightMaps allocation groups and turns them into FLightMapPendingTexture
 
  FLightMapPendingTexture::StartEncoding()
-
-
-
 
 Multiple Lightmaps
 

@@ -20,8 +20,6 @@ KeyFrameAlgorithms::Scale
 
 KeyFrameAlgorithms::Translate
 
-
-
 ## Structs:
 
 TNumericLimits&lt;>
@@ -48,8 +46,6 @@ TTypeCompatibleBytes
 
 TFunction & TFunctionRef are ways to store/pass lambdas. TFunctionRef is fast but doesn't take ownership so you have to make sure the lambda being passed is still in scope when TFunctionRef gets called
 
-
-
 ## Useful Debugging Stack trace debugging tooling
 
 Stack trace/Call Stack/Stack Capturing + Symbol Debug ties :
@@ -72,8 +68,6 @@ Stack trace/Call Stack/Stack Capturing + Symbol Debug ties :
 - FProgramCounterSymbolInfo
 
 - FStackWalkModuleInfo
-
-
 
 ## Useful Containers
 
@@ -130,8 +124,6 @@ TLinkedList/TDoubleLinkedList
 TIntrusiveLinkedList
 
 TSparseArray: Dynamically sized array where elemnt indices arent necessarily contiguous. Memory allocated for all elements but allows for O(1) element removal
-
-
 
 ## Container Functions:
 

@@ -16,7 +16,7 @@ Ex: >Debug.AttachDetach
 
 Execute code in a macro:
 
-```DTE.Debugger.ExecuteStatement("variable_name=0")```
+`DTE.Debugger.ExecuteStatement("variable_name=0")`
 
 *Reference From <http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value>*
 
@@ -48,4 +48,3 @@ Windows Performance Toolkit
 - Driverquery |find "driverdllname" to find info about a driver (don't use
 
 - strings binary.exe: >bla.txt sysinternals tool to produce all string parameters for a binary
-

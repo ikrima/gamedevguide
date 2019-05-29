@@ -7,11 +7,13 @@ Perf Tool
 - Editor Toolbar Button to launch current map for perf testing.
 
   - Command line is:
+
 ```cpp
     {full_path_to_ue4editor.exe}
     {fullpathto_BBR.uproject {current_map}?Listen -game -Multiprocess -messaging
     \-SessionName="PerfTesting Mode" -MultiprocessSaveConfig -MultiprocessOSS WinX=5 WinY=495 SAVEWINPOS=1 -NoVerifyGC -NoAILogging
 ```
+
 - Make sure to on launch:
 
   - For the existing instance:
@@ -30,6 +32,7 @@ Perf Tool
 
 
 - Try to minimize the editor window.
+
 ```cpp
   - TSharedPtr<SWindow> RootWindow = FGlobalTabmanager::Get()->GetRootWindow();
 
@@ -53,54 +56,53 @@ Perf Tool
 
 - Normal Mode options:
 
-  -ResX=2160 -ResY=1200 -nohmd -windowed -ExecCmds="r.screenpercentage 140,r.pd=1"
+  \-ResX=2160 -ResY=1200 -nohmd -windowed -ExecCmds="r.screenpercentage 140,r.pd=1"
 
 
 - VR Emulation variant options:
 
-  -ResX=2160 -ResY=1200 -nohmd -windowed -emulatestereo -ExecCmds="r.screenpercentage 140,r.pd=1"
+  \-ResX=2160 -ResY=1200 -nohmd -windowed -emulatestereo -ExecCmds="r.screenpercentage 140,r.pd=1"
 
 
 - VR Mode:
 
-  -vr
+  \-vr
 
 - Optional useful Params:
 
-  -Deterministic (shortcut for -fixedtimestep/-fixedseed)
+  \-Deterministic (shortcut for -fixedtimestep/-fixedseed)
 
-  -fixedtimestep
+  \-fixedtimestep
 
-  -FixedSeed
+  \-FixedSeed
 
-  -usefixedtimestep
+  \-usefixedtimestep
 
-  -debug (To Launch In DebugGame)
+  \-debug (To Launch In DebugGame)
 
-  -log or -log LOG=logfile.txt
+  \-log or -log LOG=logfile.txt
 
-  -FORCELOGFLUSH
+  \-FORCELOGFLUSH
 
-  -nologging
+  \-nologging
 
-  -NoTextureStreaming
+  \-NoTextureStreaming
 
-  -nosound
-
+  \-nosound
 
 D3D Debugging
 
--D3DDEBUG
+\-D3DDEBUG
 
--d3dbreakonwarning
+\-d3dbreakonwarning
 
--ONETHREAD
+\-ONETHREAD
 
--VSPerf
+\-VSPerf
 
--VTune
+\-VTune
 
-For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform](onenote:<https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one#Application/OS/Generic> Platform§ion-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={51DB5F0B-142A-49A0-AA97-77413BA70981}&end)
+For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform]\(onenote:<https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one#Application/OS/Generic> Platform§ion-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={51DB5F0B-142A-49A0-AA97-77413BA70981}&end)
 
 =====================================================================================================================================
 
@@ -128,11 +130,7 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
     *I had added drawing a debug frustum to the FREEZERENDERING command to aid in debugging culling using a joint frustum for both eyes. I had* [*improved the DrawDebugFrustum() code*](https://github.com/inequation/UnrealEngine/commit/38127610bd153c949213e95564a97b5808e52d5d) *to better handle the* [*inverse-Z projection*](https://developer.nvidia.com/content/depth-precision-visualized) *matrices that UE4 uses, and also to allow a plane set to be the data source.*
 
-    
-    
     *Reference From <https://medium.com/@TheIneQuation/the-vanishing-of-milliseconds-dfe7572d9856>*
-
-
 
 **Command To Launch Oculus Perf tool:**
 
@@ -146,7 +144,7 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 - See if you can bypass proximity sensor check. The Oculus Lost Frame Capture tool has a setting which probably means it writes to a registry key. You can snoop it using ProcMon:
 
-![Tolva_OculusDebugTool](...\..\..\.\assets\Tolva_OculusDebugTool.png)
+![Tolva_OculusDebugTool](........\assets\Tolva_OculusDebugTool.png)
 
 <https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-lostframes/>
 
@@ -157,8 +155,6 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
   - Game Thread should keep ticking but game engine should not increase the game clock so we can deterministically analyze current frame tick
 
-
-
 **Low-Pri**
 
 - Low-pri: Add Ethan Carter's implementation of STAT RELEVANTLIGHTS:
@@ -168,8 +164,9 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 - Command to capture ETW tracefile using ovrlog or ovrlog_win10.
 
   - Oculus Guide on ETW/GPUView: <https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-tutorial/>
+
 - This chapter from this book is another detailed good resource (I have the ebook, ask me when you get to it):
-    - Chapter 2. Understanding, Measuring, and Analyzing VR Graphics Performance (by James Hughes, Reza Nourai, and Ed Hutchins) in the book *GPU Zen: Advanced Rendering Techniques (Wolfgang Engel*, ed)
+  - Chapter 2. Understanding, Measuring, and Analyzing VR Graphics Performance (by James Hughes, Reza Nourai, and Ed Hutchins) in the book *GPU Zen: Advanced Rendering Techniques (Wolfgang Engel*, ed)
 
 - Grab Individual stat numbers and construct our own groups:
 
@@ -201,8 +198,6 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
   - "C:\\Program Files (x86)\\NVIDIA Corporation\\Nsight Visual Studio Edition 5.3\\Monitor\\Common\\Nvda.Launcher.exe" "%1"
   - Ex:
   - "C:\\Program Files (x86)\\NVIDIA Corporation\\Nsight Visual Studio Edition 5.3\\Monitor\\Common\\Nvda.Launcher.exe" "C:\\UE4Editor.exe" BBR.uproject -log
-
-
 
 **Launch NSight Monitor**
 
@@ -256,8 +251,6 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 - Launcher Mode for Shader Debugging:
 
-
-
 ## Commands for toggling debug & perf markers:
 
 ToggleDrawEvents: Emits helpful draw event markers for use with GPU Capture/PIX
@@ -292,15 +285,11 @@ ToggleRHIThread
 
 r.ParallelTranslucency
 
-
-
 ## Commands for debug logging
 
 r.D3DDumpAMDCodeXLFile
 
 r.D3DDumpD3DAsm
-
-
 
 ## General:
 
@@ -344,15 +333,11 @@ ProcessGameThreadTargetTime=.01
 
 ShaderPDBRoot=D:\\DirectoryOfChoice
 
-
-
 ## Sanity Checking Commands
 
 r.ShowShaderCompilerWarnings=1
 
 r.D3DCheckShadersForDouble=1
-
-
 
 ## Debug Logging
 
@@ -369,8 +354,6 @@ r.DumpShaderDebugShortNames=1
 ; When this is enabled, when dumping shaders an additional file to use with ShaderCompilerWorker -direct mode will be generated
 
 r.DumpShaderDebugWorkerCommandLine=1
-
-
 
 ## Add these when running with a graphical debugger like NSight (but not when profiling)
 

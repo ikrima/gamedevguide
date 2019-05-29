@@ -18,8 +18,6 @@ The functions of interest to initialization order for an Actor is roughly as fol
 
 - AActor::BeginPlay - Called when the level is started
 
-
-
 Ticks are executed asynchronously in tick groups
 
 Tick groups define general dependency between sets of actor ticks
@@ -52,8 +50,6 @@ TG_NewlySpawned - Special tick group that is not actually a tick group. After ev
 
 *Reference From <https://answers.unrealengine.com/questions/231386/tickgroup-how-to-understand-that.html>*
 
-
-
 #### Actor Tick():
 
 - Object ticking is done by registering a function delegate (FTickFunction) to the engine which is responsible for executing it. Ex: For Actors, FActorTickFunction::ExecuteTick() calls TickActor()
@@ -78,8 +74,6 @@ TG_NewlySpawned - Special tick group that is not actually a tick group. After ev
 
   - Afterwards, calls ProcessLatentActions() to process BP latent actions like delay events
 
-
-
 #### Notes:
 
 - ActorComponent's are not necessarily ticked in any order in relation to their owner Actor. Everything is just added onto the task graph. You have to use AddActorPrerequisite or AddActorComponentPrerequisite to define dependencies
@@ -92,11 +86,7 @@ TG_NewlySpawned - Special tick group that is not actually a tick group. After ev
 
 - IntializeComponent and BeginPlay are only called in game worlds, not the editor world, so that may be why you aren't seeing them called. Like bWantsBeginPlay you also need bWantsInitializeComponent. Both BeginPlay and InitializeComponent will get called as part of calling RegisterComponent if the owning Actor has been initialized/begun play respectively.
 
-
-
 *Reference From <https://udn.unrealengine.com/questions/285100/component-creation-overview.html>*
-
-
 
 ```cpp
 // General flow here is like so  

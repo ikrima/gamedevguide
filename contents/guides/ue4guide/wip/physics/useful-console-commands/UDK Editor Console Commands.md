@@ -26,7 +26,6 @@ sortIndex: 3
 
   - [CSG Surface Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html#CSG%20Surface%20Commands)
 
-
 ### Overview
 
 Console commands are string-based commands that you can run in the game or in the editor. They are also known as *exec commands*.
@@ -211,7 +210,6 @@ In addition to the general engine [console commands](https://api.unrealengine.co
 
 - **UNMOUNTALLFACEFX** – Unmounts all FaceFX assets unless currently open in the FaceFX editor.
 
-
 ### Actor Commands
 
 - **ACTOR** – General actor commands
@@ -328,8 +326,6 @@ In addition to the general engine [console commands](https://api.unrealengine.co
 
 - **UPDATE** – Updates the selected actors.
 
-
-
 ### Editor Mode Commands
 
 - **MODE** – General mode commands
@@ -352,7 +348,6 @@ In addition to the general engine [console commands](https://api.unrealengine.co
 - **USESIZINGBOX=** - Enables or disables the display of sizing information in the top left corner of the viewports.
   - **WIDGETCOORDSYSTEMCYCLE** –Cycles through the available coordinate systems, i.e. Local and World.
 - **WIDGETMODECYCLE** - Cycles the transform widget through the available options.
-
 
 ### Map Commands
 
@@ -412,7 +407,6 @@ In addition to the general engine [console commands](https://api.unrealengine.co
 
   - **SETBRUSH**
 
-
 ### CSG Brush Commands
 
 - **BRUSH** - General CSG brush commands
@@ -445,8 +439,6 @@ In addition to the general engine [console commands](https://api.unrealengine.co
 - **SEPARATEPOLYS** – Separates the selected faces from the current brush.
   - **SUBTRACT** – Create a new subtractive brush.
 
-
-
 ### Static Mesh Commands
 
 - **STATICMESH** – General static mesh commands
@@ -458,8 +450,6 @@ In addition to the general engine [console commands](https://api.unrealengine.co
 
 - **TO BRUSH** – Uses first selected static mesh to create a new builder brush shape.
   - **UNSMOOTH** – Sets the smoothing mask of all triangles in the selected static mesh to 0.
-
-
 
 ### CSG Surface Commands
 
@@ -532,4 +522,3 @@ In addition to the general engine [console commands](https://api.unrealengine.co
   - **TEXSCALE \[UU=uu] \[UV=uv] \[VU=vu] \[VV=vv]** – Sets the scaling of the material on the currently selected surfaces.
 
     - **RELATIVE** – Scales relative to current values.
-

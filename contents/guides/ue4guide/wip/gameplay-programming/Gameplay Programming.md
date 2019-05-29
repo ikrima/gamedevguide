@@ -148,9 +148,9 @@ if (SpriteComponent)
 
 - Create components in the constructor using ConstructorHelpers::CreateComponent&lt;>()
 
- ##### Function Specifiers
+  ##### Function Specifiers
 
- When declaring functions, specifiers can be added to the declaration to control how the function behaves with various aspects of the engine and editor.
+  When declaring functions, specifiers can be added to the declaration to control how the function behaves with various aspects of the engine and editor.
 
 - [BlueprintAuthorityOnly](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/BlueprintAuthorityOnly/index.html)
 
@@ -180,9 +180,7 @@ if (SpriteComponent)
 
 - [Unreliable](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/Specifiers/Unreliable/index.html)
 
- *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>*
-
-
+  *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>*
 
 #### Delegates
 
@@ -200,11 +198,9 @@ if (SpriteComponent)
 
 - [Dynamic (UObject, serializable)](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates/Dynamic)
 
- See the [Delegates](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates) page for reference and usage information.
+  See the [Delegates](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates) page for reference and usage information.
 
- *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>*
-
-
+  *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>*
 
 #### Timer Management
 

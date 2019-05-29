@@ -6,13 +6,11 @@ sortIndex: 1
 
 - Define what can be changed
 
-| Function Name                             | **Purpose**                                                  |
-| ----------------------------------------- | ------------------------------------------------------------ |
-| PreAttributeChange PreAttributeBaseChange | These functions are called just before modifications to an Attribute. They are intended to enforce rules on the Attribute's value, such as "Health must be between 0 and MaxHealth", and should not trigger in-game reactions to Attribute changes. |
-| PreGameplayEffectExecute                  | Just before modifying an Attribute's value, this function can reject or alter the proposed modification. |
+| Function Name                             | **Purpose**                                                                                                                                                                                                                                                       |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PreAttributeChange PreAttributeBaseChange | These functions are called just before modifications to an Attribute. They are intended to enforce rules on the Attribute's value, such as "Health must be between 0 and MaxHealth", and should not trigger in-game reactions to Attribute changes.               |
+| PreGameplayEffectExecute                  | Just before modifying an Attribute's value, this function can reject or alter the proposed modification.                                                                                                                                                          |
 | PostGameplayEffectExecute                 | Immediately after modifying an Attribute's value, this function can react to the change. This often includes clamping the final value of the Attribute, or triggering an in-game reaction to the new value, like dying when the "health" Attribute falls to zero. |
-
-
 
 *Reference From <https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAttributesAndGameplayEffects>*
 
@@ -76,8 +74,6 @@ sortIndex: 1
 
 *Reference From <https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>*
 
-
-
 Old:
 
 Overview tutorial:
@@ -94,4 +90,4 @@ Sample Repo: <https://github.com/daveratti/GameplayAbilitiesSample/tree/release/
 
 Older Doc:
 
-<<AbilitySystemK&L (1).docx>>
+&lt;&lt;AbilitySystemK&L (1).docx>>

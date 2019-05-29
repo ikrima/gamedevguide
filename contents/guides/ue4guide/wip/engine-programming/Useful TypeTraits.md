@@ -1,6 +1,7 @@
 ---
 sortIndex: 6
 ---
+
 ```cpp
 template &lt;> struct TIsWeakPointerType&lt;FLazyObjectPtr> { enum { Value = TIsWeakPointerType&lt;TPersistentObjectPtr&lt;FUniqueObjectGuid> >::Value }; };
 

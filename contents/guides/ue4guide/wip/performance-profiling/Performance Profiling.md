@@ -46,16 +46,12 @@ hmd vsync on/off/reset: Self-explanatory
 
 *Reference From <https://answers.unrealengine.com/questions/23023/trouble-configuring-game-settings.html>*
 
-
-
 Texture Quality Settings
 
 \[SystemSettings]/\[SystemSettingsEditor]  
 ; NOTE THAT ANY ITEMS IN THIS SECTION WILL AFFECT ALL PLATFORMS!!!
 
 TEXTUREGROUP_World=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point) 
-
-
 
 TEXTUREGROUP_WorldNormalMap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_WorldSpecular=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
@@ -84,8 +80,8 @@ TEXTUREGROUP_Bokeh=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=linear,Mi
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Engine/Content/Types/Textures/SupportAndSettings/index.html>*
 
-![PerformanceProfiling_CPUProfiling](...\..\..\..\assets\PerformanceProfiling_CPUProfiling.png)
+![PerformanceProfiling_CPUProfiling](.........\assets\PerformanceProfiling_CPUProfiling.png)
 
-![PerformanceProfiling_RenderThread](...\..\..\..\assets\PerformanceProfiling_RenderThread.png)
+![PerformanceProfiling_RenderThread](.........\assets\PerformanceProfiling_RenderThread.png)
 
-![PerformanceProfiling_GPUVisualizer](...\..\..\..\assets\PerformanceProfiling_GPUVisualizer.png)
+![PerformanceProfiling_GPUVisualizer](.........\assets\PerformanceProfiling_GPUVisualizer.png)

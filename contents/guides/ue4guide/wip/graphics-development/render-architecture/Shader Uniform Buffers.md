@@ -3,6 +3,7 @@ sortIndex: 9
 ---
 
 - Primitive Uniform Buffer
+
 ```cpp
 BEGIN_UNIFORM_BUFFER_STRUCT(FPrimitiveUniformShaderParameters,ENGINE_API)  
         UNIFORM_MEMBER(FMatrix,LocalToWorld)                // always needed  
@@ -26,6 +27,7 @@ END_UNIFORM_BUFFER_STRUCT(FPrimitiveUniformShaderParameters)
 ```
 
 - View Uniform Buffer
+
 ```cpp
 \#define VIEW_UNIFORM_BUFFER_MEMBER_TABLE \  
         VIEW_UNIFORM_BUFFER_MEMBER(FMatrix, TranslatedWorldToClip) \  

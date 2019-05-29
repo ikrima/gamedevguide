@@ -8,8 +8,6 @@ sortIndex: 1
 
 ![Rich web content titled: UE4 Networking](file:///C:/Users/KITELI~1/AppData/Local/Temp/msohtmlclip1/02/clip_image001.png)
 
-
-
 Actor Relevancy: Trade CPU for network bandwidth
 
 Reliable function replication:
@@ -20,15 +18,11 @@ Reliable function replication:
 
 - Delayed when bandwidth is saturated
 
-
-
 Unreliable function replication:
 
 - Gets skipped if bandwidth is saturated
 
 - Does not re-attempt if error occurs
-
-
 
 UNetDriver: contains list of connections to Tick
 
@@ -52,4 +46,3 @@ UNetDriver: contains list of connections to Tick
       - Each replicated actor has a channel
 
       - Actors replicated by dynamically assigned channel ID
-

@@ -21,4 +21,3 @@ FGenericPlatformProcess
 FGenericPlatformProperties
 
 FGenericWindow
-

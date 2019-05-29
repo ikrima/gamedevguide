@@ -6,32 +6,34 @@ sortIndex: 1
 
 Useful list from UE3: <https://docs.unrealengine.com/udk/Three/ConsoleCommands.html>
 
-- **GET [class] [property]** - returns the default value of a class property
+- **GET [class][property]** - returns the default value of a class property
 
-- **GETALL [class] [property]** - returns the value property for all instantiated classes
+- **GETALL [class][property]** - returns the value property for all instantiated classes
 
 - **DISPLAYALL / DISPLAYALLSTATE** - Identical to "getall", but displays output on the screen in realtime, similarly to stats.
 
-- **DISPLAY [object] [property]** - Displays only the specified property for the specified single object. Only enough of the outer chain is required to make the object uniquely identifiable.
+- **DISPLAY [object][property]** - Displays only the specified property for the specified single object. Only enough of the outer chain is required to make the object uniquely identifiable.
 
 - **DISPLAYCLEAR** - Clears all display\* output.
 
 - **SET** - this one is the most powerful of them all. It takes as the first parameter string a class name, the second string a variable name, and the third string, a value. All objects of the given class (including subclasses) will have the given variable set to the given value. For example "set Pawn CollisionRadius 200" will make all pawns have a collision radius of 200. (See PawnTricksAndTips<sup>?</sup> for more details). In v3323 the set command has limited functionality when using online, this is to limit cheating.
 
 - **EDITACTOR [parameter]** – Will bring up property detail view & edit the properties of first found actor according to the parameter.
+
 - **CLASS=** - Class to look for.
-  
+
 - **NAME=** - Name to look for
-  
+
 - **TRACE** – Trace player view for first hit actor.
-  
+
 - **EDITDEFAULT [CLASS=class]** – Open property editor for default properties of specified class. Only allowed in standalone.
 
 - **EDITOBJECT [parameter]** – Edit the properties of the first found object of the specified class or with the given name.
+
 - **CLASS=** - Class to look for.
-  
+
 - **NAME=** - Name to look for.
-  
+
 - **LISTPROPS**
 
 - **LISTFUNCS**
@@ -72,8 +74,6 @@ The **Lighting Build Info** dialog is a very important tool for improving ligh
 How To Execute Multiple/Chain Console Commands /string console commands. Use the pipe as a console command separator
 
 - stat unit | stat scenerendering
-
-
 
 Dump all console commands:
 

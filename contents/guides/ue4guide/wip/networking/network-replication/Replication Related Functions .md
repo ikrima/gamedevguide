@@ -1,6 +1,7 @@
 ---
 sortIndex: 8
 ---
+
 # UObject:
 
 ```cpp
@@ -36,7 +37,6 @@ virtual void PostRepNotifies() {}
 
 virtual void PreDestroyFromReplication();
 ```
-
 
 # Actor Helpers/HighLevel:
 
@@ -248,13 +248,11 @@ Called by the networking system to call PreReplication on this actor and its com
 void CallPreReplication(UNetDriver* NetDriver);
 ```
 
-
 Gives the actor a chance to pause replication to a player represented by the passed in actor - only called on server
 
 ```cpp
 virtual bool IsReplicationPausedForConnection(const FNetViewer& ConnectionOwnerNetViewer);
 ```
-
 
 Called on the client when the replication paused value is changed 
 
@@ -262,20 +260,17 @@ Called on the client when the replication paused value is changed
 virtual void OnReplicationPausedChanged(bool bIsReplicationPaused);
 ```
 
-
 Sync IsSimulatingPhysics() with ReplicatedMovement.bRepPhysics
 
 ```cpp
 void SyncReplicatedPhysicsSimulation();
 ```
 
-
 Called when the replicated state of a component changes to update the Actor's cached ReplicatedComponents array
 
 ```cpp
 void UpdateReplicatedComponent(UActorComponent* Component);
 ```
-
 
 Completely synchronizes the replicated components array so that it contains exactly the number of replicated components currently owned
 

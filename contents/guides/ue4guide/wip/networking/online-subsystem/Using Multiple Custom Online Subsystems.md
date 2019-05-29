@@ -8,10 +8,8 @@ FWIW, the way we handle crossplatform on Paragon and Fortnite is using a Single 
 
 For example, if you take a look at FOnlineSubsystemPS4, you'll notice there are a bunch of flags like bAreRoomsEnabled, bAreAchievementsEnabled, etc:
 
-1. /** true by default, this enables room creation. Can be disabled to use third party matchmaking. */
+1. /\** true by default, this enables room creation. Can be disabled to use third party matchmaking. */
 1. bool bAreRoomsEnabled;
-
-
 
 Then, in the OSS we've just guard any calls into related methods.
 
@@ -26,8 +24,6 @@ So, the process for us would look a bit more like this:
 1. Disable any features we don't want to use.
 
 *Reference From <https://udn.unrealengine.com/questions/404339/accessing-oculussteam-apis-without-respective-oss.html>*
-
-
 
 To do this, it sounds like we need to create a custom OSS that communicates with PlayFab for match making, make calls into Steam/Oculus APIs for handling stuff like Friend Invites/Authentication, and use GameNetDriver for clients to join servers via IPs?
 
@@ -73,8 +69,8 @@ bEnabled=true
 DefaultPlatformService=PlayFab
 ```
 
-
 In the scenario where you want to use a different OSS at runtime, you'd just interact with the FOnlineSubsystemModule normally. I'll point out that the interface is set up so you can pass in the name of OSS you want. E.G.:
+
 ```cpp
 /**
 

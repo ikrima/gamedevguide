@@ -4,33 +4,25 @@ sortIndex: 1
 
 Enable Stats from Command Line:
 
--StatCmds="startfile"
+\-StatCmds="startfile"
 
-*Reference From https://udn.unrealengine.com/questions/445587/long-initial-load-times.html>*
-
-
+*Reference From <https://udn.unrealengine.com/questions/445587/long-initial-load-times.html>>*
 
 Description of stats: <https://docs.unrealengine.com/udk/Three/StatsDescriptions.html>
 
-
-
-Common options: [-ms=5.0] [-root=None] [leaf=None] [-depth=maxint] [-nodisplay]
+Common options: [-ms=5.0][-root=None] [leaf=None][-depth=maxint] [-nodisplay]
 
 stat groupnam [+] - toggles displaying stats group, + enables hierarchical display
 
 stat group list|listall|enable name|disable name|none|all|default - manages enabling/disabling recording of the stats groups. Doing stat [groupname] automatically enables that group
 
-- Also supports [-group=groupname] [-sortby=name] [-maxhistoryframes=60] [-reset] [-maxdepth=4] [-root=None] [-ms=0.2] [-reset]
-
-
+- Also supports [-group=groupname][-sortby=name] [-maxhistoryframes=60][-reset] [-maxdepth=4][-root=None] [-ms=0.2][-reset]
 
 stat namedmarker #markername# - adds a custom marker to the stats stream
 
 stat none - disables drawing all stats groups
 
 stat display -font=small\[tiny] - Changes stats rendering display options
-
-
 
 stat slow \[-ms=1.0] \[-depth=4] - toggles displaying the game and render thread stats
 
@@ -50,8 +42,6 @@ stat dumpcpu - dumps cpu stats
 
 stat dumpnonframe \[groupname] - dumps non-frame stats, usually memory stats
 
-
-
 stat hier -group=groupname \[-sortby=name] \[-maxhistoryframes=60] \[-reset] \[-maxdepth=4] \[-root=None] \[-ms=0.2] \[-reset]
 
 - groupname is a stat group like initviews or statsystem
@@ -64,8 +54,6 @@ stat hier -group=groupname \[-sortby=name] \[-maxhistoryframes=60] \[-reset] \[-
 
 - maxdepth (default 4, maximum depth for the hierarchy)
 
-
-
 stat startfile - starts dumping a capture
 
 stat stopfile - stops dumping a capture (regular, raw, memory)
@@ -74,29 +62,21 @@ stat startfileraw - starts dumping a raw capture
 
 stat toggledebug - toggles tracking the most memory expensive stats
 
-
-
 add -memoryprofiler in the command line to enable the memory profiling
 
 stat stopfile - stops tracking all memory operations and writes the results to the file
 
 stat testfile - loads the last saved capture and dumps first, middle and last frame
 
-
-
 Details from Stats.h: Implementing custom stats or cycle counters
 
-
-
  **Unreal Engine Stats system**
-
 
 This is a preliminary version of the documentation, any comments are welcome :)
 
  This system allows you to collect various performance data and then the data can be used to optimize your game.
 
 There are a few methods how to achieve this. This quick tutorial will describe all of them.
-
 
  For stats commands check out method PrintStatsHelpToOutputDevice();
 
@@ -110,10 +90,7 @@ There are a few methods how to achieve this. This quick tutorial will describe a
 
 Memory - a special type of counter that is optimized for memory tracking
 
-
-
 Each stat needs to be grouped, this usually corresponds with displaying the specified stat group i.e. 'stat statsystem' which displays stats' related data.
-
 
 To define a stat group you need to use one of the following methods:
 
@@ -123,11 +100,9 @@ DECLARE_STATS_GROUP_VERBOSE(GroupDesc,GroupId,GroupCat) - declares a stats group
 
 DECLARE_STATS_GROUP_MAYBE_COMPILED_OUT(GroupDesc,GroupId,GroupCat) - declares a stats group which is disabled by default and may be stripped by the compiler
 
-
-
  where
 
--  GroupDesc is a text description of the group
+- GroupDesc is a text description of the group
 
 - GroupId is an UNIQUE id of the group
 
@@ -135,13 +110,11 @@ DECLARE_STATS_GROUP_MAYBE_COMPILED_OUT(GroupDesc,GroupId,GroupCat) - declares a 
 
 - CompileIn if set to true, the compiler may strip it out
 
-
 It can be done in the source or header file depending the usage scope.
 
 Examples:
 
 ```cpp
-
 DECLARE_STATS_GROUP(TEXT("Threading"), STATGROUP_Threading, STATCAT_Advanced); DECLARE_STATS_GROUP_VERBOSE(TEXT("Linker Load"), STATGROUP_LinkerLoad, STATCAT_Advanced);
 ```
 
@@ -159,8 +132,6 @@ QUICK_SCOPE_CYCLE_COUNTER(StatId) - declares a cycle counter stat that will belo
 
 RETURN_QUICK_DECLARE_CYCLE_STAT(StatId,GroupId) - returns a cycle counter, used by a few specialized classes, more information later
 
-
-
 DECLARE_FLOAT_COUNTER_STAT(CounterName,StatId,GroupId) - declares a float counter, technically speaking it's based on the double type, 8 bytes
 
 DECLARE_DWORD_COUNTER_STAT(CounterName,StatId,GroupId) - declared a dword counter, technically speaking it's based on the qword type, 8 bytes
@@ -172,8 +143,6 @@ DECLARE_DWORD_ACCUMULATOR_STAT(CounterName,StatId,GroupId) - declares a dword ac
 DECLARE_MEMORY_STAT(CounterName,StatId,GroupId) - declares a memory counter, same as the dword accumulator, but will be displayed with memory specific units
 
 DECLARE_MEMORY_STAT_POOL(CounterName,StatId,GroupId,Pool) - declares a memory counter with a pool
-
-
 
 If you want to have these stats accessible in the whole project/or wider range of files you need to use extern version.
 
@@ -193,8 +162,6 @@ These methods are the same as the previously mentioned but with \_EXTERN and the
 
 - DECLARE_MEMORY_STAT_POOL_EXTERN(CounterName,StatId,GroupId,Pool, API)
 
-
-
 Then in the source file you need to define those stats.
 
 DEFINE_STAT(CounterName) - defines stats declared with \_EXTERN
@@ -209,8 +176,7 @@ GroupId is an id of the group that the stat will belong to, the GroupId from DEC
 
 Pool is a platform specific memory pool, more details later
 
-API is the *_API of module, can be empty if the stat will be used only in that module
-
+API is the \*\_API of module, can be empty if the stat will be used only in that module
 
 **Examples:**
 
@@ -238,7 +204,6 @@ MCR_MAX
 };
 ```
 
-
 This is an example that will allow using the pools every where, see CORE_API.
 
 THE NAME OF THE POOL MUST START WITH MCR\_
@@ -251,8 +216,6 @@ DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("GPU Memory Pool \[GPU]"), MCR_GPU, STATGRO
 
 DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Texture Memory Pool \[Texture]"), MCR_TexturePool, STATGROUP_Memory, FPlatformMemory::MCR_TexturePool,CORE_API);
 
-
-
 Source file.
 
 DEFINE_STAT(MCR_Physical);
@@ -261,8 +224,6 @@ DEFINE_STAT(MCR_GPU);
 
 DEFINE_STAT(MCR_TexturePool);
 
-
-
 This is a pool, so it needs to be initialized. Usually in the F\*PlatformMemory::Init()
 
 SET_MEMORY_STAT(MCR_Physical, PhysicalPoolLimit);
@@ -270,7 +231,6 @@ SET_MEMORY_STAT(MCR_Physical, PhysicalPoolLimit);
 SET_MEMORY_STAT(MCR_GPU, GPUPoolLimit);
 
 SET_MEMORY_STAT(MCR_TexturePool, TexturePoolLimit);
-
 
 Now we have pools, so we can setup memory stats for those pools.
 
@@ -284,15 +244,11 @@ DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Structured buffer memory"), STAT_Structure
 
 DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Pixel buffer memory"), STAT_PixelBufferMemory, STATGROUP_RHI, FPlatformMemory::MCR_GPU, RHI_API);
 
-
-
 Accessible only in the module where defined.
 
 DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Pool Memory Size"), STAT_TexturePoolSize, STATGROUP_Streaming, FPlatformMemory::MCR_TexturePool, );
 
 DECLARE_MEMORY_STAT_POOL_EXTERN(TEXT("Pool Memory Used"), STAT_TexturePoolAllocatedSize, STATGROUP_Streaming, FPlatformMemory::MCR_TexturePool, );
-
-
 
 And the last thing, updating the memory stats.
 
@@ -301,8 +257,6 @@ INC_MEMORY_STAT_BY(STAT_PixelBufferMemory,NumBytes) - increases a memory stat by
 DEC_MEMORY_STAT_BY(STAT_PixelBufferMemory,NumBytes) - decreases a memory stat by the specified value
 
 SET_MEMORY_STAT(STAT_PixelBufferMemory,NumBytes) - sets a memory stat to the specified value
-
-
 
 Regular memory stats, without pools
 
@@ -314,11 +268,9 @@ DECLARE_MEMORY_STAT(TEXT("Page Size"), STAT_PageSize, STATGROUP_MemoryPlatform);
 
 DECLARE_MEMORY_STAT(TEXT("Total Physical GB"), STAT_TotalPhysicalGB, STATGROUP_MemoryPlatform);
 
-
 Or DECLARE_MEMORY_STAT_EXTERN in the header file and then DEFINE_STAT in the source file.
 
 Updating the memory stats is done the same way as in the version with pools.
-
 
 Performance data using the cycle counters.
 
@@ -328,9 +280,7 @@ DECLARE_CYCLE_STAT(TEXT("Broadcast"), STAT_StatsBroadcast,STATGROUP_StatSystem);
 
 DECLARE_CYCLE_STAT(TEXT("Condense"), STAT_StatsCondense, STATGROUP_StatSystem);
 
-
 Or DECLARE_CYCLE_STAT_EXTERN in the header file and then DEFINE_STAT in the source file.
-
 
 Now you can grab the performance data.
 
@@ -350,13 +300,11 @@ SCOPE_CYCLE_COUNTER(STAT_StatsBroadcast);
  }
 ```
 
-
 and that's all.
 
 Sometimes you don't want to grab the stats every time the function is called, so you can use conditional cycle counter.
 
 It's not very common, but may be useful.
-
 
 ```cpp
 Stats::Broadcast(bool bSomeCondition)
@@ -375,7 +323,6 @@ CONDITIONAL_SCOPE_CYCLE_COUNTER(STAT_StatsBroadcast,bSomeCondition);
 ```
 
 If you want to grab the performance data from one function you can use following construction.
-
 
 ```cpp
 Stats::Broadcast(bool bSomeCondition)
@@ -413,9 +360,7 @@ Stats::Broadcast(bool bSomeCondition)
 }
 ```
 
-
 Mostly used for temporary stats.
-
 
 Those all cycle counters are used to generate the hierarchy. So you can get more detailed information about performance data.
 
@@ -447,7 +392,6 @@ They implement method GetStatId(). If there is no GetStatId(), the code will not
 
 Here is an example.
 
-
 ```cpp
 class FParallelAnimationCompletionTask
 
@@ -472,7 +416,6 @@ RETURN_QUICK_DECLARE_CYCLE_STAT(FParallelAnimationCompletionTask, STATGROUP_Task
 };
 ```
 
-
 Generic data using the float or dword counters.
 
 First you need to add a few counters.
@@ -484,8 +427,6 @@ DECLARE_DWORD_COUNTER_STAT_EXTERN(STAT_DwordCounter,StatId,STATGROUP_TestGroup, 
 DECLARE_FLOAT_ACCUMULATOR_STAT_EXTERN(STAT_FloatAccumulator,StatId,STATGROUP_TestGroup, CORE_API)
 
 DECLARE_DWORD_ACCUMULATOR_STAT_EXTERN(STAT_DwordAccumulator,StatId,STATGROUP_TestGroup, CORE_API)
-
-
 
 Updating counters.
 
@@ -505,19 +446,15 @@ DEC_FLOAT_STAT_BY(StatId,Amount) - decreases a float stat by the specified value
 
 SET_FLOAT_STAT(StatId,Value) - sets a float stat to the specified value
 
-
 A few helper methods
 
 GET_STATID(StatId) - returns an instance of the TStatId of the stat, ADVANCED
 
 GET_STATDESCRIPTION(StatId) - returns a description of the stat
 
-
 If you don't want to use the stats system and just log some performance data, there is functionality for this.
 
-
 SCOPE_SECONDS_COUNTER(double&Seconds) - captures time passed in seconds, adding delta time to passed in variable
-
 
 ```cpp
 Stats::Broadcast()
@@ -543,10 +480,7 @@ UE_LOG(LogTemp, Log, TEXT("Stats::Broadcast %.2f"), ThisTime );
 }
 ```
 
-
 FScopeLogTime - utility class to log time passed in seconds, adding cumulative stats to passed in variable, print the performance data to the log in the destructor
-
-
 
 SCOPE_LOG_TIME(Name,CumulativePtr) - using the given name prints the performance data and gathers cumulative stats
 
@@ -555,8 +489,6 @@ SCOPE_LOG_TIME_IN_SECONDS(Name,CumulativePtr) - the same as above, but prints in
 SCOPE_LOG_TIME_FUNC() - using the funcion name prints the performance data, cannot be nested
 
 SCOPE_LOG_TIME_FUNC_WITH_GLOBAL(CumulativePtr), same as above, but gather cumulative stats
-
-
 
 A few examples.
 

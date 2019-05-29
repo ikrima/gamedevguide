@@ -12,7 +12,7 @@ Fast player effect targetting:
 
 - Easy to have lots of variation not in one being uber shader
 
-- ![ParagonOptimization_Bots](...\..\..\..\assets\ParagonOptimization_Bots.png)
+- ![ParagonOptimization_Bots](.........\assets\ParagonOptimization_Bots.png)
 
 Reduce number of components on characters
 
@@ -25,4 +25,3 @@ Reduce number of components on characters
 Reduce tick rate of certain objects or manually use timer manager (e.g. if object ticks once every 10 seconds, no need for the tick check to happen every frame)
 
 - Tick some objects manually to reduce task graph overhead and can improve cache coherence
-

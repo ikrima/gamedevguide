@@ -8,8 +8,6 @@ PostLoad()
 
 - BeginInitResources(): Create static render resources (e.g. index/vertex buffer)
 
-
-
 Component Register
 
 - FScene::AddPrimitive()
@@ -51,8 +49,6 @@ Component Register
     - Loop through Light Octree and create LightPrimitiveInteractions for each Light affecting this Primitive
 
       - PrimitiveSceneProxy::GetLightRelevance() based on FlightInteraction for primitive (retrieved through PrimitiveSceneProxy::GetInteraction())
-
-
 
 Component Transform Update
 

@@ -10,15 +10,11 @@ Actors/components tick after the matinee actor/levelsequencer that controls it (
 
 Some common dependencies in order of priority: sub-bullet points mean they get run after their header
 
-
-
 PossessingController.ActorTick
 
 - PossessedPawn.ActorTick
 
 - PossessedPawn.MovementComponent (look below for this ones other dependencies)
-
-
 
 {PossessingController.ActorTick, MovementBasePrimitiveComponent.Primary, Owner of MovementBasePrimitiveComponent, & all of its the ticking child components}
 
@@ -32,33 +28,23 @@ PossessingController.ActorTick
 
   - MovementComponent.UpdatedComponent (e.g. Capsule component of ACharacter)
 
-
-
 World->EndPhysicsTickFunction
 
 - SkeletalMeshComponent.EndPhysicsTickFunction
-
-
 
 MasterPoseComponentTick.Primary
 
 - SkinnedMeshComponent.PrimaryComponent
 
-
-
 {PrimitiveComponent.Primary && World->EndPhysicsTickFunction}
 
 - PostPhysicsComponentTick
-
-
 
 Engine Flow
 
 FWorldDelegates::OnWorldTickStart.Broadcast(TickType, DeltaSeconds);
 
 //Happens before net code/update all incoming packets
-
-
 
 FEngineLoop::TotalTickTime
 

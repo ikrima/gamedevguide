@@ -16,8 +16,6 @@ For connecting, the console command should be "open ipaddress:port". As I have r
 
 Now, as for RedeemMatchmakerTicket, this is something a bit more tricky that requires a bit of fangling. So, for now I'll assume you're using the C++ SDK. Unreal Engine doesn't have any real Authentication functions past the client side login. You you run "open 127.0.0.1:7777" you should as provide parameters for the ticket. i.e. "open 127.0.0.1:7777?ticket=XXX?playfabid=XXX" We want both the ticket and the PlayFabId as without the provided PlayFabId, there's no way to make sure that ticket is valid with that client. Now as I haven't tried this in Blueprint, I'm not sure what GameMode functions are available. So, what you can do is on AGameMode::Login, you can parse the Options parameter and use that info to send the RedeemMatchmakerTicket request. When it sends the info back, you compare the two PlayFabIds just to make sure they're equal. If equal, the player should be valid, yay! If not equal, something is either wrong or the client is trying to spoof something.
 
-
-
 <https://community.playfab.com/questions/5530/can-i-get-a-conceptual-explanation-of-how-a-custom.html>
 
 Correct, the Matchmaker API set is for developers who want to build their own custom matchmaking server. In general, the way one would work is:
@@ -51,7 +49,6 @@ I will say that what some titles are doing is a basic matchmaking call in PlayFa
 The StartGame and Matchmake calls return the information for the server instance the player should connect to, and that info is returned immediately after the game wrangler service starts the executable for your game server. If your server has to load extra libraries or do other processing when it is run, that could mean that your client would try connecting before it is ready, so it's important to ensure you have a process running that listens for players as soon as your executable launches.
 
 *Reference From <https://community.playfab.com/questions/5530/can-i-get-a-conceptual-explanation-of-how-a-custom.html>*
-
 
 The way the PlayFab matchmaker works is that it finds all sessions that have available slots, which match the "must have" criteria - Build Version, Game Mode, and Region - and filters that based on Tags. If there's no statistic provided for the match, it just picks randomly from that list. If there is a statistic provided, it orders the available sessions by the ABS difference between the input statistic, and that of the active session, returning a session from the top of the list (closest to the input score). But it never waits - it always immediately returns the closest match, or if one cannot be found, either "no match found" or a new session, depending on whether you start sessions on calls to matchmake or not.
 

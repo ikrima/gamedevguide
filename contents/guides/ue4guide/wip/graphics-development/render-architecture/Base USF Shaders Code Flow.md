@@ -1,9 +1,11 @@
 ---
 sortIndex: 10
 ---
+
 # Common Info:
 
 ### Params:
+
 ```cpp
 - Specular = 0.5 by default, \[0,1]
 
@@ -54,7 +56,6 @@ uint ShadowedBits;
 
 };
 ```
-
 
 - **Primitive Uniform Buffer:**
 
@@ -109,8 +110,6 @@ uint ShadowedBits;
 
 - Vis = G / (4*NoL*NoV)
 
-
-
 # Base Pass Pixel Shader.usf::FPixelShaderInOut_MainPS(): 
 
 #### **Forward Lighting Pre-amble/setup:**
@@ -157,15 +156,15 @@ uint ShadowedBits;
 
 - Cache common results in local variables:
 
-  half3 BaseColor = GetMaterialBaseColor(PixelMaterialInputs);
+   half3 BaseColor = GetMaterialBaseColor(PixelMaterialInputs);
 
-  half Metallic = GetMaterialMetallic(PixelMaterialInputs);
+   half Metallic = GetMaterialMetallic(PixelMaterialInputs);
 
-  half Specular = GetMaterialSpecular(PixelMaterialInputs);
+   half Specular = GetMaterialSpecular(PixelMaterialInputs);
 
- float MaterialAO = GetMaterialAmbientOcclusion(PixelMaterialInputs);
+  float MaterialAO = GetMaterialAmbientOcclusion(PixelMaterialInputs);
 
- float Roughness = GetMaterialRoughness(PixelMaterialInputs);
+  float Roughness = GetMaterialRoughness(PixelMaterialInputs);
 
 - Other Misc Stuff:
 
@@ -205,7 +204,7 @@ uint ShadowedBits;
         - This will only come from stationary directional lights as well
 
 
-- **SetGBufferForShadingModel():** Different MATERIAL_SHADINGMODEL_* adjust the gbuffer here and write custom data
+- **SetGBufferForShadingModel():** Different MATERIAL*SHADINGMODEL*\* adjust the gbuffer here and write custom data
 
 
 - ***(USES_GBUFFER ONLY)*: Velocity calculation**
@@ -213,13 +212,13 @@ uint ShadowedBits;
 
 - **Adjust GBuffer struct values based on shader:**
 
-  - **GBuffer.SpecularColor:** lerp(0.08 * Specular.xxx, BaseColor, Metallic.xxx); //Think this means index of refraction
+  - **GBuffer.SpecularColor:** lerp(0.08 \* Specular.xxx, BaseColor, Metallic.xxx); //Think this means index of refraction
 
   - **GBuffer.Roughness:** NormalCurvatureToRoughness(MaterialParameters.WorldNormal)
 
   - ***(Subsurface_Profile && USES_GBUFFER)* AdjustBaseColorAndSpecularColorForSubsurfaceProfileLighting()**
 
-  - **GBuffer.DiffuseColor** = BaseColor - BaseColor * Metallic;
+  - **GBuffer.DiffuseColor** = BaseColor - BaseColor \* Metallic;
 
   - **FORCE_FULLY_ROUGH** optimization
 
@@ -230,8 +229,6 @@ uint ShadowedBits;
     - Applies a vsibility cone intersection using bent normal & roughness by converting to Spherical Gaussians and convolving there
 
   - **GBuffer.GBufferAO** = AOMultiBounce()
-
-
 
 ### GetPrecomputedIndirectLightingAndSkyLight(): Indirect Diffuse Lighting
 
@@ -392,8 +389,6 @@ You can look at how the channels are used in LightmapCommon.usf if you want the 
 
 **NOTE: DiffuseColor in FPixelShaderInOut_MainPS is actually indirect diffuse contribution. Direct Dynamic Lighting is accumulated directly into Color variable**
 
-
-
 #### GetForwardDirectLighting():
 
 Get's final shaded pixel value from direct lights
@@ -424,8 +419,6 @@ Get's final shaded pixel value from direct lights
 
   - LightAccumulator_Add()/LightAccumulator_GetResult(): Simple accumulator/return. Apply light falloff attenuation. Only does something special for subsurface models
 
-
-
 #### GetImageBasedReflectionLighting():
 
 Get indirect specular from image based reflection environment.
@@ -451,8 +444,6 @@ Get indirect specular from image based reflection environment.
 
 - GetSimpleForwardLightingDirectionalLight(): For Simple directional lighting only for low-end hw
 
-  
-
 **Prefiltering/baking:**
 
 Prefiltering split sum approximation for Image based lighting (<https://de45xmedrsdbp.cloudfront.net/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf>):
@@ -468,8 +459,6 @@ PrefilterEnvMap()
 ApproximateSpecularIBL()
 
 IntegrateBRDF()
-
-
 
 **Common #if Defines**
 
@@ -494,8 +483,6 @@ Below are some common pre-processor defines found in the deferred shading pipeli
 - \#if IMPORTANCE_SAMPLE => Doesn't seem to be used
 
   - Calls ImageBasedLightingHair() & ImageBasedLightingMIS()
-
-
 
 **Misc funcs:**
 

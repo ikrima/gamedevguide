@@ -6,25 +6,22 @@ sortIndex: 17
 
 [![](http://img.youtube.com/vi/hcxetY8g_fs/0.jpg)](http://www.youtube.com/watch?v=hcxetY8g_fs)
 
-
 Dev build -> Noise in draw thread; Test is cleanest
-
 
 Profiling from editor:
 
-->Play in Standalone
+\->Play in Standalone
 
-->Make sure Editor not updating in real time & not updating in background
+\->Make sure Editor not updating in real time & not updating in background
 
-->Make sure frame rate smoothing is off & vsync is off
+\->Make sure frame rate smoothing is off & vsync is off
 
-->Minimize editor
+\->Minimize editor
 
-->Don't profile from PIE
+\->Don't profile from PIE
 
 net.DumpRelevantActors
 
 to run on server: cheat net.\* command
 
 stat net (4.19)
-

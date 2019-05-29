@@ -1,6 +1,7 @@
 ---
 sortIndex: 5
 ---
+
 ```cpp
 **FStatsUtils::DebugPrint(FStatMessage const& Item)**
 
@@ -36,6 +37,7 @@ return Result;
 ```
 
 ### Examples of parsing stats:
+
 ```cpp
 **FStatsThreadState::GetRawStackStats(int64 TargetFrame, FRawStatStackNode& Root, TArray<FStatMessage>* OutNonStackStats)**
 
@@ -59,4 +61,3 @@ return Result;
 
 }
 ```
-

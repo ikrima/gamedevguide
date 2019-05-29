@@ -12,24 +12,22 @@ GameMode contains a state machine that tracks the state of the Match
 
    a) things are fully loaded
 
-2.  WaitingToStart: HandleMatchIsWaitingToStart() called when entering this state. Actors are ticking, players have not yet spawned. Transitions on =>
+1. WaitingToStart: HandleMatchIsWaitingToStart() called when entering this state. Actors are ticking, players have not yet spawned. Transitions on =>
 
 1. ReadyToStartMatch() returns true
    2. Someone calls StartMatch()
 
-3. InProgress: HandleMatchHasStarted called on enter. Calls BeginPlay() on all Actors just incase it wasn’t called in HandleMatchIsWaitingToStart(). Normal gameplay. Transitions on =>
+1. InProgress: HandleMatchHasStarted called on enter. Calls BeginPlay() on all Actors just incase it wasn’t called in HandleMatchIsWaitingToStart(). Normal gameplay. Transitions on =>
 
    1. ReadyToEndMatch() == true
-   2. Someone calls EndMatch()
+   1. Someone calls EndMatch()
 
-4. WaitingPostMatch: HandleMatchHasEnded() on enter. Actors still ticking but new players not accepted. Transitions on =>
+1. WaitingPostMatch: HandleMatchHasEnded() on enter. Actors still ticking but new players not accepted. Transitions on =>
    1. Map transfer starts
 
-5. LeavingMap: HandleLeavingMap() on enter. Match stays in this state while transferring to a new map
+1. LeavingMap: HandleLeavingMap() on enter. Match stays in this state while transferring to a new map
 
-5. Aborted: failure state. Started from AbortMatch()
-
-
+1. Aborted: failure state. Started from AbortMatch()
 
 Events that are fired:
 
@@ -38,8 +36,6 @@ Events that are fired:
   - Passes valid PlayerController owned by connecting Player's connection
 
   - Can be used to Spawn new player pawn
-
-
 
 OptionsString: contains options, delimetted by ?, that can be passed via OpenLevel() or ServerTravel()
 
@@ -55,8 +51,6 @@ GameState maintains list of connected Players (PlayerState)
 
 - AuthorityGameMode (only server has this)
 
-
-
 PlayerState: holds current information about the current Player
 
 - Replicated to everyone so other clients can know details about the Player
@@ -70,8 +64,6 @@ PlayerState: holds current information about the current Player
   - Does this by copying current PlayerState into the new PlayerState
 
   - Override CopyProperties() & OverrideWith()
-
-
 
 Pawns
 
@@ -91,8 +83,6 @@ AActor::IsNetRelevantFor() - Determines relevancy for a playercontroller/actor
 the Actor should be set to 'bAlwaysRelevant = true'
 
 6. If 'AGameNetworkManager' is set to use distance based relevancy, the Actor is relevant if it is closer than the net cull distance
-
-
 
 AActor::GetNetPriority()- determines how much relative bandwidth actor receives compared to others. NetPriority=2.0 => 2x more bandwidth
 

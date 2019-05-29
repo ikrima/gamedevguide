@@ -1,9 +1,11 @@
 ---
 sortIndex: 3
 ---
+
 <https://www.unrealengine.com/en-US/blog/debugging-ufunction-invoke>
 
 When running an Editor build of your game, you can now use the command,
+
 ```cpp
 {,,UE4Editor-Core}::PrintScriptCallstack()
 
@@ -11,9 +13,8 @@ and just
 
 ::PrintScriptCallstack()
 ```
+
 *Reference From <https://www.unrealengine.com/en-US/blog/debugging-ufunction-invoke>*
-
-
 
 Print Blueprint CallStack from Visual Studio
 
@@ -22,6 +23,7 @@ Print Blueprint CallStack from Visual Studio
 - How to make a command alias & button for it
 
   Visual Commander Macro:
+
 ```cpp
   using EnvDTE;
 

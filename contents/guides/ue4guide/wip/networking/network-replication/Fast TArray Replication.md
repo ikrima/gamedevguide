@@ -1,8 +1,8 @@
 ---
 sortIndex: 7
 ---
-*Reference From <https://udn.unrealengine.com/questions/164217/how-can-i-improve-performance-of-tarray-replicatio.html>*
 
+*Reference From <https://udn.unrealengine.com/questions/164217/how-can-i-improve-performance-of-tarray-replicatio.html>*
 
 #### Overview
 
@@ -16,10 +16,10 @@ sortIndex: 7
 
   Keep in mind its still important to optimize your replicated data. The data set being replciated should be as small as possible. Even though the replication only sends the bare minimum of what data has changed, it still has to chew through the entire set of data to find out what changed.
 
-
 #### Using
 
  Below is an example of using fast TArray in a structure called FExampleItemEntry (the same code can be found in NetSerialization.h for easier copy/paste). The TArray of these structs is then wrapped in another structure, FExampleArray. Follow the step in the comments to make use of it in your own structure.
+
 ```cpp
  /** Step 1: Make your struct inherit from FFastArraySerializerItem */
 
@@ -94,9 +94,7 @@ sortIndex: 7
  };
 
  };
-
 ```
-
 
 Now to use, just:
 

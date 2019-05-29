@@ -8,14 +8,13 @@ sortIndex: 3
 
 <https://www.unrealengine.com/en-US/blog/optimizing-battle-breakers-for-chunked-downloading>
 
-| **Asset Registry:**      | Repository of useful info about specific assets              |
-| ------------------------ | ------------------------------------------------------------ |
-| **Streamable Managers:** | native structs that manage streaming                         |
+| **Asset Registry:**      | Repository of useful info about specific assets                                                                |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| **Streamable Managers:** | native structs that manage streaming                                                                           |
 | **Primary Assets:**      | assets that can be manually loaded/unloaded based on game state (e.g. maps, inventory items,character classes) |
-| **Secondary Assets:**    | Auto loaded/dependent assets based on Primary Assets (e.g. textures, sounds, etc) |
-| **Asset Bundle:**        | Logical group of named list of assets that can be loaded together at runtime |
-| **Asset Manager**        | New singleton managing info about primary assets/asset bundles |
-
+| **Secondary Assets:**    | Auto loaded/dependent assets based on Primary Assets (e.g. textures, sounds, etc)                              |
+| **Asset Bundle:**        | Logical group of named list of assets that can be loaded together at runtime                                   |
+| **Asset Manager**        | New singleton managing info about primary assets/asset bundles                                                 |
 
 **FPrimaryAssetID:**
 
@@ -61,28 +60,26 @@ sortIndex: 3
 
 - **GetPrimaryAssetIdForPath(StringReference)**: Converts an object path into a Type:Name pair if that path refers to a Primary Asset
 
-
-
 Override UAssetManager::ShouldSetManager for your project, this is the function that figures out what Primary Assets "manage" other things. You could add a specific check where if your main menu primary asset is asking it it should reference Map primary assets, return DoNotSet. Fortnite does this so our "list of maps to display" asset doesn't acquire management over specific maps
 
 *Reference From <https://udn.unrealengine.com/questions/452756/view.html>*
 
-/**
+/\*\*
 
-* External modules can have additional data associated with this UWorld.
+- External modules can have additional data associated with this UWorld.
 
-* This is a list of per module world data objects. These aren't
+- This is a list of per module world data objects. These aren't
 
-* loaded/saved by default.
+- loaded/saved by default.
 
-*/
+\*/
 
 UPROPERTY(Transient)
 
 TArray&lt;UObject\*>                                                        PerModuleDataObjects;
 
-
 **Primary Asset Picker:**
+
 ```cpp
 /**   
          * Creates a simple version of a Primary Asset Type selector, not bound to a PropertyHandle   

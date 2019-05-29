@@ -30,12 +30,9 @@ You also need to be careful with naming, making sure that the Server and Client 
 
 *Reference From <https://udn.unrealengine.com/questions/426339/stream-sublevels-of-a-streamed-level.html>*
 
-
 Fortnite detailed approach:
 
 <https://udn.unrealengine.com/questions/399764/load-level-instance-with-replicated-actors.html>
-
-
 
 #### Multiplayer issues with sublevel streaming/toggling visibility:
 
@@ -75,8 +72,6 @@ Streaming should definitely work in multiplayer, and using BP vs. Streaming Volu
 
 *Reference From <https://udn.unrealengine.com/questions/429527/issue-with-level-streaming-in-multiplayer.html>*
 
-
-
 #### Notification (in C++) on all Streaming Levels loaded via World Composition in a multiplayer scenario
 
 Whenever Clients have loaded levels (their persistent level, sublevels loaded via World Composition, or sublevels loaded in other ways), they have to notify the server via APlayerController::ServerUpdateLevelVisibility (and ServerUpdateMultipleLevelsVisibility in newer versions).
@@ -86,4 +81,3 @@ I'll point out that it's a SealedEvent, meaning that it cannot be overridden in 
 Depending on what you're actually trying to do, though, there may be better alternatives to getting around this type of thing. Are you trying to do this to control game state, to trigger events, something else?
 
 *Reference From <https://udn.unrealengine.com/questions/443407/notification-in-c-on-all-streaming-levels-loaded-v.html>*
-

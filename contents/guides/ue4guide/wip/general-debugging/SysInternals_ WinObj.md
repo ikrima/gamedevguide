@@ -18,5 +18,4 @@ Procmon
 
 - Count Occurrences Result will collate all errors
 
-..\WindowsSDK\Debuggers\x64\gflags.exe
-
+..\\WindowsSDK\\Debuggers\\x64\\gflags.exe

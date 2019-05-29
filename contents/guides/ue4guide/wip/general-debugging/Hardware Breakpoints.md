@@ -24,17 +24,15 @@ DR6 - Irrelevent to this tutorial, read intel developers manual Vol.3
 
 DR7 - Bits representing whether the breakpoint is enabled(locally or globally), the breakpoint's condition, and the breakpoint's size. Along with a few other irrelevent(to this tutorial) variables.
 
-
-
 #### Processor Breakpoints
 
 A processor breakpoint is triggered when a specific memory location is accessed. There are four types of processor breakpoints, corresponding to the kind of memory access that triggers it:
 
-| Breakpoint Type    | Action                                                       |
-| ------------------ | ------------------------------------------------------------ |
+| Breakpoint Type    | Action                                                                            |
+| ------------------ | --------------------------------------------------------------------------------- |
 | **e** (execute)    | Triggered when the processor retrieves an instruction from the specified address. |
-| **r** (read/write) | Triggered when the processor reads or writes memory at the specified address. |
-| **w** (write)      | Triggered when the processor writes memory at the specified address. |
-| **i** (i/o)        | Triggered when the I/O port at the specified *Address* is accessed. |
+| **r** (read/write) | Triggered when the processor reads or writes memory at the specified address.     |
+| **w** (write)      | Triggered when the processor writes memory at the specified address.              |
+| **i** (i/o)        | Triggered when the I/O port at the specified *Address* is accessed.               |
 
 *Reference From <https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/processor-breakpoints---ba-breakpoints->*

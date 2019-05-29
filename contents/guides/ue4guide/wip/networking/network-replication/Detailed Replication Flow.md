@@ -1,11 +1,10 @@
 ---
 sortIndex: 2
 ---
+
 UNetDriver::ServerReplicateActors. This is where the server will gather all of the actors that it has determined to be relevant for each client, and send any properties that have changed since the last time each connected client was updated.
 
 *Reference From <https://docs.unrealengine.com/en-us/Gameplay/Networking/Actors/ReplicationFlow>*
-
-
 
 Important functions for how actors are updated:
 
@@ -18,8 +17,6 @@ Important functions for how actors are updated:
 - AActor::IsRelevancyOwnerFor - Called to determine relevancy when bOnlyRelevantToOwner is true
 
 - AActor::IsNetRelevantFor - Called to determine relevancy when bOnlyRelevantToOwner is false
-
-
 
 The high level flow looks like this:
 
@@ -82,7 +79,6 @@ The high level flow looks like this:
     - For any actor that passes all of the above, the actor is replicated to the connection by calling UChannel::ReplicateActor
 
 *Reference From <https://docs.unrealengine.com/en-us/Gameplay/Networking/Actors/ReplicationFlow>*
-
 
 ### Replicating an Actor to a Connection
 

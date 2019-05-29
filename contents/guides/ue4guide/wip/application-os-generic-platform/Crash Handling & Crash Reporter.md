@@ -14,23 +14,17 @@ static FOnHandleSystemError OnHandleSystemError;
 
 **Useful Functions:**
 
-/** Whether we should generate crash reports even if the debugger is attached. */
+/\** Whether we should generate crash reports even if the debugger is attached. */
 
 extern CORE_API bool GAlwaysReportCrash;
-
-
 
 /*\* Whether to use ClientReportClient rather than AutoReporter. */
 
 extern CORE_API bool GUseCrashReportClient;
 
-
-
 /\*\* Whether we should ignore the attached debugger. \*/
 
 extern CORE_API bool GIgnoreDebugger;
-
-
 
 // @third party code - BEGIN Bebylon
 
@@ -41,8 +35,6 @@ extern CORE_API bool GBBForcePostMortemDebugging;
 // @third party code - END Bebylon
 
 extern CORE_API TCHAR MiniDumpFilenameW\[1024];
-
-
 
 **Here is a typical timeline for a single crash:**
 

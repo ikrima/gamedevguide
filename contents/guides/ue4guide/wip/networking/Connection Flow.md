@@ -1,6 +1,7 @@
 ---
 sortIndex: 3
 ---
+
 **Control messages are handled in UWorld::NotifyControlMessage (mostly for server) and UPendingNetGame (mostly for client)**. The general flow looks like this:
 
 1. Client sends Hello,
@@ -37,8 +38,6 @@ sortIndex: 3
 
 1. PostLogin is called, **now safe for the Server to start calling RPC** functions on the PlayerController
 
- 
-
 **Client Connection Events:**
 
 - To catch the moment when a new connection is made is by hooking into the NotifyAcceptedConnection method of UWorld or AOnlineBeacon. They both manage an UNetDriver and inherit from FNetworkNotify.
@@ -54,11 +53,9 @@ sortIndex: 3
 
 SetPlayer()
 
-->ReceivedPlayer();
+\->ReceivedPlayer();
 
 *Reference From <https://answers.unrealengine.com/questions/161894/c-networking-how-to-get-a-client-connection-event.html>*
-
-
 
 Connections are not actually established until after the challenge is sent and passes to help protect against DDoS attacks (e.g., it's significantly cheaper to handle incoming packets without fully establishing a UNetConnectiong and having to do cleanup if things fail).
 
@@ -69,8 +66,6 @@ There are a few things you can do to debug this. First, make sure LogNet is set 
 If you still don't see any messages, try to put a breakpoint in either UIpNetDriver::TickDispatch, or the TickDispatch of whatever NetDriver you're using. This is where packets will be processed.
 
 *Reference From <https://udn.unrealengine.com/questions/404339/accessing-oculussteam-apis-without-respective-oss.html>*
-
-
 
 NetDrivers are distinct from OSSs.
 

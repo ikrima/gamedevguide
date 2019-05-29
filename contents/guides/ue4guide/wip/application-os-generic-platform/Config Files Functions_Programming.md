@@ -12,15 +12,15 @@ FCoreDelegates::ConfigReadyForUse.Broadcast();
 
 - Specify by this:
 
-  ```UCLASS(config=GameplayTags, defaultconfig, notplaceable)```
+  `UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
 
 - Get the name by this:
 
- ``` GetClass()->GetDefaultConfigFilename()```
+  `GetClass()->GetDefaultConfigFilename()`
 
-  **or**
+   **or**
 
-  ```ConfigFileName = uobj->GetDefaultConfigFilename();```
+   `ConfigFileName = uobj->GetDefaultConfigFilename();`
 
 - Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
 
@@ -39,6 +39,7 @@ static FOnFConfigFileCreated OnFConfigCreated;
 static FOnApplyCVarFromIni OnApplyCVarFromIni;
 
 **Manual save config example:**
+
 ```cpp
 void SaveConfig() const
 
@@ -72,6 +73,7 @@ GConfig->Flush(false);
 
 }
 ```
+
 **Get value from Config:**
 
 GConfig->GetBool(TEXT("/Script/UnrealEd.EditorLoadingSavingSettings"), TEXT("bForceCompilationAtStartup"), bNeedCompile, GEditorPerProjectIni)
@@ -81,6 +83,7 @@ static const FBoolConfigValueHelper DisplayPrintStringSource(TEXT("Kismet"), TEX
 GConfig->GetString(\*IniSection, \*(InConfigKey + TEXT(".EditorShowFlags")), ViewportInstanceSettings.EditorShowFlagsString, GEditorPerProjectIni);
 
 **Save UProperties manually to config:**
+
 ```cpp
 {
 
@@ -172,6 +175,7 @@ GConfig->Flush(0);
 ```
 
 **Inject our key bind into the debug execs**
+
 ```cpp
  FConfigFile* ConfigFile = nullptr;
 
@@ -213,6 +217,7 @@ void UFbxAssetImportData::LoadOptions() {}
 ```
 
 **Main Structs:**
+
 ```cpp
 class FConfigFile : public TMap<FString,FConfigSection>
 

@@ -1,6 +1,7 @@
 ---
 sortIndex: 2
 ---
+
 # Guides:
 
 ### Lightmass Deep Dive:
@@ -17,8 +18,6 @@ sortIndex: 2
 
 ![image1](C:\devguide\conversion\FINISHED\assets\image1-1556561794310.png)
 
-
-
 ### Taming lightmass guide/Lightmass For Large Console Games
 
 [UE4 Lightmass for Large Console Games (UE4 Lightmass Deep Dive)](https://www.slideshare.net/EpicGamesJapan/ue4-lightmass-for-large-console-games)
@@ -33,7 +32,6 @@ sortIndex: 2
 
 <img src="process_markdown/assets/media/image4.png" alt="Rich web content titled: Practical usage of Lightmass in Architectural Visualization (UE4 Lightmass Deep Dive)" style="width:4.42708in;height:3.69792in" />
 
-
 ## Making Lightmass Understandable:
 
 <https://forums.unrealengine.com/development-discussion/architectural-and-design-visualization/60547-lets-make-lightmass-epic-and-understandable?88952-Lets-make-Lightmass-EPIC-(and-understandable)=&highlight=swarm>
@@ -41,7 +39,6 @@ sortIndex: 2
 First, there are two completely separate paths for punctual lights (directional, spot, point) than for sky lights.
 
 Lightmass is heavily optimized around solving indirect lighting from punctual lights with high quality. In particular, the case where you have bright sunlight coming in a small window and hitting the wall/floor, lighting up the whole room, is what I would consider the primary use case. Lighting with sky lights / HDRI is a much more recent implementation and honestly it's not very high quality.
-
 
 #### Punctual light method:
 
@@ -79,18 +76,16 @@ So now you can see why static sky lights have limited quality and only support o
 
 *Reference From <https://forums.unrealengine.com/development-discussion/architectural-and-design-visualization/60547-lets-make-lightmass-epic-and-understandable?88952-Lets-make-Lightmass-EPIC-(and-understandable)=&highlight=swarm>*
 
-
-
 ## Lightmass Lightmap Config
 
 Most common settings to tweak:
-```
-[DevOptions.PrecomputedDynamicObjectLighting]  
-SurfaceLightSampleSpacing=300  
-FirstSurfaceSampleLayerHeight=50  
-SurfaceSampleLayerHeightSpacing=250  
-NumSurfaceSampleLayers=2
-```
+
+    [DevOptions.PrecomputedDynamicObjectLighting]  
+    SurfaceLightSampleSpacing=300  
+    FirstSurfaceSampleLayerHeight=50  
+    SurfaceSampleLayerHeightSpacing=250  
+    NumSurfaceSampleLayers=2
+
 Look at BaseLightmass.ini for all of the settings to tweak baking lightmaps
 
 Tweak multiple skybounce lighting

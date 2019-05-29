@@ -10,14 +10,10 @@ Motivation: Need to execute lot of draws
 
 - Some techniques (DXR/GPU culling) needs to eval entire scene
 
-
-
 Approach:
 
 - Draw call merging based on RHI
 - No more per draw per frame shader params
-
-
 
 Mesh Drawing/Render Refactor:
 
@@ -31,15 +27,10 @@ Mesh Drawing/Render Refactor:
 
   Now, as for render graph it's currently not used too much in 4.22 :)
 
-
-
 ​	MeshBatch is now converted into mesh draw command, which contains all the draw state (binding etc).
 
 ​	FMeshBatch is like an interface for rendering.
 
-
-
 Misc:
 
 - <https://github.com/EpicGames/UnrealEngine/commit/b5d7db368977e263092be9b97f78944739f80476>
-

@@ -5,4 +5,3 @@ Debug Drawing Utilities:
 **Set a function call on the next tick:**
 
 GetWorldTimerManager().SetTimerForNextTick(this, &AUTGameMode::StartMatch);
-

@@ -46,7 +46,6 @@ UE_LOG(LogActor, Warning, TEXT("SetReplicates called on actor '%s' that is not v
 }
 ```
 
-
 **JSON**
 
 ```json
@@ -72,9 +71,8 @@ struct FJsonSerializable
                 JSON_SERIALIZE( "shouldKeep",        **bShouldKeep** );  
         END_JSON_SERIALIZER
 ```
+
 JSON documentation: <http://www.wraiyth.com/?p=198>
-
-
 
 NetUpdate() & NetUpdateFrequency()
 

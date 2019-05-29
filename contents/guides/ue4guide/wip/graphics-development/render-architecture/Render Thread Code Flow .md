@@ -12,8 +12,6 @@ sortIndex: 4
 
 <https://medium.com/@lordned/unreal-engine-4-rendering-overview-part-1-c47f2da65346>
 
-
-
 Render thread runs a frame or two behind
 
 Game thread blocks at end of Tick() to allow render thread to catch up
@@ -21,8 +19,6 @@ Game thread blocks at end of Tick() to allow render thread to catch up
 On D3D12, there's a separate RHIThread that's just responsible for submitting to the driver
 
 - On D3D11, the renderthread is what submits to the driver
-
-
 
 Asynchronous communication between two threads through ENQUEUE RENDER CMD Macro
 
@@ -40,13 +36,9 @@ Asynchronous communication between two threads through ENQUEUE RENDER CMD Macro
 
 - MarkRenderStateDirty()
 
-
-
 Triggered by MarkRenderDynamicDataDirty() or MarkRenderStateDirty()
 
 Ex: Dynamic Resource interaction with SkinnedMeshComponent
-
-
 
 Gamethread
 
@@ -55,12 +47,12 @@ Gamethread
 1. Overrides CreateRenderState_Concurrent so that it can create renderstate
 
    - SkeletalMeshObject manages sending skinned mesh bone xforms, vertex anim state, etc to the render thread
-   
-3. TickComponent() updates animations, calls MarkRenderDynamicDataDirty()
 
-4. MarkRenderDynamicDataDirty() flags this component to be updated at the end of the frame on a thread (can override RequiresGameThreadEndOfFrameUpdates() to specify game thread)
+1. TickComponent() updates animations, calls MarkRenderDynamicDataDirty()
 
-5. At the end of the frame, a task job processor calls DoDeferredRenderUpdates_Concurrent() on each actor that needs updates
+1. MarkRenderDynamicDataDirty() flags this component to be updated at the end of the frame on a thread (can override RequiresGameThreadEndOfFrameUpdates() to specify game thread)
+
+1. At the end of the frame, a task job processor calls DoDeferredRenderUpdates_Concurrent() on each actor that needs updates
 
 1. DoDeferredRenderUpdates_Concurrent ->
 
@@ -69,25 +61,23 @@ Gamethread
    - (bRenderTransformDirty) => SendRenderTransform_Concurrent
 
    - (bRenderDynamicDataDirty) => SendRenderDynamicData_Concurrent
-   
+
 1. SkinnedMeshComponent::SendRenderDynamicData_Concurrent() then is responsible for sending updated render data to the render thread (through Enqueue_Unique_Render_Command)
    - Uses SkeletalMeshObject as the helper class to manage that
    - Payload is a struct of FDynamicSkelMeshObjectData
 
-8. On Component detachment/destruction, game thread enqueues commands to release all RHI FRenderResources
+1. On Component detachment/destruction, game thread enqueues commands to release all RHI FRenderResources
 
    - a. DestroyRenderState_Concurrent () called when component is unregistered
-   
+
    - b. FSkeletalMeshObject::ReleaseResources() is called to free up RHIs owned by this object
      - Calls BeginReleaseResource() on all RHI objects
      - Enqueues Render Command: Resource::ReleaseResource()
      - ReleaseResource() is responsible for deallocating the RHI Resource (e.g. calls VertexBuffer:ReleaseResource->ReleaseRHI/ReleaseDynamicRHI)
-   
+
    - c. BeginCleanup(MeshObject) is called to do a deferred deletion of the object
-   
+
    - d. After the render command buffer has been flushed, FSkeletalMeshObject::FinishCleanup() ( which is a delete this; for FSkeletalMeshObject)
-
-
 
 Ex: Static Resource interaction with USkeletalMesh
 
@@ -104,8 +94,6 @@ Ex: Static Resource interaction with USkeletalMesh
    1. GC calls UObject::FinishDestroy()
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/ThreadedRendering/index.html>*
-
-
 
 FSceneView is per Eye scene view. Calculates offsets & HMD rotation
 
@@ -130,4 +118,3 @@ The HUD Class also contains the events for when you click the Hitboxes that are 
 Hopefully this enough to keep you going on working with Blueprint HUD. We're working hard to get more official documentation for both Blueprint HUD and C++ HUD and hope to be able to provide it soon!
 
 *Reference From <https://wiki.unrealengine.com/Content_example_blueprint_HUD>*
-

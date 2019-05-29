@@ -32,8 +32,6 @@ These classes will be maintained and expanded as we introduce the OSS into our g
 
 *Reference From <https://udn.unrealengine.com/questions/168944/best-way-to-interface-with-onlinesubsystem.html>*
 
-
-
 #### Here's our current layout (in broad strokes):
 
 - Matching Server M, which does matching making but also player lobbies
@@ -52,8 +50,6 @@ Is my understanding correct? As far as I can tell, there is no reason for the De
 
 *Reference From <https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>*
 
-
-
 It sounds like you've worked out the basics, but your code doesn't have to follow such a rigid pattern. Online games will typically create a custom class derived from UOnlineSessionClient, but my first thought on how to implement this would be to implement IOnlineSession::FindSessions() and the related functions in your custom online subsystem such that that's where the communication with your matchmaking server takes place. But if it makes more sense for your use case to do that in a UOnlineSession subclass, then no, you probably don't need a custom OnlineSessionInterface.
 
 One potential benefit of doing matchmaking in the session interface is that you can more easily swap in another implementation (such as OnlineSubsystemNull) for testing purposes.
@@ -63,8 +59,6 @@ You will want a custom AGameSession, but you can probably use the same class on 
 Typically in our games the dedicated server does maintain a session with the OnlineSessionInterface, but I suppose this doesn't have to be the case if your matching server maintains the state you need.
 
 *Reference From <https://udn.unrealengine.com/questions/264223/proper-way-to-use-uonlinesession-agamesession-and.html>*
-
-
 
 Rationalize between Steam & Oculus Online Subsystem or Platform Services:
 

@@ -14,6 +14,4 @@ If you truly need this exposed more readily, this is definitely something we can
 
 **APlayerState.UniqueID -** This is a **FUniqueNetID**, and is only valid though if you connect through matchmaking using the online subsystems, so is a bit more involved to explain here. Used for online subsystem communication
 
-
 *Reference From <https://udn.unrealengine.com/questions/232509/about-testing-multiplayer.html>*
-

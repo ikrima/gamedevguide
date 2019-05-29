@@ -18,13 +18,9 @@ If you split the path using dot as delimiter you will get:
 
 1. AnotherObject
 
-
-
 Outer most object is awlays a UPackage
 
 - In this example, it's /Game/MyGame/MyAsset
-
-
 
 Object flags: Tell us the state of the object
 
@@ -40,8 +36,6 @@ Object flags: Tell us the state of the object
 
 - RF_Transactional => property changes are recorded and can be reverted
 
-
-
 Class flags: tell about the object's UClass
 
 - CLASS_Abstract => Class can't be instantiated
@@ -52,25 +46,17 @@ Class flags: tell about the object's UClass
 
 All native classes get populated in /Script/\[ModuleName].
 
-
-
 Native classes do not get a PostLoad
-
-
 
 Constructor:
 
 - Object is still abstract entity
-
-
 
 PostInitProperties:
 
 - Properties initialized, including any set from config inis
 
 - Ready to interact with the world
-
-
 
 Serialized Assets get PostLoad
 

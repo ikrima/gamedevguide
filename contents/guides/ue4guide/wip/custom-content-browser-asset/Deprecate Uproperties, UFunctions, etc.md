@@ -9,6 +9,7 @@ sortIndex: 7
 - This will allow blueprints to still compile. I recommend removing all uses of the deprecated property during rename instead of just refactoring the name of the symbol.
 
 - Specify DeprecatedProperty and DeprecationMessage in the UPROPERTY() macro for some ad­di­tion in­for­ma­tion to the us­er.
+
 ```cpp
 *UPROPERTY(EditAnywhere)*
 
@@ -19,10 +20,10 @@ sortIndex: 7
 *int32 Count_DEPRECATED;*
 ```
 
-
 **UFUNCTION**
 
 - Adding the meta specifiers. You do not need to remove the other specifiers here nor rename the function.
+
 ```cpp
 *UPROPERTY(BlueprintPure)*
 
@@ -33,12 +34,12 @@ sortIndex: 7
 *int GetAnswerToEverything() const {…}*
 ```
 
-
 **UCLASS**
 
 - These have a special Deprecated specifier that you should use to mark the class.
 
 - You will need to rename it:
+
 ```cpp
 *UCLASS()*
 
@@ -61,7 +62,6 @@ sortIndex: 7
 *};*
 ```
 
-
 **UENUM**
 
 - These don’t seem to have graceful means for being deprecated.
@@ -69,6 +69,7 @@ sortIndex: 7
 - In the engine’s code you can find enum values that are deprecated by suffixing them with \_DEPRECATED.
 
 - That is not necessarily “graceful” on its own, as in it isn’t picked up by the blueprint system and will cause compile errors there.
+
 ```cpp
 *UENUM()*
 
@@ -102,7 +103,9 @@ sortIndex: 7
 
 *};*
 ```
+
 - To ensure blueprints keep compiling, you can add redirects, e.g. in your DefaultEngine.ini:
+
 ```cpp
 *+EnumRedirects=(OldName="/Script/MyGame.EMyEnum",*
 
@@ -110,6 +113,7 @@ sortIndex: 7
 
 *ValueChanges=(("MyValue","MyValue_DEPRECATED"), ("YourValue","YourValue_DEPRECATED")))*
 ```
+
 - Blueprints will not issue a warning, the user will at least see that \_DEPRECATED suffix. hopefully hover over something that shows the code com­ments in a tooltip and make necessary changes.
 
 - Unreal Engine Documentation > Programming Guide > Core Redirects for more information on redirects.
@@ -117,6 +121,7 @@ sortIndex: 7
 **USTRUCT**
 
 - Don’t seem to have graceful means of deprecation either. I suggest to either deprecate the C++ side gracefully (see Non-Blueprint Types) and then deprecate all the attributes:
+
 ```cpp
 *// Before*
 
@@ -134,6 +139,7 @@ sortIndex: 7
 
 *};*
 ```
+
 ```cpp
  *// After*
 
@@ -151,7 +157,9 @@ sortIndex: 7
 
  *};*
 ```
+
 **Non-Blueprint Types**
+
 ```cpp
 - DEPRECATED(version, message) macro:
 

@@ -3,6 +3,7 @@ sortIndex: 2
 ---
 
 Get build configuration & UBT settings from C++
+
 ```cpp
 FGenericPlatformProperties, FWindowsPlatformProperties, FPlatformProperties
 
@@ -30,7 +31,9 @@ ITargetPlatformManagerModule* TPM = GetTargetPlatformManager();
 
  }
 ```
+
 Get build configuration & UBT settings from C++ at runtime:
+
 ```cpp
  EBuildConfigurations::Type FApp::GetBuildConfiguration()
 

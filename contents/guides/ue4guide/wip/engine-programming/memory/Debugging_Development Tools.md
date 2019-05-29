@@ -1,6 +1,7 @@
 ---
 sortIndex: 2
 ---
+
 ## Simple Way For Tracking UObject Memory Use
 
 Details: <https://www.unrealengine.com/en-US/blog/debugging-and-optimizing-memory>
@@ -26,11 +27,9 @@ Stat MemoryPlatform
 
 Stat MemoryStaticMesh
 
-
 ## Low Level Memory Tracker (LLM)
 
 <https://qiita.com/donbutsu17/items/dd410cd6ee53b0b348ca>
-
 
 ## Malloc Profiler
 
@@ -65,6 +64,6 @@ For most memory issues, internally we use all of the following to try to track t
 
 Your best bet for finding fragmentation is either 2 or 3 as they can give you a more complete picture of the current state of memory.
 
--Pete
+\-Pete
 
 *Reference From <https://udn.unrealengine.com/questions/393847/tools-for-looking-at-memory-fragmentation.html>*

@@ -12,8 +12,6 @@ Recommended approach is to run with editor
 
 1. Non-VR Client: UE4Editor.exe MPRepro 127.0.0.1 -game -nohmd
 
-
-
 Can also specify VR hmd:
 
 1. VR Client 1: UE4Editor.exe MPRepro 127.0.0.1 -game -vr -hmd=steamvr
@@ -22,9 +20,6 @@ Can also specify VR hmd:
 
 *Reference From <https://udn.unrealengine.com/questions/374348/vr-preview-with-dedicated-server.html>*
 
-
-
 Dedicated server can work with this changelist:
 
 <https://github.com/EpicGames/UnrealEngine/pull/2514>
-

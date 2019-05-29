@@ -16,8 +16,8 @@ SceneProxy::DrawStaticElements
 
 Collects FMeshBatch elemets and sets flags on them:
 
-
 NOTE: need to update this line
+
 ```cpp
 bSafeToUseUnifiedMesh =
 
@@ -33,10 +33,11 @@ bSafeToUseUnifiedMesh =
 
 && Material->GetMaterialDomain() == MD_Surface;
 ```
+
 NOTE: Check everywhere in the code you have (Material->GetMaterialDomain() == MD_Surface)
 
-
 NOTE: Re-eval this line of code (StaticMeshRender.cpp)
+
 ```cpp
 // Depth pass is only used for deferred renderer. The other conditions are meant to match the logic in FStaticMesh::AddToDrawLists.
 
@@ -48,6 +49,7 @@ Mesh::AddToDrawLists - Add the static mesh to the appropriate draw lists.
 ```
 
 NOTE JACKPOT: here's where we add to various drawlists.
+
 ```cpp
 Ex: FDepthDrawingPolicyFactory::AddStaticMesh() &
 
@@ -59,11 +61,13 @@ Static (not movable) StaticMeshComponent gets added iff ShouldIncludeDomainInMes
 
 FBasePassOpaqueDrawingPolicyFactory::ProcessBasePassMesh() - this function stores the renderstate for this mesh batch
 ```
+
 NOTE: If we want to piggy back off the existing drawingpolicies & existing basepasses, extend TBasePassDrawingPolicy() to handle arenamaterial domain
 
 and set the correct stencil render state
 
 NOTE: JACKPOT: Also might be able to expand BasePassDrawListTYpe in FDrawBasePassStaticMeshAction::Process&lt;>
+
 ```cpp
 enum EBasePassDrawListType
 
@@ -76,7 +80,7 @@ EBasePass_Masked,
 EBasePass_MAX
 
 };
-````
+```
 
 Which means add BasePassUniformLightMapPolicyDrawList, BasePassSelfShadowedTranslucencyDrawList, BasePassSelfShadowedCachedPointIndirectTranslucencyDrawList
 

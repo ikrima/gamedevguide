@@ -5,6 +5,7 @@ sortIndex: 2
 - <https://blog.markvincze.com/attach-to-process-shortcut-in-visual-studio/>
 
 - Example script for UE4:
+
 ```cpp
   using EnvDTE;
 
@@ -43,8 +44,9 @@ public class C : VisualCommanderExt.ICommand
 
 }
 ```
+
 - To add it to the toolbar:
 
-![GeneralDebugging_Addingbutton](...\..\..\.\assets\GeneralDebugging_Addingbutton.png)
+![GeneralDebugging_Addingbutton](........\assets\GeneralDebugging_Addingbutton.png)
 
-![GeneralDebugging_Addingbutton2](...\..\..\.\assets\GeneralDebugging_Addingbutton2.png)
+![GeneralDebugging_Addingbutton2](........\assets\GeneralDebugging_Addingbutton2.png)

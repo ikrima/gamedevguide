@@ -2,7 +2,7 @@
 sortIndex: 2
 ---
 
-![ThreadingModel_GameGPU](...\..\..\..\assets\ThreadingModel_GameGPU.png)
+![ThreadingModel_GameGPU](.........\assets\ThreadingModel_GameGPU.png)
 
 *Reference From <https://software.intel.com/en-us/articles/intel-software-engineers-assist-with-unreal-engine-419-optimizations>*
 
@@ -16,8 +16,6 @@ sortIndex: 2
 
 
 - Tick Groups: control order of ticking of objects but is not parallel
-
-
 
 **Render Thread:**
 
@@ -38,8 +36,6 @@ Breaking the frame into chunks enables farming them into worker tasks with a par
 Those get serialized back and used to generate draw calls.
 
 Engine doesn’t join worker threads at the call site, but instead joins at sync points (end of phases), or at the point where they are used if fast enough.
-
-
 
 ### Audio Thread
 
@@ -64,5 +60,3 @@ two types of tasks—decoding and source worker.
   - If you have four workers and 32 sources, each will mix eight sources.
 
   - The Source Worker is highly parallelizable, so you can increase the number if you have more processor power.
-
-

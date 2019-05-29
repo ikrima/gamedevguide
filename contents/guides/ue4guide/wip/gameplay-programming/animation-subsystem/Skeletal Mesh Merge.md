@@ -15,6 +15,7 @@ UMorphTarget -> FMorphTargetLODModel (per LOD) -> FMorphTargetDelta
 This delta stores vertex index, and delta of position and normal.
 
 Mesh merge code is
+
 ```cpp
 bool FSkeletalMeshMerge::DoMerge(TArray\* RefPoseOverrides / *= nullptr* /)
 
@@ -48,8 +49,6 @@ We create Morphtarget with internal object of USkeletalMesh, meaning you'll have
 MorphTarget = NewObject(BaseSkelMesh, FName(\*ShapeName));
 
 *Reference From <https://udn.unrealengine.com/questions/397831/adding-morph-targets-to-skeletal-mesh-merge.html>*
-
-
 
 bool FLODUtilities::RegenerateLOD(USkeletalMesh\* SkeletalMesh, int32 NewLODCount /*= 0*/, bool bRegenerateEvenIfImported /*= false*/)
 

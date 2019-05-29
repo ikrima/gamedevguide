@@ -16,8 +16,6 @@ Net PktLagVariance=0
 
 DumpOnlineSessionState
 
-
-
 Debug Character Movement/Client Side prediction:
 
 - Draw green/red collision bounds at server correction/client incorrect positions of replicated objects p.netshowcorrections 1
@@ -30,21 +28,15 @@ Debug Character Movement/Client Side prediction:
 
   log lognetplayermovement verbose
 
-
-
 LogNet: Verbose info on channels/connections
 
 LogNetPlayerMovement: Detailed info about movement from clients & corrections
 
 LogNetTraffic: Verbose information about data sent on a connection
 
-
-
 Stat Net: lists ping, channel count, in/out bytes, etc
 
 Stat Game: List of network processing information
-
-
 
 ## Logging:
 
@@ -77,8 +69,6 @@ LogCharacterNetSmoothing Log
 LogRep Log
 
 LogRepTraffic Log
-
-
 
 ## Stats
 
@@ -130,8 +120,6 @@ DECLARE_CYCLE_STAT_EXTERN(TEXT("Net Post BC Tick Time"),STAT_NetBroadcastPostTic
 
 DECLARE_CYCLE_STAT_EXTERN(TEXT("Net PackageMap SerializeObject"),STAT_PackageMap_SerializeObjectTime,STATGROUP_Game, );
 
-
-
 ## Debug networking on local machine with VR (launch order important!)
 
 Server: UE4Editor.exe MPRepro mptest -server -log
@@ -141,8 +129,6 @@ Non-VR Client: UE4Editor.exe MPRepro 127.0.0.1 -game -nohmd
 VR Client: UE4Editor.exe MPRepro 127.0.0.1 -game -vr
 
 <https://udn.unrealengine.com/questions/307536/debugging-multiplayer-vr.html>>
-
-
 
 ## Getting around breakpoint timeouts
 
@@ -162,19 +148,16 @@ For both code and blueprint projects, you also need to set the DefaultPlatformSe
 
 DefaultPlatformService=Null
 
-
-
 ## How To Check If Player Is Local vs Server
 
 Use these functions:
 
 - IsLocalController() or GetRemoteRole()
 
-
-
 ## How to check for the server build: client vs server vs listen server: editor vs game vs pie vs editorpreview vs gamepreview
 
 Use
+
 ```cpp
 AActor::IsNetMode
 
@@ -182,6 +165,7 @@ UEngine::GetNetMode
 ```
 
 Which calls these functions
+
 ```cpp
 FPlatformProperties::IsServerOnly()  
 FPlatformProperties::IsGameOnly()  
@@ -192,6 +176,7 @@ IsRunningClientOnly()
 ```
 
 \#UE_SERVER for compile time check of server build
+
 ```cpp
 /** Returns whether script is executing within the editor. */
 
@@ -268,8 +253,6 @@ NM_MAX,
 };
 ```
 
-
-
 ### Client Authoritative
 
 There is a config option for "ClientAuthorativePosition" \[sic, I know it's misspelled] on the GameNetworkManager that changes the rules: the server will accept client movement as authoritative and not force a correction if it's within a squared distance (MAXPOSITIONERRORSQUARED) from where the server last saw it. So in this case, the server would warp the character to where the client tried to move, and the client's position is the authority. The server can still replicate movement to the client normally, this just handles rogue client movements.
@@ -282,4 +265,4 @@ You set this in your game ini settings:
 
 1. ClientAuthorativePosition=true
 
-*Reference From https://answers.unrealengine.com/questions/26116/able-to-replicate-movement-when-using-addmovement.html>*
+*Reference From <https://answers.unrealengine.com/questions/26116/able-to-replicate-movement-when-using-addmovement.html>>*

@@ -20,7 +20,6 @@ sortIndex: 10
 
 #### Metadata
 
-
 **UCLASS**:
 
 config=… => Ini to use
@@ -99,26 +98,22 @@ GGameUserSettingsIni | GameUserSettings /\* User Game Settings ini filename \*/
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*
 
-
-
 **Custom config file name for a class:**
 
 - Specify by this:
 
-  ```UCLASS(config=GameplayTags, defaultconfig, notplaceable)```
+  `UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
 
 
 - Get the name by this:
 
-  ```GetClass()->GetDefaultConfigFilename()```
+   `GetClass()->GetDefaultConfigFilename()`
 
-  **or**
+   **or**
 
- ``` ConfigFileName = uobj->GetDefaultConfigFilename();```
+  `ConfigFileName = uobj->GetDefaultConfigFilename();`
 
 - Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
-
-
 
 **Override Config Ini files with command line argument:**
 
@@ -153,15 +148,15 @@ The below file hierarchy example is for the Engine category of configuration f
 
    Base.ini is usually empty.
 
-2. Engine/Config/BaseEngine.ini
+1. Engine/Config/BaseEngine.ini
 
-3. Engine/Config/\[Platform]/\[Platform]Engine.ini
+1. Engine/Config/\[Platform]/\[Platform]Engine.ini
 
-4. \[ProjectDirectory]/Config/DefaultEngine.ini
+1. \[ProjectDirectory]/Config/DefaultEngine.ini
 
-5. \[ProjectDirectory]/Config/\[Platform]/\[Platform]Engine.ini
+1. \[ProjectDirectory]/Config/\[Platform]/\[Platform]Engine.ini
 
-6. \[ProjectDirectory]/Saved/Config/\[Platform]/Engine.ini
+1. \[ProjectDirectory]/Saved/Config/\[Platform]/Engine.ini
 
    The configuration file in the Saved directory only stores the project-specific and platform-specific differences in the stack of configuration files.
 
@@ -197,9 +192,8 @@ It will work appropriately. Using a *+* there would fail to add the last line,
 
 - Escape a quote character: ~Quote~, ~OpenBracket~. Ex:
 
-```
-UserDefinedChords=~OpenBracket~~Quote~BindingContext~Quote~:~Quote~PlayWorld~Quote~,~Quote~CommandName~Quote~:~Quote~PausePlaySession~Quote~,~Quote~ChordIndex~Quote~:1,~Quote~Control~Quote~:false,~Quote~Alt~Quote~:false,~Quote~Shift~Quote~:false,~Quote~Command~Quote~:false,~Quote~Key~Quote~:~Quote~None~Quote~~CloseBracket~
-```
+
+    UserDefinedChords=~OpenBracket~~Quote~BindingContext~Quote~:~Quote~PlayWorld~Quote~,~Quote~CommandName~Quote~:~Quote~PausePlaySession~Quote~,~Quote~ChordIndex~Quote~:1,~Quote~Control~Quote~:false,~Quote~Alt~Quote~:false,~Quote~Shift~Quote~:false,~Quote~Command~Quote~:false,~Quote~Key~Quote~:~Quote~None~Quote~~CloseBracket~
 
 **Comments**
 

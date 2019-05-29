@@ -16,8 +16,6 @@ This mostly works, but the problem I am trying to solve is when Player 1 hits th
 
 *Reference From <https://udn.unrealengine.com/questions/215236/steam-lobbies-vs-ue4-game-session.html>*
 
-
-
 The Steam lobby and the players in it aren't meant to be exposed at the game layer.
 
 Player registration in general works at the Login time frame when a APlayerState is created with the APlayerController, its FUniqueNetId is assigned and then registered with the AGameMode/AGameSession via RegisterPlayer. So while players who are using the session interface are actually in the platform session, this book keeping is handled by the players themselves as long as they call CreateSession/JoinSession/DestroySession.

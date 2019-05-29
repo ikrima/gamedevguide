@@ -62,9 +62,8 @@ return LodComponent;
 
  }
 ```
+
 *Reference From <https://udn.unrealengine.com/questions/457850/view.html>*
-
-
 
 [gerardo.perez](https://accounts.unrealengine.com/login/index?response_type=code&client_id=bc742d26f8314469aa997373f39c876e)  ( Disruptive Games Inc. ) 3 days ago Newest
 

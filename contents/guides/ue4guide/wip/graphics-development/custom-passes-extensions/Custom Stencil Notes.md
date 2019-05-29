@@ -16,8 +16,6 @@ The gist is to search for "CustomDepth" and do almost the exact same thing, exce
 
 *Reference From <https://udn.unrealengine.com/questions/189594/on-using-intermediate-render-targets.html>*
 
-
-
 #### Useful classes
 
  EMaterialDomain
@@ -35,9 +33,6 @@ The gist is to search for "CustomDepth" and do almost the exact same thing, exce
  bEarlyZPassMovable = true;
 
 Look at Landscape material for getting custom attributes in a material (LandscapelayerBlend,LandscapeLayerCoords)
-
-
-
 
 #### Useful functions:
 
@@ -92,9 +87,6 @@ FStaticMeshLODResources::InitResources
 
 FStaticMeshLODResources::InitVertexFactory
 
-
-
-
 ## Extending Custom Occlusion Culling:
 
 ICustomVisibilityQuery
@@ -106,24 +98,22 @@ GCustomCullingImpl
 FCableVertexFactory
 <https://wiki.unrealengine.com/Procedural_Mesh_Generation>
 
-|                         |                                                              |
-| ----------------------- | ------------------------------------------------------------ |
-| FScene    | is the renderer equivalent of UWorld(). Objects only exist to renderer when they call their Component::OnRegister()                  |
-| FPrimitiveSceneProxy    | Renderer version of UPrimitiveComponent                  |
-| FPrimitiveSceneInfo     | Internal renderer state for single UPrimitiveComponent/FPrimitiveSceneProxy |
-| FPrimitiveViewRelevance | Stores info on what effects/passes are relevant to the primtive. |
+|                         |                                                                                                                              |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| FScene                  | is the renderer equivalent of UWorld(). Objects only exist to renderer when they call their Component::OnRegister()          |
+| FPrimitiveSceneProxy    | Renderer version of UPrimitiveComponent                                                                                      |
+| FPrimitiveSceneInfo     | Internal renderer state for single UPrimitiveComponent/FPrimitiveSceneProxy                                                  |
+| FPrimitiveViewRelevance | Stores info on what effects/passes are relevant to the primtive.                                                             |
 | FSceneView              | Renderer View into an FScene. One scene can be rendered with different views (splitscreen, stereo rendering, editor windows) |
-| FViewInfo               | Internal renderer representation of a view               |
-| FSceneViewState         | private renderer info about view that's needed across frames. Renderer analog of ULocalPlayer |
-| FSceneRenderer          | Class that manages rendering                             |
-| FMaterial               | Abstract Interface to a material used for rendering. Provides access to material properties, shader map |
-| FMaterialResource       | Concrete implementation of UMaterial, the asset          |
-| FMaterialRenderProxy    | Material representation on the rendering thread (equiv to FPrimitiveSceneProxy) |
-| UMaterialInterface      | Game thread interface for material func. Corresponds to FMaterialRenderProxy |
-| UMaterial               | Material asset                                               |
-| UMaterialInstance       | Concerete Instance of a UMaterial with concrete parameters for the UMaterial |
-
-
+| FViewInfo               | Internal renderer representation of a view                                                                                   |
+| FSceneViewState         | private renderer info about view that's needed across frames. Renderer analog of ULocalPlayer                                |
+| FSceneRenderer          | Class that manages rendering                                                                                                 |
+| FMaterial               | Abstract Interface to a material used for rendering. Provides access to material properties, shader map                      |
+| FMaterialResource       | Concrete implementation of UMaterial, the asset                                                                              |
+| FMaterialRenderProxy    | Material representation on the rendering thread (equiv to FPrimitiveSceneProxy)                                              |
+| UMaterialInterface      | Game thread interface for material func. Corresponds to FMaterialRenderProxy                                                 |
+| UMaterial               | Material asset                                                                                                               |
+| UMaterialInstance       | Concerete Instance of a UMaterial with concrete parameters for the UMaterial                                                 |
 
 Drawing policies:
 
@@ -134,21 +124,15 @@ Takes set of mesh material shaders + vertex factory => binds vertex factory's bu
 
 - FMaterial interface to abstrat material details
 
-
-
 FlushRenderingCommands is standard method of blocking the game thread until rendering thread has caught up. Mainly useful for offline/editor operations
 
 FRenderResource: base rendering resource interface (e.g. FVertexBuffer, FIndexBuffer, etc)
 
 - Use helper function BeginInitResource() which calls FRenderResource::InitResource() on the render thread
 
-
-
 FRenderCommandFence: Used to sync operations from GT & RT
 
 - UPrimitiveComponent::DetachFence used on deleting
-
-
 
 [Great example is USkinnedMeshComponent/USkeletalMesh]
 
@@ -163,8 +147,6 @@ Static Render Resources:
 - UPrimitiveComponent::IsReadyForFinishDestroy() - returns if true if DetachFence.IsFenceComplete()
 
 - GC calls FinishDestroy() to actually delete. Usually destructor's handle this
-
-
 
 Dynamic Render Resources:
 
@@ -182,10 +164,9 @@ Dynamic Render Resources:
 
   - Calls BeginCleanup() on Render Thread Objects (e.g. FSkeletalMeshObject)
 
-    - Make sure to delete any remaining allocated dynamic data struct that was used to pass stuff between GT to RT in SendRenderDynamicData_Concurrent() (e.g. delete (FDynamicSkelMeshObjectDataCPUSkin*)DynamicData;)
+    - Make sure to delete any remaining allocated dynamic data struct that was used to pass stuff between GT to RT in SendRenderDynamicData_Concurrent() (e.g. delete (FDynamicSkelMeshObjectDataCPUSkin\*)DynamicData;)
 
   - Nullptr out the Render Thread Object. Ex: MeshObject = nullptr
-
 
 **Approaches to Create separate stencil buffer**
 
@@ -197,8 +178,7 @@ Extend view relevance with new arena bit?
 
 Separate render pass, after all opaque?
 
-Extend FrustumCull<>() to cull objects based on View cone direction
-
+Extend FrustumCull&lt;>() to cull objects based on View cone direction
 
 ## Early-Z/Stencil/Hi-Z/Hi-Stencil/Z-Cull Rules:
 
@@ -206,17 +186,17 @@ TLDR:
 
 - If you force the hardware to go to late-z, it wont' reset until the next zbuffer clear/pipeline flush/next frame
 
-|                                                              | Early-Z| Hi-Z |
-| ------------------------------------------------------------ | ----------- | -------- |
-| Shader depth output                                          | Disabled    | Disabled |
-| Alpha test, alpha to coverage or texkill with depth or stencil writes on | Disabled    | Enabled  |
-| Alpha test, alpha to coverage or texkill with depth and stencil writes off | Enabled     | Enabled  |
-| Stencil op fail or zfail is not KEEP                     | Enabled     | Disabled |
-| Stencil op fail and zfail is KEEP, pass is any op        | Enabled     | Enabled  |
-| Depth test comparison is EQUAL                           | Enabled     | Enabled  |
-| Depth test comparison is NOTEQUAL                        | Enabled     | Disabled |
-| Reversed depth comparison direction                      | Enabled     | Disabled |
-| Reversed stencil comparison direction                    | Enabled     | Enabled  |
+|                                                                            | Early-Z  | Hi-Z     |
+| -------------------------------------------------------------------------- | -------- | -------- |
+| Shader depth output                                                        | Disabled | Disabled |
+| Alpha test, alpha to coverage or texkill with depth or stencil writes on   | Disabled | Enabled  |
+| Alpha test, alpha to coverage or texkill with depth and stencil writes off | Enabled  | Enabled  |
+| Stencil op fail or zfail is not KEEP                                       | Enabled  | Disabled |
+| Stencil op fail and zfail is KEEP, pass is any op                          | Enabled  | Enabled  |
+| Depth test comparison is EQUAL                                             | Enabled  | Enabled  |
+| Depth test comparison is NOTEQUAL                                          | Enabled  | Disabled |
+| Reversed depth comparison direction                                        | Enabled  | Disabled |
+| Reversed stencil comparison direction                                      | Enabled  | Enabled  |
 
 - Don't switch depth comparison direction
 
@@ -232,19 +212,18 @@ Resources:
 
 - <https://fgiesen.wordpress.com/2011/07/08/a-trip-through-the-graphics-pipeline-2011-part-7/>
 
-
-
 Force earlydepthstencil (if we're not doing an earlyZ pass)
 
 - Make sure z/stencil-fail op == KEEP. Otherwise early/hiZ might get disabled
 
 - Alpha test/texkill/alpha to coverage will disable EarlyZ but sometimes ok with HiZ
 
-![CustomStencilNotes_DepthTest](.\..\..\.\assets\CustomStencilNotes_DepthTest.png)
+![CustomStencilNotes_DepthTest](......\assets\CustomStencilNotes_DepthTest.png)
 
 Early/HiZ AMD circa 2007:
 
 Early Z Hierarchical Z Shader depth output Disabled Disabled Alpha test, alpha to coverage or texkill with depth or stencil writes on Disabled Enabled Alpha test, alpha to coverage or texkill with depth and stencil writes off Enabled Enabled Stencil op fail or zfail is not KEEP Enabled Disabled Stencil op fail and zfail is KEEP, pass is any op Enabled Enabled Depth test comparison is EQUAL Enabled X8xx: Disabled X1xxx: Enabled Depth test comparison is NOTEQUAL Enabled Disabled Reversed depth comparison direction Enabled Disabled Reversed stencil comparison direction Enabled Enabled
+
 ```cpp
 /*  
 * Stencil layout during basepass / deferred decals:  
@@ -262,18 +241,16 @@ Early Z Hierarchical Z Shader depth output Disabled Disabled Alpha test, alpha t
 */
 ```
 
-|                                                     |                                                     |
-| --------------------------------------------------- | --------------------------------------------------- |
+|                                                     |                                                 |
+| --------------------------------------------------- | ----------------------------------------------- |
 | TBasePassPSFNoLightMapPolicy                        | Base pass shader without light map              |
 | TBasePassPSTDistanceFieldShadowsAndLightMapPolicyHQ | Base pass shader with static lighting           |
 | TBasePassPSFNoLightMapPolicy                        | Base pass shader with only dynamic lighting     |
 | TBasePassPSFSelfShadowedTranslucencyPolicy          | Base pass shader for self shadowed translucency |
-| TBasePassVSFNoLightMapPolicy                        | Vertex shader                                       |
-
-
+| TBasePassVSFNoLightMapPolicy                        | Vertex shader                                   |
 
 FSceneRenderTargets() is central class to manage binding render targets for variouis passes (e.g. BeginRenderingSceneColor, BeginRenderingGBuffer)
 
 D3D11 Stencil pipeline:
 
-![CustomStencilNotes_StencilPipeline](.\..\..\.\assets\CustomStencilNotes_StencilPipeline.png)
+![CustomStencilNotes_StencilPipeline](......\assets\CustomStencilNotes_StencilPipeline.png)

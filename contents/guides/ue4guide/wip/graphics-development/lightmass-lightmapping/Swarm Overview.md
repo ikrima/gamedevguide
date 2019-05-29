@@ -22,8 +22,6 @@ Where I work at HBO, only a subset of employees use Unreal. However, we want e
 
 Without rehashing what the existing documentation already covers, I’m including everything I’ve learned about Swarm as of Unreal version 4.9. This information is useful to anybody setting up Swarm on your network or wanting to understand how to best configure Swarm.
 
-
-
 ### Swarm Coordinator
 
 The Coordinator keeps track of all of the Swarm Agents on the network and the status of each. You can also use the Coordinator to restart Swarm Agent instances.
@@ -32,8 +30,6 @@ The Coordinator keeps track of all of the Swarm Agents on the network and the s
 - Swarm Coordinator does not require that Unreal Engine be installed. I didn’t do the original setup of the Coordinator on our network, but based on empirical evidence, it requires the same files as the Swarm Agent (see below), plus the SwarmCoordinator.exe.config file.
 - We place a shortcut to SwarmCoordinator.exe in the Windows Startup folder so that the Coordinator always begins at system start.
 - In theory you could have multiple Coordinators on the network, each managing an independent set of machines/Agents. We haven’t tested this theory.
-
-
 
 ### Unreal Lightmass
 
@@ -60,8 +56,6 @@ Lightmass is the workhorse application that bakes lighting. It is automatically
   - DirectX v9 extensions, specifically D3DX9_43.dll, DComp.dll and XInput1_3.dll
 
   - Microsoft C runtime for Visual Studio 2013, specifically MSVCP120.dll and MSVCR120.dll
-
-
 
 ### Swarm Agent
 
@@ -139,11 +133,9 @@ Swarm Agent is designed to run on multiple machines across your network, buildin
 
   - Uninstall firewall exceptions: netsh advfirewall firewall delete rule name=”Unreal Swarm”
 
-/>![SwarmOverview_Networkconfig](.\..\..\.\assets\SwarmOverview_Networkconfig.png)
+/>![SwarmOverview_Networkconfig](......\assets\SwarmOverview_Networkconfig.png)
 
 This diagram shows a scenario where the PC in the bottom center has kicked off a Unreal lighting bake. Three PCs have Unreal installed, but all the PCs are running Swarm Agents. The top center PC is running the Swarm Coordinator. Five PCs were chosen to participate in the bake. The other PC was busy (compiling code, etc.). Communication between the local agent and the remote agents, represented by the arrows, happens in a peer-to-peer fashion.
-
-
 
 ### Swarm Parameters
 
@@ -164,8 +156,6 @@ Many elements of how Swarm operates can be modified. The Settings tab in Swarm 
 - **AgentGroupName**: this is the name of the group that the local agent belongs to. We use our team name.
 
 - **LocalJobsDefaultProcessorCount** and **RemoteJobsDefaultProcessorCount** (developer settings): the number of CPU cores used by Lightmass for local and remote bakes. These are set automatically to reasonable values, but can be reduced to lessen CPU impact at the cost of bake speed.
-
-
 
 ### Swarm Installer
 

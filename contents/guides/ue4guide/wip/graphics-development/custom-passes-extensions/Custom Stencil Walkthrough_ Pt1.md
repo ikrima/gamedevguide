@@ -2,13 +2,13 @@
 sortIndex: 3 
 ---
 
-*Helpful bits >
+\*Helpful bits >
 
 SetDepthStencilStateForBasePass()
 
-TStaticDepthStencilState<...>::GetStaticState() for the class defining all the stencil op state
+TStaticDepthStencilState&lt;...>::GetStaticState() for the class defining all the stencil op state
 
-TStaticStencilState<>::GetRHI() for getting the default stencil (iirc, stencil expects to be set back to the default but not sure)
+TStaticStencilState&lt;>::GetRHI() for getting the default stencil (iirc, stencil expects to be set back to the default but not sure)
 
 RHICommandSetStencilRef() for setting stencil
 
@@ -24,32 +24,27 @@ FCustomDepthPrimSet
 
 StencilDithering for LOD transitoins
 
-
-
 #### Visiblity Culling Interesting things:
-
 
 virtual bool CanBeOccluded() const override
 
--Gets Called in FPrimitiveSceneInfo::AddToScene() & setting FScene.PrimitiveOcclusionFlags
+\-Gets Called in FPrimitiveSceneInfo::AddToScene() & setting FScene.PrimitiveOcclusionFlags
 
-FrustumCull<true, true>(Scene, View);
+FrustumCull&lt;true, true>(Scene, View);
 
 FViewInfo
 
 FSceneBitArray PrimitiveVisibilityMap;
 
-ICustomVisibilityQuery* CustomVisibilityQuery
+ICustomVisibilityQuery\* CustomVisibilityQuery
 
 There's a separation between PrimitiveBounds & PrimitiveOcclusionBounds
 
-
-
 #### GOAL/Endresult:
 
--Apply Material with MD=Arena to Objects in Scene
+\-Apply Material with MD=Arena to Objects in Scene
 
--Expected result: they get culled out through a hardcoded stencil sphere
+\-Expected result: they get culled out through a hardcoded stencil sphere
 
 Two cases:
 
@@ -75,7 +70,7 @@ Sphere write out stencil_val = 1
 
 Draw Arena:
 
-StencilOp = < 3
+StencilOp = &lt; 3
 
 DepthOp = depth_near
 
@@ -89,21 +84,15 @@ Highlevel implementation tasks:
 
 1. Hardcode render two spheres as the stencil geo into stencil buffer (just piggy back on custom depth)
 
-
-
 Case: Normal gameboard
 
 Case: Portal gameboard
 
 Case: Special (space tear)
 
-
-
 A)Sphere one writes stencil value that masks arena geo
 
 B)Sphere two writes stencil value that masks stadium geo
-
-
 
 //Nongoal: Exact stencil operations/mask bits unimportant; figure them out later. Just need to make sure it doesn't get stomped
 
@@ -115,19 +104,17 @@ and others that may not be thinking of (like decals/particles/etc)
 
    A)Prepass arena geo with stencil ops: Depth Test, Depth Write, Stencil=Keep (do not write), Stencil Test
 
-	Stencil Compare = Equal & Stencil Op = Keep, Depth Write, Depth Compare = Greater
+       	Stencil Compare = Equal & Stencil Op = Keep, Depth Write, Depth Compare = Greater
 
-	B) Prepass everything else as normal
+       	B) Prepass everything else as normal
 
-3. Modify the basepass:
+2. Modify the basepass:
 
    A)Render arena geo first
 
    B)Render everything else as normal
 
    Possible Issues: Filtering out arena geo from the normal execution flow
-
-
 
 #### Approaches:
 
@@ -153,21 +140,17 @@ ComputeViewRelevance =>
 
 the material (e.g. if the material is translucent=>viewrelevance for translucency)
 
-
-
 NOTE: Look at how custom depth property in the component is percolated all the way to the RT and how it gets added to custom depth primset
 
+\-Extend SetPrimitiveViewRelevance(FPrimitiveViewRelevance& OutViewRelevance) const
 
-
--Extend SetPrimitiveViewRelevance(FPrimitiveViewRelevance& OutViewRelevance) const
-
--If MaterialDomain == MD_BBArena, outviewrelevance.arenarelevance = 1
+\-If MaterialDomain == MD_BBArena, outviewrelevance.arenarelevance = 1
 
 Render Side:
 
--Gather all viewrelevance.arena into a drawlist/primset
+\-Gather all viewrelevance.arena into a drawlist/primset
 
--REFERENCES: custom depth, StaticMeshBatchVisibility, VisibleDynamicPrimitives, TranslucentPrimSet, CustomDepthSet
+\-REFERENCES: custom depth, StaticMeshBatchVisibility, VisibleDynamicPrimitives, TranslucentPrimSet, CustomDepthSet
 
 DynamicMeshElements
 
@@ -177,24 +160,23 @@ FRelevancePacket::ComputeRelevance() is where it updatees them (in parallel way)
 
 FRelevancePacket::RenderThreadFinalize() is where it writes them back out to FSceneView/FScene
 
--REFERENCES: PositionOnlyDepthDrawList, DepthDrawList, BasePassUniformLightMapPolicyDrawList
+\-REFERENCES: PositionOnlyDepthDrawList, DepthDrawList, BasePassUniformLightMapPolicyDrawList
 
 Here's where we create the drawlists:
 
 void FStaticMesh::AddToDrawLists(FRHICommandListImmediate& RHICmdList, FScene\* Scene)
 
--Depth: Prepass Render Arena
+\-Depth: Prepass Render Arena
 
--Prepass arena geo with stencil ops: Depth Test, Depth Write, Stencil=Keep (do not write), Stencil Test
+\-Prepass arena geo with stencil ops: Depth Test, Depth Write, Stencil=Keep (do not write), Stencil Test
 
 - This is done in FDeferredShadingSceneRenderer::RenderPrePassView
 
+\-Base Pass:
 
--Base Pass:
+\-Custom Function to render our arnea-> ?????
 
--Custom Function to render our arnea-> ?????
-
--Make sure it doesn't get rendered in normal pass -> ????
+\-Make sure it doesn't get rendered in normal pass -> ????
 
 primitivecomponent.bRenderinmainpass
 
@@ -202,7 +184,7 @@ ShouldUseAsOccluder()
 
 ShouldRenderInMainPass()
 
--Looks like it's used alongside ShouldIncludeDomainInMeshPass
+\-Looks like it's used alongside ShouldIncludeDomainInMeshPass
 
 GetMaterialRelevance
 
@@ -216,16 +198,12 @@ FMeshBatch.CastShadow
 
 FMeshBatch.bUseAsOccluder
 
-
 2. Create separate primsets like custom depth and add our arena components to that
 
-	Advantages: Might be simpler
+   Advantages: Might be simpler
 
-	Disadvantage: Might be rigid and inflexible with lots of edge cases
+   Disadvantage: Might be rigid and inflexible with lots of edge cases
 
-	Ex: What happens when we need to draw things that are in both stadium & arena? viewrelevance bitmask sounds better
+   Ex: What happens when we need to draw things that are in both stadium & arena? viewrelevance bitmask sounds better
 
-3. Just take a look at decals/mesh decals
-
-
-
+2. Just take a look at decals/mesh decals

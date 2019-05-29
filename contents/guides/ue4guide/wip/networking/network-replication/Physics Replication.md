@@ -3,6 +3,7 @@ sortIndex: 4
 ---
 
 *Physics simulation is run on both the client and the server. Updates are sent to the client from the server. The following struct is used to describe the physical state of a rigid body, and is replicated (as defined in **Actor**):*
+
 ```cpp
 struct RigidBodyState 
 { 
@@ -22,13 +23,11 @@ var int bNewData;
 
 - *Large correction or object stopped: 100% position adjust*
 
-
-
 #### Simulation
 
 The following scenarios describe physics simulation:
 
-- ***ROLE_SimulatedProxy** Actor simulation*
+- **\*ROLE_SimulatedProxy** Actor simulation\*
 
   - *The client continuously updates the simulated actor position based on the received position and velocity.*
 

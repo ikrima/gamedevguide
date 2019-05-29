@@ -18,5 +18,4 @@ This will result in the right code being generated, but now it needs to be taken
 
 I think that's all there is to it. ;-) As I say, it's not a trivial process, and you'll end up having to port your changes across to newer engine versions.
 
-*Reference From https://udn.unrealengine.com/questions/401535/add-custom-property-flag.html>*
-
+*Reference From <https://udn.unrealengine.com/questions/401535/add-custom-property-flag.html>>*

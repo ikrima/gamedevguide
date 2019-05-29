@@ -5,6 +5,7 @@ sortIndex: 1
 GaurdedMainLoop
 
 * * *
+
 ```cpp
 FCoreDelegates::GetPreMainInitDelegate().Broadcast()
 

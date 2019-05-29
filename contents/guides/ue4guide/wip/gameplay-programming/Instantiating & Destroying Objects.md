@@ -14,8 +14,6 @@ Object destruction is handled automatically by the garbage collection system whe
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html>*
 
-
-
 Immediate destruction:
 
 - RemoveFromRoot()

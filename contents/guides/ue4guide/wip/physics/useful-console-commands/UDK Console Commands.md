@@ -11,42 +11,43 @@ sortIndex: 2
 - [Overview](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Overview)
 
 - [Command List](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Command%20List)
+
 - [General Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#General%20Commands)
-  
+
 - [Debugging Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Debugging%20Commands)
-  
+
 - [Statistics Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Statistics%20Commands)
-  
+
 - [Memory and Performance Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Memory%20and%20Performance%20Commands)
-  
+
 - [Display Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Display%20Commands)
-  
+
 - [Rendering Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Rendering%20Commands)
-  
+
 - [Texture Mip-Map Fading Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Texture%20Mip-Map%20Fading%20Commands)
-  
+
 - [Physics Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Physics%20Commands)
-  
+
 - [Audio Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Audio%20Commands)
-  
+
 - [Networking Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Networking%20Commands)
-  
+
 - [Still Captures and Demo Recording Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Still%20Captures%20and%20Demo%20Recording%20Commands)
-  
+
 - [Movie Capture](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Movie%20Capture)
-  
+
 - [Gameplay Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Gameplay%20Commands)
-  
+
 - [Navigation and Pathfinding Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Navigation%20and%20Pathfinding%20Commands)
-  
+
 - [User Interface Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#User%20Interface%20Commands)
-  
+
 - [Miscellaneous Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Miscellaneous%20Commands)
-  
+
 - [System Settings Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#System%20Settings%20Commands)
-  
+
 - [Mobile Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Mobile%20Commands)
-  
+
 - [Editor-Specific Commands](https://api.unrealengine.com/udk/Three/ConsoleCommands.html#Editor-Specific%20Commands)
 
 ## Overview
@@ -56,8 +57,6 @@ Console commands are string-based commands that you can run in the game or in th
 To use console commands, bring up the console by pressing Tab or Tilde (~), type them in, and press Enter. Console commands may be executed from within the game, from within the editor, or if the game has been started using the -server switch, from the server's console. They can do various things from resetting the engine to setting particular actor's variables.
 
 Lists of commands can also be stored in text files in the system directory and executed by typing exec \_filename\_ at the console.
-
-
 
 ## **Command List** 
 
@@ -84,8 +83,6 @@ The following is a list of engine supported console commands...
 - **START \[url]** - similar to OPEN, difference is it does a TRAVEL_Absolute instead of TRAVEL_Partial.
 
 - **STREAMMAP \[url]** – Does a prepare and commit map change on the URL.
-
-
 
 ### **Debugging Commands**
 
@@ -543,8 +540,6 @@ STAT can also be used with the following parameters to modify settings about how
 
 - **STOPFILE** – Finish capturing stats file
 
-
-
 ### **Memory and Performance Commands**
 
 - **BEGINTRACKINGTHREAD** – Begins tracking the current thread.
@@ -607,14 +602,10 @@ STAT can also be used with the following parameters to modify settings about how
 
 - **TRIMMEMORY** – Attempts to return memory back to the OS from unused segments.
 
-
-
 ### **Display Commands**
 
 - **GAMMA \[value]** – Modifies the display gamma level.
 - **SETRES \[height]x\[width]\[w|f]** - changes the resolution (w = windowed; f = fullscreen) for example: 800x600f
-
-
 
 ### **Rendering Commands**
 
@@ -988,15 +979,11 @@ STAT can also be used with the following parameters to modify settings about how
 - **TESTLPF** – Sets the low pass filter to maximum on all audio sources for testing.
 - **TESTSTEREOBLEED** – Sets stereo bleed to maximum on all audio sources for testing.
 
-
-
 ### **Networking Commands**
 
 - **CRACKURL** - breaks down passed URL and parameters<sup>?</sup> to the engine for the map/game and displays all parameters
 - **PACKAGEMAP** – Outputs the packagemap for all open network connections to the log fil.
 - **SOCKETS** – Outputs a list of all open network connections to the log file.
-
-
 
 ### **Still Captures and Demo Recording Commands**
 
@@ -1009,23 +996,17 @@ More information about this can be found in the [DemoRecording] document.
 - **SHOT / SCREENSHOT** – Takes a screenshot at the current screen resolution.
 - **TILEDSHOT \[factor]** – Takes a screenshot with the current resolution multiplied by the specified factor.
 
-
-
 ### **Movie Capture**
 
-More information about this can be found in the [MovieCapture](<https://api.unrealengine.com/udk/Three/MovieCapture.html>) document.
+More information about this can be found in the [MovieCapture](https://api.unrealengine.com/udk/Three/MovieCapture.html) document.
 
 - **STARTMOVIECAPTURE** – Start in-game movie capture.
 - **STOPMOVIECAPTURE** - Stop in-game movie capture.
-
-
 
 ### **Gameplay Commands**
 
 - **SAVEGAME** - tells the engine to save the current game state. See SavingAndLoadingGames<sup>?</sup> for more info.
 - **SAY** - GUI server only
-
-
 
 ### **Navigation and Pathfinding Commands**
 
@@ -1067,8 +1048,6 @@ More information about this can be found in the [MovieCapture](<https://api.unre
 
   - **ENABLED=** - Whether to enable or disable path collsiions.
 
-
-
 ### **User Interface Commands**
 
 - **DEBUGUIPREFAB \[object]** – Output information about the specified UI prefab object.
@@ -1084,8 +1063,6 @@ More information about this can be found in the [MovieCapture](<https://api.unre
   - **SCENE=** - Specifies a UIScene to search within.
 
 - **TOGGLEDEBUGINPUT \[true/false]** - display debug info then (CTRL-ALT-D to toggle displaying the info; then CTRL-F to toggle displaying the focused widget).
-
-
 
 ### **Miscellaneous Commands**
 
@@ -1127,11 +1104,9 @@ More information about this can be found in the [MovieCapture](<https://api.unre
 
 - **SHOWHOTKISMET** – Outputs the top 10 most used Kismet sequence ops.
 
-
-
 ### **System Settings Commands**
 
-The System Settings commands allow you to change the settings as described by the [SystemSettings](<https://api.unrealengine.com/udk/Three/SystemSettings.html>) document, which are normally set by the [Application Compatibility] system.
+The System Settings commands allow you to change the settings as described by the [SystemSettings](https://api.unrealengine.com/udk/Three/SystemSettings.html) document, which are normally set by the [Application Compatibility] system.
 
 - **SCALE \[scale command]** - where \[scale command] is one of:
 
@@ -1149,10 +1124,9 @@ The System Settings commands allow you to change the settings as described by th
 - **HIGHEND** - assume a very high end list of settings
   - **RESET** - reload the system settings from the INI file
 
-- **SET \[setting] \[value]** - set a specific setting (listed in the [SystemSettings](<https://api.unrealengine.com/udk/Three/SystemSettings.html>) document) to a certain value
+- **SET \[setting] \[value]** - set a specific setting (listed in the [SystemSettings](https://api.unrealengine.com/udk/Three/SystemSettings.html) document) to a certain value
+
 - **TOGGLE \[setting]** - toggle a boolean setting
-
-
 
 ### **Mobile Commands**
 
@@ -1177,8 +1151,6 @@ These commands only work on mobile platforms (specifically iOS)
   - **STOPSONG** - Stops the mp3 song currently playing in hardware.
 
 - **APPEXIT** - Exits the app on the device.
-
-
 
 ### **Editor-Specific Commands**
 

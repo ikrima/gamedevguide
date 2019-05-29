@@ -5,6 +5,7 @@ sortIndex: 5
 #### Initialize Struct:
 
 * * *
+
 ```cpp
 StructMemory = (uint8\*)FMemory::Malloc(ActualStruct->GetStructureSize());
 
@@ -40,9 +41,11 @@ bFoundRow = true;
 
 }
 ```
+
 #### Destroy Struct:
 
 * * *
+
 ```cpp
 UScriptStruct\* structType = FESCompSumType::GetStructType(CompStructType);
 
@@ -50,7 +53,9 @@ structType->DestroyStruct(StructData);
 
 Reflection through struct params apart:
 ```
+
 <https://forums.unrealengine.com/community/community-content-tools-and-tutorials/27351-tutorial-how-to-accept-wildcard-structs-in-your-ufunctions>
+
 ```cpp
 FMovieSceneEvalTemplatePtr& operator=(const FMovieSceneEvalTemplatePtr& RHS)
 

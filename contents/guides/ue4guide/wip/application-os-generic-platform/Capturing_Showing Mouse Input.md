@@ -27,4 +27,3 @@ ReleaseJoystickCapture
 ClearUserFocus
 
 SetUserFocus
-

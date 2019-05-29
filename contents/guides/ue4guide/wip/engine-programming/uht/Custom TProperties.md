@@ -12,11 +12,9 @@ UHT knows about TAssetPtr and allows it to be used in a property even though it 
 
 1. const bool bIsAssetPtrTemplate = VarType.Matches(TEXT("TAssetPtr")) || VarType.Matches(TEXT("TCustomAssetPtr"));
 
-
 Hope that helps.
 
 *Reference From <https://udn.unrealengine.com/questions/364023/custom-tassetptr.html>*
-
 
 **Custom UProperties:**
 

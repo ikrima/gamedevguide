@@ -14,7 +14,6 @@ sortIndex: 15
 
 <https://udn.unrealengine.com/questions/379831/cant-get-replay-to-work-in-415.html>
 
-
 ## Duplicating Levels:
 
 <https://udn.unrealengine.com/questions/417480/finmemorynetworkreplaystreamer-killcam.html>
@@ -22,7 +21,6 @@ sortIndex: 15
 Yes, this is likely a known issue. <https://issues.unrealengine.com/issue/UE-48320>
 
 The ticket doesn't elaborate heavily, but it comes down to how we manage level collections. Basically, if you try to start / stop / playback recording at certain times the underlying NetDriver may get switched out from underneath you.
-
 
 ###### How can I stay connected with the same controller?
 

@@ -23,6 +23,7 @@ sortIndex: 3
 *Reference From <https://udn.unrealengine.com/questions/427836/ulevelsequencebindingreferences-causes-unnecessary.html>*
 
 Tracking Garbage Collector references to an object:
+
 ```cpp
  static int32 URamaStaticFunctionLib::GetObjReferenceCount(UObject* Obj, TArray<UObject*>* OutReferredToObjects = nullptr)  
  {  
@@ -42,13 +43,13 @@ Tracking Garbage Collector references to an object:
          return OutReferredToObjects.Num();  
  }
 ```
+
 *Reference From <https://wiki.unrealengine.com/Garbage_Collection_~_Count_References_To_Any_Object#Code>*
-
-
 
 - **Non-UObject References:**
 
- Normal, non-UObjects can also have the ability to add a reference to an object and prevent garbage collection. To do that, your object must derive from **FGCObject** and override its **AddReferencedObjects** class.
+  Normal, non-UObjects can also have the ability to add a reference to an object and prevent garbage collection. To do that, your object must derive from **FGCObject** and override its **AddReferencedObjects** class.
+
 ```cpp
  class FMyNormalClass : public FGCObject  
  {  
@@ -66,6 +67,7 @@ Tracking Garbage Collector references to an object:
  }  
  };
 ```
+
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Introduction/index.html>*
 
  TStrongObjectPtr

@@ -22,8 +22,6 @@ UStretchGizmoHandleGroup
 
 UStretchGizmoHandleGroup
 
-
-
 **PreviewMeshes:**
 
 ACameraRig_Rail
@@ -103,4 +101,3 @@ class UGizmoHandleMeshComponent\* UGizmoHandleGroup::CreateMeshHandle( class USt
  return HandleComponent;
 
 }
-

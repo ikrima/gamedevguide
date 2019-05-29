@@ -1,6 +1,7 @@
 ---
 sortIndex: 5
 ---
+
 Using netserialize for custom struct serialization
 
 <http://www.aclockworkberry.com/custom-struct-serialization-for-networking-in-unreal-engine/>
@@ -15,6 +16,7 @@ Using netserialize for custom struct serialization
 ```
 
 **NetSerialization.h has lots of comments:**
+
 ```cpp
 /**
 

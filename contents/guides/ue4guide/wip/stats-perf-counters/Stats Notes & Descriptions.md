@@ -1,6 +1,8 @@
 ---
 sortIndex: 4
---- 
+---
+
+ 
 \* STAT_FrameSyncTime => GT waiting on RT
 
 TaskGraph:
@@ -17,11 +19,7 @@ TaskGraphThreadHP
 
 \> TPri_SlightlyBelowNormal
 
-
-
 StatsThread:
-
-
 
 FQueuedThreadPool:
 

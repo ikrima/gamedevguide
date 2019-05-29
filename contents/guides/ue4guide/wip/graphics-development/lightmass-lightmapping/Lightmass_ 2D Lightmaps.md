@@ -10,9 +10,7 @@ sortIndex: 3
 
 float DirCorrection = 1.0f / FMath::Max( 0.0001f, InGatheredLightSample.SHCorrection );
 
-DirLuma[i] *= DirCorrection / PI;
-
-
+DirLuma[i] \*= DirCorrection / PI;
 
 - SHCorrection is a normalization factor. Done to normalize SH vector s.t. luminance(irradiance) (Not radiance) at smoothed vertex normal = 1
 
@@ -20,17 +18,16 @@ DirLuma[i] *= DirCorrection / PI;
 
   // These scaling coefficients are SHBasisFunction and CalcDiffuseTransferSH baked down
 
-  // 0.325735f = 0.488603f from SHBasisFunction * 2/3 from CalcDiffuseTransferSH
+  // 0.325735f = 0.488603f from SHBasisFunction \* 2/3 from CalcDiffuseTransferSH
 
   // Only using V[2] which is the tangent space Z
 
   FSHVector2 SH = FSHVector2::SHBasisFunction(TangentDirection);
 
-  Result.SHCorrection = Color.GetLuminance() * (0.282095f * SH.V[0] + 0.325735f * SH.V\[2]);
+  Result.SHCorrection = Color.GetLuminance() * (0.282095f * SH.V[0] + 0.325735f \* SH.V\[2]);
 
-  Result.IncidentLighting = Color * FMath::Max(0.0f, TangentDirection.Z);
+  Result.IncidentLighting = Color \* FMath::Max(0.0f, TangentDirection.Z);
 
-  
 
 - Apply SH scale/bias normalization so that L0 == 1
 
@@ -38,17 +35,13 @@ DirLuma[i] *= DirCorrection / PI;
 
   float ColorScale = DirLuma[0];
 
-  
-
   // IncidentLighting is ground truth for a representative direction, the vertex normal
 
-  OutCoefficients\[0]\[0] = ColorScale * InGatheredLightSample.IncidentLighting.R;
+  OutCoefficients\[0]\[0] = ColorScale \* InGatheredLightSample.IncidentLighting.R;
 
-  OutCoefficients\[0]\[1] = ColorScale * InGatheredLightSample.IncidentLighting.G;
+  OutCoefficients\[0]\[1] = ColorScale \* InGatheredLightSample.IncidentLighting.G;
 
-  OutCoefficients\[0]\[2] = ColorScale * InGatheredLightSample.IncidentLighting.B;
-
-  
+  OutCoefficients\[0]\[2] = ColorScale \* InGatheredLightSample.IncidentLighting.B;
 
   // Will force DirLuma\[0] to 0.282095f
 
@@ -57,8 +50,6 @@ DirLuma[i] *= DirCorrection / PI;
   OutCoefficients\[1]\[1] = 0.325735f \* DirLuma\[2] \* DirScale;
 
   OutCoefficients\[1]\[2] = -0.325735f \* DirLuma\[3] \* DirScale;
-
-  
 
 **GetLightMapColorHQ: L1 SH Band Data Reconstruction**
 
@@ -85,10 +76,7 @@ Sample1.rgb encodes the L1 SH band data
 
 - All done bc Lightmap0 & Lightmap1 are 32-bit quantized textures (8bits per component)
 
-
-
 Key Data Structures:
-
 
 ```cpp
 class FGatheredLightMapSample

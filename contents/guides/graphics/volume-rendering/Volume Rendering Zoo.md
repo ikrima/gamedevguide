@@ -28,8 +28,12 @@
     - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf>
     - Technique is basically exponentiation of single scattering with multiple octaves
     - Must make sure a &lt;= b to be energy conserving
-
-![](../assets/vol-render-zoo-ms-eq.png)
+      $$
+      \left(x, \omega_{i}\right)=\sum_{0}^{(N-1)} L \operatorname{scat}\left(x, \omega_{i}\right) \\
+      \begin{aligned} \sigma_{s}^{\prime} &=\sigma_{s} \times a^{n} \\
+      \sigma_{e}^{\prime} &=\sigma_{e} \times b^{n} \\
+      p^{\prime}(\theta) &=p\left(\theta \times c^{n}\right) \end{aligned}
+      $$
 
 - Take Mean Free Path/Transport mean free path into account
   - The scattering mean free path is the average distance between scattering events (in biological tissues around 100 μm)
@@ -51,7 +55,7 @@
   - <https://github.com/selfshadow/ltc\_code>
   - GPU Zen Chapter: Linear-Light Shading with Linearly Transformed Cosines
 
-Tasks
+## Tasks
 
 - Channel Lighting (devon's approach)
   - Houdini modify to export 3 lighting channels + density
@@ -65,11 +69,18 @@ Tasks
     - Directional Occlusion
     - Directional Lightfield
   - Re-export Volume Flipbook sample
-  - Reference pathtrace/raymarch
+  - ~~Reference pathtrace/raymarch~~
   - Particle Rendering with Slabs sampling
   - Basis Functions
-    - Spherical Harmonics
-    - Spherical Gaussians
+    - ~~Create DbgVisualizer for Lightfield at volume isosurface~~
+      - ~~Visualize Light Along Ray~~
+      - ~~Visualize Final Light out~~
+      - ~~Visualize Incoming Light~~
+    - Project that onto basis functions
+      - ~~Grid Basis~~
+      - Spherical Harmonics
+      - Spherical Gaussians
+      - HBasis
     - \#nicetohave Incorporate Baked VLM
       - VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);
 
@@ -77,13 +88,13 @@ Tasks
   - Make a simple houdini &lt;> ue4 plugin then iterate.
 
 - Houdini:
-  - create voxel grid
-  - create attribs (bakedirect,scatter,env)
-  - Make a nice volumetric mesh
-  - Sample based on plane alignment
-  - bake direct into samples
-  - bake scattering into samples
-  - bake indirect into samples
+  - ~~create voxel grid~~
+  - ~~create attribs (bakedirect,scatter,env)~~
+  - ~~Make a nice volumetric mesh~~
+  - ~~Sample based on plane alignment~~
+  - ~~bake direct into samples~~
+  - ~~bake scattering into samples~~
+  - ~~bake indirect into samples~~
   - export
     - render volume texture
     - Sample cop into texture as channel lighting

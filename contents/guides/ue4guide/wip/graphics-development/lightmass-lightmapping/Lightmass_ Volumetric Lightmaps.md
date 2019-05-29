@@ -1,6 +1,7 @@
 ---
 sortIndex: 4
 ---
+
 Key functions:
 
 - **CalculateVolumeSampleIncidentRadiance():** Main function
@@ -8,6 +9,7 @@ Key functions:
 **For volumetric irradience brick:**
 
 **SetFromVolumeLightingSample():** Defines spherical harmonic encoding of what gets stored in the lightmap
+
 ```cpp
 /*
 
@@ -95,6 +97,7 @@ SHCoefficients\[ChannelIndex \* 2 + 1]\[Index] = (Vector1Normalized \* FLinearCo
 - CalculateApproximateDirectLighting()
 
 - IncomingRadianceAdaptive()
+
 ```cpp
 /**
 

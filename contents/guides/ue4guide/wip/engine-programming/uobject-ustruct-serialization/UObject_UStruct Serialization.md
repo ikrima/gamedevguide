@@ -5,7 +5,6 @@ sortIndex: 1
 ### Serialize Struct:
 
 ```cpp
-
 Ar << ObjectClass;
 
 uStruct->SerializeItem(Ar, Allocation, nullptr);
@@ -18,7 +17,9 @@ ObjectClass->SerializeBin(Ar, Object);
 else  
 ObjectClass->SerializeTaggedProperties(Ar,Object,...);
 ```
+
 **Serialize Enum:**
+
 ```cpp
 FORCEINLINE friend FArchive& operator&lt;&lt;(FArchive& Ar, EnumType& Value)
 
@@ -28,6 +29,7 @@ FORCEINLINE friend FArchive& operator&lt;&lt;(FArchive& Ar, EnumType& Value)
 
  }
 ```
+
 **UObject**
 
 ObjectReader/ObjectWriter only to be able to serialize the actual objects into byte arrays. We have not found any other archives that do this for us in a good way.
@@ -44,9 +46,10 @@ the super undocumented <span class="underline">secret to serializing any data to
 
 *Reference From <https://forums.unrealengine.com/development-discussion/c-gameplay-programming/88477-spawning-actors-from-serialized-data?116235-Spawning-Actors-from-Serialized-Data=&viewfull=1>*
 
-
 ### Saving data to file
+
 **Archive to bytearray to File**
+
 ```cpp
 FActorSaveData ActorRecord;
 ActorRecord.ActorName = FName(*Actor->GetName());
@@ -62,6 +65,7 @@ Actor->Serialize(Ar);
 ```
 
 After all the actor records are saved, we can create the final save game.
+
 ```cpp
 FSaveGameData SaveGameData;
  
@@ -96,7 +100,6 @@ UE_LOG(LogTemp, Warning, TEXT("Save Failed!"));
 BinaryData.FlushCache();
 
 BinaryData.Empty();
-
 ```
 
 *Reference From <http://runedegroot.com/saving-and-loading-actor-data-in-unreal-engine-4/>*
@@ -134,9 +137,11 @@ UE_LOG(LogCollisionAnalyzer, Log, TEXT("Saved collision analyzer data to file '%
 ```
 
 ### Loading Actors
+
 **Loading the data from file**
 
 To load the binary data
+
 ```cpp
 TArray<uint8>BinaryData;
 
@@ -152,6 +157,7 @@ UE_LOG(LogTemp, Warning, TEXT("Load Succeeded!"));
 ```
 
 ##### Extracting data from binary
+
 ```cpp
 FMemoryReader FromBinary = FMemoryReader(BinaryData, true);
 FromBinary.Seek(0);
@@ -163,10 +169,11 @@ FromBinary.FlushCache();
 BinaryData.Empty();
 FromBinary.Close();
 ```
+
 *Reference From <http://runedegroot.com/saving-and-loading-actor-data-in-unreal-engine-4/>*
 
-
 ### Serialize Objects & Names as strings:
+
 ```cpp
 struct FSaveGameArchive : public FObjectAndNameAsStringProxyArchive
 
@@ -186,7 +193,6 @@ ArIsSaveGame = true;
 ```
 
 *Reference From <http://runedegroot.com/saving-and-loading-actor-data-in-unreal-engine-4/>*
-
 
 ### PostFixupReferences
 

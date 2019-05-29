@@ -135,9 +135,7 @@ OnFailure.Broadcast();
 **How do I find the current session created by the dedicated server?**
 
 - You can try IOnlineSession::GetNamedSession. Unfortunately, that will only return the session if you already know the name. Usually, calling DestroySession should be enough (it will use GetNamedSession under the hood to grab the correct one). 
-What I'd recommend is actually debugging to see whether or not any sessions actually do exist. All OSSs should have some array or map so they can implement GetNamedSession. For example, in FOnlineSessionSteam there's a Sessions array. Putting a breakpoint somewhere in the interface and then inspecting that list would tell you for certain whether or not something was created.
-
-
+  What I'd recommend is actually debugging to see whether or not any sessions actually do exist. All OSSs should have some array or map so they can implement GetNamedSession. For example, in FOnlineSessionSteam there's a Sessions array. Putting a breakpoint somewhere in the interface and then inspecting that list would tell you for certain whether or not something was created.
 
 **How do I get dedicated server to use my session variables and settings on startup?**
 

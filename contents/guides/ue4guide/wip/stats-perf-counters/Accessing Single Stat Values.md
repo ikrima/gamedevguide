@@ -30,8 +30,6 @@ b. DumpCPUDelegateHandle = Stats.NewFrameDelegate.AddStatic(&DumpCPU);
 
 c.
 
-
-
 And that registers a call back on the stats thread so whenever a frame happens, you are informed. This is a fairly simple command, which does this on every frame....which turns out to be only one frame:
 
 a. static void DumpCPU(int64 Frame)
@@ -74,7 +72,7 @@ Depending on what you want to do, it might be easier to just hack the hud stats 
 
 Let me know if you need more help on this. It is tedious and hard to understand, but you should be able to do anything you like.
 
--Gil
+\-Gil
 
 *Reference From <https://udn.unrealengine.com/questions/302333/accessing-stat-values-in-c.html>*
 
@@ -82,9 +80,7 @@ The description is part of the stat declaration:
 
 1. DECLARE_CYCLE_STAT(TEXT("Step: steering"), STAT_AI_Crowd_StepSteeringTime, STATGROUP_AICrowd);
 
-2. TEXT("Step: steering") is the description and all stat types have them. This is Item.NameAndInfo.GetDescription().
-
-
+1. TEXT("Step: steering") is the description and all stat types have them. This is Item.NameAndInfo.GetDescription().
 
 Another potential way to find what you are looking for is to put that stuff in a special (hardcoded) group....that is STATGROUP_AICrowd. Item.NameAndInfo.GetGroupName().
 

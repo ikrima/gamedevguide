@@ -1,11 +1,10 @@
 ---
 sortIndex: 13
 ---
+
 UActorChannel
 
 - ActorChannel manages the creation and lifetime of a replicated actor. Actual replication of properties and RPCs actually happens in FObjectReplicator now (see DataReplication.h).
-
-
 
 Manage ParticleSpawning:
 
@@ -18,15 +17,14 @@ struct CORE_API FNetworkVersion
 INetworkPredictionInterface\* **NetworkPredictionInterface** = Cast<INetworkPredictionInterface>(**PawnMovement**);
 ```
 
-
 **bNetLoadOnClient** : If true the Actor will load from a level file on a network client. This should be set to true for Actors you place in a map that you want to exist on a client (typically most Actors want this).
 
 *Reference From <https://wiki.unrealengine.com/Replication>*
 
 **IsNetStartupActor()**: Returns true if this is a replicated actor that was placed in the map
 
-
 Useful functions:
+
 ```cpp
 / Always called immediately before properties are received from the remote.
 
@@ -71,8 +69,6 @@ If the packet containing Frame 2's property updates gets dropped and Frame 3's d
 
 *Reference From <https://udn.unrealengine.com/questions/287584/property-replication-promises.html>*
 
-
-
 ## Spawn/Initial Replication Logic
 
 Server tells client to spawn actor
@@ -87,13 +83,11 @@ On the client:
 
 - PostNetInit() gets called, ensuring all the replicated initial properties of the actor have been initialized
 
-  - Also calls BeginPlay(). BeginPlay() is blocked for "networked spawned" Actors on clients. It still gets called in Spawn<> on the server during
+  - Also calls BeginPlay(). BeginPlay() is blocked for "networked spawned" Actors on clients. It still gets called in Spawn&lt;> on the server during
 
     - **IMPORTANT:** Which really means BeginPlay() should only use UPROPERTIES() that are meant to be set and default configuration time
 
 - Can also create replication conditions on properties to only replicate on initial with COND_InitialOnly
-
-
 
 Reference:
 
@@ -109,20 +103,17 @@ Reference:
 
   *Reference From <https://udn.unrealengine.com/questions/226302/join-in-progress-initial-replication-completion.html>*
 
-
-
 Standard method of serializing a new actor.  
 
 - For static actors, this will just be a single call to SerializeObject, since they can be referenced by their path name.  
 - For dynamic actors, first the actor's reference is serialized but will not resolve on clients since they haven't spawned the actor yet.  
 - The actor archetype is then serialized along with the starting location, rotation, and velocity. 
 - After reading this information, the client spawns this actor in the NetDriver's World and assigns it the NetGUID it read at the top of the function.  
- - returns true if a new actor was spawned. false means an existing actor was found for the netguid. 
+   - returns true if a new actor was spawned. false means an existing actor was found for the netguid. 
+
 ```cpp
 bool UPackageMapClient::SerializeNewActor(FArchive& Ar, class UActorChannel \*Channel, class AActor*& Actor)
 ```
-
-
 
 ## How to dynamically add component in begin play C++ with replication:
 
@@ -138,8 +129,8 @@ This must be executed only on the server (components will be spawned automatical
 
 *Reference From <https://udn.unrealengine.com/questions/236164/dynamically-add-component-in-begin-play.html>*
 
-
 ## Replication Keys:
+
 ```cpp
 bool UActorChannel::ReplicateSubobject(UObject *Obj, FOutBunch &Bunch, const FReplicationFlags &RepFlags)  
 { 

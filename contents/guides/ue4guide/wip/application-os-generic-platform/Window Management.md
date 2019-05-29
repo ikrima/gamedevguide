@@ -1,6 +1,7 @@
 ---
 sortIndex: 8
 ---
+
 ```cpp
 FSlateApplication::Get().GetInteractiveTopLevelWindows()
 
@@ -23,10 +24,10 @@ Get Application Slate Renderer (D3D, OpenGL, etc):
 - FSlateApplication::Get().GetRenderer()
 ```
 
-
 #### Is it possible to choose the default screen in a multi monitor configuration?
 
 *Reference From <https://answers.unrealengine.com/questions/294650/is-it-possible-to-choose-the-default-screen-in-a-m.html>*
+
 ```cpp
  // Move window to the corresponding monitor
 
@@ -58,11 +59,11 @@ FVector2D WindowPosition = FVector2D(WidthPosition, 0.f);
 
  }
 ```
+
 *Reference From <https://answers.unrealengine.com/questions/294650/is-it-possible-to-choose-the-default-screen-in-a-m.html>*
 
-
-
 Everything happens in **UGameEngine::CreateGameViewport()** which can be found in **Engine\\Source\\Runtime\\Engine\\Private\\GameEngine.cpp**. Now look at the following lines of code :
+
 ```cpp
 // SAVEWINPOS tells us to load/save window positions to user settings (this is disabled by default)
 int32 SaveWinPos;
@@ -70,9 +71,8 @@ if (FParse::Value(FCommandLine::Get(), TEXT("SAVEWINPOS="), SaveWinPos) && SaveW
 {
 ```
 
-
-
 You can see the **Window->MoveWindowTo()** function call which is exactly what we want. So after these lines I added the following :
+
 ```cpp
 FDisplayMetrics DisplayMetrics;
     FSlateApplication::Get().GetDisplayMetrics(DisplayMetrics);
@@ -105,6 +105,4 @@ FDisplayMetrics DisplayMetrics;
     } 
 ```
 
-
 *Reference From <http://www.froyok.fr/blog/2018-01-ue4-specify-default-monitor-at-launch>*
-

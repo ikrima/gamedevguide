@@ -6,8 +6,6 @@ sortIndex: 9
 
 PostEditComponentMove(bool bFinished) {}
 
-
-
 **AActors:**
 
 AActor::PreEditChange(UProperty\* PropertyThatWillChange)
@@ -24,15 +22,11 @@ DebugShowComponentHierarchy( const TCHAR\* Info, bool bShowPosition )
 
 DebugShowOneComponentHierarchy( USceneComponent\* SceneComp, int32& NestLevel, bool bShowPosition )
 
-
-
 FActorTransactionAnnotation(const AActor\* Actor, const bool bCacheRootComponentData) : ComponentInstanceData(Actor)
 
 AddReferencedObjects(FReferenceCollector& Collector)
 
 HasInstanceData() const
-
-
 
 GetTransactionAnnotation() const
 
@@ -41,8 +35,6 @@ PreEditUndo()
 PostEditUndo()
 
 PostEditUndo(TSharedPtr&lt;ITransactionObjectAnnotation> TransactionAnnotation)
-
-
 
 EditorApplyTranslation(const FVector& DeltaTranslation, bool bAltDown, bool bShiftDown, bool bCtrlDown)
 

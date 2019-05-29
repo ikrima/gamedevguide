@@ -3,6 +3,7 @@ sortIndex: 4
 ---
 
 #### Useful properties that expose FilePickers:
+
 ```cpp
 FFilePath (can use meta property to filter by asset type meta=(FilePathFilter="py"))
 
@@ -43,5 +44,5 @@ if (ReplayInfoFileAr.IsValid())
 ReplayInfoFileAr->Close();  
         }
 ```
-*Reference From <https://wiki.unrealengine.com/Replay_System_Tutorial>*
 
+*Reference From <https://wiki.unrealengine.com/Replay_System_Tutorial>*

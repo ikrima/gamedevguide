@@ -1,6 +1,7 @@
 ---
 sortIndex: 9
 ---
+
 <https://github.com/ue4plugins/LoadingScreen>
 
 Loading Screen:
@@ -12,4 +13,3 @@ If you need the loading screen to start earlier, you'll want to look into level 
 *Reference From <https://udn.unrealengine.com/questions/320252/how-to-show-the-loading-screen-earlier.html>*
 
 <https://wiki.unrealengine.com/Loading_Screen>
-

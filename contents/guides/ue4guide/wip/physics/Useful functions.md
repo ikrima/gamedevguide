@@ -1,6 +1,7 @@
 ---
 sortIndex: 8
 ---
+
 ```cpp
 virtual void RerunConstructionScripts();
 
@@ -8,6 +9,7 @@ UActorComponent\* CreateComponentFromTemplate(UActorComponent\* **Template**,�
 
 UActorComponent\* CreateComponentFromTemplateData(…);
 ```
+
 LoadedLevel will not be set on the ULevelStreaming object until the level is fully loaded. And at that same point the ULevelStreaming.OnLevelLoaded will be broadcast.
 
 *Reference From <https://udn.unrealengine.com/questions/356697/beginplay-order.html>*
@@ -23,4 +25,3 @@ COREUOBJECT_API UObject\* StaticConstructObject( UClass\* Class, UObject\* InOut
 Prevent or Disable creating a default subobject:
 
 ObjectInitializer.DoNotCreateDefaultSubobject(TEXT("Sprite"))
-

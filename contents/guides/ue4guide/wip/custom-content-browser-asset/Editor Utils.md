@@ -1,6 +1,7 @@
 ---
 sortndex: 15
 ---
+
 ```cpp
 IsUniqueObjectName()
 
@@ -161,5 +162,4 @@ namespace EditorUtilities
  UNREALED_API int32 CopyActorProperties( AActor\* SourceActor, AActor\* TargetActor, const FCopyOptions& Options = FCopyOptions(ECopyOptions::Default) );
 
 }
-
 ```

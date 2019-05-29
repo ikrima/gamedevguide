@@ -18,4 +18,3 @@ The final argument passed to the function is a bool called bStripFilesForOtherP
 For future generations, strategically use platform names in your build folders: Win32 Win64 WinRT WinRT_ARM UWP Mac XboxOne PS4 IOS Android HTML5 Linux AllDesktop
 
 *Reference From <https://answers.unrealengine.com/questions/241947/additional-asset-directories-not-copied-to-package.html>*
-

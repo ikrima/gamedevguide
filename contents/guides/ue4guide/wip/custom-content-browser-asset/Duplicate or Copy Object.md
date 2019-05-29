@@ -3,19 +3,17 @@ sortIndex: 12
 ---
 
 1. Generic object copy
- UEngine::CopyPropertiesForUnrelatedObjects(ObjectTemplate, SpawnedActor, CopyParams);
+   UEngine::CopyPropertiesForUnrelatedObjects(ObjectTemplate, SpawnedActor, CopyParams);
 
-2. Fast copy of specific class
+1. Fast copy of specific class
 
-     StaticDuplicateObject(Instance, &OwnerMovieScene, TemplateName, RF_AllFlags & ~RF_Transient);
+    StaticDuplicateObject(Instance, &OwnerMovieScene, TemplateName, RF_AllFlags & ~RF_Transient);
 
-3. For actors:
+1. For actors:
 
-     EditorUtilities::CopySingleProperty()
+    EditorUtilities::CopySingleProperty()
 
-     EditorUtilities::CopyActorProperties()
-
-
+    EditorUtilities::CopyActorProperties()
 
 NOTE: You can pass a template object but Subobject Instancing needs a special case:
 
@@ -112,6 +110,5 @@ check(DestObject->SubObject->TestValue == i);
 
  }
 ```
+
 <https://udn.unrealengine.com/questions/458532/view.html>
-
-

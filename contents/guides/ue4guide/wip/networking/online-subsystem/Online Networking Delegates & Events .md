@@ -31,4 +31,3 @@ Delegate fires whenever a client cheater is detected in the networking code
 
  static FOnPendingNetGameConnectionCreated OnPendingNetGameConnectionCreated;
 ```
-

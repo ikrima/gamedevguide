@@ -5,6 +5,7 @@ sortIndex: 2
 Pass -lanplay command arg to use lan bandwidth settings
 
 ### Low Level Constants:
+
 ```cpp
 enum { MAX_PACKET_SIZE = 1024 }; // MTU for the connection  
 enum { LAN_BEACON_MAX_PACKET_SIZE = 1024 }; // MTU for the connection
@@ -41,15 +42,14 @@ UPlayer/UNetConnection:
 
 - LastRecvAckTime; // The last time an ack was received \*/
 
-
 **Misc Details:**
 
 - **NetClientTicksPerSecond:** is actually how many client connections the server will tick on each of its frames. Similar for the NetUpdateFrequency values, those control how often the server will consider the actor's properties for replication.
 
 - **bClampListenServerTickRate:** Clamp maxtickrate if listenserver by using NetServerMaxTickRate
 
-
 ### Ini Config:
+
 ```cpp
 [/Script/Engine.Player] 
 ; Bandwidth Settings For Client 
