@@ -1,18 +1,22 @@
+---
+sortindex: 3
+---
+
 ## GENERAL NOTES:
 
-LOD
+### LOD
 
 - LOD objects in Maya must be a single piece of geometry or UE4 will fail on Import
 
 - UE4 cannot properly create a lightmap UV set for LOD objects so this must be done in Maya (updated in 4.5 so it should work now)
 
-TEXTURES
+### TEXTURES
 
 - Textures must be photoshop files in Maya in order to link up in UE4
 
 - Diffuse map should have roughness map in its alpha channel
 
-IMPORTING FBX INTO UE4
+### IMPORTING FBX INTO UE4
 
 - \*Re-Importing is very weak.
 

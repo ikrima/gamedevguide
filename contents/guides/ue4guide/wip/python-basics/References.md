@@ -1,3 +1,7 @@
+---
+sortIndex: 2
+---
+
 <http://book.pythontips.com/en/latest/index.html>
 
 <http://python-3-patterns-idioms-test.readthedocs.io/en/latest/PythonForProgrammers.html>

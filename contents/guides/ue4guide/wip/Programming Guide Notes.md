@@ -1,4 +1,8 @@
-![PorgrammingGuideNotes_ProjectModuleClassOrg](C:\devguide\conversion\FINISHED\assets\PorgrammingGuideNotes_ProjectModuleClassOrg.jpg)
+---
+sortIndex: 25
+---
+
+![PorgrammingGuideNotes_ProjectModuleClassOrg](........\assets\PorgrammingGuideNotes_ProjectModuleClassOrg.jpg)
 
 - AActor is base class Spawnable class
 
@@ -6,7 +10,7 @@
 
 ## Coding Standard:
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>>*
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>*
 
 - Classes should have public interface methods declared first
 
@@ -68,15 +72,17 @@
 
 Don't use the C++ int type in portable code, since it's dependent on the compiler how large it is.
 
-\* \*
+\*\*
 
 General
 
 - Comment third party code with special comments
 
+```cpp
 // @third party code - BEGIN PhysX
-\#include &lt;PhysX.h>
+#include <PhysX.h>
 // @third party code - END PhysX
+```
 
 - Braces should be on a new line
 
@@ -115,56 +121,55 @@ You can use namespaces to organize your classes, functions and variables where a
 
 - Enums must be wrapped in their own namespace b/c C++ Enum values have the same scope. Ex:
 
-> /\*\* Defining a enumeration within a namespace to achieve C#-style enum scoping \*/  
-> namespace EColorChannel  
-> {  
-> /\*\* Declare EColorChannel::Type as the actual type for this enum \*/  
-> enum Type  
-> {  
-> Red,  
-> Green,  
-> Blue  
-> };  
-> }
->
-> /\*\* Given a color channel, returns the name of that channel. \*/  
-> FString GetNameForColorChannel(const EColorChannel::Type ColorChannel)  
-> {  
-> switch(ColorChannel)  
-> {  
-> case EColorChannel::Red: return TEXT("Red");  
-> case EColorChannel::Green: return TEXT("Green");  
-> case EColorChannel::Blue: return TEXT("Blue");  
-> default: return TEXT("Unknown");  
-> }  
-> }
+```cpp
+ /** Defining a enumeration within a namespace to achieve C#-style enum scoping */ 
+ namespace EColorChannel 
+ { 
+ /** Declare EColorChannel::Type as the actual type for this enum */ 
+ enum Type 
+ { 
+ Red, 
+ Green, 
+ Blue 
+ }; 
+ }
+
+ /** Given a color channel, returns the name of that channel. */ 
+ FString GetNameForColorChannel(const EColorChannel::Type ColorChannel) 
+ { 
+ switch(ColorChannel) 
+ { 
+ case EColorChannel::Red: return TEXT("Red"); 
+ case EColorChannel::Green: return TEXT("Green"); 
+ case EColorChannel::Blue: return TEXT("Blue"); 
+ default: return TEXT("Unknown"); 
+ } 
+ }
+```
 
 - Note that for locally-declared enums, you won't be able to use a namespace for scoping. In these cases, we opt to declare a local struct with no member variables, only a local enum type and use that struct for scoping.
-  > /\*\* Defining a locally-scoped enumeration using structs\*/  
-  > class FObjectMover  
-  > {  
-  > public:
-  >
-  > /\*\* Direction to move \*/  
-  > struct EMoveDirection  
-  > {  
-  > enum Type  
-  > {  
-  > Forward,  
-  > Reverse,  
-  > };  
-  > };
 
-> /\*\* Construct an FObjectMover with the specified movement direction \*/  
-> FObjectMover( const EMoveDirection::Type Direction );
+```cpp
+  /** Defining a locally-scoped enumeration using structs*/ 
+  class FObjectMover 
+  { 
+  public:
+  
+  /** Direction to move */ 
+  struct EMoveDirection 
+  { 
+  enum Type 
+  { 
+  Forward, 
+  Reverse, 
+  }; 
+  };
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>>*
+/** Construct an FObjectMover with the specified movement direction */ 
+FObjectMover( const EMoveDirection::Type Direction );
+```
 
->
-
--
-
->
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard/index.html>*
 
 # Object Handling
 
@@ -182,9 +187,14 @@ UCLASS() macro tags classes into the Uobject handling system:
 
 There are several functions that can be used to create new UObject instances as well as the standard new operator; each of which have their own use case:
 
-<table><thead><tr class="header"><th><strong>Method</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><a href="https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#newobject">NewObject&lt;class&gt;()</a></td><td>Creates a new instance with an automatically generated name. Best practice to use for simple cases.</td></tr><tr class="even"><td><a href="https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#newnamedobject">NewNamedObject&lt;class&gt;()</a></td><td>Creates a new instance using a specified name along with a few other optional parameters. Asserts if the name conflicts within the new instance's Outer.</td></tr><tr class="odd"><td><a href="https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#constructobject">ConstructObject&lt;class&gt;()</a></td><td>Creates a new instance providing all available creation options. Use only when flexibility is required.</td></tr><tr class="even"><td>new</td><td>Use to construct objects in certain low level circumstances, such as when the constructor requires arguments.</td></tr></tbody></table>
+| **Method**                                                                                                                                      | **Description**                                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [NewObject<class>()](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#newobject)             | Creates a new instance with an automatically generated name. Best practice to use for simple cases.                                                      |
+| [NewNamedObject<class>()](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#newnamedobject)   | Creates a new instance using a specified name along with a few other optional parameters. Asserts if the name conflicts within the new instance's Outer. |
+| [ConstructObject<class>()](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/Creation/index.html#constructobject) | Creates a new instance providing all available creation options. Use only when flexibility is required.                                                  |
+| new                                                                                                                                             | Use to construct objects in certain low level circumstances, such as when the constructor requires arguments.                                            |
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html>>*
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Objects/index.html>*
 
 - Tick is the Update() per frame update function.
 
@@ -202,7 +212,7 @@ UClass System notes:
 
 - Automatic editor integration
 
-- Simple RTTI (can do typecasting IsA&lt;T>() or Cast&lt;T>()
+- Simple RTTI (can do typecasting IsA<T>() or Cast<T>()
 
 - Supports network replication (can tag UFUNCTIONS for RPC & UPROPERTIES for replication)
 
@@ -228,8 +238,6 @@ UClass System notes:
 
   - More spawning helper functions @ <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Spawning/index.html>
 
->
-
 # Components
 
 - UActorComponent: Base class for components
@@ -252,27 +260,35 @@ UClass System notes:
 
 - PhysicsState manages physics for a component
 
-> **Register Events**
->
-> When a component is registered, the events below are fired off.
+**Register Events**
 
-<table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>UActorComponent::OnRegister()</td><td>Event to allow for additional initialization when registering a component, if necessary.</td></tr><tr class="even"><td>UActorComponent::CreateRenderState()</td><td>Initializes the render state for the component.</td></tr><tr class="odd"><td>UActorComponent::CreatePhysicsState()</td><td>Initializes the physics state for the component.</td></tr></tbody></table>
+When a component is registered, the events below are fired off.
 
-> **UnRegistering Components**
->
-> **ActorComponents** can be unregistered as well to avoid them being updated, simulated, or rendered. Unregistering a component is performed by callingUActorComponent::UnregisterComponent().
->
-> void UActorComponent::UnregisterComponent()
->
-> **UnRegister Events**
->
-> The events below are fired off when a component is unregistered.
+| **Function**                          | **Description**                                                                          |
+| ------------------------------------- | ---------------------------------------------------------------------------------------- |
+| UActorComponent::OnRegister()         | Event to allow for additional initialization when registering a component, if necessary. |
+| UActorComponent::CreateRenderState()  | Initializes the render state for the component.                                          |
+| UActorComponent::CreatePhysicsState() | Initializes the physics state for the component.                                         |
 
-<table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>UActorComponent::OnUnRegister()</td><td>Event to allow for additional actions when unregistering a component, if necessary.</td></tr><tr class="even"><td>UActorComponent::DestroyRenderState()</td><td>Uninitializes the render state for the component.</td></tr><tr class="odd"><td>UActorComponent::DestroyPhysicsState()</td><td>Uninitializes the physics state for the component.</td></tr></tbody></table>
+#### UnRegistering Components
 
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>>*
->
-> **Component Transforms**
+**ActorComponents** can be unregistered as well to avoid them being updated, simulated, or rendered. Unregistering a component is performed by callingUActorComponent::UnregisterComponent().
+
+void UActorComponent::UnregisterComponent()
+
+**UnRegister Events**
+
+The events below are fired off when a component is unregistered.
+
+| **Function**                           | **Description**                                                                     |
+| -------------------------------------- | ----------------------------------------------------------------------------------- |
+| UActorComponent::OnUnRegister()        | Event to allow for additional actions when unregistering a component, if necessary. |
+| UActorComponent::DestroyRenderState()  | Uninitializes the render state for the component.                                   |
+| UActorComponent::DestroyPhysicsState() | Uninitializes the physics state for the component.                                  |
+
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>*
+
+**Component Transforms**
 
 - **FTransform** struct contains a **Translation vector, a Rotation quaternion, and a Scale3D vector**.
 
@@ -286,36 +302,29 @@ UClass System notes:
 
   - Can also set the absolute world position (internally converted to relative xform) by these functions
 
->
+| **Function**                       | **Description**                                                                                   |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------- |
+| SceneComponent::SetWorldLocation() | Set the relative translation of this component to put it at the supplied location in world space. |
+| SceneComponent::SetWorldRotation() | Set the relative rotation of this component to put it at the supplied orientation in world space. |
 
-<table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>SceneComponent::SetWorldLocation()</td><td>Set the relative translation of this component to put it at the supplied location in world space.</td></tr><tr class="even"><td>SceneComponent::SetWorldRotation()</td><td>Set the relative rotation of this component to put it at the supplied orientation in world space.</td></tr></tbody></table>
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>*
 
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>>*
->
-> **Delegates**
->
-> Delegates allow you to call member functions on C++ objects in a generic, yet type-safe way. Using delegates, you can dynamically bind to a member function of an arbitrary object, then call functions on the object, even if the caller does not know the object's type.
->
-> It is perfectly safe to copy delegate objects. Delegates can be passed around by value but this is generally not recommended since they do have to allocate memory on the heap. **You should always pass delegates by reference when possible.**
->
-> Both single-cast and multi-cast delegates are supported, as well as "dynamic" delegates which can be safely serialized to disk.
+**Delegates**
+
+Delegates allow you to call member functions on C++ objects in a generic, yet type-safe way. Using delegates, you can dynamically bind to a member function of an arbitrary object, then call functions on the object, even if the caller does not know the object's type.
+
+It is perfectly safe to copy delegate objects. Delegates can be passed around by value but this is generally not recommended since they do have to allocate memory on the heap. **You should always pass delegates by reference when possible.**
+
+Both single-cast and multi-cast delegates are supported, as well as "dynamic" delegates which can be safely serialized to disk.
 
 - Single-cast
 
-- [Multi-cast]
+- [Multi-cast](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Multicast/index.html)
 
-- [Events]
+- [Events](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Events/index.html)
 
-- [Dynamic (UObject, serializable)]
+- [Dynamic (UObject, serializable)](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Dynamic/index.html)
 
-> See the [Delegates] page for reference and usage information.
->
-> *From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>>*
+See the [Delegates](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/index.html) page for reference and usage information.
 
-[multi-cast]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Multicast/index.html
-
-[events]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Events/index.html
-
-[dynamic (uobject, serializable)]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Dynamic/index.html
-
-[delegates]: https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/index.html
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.htm>*

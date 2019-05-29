@@ -3,25 +3,33 @@
 ## Techniques
 
 - Reference pathtrace/raymarch
+
 - Volume Flipbook
+
 - Particle Rendering with Slabs sampling
+
 - Channel Lighting
   - Volume Filtering with mips
+
 - IsoSurface Tracking
   - Mean Occlusion
   - Directional Occlusion
   - Directional Lightfield
+
 - Vertex Baking
+
 - Basis Functions
   - Spherical Harmonics
   - Spherical Gaussians
   - Fourier Opacity Maps
   - Extinction Transmittance Maps \[Extinction Transmittance Maps]
+
 - Precomputed Radiance Transfer for Volume Rendering
   - Do it inside the volume
   - Can also do it on the surface and tangent basis (use burley's normalized diffusion profile as it provides super simple artistic control)
     - Reference: Approximate Reflectance Profiles for Efficient Subsurface Scattering
     - Reference: *Extending the Disney BRDF to a BSDF with Integrated Subsurface Scattering*
+
 - Multiple Scattering approximations
   - Contrast approximation for art directable multiple scattering
     - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf>
@@ -39,6 +47,7 @@
   - The scattering mean free path is the average distance between scattering events (in biological tissues around 100 μm)
   - The transport mean free path can be thought of as the mean distance after which a photon’s direction becomes random (in biological tissues around 1 mm)
   - The **transport length** in a strongly diffusing medium (noted l\*) is the length over which the direction of propagation of the [photon](https://www.wikiwand.com/en/Photon) is randomized. It is related to the [mean free path](https://www.wikiwand.com/en/Mean_free_path) l by the relation
+
 - \#nicetohave Incorporate Baked VLM
   - VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);
   - Radiance caching gradients
@@ -49,6 +58,7 @@
     - <https://www.gamedev.net/blogs/entry/2265248-voxel-traversal-algorithm-ray-casting/>
     - <https://github.com/francisengelmann/fast\_voxel\_traversal>
     - Survey olf grid traversal: <http://www.cosenza.eu/papers/CosenzaEGITA08Grid.pdf>
+
 - Linearly transformed cosines
   - Use them as a basis. Linear transform of cosine lobe (scale, skew, rotation) doesn't affect integral product and has closed form solution
   - <https://blog.magnum.graphics/guest-posts/area-lights-with-ltcs/>

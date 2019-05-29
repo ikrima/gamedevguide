@@ -1,3 +1,7 @@
+---
+sortIndex: 2
+---
+
 # 3 classes of lights:
 
 1. Static: Precomputed lighting & shadowing stored in the lightmap for static objects.
@@ -22,7 +26,9 @@
 
 - Static at runtime but code looks as if it calculates it every frame
 
+```cpp
   GameEngine.cpp: USkyLightComponent::UpdateSkyCaptureContents(Context.World());)
+```
 
 - Applies bent normal ambient occlusion for local shadowing
 
@@ -88,4 +94,4 @@ There are a few performance hazards that happen with movable objects and station
 
 - 'profilegpu' - measures GPU execution time
 
-*From &lt;<https://answers.unrealengine.com/questions/3438/large-actor-receives-a-pre-shadow-and-will-cause-a.html>>*
+*Reference From <https://answers.unrealengine.com/questions/3438/large-actor-receives-a-pre-shadow-and-will-cause-a.html>*

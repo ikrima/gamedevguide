@@ -1,3 +1,7 @@
+---
+sortIndex: 5
+---
+
 ## Commands for toggling debug & perf markers:
 
 ToggleDrawEvents: Emits helpful draw event markers for use with GPU Capture/PIX
@@ -32,7 +36,7 @@ ToggleRHIThread
 
 r.ParallelTranslucency
 
-## Commands for debug logging
+## Commands for debug logging:
 
 r.D3DDumpAMDCodeXLFile
 
@@ -48,7 +52,7 @@ r.CompileShadersForDevelopment=1
 
 r.MaterialEditor.UseDevShaders=1
 
-\[DevOptions.Shaders]
+[DevOptions.Shaders]
 
 ; See FShaderCompilingManager for documentation on what these do
 
@@ -80,13 +84,13 @@ ProcessGameThreadTargetTime=.01
 
 ShaderPDBRoot=D:\\DirectoryOfChoice
 
-## Sanity Checking Commands
+## Sanity Checking Commands:
 
 r.ShowShaderCompilerWarnings=1
 
 r.D3DCheckShadersForDouble=1
 
-## Debug Logging
+## Debug Logging:
 
 ; Uncomment to dump shaders in the Saved folder
 
@@ -102,7 +106,7 @@ r.DumpShaderDebugShortNames=1
 
 r.DumpShaderDebugWorkerCommandLine=1
 
-## Add these when running with a graphical debugger like NSight (but not when profiling)
+## Add these when running with a graphical debugger like NSight (but not when profiling):
 
 r.Shaders.Optimize=0
 
@@ -152,13 +156,13 @@ bb.perf.SetShaderCompileMode 0
 
 - This is equivalent to at runtime doing:
 
-\[DevOptions.Shaders]
+  [DevOptions.Shaders]
 
-; See FShaderCompilingManager for documentation on what these do
+  ; See FShaderCompilingManager for documentation on what these do
 
-bAllowCompilingThroughWorkers=False
+  bAllowCompilingThroughWorkers=False
 
-bAllowAsynchronousShaderCompiling=False
+  bAllowAsynchronousShaderCompiling=False
 
 **Launch Project with NSight HUD:**
 
@@ -168,7 +172,7 @@ Ex:
 
 "C:\\Program Files (x86)\\NVIDIA Corporation\\Nsight Visual Studio Edition 5.3\\Monitor\\Common\\Nvda.Launcher.exe" "C:\\UE4Editor.exe" BBR.uproject -log
 
-## Guidance Tips on how to debug UE4 USF shaders
+## Guidance Tips on how to debug UE4 USF shaders:
 
 A lot of these are now configurable through environment flags/switches:
 
@@ -196,7 +200,7 @@ A lot of these are now configurable through environment flags/switches:
 
 - Rejoice at seeing the source code for your shaders show up in GPU PerfStudio 2.
 
-*From &lt;<https://udn.unrealengine.com/questions/166316/dx11-hlsl-shader-debugging.html>>*
+*Reference From <https://udn.unrealengine.com/questions/166316/dx11-hlsl-shader-debugging.html>*
 
 <https://udn.unrealengine.com/questions/166316/dx11-hlsl-shader-debugging.html>
 

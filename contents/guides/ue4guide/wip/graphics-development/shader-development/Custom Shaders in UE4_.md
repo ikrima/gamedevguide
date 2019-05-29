@@ -1,3 +1,7 @@
+---
+sortIndex: 1
+---
+
 Custom Shaders in UE4:
 
 Overview documentation at <https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>
@@ -50,12 +54,15 @@ C:\\Users\\ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Source\\Runtim
 
 To bind LocalVertexFactory with a shader you have to use:
 
+```cpp
 DECLARE_VERTEX_FACTORY_TYPE( FFluidSurfaceVertexFactory );
 
 IMPLEMENT_VERTEX_FACTORY_TYPE( FFluidSurfaceVertexFactory, "FluidSurfaceVertexFactory", true, true, true, true, false );
+```
 
 VertexFactory::InitRHI() is where the vertex declaration is created
 
+```cpp
 void FLocalVertexFactory::InitRHI()
 
 BEGIN_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters, )  
@@ -96,6 +103,7 @@ FillDeclElements(Elements, Offset);
                 // to rely on it being initialized, since InitDynamicRHI is called before InitRHI.  
                 VertexDeclarationRHI = RHICreateVertexDeclaration(Elements);  
         }
+```
 
 1. Need to run with -d3ddebug in order to set debug flag to device. Now I have informative errors descriptions.
 
@@ -105,7 +113,7 @@ FillDeclElements(Elements, Offset);
 
 1. Similar way other attributes initialized in appropriate classes. In FInstancedStaticMeshVertexFactory::InitRHI, for example.
 
-*From &lt;<https://forums.unrealengine.com/showthread.php?15761-How-does-FVertexFactoryInput-works>>*
+*Reference From <https://forums.unrealengine.com/showthread.php?15761-How-does-FVertexFactoryInput-works>*
 
 FSkeletalMeshObject:Update -> Calculates new bones
 
@@ -133,7 +141,8 @@ How To Debug Shaders:
 
 - Modify shader compiler compilation flags
 
-void FKAbcRigidVertexFactory::ModifyCompilationEnvironment(EShaderPlatform Platform, const FMaterial\* Material, FShaderCompilerEnvironment& OutEnvironment) {
+```cpp
+void FKAbcRigidVertexFactory::ModifyCompilationEnvironment(EShaderPlatform Platform, const FMaterial* Material, FShaderCompilerEnvironment& OutEnvironment) {
 
 FVertexFactory::ModifyCompilationEnvironment(Platform, Material, OutEnvironment);
 
@@ -144,9 +153,10 @@ OutEnvironment.CompilerFlags.Add(CFLAG_Debug);
 OutEnvironment.CompilerFlags.Add(CFLAG_PreferFlowControl);
 
 }
+```
 
-\* Remove the call to D3DStripShader in D3D11ShaderCompiler.cpp. You have to recompile ShaderCompileWorker Win64 Development to propagate the change. And then add a space or something to common.usf to force shaders to recompile (if you are working on a global shader just edit it a bit).
+- Remove the call to D3DStripShader in D3D11ShaderCompiler.cpp. You have to recompile ShaderCompileWorker Win64 Development to propagate the change. And then add a space or something to common.usf to force shaders to recompile (if you are working on a global shader just edit it a bit).
 
-\* In UE4 we compile the shaders in a different app (ShaderCompileWorker) which allows making use of all your cores. However tools like NSight don't know about this other app and they only hook the compile calls in the main executable. If you open BaseEngine.ini and set bAllowCompilingThroughWorkers=False, any future shaders will be compiled from the main executable. Of course, this will make compiling super slow.
+- In UE4 we compile the shaders in a different app (ShaderCompileWorker) which allows making use of all your cores. However tools like NSight don't know about this other app and they only hook the compile calls in the main executable. If you open BaseEngine.ini and set bAllowCompilingThroughWorkers=False, any future shaders will be compiled from the main executable. Of course, this will make compiling super slow.
 
-*From &lt;<https://forums.unrealengine.com/showthread.php?6719-Debugging-USF-(Unreal-Shader-Files)>>*
+*Reference From <https://forums.unrealengine.com/showthread.php?6719-Debugging-USF-(Unreal-Shader-Files)>*

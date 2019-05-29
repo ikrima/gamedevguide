@@ -6,7 +6,7 @@ sortIndex: 4
 
 Go to Window -> Developer Tools -> Debug Tools -> Test Suite. Shows all the different widgets
 
-![Useful_Slate_Code_Samples](....\assets\Useful_Slate_Code_Samples.png)
+![Useful_Slate_Code_Samples](../../..\assets\Useful_Slate_Code_Samples.png)
 
 ### Writing Custom Slate Widgets:
 
@@ -80,29 +80,29 @@ LOCTEXT("PIEComboToolTip", "Play-In-Editor options") );
 
 const TSharedRef&lt; IPropertyTable &gt; Table = Module.CreatePropertyTable();
 
-TArray&lt; UObject\* &gt; Objects;
+TArray< UObject* > Objects;
 
-for (int Count = 0; Count &lt; 50; Count++)
-
-{
-
-Objects.Add(NewObject&lt;UPropertyEditorTestObject&gt;());
-
-}
-
-Table-&gt;SetObjects( Objects );
-
-for (TFieldIterator&lt;UProperty&gt; PropertyIter( UPropertyEditorTestObject::StaticClass(), EFieldIteratorFlags::IncludeSuper); PropertyIter; ++PropertyIter)
+for (int Count = 0; Count < 50; Count++)
 
 {
 
-const TWeakObjectPtr&lt; UProperty &gt;& Property = \*PropertyIter;
-
-Table-&gt;AddColumn( Property );
+Objects.Add(NewObject<UPropertyEditorTestObject>());
 
 }
 
-Window-&gt;SetContent
+Table->SetObjects( Objects );
+
+for (TFieldIterator<UProperty> PropertyIter( UPropertyEditorTestObject::StaticClass(), EFieldIteratorFlags::IncludeSuper); PropertyIter; ++PropertyIter)
+
+{
+
+const TWeakObjectPtr< UProperty >& Property = *PropertyIter;
+
+Table->;AddColumn( Property );
+
+}
+
+Window->SetContent
 
 (
 
@@ -148,7 +148,7 @@ FAssetPickerConfig **AssetPickerConfig**;
         **AssetPickerConfig**.bShowBottomToolbar = false;
         **AssetPickerConfig**.bAutohideSearchBar = bInFavoritesMode ? true : false;
 
-**AssetPickerConfig**.Filter.ClassNames.Add(UEditorUtilityBlueprint::StaticClass()-&gt;GetFName());
+**AssetPickerConfig**.Filter.ClassNames.Add(UEditorUtilityBlueprint::StaticClass()->GetFName());
         if (bInFavoritesMode)
         {
                 new (**AssetPickerConfig**.Collections) FCollectionNameType(BlutilityModule::**BlutilityShelfCollectionName**, ECollectionShareType::CST_Local);
@@ -170,18 +170,18 @@ ChildSlot
 ```js
 const bool bPressedOk = SClassPickerDialog::PickClass(TitleText, Options, ChosenClass, UDataAsset::StaticClass());
 
-FClassViewerModule& ClassViewerModule = FModuleManager::LoadModuleChecked&lt;FClassViewerModule&gt;("ClassViewer");
+FClassViewerModule& ClassViewerModule = FModuleManager::LoadModuleChecked<FClassViewerModule>;("ClassViewer");
 
-TSharedRef&lt;SWidget&gt; ClassViewer = ClassViewerModule.CreateClassViewer(Options, FOnClassPicked::CreateRaw(this, &FBBProcSeqCapObjEditorBinding::HandleProcSeqContextClassPicked));
+TSharedRef<SWidget> ClassViewer = ClassViewerModule.CreateClassViewer(Options, FOnClassPicked::CreateRaw(this, &FBBProcSeqCapObjEditorBinding::HandleProcSeqContextClassPicked));
 
 Create Dynamic Context Menu:
 
-FLevelEditorModule& **LevelEditorModule** = FModuleManager::GetModuleChecked&lt;FLevelEditorModule&gt;( "LevelEditor");
-        TSharedPtr&lt; ILevelEditor &gt; **LevelEditor** = **LevelEditorModule**.GetFirstLevelEditor();
+FLevelEditorModule& **LevelEditorModule** = FModuleManager::GetModuleChecked<FLevelEditorModule>( "LevelEditor");
+        TSharedPtr< ILevelEditor > **LevelEditor** = **LevelEditorModule**.GetFirstLevelEditor();
 
-TSharedPtr&lt;SWidget&gt; **MenuWidget**;
+TSharedPtr<SWidget> **MenuWidget**;
 
-if (**ComponentsWithSockets**.Num() &gt; 1)
+if (**ComponentsWithSockets**.Num() > 1)
         {                        
                 **MenuWidget** = 
                         SNew(SComponentChooserPopup)

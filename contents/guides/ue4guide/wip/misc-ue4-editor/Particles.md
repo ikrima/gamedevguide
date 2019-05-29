@@ -1,3 +1,7 @@
+---
+sortIndex: 1
+---
+
 <https://www.imbuefx.com/downloads/vfx-quick-tips-introduction-to-gpu-lit-particles-in-unreal-engine-4/>
 
 <https://www.imbuefx.com/>

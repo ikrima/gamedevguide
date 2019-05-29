@@ -90,6 +90,6 @@ And extend Scene->GetBasePassDrawList&lt;LightMapPolicyType>(DrawType);
 
 BaseDrawingPolicy::
 
-SetSharedState
+​	SetSharedState
 
-SetMeshRenderState
+​	SetMeshRenderState

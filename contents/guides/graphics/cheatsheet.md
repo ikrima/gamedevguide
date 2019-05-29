@@ -40,7 +40,6 @@ sortIndex: 2
 - measures efficacy of a light turning watts into lumens
 - $\mathrm{lm} / \mathrm{W}$
 
-
 | Illuminance (lux) | Surfaces illuminated by                           |
 | ----------------- | ------------------------------------------------- |
 | 0.0001            | Moonless, overcast night sky (starlight)[3]       |

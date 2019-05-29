@@ -1,3 +1,7 @@
+---
+sortIndex: 8
+---
+
 **Efficient implementation of custom grading/adding custom post process pass**
 
 - Look at deferred decals/deferred decal mesh (PostProcessDeferredDecals.cpp & PostProcessMeshDecals.cpp)

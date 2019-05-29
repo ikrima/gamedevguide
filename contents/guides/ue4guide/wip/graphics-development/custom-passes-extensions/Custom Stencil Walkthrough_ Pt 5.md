@@ -1,3 +1,7 @@
+---
+sortIndex: 7
+---
+
 DONE: LODDither not tested.
 
 DONE: Parallel render paths need updated to work.
@@ -26,7 +30,7 @@ DepthEnable: {True, False}
 
 DepthWriteMask: 8bits
 
-Cmp: {False, True, !=, ==, &lt;, &lt;=, >, >= }
+Cmp: {False, True, !=, ==, &lt;, >=, >, >= }
 
 StencilEnable: {True, False}
 
@@ -49,5 +53,3 @@ StencilFail_Depth\*: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP
 StencilPass_DepthFail: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP_INVERT, OP_INCR, OP_DECR}
 
 StencilPass_DepthPass: {OP_KEEP, OP_ZERO, OP_REPLACE, OP_INCR_SAT, OP_DECR_SAT, OP_INVERT, OP_INCR, OP_DECR}
-
-* * *

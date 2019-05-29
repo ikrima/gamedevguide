@@ -1,16 +1,20 @@
+---
+sortIndex: 6
+---
+
 # Stencil Layers
 
-Properties to expose:
+##### Properties to expose:
 
 L1_StencilMesh.twosided (Handled
 
 L1_StencilMesh.reverse
 
-Prepass:
+##### Prepass:
 
 Draw L0_Geo
 
-Draw L1_StencilMesh
+##### Draw L1_StencilMesh
 
 : depth cmp &lt;= L1_StencilMesh.bNotInDbgForceAlways ? near : always
 
@@ -20,7 +24,7 @@ Draw L1_StencilMesh
 
 : stencil_cmp >= L0_StencilRef
 
-Draw L1_Geo:
+##### Draw L1_Geo:
 
 : depth cmp &lt;= near
 
@@ -30,7 +34,7 @@ Draw L1_Geo:
 
 : stencil_write = Keep
 
-Draw L2_StencilMesh
+##### Draw L2_StencilMesh
 
 : depth cmp &lt;= L2_StencilMesh.bNotInDbgForceAlways ? near : always
 
@@ -40,13 +44,13 @@ Draw L2_StencilMesh
 
 : stencil_cmp =>
 
-if L2_StencilMesh.bIsScopedToPreviousLayer
+​	if L2_StencilMesh.bIsScopedToPreviousLayer
 
-? GreaterOrEq to StencilRef_L2
+​	? GreaterOrEq to StencilRef_L2
 
-: Always
+​	: Always
 
-Draw L2_Geo:
+##### Draw L2_Geo:
 
 : depth cmp &lt;= near
 
@@ -56,13 +60,13 @@ Draw L2_Geo:
 
 : stencil_write = Keep
 
-FINAL LAYER:
+##### FINAL LAYER:
 
 : depth cmp &lt;= near
 
 : Avatar/Asteroids
 
-Question:
+##### Question:
 
 : What happens when you're inside?
 
@@ -70,9 +74,10 @@ Question:
 
 : Objects that cross the boundary of portal
 
-Basepass:
+##### Basepass:
 
 Draw everything with depth_cmp = equal
 
-Translucents:  
+##### Translucents:
+
 Draw everything in its already sorted back-to-front order, Because this pass hasn't primed the depth we can't use depth_cmd = equal to scope. We need to just let these draw and rely on artist constraints to stop particles/transparents from crossing the portal boundaries unless intended that way (smoke pouring out a hell portal for example).

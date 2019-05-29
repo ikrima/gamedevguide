@@ -1,4 +1,8 @@
-# <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/index.html>
+---
+sortIndex: 24
+---
+
+<https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/index.html>
 
 <https://docs.unrealengine.com/latest/INT/Programming/Gameplay/Framework/QuickReference/index.html>
 
@@ -80,36 +84,37 @@ The UpdateViewTarget function in PlayerCameraManager queries the ViewTarget and 
 
 A game is made up of a GameMode and GameState. Human players joining the game are associated with PlayerControllers. These PlayerControllers allow players to possess pawns in the game so they can have physical representations in the level. PlayerControllers also give players input controls, a heads-up display, or HUD, and a PlayerCameraManager for handling camera views.
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/index.html>>*
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/index.html>*
 
 UObject: Base class for all UE4 objects
 
 - Actor: Base spawnable class
+
 - Pawns:
   - Can be possessed by Controller.
   - Pawn not assumed to be humanoid
+
 - weee
   - ooo
     - kkk
 
-\--Character:
-\-Humanoid specialized Pawn
+- Character:
+  - Humanoid specialized Pawn
+  - CapsuleComponent for collision detection
+  - CharacterMovement for movement \* Replicates movement smoothly across network
 
-- CapsuleComponent for collision detection
-- CharacterMovement for movement \* Replicates movement smoothly across network
+- Controller: Actors that possesses/control pawns
 
-  - Controller: Actors that possesses/control pawns
+  - PlayerController: Interface between Pawn & human
 
-    - PlayerController: Interface between Pawn & human
+  - AI: Computer driven controller
 
-    - AI: Computer driven controller
+- HUD: Class responsible for HUD
 
-  - HUD: Class responsible for HUD
+- CameraActor: Wraps Camera Component so you can drop it into the scene
 
-  - CameraActor: Wraps Camera Component so you can drop it into the scene
+- GameMode: Defines rules of the game
 
-  - GameMode: Defines rules of the game
+  - GameState: State of the game (# of players connected, chess piece locations in game, etc)
 
-    - GameState: State of the game (# of players connected, chess piece locations in game, etc)
-
-    - PlayerState: State of each player (name of player, whether they're carrying flag, etc)
+  - PlayerState: State of each player (name of player, whether they're carrying flag, etc)

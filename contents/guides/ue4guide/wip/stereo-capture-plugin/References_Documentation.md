@@ -1,3 +1,7 @@
+---
+sortIndex: 2
+---
+
 <http://mathproofs.blogspot.com/2005/07/mapping-cube-to-sphere.html>
 
 <http://mathproofs.blogspot.com/2005/07/mapping-square-to-circle.html>

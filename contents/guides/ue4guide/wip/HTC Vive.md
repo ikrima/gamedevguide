@@ -1,3 +1,7 @@
+---
+sortIndex: 26
+---
+
 UE4 Setup: <https://forums.unrealengine.com/showthread.php?73239-Unreal-Setup-for-HTC-Vive>
 
 Motion Controller Setup: <https://docs.unrealengine.com/latest/INT/Platforms/VR/MotionController/index.html>
@@ -6,7 +10,7 @@ SteamVR Controller: <https://forums.unrealengine.com/showthread.php?74817-Steam-
 
 Controller Trigger Inputs in UE4: <http://steamcommunity.com/app/358720/discussions/0/521643320352268286/>
 
-Debug Key Commands
+#### Debug Key Commands
 
 I mentioned the existence of Aaron's SteamVR debug keys to a few folks and no one knew what I was talking about but were very interested in getting the info, so I'm pasting Aaron's notes below for posterity.
 
@@ -24,4 +28,4 @@ I mentioned the existence of Aaron's SteamVR debug keys to a few folks and no on
 
 **Other useful notes:** Left click will regain fullscreen exclusive status in the event Windows kicks it out (usually due to another window overlapping onto its part of the desktop).
 
-*From &lt;<http://steamcommunity.com/app/358720/discussions/0/520518053451174524/>>*
+*Reference From <http://steamcommunity.com/app/358720/discussions/0/520518053451174524/>*

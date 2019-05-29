@@ -1,6 +1,11 @@
+---
+sortIndex: 3
+---
+
 Add defaults to custom material properties (eg MP_CustomData2) in:
 
-int32 FMaterialAttributeDefintion::CompileDefaultValue(FMaterialCompiler\* Compiler)
+```cpp
+int32 FMaterialAttributeDefintion::CompileDefaultValue(FMaterialCompiler* Compiler)
 
 {
 
@@ -33,3 +38,4 @@ case MP_CustomData3: Ret = Compiler->Constant(0.0f); break;
 }
 
 // @third party code - END Bebylon
+```

@@ -18,4 +18,4 @@ r.TranslucencyLightingVolumeInnerDistance
 
 r.TranslucencyLightingVolumeOuterDistance
 
-Inner & Outer distance are the ones to change for getting around the popping.
+Inner & Outer distance are the ones to change for getting around the popping
