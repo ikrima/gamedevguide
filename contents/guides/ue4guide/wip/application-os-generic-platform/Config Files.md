@@ -104,14 +104,13 @@ GGameUserSettingsIni | GameUserSettings /\* User Game Settings ini filename \*/
 
   `UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
 
-
 - Get the name by this:
 
-   `GetClass()->GetDefaultConfigFilename()`
+   `cpp>GetClass()->GetDefaultConfigFilename()`
 
    **or**
 
-  `ConfigFileName = uobj->GetDefaultConfigFilename();`
+  `cpp>ConfigFileName = uobj->GetDefaultConfigFilename();`
 
 - Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
 
@@ -168,7 +167,7 @@ The below file hierarchy example is for the Engine category of configuration f
 
 Typical configuration files consist of sections of key-value pairs, arranged as follows:
 
-\[Section] 
+\[Section]
 Key=Value
 
 **Special Characters**
@@ -183,9 +182,9 @@ Key=Value
 
 **Note**: **.* is like *+** except it will potentially add a duplicate line. This is useful for the bindings (as seen in DefaultInput.ini), for instance, where the bottom-most binding takes effect, so if you add something like:
 
-\[/Script/Engine.PlayerInput] 
-Bindings=(Name="Q",Command="Foo") 
-.Bindings=(Name="Q",Command="Bar") 
+\[/Script/Engine.PlayerInput]
+Bindings=(Name="Q",Command="Foo")
+.Bindings=(Name="Q",Command="Bar")
 .Bindings=(Name="Q",Command="Foo")
 
 It will work appropriately. Using a *+* there would fail to add the last line, and your bindings would be incorrect. Due to configuration file combining, the above usage pattern can happen.
@@ -199,7 +198,7 @@ It will work appropriately. Using a *+* there would fail to add the last line,
 
 Most people seem to be under the impression that the semicolon denotes comments in configuration files, but they aren't (FConfigFile::ProcessInputFileContents doesn't actually treat them, or any other string, as a comment delimiter). This behavior is intentional. Technically any character can represent a different key-value pair. Typically, a semicolon is placed at the beginning of a new line. It works like a comment, but it's not actually.
 
-; This is a Comment 
+; This is a Comment
 ; So is this!
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*

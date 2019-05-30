@@ -1,5 +1,5 @@
 // 3rd
-// import './src/styles/antd.less'
+// import './src/styles/antd.less';
 import './src/styles/bootstrap/bootstrap.scss';
 // // custom
 import './src/styles/layout.scss';
