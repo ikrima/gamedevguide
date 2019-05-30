@@ -7,11 +7,11 @@ sortIndex: 10
 For Cooked Builds that are run from editor, visual studio, or run.py, they are in
 
 ```cpp
-"BBR\\Saved\\Cooked\\WindowsNoEditor\\BBR\\Saved\\Config\\WindowsNoEditor\\"
+"BBR\Saved\Cooked\WindowsNoEditor\BBR\Saved\Config\WindowsNoEditor\"
 
 Staged or Packaged Builds:
 
-"BBR\\Saved\\StagedBuilds\\WindowsNoEditor\\BBR\\Config\\"
+"BBR\Saved\StagedBuilds\WindowsNoEditor\BBR\Config\"
 ```
 
 # General Paths:

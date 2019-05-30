@@ -10,15 +10,17 @@ sortIndex: 7
 
 - You can specify debug bindings by adding this to DefaultInput.ini
 
-  \[/Script/Engine.PlayerInput]
+```cpp
+ \[/Script/Engine.PlayerInput]
 
-  \+DebugExecBindings=(Key=L,Command="ToggleInfiniteAmmo")
+ +DebugExecBindings=(Key=L,Command="ToggleInfiniteAmmo")
 
-  \+DebugExecBindings=(Key=L,Command="ToggleInfiniteClip", Control=True)
+ +DebugExecBindings=(Key=L,Command="ToggleInfiniteClip", Control=True)
 
-  \+DebugExecBindings=(Key=T,Command="ToggleMatchTimer")
+ +DebugExecBindings=(Key=T,Command="ToggleMatchTimer")
 
-  \+DebugExecBindings=(Key=T, Command="ForceMatchStart", Control=True)
+ +DebugExecBindings=(Key=T, Command="ForceMatchStart", Control=True)
+```
 
 - BaseInput.ini has debugexecbindings that control the debug viewmodes through the F1-F7 keys
 

@@ -64,15 +64,11 @@ Override UAssetManager::ShouldSetManager for your project, this is the function 
 
 *Reference From <https://udn.unrealengine.com/questions/452756/view.html>*
 
-/\*\*
-
 - External modules can have additional data associated with this UWorld.
 
 - This is a list of per module world data objects. These aren't
 
 - loaded/saved by default.
-
-\*/
 
 UPROPERTY(Transient)
 
@@ -88,7 +84,7 @@ TArray&lt;UObject\*>                              
          * @param bAllowClear If true, add None option to top  
          * @param bAlowAll If true, add All Types option to bottom, returns AllPrimaryAssetTypes if selected  
          */  
-        static TSharedRef&lt;SWidget> MakePrimaryAssetTypeSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetType OnSetType, bool bAllowClear = true, bool bAllowAll = false);
+        static TSharedRef<SWidget> MakePrimaryAssetTypeSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetType OnSetType, bool bAllowClear = true, bool bAllowAll = false);
 
 /**   
          * Creates a simple version of a Primary Asset Id selector, not bound to a PropertyHandle  
@@ -96,8 +92,8 @@ TArray&lt;UObject\*>                              
          * @param OnSetId Delegate called when id is changed  
          * @param bAllowClear If true, add None option to top  
          */  
-        static TSharedRef&lt;SWidget> MakePrimaryAssetIdSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetId OnSetId, bool bAllowClear = true, TArray&lt;FPrimaryAssetType> AllowedTypes = TArray&lt;FPrimaryAssetType>());
+        static TSharedRef<SWidget> MakePrimaryAssetIdSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetId OnSetId, bool bAllowClear = true, TArray<FPrimaryAssetType> AllowedTypes = TArray<FPrimaryAssetType>());
 
-/** Called to get list of valid primary asset types */  
-        static void GeneratePrimaryAssetTypeComboBoxStrings(TArray&lt; TSharedPtr&lt;FString> >> OutComboBoxStrings, TArray&lt;TSharedPtr&lt;SToolTip>>> OutToolTips, TArray&lt;bool>> OutRestrictedItems, bool bAllowClear, bool bAllowAll);
+** Called to get list of valid primary asset types *  
+        static void GeneratePrimaryAssetTypeComboBoxStrings(TArray< TSharedPtr<FString> >> OutComboBoxStrings, TArray<TSharedPtr<SToolTip>>> OutToolTips, TArray<bool>> OutRestrictedItems, bool bAllowClear, bool bAllowAll);
 ```

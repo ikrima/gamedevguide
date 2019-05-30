@@ -1,9 +1,14 @@
-## **Purpose**
+---
+sortindex: 32
+---
+
+## Purpose
 
 Visual Log has been implemented as a helper in debugging gameplay issues by gathering information and presenting it in a visual manner. This approach proved to be very powerful while developing and shipping Bulletstorm. It’s remarkable how simply seeing logged data in a spatial context speeds up debugging.
 
-## **Misc:**
+## Misc:
 
+```cpp
 FDebugRenderSceneProxy: Debug Render primitive that extends FPrimitiveSceneProxy:
 
 - Look at FVisualLoggerSceneProxy for simple extension
@@ -12,7 +17,7 @@ FDebugRenderSceneProxy: Debug Render primitive that extends FPrimitiveSceneProxy
 
 Serialize ue4 data to binary blob with memory compression:
 
-void UEnvQueryDebugHelpers::DebugDataToBlobArray(EQSDebug::FQueryData& EQSLocalData, TArray&lt;uint8>& BlobArray, bool bUseCompression)
+void UEnvQueryDebugHelpers::DebugDataToBlobArray(EQSDebug::FQueryData& EQSLocalData, TArray<uint8>& BlobArray, bool bUseCompression)
 
 {
 
@@ -22,7 +27,7 @@ if (!bUseCompression)
 
 FMemoryWriter ArWriter(BlobArray);
 
-ArWriter &lt;&lt; EQSLocalData;
+ArWriter << EQSLocalData;
 
 }
 
@@ -30,27 +35,27 @@ else
 
 {
 
-TArray&lt;uint8> UncompressedBuffer;
+TArray<uint8> UncompressedBuffer;
 
 FMemoryWriter ArWriter(UncompressedBuffer);
 
-ArWriter &lt;&lt; EQSLocalData;
+ArWriter << EQSLocalData;
 
 const int32 UncompressedSize = UncompressedBuffer.Num();
 
 const int32 HeaderSize = sizeof(int32);
 
-BlobArray.Init(0, HeaderSize + FMath::TruncToInt(1.1f \* UncompressedSize));
+BlobArray.Init(0, HeaderSize + FMath::TruncToInt(1.1f * UncompressedSize));
 
 int32 CompressedSize = BlobArray.Num() - HeaderSize;
 
-uint8\* DestBuffer = BlobArray.GetData();
+uint8* DestBuffer = BlobArray.GetData();
 
 FMemory::Memcpy(DestBuffer, &UncompressedSize, HeaderSize);
 
 DestBuffer += HeaderSize;
 
-FCompression::CompressMemory((ECompressionFlags)(COMPRESS_ZLIB | COMPRESS_BiasMemory), (void\*)DestBuffer, CompressedSize, (void\*)UncompressedBuffer.GetData(), UncompressedSize);
+FCompression::CompressMemory((ECompressionFlags)(COMPRESS_ZLIB | COMPRESS_BiasMemory), (void*)DestBuffer, CompressedSize, (void*)UncompressedBuffer.GetData(), UncompressedSize);
 
 BlobArray.SetNum(CompressedSize + HeaderSize, false);
 
@@ -58,7 +63,7 @@ BlobArray.SetNum(CompressedSize + HeaderSize, false);
 
 }
 
-void UEnvQueryDebugHelpers::BlobArrayToDebugData(const TArray&lt;uint8>& BlobArray, EQSDebug::FQueryData& EQSLocalData, bool bUseCompression)
+void UEnvQueryDebugHelpers::BlobArrayToDebugData(const TArray<uint8>& BlobArray, EQSDebug::FQueryData& EQSLocalData, bool bUseCompression)
 
 {
 
@@ -68,7 +73,7 @@ if (!bUseCompression)
 
 FMemoryReader ArReader(BlobArray);
 
-ArReader &lt;&lt; EQSLocalData;
+ArReader << EQSLocalData;
 
 }
 
@@ -76,13 +81,13 @@ else
 
 {
 
-TArray&lt;uint8> UncompressedBuffer;
+TArray<uint8> UncompressedBuffer;
 
 int32 UncompressedSize = 0;
 
 const int32 HeaderSize = sizeof(int32);
 
-uint8\* SrcBuffer = (uint8\*)BlobArray.GetData();
+uint8* SrcBuffer = (uint8*)BlobArray.GetData();
 
 FMemory::Memcpy(&UncompressedSize, SrcBuffer, HeaderSize);
 
@@ -92,11 +97,11 @@ const int32 CompressedSize = BlobArray.Num() - HeaderSize;
 
 UncompressedBuffer.AddZeroed(UncompressedSize);
 
-FCompression::UncompressMemory((ECompressionFlags)(COMPRESS_ZLIB), (void\*)UncompressedBuffer.GetData(), UncompressedSize, SrcBuffer, CompressedSize);
+FCompression::UncompressMemory((ECompressionFlags)(COMPRESS_ZLIB), (void*)UncompressedBuffer.GetData(), UncompressedSize, SrcBuffer, CompressedSize);
 
 FMemoryReader ArReader(UncompressedBuffer);
 
-ArReader &lt;&lt; EQSLocalData;
+ArReader << EQSLocalData;
 
 }
 
@@ -104,17 +109,18 @@ ArReader &lt;&lt; EQSLocalData;
 
 Register Visual Logger Drawing Extension:
 
-\#if WITH_EDITOR && ENABLE_VISUAL_LOG
+#if WITH_EDITOR && ENABLE_VISUAL_LOG
 
-FVisualLogger::Get().RegisterExtension(\*EVisLogTags::TAG_EQS, &VisualLoggerExtension);
+FVisualLogger::Get().RegisterExtension(*EVisLogTags::TAG_EQS, &VisualLoggerExtension);
 
-\#endif
+#endif
 
 class FVisualLoggerExtension : public FVisualLogExtensionInterface
 
 {}
+```
 
-## **Logging**
+## Logging
 
 Visual Log gathers data in two ways:
 
@@ -136,7 +142,7 @@ UE_VLOG_SEGMENT(Actor, SegmentStart, SegmentEnd, Color, DescriptionFormat, ...)
 
 “Spatial” information logged with Visual Log will be presented along with any other data logged within that frame when viewing log.
 
-#### **Logging actor’s hierarchy**
+#### Logging actor’s hierarchy
 
 It can happen we want logs of one actor to be associated with logs of another, like for example we’d like to have Weapon’s logs to be added to Pawn’s log. It’s possible and can be done by using these two macros:
 
@@ -144,11 +150,11 @@ It can happen we want logs of one actor to be associated with logs of another, l
 
 - REDIRECT_ACTOR_TO_VLOG(SrcActor, OtherActor) – makes logs of SrcActor to be added to OtherActor’s
 
-### **Viewing Log**
+### Viewing Log
 
 A tool has been created to enable users (not only programmers) to view gathered information. It’s a very basic implementation that will be developed further, but it’s already usable and supplies basic functionality. The name is LogVisualizer and here is roughly what it does:
 
-![image1 (C:\devguide\conversion\FINISHED\assets\image1 (2).png)]\(C:\\devguide\\conversion\\INPROG\\assets\\media\\image1 (2).png)
+![](.../.././assets\vislog.png)
 
 - Recording start/stop button
 
@@ -180,7 +186,7 @@ A tool has been created to enable users (not only programmers) to view gathered 
 
   To run Log Visualizer just type **VisLog** in console.
 
-### **Limitations and Future plans**
+### Limitations and Future plans
 
 There are a number of features that are missing to claim Visual Log a full featured tool (although it can already be a huge help!). Here’s a brief list:
 
@@ -200,4 +206,4 @@ There are a number of features that are missing to claim Visual Log a full featu
 
 - Future feature: filtering log entries with string so that we can instantly see which entries contain requested text. There’s also a huge list of features I hadn’t come up with yet, so if you have any idea just let me know!
 
-*From <https://answers.unrealengine.com/questions/3675/enable-visual-log-grabdebugsnapsho.html>*
+*Reference From <https://answers.unrealengine.com/questions/3675/enable-visual-log-grabdebugsnapsho.html>*

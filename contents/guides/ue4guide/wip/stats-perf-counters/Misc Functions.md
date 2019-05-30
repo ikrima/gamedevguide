@@ -17,7 +17,7 @@ checkStats(ScopeEnd.NameAndInfo.GetField<EStatOperation>() == EStatOperation::Cy
 
 FStatMessage Result(ScopeStart);
 
-Result.NameAndInfo.SetField&lt;EStatOperation>(EStatOperation::Set);
+Result.NameAndInfo.SetField<EStatOperation>(EStatOperation::Set);
 
 Result.NameAndInfo.SetFlag(EStatMetaFlags::IsPackedCCAndDuration, true);
 

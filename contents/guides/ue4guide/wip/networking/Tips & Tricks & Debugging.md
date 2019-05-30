@@ -2,6 +2,7 @@
 
 Console commands Simulate network packet loss/lag/congestion/latency:
 
+```cpp
 Net PktLoss=1
 
 net pktlossburst=x
@@ -15,6 +16,7 @@ Net PktLag=75
 Net PktLagVariance=0
 
 DumpOnlineSessionState
+```
 
 Debug Character Movement/Client Side prediction:
 
@@ -22,11 +24,15 @@ Debug Character Movement/Client Side prediction:
 
 - Control lifetime of visualizations
 
+```cpp
   p.NetCorrectionLifetime 5
+```
 
 - Verbose logging
 
+```cpp
   log lognetplayermovement verbose
+```
 
 LogNet: Verbose info on channels/connections
 
@@ -72,53 +78,53 @@ LogRepTraffic Log
 
 ## Stats
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Net Tick Time"),STAT_NetWorldTickTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Net Tick Time"),STAT_NetWorldTickTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Nav Tick Time"),STAT_NavWorldTickTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Nav Tick Time"),STAT_NavWorldTickTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Reset Async Trace Time"),STAT_ResetAsyncTraceTickTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Reset Async Trace Time"),STAT_ResetAsyncTraceTickTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("GT Tickable Time"),STAT_TickableTickTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("GT Tickable Time"),STAT_TickableTickTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Runtime Movie Tick Time"),STAT_RuntimeMovieSceneTickTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Runtime Movie Tick Time"),STAT_RuntimeMovieSceneTickTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Finish Async Trace Time"),STAT_FinishAsyncTraceTickTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Finish Async Trace Time"),STAT_FinishAsyncTraceTickTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Net Broadcast Tick Time"),STAT_NetBroadcastTickTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Net Broadcast Tick Time"),STAT_NetBroadcastTickTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("ServerReplicateActors Time"),STAT_NetServerRepActorsTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("ServerReplicateActors Time"),STAT_NetServerRepActorsTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Consider Actors Time"),STAT_NetConsiderActorsTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Consider Actors Time"),STAT_NetConsiderActorsTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Update Unmapped Objects Time"),STAT_NetUpdateUnmappedObjectsTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Update Unmapped Objects Time"),STAT_NetUpdateUnmappedObjectsTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Inital Dormant Time"),STAT_NetInitialDormantCheckTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Inital Dormant Time"),STAT_NetInitialDormantCheckTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Prioritize Actors Time"),STAT_NetPrioritizeActorsTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Prioritize Actors Time"),STAT_NetPrioritizeActorsTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Replicate Actor Time"),STAT_NetReplicateActorTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Replicate Actor Time"),STAT_NetReplicateActorTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Dynamic Property Rep Time"),STAT_NetReplicateDynamicPropTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Dynamic Property Rep Time"),STAT_NetReplicateDynamicPropTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Dynamic Property Compare Time"),STAT_NetReplicateDynamicPropCompareTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Dynamic Property Compare Time"),STAT_NetReplicateDynamicPropCompareTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Dynamic Property Send Time"),STAT_NetReplicateDynamicPropSendTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Dynamic Property Send Time"),STAT_NetReplicateDynamicPropSendTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Dynamic Property Send BackCompat Time"),STAT_NetReplicateDynamicPropSendBackCompatTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Dynamic Property Send BackCompat Time"),STAT_NetReplicateDynamicPropSendBackCompatTime,STATGROUP_Game, );
 
-DECLARE_DWORD_COUNTER_STAT_EXTERN(TEXT("Skipped Dynamic Props"),STAT_NetSkippedDynamicProps,STATGROUP_Game, );
+    DECLARE_DWORD_COUNTER_STAT_EXTERN(TEXT("Skipped Dynamic Props"),STAT_NetSkippedDynamicProps,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("NetSerializeItemDelta Time"),STAT_NetSerializeItemDeltaTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("NetSerializeItemDelta Time"),STAT_NetSerializeItemDeltaTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("NetUpdateGuidToReplicatorMap Time"), STAT_NetUpdateGuidToReplicatorMap,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("NetUpdateGuidToReplicatorMap Time"), STAT_NetUpdateGuidToReplicatorMap,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Static Property Rep Time"),STAT_NetReplicateStaticPropTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Static Property Rep Time"),STAT_NetReplicateStaticPropTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Rebuild Conditionals"),STAT_NetRebuildConditionalTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Rebuild Conditionals"),STAT_NetRebuildConditionalTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Net Post BC Tick Time"),STAT_NetBroadcastPostTickTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Net Post BC Tick Time"),STAT_NetBroadcastPostTickTime,STATGROUP_Game, );
 
-DECLARE_CYCLE_STAT_EXTERN(TEXT("Net PackageMap SerializeObject"),STAT_PackageMap_SerializeObjectTime,STATGROUP_Game, );
+    DECLARE_CYCLE_STAT_EXTERN(TEXT("Net PackageMap SerializeObject"),STAT_PackageMap_SerializeObjectTime,STATGROUP_Game, );
 
 ## Debug networking on local machine with VR (launch order important!)
 
@@ -144,9 +150,11 @@ If your project is a code project with a \*.Build.cs file, you'll need a depende
 
 For both code and blueprint projects, you also need to set the DefaultPlatformService in your DefaultEngine.ini file, like this:
 
+```cpp
 [OnlineSubsystem]
 
 DefaultPlatformService=Null
+```
 
 ## How To Check If Player Is Local vs Server
 
@@ -167,9 +175,9 @@ UEngine::GetNetMode
 Which calls these functions
 
 ```cpp
-FPlatformProperties::IsServerOnly()
-FPlatformProperties::IsGameOnly()
-IsRunningDedicatedServer()
+FPlatformProperties::IsServerOnly()  
+FPlatformProperties::IsGameOnly()  
+IsRunningDedicatedServer()  
 IsRunningGame()
 
 IsRunningClientOnly()
@@ -184,72 +192,72 @@ UWorld
 
 bool IsPlayInEditor() const;
 
-/** Returns whether script is executing within a preview window */
+/** Returns whether script is executing within a preview window */  
         bool IsPlayInPreview() const;
 
-/** Returns whether script is executing within a mobile preview window */
+/** Returns whether script is executing within a mobile preview window */  
         bool IsPlayInMobilePreview() const;
 
-/** Returns whether script is executing within a vulkan preview window */
+/** Returns whether script is executing within a vulkan preview window */  
         bool IsPlayInVulkanPreview() const;
 
-/** Returns true if this world is any kind of game world (including PIE worlds) */
+/** Returns true if this world is any kind of game world (including PIE worlds) */  
         bool IsGameWorld() const;
 
-/** Returns true if this world is a preview game world (blueprint editor) */
+/** Returns true if this world is a preview game world (blueprint editor) */  
         bool IsPreviewWorld() const;
 
 GetWorld()->WorldType
 
-namespace EWorldType
-{
-        enum Type
-        {
-                /** An untyped world, in most cases this will be the vestigial worlds of streamed in sub-levels */
+namespace EWorldType  
+{  
+        enum Type  
+        {  
+                /** An untyped world, in most cases this will be the vestigial worlds of streamed in sub-levels */  
                 None,
 
-/** The game world */
+/** The game world */  
                 Game,
 
-/** A world being edited in the editor */
+/** A world being edited in the editor */  
                 Editor,
 
-/** A Play In Editor world */
+/** A Play In Editor world */  
                 PIE,
 
-/** A preview world for an editor tool */
+/** A preview world for an editor tool */  
                 EditorPreview,
 
-/** A preview world for a game */
+/** A preview world for a game */  
                 GamePreview,
 
-/** An editor world that was loaded but not currently being edited in the level editor */
-                Inactive
+/** An editor world that was loaded but not currently being edited in the level editor */  
+                Inactive  
         };
 
-/**
- * The network mode the game is currently running.
+/** 
+ * The network mode the game is currently running.  
  * @see <https://docs.unrealengine.com/latest/INT/Gameplay/Networking/Replication>
- */
-
-enum ENetMode
-{
-        /** Standalone: a game without networking, with one or more local players. Still considered a server because it has all server functionality. */
+ */ 
+    
+enum ENetMode 
+{ 
+        /** Standalone: a game without networking, with one or more local players. Still considered a server because it has all server functionality. */  
         NM_Standalone,
 
-/** Dedicated server: server with no local players. */
+/** Dedicated server: server with no local players. */ 
         NM_DedicatedServer,
 
-/** Listen server: a server that also has a local player who is hosting the game, available to other players on the network. */
+/** Listen server: a server that also has a local player who is hosting the game, available to other players on the network. */ 
         NM_ListenServer,
 
-/**
-         * Network client: client connected to a remote server.
-         * Note that every mode less than this value is a kind of server, so checking NetMode &lt; NM_Client is always some variety of server.
-         */
+/** 
+         * Network client: client connected to a remote server.  
+         * Note that every mode less than this value is a kind of server, so checking NetMode &lt; NM_Client is always some variety of server.  
+         */  
         NM_Client,
 
-NM_MAX,
+NM_MAX, 
 };
 ```
 
@@ -259,10 +267,12 @@ There is a config option for "ClientAuthorativePosition" \[sic, I know it's miss
 
 You set this in your game ini settings:
 
-1. [/Script/Engine.GameNetworkManager]
+```cpp
+[/Script/Engine.GameNetworkManager]
 
-1. MAXPOSITIONERRORSQUARED=625
+MAXPOSITIONERRORSQUARED=625
 
-1. ClientAuthorativePosition=true
+ClientAuthorativePosition=true
+```
 
 *Reference From <https://answers.unrealengine.com/questions/26116/able-to-replicate-movement-when-using-addmovement.html>*

@@ -34,11 +34,13 @@ There's a NeedsLoadForClient(), virtual bool NeedsLoadForEditorGame() const over
 
 Also To exclude stuff from dedicated client:
 
-\[CookSettings]
+```cpp
+[CookSettings]
 
 DedicatedClientExclusion
 
 DedicatedServerExclusion
+```
 
 <https://udn.unrealengine.com/questions/355061/is-there-existing-functionality-to-remove-server-b.html>
 
@@ -58,15 +60,17 @@ If you have blueprints here, they & their dependencies will force get added (<ht
 
 Conversely, if you cook without Pak option on windows, UAT's stager will strip content in folders named UWP, XboxOne, PS4, etc (<https://answers.unrealengine.com/questions/241947/additional-asset-directories-not-copied-to-package.html>)
 
+```cpp
 [UI]
 
-\+ContentDirectories=/Game/UI
++ContentDirectories=/Game/UI
 
-\+ContentDirectories=/Game/Widget
++ContentDirectories=/Game/Widget
 
-\+ContentDirectories=/Game/Widgets
++ContentDirectories=/Game/Widgets
 
-\+ContentDirectories=/Engine/MobileResources
++ContentDirectories=/Engine/MobileResources
+```
 
 **Set CanSkipEditorReferencedPackagesWhenCooking to true**
 

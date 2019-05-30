@@ -43,12 +43,12 @@ Absolute vs. Relative Import
 
 ### Logging:
 
-```cpp
+```python
 print("")
 
 import os
 
-os.environ\['HOME'] will retrieve the environment variable. os.environ is a dictionary
+os.environ['HOME'] will retrieve the environment variable. os.environ is a dictionary
 
 os.environ.get('KEY') will return None if the key doesn't exist instead of raising KeyError
 ```
@@ -61,7 +61,7 @@ os.environ.get('KEY') will return None if the key doesn't exist instead of raisi
 
 You can use glob:
 
-```cpp
+```python
 import glob 
 import os 
 os.chdir("/mydir")for file in glob.glob("*.txt"): 
@@ -95,7 +95,7 @@ next(os.walk('.')) [1]
 
 #### Renaming Script in directory and append number based on name sort order:
 
-```cpp
+```python
 import os, glob
 
 files = glob.glob('/Users/ikrima/src/MythlyRepos/CineX/Photogrammetry/CineX/TAJA/Distortion/renames/*.tif')
@@ -111,23 +111,23 @@ os.rename(files[i], os.path.join(os.path.dirname(files[i]), filename + ".%07d" 
 
 #### Executing shell commands
 
-```cpp
+```python
 os.system("some_command with args")
 ```
 
 *Reference From <http://stackoverflow.com/questions/89228/calling-an-external-command-in-python>*
 
-```cpp
+```python
 import subprocess
 
-proc = subprocess.Popen(\["cat", "/tmp/baz"], stdout=subprocess.PIPE) 
+proc = subprocess.Popen(["cat", "/tmp/baz"], stdout=subprocess.PIPE) 
 (out, err) = proc.communicate() 
 print "program output:", out
 ```
 
 #### Directory/Filesystem Traversal:
 
-```cpp
+```python
 os.chdir()/os.getcwd()
 ```
 
@@ -135,7 +135,7 @@ os.chdir()/os.getcwd()
 
 #### Object as dictionary:
 
-```cpp
+```python
 obj = Foo()
 
 dict(obj)
@@ -143,7 +143,7 @@ dict(obj)
 
 #### Unzip List of Tuples:
 
-```cpp
+```python
 zipper_list = [(1, 'a'), (2, 'b'), (3, 'c')]
 
 list_a, list_b = zip(*zipper_list)
@@ -161,7 +161,7 @@ f'This is inline string interpolation {bla:10}'
 
 Examples:
 
-```cpp
+```python
 f'{a:02}' => '01'S
 ```
 
@@ -169,7 +169,7 @@ f'{a:02}' => '01'S
 
 The general form of a standard format specifier is:
 
-```cpp
+```python
 [[fill]align] [sign] [#] [0] [minimumwidth] [.precision] [type]
 ```
 

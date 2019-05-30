@@ -82,13 +82,15 @@ Specular aliasing is an issue
 
 Give BP compiler hints on inlining functions. Look at KismetMathLibrary.h for details:
 
+```cpp
 // Conditionally inlined
 
-\#if KISMET_MATH_INLINE_ENABLED
+#if KISMET_MATH_INLINE_ENABLED
 
-\#include "KismetMathLibrary.inl"
+#include "KismetMathLibrary.inl"
 
-\#endif
+#endif
+```
 
 Game Thread Optimization:
 

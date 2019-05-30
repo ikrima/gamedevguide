@@ -67,7 +67,7 @@ Useful list from UE3: <https://docs.unrealengine.com/udk/Three/ConsoleCommands.h
 
 - How to improve light build times, look at the Lightmass statistics window
 
-The **Lighting Build Info** dialog is a very important tool for improving lighting build times. First, build lighting in the level that you want to see stats for. Then, open the dialog under *Build->Lighting Info->Light\`\`ing StaticMesh Info*. Change the drop down to *Lighting Build Info*. This will show a sorted list of meshes and how long they took to compute lighting for.
+The **Lighting Build Info** dialog is a very important tool for improving lighting build times. First, build lighting in the level that you want to see stats for. Then, open the dialog under *Build->Lighting Info->Lighting StaticMesh Info*. Change the drop down to *Lighting Build Info*. This will show a sorted list of meshes and how long they took to compute lighting for.
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Engine/Rendering/LightingAndShadows/Lightmass/#gettingthebestlightingbuildtimes>*
 

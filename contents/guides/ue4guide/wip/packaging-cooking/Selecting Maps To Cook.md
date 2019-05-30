@@ -6,15 +6,15 @@ sortIndex: 5
 
 **[Script/UnrealEd.ProjectPackagingSettings]**
 
-bCookAll: if true, cook everything in the content directory. This means that if you have an asset that is not referenced by any others, it will still end up in the cook. From this it follows that the list of maps to be cooked is simply all of them, even if they are not in any other .inis.
+- bCookAll: if true, cook everything in the content directory. This means that if you have an asset that is not referenced by any others, it will still end up in the cook. From this it follows that the list of maps to be cooked is simply all of them, even if they are not in any other .inis.
 
-bCookMapsOnly: this setting **only** has any effect if bCookAll is set. If it is true, "cook all" does not actually cook every asset, just all maps and the assets they reference.
+- bCookMapsOnly: this setting **only** has any effect if bCookAll is set. If it is true, "cook all" does not actually cook every asset, just all maps and the assets they reference.
 
-DirectoriesToAlwaysCook: like bCookAll for subdirectories. You can have more than one of these (possibly combined with DirectoriesToNeverCook) to get more fine-grained control than you would with bCookAll.
+- DirectoriesToAlwaysCook: like bCookAll for subdirectories. You can have more than one of these (possibly combined with DirectoriesToNeverCook) to get more fine-grained control than you would with bCookAll.
 
-bCookSinglePackage: affects MapsToCook behaviour (and nothing else), see below.
+- bCookSinglePackage: affects MapsToCook behaviour (and nothing else), see below.
 
-\+MapsToCook: which maps to cook if: (1) bCookSinglePackage is false (the default), and (2) there are no maps specified on the command line.
+- \+MapsToCook: which maps to cook if: (1) bCookSinglePackage is false (the default), and (2) there are no maps specified on the command line.
 
 **DefaultEditor.ini**
 

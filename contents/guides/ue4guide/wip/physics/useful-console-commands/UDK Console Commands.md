@@ -58,11 +58,11 @@ To use console commands, bring up the console by pressing Tab or Tilde (~), type
 
 Lists of commands can also be stored in text files in the system directory and executed by typing exec \_filename\_ at the console.
 
-## **Command List** 
+## Command List
 
 The following is a list of engine supported console commands...
 
-### **General Commands**
+### General Commands
 
 - **CANCEL** - tells the engine to cancel an in progress connection attempt
 
@@ -386,7 +386,7 @@ The following is a list of engine supported console commands...
 
 - **VIEWNAMES \[Number]** – Displays the last Number of names added to the name table.
 
-### **Statistics Commands**
+### Statistics Commands
 
 The STAT command is responsible for enabling the display of statistical data on the screen during runtime as well as controlling how and what data is shown. It can be used in conjunction with the following parameters to toggle on/off the display of statistics for the specified group of data (see [Stats Descriptions](https://api.unrealengine.com/udk/Three/StatsDescriptions.html) for more details):
 
@@ -540,7 +540,7 @@ STAT can also be used with the following parameters to modify settings about how
 
 - **STOPFILE** – Finish capturing stats file
 
-### **Memory and Performance Commands**
+### Memory and Performance Commands
 
 - **BEGINTRACKINGTHREAD** – Begins tracking the current thread.
 
@@ -602,12 +602,12 @@ STAT can also be used with the following parameters to modify settings about how
 
 - **TRIMMEMORY** – Attempts to return memory back to the OS from unused segments.
 
-### **Display Commands**
+### Display Commands
 
 - **GAMMA \[value]** – Modifies the display gamma level.
 - **SETRES \[height]x\[width]\[w|f]** - changes the resolution (w = windowed; f = fullscreen) for example: 800x600f
 
-### **Rendering Commands**
+### Rendering Commands
 
 - **AVAILABLETEXMEM** – Outputs the amount of available texture memory.
 
@@ -811,12 +811,12 @@ STAT can also be used with the following parameters to modify settings about how
 
 - **WIREFRAME** – Renders scene in a wireframe view.
 
-### **Texture Mip-Map Fading Commands**
+### Texture Mip-Map Fading Commands
 
 - **TOGGLEMIPFADE** - Toggles all texture fading on/off.
 - **PAUSERENDERCLOCK** - Pauses/unpauses the renderthread clock that's used by texture fading. Pausing it will freeze the fading. Any new textures that are streamed in will then be low-res (not fading in). Then you can togglemipfade or unpause the clock to see the difference (and measure performance).
 
-### **Physics Commands**
+### Physics Commands
 
 - **DUMPAWAKE** – Output list of all awake physical bodies.
 
@@ -956,7 +956,7 @@ STAT can also be used with the following parameters to modify settings about how
 
 - **DISCONNECT** – Disconnect from the remote debugger.
 
-### **Audio Commands**
+### Audio Commands
 
 - **AUDIO FLUSH TRUE** - flush all sound buffers
 - **DISABLELPF** – Disables the low pass filter on all sources for testing.
@@ -979,13 +979,13 @@ STAT can also be used with the following parameters to modify settings about how
 - **TESTLPF** – Sets the low pass filter to maximum on all audio sources for testing.
 - **TESTSTEREOBLEED** – Sets stereo bleed to maximum on all audio sources for testing.
 
-### **Networking Commands**
+### Networking Commands
 
 - **CRACKURL** - breaks down passed URL and parameters<sup>?</sup> to the engine for the map/game and displays all parameters
 - **PACKAGEMAP** – Outputs the packagemap for all open network connections to the log fil.
 - **SOCKETS** – Outputs a list of all open network connections to the log file.
 
-### **Still Captures and Demo Recording Commands**
+### Still Captures and Demo Recording Commands
 
 More information about this can be found in the [DemoRecording] document.
 
@@ -996,19 +996,19 @@ More information about this can be found in the [DemoRecording] document.
 - **SHOT / SCREENSHOT** – Takes a screenshot at the current screen resolution.
 - **TILEDSHOT \[factor]** – Takes a screenshot with the current resolution multiplied by the specified factor.
 
-### **Movie Capture**
+### Movie Capture
 
 More information about this can be found in the [MovieCapture](https://api.unrealengine.com/udk/Three/MovieCapture.html) document.
 
 - **STARTMOVIECAPTURE** – Start in-game movie capture.
 - **STOPMOVIECAPTURE** - Stop in-game movie capture.
 
-### **Gameplay Commands**
+### Gameplay Commands
 
 - **SAVEGAME** - tells the engine to save the current game state. See SavingAndLoadingGames<sup>?</sup> for more info.
 - **SAY** - GUI server only
 
-### **Navigation and Pathfinding Commands**
+### Navigation and Pathfinding Commands
 
 - **ADDLONGREACHSPECS \[option]** – Add long range reach specs. Option is:
 
@@ -1048,7 +1048,7 @@ More information about this can be found in the [MovieCapture](https://api.unrea
 
   - **ENABLED=** - Whether to enable or disable path collsiions.
 
-### **User Interface Commands**
+### User Interface Commands
 
 - **DEBUGUIPREFAB \[object]** – Output information about the specified UI prefab object.
 
@@ -1064,7 +1064,7 @@ More information about this can be found in the [MovieCapture](https://api.unrea
 
 - **TOGGLEDEBUGINPUT \[true/false]** - display debug info then (CTRL-ALT-D to toggle displaying the info; then CTRL-F to toggle displaying the focused widget).
 
-### **Miscellaneous Commands**
+### Miscellaneous Commands
 
 - **GET \[class] \[property]** - returns the default value of a class property
 
@@ -1104,7 +1104,7 @@ More information about this can be found in the [MovieCapture](https://api.unrea
 
 - **SHOWHOTKISMET** – Outputs the top 10 most used Kismet sequence ops.
 
-### **System Settings Commands**
+### System Settings Commands
 
 The System Settings commands allow you to change the settings as described by the [SystemSettings](https://api.unrealengine.com/udk/Three/SystemSettings.html) document, which are normally set by the [Application Compatibility] system.
 
@@ -1128,7 +1128,7 @@ The System Settings commands allow you to change the settings as described by th
 
 - **TOGGLE \[setting]** - toggle a boolean setting
 
-### **Mobile Commands**
+### Mobile Commands
 
 These commands only work on mobile platforms (specifically iOS)
 
@@ -1152,6 +1152,6 @@ These commands only work on mobile platforms (specifically iOS)
 
 - **APPEXIT** - Exits the app on the device.
 
-### **Editor-Specific Commands**
+### Editor-Specific Commands
 
 See the [Editor Console Commands](https://api.unrealengine.com/udk/Three/EditorConsoleCommands.html) page for more commands that are used only in the editor.

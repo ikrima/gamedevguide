@@ -50,7 +50,7 @@ This is a quick guide to using some of UE3's runtime gameplay debugging features
 
 ### Remote Control
 
-![UDKGameplay_Debugging_RemoteControl](C:\devguide\conversion\FINISHED\assets\UDKGameplay_Debugging_RemoteControl.jpg)
+![UDKGameplay_Debugging_RemoteControl](.../...\assets\UDKGameplay_Debugging_RemoteControl.jpg)
 
 The RemoteControl is a special window that can be opened while the game is running to provide information and control over certain aspects of the game.
 
@@ -76,19 +76,25 @@ The editactor console command makes the properties of an actor in the game avail
 
 If a name of an Actor is specified, either with the name= prefix or not, the properties of that Object will be displayed.
 
+```cpp
 editactor name=UTPawn_0
+```
 
 This will open a property window for the object UTPawn_0.
 
 If a class is specified, the properties of the first Actor of that class, or a subclass thereof, are displayed.
 
+```cpp
 editactor class=UTPawn
+```
 
 This will choose the first UTPawn. In this case, it would most likely open the properties for the current player's UTPawn.
 
 If the trace argument is specified, the properties of the Actor being aimed at are displayed.
 
+```cpp
 editactor trace
+```
 
 This will open a property window for the object at which the camera is aiming.
 
@@ -112,25 +118,31 @@ The editobject console command makes the properties of a specific object in the 
 
 If a name of an Object is specified, either with the name= prefix or not, the properties of that Object will be displayed.
 
+```cpp
 editobject GameThirdPersonCamera_0
 
 editobject name=GameThirdPersonCamera_0
+```
 
 Both of these are functionally identical, and will display the properties for the GameThirdPersonCamera_0 object.
 
 If a class is specified, the properties of the first Object of that class, or a subclass thereof, are displayed.
 
+```cpp
 editobject class=GameThirdPersonCamera
+```
 
 This will choose the first GameThirdPersonCamera. In this case, it would most likely open the properties for the current player's GameThirdPersonCamera
 
-#### **Example Usage:**
+#### Example Usage
 
 Implementing a camera other than first person usually requires having the camera offset from the player mesh, among other aspects that may need tuning. Of course, getting the camera offset the proper distance to get the desired look and feel can be tricky. You certainly do not want to be constantly going back and forth between code and testing needing to compile with each tweak. If you are also working with a system similar to the modular system that is part of the GameFramework examples that means you are dealing with objects and not actors. The editobject command enables you to easily view and modify the properties of those modules with the game running to make the process of tweaking your camera extremely simple and incredibly intuitive.
 
 By using the editobject command and passing it the class of the camera module, the properties for the module will be displayed and tuned to get the offset just right.
 
+```cpp
 editobject class=UDNCameraModule
+```
 
 This will open the property window for the camera module currently in use.
 
@@ -144,15 +156,17 @@ The editdefault console command makes the properties of a class default object a
 
 **Note:** This command is not allowed when running a map from within UnrealEd through a Play In Editor session.
 
-#### **Example Usage:**
+#### Example Usage:
 
 Tweaking the behavior of projectiles can be tedious if you are constantly going between code and testing. By editing the default values directly inside the game while you are testing, the process becomes extremely streamlined.
 
 Simply use the editdefault command and pass it the name of a projectile class:
 
+```cpp
 editdefault UTProj_LinkPlasma
 
 editdefault class=UTProj_LinkPlasma
+```
 
 Both of these are functionally identical and will display the default properties of the UTProj_LinkPlasma class which can then be modified allowing you to adjust the behavior of all future instances of that class.
 
@@ -166,7 +180,7 @@ In addition to being able to edit the properties of the archetype, the settings 
 
 **Note:** This command is not allowed when running a map from within UnrealEd through a Play In Editor session.
 
-#### Example Usage:
+#### Example Usage
 
 Say you have a weapon class set up to use archetypes as templates for its projectiles. This allows the look and behavior of the projectiles to easily be tweaked without having to modify and recompile the scripts. However, it would also usually require running the game and testing, closing the game and making changes, running the game and testing, etc. By using the editarchetype command, the modifications can be made while the game is running for an easy and efficient workflow.
 
@@ -176,7 +190,9 @@ The projectile using the current settings of the archetype:
 
 Simply use the editarchetype command and pass it the path of the archetype:
 
+```cpp
 editarchetype UDNProjectiles.RedPlasma
+```
 
 ![UDKGameplay_Debugging_Redplasma](.........\assets\UDKGameplay_Debugging_Redplasma.jpg)
 
@@ -200,7 +216,9 @@ When implementing a new custom camera system, it can be frustrating to run the g
 
 By using this command and passing it your custom PlayerController class and the name of the camera variable contained within it, the current value of that variable will be displayed right there in the console, immediately letting you know if the camera is not being assigned properly or if the problem lies elsewhere.
 
+```cpp
 getall UDNPlayerController PlayerCamera
+```
 
 This will list out the Name and PlayerCamera of every UDNPlayerController actor in memory in the console in-game.
 
@@ -208,7 +226,7 @@ This will list out the Name and PlayerCamera of every UDNPlayerController actor 
 
 Since the PlayerCamera has a value and not None, you know the camera is being assigned properly.
 
-#### **Additional Parameters:**
+#### Additional Parameters:
 
 This command can also be used to obtain the value of a particular variable for a single instance of a particular class by specifying some optional parameters.
 
@@ -230,7 +248,9 @@ The getallstate console command returns the current state of all objects of a pa
 
 #### **Example usage:**
 
+```cpp
 getallstate UTPawn
+```
 
 This will list the current state of every UTPawn in memory in the console in-game.
 
@@ -248,7 +268,9 @@ The displayall console command returns the value of a particular variable for al
 
 **Example usage:**
 
+```cpp
 displayall UTPawn Location
+```
 
 This will list the Name and Location of every UTPawn on the screen, updated every frame.
 
@@ -258,13 +280,15 @@ This will list the Name and Location of every UTPawn on the screen, updated ever
 
 The displayallstate console command returns the current state of all objects of a particular class and displays them on the screen. The command is followed by the name of the class to access.
 
-\*Example usage:\*\*
+**Example usage:**
 
 Creating believable AI in a game is a difficult task to begin with, but without a way to keep an eye on all the AI as they interact it would become even more so. The displayallstate command makes one aspect of this quick and easy. You can have the current state of every AI entity displayed right on the screen, updating every frame as they make new decisions.
 
 By using this command and passing it the class of the AI entities, you can have an overview of your AI at the ready.
 
+```cpp
 displayallstate UTBot
+```
 
 This will list the current state of every UTBot in memory on the screen, updated every frame, making it extremely easy to see exactly what each bot is doing.
 
@@ -276,7 +300,9 @@ The displayclear console command clears all object data currently being displaye
 
 **Example usage:**
 
+```cpp
 displayclear
+```
 
 This will clear the object data being displayed on the screen from a previous [DisplayAll](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll) or [DisplayAllState](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState) command.
 
@@ -296,7 +322,9 @@ Balancing weapons can be a tricky feat, constantly tweaking properties to get ju
 
 By this command and passing it a class name, a variable name, and a value for that variable, it is easy to modify the value of that variable for all instances of that class that currently exist and any instances that may be spawned subsequently.
 
+```cpp
 set utweap_linkgun maxammocount 150
+```
 
 This will increase the maximum ammo count that all link guns can hold.
 

@@ -72,9 +72,7 @@ sortIndex: 25
 
 Don't use the C++ int type in portable code, since it's dependent on the compiler how large it is.
 
-\*\*
-
-General
+#### General
 
 - Comment third party code with special comments
 

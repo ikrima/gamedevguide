@@ -22,7 +22,7 @@ Make Sure p Service is running:
 
 - Run as root: /volume1/KnL/Perforce/start.sh
 
-Set up ignore [file:p4] set P4IGNORE=.gitignore
+Set up ignore [file:p4](file://p4) set P4IGNORE=.gitignore
 
 ##### Setting up new user:
 
@@ -44,7 +44,7 @@ Disable user account creation for anyone but you:
 
 1. Give the workspace a reasonable name, lowercase, no spaces (for working on command line later). Workspaces are stored per user so two users should be able to use the same workspace name without a conflict.
 
-1. Put it in a folder near the root of the drive (I have mine in C:\\Perforce\\\[ClientName]\\\[WorkspaceName]
+1. Put it in a folder near the root of the drive (I have mine in C:\\Perforce\[ClientName]\[WorkspaceName]
 
 1. Right click on the folder in the depot that represents the project and choose "Include Tree". Right click on other projects and choose "Exclude Tree" (it doesn't work to just whitelist with "include tree", which seems silly -- is it configurable?).
 
@@ -52,21 +52,21 @@ Disable user account creation for anyone but you:
 
 ##### Deleting a workspace:
 
-If you screw up you can delete a workspace. Go to Connection -> Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type p4 client -d \[workspace-name]
+If you screw up you can delete a workspace. Go to Connection -> Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type p4 client -d [workspace-name]
 
 Useful commands:
 
 - **Fast Reconcile with files that have been edited, added, deleted and with special characters in their name**
 
-  p4 reconcile -meadf d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries\\...
+  p4 reconcile -meadf d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries...
 
 - **Show me files that were ignored:**
 
-  p4 reconcile -nI d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries\\...
+  p4 reconcile -nI d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries...
 
 - **Show me files that were ignored but need to be added**
 
-  p4 reconcile -naI d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries\\...
+  p4 reconcile -naI d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries...
 
 - **Why something was ignored:**
 
@@ -74,7 +74,7 @@ Useful commands:
 
 - **Force resync only deleted files (deletes files that are only available locally and not in depot):**
 
-  p4 -I clean -ead D:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Source\\Runtime\\...
+  p4 -I clean -ead D:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Source\\Runtime...
 
 - **Note: Using -m might skip files if you copied over stuff recently**
 
@@ -104,7 +104,7 @@ Here's how:
 
 1. Run p4 flush //depot/path/to/folder/...@&lt;last_changelist>
 
-The [flush] command tells the server that you have the files at the path specified, at the changelist specified. It's a synonym for p4 sync -k.
+The [flush](https://www.perforce.com/manuals/v15.1/cmdref/p4_flush.html) command tells the server that you have the files at the path specified, at the changelist specified. It's a synonym for p4 sync -k.
 
 *Reference From <https://stackoverflow.com/questions/7030296/how-do-i-move-a-perforce-workspace-folder>*
 
@@ -123,10 +123,10 @@ p4 sync
 
 *From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:*
 
-\_p4 stream -t task -P //stream/parent //stream/mynewtask01
+p4 stream -t task -P //stream/parent //stream/mynewtask01
 p4 populate -r -S //stream/mynewtask01
 p4 client -s -S //stream/mynewtask01
-p4 sync\_\_
+p4 sync
 
 *The "stream" and "client" commands don't actually operate on any files, so they'll be really quick no matter what. The "populate" will branch all 10k files, but it does it on the back end without actually moving any content around, so it'll also be really quick (if you got up into the millions or billions it might take an appreciable amount of time depending on the server hardware, but 10k is nothing). The "sync" will be very quick if you were already synced to //stream/parent, because all the files are already there; again, it's just moving pointers around on the server side rather than transferring the file content.*
 
@@ -190,16 +190,16 @@ p4 property -a -n net.tcpsize -v 2M
 ```js
 p4 typemap
 
-\# Perforce File Type Mapping Specifications.
-\#
-\# TypeMap: a list of filetype mappings; one per line.
-\# Each line has two elements:
-\#
-\# Filetype: The filetype to use on 'p4 add'.
-\#
-\# Path: File pattern which will use this filetype.
-\#
-\# See 'p4 help typemap' for more information.
+# Perforce File Type Mapping Specifications.
+#
+# TypeMap: a list of filetype mappings; one per line.
+# Each line has two elements:
+#
+# Filetype: The filetype to use on 'p4 add'.
+#
+# Path: File pattern which will use this filetype.
+#
+# See 'p4 help typemap' for more information.
 
 TypeMap:
 binary+w //depot/....exe

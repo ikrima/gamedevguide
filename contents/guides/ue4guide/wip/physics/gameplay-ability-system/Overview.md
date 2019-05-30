@@ -87,7 +87,3 @@ Target Data: <https://udn.unrealengine.com/questions/273352/abilitysystem-target
 <https://wiki.unrealengine.com/GameplayAbilities_and_You>
 
 Sample Repo: <https://github.com/daveratti/GameplayAbilitiesSample/tree/release/GAS>
-
-Older Doc:
-
-&lt;&lt;AbilitySystemK&L (1).docx>>

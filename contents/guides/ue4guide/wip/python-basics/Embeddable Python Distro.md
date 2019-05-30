@@ -4,7 +4,7 @@ sortIndex: 4
 
 Bundling/Creating custom python distribution (Embeddable zip or not). Also known as "freezing" a python distro:
 
-<https://docs.python-guide.org/shipping/freezing>
+<https://docs.python-guide.org/shipping/freezing/>
 
 ## Python embedded distribution for Windows
 
@@ -22,26 +22,26 @@ These are my notes to install third-party packages for this version of Python us
 
 1. You can now install (and, by [2], import) third-party packages with: > python -m pip install ... where ... is the list of package names
 
-*Reference From <http://www.christhoung.com/2018/07/15/embedded-python-windows>*
+*Reference From <http://www.christhoung.com/2018/07/15/embedded-python-windows/>*
 
 *This is how you can do this, extract Python embeddable zip file. It has the file pythonxx.\_pth. This file contains list of directory/zip files which embedded python uses to look for modules i.e. to setup sys.path . For example I have extracted 3.6 embedded version into E:\\dev folder.*
 
-\*PS C:\\Users\\user2> get-content E:\\dev\\python-3.6.5-embed-amd64\\python36.\_pth
-python36.zip
+\*PS C:\\Users\\user2> get-content E:\\dev\\python-3.6.5-embed-amd64\\python36.\_pth 
+python36.zip 
 
+```python
 # Uncomment to run site.main() automatically
 
-\#import site
+#import site
 
 *sys.path will reflect the same thing*
 
-\*PS C:\\Users\\user2> python
-Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) \[MSC v.1900 64 bit (AMD64)] on win32
+*PS C:\Users\user2> python 
+Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)] on win32  
 
-```cpp
-import sys
-sys.path
- \['E:\\dev\\python-3.6.5-embed-amd64\\python36.zip', 'E:\\dev\\python-3.6.5-embed-amd64']
+import sys 
+sys.path 
+ ['E:\\dev\\python-3.6.5-embed-amd64\\python36.zip', 'E:\\dev\\python-3.6.5-embed-amd64']  
 ```
 
 *Now all I need to do is create a new directory or zip file in E:\\dev\\python-3.6.5-embed-amd64, which contains all my modules and add that directory in python36.\_pth file. Once all the testing is done, I can zip the folder E:\\dev\\python-3.6.5-embed-amd64 which can be used to deploy Python with all the required modules ready to import.*

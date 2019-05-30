@@ -19,7 +19,7 @@ Unfortunately there's no way of switching from the editor UI in the 4.2 build. I
 ```cpp
 if (PlatformName == "WindowsNoEditor")
 {
-if (PackagingSettings-&gt;BuildConfiguration == PPBC_Shipping)
+if (PackagingSettings->BuildConfiguration == PPBC_Shipping)
 {
 OptionalParams += TEXT(" -targetplatform=Win32");
 }

@@ -242,9 +242,10 @@ You can see the Checking cost and the deletion cost are printed out in this mann
 
 3. CBD Profiling Tools
 
-\#define PROFILE_ConditionalBeginDestory
+```cpp
+#define PROFILE_ConditionalBeginDestory
 
-\#define PROFILE_GCConditionalBeginDestroyByClass
+#define PROFILE_GCConditionalBeginDestroyByClass
 
 These defines dump delete costs per each assets as below.
 
@@ -257,6 +258,7 @@ LogTemp: 698 cnt 2.11us per 1.48ms total /Game/Blueprints/Character/CCCCCCCCCC
 LogTemp: 489 cnt 2.64us per 1.29ms total /Game/Blueprints/Gimmick/GimmickAAAAA
 
 LogTemp: 261 cnt 4.22us per 1.10ms total /Game/Maps/MAPMAPMAP
+```
 
 5. Obj list / Blueprint Stats
 
@@ -302,25 +304,33 @@ ObjectProperty 3251
 
 **1. Enable DisregardGCObject**
 
+```cpp
 [/Script/Engine.GarbageCollectionSettings]
+```
 
 **gc.MaxObjectsNotConsideredByGC=1**
 
+```cpp
 gc.SizeOfPermanentObjectPool=0
+```
 
 **2. When enabled, You can see the following log messages at boot time**
 
+```cpp
 LogUObjectArray: **52083** objects as part of root set at end of initial load.
 
 LogUObjectAllocator: **9937152** out of 0 bytes used by permanent object pool.
+```
 
 **3. Set the 2 parameters to the 2 values you got above.**
 
+```cpp
 [/Script/Engine.GarbageCollectionSettings]
 
 gc.MaxObjectsNotConsideredByGC= **52083**
 
 gc.SizeOfPermanentObjectPool= **9937152**
+```
 
 - GC Clustering
 

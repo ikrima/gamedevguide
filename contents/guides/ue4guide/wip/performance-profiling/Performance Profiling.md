@@ -15,32 +15,27 @@ Make sure to perf profile under the right conditions:
 ## Controlling Quality Settings:
 
 1. **r.ScreenPercentage 25**
-
 1. **r.ViewDistanceScale 0.4**
-
 1. **r.PostProcessAAQuality 0**
-
 1. r.PostProcessingQuality 0
-
 1. r.ShadowQuality 0
-
 1. r.TextureQuality 0
-
 1. r.EffectsQuality 0
 
-1)  **sg.ResolutionQuality 25**
 
-2)  **sg.ViewDistanceQuality 0**
+1. **sg.ResolutionQuality 25**
 
-3)  **sg.AntiAliasingQuality 0**
+1. **sg.ViewDistanceQuality 0**
 
-4)  **sg.PostProcessQuality 0**
+1. **sg.AntiAliasingQuality 0**
 
-5)  **sg.ShadowQuality 0**
+1. **sg.PostProcessQuality 0**
 
-6)  **sg.TextureQuality 0**
+1. **sg.ShadowQuality 0**
 
-7)  **sg.EffectsQuality 0**
+1. **sg.TextureQuality 0**
+
+1. **sg.EffectsQuality 0**
 
 hmd vsync on/off/reset: Self-explanatory
 
@@ -48,10 +43,13 @@ hmd vsync on/off/reset: Self-explanatory
 
 Texture Quality Settings
 
-\[SystemSettings]/\[SystemSettingsEditor]  
+```cpp
+[SystemSettings]/[SystemSettingsEditor] 
 ; NOTE THAT ANY ITEMS IN THIS SECTION WILL AFFECT ALL PLATFORMS!!!
 
 TEXTUREGROUP_World=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point) 
+
+
 
 TEXTUREGROUP_WorldNormalMap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_WorldSpecular=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
@@ -77,6 +75,7 @@ TEXTUREGROUP_MobileFlattened=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilte
 TEXTUREGROUP_Terrain_Heightmap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_Terrain_Weightmap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)  
 TEXTUREGROUP_Bokeh=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=linear,MipFilter=linear)
+```
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Engine/Content/Types/Textures/SupportAndSettings/index.html>*
 

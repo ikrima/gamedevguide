@@ -24,49 +24,49 @@ You can use the same approach and just not block for the results; this is what D
 
 For example, one simple command is "stat dumpcu". That ends up calling this on the stats thread:
 
-a. StatsMasterEnableAdd(); // make sure we are collecting data
+```cpp
+StatsMasterEnableAdd(); // make sure we are collecting data
 
-b. DumpCPUDelegateHandle = Stats.NewFrameDelegate.AddStatic(&DumpCPU);
-
-c.
+DumpCPUDelegateHandle = Stats.NewFrameDelegate.AddStatic(&DumpCPU);
+```
 
 And that registers a call back on the stats thread so whenever a frame happens, you are informed. This is a fairly simple command, which does this on every frame....which turns out to be only one frame:
 
-a. static void DumpCPU(int64 Frame)
+```cpp
+ static void DumpCPU(int64 Frame)
 
-b. {
+ {
 
-c. FStatsThreadState& Stats = FStatsThreadState::GetLocalState();
+ FStatsThreadState& Stats = FStatsThreadState::GetLocalState();
 
-d. int64 Latest = Stats.GetLatestValidFrame();
+ int64 Latest = Stats.GetLatestValidFrame();
 
-e. check(Latest > 0);
+ check(Latest > 0);
 
-f. DumpCPUSummary(Stats, Latest);
+ DumpCPUSummary(Stats, Latest);
 
-g. Stats.NewFrameDelegate.Remove(DumpCPUDelegateHandle); // don't listen any more
+ Stats.NewFrameDelegate.Remove(DumpCPUDelegateHandle); // don't listen any more
 
-h. StatsMasterEnableSubtract(); // don't keep recording stats (unless someone else is looking)
+ StatsMasterEnableSubtract(); // don't keep recording stats (unless someone else is looking)
 
-i. }
-
-j.
+ }
+```
 
 Actually parsing the stats is fairly complicated, but there are lots of examples in this file. You might have to ask questions about what specifically you would like to do.
 
 If you need to get your data back to the game thread (as opposed to just logging some stuff), then send a task back to the game thread like the "HUD stats" do:
 
-a. FSimpleDelegateGraphTask::CreateAndDispatchWhenReady
+```cpp
+FSimpleDelegateGraphTask::CreateAndDispatchWhenReady
 
-b. (
+ (
 
-c. FSimpleDelegateGraphTask::FDelegate::CreateRaw(&FHUDGroupGameThreadRenderer::Get(), &FHUDGroupGameThreadRenderer::NewData, ToGame),
+ FSimpleDelegateGraphTask::FDelegate::CreateRaw(&FHUDGroupGameThreadRenderer::Get(), &FHUDGroupGameThreadRenderer::NewData, ToGame),
 
-d. GET_STATID(STAT_FSimpleDelegateGraphTask_StatsHierToGame), nullptr, ENamedThreads::GameThread
+ GET_STATID(STAT_FSimpleDelegateGraphTask_StatsHierToGame), nullptr, ENamedThreads::GameThread
 
-e. );
-
-f.
+ );
+```
 
 Depending on what you want to do, it might be easier to just hack the hud stats to display what you want instead setting up a different display from scratch.
 

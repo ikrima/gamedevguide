@@ -26,6 +26,7 @@ sortIndex: 1
 
 1. Create a patch from the bebylon branch ranging from it's parent in the release branch to current
 
+```cpp
    git checkout -b tmpsquash 4.19.0-release
 
    git merge --squash bebylon
@@ -42,20 +43,25 @@ sortIndex: 1
 
    git diff 4.19.0-release bebylon > my_new_patch.diff
 
-   git format-patch 4.19.0-release..bebylon --stdout > my_new_patch.patch
-   git am &lt; my_new_patch.patch
+   git format-patch 4.19.0-release..bebylon --stdout > my_new_patch.patch  
+   git am < my_new_patch.patch
 
    git apply my_new_patch.diff
+```
 
 Using git apply provides the patch as unstaged changes in your branch. If you want to apply the patches as commits, you can use git am.
 
 2. Create a new branch at the sync off point off of the new engine release branch (e.g. branch: release, tag: 4.20.2-release). Call it bebylon-{new engine version}-merge{oldversion} (eg bebylon-4.20.2-merged4.19)
 
+```cpp
    git checkout -f -b bebylon-4.20.2-merged4.19.0 4.20.2-release
+```
 
 3) Apply patch to new said branch & Manually resolve the changes
 
+```cpp
    git am --3way --signoff 0001-Squashed-4.19-to-Bebylon-commits.patch
+```
 
 4. Merge bebylon into the new branch with merge override from the new branch. We want to merge Bebylon with bebylon-4.20.2-merged4.19.0 but not actually do any merging but instead take bebylon-4.20.2-merged4.19.0 as authoritative.
 
@@ -95,9 +101,9 @@ Rebase our private branch on top of the new UE4 repository. Make sure everyone h
 
 ### Windows
 
-6. Be sure to have [Visual Studio 2013][] installed. You can use any desktop version of Visual Studio 2013, including the free version: [Visual Studio 2013 Express for Windows Desktop][visual studio 2013]
+6. Be sure to have [Visual Studio 2013](https://visualstudio.microsoft.com/vs/older-downloads/) installed. You can use any desktop version of Visual Studio 2013, including the free version: [Visual Studio 2013 Express for Windows Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=40769)
 
-6. Make sure you have [June 2010 DirectX runtime][] installed. You don't need the SDK, just the runtime.
+6. Make sure you have [June 2010 DirectX runtime](https://www.microsoft.com/en-us/download/details.aspx?id=8109) installed. You don't need the SDK, just the runtime.
 
 6. You'll need project files in order to compile. In the *UnrealEngine* folder, double-click on**GenerateProjectFiles.bat**. It should take less than a minute to complete. On Windows 8, a warning from SmartScreen may appear. Click "More info", then "Run anyway" to continue.
 

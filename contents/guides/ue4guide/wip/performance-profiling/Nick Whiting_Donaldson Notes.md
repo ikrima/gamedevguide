@@ -31,43 +31,32 @@ How do you launch in fullscreen/stereo? NickP will follow-up
 stat unitgraph
 
 email NickD how to make stat raw
-
 and stat scenerendering vs stat d3drhicmds
-
 send them the UE4 project
 
 stat DumpHitches
 
 staticmaskednolightmapped
-
 staticopaquelightmaped
-
 staticopaquenolightmapped
 
 r.AllowOcclusionQueries
-
 EarlyZPass, auto heuristic is bad
 
 can control whether masked gets drawn into early Z pass
 
 Shader complexity view
-
 r.earlyzpass ?
-
 r.earlyzpassmovable can't be changed at runtime (look at the description)
 
 How do you do test builds? ask NickWhiting
 
 Show flags
-
 (show flags really meant for debug)
 
 Use layers
-
-Show \[layer name]
-
+Show [layer name]
 hit pause
 
 Show enter
-
 ambientcubemap is expensive

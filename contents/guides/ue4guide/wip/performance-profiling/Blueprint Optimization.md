@@ -9,9 +9,9 @@ Give BP compiler hints on inlining functions. Look at KismetMathLibrary.h for de
 ```cpp
 // Conditionally inlined
 
-\#if KISMET_MATH_INLINE_ENABLED
+#if KISMET_MATH_INLINE_ENABLED
 
-\#include "KismetMathLibrary.inl"
+#include "KismetMathLibrary.inl"
 
-\#endif
+#endif
 ```

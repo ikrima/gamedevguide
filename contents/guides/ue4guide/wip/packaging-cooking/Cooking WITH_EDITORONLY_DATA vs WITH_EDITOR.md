@@ -28,12 +28,16 @@ UEBuildTarget.cs does most of the decision making regarding these defines.Notice
 
 To exclude from dedicated server:
 
+```cpp
 Implement NeedsLoadForServer() and return false
+```
 
 *Reference From <https://udn.unrealengine.com/questions/365330/determining-references-in-the-cooking-time-for-ded.html>*
 
 To exclude stuff from dedicated client:
 
-\[CookerSettings]DedicatedClientExclusion
+```cpp
+[CookerSettings]DedicatedClientExclusion
+```
 
 *Reference From <https://udn.unrealengine.com/questions/355061/is-there-existing-functionality-to-remove-server-b.html>*
