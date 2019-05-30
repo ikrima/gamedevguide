@@ -167,7 +167,7 @@ module.exports = {
         description: siteCfg.siteDescription,
         start_url: siteCfg.pathPrefix,
         background_color: siteCfg.theme.BackgroundColor,
-        theme_color: siteCfg.theme.Color,
+        theme_color: siteCfg.theme.PrimaryColor,
         display: siteCfg.siteDisplay,
         icon: siteCfg.favicon,
       },

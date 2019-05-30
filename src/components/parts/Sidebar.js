@@ -53,7 +53,7 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
         trigger={null}
         width={240}
         id="app-sidenav"
-        className={`app-sidenav bg-light d-none ${!showSidebar ? 'd-md-none' : 'd-md-flex'}`}
+        className={`app-sidenav bg-dark d-none ${!showSidebar ? 'd-md-none' : 'd-md-flex'}`}
       >
         <div
           className="sidenav-content"

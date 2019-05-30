@@ -36,8 +36,12 @@ const SiteCfg = {
   theme: {
     // Manifest and Progress color
     // See: https://developers.google.com/web/fundamentals/web-app-manifest/
-    Color: '#292a2d',
-    BackgroundColor: '#ffffff',
+    WhitePoint: '#f8f8f8',
+    BlackPoint: '#000000',
+
+    PrimaryColor: '@geekblue-6',
+    BackgroundColor: '#f8f8f8',
+
     DefaultTheme: 'dark',
     DarkVariant: 'dark',
     LightVariant: 'light',
@@ -45,6 +49,8 @@ const SiteCfg = {
     ShowMenuItems: 4,
     MenuMoreText: 'Show more',
     modifyVars: {},
+    bodyFontFamily: "'Source Sans Pro', sans-serif",
+    headerFontFamily: "'Source Serif Pro', sans-serif",
 
     sidebarMenuWidth: 300,
     sidebarIndent: 12,
@@ -53,22 +59,20 @@ const SiteCfg = {
   },
 };
 
+// https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
 SiteCfg.theme.modifyVars = {
-  // "font-family":            "Arial",
+  'primary-color': SiteCfg.theme.PrimaryColor, // primary color for all components
+  white: SiteCfg.theme.WhitePoint,
+  black: SiteCfg.theme.BlackPoint,
+
+  'font-family': SiteCfg.theme.bodyFontFamily,
+
+  'body-background': SiteCfg.theme.BackgroundColor,
+  'component-background': SiteCfg.theme.BackgroundColor,
   'layout-body-background': SiteCfg.theme.BackgroundColor,
-  'primary-color': SiteCfg.theme.Color, // primary color for all components
-  // "link-color":             "#1890ff",                            // link color
-  // "success-color":          "#52c41a",                            // success state color
-  // "warning-color":          "#faad14",                            // warning state color
-  // "error-color":            "#f5222d",                            // error state color
-  // "font-size-base":         "14px",                               // major text font size
-  // "heading-color":          "rgba(0, 0, 0, .85)",                 // heading text color
-  // "text-color":             "rgba(0, 0, 0, .65)",                 // major text color
-  // "text-color-secondary":   "rgba(0, 0, 0, .45)",                 // secondary text color
-  // "disabled-color":         "rgba(0, 0, 0, .25)",                 // disable state color
-  // "border-radius-base":     "4px",                                // major border radius
-  // "border-color-base":      "#d9d9d9",                            // major border color
-  // "box-shadow-base":        "0 2px 8px rgba(0, 0, 0, .15)",       // major shadow for layers
+  'layout-sider-background-light': SiteCfg.theme.BackgroundColor,
+  'background-color-base': SiteCfg.theme.BackgroundColor, // Default grey background color
+  'background-color-light': `lighten(${SiteCfg.theme.BackgroundColor}, 2%)`, // background of header and selected item
 };
 
 module.exports = SiteCfg;
