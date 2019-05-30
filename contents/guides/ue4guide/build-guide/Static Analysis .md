@@ -42,6 +42,13 @@ build.py -c development -t editor check pvs
 
 1. Key: FREE-FREE-FREE-FREE
 
+1. Add the following comments to every .cpp file
+
+   ```cpp
+   // This is an independent project of an individual developer. Dear PVS-Studio, please check it.
+   // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+   ```
+
 1. (For now, you need to have Incredibuild disabled. )
 
    Go to BBProto.Build.cs and add BuildConfiguration.bAllowXGE = false;
