@@ -102,7 +102,7 @@ D3D Debugging
 
 \-VTune
 
-For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform]\(onenote:<https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one#Application/OS/Generic> Platform§ion-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={51DB5F0B-142A-49A0-AA97-77413BA70981}&end)
+For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform](fixme_self_referential_link)
 
 **Below here needs to be reimplemented & tasked in Hansoft to Andrew**
 
@@ -184,9 +184,9 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
   - Use dxcap: <https://msdn.microsoft.com/en-us/library/hh780905.aspx>
 
-    dxcap -c D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\\Ikrima\\src\\Assembla\\Bebylon\\BBR\\BBR.uproject 0-Lobby -log -debug -d3ddebug -game
+    dxcap -c UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\\Ikrima\\src\\Assembla\\Bebylon\\BBR\\BBR.uproject 0-Lobby -log -debug -d3ddebug -game
 
-    dxcap -frame 8s -c D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\\Ikrima\\src\\Assembla\\Bebylon\\BBR\\BBR.uproject 0-Lobby -log -game
+    dxcap -frame 8s -c UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\\Ikrima\\src\\Assembla\\Bebylon\\BBR\\BBR.uproject 0-Lobby -log -game
 
 
 - Programmatic NSight capture would be great too:

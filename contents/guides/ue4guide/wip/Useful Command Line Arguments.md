@@ -78,7 +78,7 @@ SAVEWINPOS=1
 
 Override INI (note, no '-' prefix):
 
-GameUserSettingsINI="D:/Ikrima/src/Assembla/Bebylon/BBR/Saved/Config/Windows/PIEGameUserSettings0.ini"
+GameUserSettingsINI="UnrealEngine/Saved/Config/Windows/PIEGameUserSettings0.ini"
 
 | **Commandline Argument**  | **INI Override**           |
 | ------------------------- | -------------------------- |

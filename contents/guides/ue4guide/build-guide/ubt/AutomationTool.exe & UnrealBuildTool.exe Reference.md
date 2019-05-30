@@ -8,7 +8,7 @@ sortIndex: 6
 
 - AutomationTool.exe is what RunUAT.exe calls to cook/package, etc
 
-- "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\DotNET\\AutomationTool.exe" -help will dump
+- "UnrealEngine\\Engine\\Binaries\\DotNET\\AutomationTool.exe" -help will dump
 
       	 Automation.ParseCommandLine: Parsing command line: -Help
       	 CommandUtils.LogHelp:
@@ -315,4 +315,4 @@ If no DefaultMap can be found, the command falls back to /Engine/Maps/Entry.
 
 \-NoSign Skips signing of code/content files.
 
-- D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Source\\Programs\\AutomationTool\\AutomationUtils\\**ProjectParams.cs** lists all of the parameters/options
+- UnrealEngine\\Engine\\Source\\Programs\\AutomationTool\\AutomationUtils\\**ProjectParams.cs** lists all of the parameters/options

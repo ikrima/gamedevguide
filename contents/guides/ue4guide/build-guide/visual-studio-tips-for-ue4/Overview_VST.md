@@ -2,9 +2,9 @@
 sortIndex: 1
 ---
 
-- [Adding a button to attach the debugger directly to the UE4 instance][https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/documents/kitelightning/bebylon/unreal.one]
+- [Adding a button to attach the debugger directly to the UE4 instance][fixme_self_referential_link]
 
-- [Print Blueprint/BP Callstack][https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/documents/kitelightning/bebylon/unreal.one]
+- [Print Blueprint/BP Callstack][fixme_self_referential_link]
 
 
 - **Crash Course Visual Assist Shortcuts:**

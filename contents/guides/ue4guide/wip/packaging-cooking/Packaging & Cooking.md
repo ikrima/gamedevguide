@@ -46,7 +46,7 @@ sortIndex: 1
 
 ## Packaging without cooking or building:
 
-- "D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Build\\BatchFiles\\RunUAT.bat" BuildCookRun -project="D:\\Ikrima\\src\\Assembla\\GENeuro\\Neuro.uproject" -windows-noeditor -skipcook -stage -pak -package -clientconfig=Test
+- "UnrealEngine\\Engine\\Build\\BatchFiles\\RunUAT.bat" BuildCookRun -project="D:\\Ikrima\\src\\Assembla\\GENeuro\\Neuro.uproject" -windows-noeditor -skipcook -stage -pak -package -clientconfig=Test
 
 ## Only Cook Content:
 

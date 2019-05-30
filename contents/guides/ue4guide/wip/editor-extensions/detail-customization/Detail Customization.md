@@ -179,7 +179,7 @@ FCoreUObjectDelegates::FOnPreObjectPropertyChanged FCoreUObjectDelegates::OnPreO
 
 FCoreUObjectDelegates::FOnObjectPropertyChanged FCoreUObjectDelegates::OnObjectPropertyChanged;
 
-- Also look at Editor delegates that get called globally on property change modification: [Also FCoreUObjectDelegates in UObjectGlobals:](onenote:#Core Events\Delegates&section-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={52C48550-D9C3-4CB4-9C71-6D4A7CB88779}&object-id={893127CB-E7B4-0DE3-0927-A79D8F5559BE}&9C&base-path=https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one)
+- Also look at Editor delegates that get called globally on property change modification: [Also FCoreUObjectDelegates in UObjectGlobals:](fixme_self_referential_link)
 
 virtual TSharedPtr&lt;class ISinglePropertyView&gt; CreateSingleProperty( UObject\* **InObject**, FName **InPropertyName**, const struct FSinglePropertyParams& InitParams );
 
@@ -336,4 +336,4 @@ TSharedRef&lt;IDetailsView&gt; **DetailsView** = **PropertyEditor**.CreateDet
         };
 ```
 
-[also fcoreuobjectdelegates in uobjectglobals:]: onenote:#Core%20Events\Delegates&section-id={37412B85-90BD-4C74-B6F2-230753E331ED}&page-id={52C48550-D9C3-4CB4-9C71-6D4A7CB88779}&object-id={893127CB-E7B4-0DE3-0927-A79D8F5559BE}&9C&base-path=https://kitelightning-my.sharepoint.com/personal/ikrima_kiteandlightning_la/Documents/KiteLightning/Bebylon/Unreal.one
+[also fcoreuobjectdelegates in uobjectglobals:]: [fixme_self_referential_link]
