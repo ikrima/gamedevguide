@@ -22,7 +22,7 @@ UStruct is the basic type of aggregate structures (anything that contains otherÂ
 To iterate over all members of a UStruct, use a TFieldIterator:
 
 ```cpp
-for (TFieldIterator&lt;UProperty> PropIt(GetClass()); PropIt; ++PropIt)
+for (TFieldIterator<UProperty> PropIt(GetClass()); PropIt; ++PropIt)
 
 {
 

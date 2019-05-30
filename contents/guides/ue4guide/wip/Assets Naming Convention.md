@@ -10,11 +10,11 @@ sortIndex: 23
 
  The goal of this document is to share our internal naming conventions with the community to give everyone something to start out with. Using and getting comfortable with  a strict naming convention is essential before your projects grows beyond a few dozen files.
 
- **\*Disclaimer**: This document is a constant work in progress, more asset types are added over time as we start using them with our game projects. If you have suggestions or comments you can leave them at the bottom of this page. Feedback is appreciated to improve this page.\*
+ \***Disclaimer**: This document is a constant work in progress, more asset types are added over time as we start using them with our game projects. If you have suggestions or comments you can leave them at the bottom of this page. Feedback is appreciated to improve this page.\*
 
  Last Revision: ***July 15, 2014***
 
- **Contents ** [hide](http://www.tomlooman.com/ue4-naming-convention/#)
+ **Contents** [hide](http://www.tomlooman.com/ue4-naming-convention/#)
 
 - [1 General Naming](http://www.tomlooman.com/ue4-naming-convention/#General_Naming)
 

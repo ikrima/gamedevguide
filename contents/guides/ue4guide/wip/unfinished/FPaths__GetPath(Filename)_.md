@@ -31,10 +31,12 @@ PrimaryActorTick.bStartWithTickEnabled = false;
 *From <https://www.unrealengine.com/blog/how-to-improve-game-thread-cpu-performance>*
 
 class FLayoutUV
--Handles generating lightmap Uvs
+
+- Handles generating lightmap Uvs
 
 FMeshUtilities::CacheOptimizeVertexAndIndexBuffer
--Optimizes the VertexBuffer/IndexBuffer by re-ordering Indices for post-transform cache and then re-orders the indices to be coherent along with the vertex array so its optimized for the pre-transform cache
+
+- Optimizes the VertexBuffer/IndexBuffer by re-ordering Indices for post-transform cache and then re-orders the indices to be coherent along with the vertex array so its optimized for the pre-transform cache
 
 void FRenderCommandFence::BeginFence()
 

@@ -25,7 +25,10 @@
     ["remark-lint-no-file-name-mixed-case", false],
     ["remark-lint-file-extension", false],
     ["remark-lint-no-heading-punctuation", ".,;:!?"],
-    ["remark-lint-linebreak-style", "consistent"]
+    ["remark-lint-linebreak-style", "consistent"],
+
+    ["remark-lint-no-shortcut-reference-link", false],
+    ["remark-lint-no-undefined-references", false]
 
   ]
 }
