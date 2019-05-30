@@ -76,7 +76,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-antd',
       options: {
-        style: false,
+        style: true,
       },
     },
     {
@@ -109,12 +109,12 @@ module.exports = {
         gatsbyRemarkPlugins: gbRemarkPluginsList,
       },
     },
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utils/typography.js',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-typography',
+    //   options: {
+    //     pathToConfigModule: 'src/utils/typography.js',
+    //   },
+    // },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',

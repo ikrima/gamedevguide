@@ -37,7 +37,7 @@ const SiteCfg = {
     // Manifest and Progress color
     // See: https://developers.google.com/web/fundamentals/web-app-manifest/
     Color: '#292a2d',
-    BackgroundColor: '#292a2d',
+    BackgroundColor: '#ffffff',
     DefaultTheme: 'dark',
     DarkVariant: 'dark',
     LightVariant: 'light',
