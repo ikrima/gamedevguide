@@ -55,13 +55,13 @@
   - Amanatide ray marching: A Fast Voxel Traversal Algorithm for Ray Tracing
     - Gives list of voxel coordinates that will be hit
     - <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3\_ch22.html>
-    - <https://www.gamedev.net/blogs/entry/2265248-voxel-traversal-algorithm-ray-casting/>
+    - <https://www.gamedev.net/blogs/entry/2265248-voxel-traversal-algorithm-ray-casting>
     - <https://github.com/francisengelmann/fast\_voxel\_traversal>
     - Survey olf grid traversal: <http://www.cosenza.eu/papers/CosenzaEGITA08Grid.pdf>
 
 - Linearly transformed cosines
   - Use them as a basis. Linear transform of cosine lobe (scale, skew, rotation) doesn't affect integral product and has closed form solution
-  - <https://blog.magnum.graphics/guest-posts/area-lights-with-ltcs/>
+  - <https://blog.magnum.graphics/guest-posts/area-lights-with-ltcs>
   - <https://github.com/selfshadow/ltc\_code>
   - GPU Zen Chapter: Linear-Light Shading with Linearly Transformed Cosines
 
@@ -182,13 +182,13 @@ Optimization Reminders
 - Spherical RBFs
   - Is There Anything Comparable to Spherical Harmonics But Simpler? <http://www.cs.cuhk.hk/~ttwong/papers/srbf/srbf.html>
     - <http://www.cs.cuhk.hk/~ttwong/demo/srbf/srbf.html>
-    - <http://www.cs.cuhk.hk/~ttwong/>
+    - <http://www.cs.cuhk.hk/~ttwong>
   - Von Mises Basis Functions vs Gaussian Spherical Radial Basis Functions:
     - A Comparison of the von Mises and Gaussian Basis Functions for Approximating Spherical Acoustic Scatter
     - 3 orders of magnitude better than guassian
   - Real-time Rendering of Dynamic Scenes under All-frequency Lighting using Integral Spherical Gaussian
     - All-Frequency Precomputed Radiance Transfer using Spherical RadialBasis Functions and Clustered Tensor Approximation
-    - <https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations/>
+    - <https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations>
 
 ### **Promising:**
 
@@ -212,7 +212,7 @@ Optimization Reminders
   - The Magic of Computer Graphics
   - Dissertation - Efficient Monte Carlo Methods For Light Transport In Scattering Media
   - Transfer Equations in Global Illumination
-  - Deep Compositing: <https://zero-radiance.github.io/post/deep-compositing/>
+  - Deep Compositing: <https://zero-radiance.github.io/post/deep-compositing>
   - Spherical Harmonic Clipped integration: <https://belcour.github.io/blog/research/2018/02/01/sh-integral.html>
   - Disney Subsurface Scattering Unity implementation: <http://advances.realtimerendering.com/s2018/Efficient%20screen%20space%20subsurface%20scattering%20Siggraph%202018.pdf>
   - Cone Step Relief Mapping:

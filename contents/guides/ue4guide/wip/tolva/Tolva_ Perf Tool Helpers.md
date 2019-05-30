@@ -138,7 +138,7 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
   - The 4 different modes for Oculus PerfHud
 
-  - The minimal perf hud mode that shows L,C,F depending on what missed frame rate (<https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-warning/>)
+  - The minimal perf hud mode that shows L,C,F depending on what missed frame rate (<https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-warning>)
 
 - Also force disable timewarp when launching
 
@@ -146,7 +146,7 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 ![Tolva_OculusDebugTool](........\assets\Tolva_OculusDebugTool.png)
 
-<https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-lostframes/>
+<https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-lostframes>
 
 - Pause Game Thread: (pause)
 
@@ -163,7 +163,7 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 - Command to capture ETW tracefile using ovrlog or ovrlog_win10.
 
-  - Oculus Guide on ETW/GPUView: <https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-tutorial/>
+  - Oculus Guide on ETW/GPUView: <https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-tutorial>
 
 - This chapter from this book is another detailed good resource (I have the ebook, ask me when you get to it):
   - Chapter 2. Understanding, Measuring, and Analyzing VR Graphics Performance (by James Hughes, Reza Nourai, and Ed Hutchins) in the book *GPU Zen: Advanced Rendering Techniques (Wolfgang Engel*, ed)

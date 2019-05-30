@@ -12,30 +12,30 @@ There are three basic ways to allocate or free memory within the Unreal Engine 4
 
 - **Global new and delete operators**. By default they a only defined in the modules in ModuleBoilerplate.h which means that many calls to new and delete were not being handled within the Unreal Engine 4 memory system. The overloaded operators actually call the FMemory functions.
 
-*Reference From <https://pzurita.wordpress.com/>*
+*Reference From <https://pzurita.wordpress.com>*
 
 ## Useful Allocators:
 
-| TPageAllocator/FPageAllocator                                       | Page allocator                                                                                                             |
-| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| TInlineAllocator                                                    |                                                                                                                            |
-| THeapAllocator                                                      |                                                                                                                            |
-| TFixedAllocator                                                     |                                                                                                                            |
-| FOneFrameResource                                                   |                                                                                                                            |
-| TSetAllocator                                                       |                                                                                                                            |
-| TInlineSetAllocator                                                 |                                                                                                                            |
-| TSparseArrayAllocator                                               |                                                                                                                            |
-| TInlineSparseArrayAllocator                                         |                                                                                                                            |
-| FLinearAllocator                                                    |                                                                                                                            |
-| TMemStackAllocator<br /> FMemStackBase<br />FMemStack<br />FMemMark | Linear allocation memory stack                                                                                             |
-| TAllocatorFixedSizeFreeList                                         | Linear block allocator: Fixed-size allocator that uses a free list to cache allocations.                                   |
-| TLockFreeFixedSizeAllocator_TLSCacheBase                            | Must use custom new/delete to use (or use placementnew). Ex:FLightPrimitiveInteraction                                     |
-| TLockFreeFixedSizeAllocator                                         | For more automatic, look at      TMemStackAllocator&lt;> which uses TLockFreeFixedSizeAllocator      underneath the covers |
-| TLockFreeClassAllocator                                             | Examples: FAnimStackAllocator & SceneRenderingAllocator                                                                    |
-| TLockFreeClassAllocator_TLSCache                                    | Can use it as an object pool (Ex: TheGraphEventAllocator &FGraphEvent::CreateGraphEvent())                                 |
-| TGenericGrowableAllocator                                           | Memory allocator that allocates direct memory for pool memory                                                              |
-| TCachedOSPageAllocator                                              |                                                                                                                            |
-| FLinearBlockAllocator                                               |                                                                                                                            |
+| TPageAllocator/FPageAllocator                                    | Page allocator                                                                                                             |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| TInlineAllocator                                                 |                                                                                                                            |
+| THeapAllocator                                                   |                                                                                                                            |
+| TFixedAllocator                                                  |                                                                                                                            |
+| FOneFrameResource                                                |                                                                                                                            |
+| TSetAllocator                                                    |                                                                                                                            |
+| TInlineSetAllocator                                              |                                                                                                                            |
+| TSparseArrayAllocator                                            |                                                                                                                            |
+| TInlineSparseArrayAllocator                                      |                                                                                                                            |
+| FLinearAllocator                                                 |                                                                                                                            |
+| TMemStackAllocator<br/> FMemStackBase<br/>FMemStack<br/>FMemMark | Linear allocation memory stack                                                                                             |
+| TAllocatorFixedSizeFreeList                                      | Linear block allocator: Fixed-size allocator that uses a free list to cache allocations.                                   |
+| TLockFreeFixedSizeAllocator_TLSCacheBase                         | Must use custom new/delete to use (or use placementnew). Ex:FLightPrimitiveInteraction                                     |
+| TLockFreeFixedSizeAllocator                                      | For more automatic, look at      TMemStackAllocator&lt;> which uses TLockFreeFixedSizeAllocator      underneath the covers |
+| TLockFreeClassAllocator                                          | Examples: FAnimStackAllocator & SceneRenderingAllocator                                                                    |
+| TLockFreeClassAllocator_TLSCache                                 | Can use it as an object pool (Ex: TheGraphEventAllocator &FGraphEvent::CreateGraphEvent())                                 |
+| TGenericGrowableAllocator                                        | Memory allocator that allocates direct memory for pool memory                                                              |
+| TCachedOSPageAllocator                                           |                                                                                                                            |
+| FLinearBlockAllocator                                            |                                                                                                                            |
 
 ## Malloc:
 

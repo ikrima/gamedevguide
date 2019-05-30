@@ -42,7 +42,7 @@ sortIndex: 1
 
    git diff 4.19.0-release bebylon > my_new_patch.diff
 
-   git format-patch 4.19.0-release..bebylon --stdout > my_new_patch.patch  
+   git format-patch 4.19.0-release..bebylon --stdout > my_new_patch.patch
    git am &lt; my_new_patch.patch
 
    git apply my_new_patch.diff
@@ -109,7 +109,7 @@ Rebase our private branch on top of the new UE4 repository. Make sure everyone h
 
 6. One last thing. You'll want to setup your Windows shell so that you can interact with .uproject files. Find the file named **UnrealVersionSelector-Win64-Shippping.exe** in the *UnrealEngine/Engine/Binaries/Win64/*folder and run it. Now, you'll be able to double-click .uproject files to load the project, or right click them to quickly update Visual Studio files.
 
-*Reference From <https://github.com/EpicGames/UnrealEngine/>*
+*Reference From <https://github.com/EpicGames/UnrealEngine>*
 
 # Visual Studio Customization:
 

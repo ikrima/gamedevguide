@@ -24,7 +24,7 @@ sortIndex: 8
   - Enable USF/USH in options menu:
   - Screenshot: [](/assets/media/image1.jpg)
 
-- Setting up Visual Studio with UE4: <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup/>
+- Setting up Visual Studio with UE4: <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
 
 - Enable Visual Assist support for UE4 C++ support <https://docs.wholetomato.com/default.asp?W763>
 
@@ -34,7 +34,7 @@ sortIndex: 8
   - Disable intellisense browse database <https://support.wholetomato.com/default.asp?W133>
   - Disable enumerate references <https://support.wholetomato.com/default.asp?W664>
   - <https://support.wholetomato.com/default.asp?W663>
-  - <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup/>
+  - <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
 
 - Add exceptions to Windows Defender to your project directories, for devenv, unrealheader tool, msbuild, cl.exe, incredibuild, link.exe
 

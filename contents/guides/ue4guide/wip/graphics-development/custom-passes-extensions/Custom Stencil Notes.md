@@ -28,8 +28,8 @@ The gist is to search for "CustomDepth" and do almost the exact same thing, exce
 
 #### Forward Shading Forces EarlyZPassMovable & DDM_AllOccluders
 
- // DBuffer decals force a full prepass 
- EarlyZPassMode = DDM_AllOccluders; 
+ // DBuffer decals force a full prepass
+ EarlyZPassMode = DDM_AllOccluders;
  bEarlyZPassMovable = true;
 
 Look at Landscape material for getting custom attributes in a material (LandscapelayerBlend,LandscapeLayerCoords)
@@ -56,7 +56,7 @@ ApplyDitheredLODTransitionState
 
 SetDepthStencilStateForBasePass
 
-MeshDecalPrimSet 
+MeshDecalPrimSet
 CustomDepthSet
 
 FMaterialRelevance MaterialRelevance;
@@ -117,7 +117,7 @@ FCableVertexFactory
 
 Drawing policies:
 
-Logic to render meshes with pass specific shaders. 
+Logic to render meshes with pass specific shaders.
 Takes set of mesh material shaders + vertex factory => binds vertex factory's buffers to RHI => binds mesh material shaders to RHI => sets shader parameters => issues RHI drawcall
 
 - FVertexFactory to itnerface to abstract mesh type
@@ -210,7 +210,7 @@ Resources:
 
 - <https://github.com/buildaworldnet/IrrlichtBAW/wiki/Early-Fragment-Tests,-Hi-Z,-Depth,-Stencil-and-other-benchmarks>
 
-- <https://fgiesen.wordpress.com/2011/07/08/a-trip-through-the-graphics-pipeline-2011-part-7/>
+- <https://fgiesen.wordpress.com/2011/07/08/a-trip-through-the-graphics-pipeline-2011-part-7>
 
 Force earlydepthstencil (if we're not doing an earlyZ pass)
 
@@ -225,19 +225,19 @@ Early/HiZ AMD circa 2007:
 Early Z Hierarchical Z Shader depth output Disabled Disabled Alpha test, alpha to coverage or texkill with depth or stencil writes on Disabled Enabled Alpha test, alpha to coverage or texkill with depth and stencil writes off Enabled Enabled Stencil op fail or zfail is not KEEP Enabled Disabled Stencil op fail and zfail is KEEP, pass is any op Enabled Enabled Depth test comparison is EQUAL Enabled X8xx: Disabled X1xxx: Enabled Depth test comparison is NOTEQUAL Enabled Disabled Reversed depth comparison direction Enabled Disabled Reversed stencil comparison direction Enabled Enabled
 
 ```cpp
-/*  
-* Stencil layout during basepass / deferred decals:  
-*                BIT ID    | USE 
-*                [0]       | sandbox bit (bit to be use by any rendering passes, but must be properly reset to 0 after using) 
-*                [1]       | unallocated 
-*                [2]       | unallocated 
-*                [3]       | Temporal AA mask for translucent object. 
-*                [4]       | Lighting channels 
-*                [5]       | Lighting channels 
-*                [6]       | Lighting channels 
-*                [7]       | primitive receive decal bit 
-* 
-* After deferred decals, stencil is cleared to 0 and no longer packed in this way, to ensure use of fast hardware clears and HiStencil. 
+/*
+* Stencil layout during basepass / deferred decals:
+*                BIT ID    | USE
+*                [0]       | sandbox bit (bit to be use by any rendering passes, but must be properly reset to 0 after using)
+*                [1]       | unallocated
+*                [2]       | unallocated
+*                [3]       | Temporal AA mask for translucent object.
+*                [4]       | Lighting channels
+*                [5]       | Lighting channels
+*                [6]       | Lighting channels
+*                [7]       | primitive receive decal bit
+*
+* After deferred decals, stencil is cleared to 0 and no longer packed in this way, to ensure use of fast hardware clears and HiStencil.
 */
 ```
 

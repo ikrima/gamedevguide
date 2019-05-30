@@ -8,7 +8,7 @@ Motion Controller Setup: <https://docs.unrealengine.com/latest/INT/Platforms/VR/
 
 SteamVR Controller: <https://forums.unrealengine.com/showthread.php?74817-Steam-VR-Controllers>
 
-Controller Trigger Inputs in UE4: <http://steamcommunity.com/app/358720/discussions/0/521643320352268286/>
+Controller Trigger Inputs in UE4: <http://steamcommunity.com/app/358720/discussions/0/521643320352268286>
 
 #### Debug Key Commands
 
@@ -28,4 +28,4 @@ I mentioned the existence of Aaron's SteamVR debug keys to a few folks and no on
 
 **Other useful notes:** Left click will regain fullscreen exclusive status in the event Windows kicks it out (usually due to another window overlapping onto its part of the desktop).
 
-*Reference From <http://steamcommunity.com/app/358720/discussions/0/520518053451174524/>*
+*Reference From <http://steamcommunity.com/app/358720/discussions/0/520518053451174524>*

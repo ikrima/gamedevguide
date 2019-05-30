@@ -35,7 +35,7 @@ sortIndex: 1
 
 - Setting up Visual Studio with UE4:
 
-  <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup/>
+  <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
 
 
 - Enable Visual Assist support for UE4 C++ support
@@ -56,7 +56,7 @@ sortIndex: 1
 
   - <https://support.wholetomato.com/default.asp?W663>
 
-  - <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup/>
+  - <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
 
 
 - Add exceptions to Windows Defender to your project directories, for devenv, unrealheader tool, msbuild, cl.exe, incredibuild, link.exe

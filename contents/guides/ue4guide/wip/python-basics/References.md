@@ -8,6 +8,6 @@ sortIndex: 2
 
 <https://github.com/arogozhnikov/python3_with_pleasure>
 
-<http://docs.python-guide.org/en/latest/writing/gotchas/>
+<http://docs.python-guide.org/en/latest/writing/gotchas>
 
 <http://pythonextensionpatterns.readthedocs.io/en/latest/refcount.html>

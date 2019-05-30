@@ -161,7 +161,7 @@ The property needs to be specified as:
 | LongPackageName                                     | Used by FDirectoryPath properties. Converts the path to a long package name.                                                                                                               |
 | MakeEditWidget                                      | Used for Transform or Rotator properties, or Arrays of Transforms or Rotators. Indicates that the property should be exposed in the viewport as a movable widget.                          |
 
-*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Metadata/>*
+*Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Metadata>*
 
 /// \[PropertyMetadata] Used for Subclass and StringClassReference properties. Shows the picker as a tree view instead of as a list
 
@@ -181,7 +181,7 @@ Default Value for structs in blueprints or parameters: MakeStructureDefaultValue
 
 Default function parameter values:
 
-UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\\"AssetTag.Item\\")",GameplayTagFilter="AssetTag.Item"))  
+UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\\"AssetTag.Item\\")",GameplayTagFilter="AssetTag.Item"))
 UBBItemVisualCfg\* GetItemVisualCfg(FBBAssetTag ItemVisualStyle) const;
 
 Restrict types of classes selectable in fstringassetreference properties: meta=(AllowedClasses="LevelSequence")
@@ -267,159 +267,159 @@ UPROPERTY(EditAnywhere, NoClear, BlueprintReadOnly)
 Deprecate functions in UE4: a Blueprint exposed function by adding \_DEPRECATED to its name along with DeprecatedFunction metadata:
 
 ```cpp
-struct BLUEPRINTGRAPH_API FBlueprintMetadata  
-{  
-public:  
-        // Struct/Enum/Class:  
-        // If true, this class, struct, or enum is a valid type for use as a variable in a blueprint  
+struct BLUEPRINTGRAPH_API FBlueprintMetadata
+{
+public:
+        // Struct/Enum/Class:
+        // If true, this class, struct, or enum is a valid type for use as a variable in a blueprint
         static const FName MD_AllowableBlueprintVariableType;
 
-// If true, this class, struct, or enum is not valid for use as a variable in a blueprint  
+// If true, this class, struct, or enum is not valid for use as a variable in a blueprint
         static const FName MD_NotAllowableBlueprintVariableType;
 
-// Class:  
-        // \[ClassMetadata] If present, the component class can be spawned by a blueprint  
+// Class:
+        // \[ClassMetadata] If present, the component class can be spawned by a blueprint
         static const FName MD_BlueprintSpawnableComponent;
 
-/\*\* If true, the class will be usable as a base for blueprints \*/  
+/\*\* If true, the class will be usable as a base for blueprints \*/
         static const FName MD_IsBlueprintBase;
 
-/\*\* A listing of classes that this class is accessible from (and only those classes, if present).  Note that this determines the GRAPH CONTEXTS in which the node cannot be placed (e.g. right click menu, palette), and does NOT control menus when dragging off of a context pin (i.e. contextual drag) \*/  
+/\*\* A listing of classes that this class is accessible from (and only those classes, if present).  Note that this determines the GRAPH CONTEXTS in which the node cannot be placed (e.g. right click menu, palette), and does NOT control menus when dragging off of a context pin (i.e. contextual drag) \*/
         static const FName MD_RestrictedToClasses;
 
-/// \[ClassMetadata] Used for Actor and Component classes. If the native class cannot tick, Blueprint generated classes based this Actor or Component can have bCanEverTick flag overridden even if bCanBlueprintsTickByDefault is false.  
+/// \[ClassMetadata] Used for Actor and Component classes. If the native class cannot tick, Blueprint generated classes based this Actor or Component can have bCanEverTick flag overridden even if bCanBlueprintsTickByDefault is false.
         static const FName MD_ChildCanTick;
 
-/// \[ClassMetadata] Used for Actor and Component classes. If the native class cannot tick, Blueprint generated classes based this Actor or Component can never tick even if bCanBlueprintsTickByDefault is true.  
+/// \[ClassMetadata] Used for Actor and Component classes. If the native class cannot tick, Blueprint generated classes based this Actor or Component can never tick even if bCanBlueprintsTickByDefault is true.
         static const FName MD_ChildCannotTick;
 
-/// \[ClassMetadata] Used to make the first subclass of a class ignore all inherited showCategories and hideCategories commands  
+/// \[ClassMetadata] Used to make the first subclass of a class ignore all inherited showCategories and hideCategories commands
         static const FName MD_IgnoreCategoryKeywordsInSubclasses;
 
-//    function metadata  
-        /\*\* Specifies a UFUNCTION as Kismet protected, which can only be called from itself \*/  
+//    function metadata
+        /\*\* Specifies a UFUNCTION as Kismet protected, which can only be called from itself \*/
         static const FName MD_Protected;
 
-/\*\* Marks a UFUNCTION as latent execution \*/  
+/\*\* Marks a UFUNCTION as latent execution \*/
         static const FName MD_Latent;
 
-/\*\* Marks a UFUNCTION as unsafe for use in the UCS, which prevents it from being called from the UCS.  Useful for things that spawn actors, etc that should never happen in the UCS \*/  
+/\*\* Marks a UFUNCTION as unsafe for use in the UCS, which prevents it from being called from the UCS.  Useful for things that spawn actors, etc that should never happen in the UCS \*/
         static const FName MD_UnsafeForConstructionScripts;
 
-// The category that a function appears under in the palette  
+// The category that a function appears under in the palette
         static const FName MD_FunctionCategory;
 
-// \[FunctionMetadata] Indicates that the function is deprecated  
+// \[FunctionMetadata] Indicates that the function is deprecated
         static const FName MD_DeprecatedFunction;
 
-// \[FunctionMetadata] Supplies the custom message to use for deprecation  
+// \[FunctionMetadata] Supplies the custom message to use for deprecation
         static const FName MD_DeprecationMessage;
 
-// \[FunctionMetadata] Indicates that the function should be drawn as a compact node with the specified body title  
+// \[FunctionMetadata] Indicates that the function should be drawn as a compact node with the specified body title
         static const FName MD_CompactNodeTitle;
 
-// \[FunctionMetadata] Indicates that the function should be drawn with this title over the function name  
+// \[FunctionMetadata] Indicates that the function should be drawn with this title over the function name
         static const FName MD_DisplayName;
 
-// \[FunctionMetadata] Indicates that a particular function parameter is for internal use only, which means it will be both hidden and not connectible.  
+// \[FunctionMetadata] Indicates that a particular function parameter is for internal use only, which means it will be both hidden and not connectible.
         static const FName MD_InternalUseParam;
 
 //    property metadata
 
-/\*\* UPROPERTY will be exposed on "Spawn Blueprint" nodes as an input  \*/  
+/\*\* UPROPERTY will be exposed on "Spawn Blueprint" nodes as an input  \*/
         static const FName MD_ExposeOnSpawn;
 
-/\*\* UPROPERTY uses the specified function as a getter rather than reading from the property directly \*/  
+/\*\* UPROPERTY uses the specified function as a getter rather than reading from the property directly \*/
         static const FName MD_PropertyGetFunction;
 
-/\*\* UPROPERTY uses the specified function as a setter rather than writing to the property directly \*/  
+/\*\* UPROPERTY uses the specified function as a setter rather than writing to the property directly \*/
         static const FName MD_PropertySetFunction;
 
-/\*\* UPROPERTY cannot be modified by other blueprints \*/  
+/\*\* UPROPERTY cannot be modified by other blueprints \*/
         static const FName MD_Private;
 
-/\*\* If true, the self pin should not be shown or connectable regardless of purity, const, etc. similar to InternalUseParam \*/  
+/\*\* If true, the self pin should not be shown or connectable regardless of purity, const, etc. similar to InternalUseParam \*/
         static const FName MD_HideSelfPin;
 
-/\*\* If true, the specified UObject parameter will default to "self" if nothing is connected \*/  
+/\*\* If true, the specified UObject parameter will default to "self" if nothing is connected \*/
         static const FName MD_DefaultToSelf;
 
-/\*\* The specified parameter should be used as the context object when retrieving a UWorld pointer (implies hidden and default-to-self) \*/  
+/\*\* The specified parameter should be used as the context object when retrieving a UWorld pointer (implies hidden and default-to-self) \*/
         static const FName MD_WorldContext;
 
-/\*\* For functions that have the MD_WorldContext metadata but are safe to be called from contexts that do not have the ability to provide the world context (either through GetWorld() or ShowWorldContextPin class metadata \*/  
+/\*\* For functions that have the MD_WorldContext metadata but are safe to be called from contexts that do not have the ability to provide the world context (either through GetWorld() or ShowWorldContextPin class metadata \*/
         static const FName MD_CallableWithoutWorldContext;
 
-/\*\* For functions that should be compiled in development mode only \*/  
+/\*\* For functions that should be compiled in development mode only \*/
         static const FName MD_DevelopmentOnly;
 
-/\*\* If true, an unconnected pin will generate a UPROPERTY under the hood to connect as the input, which will be set to the literal value for the pin.  Only valid for reference parameters. \*/  
+/\*\* If true, an unconnected pin will generate a UPROPERTY under the hood to connect as the input, which will be set to the literal value for the pin.  Only valid for reference parameters. \*/
         static const FName MD_AutoCreateRefTerm;
 
-/\*\* If true, the hidden world context pin will be visible when the function is placed in a child blueprint of the class. \*/  
+/\*\* If true, the hidden world context pin will be visible when the function is placed in a child blueprint of the class. \*/
         static const FName MD_ShowWorldContextPin;
 
-static const FName MD_BlueprintInternalUseOnly;  
+static const FName MD_BlueprintInternalUseOnly;
         static const FName MD_NeedsLatentFixup;
 
 static const FName MD_LatentCallbackTarget;
 
-/\*\* If true, properties defined in the C++ private scope will be accessible to blueprints \*/  
+/\*\* If true, properties defined in the C++ private scope will be accessible to blueprints \*/
         static const FName MD_AllowPrivateAccess;
 
-/\*\* Categories of functions to expose on this property \*/  
+/\*\* Categories of functions to expose on this property \*/
         static const FName MD_ExposeFunctionCategories;
 
-// \[InterfaceMetadata]  
-        static const FName MD_CannotImplementInterfaceInBlueprint;  
+// \[InterfaceMetadata]
+        static const FName MD_CannotImplementInterfaceInBlueprint;
         static const FName MD_ProhibitedInterfaces;
 
-/\*\* Keywords used when searching for functions \*/  
+/\*\* Keywords used when searching for functions \*/
         static const FName MD_FunctionKeywords;
 
-/\*\* Indicates that during compile we want to create multiple exec pins from an enum param \*/  
+/\*\* Indicates that during compile we want to create multiple exec pins from an enum param \*/
         static const FName MD_ExpandEnumAsExecs;
 
 static const FName MD_CommutativeAssociativeBinaryOperator;
 
-/\*\* Metadata string that indicates to use the MaterialParameterCollectionFunction node. \*/  
+/\*\* Metadata string that indicates to use the MaterialParameterCollectionFunction node. \*/
         static const FName MD_MaterialParameterCollectionFunction;
 
-/\*\* Metadata string that sets the tooltip \*/  
+/\*\* Metadata string that sets the tooltip \*/
         static const FName MD_Tooltip;
 
-/\*\* Metadata string that indicates the specified event can be triggered in editor \*/  
+/\*\* Metadata string that indicates the specified event can be triggered in editor \*/
         static const FName MD_CallInEditor;
 
-/\*\* Metadata to identify an DataTable Pin. Depending on which DataTable is selected, we display different RowName options \*/  
+/\*\* Metadata to identify an DataTable Pin. Depending on which DataTable is selected, we display different RowName options \*/
         static const FName MD_DataTablePin;
 
-/\*\* Metadata that flags make/break functions for specific struct types. \*/  
-        static const FName MD_NativeMakeFunction;  
+/\*\* Metadata that flags make/break functions for specific struct types. \*/
+        static const FName MD_NativeMakeFunction;
         static const FName MD_NativeBreakFunction;
 
-/\*\* Used by DynamicOutputParam && DeterminesOutputType to control output type Metadata that flags function params that govern what type of object the function returns \*/  
-        static const FName MD_DynamicOutputType;  
-        /\*\* Metadata that flags the function output param that will be controlled by the "MD_DynamicOutputType" pin \*/  
+/\*\* Used by DynamicOutputParam && DeterminesOutputType to control output type Metadata that flags function params that govern what type of object the function returns \*/
+        static const FName MD_DynamicOutputType;
+        /\*\* Metadata that flags the function output param that will be controlled by the "MD_DynamicOutputType" pin \*/
         static const FName MD_DynamicOutputParam;
 
-static const FName MD_ArrayParam;  
+static const FName MD_ArrayParam;
         static const FName MD_ArrayDependentParam;
 
-/\*\* Metadata that flags TSet parameters that will have their type determined at blueprint compile time \*/  
+/\*\* Metadata that flags TSet parameters that will have their type determined at blueprint compile time \*/
         static const FName MD_SetParam;
 
-/\*\* Metadata that flags TMap function parameters that will have their type determined at blueprint compile time \*/  
-        static const FName MD_MapParam;  
-        static const FName MD_MapKeyParam;  
+/\*\* Metadata that flags TMap function parameters that will have their type determined at blueprint compile time \*/
+        static const FName MD_MapParam;
+        static const FName MD_MapKeyParam;
         static const FName MD_MapValueParam;
 
-/\*\* Metadata that identifies an integral property as a bitmask. \*/  
-        static const FName MD_Bitmask;  
-        /\*\* Metadata that associates a bitmask property with a bitflag enum. \*/  
-        static const FName MD_BitmaskEnum;  
-        /\*\* Metadata that identifies an enum as a set of explicitly-named bitflags. \*/  
-        static const FName MD_Bitflags;  
-        /\*\* Metadata that signals to the editor that enum values correspond to mask values instead of bitshift (index) values. \*/  
+/\*\* Metadata that identifies an integral property as a bitmask. \*/
+        static const FName MD_Bitmask;
+        /\*\* Metadata that associates a bitmask property with a bitflag enum. \*/
+        static const FName MD_BitmaskEnum;
+        /\*\* Metadata that identifies an enum as a set of explicitly-named bitflags. \*/
+        static const FName MD_Bitflags;
+        /\*\* Metadata that signals to the editor that enum values correspond to mask values instead of bitshift (index) values. \*/
         static const FName MD_UseEnumValuesAsMaskValuesInEditor;
 ```

@@ -33,7 +33,7 @@ UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodeb
 
 # Manually setting up PVS Studio for Static Analysis
 
-1. Download PVS Studio from <http://www.viva64.com/en/pvs-studio/>
+1. Download PVS Studio from <http://www.viva64.com/en/pvs-studio>
 1. Launch standalone.exe, go to Tools-Options-Registration
 1. Name: PVS-Studio Free
 1. Key: FREE-FREE-FREE-FREE

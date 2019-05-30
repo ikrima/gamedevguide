@@ -167,9 +167,9 @@ UEngine::GetNetMode
 Which calls these functions
 
 ```cpp
-FPlatformProperties::IsServerOnly()  
-FPlatformProperties::IsGameOnly()  
-IsRunningDedicatedServer()  
+FPlatformProperties::IsServerOnly()
+FPlatformProperties::IsGameOnly()
+IsRunningDedicatedServer()
 IsRunningGame()
 
 IsRunningClientOnly()
@@ -184,72 +184,72 @@ UWorld
 
 bool IsPlayInEditor() const;
 
-/** Returns whether script is executing within a preview window */  
+/** Returns whether script is executing within a preview window */
         bool IsPlayInPreview() const;
 
-/** Returns whether script is executing within a mobile preview window */  
+/** Returns whether script is executing within a mobile preview window */
         bool IsPlayInMobilePreview() const;
 
-/** Returns whether script is executing within a vulkan preview window */  
+/** Returns whether script is executing within a vulkan preview window */
         bool IsPlayInVulkanPreview() const;
 
-/** Returns true if this world is any kind of game world (including PIE worlds) */  
+/** Returns true if this world is any kind of game world (including PIE worlds) */
         bool IsGameWorld() const;
 
-/** Returns true if this world is a preview game world (blueprint editor) */  
+/** Returns true if this world is a preview game world (blueprint editor) */
         bool IsPreviewWorld() const;
 
 GetWorld()->WorldType
 
-namespace EWorldType  
-{  
-        enum Type  
-        {  
-                /** An untyped world, in most cases this will be the vestigial worlds of streamed in sub-levels */  
+namespace EWorldType
+{
+        enum Type
+        {
+                /** An untyped world, in most cases this will be the vestigial worlds of streamed in sub-levels */
                 None,
 
-/** The game world */  
+/** The game world */
                 Game,
 
-/** A world being edited in the editor */  
+/** A world being edited in the editor */
                 Editor,
 
-/** A Play In Editor world */  
+/** A Play In Editor world */
                 PIE,
 
-/** A preview world for an editor tool */  
+/** A preview world for an editor tool */
                 EditorPreview,
 
-/** A preview world for a game */  
+/** A preview world for a game */
                 GamePreview,
 
-/** An editor world that was loaded but not currently being edited in the level editor */  
-                Inactive  
+/** An editor world that was loaded but not currently being edited in the level editor */
+                Inactive
         };
 
-/** 
- * The network mode the game is currently running.  
- * @see <https://docs.unrealengine.com/latest/INT/Gameplay/Networking/Replication/>  
- */ 
-    
-enum ENetMode 
-{ 
-        /** Standalone: a game without networking, with one or more local players. Still considered a server because it has all server functionality. */  
+/**
+ * The network mode the game is currently running.
+ * @see <https://docs.unrealengine.com/latest/INT/Gameplay/Networking/Replication>
+ */
+
+enum ENetMode
+{
+        /** Standalone: a game without networking, with one or more local players. Still considered a server because it has all server functionality. */
         NM_Standalone,
 
-/** Dedicated server: server with no local players. */ 
+/** Dedicated server: server with no local players. */
         NM_DedicatedServer,
 
-/** Listen server: a server that also has a local player who is hosting the game, available to other players on the network. */ 
+/** Listen server: a server that also has a local player who is hosting the game, available to other players on the network. */
         NM_ListenServer,
 
-/** 
-         * Network client: client connected to a remote server.  
-         * Note that every mode less than this value is a kind of server, so checking NetMode &lt; NM_Client is always some variety of server.  
-         */  
+/**
+         * Network client: client connected to a remote server.
+         * Note that every mode less than this value is a kind of server, so checking NetMode &lt; NM_Client is always some variety of server.
+         */
         NM_Client,
 
-NM_MAX, 
+NM_MAX,
 };
 ```
 

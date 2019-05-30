@@ -4,7 +4,7 @@ sortIndex: 1
 
 # Useful Links
 
-<http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified/>
+<http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified>
 <https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4>
 
 ## **Project Generation**

@@ -38,7 +38,7 @@ Reference: UnrealEngine\\Engine\\Source\\Programs\\UnrealBuildTool\\Configuratio
   - <https://docs.unrealengine.com/latest/INT/Programming/Development/InstalledBuildReference/index.html>
   - <https://docs.unrealengine.com/latest/INT/Programming/Development/BuildGraph/index.html>
   - <http://jackknobel.com/How-To/BuildGraph>
-  - <http://jackknobel.com/BuildGraph/Building-an-installed-ue4/>
+  - <http://jackknobel.com/BuildGraph/Building-an-installed-ue4>
 - (4.13 Deprecated) Coherent explanation on Rocket build process/GUBP: <https://github.com/Kalmalyzer/UE4RocketBuild>
   - Also deprecated: GetModulesToPrecompile(). Use -precompile flag instead which automatically gets the right engine modules for recompilation
 - UBT uses empty text files in Engine/Build to demarcate stuff as well. Ex:
@@ -54,7 +54,7 @@ Reference: UnrealEngine\\Engine\\Source\\Programs\\UnrealBuildTool\\Configuratio
 
 # Building Configuration With Custom Build Compiler Flags
 
-- Reference: <https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/TargetFiles/>
+- Reference: <https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/TargetFiles>
 - Your Game.target.cs file configures the build environment and flags
 - UEBuildConfiguration contains a lot of the settings you would want to modify
 - You modify this in the SetupGlobalEnvironment() call

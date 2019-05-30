@@ -9,12 +9,12 @@ Ar << ObjectClass;
 
 uStruct->SerializeItem(Ar, Allocation, nullptr);
 
-if (Ar.ArIsLoading)  
+if (Ar.ArIsLoading)
 Object = NewObject&lt;UObject>(ObjectClass, ...);
 
-if (Ar.WantBinaryPropertySerialization())  
-ObjectClass->SerializeBin(Ar, Object);  
-else  
+if (Ar.WantBinaryPropertySerialization())
+ObjectClass->SerializeBin(Ar, Object);
+else
 ObjectClass->SerializeTaggedProperties(Ar,Object,...);
 ```
 
@@ -68,13 +68,13 @@ After all the actor records are saved, we can create the final save game.
 
 ```cpp
 FSaveGameData SaveGameData;
- 
+
 SaveGameData.GameID = "1234";
 SaveGameData.Timestamp = FDateTime::Now();
 SaveGameData.SavedActors = SavedActors;
- 
+
 FBufferArchive BinaryData;
- 
+
 BinaryData << SaveGameData;
 ```
 
@@ -83,7 +83,7 @@ After we have created the final save file and serialized it, we can store the by
 ```cpp
 if (FFileHelper::SaveArrayToFile(BinaryData, *FString("TestSave.sav")))
 
-{ 
+{
 
 UE_LOG(LogTemp, Warning, TEXT("Save Success! %s"), FPlatformProcess::BaseDir());
 
@@ -102,7 +102,7 @@ BinaryData.FlushCache();
 BinaryData.Empty();
 ```
 
-*Reference From <http://runedegroot.com/saving-and-loading-actor-data-in-unreal-engine-4/>*
+*Reference From <http://runedegroot.com/saving-and-loading-actor-data-in-unreal-engine-4>*
 
 **Alternate way to do it directly with proxy archive:**
 
@@ -170,7 +170,7 @@ BinaryData.Empty();
 FromBinary.Close();
 ```
 
-*Reference From <http://runedegroot.com/saving-and-loading-actor-data-in-unreal-engine-4/>*
+*Reference From <http://runedegroot.com/saving-and-loading-actor-data-in-unreal-engine-4>*
 
 ### Serialize Objects & Names as strings:
 
@@ -192,7 +192,7 @@ ArIsSaveGame = true;
 };
 ```
 
-*Reference From <http://runedegroot.com/saving-and-loading-actor-data-in-unreal-engine-4/>*
+*Reference From <http://runedegroot.com/saving-and-loading-actor-data-in-unreal-engine-4>*
 
 ### PostFixupReferences
 

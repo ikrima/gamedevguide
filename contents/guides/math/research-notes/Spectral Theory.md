@@ -66,7 +66,7 @@ Laplacian => Avg of neighbors at a point - point value
 
 - INTEGRATION BY RBF OVER THE SPHERE: <https://www.math.unipd.it/~marcov/pdf/AMR05_17.pdf>
 - RBF for Scientific computing: <https://math.boisestate.edu/~wright/montestigliano/RBFsForScientificComputingPartOne.pdf>
-- Interpolation and Best Approximation for Spherical Radial Basis Function Networks: <https://www.hindawi.com/journals/aaa/2013/206265/>
+- Interpolation and Best Approximation for Spherical Radial Basis Function Networks: <https://www.hindawi.com/journals/aaa/2013/206265>
 - Spherical Radial Basis Functions, Theory and Applications (SpringerBriefs in Mathematics)
 - Transport schemes on a sphere using radial basis functions: <https://www.math.utah.edu/~wright/misc/msFinal_Grady.pdf>
 - On choosing a radial basis function and a shape parameterwhen solving a convective PDE on a sphere: <https://amath.colorado.edu/faculty/fornberg/Docs/Fornberg_Piret_2.pdf>

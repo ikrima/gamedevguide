@@ -6,7 +6,7 @@ sortIndex: 2
 
 <http://mathproofs.blogspot.com/2005/07/mapping-square-to-circle.html>
 
-<http://paulbourke.net/geometry/transformationprojection/>
+<http://paulbourke.net/geometry/transformationprojection>
 
 <https://github.com/rlk/envtools/blob/master/envremap.c>
 
@@ -14,7 +14,7 @@ sortIndex: 2
 
 <http://mathproofs.blogspot.com/2005/07/mapping-cube-to-sphere.html>
 
-<http://paulbourke.net/geometry/transformationprojection/>
+<http://paulbourke.net/geometry/transformationprojection>
 
 <http://en.wikipedia.org/wiki/Spherical_coordinate_system>
 
@@ -30,7 +30,7 @@ sortIndex: 2
 
 <https://kahrbjy.files.wordpress.com/2012/08/ee207notes3.pdf>
 
-<https://www.physicsforums.com/threads/surface-area-of-a-sphere-in-spherical-coordinates-concentric-rings.676927/>
+<https://www.physicsforums.com/threads/surface-area-of-a-sphere-in-spherical-coordinates-concentric-rings.676927>
 
 <http://mathworld.wolfram.com/SolidAngle.html>
 
@@ -52,7 +52,7 @@ Sampling-Efficient Mapping of Spherical Images <http://mentallandscape.com/Paper
 
 <http://www.learnopengl.com/#!Advanced-OpenGL/Cubemaps>
 
-<http://www.euclideanspace.com/maths/geometry/elements/plane/lineOnPlane/>
+<http://www.euclideanspace.com/maths/geometry/elements/plane/lineOnPlane>
 
 <http://www.cs.princeton.edu/courses/archive/fall2000/cs426/lectures/raycast/sld017.htm>
 
@@ -66,7 +66,7 @@ Sampling-Efficient Mapping of Spherical Images <http://mentallandscape.com/Paper
 
 <https://forums.unrealengine.com/showthread.php?30345-Tutorial-Creating-and-Using-Delegates-C-and-Accessing-them-in-Blueprints>
 
-<http://www.gamerendering.com/2008/10/05/bilinear-interpolation/>
+<http://www.gamerendering.com/2008/10/05/bilinear-interpolation>
 
 <http://en.wikipedia.org/wiki/Spherical_coordinate_system>
 

@@ -45,13 +45,13 @@ GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to C
 
 # Deep Dive Technical Course:
 
-<http://nikoladimitroff.github.io/Game-Engine-Architecture/>
+<http://nikoladimitroff.github.io/Game-Engine-Architecture>
 
-<https://www.blaenkdenum.com/notes/unreal-engine/>
+<https://www.blaenkdenum.com/notes/unreal-engine>
 
 # Rendering:
 
-- How Unreal Renders A Frame: <https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame/>
+- How Unreal Renders A Frame: <https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame>
 
 - UE4 Rendering Overview: <https://medium.com/@lordned/unreal-engine-4-rendering-overview-part-1-c47f2da65346>
 

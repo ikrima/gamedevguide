@@ -89,7 +89,7 @@ Actor Select Relevant Lights
 
 <https://docs.unrealengine.com/udk/Three/PerformanceDebugging.html>
 
-<http://www.hourences.com/tutorials-ue3-performance-profiling-introduction/>
+<http://www.hourences.com/tutorials-ue3-performance-profiling-introduction>
 
 Go to bool StaticExec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevice& Ar ) in Obj.cpp and extract out useful commands and arguments (eg listprops, getall, singleref, refs, etc)
 

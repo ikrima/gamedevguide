@@ -8,7 +8,7 @@ Great Simple Reference:
 
 - Tutorial from Max Gerke: <https://vimeo.com/album/5022905/video/241039777>
 
-<http://headcrash.industries/reference/adding-new-asset-types-to-ue4/>
+<http://headcrash.industries/reference/adding-new-asset-types-to-ue4>
 
 Great Complex Reference: FaceFx UE4 Plugin: <https://github.com/FaceFX/FaceFX-UE4>
 
@@ -18,7 +18,7 @@ Great Complex Reference: FaceFx UE4 Plugin: <https://github.com/FaceFX/FaceFX-UE
 
 **Custom Asset Picker**
 
-<https://kasundevblog.wordpress.com/2015/10/07/creating-assets-with-support-of-a-custom-class-picker-unreal-engine-4/>
+<https://kasundevblog.wordpress.com/2015/10/07/creating-assets-with-support-of-a-custom-class-picker-unreal-engine-4>
 
 **Create Custom Content Browser Asset Category**
 

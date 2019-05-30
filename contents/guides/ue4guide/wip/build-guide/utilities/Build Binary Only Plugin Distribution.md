@@ -54,4 +54,4 @@ Since you are not supplying the source that UE4 expects, there are several limit
 
 1. **The binary plugin only works with the same version of the engine it was compiled with.** If you build your plugin using the Epic launcher version of UE4, then it doesn’t work with custom versions of the engine or people that have built the engine from source code. Thankfully it does work for all minor point releases, e.g. 4.20.X, so we only have to release an update when major UE4 versions are released.
 
-*Reference From: <https://mercuna.com/building-binary-plugins-in-unreal-engine-4/>*
+*Reference From: <https://mercuna.com/building-binary-plugins-in-unreal-engine-4>*

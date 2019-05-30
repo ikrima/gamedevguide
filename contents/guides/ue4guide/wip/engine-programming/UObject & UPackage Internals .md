@@ -2,7 +2,7 @@
 sortIndex: 3
 ---
 
-<https://heapcleaner.wordpress.com/2016/06/11/uobject-constructor-postinitproperties-and-postload/>
+<https://heapcleaner.wordpress.com/2016/06/11/uobject-constructor-postinitproperties-and-postload>
 
 All unreal objects have unique path in the form of string:
 

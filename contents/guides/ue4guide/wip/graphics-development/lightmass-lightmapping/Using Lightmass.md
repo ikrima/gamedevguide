@@ -8,13 +8,13 @@ sortIndex: 2
 
 [Lightmass Deep Dive 2018 Vol.1: Lightmass 内部アルゴリズム概要(Lightmap 編)\]](https://www.slideshare.net/EpicGamesJapan/lightmass-deep-dive-2018-vol1-lightmasslightmap)
 
-<img src="process_markdown/assets/media/image1.png" alt="Machine generated alternative text: " style="width:4.42708in;height:3.69792in" />
+<img src="process_markdown/assets/media/image1.png" alt="Machine generated alternative text: " style="width:4.42708in;height:3.69792in" >
 
 ![Machine generated alternative text:  ](file:///C:/Users/KITELI~1/AppData/Local/Temp/msohtmlclip1/02/clip_image001.png)
 
 [Lightmass Deep Dive 2018 Vol. 2: Lightmap 作成のための Lightmass 設定方法](https://www.slideshare.net/EpicGamesJapan/lightmass-deep-dive-2018-vol-2-lightmaplightmass)
 
-<img src="process_markdown/assets/media/image2.png" alt="Liľltrna;s Deeo Dve XII 8 " style="width:4.42708in;height:3.69792in" />
+<img src="process_markdown/assets/media/image2.png" alt="Liľltrna;s Deeo Dve XII 8 " style="width:4.42708in;height:3.69792in" >
 
 ![image1](C:\devguide\conversion\FINISHED\assets\image1-1556561794310.png)
 
@@ -24,13 +24,13 @@ sortIndex: 2
 
 ![image2](C:\devguide\conversion\FINISHED\assets\image2.png)
 
-<img src="process_markdown/assets/media/image3.png" alt="Rich web content titled: UE4 Lightmass for Large Console Games (UE4 Lightmass Deep Dive)" style="width:4.42708in;height:3.69792in" />
+<img src="process_markdown/assets/media/image3.png" alt="Rich web content titled: UE4 Lightmass for Large Console Games (UE4 Lightmass Deep Dive)" style="width:4.42708in;height:3.69792in" >
 
 [Practical usage of Lightmass in Architectural Visualization (UE4 Lightmass Deep Dive)](https://www.slideshare.net/EpicGamesJapan/practical-usage-of-lightmass-in-architectural-visualization-ue4-lightmass-deep-dive)
 
 (<https://www.slideshare.net/EpicGamesJapan/practical-usage-of-lightmass-in-architectural-visualization-ue4-lightmass-deep-dive>)
 
-<img src="process_markdown/assets/media/image4.png" alt="Rich web content titled: Practical usage of Lightmass in Architectural Visualization (UE4 Lightmass Deep Dive)" style="width:4.42708in;height:3.69792in" />
+<img src="process_markdown/assets/media/image4.png" alt="Rich web content titled: Practical usage of Lightmass in Architectural Visualization (UE4 Lightmass Deep Dive)" style="width:4.42708in;height:3.69792in" >
 
 ## Making Lightmass Understandable:
 
@@ -80,10 +80,10 @@ So now you can see why static sky lights have limited quality and only support o
 
 Most common settings to tweak:
 
-    [DevOptions.PrecomputedDynamicObjectLighting]  
-    SurfaceLightSampleSpacing=300  
-    FirstSurfaceSampleLayerHeight=50  
-    SurfaceSampleLayerHeightSpacing=250  
+    [DevOptions.PrecomputedDynamicObjectLighting]
+    SurfaceLightSampleSpacing=300
+    FirstSurfaceSampleLayerHeight=50
+    SurfaceSampleLayerHeightSpacing=250
     NumSurfaceSampleLayers=2
 
 Look at BaseLightmass.ini for all of the settings to tweak baking lightmaps

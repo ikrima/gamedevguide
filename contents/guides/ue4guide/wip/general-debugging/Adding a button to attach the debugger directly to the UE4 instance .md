@@ -2,7 +2,7 @@
 sortIndex: 2
 ---
 
-- <https://blog.markvincze.com/attach-to-process-shortcut-in-visual-studio/>
+- <https://blog.markvincze.com/attach-to-process-shortcut-in-visual-studio>
 
 - Example script for UE4:
 

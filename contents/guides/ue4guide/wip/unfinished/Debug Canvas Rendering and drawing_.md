@@ -40,7 +40,7 @@ GEngine:bool IsStereoscopic3D(FViewport\* InViewport = nullptr);
 
 Perf Tab:
 
-Look at stat <https://docs.unrealengine.com/latest/INT/Engine/Performance/StatCommands/>
+Look at stat <https://docs.unrealengine.com/latest/INT/Engine/Performance/StatCommands>
 
 Debug Tab:
 

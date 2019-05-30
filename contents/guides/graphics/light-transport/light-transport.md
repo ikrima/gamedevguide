@@ -36,7 +36,7 @@ Imho, the easiest/comprehensive path are the Volume rendering siggraph courses. 
 - Volumetric Path Tracing: MC Estimators: <http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/09volpath.pdf>
 - Volumetric Path Tracing: Dipole Derivation: <https://www.cs.cornell.edu/courses/cs6630/2012sp/notes/10diffusion.pdf>
 - The Path to Path-Traced Movies: <https://graphics.pixar.com/library/PathTracedMovies/paper.pdf>
-- Efficient Monte Carlo Methods for Light Transport in Scattering Media: <https://cs.dartmouth.edu/wjarosz/publications/dissertation/>
+- Efficient Monte Carlo Methods for Light Transport in Scattering Media: <https://cs.dartmouth.edu/wjarosz/publications/dissertation>
 - Implementing a skin BSSRDF by Christophe Hery: <http://www.treyharrell.com/prman-notes/scat.pdf>
 
 **Lecture Notes:**
@@ -51,7 +51,7 @@ Imho, the easiest/comprehensive path are the Volume rendering siggraph courses. 
 
 **Overview on Advanced techniques**
 
-- This FXGuide article on the frontier of light transport is a great overview of the advanced set of techniques: <https://www.fxguide.com/featured/its-not-rocket-science-oh-wait/>
+- This FXGuide article on the frontier of light transport is a great overview of the advanced set of techniques: <https://www.fxguide.com/featured/its-not-rocket-science-oh-wait>
 - This is a good next step in more details: A Hitchhiker's Guide to Multiple Scattering: <http://www.eugenedeon.com/hitchhikers>
 - 2018 State of Art Monte Carlo Methods for Volumetric Light Transport Simulation: <https://cs.dartmouth.edu/wjarosz/publications/novak18monte.html>
 
@@ -91,10 +91,10 @@ Imho, the easiest/comprehensive path are the Volume rendering siggraph courses. 
 
 Masters/Undergrad thesis are usually super great for getting up to speed on foundational techniques in the field. Here's some good overview links
 
-- Dipole approximation for dummies I: <https://flashypixels.wordpress.com/2016/02/10/chronicles-of-a-tour-in-skin-shading-dipole-approximation-for-dummies/>
-- Dipole approximation for dummies II: <https://flashypixels.wordpress.com/2016/02/28/chronicles-of-a-tour-in-skin-shading-some-useful-biological-aspects-used-in-cg/>
+- Dipole approximation for dummies I: <https://flashypixels.wordpress.com/2016/02/10/chronicles-of-a-tour-in-skin-shading-dipole-approximation-for-dummies>
+- Dipole approximation for dummies II: <https://flashypixels.wordpress.com/2016/02/28/chronicles-of-a-tour-in-skin-shading-some-useful-biological-aspects-used-in-cg>
 - Photon Path Distribution in Inhomogeneous Scattering Media: <http://www.mia.uni-saarland.de/schmaltz/Diplom.ps.gz>
-- The Radiance Field: <http://reedbeta.com/blog/the-radiance-field/>
+- The Radiance Field: <http://reedbeta.com/blog/the-radiance-field>
 
 # Notes: Volume Rendering
 
@@ -235,7 +235,7 @@ Dipole Approximation: Making subsurface translucency more accurate
 
   - SCHLICK PHASE FUNCTION. While the Henyey-Greenstein phase function is a good approximation to Mie scattering, it is still relatively expensive to evaluate. Schlick observed that the accurate shape is often not crucial for rendering applications and he replaced a relatively expensive exponentiation with even simpler expression [7]&#x3A; P(ω ,ω ) = 1−k2 (1+k cosθ)2 (4) where k is a parameter similar to the asymmetry parameter g: −1 ≤ k ≤ 1. The phase function still needs to be normalized by multiplying it by 1/4π, so that it will integrate to 1. R
 
-  - Case A, where the E of the incident photon matches a gap between E levels of the atom, so the atom is excited into a higher state (electron transition). This is often called "resonance absorption". Case B, where the E of the incident photon is lower than such gap, so there is no such excitation / transition, and the photon goes out as it came in. This is called "Rayleigh scattering". When the E of the incident photon is higher than the gap, the photon loses energy to the particle but we don't say that there is partial absorption (?) and this is called "Raman scattering" (also Stokes scattering, but there is also an anti-Stokes effect, let us leave that aside...). But then you learn that in case A the excitation lasts for an incredibly short time after which the photon is re-emitted with the same E as it came in, just as in case B. May it be that the duration of "excitation" in A is longer than "whatever happens" in B? (but it doesn't look like a great difference, given that the time is very short).  From <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796/>
+  - Case A, where the E of the incident photon matches a gap between E levels of the atom, so the atom is excited into a higher state (electron transition). This is often called "resonance absorption". Case B, where the E of the incident photon is lower than such gap, so there is no such excitation / transition, and the photon goes out as it came in. This is called "Rayleigh scattering". When the E of the incident photon is higher than the gap, the photon loses energy to the particle but we don't say that there is partial absorption (?) and this is called "Raman scattering" (also Stokes scattering, but there is also an anti-Stokes effect, let us leave that aside...). But then you learn that in case A the excitation lasts for an incredibly short time after which the photon is re-emitted with the same E as it came in, just as in case B. May it be that the duration of "excitation" in A is longer than "whatever happens" in B? (but it doesn't look like a great difference, given that the time is very short).  From <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796>
 
 A common explanation that has been provided is that a photon moving through the material still moves at the speed of c, but when it encounters the atom of the material, it is absorbed by the atom via an atomic transition. After a very slight delay, a photon is then re-emitted. This explanation is incorrect and inconsistent with empirical observations. If this is what actually occurs, then the absorption spectrum will be discrete because atoms have only discrete energy states. Yet, in glass for example, we see almost the whole visible spectrum being transmitted with no discrete disruption in the measured speed. In fact, the index of refraction (which reflects the speed of light through that medium) varies continuously, rather than abruptly, with the frequency of light.
 
@@ -247,13 +247,13 @@ A solid has a network of ions and electrons fixed in a “lattice”. Think of t
 
 On the other hand, if a photon has an energy beyond the phonon spectrum, then while it can still cause a disturbance of the lattice ions, the solid cannot sustain this vibration, because the phonon mode isn’t available. This is similar to trying to oscillate something at a different frequency than the resonance frequency. So the lattice does not absorb this photon and it is re-emitted but with a very slight delay. This, naively, is the origin of the apparent slowdown of the light speed in the material. The emitted photon may encounter other lattice ions as it makes its way through the material and this accumulate the delay.
 
-*Moral of the story*: the properties of a solid that we are familiar with have more to do with the “collective” behavior of a large number of atoms interacting with each other. In most cases, these do not reflect the properties of the individual, isolated atoms. From <https://www.physicsforums.com/insights/do-photons-move-slower-in-a-solid-medium/>
+*Moral of the story*: the properties of a solid that we are familiar with have more to do with the “collective” behavior of a large number of atoms interacting with each other. In most cases, these do not reflect the properties of the individual, isolated atoms. From <https://www.physicsforums.com/insights/do-photons-move-slower-in-a-solid-medium>
 
 - Quantum theory describes radiation as photons being wave packets, not continuous waves
   <https://www.quora.com/How-does-the-amplitude-of-an-electromagnetic-wave-affect-its-energy>
   ![](../assets/quantumpacket.png)
 
-  - The usual description does assume that the “lattice” (because it is a collective behavior, see this FAQ) briefly vibrates with a non-resonant frequency and then re-emits it. That brief stop and ensuing delay is what would explain that light travels more slowly in the medium. Whether that is "scattering" or not is another question. I would say, yes, the light is scattered/re-emitted in random directions. How is it that it keeps its original direction? What I read (classical explanation) is that the network of atoms acts cooperatively so that there is destructive interference except in the original direction, but someone objected once to that in a discussion… Reference <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796/>
+  - The usual description does assume that the “lattice” (because it is a collective behavior, see this FAQ) briefly vibrates with a non-resonant frequency and then re-emits it. That brief stop and ensuing delay is what would explain that light travels more slowly in the medium. Whether that is "scattering" or not is another question. I would say, yes, the light is scattered/re-emitted in random directions. How is it that it keeps its original direction? What I read (classical explanation) is that the network of atoms acts cooperatively so that there is destructive interference except in the original direction, but someone objected once to that in a discussion… Reference <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796>
     ![](../assets/collimatedlightsource.png)
 
     The theory of light is described by a series of increasingly complete optical models, where each successive model is able to account for more optical phenomena. In computer graphics and this dissertation, we will restrict ourselves to the simplest model, ray optics.
@@ -263,16 +263,16 @@ On the other hand, if a photon has an energy beyond the phonon spectrum, then wh
 
 This is the most useful literature I found on describing the nature of scattering. But it's also very dense. Also humbling how much of this stuff was solved in the 60s without computers.
 
-<http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/macroscopic-cross-section/>
-<http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/neutron-absorption/neutron-absorption-cross-section/>
+<http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/macroscopic-cross-section>
+<http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/neutron-absorption/neutron-absorption-cross-section>
 <http://moreira.tamu.edu/BAEN625/TOC_files/chapt6b.pdf>
 
-<http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/microscopic-cross-section/>
+<http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/microscopic-cross-section>
 Difference between microscopic cross-section vs macroscopic crosssection:
 The difference between the microscopic and macroscopic cross sections is extremely important. The microscopic cross section represents the effective target area of a single nucleus, while the macroscopic cross section represents the effective target area of all of
 the nuclei contained in certain volume.
 
-From <http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/microscopic-cross-section/>
+From <http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/microscopic-cross-section>
 ![](../assets/neutrinotransport.png)
 
 Different cross-sections indicate characteristic target area that defines type of nuclear reaction that would occur

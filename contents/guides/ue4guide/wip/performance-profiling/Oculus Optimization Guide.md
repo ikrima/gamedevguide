@@ -2,7 +2,7 @@
 sortIndex: 13
 ---
 
-<https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance/>
+<https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance>
 
 [Oculus Connect 2: Integrating and Profiling VR in your Engine with the Oculus PC SDK](https://www.youtube.com/watch?v=NaQ8RJKe3cE)
 

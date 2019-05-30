@@ -49,7 +49,7 @@ Reference: D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Source\\Pr
 
   - <http://jackknobel.com/How-To/BuildGraph>
 
-  - <http://jackknobel.com/BuildGraph/Building-an-installed-ue4/>
+  - <http://jackknobel.com/BuildGraph/Building-an-installed-ue4>
 
 - (4.13 Deprecated) Coherent explanation on Rocket build process/GUBP: <https://github.com/Kalmalyzer/UE4RocketBuild>
 
@@ -69,7 +69,7 @@ Reference: D:\\Ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Source\\Pr
 
 ## Building Configuration With Custom Build Compiler Flags
 
-- Reference: <https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/TargetFiles/>
+- Reference: <https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/TargetFiles>
 
 - Your Game.target.cs file configures the build environment and flags
 

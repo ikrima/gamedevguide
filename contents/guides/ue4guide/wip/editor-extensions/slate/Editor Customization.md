@@ -10,7 +10,7 @@ Component Visualizer: <https://wiki.unrealengine.com/Component_Visualizers>
 
 Custom Asset Picker:
 
-<https://kasundevblog.wordpress.com/2015/10/07/creating-assets-with-support-of-a-custom-class-picker-unreal-engine-4/>
+<https://kasundevblog.wordpress.com/2015/10/07/creating-assets-with-support-of-a-custom-class-picker-unreal-engine-4>
 
 Console command "testprops" will bring up UPropertyEditorTestObject that contains all base properties and the corresponding slate widgets
 

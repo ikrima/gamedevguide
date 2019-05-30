@@ -14,9 +14,9 @@ However, if you wanted to use INIs, I'd recommend Game.ini (as this is a game sp
 
 For starters, take a look at these docs:
 
-<https://docs.unrealengine.com/latest/INT/Programming/Development/Tools/ConsoleManager/>
+<https://docs.unrealengine.com/latest/INT/Programming/Development/Tools/ConsoleManager>
 
-<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/>
+<https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles>
 
 Those should get you started with Console Variables and INI Properties. What you choose is ultimately up to you.
 
@@ -134,12 +134,12 @@ OnFailure.Broadcast();
 
 **How do I find the current session created by the dedicated server?**
 
-- You can try IOnlineSession::GetNamedSession. Unfortunately, that will only return the session if you already know the name. Usually, calling DestroySession should be enough (it will use GetNamedSession under the hood to grab the correct one). 
+- You can try IOnlineSession::GetNamedSession. Unfortunately, that will only return the session if you already know the name. Usually, calling DestroySession should be enough (it will use GetNamedSession under the hood to grab the correct one).
   What I'd recommend is actually debugging to see whether or not any sessions actually do exist. All OSSs should have some array or map so they can implement GetNamedSession. For example, in FOnlineSessionSteam there's a Sessions array. Putting a breakpoint somewhere in the interface and then inspecting that list would tell you for certain whether or not something was created.
 
 **How do I get dedicated server to use my session variables and settings on startup?**
 
-- Take a look at AGameNetworkManager. We use this to access INI settings in multiple places. Basically, we mark the settings up that we need as either Config or GlobalConfig. Then, when we need to access them we do something like this: 
+- Take a look at AGameNetworkManager. We use this to access INI settings in multiple places. Basically, we mark the settings up that we need as either Config or GlobalConfig. Then, when we need to access them we do something like this:
 
   GetDefault&lt;AGameNetworkManager>()->bUseDistanceBasedRelevancy
 

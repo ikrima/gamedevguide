@@ -4,11 +4,11 @@ sortIndex: 4
 
 **How Unreal Renders A Frame (circa 4.17): Great General high level overview breakdowns**
 
-<https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame/>
+<https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame>
 
-<https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame-part-2/>
+<https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame-part-2>
 
-<https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame-part-3/>
+<https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame-part-3>
 
 <https://medium.com/@lordned/unreal-engine-4-rendering-overview-part-1-c47f2da65346>
 

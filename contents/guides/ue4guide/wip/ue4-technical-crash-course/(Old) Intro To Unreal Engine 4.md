@@ -8,13 +8,13 @@ I'm spending the next week doing a self-directed crash course. Here are all my n
 
 #### General Resource Links:
 
-<https://docs.unrealengine.com/latest/INT/>
+<https://docs.unrealengine.com/latest/INT>
 
 <https://wiki.unrealengine.com/Main_Page>
 
-<https://answers.unrealengine.com/>
+<https://answers.unrealengine.com>
 
-<https://forums.unrealengine.com/>
+<https://forums.unrealengine.com>
 
 All video tutorials: <https://www.youtube.com/playlist?list=PLZlv_N0_O1gaCL2XjKluO7N2Pmmw9pvhE>
 

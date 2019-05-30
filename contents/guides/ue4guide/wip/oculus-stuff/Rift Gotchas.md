@@ -51,47 +51,47 @@
 
 - Oculus Config settings are in the DefaultEngine.ini file (\[root]/Config/DefaultEngine.ini)
 
-​ \[Oculus.Settings]  
-​ ; In meters, not Unreal Units (cm)  
-​ ; Recommended for true first person viewpoint  
-​ ; since you are simulating the head.  
-​ ;HeadModel_v2=(X=0.0,Y=0,Z=0.0)  
-​ ; Default values  
+​ \[Oculus.Settings]
+​ ; In meters, not Unreal Units (cm)
+​ ; Recommended for true first person viewpoint
+​ ; since you are simulating the head.
+​ ;HeadModel_v2=(X=0.0,Y=0,Z=0.0)
+​ ; Default values
 ​ HeadModel_v2=(X=0.12,Y=0,Z=0.17)
 
-​ bChromaAbCorrectionEnabled=true  
-​ bMagEnabled=true  
-​ bDevSettingsEnabled=false  
-​ bMotionPredictionEnabled=true  
-​ bTiltCorrectionEnabled=true  
-​ AccelGain=0.0  
+​ bChromaAbCorrectionEnabled=true
+​ bMagEnabled=true
+​ bDevSettingsEnabled=false
+​ bMotionPredictionEnabled=true
+​ bTiltCorrectionEnabled=true
+​ AccelGain=0.0
 ​ MotionPrediction=0.04
 
-​ bOverrideIPD=false  
+​ bOverrideIPD=false
 ​ IPD=0.064
 
-​ bOverrideStereo=false  
-​ ProjectionCenterOffset=0.0  
-​ LensCenterOffset=0.0  
+​ bOverrideStereo=false
+​ ProjectionCenterOffset=0.0
+​ LensCenterOffset=0.0
 ​ FOV=90.0
 
-​ bOverrideVSync=false  
+​ bOverrideVSync=false
 ​ bVSync=true
 
-​ bOverrideScreenPercentage=false  
-​ ; Value is out of range \[30..300]  
+​ bOverrideScreenPercentage=false
+​ ; Value is out of range \[30..300]
 ​ ScreenPercentage=100.0
 
-​ bAllowFinishCurrentFrame=false  
-​ PositionScaleFactor=1.0  
-​ ; Defaults to true if DLL built with OVR_VISION_ENABLED defined.  
-​ ; Positional tracking for DK2 onwards perhaps?  
-​ bHmdPosTracking=false  
+​ bAllowFinishCurrentFrame=false
+​ PositionScaleFactor=1.0
+​ ; Defaults to true if DLL built with OVR_VISION_ENABLED defined.
+​ ; Positional tracking for DK2 onwards perhaps?
+​ bHmdPosTracking=false
 ​ bLowPersistenceMode=false
 
-​ ; Defaults to true.  
-​ ; If enabled, viewpoint rotation is updated during the render thread.  
-​ ; Depending on how you control a players view rotation, you may need to disable this.  
+​ ; Defaults to true.
+​ ; If enabled, viewpoint rotation is updated during the render thread.
+​ ; Depending on how you control a players view rotation, you may need to disable this.
 ​ bUpdateOnRT=true
 
 - World Scale can be changed in Window->World Settings. Default is 100 uu => 1m (i.e. 1 uu = 1cm)
@@ -148,9 +148,9 @@ I did some digging into the Oculus plugin in the UE4 source, and came up with th
 
 **1)** If you've messed with your GameUserSettings.ini file, change the following settings back:
 
-ResolutionSizeX=1280  
-ResolutionSizeY=800  
-bUseDesktopResolutionForFullscreen=False  
+ResolutionSizeX=1280
+ResolutionSizeY=800
+bUseDesktopResolutionForFullscreen=False
 FullscreenMode=0
 
 The following steps will work at higher resolutions, but results will not be as good.
@@ -165,7 +165,7 @@ Find the most complex scene in the demo exhibiting the poorest frame rate for te
 
 **4)** Enter the console with ~ and type the following commands:
 
-oculusdev on  
+oculusdev on
 hmdwarp 1=1
 
 These commands have no apparent effect, but unless you do both of them, the command in the next step will have no effect (the second command is a workaround for a bug).
@@ -190,4 +190,4 @@ If you close the demo normally, it will save your modified ScreenPercentage to y
 
 That's it! I've tried this on both the Starship Bridge Demo (for which I got ScreenPercentage up to 250 on my GTX 780 Ti) and UE4EffectsCave (I got up to 130). Let me know what kind of results you get!
 
-*From &lt;<http://www.reddit.com/r/oculus/comments/24g92u/guide_to_getting_good_fps_and_quality_in_ue4/>>*
+*From &lt;<http://www.reddit.com/r/oculus/comments/24g92u/guide_to_getting_good_fps_and_quality_in_ue4>>*

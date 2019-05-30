@@ -70,14 +70,14 @@ Note that for **MDD** to symbolize the callstack, a process need to upload the s
 
 #### **Setup Custom Crash Reporter Client & MinidumpDiagnostics**
 
-<http://www.teal-game.com/blog/customcrashreporter/>
+<http://www.teal-game.com/blog/customcrashreporter>
 
-\[Engine.CrashDebugHelper] 
-DepotRoot=\[PathToSourceCode] 
-PDBCachePath=\[PathToCacheFolder] 
-PDBCacheSizeGB=250 
-MinDiskFreeSpaceGB=25 
-DaysToDeleteUnusedFilesFromPDBCache=3 
-PDBCache_0_Branch=++UE4+Release 
-PDBCache_0_ExecutablePathPattern=\[PathToExecutableFolder] 
+\[Engine.CrashDebugHelper]
+DepotRoot=\[PathToSourceCode]
+PDBCachePath=\[PathToCacheFolder]
+PDBCacheSizeGB=250
+MinDiskFreeSpaceGB=25
+DaysToDeleteUnusedFilesFromPDBCache=3
+PDBCache_0_Branch=++UE4+Release
+PDBCache_0_ExecutablePathPattern=\[PathToExecutableFolder]
 PDBCache_0_SymbolPathPattern=\[PathToPdbFolder]

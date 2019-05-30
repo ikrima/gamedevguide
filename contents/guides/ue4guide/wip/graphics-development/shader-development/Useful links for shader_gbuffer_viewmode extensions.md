@@ -4,7 +4,7 @@ sortIndex: 2
 
 <https://www.unrealengine.com/en-US/blog/how-to-add-global-shaders-to-ue4>
 
-<http://blog.felixkate.net/2016/05/22/adding-a-custom-shading-model-1/>
+<http://blog.felixkate.net/2016/05/22/adding-a-custom-shading-model-1>
 
 <https://medium.com/@lordned/ue4-rendering-part-6-adding-a-new-shading-model-e2972b40d72d>
 
@@ -20,7 +20,7 @@ sortIndex: 2
 
 <https://forums.unrealengine.com/showthread.php?58489-Tutorial-Pixel-and-Compute-Shaders-in-UE4>
 
-Compute and pixel shader: <https://github.com/sp0lsh/UE4ShaderPluginDemo/>
+Compute and pixel shader: <https://github.com/sp0lsh/UE4ShaderPluginDemo>
 
 <https://github.com/slomp/UE4RenderDocPlugin>
 

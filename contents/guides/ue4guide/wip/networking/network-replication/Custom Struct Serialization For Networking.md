@@ -4,14 +4,14 @@ sortIndex: 5
 
 Using netserialize for custom struct serialization
 
-<http://www.aclockworkberry.com/custom-struct-serialization-for-networking-in-unreal-engine/>
+<http://www.aclockworkberry.com/custom-struct-serialization-for-networking-in-unreal-engine>
 
 - To define your own NetSerialize and NetDeltaSerialize on a structure:
 
 - GameplayDebuggerCategoryReplicator.h, FGameplayDebuggerNetPack, and AGameplayDebuggerCategoryReplicator  are good examples of full netserialization
 
 ```cpp
-  struct FGameplayDebuggerNetPack 
+  struct FGameplayDebuggerNetPack
   class GAMEPLAYDEBUGGER_API AGameplayDebuggerCategoryReplicator : public Aactor
 ```
 

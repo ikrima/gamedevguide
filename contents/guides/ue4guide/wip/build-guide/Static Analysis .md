@@ -34,7 +34,7 @@ build.py -c development -t editor check pvs
 
 # Manually setting up PVS Studio for Static Analysis
 
-1. Download PVS Studio from <http://www.viva64.com/en/pvs-studio/>
+1. Download PVS Studio from <http://www.viva64.com/en/pvs-studio>
 
 1. Launch standalone.exe, go to Tools-Options-Registration
 

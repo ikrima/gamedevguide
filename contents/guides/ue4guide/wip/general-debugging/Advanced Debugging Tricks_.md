@@ -25,7 +25,7 @@ Can execute code in Action:print message section of breakpoint settings by wrapp
 You can also concatenate several instructions on the same line. They simply have to be separated by curly braces:
 *i.e. { {done = (i == 100);} { object.x -= 1.0f; } { data\[15] = 3; } }*
 
-*Reference From <https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints/>*
+*Reference From <https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints>*
 
 Tools
 

@@ -4,7 +4,7 @@ sortIndex: 23
 
  UPDATED VERSION HERE: <https://github.com/Allar/ue4-style-guide>
 
-*Reference From <http://www.tomlooman.com/ue4-naming-convention/>>*
+*Reference From <http://www.tomlooman.com/ue4-naming-convention>>*
 
 # Unreal Engine 4: Naming Convention
 

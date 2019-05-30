@@ -1,4 +1,4 @@
-<https://forums.unrealengine.com/showthread.php?119267-Your-thoughts-on-and-comments-to-Volume-Rendering-in-Unreal-Engine-4/>
+<https://forums.unrealengine.com/showthread.php?119267-Your-thoughts-on-and-comments-to-Volume-Rendering-in-Unreal-Engine-4>
 
 <https://github.com/sp0lsh/UE4ShaderPluginDemo/commits/volumetric>
 
