@@ -12,15 +12,15 @@ FCoreDelegates::ConfigReadyForUse.Broadcast();
 
 - Specify by this:
 
-  `UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
+  `cpp>UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
 
 - Get the name by this:
 
-  `GetClass()->GetDefaultConfigFilename()`
+  `cpp>GetClass()->GetDefaultConfigFilename()`
 
    **or**
 
-   `ConfigFileName = uobj->GetDefaultConfigFilename();`
+   `cpp>ConfigFileName = uobj->GetDefaultConfigFilename();`
 
 - Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
 

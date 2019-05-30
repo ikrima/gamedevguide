@@ -19,7 +19,7 @@ const gbRemarkPluginsList = [
       classPrefix: 'language-',
       inlineCodeMarker: '>',
       aliases: {},
-      showLineNumbers: false,
+      showLineNumbers: true,
       noInlineHighlight: false,
     },
   },

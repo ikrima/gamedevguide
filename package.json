@@ -15,6 +15,7 @@
     "lint": "eslint . --ext .js,.jsx --ignore-path .eslintignore",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .eslintignore",
     "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
+    "lint:mdwip": "remark --no-color --rc-path .remarkrc contents/guides/ue4guide/wip/**/*.md",
     "format:md": "remark --rc-path .remarkrc contents/guides/**/*.md -o",
     "format:mdx": "remark --rc-path .remarkrc contents/guides/**/*.mdx -o",
     "format:js": "prettier --write \"**/*.js\"",
