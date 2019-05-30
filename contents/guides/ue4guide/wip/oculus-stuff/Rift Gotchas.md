@@ -128,7 +128,7 @@ The dimensions of this virtual head model are determined by the HeadModel_v2 con
 
 1. By then, you would run the game in default graphic config, that is "Epic mode"! This is a big problem here! You should tweak scalability parameters from Epic to High, at least. Read [this official post to learn about its effect on Editor mode] then read [my expl\`\`anation on how to make this dynamic into your standalone game using blueprints]
 
-*From &lt;<https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>>*
+*From <https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>*
 
 Regarding cloning multiple monitors, I personally had the **best performance with cloning enabled, and my game running in fullscreen mode**, instead of running with my desktop extended and the game running in a "fullscreen" window.
 
@@ -136,7 +136,7 @@ But to make vsync work (so that the Rift doesn't inherit the vsync timing of you
 
 ![Oculus_RiftGotchas_CloningMultiMonitor](C:\devguide\conversion\FINISHED\assets\Oculus_RiftGotchas_CloningMultiMonitor.png)
 
-*From &lt;<https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>>*
+*From <https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>*
 
 # Guide to getting good FPS and quality in UE4 demos using DistortionScale and ScreenPercentage
 
@@ -190,4 +190,4 @@ If you close the demo normally, it will save your modified ScreenPercentage to y
 
 That's it! I've tried this on both the Starship Bridge Demo (for which I got ScreenPercentage up to 250 on my GTX 780 Ti) and UE4EffectsCave (I got up to 130). Let me know what kind of results you get!
 
-*From &lt;<http://www.reddit.com/r/oculus/comments/24g92u/guide_to_getting_good_fps_and_quality_in_ue4>>*
+*From <http://www.reddit.com/r/oculus/comments/24g92u/guide_to_getting_good_fps_and_quality_in_ue4>*

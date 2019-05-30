@@ -16,24 +16,24 @@ QUICK_SCOPE_CYCLE_COUNTER
 
 **FRHICommandList**
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/API/Runtime/RHI/FRHICommandList/index.html>>*
+*From <https://docs.unrealengine.com/latest/INT/API/Runtime/RHI/FRHICommandList/index.html>*
 
 FRenderCommandFence
 
 GetNumPendingFences
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ThreadedRendering/index.html>>*
+*From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/ThreadedRendering/index.html>*
 
 PrimaryActorTick.bCanEverTick = true;
 
 PrimaryActorTick.bStartWithTickEnabled = false;
 
-*From &lt;<https://www.unrealengine.com/blog/how-to-improve-game-thread-cpu-performance>>*
+*From <https://www.unrealengine.com/blog/how-to-improve-game-thread-cpu-performance>*
 
-class FLayoutUV  
+class FLayoutUV
 -Handles generating lightmap Uvs
 
-FMeshUtilities::CacheOptimizeVertexAndIndexBuffer  
+FMeshUtilities::CacheOptimizeVertexAndIndexBuffer
 -Optimizes the VertexBuffer/IndexBuffer by re-ordering Indices for post-transform cache and then re-orders the indices to be coherent along with the vertex array so its optimized for the pre-transform cache
 
 void FRenderCommandFence::BeginFence()
@@ -48,8 +48,8 @@ Warn->Log(ELogVerbosity::Error, FbxImporter->GetErrorMessage() );
 
 **Create a uasset file:**
 
-NewPackageName = FPackageName::GetLongPackagePath(Parent->GetOutermost()->GetName()) + TEXT("/") + MeshName;  
-                NewPackageName = PackageTools::SanitizePackageName(NewPackageName);  
+NewPackageName = FPackageName::GetLongPackagePath(Parent->GetOutermost()->GetName()) + TEXT("/") + MeshName;
+                NewPackageName = PackageTools::SanitizePackageName(NewPackageName);
                 Package = CreatePackage(NULL, \*NewPackageName);
 
 StaticMesh = new(Package,FName(\*MeshName),Flags|RF_Public) UStaticMesh(FPostConstructInitializeProperties());
@@ -102,8 +102,8 @@ void FRawMeshBulkData::SaveRawMesh(FRawMesh& InMesh)
 
 void FRawMeshBulkData::LoadRawMesh(FRawMesh& OutMesh)
 
-SetupActorComponentTickFunction(&PostPhysicsComponentTick)  
-PostPhysicsComponentTick.AddPrerequisite(this,PrimaryComponentTick);  
+SetupActorComponentTickFunction(&PostPhysicsComponentTick)
+PostPhysicsComponentTick.AddPrerequisite(this,PrimaryComponentTick);
 Can actually set tick functions that with prereqs into the job queue
 
 # UE4 Macros:
@@ -132,7 +132,7 @@ A subobject is any UObject that has an Outer that is not a UPackage. UPackages a
 
 A component is anything that is a subclass of UActorComponent, and is a subobject of UActor. We don't have any components that are not ActorComponents.
 
-*From &lt;<https://forums.unrealengine.com/showthread.php?275-Subobjects-vs-Components>>*
+*From <https://forums.unrealengine.com/showthread.php?275-Subobjects-vs-Components>*
 
 # Archive Serialization:
 
@@ -146,19 +146,19 @@ A component is anything that is a subclass of UActorComponent, and is a subobjec
 
 - Called by UStaticMesh::Build() -> FStaticMeshRenderData()::Cache()->FMeshUtilities::BuildStaticMesh()
 
-TArray&lt;FMatrix>> ReferenceToLocalMatrices = DynamicData->ReferenceToLocal;  
-                        const int32 NumReferenceToLocal = ReferenceToLocalMatrices.Num();  
-                        for( int32 BoneIdx=0; BoneIdx &lt; NumBones; BoneIdx++ )  
-                        {  
-                                FPlatformMisc::Prefetch( ChunkMatrices.GetTypedData() + BoneIdx + PreFetchStride );   
-                                FPlatformMisc::Prefetch( ChunkMatrices.GetTypedData() + BoneIdx + PreFetchStride, CACHE_LINE_SIZE );   
-                                FPlatformMisc::Prefetch( ReferenceToLocalMatrices.GetTypedData() + BoneIdx + PreFetchStride );  
+TArray&lt;FMatrix>> ReferenceToLocalMatrices = DynamicData->ReferenceToLocal;
+                        const int32 NumReferenceToLocal = ReferenceToLocalMatrices.Num();
+                        for( int32 BoneIdx=0; BoneIdx &lt; NumBones; BoneIdx++ )
+                        {
+                                FPlatformMisc::Prefetch( ChunkMatrices.GetTypedData() + BoneIdx + PreFetchStride ); 
+                                FPlatformMisc::Prefetch( ChunkMatrices.GetTypedData() + BoneIdx + PreFetchStride, CACHE_LINE_SIZE ); 
+                                FPlatformMisc::Prefetch( ReferenceToLocalMatrices.GetTypedData() + BoneIdx + PreFetchStride );
                                 FPlatformMisc::Prefetch( ReferenceToLocalMatrices.GetTypedData() + BoneIdx + PreFetchStride, CACHE_LINE_SIZE );
 
-FBoneSkinning& BoneMat = ChunkMatrices\[BoneIdx];  
-                                const FBoneIndexType RefToLocalIdx = Chunk.BoneMap\[BoneIdx];  
-                                const FMatrix& RefToLocal = ReferenceToLocalMatrices\[RefToLocalIdx];  
-                                RefToLocal.To3x4MatrixTranspose( (float\*)BoneMat.M );  
+FBoneSkinning& BoneMat = ChunkMatrices\[BoneIdx];
+                                const FBoneIndexType RefToLocalIdx = Chunk.BoneMap\[BoneIdx];
+                                const FMatrix& RefToLocal = ReferenceToLocalMatrices\[RefToLocalIdx];
+                                RefToLocal.To3x4MatrixTranspose( (float\*)BoneMat.M );
                         }
 
 AStaticMeshActor > UStaticMeshComponent > UStaticMesh & FStaticMeshSceneProxy
@@ -177,7 +177,7 @@ Even when using parent-relative transform values, it is still possible to set tr
 
 <table><thead><tr class="header"><th><strong>Function</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td>SceneComponent::SetWorldLocation()</td><td>Set the relative translation of this Component to put it at the supplied location in world space.</td></tr><tr class="even"><td>SceneComponent::SetWorldRotation()</td><td>Set the relative rotation of this Component to put it at the supplied orientation in world space.</td></tr></tbody></table>
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>>*
+*From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Actors/Components/index.html>*
 
 GetDynamicMeshElements
 
@@ -200,7 +200,7 @@ The primary method of communication between the two threads is through the ENQUE
 
 FRenderCommandFence provides a convenient way to track the progress of the rendering thread on the game thread. The game thread calls FRenderCommandFence::BeginFence to begin the fence. The game thread can then call FRenderCommandFence::Wait to block until the rendering thread has processed the fence, or it can just poll the progress of the rendering thread by checking GetNumPendingFences. When GetNumPendingFences returns 0, the rendering thread has processed the fence.
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/ThreadedRendering/index.html>>*
+*From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/ThreadedRendering/index.html>*
 
 ENQUEUE_UNIQUE_RENDER_COMMAND_ONEPARAMETER(TypeName,ParamType1,ParamName1,ParamValue1,Code)
 
@@ -224,30 +224,30 @@ FText represents a "display string". Any text you want to display to the user sh
 
 Unlike FName and FText, FString is the only string class that allows for manipulation. There are many methods available for string manipulation, including case changing, excerpting substrings, and reversing. FStrings can be searched, modified, and compared against other strings. However, these manipulations can make FStrings more expensive than the immutable string classes.
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/StringHandling/index.html>>*
+*From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/StringHandling/index.html>*
 
 There is a lot of rendering code in UE4 so it is hard to get a quick high level view of what is going on. A good place to start reading through the code is FDeferredShadingSceneRenderer::Render, which is where a new frame is rendered on the rendering thread. It is also useful to do a 'profilegpu' command and look through the draw events. You can then do a **Find in Files** in Visual Studio on the draw event name to find the corresponding C++ implementation.
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>>*
+*From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>*
 
 **Material classes**
 
 <table><thead><tr class="header"><th><strong>Class</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr class="odd"><td><strong>FMaterial</strong></td><td>An interface to a material used for rendering. Provides access to material properties (e.g. blend mode). Contains a shader map used by the renderer to retrieve individual shaders.</td></tr><tr class="even"><td><strong>FMaterialResource</strong></td><td>UMaterial's implementation of the FMaterial interface.</td></tr><tr class="odd"><td><strong>FMaterialRenderProxy</strong></td><td>A material's representation on the rendering thread. Provides access to an FMaterial interface and the current value of each scalar, vector, and texture parameter.</td></tr><tr class="even"><td><strong>UMaterialInterface</strong></td><td>[abstract] Game thread interface for material functionality. Used to retrieve the FMaterialRenderProxy used for rendering and the UMaterial that is used as the source.</td></tr><tr class="odd"><td><strong>UMaterial</strong></td><td>A material asset. Authored as a node graph. Computes material attributes used for shading, sets blend mode, etc.</td></tr><tr class="even"><td><strong>UMaterialInstance</strong></td><td>[abstract] An instance of a UMaterial. Uses the node graph in the UMaterial but provides different parameters (scalars, vectors, textures, static switches). Each instance has a parent UMaterialInterface. Therefore a material instance's parent may be a UMaterial or another UMaterialInstance. This creates a chain that will eventually lead to a UMaterial.</td></tr><tr class="odd"><td><strong>UMaterialInstanceConstant</strong></td><td>A UMaterialInstance that may only be modified in the editor. May provide scalar, vector, texture, and static switch parameters.</td></tr><tr class="even"><td><strong>UMaterialInstanceDynamic</strong></td><td>A UMaterialInstance that may be modified at runtime. May provide scalar, vector, and texture parameters. It cannot provide static switch parameters and it cannot be the parent of another UMaterialInstance.</td></tr></tbody></table>
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>>*
+*From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>*
 
 Primitive components are the basic unit of visibility and relevance determination. For example, occlusion and frustum culling happen on a per-primitive basis. Therefore it is important when designing a system to think about how big to make components. Each component has a bounds that is used for various operations like culling, shadow casting, and light influence determination.
 
-*From &lt;<https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>>*
+*From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>*
 
 Parallel Task evaluation:
 
-// start parallel work  
+// start parallel work
                 FGraphEventRef EvaluationTickEvent = TGraphTask&lt;FParallelAnimationEvaluationTask>::CreateTask().ConstructAndDispatchWhenReady(this);
 
-// set up a task to run on the game thread to accept the results  
-                FGraphEventArray Prerequistes;  
-                Prerequistes.Add(EvaluationTickEvent);  
+// set up a task to run on the game thread to accept the results
+                FGraphEventArray Prerequistes;
+                Prerequistes.Add(EvaluationTickEvent);
                 FGraphEventRef TickCompletionEvent = TGraphTask&lt;FParallelAnimationCompletionTask>::CreateTask(&Prerequistes).ConstructAndDispatchWhenReady(this);
 
 TickFunction->GetCompletionHandle()->DontCompleteUntil(TickCompletionEvent);

@@ -6,7 +6,7 @@ Enable Stats from Command Line:
 
 \-StatCmds="startfile"
 
-*Reference From <https://udn.unrealengine.com/questions/445587/long-initial-load-times.html>>*
+*Reference From <https://udn.unrealengine.com/questions/445587/long-initial-load-times.html>*
 
 Description of stats: <https://docs.unrealengine.com/udk/Three/StatsDescriptions.html>
 

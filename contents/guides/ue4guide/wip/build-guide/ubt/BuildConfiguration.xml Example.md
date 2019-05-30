@@ -10,7 +10,7 @@ UnrealBuildTool reads settings from XML configuration files in the following loc
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/Configuration/index.html>*
 
-```cpp
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Configuration xmlns="https://www.unrealengine.com/BuildConfiguration">

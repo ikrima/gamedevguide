@@ -12,4 +12,4 @@ Basically, you need to:
 
 The token that's passed as the URL option should not be the actual encryption key, since this string will not be encrypted. What you can do is use the token to look up the actual key, possibly from your own web service, and use this key in the parameters to the delegates for ReceivedNetworkEncryptionToken and ReceivedNetworkEncryptionAck.
 
-*From &lt;<https://udn.unrealengine.com/questions/443027/visibility-of-the-data-during-multiplayer-networki.html>>*
+*From <https://udn.unrealengine.com/questions/443027/visibility-of-the-data-during-multiplayer-networki.html>*

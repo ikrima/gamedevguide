@@ -200,4 +200,4 @@ There are a number of features that are missing to claim Visual Log a full featu
 
 - Future feature: filtering log entries with string so that we can instantly see which entries contain requested text. There’s also a huge list of features I hadn’t come up with yet, so if you have any idea just let me know!
 
-*From &lt;<https://answers.unrealengine.com/questions/3675/enable-visual-log-grabdebugsnapsho.html>>*
+*From <https://answers.unrealengine.com/questions/3675/enable-visual-log-grabdebugsnapsho.html>*

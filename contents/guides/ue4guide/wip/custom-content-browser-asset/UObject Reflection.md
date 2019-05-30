@@ -38,7 +38,7 @@ Each type has a unique set of flags (EClassFlags + HasAnyClassFlags, etc…), as
 #### Look up / Find a property:\*\*
 
 ```cpp
-FindField&lt;UProperty>(**Struct**, **VarDesc**->**VarName**)
+FindField<UProperty>(**Struct**, **VarDesc**->**VarName**)
 ```
 
 #### Export/Import text from Uproperty:\*\*
@@ -90,24 +90,24 @@ virtual void PostEditComponentMove(bool bFinished) override;
 
 **Export UStruct to text or ToString**
 
-UScriptStruct\* **structClass** = FBBStadCamManip::StaticStruct();  
-FString **outStr**;  
+UScriptStruct\* **structClass** = FBBStadCamManip::StaticStruct();
+FString **outStr**;
 **structClass**->ExportText(**outStr**, &**stadCamManipVal**, nullptr, nullptr, PPF_None, nullptr);
 
 // Find an event with no parameters
 
-this->GetClass()->FindFunctionByName("ReceiveBeginPlay", EIncludeSuperFlag::ExcludeSuper)UFunction\* **EventTarget** = **this**->FindFunction(**EventName**);  
-if( **EventTarget** && **EventTarget**->NumParms == 0)  
-{  
-        **LSA**->ProcessEvent(**EventTarget**, *NULL*);  
-        **bFoundEvent** = true;  
+this->GetClass()->FindFunctionByName("ReceiveBeginPlay", EIncludeSuperFlag::ExcludeSuper)UFunction\* **EventTarget** = **this**->FindFunction(**EventName**);
+if( **EventTarget** && **EventTarget**->NumParms == 0)
+{
+        **LSA**->ProcessEvent(**EventTarget**, *NULL*);
+        **bFoundEvent** = true;
 }
 ```
 
 **Find Class or Ustruct by name:**
 
 ```cpp
-FClass\* FClasses::FindClass(const TCHAR\* ClassName) const  
+FClass\* FClasses::FindClass(const TCHAR\* ClassName) const
 UObject\* ClassPackage = ANY_PACKAGE;
 
 UClass\* Result = FindObject&lt;UClass>(ClassPackage, ClassName);
@@ -135,9 +135,9 @@ TFieldIterator&lt;UProperty> **IteratorA**(ufunc);
 Iterate through functions/fields:
 
 ```cpp
-for (TFieldIterator&lt;UFunction> **FunctionIt**(this->GetClass(), EFieldIteratorFlags::ExcludeSuper); **FunctionIt**; ++**FunctionIt**)  
-    {  
-        UFunction\* **Function** = \***FunctionIt**;  
+for (TFieldIterator&lt;UFunction> **FunctionIt**(this->GetClass(), EFieldIteratorFlags::ExcludeSuper); **FunctionIt**; ++**FunctionIt**)
+    {
+        UFunction\* **Function** = \***FunctionIt**;
     }
 ```
 
@@ -180,7 +180,7 @@ FStructureEditorUtils::AddVariable(**StructureDetailsSP**->GetUserDefinedStruct(
 **Programmatically Construct Struct/UScriptStruct**
 
 ```cpp
-template&lt;typename T>  
+template&lt;typename T>
 T ConstructTInlineValue(UScriptStruct\* **Struct**)
 
 static void SetStructurePropertyByName(UObject\* **Object**, FName **PropertyName**, const T& **Value**)

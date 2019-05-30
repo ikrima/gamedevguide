@@ -39,7 +39,7 @@ Don't minimize the editor window while in VR Mode
 
 - You can maintain the Editor window during VR Preview mode by commenting out this line in PlayLevel.cpp:
 
-//TODO: ikrimae: Pipe disabling this based on a config variable. Not sure if this will crash the editor & also it's a perf hit  
+//TODO: ikrimae: Pipe disabling this based on a config variable. Not sure if this will crash the editor & also it's a perf hit
 //RootWindow->Minimize();
 
 Rename Oculus Home exe to get rid of it (C:\\Program Files (x86)\\Oculus\\Support\\oculus-home\\PC_OculusHome.exe)
@@ -50,13 +50,13 @@ Get rid of purgatory UI (L,C,F):
 
 How to detect if VR Headset is Vive or Oculus
 
-if (GEngine->HMDDevice.IsValid() && GEngine->HMDDevice->IsHMDEnabled())  
-        {  
-                if (GEngine->HMDDevice->GetHMDDeviceType() == EHMDDeviceType::DT_SteamVR)  
-                {  
+if (GEngine->HMDDevice.IsValid() && GEngine->HMDDevice->IsHMDEnabled())
+        {
+                if (GEngine->HMDDevice->GetHMDDeviceType() == EHMDDeviceType::DT_SteamVR)
+                {
                         // BLAH!
 
-*From &lt;<https://forums.unrealengine.com/showthread.php?87727-How-to-Detect-if-using-Rift-or-Vive>>*
+*From <https://forums.unrealengine.com/showthread.php?87727-How-to-Detect-if-using-Rift-or-Vive>*
 
 Useful Oculus console commands:
 

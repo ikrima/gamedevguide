@@ -146,4 +146,4 @@ OnFailure.Broadcast();
   What this will do is grab the Class Default Object (CDO) and read the settings from it. In the case where no CDO exists already, one will be created.
   If you take the CVar approach, then all it would require would be for you to just query the CVars.
 
-*From &lt;<https://udn.unrealengine.com/questions/410222/specifying-net-session-name-and-other-vars-dedicat.html>>*
+*From <https://udn.unrealengine.com/questions/410222/specifying-net-session-name-and-other-vars-dedicat.html>*

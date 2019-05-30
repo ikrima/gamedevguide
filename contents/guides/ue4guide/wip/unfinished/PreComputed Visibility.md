@@ -8,4 +8,4 @@ Sadly there are no UE4 docs on these systems, but the UE3 docs are mostly releva
 
 Dynamic occlusion culling is on automatically, it tests the bounding box of each object against the depth buffer from last frame to determine visibility. The default method right now is called HZB (Hierarchical Z Buffer) but there's also the standard occlusion query method if HZB is disabled. You can test efficiency with 'stat sceneocclusion'.
 
-*From &lt;<https://forums.unrealengine.com/showthread.php?18323-Visual-occlusion-and-viz-boxes>>*
+*From <https://forums.unrealengine.com/showthread.php?18323-Visual-occlusion-and-viz-boxes>*

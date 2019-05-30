@@ -56,11 +56,11 @@ Histogram.h
 
 MallocProfiler
 
-for( TArray&lt;ULevel\*>::TConstIterator **it** = GetWorld()->GetLevels().CreateConstIterator(); **it**; ++**it** )  
-{  
-        ULevel\* **CurLevel** = \***it**;  
-        if( **CurLevel** && **CurLevel**->bIsVisible )  
-        {  
+for( TArray&lt;ULevel\*>::TConstIterator **it** = GetWorld()->GetLevels().CreateConstIterator(); **it**; ++**it** )
+{
+        ULevel\* **CurLevel** = \***it**;
+        if( **CurLevel** && **CurLevel**->bIsVisible )
+        {
                 ALevelScriptActor\* **LSA** = **CurLevel**->GetLevelScriptActor();
 
 ### Changing Component Ownership:
@@ -103,4 +103,4 @@ for( TArray&lt;ULevel\*>::TConstIterator **it** = GetWorld()->GetLevels().Cr
 
 1. }
 
-*From &lt;<https://answers.unrealengine.com/questions/539437/temporarily-adding-ticking-actorcomponents-to-acto.html>>*
+*From <https://answers.unrealengine.com/questions/539437/temporarily-adding-ticking-actorcomponents-to-acto.html>*

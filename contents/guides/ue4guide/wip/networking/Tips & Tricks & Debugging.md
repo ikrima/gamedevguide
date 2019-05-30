@@ -265,4 +265,4 @@ You set this in your game ini settings:
 
 1. ClientAuthorativePosition=true
 
-*Reference From <https://answers.unrealengine.com/questions/26116/able-to-replicate-movement-when-using-addmovement.html>>*
+*Reference From <https://answers.unrealengine.com/questions/26116/able-to-replicate-movement-when-using-addmovement.html>*

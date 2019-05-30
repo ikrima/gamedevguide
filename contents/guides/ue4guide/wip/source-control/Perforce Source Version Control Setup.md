@@ -231,4 +231,4 @@ binary+l //depot/....udk
 
 You can diff Blueprints using built-in diffing tool
 
-- &lt;<https://www.unrealengine.com/blog/diffing-blueprints>
+- <https://www.unrealengine.com/blog/diffing-blueprints>

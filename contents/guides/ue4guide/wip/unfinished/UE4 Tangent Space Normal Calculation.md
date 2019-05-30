@@ -28,18 +28,18 @@ For details,
 
 Look at MaterialTemplate.usf:
 
-Parameters.TangentNormal = GetMaterialNormal(Parameters);  
-Parameters.TangentNormal = normalize(Parameters.TangentNormal);  
+Parameters.TangentNormal = GetMaterialNormal(Parameters);
+Parameters.TangentNormal = normalize(Parameters.TangentNormal);
 Parameters.WorldNormal = normalize(TransformTangentVectorToWorld(Parameters.TangentToWorld, Parameters.TangentNormal));
 
 ### **Pixel Shader Transformation**
 
 In regards to the interpolated tangent space the baker in both Blender and the xnormal plugin will keep the vertex normal and the vertex tangent normalized in the vertex shader. However, in the pixel shader the "unnormalized" and interpolated vertex normal and tangent are used to decode the tangent space normal. The bitangent is constructed here to avoid the use of an additional interpolater and again is NOT normalized.
 
-// vNt is the tangent space normal  
-vB = sign \* cross(vN, vT);  
+// vNt is the tangent space normal
+vB = sign \* cross(vN, vT);
 vNout = normalize( vNt.x \* vT + vNt.y \* vB + vNt.z \* vN );
 
 The key to get flawless results is that the baker is designed to do the EXACT inverse of this very transformation allowing the pixel shader to remain fast and simple.
 
-*From &lt;<http://wiki.blender.org/index.php/Dev:Shading/Tangent_Space_Normal_Maps>>*
+*From <http://wiki.blender.org/index.php/Dev:Shading/Tangent_Space_Normal_Maps>*

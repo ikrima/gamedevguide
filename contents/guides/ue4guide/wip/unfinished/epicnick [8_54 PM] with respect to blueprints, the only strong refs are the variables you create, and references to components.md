@@ -29,4 +29,4 @@ All EXCEPT TWeakObjPtr UPROPERTIES
 
 but yup, that is correct
 
-*From &lt;<https://ue4vr.slack.com/messages/techtalk/search/garbage>>*
+*From <https://ue4vr.slack.com/messages/techtalk/search/garbage>*

@@ -2,13 +2,13 @@
 
 Have a look at UStaticMeshComponent::GetComponentInstanceData and UStaticMeshComponent::ApplyComponentInstanceData. This is where lightmap data for components created in a construction script are supposed to backup and then restore their static lighting. Most likely something is happening causing the lightmaps to not be restored properly. Otherwise, look for a later call to InvalidateLightingCache and see why that is happening.
 
-*From &lt;<https://udn.unrealengine.com/questions/163437/lightasifstatic-with-mf-dynamic-resulting-in-too-m.html>>*
+*From <https://udn.unrealengine.com/questions/163437/lightasifstatic-with-mf-dynamic-resulting-in-too-m.html>*
 
 Finally, is there a way to disable these static lights insertions without side effects? (without having to rebuild all the lighting without issues)
 
 You can disregard all unbuilt interactions by modifying FLightPrimitiveInteraction::Create, however that's not addressing the root cause.
 
-*From &lt;<https://udn.unrealengine.com/questions/245332/ue4-static-light-building-issues.html>>*
+*From <https://udn.unrealengine.com/questions/245332/ue4-static-light-building-issues.html>*
 
 bool FLightSceneInfo::ShouldRenderLight(const FViewInfo& View) const
 
@@ -93,4 +93,4 @@ ISceneViewExtension
 
 - FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(Blueprint);
 
-*From &lt;<https://udn.unrealengine.com/questions/413898/attaching-component-to-a-blueprint-asset-in-c.html>>*
+*From <https://udn.unrealengine.com/questions/413898/attaching-component-to-a-blueprint-asset-in-c.html>*
