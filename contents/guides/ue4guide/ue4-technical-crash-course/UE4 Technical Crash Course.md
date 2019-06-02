@@ -2,11 +2,10 @@
 sortIndex: 1
 ---
 
-# Overview Of Engine:
+# Overview Of Engine
 
-<https://docs.unrealengine.com/latest/INT/Programming/Introduction/index.html>
-
-GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to Come: <http://www.slideshare.net/GerkeMaxPreussner/gdc-europe-2014>
+- <https://docs.unrealengine.com/latest/INT/Programming/Introduction/index.html>
+- [GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to Come:](http://www.slideshare.net/GerkeMaxPreussner/gdc-europe-2014)
 
 ## Modules
 
@@ -43,46 +42,38 @@ GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to C
 - AssetRegistry: Asset database functionality for UnrealEd
 - JsonUtilities & XmlParser: Parsing json/xml files
 
-# Deep Dive Technical Course:
+# Deep Dive Technical Course
 
-<http://nikoladimitroff.github.io/Game-Engine-Architecture>
+- <http://nikoladimitroff.github.io/Game-Engine-Architecture>
+- <https://www.blaenkdenum.com/notes/unreal-engine>
 
-<https://www.blaenkdenum.com/notes/unreal-engine>
-
-# Rendering:
+# Rendering
 
 - How Unreal Renders A Frame: <https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame>
-
 - UE4 Rendering Overview: <https://medium.com/@lordned/unreal-engine-4-rendering-overview-part-1-c47f2da65346>
-
 - <http://gregory-igehy.hatenadiary.com/entry/2018/02/24/023251>
-
 - <http://gregory-igehy.hatenadiary.com/entry/2017/12/28/002645>
 
-# Python:
+# Python
 
-READ: PYTHON REPO
+## Fast ramp up to UE4Python
 
-README.MD
+These documents are great starting points which are located in the [UE4 Python Repo](https://github.com/kitelightning/UnrealEnginePython/)
 
-UOBJECT_API.md
+- README.MD
+- UOBJECT_API.md
+- SnippetsForStaticAndSkeletalMeshes.md
+- Examples\\\*.md
 
-Skim through:
+## How to find stuff
 
-SnippetsForStaticAndSkeletalMeshes.md
+- Look at the \*Snippets.py files
+- Use Find all in BuildAutomation vscode project
+- Use Visual assist symbol search "py\_ ..."
 
-Examples\\\*.md
+## Useful Python Starting Points
 
-How to find stuff:
-
-Snippets.py
-
-Find all in BuildAutomation
-
-Visual assist symbol search "py\_ ..."
-
-<https://www.toptal.com/python/top-10-mistakes-that-python-programmers-make>
-
-<http://book.pythontips.com/en/latest/index.html>
-
-<http://ozkatz.github.io/improving-your-python-productivity.html>
+- <https://www.toptal.com/python/top-10-mistakes-that-python-programmers-make>
+- <http://book.pythontips.com/en/latest/index.html>
+- <http://ozkatz.github.io/improving-your-python-productivity.html>
+- <https://treyhunner.com/2019/05/python-builtins-worth-learning>
