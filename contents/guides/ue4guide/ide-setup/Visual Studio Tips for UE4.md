@@ -1,5 +1,5 @@
 ---
-sortIndex: 8
+sortIndex: 1
 ---
 
 # General Tips
@@ -23,7 +23,7 @@ sortIndex: 8
 - USF/USH/HLSL intellisense
   - <https://marketplace.visualstudio.com/items?itemName=TimGJones.HLSLToolsforVisualStudio>
   - Enable USF/USH in options menu:
-  - Screenshot: [](../assets/VSTipsUE4_Overview.jpg)
+  - Screenshot: ![VSTipsUE4_Overview](../assets/VSTipsUE4_Overview.jpg)
 
 - Setting up Visual Studio with UE4: <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
 
@@ -38,6 +38,8 @@ sortIndex: 8
   - <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
 
 - Add exceptions to Windows Defender to your project directories, for devenv, unrealheader tool, msbuild, cl.exe, incredibuild, link.exe
+  - Our devops scripts (setupmachine.py) automatically does this.
+  - Here's a [powershell script](/ide-setup/windows-defender-exclusions-script) that does the same thing
 
 - VS2017 Disable lightweight solutions
 
@@ -47,25 +49,23 @@ sortIndex: 8
 
 # Visual Asist Debugging
 
-## **Enable Logging**
-
-Visual Assist can produce debug logs to assist with technical problems. Follow these steps only upon direction of Whole Tomato Software. Do not send a log with an initial request for technical assistance, or when unsolicited.
+## Enable Logging
 
 Although debug logs contain information primarily related to functions and performance of Visual Assist, they will contain names of local solutions, projects, directories, and files, and may also contain symbol names.
 
 If you can open the options dialog of Visual Assist, enable logging:
 
-[](../assets/VSTipsUE4_VAssistXDebug_options.png)
+![](../assets/VSTipsUE4_VAssistXDebug_options.png)
 
-(Logging begins the moment you enable the checkbox. If you close and re-open the options dialog, the checkbox may not be enabled even though logging is in effect.)
+*(Logging begins the moment you enable the checkbox. If you close and re-open the options dialog, the checkbox may not be enabled even though logging is in effect.)*
 
 Note the location of va.log.
 
-[](../assets/VSTipsUE4_VisualAssist.png)
+![](../assets/VSTipsUE4_VisualAssist.png)
 
 If you cannot open the options dialog of Visual Assist or are so directed by customer support, use regedit to enable logging before Visual Studio starts:
 
 1. Navigate to HKCU\\Software\\Whole Tomato
-1. set the value of Logging to 1
+1. Set the value of Logging to 1
 
 *From <https://support.wholetomato.com/default.asp?W305>*

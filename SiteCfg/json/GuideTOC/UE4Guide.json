@@ -17,8 +17,13 @@
       "childTOCs": []
     },
     {
-      "slugPart": "build-guide",
+      "slugPart": "ide-setup",
       "sortIndex": 3,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "build-guide",
+      "sortIndex": 4,
       "childTOCs": [
         {
           "slugPart": "utilities",
@@ -33,11 +38,6 @@
         {
           "slugPart": "plugins-modules",
           "sortIndex": 6,
-          "childTOCs": []
-        },
-        {
-          "slugPart": "visual-studio-tips-for-ue4",
-          "sortIndex": 10,
           "childTOCs": []
         }
       ]
