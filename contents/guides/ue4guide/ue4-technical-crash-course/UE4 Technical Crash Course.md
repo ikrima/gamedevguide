@@ -7,6 +7,11 @@ sortIndex: 1
 - <https://docs.unrealengine.com/latest/INT/Programming/Introduction/index.html>
 - [GDC Europe 2014: Unreal Engine 4 for Programmers - Lessons Learned & Things to Come:](http://www.slideshare.net/GerkeMaxPreussner/gdc-europe-2014)
 
+# Deep Dive Technical Course
+
+- <http://nikoladimitroff.github.io/Game-Engine-Architecture>
+- <https://www.blaenkdenum.com/notes/unreal-engine>
+
 ## Modules
 
 **Types:**
@@ -41,11 +46,6 @@ sortIndex: 1
 - Analytics: Analytics functionality
 - AssetRegistry: Asset database functionality for UnrealEd
 - JsonUtilities & XmlParser: Parsing json/xml files
-
-# Deep Dive Technical Course
-
-- <http://nikoladimitroff.github.io/Game-Engine-Architecture>
-- <https://www.blaenkdenum.com/notes/unreal-engine>
 
 # Rendering
 
