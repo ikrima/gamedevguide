@@ -66,21 +66,26 @@
   - GPU Zen Chapter: Linear-Light Shading with Linearly Transformed Cosines
 
 ## Tasks
-
-- Channel Lighting (devon's approach)
-  - Houdini modify to export 3 lighting channels + density
-  - Modify shader to take channel ramps into account
-  - Make pretty visuals
-
 - Create ShowcaseZoo
+  - Reference
+  - Particle Slab
+  - Penny Channel Lighting
+  - Skull & Bones Channel Lighting
+  - IsoMesh Basis Rendering
 
+- ~~Channel Lighting (devon's approach)~~
+  - ~~Houdini modify to export 3 lighting channels + density~~
+  - ~~Modify shader to take channel ramps into account~~
+  - ~~Make pretty visuals~~
+
+- Implement
   - IsoSurface Tracking
     - Mean Occlusion
     - Directional Occlusion
     - Directional Lightfield
   - Re-export Volume Flipbook sample
   - ~~Reference pathtrace/raymarch~~
-  - Particle Rendering with Slabs sampling
+  - ~~Particle Rendering with Slabs sampling~~
   - Basis Functions
     - ~~Create DbgVisualizer for Lightfield at volume isosurface~~
       - ~~Visualize Light Along Ray~~
@@ -105,10 +110,10 @@
   - ~~bake direct into samples~~
   - ~~bake scattering into samples~~
   - ~~bake indirect into samples~~
-  - export
-    - render volume texture
-    - Sample cop into texture as channel lighting
-    - render fbx of isosurface
+  - ~~export~~
+    - ~~render volume texture~~
+    - ~~Sample cop into texture as channel lighting~~
+    - ~~render fbx of isosurface~~
   - Bake thickness
     - Bake to SH
 
@@ -146,6 +151,33 @@
   - \#nicetohave linear regression on basis function
 
 # **Notes:**
+
+## Channel Lighting Magik
+
+- Devon's overview of his technique
+  > Right now the rays terminate with the max samples per ray, which is ~25, and in general the rays early terminate with a density close to 1. This works for my clouds because they are so dense, and most rays early terminate except for gazing angles.
+
+  > Try to do some experiments with straight ray marching, just for comparison. In my tests, I got nicely convergent renders with a 970 + Vive @ ~1.2ms GPU time, and some overhead for rendering the cloud shell into custom depth (.3-.4ms). There isn't much CPU overhead. This is with 25 samples per ray and my dense clouds with a 3d texture that is 950x950x600
+
+  > So yes, I did bake in 3 lights and denisty into the grid as a preprocess in Houdini
+  >
+  > in Houdini, I did a whole bunch of volume renders from different angles, and configured it to output ray march points where each point was the attenuated light that reached that point in space.
+  >
+  > it was a massive amount of data that was then resampled to a vdb grid, then output to a custom format rgba
+  >
+  > im not totally sure what your dLo and ds are, but the basic idea is to remap the rgb you get at each step, then attenuate that by the transmittance.  While this talk is more based on analytical methods, I like the description for the math:
+  > https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf
+  >
+  > the remap I used was very simple - I just did:
+  > VolumeRadianceAtSample = VolumeSample.r * KeyLightColor + VolumeSample.g * MultipleScatteringColor + VolumeSample.b * EnvironmentLightColor
+  >
+  > and yes, I did apply this at each ray march step rather than at the end.  It'll look a bit better and be more flexible, but in theory, you can remap at the end too (we did that at DreamWorks all the time so you could remap colors in compositing)
+  >
+  > the key to getting it look good is baking in really solid lighting and using a reasonably high resolution grid
+  >
+  > and I had a really good lighting artist tweak the lighting channel remapping a lot 🙂
+  >
+  > I could try to dig up the math I used too if you get stuck on the numerical integratio
 
 ## **Math Reminders**
 
@@ -193,6 +225,7 @@ Optimization Reminders
 ### **Promising:**
 
 - Quantization baking: Noise-Resistant Fitting for Spherical Harmonics
+- Gaussian Mixture Models
 
 ### **Misc reminders:**
 
