@@ -10,8 +10,7 @@ Add our own private github repo:
 
 Our github repo is at <https://github.com/kitelightning/UnrealEngine>
 
-Make sure to add an 'upstream' remote to :
-
+Make sure to add an 'upstream' remote too:
 ```batch
 git remote add upstream https://github.com/EpicGames/UnrealEngine
 git fetch upstream
@@ -21,7 +20,7 @@ git merge upstream/4.1
 
 # Updating Engine Version
 
-**Note: Examples are assuming 4.21.2-release tag is on the release branch and is the base, Bebylon is forked from that, and we're trying to update to 4.22.2-release (tag) on the upstream/release branch**
+_**Note: Examples are assuming 4.21.2-release tag is on the release branch and is the base, Bebylon is forked from that, and we're trying to update to 4.22.2-release (tag) on the upstream/release branch**_
 
 1. Sync from github into a clean directory so BBR subdirectory/game cruft or intermediate files aren't getting in the way
 
@@ -54,7 +53,7 @@ git merge upstream/4.1
 
 1. Merge bebylon into the new branch with merge override from the new branch. We want to merge Bebylon with bebylon-4.22.2-merged4.21.2 but not actually do any merging but instead take bebylon-4.22.2-merged4.21.2 as authoritative.
 
-   ***Note:** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict*
+   _**Note:** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict_
 
    Use these commands to do that:
 
@@ -72,7 +71,9 @@ git merge upstream/4.1
 
 1. Reconcile for perforce:
 
-   `batch>Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs`
+   ```batch
+   Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs
+   ```
 
 1. Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
 
@@ -90,7 +91,7 @@ git merge upstream/4.1
 
 1. Okay, platform stuff comes next. Depending on whether you are on Windows or Mac, follow one of the sections below:
 
-### Windows
+## Windows
 
 1. Be sure to have [Visual Studio 2013](https://visualstudio.microsoft.com/vs/older-downloads/) installed. You can use any desktop version of Visual Studio 2013, including the free version: [Visual Studio 2013 Express for Windows Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=40769)
 
@@ -108,7 +109,7 @@ git merge upstream/4.1
 
 *Reference From <https://github.com/EpicGames/UnrealEngine>*
 
-# Visual Studio Customization:
+# Visual Studio Customization
 
 Generate VS2013 project files by running GenerateProjectFiles.bat
 
@@ -142,21 +143,21 @@ Unreal Engine 4 and the UnrealBuildTool use different build configurations to de
 
 Each build configuration contains two keywords. The first of these indicates the state of the engine and your game project. For instance, if you compile using a **Debug** configuration, you will be able to debug your game's code. The second keyword indicates the target you are building for. If you would like to open a project in Rocket, you need to build with the **Editor** target keyword, but if you are building an executable version of your game, you would need to build using the **empty** target keyword.
 
-| Build Configuration - State | Description                                                                                                                                                                                                                                                       |
+| Build Configuration: State | Description                                                                                                                                                                                                                                                       |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Debug**                   | This configuration contains symbols for debugging. If you compile your project using the **Debug** configuration and want to open the project with the Rocket Editor, you must use the "-debug" flag in order to see your code changes reflected in your project. |
 | **Development**             | This configuration is equivalent to Release. In order to see your project's code changes reflected when you open the project later in the Rocket Editor, you must compile in the **Development** configuration.                                                   |
 | **Shipping**                | This is the configuration for optimal performance and shipping your game. This configuration strips out console commands, stats, and profiling tools.                                                                                                             |
 
-| **Build Configuration - Target** | **Description**                                                                                                                                                                                                                                                              |
+| Build Configuration: Target | Description                                                                                                                                                                                                                                                              |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [empty]                          | This configuration builds a stand-alone executable version of your project, but requires cooked content specific to the platform.                                                                                                                                            |
 | **Editor**                       | To be able to open a project in Unreal Editor and see all code changes reflected, the project must be built in an **Editor** configuration.                                                                                                                                  |
 | **Uncooked**                     | Projects built using configurations that have an **Uncooked** type should be opened in Unreal Editor with the "-game" flag. This runs your game with uncooked content, in a new window, and is equivalent to **Play in > New Window at Default Player Start** in the editor. |
 
-# Build Configuration
+# Generating Project Files
 
-Not all configurations will appear by default. Edit the [GenerateProjectFiles.bat][https://docs.unrealengine.com/en-us/programming/buildtools/unrealbuildtool/projectfilesforides] file in the main UE4 directory to generate the project files for additional configurations as needed.
+Not all configurations will appear by default. Edit the [GenerateProjectFiles.bat](https://docs.unrealengine.com/en-us/programming/buildtools/unrealbuildtool/projectfilesforides) file in the main UE4 directory to generate the project files for additional configurations as needed.
 
 Unreal Engine 4 and the UnrealBuildTool use different build configurations to determine how the engine is compiled. Which configuration you use will be determined by the purposes of the build you want to create.
 

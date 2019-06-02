@@ -12,8 +12,13 @@
       "childTOCs": []
     },
     {
-      "slugPart": "build-guide",
+      "slugPart": "source-control",
       "sortIndex": 2,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "build-guide",
+      "sortIndex": 3,
       "childTOCs": [
         {
           "slugPart": "utilities",
@@ -36,11 +41,6 @@
           "childTOCs": []
         }
       ]
-    },
-    {
-      "slugPart": "source-control",
-      "sortIndex": 3,
-      "childTOCs": []
     },
     {
       "slugPart": "general-debugging",
