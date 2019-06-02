@@ -39,7 +39,7 @@ sortIndex: 1
 
 - Add exceptions to Windows Defender to your project directories, for devenv, unrealheader tool, msbuild, cl.exe, incredibuild, link.exe
   - Our devops scripts (setupmachine.py) automatically does this.
-  - Here's a [powershell script](/ide-setup/windows-defender-exclusions-script) that does the same thing
+  - Here's a [powershell script](/ue4guide/ide-setup/windows-defender-exclusions-script) that does the same thing
 
 - VS2017 Disable lightweight solutions
 
@@ -66,6 +66,6 @@ Note the location of va.log.
 If you cannot open the options dialog of Visual Assist or are so directed by customer support, use regedit to enable logging before Visual Studio starts:
 
 1. Navigate to HKCU\\Software\\Whole Tomato
-1. Set the value of Logging to 1
+2. Set the value of Logging to 1
 
 *From <https://support.wholetomato.com/default.asp?W305>*
