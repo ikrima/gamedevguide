@@ -336,4 +336,4 @@ TSharedRef&lt;IDetailsView&gt; **DetailsView** = **PropertyEditor**.CreateDet
         };
 ```
 
-[also fcoreuobjectdelegates in uobjectglobals:]: [fixme_self_referential_link]
+[also fcoreuobjectdelegates in uobjectglobals:]&#x3A; [fixme_self_referential_link]

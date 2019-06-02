@@ -66,6 +66,7 @@
   - GPU Zen Chapter: Linear-Light Shading with Linearly Transformed Cosines
 
 ## Tasks
+
 - Create ShowcaseZoo
   - Reference
   - Particle Slab
@@ -155,10 +156,11 @@
 ## Channel Lighting Magik
 
 - Devon's overview of his technique
+
   > Right now the rays terminate with the max samples per ray, which is ~25, and in general the rays early terminate with a density close to 1. This works for my clouds because they are so dense, and most rays early terminate except for gazing angles.
-
+  >
   > Try to do some experiments with straight ray marching, just for comparison. In my tests, I got nicely convergent renders with a 970 + Vive @ ~1.2ms GPU time, and some overhead for rendering the cloud shell into custom depth (.3-.4ms). There isn't much CPU overhead. This is with 25 samples per ray and my dense clouds with a 3d texture that is 950x950x600
-
+  >
   > So yes, I did bake in 3 lights and denisty into the grid as a preprocess in Houdini
   >
   > in Houdini, I did a whole bunch of volume renders from different angles, and configured it to output ray march points where each point was the attenuated light that reached that point in space.
@@ -166,7 +168,7 @@
   > it was a massive amount of data that was then resampled to a vdb grid, then output to a custom format rgba
   >
   > im not totally sure what your dLo and ds are, but the basic idea is to remap the rgb you get at each step, then attenuate that by the transmittance.  While this talk is more based on analytical methods, I like the description for the math:
-  > https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf
+  > <https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf>
   >
   > the remap I used was very simple - I just did:
   > VolumeRadianceAtSample = VolumeSample.r * KeyLightColor + VolumeSample.g * MultipleScatteringColor + VolumeSample.b * EnvironmentLightColor

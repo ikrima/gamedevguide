@@ -5,6 +5,7 @@ sortindex: 8
 ## Using BuildGraph
 
 1. Create the installed build
+
 ```batch
 "UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" BuildGraph -script="UnrealEngine\Engine\Build\InstalledEngineBuild.xml" -target="Make Installed Build Win64" -set:HostPlatformOnly=true -set:WithWin32=false -set:WithIOS=false
 ```
