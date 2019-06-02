@@ -37,6 +37,11 @@
         "sortIndex": 2,
         "childTOCs": []
       },
+      {
+        "slugPart": "general-debugging",
+        "sortIndex": 15,
+        "childTOCs": []
+      },
     {
       "slugPart": "wip",
       "prettyTitle": "WORK IN PROGRESS",
@@ -174,11 +179,6 @@
         {
           "slugPart": "application-os-generic-platform",
           "sortIndex": 14,
-          "childTOCs": []
-        },
-        {
-          "slugPart": "general-debugging",
-          "sortIndex": 15,
           "childTOCs": []
         },
         {

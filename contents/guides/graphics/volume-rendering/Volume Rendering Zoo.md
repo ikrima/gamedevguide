@@ -171,7 +171,7 @@
   > <https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf>
   >
   > the remap I used was very simple - I just did:
-  > VolumeRadianceAtSample = VolumeSample.r * KeyLightColor + VolumeSample.g * MultipleScatteringColor + VolumeSample.b * EnvironmentLightColor
+  > VolumeRadianceAtSample = VolumeSample.r \* KeyLightColor + VolumeSample.g \* MultipleScatteringColor + VolumeSample.b \* EnvironmentLightColor
   >
   > and yes, I did apply this at each ray march step rather than at the end.  It'll look a bit better and be more flexible, but in theory, you can remap at the end too (we did that at DreamWorks all the time so you could remap colors in compositing)
   >

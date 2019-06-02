@@ -23,7 +23,7 @@ git merge upstream/4.1
 
 **Note: Examples are assuming 4.21.2-release tag is on the release branch and is the base, Bebylon is forked from that, and we're trying to update to 4.22.2-release (tag) on the upstream/release branch**
 
-1. Move /BBR game project folder out of UE4 subdirectory
+1. Sync from github into a clean directory so BBR subdirectory/game cruft or intermediate files aren't getting in the way
 
 1. Create a patch from the bebylon branch ranging from it's parent in the release branch to current
 
@@ -38,29 +38,33 @@ git merge upstream/4.1
    git branch -D tmpsquash
    ```
 
-2. Create a new branch at the sync off point off of the new engine release branch (e.g. branch: release, tag: 4.22.2-release). Call it bebylon-{new engine version}-merge{oldversion} (eg bebylon-4.22.2-merged4.21.2)
+1. Create a new branch at the sync off point off of the new engine release branch (e.g. branch: release, tag: 4.22.2-release). Call it bebylon-{new engine version}-merge{oldversion} (eg bebylon-4.22.2-merged4.21.2)
 
    ```batch
    git checkout -f -b bebylon-4.22.2-merged4.21.2 4.22.2-release
    ```
 
-3. Apply patch to new said branch & Manually resolve the changes
+1. Apply patch to new said branch & manually solve the conflicts. Push this up to github
 
    ```batch
    git am --3way --signoff 0001-Squashed-4.21.2-to-Bebylon-commits.patch
    ```
 
-4. Merge bebylon into the new branch with merge override from the new branch. We want to merge Bebylon with bebylon-4.22.2-merged4.21.2 but not actually do any merging but instead take bebylon-4.22.2-merged4.21.2 as authoritative.
+1. Sync down into proper directory and actually solve the conflicts to get UE4 building & compiling
 
-   **Note:** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict
+1. Merge bebylon into the new branch with merge override from the new branch. We want to merge Bebylon with bebylon-4.22.2-merged4.21.2 but not actually do any merging but instead take bebylon-4.22.2-merged4.21.2 as authoritative.
+
+   ***Note:** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict*
 
    Use these commands to do that:
 
-   - git merge -s ours Bebylon
-   - git checkout Bebylon
-   - git merge bebylon-4.22.2-merged4.21.2
+   ```batch
+   git merge -s ours Bebylon
+   git checkout Bebylon
+   git merge bebylon-4.22.2-merged4.21.2
+   ```
 
-*Reference From <https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git>*
+   *Reference From <https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git>*
 
 1. Create tag at merge point bebylon-4.22.2-merged4.21.2
 
@@ -68,11 +72,11 @@ git merge upstream/4.1
 
 1. Reconcile for perforce:
 
-Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs
+   `batch>Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs`
 
-Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
+1. Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
 
-<http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch>
+   <http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch>
 
 # Building The Source
 
@@ -88,21 +92,21 @@ Rebase our private branch on top of the new UE4 repository. Make sure everyone h
 
 ### Windows
 
-6. Be sure to have [Visual Studio 2013](https://visualstudio.microsoft.com/vs/older-downloads/) installed. You can use any desktop version of Visual Studio 2013, including the free version: [Visual Studio 2013 Express for Windows Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=40769)
+1. Be sure to have [Visual Studio 2013](https://visualstudio.microsoft.com/vs/older-downloads/) installed. You can use any desktop version of Visual Studio 2013, including the free version: [Visual Studio 2013 Express for Windows Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=40769)
 
-7. Make sure you have [June 2010 DirectX runtime](https://www.microsoft.com/en-us/download/details.aspx?id=8109) installed. You don't need the SDK, just the runtime.
+1. Make sure you have [June 2010 DirectX runtime](https://www.microsoft.com/en-us/download/details.aspx?id=8109) installed. You don't need the SDK, just the runtime.
 
-8. You'll need project files in order to compile. In the *UnrealEngine* folder, double-click on**GenerateProjectFiles.bat**. It should take less than a minute to complete. On Windows 8, a warning from SmartScreen may appear. Click "More info", then "Run anyway" to continue.
+1. You'll need project files in order to compile. In the *UnrealEngine* folder, double-click on**GenerateProjectFiles.bat**. It should take less than a minute to complete. On Windows 8, a warning from SmartScreen may appear. Click "More info", then "Run anyway" to continue.
 
-9. Load the project into Visual Studio by double-clicking on the **UE4.sln** file.
+1. Load the project into Visual Studio by double-clicking on the **UE4.sln** file.
 
-10. It's time to **compile the editor**! In Visual Studio, make sure your solution configuration is set to**Development Editor**, and your solution platform is set to **Win64**. Right click on the **UE4** target and select**Build**. It will take between 15 and 40 minutes to finish compiling, depending on your system specs.
+1. It's time to **compile the editor**! In Visual Studio, make sure your solution configuration is set to**Development Editor**, and your solution platform is set to **Win64**. Right click on the **UE4** target and select**Build**. It will take between 15 and 40 minutes to finish compiling, depending on your system specs.
 
-11. After compiling finishes, you can **load the editor** from Visual Studio by setting your startup project to **UE4**and pressing **F5** to debug.
+1. After compiling finishes, you can **load the editor** from Visual Studio by setting your startup project to **UE4**and pressing **F5** to debug.
 
-12. One last thing. You'll want to setup your Windows shell so that you can interact with .uproject files. Find the file named **UnrealVersionSelector-Win64-Shippping.exe** in the *UnrealEngine/Engine/Binaries/Win64/*folder and run it. Now, you'll be able to double-click .uproject files to load the project, or right click them to quickly update Visual Studio files.
+1. One last thing. You'll want to setup your Windows shell so that you can interact with .uproject files. Find the file named **UnrealVersionSelector-Win64-Shippping.exe** in the *UnrealEngine/Engine/Binaries/Win64/*folder and run it. Now, you'll be able to double-click .uproject files to load the project, or right click them to quickly update Visual Studio files.
 
-_Reference From <https://github.com/EpicGames/UnrealEngine>_
+*Reference From <https://github.com/EpicGames/UnrealEngine>*
 
 # Visual Studio Customization:
 
@@ -166,4 +170,4 @@ The available configurations:
 | **Shipping**            | This is the configuration for optimal performance and shipping your game. This configuration strips out console commands, stats, and profiling tools. |
 | **Test**                | This configuration is the **Shipping** configuration, but with some console commands, stats, and profiling tools enabled.                             |
 
-_Reference From: <https://docs.unrealengine.com/latest/INT/Programming/Development/BuildingUnrealEngine/index.html>_
+*Reference From: <https://docs.unrealengine.com/latest/INT/Programming/Development/BuildingUnrealEngine/index.html>*

@@ -2,14 +2,13 @@
 sortIndex: 8
 ---
 
-# General Stuff
+# General Tips
 
-- [Adding a button to attach the debugger directly to the UE4 instance](/ue4guide/vs-autoattach-to-ue4-button)
+- [Adding a button to attach the debugger directly to the UE4 instance](/ue4guide/general-debugging/add-vs-autoattach-to-ue4-button)
 
-- [Print Blueprint/BP Callstack](/print-blueprint-callstack)
+- [Print Blueprint/BP Callstack](/ue4guide/general-debugging/print-bp-callstack)
 
-- Crash Course Visual Assist Shortcuts:
-
+- Crash Course Visual Assist Shortcuts
   - ALT+G - Context menu to go to places where a function/variable/class is referenced
   - ALT+SHIFT+G - Context menu to see the declaration/implementation of a function, see instances of a type, see base symbols (classes/function/variables it might be inherting from)
   - ALT+O - Toggle Header/Code file
@@ -19,10 +18,12 @@ sortIndex: 8
   - ALT+SHIFT+R - Rename symbol
   - CTRL+SHIFT+V
 
+# Configuration
+
 - USF/USH/HLSL intellisense
   - <https://marketplace.visualstudio.com/items?itemName=TimGJones.HLSLToolsforVisualStudio>
   - Enable USF/USH in options menu:
-  - Screenshot: [](/assets/media/image1.jpg)
+  - Screenshot: [](../assets/VSTipsUE4_Overview.jpg)
 
 - Setting up Visual Studio with UE4: <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
 
@@ -54,13 +55,13 @@ Although debug logs contain information primarily related to functions and perfo
 
 If you can open the options dialog of Visual Assist, enable logging:
 
-[](/assets/media/image1.png)
+[](../assets/VSTipsUE4_VAssistXDebug_options.png)
 
 (Logging begins the moment you enable the checkbox. If you close and re-open the options dialog, the checkbox may not be enabled even though logging is in effect.)
 
 Note the location of va.log.
 
-[](assets/media/image2.png)
+[](../assets/VSTipsUE4_VisualAssist.png)
 
 If you cannot open the options dialog of Visual Assist or are so directed by customer support, use regedit to enable logging before Visual Studio starts:
 
