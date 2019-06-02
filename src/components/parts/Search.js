@@ -88,7 +88,7 @@ export function SearchUsingAutocomplete() {
     if (searchResults.length >= siteCfg.inlineSearchResultMax) {
       retVals.push(
         <AntdOption disabled key="inlineSearchResultShowMore">
-          <Link to="/search" key="showMoreSearchResults">
+          <Link to="/searchresults" key="showMoreSearchResults">
             <AntdButton type="primary">Show More Results</AntdButton>
           </Link>
         </AntdOption>
@@ -140,7 +140,7 @@ export function SearchUsingPopover() {
                 style={{ width: '250px' }}
                 footer={
                   // filteredResults.length > 5 && (
-                  <Link to="/search" className="no-link-style">
+                  <Link to="/searchresults" className="no-link-style">
                     Read All <Icon type="arrow-right" />
                   </Link>
                   // )
