@@ -39,7 +39,7 @@ sortIndex: 1
 
 - Add exceptions to Windows Defender to your project directories, for devenv, unrealheader tool, msbuild, cl.exe, incredibuild, link.exe
   - Our devops scripts (setupmachine.py) automatically does this.
-  - Here's a [powershell script](/ue4guide/ide-setup/windows-defender-exclusions-script) that does the same thing
+  - Here's a [powershell script](/ue4guide/development-setup/windows-defender-exclusions-script) that does the same thing
 
 - VS2017 Disable lightweight solutions
 
