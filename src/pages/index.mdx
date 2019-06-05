@@ -40,25 +40,40 @@ Github Repo For Guide
 - [ ] Houdini
 
 ## Webdev bs Pt 2
-- [ ] Add support for ordering between sidebar toc submenu headers and site pages
+
+- [ ] Remove Ant Admin Theme and choose a UI system
+  - [ ] Material UI:
+    - This looks like it has an easy integration with Gatsby and easy styling support
+    - If it'd be fast to update the code from ant design to this, I'd prefer this
+    - https://www.gatsbyjs.org/packages/gatsby-plugin-material-ui/
+  - [ ] Ant Design UI System
+    - The other option is to stick with Ant Design.
+    - Here's an example integration with gatsby: https://github.com/jannikbuschke/gatsby-antd-docs
+- [ ] Autoexpand sidebar when someone goes to a page directly
+- [ ] Add search bar on the left column to search headings (example: https://gatsby-docz.netlify.com/docs/)
 - [ ] Make submenu headings in sidebar more noticable and more vertically more compact
 - [ ] #Perf: When navigating inside of a guide, should not reload the entire page; should update just the main content part.
+    - [ ] This is exactly
     - [ ] This should also not reset the scroll position of the sidebar toc menu
-- [ ] Better inline search
-    - [ ] Should show excerpt of highlighted text
+- [ ] Improve the search components
+    - [ ] Inline seach should display a list of excerpts and highlights
+    - [ ] Search results page should also display excerpts and highlights
     - [ ] Allow search for specific guides
-- [ ] Add search bar on the left column to search headings (example: https://gatsby-docz.netlify.com/docs/)
+- [ ] Add support for ordering between sidebar toc submenu headers and site pages
+
+
+## Webdev bs Pt 3
+
+- [ ] Add autodemarcation of notes still to be fully transitioned
 - [ ] #Perf: Use Emotion - https://jenniferwadella.com/blog/all-the-dumb-mistakes-i-made-building-my-first-gatsby-site
 - [ ] #Perf: Image Optimization - https://medium.com/@kyle.robert.gill/ridiculously-easy-image-optimization-with-gatsby-js-59d48e15db6e
-- [ ] #Visual: Find a decent visual theme for markdown (https://github.com/pedronauck/gatsby-starter-docz or http://iarouse.com/dist-react-ant-design/v1.1.4/#/app/layout/page)
-- [ ] CSS help: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ http://grid.malven.co/ https://visme.co/blog/layout-design/
-- [ ] Further prettification: Look at css styling from https://casual-effects.com/markdeep/#examples
-- [ ] Integrate Ant Admin theme (http://iarouse.com/dist-react-ant-design/v1.1.4/#/app/layout/page)
-- [ ] Add autodemarcation of notes still to be fully transitioned
-- [ ] Theme support: Examples
+- [ ] #Visual: Find a decent visual theme for markdown (https://github.com/pedronauck/gatsby-starter-docz)
+- [ ] Gatsby Theme support: Examples
     - https://medium.com/@kyle.robert.gill/a-simple-guide-to-gatsbyjs-themes-a4f9765c5ac7
     - https://www.christopherbiscardi.com/post/running-a-gatsby-starter-as-a-theme
     - https://github.com/jannikbuschke/gatsby-antd-docs
+- [ ] CSS help: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ http://grid.malven.co/ https://visme.co/blog/layout-design/
+- [ ] Further prettification: Look at css styling from https://casual-effects.com/markdeep/#examples
 
 ## Webdev bs Pt 1
 
@@ -81,3 +96,16 @@ Github Repo For Guide
     - [x] ~~First 5 results should show up in a pop up~~
     - [x] ~~Should have button to click it to open to another search results page with all the results~~
     - [x] ~~Search should groupby guides~~
+
+
+# Useful Examples:
+
+-  https://gatsby-docz.netlify.com/docs/
+- https://using-remark.gatsbyjs.org/ & https://github.com/gatsbyjs/gatsby/tree/master/examples/using-remark
+- https://github.com/LekoArts/gatsby-starter-minimal-blog
+- https://mkdevdiary.netlify.com/gatsby-plugins-seo-and-images
+- http://github.com/kyleamathews/blog
+- https://github.com/ericwindmill/gatsby-starter-docs
+- gatsby-remark-external-links
+- Ant Design Pro: http://pro.ant.design/docs/use-components-alone
+- Ant Design Kitchen Sink: http://kitchen.alipay.com/
