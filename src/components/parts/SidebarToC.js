@@ -145,7 +145,7 @@ export default function SidebarToC() {
     .map(({ node }) => (node.childMdx ? node.childMdx : node.childMarkdownRemark))
     .filter(node => node.fields.slug.startsWith(curGuideRelRoot));
 
-  function createTOCNodes(tocTree) {
+  function createTOCNodes(tocTree, searchFilter) {
     const childSubTreeNodes = tocTree.childTOCs
       ? tocTree.childTOCs.map(tocSubTree => (
           <AntdSubMenu
@@ -153,23 +153,44 @@ export default function SidebarToC() {
             sort={tocSubTree.sortIndex}
             title={tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}
           >
-            {createTOCNodes(tocSubTree)}
+            {createTOCNodes(tocSubTree, searchFilter)}
           </AntdSubMenu>
         ))
       : [];
 
-    const leafNodes = _.map(tocTree.childPages, childPage => (
-      <AntdMenu.Item
-        key={childPage.slug}
-        sort={childPage.sortIndex}
-        className={safeGetRelWindowPath() === childPage.slug && 'ant-menu-item-selected'}
-      >
-        <Link to={childPage.slug} onClick={() => dispatch({ type: 'closeSD' })}>
-          <span className="nav-text">{childPage.title}</span>
-        </Link>
-      </AntdMenu.Item>
-    ));
-    var combinedNodes = _.concat(leafNodes, childSubTreeNodes);
+    const leafNodes = tocTree.childPages
+      .filter(childPage => {
+        if (searchFilter === undefined || searchFilter.trim() === '') {
+          return true;
+        } else {
+          var title = childPage.title || prettifySlug(childPage.slugPart);
+          var terms = searchFilter.trim().split(' ');
+          var indexes = terms
+            .map(item => {
+              return title.toLowerCase().indexOf(item.toLowerCase());
+            })
+            .filter(item => item !== -1);
+          return indexes.length > 0;
+        }
+      })
+      .map(childPage => (
+        <AntdMenu.Item
+          key={childPage.slug}
+          sort={childPage.sortIndex}
+          className={safeGetRelWindowPath() === childPage.slug && 'ant-menu-item-selected'}
+        >
+          <Link to={childPage.slug} onClick={() => dispatch({ type: 'closeSD' })}>
+            <span className="nav-text">{childPage.title}</span>
+          </Link>
+        </AntdMenu.Item>
+      ));
+
+    var combinedNodes = _.concat(
+      leafNodes,
+      childSubTreeNodes.filter(item =>
+        searchFilter.trim() !== '' && item.props.children.length === 0 ? false : true
+      )
+    );
 
     combinedNodes.sort((a, b) => {
       if (a.props.sort < b.props.sort) {
@@ -178,6 +199,7 @@ export default function SidebarToC() {
         return 1;
       }
     });
+    console.log(combinedNodes);
 
     combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, curr]) : '';
 
@@ -193,8 +215,20 @@ export default function SidebarToC() {
       )
     : null;
   bDisplaySidebar = !!guideTocMV;
-  const defaultOpenKeys = bDisplaySidebar ? getHeadingSlugPrefixes(guideTocMV, 2) : [];
 
+  const getAllKeys = function(tree, keys) {
+    tree.childTOCs.forEach(submenu => {
+      keys.push(submenu.slugPrefix);
+      if (submenu.childTOCs) {
+        getAllKeys(submenu, keys);
+      }
+    });
+  };
+  var allkeys = [];
+  getAllKeys(guideTocMV, allkeys);
+
+  const defaultOpenKeys = bDisplaySidebar ? getHeadingSlugPrefixes(guideTocMV, 2) : [];
+  const allOpen = searchFilter.trim() === '' ? null : allkeys;
   return (
     <AntdMenu
       mode="inline"
@@ -203,7 +237,7 @@ export default function SidebarToC() {
         // const flattenedKeys = !(_.isNil(keys) || _.isEmpty(keys)) ? _.uniq(_.flattenDeep(keys)) : []
         dispatch({ type: 'openKeys', payload: keys });
       }}
-      openKeys={openKeys}
+      openKeys={allOpen ? allOpen : openKeys}
       theme={siteCfg.theme.DarkVariant}
       defaultOpenKeys={defaultOpenKeys}
       selectedKeys={selectedKeys}
@@ -214,6 +248,7 @@ export default function SidebarToC() {
       <AntdMenu.Item>
         {/* SEARCH */}
         <AntdInput
+          placeholder="Search the TOC"
           onChange={e => {
             var str = e.target.value;
             setSearchFilter(str);
@@ -221,7 +256,7 @@ export default function SidebarToC() {
         />
       </AntdMenu.Item>
 
-      {isInBrowser() ? createTOCNodes(guideTocMV) : <div />}
+      {isInBrowser() ? createTOCNodes(guideTocMV, searchFilter) : <div />}
     </AntdMenu>
   );
 
