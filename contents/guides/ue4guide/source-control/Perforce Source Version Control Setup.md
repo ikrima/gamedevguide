@@ -58,23 +58,23 @@ Useful commands:
 
 - **Fast Reconcile with files that have been edited, added, deleted and with special characters in their name**
 
-  p4 reconcile -meadf d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries...
+  p4 reconcile -meadf UnrealEngine\\Engine\\Binaries...
 
 - **Show me files that were ignored:**
 
-  p4 reconcile -nI d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries...
+  p4 reconcile -nI UnrealEngine\\Engine\\Binaries...
 
 - **Show me files that were ignored but need to be added**
 
-  p4 reconcile -naI d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries...
+  p4 reconcile -naI UnrealEngine\\Engine\\Binaries...
 
 - **Why something was ignored:**
 
-  p4 ignores -v -i d:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Binaries\\ThirdParty\\svn\\Mac\\lib\\apr.exp
+  p4 ignores -v -i UnrealEngine\\Engine\\Binaries\\ThirdParty\\svn\\Mac\\lib\\apr.exp
 
 - **Force resync only deleted files (deletes files that are only available locally and not in depot):**
 
-  p4 -I clean -ead D:\\Ikrima\\src\\Assembla\\Bebylon\\UnrealEngine\\Engine\\Source\\Runtime...
+  p4 -I clean -ead UnrealEngine\\Engine\\Source\\Runtime...
 
 - **Note: Using -m might skip files if you copied over stuff recently**
 

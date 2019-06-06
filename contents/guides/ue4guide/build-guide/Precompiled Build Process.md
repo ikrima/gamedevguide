@@ -15,11 +15,11 @@ sortindex: 8
 ## Sans BuildGraph
 
 ```batch
-UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 UE4Editor -project="BBRProto\BBRProto.uproject" -precompile
-UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProto -project="BBRProto\BBRProto.uproject" -useprecompiled
-UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProtoEditor -project="BBRProto\BBRProto.uproject" -useprecompiled
+UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 UE4Editor -project="BBR\BBR.uproject" -precompile
+UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBR -project="BBR\BBR.uproject" -useprecompiled
+UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBREditor -project="BBR\BBR.uproject" -useprecompiled
 
-UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProtoEditorBP -project="BBRProto\BBRProto.uproject" -useprecompiled
+UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBREditorBP -project="BBR\BBR.uproject" -useprecompiled
 ```
 
 ## Add section to BaseEngine.ini
@@ -35,7 +35,7 @@ UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRPro
 ## Generate project files
 
 ```batch
-UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBRProto -project="UnrealEngine\BBRProto\BBRProto.uproject" -useprecompiled -projectfiles -game -engine
+UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBR -project="UnrealEngine\BBR\BBR.uproject" -useprecompiled -projectfiles -game -engine
 ```
 
-Uncheck ShaderCompilerWorker dependency from BBRProto
+Uncheck ShaderCompilerWorker dependency from BBR

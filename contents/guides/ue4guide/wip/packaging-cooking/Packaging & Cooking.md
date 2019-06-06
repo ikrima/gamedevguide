@@ -40,18 +40,18 @@ sortIndex: 1
 
 - Go to your UE4/Engine/Build/BatchFiles folder, and run the following:
 
-```cpp
-  "D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun -project="D:\Ikrima\src\Assembla\GENeuro\Neuro.uproject" -windows-noeditor -cook -build -stage -pak -package -clientconfig=Test
+```batch
+"UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun -project="UnrealEngine\GENeuro\Neuro.uproject" -windows-noeditor -cook -build -stage -pak -package -clientconfig=Test
 ```
 
-## Packaging without cooking or building:
+## Packaging without cooking or building
 
-- "UnrealEngine\\Engine\\Build\\BatchFiles\\RunUAT.bat" BuildCookRun -project="D:\\Ikrima\\src\\Assembla\\GENeuro\\Neuro.uproject" -windows-noeditor -skipcook -stage -pak -package -clientconfig=Test
+- "UnrealEngine\\Engine\\Build\\BatchFiles\\RunUAT.bat" BuildCookRun -project="UnrealEngine\\GENeuro\\Neuro.uproject" -windows-noeditor -skipcook -stage -pak -package -clientconfig=Test
 
-## Only Cook Content:
+## Only Cook Content
 
-```cpp
-- "D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun -project="D:\Ikrima\src\Assembla\GENeuro\Neuro.uproject" -windows-noeditor -cook -iterate -clientconfig=Test
+```batch
+"UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun -project="UnrealEngine\\GENeuro\\Neuro.uproject" -windows-noeditor -cook -iterate -clientconfig=Test
 ```
 
 ## Cooking content Detailed \[sometimes RunUAT fails but this direct command doesn't]:
@@ -62,12 +62,12 @@ sortIndex: 1
 
 ## Cook On The Fly:
 
-```cpp
-"D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "D:\Ikrima\src\Assembla\Bebylon\BBRProto\BBRProto.uproject" -run=cook -targetplatform=Windows -cookonthefly -iterate -debug -log
+```batch
+"UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "UnrealEngine\\BBR\\BBR.uproject" -run=cook -targetplatform=Windows -cookonthefly -iterate -debug -log
 
-"D:\Ikrima\src\Assembla\Bebylon\BBRProto\Binaries\Win64\BBRProto-Win64-DebugGame.exe" -Game -debug -log -filehostip=127.0.0.1
+"UnrealEngine\Engine\BBR\Binaries\Win64\BBRProto-Win64-DebugGame.exe" -Game -debug -log -filehostip=127.0.0.1
 
-"D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "D:\Ikrima\src\Assembla\Bebylon\BBRProto\BBRProto.uproject" -targetplatform=Windows -Game -debug -log -filehostip=127.0.0.1
+"UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "UnrealEngine\\BBR\\BBR.uproject" -targetplatform=Windows -Game -debug -log -filehostip=127.0.0.1
 ```
 
 ## Cooking on the Fly Notes
@@ -76,8 +76,8 @@ sortIndex: 1
 
 #### Basic Command Line
 
-```cpp
-"D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "D:\Ikrima\src\Assembla\Bebylon\BBRProto\BBRProto.uproject" -run=cook -targetplatform=Windows -cookonthefly -iterate -debug -log
+```batch
+"UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "UnrealEngine\\BBR\\BBR.uproject" -run=cook -targetplatform=Windows -cookonthefly -iterate -debug -log
 ```
 
 #### *Project File*
@@ -92,8 +92,8 @@ When running the standalone version, the game will fail to connect to a cook ser
 
 ### Basic Command Line
 
-```cpp
-"D:\src\Public-Development\UnrealEngine\Engine\Binaries\Win64\UE4Editor-Win64-Debug.exe" "D:\src\Assembla\Bebylon\BBR\BBR.uproject" -targetplatform=Windows -Game -debug -log -filehostip=127.0.0.1
+```batch
+UnrealEngine\Engine\Binaries\Win64\UE4Editor-Win64-Debug.exe" "UnrealEngine\BBR\BBR.uproject" -targetplatform=Windows -Game -debug -log -filehostip=127.0.0.1
 ```
 
 #### *TargetPlatform*

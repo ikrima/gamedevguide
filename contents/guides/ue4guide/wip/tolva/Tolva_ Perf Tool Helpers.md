@@ -184,9 +184,9 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
   - Use dxcap: <https://msdn.microsoft.com/en-us/library/hh780905.aspx>
 
-    dxcap -c UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\\Ikrima\\src\\Assembla\\Bebylon\\BBR\\BBR.uproject 0-Lobby -log -debug -d3ddebug -game
+    dxcap -c UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe BBR\\BBR.uproject 0-Lobby -log -debug -d3ddebug -game
 
-    dxcap -frame 8s -c UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe D:\\Ikrima\\src\\Assembla\\Bebylon\\BBR\\BBR.uproject 0-Lobby -log -game
+    dxcap -frame 8s -c UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe BBR\\BBR.uproject 0-Lobby -log -game
 
 
 - Programmatic NSight capture would be great too:

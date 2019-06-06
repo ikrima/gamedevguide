@@ -66,16 +66,16 @@ GameSession is meant to handle interactions with OnlineSubsystem like accepting 
 
 - Network debugging/testing - Launch network version of game through command line shortcut: <https://docs.unrealengine.com/latest/INT/Programming/Basics/CommandLineArguments/index.html>
 
-```cpp
-  "D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "D:\Ikrima\src\Assembla\Bebylon\BBRProto\BBRProto.uproject" 0-LevelStart?listen -Game
+```batch
+"UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "UnrealEngine\BBR\BBR.uproject" 0-LevelStart?listen -Game
 
-  "D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "D:\Ikrima\src\Assembla\Bebylon\BBRProto\BBRProto.uproject" -Game 192.168.0.17
+"UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "UnrealEngine\BBR\BBR.uproject" -Game 192.168.0.17
 
- "D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe"
+"UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe"
 
- "D:\Ikrima\src\Assembla\Bebylon\BBRProto\BBRProto.uproject" 0-LevelLockArena?listen -Game
+"UnrealEngine\\BBR\\BBR.uproject" 0-LevelLockArena?listen -Game
 
- "D:\Ikrima\src\Public-Development\UnrealEngine\Engine\Binaries\Win64\\UE4Editor-Win64-Debug.exe" "D:\Ikrima\src\Assembla\Bebylon\BBRProto\BBRProto.uproject" 1-SimpleMasterArenaFlow?listen -Game -log
+"UnrealEngine\Engine\Binaries\Win64\\UE4Editor-Win64-Debug.exe" "UnrealEngine\\BBR\\BBR.uproject" 1-SimpleMasterArenaFlow?listen -Game -log
 ```
 
 Launch server mode in standalone build:

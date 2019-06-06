@@ -123,7 +123,7 @@ Customize Toolbar to showcase UE4 Build Profiles/Targets:
 
 Install the UnrealVS extension for UnrealVS Toolbar:
 
-C:\\Users\\ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Extras\\UnrealVS\\VS2013
+UnrealEngine\\Engine\\Extras\\UnrealVS\\VS2013
 
 Install Visual Studio Unreal Extensions:
 
@@ -131,7 +131,7 @@ Install Visual Studio Unreal Extensions:
 
 Run the UnrealVersion Selector:
 
-"C:\\Users\\ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Binaries\\Win64\\UnrealVersionSelector-Win64-Shipping.exe"
+"UnrealEngine\\Engine\\Binaries\\Win64\\UnrealVersionSelector-Win64-Shipping.exe"
 
 Configure Visual Studio for Unreal Project:
 

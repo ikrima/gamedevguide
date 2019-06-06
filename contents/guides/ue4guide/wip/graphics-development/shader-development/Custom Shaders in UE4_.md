@@ -48,9 +48,9 @@ VertexFactory:
 
 Interesting code to look at to directly render stuff, create uniform constant buffers, and create a custom vertex declaration:
 
-C:\\Users\\ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Source\\Runtime\\Engine\\Private\\Particles\\ParticleBeamTrailVertexFactory.cpp
+UnrealEngine\\Engine\\Source\\Runtime\\Engine\\Private\\Particles\\ParticleBeamTrailVertexFactory.cpp
 
-C:\\Users\\ikrima\\src\\Public-Development\\UnrealEngine\\Engine\\Source\\Runtime\\Eengine\\Private\\Particles\\ParticleVertexFactory.cpp
+UnrealEngine\\Engine\\Source\\Runtime\\Eengine\\Private\\Particles\\ParticleVertexFactory.cpp
 
 To bind LocalVertexFactory with a shader you have to use:
 
@@ -65,43 +65,43 @@ VertexFactory::InitRHI() is where the vertex declaration is created
 ```cpp
 void FLocalVertexFactory::InitRHI()
 
-BEGIN_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters, )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, AxisLockRight, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, AxisLockUp, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, TangentSelector, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, NormalsSphereCenter, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, NormalsCylinderUnitDirection, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, SubImageSize, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER( FVector4, MacroUVParameters )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, RotationScale, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, RotationBias, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, NormalsType, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, InvDeltaSeconds, EShaderPrecisionModifier::Half )  
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector2D, PivotOffset, EShaderPrecisionModifier::Half )  
-END_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters )  
+BEGIN_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters, )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, AxisLockRight, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, AxisLockUp, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, TangentSelector, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, NormalsSphereCenter, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, NormalsCylinderUnitDirection, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, SubImageSize, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER( FVector4, MacroUVParameters )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, RotationScale, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, RotationBias, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, NormalsType, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, InvDeltaSeconds, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector2D, PivotOffset, EShaderPrecisionModifier::Half )
+END_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters )
 typedef TUniformBufferRef&lt;FParticleSpriteUniformParameters> FParticleSpriteUniformBufferRef;
 
 FParticleVertexFactoryBase
 
 FParticleSpriteVertexFactory
 
-void FParticleSpriteVertexFactory::InitRHI()  
-{  
-        InitStreams();  
-        SetDeclaration(GetParticleSpriteVertexDeclaration(GetFeatureLevel()).VertexDeclarationRHI);  
+void FParticleSpriteVertexFactory::InitRHI()
+{
+        InitStreams();
+        SetDeclaration(GetParticleSpriteVertexDeclaration(GetFeatureLevel()).VertexDeclarationRHI);
 }
 
-virtual void InitDynamicRHI()  
-        {  
-                FVertexDeclarationElementList Elements;  
+virtual void InitDynamicRHI()
+        {
+                FVertexDeclarationElementList Elements;
                 int32        Offset = 0;
 
 FillDeclElements(Elements, Offset);
 
-// Create the vertex declaration for rendering the factory normally.  
-                // This is done in InitDynamicRHI instead of InitRHI to allow FParticleSpriteVertexFactory::InitRHI  
-                // to rely on it being initialized, since InitDynamicRHI is called before InitRHI.  
-                VertexDeclarationRHI = RHICreateVertexDeclaration(Elements);  
+// Create the vertex declaration for rendering the factory normally.
+                // This is done in InitDynamicRHI instead of InitRHI to allow FParticleSpriteVertexFactory::InitRHI
+                // to rely on it being initialized, since InitDynamicRHI is called before InitRHI.
+                VertexDeclarationRHI = RHICreateVertexDeclaration(Elements);
         }
 ```
 
