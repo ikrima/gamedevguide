@@ -1,7 +1,7 @@
 /* eslint-disable */
 
-import React, { useContext } from 'react';
-import { Menu as AntdMenu } from 'antd';
+import React, { useContext, useState } from 'react';
+import { Menu as AntdMenu, Input as AntdInput } from 'antd';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { Context as SidebarContext } from '../../contexts/SidebarContext';
 import siteCfg from '../../../SiteCfg';
@@ -23,6 +23,8 @@ export default function SidebarToC() {
     state: { openKeys },
     dispatch,
   } = useContext(SidebarContext);
+
+  const [searchFilter, setSearchFilter] = useState('');
   const { guides } = useStaticQuery(graphql`
     query sidebarToCQuery {
       guides: allFile(
@@ -148,6 +150,7 @@ export default function SidebarToC() {
       ? tocTree.childTOCs.map(tocSubTree => (
           <AntdSubMenu
             key={tocSubTree.slugPrefix}
+            sort={tocSubTree.sortIndex}
             title={tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}
           >
             {createTOCNodes(tocSubTree)}
@@ -158,6 +161,7 @@ export default function SidebarToC() {
     const leafNodes = _.map(tocTree.childPages, childPage => (
       <AntdMenu.Item
         key={childPage.slug}
+        sort={childPage.sortIndex}
         className={safeGetRelWindowPath() === childPage.slug && 'ant-menu-item-selected'}
       >
         <Link to={childPage.slug} onClick={() => dispatch({ type: 'closeSD' })}>
@@ -165,14 +169,24 @@ export default function SidebarToC() {
         </Link>
       </AntdMenu.Item>
     ));
-    const combinedNodes = _.concat(childSubTreeNodes, leafNodes);
+    var combinedNodes = _.concat(leafNodes, childSubTreeNodes);
 
-    return combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, curr]) : '';
+    combinedNodes.sort((a, b) => {
+      if (a.props.sort < b.props.sort) {
+        return -1;
+      } else if (a.props.sort > b.props.sort) {
+        return 1;
+      }
+    });
+
+    combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, curr]) : '';
+
+    return combinedNodes;
   }
 
   const selectedKeys = [safeGetRelWindowPath()];
   let bDisplaySidebar = !!(curPageGuideName && curPageGuideName.length > 1);
-  const guideTocMV = bDisplaySidebar
+  var guideTocMV = bDisplaySidebar
     ? _.find(
         createTOCModelView(mdNodes).childTOCs,
         o => o.slugPart.toLowerCase() === curPageGuideName.toLowerCase()
@@ -197,6 +211,16 @@ export default function SidebarToC() {
     >
       {/* {" "} */}
       {/* <div className="py-3" /> */}
+      <AntdMenu.Item>
+        {/* SEARCH */}
+        <AntdInput
+          onChange={e => {
+            var str = e.target.value;
+            setSearchFilter(str);
+          }}
+        />
+      </AntdMenu.Item>
+
       {isInBrowser() ? createTOCNodes(guideTocMV) : <div />}
     </AntdMenu>
   );
