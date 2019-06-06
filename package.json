@@ -23,7 +23,7 @@
     "formatp:md": "prettier --parser markdown --write \"contents/guides/**/*.md\"",
     "formatp:mdx": "prettier --parser mdx --write \"contents/**/*.mdx\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "pushd ..\\..\\knl\\knl-gamedevguide & git pull & git push & git fetch & popd"
   },
   "license": "MIT",
   "dependencies": {
