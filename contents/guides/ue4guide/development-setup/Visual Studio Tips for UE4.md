@@ -66,6 +66,6 @@ Note the location of va.log.
 If you cannot open the options dialog of Visual Assist or are so directed by customer support, use regedit to enable logging before Visual Studio starts:
 
 1. Navigate to HKCU\\Software\\Whole Tomato
-2. Set the value of Logging to 1
+1. Set the value of Logging to 1
 
 *From <https://support.wholetomato.com/default.asp?W305>*
