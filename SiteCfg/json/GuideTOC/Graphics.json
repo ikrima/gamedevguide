@@ -8,6 +8,10 @@
     {
       "slugPart": "volume-rendering",
       "childTOCs": []
+    },
+    {
+      "slugPart": "gpu-architecture",
+      "childTOCs": []
     }
   ]
 }
