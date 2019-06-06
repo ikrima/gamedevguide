@@ -54,12 +54,14 @@ Every frame, generate FMeshBatch from Scene proxies
   - Describes a mesh pass
 
 # Shader Binding
+
 ## Overview
+
 - Shader Parms are submitted in big GPU buffers
 - Anything referenced by FMeshDrawCommands must not change frequently bc it will be invalidated
 - Instead, keep bindings stable and reference one big Uniform Buffer
   - Code path to update uniform buffer: RHIUpdateUniformBuffer
-  ![](../../assets/newrenderpipeline-shaderbinding-update.png)
+    ![](../../assets/newrenderpipeline-shaderbinding-update.png)
 - Uniform Buffers: FPersistentUniformBuffers
   - PrimitiveUniformBuffer: Data unique to primitive like LocalToWorldTransform
   - MaterialUniformBuffer: Material params
@@ -73,6 +75,7 @@ Every frame, generate FMeshBatch from Scene proxies
     ![](../../assets/newrenderpipeline-vf-caching.png)
 
 ## High level Frame with Caching
+
 - FPrimitiveSceneInfo::AddToScene
   - If Static, cache FMeshBatch’s on FPrimitiveSceneInfo
     - Also generate FMeshDrawCommands and store on the scene
@@ -90,12 +93,17 @@ Every frame, generate FMeshBatch from Scene proxies
 ## Drawcall Merging
 
 - Happens in FMeshDrawCommand::MatchesForDynamicInstancing
+
 - Assigning state buckets for merging is slow so its cached at FPrimitive::AddToScene
   - `cpp>TSet<FMeshDrawCommandStateBucket, MeshDrawCommandKeyFuncs> CachedMeshDrawCommandStateBuckets;`
+
 - Actual merging operation is just transformation on visible FMeshDrawCommand list
   - For each drawcommand in the same statebucket, it gets replaced with an instanced mesh draw command
+
 - To be effective, need to get rid of per-draw bindings
+
 - Created Pass uniform buffer frequency
+
   - Moved 64 per-draw bindings into OpaqueBasePassUniformBuffer
 
   ```cpp
@@ -141,6 +149,7 @@ Every frame, generate FMeshBatch from Scene proxies
     - PrimitiveUniformBuffer
     - PrecomputedLightingUniformBuffer
     - DistanceCullFadeUniformBuffer
+
 - GPU Scene Primitive Data buffer: GPU TArray implementation with dynamic resizing
   - Renderthread tracks Primitive add / update / remove, uses a compute shader to update them on the next frame (only operate on deltas)
   - Need to use GetPrimitiveData(Parameters.PrimitiveId) in shaders now
@@ -178,15 +187,22 @@ Every frame, generate FMeshBatch from Scene proxies
 ## Shader Bindings
 
 - Previously all shader parameters were directly set on RHICmdList by drawing policies
+
 - Now, All parameters are gathered into FMeshDrawSingleShaderBindings (which later are set on RHICmdList by calling SetOnCommandList during drawing)
+
 - Old: FDrawingPolicyRenderState to pass common high-level mesh pass render state (e.g. pass uniform buffer)
+
 - New: Renames FDrawingPolicyRenderState to FMeshPassProcessorRenderState without major changes to its functionality
+
 - Old: Other parts of shader bindings were filled inside of shader’s SetParameters and SetMesh functions
+
 - New: Replaced by GetShaderBindings and GetElementShaderBindings, and pass per-draw parameters inside a customizable ShaderElementDataType
   - Since each FMeshPassProcessor must go through BuildMeshDrawCommands() to call the pass shader’s GetShaderBindings(), we need a mechanism to pass arbitrary data from the FMeshPassProcessor to the GetShaderBindings() call. This is accomplished with the ShaderElementData parameter to BuildMeshDrawCommands()
 
 - Many loose parameters were pulled out into per-pass or other uniform buffers (do not use loose parameters)
+
 - Old: uniform buffers like ViewUniformBuffer or DepthPassUniformBuffer were recreated every frame with new data
+
 - New: those are persistent and global (kept inside FScene::FPersistentUniformBuffers)
   - instead of recreating them to pass new data — their contents are updated using new RHI function — to RHIUpdateUniformBuffer
   - This indirection enables shaders to receive per-frame data even though their mesh draw commands are cached
@@ -205,12 +221,11 @@ Every frame, generate FMeshBatch from Scene proxies
 - Shaders need to use GetPrimitiveData(PrimitiveId) instead of accessing the Primitive uniform buffer directly to compile with GPUScene enabled.
   - Primitive.Member => GetPrimitiveData(Parameters.PrimitiveId).Member
 
-
 Misc:
+
 - <https://github.com/EpicGames/UnrealEngine/commit/b5d7db368977e263092be9b97f78944739f80476>
 
 `youtube: https://www.youtube.com/watch?v=UJ6f1pm_sdU`
-
 
 ## Add Immediate Mode Custom Mesh Pass
 
@@ -299,7 +314,7 @@ void RenderMeshDecals(FRenderingCompositePassContext& Context, EDecalRenderStage
 
 # Render Graph
 
-Main file: UnrealEngine\Engine\Source\Runtime\RenderCore\Public\RenderGraph.h
+Main file: UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Public\\RenderGraph.h
 
 Main class: FRDGBuilder
 Currently used very lightly in 4.22 but looks like Compute Shaders can be dispatched with it

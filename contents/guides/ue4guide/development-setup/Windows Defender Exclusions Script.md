@@ -4,7 +4,7 @@ sortIndex: 2
 
 Powershell script to add exclusions to windows defender.
 
-_**Important:**_ You should verify each of the lines.
+***Important:*** You should verify each of the lines.
 
 ```powershell
 $kl_bbassembladir    = $env:KL_BBASSEMBLADIR
