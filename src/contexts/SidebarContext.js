@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer, useEffect, useRef } from 'react';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -39,6 +39,13 @@ function getKeysFromLocation() {
 
 export const Context = createContext({});
 export default function Wrapper({ children }) {
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
   const initialKeys = getKeysFromLocation();
 
   const [state, dispatch] = useReducer(reducer, {
@@ -50,6 +57,14 @@ export default function Wrapper({ children }) {
     slugStart: '/',
     openKeys: [...initialKeys],
   });
+  const el = document.querySelector('.ant-menu-item-selected');
+
+  const prev = usePrevious(el);
+  useEffect(() => {
+    if (!prev && el) {
+      el.scrollIntoView({ block: 'center' });
+    }
+  }, [el]);
 
   return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>;
 }

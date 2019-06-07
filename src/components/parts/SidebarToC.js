@@ -229,12 +229,7 @@ export default function SidebarToC() {
 
   const defaultOpenKeys = bDisplaySidebar ? getHeadingSlugPrefixes(guideTocMV, 2) : [];
   const allOpen = searchFilter.trim() === '' ? null : allkeys;
-  var el = document.querySelector('.ant-menu-item-selected');
-  useEffect(() => {
-    if (el !== null) {
-      el.scrollIntoView();
-    }
-  }, [el]);
+
   return (
     <AntdMenu
       mode="inline"
