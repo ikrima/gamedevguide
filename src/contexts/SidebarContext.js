@@ -10,6 +10,8 @@ function reducer(state, action) {
       return { ...state, toc: !state.toc };
     case 'openKeys':
       return { ...state, openKeys: action.payload };
+    case 'scrollTop':
+      return { ...state, scrollTop: action.payload };
 
     case 'closeSD':
       return { ...state, toc: false, drawer: false };
@@ -24,6 +26,7 @@ export default function Wrapper({ children }) {
   const [state, dispatch] = useReducer(reducer, {
     sidebar: true,
     drawer: false,
+    scrollTop: 0,
     toc: false,
     slugStart: '/',
     openKeys: [],

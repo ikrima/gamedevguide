@@ -199,7 +199,6 @@ export default function SidebarToC() {
         return 1;
       }
     });
-    console.log(combinedNodes);
 
     combinedNodes ? _.reduce(combinedNodes, (prev, curr) => [prev, curr]) : '';
 
