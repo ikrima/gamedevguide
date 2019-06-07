@@ -10,7 +10,7 @@ sortIndex: 2
 
 - Budget BebylonPerf
 
-2. Freeze Game Thread 
+2. Freeze Game Thread
    - Pause
 
 2. Check Game Thread Perf
@@ -526,7 +526,7 @@ stat startfileraw - starts dumping a raw capture
 
    - r.Cache.DrawLightingSamples
 
-1. Post-Processing 
+1. Post-Processing
    - r.ListSceneColorMaterials
 
 1. VR
@@ -619,9 +619,8 @@ stat startfileraw - starts dumping a raw capture
 
   r.RenderTargetPoolMin'
 
-**Below here needs to be reimplemented & tasked in Hansoft to Andrew**
 
-### Performance Tuning:
+### Performance Tuning
 
  **Tunable Optimizations:**
 
