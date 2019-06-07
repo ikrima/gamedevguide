@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 import { Layout, Drawer } from 'antd';
 
 import SidebarMenu from './SidebarMenu';
@@ -9,13 +9,18 @@ const { Sider } = Layout;
 const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
   const {
     dispatch,
-    state: { drawer, toc, sidebar, scrollTop },
+    state: { drawer, toc, sidebar, scrollTop, guide },
   } = useContext(SidebarContext);
   const sidenavRef = useRef(null);
 
   useEffect(() => {
-    sidenavRef.current.scrollTop = scrollTop;
-  });
+    const g = typeof window !== 'undefined' && window.location.pathname.split('/')[1];
+    if (g !== guide) {
+      dispatch({ type: 'setGuide', payload: g });
+    } else {
+      sidenavRef.current.scrollTop = scrollTop;
+    }
+  }, [scrollTop]);
 
   return (
     <div className={`app-sidenav-container ${className}`}>

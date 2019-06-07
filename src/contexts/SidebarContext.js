@@ -12,6 +12,8 @@ function reducer(state, action) {
       return { ...state, openKeys: action.payload };
     case 'scrollTop':
       return { ...state, scrollTop: action.payload };
+    case 'setGuide':
+      return { ...state, guide: action.payload };
 
     case 'closeSD':
       return { ...state, toc: false, drawer: false };
@@ -27,6 +29,7 @@ export default function Wrapper({ children }) {
     sidebar: true,
     drawer: false,
     scrollTop: 0,
+    guide: '',
     toc: false,
     slugStart: '/',
     openKeys: [],
