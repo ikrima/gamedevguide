@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Menu as AntdMenu, Input as AntdInput } from 'antd';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { Context as SidebarContext } from '../../contexts/SidebarContext';
@@ -22,6 +22,7 @@ export default function SidebarToC() {
   const {
     state: { openKeys },
     dispatch,
+    initialKeys,
   } = useContext(SidebarContext);
 
   const [searchFilter, setSearchFilter] = useState('');
@@ -228,6 +229,12 @@ export default function SidebarToC() {
 
   const defaultOpenKeys = bDisplaySidebar ? getHeadingSlugPrefixes(guideTocMV, 2) : [];
   const allOpen = searchFilter.trim() === '' ? null : allkeys;
+  var el = document.querySelector('.ant-menu-item-selected');
+  useEffect(() => {
+    if (el !== null) {
+      el.scrollIntoView();
+    }
+  }, [el]);
   return (
     <AntdMenu
       mode="inline"
@@ -242,7 +249,6 @@ export default function SidebarToC() {
       selectedKeys={selectedKeys}
       inlineIndent={siteCfg.theme.sidebarIndent}
     >
-      {/* {" "} */}
       {/* <div className="py-3" /> */}
       <AntdMenu.Item>
         {/* SEARCH */}
