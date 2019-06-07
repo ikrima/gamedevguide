@@ -51,7 +51,7 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
         collapsed={!sidebar}
         collapsedWidth={0}
         trigger={null}
-        width={240}
+        width={300}
         id="app-sidenav"
         className={`app-sidenav bg-dark d-none ${!showSidebar ? 'd-md-none' : 'd-md-flex'}`}
       >
@@ -60,7 +60,7 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
           style={{
             overflow: 'auto',
             border: !sidebar ? 'none' : null,
-            width: '240px',
+            width: '300px',
             height: '100vh',
             position: 'fixed',
             left: 0,
