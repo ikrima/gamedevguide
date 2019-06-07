@@ -2,10 +2,10 @@
 
 Condensed cheat sheet/mnemonics of stuff I forget
 
-Measure => Size
-Metric => Distance
-Norm => Length
 Inner Product => Angle
+Norm => Length
+Metric => Distance
+Measure => Size
 $L_{p}$ norm => Max() component
 $L_{0}$ norm => Counting norm
 

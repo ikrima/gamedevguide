@@ -10,19 +10,6 @@ Memory Leaking:
 
 gc.CollectGarbageEveryFrame 1
 
-| [Opaques](https://www.perforce.com/products/hansoft/server-hostname)                                 | Not done     | andrew     | 0.0d     |
-| ---------------------------------------------------------------------------------------------------- | ------------ | ---------- | -------- |
-| **[Masked Transparents (Cutouts)](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)** | **Not done** | **andrew** | **0.0d** |
-| **[Blended Transparents](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)**          | **Not done** | **andrew** | **0.0d** |
-| **[Particles](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)**                     | **Not done** | **andrew** | **0.0d** |
-| **[Animations](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)**                    | **Not done** | **andrew** | **0.0d** |
-| **[Tickable objects](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)**              | **Not done** | **andrew** | **0.0d** |
-| **[Depth pre-pass](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)**                | **Not done** | **andrew** | **0.0d** |
-| **[CPU visibility queries](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)**        | **Not done** | **andrew** | **0.0d** |
-| **[GPU visibility queries](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)**        | **Not done** | **andrew** | **0.0d** |
-| **[Post-process stack](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)**            | **Not done** | **andrew** | **0.0d** |
-| **[CPU vs GPU load balancing](http://www.hansoft.com/releasenotes/HansoftServerHostname70.htm)**     | **Not done** | **andrew** | **0.0d** |
-
 Physics:
 
 1. Visualize by using
