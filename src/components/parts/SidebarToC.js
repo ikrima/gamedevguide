@@ -235,7 +235,7 @@ export default function SidebarToC() {
       style={{ minHeight: '100vh' }}
       onOpenChange={keys => {
         // const flattenedKeys = !(_.isNil(keys) || _.isEmpty(keys)) ? _.uniq(_.flattenDeep(keys)) : []
-        dispatch({ type: 'openKeys', payload: keys });
+       searchFilter.trim() === "" && dispatch({ type: 'openKeys', payload: keys });
       }}
       openKeys={allOpen ? allOpen : openKeys}
       theme={siteCfg.theme.DarkVariant}
