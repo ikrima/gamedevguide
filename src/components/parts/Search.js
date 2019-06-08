@@ -73,11 +73,24 @@ export function SearchUsingAutocomplete() {
     const retVals = _.map(retValsByGuide, kvp => {
       const grpKey = kvp[0];
       const grpValue = kvp[1];
-      const optionChildren = grpValue.map(searchResult => (
-        <AntdOption key={searchResult.slug} value={searchResult.slug}>
-          {searchResult.title}
-        </AntdOption>
-      ));
+      const regex = new RegExp(query.split(' ').join('|'), 'gi');
+
+      const optionChildren = grpValue.map(searchResult => {
+        const titleHTML = searchResult.title.replace(
+          regex,
+          match => `<span style="background-color: yellow;">${match}</span>`
+        );
+        const excerptHTML = searchResult.excerpt.replace(
+          regex,
+          match => `<span style="background-color: yellow;">${match}</span>`
+        );
+        return (
+          <AntdOption style={{ height: 'auto' }} key={searchResult.slug} value={searchResult.slug}>
+            <Link to={searchResult.slug} dangerouslySetInnerHTML={{ __html: titleHTML }} />
+            <div dangerouslySetInnerHTML={{ __html: excerptHTML }} />
+          </AntdOption>
+        );
+      });
       return (
         <AntdOptGroup key={grpKey} label={grpKey}>
           {optionChildren}
@@ -124,7 +137,7 @@ export function SearchUsingPopover() {
     <>
       <div
         className="list-inline-item search-box seach-box-right d-none  d-sm-inline-block"
-        style={{ maxWidth: '100px' }}
+        style={{ maxWidth: '300px' }}
       >
         <div className="search-box-inner">
           <div className="search-box-icon">
@@ -137,7 +150,7 @@ export function SearchUsingPopover() {
             // style={{ width: '250px' }}
             content={
               <List
-                style={{ width: '250px' }}
+                // style={{ width: '250px' }}
                 footer={
                   // filteredResults.length > 5 && (
                   <Link to="/searchresults" className="no-link-style">
