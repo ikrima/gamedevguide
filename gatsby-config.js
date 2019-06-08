@@ -1,4 +1,6 @@
 const path = require(`path`);
+const remark = require('remark');
+const visit = require('unist-util-visit');
 const _ = require('lodash');
 const siteCfg = require('./SiteCfg');
 
@@ -191,6 +193,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-remove-trailing-slashes',
+    {
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        // Accepts all options defined by `babel-plugin-emotion` plugin.
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     'gatsby-plugin-offline',
@@ -225,22 +233,54 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        fields: ['title', 'menuTitle', 'slug', 'content', 'guideName'],
+        fields: ['title', 'menuTitle', 'slug', 'content', 'guideName', 'excerpt'],
         // How to resolve each field`s value for a supported node type
         resolvers: {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
           Mdx: {
             title: node => node.fields.pageTitle,
+            excerpt: node => {
+              const excerptLength = 136; // Hard coded excerpt length
+              let excerpt = '';
+              const tree = remark().parse(node.rawMarkdownBody);
+              visit(tree, 'text', node => {
+                excerpt += node.value;
+              });
+              return `${excerpt.slice(0, excerptLength)}...`;
+            },
             menuTitle: node => node.fields.sideMenuHeading,
             slug: node => node.fields.slug,
-            content: node => node.rawBody,
+            content: node => {
+              let content = '';
+              const tree = remark().parse(node.rawMarkdownBody);
+              visit(tree, 'text', node => {
+                content += node.value;
+              });
+              return content;
+            },
             guideName: node => node.fields.guideName,
           },
           MarkdownRemark: {
             title: node => node.fields.pageTitle,
+            excerpt: node => {
+              const excerptLength = 136; // Hard coded excerpt length
+              let excerpt = '';
+              const tree = remark().parse(node.rawMarkdownBody);
+              visit(tree, 'text', node => {
+                excerpt += node.value;
+              });
+              return `${excerpt.slice(0, excerptLength)}`;
+            },
             menuTitle: node => node.fields.sideMenuHeading,
             slug: node => node.fields.slug,
-            content: node => node.rawMarkdownBody,
+            content: node => {
+              let content = '';
+              const tree = remark().parse(node.rawMarkdownBody);
+              visit(tree, 'text', node => {
+                content += node.value;
+              });
+              return content;
+            },
             guideName: node => node.fields.guideName,
           },
         },

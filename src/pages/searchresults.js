@@ -1,9 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Input, List } from 'antd';
 import { Link } from 'gatsby';
+import styled from '@emotion/styled';
 import MainLayout from '../components/main-layout';
 import { SearchContext } from '../contexts/SearchContext';
 
+const Excerpt = styled.div`
+  overflow-x: hidden;
+  .highlight {
+    background-color: yellow;
+    /* display: inline-block; */
+    /* padding: 0 0.25em; */
+  }
+`;
 const SearchPage = ({ location }) => {
   const {
     state: { results, query },
@@ -29,11 +38,29 @@ const SearchPage = ({ location }) => {
         bordered
         className="bg-white mt-3"
         dataSource={results}
-        renderItem={item => (
-          <List.Item>
-            <Link to={item.slug}>{item.title}</Link>
-          </List.Item>
-        )}
+        renderItem={item => {
+          const regex = new RegExp(query.split(' ').join('|'), 'gi');
+          const titleHTML = item.title.replace(
+            regex,
+            match => `<span class="highlight">${match}</span>`
+          );
+          const excerptHTML = item.excerpt.replace(
+            regex,
+            match => `<span class="highlight">${match}</span>`
+          );
+          return (
+            <List.Item>
+              <Excerpt>
+                {/* {console.log(item.excerpt)} */}
+                <Link to={item.slug} dangerouslySetInnerHTML={{ __html: titleHTML }} />{' '}
+                <div
+                  style={{ whiteSpace: 'normal' }}
+                  dangerouslySetInnerHTML={{ __html: excerptHTML }}
+                />
+              </Excerpt>
+            </List.Item>
+          );
+        }}
       />
     </MainLayout>
   );
