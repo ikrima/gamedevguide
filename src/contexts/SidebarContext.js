@@ -57,7 +57,7 @@ export default function Wrapper({ children }) {
     slugStart: '/',
     openKeys: [...initialKeys],
   });
-  const el = document.querySelector('.ant-menu-item-selected');
+  const el = typeof window !== 'undefined' && document.querySelector('.ant-menu-item-selected');
 
   const prev = usePrevious(el);
   useEffect(() => {
