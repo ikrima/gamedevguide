@@ -83,6 +83,7 @@
     "react-sizeme": "^2.6.7",
     "react-typography": "^0.16.19",
     "redux": "^4.0.1",
+    "remark": "^10.0.1",
     "remark-parse": "^6.0.3",
     "reqwest": "^2.0.5",
     "typescript": "^3.5.1",
@@ -90,7 +91,8 @@
     "typography-plugin-code": "^0.16.19",
     "typography-theme-moraga": "^0.16.19",
     "typography-theme-st-annes": "^0.16.19",
-    "underscore.string": "^3.3.5"
+    "underscore.string": "^3.3.5",
+    "unist-util-visit": "^1.4.1"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
