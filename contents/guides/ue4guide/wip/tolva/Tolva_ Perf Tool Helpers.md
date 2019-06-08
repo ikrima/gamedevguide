@@ -104,7 +104,6 @@ D3D Debugging
 
 For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform](fixme_self_referential_link)
 
-
 - Command to build + cook + launch game
 
   - Click the command => SWindow Popout with checkboxes+comboboxes to {build|cook} {engine|standalone} {development|debuggame} BBR
@@ -199,27 +198,27 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 1. Make sure to launch nsmonitor with admin priv
 
-2. Adjust WDDM TDR for Nsight
+1. Adjust WDDM TDR for Nsight
 
-3. Enable Driver Instrumentation
+1. Enable Driver Instrumentation
 
-4. Make sure to warn if these settings arent set:
+1. Make sure to warn if these settings arent set:
 
    - t.maxfps=0
 
    - Set BBIsGPUProfiling = true
 
-5. Remember to pass -d3ddebug
+1. Remember to pass -d3ddebug
 
-6. Exhaustive D3D11 shader collection
+1. Exhaustive D3D11 shader collection
 
-7. Make sure to set shader include paths
+1. Make sure to set shader include paths
 
-8. Make sure to set application is a launcher
+1. Make sure to set application is a launcher
 
-9. Set Force Assembly debugging if you cant find source = true
+1. Set Force Assembly debugging if you cant find source = true
 
-10. Set Preferred remote shader debugging mode = Replay-based debugging
+1. Set Preferred remote shader debugging mode = Replay-based debugging
 
 - Tick One Frame Forward at Fixed Interval
 

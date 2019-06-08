@@ -319,3 +319,13 @@ Main file: UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Public\\RenderGrap
 Main class: FRDGBuilder
 Currently used very lightly in 4.22 but looks like Compute Shaders can be dispatched with it
 FComputeShaderUtils::AddPass(...)
+
+# Debugging
+
+| Command                                          | Desc                                                                                                                                       |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| r.MeshDrawCommands.DynamicInstancing             | Whether to dynamically combine multiple compatible visible Mesh Draw Commands into one instanced draw on vertex factories that support it. |
+| r.MeshDrawCommands.LogDynamicInstancingStats     | Whether to log dynamic instancing stats on the next frame                                                                                  |
+| r.MeshDrawCommands.LogMeshDrawCommandMemoryStats | Whether to log mesh draw command memory stats on the next frame                                                                            |
+| r.MeshDrawCommands.ParallelPassSetup             | Whether to setup mesh draw command pass in parallel.                                                                                       |
+| r.MeshDrawCommands.UseCachedCommands             | Whether to render from cached mesh draw commands (on vertex factories that support it), or to generate draw commands every frame.          |

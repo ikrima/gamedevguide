@@ -619,7 +619,6 @@ stat startfileraw - starts dumping a raw capture
 
   r.RenderTargetPoolMin'
 
-
 ### Performance Tuning
 
  **Tunable Optimizations:**
