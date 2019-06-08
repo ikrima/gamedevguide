@@ -54,7 +54,7 @@ git merge upstream/4.1
 
 1. Merge bebylon into the new branch with merge override from the new branch. We want to merge Bebylon with bebylon-4.22.2-merged4.21.2 but not actually do any merging but instead take bebylon-4.22.2-merged4.21.2 as authoritative.
 
-   _**Note:** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict_
+   ***Note:** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict*
 
    Use these commands to do that:
 

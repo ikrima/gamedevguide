@@ -10,3 +10,8 @@
 .ant-menu-dark .ant-menu-inline.ant-menu-sub {
   background: rgba(255, 255, 255, 0.03) !important;
 }
+.ant-menu-sub.ant-menu-inline > .ant-menu-item,
+.ant-menu-sub.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+  height: 34px !important;
+  line-height: 34px !important;
+}
