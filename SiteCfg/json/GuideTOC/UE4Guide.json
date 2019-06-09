@@ -39,6 +39,11 @@
           "slugPart": "plugins-modules",
           "sortIndex": 6,
           "childTOCs": []
+        },
+        {
+          "slugPart": "docker",
+          "sortIndex": 7,
+          "childTOCs": []
         }
       ]
     },

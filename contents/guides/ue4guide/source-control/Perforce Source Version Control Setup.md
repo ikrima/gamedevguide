@@ -16,7 +16,6 @@ sortIndex: 2
 
 <https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/Integration/index.html>
 
-
 # Assembla performance optimizations
 
 <https://articles.assembla.com/using-perforce/speed-up-your-perforce-repo-with-p4v>
@@ -103,7 +102,6 @@ If you screw up you can delete a workspace. Go to Connection -> Choose Workspace
   - \-e Edited files: Find files in the workspace that have been modified and restore them to the last file version that has synced from the depot.
 
   - (p4 clean => p4 reconcile -w)
-
 
   *Reference From <https://www.perforce.com/perforce/doc.current/manuals/cmdref/Content/CmdRef/p4_clean.html?Highlight=clean>*
 
