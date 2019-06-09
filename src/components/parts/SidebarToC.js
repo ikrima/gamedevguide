@@ -147,44 +147,47 @@ export default function SidebarToC() {
     .filter(node => node.fields.slug.startsWith(curGuideRelRoot));
 
   function createTOCNodes(tocTree, searchFilter) {
-    const childSubTreeNodes = tocTree.childTOCs
-      ? tocTree.childTOCs.map(tocSubTree => (
-          <AntdSubMenu
-            key={tocSubTree.slugPrefix}
-            sort={tocSubTree.sortIndex}
-            title={tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}
-          >
-            {createTOCNodes(tocSubTree, searchFilter)}
-          </AntdSubMenu>
-        ))
-      : [];
+    const childSubTreeNodes =
+      tocTree && tocTree.childTOCs
+        ? tocTree.childTOCs.map(tocSubTree => (
+            <AntdSubMenu
+              key={tocSubTree.slugPrefix}
+              sort={tocSubTree.sortIndex}
+              title={tocSubTree.prettyTitle || prettifySlug(tocSubTree.slugPart)}
+            >
+              {createTOCNodes(tocSubTree, searchFilter)}
+            </AntdSubMenu>
+          ))
+        : [];
 
-    const leafNodes = tocTree.childPages
-      .filter(childPage => {
-        if (searchFilter === undefined || searchFilter.trim() === '') {
-          return true;
-        } else {
-          var title = childPage.title || prettifySlug(childPage.slugPart);
-          var terms = searchFilter.trim().split(' ');
-          var indexes = terms
-            .map(item => {
-              return title.toLowerCase().indexOf(item.toLowerCase());
-            })
-            .filter(item => item !== -1);
-          return indexes.length > 0;
-        }
-      })
-      .map(childPage => (
-        <AntdMenu.Item
-          key={childPage.slug}
-          sort={childPage.sortIndex}
-          className={safeGetRelWindowPath() === childPage.slug && 'ant-menu-item-selected'}
-        >
-          <Link to={childPage.slug} onClick={() => dispatch({ type: 'closeSD' })}>
-            <span className="nav-text">{childPage.title}</span>
-          </Link>
-        </AntdMenu.Item>
-      ));
+    const leafNodes =
+      tocTree &&
+      tocTree.childPages
+        .filter(childPage => {
+          if (searchFilter === undefined || searchFilter.trim() === '') {
+            return true;
+          } else {
+            var title = childPage.title || prettifySlug(childPage.slugPart);
+            var terms = searchFilter.trim().split(' ');
+            var indexes = terms
+              .map(item => {
+                return title.toLowerCase().indexOf(item.toLowerCase());
+              })
+              .filter(item => item !== -1);
+            return indexes.length > 0;
+          }
+        })
+        .map(childPage => (
+          <AntdMenu.Item
+            key={childPage.slug}
+            sort={childPage.sortIndex}
+            className={safeGetRelWindowPath() === childPage.slug && 'ant-menu-item-selected'}
+          >
+            <Link to={childPage.slug} onClick={() => dispatch({ type: 'closeSD' })}>
+              <span className="nav-text">{childPage.title}</span>
+            </Link>
+          </AntdMenu.Item>
+        ));
 
     var combinedNodes = _.concat(
       leafNodes,
@@ -217,12 +220,13 @@ export default function SidebarToC() {
   bDisplaySidebar = !!guideTocMV;
 
   const getAllKeys = function(tree, keys) {
-    tree.childTOCs.forEach(submenu => {
-      keys.push(submenu.slugPrefix);
-      if (submenu.childTOCs) {
-        getAllKeys(submenu, keys);
-      }
-    });
+    tree &&
+      tree.childTOCs.forEach(submenu => {
+        keys.push(submenu.slugPrefix);
+        if (submenu.childTOCs) {
+          getAllKeys(submenu, keys);
+        }
+      });
   };
   var allkeys = [];
   getAllKeys(guideTocMV, allkeys);
@@ -236,7 +240,7 @@ export default function SidebarToC() {
       style={{ minHeight: '100vh' }}
       onOpenChange={keys => {
         // const flattenedKeys = !(_.isNil(keys) || _.isEmpty(keys)) ? _.uniq(_.flattenDeep(keys)) : []
-       searchFilter.trim() === "" && dispatch({ type: 'openKeys', payload: keys });
+        searchFilter.trim() === '' && dispatch({ type: 'openKeys', payload: keys });
       }}
       openKeys={allOpen ? allOpen : openKeys}
       theme={siteCfg.theme.DarkVariant}

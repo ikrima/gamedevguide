@@ -8,6 +8,7 @@
 - Add search bar on the left column to search headings
 - Make submenu headings in sidebar more noticable and more vertically more compact
 - Add support for ordering between sidebar toc submenu headers and site pages
+- Search results page should also display excerpts and highlights
 
 ## TODO
 
@@ -23,7 +24,7 @@
 
 - [ ] Improve the search components
 - [ ] Inline seach should display a list of excerpts and highlights
-- [ ] Search results page should also display excerpts and highlights
+- [ ]
 - [ ] Allow search for specific guides
       GitHub
       jannikbuschke/gatsby-antd-docs
