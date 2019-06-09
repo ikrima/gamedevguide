@@ -81,6 +81,9 @@ Every frame, generate FMeshBatch from Scene proxies
     - Also generate FMeshDrawCommands and store on the scene
 - FScene::SetSkyLight
   - Invalidate cached FMeshDrawCommands
+    - FPrimitiveSceneInfo::BeginDeferredUpdateStaticMeshes: Invalidate specific mesh
+    - FScene->bScenesPrimitivesNeedStaticMeshElementUpdate: Invalidate entire Scene's cached commands
+    - Ex: FScene::SetSkyLight()
 - InitViews
   - Foreach Primitive
     - If Static Relevance
@@ -92,7 +95,22 @@ Every frame, generate FMeshBatch from Scene proxies
 
 ## Drawcall Merging
 
+- FMeshDrawCommand captures all the state for the draw
+  - Currently only D3D11 style merging implemented, so only drawcalls with identitcal shader bindings merge
+  - Future will be D3D12 Execute Indirect that can change state in-between
+
 - Happens in FMeshDrawCommand::MatchesForDynamicInstancing
+
+- Shader Parameters must be crafted to enable this
+
+  | Pass Types                     | Description                                                                                                            |
+  | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+  | Pass Parameters                | These are placed in the pass uniform buffer, where any draws in the pass can merge.                                    |
+  | FLocalVertexFactory Parameters | These are placed in a uniform buffer owned by UStaticMesh where any draws with the same UStaticMesh can merge.         |
+  | Material Instance Parameters   | These are palced in a material uniform buffer where any draws using the same Material Instance can merge.              |
+  | Lightmap Resource Parameters   | These are placed in a LightmapResourceCluster uniform buffer where any draws using the same LightmapTexture can merge. |
+  | Primitive Parameters           | These are placed in a scene-wide primitive data buffer called GPUScene and indexed in the shader using PrimitiveID.    |
+
 
 - Assigning state buckets for merging is slow so its cached at FPrimitive::AddToScene
   - `cpp>TSet<FMeshDrawCommandStateBucket, MeshDrawCommandKeyFuncs> CachedMeshDrawCommandStateBuckets;`
@@ -322,10 +340,23 @@ FComputeShaderUtils::AddPass(...)
 
 # Debugging
 
-| Command                                          | Desc                                                                                                                                       |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| r.MeshDrawCommands.DynamicInstancing             | Whether to dynamically combine multiple compatible visible Mesh Draw Commands into one instanced draw on vertex factories that support it. |
-| r.MeshDrawCommands.LogDynamicInstancingStats     | Whether to log dynamic instancing stats on the next frame                                                                                  |
-| r.MeshDrawCommands.LogMeshDrawCommandMemoryStats | Whether to log mesh draw command memory stats on the next frame                                                                            |
-| r.MeshDrawCommands.ParallelPassSetup             | Whether to setup mesh draw command pass in parallel.                                                                                       |
-| r.MeshDrawCommands.UseCachedCommands             | Whether to render from cached mesh draw commands (on vertex factories that support it), or to generate draw commands every frame.          |
+FMeshDrawCommand:
+
+- FMeshDrawCommand::DebugData is a debug data struct
+- WANTS_DRAW_MESH_EVENTS (RHI_COMMAND_LIST_DEBUG_TRACES || (WITH_PROFILEGPU && PLATFORM_SUPPORTS_DRAW_MESH_EVENTS))
+- VALIDATE_UNIFORM_BUFFER_LAYOUT_LIFETIME
+  - Whether to assert in cases where the layout is released before uniform buffers created with that layout
+- VALIDATE_UNIFORM_BUFFER_LIFETIME 0
+      \- Whether to assert when a uniform buffer is being deleted while still referenced by a mesh draw command
+      \- Enabling this requires -norhithread to work correctly since FRHIResource lifetime is managed by both the RT and RHIThread
+
+  | Command                                          | Desc                                                                                                                                       |
+  | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+  | r.MeshDrawCommands.DynamicInstancing             | Whether to dynamically combine multiple compatible visible Mesh Draw Commands into one instanced draw on vertex factories that support it. |
+  | r.MeshDrawCommands.LogDynamicInstancingStats     | Whether to log dynamic instancing stats on the next frame                                                                                  |
+  | r.MeshDrawCommands.LogMeshDrawCommandMemoryStats | Whether to log mesh draw command memory stats on the next frame                                                                            |
+  | r.MeshDrawCommands.ParallelPassSetup             | Whether to setup mesh draw command pass in parallel.                                                                                       |
+  | r.MeshDrawCommands.UseCachedCommands             | Whether to render from cached mesh draw commands (on vertex factories that support it), or to generate draw commands every frame.          |
+  | r.RHICmdBasePassDeferredContexts to 0            | disable the parallel tasks for base pass draw dispatch, causing those to happen on the RenderingThread.                                    |
+  | r.GPUScene.UploadEveryFrame                      | Forces GPU Scene to be fully updated every frame, which is useful for diagnosing issues with stale GPU Scene data.                         |
+  | r.GPUScene.ValidatePrimitiveBuffer               | This downloads GPU Scene to the CPU and validates its contents against primitive uniform buffers.                                          |
