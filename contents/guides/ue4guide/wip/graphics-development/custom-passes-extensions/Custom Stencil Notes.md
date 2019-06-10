@@ -34,8 +34,9 @@ The gist is to search for "CustomDepth" and do almost the exact same thing, exce
 
 Look at Landscape material for getting custom attributes in a material (LandscapelayerBlend,LandscapeLayerCoords)
 
-#### Useful functions:
+#### Useful functions
 
+```cpp
 static void SetDecalDepthState(FDecalDepthState DecalDepthState, FRHICommandListImmediate& RHICmdList, FDrawingPolicyRenderState& DrawRenderState)
 
 SetDepthStencilStateForBasePass()
@@ -97,6 +98,7 @@ GCustomCullingImpl
 
 FCableVertexFactory
 <https://wiki.unrealengine.com/Procedural_Mesh_Generation>
+```
 
 |                         |                                                                                                                              |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
