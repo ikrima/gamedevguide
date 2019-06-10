@@ -51,7 +51,6 @@ AddPrimitive->
 
                 And extend Scene->GetBasePassDrawList<LightMapPolicyType>(DrawType);
 
-
 BaseDrawingPolicy::
   SetSharedState
   SetMeshRenderState
