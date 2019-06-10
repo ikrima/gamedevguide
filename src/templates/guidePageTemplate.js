@@ -8,7 +8,7 @@ import siteCfg from '../../SiteCfg';
 
 import { prettifySlug, safeGetRelWindowPathSlugs } from '../../gatsby/utils';
 
-const _ = require('lodash');
+import _ from 'lodash';
 
 function Template({
   data, // this prop will be injected by the GraphQL query below.
