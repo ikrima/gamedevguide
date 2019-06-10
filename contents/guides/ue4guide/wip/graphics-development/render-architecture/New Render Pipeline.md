@@ -2,6 +2,55 @@
 sortIndex: 2
 ---
 
+# TLDR
+
+**Steps to implement custom meshpass**
+
+1. Add new render pass method FDeferredShadingSceneRenderer::RenderPrePass
+
+   1. Debug Stats & flags:
+
+      ```cpp
+      check(RHICmdList.IsOutsideRenderPass());
+
+      if (!ShouldRenderTranslucency(TranslucencyPass))
+      {
+        return; // Early exit if nothing needs to be done.
+      }
+
+      SCOPED_DRAW_EVENT(RHICmdList, Translucency);
+      SCOPED_GPU_STAT(RHICmdList, Translucency);
+      ```
+
+   1. Call & Implement CreateCustomPassUniformBuffer(RHICmdList, View, PassUniformBuffer);
+
+   1. Create Pass Render State with UniformBufferParms: FMeshPassProcessorRenderState DrawRenderState(View, BasePassUniformBuffer);
+
+   1. Call & Implement SetupCustomPassState(DrawRenderState);
+
+   1. Scene->UniformBuffers.UpdateViewUniformBuffer(View);
+
+   1. FDeferredShadingSceneRenderer::RenderBasePassView
+      1. SetupCustomPassView
+         1. SetViewport
+      1. DispatchDraw
+1. Implement FMeshPassProcessor. Ex: class FDepthPassMeshProcessor : public FMeshPassProcessor
+   1. Register the pass: FRegisterPassProcessorCreateFunction RegisterCustomPass()
+   1. Implement AddMeshBatch
+      - Pass Filter
+      - Select Shader to use. Ex: GetDepthPassShaders
+      - Implement CalculateCustomPassMeshStaticSortKey() to calculate SortKey for mesh state
+      - Gather bindings: BuildMeshDrawCommands()
+1. FRelevancePacket::MarkRelevant() && FRelevancePacket::ComputeDynamicMeshRelevance()
+1. Drawcall Merging: class FMeshDrawCommand::MatchesForDynamicInstancing
+
+
+Notes: Update Shaders from Primitive.PrimitiveId => GetPrimitiveData(Parameters.PrimitiveId).
+2. Need to use GetPrimitiveData(Parameters.PrimitiveId)
+3. FDeferredShadingSceneRenderer::ClearGBufferAtMaxZ(FRHICommandList& RHICmdList)
+
+# Overview
+
 Motivation: Need to execute lot of draws
 
 - Modular construction
