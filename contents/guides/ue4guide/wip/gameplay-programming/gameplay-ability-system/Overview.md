@@ -52,9 +52,10 @@ sortIndex: 1
 
     - **Standalone Gameplay Cue Notify Blueprints:** can also respond to Gameplay Cues.
 
-#### [Gameplay Ability:][https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAbility]
+#### Gameplay Ability
+*<https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAbility>*
 
-- defines what an in-game ability does, what (if anything) it costs to use, when or under what conditions it can be used, and so on.
+- Defines what an in-game ability does, what (if anything) it costs to use, when or under what conditions it can be used, and so on.
 
 - Because Gameplay Abilities are capable of existing as instanced objects running asynchronously, you can run specialized, multi-stage tasks involving character animation, particle and sound effects, and even branching based on player input or character interactions that occur during execution.
 
@@ -74,16 +75,14 @@ sortIndex: 1
 
 *Reference From <https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>*
 
-Old:
+# Old:
 
 Overview tutorial:
 
-UDN Answer Overview: <https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>
-
-Overview #2: <https://udn.unrealengine.com/questions/315010/view.html>
-
-Target Data: <https://udn.unrealengine.com/questions/273352/abilitysystem-targeting-how-to-fetch-custom-target.html>
-
-<https://wiki.unrealengine.com/GameplayAbilities_and_You>
-
-Sample Repo: <https://github.com/daveratti/GameplayAbilitiesSample/tree/release/GAS>
+| Description | Link |
+| --- | --- |
+| UDN Answer Overview | <https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html> |
+| Overview #2         | <https://udn.unrealengine.com/questions/315010/view.html> |
+| Community Wiki      | <https://wiki.unrealengine.com/GameplayAbilities_and_You>              |
+| Target Data         | <https://udn.unrealengine.com/questions/273352/abilitysystem-targeting-how-to-fetch-custom-target.html> |
+| Sample Repo         | <https://github.com/daveratti/GameplayAbilitiesSample/tree/release/GAS> |

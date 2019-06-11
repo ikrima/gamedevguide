@@ -288,7 +288,7 @@ Every frame, generate FMeshBatch from Scene proxies
 - Shaders need to use GetPrimitiveData(PrimitiveId) instead of accessing the Primitive uniform buffer directly to compile with GPUScene enabled.
   - Primitive.Member => GetPrimitiveData(Parameters.PrimitiveId).Member
 
-Misc:
+# Misc:
 
 - <https://github.com/EpicGames/UnrealEngine/commit/b5d7db368977e263092be9b97f78944739f80476>
 
@@ -299,83 +299,83 @@ Misc:
 ```cpp
 void DrawDecalMeshCommands(FRenderingCompositePassContext& Context, EDecalRenderStage CurrentDecalStage, FDecalRenderingCommon::ERenderTargetMode RenderTargetMode)
 {
-	FRHICommandListImmediate& RHICmdList = Context.RHICmdList;
-	const FViewInfo& View = Context.View;
+  FRHICommandListImmediate& RHICmdList = Context.RHICmdList;
+  const FViewInfo& View = Context.View;
 
-	const bool bPerPixelDBufferMask = IsUsingPerPixelDBufferMask(View.GetShaderPlatform());
+  const bool bPerPixelDBufferMask = IsUsingPerPixelDBufferMask(View.GetShaderPlatform());
 
-	FGraphicsPipelineStateInitializer GraphicsPSOInit;
-	FDecalRenderTargetManager RenderTargetManager(Context.RHICmdList, Context.GetShaderPlatform(), CurrentDecalStage);
-	RenderTargetManager.SetRenderTargetMode(RenderTargetMode, true, bPerPixelDBufferMask);
-	Context.SetViewportAndCallRHI(Context.View.ViewRect);
-	RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
+  FGraphicsPipelineStateInitializer GraphicsPSOInit;
+  FDecalRenderTargetManager RenderTargetManager(Context.RHICmdList, Context.GetShaderPlatform(), CurrentDecalStage);
+  RenderTargetManager.SetRenderTargetMode(RenderTargetMode, true, bPerPixelDBufferMask);
+  Context.SetViewportAndCallRHI(Context.View.ViewRect);
+  RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
 
 
-	DrawDynamicMeshPass(View, RHICmdList,
-		[&View, CurrentDecalStage, RenderTargetMode](FDynamicPassMeshDrawListContext* DynamicMeshPassContext)
-	{
-		FMeshDecalMeshProcessor PassMeshProcessor(
-			View.Family->Scene->GetRenderScene(),
-			&View,
-			CurrentDecalStage,
-			RenderTargetMode,
-			DynamicMeshPassContext);
+  DrawDynamicMeshPass(View, RHICmdList,
+    [&View, CurrentDecalStage, RenderTargetMode](FDynamicPassMeshDrawListContext* DynamicMeshPassContext)
+  {
+    FMeshDecalMeshProcessor PassMeshProcessor(
+      View.Family->Scene->GetRenderScene(),
+      &View,
+      CurrentDecalStage,
+      RenderTargetMode,
+      DynamicMeshPassContext);
 
-		for (int32 MeshBatchIndex = 0; MeshBatchIndex < View.MeshDecalBatches.Num(); ++MeshBatchIndex)
-		{
-			const FMeshBatch* Mesh = View.MeshDecalBatches[MeshBatchIndex].Mesh;
-			const FPrimitiveSceneProxy* PrimitiveSceneProxy = View.MeshDecalBatches[MeshBatchIndex].Proxy;
-			const uint64 DefaultBatchElementMask = ~0ull;
+    for (int32 MeshBatchIndex = 0; MeshBatchIndex < View.MeshDecalBatches.Num(); ++MeshBatchIndex)
+    {
+      const FMeshBatch* Mesh = View.MeshDecalBatches[MeshBatchIndex].Mesh;
+      const FPrimitiveSceneProxy* PrimitiveSceneProxy = View.MeshDecalBatches[MeshBatchIndex].Proxy;
+      const uint64 DefaultBatchElementMask = ~0ull;
 
-			PassMeshProcessor.AddMeshBatch(*Mesh, DefaultBatchElementMask, PrimitiveSceneProxy);
-		}
-	});
+      PassMeshProcessor.AddMeshBatch(*Mesh, DefaultBatchElementMask, PrimitiveSceneProxy);
+    }
+  });
 }
 
 void RenderMeshDecals(FRenderingCompositePassContext& Context, EDecalRenderStage CurrentDecalStage)
 {
-	FRHICommandListImmediate& RHICmdList = Context.RHICmdList;
-	FSceneRenderTargets& SceneContext = FSceneRenderTargets::Get(RHICmdList);
-	const FViewInfo& View = Context.View;
-	FScene* Scene = (FScene*)View.Family->Scene;
+  FRHICommandListImmediate& RHICmdList = Context.RHICmdList;
+  FSceneRenderTargets& SceneContext = FSceneRenderTargets::Get(RHICmdList);
+  const FViewInfo& View = Context.View;
+  FScene* Scene = (FScene*)View.Family->Scene;
 
-	QUICK_SCOPE_CYCLE_COUNTER(STAT_FSceneRenderer_RenderMeshDecals);
-	SCOPED_DRAW_EVENT(RHICmdList, MeshDecals);
+  QUICK_SCOPE_CYCLE_COUNTER(STAT_FSceneRenderer_RenderMeshDecals);
+  SCOPED_DRAW_EVENT(RHICmdList, MeshDecals);
 
-	FSceneTexturesUniformParameters SceneTextureParameters;
-	SetupSceneTextureUniformParameters(SceneContext, View.FeatureLevel, ESceneTextureSetupMode::All, SceneTextureParameters);
-	Scene->UniformBuffers.MeshDecalPassUniformBuffer.UpdateUniformBufferImmediate(SceneTextureParameters);
+  FSceneTexturesUniformParameters SceneTextureParameters;
+  SetupSceneTextureUniformParameters(SceneContext, View.FeatureLevel, ESceneTextureSetupMode::All, SceneTextureParameters);
+  Scene->UniformBuffers.MeshDecalPassUniformBuffer.UpdateUniformBufferImmediate(SceneTextureParameters);
 
-	if (View.MeshDecalBatches.Num() > 0)
-	{
-		switch (CurrentDecalStage)
-		{
-		case DRS_BeforeBasePass:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_DBuffer);
-			break;
+  if (View.MeshDecalBatches.Num() > 0)
+  {
+    switch (CurrentDecalStage)
+    {
+    case DRS_BeforeBasePass:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_DBuffer);
+      break;
 
-		case DRS_AfterBasePass:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColorAndGBufferDepthWriteWithNormal);
-			break;
+    case DRS_AfterBasePass:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColorAndGBufferDepthWriteWithNormal);
+      break;
 
-		case DRS_BeforeLighting:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_GBufferNormal);
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColorAndGBufferWithNormal);
-			break;
+    case DRS_BeforeLighting:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_GBufferNormal);
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColorAndGBufferWithNormal);
+      break;
 
-		case DRS_Mobile:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColor);
-			break;
+    case DRS_Mobile:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColor);
+      break;
 
-		case DRS_AmbientOcclusion:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_AmbientOcclusion);
-			break;
+    case DRS_AmbientOcclusion:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_AmbientOcclusion);
+      break;
 
-		case DRS_Emissive:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColor);
-			break;
-		}
-	}
+    case DRS_Emissive:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColor);
+      break;
+    }
+  }
 }
 ```
 
