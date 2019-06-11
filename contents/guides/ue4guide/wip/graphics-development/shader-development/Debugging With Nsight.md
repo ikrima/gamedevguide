@@ -6,7 +6,7 @@ sortIndex: 8
 
 ## Custom visualization shader to display stencil values
 
-```hlsl
+```glsl
 uint RENDERDOC_TextureType; // hlsl
 // selected MSAA sample or -numSamples for resolve. See docs
 int RENDERDOC_SelectedSample;

@@ -2,13 +2,12 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import { PageHeader as AntdPageHeader } from 'antd';
+import _ from 'lodash';
 import MainLayout from '../components/main-layout';
 import 'katex/dist/katex.min.css';
 import siteCfg from '../../SiteCfg';
 
 import { prettifySlug, safeGetRelWindowPathSlugs } from '../../gatsby/utils';
-
-import _ from 'lodash';
 
 function Template({
   data, // this prop will be injected by the GraphQL query below.

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect, useState } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { Layout, Drawer } from 'antd';
 
 import SidebarMenu from './SidebarMenu';

@@ -31,6 +31,16 @@ npm install -g gatsby-cli
 npm install -g yarn
 ```
 
+- Upgrade
+
+```shell
+gatsby info
+node -v
+npm -v
+npm update -g gatsby ; upgrade gatsby globally
+npm update --dev ; update all packages in project
+```
+
 - Building
 
 ```shell
