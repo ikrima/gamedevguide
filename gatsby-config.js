@@ -243,8 +243,8 @@ module.exports = {
               const excerptLength = 136; // Hard coded excerpt length
               let excerpt = '';
               const tree = remark().parse(node.rawMarkdownBody);
-              visit(tree, 'text', node => {
-                excerpt += node.value;
+              visit(tree, 'text', n => {
+                excerpt += n.value;
               });
               return `${excerpt.slice(0, excerptLength)}...`;
             },
@@ -253,8 +253,8 @@ module.exports = {
             content: node => {
               let content = '';
               const tree = remark().parse(node.rawMarkdownBody);
-              visit(tree, 'text', node => {
-                content += node.value;
+              visit(tree, 'text', n => {
+                content += n.value;
               });
               return content;
             },
@@ -266,8 +266,8 @@ module.exports = {
               const excerptLength = 136; // Hard coded excerpt length
               let excerpt = '';
               const tree = remark().parse(node.rawMarkdownBody);
-              visit(tree, 'text', node => {
-                excerpt += node.value;
+              visit(tree, 'text', n => {
+                excerpt += n.value;
               });
               return `${excerpt.slice(0, excerptLength)}`;
             },
@@ -276,8 +276,8 @@ module.exports = {
             content: node => {
               let content = '';
               const tree = remark().parse(node.rawMarkdownBody);
-              visit(tree, 'text', node => {
-                content += node.value;
+              visit(tree, 'text', n => {
+                content += n.value;
               });
               return content;
             },

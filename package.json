@@ -86,6 +86,7 @@
     "remark": "^10.0.1",
     "remark-parse": "^6.0.3",
     "reqwest": "^2.0.5",
+    "terser": "3.14",
     "typescript": "^3.5.1",
     "typography": "^0.16.19",
     "typography-plugin-code": "^0.16.19",
