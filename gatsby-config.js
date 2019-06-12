@@ -233,54 +233,56 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        fields: ['title', 'menuTitle', 'slug', 'content', 'guideName', 'excerpt'],
+        fields: ['title', 'menuTitle', 'slug', 'guideName', 'excerpt'],
         // How to resolve each field`s value for a supported node type
         resolvers: {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
           Mdx: {
             title: node => node.fields.pageTitle,
-            excerpt: node => {
-              const excerptLength = 136; // Hard coded excerpt length
-              let excerpt = '';
-              const tree = remark().parse(node.rawMarkdownBody);
-              visit(tree, 'text', n => {
-                excerpt += n.value;
-              });
-              return `${excerpt.slice(0, excerptLength)}...`;
-            },
+            excerpt: node => node.fields.pageTitle,
+            // excerpt: node => {
+            //   const excerptLength = 136; // Hard coded excerpt length
+            //   let excerpt = '';
+            //   const tree = remark().parse(node.rawMarkdownBody);
+            //   visit(tree, 'text', n => {
+            //     excerpt += n.value;
+            //   });
+            //   return `${excerpt.slice(0, excerptLength)}...`;
+            // },
             menuTitle: node => node.fields.sideMenuHeading,
             slug: node => node.fields.slug,
-            content: node => {
-              let content = '';
-              const tree = remark().parse(node.rawMarkdownBody);
-              visit(tree, 'text', n => {
-                content += n.value;
-              });
-              return content;
-            },
+            // content: node => {
+            //   let content = '';
+            //   const tree = remark().parse(node.rawMarkdownBody);
+            //   visit(tree, 'text', n => {
+            //     content += n.value;
+            //   });
+            //   return content;
+            // },
             guideName: node => node.fields.guideName,
           },
           MarkdownRemark: {
             title: node => node.fields.pageTitle,
-            excerpt: node => {
-              const excerptLength = 136; // Hard coded excerpt length
-              let excerpt = '';
-              const tree = remark().parse(node.rawMarkdownBody);
-              visit(tree, 'text', n => {
-                excerpt += n.value;
-              });
-              return `${excerpt.slice(0, excerptLength)}`;
-            },
+            excerpt: node => node.fields.pageTitle,
+            // excerpt: node => {
+            //   const excerptLength = 136; // Hard coded excerpt length
+            //   let excerpt = '';
+            //   const tree = remark().parse(node.rawMarkdownBody);
+            //   visit(tree, 'text', n => {
+            //     excerpt += n.value;
+            //   });
+            //   return `${excerpt.slice(0, excerptLength)}`;
+            // },
             menuTitle: node => node.fields.sideMenuHeading,
             slug: node => node.fields.slug,
-            content: node => {
-              let content = '';
-              const tree = remark().parse(node.rawMarkdownBody);
-              visit(tree, 'text', n => {
-                content += n.value;
-              });
-              return content;
-            },
+            // content: node => {
+            //   let content = '';
+            //   const tree = remark().parse(node.rawMarkdownBody);
+            //   visit(tree, 'text', n => {
+            //     content += n.value;
+            //   });
+            //   return content;
+            // },
             guideName: node => node.fields.guideName,
           },
         },
