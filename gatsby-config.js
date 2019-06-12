@@ -177,6 +177,7 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
+        excerpt_separator: `<!--excerpt-->`,
         plugins: gbRemarkPluginsList,
       },
     },
@@ -239,7 +240,7 @@ module.exports = {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
           Mdx: {
             title: node => node.fields.pageTitle,
-            excerpt: node => node.frontmatter.excerpt,
+            excerpt: node => node.excerpt,
 
             menuTitle: node => node.fields.sideMenuHeading,
             slug: node => node.fields.slug,
@@ -248,7 +249,15 @@ module.exports = {
           },
           MarkdownRemark: {
             title: node => node.fields.pageTitle,
-            excerpt: node => node.frontmatter.excerpt,
+            excerpt: node => {
+              const length = 136;
+              const tree = remark().parse(node.rawMarkdownBody);
+              let excerpt = '';
+              visit(tree, 'text', n => {
+                excerpt += n.value;
+              });
+              return `${excerpt.slice(0, length)}...`;
+            },
 
             menuTitle: node => node.fields.sideMenuHeading,
             slug: node => node.fields.slug,
