@@ -18,6 +18,8 @@ Print Blueprint CallStack from Visual Studio:
 
 - How to make a command alias & button for it with Visual Commander Macro
 
+  - Create a VCMD Command called 'PrintScriptCallstack' and use this code
+
   ```csharp
   using EnvDTE;
   using EnvDTE80;
@@ -34,3 +36,7 @@ Print Blueprint CallStack from Visual Studio:
       }
   }
   ```
+
+  - Then do this in Visual Studio to setup a command shortcut alias:
+
+    `cpp>alias pbs VCmd.CCommandPrintBPStack`

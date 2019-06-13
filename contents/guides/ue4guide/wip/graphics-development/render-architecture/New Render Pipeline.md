@@ -404,12 +404,14 @@ FMeshDrawCommand:
   | r.MeshDrawCommands.DynamicInstancing             | Whether to dynamically combine multiple compatible visible Mesh Draw Commands into one instanced draw on vertex factories that support it. |
   | r.MeshDrawCommands.LogDynamicInstancingStats     | Whether to log dynamic instancing stats on the next frame                                                                                  |
   | r.MeshDrawCommands.LogMeshDrawCommandMemoryStats | Whether to log mesh draw command memory stats on the next frame                                                                            |
-  | r.MeshDrawCommands.ParallelPassSetup             | Whether to setup mesh draw command pass in parallel.                                                                                       |
-  | r.MeshDrawCommands.UseCachedCommands             | Whether to render from cached mesh draw commands (on vertex factories that support it), or to generate draw commands every frame.          |
   | r.GPUScene.UploadEveryFrame                      | Forces GPU Scene to be fully updated every frame, which is useful for diagnosing issues with stale GPU Scene data.                         |
   | r.GPUScene.ValidatePrimitiveBuffer               | This downloads GPU Scene to the CPU and validates its contents against primitive uniform buffers.                                          |
   | r.RHICmdUseThread                                | To Use a separate thread for RHICmdList                                                                                                    |
   | r.RHIThread.Enable                               | To Disable RHI Thread                                                                                                                      |
   | r.RHICmdBypass                                   | Set to 1 to disable                                                                                                                        |
   | r.RHICmdUseParallelAlgorithms                    | True to use parallel algorithms. Ignored if r.RHICmdBypass is 1.                                                                           |
+  | r.MeshDrawCommands.ParallelPassSetup             | Whether to setup mesh draw command pass in parallel.                                                                                       |
   | r.RHICmdBasePassDeferredContexts                 | Disable the parallel tasks for base pass draw dispatch, causing those to happen on the RenderingThread.                                    |
+  | r.MeshDrawCommands.UseCachedCommands             | Whether to render from cached mesh draw commands (on vertex factories that support it), or to generate draw commands every frame.          |
+  | r.RDG.ImmediateMode             | Toggle get render graph executing passes as they get created to easily debug crashes caused by pass wiring logic.          |
+  | r.RDG.EmitWarnings | Toggle render graph emitting warnings about inefficiencies.          |

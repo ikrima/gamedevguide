@@ -152,4 +152,4 @@ UActorComponent::RegisterAllComponentTickFunctions
 UActorComponent::BeginPlay
 AActor::ReceiveBeginPlay
 
-From [&lt;https://qiita.com/donbutsu17/items/be66551c48360d7b0864]\(<https://qiita.com/donbutsu17/items/be66551c48360d7b0864)>
+*From <https://qiita.com/donbutsu17/items/be66551c48360d7b0864>*

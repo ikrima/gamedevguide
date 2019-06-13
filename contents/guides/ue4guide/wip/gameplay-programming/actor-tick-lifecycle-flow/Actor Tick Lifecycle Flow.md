@@ -28,25 +28,16 @@ AddTickPrerequisiteActor or AddTickPrerequisiteComponent
 
 Tick Groups:
 
-TG_PrePhysics - ticked before physics simulation starts
-
-TG_StartPhysics - special tick group that starts physics simulation
-
-TG_DuringPhysics - ticks that can be run in parallel with our physics simulation work
-
-TG_EndPhysics - special tick group that ends physics simulation
-
-TG_PreCloth - any item that needs physics to be complete before being executed
-
-TG_StartCloth - any item that needs to be updated after rigid body simulation is done, but before cloth is simulation is done
-
-TG_EndCloth - any item that can be run during cloth simulation
-
-TG_PostPhysics - any item that needs rigid body and cloth simulation to be complete before being executed
-
-TG_PostUpdateWork - any item that needs the update work to be done before being ticked
-
-TG_NewlySpawned - Special tick group that is not actually a tick group. After every tick group this is repeatedly re-run until there are no more newly spawned items to run
+- TG_PrePhysics - ticked before physics simulation starts
+- TG_StartPhysics - special tick group that starts physics simulation
+- TG_DuringPhysics - ticks that can be run in parallel with our physics simulation work
+- TG_EndPhysics - special tick group that ends physics simulation
+- TG_PreCloth - any item that needs physics to be complete before being executed
+- TG_StartCloth - any item that needs to be updated after rigid body simulation is done, but before cloth is simulation is done
+- TG_EndCloth - any item that can be run during cloth simulation
+- TG_PostPhysics - any item that needs rigid body and cloth simulation to be complete before being executed
+- TG_PostUpdateWork - any item that needs the update work to be done before being ticked
+- TG_NewlySpawned - Special tick group that is not actually a tick group. After every tick group this is repeatedly re-run until there are no more newly spawned items to run
 
 *Reference From <https://answers.unrealengine.com/questions/231386/tickgroup-how-to-understand-that.html>*
 
@@ -89,10 +80,10 @@ TG_NewlySpawned - Special tick group that is not actually a tick group. After ev
 *Reference From <https://udn.unrealengine.com/questions/285100/component-creation-overview.html>*
 
 ```cpp
-// General flow here is like so  
-        // - Actor sets up the basics.  
-        // - Actor gets PreInitializeComponents()  
-        // - Actor constructs itself, after which its components should be fully assembled  
+// General flow here is like so
+        // - Actor sets up the basics.
+        // - Actor gets PreInitializeComponents()
+        // - Actor constructs itself, after which its components should be fully assembled
         // - Actor components get OnComponentCreated
 
 // - Actor components get OnRegister
@@ -101,7 +92,7 @@ TG_NewlySpawned - Special tick group that is not actually a tick group. After ev
 
 // - Actor gets PostInitializeComponents() once everything is set up
 
-// - Actor components get RegisterComponentTickFunctions  
+// - Actor components get RegisterComponentTickFunctions
         // This should be the same sequence for deferred or nondeferred spawning.
 
 // It's not safe to call UWorld accessor functions till the world info has been spawned.

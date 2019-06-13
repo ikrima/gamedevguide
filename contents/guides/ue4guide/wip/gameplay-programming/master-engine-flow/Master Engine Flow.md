@@ -90,22 +90,13 @@ FEngineLoop::Tick()
 
 GameMode Flow:
 
-InitGame()
-
-InitGameState()
-
-PostInitializeComponents()
-
-ChoosePlayerStart_Implementation()
-
-PostLogin()
-
-HandleStartingNewPlayer_Implementation()
-
-ChoosePlayerStart_Implementation()
-
-SetPlayerDefaults()
-
-RestartPlayerAtPlayerStart()
-
-StartPlay()
+- InitGame()
+- InitGameState()
+- PostInitializeComponents()
+- ChoosePlayerStart_Implementation()
+- PostLogin()
+- HandleStartingNewPlayer_Implementation()
+- ChoosePlayerStart_Implementation()
+- SetPlayerDefaults()
+- RestartPlayerAtPlayerStart()
+- StartPlay()
