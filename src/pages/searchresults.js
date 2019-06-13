@@ -40,14 +40,12 @@ const SearchPage = ({ location }) => {
         dataSource={results}
         renderItem={item => {
           const regex = new RegExp(query.split(' ').join('|'), 'gi');
-          const titleHTML = item.title.replace(
-            regex,
-            match => `<span class="highlight">${match}</span>`
-          );
-          const excerptHTML = item.excerpt.replace(
-            regex,
-            match => `<span class="highlight">${match}</span>`
-          );
+          const titleHTML = item.title
+            ? item.title.replace(regex, match => `<span class="highlight">${match}</span>`)
+            : '';
+          const excerptHTML = item.excerpt
+            ? item.excerpt.replace(regex, match => `<span class="highlight">${match}</span>`)
+            : '';
           return (
             <List.Item>
               <Excerpt>

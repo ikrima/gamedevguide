@@ -17,6 +17,8 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
     const g = typeof window !== 'undefined' && window.location.pathname.split('/')[1];
     if (g !== guide) {
       dispatch({ type: 'setGuide', payload: g });
+
+      dispatch({ type: 'openKeys', payload: [] });
     } else {
       sidenavRef.current.scrollTop = scrollTop;
     }
