@@ -3,7 +3,6 @@ import _ from 'lodash';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import { PageHeader as AntdPageHeader } from 'antd';
-import _ from 'lodash';
 import MainLayout from '../components/main-layout';
 import 'katex/dist/katex.min.css';
 import siteCfg from '../../SiteCfg';
