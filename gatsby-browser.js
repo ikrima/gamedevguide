@@ -1,11 +1,7 @@
 // 3rd
-// import './src/styles/antd.less';
+import './src/styles/antd.less';
+// import 'antd/dist/antd.css';
 import './src/styles/bootstrap/bootstrap.scss';
-// // custom
-import './src/styles/layout.scss';
-import './src/styles/theme.scss';
-import './src/styles/ui.scss';
-import './src/styles/vendors.scss';
 import './src/styles/custom.scss';
 
 import React from 'react';

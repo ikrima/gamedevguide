@@ -34,6 +34,7 @@
     "@mdx-js/react": "^1.0.20",
     "@mdx-js/tag": "^0.20.3",
     "antd": "^3.19.1",
+    "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "echarts": "^4.2.1",
     "echarts-for-react": "^2.0.14",

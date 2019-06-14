@@ -16,7 +16,7 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
 
   return (
     <Header className="app-header bg-dark" style={{ padding: '0 20px' }}>
-      <div className="app-header-inner  bg-dark  ">
+      <div className="app-header-inner  bg-dark d-flex justify-content-between ">
         <div className="header-left">
           <div className="list-unstyled list-inline ">
             <span
@@ -25,14 +25,17 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
             >
               {showSidebarBtn && !sidebar && (
                 <Icon
+                  style={{ color: '#fff' }}
                   type="menu-fold"
                   onClick={() => {
                     dispatch({ type: 'toggleSidebar' });
                   }}
                 />
               )}
+
               {showSidebarBtn && sidebar && (
                 <Icon
+                  style={{ color: '#fff' }}
                   type="menu-unfold"
                   onClick={() => {
                     dispatch({ type: 'toggleSidebar' });
@@ -46,6 +49,7 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
             >
               {showToC && !sidebar && (
                 <Icon
+                  style={{ color: '#fff' }}
                   type="menu-fold"
                   onClick={() => {
                     dispatch({ type: 'toggleDrawer' });
@@ -54,6 +58,7 @@ export default function ContentHeader({ showSidebarBtn, showToC }) {
               )}
               {showToC && sidebar && (
                 <Icon
+                  style={{ color: '#fff' }}
                   type="menu-unfold"
                   onClick={() => {
                     dispatch({ type: 'toggleDrawer' });
