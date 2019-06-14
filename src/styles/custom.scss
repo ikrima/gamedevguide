@@ -15,3 +15,23 @@
   height: 34px !important;
   line-height: 34px !important;
 }
+.app-header .bg-dark a {
+  color: #f8f8f8;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.app-header-inner .list-inline-item {
+  padding: 0 0.875rem;
+  margin: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.container-fluid.no-breadcrumb {
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+.app-drawer .ant-drawer-body {
+  padding: 0;
+}
