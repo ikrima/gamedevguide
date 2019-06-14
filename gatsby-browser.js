@@ -1,5 +1,6 @@
 // 3rd
-import './src/styles/antd.less';
+// The stylesheet is in SiteCfg.js bc the antd gatsby plugin configures it in gatsby-config.js
+// import './src/styles/antd.less';
 // import 'antd/dist/antd.css';
 import './src/styles/bootstrap/bootstrap.scss';
 import './src/styles/custom.scss';

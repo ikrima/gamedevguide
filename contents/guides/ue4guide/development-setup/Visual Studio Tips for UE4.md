@@ -47,7 +47,7 @@ sortIndex: 1
   - [Adding a button to attach the debugger directly to the UE4 instance](/ue4guide/vs-autoattach-to-ue4-button)
   - [Print Blueprint/BP Callstack](/print-blueprint-callstack)
 
-# Visual Asist Debugging
+# Visual Assist Debugging
 
 ## Enable Logging
 

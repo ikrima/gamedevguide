@@ -1,3 +1,10 @@
+const ColorsConsts = {
+  WhitePoint: '#f8f8f8',
+  BlackPoint: '#000000',
+  Cyan: '#01bcd4',
+  Green: '#66bb6a',
+};
+
 const SiteCfg = {
   pathPrefix: '/', // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
 
@@ -36,11 +43,10 @@ const SiteCfg = {
   theme: {
     // Manifest and Progress color
     // See: https://developers.google.com/web/fundamentals/web-app-manifest/
-    WhitePoint: '#f8f8f8',
-    BlackPoint: '#000000',
 
-    PrimaryColor: '@geekblue-6',
-    BackgroundColor: '#f8f8f8',
+    // PrimaryColor: '@geekblue-6',
+    PrimaryColor: '@blue-6',
+    BackgroundColor: ColorsConsts.WhitePoint,
 
     DefaultTheme: 'dark',
     DarkVariant: 'dark',
@@ -49,8 +55,10 @@ const SiteCfg = {
     ShowMenuItems: 4,
     MenuMoreText: 'Show more',
     modifyVars: {},
-    bodyFontFamily: "'Source Sans Pro', sans-serif",
-    headerFontFamily: "'Source Serif Pro', sans-serif",
+    bodyFontFamily:
+      '"Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    headerFontFamily:
+      '"Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
 
     sidebarMenuWidth: 300,
     sidebarIndent: 12,
@@ -61,11 +69,12 @@ const SiteCfg = {
 
 // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
 SiteCfg.theme.modifyVars = {
+  white: ColorsConsts.WhitePoint,
+  black: ColorsConsts.BlackPoint,
   'primary-color': SiteCfg.theme.PrimaryColor, // primary color for all components
-  white: SiteCfg.theme.WhitePoint,
-  black: SiteCfg.theme.BlackPoint,
 
-  'font-family': SiteCfg.theme.bodyFontFamily,
+  'font-family-no-number': SiteCfg.theme.bodyFontFamily,
+  'font-family': '@font-family-no-number',
 
   'body-background': SiteCfg.theme.BackgroundColor,
   'component-background': SiteCfg.theme.BackgroundColor,
@@ -73,6 +82,27 @@ SiteCfg.theme.modifyVars = {
   'layout-sider-background-light': SiteCfg.theme.BackgroundColor,
   'background-color-base': SiteCfg.theme.BackgroundColor, // Default grey background color
   'background-color-light': `lighten(${SiteCfg.theme.BackgroundColor}, 2%)`, // background of header and selected item
+
+  // -------- Colors -----------
+  // 'info-color': ColorsConsts.Cyan, // cyan
+  // 'success-color': ColorsConsts.Green, // green
+  // 'processing-color': '@blue-6',
+  // 'error-color': '@red-5', // #ff4d4f
+  // 'highlight-color': '@red-5',
+  // 'warning-color': '@gold-5', // #ffc53d
+  // 'normal-color': '#d9d9d9',
+
+  // 'line-height-base': '1.714285714285714', // 24px
+
+  // // Base Scaffolding Variables
+  // // ---
+
+  // 'border-radius-base': '6px',
+
+  // // ICONFONT
+  // // @icon-url               : "/vendors/antd/iconfont/iconfont"; // By default it use alicdn.com
+  // 'menu-dark-bg': ColorsConsts.BlackPoint,
+  // 'menu-dark-submenu-bg': `darken(${ColorsConsts.BlackPoint}, 3%)`,
 };
 
 module.exports = SiteCfg;
