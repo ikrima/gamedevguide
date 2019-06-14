@@ -12,7 +12,7 @@ Targetting: <https://udn.unrealengine.com/questions/273352/abilitysystem-targeti
 
 # Overview of Gameplay Ability Prediction
 
-## High Level Goals:
+## High Level Goals
 
 At the GameplayAbility level (implementing an ability) prediction is transparent. An ability says "Do X->Y->Z", and we will automatically predict the parts of that that we can.
 We wish to avoid having logic such as "If Authority: Do X. Else: Do predictive version of X" in the ability itself.
@@ -263,49 +263,3 @@ The main things FPredictionKey itself provides are:
 - Unique ID and a system for having dependant chains of Prediction Keys ("Current" and "Base" integers)
 - A special implementation of ::NetSerialize *** which only serializes the prediction key to the predicting client ***
   -This is important as it allows us to serialize prediction keys in replicated state, knowing that only clients that gave the server the prediction key will actually see them!
-
-# BBR Specific
-
-For rollback/rollforth:
-
-- C:\\ikrima\\src\\knl\\Bebylon\\UnrealEngine\\Engine\\Source\\Runtime\\MovieScene\\Public\\MovieSceneTimeController.h
-
-- TSharedPtr<FMovieSceneTimeController> TimeController; on level sequence
-
-- UTimecodeProvider
-
-- FMovieSceneTimeController
-
-- PlaybackSettings.TimeController,
-
-- FMovieSceneTimeController,
-
-- FMovieSceneTimeController_AudioClock
-
-- FMovieSceneTimeController_PlatformClock
-
-- FMovieSceneTimeController_Tick
-
-- FMovieSceneTimeController_FrameStep
-
-- UAutomatedLevelSequenceCapture::FMovieSceneTimeController_FrameStep
-
-- class TIMEMANAGEMENT_API UFixedFrameRateCustomTimeStep : public UEngineCustomTimeStep
-
-  UMovieScene::EUpdateClockSource ClockSource;
-  MovieScene->GetTickResolution();
-  MovieScene->GetDisplayRate();
-  PlayPosition.SetTimeBase(DisplayRate, TickResolution, EvaluationType);
-
-      {
-        // Set up the default frame range from the sequence's play range
-        TRange<FFrameNumber> PlaybackRange   = MovieScene->GetPlaybackRange();
-
-        const FFrameNumber SrcStartFrame = MovieScene::DiscreteInclusiveLower(PlaybackRange);
-        const FFrameNumber SrcEndFrame   = MovieScene::DiscreteExclusiveUpper(PlaybackRange);
-
-        const FFrameNumber StartingFrame = ConvertFrameTime(SrcStartFrame, TickResolution, DisplayRate).FloorToFrame();
-        const FFrameNumber EndingFrame   = ConvertFrameTime(SrcEndFrame,   TickResolution, DisplayRate).FloorToFrame();
-
-        SetFrameRange(StartingFrame.Value, (EndingFrame - StartingFrame).Value);
-      }
