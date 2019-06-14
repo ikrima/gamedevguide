@@ -55,7 +55,7 @@ Gameplay Attributes represent float values such as Health, MaxHealth, Armor, Dam
 
 Attributes in the end are simply float UProperties contained in UAttributeSets. FGameplayAttribute wraps the reference to the UProperty and provides a Details Customization for selecting attributes from a drop down (AttributeDetails.h/.cpp), allowing other pieces of the system to reference attributes generically.
 
-AttributeSets are what hold the attribute properties. AttributeSets are able to define extra logical to react to changes in attribute (Kill player if health is < 0), enforce clamping (keep Health <= MaxHealth), etc.  The sets are instantiated as subobjects on the owning actor (the actor that owns the Ability System Component). The attribute properties themselves replicate via normal subobject replication.
+AttributeSets are what hold the attribute properties. AttributeSets are able to define extra logical to react to changes in attribute (Kill player if health is &lt; 0), enforce clamping (keep Health &lt;= MaxHealth), etc.  The sets are instantiated as subobjects on the owning actor (the actor that owns the Ability System Component). The attribute properties themselves replicate via normal subobject replication.
 
 Our approach so far has been the split up attributes into several sets. For example: HealthSet (anything that takes damage), CombatSet (anything that does damage), MovementSet (anything that moves), etc. That way, something like a tower would not have a MovementSet and would be able to ignore effects that modify movement related attributes.
 
@@ -98,6 +98,7 @@ AbilityTasks themselves are uobjects that are instantiated upon, and are a subse
 GameplayCues are cosmetic clientside events in the GameplayAbility system. It is an attempt to create a solid separation of the server/simulation logic and the client/presentation in the game.
 
 The main things we are trying to solve with this system are:
+
 1. Replication. GameplayCues will automatically replicate and be network friendly. We wish to avoid having client vs server logic in the abilities themselves.
 1. Server optimization. Likewise, since GameplayCues are cosmetic only in nature, they never have to run on a dedicated server. Again, keeping client vs server checks out of the abilities themselves.
 1. Loose coupling. Another goal is to improve the work-flow of designers (anyone making abilities) and artists (anyone making FX/audio/etc). By having the two groups interface with a generic event system, we avoid having to directly hook up "A set of designer blueprints" to "A set of artist assets".

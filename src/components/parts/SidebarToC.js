@@ -17,6 +17,7 @@ import {
 } from '../../../gatsby/utils';
 
 const AntdSubMenu = AntdMenu.SubMenu;
+const AntdSearch = AntdInput.Search;
 
 export default function SidebarToC() {
   const {
@@ -251,7 +252,7 @@ export default function SidebarToC() {
       {/* <div className="py-3" /> */}
       <AntdMenu.Item>
         {/* SEARCH */}
-        <AntdInput
+        <AntdSearch
           placeholder="Search the TOC"
           onChange={e => {
             var str = e.target.value;

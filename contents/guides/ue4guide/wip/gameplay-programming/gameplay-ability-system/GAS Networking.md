@@ -4,14 +4,11 @@ sortIndex: 3
 
 # Notes
 
-Detailed breakdown of networking character movement: https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html
+Detailed breakdown of networking character movement: <https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>
 
-Targetting: https://udn.unrealengine.com/questions/273352/abilitysystem-targeting-how-to-fetch-custom-target.html
-
+Targetting: <https://udn.unrealengine.com/questions/273352/abilitysystem-targeting-how-to-fetch-custom-target.html>
 
 # Code Comments GameplayPrediction.h
-
-
 
 # Overview of Gameplay Ability Prediction
 
@@ -26,22 +23,28 @@ When we say "client side prediction" we really mean client predicting game simul
 For example, footsteps are completely client side and never interact with this system. But clients predicting their mana going from 100 to 90 when they cast a spell is 'client side prediction'.
 
 What do we currently predict?
+
 - Ability activation
+
 - Triggered Events
+
 - GameplayEffect application:
   - Attribute modification (EXCEPTIONS: Executions do not currently predict, only attribute modifiers)
   - GameplayTag modification
+
 - Gameplay Cue events (both from within predictive gameplay effect and on their own)
 
 - Montages
+
 - Movement (built into UE4 UCharacterMovement)
 
-
 Some things we don't predict (most of these we potentially could, but currently dont):
+
 - GameplayEffect removal
 - GameplayEffect periodic effects (dots ticking)
 
 Problems we attempt to solve:
+
 1. "Can I do this?" Basic protocol for prediction.
 2. "Undo" How to undo side effects when a prediction fails.
 3. "Redo" How to avoid replaying side effects that we predicted locally but that also get replicated from the server.
@@ -49,7 +52,7 @@ Problems we attempt to solve:
 5. "Dependencies" How to manage dependent prediction and chains of predicted events.
 6. "Override" How to override state predictively that is otherwise replicated/owned by the server.
 
----------------------------------------------------------
+* * *
 
 ## Implementation Details
 
@@ -57,24 +60,27 @@ Problems we attempt to solve:
 
 A fundamental concept in this system is the Prediction Key (FPredictionKey). A prediction key on its own is simply a unique ID that is generated in a central place on the client. The client will send his prediction key to the server, and associate predictive actions and side effects with this key. The server may respond with an accept/reject for the prediction key, and will also associate the server-side created side effects with this prediction key.
 
-***(IMPORTANT)*** FPredictionKey always replicate client -> server, but when replicating server -> clients they *only replicate to the client that sent the prediction key to the server in the first place.
+***(IMPORTANT)*** FPredictionKey always replicate client -> server, but when replicating server -> clients they \*only replicate to the client that sent the prediction key to the server in the first place.
 This happens in FPredictionKey::NetSerialize. All other clients will receive an invalid (0) prediction key when a prediction key sent from a client is replicated back down through a replicated property.
-
 
 ### Ability Activation
 
 Ability Activation is a first class predictive action. Whenever a client predictively activates an ability, he explicitly asks the server and the server explicitly responds. Once an ability has been predictively activated, the client has a valid 'prediction window' where predictive side effects can happen which are not explicitly 'asked about'. (E.g., we do not explicitly ask 'Can I decrement mana, Can I put this ability on cooldown. Those actions are considered logically atomic with activating an ability).
 
-
 AbilitySystemComponent provides a set of functions for communicating ability activation between clients and server: TryActivateAbility -> ServerTryActivateAbility ->  ClientActivateAbility(Failed/Succeed).
 
 1. Client calls TryActivateAbility which generates a new FPredictionKey and calls ServerTryActivateAbility.
-2. Client continues (before hearing back from server) and calls ActivateAbility with the generated PredictionKey associated with the Ability's ActivationInfo.
-3. Any side effects that happen /before the call to ActivatAbility finish/ have the generated FPredictionKey associated with them.
-4. Server decides if the ability really happened in ServerTryActivateAbility, calls ClientActivateAbility(Failed/Succeed) and sets UAbilitySystemComponent::ReplicatedPredictionKey to the generated key that was sent.
-5. If client receives ClientAbilityFailed, he immediately kills the ability and rolls back side effects that were associated with the prediction key.
+
+1. Client continues (before hearing back from server) and calls ActivateAbility with the generated PredictionKey associated with the Ability's ActivationInfo.
+
+1. Any side effects that happen /before the call to ActivatAbility finish/ have the generated FPredictionKey associated with them.
+
+1. Server decides if the ability really happened in ServerTryActivateAbility, calls ClientActivateAbility(Failed/Succeed) and sets UAbilitySystemComponent::ReplicatedPredictionKey to the generated key that was sent.
+
+1. If client receives ClientAbilityFailed, he immediately kills the ability and rolls back side effects that were associated with the prediction key.
 
    - 'Rolling back' is accomplished via FPredictionKeyDelegates and FPredictionKey::NewRejectedDelegate/NewCaughtUpDelegate/NewRejectOrCaughtUpDelegate.
+
    - Registering the callback in TryActivateAbility:
      // If this PredictionKey is rejected, we will call OnClientActivateAbilityFailed.
      ThisPredictionKey.NewRejectedDelegate().BindUObject(this, &UAbilitySystemComponent::OnClientActivateAbilityFailed, Handle, ThisPredictionKey.Current);
@@ -82,27 +88,23 @@ AbilitySystemComponent provides a set of functions for communicating ability act
    - Invoking the callback in ClientActivateAbilityFailed_Implementation:
       FPredictionKeyDelegates::BroadcastRejectedDelegate(PredictionKey);
 
-6. If accepted, client must wait until property replication catches up (the Succeed RPC will be sent immediately, property replication will happen on its own). Once the ReplicatedPredictionKey catches up to the
-  key used previous steps, the client can undo his predictive side effects. See UAbilitySystemComponent::OnRep_PredictionKey.
-
-
-
+1. If accepted, client must wait until property replication catches up (the Succeed RPC will be sent immediately, property replication will happen on its own). Once the ReplicatedPredictionKey catches up to the
+   key used previous steps, the client can undo his predictive side effects. See UAbilitySystemComponent::OnRep_PredictionKey.
 
 ### GameplayEffect Prediction
 
 GameplayEffects are considered side effects of prediction and are not explicitly asked about.
 
 1. GameplayEffects are only applied on clients if there is a valid prediction key. (If no prediction key, it simply skips the application on client).
-2. Attributes, GameplayCues, and GameplayTags are all predicted if the GameplayEffect is predicted.
-3. When the FActiveGameplayEffect is created, it stores the prediction key (FActiveGameplayEffect::PredictionKey)
+1. Attributes, GameplayCues, and GameplayTags are all predicted if the GameplayEffect is predicted.
+1. When the FActiveGameplayEffect is created, it stores the prediction key (FActiveGameplayEffect::PredictionKey)
    - Instant effects are explained below in "Attribute Prediction".
-4. On the server, the same prediction key is also set on the server's FActiveGameplayEffect that will be replicated down.
-5. As a client, if you get a replicated FActiveGameplayEffect with a valid prediction key on it, you check to see if you have an ActiveGameplayEffect with that same key, if there is match, we do not apply the 'on applied' type of logic, e.g., GameplayCues. The solves the "Redo" problem. However we will have 2 of the 'same' GameplayEffects in our ActiveGameplayEffects container, temporarily:
-6. At the same time, UAbilitySystemComponent::ReplicatedPredictionKey will catch up and the predictive effects will be removed. When they are removed in this case, we again check PredicitonKey and decide
-  if we should not do the 'On Remove' logic / GameplayCue.
+1. On the server, the same prediction key is also set on the server's FActiveGameplayEffect that will be replicated down.
+1. As a client, if you get a replicated FActiveGameplayEffect with a valid prediction key on it, you check to see if you have an ActiveGameplayEffect with that same key, if there is match, we do not apply the 'on applied' type of logic, e.g., GameplayCues. The solves the "Redo" problem. However we will have 2 of the 'same' GameplayEffects in our ActiveGameplayEffects container, temporarily:
+1. At the same time, UAbilitySystemComponent::ReplicatedPredictionKey will catch up and the predictive effects will be removed. When they are removed in this case, we again check PredicitonKey and decide
+   if we should not do the 'On Remove' logic / GameplayCue.
 
 At this point, we have effectively predicted a gameplay effect as a side effect and handled the 'Undo' and 'Redo' problems.
-
 
 ### Attribute Prediction
 
@@ -115,12 +117,10 @@ the server confirms our prediction key. Basically, treat instant modifications a
 For the "override" problem, we can handle this in the properties OnRep by treating the replicated (server) value as the 'base value' instead of 'final value' of the attribute, and to
 reaggregate our 'final value' after a replication happens.
 
-
 1. We treat predictive instant gameplay effects as infinite duration gamepaly effects. See UAbilitySystemComponent::ApplyGameplayEffectSpecToSelf.
-2. We have to *always receive RepNotify calls on our attributes (not just when there is a change from last local value, since we will predict the change ahead of time). Done with REPNOTIFY_Always.
-3. In the attribute RepNotify, we call into the AbilitySystemComponent::ActiveGameplayEffects to update our 'final value' give the new 'base value'. the GAMEPLAYATTRIBUTE_REPNOTIFY can do this.
-4. Everything else will work like above (GameplayEffect prediction) : when the prediction key is caught up, the predictive GameplayEffect is removed and we will return to the server given value.
-
+1. We have to *always* receive RepNotify calls on our attributes (not just when there is a change from last local value, since we will predict the change ahead of time). Done with REPNOTIFY_Always.
+1. In the attribute RepNotify, we call into the AbilitySystemComponent::ActiveGameplayEffects to update our 'final value' give the new 'base value'. the GAMEPLAYATTRIBUTE_REPNOTIFY can do this.
+1. Everything else will work like above (GameplayEffect prediction) : when the prediction key is caught up, the predictive GameplayEffect is removed and we will return to the server given value.
 
 Example:
 
@@ -143,7 +143,7 @@ void UMyHealthSet::OnRep_Health()
 Outside of GameplayEffects which are already explained, Gameplay Cues can be activated on their own. These functions (UAbilitySystemComponent::ExecuteGameplayCue etc)  take network role and prediction keys into account.
 
 1. In UAbilitySystemComponent::ExecuteGameplayCue, if authority then do the multicast event (with replication key). If non authority but w/ a valid prediction key, predict the GameplayCue.
-2. On the receiving end (NetMulticast_InvokeGameplayCueExecuted etc), if there is a replication key, then don't do the event (assume you predicted it).
+1. On the receiving end (NetMulticast_InvokeGameplayCueExecuted etc), if there is a replication key, then don't do the event (assume you predicted it).
 
 Remember that FPredictionKeys only replicate to the originating owner. This is an intrinsic property of FReplicationKey.
 
@@ -157,7 +157,7 @@ activated from a predictive ability. When receiving a TryActivate from a trigger
 
 There is work left to do on Triggered Events and replication. (explained at the end).
 
----------------------------------------------------------
+* * *
 
 ## *Advanced topic*
 
@@ -171,7 +171,7 @@ That prediction key is used as the base for any new prediction keys generated. W
 
 This is slightly more nuanced though. In the X->Y->Z case, the server will only recieve the PredictionKey for X before trying to run the chain himself
 E.g., he will TryActivate Y and Z with the original prediction key sent to him from the client.
-Where as the client will generate a new PredictionKey each time he calls TryActivateAbility. The client *has to generate a new PRedictionKey for each ability activate, since each activate is not logically atomic. Each side effect produced in the chain of events has to have a unique PredictionKey. We cannot have GameplayEffects produced in X have the same PredictionKey produced in Z.
+Where as the client will generate a new PredictionKey each time he calls TryActivateAbility. The client \*has to generate a new PRedictionKey for each ability activate, since each activate is not logically atomic. Each side effect produced in the chain of events has to have a unique PredictionKey. We cannot have GameplayEffects produced in X have the same PredictionKey produced in Z.
 
 To get around this, The prediction key of X is considered the Base key for Y and Z. The dependancy from Y to Z is kept completely client side, which is done in by FPredictionKeyDelegates::AddDependancy. We add delegates
 to reject/catchup Z if Y rejected/confirmed.
@@ -187,6 +187,7 @@ This isn't that bad, except that abilities will sometimes want to react to playe
 FScopedPredictionWindows provides a way to send the server a new prediction key and have the server pick up and use that key within the same logical scope.
 
 UAbilityTask_WaitInputRelease::OnReleaseCallback is a good example. The flow of events is as followed:
+
 1. Client enters UAbilityTask_WaitInputRelease::OnReleaseCallback and starts a new FScopedPredictionWindow. This creates a new prediction key for this scope (FScopedPredictionWindow::ScopedPredictionKey).
 2. Client calls AbilitySystemComponent->ServerInputRelease which passes ScopedPrediction.ScopedPredictionKey as a parameter.
 3. Server runs ServerInputRelease_Implementation which takes the passed in PredictionKey and sets it as UAbilitySystemComponent::ScopedPredictionKey with an FScopedPredictionWindow.
@@ -199,14 +200,12 @@ The key to this working is that ::OnReleaseCallback calls ::ServerInputRelease w
 
 While there is no "Try/Failed/Succeed" calls in this example, all side effects are procedurally grouped/atomic. This solves the "Undo" and "Redo" problems for any arbitrary function calls that run on the server and client.
 
-
----------------------------------------------------------
+* * *
 
 ## Unsupported / Issues/ Todo
 
 Triggered events do not explicitly replicate. E.g., if a triggered event only runs on the server, the client will never hear about it. This also prevents us from doing cross player/AI etc events.
 Support for this should eventually be added and it should follow the same pattern that GameplayEffect and GameplayCues follow (predict triggered event with a prediction key, ignore the RPC event if it has a prediction key).
-
 
 ### Predicting "Meta" Attributes such as Damage/Healing vs "real" attributes such as Health
 
@@ -215,19 +214,18 @@ We are unable to apply meta attributes predictively. Meta attributes only work o
 In order to support this, we would probably add some limited support for duration based meta attributes, and move the transform of the instant gameplay effect from the front end (UAbilitySystemComponent::ApplyGameplayEffectSpecToSelf)
 to the backend (UAttributeSet::PostModifyAttribute).
 
-
 ### Predicting ongoing multiplicitive GameplayEffects
 
 There are also limitations when predicting % based gameplay effects. Since the server replicates down the 'final value' of an attribute, but not the entire aggregator chain of what is modifying it, we may run into cases where
 the client cannot accurately predict new gameplay effects.
 
 For example:
--Client has a perm +10% movement speed buff with base movement speed of 500 -> 550 is the final movement speed for this client.
--Client has an ability which grants an additional 10% movement speed buff. It is expected to *sum the % based multipliers for a final 20% bonus to 500 -> 600 movement speed.
--However on the client, we just apply a 10% buff to 550 -> 605.
+
+- Client has a perm +10% movement speed buff with base movement speed of 500 -> 550 is the final movement speed for this client.
+- Client has an ability which grants an additional 10% movement speed buff. It is expected to \*sum the % based multipliers for a final 20% bonus to 500 -> 600 movement speed.
+- However on the client, we just apply a 10% buff to 550 -> 605.
 
 This will need to be fixed by replicating down the aggregator chain for attributes. We already replicate some of this data, but not the full modifier list. We will need to look into supporting this eventually.
-
 
 ### "Weak Prediction"
 
@@ -241,7 +239,6 @@ predicting the state and attribute change - then the problems get less severe.
 
 I can envision a weak prediction mode which is what (certain abilities? All abilities?) fall back to when there is no fresh prediction key that can accurately correlate side effects. When in weak prediction mode, perhaps
 only certain actions can be predicted - for example GameplayCue execute events, but not OnAdded/OnRemove events.
-
 
 FPredictionKey is a generic way of supporting Clientside Prediction in the GameplayAbility system.
 A FPredictionKey is essentially an ID for identifying predictive actions and side effects that are
@@ -262,23 +259,35 @@ If the ability activation is accepted, the client must wait until the replicated
   Once replication of the server created side effects is finished, the client can undo his locally predictive side effects.
 
 The main things FPredictionKey itself provides are:
-  -Unique ID and a system for having dependant chains of Prediction Keys ("Current" and "Base" integers)
-  -A special implementation of ::NetSerialize *** which only serializes the prediction key to the predicting client ***
-    -This is important as it allows us to serialize prediction keys in replicated state, knowing that only clients that gave the server the prediction key will actually see them!
+
+- Unique ID and a system for having dependant chains of Prediction Keys ("Current" and "Base" integers)
+- A special implementation of ::NetSerialize *** which only serializes the prediction key to the predicting client ***
+  -This is important as it allows us to serialize prediction keys in replicated state, knowing that only clients that gave the server the prediction key will actually see them!
 
 # BBR Specific
 
 For rollback/rollforth:
-- C:\ikrima\src\knl\Bebylon\UnrealEngine\Engine\Source\Runtime\MovieScene\Public\MovieSceneTimeController.h
+
+- C:\\ikrima\\src\\knl\\Bebylon\\UnrealEngine\\Engine\\Source\\Runtime\\MovieScene\\Public\\MovieSceneTimeController.h
+
 - TSharedPtr<FMovieSceneTimeController> TimeController; on level sequence
+
 - UTimecodeProvider
+
 - FMovieSceneTimeController
+
 - PlaybackSettings.TimeController,
+
 - FMovieSceneTimeController,
+
 - FMovieSceneTimeController_AudioClock
+
 - FMovieSceneTimeController_PlatformClock
+
 - FMovieSceneTimeController_Tick
+
 - FMovieSceneTimeController_FrameStep
+
 - UAutomatedLevelSequenceCapture::FMovieSceneTimeController_FrameStep
 
 - class TIMEMANAGEMENT_API UFixedFrameRateCustomTimeStep : public UEngineCustomTimeStep

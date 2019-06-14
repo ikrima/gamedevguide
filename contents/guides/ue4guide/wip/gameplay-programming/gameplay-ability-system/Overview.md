@@ -57,6 +57,7 @@ sortIndex: 1
     - **Standalone Gameplay Cue Notify Blueprints:** can also respond to Gameplay Cues.
 
 #### Gameplay Ability
+
 *<https://docs.unrealengine.com/en-us/Gameplay/GameplayAbilitySystem/GameplayAbility>*
 
 - Defines what an in-game ability does, what (if anything) it costs to use, when or under what conditions it can be used, and so on.
@@ -83,10 +84,10 @@ sortIndex: 1
 
 *These might be outdated*
 
-| Description | Link |
-| --- | --- |
-| UDN Answer Overview | <https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html> |
-| Overview #2         | <https://udn.unrealengine.com/questions/315010/view.html> |
-| Community Wiki      | <https://wiki.unrealengine.com/GameplayAbilities_and_You>              |
+| Description         | Link                                                                                                    |
+| ------------------- | ------------------------------------------------------------------------------------------------------- |
+| UDN Answer Overview | <https://udn.unrealengine.com/questions/319582/questions-about-gameplayability-system.html>             |
+| Overview #2         | <https://udn.unrealengine.com/questions/315010/view.html>                                               |
+| Community Wiki      | <https://wiki.unrealengine.com/GameplayAbilities_and_You>                                               |
 | Target Data         | <https://udn.unrealengine.com/questions/273352/abilitysystem-targeting-how-to-fetch-custom-target.html> |
-| Sample Repo         | <https://github.com/daveratti/GameplayAbilitiesSample/tree/release/GAS> |
+| Sample Repo         | <https://github.com/daveratti/GameplayAbilitiesSample/tree/release/GAS>                                 |

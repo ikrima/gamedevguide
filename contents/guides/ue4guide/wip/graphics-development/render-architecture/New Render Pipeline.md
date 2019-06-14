@@ -34,6 +34,7 @@ sortIndex: 2
       1. SetupCustomPassView
          1. SetViewport
       1. DispatchDraw
+
 1. Implement FMeshPassProcessor. Ex: class FDepthPassMeshProcessor : public FMeshPassProcessor
    1. Register the pass: FRegisterPassProcessorCreateFunction RegisterCustomPass()
    1. Implement AddMeshBatch
@@ -41,12 +42,15 @@ sortIndex: 2
       - Select Shader to use. Ex: GetDepthPassShaders
       - Implement CalculateCustomPassMeshStaticSortKey() to calculate SortKey for mesh state
       - Gather bindings: BuildMeshDrawCommands()
+
 1. FRelevancePacket::MarkRelevant() && FRelevancePacket::ComputeDynamicMeshRelevance()
+
 1. Drawcall Merging: class FMeshDrawCommand::MatchesForDynamicInstancing
 
    Notes: Update Shaders from Primitive.PrimitiveId => GetPrimitiveData(Parameters.PrimitiveId).
 
 1. Need to use GetPrimitiveData(Parameters.PrimitiveId)
+
 1. FDeferredShadingSceneRenderer::ClearGBufferAtMaxZ(FRHICommandList& RHICmdList)
 
 # Overview
@@ -413,5 +417,5 @@ FMeshDrawCommand:
   | r.MeshDrawCommands.ParallelPassSetup             | Whether to setup mesh draw command pass in parallel.                                                                                       |
   | r.RHICmdBasePassDeferredContexts                 | Disable the parallel tasks for base pass draw dispatch, causing those to happen on the RenderingThread.                                    |
   | r.MeshDrawCommands.UseCachedCommands             | Whether to render from cached mesh draw commands (on vertex factories that support it), or to generate draw commands every frame.          |
-  | r.RDG.ImmediateMode             | Toggle get render graph executing passes as they get created to easily debug crashes caused by pass wiring logic.          |
-  | r.RDG.EmitWarnings | Toggle render graph emitting warnings about inefficiencies.          |
+  | r.RDG.ImmediateMode                              | Toggle get render graph executing passes as they get created to easily debug crashes caused by pass wiring logic.                          |
+  | r.RDG.EmitWarnings                               | Toggle render graph emitting warnings about inefficiencies.                                                                                |
