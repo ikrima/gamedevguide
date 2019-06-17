@@ -39,6 +39,11 @@
           "slugPart": "plugins-modules",
           "sortIndex": 6,
           "childTOCs": []
+        },
+        {
+          "slugPart": "docker",
+          "sortIndex": 7,
+          "childTOCs": []
         }
       ]
     },
@@ -105,26 +110,25 @@
               "slugPart": "animation-subsystem",
               "sortIndex": 4,
               "childTOCs": []
-            }
-          ]
-        },
-        {
-          "slugPart": "physics",
-          "sortIndex": 8,
-          "childTOCs": [
+            },
+            {
+              "slugPart": "physics",
+              "sortIndex": 5,
+              "childTOCs": []
+            },
             {
               "slugPart": "gameplay-framework",
-              "sortIndex": 2,
+              "sortIndex": 6,
               "childTOCs": []
             },
             {
               "slugPart": "gameplay-ability-system",
-              "sortIndex": 4,
+              "sortIndex": 8,
               "childTOCs": []
             },
             {
               "slugPart": "useful-console-commands",
-              "sortIndex": 5,
+              "sortIndex": 9,
               "childTOCs": []
             }
           ]

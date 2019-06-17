@@ -2,7 +2,71 @@
 sortIndex: 8
 ---
 
-### Nvidia Insight
+# RenderDoc
+
+## Custom visualization shader to display stencil values
+
+```glsl
+uint RENDERDOC_TextureType; // hlsl
+// selected MSAA sample or -numSamples for resolve. See docs
+int RENDERDOC_SelectedSample;
+
+Texture2DArray<uint2> texDisplayTexStencilArray : register(t5);
+Texture2DMSArray<uint2> texDisplayTexStencilMSArray : register(t7);
+uint4 RENDERDOC_TexDim; // xyz == width, height, depth. w == # mips Texture2DArray<uint2> texDisplayTexStencilArray : register(t5);
+
+#define KL_GOLDEN_RATIO_CONJUGATE   0.618033988749895
+
+
+float3 hsv2rgb(float3 c)
+{
+  float4 K = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+  float3 p = abs(frac(c.xxx + K.xyz) * 6.0 - K.www);
+  return c.z * lerp(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+
+float3 GetGoldenRatioColor(const int colorIndex, const float3 baseHSVColor, const float hueRange) {
+  float hue = (baseHSVColor.r + frac(float(colorIndex) * KL_GOLDEN_RATIO_CONJUGATE) * hueRange) % 360.0f;
+  return hsv2rgb(float3(hue/360.0f, baseHSVColor.g, baseHSVColor.b));
+}
+
+float3 GetGoldenRatioColor(const int colorIndex){
+  return GetGoldenRatioColor(colorIndex, float3(0.0, 0.5, 0.99), 360.0);
+}
+
+float4 main(float4 pos : SV_Position, float4 uv : TEXCOORD0) : SV_Target0 {
+  float4 Colors[8] =
+  {
+    float4(116/255.0,187/255.0,134/255.0, 1.0),
+    float4(153/255.0,101/255.0,197/255.0, 1.0),
+    float4(193/255.0,81/255.0,58/255.0, 1.0),
+    float4(76/255.0,63/255.0,61/255.0, 1.0),
+    float4(153/255.0,173/255.0,189/255.0, 1.0),
+    float4(182/255.0,154/255.0,75/255.0, 1.0),
+    float4(144/255.0,209/255.0,73/255.0, 1.0),
+    float4(186/255.0,82/255.0,131/255.0, 1.0)
+  };
+
+  uint stencil = 0;
+  if (RENDERDOC_TextureType == 5) {
+    stencil = texDisplayTexStencilArray.Load(int4(uv.xy * RENDERDOC_TexDim.xy, 0, 0)).g;
+  }
+  else if (RENDERDOC_TextureType == 7) {
+    stencil = texDisplayTexStencilMSArray.Load(int3(uv.xy * RENDERDOC_TexDim.xy, 0), RENDERDOC_SelectedSample).g;
+  }
+  stencil = stencil & 0x7;
+
+  float4 ret = float4(0,0,0,1);
+
+  //ret = Colors[(stencil+4) % 8];
+  ret = float4(GetGoldenRatioColor(stencil, float3(0,0.5,0.99), 360), 1.0);
+
+  return ret;
+}
+```
+
+# Nvidia Insight
 
 Installation:
 

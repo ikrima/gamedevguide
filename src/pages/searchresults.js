@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Input, List } from 'antd';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';

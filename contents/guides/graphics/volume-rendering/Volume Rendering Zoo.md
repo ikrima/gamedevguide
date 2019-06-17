@@ -228,6 +228,9 @@ Optimization Reminders
 
 - Quantization baking: Noise-Resistant Fitting for Spherical Harmonics
 - Gaussian Mixture Models
+- Dynamic Diffuse Global Illumination with Ray-Traced Irradiance Fields
+  - Might have some utility in sampling scheme/filtering with moment based approach
+  - https://devblogs.nvidia.com/dynamic-diffuse-global-illumination-part-i/
 
 ### **Misc reminders:**
 

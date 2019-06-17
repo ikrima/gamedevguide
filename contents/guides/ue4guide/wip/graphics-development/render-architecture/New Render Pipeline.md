@@ -2,6 +2,59 @@
 sortIndex: 2
 ---
 
+# TLDR
+
+**Steps to implement custom meshpass**
+
+1. Add new render pass method FDeferredShadingSceneRenderer::RenderPrePass
+
+   1. Debug Stats & flags:
+
+      ```cpp
+      check(RHICmdList.IsOutsideRenderPass());
+
+      if (!ShouldRenderTranslucency(TranslucencyPass))
+      {
+        return; // Early exit if nothing needs to be done.
+      }
+
+      SCOPED_DRAW_EVENT(RHICmdList, Translucency);
+      SCOPED_GPU_STAT(RHICmdList, Translucency);
+      ```
+
+   1. Call & Implement CreateCustomPassUniformBuffer(RHICmdList, View, PassUniformBuffer);
+
+   1. Create Pass Render State with UniformBufferParms: FMeshPassProcessorRenderState DrawRenderState(View, BasePassUniformBuffer);
+
+   1. Call & Implement SetupCustomPassState(DrawRenderState);
+
+   1. Scene->UniformBuffers.UpdateViewUniformBuffer(View);
+
+   1. FDeferredShadingSceneRenderer::RenderBasePassView
+      1. SetupCustomPassView
+         1. SetViewport
+      1. DispatchDraw
+
+1. Implement FMeshPassProcessor. Ex: class FDepthPassMeshProcessor : public FMeshPassProcessor
+   1. Register the pass: FRegisterPassProcessorCreateFunction RegisterCustomPass()
+   1. Implement AddMeshBatch
+      - Pass Filter
+      - Select Shader to use. Ex: GetDepthPassShaders
+      - Implement CalculateCustomPassMeshStaticSortKey() to calculate SortKey for mesh state
+      - Gather bindings: BuildMeshDrawCommands()
+
+1. FRelevancePacket::MarkRelevant() && FRelevancePacket::ComputeDynamicMeshRelevance()
+
+1. Drawcall Merging: class FMeshDrawCommand::MatchesForDynamicInstancing
+
+   Notes: Update Shaders from Primitive.PrimitiveId => GetPrimitiveData(Parameters.PrimitiveId).
+
+1. Need to use GetPrimitiveData(Parameters.PrimitiveId)
+
+1. FDeferredShadingSceneRenderer::ClearGBufferAtMaxZ(FRHICommandList& RHICmdList)
+
+# Overview
+
 Motivation: Need to execute lot of draws
 
 - Modular construction
@@ -54,12 +107,14 @@ Every frame, generate FMeshBatch from Scene proxies
   - Describes a mesh pass
 
 # Shader Binding
+
 ## Overview
+
 - Shader Parms are submitted in big GPU buffers
 - Anything referenced by FMeshDrawCommands must not change frequently bc it will be invalidated
 - Instead, keep bindings stable and reference one big Uniform Buffer
   - Code path to update uniform buffer: RHIUpdateUniformBuffer
-  ![](../../assets/newrenderpipeline-shaderbinding-update.png)
+    ![](../../assets/newrenderpipeline-shaderbinding-update.png)
 - Uniform Buffers: FPersistentUniformBuffers
   - PrimitiveUniformBuffer: Data unique to primitive like LocalToWorldTransform
   - MaterialUniformBuffer: Material params
@@ -73,11 +128,15 @@ Every frame, generate FMeshBatch from Scene proxies
     ![](../../assets/newrenderpipeline-vf-caching.png)
 
 ## High level Frame with Caching
+
 - FPrimitiveSceneInfo::AddToScene
   - If Static, cache FMeshBatch’s on FPrimitiveSceneInfo
     - Also generate FMeshDrawCommands and store on the scene
 - FScene::SetSkyLight
   - Invalidate cached FMeshDrawCommands
+    - FPrimitiveSceneInfo::BeginDeferredUpdateStaticMeshes: Invalidate specific mesh
+    - FScene->bScenesPrimitivesNeedStaticMeshElementUpdate: Invalidate entire Scene's cached commands
+    - Ex: FScene::SetSkyLight()
 - InitViews
   - Foreach Primitive
     - If Static Relevance
@@ -89,13 +148,33 @@ Every frame, generate FMeshBatch from Scene proxies
 
 ## Drawcall Merging
 
+- FMeshDrawCommand captures all the state for the draw
+  - Currently only D3D11 style merging implemented, so only drawcalls with identitcal shader bindings merge
+  - Future will be D3D12 Execute Indirect that can change state in-between
+
 - Happens in FMeshDrawCommand::MatchesForDynamicInstancing
+
+- Shader Parameters must be crafted to enable this
+
+  | Pass Types                     | Description                                                                                                            |
+  | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+  | Pass Parameters                | These are placed in the pass uniform buffer, where any draws in the pass can merge.                                    |
+  | FLocalVertexFactory Parameters | These are placed in a uniform buffer owned by UStaticMesh where any draws with the same UStaticMesh can merge.         |
+  | Material Instance Parameters   | These are palced in a material uniform buffer where any draws using the same Material Instance can merge.              |
+  | Lightmap Resource Parameters   | These are placed in a LightmapResourceCluster uniform buffer where any draws using the same LightmapTexture can merge. |
+  | Primitive Parameters           | These are placed in a scene-wide primitive data buffer called GPUScene and indexed in the shader using PrimitiveID.    |
+
+
 - Assigning state buckets for merging is slow so its cached at FPrimitive::AddToScene
   - `cpp>TSet<FMeshDrawCommandStateBucket, MeshDrawCommandKeyFuncs> CachedMeshDrawCommandStateBuckets;`
+
 - Actual merging operation is just transformation on visible FMeshDrawCommand list
   - For each drawcommand in the same statebucket, it gets replaced with an instanced mesh draw command
+
 - To be effective, need to get rid of per-draw bindings
+
 - Created Pass uniform buffer frequency
+
   - Moved 64 per-draw bindings into OpaqueBasePassUniformBuffer
 
   ```cpp
@@ -141,6 +220,7 @@ Every frame, generate FMeshBatch from Scene proxies
     - PrimitiveUniformBuffer
     - PrecomputedLightingUniformBuffer
     - DistanceCullFadeUniformBuffer
+
 - GPU Scene Primitive Data buffer: GPU TArray implementation with dynamic resizing
   - Renderthread tracks Primitive add / update / remove, uses a compute shader to update them on the next frame (only operate on deltas)
   - Need to use GetPrimitiveData(Parameters.PrimitiveId) in shaders now
@@ -178,15 +258,22 @@ Every frame, generate FMeshBatch from Scene proxies
 ## Shader Bindings
 
 - Previously all shader parameters were directly set on RHICmdList by drawing policies
+
 - Now, All parameters are gathered into FMeshDrawSingleShaderBindings (which later are set on RHICmdList by calling SetOnCommandList during drawing)
+
 - Old: FDrawingPolicyRenderState to pass common high-level mesh pass render state (e.g. pass uniform buffer)
+
 - New: Renames FDrawingPolicyRenderState to FMeshPassProcessorRenderState without major changes to its functionality
+
 - Old: Other parts of shader bindings were filled inside of shader’s SetParameters and SetMesh functions
+
 - New: Replaced by GetShaderBindings and GetElementShaderBindings, and pass per-draw parameters inside a customizable ShaderElementDataType
   - Since each FMeshPassProcessor must go through BuildMeshDrawCommands() to call the pass shader’s GetShaderBindings(), we need a mechanism to pass arbitrary data from the FMeshPassProcessor to the GetShaderBindings() call. This is accomplished with the ShaderElementData parameter to BuildMeshDrawCommands()
 
 - Many loose parameters were pulled out into per-pass or other uniform buffers (do not use loose parameters)
+
 - Old: uniform buffers like ViewUniformBuffer or DepthPassUniformBuffer were recreated every frame with new data
+
 - New: those are persistent and global (kept inside FScene::FPersistentUniformBuffers)
   - instead of recreating them to pass new data — their contents are updated using new RHI function — to RHIUpdateUniformBuffer
   - This indirection enables shaders to receive per-frame data even though their mesh draw commands are cached
@@ -205,102 +292,130 @@ Every frame, generate FMeshBatch from Scene proxies
 - Shaders need to use GetPrimitiveData(PrimitiveId) instead of accessing the Primitive uniform buffer directly to compile with GPUScene enabled.
   - Primitive.Member => GetPrimitiveData(Parameters.PrimitiveId).Member
 
+# Misc:
 
-Misc:
 - <https://github.com/EpicGames/UnrealEngine/commit/b5d7db368977e263092be9b97f78944739f80476>
 
 `youtube: https://www.youtube.com/watch?v=UJ6f1pm_sdU`
-
 
 ## Add Immediate Mode Custom Mesh Pass
 
 ```cpp
 void DrawDecalMeshCommands(FRenderingCompositePassContext& Context, EDecalRenderStage CurrentDecalStage, FDecalRenderingCommon::ERenderTargetMode RenderTargetMode)
 {
-	FRHICommandListImmediate& RHICmdList = Context.RHICmdList;
-	const FViewInfo& View = Context.View;
+  FRHICommandListImmediate& RHICmdList = Context.RHICmdList;
+  const FViewInfo& View = Context.View;
 
-	const bool bPerPixelDBufferMask = IsUsingPerPixelDBufferMask(View.GetShaderPlatform());
+  const bool bPerPixelDBufferMask = IsUsingPerPixelDBufferMask(View.GetShaderPlatform());
 
-	FGraphicsPipelineStateInitializer GraphicsPSOInit;
-	FDecalRenderTargetManager RenderTargetManager(Context.RHICmdList, Context.GetShaderPlatform(), CurrentDecalStage);
-	RenderTargetManager.SetRenderTargetMode(RenderTargetMode, true, bPerPixelDBufferMask);
-	Context.SetViewportAndCallRHI(Context.View.ViewRect);
-	RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
+  FGraphicsPipelineStateInitializer GraphicsPSOInit;
+  FDecalRenderTargetManager RenderTargetManager(Context.RHICmdList, Context.GetShaderPlatform(), CurrentDecalStage);
+  RenderTargetManager.SetRenderTargetMode(RenderTargetMode, true, bPerPixelDBufferMask);
+  Context.SetViewportAndCallRHI(Context.View.ViewRect);
+  RHICmdList.ApplyCachedRenderTargets(GraphicsPSOInit);
 
 
-	DrawDynamicMeshPass(View, RHICmdList,
-		[&View, CurrentDecalStage, RenderTargetMode](FDynamicPassMeshDrawListContext* DynamicMeshPassContext)
-	{
-		FMeshDecalMeshProcessor PassMeshProcessor(
-			View.Family->Scene->GetRenderScene(),
-			&View,
-			CurrentDecalStage,
-			RenderTargetMode,
-			DynamicMeshPassContext);
+  DrawDynamicMeshPass(View, RHICmdList,
+    [&View, CurrentDecalStage, RenderTargetMode](FDynamicPassMeshDrawListContext* DynamicMeshPassContext)
+  {
+    FMeshDecalMeshProcessor PassMeshProcessor(
+      View.Family->Scene->GetRenderScene(),
+      &View,
+      CurrentDecalStage,
+      RenderTargetMode,
+      DynamicMeshPassContext);
 
-		for (int32 MeshBatchIndex = 0; MeshBatchIndex < View.MeshDecalBatches.Num(); ++MeshBatchIndex)
-		{
-			const FMeshBatch* Mesh = View.MeshDecalBatches[MeshBatchIndex].Mesh;
-			const FPrimitiveSceneProxy* PrimitiveSceneProxy = View.MeshDecalBatches[MeshBatchIndex].Proxy;
-			const uint64 DefaultBatchElementMask = ~0ull;
+    for (int32 MeshBatchIndex = 0; MeshBatchIndex < View.MeshDecalBatches.Num(); ++MeshBatchIndex)
+    {
+      const FMeshBatch* Mesh = View.MeshDecalBatches[MeshBatchIndex].Mesh;
+      const FPrimitiveSceneProxy* PrimitiveSceneProxy = View.MeshDecalBatches[MeshBatchIndex].Proxy;
+      const uint64 DefaultBatchElementMask = ~0ull;
 
-			PassMeshProcessor.AddMeshBatch(*Mesh, DefaultBatchElementMask, PrimitiveSceneProxy);
-		}
-	});
+      PassMeshProcessor.AddMeshBatch(*Mesh, DefaultBatchElementMask, PrimitiveSceneProxy);
+    }
+  });
 }
 
 void RenderMeshDecals(FRenderingCompositePassContext& Context, EDecalRenderStage CurrentDecalStage)
 {
-	FRHICommandListImmediate& RHICmdList = Context.RHICmdList;
-	FSceneRenderTargets& SceneContext = FSceneRenderTargets::Get(RHICmdList);
-	const FViewInfo& View = Context.View;
-	FScene* Scene = (FScene*)View.Family->Scene;
+  FRHICommandListImmediate& RHICmdList = Context.RHICmdList;
+  FSceneRenderTargets& SceneContext = FSceneRenderTargets::Get(RHICmdList);
+  const FViewInfo& View = Context.View;
+  FScene* Scene = (FScene*)View.Family->Scene;
 
-	QUICK_SCOPE_CYCLE_COUNTER(STAT_FSceneRenderer_RenderMeshDecals);
-	SCOPED_DRAW_EVENT(RHICmdList, MeshDecals);
+  QUICK_SCOPE_CYCLE_COUNTER(STAT_FSceneRenderer_RenderMeshDecals);
+  SCOPED_DRAW_EVENT(RHICmdList, MeshDecals);
 
-	FSceneTexturesUniformParameters SceneTextureParameters;
-	SetupSceneTextureUniformParameters(SceneContext, View.FeatureLevel, ESceneTextureSetupMode::All, SceneTextureParameters);
-	Scene->UniformBuffers.MeshDecalPassUniformBuffer.UpdateUniformBufferImmediate(SceneTextureParameters);
+  FSceneTexturesUniformParameters SceneTextureParameters;
+  SetupSceneTextureUniformParameters(SceneContext, View.FeatureLevel, ESceneTextureSetupMode::All, SceneTextureParameters);
+  Scene->UniformBuffers.MeshDecalPassUniformBuffer.UpdateUniformBufferImmediate(SceneTextureParameters);
 
-	if (View.MeshDecalBatches.Num() > 0)
-	{
-		switch (CurrentDecalStage)
-		{
-		case DRS_BeforeBasePass:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_DBuffer);
-			break;
+  if (View.MeshDecalBatches.Num() > 0)
+  {
+    switch (CurrentDecalStage)
+    {
+    case DRS_BeforeBasePass:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_DBuffer);
+      break;
 
-		case DRS_AfterBasePass:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColorAndGBufferDepthWriteWithNormal);
-			break;
+    case DRS_AfterBasePass:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColorAndGBufferDepthWriteWithNormal);
+      break;
 
-		case DRS_BeforeLighting:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_GBufferNormal);
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColorAndGBufferWithNormal);
-			break;
+    case DRS_BeforeLighting:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_GBufferNormal);
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColorAndGBufferWithNormal);
+      break;
 
-		case DRS_Mobile:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColor);
-			break;
+    case DRS_Mobile:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColor);
+      break;
 
-		case DRS_AmbientOcclusion:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_AmbientOcclusion);
-			break;
+    case DRS_AmbientOcclusion:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_AmbientOcclusion);
+      break;
 
-		case DRS_Emissive:
-			DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColor);
-			break;
-		}
-	}
+    case DRS_Emissive:
+      DrawDecalMeshCommands(Context, CurrentDecalStage, FDecalRenderingCommon::RTM_SceneColor);
+      break;
+    }
+  }
 }
 ```
 
 # Render Graph
 
-Main file: UnrealEngine\Engine\Source\Runtime\RenderCore\Public\RenderGraph.h
+Main file: UnrealEngine\\Engine\\Source\\Runtime\\RenderCore\\Public\\RenderGraph.h
 
 Main class: FRDGBuilder
 Currently used very lightly in 4.22 but looks like Compute Shaders can be dispatched with it
 FComputeShaderUtils::AddPass(...)
+
+# Debugging
+
+FMeshDrawCommand:
+
+- FMeshDrawCommand::DebugData is a debug data struct
+- WANTS_DRAW_MESH_EVENTS (RHI_COMMAND_LIST_DEBUG_TRACES || (WITH_PROFILEGPU && PLATFORM_SUPPORTS_DRAW_MESH_EVENTS))
+- VALIDATE_UNIFORM_BUFFER_LAYOUT_LIFETIME
+  - Whether to assert in cases where the layout is released before uniform buffers created with that layout
+- VALIDATE_UNIFORM_BUFFER_LIFETIME 0
+      \- Whether to assert when a uniform buffer is being deleted while still referenced by a mesh draw command
+      \- Enabling this requires -norhithread to work correctly since FRHIResource lifetime is managed by both the RT and RHIThread
+
+  | Command                                          | Desc                                                                                                                                       |
+  | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+  | r.MeshDrawCommands.DynamicInstancing             | Whether to dynamically combine multiple compatible visible Mesh Draw Commands into one instanced draw on vertex factories that support it. |
+  | r.MeshDrawCommands.LogDynamicInstancingStats     | Whether to log dynamic instancing stats on the next frame                                                                                  |
+  | r.MeshDrawCommands.LogMeshDrawCommandMemoryStats | Whether to log mesh draw command memory stats on the next frame                                                                            |
+  | r.GPUScene.UploadEveryFrame                      | Forces GPU Scene to be fully updated every frame, which is useful for diagnosing issues with stale GPU Scene data.                         |
+  | r.GPUScene.ValidatePrimitiveBuffer               | This downloads GPU Scene to the CPU and validates its contents against primitive uniform buffers.                                          |
+  | r.RHICmdUseThread                                | To Use a separate thread for RHICmdList                                                                                                    |
+  | r.RHIThread.Enable                               | To Disable RHI Thread                                                                                                                      |
+  | r.RHICmdBypass                                   | Set to 1 to disable                                                                                                                        |
+  | r.RHICmdUseParallelAlgorithms                    | True to use parallel algorithms. Ignored if r.RHICmdBypass is 1.                                                                           |
+  | r.MeshDrawCommands.ParallelPassSetup             | Whether to setup mesh draw command pass in parallel.                                                                                       |
+  | r.RHICmdBasePassDeferredContexts                 | Disable the parallel tasks for base pass draw dispatch, causing those to happen on the RenderingThread.                                    |
+  | r.MeshDrawCommands.UseCachedCommands             | Whether to render from cached mesh draw commands (on vertex factories that support it), or to generate draw commands every frame.          |
+  | r.RDG.ImmediateMode                              | Toggle get render graph executing passes as they get created to easily debug crashes caused by pass wiring logic.                          |
+  | r.RDG.EmitWarnings                               | Toggle render graph emitting warnings about inefficiencies.                                                                                |

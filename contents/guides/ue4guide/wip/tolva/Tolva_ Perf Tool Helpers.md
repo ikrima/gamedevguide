@@ -104,8 +104,6 @@ D3D Debugging
 
 For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform](fixme_self_referential_link)
 
-**Below here needs to be reimplemented & tasked in Hansoft to Andrew**
-
 - Command to build + cook + launch game
 
   - Click the command => SWindow Popout with checkboxes+comboboxes to {build|cook} {engine|standalone} {development|debuggame} BBR

@@ -85,3 +85,6 @@ FramePro:
 - Framepro.startrec
 
 - Framepro.endrec
+
+SuperLuminal:
+- Start game with -Superluminal command arg

@@ -13,9 +13,12 @@ When running an Editor build of your game, you can now use the command:
 *Reference From <https://www.unrealengine.com/en-US/blog/debugging-ufunction-invoke>*
 
 Print Blueprint CallStack from Visual Studio:
+
 - In the immediate window: `cpp>{,,UE4Editor-Core}::PrintScriptCallstack(false)`
 
 - How to make a command alias & button for it with Visual Commander Macro
+
+  - Create a VCMD Command called 'PrintScriptCallstack' and use this code
 
   ```csharp
   using EnvDTE;
@@ -33,3 +36,7 @@ Print Blueprint CallStack from Visual Studio:
       }
   }
   ```
+
+  - Then do this in Visual Studio to setup a command shortcut alias:
+
+    `cpp>alias pbs VCmd.CCommandPrintBPStack`

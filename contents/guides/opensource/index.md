@@ -8,6 +8,12 @@ In return, we only ask that you **help us spread the word about our VR game, *Be
 
 # Repos
 
+## Superluminal Profiler
+
+[Superluminal](https://www.superluminal.eu/) is an insanely low-overhead psamplin & instrumenting profiler with thread block visualization
+
+[Repo: https://github.com/kitelightning/SuperluminalPlugin](https://github.com/kitelightning/SuperluminalPlugin)
+
 ## Microprofile
 
 **NEW:** 4.19.2 Integration with in-game live update drawing [Video demo: https://twitter.com/KNLstudio/status/999422263190474752](https://twitter.com/KNLstudio/status/999422263190474752)
