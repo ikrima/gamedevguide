@@ -7,6 +7,7 @@
     "gatsby"
   ],
   "scripts": {
+    "analyze": "cross-env ANALYZE_BUNDLE_SIZE=true gatsby build",
     "build": "gatsby build",
     "clean": "gatsby clean",
     "dev": "gatsby develop",
@@ -57,6 +58,7 @@
     "gatsby-plugin-sitemap": "^2.1.0",
     "gatsby-plugin-typography": "^2.2.13",
     "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "gatsby-remark-autolink-headers": "^2.0.11",
     "gatsby-remark-embed-video": "^1.7.0",
     "gatsby-remark-images": "^3.0.14",
@@ -101,6 +103,7 @@
     "babel-plugin-import": "^1.11.2",
     "babel-preset-gatsby": "^0.1.11",
     "cssnano": "^4.1.8",
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.3.0",
