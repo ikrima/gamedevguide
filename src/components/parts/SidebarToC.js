@@ -248,6 +248,7 @@ export default function SidebarToC() {
       selectedKeys={selectedKeys}
       inlineIndent={siteCfg.theme.sidebarIndent}
     >
+      {console.log(openKeys)}
       {/* <div className="py-3" /> */}
       <AntdMenu.Item>
         {/* SEARCH */}
