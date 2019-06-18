@@ -168,7 +168,8 @@ Studios should use a shared DDC that all users in a particular location can acce
 
 To set up a shared DDC, override the paths for the \[DerivedDataBackendGraph] by declaring this section in your game's **DefaultEngine.ini**. This section is originally declared in the **BaseEngine.ini** where the paths are set to Epic's internal DDC share. Re-declare the section and change the paths to point to a share on your network (e.g. Path=\\\\mystudio.net\\DDC):
 
-\[DerivedDataBackendGraph]
+```ini
+[DerivedDataBackendGraph]
 MinimumDaysToKeepFile=7
 Root=(Type=KeyLength, Length=120, Inner=AsyncPut)
 AsyncPut=(Type=AsyncPut, Inner=Hierarchy)
@@ -179,6 +180,7 @@ Shared=(Type=FileSystem, ReadOnly=**false**, Clean=**false**, Flush=**false**, D
 AltShared=(Type=FileSystem, ReadOnly=**true**, Clean=**false**, Flush=**false**, DeleteUnused=**true**, UnusedFileAge=19, FoldersToClean=-1, Path=\\\\mystudio.net\\DDC2, EnvPathOverride=UE-SharedDataCachePath2)
 Pak=(Type=ReadPak, Filename=%GAMEDIR%DerivedDataCache/DDC.ddp)
 EnginePak=(Type=ReadPak, Filename=../../../Engine/DerivedDataCache/DDC.ddp)
+```
 
 Satellite studios working out of a single shared code base can set the **UE-SharedDataCachePath** environment variable to a path that all users at each location can read and write to. This allows each location to have its own shared DDC.
 

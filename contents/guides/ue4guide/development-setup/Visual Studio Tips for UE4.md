@@ -29,7 +29,7 @@ sortIndex: 1
 
 - Enable Visual Assist support for UE4 C++ support <https://docs.wholetomato.com/default.asp?W763>
 
-- Add va_stdafx.h file in directory of one of your sln or vcxproj files: <https://support.wholetomato.com/default.asp?W783>
+- This is no longer needed ~~Add va_stdafx.h file in directory of one of your sln or vcxproj files: <https://support.wholetomato.com/default.asp?W783>~~
 
 - VassistX/Intellisense/Visual Assist X Performance Optimization:
   - Disable intellisense browse database <https://support.wholetomato.com/default.asp?W133>
