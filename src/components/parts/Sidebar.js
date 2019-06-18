@@ -15,7 +15,9 @@ const Sidebar = ({ className, showSidebar, sidebarToC, slug }) => {
 
   useEffect(() => {
     const g = typeof window !== 'undefined' && window.location.pathname.split('/')[1];
-    if (g !== guide) {
+    if (guide === '') {
+      dispatch({ type: 'setGuide', payload: g });
+    } else if (g !== guide) {
       dispatch({ type: 'setGuide', payload: g });
 
       dispatch({ type: 'openKeys', payload: [] });
