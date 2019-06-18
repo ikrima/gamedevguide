@@ -39,7 +39,7 @@
     "classnames": "^2.2.6",
     "echarts": "^4.2.1",
     "echarts-for-react": "^2.0.14",
-    "elasticlunr": "^0.9.5", 
+    "elasticlunr": "^0.9.5",
     "gatsby": "^2.9.4",
     "gatsby-awesome-pagination": "^0.3.3",
     "gatsby-cli": "^2.6.5",
