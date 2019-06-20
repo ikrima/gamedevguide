@@ -46,11 +46,11 @@ Some things we don't predict (most of these we potentially could, but currently 
 Problems we attempt to solve:
 
 1. "Can I do this?" Basic protocol for prediction.
-2. "Undo" How to undo side effects when a prediction fails.
-3. "Redo" How to avoid replaying side effects that we predicted locally but that also get replicated from the server.
-4. "Completeness" How to be sure we /really/ predicted all side effects.
-5. "Dependencies" How to manage dependent prediction and chains of predicted events.
-6. "Override" How to override state predictively that is otherwise replicated/owned by the server.
+1. "Undo" How to undo side effects when a prediction fails.
+1. "Redo" How to avoid replaying side effects that we predicted locally but that also get replicated from the server.
+1. "Completeness" How to be sure we /really/ predicted all side effects.
+1. "Dependencies" How to manage dependent prediction and chains of predicted events.
+1. "Override" How to override state predictively that is otherwise replicated/owned by the server.
 
 * * *
 
@@ -189,12 +189,12 @@ FScopedPredictionWindows provides a way to send the server a new prediction key 
 UAbilityTask_WaitInputRelease::OnReleaseCallback is a good example. The flow of events is as followed:
 
 1. Client enters UAbilityTask_WaitInputRelease::OnReleaseCallback and starts a new FScopedPredictionWindow. This creates a new prediction key for this scope (FScopedPredictionWindow::ScopedPredictionKey).
-2. Client calls AbilitySystemComponent->ServerInputRelease which passes ScopedPrediction.ScopedPredictionKey as a parameter.
-3. Server runs ServerInputRelease_Implementation which takes the passed in PredictionKey and sets it as UAbilitySystemComponent::ScopedPredictionKey with an FScopedPredictionWindow.
-4. Server runs UAbilityTask_WaitInputRelease::OnReleaseCallback /within the same scope/
-5. When the server hits the FScopedPredictionWindow in ::OnReleaseCallback, it gets the prediction key from UAbilitySystemComponent::ScopedPredictionKey. That is now used for all side effects within this logical scope.
-6. Once the server ends this scoped prediction window, the prediction key used is finished and set to ReplicatedPredictionKey.
-7. All side effects created in this scope now share a key between client and server.
+1. Client calls AbilitySystemComponent->ServerInputRelease which passes ScopedPrediction.ScopedPredictionKey as a parameter.
+1. Server runs ServerInputRelease_Implementation which takes the passed in PredictionKey and sets it as UAbilitySystemComponent::ScopedPredictionKey with an FScopedPredictionWindow.
+1. Server runs UAbilityTask_WaitInputRelease::OnReleaseCallback /within the same scope/
+1. When the server hits the FScopedPredictionWindow in ::OnReleaseCallback, it gets the prediction key from UAbilitySystemComponent::ScopedPredictionKey. That is now used for all side effects within this logical scope.
+1. Once the server ends this scoped prediction window, the prediction key used is finished and set to ReplicatedPredictionKey.
+1. All side effects created in this scope now share a key between client and server.
 
 The key to this working is that ::OnReleaseCallback calls ::ServerInputRelease which calls ::OnReleaseCallback on the server. There is no room for anything else to happen and use the given prediction key.
 
@@ -262,4 +262,4 @@ The main things FPredictionKey itself provides are:
 
 - Unique ID and a system for having dependant chains of Prediction Keys ("Current" and "Base" integers)
 - A special implementation of ::NetSerialize *** which only serializes the prediction key to the predicting client ***
-  -This is important as it allows us to serialize prediction keys in replicated state, knowing that only clients that gave the server the prediction key will actually see them!
+  - This is important as it allows us to serialize prediction keys in replicated state, knowing that only clients that gave the server the prediction key will actually see them!

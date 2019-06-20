@@ -400,8 +400,9 @@ FMeshDrawCommand:
 - VALIDATE_UNIFORM_BUFFER_LAYOUT_LIFETIME
   - Whether to assert in cases where the layout is released before uniform buffers created with that layout
 - VALIDATE_UNIFORM_BUFFER_LIFETIME 0
-      \- Whether to assert when a uniform buffer is being deleted while still referenced by a mesh draw command
-      \- Enabling this requires -norhithread to work correctly since FRHIResource lifetime is managed by both the RT and RHIThread
+
+  - Whether to assert when a uniform buffer is being deleted while still referenced by a mesh draw command
+  - Enabling this requires -norhithread to work correctly since FRHIResource lifetime is managed by both the RT and RHIThread
 
   | Command                                          | Desc                                                                                                                                       |
   | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -419,3 +420,5 @@ FMeshDrawCommand:
   | r.MeshDrawCommands.UseCachedCommands             | Whether to render from cached mesh draw commands (on vertex factories that support it), or to generate draw commands every frame.          |
   | r.RDG.ImmediateMode                              | Toggle get render graph executing passes as they get created to easily debug crashes caused by pass wiring logic.                          |
   | r.RDG.EmitWarnings                               | Toggle render graph emitting warnings about inefficiencies.                                                                                |
+  | r.GPUScene.ValidatePrimitiveBuffer               | Readback the GPU primitive data and assert if it doesn't match the RT primitive data.                                                      |
+  | r.GPUScene.UploadEveryFrame                      | Upload the entire scene's primitive data every frame                                                                                       |

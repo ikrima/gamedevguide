@@ -2,6 +2,9 @@
 sortIndex: 2
 ---
 
+All In One Sample on a Plugin that builds its own Third Party Lib:
+<https://github.com/ue4plugins/MotionCueingInterface>
+
 Dynamic DLL
 <https://wiki.unrealengine.com/Linking_Dlls>
 

@@ -8,11 +8,11 @@ Perf Tool
 
   - Command line is:
 
-```cpp
+    ```cpp
     {full_path_to_ue4editor.exe}
     {fullpathto_BBR.uproject {current_map}?Listen -game -Multiprocess -messaging
-    \-SessionName="PerfTesting Mode" -MultiprocessSaveConfig -MultiprocessOSS WinX=5 WinY=495 SAVEWINPOS=1 -NoVerifyGC -NoAILogging
-```
+    -SessionName="PerfTesting Mode" -MultiprocessSaveConfig -MultiprocessOSS WinX=5 WinY=495 SAVEWINPOS=1 -NoVerifyGC -NoAILogging
+    ```
 
 - Make sure to on launch:
 
@@ -33,17 +33,14 @@ Perf Tool
 
 - Try to minimize the editor window.
 
-```cpp
-  - TSharedPtr<SWindow> RootWindow = FGlobalTabmanager::Get()->GetRootWindow();
+  ```cpp
+  TSharedPtr<SWindow> RootWindow = FGlobalTabmanager::Get()->GetRootWindow();
 
   if (RootWindow.IsValid() && bShouldMinimizeRootWindow)
-
   {
-
-  RootWindow->Minimize();
-
+    RootWindow->Minimize();
   }
-```
+  ```
 
 - For the launched instance(Likely need a command line arg to set a "profiling mode" or parse the -SessionName on-map-load and verify this state):
 
@@ -56,51 +53,51 @@ Perf Tool
 
 - Normal Mode options:
 
-  \-ResX=2160 -ResY=1200 -nohmd -windowed -ExecCmds="r.screenpercentage 140,r.pd=1"
+  - ResX=2160 -ResY=1200 -nohmd -windowed -ExecCmds="r.screenpercentage 140,r.pd=1"
 
 
 - VR Emulation variant options:
 
-  \-ResX=2160 -ResY=1200 -nohmd -windowed -emulatestereo -ExecCmds="r.screenpercentage 140,r.pd=1"
+  - ResX=2160 -ResY=1200 -nohmd -windowed -emulatestereo -ExecCmds="r.screenpercentage 140,r.pd=1"
 
 
 - VR Mode:
 
-  \-vr
+  - vr
 
 - Optional useful Params:
 
-  \-Deterministic (shortcut for -fixedtimestep/-fixedseed)
+  - Deterministic (shortcut for -fixedtimestep/-fixedseed)
 
-  \-fixedtimestep
+  - fixedtimestep
 
-  \-FixedSeed
+  - FixedSeed
 
-  \-usefixedtimestep
+  - usefixedtimestep
 
-  \-debug (To Launch In DebugGame)
+  - debug (To Launch In DebugGame)
 
-  \-log or -log LOG=logfile.txt
+  - log or -log LOG=logfile.txt
 
-  \-FORCELOGFLUSH
+  - FORCELOGFLUSH
 
-  \-nologging
+  - nologging
 
-  \-NoTextureStreaming
+  - NoTextureStreaming
 
-  \-nosound
+  - nosound
 
 D3D Debugging
 
-\-D3DDEBUG
+- D3DDEBUG
 
-\-d3dbreakonwarning
+- d3dbreakonwarning
 
-\-ONETHREAD
+- ONETHREAD
 
-\-VSPerf
+- VSPerf
 
-\-VTune
+- VTune
 
 For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform](fixme_self_referential_link)
 
@@ -225,13 +222,13 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 - Command to Toggle Determinism (e.g. Fixed Random Seed, Set Fixed Timestep, etc). Look at what these commandline options are and see if it's possible to set them at runtime
 
-\-Deterministic (shortcut for -fixedtimestep/-fixedseed)
+- Deterministic (shortcut for -fixedtimestep/-fixedseed)
 
-\-fixedtimestep
+- fixedtimestep
 
-\-FixedSeed
+- FixedSeed
 
-\-usefixedtimestep
+- usefixedtimestep
 
 - Custom Stats Visualizer Widget: Should display window with visualizer for render budget
 
@@ -250,146 +247,99 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 ToggleDrawEvents: Emits helpful draw event markers for use with GPU Capture/PIX
 
+```ini
 r.ShowMaterialDrawEvents: Shows material around each drawcall in profilegpu
-
 r.EmitMeshDrawEvents
-
 r.RHISetGPUCaptureOptions
-
 r.ProfileGPUSort 2, ProfileGPU
-
 r.ProfileGPU.Pattern
-
 r.ProfileGPU.ShowLeafEvents
-
 r.ProfileGPU.ShowTransitions
-
 r.ProfileGPU.PrintAssetSummary
-
 r.ProfileGPU.AssetSummaryCallOuts
-
 r.ProfileGPU.Sort
-
 r.RHICmdUseThread=0
-
 r.RHICmdBypass=1
-
 r.RHICmdUseParallelAlgorithms=1
-
 ToggleRHIThread
-
 r.ParallelTranslucency
+```
 
 ## Commands for debug logging
 
+```ini
 r.D3DDumpAMDCodeXLFile
 
 r.D3DDumpD3DAsm
+```
 
-## General:
+## General
 
+```ini
 ; Uncomment to get detailed logs on shader compiles and the opportunity to retry on errors
-
 r.ShaderDevelopmentMode=1
-
 r.CompileShadersForDevelopment=1
-
 r.MaterialEditor.UseDevShaders=1
 
 [DevOptions.Shaders]
-
 ; See FShaderCompilingManager for documentation on what these do
-
 bAllowCompilingThroughWorkers=True
-
 bAllowAsynchronousShaderCompiling=True
-
 ; Make sure we don't starve loading threads
-
 NumUnusedShaderCompilingThreads=3
-
 ; Make sure the game has enough cores available to maintain reasonable performance
-
 NumUnusedShaderCompilingThreadsDuringGame=4
-
 ; Batching multiple jobs to reduce file overhead, but not so many that latency of blocking compiles is hurt
-
 MaxShaderJobBatchSize=10
-
 bPromptToRetryFailedShaderCompiles=True
-
 bLogJobCompletionTimes=False
-
 ; Only using 10ms of game thread time per frame to process async shader maps
-
 ProcessGameThreadTargetTime=.01
-
 ;For XboxOne PIX support
-
-ShaderPDBRoot=D:\\DirectoryOfChoice
+ShaderPDBRoot=D:\DirectoryOfChoice
+```
 
 ## Sanity Checking Commands
 
+```ini
 r.ShowShaderCompilerWarnings=1
-
 r.D3DCheckShadersForDouble=1
+```
 
 ## Debug Logging
 
+```ini
 ; Uncomment to dump shaders in the Saved folder
-
 ; Warning: leaving this on for a while will fill your hard drive with many small files and folders
-
 r.DumpShaderDebugInfo=1
-
 ; When this is enabled, dumped shader paths will get collapsed (in the cases where paths are longer than the OS's max)
-
 r.DumpShaderDebugShortNames=1
-
 ; When this is enabled, when dumping shaders an additional file to use with ShaderCompilerWorker -direct mode will be generated
-
 r.DumpShaderDebugWorkerCommandLine=1
+```
 
 ## Add these when running with a graphical debugger like NSight (but not when profiling)
 
+```ini
 r.Shaders.Optimize=0
-
 r.Shaders.KeepDebugInfo=1
-
 r.ShowShaderCompilerWarnings=1
-
 r.XGEShaderCompile=0
-
 r.D3D.RemoveUnusedInterpolators=0
-
 r.GraphicsAdapter=0
-
 r.D3D12GraphicsAdapter=0
-
 ToggleDrawEvents: Emits helpful draw event markers for use with GPU Capture/PIX
-
 r.ShowMaterialDrawEvents: Shows material around each drawcall in profilegpu
-
 r.EmitMeshDrawEvents=1
-
 r.RHISetGPUCaptureOptions=1
-
 r.RHICmdUseThread=0
-
 r.RHICmdBypass=1
-
 bb.IsGPUProfiling=1
-
-- Prevents render heartbeat thread from reporting a deadlock if we're in a debugger and paused
-
-bb.perf.SetShaderCompileMode 0
-
-- This is equivalent to at runtime doing:
-
-[DevOptions.Shaders]
-
-; See FShaderCompilingManager for documentation on what these do
-
-bAllowCompilingThroughWorkers=False
-
-bAllowAsynchronousShaderCompiling=False
+  - Prevents render heartbeat thread from reporting a deadlock if we're in a debugger and paused
+bb.perf.SetShaderCompileMode=0
+  - This is equivalent to at runtime doing:
+    [DevOptions.Shaders]
+    ; See FShaderCompilingManager for documentation on what these do
+    bAllowCompilingThroughWorkers=False
+    bAllowAsynchronousShaderCompiling=False
+```

@@ -230,7 +230,7 @@ Optimization Reminders
 - Gaussian Mixture Models
 - Dynamic Diffuse Global Illumination with Ray-Traced Irradiance Fields
   - Might have some utility in sampling scheme/filtering with moment based approach
-  - https://devblogs.nvidia.com/dynamic-diffuse-global-illumination-part-i/
+  - <https://devblogs.nvidia.com/dynamic-diffuse-global-illumination-part-i/>
 
 ### **Misc reminders:**
 

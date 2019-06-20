@@ -2,7 +2,14 @@
 sortIndex: 4
 ---
 
-**How Unreal Renders A Frame (circa 4.17): Great General high level overview breakdowns**
+# Threading Model
+
+[Scalability for All: Unreal Engine 4 with Intel](https://www.slideshare.net/IntelSoftware/scalability-for-all-unreal-engine-4-with-intel) gives a good overview on the UE4 render arch
+
+- **Render Thread vs. RHIThread vs. RenderTaskgraph threads**
+-
+
+# How Unreal Renders A Frame (~4.17): Great General high level overview breakdowns
 
 <https://interplayoflight.wordpress.com/2017/10/25/how-unreal-renders-a-frame>
 
