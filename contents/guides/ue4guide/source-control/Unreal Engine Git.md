@@ -70,15 +70,23 @@ git merge upstream/4.1
 
 1. Now you can push Bebylon up to github
 
+   1. Optional Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
+
+      <http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch>
+
+1. Rerun Setup.bat to get the latest binary dependencies and reconcile
+
 1. Reconcile for perforce:
 
    ```batch
    Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs
    ```
 
-1. Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
-
-   <http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch>
+1. Rationalize the worktree and remove outdated files
+   1. Preview the files that will be nuked
+      `batch>p4 status -I -mead UnrealEngine\\Engine\\...`
+   1. ***DANGEROUS & DESTRUCTIVE*** Force the worktree to match (remove old files that are in the tree but need to be removed)
+      `batch>p4 clean -I -mead UnrealEngine\\Engine\\...`
 
 # Building The Source
 

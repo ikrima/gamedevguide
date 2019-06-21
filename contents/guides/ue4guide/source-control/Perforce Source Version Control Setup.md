@@ -73,7 +73,7 @@ If you screw up you can delete a workspace. Go to Connection -> Choose Workspace
 
 # Useful commands
 
-- **Fast Reconcile with files that have been edited, added, deleted and with special characters in their name**
+- **(local workspace to depot) Fast Reconcile of local files that have been edited, added, deleted and with special characters in their name**
 
   `batch>p4 reconcile -meadf UnrealEngine\\Engine\\Binaries...`
 
@@ -89,9 +89,12 @@ If you screw up you can delete a workspace. Go to Connection -> Choose Workspace
 
   `batch>p4 ignores -v -i UnrealEngine\\Engine\\Binaries\\ThirdParty\\svn\\Mac\\lib\\apr.exp`
 
-- **Force resync only deleted files (deletes files that are only available locally and not in depot):**
+- **See which files are out of sync from worktree**
+  `batch>p4 status -I -mead UnrealEngine\\Engine\\...`
 
-  `batch>p4 -I clean -ead UnrealEngine\\Engine\\Source\\Runtime...`
+- **(depot to workspace) Force resync only deleted files (deletes files that are only available locally and not in depot):**
+
+  `batch>p4 clean -I -ead UnrealEngine\\Engine\\Source\\Runtime...`
 
   - **Note: Using -m might skip files if you copied over stuff recently**
 
@@ -101,9 +104,20 @@ If you screw up you can delete a workspace. Go to Connection -> Choose Workspace
 
   - \-e Edited files: Find files in the workspace that have been modified and restore them to the last file version that has synced from the depot.
 
+  - \-m Use fast check (file timestamps) instead of slower CRC check
+
   - (p4 clean => p4 reconcile -w)
 
   *Reference From <https://www.perforce.com/perforce/doc.current/manuals/cmdref/Content/CmdRef/p4_clean.html?Highlight=clean>*
+
+- **Revert another users files**
+
+  - Find their workspace by username
+    `batch>p4 opened -u janedoe`
+  - Revert one file in janedoe-workspace's workspace
+    `batch>p4 revert  -C janedoe-workspace //depot/www/dev/Jam.html`
+  - Revert all files in janedoe-workspace workspace
+    `batch>p4 revert  -c 1125 -C janedoe-workspace //…`
 
 ## Set editor
 
@@ -245,6 +259,22 @@ binary+l //depot/....udk
 ```
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceControl/Perforce/index.html>*
+
+## Set the typemap on existing files
+
+- The P4 command
+
+  ```batch
+  p4 retype -t  binary+w .\....dll
+  ```
+
+  *Reference From <https://community.perforce.com/s/article/3114>*
+
+- Or use our script
+
+  ```batch
+  Utility/reconcile.py p4retypemap
+  ```
 
 ## Diff
 
