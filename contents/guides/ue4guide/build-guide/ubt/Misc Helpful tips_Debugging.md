@@ -6,54 +6,48 @@ sortIndex: 7
 
 - **Set these buildconfiguration.xml settings**
 
-  - <bPrintPerformanceInfo>true</bPrintPerformanceInfo>
-
-  - <bLogDetailedActionStats>true</bLogDetailedActionStats>
-
-  - <bPrintToolChainTimingInfo>true</bPrintToolChainTimingInfo>
+  - `xml><bPrintPerformanceInfo>true</bPrintPerformanceInfo>`
+  - `xml><bLogDetailedActionStats>true</bLogDetailedActionStats>`
+  - `xml><bPrintToolChainTimingInfo>true</bPrintToolChainTimingInfo>`
 
 ## Debugging UBT/Unreal Build Tool
 
 - **Useful command line flags** (put these in one line: -verbose -log=D:\\Log.txt )
 
-      	UE4Editor Win64 Development -WaitMutex -FromMsBuild -DEPLOY
-      	-Verbose or -VeryVerbose
-      	-log=D:\\Log.txt
-      	-xgeexport
-      	-noxge
-      	-installed
+  - UE4Editor Win64 Development -WaitMutex -FromMsBuild -DEPLOY
+  - -Verbose or -VeryVerbose
+  - -log=D:\\Log.txt
+  - -xgeexport
+  - -noxge
+  - -installed
 
-- Add <bPrintDebugInfo>true<bPrintDebugInfo>
-
+- Add `xml><bPrintDebugInfo>true<bPrintDebugInfo>`
 - Also make sure to set working directory to Engine/Source for development profile project in vs
 
 ## Export documentation for build config/targetrules.cs/modulerules.cs props
 
-\-buildconfigurationdoc=D:\\buildcfgdoc.txt
+Use these cmdline switches:
+- buildconfigurationdoc=D:\\buildcfgdoc.txt
+- modulerulesdoc=D:\\modulerulesdoc.txt
+- targetrulesdoc=D:\\targetrulesdoc.txt
 
-\-modulerulesdoc=D:\\modulerulesdoc.txt -
-
-targetrulesdoc=D:\\targetrulesdoc.txt
-
-## Verbose Logging:
+## Verbose Logging
 
 - Add -verbose cmdline
+  - If using RunUAT, add -UbtArgs="-verbose" and -VeryVerbose
+- `xml><bLogDetailedActionStats>true</bLogDetailedActionStats>`
+- `xml><bPrintDebugInfo>true</bPrintDebugInfo>`
+- Log File will be at: Engine/Programs/UnrealBuildTool/Log.txt
 
-- If using RunUAT, add -UbtArgs="-verbose" and -VeryVerbose
-
-- <bLogDetailedActionStats>true</bLogDetailedActionStats>
-
-- <bPrintDebugInfo>true</bPrintDebugInfo>
-
-## Debugging outdated files:
+## Debugging outdated files
 
 If you run UBT with the -verbose option, it should print out a message showing the files that it considers out of date that trigger a build. Something like this:
 
 `VERBOSE: UE4Editor-Core-Win64-Debug.lib: Prerequisite PCH.Core.h.obj is newer than the last execution of the action: 24/08/2017 13:06:43 vs 23/08/2017 12:41:24`
 
-## Build & Environment variables:
+## Build & Environment variables
 
-Build steps can use $(EngineDir),$(ProjectDir), $(TargetName),$(TargetPlatform), $(TargetConfiguration),$(TargetType), $(ProjectFile).
+Build steps can use \$(EngineDir),\$(ProjectDir), \$(TargetName), \$(TargetPlatform), \$(TargetConfiguration), \$(TargetType), \$(ProjectFile).
 
 ## Debugging compile flags & link switches
 
@@ -73,9 +67,9 @@ The other option would be to look at the ActionGraph.IsActionOutdated() function
 
 - Header include paths no longer automatically bring every subdirectory (for perf in building)
 
-- bLegacyPublicIncludePaths = false; is the setting that controls it in .Target.cs
+- `csharp>bLegacyPublicIncludePaths = false;` is the setting that controls it in .Target.cs
 
-- All entries in Public/PrivateIncludePaths are full paths, most easily done with "using [http://System.IO ];" at the top, then Path.Combine(ModuleDirectory, "relative/path")
+- All entries in Public/PrivateIncludePaths are full paths, most easily done with "using System.IO;" at the top, then Path.Combine(ModuleDirectory, "relative/path")
 
 - Commandlet to migrate old codebase to full path header includes:
 
@@ -83,15 +77,16 @@ The other option would be to look at the ActionGraph.IsActionOutdated() function
 
   *Reference From <https://twitter.com/kantandev/status/1020017126806032384>*
 
-## How UBT Builds RulesObjects, Modules, Targets:
+## How UBT Builds RulesObjects, Modules, Targets
 
-- Useful functions/files
+Useful functions/files:
 
-- RulesCompiler.cs, CreateProjectRulesAssembly(),
+- RulesCompiler.cs:
 
+  ```csharp
+  CreateProjectRulesAssembly(),
   CreateEngineRulesAssembly(), FindAllRulesFiles(),
   CreateTarget(), CreateTargetRules(), CreateTargetRulesAssembly()
+  ```
 
 - RulesAssembly.cs
-
-<http://system.io> ]: <https://t.co/RMAGwHWMg1>

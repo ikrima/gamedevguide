@@ -53,12 +53,12 @@ Perf Tool
 
 - Normal Mode options:
 
-  - ResX=2160 -ResY=1200 -nohmd -windowed -ExecCmds="r.screenpercentage 140,r.pd=1"
+  - -ResX=2160 -ResY=1200 -nohmd -windowed -ExecCmds="r.screenpercentage 140,r.pd=1"
 
 
 - VR Emulation variant options:
 
-  - ResX=2160 -ResY=1200 -nohmd -windowed -emulatestereo -ExecCmds="r.screenpercentage 140,r.pd=1"
+  - -ResX=2160 -ResY=1200 -nohmd -windowed -emulatestereo -ExecCmds="r.screenpercentage 140,r.pd=1"
 
 
 - VR Mode:

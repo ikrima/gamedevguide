@@ -100,7 +100,7 @@ The following is a list of engine supported console commands...
 
 - **CONFIGMEM** – Displays memory usage
 
-- **COUNTDISBALEDPARTICLEITEMS** – Outputs the number of disabled particle systems, lod levels, and modules.
+- **COUNTDISABLEDPARTICLEITEMS** – Outputs the number of disabled particle systems, lod levels, and modules.
 
 - **CUSTOMLODDATA \[LOD=lod]** – Set a custom level of detail to use for static meshes.
 
