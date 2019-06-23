@@ -53,6 +53,27 @@
       "childTOCs": []
     },
     {
+      "slugPart": "performance-profiling",
+      "sortIndex": 10,
+      "childTOCs": [
+        {
+          "slugPart": "gpu-perf-optimization",
+          "sortIndex": 1,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "tolva",
+          "sortIndex": 2,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "stats-perf-counters",
+          "sortIndex": 3,
+          "childTOCs": []
+        }
+      ]
+    },
+    {
       "slugPart": "wip",
       "prettyTitle": "WORK IN PROGRESS",
       "childTOCs": [
@@ -139,22 +160,6 @@
           "childTOCs": []
         },
         {
-          "slugPart": "performance-profiling",
-          "sortIndex": 10,
-          "childTOCs": [
-            {
-              "slugPart": "gpu-perf-optimization",
-              "sortIndex": 10,
-              "childTOCs": []
-            }
-          ]
-        },
-        {
-          "slugPart": "tolva",
-          "sortIndex": 11,
-          "childTOCs": []
-        },
-        {
           "slugPart": "engine-programming",
           "sortIndex": 12,
           "childTOCs": [
@@ -174,11 +179,6 @@
               "childTOCs": []
             }
           ]
-        },
-        {
-          "slugPart": "stats-perf-counters",
-          "sortIndex": 13,
-          "childTOCs": []
         },
         {
           "slugPart": "application-os-generic-platform",
