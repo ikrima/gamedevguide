@@ -54,29 +54,18 @@ Actor Select Relevant Lights
 
 - [UDK Console Commands](fixme_self_referential_link)
 
-<https://docs.unrealengine.com/udk/Three/GameplayDebugging.html>
-
-<https://docs.unrealengine.com/udk/Three/StatsDescriptions.html>
-
-<https://docs.unrealengine.com/udk/Three/RemoteControl.html>
-
-<https://docs.unrealengine.com/udk/Three/GameplayProgrammingHome.html>
-
-<https://docs.unrealengine.com/udk/Three/PerformanceHome.html>
-
-<https://docs.unrealengine.com/udk/Three/GameplayPerformanceOptimization.html>
-
-<https://docs.unrealengine.com/udk/Three/PerfStats.html>
-
-<https://docs.unrealengine.com/udk/Three/GameplayProfiler.html>
-
-<https://docs.unrealengine.com/udk/Three/RenderingHome.html>
-
-<https://docs.unrealengine.com/udk/Three/WebHome.html>
-
-<https://docs.unrealengine.com/udk/Three/PerformanceDebugging.html>
-
-<http://www.hourences.com/tutorials-ue3-performance-profiling-introduction>
+  <https://docs.unrealengine.com/udk/Three/GameplayDebugging.html> \
+  <https://docs.unrealengine.com/udk/Three/StatsDescriptions.html> \
+  <https://docs.unrealengine.com/udk/Three/RemoteControl.html> \
+  <https://docs.unrealengine.com/udk/Three/GameplayProgrammingHome.html> \
+  <https://docs.unrealengine.com/udk/Three/PerformanceHome.html> \
+  <https://docs.unrealengine.com/udk/Three/GameplayPerformanceOptimization.html> \
+  <https://docs.unrealengine.com/udk/Three/PerfStats.html> \
+  <https://docs.unrealengine.com/udk/Three/GameplayProfiler.html> \
+  <https://docs.unrealengine.com/udk/Three/RenderingHome.html> \
+  <https://docs.unrealengine.com/udk/Three/WebHome.html> \
+  <https://docs.unrealengine.com/udk/Three/PerformanceDebugging.html> \
+  <http://www.hourences.com/tutorials-ue3-performance-profiling-introduction>
 
 Go to bool StaticExec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevice& Ar ) in Obj.cpp and extract out useful commands and arguments (eg listprops, getall, singleref, refs, etc)
 
