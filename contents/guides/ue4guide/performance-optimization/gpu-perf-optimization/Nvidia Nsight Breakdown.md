@@ -2,15 +2,17 @@
 sortIndex: 2
 ---
 
+# Overview
+
 gr\_\_busy_pct signal on the graph. High percentage => GPU bound
 
-![](.........\assets\nvidia_breakdown_speedoflight.png)
+![](../../assets/nvidia_breakdown_speedoflight.png)
 
-![](.........\assets\nvidia_breakdown_computemetrics.png)
+![](../../assets/nvidia_breakdown_computemetrics.png)
 
-![](.........\assets\nvidia_breakdown_graphicsmetrics.png)
+![](../../assets/nvidia_breakdown_graphicsmetrics.png)
 
-Range Profiler
+# Range Profiler
 
 - **Finding most expensive drawcall:** Capture frame and click action details in range info section. Sort table by draw call times
 

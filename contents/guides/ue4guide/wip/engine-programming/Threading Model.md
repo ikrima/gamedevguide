@@ -2,7 +2,37 @@
 sortIndex: 2
 ---
 
-![ThreadingModel_GameGPU](.........\assets\ThreadingModel_GameGPU.png)
+# Thread Pools
+
+- STAT_FrameSyncTime => GT waiting on RT
+
+- TaskGraph:
+  - TaskGraphThreadBP
+    - TPri_Lowest
+  - TaskGraphThreadNP
+    - TPri_BelowNormal: 8 (FPlatformMisc::NumberOfCores())
+  - TaskGraphThreadHP
+    - TPri_SlightlyBelowNormal
+
+- StatsThread:
+
+- FQueuedThreadPool:
+  - GThreadPool:
+    - TPri_SlightlyBelowNormal: 14
+  - GBackgroundPriorityThreadPool:
+    - TPri_Lowest: 2
+  - GLargeThreadPool: (Editor Only for building lighting etc)
+    - TPri_Normal: 14
+  - GIOThreadPool: FPlatformMisc::NumberOfIOWorkerThreadsToSpawn()
+
+- GImgMediaThreadPoolSlow
+  - FQueuedThreadPool::Allocate();
+
+# Details
+
+# Game Thread
+
+![ThreadingModel_GameGPU](../assets/ThreadingModel_GameGPU.png)
 
 *Reference From <https://software.intel.com/en-us/articles/intel-software-engineers-assist-with-unreal-engine-419-optimizations>*
 
@@ -14,10 +44,9 @@ sortIndex: 2
 
 - Whatever is displayed thus runs two frames behind.
 
-
 - Tick Groups: control order of ticking of objects but is not parallel
 
-**Render Thread:**
+## Render Thread
 
 Render thread handles generating render commands to send to the GPU.
 
@@ -37,7 +66,7 @@ Those get serialized back and used to generate draw calls.
 
 Engine doesn’t join worker threads at the call site, but instead joins at sync points (end of phases), or at the point where they are used if fast enough.
 
-### Audio Thread
+## Audio Thread
 
 The main audio thread is analogous to the render thread, and acts as the interface for the lower-level mixing functions by performing the following tasks:
 

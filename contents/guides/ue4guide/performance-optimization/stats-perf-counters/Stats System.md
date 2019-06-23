@@ -12,6 +12,12 @@ Enable Stats from Command Line:
 
 Description of stats: <https://docs.unrealengine.com/udk/Three/StatsDescriptions.html>
 
+# Stats System Diagram
+
+![](../../assets/statsperfcounters-tracingstats.png)
+
+- FEventPayload
+
 # Common Functions & Stats
 
 Common options: [-ms=5.0] [-root=None] [leaf=None] [-depth=maxint] [-nodisplay]

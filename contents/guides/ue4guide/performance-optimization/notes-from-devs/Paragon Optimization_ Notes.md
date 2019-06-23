@@ -1,5 +1,5 @@
 ---
-sortIndex: 14
+sortIndex: 2
 ---
 
 [Building Paragon in UE4  GDC 2016 Event Coverage Unreal Engine](https://www.youtube.com/watch?v=BXcw2IrIinc)
