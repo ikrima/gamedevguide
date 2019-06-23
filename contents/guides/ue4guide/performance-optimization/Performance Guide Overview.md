@@ -1,61 +1,53 @@
 ---
 sortIndex: 1
+title: Performance Profiling & Optimization Guide
 ---
 
 # Overview
 
-The UE4 Documentation has been updated to be more useful (circa 4.22): https://docs.unrealengine.com/en-US/Engine/Performance/index.html
+The UE4 Documentation has been updated to be more useful (circa 4.22) \
+<https://docs.unrealengine.com/en-US/Engine/Performance/index.html>
 
 # Important settings
 
 Make sure to perf profile under the right conditions:
 
 - Never "Debug". "Development" is convenient, but "Test" is closer to shipping
-
 - Never in Editor (Slate UI renders each frame & some thumbnails update more irregularly)
+- Make sure lighting is built; unbuilt lighting uses a slower path \
+  <https://answers.unrealengine.com/questions/17151/what-are-the-in-engine-tools-for-cpu-and-gpu-profi.html?sort=newest>
 
-- Make sure lighting is built; unbuilt lighting uses a slower path
+# Controlling Quality Settings
 
-<https://answers.unrealengine.com/questions/17151/what-are-the-in-engine-tools-for-cpu-and-gpu-profi.html?sort=newest>
+```ini
+r.ScreenPercentage 25
+r.ViewDistanceScale 0.4
+r.PostProcessAAQuality 0
+r.PostProcessingQuality 0
+r.ShadowQuality 0
+r.TextureQuality 0
+r.EffectsQuality 0
+sg.ResolutionQuality 25
+sg.ViewDistanceQuality 0
+sg.AntiAliasingQuality 0
+sg.PostProcessQuality 0
+sg.ShadowQuality 0
+sg.TextureQuality 0
+sg.EffectsQuality 0
+```
 
-## Controlling Quality Settings:
-
-1. **r.ScreenPercentage 25**
-1. **r.ViewDistanceScale 0.4**
-1. **r.PostProcessAAQuality 0**
-1. r.PostProcessingQuality 0
-1. r.ShadowQuality 0
-1. r.TextureQuality 0
-1. r.EffectsQuality 0
-
-
-1. **sg.ResolutionQuality 25**
-
-1. **sg.ViewDistanceQuality 0**
-
-1. **sg.AntiAliasingQuality 0**
-
-1. **sg.PostProcessQuality 0**
-
-1. **sg.ShadowQuality 0**
-
-1. **sg.TextureQuality 0**
-
-1. **sg.EffectsQuality 0**
-
-hmd vsync on/off/reset: Self-explanatory
+Toggle HMD Settings: `hmd vsync on/off/reset`
 
 *Reference From <https://answers.unrealengine.com/questions/23023/trouble-configuring-game-settings.html>*
 
 Texture Quality Settings
 
-```cpp
-[SystemSettings]/[SystemSettingsEditor]
+```ini
+[SystemSettingsEditor] ; For controlling system settings in the editor
+[SystemSettings]
 ; NOTE THAT ANY ITEMS IN THIS SECTION WILL AFFECT ALL PLATFORMS!!!
 
 TEXTUREGROUP_World=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)
-
-
 
 TEXTUREGROUP_WorldNormalMap=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)
 TEXTUREGROUP_WorldSpecular=(MinLODSize=1,MaxLODSize=4096,LODBias=0,MinMagFilter=aniso,MipFilter=point)
@@ -85,8 +77,8 @@ TEXTUREGROUP_Bokeh=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=linear,Mi
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Engine/Content/Types/Textures/SupportAndSettings/index.html>*
 
-![PerformanceProfiling_CPUProfiling](.........\assets\PerformanceProfiling_CPUProfiling.png)
+![PerformanceProfiling_CPUProfiling](..\assets\PerformanceProfiling_CPUProfiling.png)
 
-![PerformanceProfiling_RenderThread](.........\assets\PerformanceProfiling_RenderThread.png)
+![PerformanceProfiling_RenderThread](..\assets\PerformanceProfiling_RenderThread.png)
 
-![PerformanceProfiling_GPUVisualizer](.........\assets\PerformanceProfiling_GPUVisualizer.png)
+![PerformanceProfiling_GPUVisualizer](..\assets\PerformanceProfiling_GPUVisualizer.png)

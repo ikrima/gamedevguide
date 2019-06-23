@@ -1,3 +1,7 @@
+---
+sortIndex: 8
+---
+
 **Very useful article:** <http://www.gamasutra.com/blogs/LeszekGodlewski/20160721/272886/The_Vanishing_of_Milliseconds_Optimizing_the_UE4_renderer_for_Ethan_Carter_VR.php>
 
 **Useful Commands:**

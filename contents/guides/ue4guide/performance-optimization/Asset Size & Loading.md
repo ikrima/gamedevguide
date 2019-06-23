@@ -1,10 +1,11 @@
 ---
-sortIndex: 2
+sortIndex: 6
+title: Asset Size Reduction and Loading Time Optimization
 ---
 
-UnrealFest Europe 2018: Introduction to UE4 Asset Reduction Tools and Optimization Tips for Load Times and GC
+# UnrealFest Europe 2018: Introduction to UE4 Asset Reduction Tools and Optimization Tips for Load Times and GC
 
-**Find objects that take a lot of time to do vertex calculations using Graphics Debugger**
+## Find objects that take a lot of time to do vertex calculations using Graphics Debugger
 
 Example:
 
@@ -29,7 +30,7 @@ Example:
 
 These commands affects all objects and can’t target individual objects specifically, but can use them to do a quick check of the whole scene
 
-**Using “CompressAnimations” Commandlet, You can compress all animation sequences in your project.**
+## **Using “CompressAnimations” Commandlet, You can compress all animation sequences in your project.**
 
 - Example)
 
@@ -127,7 +128,7 @@ Init Actors : 0.00 ms
 
 Initialize : 0.08 m
 
-- ### **Optimization**
+### **Optimization**
 
 - Pak file should be used for load-time.
 
@@ -362,3 +363,7 @@ Actor Clustering
 - So UObjects for each Blueprint should be an effective optimization
 
 - “Blueprint clustering has been enabled for Fortnite, which has significantly reduced garbage collection mark times (measured from ~66ms to ~22ms on PS4). Also made significant performance improvements to cluster verification code used in development builds, and started work on a technique that moves clustered objects into the disregard-to-GC pool for a faster early out during the scan.”
+
+# File Profiler
+
+<https://coconutlizard.co.uk/new/programming/improving-file-profiler>

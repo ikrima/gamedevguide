@@ -1,3 +1,7 @@
+---
+sortIndex: 10
+---
+
 **VIEWMODE \[Mode]**
 
 ​ Sets the rendering mode of the game viewport to the specified mode. The available modes are:
