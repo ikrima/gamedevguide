@@ -88,6 +88,11 @@ git merge upstream/4.1
    1. ***DANGEROUS & DESTRUCTIVE*** Force the worktree to match (remove old files that are in the tree but need to be removed)
       `batch>p4 clean -I -mead UnrealEngine\\Engine\\...`
 
+1. Run FullBuildClean on Jenkins to verify that the new build works as expected
+   - This will sync the perforce tree
+   - Nuke all files locally that are not in the perforce tree
+   - Fully rebuild everything (engine, editor, cook, etc); this will take ~4-6 hours
+
 # Building The Source
 
 1. **Download the source** and unzip it to a folder, or [**create a fork**] and **clone the repository**. If you clone, don't forget to switch to the correct branch for this release! (The 'master' branch has unstable code, so you will want to make sure to choose a release branch.)
