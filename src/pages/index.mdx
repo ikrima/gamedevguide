@@ -41,18 +41,27 @@ Github Repo For Guide
 
 ## Webdev bs Pt 3
 
+- [ ] Algolia Search integration
+  - [ ] Still need the fast elasticlunar search component to be available. For now, can you add a config var in SiteCfg.js to toggle whether the site is built with the algolia component vs elastic lunr
+- [ ] #Perf: Sidebar search is slow.
+    - This is probably bc of the hierarchy construction of the sidebar and related to the other perf issues. This can happen just once during the build process and cache it into a generated json as an easy solution.
 - [ ] Webpage's title tag != the current page title
     - [ ] What other SEO/sitemap/etc things need to be done?
 - [ ] Sidebar doesn't respond to touch controls on mobile/ipad
-- [ ] #Perf: The site responsiveness in clicking around is sluggish compared to how fast it should be
+- [ ] Integrate Jeri image viewer for use in mdx: https://jeri.io/
+- [ ] #Perf: The site responsiveness in clicking around is sluggish compared to how fast it should be (ignoring initial load)
     - [ ] This is the level of site responsiveness to reach: Live Site: https://gatsby-docs-starter.netlify.com/lesson-one & Source: https://github.com/ericwindmill/gatsby-starter-docs
         - Ofcourse look at the code or perf profile, but some thoughts on what it could be:
             - Might be reloading the entire page
             - Some expensive initialization might be reperformed on every page click vs being persistent
             - Some advanced gatsby configuration settings might be set wrong. For example, the gatsby starter used for our site was the basic gatsby starter while the Gatsby Docs Starter used the Gatsby Advanced Starter. In the [Readme](https://github.com/ericwindmill/gatsby-starter-docs), it references "fast loading times thanks to pre-rendered HTML & automatic chunk loading of JS files"
             - Defintely seems evident that it's reloading the entire page or sidebar as you click around. If you sync to #4f5ce285417af3ae9be19521d5aacc36a5e2d271 with the bug of autoexpanding sidebar, you can notice it
-- [ ] #Perf: Sidebar search is slow
-- [ ] Algolia Search integration
+
+
+## Webdev bs Pt 4
+
+- [ ] CSS help: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ http://grid.malven.co/ https://visme.co/blog/layout-design/
+- [ ] Further prettification: Look at css styling from https://casual-effects.com/markdeep/#examples
 - [ ] Add autodemarcation of notes still to be fully transitioned
 - [ ] Paginate search results
 - [ ] #Perf: Use Emotion - https://jenniferwadella.com/blog/all-the-dumb-mistakes-i-made-building-my-first-gatsby-site
@@ -62,8 +71,6 @@ Github Repo For Guide
     - https://medium.com/@kyle.robert.gill/a-simple-guide-to-gatsbyjs-themes-a4f9765c5ac7
     - https://www.christopherbiscardi.com/post/running-a-gatsby-starter-as-a-theme
     - https://github.com/jannikbuschke/gatsby-antd-docs
-- [ ] CSS help: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ http://grid.malven.co/ https://visme.co/blog/layout-design/
-- [ ] Further prettification: Look at css styling from https://casual-effects.com/markdeep/#examples
 
 ----------------
 

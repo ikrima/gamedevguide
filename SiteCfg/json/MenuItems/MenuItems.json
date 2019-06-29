@@ -20,6 +20,10 @@
     "link": "/houdini"
   },
   {
+    "name": "General Dev",
+    "link": "/generaldev"
+  },
+  {
     "name": "Blog",
     "link": "/blog"
   }

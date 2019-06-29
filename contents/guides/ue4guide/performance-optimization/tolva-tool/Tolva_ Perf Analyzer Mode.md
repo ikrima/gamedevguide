@@ -111,18 +111,18 @@ sortIndex: 2
 
    - Toggle Lighting Components
      - Direct Lighting
-        - `show DirectLighting`
-        - `r.SimpleDynamicLighting`
+       - `show DirectLighting`
+       - `r.SimpleDynamicLighting`
      - Ambient Occlusion
-        - `show AmbientOcclusion`
-        - `show Diffuse`
-        - `show Specular`
+       - `show AmbientOcclusion`
+       - `show Diffuse`
+       - `show Specular`
      - Global Illumination
-        - `show GlobalIllumination`
-        - `show SubsurfaceScattering`
+       - `show GlobalIllumination`
+       - `show SubsurfaceScattering`
      - Indirect Lighting Cache
-        - `r.IndirectLightingCache`
-        - `show IndirectLightingCache` ***(verify)***
+       - `r.IndirectLightingCache`
+       - `show IndirectLightingCache` ***(verify)***
      - Reflection Environment
        - `show ReflectionEnvironment`
 
@@ -134,17 +134,22 @@ sortIndex: 2
 
    - Toggle Particles
      (find all commands to turn them off completely)
+
    - Toggle Particle Simulation
      - `r.GPUParticle.Simulate`
      - `r.GPUParticle.FixDeltaSeconds`
      - `FX.FreezeGPUSimulation`
      - `FX.FreezeParticleSimulation`
      - `FX.RestartAll`
+
    - Toggle Particle Rendering
      - `show Particles`
+
    - Turn Off CPU Particles
+
    - Turn Off GPU Particles
      - `FX.AllowGPUParticles`
+
    - Misc Particle Commands
      - `PARTICLE`
      - `KILLPARTICLES`
@@ -166,29 +171,29 @@ sortIndex: 2
 
 1. Disable rendering features in order of priority by `r.LimitRenderingFeatures=FeatureLevel`. Feature Levels:
    1. AntiAliasing
-   2. EyeAdaptation
-   3. SeparateTranslucency
-   4. DepthOfField
-   5. AmbientOcclusion
-   6. CameraImperfections
-   7. Decals
-   8. LensFlares
-   9. Bloom
-   10. ColorGrading
-   11. Tonemapper
-   12. Refraction
-   13. ReflectionEnvironment
-   14. AmbientCubemap
-   15. MotionBlur
-   16. DirectLighting
-   17. Lighting
-   18. Translucency
-   19. TextRender
-   20. Particles
-   21. SkeletalMeshes
-   22. StaticMeshes
-   23. BSP
-   24. Paper2DSprites
+   1. EyeAdaptation
+   1. SeparateTranslucency
+   1. DepthOfField
+   1. AmbientOcclusion
+   1. CameraImperfections
+   1. Decals
+   1. LensFlares
+   1. Bloom
+   1. ColorGrading
+   1. Tonemapper
+   1. Refraction
+   1. ReflectionEnvironment
+   1. AmbientCubemap
+   1. MotionBlur
+   1. DirectLighting
+   1. Lighting
+   1. Translucency
+   1. TextRender
+   1. Particles
+   1. SkeletalMeshes
+   1. StaticMeshes
+   1. BSP
+   1. Paper2DSprites
 
 ## Profiling Draw Thread Performance
 
@@ -216,14 +221,16 @@ sortIndex: 2
 1. Occlusion/Visibility Culling:
 
    a. Use:
-      - stat initviews - Displays information on how long visibility culling took and how effective it was. Visible section count is the single most important stat with respect to rendering thread performance, and that is dominated by Visible Static Mesh Elements under STAT INITVIEWS, but Visible Dynamic Primitives also factors in
+
+   - stat initviews - Displays information on how long visibility culling took and how effective it was. Visible section count is the single most important stat with respect to rendering thread performance, and that is dominated by Visible Static Mesh Elements under STAT INITVIEWS, but Visible Dynamic Primitives also factors in
 
    b. FIX:
-      - show Bounds
-      - DumpVisibleActors
-      - r.VisualizeOccludedPrimitives
-      - showflag.visualizeculling
-      - show bounds
+
+   - show Bounds
+   - DumpVisibleActors
+   - r.VisualizeOccludedPrimitives
+   - showflag.visualizeculling
+   - show bounds
 
 1. Check if driver overhead is cause
    - stat d3d11rhi
@@ -271,7 +278,7 @@ stat none - visually turn off all stats (recording is still active)
 
    stat dumpevents [-ms=0.2][-all] - dumps events history for slow events, -all adds other threads besides game and render
 
-2. After narrowing down, dump specific stat group frame
+1. After narrowing down, dump specific stat group frame
 
 stat dumpframe [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] - dumps a frame of stats
 

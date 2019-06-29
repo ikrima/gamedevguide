@@ -54,6 +54,39 @@ Problems we attempt to solve:
 
 * * *
 
+# DaveRatti Networking Explanation
+
+dependent predictionkey
+
+- fortnight/paragon doesnt really use it
+-
+
+Prediction:
+
+- initiated by client
+- rpc
+- create side effeccts => replicate back as properties
+- relies on replicated properties
+
+ability->Can Ido it
+&lt;- server says YUP! you did
+predictionkey hasn't come back yet, so you still have to come wait for state
+
+gameeffect applied
+  \-> stores delegates
+  \->
+
+UAbilitySystemGlobals
+
+- How to turn stuff into gampelaycueparameters
+  virtual void InitGameplayCueParameters(FGameplayCueParameters& CueParameters, const FGameplayEffectSpecForRPC &Spec);
+  virtual void InitGameplayCueParameters_GESpec(FGameplayCueParameters& CueParameters, const FGameplayEffectSpec &Spec);
+  virtual void InitGameplayCueParameters(FGameplayCueParameters& CueParameters, const FGameplayEffectContextHandle& EffectContext);
+
+IsReadyForReplicatedMontage
+OnRep_ReplicatedAnimMontage
+FGameplayAbilityRepAnimMontage RepAnimMontageInfo
+
 ## Implementation Details
 
 ### PredictionKey

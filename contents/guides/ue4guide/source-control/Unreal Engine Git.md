@@ -15,8 +15,13 @@ Make sure to add an 'upstream' remote too:
 ```batch
 git remote add upstream https://github.com/EpicGames/UnrealEngine
 git fetch upstream
-git checkout 4.1
-git merge upstream/4.1
+git checkout release
+```
+
+Optimize git behavior
+
+```batch
+git config --global gc.auto 1024
 ```
 
 # Updating Engine Version

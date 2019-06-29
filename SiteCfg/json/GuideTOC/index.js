@@ -3,8 +3,9 @@ const Houdini = require('./Houdini.json');
 const Graphics = require('./Graphics.json');
 const OpenSource = require('./OpenSource.json');
 const Math = require('./Math.json');
+const GeneralDev = require('./GeneralDev.json');
 
-const listOfGuideTOCs = [UE4Guide, Houdini, Graphics, OpenSource, Math];
+const listOfGuideTOCs = [UE4Guide, Houdini, Graphics, OpenSource, Math, GeneralDev];
 const allGuideTOCs = {
   slug: '/',
   slugPart: '',

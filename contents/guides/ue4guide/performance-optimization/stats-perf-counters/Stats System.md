@@ -20,31 +20,34 @@ Description of stats: <https://docs.unrealengine.com/udk/Three/StatsDescriptions
 
 # Common Functions & Stats
 
-Common options: [-ms=5.0] [-root=None] [leaf=None] [-depth=maxint] [-nodisplay]
+Common options: [-ms=5.0][-root=None] [leaf=None][-depth=maxint] [-nodisplay]
 stat groupname[+] - toggles displaying stats group, + enables hierarchical display
 stat group list|listall|enable name|disable name|none|all|default - manages enabling/disabling recording of the stats groups. Doing stat [groupname] automatically enables that group
-  - Also supports [-group=groupname] [-sortby=name] [-maxhistoryframes=60] [-reset] [-maxdepth=4] [-root=None] [-ms=0.2] [-reset]
+
+- Also supports [-group=groupname][-sortby=name] [-maxhistoryframes=60][-reset] [-maxdepth=4][-root=None] [-ms=0.2][-reset]
 
 stat namedmarker #markername# - adds a custom marker to the stats stream
 stat none - disables drawing all stats groups
 stat display -font=small[tiny]   - Changes stats rendering display options
 
-stat slow [-ms=1.0] [-depth=4] - toggles displaying the game and render thread stats
+stat slow [-ms=1.0][-depth=4] - toggles displaying the game and render thread stats
 stat dumpframe - dumps a frame of stats
-  - stat dumpframe -ms=.001 -root=initviews
-  - stat dumpframe -ms=.001 -root=shadow
-stat dumpave|dumpmax|dumpsum  [-start | -stop | -num=30]  - aggregate stats over multiple frames
-stat dumphitches [-start | -stop | empty toggles] - toggles dumping hitches
-stat dumpevents [-ms=0.2] [-all] - dumps events history for slow events, -all adds other threads besides game and render
-stat dumpcpu - dumps cpu stats
-stat dumpnonframe [groupname] - dumps non-frame stats, usually memory stats
 
-stat hier -group=groupname [-sortby=name] [-maxhistoryframes=60] [-reset] [-maxdepth=4] [-root=None] [-ms=0.2] [-reset]
-  - groupname is a stat group like initviews or statsystem
-  - sortby can be name (by stat FName), callcount (by number of calls, only for scoped cycle counters), num(by total inclusive time)
-  - maxhistoryframes (default 60, number of frames used to generate the stats displayed on the hud)
-  - reset (reset the accumulated history)
-  - maxdepth (default 4, maximum depth for the hierarchy)
+- stat dumpframe -ms=.001 -root=initviews
+- stat dumpframe -ms=.001 -root=shadow
+  stat dumpave|dumpmax|dumpsum  [-start | -stop | -num=30]  - aggregate stats over multiple frames
+  stat dumphitches [-start | -stop | empty toggles] - toggles dumping hitches
+  stat dumpevents [-ms=0.2][-all] - dumps events history for slow events, -all adds other threads besides game and render
+  stat dumpcpu - dumps cpu stats
+  stat dumpnonframe [groupname] - dumps non-frame stats, usually memory stats
+
+stat hier -group=groupname [-sortby=name][-maxhistoryframes=60] [-reset][-maxdepth=4] [-root=None][-ms=0.2] [-reset]
+
+- groupname is a stat group like initviews or statsystem
+- sortby can be name (by stat FName), callcount (by number of calls, only for scoped cycle counters), num(by total inclusive time)
+- maxhistoryframes (default 60, number of frames used to generate the stats displayed on the hud)
+- reset (reset the accumulated history)
+- maxdepth (default 4, maximum depth for the hierarchy)
 
 stat startfile - starts dumping a capture
 stat stopfile - stops dumping a capture (regular, raw, memory)
@@ -336,4 +339,4 @@ stat testfile - loads the last saved capture and dumps first, middle and last fr
  *                  // a piece of code
  *                  ...
  *              }
- ```
+```

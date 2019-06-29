@@ -15,18 +15,20 @@ sortIndex: 7
 - **Useful command line flags** (put these in one line: -verbose -log=D:\\Log.txt )
 
   - UE4Editor Win64 Development -WaitMutex -FromMsBuild -DEPLOY
-  - -Verbose or -VeryVerbose
-  - -log=D:\\Log.txt
-  - -xgeexport
-  - -noxge
-  - -installed
+  - \-Verbose or -VeryVerbose
+  - \-log=D:\\Log.txt
+  - \-xgeexport
+  - \-noxge
+  - \-installed
 
 - Add `xml><bPrintDebugInfo>true<bPrintDebugInfo>`
+
 - Also make sure to set working directory to Engine/Source for development profile project in vs
 
 ## Export documentation for build config/targetrules.cs/modulerules.cs props
 
 Use these cmdline switches:
+
 - buildconfigurationdoc=D:\\buildcfgdoc.txt
 - modulerulesdoc=D:\\modulerulesdoc.txt
 - targetrulesdoc=D:\\targetrulesdoc.txt
@@ -47,7 +49,7 @@ If you run UBT with the -verbose option, it should print out a message showing t
 
 ## Build & Environment variables
 
-Build steps can use \$(EngineDir),\$(ProjectDir), \$(TargetName), \$(TargetPlatform), \$(TargetConfiguration), \$(TargetType), \$(ProjectFile).
+Build steps can use $(EngineDir),$(ProjectDir), $(TargetName), $(TargetPlatform), $(TargetConfiguration), $(TargetType), $(ProjectFile).
 
 ## Debugging compile flags & link switches
 

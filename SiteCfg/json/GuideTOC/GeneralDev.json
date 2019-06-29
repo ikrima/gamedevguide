@@ -1,0 +1,15 @@
+{
+  "slugPart": "generaldev",
+  "childTOCs": [
+    {
+      "slugPart": "scripting",
+      "sortIndex": 1,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "windows-debugging",
+      "sortIndex": 0,
+      "childTOCs": []
+    }
+  ]
+}

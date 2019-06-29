@@ -9,7 +9,7 @@ sortIndex: 9
 [Oculus Connect 2: Integrating and Profiling VR in your Engine with the Oculus PC SDK](https://www.youtube.com/watch?v=NaQ8RJKe3cE)
 `youtube: https://www.youtube.com/watch?v=NaQ8RJKe3cE`
 
-# Understanding, Measuring, and Analyzing VR Graphics Performance*
+# Understanding, Measuring, and Analyzing VR Graphics Performance
 
 - Turn off framerate smoothing
 - Turnoff Generate Mesh Distance fields
