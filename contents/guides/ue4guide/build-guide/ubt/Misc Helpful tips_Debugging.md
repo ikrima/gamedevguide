@@ -49,7 +49,7 @@ If you run UBT with the -verbose option, it should print out a message showing t
 
 ## Build & Environment variables
 
-Build steps can use $(EngineDir),$(ProjectDir), $(TargetName), $(TargetPlatform), $(TargetConfiguration), $(TargetType), $(ProjectFile).
+Build steps can use $(EngineDir),$(ProjectDir), $(TargetName),$(TargetPlatform), $(TargetConfiguration),$(TargetType), $(ProjectFile).
 
 ## Debugging compile flags & link switches
 

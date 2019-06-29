@@ -5,7 +5,7 @@ sortIndex: 0
 # Reminders
 
 - % => alias for foreach-object
-- $_ in a foreach-object is current item
+- $\_ in a foreach-object is current item
 - get-member => object introspection
 - String interpolation:
   - `powershell>"blaaa $myvar", "blaaaa$($myobjVar.name)"`

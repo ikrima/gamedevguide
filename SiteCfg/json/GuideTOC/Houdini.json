@@ -1,4 +1,84 @@
 {
   "slugPart": "houdini",
-  "childTOCs": []
+  "childTOCs": [
+    {
+      "slugPart": "release-notes",
+      "sortIndex": 0,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "extending",
+      "sortIndex": 1,
+      "childTOCs": [
+        {
+          "slugPart": "hda",
+          "sortIndex": 0,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "hdk",
+          "sortIndex": 0,
+          "childTOCs": []
+        }
+      ]
+    },
+    {
+      "slugPart": "rendering",
+      "sortIndex": 2,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "techniques",
+      "sortIndex": 3,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "volumes",
+      "sortIndex": 4,
+      "childTOCs": [
+        {
+          "slugPart": "techniques",
+          "sortIndex": 1,
+          "childTOCs": []
+        }
+      ]
+    },
+    {
+      "slugPart": "vellum",
+      "sortIndex": 5,
+      "childTOCs": [
+        {
+          "slugPart": "techniques",
+          "sortIndex": 1,
+          "childTOCs": []
+        }
+      ]
+    },
+    {
+      "slugPart": "dops",
+      "sortIndex": 6,
+      "childTOCs": [
+        {
+          "slugPart": "techniques",
+          "sortIndex": 2,
+          "childTOCs": []
+        }
+      ]
+    },
+    {
+      "slugPart": "quick-tips",
+      "sortIndex": 7,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "ue4",
+      "sortIndex": 8,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "funtimes",
+      "sortIndex": 9,
+      "childTOCs": []
+    }
+  ]
 }
