@@ -76,18 +76,10 @@ export function SearchUsingAutocomplete() {
       const regex = new RegExp(query.split(' ').join('|'), 'gi');
 
       const optionChildren = grpValue.map(searchResult => {
-        const titleHTML = searchResult.title
-          ? searchResult.title.replace(
-              regex,
-              match => `<spanstyle="background-color:yellow;">${match}</span>`
-            )
-          : '';
-        const excerptHTML = searchResult.excerpt
-          ? searchResult.excerpt.replace(
-              regex,
-              match => `<spanstyle="background-color:yellow;">${match}</span>`
-            )
-          : '';
+        // eslint-disable-next-line prettier/prettier
+        const titleHTML = searchResult.title ? searchResult.title.replace(regex, match => `<spanstyle="background-color:yellow;">${match}</span>`) : '';
+        // eslint-disable-next-line prettier/prettier
+        const excerptHTML = searchResult.excerpt ? searchResult.excerpt.replace(regex, match => `<spanstyle="background-color:yellow;">${match}</span>`) : '';
         return (
           <AntdOption style={{ height: 'auto' }} key={searchResult.slug} value={searchResult.slug}>
             <Link to={searchResult.slug} dangerouslySetInnerHTML={{ __html: titleHTML }} />

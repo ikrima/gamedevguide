@@ -26,7 +26,6 @@ const gbRemarkPluginsList = [
     },
   },
   'gatsby-remark-smartypants',
-
   {
     resolve: 'gatsby-remark-katex',
     options: {
@@ -39,6 +38,14 @@ const gbRemarkPluginsList = [
     resolve: 'gatsby-remark-autolink-headers',
     options: {
       className: 'post-toc-anchor',
+    },
+  },
+  {
+    resolve: 'gatsby-remark-images-grid',
+    options: {
+      // className: 'myCustomClassName',
+      // gridGap: '20px',
+      // margin: '20px auto',
     },
   },
   {
