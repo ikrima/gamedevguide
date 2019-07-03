@@ -22,11 +22,8 @@ sortIndex: 2
 
 ```batch
 p4 property -a -n P4IGNORE -v .p4ignore
-
 p4 property -a -n P4V.Performance.ServerRefresh -v 60
-
 p4 property -a -n filesys.bufsize -v 2M
-
 p4 property -a -n net.tcpsize -v 2M
 ```
 

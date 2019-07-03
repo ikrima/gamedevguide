@@ -1,28 +1,27 @@
+---
+sortIndex: 2
+---
+
 # TODO
 
 ## Techniques
 
-- Reference pathtrace/raymarch
-
-- Volume Flipbook
-
-- Particle Rendering with Slabs sampling
-
-- Channel Lighting
-  - Volume Filtering with mips
-
-- IsoSurface Tracking
-  - Mean Occlusion
-  - Directional Occlusion
-  - Directional Lightfield
-
-- Vertex Baking
-
-- Basis Functions
-  - Spherical Harmonics
-  - Spherical Gaussians
-  - Fourier Opacity Maps
-  - Extinction Transmittance Maps \[Extinction Transmittance Maps]
+1. Reference pathtrace/raymarch
+1. Volume Flipbook
+1. Particle Rendering with Slabs sampling
+1. Channel Lighting
+   - Volume Filtering with mips
+   - ## Turn Zeus into Cloud Volume
+1. IsoSurface Tracking
+   - Mean Occlusion
+   - Directional Occlusion
+   - Directional Lightfield
+1. Vertex Baking
+1. Basis Functions
+   - Spherical Harmonics
+   - Spherical Gaussians
+   - Fourier Opacity Maps
+   - Extinction Transmittance Maps \[Extinction Transmittance Maps]
 
 - Precomputed Radiance Transfer for Volume Rendering
   - Do it inside the volume
@@ -30,18 +29,18 @@
     - Reference: Approximate Reflectance Profiles for Efficient Subsurface Scattering
     - Reference: *Extending the Disney BRDF to a BSDF with Integrated Subsurface Scattering*
 
-- Multiple Scattering approximations
-  - Contrast approximation for art directable multiple scattering
-    - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf>
-    - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf>
-    - Technique is basically exponentiation of single scattering with multiple octaves
-    - Must make sure a &lt;= b to be energy conserving
-      $$
-      \left(x, \omega_{i}\right)=\sum_{0}^{(N-1)} L \operatorname{scat}\left(x, \omega_{i}\right) \\
-      \begin{aligned} \sigma_{s}^{\prime} &=\sigma_{s} \times a^{n} \\
-      \sigma_{e}^{\prime} &=\sigma_{e} \times b^{n} \\
-      p^{\prime}(\theta) &=p\left(\theta \times c^{n}\right) \end{aligned}
-      $$
+1. Multiple Scattering approximations
+   - Contrast approximation for art directable multiple scattering
+     - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf>
+     - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf>
+     - Technique is basically exponentiation of single scattering with multiple octaves
+     - Must make sure a &lt;= b to be energy conserving
+       $$
+       \left(x, \omega_{i}\right)=\sum_{0}^{(N-1)} L \operatorname{scat}\left(x, \omega_{i}\right) \\
+       \begin{aligned} \sigma_{s}^{\prime} &=\sigma_{s} \times a^{n} \\
+       \sigma_{e}^{\prime} &=\sigma_{e} \times b^{n} \\
+       p^{\prime}(\theta) &=p\left(\theta \times c^{n}\right) \end{aligned}
+       $$
 
 - Take Mean Free Path/Transport mean free path into account
   - The scattering mean free path is the average distance between scattering events (in biological tissues around 100 μm)

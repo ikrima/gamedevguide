@@ -13,7 +13,7 @@ Use these repositories to get a sense of what windows might be doing underneath 
 
 - **OSR Community:** <https://www.osr.com/developer-community/>
 
-# Windows Syscall Notes
+# Windows Kernel Syscall Notes
 
 ## Ntxxx vs Zwxxx
 
