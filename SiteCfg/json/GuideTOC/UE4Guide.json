@@ -48,11 +48,6 @@
       ]
     },
     {
-      "slugPart": "general-debugging",
-      "sortIndex": 15,
-      "childTOCs": []
-    },
-    {
       "slugPart": "performance-optimization",
       "sortIndex": 10,
       "childTOCs": [
@@ -74,6 +69,63 @@
         {
           "slugPart": "notes-from-devs",
           "sortIndex": 5,
+          "childTOCs": []
+        }
+      ]
+    },
+    {
+      "slugPart": "general-debugging",
+      "sortIndex": 15,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "graphics-development",
+      "sortIndex": 16,
+      "childTOCs": [
+        {
+          "slugPart": "custom-passes-extensions",
+          "sortIndex": 4,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "how-to",
+          "sortIndex": 7,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "lightmass-lightmapping",
+          "sortIndex": 3,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "render-architecture",
+          "sortIndex": 2,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "shader-development",
+          "sortIndex": 5,
+          "childTOCs": []
+        }
+      ]
+    },
+    {
+      "slugPart": "networking",
+      "sortIndex": 16,
+      "childTOCs": [
+        {
+          "slugPart": "low-level-networking",
+          "sortIndex": 5,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "network-replication",
+          "sortIndex": 6,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "online-subsystem",
+          "sortIndex": 7,
           "childTOCs": []
         }
       ]
@@ -191,78 +243,25 @@
           "childTOCs": []
         },
         {
-          "slugPart": "networking",
-          "sortIndex": 16,
-          "childTOCs": [
-            {
-              "slugPart": "low-level-networking",
-              "sortIndex": 5,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "network-replication",
-              "sortIndex": 6,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "online-subsystem",
-              "sortIndex": 7,
-              "childTOCs": []
-            }
-          ]
+          "slugPart": "stereo-capture-plugin",
+          "sortIndex": 17,
+          "childTOCs": []
         },
-      {
-        "slugPart": "graphics-development",
-        "sortIndex": 16,
-        "childTOCs": [
-          {
-            "slugPart": "custom-passes-extensions",
-            "sortIndex": 4,
-            "childTOCs": []
-          },
-          {
-            "slugPart": "how-to",
-            "sortIndex": 7,
-            "childTOCs": []
-          },
-          {
-            "slugPart": "lightmass-lightmapping",
-            "sortIndex": 3,
-            "childTOCs": []
-          },
-          {
-            "slugPart": "render-architecture",
-            "sortIndex": 2,
-            "childTOCs": []
-          },
-          {
-            "slugPart": "shader-development",
-            "sortIndex": 5,
-            "childTOCs": []
-          }
-        ]
-
-      },
-      {
-        "slugPart": "stereo-capture-plugin",
-        "sortIndex": 17,
-        "childTOCs": []
-      },
-      {
-        "slugPart": "python-basics",
-        "sortIndex": 18,
-        "childTOCs": []
-      },
-      {
-        "slugPart": "oculus-stuff",
-        "sortIndex": 19,
-        "childTOCs": []
-      },
-      {
-        "slugPart": "misc-ue4-editor",
-        "sortIndex": 20,
-        "childTOCs": []
-      },
+        {
+          "slugPart": "python-basics",
+          "sortIndex": 18,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "oculus-stuff",
+          "sortIndex": 19,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "misc-ue4-editor",
+          "sortIndex": 20,
+          "childTOCs": []
+        },
         {
           "slugPart": "unfinished",
           "childTOCs": []
