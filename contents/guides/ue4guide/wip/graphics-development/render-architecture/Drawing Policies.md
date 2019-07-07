@@ -75,15 +75,15 @@ Shaders using **FMeshMaterialShaderType** are pass specific shaders which depe
 A material's set of required shaders is contained in a FMaterialShaderMap. It looks like this:
 
 ```cpp
-FMaterialShaderMap 
-FLightFunctionPixelShader - FMaterialShaderType 
-FLocalVertexFactory - FVertexFactoryType 
-TDepthOnlyPS - FMeshMaterialShaderType 
-TDepthOnlyVS - FMeshMaterialShaderType 
-TBasePassPS - FMeshMaterialShaderType 
-TBasePassVS - FMeshMaterialShaderType 
-Etc 
-FGPUSkinVertexFactory - FVertexFactoryType 
+FMaterialShaderMap
+FLightFunctionPixelShader - FMaterialShaderType
+FLocalVertexFactory - FVertexFactoryType
+TDepthOnlyPS - FMeshMaterialShaderType
+TDepthOnlyVS - FMeshMaterialShaderType
+TBasePassPS - FMeshMaterialShaderType
+TBasePassVS - FMeshMaterialShaderType
+Etc
+FGPUSkinVertexFactory - FVertexFactoryType
 Etc
 ```
 
@@ -140,11 +140,11 @@ With r.ShaderDevelopmentMode enabled, you will get the opportunity to retry on s
 
 In debug, with the debugger attached, you will hit a breakpoint and get the compile error in the Visual Studio output window. **You can then double-click the error log to be taken directly to the offending line.**
 
-![DrawingPolicies_Shaders](./.....\assets\DrawingPolicies_Shaders.jpg)
+![DrawingPolicies_Shaders](../../assets/DrawingPolicies_Shaders.jpg)
 
 Otherwise you will get a Yes/No dialog
 
-![DrawingPolicies_ErrorMessage](......\assets\DrawingPolicies_ErrorMessage.jpg)
+![DrawingPolicies_ErrorMessage](../../assets/DrawingPolicies_ErrorMessage.jpg)
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>*
 

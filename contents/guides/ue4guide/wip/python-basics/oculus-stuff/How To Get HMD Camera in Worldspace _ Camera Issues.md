@@ -6,7 +6,7 @@ Lots of Camera Issues in VR in 4.8:
 
 <https://forums.oculus.com/viewtopic.php?f=60&t=24683>
 
-![OculusStuff_HMDCamera](......\assets\OculusStuff_HMDCamera.png)
+![OculusStuff_HMDCamera](../../assets/OculusStuff_HMDCamera.png)
 
 <https://answers.unrealengine.com/questions/243325/how-to-get-real-camera-position-in-vr-mode.html>
 

@@ -2,7 +2,7 @@
 sortIndex: 25
 ---
 
-![PorgrammingGuideNotes_ProjectModuleClassOrg](........\assets\PorgrammingGuideNotes_ProjectModuleClassOrg.jpg)
+![PorgrammingGuideNotes_ProjectModuleClassOrg](../assets/PorgrammingGuideNotes_ProjectModuleClassOrg.jpg)
 
 - AActor is base class Spawnable class
 
@@ -120,50 +120,50 @@ You can use namespaces to organize your classes, functions and variables where a
 - Enums must be wrapped in their own namespace b/c C++ Enum values have the same scope. Ex:
 
 ```cpp
- /** Defining a enumeration within a namespace to achieve C#-style enum scoping */ 
- namespace EColorChannel 
- { 
- /** Declare EColorChannel::Type as the actual type for this enum */ 
- enum Type 
- { 
- Red, 
- Green, 
- Blue 
- }; 
+ /** Defining a enumeration within a namespace to achieve C#-style enum scoping */
+ namespace EColorChannel
+ {
+ /** Declare EColorChannel::Type as the actual type for this enum */
+ enum Type
+ {
+ Red,
+ Green,
+ Blue
+ };
  }
 
- /** Given a color channel, returns the name of that channel. */ 
- FString GetNameForColorChannel(const EColorChannel::Type ColorChannel) 
- { 
- switch(ColorChannel) 
- { 
- case EColorChannel::Red: return TEXT("Red"); 
- case EColorChannel::Green: return TEXT("Green"); 
- case EColorChannel::Blue: return TEXT("Blue"); 
- default: return TEXT("Unknown"); 
- } 
+ /** Given a color channel, returns the name of that channel. */
+ FString GetNameForColorChannel(const EColorChannel::Type ColorChannel)
+ {
+ switch(ColorChannel)
+ {
+ case EColorChannel::Red: return TEXT("Red");
+ case EColorChannel::Green: return TEXT("Green");
+ case EColorChannel::Blue: return TEXT("Blue");
+ default: return TEXT("Unknown");
+ }
  }
 ```
 
 - Note that for locally-declared enums, you won't be able to use a namespace for scoping. In these cases, we opt to declare a local struct with no member variables, only a local enum type and use that struct for scoping.
 
 ```cpp
-  /** Defining a locally-scoped enumeration using structs*/ 
-  class FObjectMover 
-  { 
+  /** Defining a locally-scoped enumeration using structs*/
+  class FObjectMover
+  {
   public:
-  
-  /** Direction to move */ 
-  struct EMoveDirection 
-  { 
-  enum Type 
-  { 
-  Forward, 
-  Reverse, 
-  }; 
+
+  /** Direction to move */
+  struct EMoveDirection
+  {
+  enum Type
+  {
+  Forward,
+  Reverse,
+  };
   };
 
-/** Construct an FObjectMover with the specified movement direction */ 
+/** Construct an FObjectMover with the specified movement direction */
 FObjectMover( const EMoveDirection::Type Direction );
 ```
 

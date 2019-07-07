@@ -16,7 +16,7 @@ sortIndex: 4
 
 Add extension support in options directly
 
-![ShaderDev_TipsnTricks](\devguide\conversion\FINISHED\assets\ShaderDev_TipsnTricks.jpg)
+![ShaderDev_TipsnTricks](../../assets/ShaderDev_TipsnTricks.jpg)
 
 Not needed anymore
 
@@ -34,34 +34,34 @@ return 1;
 
 The compiler will paste it into a *CustomExpressionX* function. It doesn’t even indent it!
 
-MaterialFloat3 CustomExpression0(FMaterialPixelParameters Parameters) 
-{ 
-return 1; 
+MaterialFloat3 CustomExpression0(FMaterialPixelParameters Parameters)
+{
+return 1;
 }
 
 Look what happens if you use this code instead:
 
-return 1; 
+return 1;
 }
 
 float MyGlobalVariable;
 
-int MyGlobalFunction(int x) 
-{ 
+int MyGlobalFunction(int x)
+{
 return x;
 
 The generated HLSL now becomes this:
 
-MaterialFloat3 CustomExpression0(FMaterialPixelParameters Parameters) 
-{ 
-return 1; 
+MaterialFloat3 CustomExpression0(FMaterialPixelParameters Parameters)
+{
+return 1;
 }
 
 float MyGlobalVariable;
 
-int MyGlobalFunction(int x) 
-{ 
-return x; 
+int MyGlobalFunction(int x)
+{
+return x;
 }
 
 As you can see, MyGlobalVariable and MyGlobalFunction() are not contained within a function. This makes them global and means you can use them anywhere.
@@ -83,22 +83,22 @@ However, there seems to be a barely documented feature in HLSL that allows defin
 So in your CustomExpression Code you can do:
 
 ```cpp
-*struct Functions 
+*struct Functions
 {*
 
-*float3 OrangeBright(float3 c) 
-{ 
-return c \* float3(1, .7, 0); 
+*float3 OrangeBright(float3 c)
+{
+return c \* float3(1, .7, 0);
 }*
 
-*float3 Out() 
-{ 
-return OrangeBright(InColor); 
+*float3 Out()
+{
+return OrangeBright(InColor);
 }*
 
 *};*
 
-*Functions f; 
+*Functions f;
 return f.Out();*
 ```
 
@@ -112,8 +112,8 @@ The cool part is, this is all happening inside your own effective namespace, not
 
 Instead of editing intricate code and custom libraries inside the little primitive textbox of CustomExpression, you can edit them in a better external editor with syntax highlighting, code navigation etc, and #include that file. So if you put the above code in a file named Test.hlsl, you can:
 
-*#include "Your Path...\\Test.hlsl" 
-return 0; 
+*#include "Your Path...\\Test.hlsl"
+return 0;
 // enter spaces here and press enter to retrigger compilation*
 
 The dummy "return 0;" is to tell CustomExpression node that this not a single line expression but a full function body. The spaces will be required to signal the CustomExpression textbox that it changed, and pressing enter will compile your externally changed and saved Test.hlsl. Of course, you can split the external file and the dynamic code portion, if you prefer to make quick changes and compiles inside the textbox.
@@ -126,16 +126,16 @@ The dummy "return 0;" is to tell CustomExpression node that this not a single li
 
 *Code:*
 
-*myprj\\myprj.uproject 
-myprj\\Content 
-... 
+*myprj\\myprj.uproject
+myprj\\Content
+...
 myprj\\Shaders\\myshader.ush*
 
 *and then in my material I have a custom node with this:*
 
 *Code:*
 
-*#include "/Project/myshader.ush" 
+*#include "/Project/myshader.ush"
 return 0;*
 
 If you create the directories while UE4 is running, you need to restart the editor before they get picked up - on editor startup you'll see some log messages about the mapping of virtual shader directories (e.g. from '/Project/' to the full path on disk).
@@ -162,10 +162,10 @@ In the event that your edits cause a shader compilation error, you can't get by 
 - In addition to whatever input parameters you explicitly pass to your Custom node, it will also receive a 'parameters' parameter that often has a lot of the inputs you might need. Look in the generated HLSL code for 'customexpression' to find your custom node and you'll see something like:
 
 ```cpp
-*MaterialFloat4 CustomExpression0(FMaterialPixelParameters Parameters,...) 
-{ 
-#include "/Project/myshader.ush" 
-return 0; 
+*MaterialFloat4 CustomExpression0(FMaterialPixelParameters Parameters,...)
+{
+#include "/Project/myshader.ush"
+return 0;
 }*
 ```
 
@@ -178,13 +178,13 @@ And then look in Engine/Source/Shaders/Private/MaterialTemplate.ush to see the d
 Compile out Compute shader instructions with a define. Ex:
 
 ```cpp
-float DDY(float Input) 
-{ 
-#if COMPUTESHADER 
-        return 0;  
-#else 
-        return ddy(Input);  
-#endif 
+float DDY(float Input)
+{
+#if COMPUTESHADER
+        return 0;
+#else
+        return ddy(Input);
+#endif
 }
 ```
 

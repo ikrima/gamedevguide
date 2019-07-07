@@ -220,7 +220,7 @@ Force earlydepthstencil (if we're not doing an earlyZ pass)
 
 - Alpha test/texkill/alpha to coverage will disable EarlyZ but sometimes ok with HiZ
 
-![CustomStencilNotes_DepthTest](......\assets\CustomStencilNotes_DepthTest.png)
+![CustomStencilNotes_DepthTest](../../assets/CustomStencilNotes_DepthTest.png)
 
 Early/HiZ AMD circa 2007:
 
@@ -255,4 +255,4 @@ FSceneRenderTargets() is central class to manage binding render targets for vari
 
 D3D11 Stencil pipeline:
 
-![CustomStencilNotes_StencilPipeline](......\assets\CustomStencilNotes_StencilPipeline.png)
+![CustomStencilNotes_StencilPipeline](../../assets/CustomStencilNotes_StencilPipeline.png)

@@ -52,15 +52,15 @@ Using NVIDIA Nsight Debugging with Other Project Types
 
    Enter the name for your project and click OK.
 
-![LaunchingNsight_2DebuggingExternal](......\assets\LaunchingNsight_2DebuggingExternal.png)
+![LaunchingNsight_2DebuggingExternal](../../assets/LaunchingNsight_2DebuggingExternal.png)
 
 3. Select the project's **Nsight User Properties** to edit the default settings. (As an alternative, you can also go to the **Project** menu > **Nsight User Properties**.)
 
-![LaunchingNsight_SolutionExplorer](......\assets\LaunchingNsight_SolutionExplorer.png)
+![LaunchingNsight_SolutionExplorer](../../assets/LaunchingNsight_SolutionExplorer.png)
 
 4. Select **Launch external program**, and enter the path to the external program for the application that is to be debugged.
 
-![LaunchingNsight_4Launch](......\assets\LaunchingNsight_4Launch.png)
+![LaunchingNsight_4Launch](../../assets/LaunchingNsight_4Launch.png)
 
 5. Configure any other launch options or file synchronization settings which may be necessary for your particular debugging environment.
 

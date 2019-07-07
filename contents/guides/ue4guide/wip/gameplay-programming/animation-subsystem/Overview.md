@@ -4,7 +4,7 @@ sortIndex: 2
 
 # Animation:
 
-![AnimationSubsystem_Overview_AnimationDiagram](/......\assets\AnimationSubsystem_Overview_AnimationDiagram.jpg)
+![AnimationSubsystem_Overview_AnimationDiagram](../../assets/AnimationSubsystem_Overview_AnimationDiagram.jpg)
 
 ShowDebug Bones to show debug view of animation bones
 

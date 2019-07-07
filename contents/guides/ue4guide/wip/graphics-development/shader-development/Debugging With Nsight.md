@@ -98,7 +98,7 @@ To debug the Unity Project:
 
 - **Problem:** For some reason, when the file gets sync'ed over, the app bitches when it gets launched on the target machine, saying it can't find the \[project]\_Data folder. Still investigating this, but for now, workaround is to just manually copy over the project directory to the target machine.  (Default: C:\\Users\\\[current-user-on-target]\\AppData\\Roaming\\NVIDIA Corporation\\Nsight\\Monitor\\Mirror\\\[hostname]\\\[host-outdir] so for example
 
-![Debugging_wNsight_NVidiaInsight](......\assets\Debugging_wNsight_NVidiaInsight.jpg)
+![Debugging_wNsight_NVidiaInsight](../../assets/Debugging_wNsight_NVidiaInsight.jpg)
 
 All the Paths you specify are relative to the target machine's synchronization directory (the default is specified above). However, if you select "Don't synchronize", all of the paths will be relative to the machine
 

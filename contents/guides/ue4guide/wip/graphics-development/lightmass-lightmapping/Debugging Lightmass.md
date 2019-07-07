@@ -30,12 +30,12 @@ Debug lightmass:
 
 1. Lightmassdebug command
 
-![DebuggingLightmass_LightmassdebugCOMMAND](......\assets\DebuggingLightmass_LightmassdebugCOMMAND.png)
+![DebuggingLightmass_LightmassdebugCOMMAND](../../assets/DebuggingLightmass_LightmassdebugCOMMAND.png)
 
 2. Build Lighting Only
 
-![DebuggingLightmass_BuildLightingOnly](......\assets\DebuggingLightmass_BuildLightingOnly.png)
+![DebuggingLightmass_BuildLightingOnly](../../assets/DebuggingLightmass_BuildLightingOnly.png)
 
 3. Launch Lightmass from visual studio manually in debug
 
-![DebuggingLightmass_VisualStudio](......\assets\DebuggingLightmass_VisualStudio.png)
+![DebuggingLightmass_VisualStudio](../../assets/DebuggingLightmass_VisualStudio.png)

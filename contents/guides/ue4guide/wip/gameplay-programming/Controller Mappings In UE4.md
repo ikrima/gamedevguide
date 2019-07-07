@@ -4,4 +4,4 @@ sortIndex: 6
 
 Vive Controller Mappings
 
-![](...\assets\controller-mappings-vive.png)
+![](../assets/controller-mappings-vive.png)

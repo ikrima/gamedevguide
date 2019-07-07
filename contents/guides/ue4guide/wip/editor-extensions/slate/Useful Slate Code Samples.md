@@ -6,7 +6,7 @@ sortIndex: 4
 
 Go to Window -> Developer Tools -> Debug Tools -> Test Suite. Shows all the different widgets
 
-![Useful_Slate_Code_Samples](../../..\assets\Useful_Slate_Code_Samples.png)
+![Useful_Slate_Code_Samples](../../assets/Useful_Slate_Code_Samples.png)
 
 ### Writing Custom Slate Widgets:
 

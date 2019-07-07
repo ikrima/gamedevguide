@@ -42,13 +42,13 @@ These commands affects all objects and can’t target individual objects specifi
 
 - - “Do not override compression” option
 
-![PerformanceProfiling_AssetSize_DoNotOverrideCompression](.........\assets\PerformanceProfiling_AssetSize_DoNotOverrideCompression.png)
+![PerformanceProfiling_AssetSize_DoNotOverrideCompression](../assets/PerformanceProfiling_AssetSize_DoNotOverrideCompression.png)
 
 ### **Animation Compression**
 
 **How to check the compressed asset data size 1**
 
-![](.......\assets\perfprofile-assetsizered.png)
+![](../assets/perfprofile-assetsizered.png)
 
 You can see sizes and compressed ratios
 
@@ -66,7 +66,7 @@ Can also verify by looking at the cooked asset’s size, and the size in memory 
 
   - Stat Levels
 
-- ![PerformanceProfiling_AssetSize_LoadtoMemoryProfiling](.........\assets\PerformanceProfiling_AssetSize_LoadtoMemoryProfiling.png)
+- ![PerformanceProfiling_AssetSize_LoadtoMemoryProfiling](../assets/PerformanceProfiling_AssetSize_LoadtoMemoryProfiling.png)
 
 
     -   Gray ＝ Persistent Level
@@ -202,7 +202,7 @@ Initialize : 0.08 m
 
   - Many objects are deleted at once
 
-![PerformanceProfiling_AssetSize_RoughGCAlgorithm](.........\assets\PerformanceProfiling_AssetSize_RoughGCAlgorithm.png)
+![PerformanceProfiling_AssetSize_RoughGCAlgorithm](../assets/PerformanceProfiling_AssetSize_RoughGCAlgorithm.png)
 
 **GC Cost** **=** **Checking cost** **+** **Deletion Cost** is not entirely accurate
 
@@ -229,13 +229,13 @@ You can also do “log LogGarbage verbose” to see more log messages
 
 You can see the Checking cost and the deletion cost are printed out in this manner
 
-![PerformanceProfiling_AssetSize_GCCosts](.........\assets\PerformanceProfiling_AssetSize_GCCosts.png)
+![PerformanceProfiling_AssetSize_GCCosts](../assets/PerformanceProfiling_AssetSize_GCCosts.png)
 
 2. ##### Stat dumphitches
 
-![PerformanceProfiling_AssetSize_DumpHitches](.........\assets\PerformanceProfiling_AssetSize_DumpHitches.png)
+![PerformanceProfiling_AssetSize_DumpHitches](../assets/PerformanceProfiling_AssetSize_DumpHitches.png)
 
-![PerformanceProfiling_AssetSize_ProfilingGCVerify](.........\assets\PerformanceProfiling_AssetSize_ProfilingGCVerify.png)
+![PerformanceProfiling_AssetSize_ProfilingGCVerify](../assets/PerformanceProfiling_AssetSize_ProfilingGCVerify.png)
 
 3. (Stat Startfile/Stopfile)
 
@@ -285,7 +285,7 @@ ObjectProperty 3251
 
 **5/5 Command to output number of UObjects per Blueprint**
 
-![PerformanceProfiling_AssetSize_BlueprintStats](.........\assets\PerformanceProfiling_AssetSize_BlueprintStats.png)
+![PerformanceProfiling_AssetSize_BlueprintStats](../assets/PerformanceProfiling_AssetSize_BlueprintStats.png)
 
 - As you might have noticed on the previous slide, there were a lot of UProperties like Bool or Float Properties
 
@@ -301,7 +301,7 @@ ObjectProperty 3251
 
 - DisregardGCObject
 
-![PerformanceProfiling_AssetSize_DisregardGCObject](.........\assets\PerformanceProfiling_AssetSize_DisregardGCObject.png)
+![PerformanceProfiling_AssetSize_DisregardGCObject](../assets/PerformanceProfiling_AssetSize_DisregardGCObject.png)
 
 **1. Enable DisregardGCObject**
 
@@ -335,7 +335,7 @@ gc.SizeOfPermanentObjectPool= **9937152**
 
 - GC Clustering
 
-![1556152930143](.........\assets\1556152930143.png)
+![1556152930143](../assets/1556152930143.png)
 
 Concept:
 
@@ -350,7 +350,7 @@ Actor Clustering
 - Actors can be put in a cluster with the level they belong to, and just removed when the level is removed
 - There is a setting for this, which is only enabled by default for static meshes and reflection captures
 
-![PerformanceProfiling_AssetSize_Clustering](.........\assets\PerformanceProfiling_AssetSize_Clustering.png)
+![PerformanceProfiling_AssetSize_Clustering](../assets/PerformanceProfiling_AssetSize_Clustering.png)
 
 - Clustering runs when actors are added to the scene (during AddtoWorld()), so new references to this object can’t be added afterwards
 - This can happen, for example, if you later load a sequencer sequence that references a static mesh

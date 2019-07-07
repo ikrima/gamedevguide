@@ -48,7 +48,7 @@ sortIndex: 2
 
   - ovrversion: Prints LibOVR version
 
-- Useful Oculus Config settings & console commands are all defined in OculusRiftHMD.cpp: 
+- Useful Oculus Config settings & console commands are all defined in OculusRiftHMD.cpp:
 
 ```cpp
 bool FOculusRiftHMD::Exec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevice& Ar )
@@ -58,59 +58,59 @@ bool FOculusRiftHMD::Exec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevi
 - Oculus Config settings are in the DefaultEngine.ini file (\[root]/Config/DefaultEngine.ini)
 
 ```cpp
- [Oculus.Settings] 
- ; In meters, not Unreal Units (cm) 
- ; Recommended for true first person viewpoint 
- ; since you are simulating the head. 
- ;HeadModel_v2=(X=0.0,Y=0,Z=0.0) 
- ; Default values  
+ [Oculus.Settings]
+ ; In meters, not Unreal Units (cm)
+ ; Recommended for true first person viewpoint
+ ; since you are simulating the head.
+ ;HeadModel_v2=(X=0.0,Y=0,Z=0.0)
+ ; Default values
  HeadModel_v2=(X=0.12,Y=0,Z=0.17)
 
- bChromaAbCorrectionEnabled=true 
- bMagEnabled=true 
- bDevSettingsEnabled=false 
- bMotionPredictionEnabled=true 
- bTiltCorrectionEnabled=true 
- AccelGain=0.0 
+ bChromaAbCorrectionEnabled=true
+ bMagEnabled=true
+ bDevSettingsEnabled=false
+ bMotionPredictionEnabled=true
+ bTiltCorrectionEnabled=true
+ AccelGain=0.0
  MotionPrediction=0.04
 
- bOverrideIPD=false 
+ bOverrideIPD=false
  IPD=0.064
 
- bOverrideStereo=false 
- ProjectionCenterOffset=0.0 
- LensCenterOffset=0.0 
+ bOverrideStereo=false
+ ProjectionCenterOffset=0.0
+ LensCenterOffset=0.0
  FOV=90.0
 
- bOverrideVSync=false 
+ bOverrideVSync=false
  bVSync=true
 
- bOverrideScreenPercentage=false 
- ; Value is out of range [30..300] 
+ bOverrideScreenPercentage=false
+ ; Value is out of range [30..300]
  ScreenPercentage=100.0
 
- bAllowFinishCurrentFrame=false 
- PositionScaleFactor=1.0 
- ; Defaults to true if DLL built with OVR_VISION_ENABLED defined. 
- ; Positional tracking for DK2 onwards perhaps? 
- bHmdPosTracking=false 
+ bAllowFinishCurrentFrame=false
+ PositionScaleFactor=1.0
+ ; Defaults to true if DLL built with OVR_VISION_ENABLED defined.
+ ; Positional tracking for DK2 onwards perhaps?
+ bHmdPosTracking=false
  bLowPersistenceMode=false
 
- ; Defaults to true. 
- ; If enabled, viewpoint rotation is updated during the render thread. 
- ; Depending on how you control a players view rotation, you may need to disable this. 
+ ; Defaults to true.
+ ; If enabled, viewpoint rotation is updated during the render thread.
+ ; Depending on how you control a players view rotation, you may need to disable this.
  bUpdateOnRT=true
 
 - World Scale can be changed in Window->World Settings. Default is 100 uu => 1m (i.e. 1 uu = 1cm)
 ```
 
-  ![Oculus_RiftGotchas_worldsettings](......\assets\Oculus_RiftGotchas_worldsettings.jpg)
+  ![Oculus_RiftGotchas_worldsettings](../../assets/Oculus_RiftGotchas_worldsettings.jpg)
 
 - Player Settings: Can be changed in the Defaults or Components of your characters BluePrint
 
-  ![Oculus_RiftGotchas_Playersettings](......\assets\Oculus_RiftGotchas_Playersettings.jpg)
+  ![Oculus_RiftGotchas_Playersettings](../../assets/Oculus_RiftGotchas_Playersettings.jpg)
 
-  ![Oculus_RiftGotchas_playersettings2](......\assets\Oculus_RiftGotchas_playersettings2.jpg)
+  ![Oculus_RiftGotchas_playersettings2](../../assets/Oculus_RiftGotchas_playersettings2.jpg)
 
 
 - Height & Width are based off Capsule Half Height & Capsule Radius
@@ -141,7 +141,7 @@ Regarding cloning multiple monitors, I personally had the **best performance wi
 
 But to make vsync work (so that the Rift doesn't inherit the vsync timing of your primary monitor), at least with an Nvidia card, you can **set the Rift as your clone source** in the Nvidia Control Panel (#3 is my Rift in the screenshot below). This way the Rift's refresh timing will be used for vsync and you won't see any tearing on your headset, although if you primary monitor timing is even slightly different (probably the case) you will still see tearing on the primary monitor. Of course this shouldn't be a problem since only other people in the room will see your primary monitor while your Rift is on your head.
 
-![Oculus_RiftGotchas_CloningMultiMonitor](C:\devguide\conversion\FINISHED\assets\Oculus_RiftGotchas_CloningMultiMonitor.png)
+![Oculus_RiftGotchas_CloningMultiMonitor](../../assets/Oculus_RiftGotchas_CloningMultiMonitor.png)
 
 *Reference From <https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>*
 
@@ -156,9 +156,9 @@ I did some digging into the Oculus plugin in the UE4 source, and came up with th
 **1)** If you've messed with your GameUserSettings.ini file, change the following settings back:
 
 ```cpp
-ResolutionSizeX=1280 
-ResolutionSizeY=800 
-bUseDesktopResolutionForFullscreen=False 
+ResolutionSizeX=1280
+ResolutionSizeY=800
+bUseDesktopResolutionForFullscreen=False
 FullscreenMode=0
 ```
 
@@ -175,7 +175,7 @@ Find the most complex scene in the demo exhibiting the poorest frame rate for te
 **4)** Enter the console with ~ and type the following commands:
 
 ```cpp
-oculusdev on 
+oculusdev on
 hmdwarp 1=1
 ```
 

@@ -32,7 +32,7 @@ Collision:
 
 - After first blocking collision, collision system stops looking for collisions
 
-![CollisionDetection_FilterTable-900x490-756106034](C:\devguide\conversion\FINISHED\assets\CollisionDetection_FilterTable-900x490-756106034.jpg)
+![CollisionDetection_FilterTable-900x490-756106034](../assets/CollisionDetection_FilterTable-900x490-756106034.jpg)
 
 - **Not recommended for object to have generate hit events and overlap events**
 

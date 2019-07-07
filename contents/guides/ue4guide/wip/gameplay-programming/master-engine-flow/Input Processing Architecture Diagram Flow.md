@@ -2,7 +2,7 @@
 sortIndex: 4
 ---
 
-![InputProcessingArchitectureDiagram_Flow](......\assets\InputProcessingArchitectureDiagram_Flow.jpg)
+![InputProcessingArchitectureDiagram_Flow](../../assets/InputProcessingArchitectureDiagram_Flow.jpg)
 
 <https://docs.unrealengine.com/latest/INT/Gameplay/Input/index.html>
 

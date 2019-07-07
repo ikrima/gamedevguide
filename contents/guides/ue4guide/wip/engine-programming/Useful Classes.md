@@ -83,25 +83,18 @@ FBinaryHeap
 
 TArrayView: Statically sized view of an array. Allows functions to take either fixed C array or a TArray with arbittrary allocator when function doesn’t add or remove elements. Treat TArrayView as a ref
 
-\* int32 SumAll(TArrayView&lt;const int32> array)
-
-\* {
-
-\* return Algo::Accumulate(array);
-
-\* }
-
-\*
-
-\* could be called as:
-
-\* SumAll(MyTArray);
-
-\* SumAll(MyCArray);
-
-\* SumAll({1, 2, 3});
-
-\* SumAll(MakeArrayView(Ptr, Num));
+```cpp
+ * int32 SumAll(TArrayView<const int32> array)
+ * {
+ *     return Algo::Accumulate(array);
+ * }
+ *
+ * could be called as:
+ *     SumAll(MyTArray);
+ *     SumAll(MyCArray);
+ *     SumAll({1, 2, 3});
+ *     SumAll(MakeArrayView(Ptr, Num));
+```
 
 THeap: Can make a Tarray heapified by calling Heapify()
 
