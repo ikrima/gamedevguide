@@ -2,7 +2,9 @@
 sortindex: 10
 ---
 
-#### Sublevels aren't directly associated with ULevels. Instead, they are associated with UWorlds. See UWorld::StreamingLevels.
+# Sublevels aren't directly associated with ULevels
+
+**Instead, they are associated with UWorlds. See UWorld::StreamingLevels.**
 
 Because of that, when you load in a Sublevel, there's no way to know what it's Sublevels are (unless you figure out the owning UPackage, load that, grab the UWorld, and then grab the levels).
 
@@ -30,19 +32,17 @@ You also need to be careful with naming, making sure that the Server and Client 
 
 *Reference From <https://udn.unrealengine.com/questions/426339/stream-sublevels-of-a-streamed-level.html>*
 
-Fortnite detailed approach:
+## Fortnite detailed approach
 
 <https://udn.unrealengine.com/questions/399764/load-level-instance-with-replicated-actors.html>
 
-#### Multiplayer issues with sublevel streaming/toggling visibility:
+# Multiplayer issues with sublevel streaming/toggling visibility
 
- [Level streaming client crash](https://udn.unrealengine.com/questions/365920/level-streaming-client-crash.html)
+[Level streaming client crash](https://udn.unrealengine.com/questions/365920/level-streaming-client-crash.html)
 
- [Network streaming level visibility, disconnect](https://udn.unrealengine.com/questions/350813/network-streaming-level-visibility-disconnect.html)
+[Network streaming level visibility, disconnect](https://udn.unrealengine.com/questions/350813/network-streaming-level-visibility-disconnect.html)
 
- There is also an unresolved ticket related to this issue:
-
- [Toggling ULevelStreaming::bShouldBeVisible causes replication errors](https://issues.unrealengine.com/issue/UE-43042)
+There is also an unresolved ticket related to this issue: [Toggling ULevelStreaming::bShouldBeVisible causes replication errors](https://issues.unrealengine.com/issue/UE-43042)
 
 Level streaming definitely should (and does generally) work with Multiplayer. For example, we use Level Streaming in Fortnite. That said, there are a few important things to note (I'll try not to rehash too much of what was in those tickets).
 
@@ -66,13 +66,12 @@ Another typical approach, at least when using Dedicated Servers, is to have the 
 
 There are other issues even with potential fixes to the above. Any networking related functions on Actors in sublevels would effectively stop because they wouldn't be receiving Net Updates. Similarly, the Client wouldn't have anyway of notifying / requesting the Server to make changes to those Actors (imagine there's some Button or Lever that triggers an RPC that's only valid in a sublevel). Finally, we'd still likely need to destroy Dynamic Actors, otherwise we'd risk having duplicates created or weird behavior when getting initial replication on level stream in.
 
-TL;DR:
-
+**TL;DR:**
 Streaming should definitely work in multiplayer, and using BP vs. Streaming Volumes vs. Something else doesn't *really* matter. The biggest thing to make sure is that the Server doesn't unload levels Clients may need (which Streaming Volumes does inherently).
 
 *Reference From <https://udn.unrealengine.com/questions/429527/issue-with-level-streaming-in-multiplayer.html>*
 
-#### Notification (in C++) on all Streaming Levels loaded via World Composition in a multiplayer scenario
+## Notification (in C++) on all Streaming Levels loaded via World Composition in a multiplayer scenario
 
 Whenever Clients have loaded levels (their persistent level, sublevels loaded via World Composition, or sublevels loaded in other ways), they have to notify the server via APlayerController::ServerUpdateLevelVisibility (and ServerUpdateMultipleLevelsVisibility in newer versions).
 

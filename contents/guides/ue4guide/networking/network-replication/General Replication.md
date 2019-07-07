@@ -8,7 +8,6 @@ Object reference replication:
 
 - Server is in charge of assinging this ID and then notifying all connected clients of assignment
 
-
 - For objects to be referenced, they have to return Uobject::IsSupportedForNetworking() which passes if:
 
   - Any replicated actor can be replicated as a reference
@@ -26,7 +25,7 @@ Object reference replication:
 
   - Actors - If loaded from packages
 
-  - Components -
+  - Components
 
     - Loaded from packages
 
@@ -35,5 +34,4 @@ Object reference replication:
     - Manually marked (UActorComponent::SetNetAddressable()) - You have to make sure the component has the same name on both client & server. Anything in the AActor C++ constructor fits this
 
     - If you spawn a component and then on the client spawn it with the same name, you can mark it as stable named (SetNetAddressable()) and UE4 won't try to replicate the object but instead try to match up the objects on the server/client through the name. If you spawn on the server + mark it as replicated, then you are telling the client to try to create a new component instead of matching it up with an existing one.
-
-  <https://udn.unrealengine.com/questions/236164/dynamically-add-component-in-begin-play.html>
+      <https://udn.unrealengine.com/questions/236164/dynamically-add-component-in-begin-play.html>

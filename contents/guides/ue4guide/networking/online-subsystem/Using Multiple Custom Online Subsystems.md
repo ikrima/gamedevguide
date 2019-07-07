@@ -18,9 +18,7 @@ We haven't done anything cross platform with Oculus internally, and we don't cur
 So, the process for us would look a bit more like this:
 
 1. Create OSSPlayFab.
-
 1. Grab the platform specific backend / NetDriver.
-
 1. Disable any features we don't want to use.
 
 *Reference From <https://udn.unrealengine.com/questions/404339/accessing-oculussteam-apis-without-respective-oss.html>*
@@ -33,39 +31,28 @@ Additionally, is there a way to dynamically switch OSS? Sometimes we might not w
 
 - As I already pointed out, we do this in our games. We use our internal OSS for handling matchmaking, etc. Then we have the PS4 / XBoxLive OSSs enabled. You can do the same thing by specifying which OSSs to use in your Engine.ini file.
 
-```cpp
+```ini
 ; In your case, you may want to have some other way (like packaging specific scripts / inis) that enable / disable OSS.
-
 ; Here, I'll just have them all enabled.
 
 [OnlineSubsystemSteam]
-
 bEnabled=true
-
 ; other options
 
 [OnlineSubsystemOculus]
-
 bEnabled=true
-
 ; other options
 
 ; You'd need to create this, or another OSS.
-
 [OnlineSubsystemPlayFab]
-
 bEnabled=true
-
 ; other options
 
 ; Here, you specify global options that other OSSs can override.
-
 ; Also, you specify which OSS will be the default.
-
 [OnlineSubsystem]
 
 ; This is going to be the default OSS used.
-
 DefaultPlatformService=PlayFab
 ```
 
@@ -73,39 +60,23 @@ In the scenario where you want to use a different OSS at runtime, you'd just int
 
 ```cpp
 /**
-
 * Main entry point for accessing an online subsystem by name
-
 * Will load the appropriate module if the subsystem isn't currently loaded
-
 * It's possible that the subsystem doesn't exist and therefore can return NULL
-
 *
-
 * @param InSubsystemName - name of subsystem as referenced by consumers
-
 *
-
 * @return Requested online subsystem, or NULL if that subsystem was unable to load or doesn't exist
-
 */
-
-virtual class IOnlineSubsystem\* GetOnlineSubsystem(const FName InSubsystemName = NAME_None);
+virtual class IOnlineSubsystem* GetOnlineSubsystem(const FName InSubsystemName = NAME_None);
 
 /**
-
 * Destroys an online subsystem created internally via access with GetOnlineSubsystem
-
 * Typically destruction of the subsystem is handled at application exit, but
-
 * there may be rare instances where the subsystem is destroyed by request
-
 *
-
 * @param InSubsystemName - name of subsystem as referenced by consumers
-
 */
-
 virtual void DestroyOnlineSubsystem(const FName InSubsystemName);
 ```
 

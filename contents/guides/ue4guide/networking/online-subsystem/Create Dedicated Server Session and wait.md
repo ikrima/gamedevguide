@@ -32,103 +32,57 @@ What I'd suggest trying is modifying your code like this:
 
 ```cpp
 void UCustomCreateSession::Activate()
-
 {
+  FCustomOnlineSubsystemBPCallHelper Helper(TEXT("CustomCreateSession"), GEngine->GetWorldFromContextObject(WorldContextObject));
 
-FCustomOnlineSubsystemBPCallHelper Helper(TEXT("CustomCreateSession"), GEngine->GetWorldFromContextObject(WorldContextObject));
+  // !!!CHANGE!!! Get the session interface and set the settings first.
+  auto Sessions = Helper.OnlineSub->GetSessionInterface();
+  if (Sessions.IsValid())
+  {
+      CreateCompleteDelegateHandle = Sessions->AddOnCreateSessionCompleteDelegate_Handle(CreateCompleteDelegate);
+      SessionSettings = MakeShareable(new FOnlineSessionSettings());
+      SessionSettings->NumPublicConnections = NumPublicConnections;
+      SessionSettings->bShouldAdvertise = true;
+      SessionSettings->bAllowJoinInProgress = true;
+      SessionSettings->bIsLANMatch = bUseLAN;
+      SessionSettings->bUsesPresence = true;
+      SessionSettings->bAllowJoinViaPresence = true;
+      SessionSettings->Set("password", DSS_password, EOnlineDataAdvertisementType::ViaOnlineService);
+      SessionSettings->Set("lobbyName", DSS_lobbyName, EOnlineDataAdvertisementType::ViaOnlineService);
+      SessionSettings->Set("selectedMap", FString("Echo"), EOnlineDataAdvertisementType::ViaOnlineService);
+      // SessionSettings->Set("currentStatus", FString("ok"), EOnlineDataAdvertisementType::ViaOnlineService);
+      // SessionSettings->Set("currentBots", FString("5"), EOnlineDataAdvertisementType::ViaOnlineService);
+      // SessionSettings->Set("maxPlayers", FString("32"), EOnlineDataAdvertisementType::ViaOnlineService);
+      // SessionSettings->Set("currentPlayers", FString("1"), EOnlineDataAdvertisementType::ViaOnlineService);
+      // SessionSettings->Set("motd", FString("Hello World"), EOnlineDataAdvertisementType::ViaOnlineService);
+      SessionSettings->Set("versionNumber", DSS_versionNumber, EOnlineDataAdvertisementType::ViaOnlineService);
+      // SessionSettings->Set("gametype", FString("Normal"), EOnlineDataAdvertisementType::ViaOnlineService);
 
-// !!!CHANGE!!! Get the session interface and set the settings first.
+      Helper.QueryIDFromPlayerController(PlayerControllerWeakPtr.Get());
+      if (Helper.IsValid())
+      {
+          Sessions->CreateSession(*Helper.UserID, GameSessionName, *SessionSettings);
+          return;
+      }
+      // Helper isn't valid, try creating the session anyway.
+      // This can happen if there's no player controller, but the underlying OSS may
+      // still be able to handle it (like steam).
+      else if (Sessions->CreateSession(0, GameSessionName, *SessionSettings))
+      {
+          return;
+      }
+      else
+      {
+          FFrame::KismetExecutionMessage(TEXT("Unable to create session."), ELogVerbosity::Warning);
+      }
+  }
+  else
+  {
+      FFrame::KismetExecutionMessage(TEXT("Sessions not supported by Online Subsystem"), ELogVerbosity::Warning);
+  }
 
-auto Sessions = Helper.OnlineSub->GetSessionInterface();
-
-if (Sessions.IsValid())
-
-{
-
-CreateCompleteDelegateHandle = Sessions->AddOnCreateSessionCompleteDelegate_Handle(CreateCompleteDelegate);
-
-SessionSettings = MakeShareable(new FOnlineSessionSettings());
-
-SessionSettings->NumPublicConnections = NumPublicConnections;
-
-SessionSettings->bShouldAdvertise = true;
-
-SessionSettings->bAllowJoinInProgress = true;
-
-SessionSettings->bIsLANMatch = bUseLAN;
-
-SessionSettings->bUsesPresence = true;
-
-SessionSettings->bAllowJoinViaPresence = true;
-
-SessionSettings->Set("password", DSS_password, EOnlineDataAdvertisementType::ViaOnlineService);
-
-SessionSettings->Set("lobbyName", DSS_lobbyName, EOnlineDataAdvertisementType::ViaOnlineService);
-
-SessionSettings->Set("selectedMap", FString("Echo"), EOnlineDataAdvertisementType::ViaOnlineService);
-
-// SessionSettings->Set("currentStatus", FString("ok"), EOnlineDataAdvertisementType::ViaOnlineService);
-
-// SessionSettings->Set("currentBots", FString("5"), EOnlineDataAdvertisementType::ViaOnlineService);
-
-// SessionSettings->Set("maxPlayers", FString("32"), EOnlineDataAdvertisementType::ViaOnlineService);
-
-// SessionSettings->Set("currentPlayers", FString("1"), EOnlineDataAdvertisementType::ViaOnlineService);
-
-// SessionSettings->Set("motd", FString("Hello World"), EOnlineDataAdvertisementType::ViaOnlineService);
-
-SessionSettings->Set("versionNumber", DSS_versionNumber, EOnlineDataAdvertisementType::ViaOnlineService);
-
-// SessionSettings->Set("gametype", FString("Normal"), EOnlineDataAdvertisementType::ViaOnlineService);
-
-Helper.QueryIDFromPlayerController(PlayerControllerWeakPtr.Get());
-
-if (Helper.IsValid())
-
-{
-
-Sessions->CreateSession(*Helper.UserID, GameSessionName, *SessionSettings);
-
-return;
-
-}
-
-// Helper isn't valid, try creating the session anyway.
-
-// This can happen if there's no player controller, but the underlying OSS may
-
-// still be able to handle it (like steam).
-
-else if (Sessions->CreateSession(0, GameSessionName, *SessionSettings))
-
-{
-
-return;
-
-}
-
-else
-
-{
-
-FFrame::KismetExecutionMessage(TEXT("Unable to create session."), ELogVerbosity::Warning);
-
-}
-
-}
-
-else
-
-{
-
-FFrame::KismetExecutionMessage(TEXT("Sessions not supported by Online Subsystem"), ELogVerbosity::Warning);
-
-}
-
-// Fail immediately
-
-OnFailure.Broadcast();
-
+  // Fail immediately
+  OnFailure.Broadcast();
 }
 ```
 

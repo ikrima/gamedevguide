@@ -6,6 +6,5 @@ sortIndex: 6
 
 ```cpp
 virtual void PreReplication(IRepChangedPropertyTracker & ChangedPropertyTracker) override;
-
 virtual void PreReplicationForReplay(IRepChangedPropertyTracker & ChangedPropertyTracker) override;
 ```
