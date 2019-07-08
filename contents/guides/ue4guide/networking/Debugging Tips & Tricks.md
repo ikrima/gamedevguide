@@ -2,6 +2,13 @@
 sortIndex: 12
 ---
 
+# Debug Configuration
+
+n.IpNetDriverMaxFrameTimeBeforeAlert: Time to spend processing networking data in a single frame before an alert is raised (in seconds). It may get called multiple times in a single frame if additional processing after a previous alert exceeds the threshold again default: 1 s
+n.IpNetDriverMaxFrameTimeBeforeLogging: Time to spend processing networking data in a single frame before an output log warning is printed (in seconds). default: 10 s
+n.VerifyPeer:
+
+
 # Debugging Console Commands
 
 ## Lag Simulation
@@ -38,36 +45,73 @@ DumpOnlineSessionState
   log lognetplayermovement verbose
   ```
 
+## Other Commands
+
+SOCKETS: List open sockets
+PauseReceive: Pause Net recieve
+
 # Logging
 
-Most Useful Log Categories:
-- LogNet: Verbose info on channels/connections
+## Most Useful Categories
+
+- LogNet: Verbose info on channels/connections/control messages & handshake
 - LogNetPlayerMovement: Detailed info about movement from clients & corrections
 - LogNetTraffic: Verbose information about data sent on a connection
 
-```batch
-Net log debugging
+## Advanced Categories
 
-LogCoreNet                                Log
-LogGameNetworkManager                     Log
-LogNet                                    Log
-LogNetDormancy                            Log
-LogNetSerialization                       Log
-LogNetPackageMap                          Log
+  ```batch
+  LogCoreNet                                Log
+  LogGameNetworkManager                     Log
+  LogNet                                    Log
+  LogNetDormancy                            Log
+  LogNetSerialization                       Log
+  LogNetPackageMap                          Log
 
-LogNetFastTArray                          Log
-LogNetPartialBunch                        Log
-LogNetTraffic                             Log
+  LogNetFastTArray                          Log
+  LogNetPartialBunch                        Log
+  LogNetTraffic                             Log
+  LogSockets                                Log
+  PacketHandlerLog                          Log
 
-LogNetVersion                             Log
+  LogNetVersion                             Log
 
+  LogNetPlayerMovement                      Log
+  LogCharacterNetSmoothing                  Log
 
-LogNetPlayerMovement                      Log
-LogCharacterNetSmoothing                  Log
+  LogRep                                    Log
+  LogRepTraffic                             Log
+  LogRepProperties                          Log
+  ```
 
-LogRep                                    Log
-LogRepTraffic                             Log
-```
+## Online Subsystem Categories
+
+  ```batch
+  LogOnline                                 Log
+  LogOnlineAchievements                     Log
+  LogOnlineChat                             Log
+  LogOnlineCloud                            Log
+  LogOnlineEntitlement                      Log
+  LogOnlineEvents                           Log
+  LogOnlineExternalUI                       Log
+  LogOnlineFriend                           Log
+  LogOnlineGame                             Log
+  LogOnlineIdentity                         Log
+  LogOnlineLeaderboard                      Log
+  LogOnlineParty                            Log
+  LogOnlinePresence                         Log
+  LogOnlinePurchase                         Log
+  LogOnlineSession                          Log
+  LogOnlineSharing                          Log
+  LogOnlineStats                            Log
+  LogOnlineStore                            Log
+  LogOnlineStoreV2                          Log
+  LogOnlineTitleFile                        Log
+  LogOnlineTournament                       Log
+  LogOnlineUser                             Log
+  LogOnlineVoice                            Log
+  ```
+
 
 # Stats
 

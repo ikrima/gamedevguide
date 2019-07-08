@@ -23,23 +23,14 @@ enum { MAX_PACKET_TRAILER_BITS = 1 };
 UPlayer/UNetConnection:
 
 - CurrentNetSpeed: Actual net speed that gets updated
-
 - MaxPacket: Maximum packet size.
-
 - LastReceiveTime; // Last time a packet was received, for timeout checking.
-
 - LastReceiveRealtime; // Last time a packet was received, using real time seconds (FPlatformTime::Seconds)
-
 - LastGoodPacketRealtime; // Last real time a packet was considered valid
-
 - LastSendTime; // Last time a packet was sent, for keepalives.
-
 - LastTickTime; // Last time of polling.
-
 - QueuedBits; // Bits assumed to be queued up.
-
 - TickCount; // Count of ticks.
-
 - LastRecvAckTime; // The last time an ack was received \*/
 
 **Misc Details:**

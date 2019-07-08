@@ -27,11 +27,8 @@ INetworkPredictionInterface\* **NetworkPredictionInterface** = Cast<INetworkP
 
 NetUpdate() & NetUpdateFrequency()
 
-Called from UWorld:Tick() in LevelTick.cpp:
-- Top of tick -> BroadcastTickDispatch()/TickNetClient() is where client receives all network requests
-- Bottom of tick-> UNetDriver::TickFlush() where all the Replication magic happens from client to everywhere else
 
-Actor Functions
+**Actor Functions**
 
   ```cpp
   // Always called immediately before properties are received from the remote.
