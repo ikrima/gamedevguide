@@ -10,7 +10,12 @@ import SidebarContext from './src/contexts/SidebarContext';
 import SearchWrapper from './src/contexts/SearchContext';
 
 import './src/styles/typography.scss';
-import 'prismjs/themes/prism-tomorrow.css';
+
+// import 'prismjs/themes/prism-coy.css';
+// import 'prismjs/themes/prism-solarizedlight.css';
+// import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+// Themes from https://atelierbram.github.io/syntax-highlighting/prism/demo/
+import './src/styles/prism-themes/prism-base16-ocean.dark.scss';
 
 const wrapPageElement = ({ element, props }) => (
   <SearchWrapper {...props}>

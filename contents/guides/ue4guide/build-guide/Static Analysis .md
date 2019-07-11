@@ -25,9 +25,8 @@ build.py -c development -t editor check pvs
 # UBT Command line
 
 ```batch
-    UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=pvsstudio
-
-    UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodebuginfo
+UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=pvsstudio
+UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodebuginfo
 ```
 
 *Reference From <https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html>*

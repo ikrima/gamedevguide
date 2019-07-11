@@ -402,7 +402,7 @@ sortIndex: 1
 
 Common stat options: [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] [-nodisplay]
 
-  ```batch
+  ```ue4c
   stat groupname[+] - toggles displaying stats group, + enables hierarchical display
   stat namedmarker #markername# - adds a custom marker to the stats stream
   stat hier -group=groupname [-sortby=name][-maxhistoryframes=60] [-reset][-maxdepth=4]
@@ -412,14 +412,14 @@ Common stat options: [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] [-nodisp
 
 1. Find perf offending causers:
 
-    ```batch
+    ```ue4c
     stat slow [-ms=1.0][-depth=4] - toggles displaying the game and render thread stats
     stat dumpevents [-ms=0.2][-all] - dumps events history for slow events, -all adds other threads besides game and render
     ```
 
 1. After narrowing down, dump specific stat group frame
 
-    ```batch
+    ```ue4c
     stat dumpframe [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] - dumps a frame of stats
     stat dumpframe -ms=.001 -root=initviews
     stat dumpframe -ms=.001 -root=shadow
@@ -427,20 +427,20 @@ Common stat options: [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] [-nodisp
 
     Get more consistent stats:
 
-    ```batch
+    ```ue4c
     stat dumpave|dumpmax|dumpsum [-start | -stop | -num=30][-ms=5.0] [-root=empty][leaf=empty] [-depth=maxint] - aggregate stats over multiple frames
     ```
 
 1. Hitches
 
-    ```batch
+    ```ue4c
     stat dumphitches [-start | -stop | no explicit option toggles ] - toggles dumping hitches
     t.HitchThreshold to set threshold
     ```
 
 1. Record to disk
 
-    ```batch
+    ```ue4c
     stat startfile - starts dumping a capture
     stat stopfile - stops dumping a capture (regular, raw, memory) Low
     stat startfileraw - starts dumping a raw capture
@@ -593,10 +593,10 @@ Common stat options: [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] [-nodisp
   - CauseHitches
 
 - Memory
+  - TODO: Add a Button to explain how to Launch MTuner
+  - TODO: Add a Button to explain how to Launch igmemtrace
 
-  ```batch
-  Button to explain how to Launch MTuner
-  Button to explain how to Launch igmemtrace
+  ```ue4c
   memreport [-full]
   stat dumpnonframe [groupname]
   stat toggledebug
@@ -617,7 +617,7 @@ Common stat options: [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] [-nodisp
 
 - Misc
 
-  ```batch
+  ```ue4c
   stat dumpnonframe [groupname]
   stat Levels
   stat LoadTime

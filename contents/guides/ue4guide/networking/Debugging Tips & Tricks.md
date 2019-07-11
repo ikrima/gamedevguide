@@ -15,7 +15,7 @@ n.VerifyPeer:
 
 Console commands Simulate network packet loss/lag/congestion/latency:
 
-```batch
+```ue4c
 net PktLoss=1
 net pktlossburst=x
 net PktOrder=0
@@ -29,19 +29,19 @@ DumpOnlineSessionState
 
 - Draw green/red collision bounds at server correction/client incorrect positions of replicated objects
 
-  ```batch
+  ```ue4c
   p.netshowcorrections 1
   ```
 
 - Control lifetime of visualizations
 
-  ```batch
+  ```ue4c
   p.NetCorrectionLifetime 5
   ```
 
 - Verbose logging
 
-  ```batch
+  ```ue4c
   log lognetplayermovement verbose
   ```
 
@@ -60,7 +60,7 @@ PauseReceive: Pause Net recieve
 
 ## Advanced Categories
 
-  ```batch
+  ```ue4c
   LogCoreNet                                Log
   LogGameNetworkManager                     Log
   LogNet                                    Log
@@ -86,7 +86,7 @@ PauseReceive: Pause Net recieve
 
 ## Online Subsystem Categories
 
-  ```batch
+  ```ue4c
   LogOnline                                 Log
   LogOnlineAchievements                     Log
   LogOnlineChat                             Log
@@ -154,7 +154,7 @@ DECLARE_CYCLE_STAT_EXTERN(TEXT("Net PackageMap SerializeObject"),STAT_PackageMap
 
 Debug networking on local machine with VR (launch order important!)
 
-```batch
+```ue4c
 Server: UE4Editor.exe MPRepro mptest -server -log
 Non-VR Client: UE4Editor.exe MPRepro 127.0.0.1 -game -nohmd
 VR Client: UE4Editor.exe MPRepro 127.0.0.1 -game -vr

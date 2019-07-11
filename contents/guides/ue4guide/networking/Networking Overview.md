@@ -67,11 +67,11 @@ GameSession is meant to handle interactions with OnlineSubsystem like accepting 
 - Network debugging/testing - Launch network version of game through command line shortcut: <https://docs.unrealengine.com/latest/INT/Programming/Basics/CommandLineArguments/index.html>
 
 ```batch
-"UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "UnrealEngine\BBR\BBR.uproject" 0-LevelStart?listen -Game
-"UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "UnrealEngine\BBR\BBR.uproject" -Game 192.168.0.17
-"UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe"
-"UnrealEngine\\BBR\\BBR.uproject" 0-LevelLockArena?listen -Game
-"UnrealEngine\Engine\Binaries\Win64\\UE4Editor-Win64-Debug.exe" "UnrealEngine\\BBR\\BBR.uproject" 1-SimpleMasterArenaFlow?listen -Game -log
+UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor.exe "UnrealEngine\BBR\BBR.uproject" 0-LevelStart?listen -Game
+UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor.exe "UnrealEngine\BBR\BBR.uproject" -Game 192.168.0.17
+UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor.exe
+UnrealEngine\\BBR\\BBR.uproject 0-LevelLockArena?listen -Game
+UnrealEngine\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe "UnrealEngine\\BBR\\BBR.uproject" 1-SimpleMasterArenaFlow?listen -Game -log
 ```
 
 Launch server mode in standalone build:
