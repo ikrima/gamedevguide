@@ -1,0 +1,179 @@
+/*
+
+Name:       Base16 Atelier Heath Light
+Author:     Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/heath)
+
+Prism template by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/prism/)
+Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+
+*/
+
+$base00: #1b181b;
+$base01: #292329;
+$base02: #695d69;
+$base03: #776977;
+$base04: #9e8f9e;
+$base05: #ab9bab;
+$base06: #d8cad8;
+$base07: #f7f3f7;
+$base08: #ca402b;
+$base09: #a65926;
+$base0a: #bb8a35;
+$base0b: #918b3b;
+$base0c: #159393;
+$base0d: #516aec;
+$base0e: #7b59c0;
+$base0f: #cc33cc;
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.375;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  background: $base07;
+  color: $base02;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: $base06;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: $base06;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: $base04;
+}
+
+.token.punctuation {
+  color: $base02;
+}
+
+.token.namespace {
+  opacity: .7;
+}
+
+.token.operator,
+.token.boolean,
+.token.number {
+  color: $base09;
+}
+.token.property {
+  color: $base0a;
+}
+.token.tag {
+  color: $base0d;
+}
+.token.string {
+  color: $base0c;
+}
+.token.selector {
+  color: $base0e;
+}
+.token.attr-name {
+  color: $base09;
+}
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: $base0c;
+}
+
+.token.attr-value,
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit {
+  color: $base0b;
+}
+
+.token.statement,
+.token.regex,
+.token.atrule {
+  color: $base0c;
+}
+
+.token.placeholder,
+.token.variable {
+  color: $base0d;
+}
+
+.token.deleted {
+  text-decoration: line-through;
+}
+
+.token.inserted {
+  border-bottom: 1px dotted $base00;
+  text-decoration: none;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.important {
+  color: $base08;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+pre > code.highlight {
+  outline: .4em solid $base08;
+  outline-offset: .4em;
+}
+
+.line-numbers .line-numbers-rows {
+  border-right-color: $base06 !important;
+}
+
+.line-numbers-rows > span:before {
+  color: $base05 !important;
+}
+
+.line-highlight {
+  background: transparentize($base00,0.8) !important;
+  background: linear-gradient(to right, transparentize($base00,0.8) 70%, transparentize($base00,1)) !important;
+}
