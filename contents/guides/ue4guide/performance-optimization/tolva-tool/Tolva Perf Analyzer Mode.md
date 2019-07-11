@@ -1,10 +1,12 @@
 ---
-sortIndex: 2
+sortIndex: 1
 ---
 
-## Game Thread:
+# Quick Profiling Guide
 
-**General:**
+## Game Thread
+
+### General
 
 1. Display RenderBudget:
    - `Budget BebylonPerf`
@@ -18,7 +20,7 @@ sortIndex: 2
 1. Pause Rendering
    - `show Rendering`
 
-**Animation:**
+### Animation
 
 1. Skeletal Meshes
 
@@ -31,7 +33,7 @@ sortIndex: 2
    a.URO.ForceInterpolation
    ```
 
-**Physics:**
+### Physics
 
 1. Toggle All Collision
 
@@ -54,7 +56,7 @@ sortIndex: 2
 
    `TraceTag` or `TraceTagAll`
 
-## Profiling GPU
+## GPU Profiling
 
 `pause` - pauses game thread and then use `show` command to profile rendering
 
@@ -195,12 +197,12 @@ sortIndex: 2
    1. BSP
    1. Paper2DSprites
 
-## Profiling Draw Thread Performance
+## Draw Thread
 
 1. Look at Draw Call Counter and make sure it's within budget
 
-   - Stat RHI
-   - Stat SceneRendering
+   - stat RHI
+   - stat SceneRendering
    - Look at triangle counts. You can do show \[object category] to turn off big groups of objects to see where triangle counts are coming from
      - show shadows
      - show dynamicshadows
@@ -219,18 +221,15 @@ sortIndex: 2
    - r.DumpDrawListStats
 
 1. Occlusion/Visibility Culling:
+   - Use:
+     - stat initviews - Displays information on how long visibility culling took and how effective it was. Visible section count is the single most important stat with respect to rendering thread performance, and that is dominated by Visible Static Mesh Elements under STAT INITVIEWS, but Visible Dynamic Primitives also factors in
 
-   a. Use:
-
-   - stat initviews - Displays information on how long visibility culling took and how effective it was. Visible section count is the single most important stat with respect to rendering thread performance, and that is dominated by Visible Static Mesh Elements under STAT INITVIEWS, but Visible Dynamic Primitives also factors in
-
-   b. FIX:
-
-   - show Bounds
-   - DumpVisibleActors
-   - r.VisualizeOccludedPrimitives
-   - showflag.visualizeculling
-   - show bounds
+   - FIX
+     - show Bounds
+     - DumpVisibleActors
+     - r.VisualizeOccludedPrimitives
+     - showflag.visualizeculling
+     - show bounds
 
 1. Check if driver overhead is cause
    - stat d3d11rhi
@@ -243,327 +242,22 @@ sortIndex: 2
 ## VR Specific
 
 - Launch Oculus Performance HUD Tool
-
   - Should be accessible with console command from U4
-
   - Disable ASW
-
   - Look at these timings compared to emulate stereo mode. These are accurate GPU timings
-
   - Targets:
-
     - Should have &lt;= 1 dropped frame per 5 seconds
-
     - Should have GPU render time ~10ms
 
-### Root Cause Analysis:
+# Performance Tuning
 
-**Overview:**
-
-Common stat options: [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] [-nodisplay]
-
-stat groupname[+] - toggles displaying stats group, + enables hierarchical display
-
-stat namedmarker #markername# - adds a custom marker to the stats stream
-
-stat hier -group=groupname [-sortby=name][-maxhistoryframes=60] [-reset][-maxdepth=4]
-
-stat group list|listall|enable name|disable name|none|all|default - manages enabling/disabling recording of the stats groups. Doing stat [groupname] automatically enables that group
-
-stat none - visually turn off all stats (recording is still active)
-
-1. Find perf offending causers:
-
-   stat slow [-ms=1.0][-depth=4] - toggles displaying the game and render thread stats
-
-   stat dumpevents [-ms=0.2][-all] - dumps events history for slow events, -all adds other threads besides game and render
-
-1. After narrowing down, dump specific stat group frame
-
-stat dumpframe [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] - dumps a frame of stats
-
- stat dumpframe -ms=.001 -root=initviews
-
- stat dumpframe -ms=.001 -root=shadow
-
-Get more consistent stats:
-
-stat dumpave|dumpmax|dumpsum [-start | -stop | -num=30][-ms=5.0] [-root=empty][leaf=empty] [-depth=maxint] - aggregate stats over multiple frames
-
-1. Hitches
-
-stat dumphitches [-start | -stop | no explicit option toggles ] - toggles dumping hitches
-
-t.HitchThreshold to set threshold
-
-1. Record to disk
-
-stat startfile - starts dumping a capture
-
-stat stopfile - stops dumping a capture (regular, raw, memory) Low
-
-stat startfileraw - starts dumping a raw capture
-
-### General:
-
-1. Game Thread:
-
-   - stat Game
-
-   - tick.LogTicks
-
-   - dumpticks
-
-   - tick.showPrerequistes
-
-1. Threading Stalls
-   - stat Threading
-   - stat CPUStalls
-
-1. Engine UObject System/Constructing UObjects/PostInit/Allocation/etc:
-
-   - stat Object
-
-   - stat ObjectVerbose
-
-   - stat GC
-
-1. Game Thread Scene Update:
-   - stat Component
-   - stat UObjects
-   - Stat SceneUpdate (only the GT timers)
-   - stat Character
-   - stat Tickables (things like movieplayer, timermanager, etc)
-   - Tick.LogTicks = 1 or dumpticks
-
-1. Triangle Count/Frame/Render/Game/GPU timings:
-
-   - stat Engine
-
-   - stat RHI
-
-   - stat SceneRendering
-     - RenderViewFamily = Render Thread
-     - InitViews = Culling, dependent on how many objects (not just visible) in the scene
-
-1. Inspect CPU:
-   - stat dumpcpu
-   - stat ServerCPU
-   - stat CPUStalls
-
-1. Perf By Tick Functions/Tasks/"Job System":
-
-   - stat TaskGraphTasks
-
-   - stat Tickables
-
-   - stat TickGroups
-
-1. Animation:
-   - stat Anim
-   - stat MorphTarget
-   - stat MovieSceneEval
-   - stat GPUSkinCache
-   - stat Particles
-   - ANIMSEQSTATS
-
-1. Physics:
-
-   - stat Physics
-
-   - stat PhysXTasks
-
-   - stat Collision
-
-   - stat CollisionVerbose
-
-   - Stat CollisionTags
-
-   - stat Character
-
-   - Stat ImmediatePhysics
-
-1. FX
-   - stat Particles
-   - stat ParticleMem
-   - stat GPUParticles
-   - stat Emitters
-   - stat BeamParticles
-   - stat MeshParticles
-   - stat TrailParticles
-   - DUMPPARTICLECOUNTS
-   - DUMPPARTICLEMEM
-   - PARTICLEMESHUSAGE
-   - LISTPARTICLESYSTEMS
-
-1. Misc
-
-   - stat Quick
-   - r.DisplayInternals
-
-#### Render Thread
-
-1. DrawThread/Scene Update Stalls:
-
-   - stat SceneRendering
-
-   - Stat SceneUpdate
-
-1. D3D Driver overhead:
-   - stat d3d11rhi
-
-1. Render Thread Command Marshalling from Game Thread
-
-   - stat RenderThreadCommands
-
-   - stat RHICmdList
-
-   - stat CommandListMarkers
-
-   - stat ParallelCommandListMarkers
-
-   - stat LightRendering
-
-1. Dump Material/Shader inf
-   - DumpMaterialStats: Dump material information
-   - DumpShaderStats: Dump shader information
-   - DumpShaderPipelineStats: Dump shader pipeline information
-
-1. Visibility Culling & Primitive Component count:
-
-   - stat initviews -
-
-   - Displays information on how long visibility culling took and how effective it was. Visible section count is the single most important stat with respect to rendering thread performance, and that is dominated by Visible Static Mesh Elements under STAT INITVIEWS, but Visible Dynamic Primitives also factors in.
-
-   - show camerafrustums
-
-   - show bounds
-
-### GPU
-
-1. GPU
-
-   - stat GPU
-
-   - stat RHI (GPU Memory Pressure)
-
-1. Texture Bandwidth
-   - showMipLevels
-   - VisRT
-   - r.VisualizeTexturePool
-   - ListTextures
-   - ListStreamingTextures
-
-1. GI
-
-   - r.Cache.DrawInterpolationPoints
-
-   - r.Cache.DrawDirectionalShadowing
-
-   - r.Cache.DrawLightingSamples
-
-1. Post-Processing
-   - r.ListSceneColorMaterials
-
-1. VR
-
-   stat OculusHMD
-
-   stat Oculus
-
-1. Misc
-
-   r.GPUBusyWait
-
-   SynthBenchmark
-
-### Advanced:
-
-- **Hitches:**
-
-  stat dumphitches
-
-  CauseHitches
-
-
-- **Memory:**
-
-  Button to explain how to Launch MTuner
-
-  Button to explain how to Launch igmemtrace
-
-  memreport [-full]
-
-  stat dumpnonframe [groupname]
-
-  stat toggledebug
-
-  stat TextureGroup
-
-  stat TexturePool
-
-  stat LLMPlatform
-
-  stat LLM
-
-  stat LLMMalloc
-
-  stat LLMRHI
-
-  stat LLMAssets
-
-  stat Memory
-
-  stat MemoryPlatform
-
-  stat MemoryAllocator
-
-  Stat MemoryStaticMesh
-
-  Stat SceneMemory
-
-  memreport -fullprof
-
-
-- **Misc:**
-
-  stat dumpnonframe [groupname]
-
-  stat Levels
-
-  stat LoadTime
-
-  stat LoadTimeVerbose
-
-  stat AsyncLoad
-
-  stat AsyncLoadGameThread
-
-  stat Streaming / stat streaming sortby=name
-
-  stat StreamingDetails
-
-  PauseTextureStreaming
-
-  DumpLightmapSizeOnDisk
-
-  r.DumpRenderTargetPoolMemory
-
-  rhi.DumpMemory
-
-  r.RenderTargetPool.Events
-
-  r.RenderTargetPoolMin'
-
-### Performance Tuning
-
- **Tunable Optimizations:**
+## Tunable Optimizations
 
 1. Ticking
-   - DbgCmd('tick.AllowAsyncComponentTicks'),
-   - DbgCmd('tick.AllowConcurrentTickQueue'),
-   - DbgCmd('tick.AllowAsyncTickDispatch'),
-   - DbgCmd('tick.AllowAsyncTickCleanup'),
+   - tick.AllowAsyncComponentTicks
+   - tick.AllowConcurrentTickQueue
+   - tick.AllowAsyncTickDispatch
+   - tick.AllowAsyncTickCleanup
 
 1. Toggle Occlusion Queries
    - r.AllowOcclusionQueries
@@ -584,11 +278,9 @@ stat startfileraw - starts dumping a raw capture
 
 1. Animation Update and Evaluation
 
-   DbgCmd('a.ParallelAnimEvaluation'),
-
-   DbgCmd('a.ParallelAnimUpdate'),
-
-   DbgCmd('a.ForceParallelAnimUpdate'),
+   a.ParallelAnimEvaluation
+   a.ParallelAnimUpdate
+   a.ForceParallelAnimUpdate
 
 1. Compute Skinning
    - r.SkinCache.Mode=1
@@ -615,154 +307,329 @@ stat startfileraw - starts dumping a raw capture
    - r.GBufferFormat=1
 
 1. Lighting & GI
-
-   DbgCmd('r.Cache.LightingCacheMovableObjectAllocationSize'),
-
-   DbgCmd('r.Cache.LightingCacheDimension'),
-
-   DbgCmd('r.Cache.UpdatePrimsTaskEnabled'),
-
-   DbgCmd('r.MinScreenRadiusForLights'),
-
-   DbgCmd('r.MinScreenRadiusForDepthPrepass'),
+   - r.Cache.LightingCacheMovableObjectAllocationSize
+   - r.Cache.LightingCacheDimension
+   - r.Cache.UpdatePrimsTaskEnabled
+   - r.MinScreenRadiusForLights
+   - r.MinScreenRadiusForDepthPrepass
 
 1. Misc
-   - DbgCmd('r.Forward.LightGridPixelSize'),
-   - DbgCmd('r.Forward.LightGridSizeZ'),
-   - DbgCmd('r.Forward.MaxCulledLightsPerCell'),
-   - DbgCmd('r.Forward.LightLinkedListCulling'),
-   - DbgCmd('r.DeferUniformBufferUpdatesUntilVisible'),
-   - DbgCmd('r.UseParallelGetDynamicMeshElementsTasks'),
-   - DbgCmd('r.Tonemapper.Quality'),
+   - r.Forward.LightGridPixelSize
+   - r.Forward.LightGridSizeZ
+   - r.Forward.MaxCulledLightsPerCell
+   - r.Forward.LightLinkedListCulling
+   - r.DeferUniformBufferUpdatesUntilVisible
+   - r.UseParallelGetDynamicMeshElementsTasks
+   - r.Tonemapper.Quality
 
-### **Quality Trade-Offs:**
-
-- Toggle TranslucentLightingVolume settings:
-
-  r.TranslucentLightingVolume
-
-  r.TranslucentVolumeMinFOV
-
-  r.TranslucentVolumeFOVSnapFactor
-
-  r.TranslucencyVolumeBlur
-
-  r.TranslucencyLightingVolumeDim
-
-  r.TranslucencyLightingVolumeInnerDistance
-
-  r.TranslucencyLightingVolumeOuterDistance
-
+## Quality Trade-Offs
+- Toggle TranslucentLightingVolume settings
+  - r.TranslucentLightingVolume
+  - r.TranslucentVolumeMinFOV
+  - r.TranslucentVolumeFOVSnapFactor
+  - r.TranslucencyVolumeBlur
+  - r.TranslucencyLightingVolumeDim
+  - r.TranslucencyLightingVolumeInnerDistance
+  - r.TranslucencyLightingVolumeOuterDistance
   (Inner & Outer distance are the ones to change for getting around the popping)
 
+- Toggle Custom Depth
+  - r.CustomDepth=0
 
-- Toggle Custom Depth:
-
-  r.CustomDepth=0
-
-
-- Toggle Separate Translucency:
-
-  r.SeparateTranslucency=False
-
-  r.SeparateTranslucencyAutoDownsample=1
-
-  r.SeparateTranslucencyScreenPercentage=100
-
-  r.SeparateTranslucencyDurationDownsampleThreshold=1
-
-  r.SeparateTranslucencyDurationUpsampleThreshold=0.25
-
+- Toggle Separate Translucency
+  - r.SeparateTranslucency=False
+  - r.SeparateTranslucencyAutoDownsample=1
+  - r.SeparateTranslucencyScreenPercentage=100
+  - r.SeparateTranslucencyDurationDownsampleThreshold=1
+  - r.SeparateTranslucencyDurationUpsampleThreshold=0.25
 
 - RenderTargets & PostProcessing
+  - r.DBuffer
+  - r.Atmosphere
+  - r.CapsuleShadows
+  - r.ContactShadows
+  - r.HighQualityLightMaps
 
-  r.DBuffer
+- AA
+  - r.DefaultFeature.AntiAliasing=3
+  - r.MSAA.CompositingSampleCount=4
+  - r.MSAACount=4 (0=> TXAA, 1=>No MSAA, 2,4,8=> MSAA Count)
+  - r.WideCustomResolve
+  - r.DoTiledReflections
 
-  r.Atmosphere
-
-  r.CapsuleShadows
-
-  r.ContactShadows
-
-  DbgCmd('r.HighQualityLightMaps'),
-
-
-- AA:
-
-  r.DefaultFeature.AntiAliasing=3
-
-  r.MSAA.CompositingSampleCount=4
-
-  r.MSAACount=4 (0=> TXAA, 1=>No MSAA, 2,4,8=> MSAA Count)
-
-  DbgCmd('r.WideCustomResolve'),
-
-  DbgCmd('r.DoTiledReflections'),
-
-
-- DBuffer: r.DBuffer=False
-
+- DBuffer
+  - r.DBuffer=False
 
 - GI
-
-  r.Cache.UpdateEveryFrame
-
-  r.Cache.SampleTransitionSpeed
-
+  - r.Cache.UpdateEveryFrame
+  - r.Cache.SampleTransitionSpeed
 
 - Misc Graphics Quality:
-
-  r.FastBlurThreshold=0
-
-  r.BloomQuality=1
-
-  r.MaxAnisotropy=8
-
-  DbgCmd('r.LightFunctionQuality'),
-
+  - r.FastBlurThreshold=0
+  - r.BloomQuality=1
+  - r.MaxAnisotropy=8
+  - r.LightFunctionQuality
 
 - Skinning:
-
-  r.GPUSkin.Limit2BoneInfluences
-
-  r.SkinCache.RecomputeTangents
-
+  - r.GPUSkin.Limit2BoneInfluences
+  - r.SkinCache.RecomputeTangents
 
 - FX:
-
-  FX.GPUCollisionDepthBounds=250
-
-  FX.MaxCPUParticlesPerEmitter=1000
-
-  FX.MaxGPUParticlesSpawnedPerFrame=524288
-
-  FX.GPUSpawnWarningThreshold=10000
-
-  DbgCmd('r.GPUParticle.FixDeltaSeconds'),
-
-  DbgCmd('r.GPUParticle.FixTolerance'),
-
-  DbgCmd('r.GPUParticle.MaxNumIterations'),
-
-  DbgCmd('r.ParticleLightQuality'),
-
+  - FX.GPUCollisionDepthBounds=250
+  - FX.MaxCPUParticlesPerEmitter=1000
+  - FX.MaxGPUParticlesSpawnedPerFrame=524288
+  - FX.GPUSpawnWarningThreshold=10000
+  - r.GPUParticle.FixDeltaSeconds
+  - r.GPUParticle.FixTolerance
+  - r.GPUParticle.MaxNumIterations
+  - r.ParticleLightQuality
 
 - Reflection Captures
+  - r.ReflectionEnvironment
+  - r.ReflectionCaptureResolution=128
+  - r.ReflectionEnvironmentBeginMixingRoughness=0.1
+  - r.ReflectionEnvironmentEndMixingRoughness=0.3
+  - r.ReflectionEnvironmentLightmapMixBasedOnRoughness
+  - r.ReflectionEnvironmentLightmapMixing
+  - r.ReflectionEnvironmentLightmapMixLargestWeight=10000
 
-  r.ReflectionEnvironment
+- Big Kludges:
+  - r.pd=1
 
-  r.ReflectionCaptureResolution=128
+# Detailed Root Cause Analysis
 
-  r.ReflectionEnvironmentBeginMixingRoughness=0.1
+## Overview
 
-  r.ReflectionEnvironmentEndMixingRoughness=0.3
+Common stat options: [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] [-nodisplay]
 
-  r.ReflectionEnvironmentLightmapMixBasedOnRoughness
+  ```batch
+  stat groupname[+] - toggles displaying stats group, + enables hierarchical display
+  stat namedmarker #markername# - adds a custom marker to the stats stream
+  stat hier -group=groupname [-sortby=name][-maxhistoryframes=60] [-reset][-maxdepth=4]
+  stat group list|listall|enable name|disable name|none|all|default - manages enabling/disabling recording of the stats groups. Doing stat [groupname] automatically enables that group
+  stat none - visually turn off all stats (recording is still active)
+  ```
 
-  r.ReflectionEnvironmentLightmapMixing
+1. Find perf offending causers:
 
-  r.ReflectionEnvironmentLightmapMixLargestWeight=10000
+    ```batch
+    stat slow [-ms=1.0][-depth=4] - toggles displaying the game and render thread stats
+    stat dumpevents [-ms=0.2][-all] - dumps events history for slow events, -all adds other threads besides game and render
+    ```
 
-Big Kludges:
+1. After narrowing down, dump specific stat group frame
 
-- r.pd=1
+    ```batch
+    stat dumpframe [-ms=5.0][-root=empty] [leaf=empty][-depth=maxint] - dumps a frame of stats
+    stat dumpframe -ms=.001 -root=initviews
+    stat dumpframe -ms=.001 -root=shadow
+    ```
+
+    Get more consistent stats:
+
+    ```batch
+    stat dumpave|dumpmax|dumpsum [-start | -stop | -num=30][-ms=5.0] [-root=empty][leaf=empty] [-depth=maxint] - aggregate stats over multiple frames
+    ```
+
+1. Hitches
+
+    ```batch
+    stat dumphitches [-start | -stop | no explicit option toggles ] - toggles dumping hitches
+    t.HitchThreshold to set threshold
+    ```
+
+1. Record to disk
+
+    ```batch
+    stat startfile - starts dumping a capture
+    stat stopfile - stops dumping a capture (regular, raw, memory) Low
+    stat startfileraw - starts dumping a raw capture
+    ```
+
+## General
+
+1. Game Thread:
+
+   - stat Game
+   - tick.LogTicks
+   - dumpticks
+   - tick.showPrerequistes
+
+1. Threading Stalls
+   - stat Threading
+   - stat CPUStalls
+
+1. Engine UObject System/Constructing UObjects/PostInit/Allocation/etc:
+
+   - stat Object
+   - stat ObjectVerbose
+   - stat GC
+
+1. Game Thread Scene Update:
+   - stat Component
+   - stat UObjects
+   - stat SceneUpdate (only the GT timers)
+   - stat Character
+   - stat Tickables (things like movieplayer, timermanager, etc)
+   - Tick.LogTicks = 1 or dumpticks
+
+1. Triangle Count/Frame/Render/Game/GPU timings:
+
+   - stat Engine
+   - stat RHI
+   - stat SceneRendering
+     - RenderViewFamily = Render Thread
+     - InitViews = Culling, dependent on how many objects (not just visible) in the scene
+
+1. Inspect CPU:
+   - stat dumpcpu
+   - stat ServerCPU
+   - stat CPUStalls
+
+1. Perf By Tick Functions/Tasks/"Job System":
+   - stat TaskGraphTasks
+   - stat Tickables
+   - stat TickGroups
+
+1. Animation:
+   - stat Anim
+   - stat MorphTarget
+   - stat MovieSceneEval
+   - stat GPUSkinCache
+   - stat Particles
+   - ANIMSEQSTATS
+
+1. Physics:
+
+   - stat Physics
+   - stat PhysXTasks
+   - stat Collision
+   - stat CollisionVerbose
+   - stat CollisionTags
+   - stat Character
+   - stat ImmediatePhysics
+
+1. FX
+   - stat Particles
+   - stat ParticleMem
+   - stat GPUParticles
+   - stat Emitters
+   - stat BeamParticles
+   - stat MeshParticles
+   - stat TrailParticles
+   - DUMPPARTICLECOUNTS
+   - DUMPPARTICLEMEM
+   - PARTICLEMESHUSAGE
+   - LISTPARTICLESYSTEMS
+
+1. Misc
+   - stat Quick
+   - r.DisplayInternals
+
+## Render Thread
+
+1. DrawThread/Scene Update Stalls:
+
+   - stat SceneRendering
+   - stat SceneUpdate
+
+1. D3D Driver overhead:
+   - stat d3d11rhi
+
+1. Render Thread Command Marshalling from Game Thread
+
+   - stat RenderThreadCommands
+   - stat RHICmdList
+   - stat CommandListMarkers
+   - stat ParallelCommandListMarkers
+   - stat LightRendering
+
+1. Dump Material/Shader inf
+   - DumpMaterialStats: Dump material information
+   - DumpShaderStats: Dump shader information
+   - DumpShaderPipelineStats: Dump shader pipeline information
+
+1. Visibility Culling & Primitive Component count:
+
+   - stat initviews
+     - Displays information on how long visibility culling took and how effective it was. Visible section count is the single most important stat with respect to rendering thread performance, and that is dominated by Visible Static Mesh Elements under STAT INITVIEWS, but Visible Dynamic Primitives also factors in.
+   - show camerafrustums
+   - show bounds
+
+## GPU
+
+1. GPU
+   - stat GPU
+   - stat RHI (GPU Memory Pressure)
+
+1. Texture Bandwidth
+   - showMipLevels
+   - VisRT
+   - r.VisualizeTexturePool
+   - ListTextures
+   - ListStreamingTextures
+
+1. GI
+   - r.Cache.DrawInterpolationPoints
+   - r.Cache.DrawDirectionalShadowing
+   - r.Cache.DrawLightingSamples
+
+1. Post-Processing
+   - r.ListSceneColorMaterials
+
+1. VR
+   - stat OculusHMD
+   - stat Oculus
+
+1. Misc
+   - r.GPUBusyWait
+   - SynthBenchmark
+
+## Advanced
+
+- Hitches
+
+  - stat dumphitches
+  - CauseHitches
+
+- Memory
+
+  ```batch
+  Button to explain how to Launch MTuner
+  Button to explain how to Launch igmemtrace
+  memreport [-full]
+  stat dumpnonframe [groupname]
+  stat toggledebug
+  stat TextureGroup
+  stat TexturePool
+  stat LLMPlatform
+  stat LLM
+  stat LLMMalloc
+  stat LLMRHI
+  stat LLMAssets
+  stat Memory
+  stat MemoryPlatform
+  stat MemoryAllocator
+  stat MemoryStaticMesh
+  stat SceneMemory
+  memreport -fullprof
+  ```
+
+- Misc
+
+  ```batch
+  stat dumpnonframe [groupname]
+  stat Levels
+  stat LoadTime
+  stat LoadTimeVerbose
+  stat AsyncLoad
+  stat AsyncLoadGameThread
+  stat Streaming / stat streaming sortby=name
+  stat StreamingDetails
+  PauseTextureStreaming
+  DumpLightmapSizeOnDisk
+  r.DumpRenderTargetPoolMemory
+  rhi.DumpMemory
+  r.RenderTargetPool.Events
+  r.RenderTargetPoolMin
+  ```
