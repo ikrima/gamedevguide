@@ -23,6 +23,33 @@ const gbRemarkPluginsList = [
       aliases: {},
       showLineNumbers: true,
       noInlineHighlight: false,
+      languageExtensions: [
+        {
+          language: 'ue4c',
+          definition: {
+            string: {
+              pattern: /"(?:""|[!#$%&'()*,/:;<=>?^_ +\-.A-Z\d])*"/i,
+              greedy: true,
+            },
+            number: /(?:\b\d+\.?\d*|\B\.\d+)(?:E[+-]?\d+)?/i,
+            cvar: [
+              { pattern: /^[ \t]*[^\s=]+?(?=[ \t]*=)/m, alias: 'variable' },
+              { pattern: /^\w+(?:\.\w+)/m, alias: 'variable' },
+            ],
+            'cvar-value': {
+              pattern: /=.*/,
+              inside: {
+                punctuation: /^[=]/,
+              },
+              alias: 'attr-value',
+            },
+            function: {
+              pattern: /^\w+/m,
+            },
+            operator: /<[=>]?|>=?|[+\-*/^=&]|\b(?:AND|EQV|IMP|NOT|OR|XOR)\b/i,
+          },
+        },
+      ],
     },
   },
   'gatsby-remark-smartypants',
@@ -30,7 +57,7 @@ const gbRemarkPluginsList = [
     resolve: 'gatsby-remark-katex',
     options: {
       // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-      strict: 'warn',
+      strict: false,
       // displayMode: true,
     },
   },

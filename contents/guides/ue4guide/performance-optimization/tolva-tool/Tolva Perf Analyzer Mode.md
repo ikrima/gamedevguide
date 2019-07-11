@@ -9,22 +9,22 @@ sortIndex: 1
 ### General
 
 1. Display RenderBudget:
-   - `Budget BebylonPerf`
+   - `ue4c>Budget BebylonPerf`
 
 1. Freeze Game Thread
-   - `Pause`
+   - `ue4c>Pause`
 
 1. Check Game Thread Perf
-   - `stat Game`
+   - `ue4c>stat Game`
 
 1. Pause Rendering
-   - `show Rendering`
+   - `ue4c>show Rendering`
 
 ### Animation
 
 1. Skeletal Meshes
 
-   ```ini
+   ```ue4c
    show SkeletalMeshes
    r.EnableMorphTargets
    r.SkinCache.Mode
@@ -41,11 +41,11 @@ sortIndex: 1
 
 1. Toggle Generate All Overlap Events
 
-   Might need to implement this either in python or you might be able to the editor commands to set on all actors/objects: `set <classname> <propertyName> <value>`
+   Might need to implement this either in python or you might be able to the editor commands to set on all actors/objects: `ue4c>set <classname> <propertyName> <value>`
 
 1. Toggle Anim Dynamics
 
-   ```ini
+   ```ue4c
    p.AnimDynamics
    p.AnimDynamicsWind
    p.AnimDynamicsRestrictLOD
@@ -54,83 +54,83 @@ sortIndex: 1
 
 1. Visualize by:
 
-   `TraceTag` or `TraceTagAll`
+   `ue4c>TraceTag` or `ue4c>TraceTagAll`
 
 ## GPU Profiling
 
-`pause` - pauses game thread and then use `show` command to profile rendering
+`ue4c>pause` - pauses game thread and then use `ue4c>show` command to profile rendering
 
 `FreezeFrame 0.5` - Freezes/Pauses game after a delay. Custom function in UCheatManager
 
 1. Test if GPU Bottleneck:
 
-   - `r.screenpercentage=20` => fast test to see if GPU is bottleneck
-   - `show Rendering` ***(verify this this actually disables rendering)***
+   - `ue4c>r.screenpercentage=20` => fast test to see if GPU is bottleneck
+   - `ue4c>show Rendering` ***(verify this this actually disables rendering)***
 
 1. Test if Texture Bandwidth is problem:
 
    - Replace all textures with 2x2 textures ***(need to implement)***
 
 1. Test if Texture MipMaps are appropriate
-   - `Visualize mipmap scale`
-   - `Visualize UV scale`
+   - `ue4c>Visualize mipmap scale`
+   - `ue4c>Visualize UV scale`
 
 1. Test quad overdraw/small triangle size
 
-   - `show QuadOverdraw`
+   - `ue4c>show QuadOverdraw`
 
 1. Test Overdraw is problem
-   - `show Translucency`
-   - `show SeparateTranslucency`
+   - `ue4c>show Translucency`
+   - `ue4c>show SeparateTranslucency`
 
 1. Test Meshes bottleneck
 
-   - `show StaticMeshes`
-   - `show InstancedStaticMeshes`
-   - `show SkeletalMeshes`
-   - `r.ForceLOD`
+   - `ue4c>show StaticMeshes`
+   - `ue4c>show InstancedStaticMeshes`
+   - `ue4c>show SkeletalMeshes`
+   - `ue4c>r.ForceLOD`
    - Animation Compute Shaders:
-     - `r.SkinCache.Mode`
-     - `r.MorphTarget.Mode`
+     - `ue4c>r.SkinCache.Mode`
+     - `ue4c>r.MorphTarget.Mode`
 
 1. Test if Lighting is bottleneck
 
    - Toggle All Lighting
-     - `show Lighting` ***(verify this this actually disables rendering)***
-     - `ToggleLight` ***(verify this this actually disables rendering)***
-     - `show DeferredLighting` ***(verify this this actually disables rendering)***
-     - `show VisualizeLightCulling`
+     - `ue4c>show Lighting` ***(verify this this actually disables rendering)***
+     - `ue4c>ToggleLight` ***(verify this this actually disables rendering)***
+     - `ue4c>show DeferredLighting` ***(verify this this actually disables rendering)***
+     - `ue4c>show VisualizeLightCulling`
 
    - Toggle Static Lighting
-     - `r.AllowStaticLighting`
-     - `show DirectLighting` ***(verify this this actually disables rendering)***
+     - `ue4c>r.AllowStaticLighting`
+     - `ue4c>show DirectLighting` ***(verify this this actually disables rendering)***
 
    - Toggle Dynamic Lighting
-     - `show DirectionalLights`
-     - `show PointLights`
-     - `show SpotLights`
-     - `show SkyLighting`
+     - `ue4c>show DirectionalLights`
+     - `ue4c>show PointLights`
+     - `ue4c>show SpotLights`
+     - `ue4c>show SkyLighting`
 
    - Toggle Lighting Components
      - Direct Lighting
-       - `show DirectLighting`
-       - `r.SimpleDynamicLighting`
+       - `ue4c>show DirectLighting`
+       - `ue4c>r.SimpleDynamicLighting`
      - Ambient Occlusion
-       - `show AmbientOcclusion`
-       - `show Diffuse`
-       - `show Specular`
+       - `ue4c>show AmbientOcclusion`
+       - `ue4c>show Diffuse`
+       - `ue4c>show Specular`
      - Global Illumination
-       - `show GlobalIllumination`
-       - `show SubsurfaceScattering`
+       - `ue4c>show GlobalIllumination`
+       - `ue4c>show SubsurfaceScattering`
      - Indirect Lighting Cache
-       - `r.IndirectLightingCache`
-       - `show IndirectLightingCache` ***(verify)***
+       - `ue4c>r.IndirectLightingCache`
+       - `ue4c>show IndirectLightingCache` ***(verify)***
      - Reflection Environment
-       - `show ReflectionEnvironment`
+       - `ue4c>show ReflectionEnvironment`
 
 1. Test if Shader Complexity Bound:
-   - `ToggleForceDefaultMaterial`
-   - `show Materials`
+   - `ue4c>ToggleForceDefaultMaterial`
+   - `ue4c>show Materials`
 
 1. Test FX System
 
@@ -138,31 +138,31 @@ sortIndex: 1
      (find all commands to turn them off completely)
 
    - Toggle Particle Simulation
-     - `r.GPUParticle.Simulate`
-     - `r.GPUParticle.FixDeltaSeconds`
-     - `FX.FreezeGPUSimulation`
-     - `FX.FreezeParticleSimulation`
-     - `FX.RestartAll`
+     - `ue4c>r.GPUParticle.Simulate`
+     - `ue4c>r.GPUParticle.FixDeltaSeconds`
+     - `ue4c>FX.FreezeGPUSimulation`
+     - `ue4c>FX.FreezeParticleSimulation`
+     - `ue4c>FX.RestartAll`
 
    - Toggle Particle Rendering
-     - `show Particles`
+     - `ue4c>show Particles`
 
    - Turn Off CPU Particles
 
    - Turn Off GPU Particles
-     - `FX.AllowGPUParticles`
+     - `ue4c>FX.AllowGPUParticles`
 
    - Misc Particle Commands
-     - `PARTICLE`
-     - `KILLPARTICLES`
-     - `DUMPPARTICLEMEM`
-     - `CountDisabledParticleItems`
-     - `LISTPARTICLESYSTEMS`
-     - `PARTICLEMESHUSAGE`
-     - `DUMPPARTICLECOUNTS`
-     - `TRACKPARTICLERENDERINGSTATS`
+     - `ue4c>PARTICLE`
+     - `ue4c>KILLPARTICLES`
+     - `ue4c>DUMPPARTICLEMEM`
+     - `ue4c>CountDisabledParticleItems`
+     - `ue4c>LISTPARTICLESYSTEMS`
+     - `ue4c>PARTICLEMESHUSAGE`
+     - `ue4c>DUMPPARTICLECOUNTS`
+     - `ue4c>TRACKPARTICLERENDERINGSTATS`
 
-   - `Toggle Decals`
+   - `ue4c>Toggle Decals`
 
 1. Test If Post Processing
 
@@ -171,7 +171,7 @@ sortIndex: 1
    - show AntiAliasing
    - show Decals
 
-1. Disable rendering features in order of priority by `r.LimitRenderingFeatures=FeatureLevel`. Feature Levels:
+1. Disable rendering features in order of priority by `ue4c>r.LimitRenderingFeatures=FeatureLevel`. Feature Levels:
    1. AntiAliasing
    1. EyeAdaptation
    1. SeparateTranslucency
@@ -323,6 +323,7 @@ sortIndex: 1
    - r.Tonemapper.Quality
 
 ## Quality Trade-Offs
+
 - Toggle TranslucentLightingVolume settings
   - r.TranslucentLightingVolume
   - r.TranslucentVolumeMinFOV
