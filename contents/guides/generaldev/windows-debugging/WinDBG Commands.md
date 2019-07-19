@@ -37,3 +37,26 @@ BlueScreenView  <http://www.nirsoft.net/utils/blue_screen_view.html>
 
 Resources:
 <https://www.sysnative.com/forums/bsod-kernel-dump-analysis-debugging-information/284-bsod-method-tips.html>
+
+# Misc Commands
+
+Debug Commands:
+k: Display backtrace
+
+WinDBG:
+https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/methods-of-controlling-breakpoints
+bp 	Address breakpoint
+bu 	Unresolved/deferred breakpoint. Persists across module load/unload
+bm	Set symbol breakpoint on pattern match
+bc/bd/be	Clear/enable/disable BP
+
+Can also do breakpoint commands. Ex:
+0:000> bu MyFunction+0x47 ".dump c:\mydump.dmp; g"
+
+
+bl	List existing breakpoints
+ba	Set Read Data breakpoint
+
+
+Complex DataAccess breakpoints:
+https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/ba--break-on-access-

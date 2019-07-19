@@ -2,13 +2,23 @@
   "slugPart": "generaldev",
   "childTOCs": [
     {
-      "slugPart": "scripting",
+      "slugPart": "visual-studio",
+      "sortIndex": 0,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "os",
       "sortIndex": 1,
       "childTOCs": []
     },
     {
       "slugPart": "windows-debugging",
-      "sortIndex": 0,
+      "sortIndex": 2,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "scripting",
+      "sortIndex": 3,
       "childTOCs": []
     }
   ]

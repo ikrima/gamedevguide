@@ -4,42 +4,50 @@
 
 - Installing
 
-```shell
-cinst -y nodejs
-cinst -y yarn
-npm install -g gatsby-cli
-npm install -g yarn
-```
+  From Powershell eleveated prompt:
+  ```shell
+
+  cinst -y nvm.portable
+    nvm install 10.16.0
+    nvm install latest
+
+  nvm use 10.16.0 (or for each nodejs installation bc you globally installed modules arent shared)
+    npm install -g npm@latest
+    ; !!!!!! IMPORTANT
+    ; CAREFUL WITH THIS ONE: It does unbelievably dumb fucking shit like wreck your user path and then adds python27 directory to that path variable, wrecking existing python installs
+    npm install -g windows-build-tools
+    npm install -g gatsby-cli
+  ```
 
 - Upgrade
 
-```shell
-gatsby info
-node -v
-npm -v
-npm update -g gatsby ; upgrade gatsby globally
-npm update --dev ; update all packages in project
-```
+  ```shell
+  gatsby info
+  node -v
+  npm -v
+  npm update -g gatsby ; upgrade gatsby globally
+  npm update --dev ; update all packages in project
+  ```
 
 - Building
 
-```shell
-npm run dev
-npm run develop ; clean & start develop environment
-npm run build & npm run serve
-```
+  ```shell
+  npm run dev
+  npm run develop ; clean & start develop environment
+  npm run build & npm run serve
+  ```
 
 - Misc commands
 
-```shell
-npm run lint
-npm run lint:fix
-npm run format:js
-npm run format:md
-npm run format:mdx
-npm run formatp:md   ; this uses prettier which isnt as configurable
-npm run formatp:mdx  ; this uses prettier which isnt as configurable
-```
+  ```shell
+  npm run lint
+  npm run lint:fix
+  npm run format:js
+  npm run format:md
+  npm run format:mdx
+  npm run formatp:md   ; this uses prettier which isnt as configurable
+  npm run formatp:mdx  ; this uses prettier which isnt as configurable
+  ```
 
 ## OneNote Conversion
 
