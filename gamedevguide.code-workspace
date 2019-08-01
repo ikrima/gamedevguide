@@ -24,6 +24,7 @@
 			"activityBar.inactiveForeground": "#e7e7e799",
 			"activityBarBadge.background": "#000000",
 			"activityBarBadge.foreground": "#e7e7e7"
-		}
+		},
+		"peacock.color": "#68217A88"
 	}
 }
