@@ -27,16 +27,6 @@ sortIndex: 1
 
 - Setting up Visual Studio with UE4: <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
 
-- Enable Visual Assist support for UE4 C++ support <https://docs.wholetomato.com/default.asp?W763>
-
-- This is no longer needed ~~Add va_stdafx.h file in directory of one of your sln or vcxproj files: <https://support.wholetomato.com/default.asp?W783>~~
-
-- VassistX/Intellisense/Visual Assist X Performance Optimization:
-  - Disable intellisense browse database <https://support.wholetomato.com/default.asp?W133>
-  - Disable enumerate references <https://support.wholetomato.com/default.asp?W664>
-  - <https://support.wholetomato.com/default.asp?W663>
-  - <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
-
 - Add exceptions to Windows Defender to your project directories, for devenv, unrealheader tool, msbuild, cl.exe, incredibuild, link.exe
   - Our devops scripts (setupmachine.py) automatically does this.
   - Here's a [powershell script](/ue4guide/development-setup/windows-defender-exclusions-script) that does the same thing
@@ -47,11 +37,27 @@ sortIndex: 1
   - [Adding a button to attach the debugger directly to the UE4 instance](/ue4guide/vs-autoattach-to-ue4-button)
   - [Print Blueprint/BP Callstack](/print-blueprint-callstack)
 
-# Visual Assist Debugging
+## Visual Assist
 
-## Enable Logging
+### Optimal Config
 
-Although debug logs contain information primarily related to functions and performance of Visual Assist, they will contain names of local solutions, projects, directories, and files, and may also contain symbol names.
+- Enable Visual Assist support for UE4 C++ support <https://docs.wholetomato.com/default.asp?W763>
+- This is no longer needed ~~Add va_stdafx.h file in directory of one of your sln or vcxproj files: <https://support.wholetomato.com/default.asp?W783>~~
+- VassistX/Intellisense/Visual Assist X Performance Optimization:
+  - Disable intellisense browse database <https://support.wholetomato.com/default.asp?W133>
+  - Disable enumerate references <https://support.wholetomato.com/default.asp?W664>
+  - <https://support.wholetomato.com/default.asp?W663>
+  - <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
+  - Run concurrent parser threads of Visual Assist with [below-normal priority by setting](https://support.wholetomato.com/default.asp?W774) `HKCU\Software\Whole Tomato\ConcurrentThreadPriority`:
+    - `THREAD_PRIORITY_NORMAL = 0`
+    - `THREAD_PRIORITY_BELOW_NORMAL = ffffffff`
+    - `THREAD_PRIORITY_LOWEST = fffffffe`
+
+### Debugging & Logging VAssistX
+
+**General link for resolving performance issues:** <https://support.wholetomato.com/default.asp?W663>
+
+**Logging:** Although debug logs contain information primarily related to functions and performance of Visual Assist, they will contain names of local solutions, projects, directories, and files, and may also contain symbol names.
 
 If you can open the options dialog of Visual Assist, enable logging:
 
@@ -66,6 +72,6 @@ Note the location of va.log.
 If you cannot open the options dialog of Visual Assist or are so directed by customer support, use regedit to enable logging before Visual Studio starts:
 
 1. Navigate to HKCU\\Software\\Whole Tomato
-1. Set the value of Logging to 1
+2. Set the value of Logging to 1
 
 *From <https://support.wholetomato.com/default.asp?W305>*

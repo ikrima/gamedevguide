@@ -56,28 +56,24 @@ Problems we attempt to solve:
 
 # DaveRatti Networking Explanation
 
-dependent predictionkey
-
-- fortnight/paragon doesnt really use it
--
-
 Prediction:
-
 - initiated by client
 - rpc
 - create side effeccts => replicate back as properties
 - relies on replicated properties
+- Dependent predictionkey
+  - Fortnight/paragon doesnt really use it
 
-ability->Can Ido it
-&lt;- server says YUP! you did
-predictionkey hasn't come back yet, so you still have to come wait for state
+Ability:
+- => Can I do it?
+- <= server says YUP! you did
+- Predictionkey hasn't come back yet, so you still have to come wait for state
 
-gameeffect applied
-  \-> stores delegates
-  \->
+Gameeffect applied
+  - => stores delegates
+  - =>
 
 UAbilitySystemGlobals
-
 - How to turn stuff into gampelaycueparameters
   virtual void InitGameplayCueParameters(FGameplayCueParameters& CueParameters, const FGameplayEffectSpecForRPC &Spec);
   virtual void InitGameplayCueParameters_GESpec(FGameplayCueParameters& CueParameters, const FGameplayEffectSpec &Spec);
@@ -86,6 +82,63 @@ UAbilitySystemGlobals
 IsReadyForReplicatedMontage
 OnRep_ReplicatedAnimMontage
 FGameplayAbilityRepAnimMontage RepAnimMontageInfo
+
+Gameplay Ability System
+  - Very lightweight/stellar
+  - Higher level tasks is super unpredictable
+  - Sometimes flexible but lots of gremlins
+  - Replication mechanism:
+    - Able to predict very well but also very lightweight
+  - Works very well for melee combat
+    - At carbine, very twitchy melee combat system
+    - Also at nexon
+    - For hitscan + melee weapns
+    - Thrown weapons
+  - Pretty robust features but with cryptic names
+    - Some nodes are super heavy (surprise!)
+  - Fundemntal issues
+    - GAS is a giant iceberg/little exposed
+    - Little docs
+  - Test:
+    - 3 hit combo
+      - Can be separate ability.
+        - Start|Active|Windown
+        - Sword Stab => Sword Swing => Smash
+        - GAS
+          - Bind On Input => Input == punch => Start Ability
+          - SowrdStab Ability
+            - TryActivate (do validation; runs on both)
+            - Commit Ability (ability now running; means begin)
+              - Point of no rollback
+            - Play Montage and wait
+              - OnNotifyRecieved
+                - Start Wait for input for 10 frames
+                - If no input => end ability
+                - If there was input =>
+                  - PlayMontage And Wait: Sword Swing
+            - Wait Target Node: hjit detection
+              - if hits, do hit stuff/effect/cue
+        - When this ability ends, schedule hit combo2
+        - Can schedule cooldown
+
+    - Charged attack
+    - Input cancel
+    - Dash/Movement
+    - Misprediction?
+
+Questions:
+  - What were issues
+  - Character movement
+  - Network
+  - Debug tooling?
+
+GameAbility Prototype:
+- 3 hit combo ()
+- Charged Attack
+- Dash (moving)
+  - Charged (moving)
+
+NetLag ~200-300ms
 
 ## Implementation Details
 
@@ -104,13 +157,13 @@ AbilitySystemComponent provides a set of functions for communicating ability act
 
 1. Client calls TryActivateAbility which generates a new FPredictionKey and calls ServerTryActivateAbility.
 
-1. Client continues (before hearing back from server) and calls ActivateAbility with the generated PredictionKey associated with the Ability's ActivationInfo.
+2. Client continues (before hearing back from server) and calls ActivateAbility with the generated PredictionKey associated with the Ability's ActivationInfo.
 
-1. Any side effects that happen /before the call to ActivatAbility finish/ have the generated FPredictionKey associated with them.
+3. Any side effects that happen /before the call to ActivatAbility finish/ have the generated FPredictionKey associated with them.
 
-1. Server decides if the ability really happened in ServerTryActivateAbility, calls ClientActivateAbility(Failed/Succeed) and sets UAbilitySystemComponent::ReplicatedPredictionKey to the generated key that was sent.
+4. Server decides if the ability really happened in ServerTryActivateAbility, calls ClientActivateAbility(Failed/Succeed) and sets UAbilitySystemComponent::ReplicatedPredictionKey to the generated key that was sent.
 
-1. If client receives ClientAbilityFailed, he immediately kills the ability and rolls back side effects that were associated with the prediction key.
+5. If client receives ClientAbilityFailed, he immediately kills the ability and rolls back side effects that were associated with the prediction key.
 
    - 'Rolling back' is accomplished via FPredictionKeyDelegates and FPredictionKey::NewRejectedDelegate/NewCaughtUpDelegate/NewRejectOrCaughtUpDelegate.
 
@@ -121,7 +174,7 @@ AbilitySystemComponent provides a set of functions for communicating ability act
    - Invoking the callback in ClientActivateAbilityFailed_Implementation:
       FPredictionKeyDelegates::BroadcastRejectedDelegate(PredictionKey);
 
-1. If accepted, client must wait until property replication catches up (the Succeed RPC will be sent immediately, property replication will happen on its own). Once the ReplicatedPredictionKey catches up to the
+6. If accepted, client must wait until property replication catches up (the Succeed RPC will be sent immediately, property replication will happen on its own). Once the ReplicatedPredictionKey catches up to the
    key used previous steps, the client can undo his predictive side effects. See UAbilitySystemComponent::OnRep_PredictionKey.
 
 ### GameplayEffect Prediction
