@@ -4,7 +4,7 @@ sortIndex: 4
 
 [UE4 Performance and Profiling | Unreal Dev Day Montreal 2017 | Unreal Engine](https://www.youtube.com/watch?v=hcxetY8g_fs)
 
-[![](http://img.youtube.com/vi/hcxetY8g_fs/0.jpg)](http://www.youtube.com/watch?v=hcxetY8g_fs)
+`youtube: https://www.youtube.com/watch?v=hcxetY8g_fs`
 
 Dev build -> Noise in draw thread; Test is cleanest
 
