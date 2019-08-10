@@ -1,8 +1,62 @@
 ---
-sortIndex: 1
+sortIndex: 2
 ---
 
-Custom Shaders in UE4:
+# Add Custom Shading Model
+
+Global Shader: https://www.unrealengine.com/en-US/blog/how-to-add-global-shaders-to-ue4
+Custom Shading Model: http://blog.felixkate.net/2016/05/22/adding-a-custom-shading-model-1/
+Updated Method For Custom Shading Model: https://medium.com/@lordned/ue4-rendering-part-6-adding-a-new-shading-model-e2972b40d72d
+
+## Add New Custom Material Properties
+
+Add defaults to custom material properties (eg MP_CustomData2) in:
+
+```cpp
+int32 FMaterialAttributeDefintion::CompileDefaultValue(FMaterialCompiler* Compiler)
+{
+  int32 Ret;
+
+    // @third party code - BEGIN Bebylon - #Eng-Feature: BBFakeSSShadingMode - Adding new property
+    if (Compiler->GetMaterialShadingModel() == MSM_BBFakeSS &&
+        (Property == MP_CustomData0 || Property == MP_CustomData1 || Property == MP_CustomData2 || Property == MP_CustomData3))
+    {
+        // Standard value type
+        switch (Property)
+        {
+        case MP_CustomData0: Ret = Compiler->Constant(0.0f); break;
+        case MP_CustomData1: Ret = Compiler->Constant(0.0f); break;
+        case MP_CustomData2: Ret = Compiler->Constant(0.0f); break;
+        case MP_CustomData3: Ret = Compiler->Constant(0.0f); break;
+        }
+    }
+  // @third party code - END Bebylon
+  ...
+}
+```
+
+## GBuffer/Viewmode extensions
+
+Useful Links:
+https://www.unrealengine.com/en-US/blog/how-to-add-global-shaders-to-ue4
+http://blog.felixkate.net/2016/05/22/adding-a-custom-shading-model-1/
+https://medium.com/@lordned/ue4-rendering-part-6-adding-a-new-shading-model-e2972b40d72d
+https://forums.unrealengine.com/development-discussion/rendering/1409859-custom-hlsl-tips
+https://forums.unrealengine.com/development-discussion/rendering/113855-extending-custom-hlsl-custom-expressions
+
+https://wiki.unrealengine.com/HLSL_Shaders
+https://forums.unrealengine.com/showthread.php?71334-Anybody-written-a-Plugin-that-adds-Material-Nodes
+https://forums.unrealengine.com/showthread.php?27766-Odessey-Creating-my-own-G-Buffer-in-UE4
+https://forums.unrealengine.com/showthread.php?58489-Tutorial-Pixel-and-Compute-Shaders-in-UE4
+Compute and pixel shader: https://github.com/sp0lsh/UE4ShaderPluginDemo/
+https://github.com/slomp/UE4RenderDocPlugin
+
+## Example Custom Material Model
+
+Toon Shading: https://github.com/marynate/UnrealEngine/tree/4.16-release-toon
+Compute Shader Sample with FluidSurface: https://github.com/marynate/FluidSurface
+
+# Custom Shaders Development Brain Dump
 
 Overview documentation at <https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>
 
@@ -12,17 +66,15 @@ FVertexFactoryType represents a unique mesh type
 
 FVertexFactory instance contains per-instance data to support that unique mesh (e.g. bone matrices needed for skinning)
 
-Config settings:
+## Config settings
 
+```ini
 r.ShaderDevelopmentMode=1
-
 ; Uncomment to dump shaders in the Saved folder
-
 ; Warning: leaving this on for a while will fill your hard drive with many small files and folders
-
 r.DumpShaderDebugInfo=1
-
 r.CompileShadersForDevelopment=1
+```
 
 VertexFactory:
 

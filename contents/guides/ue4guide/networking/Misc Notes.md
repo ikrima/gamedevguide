@@ -23,30 +23,6 @@ INetworkPredictionInterface\* **NetworkPredictionInterface** = Cast<INetworkP
 
 # Useful Functions
 
-## Networking Functions
-
-NetUpdate() & NetUpdateFrequency()
-
-
-**Actor Functions**
-
-  ```cpp
-  // Always called immediately before properties are received from the remote.
-  virtual void PreNetReceive() override;
-
-  // Always called immediately after properties are received from the remote.
-  virtual void PostNetReceive() override;
-
-  // Always called immediately after spawning and reading in replicated properties
-  virtual void PostNetInit();
-
-  /** Called right after calling all OnRep notifies (called even when there are no notifies) */
-  virtual void PostRepNotifies() {}
-
-  /** Called right before being marked for destruction due to network replication */
-  virtual void PreDestroyFromReplication();
-  ```
-
 ## Helper Functions
 
 FHttpModule/IHttpRequest/IHttpResponse: Wrapper to easily make http requests

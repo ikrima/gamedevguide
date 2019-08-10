@@ -159,6 +159,17 @@ Key=Value
   UserDefinedChords=~OpenBracket~~Quote~BindingContext~Quote~:~Quote~PlayWorld~Quote~,~Quote~CommandName~Quote~:~Quote~PausePlaySession~Quote~,~Quote~ChordIndex~Quote~:1,~Quote~Control~Quote~:false,~Quote~Alt~Quote~:false,~Quote~Shift~Quote~:false,~Quote~Command~Quote~:false,~Quote~Key~Quote~:~Quote~None~Quote~~CloseBracket~
   ```
 
+### Special Variables/Tokens
+
+You can use these config vars in your ini's that UE4 will replace accordingly with expanded out string
+
+- `ini>%GAME%`: Game Name
+- `ini>%GAMEDIR%`: Game Directory
+- `ini>%ENGINEDIR%`: Engine Directory
+- `ini>%ENGINEUSERDIR%`: User's Engine Directory
+- `ini>%ENGINEVERSIONAGNOSTICUSERDIR%`: User Engine Agnostic directory
+- `ini>%APPSETTINGSDIR%`: Application Settings Directory
+
 ### Comments
 
 Most people seem to be under the impression that the semicolon denotes comments in configuration files, but they aren't (FConfigFile::ProcessInputFileContents doesn't actually treat them, or any other string, as a comment delimiter). This behavior is intentional. Technically any character can represent a different key-value pair. Typically, a semicolon is placed at the beginning of a new line. It works like a comment, but it's not actually.

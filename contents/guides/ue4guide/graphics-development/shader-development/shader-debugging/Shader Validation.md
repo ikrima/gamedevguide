@@ -1,6 +1,11 @@
 ---
-sortIndex: 1
+sortIndex: 3
 ---
+
+# Debugging Shader Compilation Process
+
+<https://www.unrealengine.com/en-US/blog/debugging-the-shader-compiling-process>
+
 
 # Debugging Validation
 

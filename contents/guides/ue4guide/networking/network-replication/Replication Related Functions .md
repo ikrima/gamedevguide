@@ -64,6 +64,8 @@ FindNetworkObjectInfo()
 FlushNetDormancy()
 ForceNetRelevant()
 ForceNetUpdate()
+NetUpdate()
+NetUpdateFrequency()
 
 IsNameStableForNetworking() const override
 IsNetRelevantFor(const AActor* RealViewer, const AActor* ViewTarget, const FVector& SrcLocation) const

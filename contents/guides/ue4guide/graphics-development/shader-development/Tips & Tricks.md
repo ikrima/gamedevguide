@@ -1,46 +1,29 @@
 ---
-sortIndex: 4
+sortIndex: 3
 ---
 
-## Enable Visual Studio syntax highlighting in .usf files
+# Fast Custom Shader Iteration Tips
 
-<s>Import this registery key:</s>
-
-<s>Windows Registry Editor Version 5.00</s>
-
-<s>\[HKEY_CURRENT_USER\\Software\\Microsoft\\VisualStudio\\14.0_Config\\Languages\\File Extensions\\.usf]</s>
-
-<s>"HLSLFile"=dword:00000001</s>
-
-<s>@="{B2F072B0-ABC1-11D0-9D62-00C04FD9DFD9}"</s>
-
-Add extension support in options directly
-
-![ShaderDev_TipsnTricks](../../assets/ShaderDev_TipsnTricks.jpg)
-
-Not needed anymore
-
-## Visual Studio HLSL with intellisense extension:
-
-<https://marketplace.visualstudio.com/items?itemName=TimGJones.HLSLToolsforVisualStudio>
-
-## Fast Custom Shader Iteration Tips:
-
-### Creating Global Functions
+## Creating Global Functions
 
 As stated above, the compiler will literally copy-paste the text in a Custom node into a function. So if you have the following:
 
+```glsl
 return 1;
+```
 
 The compiler will paste it into a *CustomExpressionX* function. It doesn’t even indent it!
 
+```glsl
 MaterialFloat3 CustomExpression0(FMaterialPixelParameters Parameters)
 {
-return 1;
+  return 1;
 }
+```
 
 Look what happens if you use this code instead:
 
+```glsl
 return 1;
 }
 
@@ -63,6 +46,7 @@ int MyGlobalFunction(int x)
 {
 return x;
 }
+```
 
 As you can see, MyGlobalVariable and MyGlobalFunction() are not contained within a function. This makes them global and means you can use them anywhere.
 
@@ -72,9 +56,7 @@ Now let’s use this behavior to create the Gaussian function.
 
 *Reference From <https://www.raywenderlich.com/190254/unreal-engine-4-custom-shaders-tutorial>*
 
-### Define Multiple Functions inside UE4's Custom Node:
-
-\#1 - Custom Functions
+## Define Multiple Functions inside UE4's Custom Node
 
 Modifying the Engine's USF files to define custom functions triggers an overhaul shader recompilation of thousands of materials. This is unusable for creative iteration. Also #include-ing files outsides the Engine's Shaders directory crashes the Editor at startup. CustomExpression nodes wrap your code inside CustomExpression#() functions, and that normally prohibits defining your own functions.
 
@@ -82,61 +64,57 @@ However, there seems to be a barely documented feature in HLSL that allows defin
 
 So in your CustomExpression Code you can do:
 
-```cpp
-*struct Functions
-{*
-
-*float3 OrangeBright(float3 c)
+```glsl
+struct Functions
 {
-return c \* float3(1, .7, 0);
-}*
-
-*float3 Out()
-{
-return OrangeBright(InColor);
-}*
-
-*};*
-
-*Functions f;
-return f.Out();*
+  float3 OrangeBright(float3 c)
+  {
+      return c * float3(1, .7, 0);
+  }
+  float3 Out()
+  {
+    return OrangeBright(InColor);
+  }
+};
+Functions f;
+return f.Out();
 ```
 
 Create and connect an input pin "InColor" of float3 on the CustomExpression node. Any Node inputs passed into CustomExpression#(), like InColor above is available inside nested function definitions.
 
 The cool part is, this is all happening inside your own effective namespace, not interfering with Unreal's USF files, and the compilation is Fast for iteration. So now, you can start to build a library of custom functions, and more complex shaders. It seems HLSL is prohibiting defining a struct nested inside a struct, so make sure to define your custom structs above and outside struct Functions.
 
-### Include custom hlsl file inside UE4's Custom Node:
-
-\#2 - External Code Editing and #include
+## Include custom hlsl file inside UE4's Custom Node
 
 Instead of editing intricate code and custom libraries inside the little primitive textbox of CustomExpression, you can edit them in a better external editor with syntax highlighting, code navigation etc, and #include that file. So if you put the above code in a file named Test.hlsl, you can:
 
-*#include "Your Path...\\Test.hlsl"
+```glsl
+#include "Your Path...\Test.hlsl"
 return 0;
-// enter spaces here and press enter to retrigger compilation*
+// enter spaces here and press enter to retrigger compilation
+```
 
 The dummy "return 0;" is to tell CustomExpression node that this not a single line expression but a full function body. The spaces will be required to signal the CustomExpression textbox that it changed, and pressing enter will compile your externally changed and saved Test.hlsl. Of course, you can split the external file and the dynamic code portion, if you prefer to make quick changes and compiles inside the textbox.
 
 *Reference From <https://forums.unrealengine.com/development-discussion/rendering/113855-extending-custom-hlsl-custom-expressions>*
 
-### General Tips:
+## General Tips
 
 - In newer UE4 (I'm using 4.18 but I think it was added in 4.17) you can have per-plugin and per-project directories. For example, in my project I have:
 
-*Code:*
+  ```batch
+  myprj\myprj.uproject
+  myprj\Content
+  ...
+  myprj\Shaders\myshader.ush
+  ```
 
-*myprj\\myprj.uproject
-myprj\\Content
-...
-myprj\\Shaders\\myshader.ush*
+  and then in my material I have a custom node with this:
 
-*and then in my material I have a custom node with this:*
-
-*Code:*
-
-*#include "/Project/myshader.ush"
-return 0;*
+  ```glsl
+  #include "/Project/myshader.ush"
+  return 0;
+  ```
 
 If you create the directories while UE4 is running, you need to restart the editor before they get picked up - on editor startup you'll see some log messages about the mapping of virtual shader directories (e.g. from '/Project/' to the full path on disk).
 
@@ -161,23 +139,23 @@ In the event that your edits cause a shader compilation error, you can't get by 
 
 - In addition to whatever input parameters you explicitly pass to your Custom node, it will also receive a 'parameters' parameter that often has a lot of the inputs you might need. Look in the generated HLSL code for 'customexpression' to find your custom node and you'll see something like:
 
-```cpp
-*MaterialFloat4 CustomExpression0(FMaterialPixelParameters Parameters,...)
+```glsl
+MaterialFloat4 CustomExpression0(FMaterialPixelParameters Parameters,...)
 {
 #include "/Project/myshader.ush"
 return 0;
-}*
+}
 ```
 
 And then look in Engine/Source/Shaders/Private/MaterialTemplate.ush to see the definition of the struct (FMaterialPixelParameters in this case) - you may find what you need is already provided there (e.g. Parameters.SvPosition.xy).
 
 *Reference From <https://forums.unrealengine.com/development-discussion/rendering/1409859-custom-hlsl-tips>*
 
-## Misc:
+### Misc
 
 Compile out Compute shader instructions with a define. Ex:
 
-```cpp
+```glsl
 float DDY(float Input)
 {
 #if COMPUTESHADER
@@ -190,20 +168,35 @@ float DDY(float Input)
 
 Useful functions:
 
+```glsl
 UnitVectorToOctahedron()
 
-Spherical Harmonic Functions:
-
-```cpp
-Struct FTwoBandSHVectorRGB
-
+// Spherical Harmonic Functions
+struct FTwoBandSHVectorRGB
 MulSH()
-
 AddSH()
-
 DotSH()
-
 SHBasisFunction3()
-
 CalcDiffuseTransferSH3()
 ```
+
+# Visual Studio
+
+## HLSL Tools Extension
+
+Provides intellisense support for your project shaders:
+<https://marketplace.visualstudio.com/items?itemName=TimGJones.HLSLToolsforVisualStudio>
+
+## Enable Visual Studio syntax highlighting in .usf files
+
+- Post-VS2017: Add extension support in options directly
+  ![ShaderDev_TipsnTricks](../../assets/VSTipsUE4_Overview.jpg)
+
+- Pre-VS2017: Import this registery key:
+
+  ```ini
+  Windows Registry Editor Version 5.00
+  [HKEY_CURRENT_USER\\Software\\Microsoft\\VisualStudio\\14.0_Config\\Languages\\File Extensions\\.usf]
+  "HLSLFile"=dword:00000001
+  @="{B2F072B0-ABC1-11D0-9D62-00C04FD9DFD9}"
+  ```
