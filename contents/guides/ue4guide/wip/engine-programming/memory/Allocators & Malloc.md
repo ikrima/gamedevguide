@@ -16,8 +16,9 @@ There are three basic ways to allocate or free memory within the Unreal Engine 4
 
 ## Useful Allocators:
 
-| TPageAllocator/FPageAllocator                                    | Page allocator                                                                                                             |
+|                                                                  |                                                                                                                            |
 | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| TPageAllocator/FPageAllocator                                    | Page allocator                                                                                                             |
 | TInlineAllocator                                                 |                                                                                                                            |
 | THeapAllocator                                                   |                                                                                                                            |
 | TFixedAllocator                                                  |                                                                                                                            |
