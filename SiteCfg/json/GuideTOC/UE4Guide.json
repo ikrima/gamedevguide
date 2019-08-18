@@ -49,7 +49,7 @@
     },
     {
       "slugPart": "performance-optimization",
-      "sortIndex": 10,
+      "sortIndex": 5,
       "childTOCs": [
         {
           "slugPart": "gpu-perf-optimization",
@@ -75,12 +75,12 @@
     },
     {
       "slugPart": "general-debugging",
-      "sortIndex": 15,
+      "sortIndex": 6,
       "childTOCs": []
     },
     {
       "slugPart": "graphics-development",
-      "sortIndex": 16,
+      "sortIndex": 7,
       "childTOCs": [
         {
           "slugPart": "render-architecture",
@@ -116,8 +116,34 @@
       ]
     },
     {
+      "slugPart": "engine-programming",
+      "sortIndex": 8,
+      "childTOCs": [
+        {
+          "slugPart": "memory",
+          "sortIndex": 9,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "uht",
+          "sortIndex": 7,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "uobject-ustruct-serialization",
+          "sortIndex": 8,
+          "childTOCs": []
+        }
+      ]
+    },
+    {
+      "slugPart": "application-os-generic-platform",
+      "sortIndex": 9,
+      "childTOCs": []
+    },
+    {
       "slugPart": "networking",
-      "sortIndex": 16,
+      "sortIndex": 10,
       "childTOCs": [
         {
           "slugPart": "low-level-networking",
@@ -137,137 +163,111 @@
       ]
     },
     {
-      "slugPart": "wip",
-      "prettyTitle": "WORK IN PROGRESS",
+      "slugPart": "packaging-cooking",
+      "sortIndex": 11,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "editor-extensions",
+      "sortIndex": 12,
       "childTOCs": [
         {
-          "slugPart": "packaging-cooking",
+          "slugPart": "slate",
+          "sortIndex": 3,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "detail-customization",
           "sortIndex": 4,
           "childTOCs": []
         },
         {
-          "slugPart": "editor-extensions",
+          "slugPart": "sequencer",
           "sortIndex": 5,
-          "childTOCs": [
-            {
-              "slugPart": "slate",
-              "sortIndex": 3,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "detail-customization",
-              "sortIndex": 4,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "sequencer",
-              "sortIndex": 5,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "custom-blueprint-node",
-              "sortIndex": 8,
-              "childTOCs": []
-            }
-          ]
+          "childTOCs": []
         },
         {
-          "slugPart": "custom-content-browser-asset",
+          "slugPart": "custom-blueprint-node",
+          "sortIndex": 8,
+          "childTOCs": []
+        }
+      ]
+    },
+    {
+      "slugPart": "custom-content-browser-asset",
+      "sortIndex": 13,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "gameplay-programming",
+      "sortIndex": 14,
+      "childTOCs": [
+        {
+          "slugPart": "master-engine-flow",
+          "sortIndex": 2,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "actor-tick-lifecycle-flow",
+          "sortIndex": 3,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "animation-subsystem",
+          "sortIndex": 4,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "physics",
+          "sortIndex": 5,
+          "childTOCs": []
+        },
+        {
+          "slugPart": "gameplay-framework",
           "sortIndex": 6,
           "childTOCs": []
         },
         {
-          "slugPart": "gameplay-programming",
-          "sortIndex": 7,
-          "childTOCs": [
-            {
-              "slugPart": "master-engine-flow",
-              "sortIndex": 2,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "actor-tick-lifecycle-flow",
-              "sortIndex": 3,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "animation-subsystem",
-              "sortIndex": 4,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "physics",
-              "sortIndex": 5,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "gameplay-framework",
-              "sortIndex": 6,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "gameplay-ability-system",
-              "sortIndex": 8,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "useful-console-commands",
-              "sortIndex": 9,
-              "childTOCs": []
-            }
-          ]
+          "slugPart": "gameplay-ability-system",
+          "sortIndex": 8,
+          "childTOCs": []
         },
         {
-          "slugPart": "niagara",
+          "slugPart": "useful-console-commands",
           "sortIndex": 9,
           "childTOCs": []
-        },
-        {
-          "slugPart": "engine-programming",
-          "sortIndex": 12,
-          "childTOCs": [
-            {
-              "slugPart": "memory",
-              "sortIndex": 9,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "uht",
-              "sortIndex": 7,
-              "childTOCs": []
-            },
-            {
-              "slugPart": "uobject-ustruct-serialization",
-              "sortIndex": 8,
-              "childTOCs": []
-            }
-          ]
-        },
-        {
-          "slugPart": "application-os-generic-platform",
-          "sortIndex": 14,
-          "childTOCs": []
-        },
-        {
-          "slugPart": "stereo-capture-plugin",
-          "sortIndex": 17,
-          "childTOCs": []
-        },
-        {
-          "slugPart": "python-basics",
-          "sortIndex": 18,
-          "childTOCs": []
-        },
-        {
-          "slugPart": "oculus-stuff",
-          "sortIndex": 19,
-          "childTOCs": []
-        },
-        {
-          "slugPart": "misc-ue4-editor",
-          "sortIndex": 20,
-          "childTOCs": []
-        },
+        }
+      ]
+    },
+    {
+      "slugPart": "niagara",
+      "sortIndex": 15,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "stereo-capture-plugin",
+      "sortIndex": 16,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "python-basics",
+      "sortIndex": 17,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "oculus-stuff",
+      "sortIndex": 18,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "misc-ue4-editor",
+      "sortIndex": 19,
+      "childTOCs": []
+    },
+    {
+      "slugPart": "wip",
+      "prettyTitle": "WORK IN PROGRESS",
+      "childTOCs": [
         {
           "slugPart": "unfinished",
           "childTOCs": []
