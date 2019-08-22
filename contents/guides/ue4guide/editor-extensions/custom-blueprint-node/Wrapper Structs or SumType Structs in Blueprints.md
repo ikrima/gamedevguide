@@ -1,5 +1,5 @@
 ---
-sortIndex: 4
+sortIndex: 5
 ---
 
 I think you should be able to produce this sort of effect similar to the Get Data Table Row node, which casts the values in a data table to the correct output pin type based on a **UScriptStruct** which is derived from the inputs.
