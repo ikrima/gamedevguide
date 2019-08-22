@@ -130,9 +130,20 @@
           "childTOCs": []
         },
         {
-          "slugPart": "uobject-ustruct-serialization",
+          "slugPart": "uobjects",
           "sortIndex": 8,
-          "childTOCs": []
+          "childTOCs": [
+            {
+              "slugPart": "reflection",
+              "sortIndex": 1,
+              "childTOCs": []
+            },
+            {
+              "slugPart": "serialization",
+              "sortIndex": 2,
+              "childTOCs": []
+            }
+          ]
         }
       ]
     },
@@ -192,11 +203,6 @@
           "childTOCs": []
         }
       ]
-    },
-    {
-      "slugPart": "custom-content-browser-asset",
-      "sortIndex": 13,
-      "childTOCs": []
     },
     {
       "slugPart": "gameplay-programming",

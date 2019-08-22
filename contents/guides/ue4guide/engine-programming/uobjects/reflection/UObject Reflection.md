@@ -1,5 +1,5 @@
 ---
-sortIndex: 4
+sortIndex: 1
 ---
 
 # UE4 Reflection Overview
@@ -20,6 +20,60 @@ The type hierarchy for the property system looks like this:
 UStruct is the basic type of aggregate structures (anything that contains other members, such as a C++ class, struct, or function), and shouldn’t be confused with a C++ struct (that's UScriptStruct). UClass can contain functions or properties as their children, while UFunction and UScriptStruct are limited to just properties.
 
 # UStructs
+
+## Manipulation
+
+### Initialize Struct
+
+```cpp
+StructMemory = (uint8*)FMemory::Malloc(ActualStruct->GetStructureSize());
+ActualStruct->InitializeStruct(StructMemory);
+```
+
+### Copy Struct
+
+```cpp
+if (ProcAnimComponent && OutInitValueStore)
+{
+     void* RowPtr = Table->FindRowUnchecked(RowName);
+     if (RowPtr != NULL)
+     {
+         UScriptStruct* StructType = Table->RowStruct;
+         if (StructType != NULL)
+         {
+             StructType->CopyScriptStruct(OutRowPtr, RowPtr);
+             bFoundRow = true;
+         }
+     }
+}
+```
+
+### Destroy Struct
+
+```cpp
+UScriptStruct* structType = FESCompSumType::GetStructType(CompStructType);
+            structType->DestroyStruct(StructData);
+```
+
+### Reflection through Struct Params apart
+
+```cpp
+FMovieSceneEvalTemplatePtr& operator=(const FMovieSceneEvalTemplatePtr& RHS)
+{
+  if (RHS.IsValid())
+  {
+    UScriptStruct::ICppStructOps& StructOps = *RHS->GetScriptStruct().GetCppStructOps();
+
+    void* Allocation = Reserve(StructOps.GetSize(), StructOps.GetAlignment());
+    StructOps.Construct(Allocation);
+    StructOps.Copy(Allocation, &RHS.GetValue(), 1);
+  }
+
+  return *this;
+}
+```
+
+Reference: <https://forums.unrealengine.com/community/community-content-tools-and-tutorials/27351-tutorial-how-to-accept-wildcard-structs-in-your-ufunctions>
 
 ## Iterate over UStruct members
 
@@ -124,6 +178,11 @@ if( EventTarget && EventTarget->NumParms == 0)
 
 ## UFunction Parameters
 
+
+### Calling UFunction Through Reflection
+
+<https://answers.unrealengine.com/questions/7732/a-sample-for-calling-a-ufunction-with-reflection.html>
+
 ### Compare UFunctions Signatures
 
 ```cpp
@@ -139,32 +198,19 @@ for (TFieldIterator<UFunction> FunctionIt(this->GetClass(), EFieldIteratorFla
 }
 ```
 
+### Retrieve UFunction Parameters Default Value
 
-# User Defined Structs
+>Hi,
+>
+>This cannot be known in general, but you can check the UFunction's "CPP_Default\_" metadata to see if a given parameter has a default argument, and the value of that default.
+>
+>However, only default arguments of certain types and values can be parsed and, as it's metadata, this information only exists in builds with WITH_METADATA defined, which is basically editor-only.
+>
+>Hope this helps,
+>
+>Steve
 
-## Programmatically Create UUserDefinedStruct
-
-```cpp
-return FStructureEditorUtils::CreateUserDefinedStruct(InParent, Name, Flags);
-FStructureEditorUtils::AddVariable(StructureDetailsSP->GetUserDefinedStruct(), InitialPinType);
-```
-
-## Change UUserDefinedStruct's Parent Struct
-
-```cpp
-FStructureEditorUtils::CreateUserDefinedStruct():
-  ((UUserDefinedStructEditorData*)(Struct->EditorData))->NativeBase = FNativeBaseS::StaticStruct();
-```
-
-
-# Programmatically Construct Struct/UScriptStruct
-
-```cpp
-template<typename T>
-T ConstructTInlineValue(UScriptStruct* Struct)
-static void SetStructurePropertyByName(UObject* Object, FName PropertyName, const T& Value)
-UKismetSystemLibrary::Generic_SetStructurePropertyByName(Object, PropertyName, &Value);
-```
+*Reference From <https://answers.unrealengine.com/questions/545342/how-can-i-know-ufunction-contain-how-many-paramete.html?sort=oldest&lang=zh-CN>*
 
 # UClass
 
@@ -193,3 +239,28 @@ UClass* Result = FindObject<UClass>(ClassPackage, ClassName);
 ```
 
 *Reference From <https://answers.unrealengine.com/questions/92651/get-blueprint-class-by-string-in-c.html>*
+
+# User Defined Structs
+
+## Programmatically Create UUserDefinedStruct
+
+```cpp
+return FStructureEditorUtils::CreateUserDefinedStruct(InParent, Name, Flags);
+FStructureEditorUtils::AddVariable(StructureDetailsSP->GetUserDefinedStruct(), InitialPinType);
+```
+
+## Change UUserDefinedStruct's Parent Struct
+
+```cpp
+FStructureEditorUtils::CreateUserDefinedStruct():
+  ((UUserDefinedStructEditorData*)(Struct->EditorData))->NativeBase = FNativeBaseS::StaticStruct();
+```
+
+## Programmatically Construct Struct/UScriptStruct
+
+```cpp
+template<typename T>
+T ConstructTInlineValue(UScriptStruct* Struct)
+static void SetStructurePropertyByName(UObject* Object, FName PropertyName, const T& Value)
+UKismetSystemLibrary::Generic_SetStructurePropertyByName(Object, PropertyName, &Value);
+```
