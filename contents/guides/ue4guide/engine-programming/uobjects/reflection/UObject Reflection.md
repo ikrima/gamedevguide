@@ -168,7 +168,8 @@ bIsLatent = (Function->HasMetaData(FBlueprintMetadata::MD_Latent) != false);
 ## Find No Parameters Event
 
 ```cpp
-this->GetClass()->FindFunctionByName("ReceiveBeginPlay", EIncludeSuperFlag::ExcludeSuper)UFunction* EventTarget = this->FindFunction(EventName);
+this->GetClass()->FindFunctionByName("ReceiveBeginPlay", EIncludeSuperFlag::ExcludeSuper)
+UFunction* EventTarget = this->FindFunction(EventName);
 if( EventTarget && EventTarget->NumParms == 0)
 {
   LSA->ProcessEvent(EventTarget, NULL);
