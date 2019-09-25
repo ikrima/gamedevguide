@@ -28,7 +28,7 @@ FSkeletalMeshMerge
 
 FEditorScriptExecutionGuard **ScriptGuard**;
 
-**Send error message to blueprint VM:  
+**Send error message to blueprint VM:
 **FFrame::KismetExecutionMessage(\*FString::Printf(TEXT("%s - Cannot map local player to unique net ID"), FunctionContext), ELogVerbosity::Warning);
 
 **Create Blueprint Exception:**
@@ -106,18 +106,18 @@ In Editor: GetWorld()->EditorDestroyActor(lcbActor, true);
 **Notification Message Warning To Editor:**
 
 ```cpp
-if (**SubstituteNodes**.Num() > 0)  
-                {  
-                        // Display a notification to inform the user that the variable type was invalid (likely due to corruption), it should no longer appear in the list.  
-                        FNotificationInfo **Info**(NSLOCTEXT("EdGraphUtilities", "SubstituteNodesWarning", "Conflicting nodes substituted during paste!"));  
-                        **Info**.ExpireDuration = 3.0f;  
-                        **Info**.bUseLargeFont = false;  
-                        **Info**.Image = FCoreStyle::Get().GetBrush(TEXT("MessageLog.Warning"));  
-                        TSharedPtr&lt;SNotificationItem> **Notification** = FSlateNotificationManager::Get().AddNotification(**Info**);  
-                        if (**Notification**.IsValid())  
-                        {  
-                                **Notification**->SetCompletionState(SNotificationItem::CS_None);  
-                        }  
+if (**SubstituteNodes**.Num() > 0)
+                {
+                        // Display a notification to inform the user that the variable type was invalid (likely due to corruption), it should no longer appear in the list.
+                        FNotificationInfo **Info**(NSLOCTEXT("EdGraphUtilities", "SubstituteNodesWarning", "Conflicting nodes substituted during paste!"));
+                        **Info**.ExpireDuration = 3.0f;
+                        **Info**.bUseLargeFont = false;
+                        **Info**.Image = FCoreStyle::Get().GetBrush(TEXT("MessageLog.Warning"));
+                        TSharedPtr&lt;SNotificationItem> **Notification** = FSlateNotificationManager::Get().AddNotification(**Info**);
+                        if (**Notification**.IsValid())
+                        {
+                                **Notification**->SetCompletionState(SNotificationItem::CS_None);
+                        }
                 }
 ```
 
@@ -130,12 +130,12 @@ MapCheck MessageLog
 How to log output editor message warnings/errors:
 
 ```cpp
-FMessageLog("PIE").Warning(FText::Format(LOCTEXT("AttachToSelfRootWarning", "AttachTo: '{0}' root component cannot be attached to other components in the same actor. Aborting."),  
+FMessageLog("PIE").Warning(FText::Format(LOCTEXT("AttachToSelfRootWarning", "AttachTo: '{0}' root component cannot be attached to other components in the same actor. Aborting."),
                                 FText::FromString(GetPathName())));
 
-FMessageLog("MapCheck").Warning()  
-                        ->AddToken(FUObjectToken::Create(this))  
-                        ->AddToken(FTextToken::Create(LOCTEXT( "MapCheck_Message_DuplicateLevelInfo", "Duplicate level info" ) ))  
+FMessageLog("MapCheck").Warning()
+                        ->AddToken(FUObjectToken::Create(this))
+                        ->AddToken(FTextToken::Create(LOCTEXT( "MapCheck_Message_DuplicateLevelInfo", "Duplicate level info" ) ))
                         ->AddToken(FMapErrorToken::Create(FMapErrors::DuplicateLevelInfo));
 ```
 
@@ -160,7 +160,7 @@ FActorFolders::Get().CreateFolder(InWorld, NewFolderName)
 Check for unbuilt lighting:
 
 ```cpp
-/\*\* Returns NumUncachedStaticLightingInteractions for this actor \*/  
+/\*\* Returns NumUncachedStaticLightingInteractions for this actor \*/
         const int32 GetNumUncachedStaticLightingInteractions() const;
 ```
 
@@ -197,54 +197,33 @@ virtual void EditorApplyRotation(const FRotator& DeltaRotation, bool bAltDown, b
 virtual void EditorApplyScale(const FVector& DeltaScale, const FVector\* PivotLocation, bool bAltDown, bool bShiftDown, bool bCtrlDown);
 
 ```cpp
-GEditor->OnBeginObjectMovement().AddRaw( this, &F3DTransformTrackEditor::OnPreTransformChanged );  
+GEditor->OnBeginObjectMovement().AddRaw( this, &F3DTransformTrackEditor::OnPreTransformChanged );
         GEditor->OnEndObjectMovement().AddRaw( this, &F3DTransformTrackEditor::OnTransformChanged );
 
-// Listen for the viewport's viewed through camera starts and stops movement  
-        GEditor->OnBeginCameraMovement().AddRaw( this, &F3DTransformTrackEditor::OnPreTransformChanged );  
+// Listen for the viewport's viewed through camera starts and stops movement
+        GEditor->OnBeginCameraMovement().AddRaw( this, &F3DTransformTrackEditor::OnPreTransformChanged );
         GEditor->OnEndCameraMovement().AddRaw( this, &F3DTransformTrackEditor::OnTransformChanged );
-```
-
-Save an objects property into the config file:
-
-```cpp
-void SaveConfig( uint64 **Flags**=CPF_Config, const TCHAR\* **Filename**=NULL, FConfigCacheIni\* **Config**=GConfig );
-
-/\*\*  
-         \* Saves just the section(s) for this class into the default ini file for the class (with just the changes from base)  
-         \*/  
-        void UpdateDefaultConfigFile(const FString& **SpecificFileLocation** = "");
-
-/\*\*  
-         \* Saves just the section(s) for this class into the global user ini file for the class (with just the changes from base)  
-         \*/  
-        void UpdateGlobalUserConfigFile();
-
-/\*\*  
-         \* Saves just the property into the global user ini file for the class (with just the changes from base)  
-         \*/  
-        void UpdateSinglePropertyInConfigFile(const UProperty\* **InProperty**, const FString& **InConfigIniName**);
 ```
 
 **FPackageName** contains a lot of utility functions for managing packages:
 
 ```cpp
-/\*\*   
-         \* Returns the path to the object referred to by the supplied export text path, excluding the class name.  
-         \*   
-         \* @param InExportTextPath The export text path for an object. Takes on the form: ClassName'ObjectPath'  
-         \* @return The path to the object referred to by the supplied export path.  
-         \*/  
+/\*\* 
+         \* Returns the path to the object referred to by the supplied export text path, excluding the class name.
+         \* 
+         \* @param InExportTextPath The export text path for an object. Takes on the form: ClassName'ObjectPath'
+         \* @return The path to the object referred to by the supplied export path.
+         \*/
         static FString ExportTextPathToObjectPath(const FString& **InExportTextPath**);
 
-/\*\*   
-         \* Returns the name of the package referred to by the specified object path  
-         \*/  
+/\*\* 
+         \* Returns the name of the package referred to by the specified object path
+         \*/
         static FString ObjectPathToPackageName(const FString& **InObjectPath**);
 
-/\*\*   
-         \* Returns the name of the object referred to by the specified object path  
-         \*/  
+/\*\* 
+         \* Returns the name of the object referred to by the specified object path
+         \*/
         static FString ObjectPathToObjectName(const FString& **InObjectPath**);
 ```
 
@@ -267,35 +246,35 @@ AActor::DebugShowComponentHierarchy
 
 Get actor instance in blueprint component editor from component:
 
-if (AActor\* **Actor** = **ActorSequence**->GetTypedOuter&lt;AActor>())  
-{  
-        return **Actor**;  
-}  
-#if WITH_EDITOR  
-else if (UBlueprintGeneratedClass\* **GeneratedClass** = **ActorSequence**->GetTypedOuter&lt;UBlueprintGeneratedClass>())  
-{  
-        return **GeneratedClass**->SimpleConstructionScript->GetComponentEditorActorInstance();  
-}  
-#endif  
+if (AActor\* **Actor** = **ActorSequence**->GetTypedOuter&lt;AActor>())
+{
+        return **Actor**;
+}
+#if WITH_EDITOR
+else if (UBlueprintGeneratedClass\* **GeneratedClass** = **ActorSequence**->GetTypedOuter&lt;UBlueprintGeneratedClass>())
+{
+        return **GeneratedClass**->SimpleConstructionScript->GetComponentEditorActorInstance();
+}
+#endif
 }
 ```
 
 **Asset Registry functions**
 
 ```cpp
-FAutoConsoleCommand GetByNameCommand;  
-        FAutoConsoleCommand GetByPathCommand;  
-        FAutoConsoleCommand GetByClassCommand;  
-        FAutoConsoleCommand GetByTagCommand;  
-        FAutoConsoleCommand GetDependenciesCommand;  
-        FAutoConsoleCommand GetReferencersCommand;  
+FAutoConsoleCommand GetByNameCommand;
+        FAutoConsoleCommand GetByPathCommand;
+        FAutoConsoleCommand GetByClassCommand;
+        FAutoConsoleCommand GetByTagCommand;
+        FAutoConsoleCommand GetDependenciesCommand;
+        FAutoConsoleCommand GetReferencersCommand;
         FAutoConsoleCommand FindInvalidUAssetsCommand;
 ```
 
 **Mapcheck Iterate over materials to check whether they read from SceneColor**
 
 ```cpp
-ListSceneColorMaterials  
+ListSceneColorMaterials
 static FAutoConsoleCommand CmdListSceneColorMaterials(
 ```
 
@@ -416,7 +395,7 @@ if (CanKeyPropertyParams.PropertyPath.GetNumProperties() == 0)
 Get BP Variable metadata:
 
 ```cpp
-FBlueprintEditorUtils::GetBlueprintVariableMetaData()  
+FBlueprintEditorUtils::GetBlueprintVariableMetaData()
 FBlueprintEditorUtils::SetBlueprintVariableMetaData()
 ```
 

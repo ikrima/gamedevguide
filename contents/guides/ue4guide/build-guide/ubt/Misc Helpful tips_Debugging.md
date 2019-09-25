@@ -51,6 +51,8 @@ If you run UBT with the -verbose option, it should print out a message showing t
 
 Build steps can use $(EngineDir),$(ProjectDir), $(TargetName),$(TargetPlatform), $(TargetConfiguration),$(TargetType), $(ProjectFile).
 
+In your Build.cs/Target.cs files, you can call `csharp>Utils.ExpandVariables(MyStringWithVars)` to expand the build/project variables in your own string
+
 ## Debugging compile flags & link switches
 
 Would probably debug this by running UnrealBuildTool with the -xgeexport option. This will export a list of actions that need to be executed (in a format for consumption by Incredibuild, but that doesn't matter). That should show you the command line that produces every output file (or give you paths to the response files used to generate each).

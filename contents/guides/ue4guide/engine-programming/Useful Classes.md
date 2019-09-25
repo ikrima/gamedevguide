@@ -2,6 +2,10 @@
 sortIndex: 5
 ---
 
+## All Template Classes
+
+https://docs.unrealengine.com/en-US/API/Runtime/Core/Templates/index.html
+
 ## Algorithms
 
 ParallelFor
@@ -20,7 +24,7 @@ KeyFrameAlgorithms::Scale
 
 KeyFrameAlgorithms::Translate
 
-## Structs:
+## Structs
 
 TNumericLimits&lt;>
 

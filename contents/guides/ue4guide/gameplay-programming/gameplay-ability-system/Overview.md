@@ -2,9 +2,11 @@
 sortIndex: 1
 ---
 
+![](../../assets/AbilitySystem-Overview.png)
+
 # Overview
 
-![](../../assets/AbilitySystem-Overview.png)
+Excellent in-depth overview with an example project: https://github.com/tranek/GASDocumentation
 
 ####  FGameplayAttributeData /UAttributeSet:
 

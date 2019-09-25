@@ -19,9 +19,21 @@ The type hierarchy for the property system looks like this:
 
 UStruct is the basic type of aggregate structures (anything that contains other members, such as a C++ class, struct, or function), and shouldn’t be confused with a C++ struct (that's UScriptStruct). UClass can contain functions or properties as their children, while UFunction and UScriptStruct are limited to just properties.
 
-# UStructs
+# UScriptStructs
 
 ## Manipulation
+
+The main place to access a lot of manipulation helpers is through `UScriptStruct::ICppStructOps`. Some useful bits:
+
+```cpp
+UScriptStruct::ICppStructOps& StructCppOps = FES2ArchTypeEntitiesTable::StaticStruct()->GetCppStructOps();
+int32 StructSize = StructCppOps->GetSize();
+int32 StructAlignment = StructCppOps->GetAlignment();
+void* Allocation = FMemory::Malloc(StructSize, StructAlignment);
+StructCppOps->Construct(Allocation);
+StructCppOps->Serialize(...)
+StructCppOps->NetSerialize(...)
+```
 
 ### Initialize Struct
 
@@ -112,9 +124,13 @@ UProperty::Identical( const void* A, const void* B, uint32 PortFlags=0 )
 UProperty::Identical_InContainer()
 ```
 
-### Compare UStructs Equality
+### Compare UStruct instances
 
-Compare if two UStructs (not C++ structs but UE4 USTRUCT meaning class type, property, etc) are the same:
+CompareScriptStruct
+
+### Compare UStructs Type Equality
+
+Compare if two UStructs types (not C++ structs but UE4 USTRUCT meaning class type, property, etc) are the same:
 
 ```cpp
 FStructUtils::ArePropertiesTheSame(PropA, PropB, false)

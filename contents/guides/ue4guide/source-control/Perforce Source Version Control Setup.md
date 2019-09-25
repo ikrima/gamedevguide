@@ -262,7 +262,12 @@ binary+l //depot/....udk
 - The P4 command
 
   ```batch
-  p4 retype -t  binary+w .\....dll
+  p4 retype -t binary+w .\....dll
+
+  or
+
+  p4 edit .\....dll
+  p4 reopen -t binary+w .\....dll
   ```
 
   *Reference From <https://community.perforce.com/s/article/3114>*

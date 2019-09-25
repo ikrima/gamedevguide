@@ -7,7 +7,6 @@ Numbers signify steps not necessarily at the same class nesting
 - UGameEngine::Init
 
   - UGameInstance::InitializeStandalone()
-
     - UGameInstance::Init() - CreateUOnlineSession and Register Delegates()
 
 - UGameEngine::Start
@@ -20,9 +19,9 @@ Numbers signify steps not necessarily at the same class nesting
 
          - UActorComponent::RegisterComponent() - Adding itself to its owner and inside owner's world, possibly creating rendering/physics state
 
-      1. ABBGameModeBase::InitGame - Create the Game Session and register FGameDelegates (ex: PreCommitMapChangeDelegate, HandleDisconnectDelegate)
+      2. ABBGameModeBase::InitGame - Create the Game Session and register FGameDelegates (ex: PreCommitMapChangeDelegate, HandleDisconnectDelegate)
 
-      1. Ulevel::RouteActorInitialize() -
+      3. Ulevel::RouteActorInitialize() -
 
          - a) Actor::PreInitializeComponents() - On all actors in the level
 
@@ -46,7 +45,9 @@ Numbers signify steps not necessarily at the same class nesting
 
            - Not sure why this is here instead of the main call to BeginPlay(possibly for networked late joins?)
 
-4. Uworld::BeginPlay()
+      4. FWorldDelegates::OnWorldInitializedActors.Broadcast(OnActorInitParams)
+
+1. Uworld::BeginPlay()
 
    - a) GameMode::StartPlay()
 

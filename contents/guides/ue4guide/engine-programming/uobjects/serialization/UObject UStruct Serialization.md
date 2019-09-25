@@ -199,3 +199,10 @@ ArIsSaveGame = true;
 - Fixup actor/object references after serialization
 
 *Reference From <https://forums.unrealengine.com/development-discussion/c-gameplay-programming/88477-spawning-actors-from-serialized-data?116235-Spawning-Actors-from-Serialized-Data=&viewfull=1>*
+
+
+### Useful Array Serialization
+
+`void BulkSerialize(FArchive& Ar, bool bForcePerElementSerialization = false)`
+
+The BulkSerialize function is a serialization function that can be used as an alternative operator<< in order to serialize the array as a block of raw bytes, rather than doing per-element serialization. This can improve performance with trivial elements, like a built-in type or a plain data struct.

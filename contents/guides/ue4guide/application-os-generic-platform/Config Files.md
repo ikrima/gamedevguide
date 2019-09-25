@@ -19,6 +19,7 @@ sortIndex: 10
 **UCLASS:**
 config=… => Ini to use
 defaultconfig => store in default/base ini
+globaluserconfig => Save object config only to global user overrides, never to local INIs (aka Unreal Engine/Engine/Config/User*.ini)
 perObjectConfig => Handle object configuration on a per-object basis, rather than per-class.
 Configdonotcheckdefaults => Determine whether on serialize to configs a check should be done on the base/defaults ini's
 
@@ -140,18 +141,23 @@ Key=Value
 
 - *.* - Adds a new property.
 
+  - **Note**: _**. is like +**_ except it will potentially add a duplicate line. This is useful for the bindings (as seen in DefaultInput.ini), for instance, where the bottom-most binding takes effect, so if you add something like:
+
+    ```ini
+    [/Script/Engine.PlayerInput]
+    Bindings=(Name="Q",Command="Foo")
+    .Bindings=(Name="Q",Command="Bar")
+    .Bindings=(Name="Q",Command="Foo")
+    ```
+
+    It will work appropriately. Using a *+* there would fail to add the last line, and your bindings would be incorrect. Due to configuration file combining, the above usage pattern can happen.
+
 - *!* - Removes a property; but you don't have to have an exact match, just the name of the property.
+  - To clear an array, use ClearArray:
 
-  **Note**: _**. is like +**_ except it will potentially add a duplicate line. This is useful for the bindings (as seen in DefaultInput.ini), for instance, where the bottom-most binding takes effect, so if you add something like:
-
-  ```ini
-  [/Script/Engine.PlayerInput]
-  Bindings=(Name="Q",Command="Foo")
-  .Bindings=(Name="Q",Command="Bar")
-  .Bindings=(Name="Q",Command="Foo")
-  ```
-
-  It will work appropriately. Using a *+* there would fail to add the last line, and your bindings would be incorrect. Due to configuration file combining, the above usage pattern can happen.
+    ```ini
+    !PrimaryAssetTypesToScan=ClearArray
+    ```
 
 - Escape a quote character: \~Quote\~, \~OpenBracket\~. Ex:
 
@@ -275,6 +281,62 @@ bool FGenericPlatformMisc::SetStoredValue(const FString& InStoreId, const FStrin
 GConfig->GetBool(TEXT("/Script/UnrealEd.EditorLoadingSavingSettings"), TEXT("bForceCompilationAtStartup"), bNeedCompile, GEditorPerProjectIni)
 static const FBoolConfigValueHelper DisplayPrintStringSource(TEXT("Kismet"), TEXT("bLogPrintStringSource"), GEngineIni);
 GConfig->GetString(*IniSection, *(InConfigKey + TEXT(".EditorShowFlags")), ViewportInstanceSettings.EditorShowFlagsString, GEditorPerProjectIni);
+```
+
+## Editor Helper Functions
+
+```cpp
+/**
+ * Save configuration out to ini files
+ * @warning Must be safe to call on class-default object
+ */
+void SaveConfig( uint64 Flags=CPF_Config, const TCHAR* Filename=NULL, FConfigCacheIni* Config=GConfig );
+
+/**
+ * Saves just the section(s) for this class into the default ini file for the class (with just the changes from base)
+ */
+void UpdateDefaultConfigFile(const FString& SpecificFileLocation = "");
+
+/**
+ * Saves just the section(s) for this class into the global user ini file for the class (with just the changes from base)
+ */
+void UpdateGlobalUserConfigFile();
+
+/**
+ * Saves just the property into the global user ini file for the class (with just the changes from base)
+ */
+void UpdateSinglePropertyInConfigFile(const UProperty* InProperty, const FString& InConfigIniName);
+
+/**
+ * Get the default config filename for the specified UObject
+ */
+FString GetDefaultConfigFilename() const;
+
+/**
+ * Get the global user override config filename for the specified UObject
+ */
+FString GetGlobalUserConfigFilename() const;
+
+/**
+ * Imports property values from an .ini file.
+ *
+ * @param	Class				the class to use for determining which section of the ini to retrieve text values from
+ * @param	Filename			indicates the filename to load values from; if not specified, uses ConfigClass's ClassConfigName
+ * @param	PropagationFlags	indicates how this call to LoadConfig should be propagated; expects a bitmask of UE4::ELoadConfigPropagationFlags values.
+ * @param	PropertyToLoad		if specified, only the ini value for the specified property will be imported.
+ */
+void LoadConfig( UClass* ConfigClass=NULL, const TCHAR* Filename=NULL, uint32 PropagationFlags=UE4::LCPF_None, class UProperty* PropertyToLoad=NULL );
+
+/**
+ * Wrapper method for LoadConfig that is used when reloading the config data for objects at runtime which have already loaded their config data at least once.
+ * Allows the objects the receive a callback that its configuration data has been reloaded.
+ *
+ * @param	Class				the class to use for determining which section of the ini to retrieve text values from
+ * @param	Filename			indicates the filename to load values from; if not specified, uses ConfigClass's ClassConfigName
+ * @param	PropagationFlags	indicates how this call to LoadConfig should be propagated; expects a bitmask of UE4::ELoadConfigPropagationFlags values.
+ * @param	PropertyToLoad		if specified, only the ini value for the specified property will be imported
+ */
+void ReloadConfig( UClass* ConfigClass=NULL, const TCHAR* Filename=NULL, uint32 PropagationFlags=UE4::LCPF_None, class UProperty* PropertyToLoad=NULL );
 ```
 
 ## Save UProperties manually to config
@@ -427,3 +489,38 @@ static bool LoadExternalIniFile(FConfigFile& ConfigFile, const TCHAR* IniName, c
 static void LoadConsoleVariablesFromINI();
 
 ```
+
+
+# Command Line Switches
+
+## Override Default Behavior
+
+- `-ENGLISHCOALESCED`: Revert to the default (English) coalesced .ini if the language-localized version cannot be found.
+- `-NOAUTOINIUPDATE`: Suppress prompts to update .ini files.
+- `-NOINI`: Do not update the .ini files.
+- `-REGENERATEINIS`: Forces .ini files to be regenerated
+
+## Override Default INI
+
+Use another command-line argument to temporarily override which INIs are loaded by the game or editor. For example, if a custom `MyGame.ini` is to be used instead of `MyOldGame.ini`, the argument would be `-GAMEINI=MyGame.ini`. This table lists the arguments used to override the different INI files used in UE4:
+
+| Command-Line Argument | INI Override |
+|---|---|
+| DEFEDITORINI= | Default Editor |
+| EDITORINI= | Editor |
+| DEFEDITORUSERSETTINGSINI= | Default EditorUserSettings |
+| EDITORUSERSETTINGSINI= | EditorUserSettings |
+| DEFCOMPATINI= | Default Compat |
+| COMPATINI= | Compat |
+| DEFLIGHTMASSINI= | Default Lightmass |
+| LIGHTMASSINI= | Lightmass |
+| DEFENGINEINI= | Default Engine |
+| ENGINEINI= | Engine |
+| DEFGAMEINI= | Default Game |
+| GAMEINI= | Game |
+| DEFINPUTINI= | Default Input |
+| INPUTINI= | Input |
+| DEFUIINI= | Default UI |
+| UIINI= | UI |
+
+*Reference From: <https://docs.unrealengine.com/en-US/Programming/Basics/CommandLineArguments/index.html>*

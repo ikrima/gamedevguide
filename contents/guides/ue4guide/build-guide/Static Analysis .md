@@ -19,7 +19,7 @@ sortIndex: 9
 # Devops script
 
 ```batch
-build.py -c development -t editor check pvs
+build.py bbr --analyzer=PVSStudio
 ```
 
 # UBT Command line
