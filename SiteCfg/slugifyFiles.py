@@ -4,7 +4,8 @@ from pathlib import Path
 non_url_safe = ['"', '#', '$', '%', '&', '+',
                 ',', '/', ':', ';', '=', '?',
                 '@', '[', '\\', ']', '^', '`',
-                '{', '|', '}', '~', "'"]
+                '{', '|', '}', '~', "'", "_"]
+strip_chars = ['(', ')']
 
 translate_table = {ord(char): u'' for char in non_url_safe}
 
@@ -15,11 +16,9 @@ def _slugify1(text):
       for c in non_safe:
           text = text.replace(c, '')
   text = u'-'.join(text.split())
-  return text
 
-def _slugify2(text):
-  text = text.translate(translate_table)
-  text = u'_'.join(text.split())
+  for c in strip_chars:
+    text = text.replace(c, '')
   return text
 
 
