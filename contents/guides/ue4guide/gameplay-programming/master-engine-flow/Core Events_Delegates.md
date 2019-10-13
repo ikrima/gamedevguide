@@ -95,6 +95,7 @@ Located in `CoreDelegates.h`
   static FSimpleMulticastDelegate OnPostEngineInit;
 
   // Called at the very end of engine initialization, right before the engine starts ticking. This is not called for commandlets
+  // 'if (GIsRunning)' => to test whether OnEngineInitComplete has already finished
   static FSimpleMulticastDelegate OnFEngineLoopInitComplete;
 
   // Called when the application is about to exit.
@@ -337,8 +338,8 @@ Located in `World.h`
   FWorldDelegates::OnPostWorldInitialization;
   // Gets called near end of UWorld::InitializeActorsForPlay(), after level map got initialized ie SpawnServerActors(), Levels->RouteActorInitialize(), etc
   FWorldDelegates::OnWorldInitializedActors
-  // Exact same as FWorldDelegates::OnWorldInitializedActors but bound to a UWorld object
-  UWorld::OnActorsInitialized
+    - UWorld::OnActorsInitialized // Exact same as FWorldDelegates::OnWorldInitializedActors but bound to a UWorld object
+    - UWorld::AreActorsInitialized() // Can use to check if the world is ready
 
   // Called at start of UWorld::CleanupWorld(), before world cleanup start
   FWorldDelegates::OnWorldCleanup;
