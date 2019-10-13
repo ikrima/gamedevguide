@@ -88,7 +88,6 @@ const gbRemarkPluginsList = [
 
 module.exports = {
   pathPrefix: siteCfg.pathPrefix,
-  __experimentalThemes: ['gatsby-theme-defaults'],
   siteMetadata: {
     siteUrl: siteCfg.siteUrl + pathPrefix,
     siteNavTitle: siteCfg.siteNavTitle,
@@ -123,6 +122,7 @@ module.exports = {
         },
       },
     },
+    'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-less',
       options: {
@@ -134,7 +134,7 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-lodash',
     {
-      resolve: 'gatsby-mdx',
+      resolve: 'gatsby-plugin-mdx',
       options: {
         defaultLayouts: {
           guides: require.resolve('./src/templates/guidePageTemplate.js'),

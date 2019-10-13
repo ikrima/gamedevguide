@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { PageHeader as AntdPageHeader } from 'antd';
 import MainLayout from '../components/main-layout';
 import 'katex/dist/katex.min.css';
@@ -29,7 +29,7 @@ function Template({
 
   let markdownHtml;
   if (data.mdx) {
-    markdownHtml = <MDXRenderer>{data.mdx.code.body}</MDXRenderer>;
+    markdownHtml = <MDXRenderer>{data.mdx.body}</MDXRenderer>;
   } else {
     markdownHtml = <div className="guide-content" dangerouslySetInnerHTML={{ __html: html }} />;
   }
@@ -79,9 +79,7 @@ export const pageQuery = graphql`
         pageSubTitle
         root
       }
-      code {
-        body
-      }
+      body
     }
   }
 `;
