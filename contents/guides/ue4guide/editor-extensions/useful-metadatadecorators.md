@@ -301,6 +301,10 @@ Add \_DEPRECATED to its name along with `DeprecatedFunction` metadata:
 
   ```
 
+- `FGameplayTagReferenceHelper`  -  Helper struct for viewing tag references (assets that reference a tag). Drop this into a struct and set the OnGetgameplayStatName. A details customization will display a tree view of assets referencing the tag
+
+- `FGameplayTagCreationWidgetHelper` - Helper struct: drop this in another struct to get an embedded create new tag widget.
+
 # Misc
 
 **UsesHierarchy:**

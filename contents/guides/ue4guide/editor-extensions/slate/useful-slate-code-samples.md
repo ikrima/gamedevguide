@@ -30,6 +30,70 @@ More slate samples: SWidgetGallery.h & AppFramework/STestSuite/SWizard/STableVie
 
 - SCollisionAnalyzer shows how to implement sorting
 
+### Custom Array Properties
+
+- Simple example
+
+  ```cpp
+  IDetailCategoryBuilder& NodeCategory = DetailBuilder.EditCategory("Node");
+  TSharedRef<FDetailArrayBuilder> NodeArrayBuilder = MakeShareable(new FDetailArrayBuilder(NodesPropertyHandle.ToSharedRef()));
+  NodeArrayBuilder->OnGenerateArrayElementWidget(FOnGenerateArrayElementWidget::CreateSP(this, &FRigDetails::GenerateNodeArrayElementWidget, &DetailBuilder));
+
+  NodeCategory.AddCustomBuilder( NodeArrayBuilder, false );
+  ```
+
+- Complex example is `FNiagaraDetailSourcedArrayBuilder`
+
+### Working with IPropertyHandle & DetailChildrenBuilder
+
+- Getting a child IPropertyHandle
+
+  ```cpp
+  TSharedPtr<IPropertyHandle> VariantTypePropHndle = StructPropertyHandle->GetChildHandle(GET_MEMBER_NAME_CHECKED(TInSumType, VariantType));
+  ```
+
+- Adding said property
+
+  ```cpp
+  ChildBuilder.AddProperty(VariantTypePropHndle.ToSharedRef());
+  ```
+
+- Adding property with SProperty Widget
+
+  ```cpp
+  SNew( SProperty, DetailBuilder.GetProperty(GET_MEMBER_NAME_CHECKED(ABBStadiumRig, bDbgShowRootVis)))
+  ```
+
+- Getting Detail View from `IDetailChildrenBuilder`
+
+  ```cpp
+  TSharedRef<const SWidget> DetailsView = ChildBuilder.GetParentCategory().GetParentLayout().GetDetailsView()->AsShared();
+  ```
+
+### Make Enum Combobox
+
+- Post 4.24: SEnumCombobox is a widget you can use. Pre 4.24: Use this:
+
+  ```cpp
+  MovieSceneToolHelpers::MakeEnumComboBox(
+    StaticEnum<TVariantEnum>(),
+    MakeAttributeLambda([VariantTypePropHndle] {
+        uint8 enumVal = 0;
+        if (VariantTypePropHndle.IsValid() && VariantTypePropHndle->IsValidHandle())
+        {
+            VariantTypePropHndle->GetValue(enumVal);
+        }
+        return (int32)enumVal;
+    }),
+    FOnEnumSelectionChanged::CreateLambda([VariantTypePropHndle](int32 Selection, ESelectInfo::Type SelectionType) {
+        if (VariantTypePropHndle.IsValid() && VariantTypePropHndle->IsValidHandle())
+        {
+            VariantTypePropHndle->SetValue((uint8)Selection);
+        }
+    })
+  )
+  ```
+
 ### Menu Builder & Pulldown Menu & Submenu:
 
 ```cpp
@@ -165,9 +229,9 @@ ChildSlot
         \];
 ```
 
-#### Class Picker/Class Viewer:
+#### Class Picker/Class Viewer
 
-```js
+```cpp
 const bool bPressedOk = SClassPickerDialog::PickClass(TitleText, Options, ChosenClass, UDataAsset::StaticClass());
 
 FClassViewerModule& ClassViewerModule = FModuleManager::LoadModuleChecked<FClassViewerModule>;("ClassViewer");

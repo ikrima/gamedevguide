@@ -335,8 +335,10 @@ Located in `World.h`
   // Called at start of UWorld::InitWorld(), before UWorld managers are allocated/created (ie Physics scene, I system, Navigation system)
   FWorldDelegates::OnPreWorldInitialization;
   // Called at end of UWorld::InitWorld(), after UWorld managers are allocated/created (ie Physics scene, I system, Navigation system)
+  // NOTE: Level Actors are loaded by here but using TActorRange<> won't work. You have to manually iterate the actors. Look at FindActorsOfClass
   FWorldDelegates::OnPostWorldInitialization;
-  // Gets called near end of UWorld::InitializeActorsForPlay(), after level map got initialized ie SpawnServerActors(), Levels->RouteActorInitialize(), etc
+  // Gets called near end of UWorld::InitializeActorsForPlay(), after level map got initialized ie SpawnServerActors(), Levels->RouteActorInitialize(),etc.
+  // NOTE: Not called in editor loading process (will be called in PIE)
   FWorldDelegates::OnWorldInitializedActors
     - UWorld::OnActorsInitialized // Exact same as FWorldDelegates::OnWorldInitializedActors but bound to a UWorld object
     - UWorld::AreActorsInitialized() // Can use to check if the world is ready
