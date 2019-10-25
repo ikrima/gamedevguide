@@ -1,80 +1,28 @@
-const _ = require('lodash');
+const _ = require(`lodash`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+const urlUtils = require(`../utils/urls`)
+const { markdownQueryConfig, defaultMarkdownSection } = require(`../utils/query-config`)
+const knownSections = _.map(markdownQueryConfig, `section`)
 
-const path = require(`path`);
+module.exports.createMarkdownNodeFields = async ({ node, getNode, actions }) => {
+    const { createNodeField } = actions
 
-const { createFilePath } = require('gatsby-source-filesystem');
-const { prettifySlug, relFilePathToSlug, absFilePathToSlug, isGuideName } = require('./utils');
+    if (node.internal.type === `MarkdownRemark`) {
+        let slug = urlUtils.urlForMarkdown(node, createFilePath({ node, getNode, basePath: `pages` }))
+        // Section is the first part of the path
+        let section = slug.match(/^\/(.*?)\//)[1]
+        section = _.includes(knownSections, section) ? section : defaultMarkdownSection
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
+        createNodeField({
+            node,
+            name: `slug`,
+            value: slug,
+        })
 
-  let pgTitle = '';
-  let sideMenuHeading = '';
-  let guideName = 'blog';
-
-  if (
-    (node.internal.type === `MarkdownRemark` || node.internal.type === `Mdx`) &&
-    typeof node.slug === `undefined`
-  ) {
-    const nodeFilePath = createFilePath({
-      node,
-      getNode,
-      basePath: 'pages',
-      trailingSlash: false,
-    });
-    const slug = relFilePathToSlug(nodeFilePath);
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug,
-    });
-    const pathSlugsArray = slug.split('/');
-    pgTitle = node.frontmatter.title
-      ? node.frontmatter.title
-      : prettifySlug(_.last(pathSlugsArray));
-    if (isGuideName(_.nth(pathSlugsArray, 1))) {
-      guideName = _.nth(pathSlugsArray, 1);
+        createNodeField({
+            node,
+            name: `section`,
+            value: section,
+        })
     }
-
-    sideMenuHeading = node.frontmatter.sideMenuHeading
-      ? node.frontmatter.sideMenuHeading
-      : prettifySlug(_.last(pathSlugsArray));
-
-    if (node.frontmatter.tags) {
-      const tagSlugs = node.frontmatter.tags.map(tag => `/tags/${_.kebabCase(tag)}/`);
-      createNodeField({ node, name: `tagSlugs`, value: tagSlugs });
-    }
-  } else if (node.internal.type === `File`) {
-    const pathObj = path.parse(
-      node.relativePath.startsWith('/') ? node.relativePath : `/${node.relativePath}`
-    );
-    const pathDir = absFilePathToSlug(pathObj.dir).replace(/\/$/, '');
-    const pathName = absFilePathToSlug(pathObj.name);
-    const pathExt = ['.md', '.mdx', '.js', '.jsx'].includes(pathObj.ext) ? '' : pathObj.ext;
-
-    const slug = `${pathDir}/${pathName}${pathExt}`;
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug,
-    });
-  }
-
-  createNodeField({
-    node,
-    name: 'pageTitle',
-    value: pgTitle,
-  });
-  createNodeField({
-    node,
-    name: 'sideMenuHeading',
-    value: sideMenuHeading,
-  });
-  createNodeField({
-    node,
-    name: 'guideName',
-    value: guideName,
-  });
-};
-
-module.exports = exports.onCreateNode;
+}

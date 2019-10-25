@@ -1,0 +1,8 @@
+[submodule "v2"]
+	path = content/api/v2
+	url = git@github.com:TryGhost/docs-api.git
+	branch = master
+[submodule "v0.11"]
+	path = content/api/v0.11
+	url = git@github.com:TryGhost/docs-api.git
+	branch = v0.11

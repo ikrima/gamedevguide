@@ -1,0 +1,17 @@
+- groups:
+  - group: Getting Started
+    items:
+      - title: Overview
+        link: /api/javascript/
+  - group: Content API
+    items:
+      - title: Client Library
+        link: /api/javascript/content/
+  - group: Admin API
+    items:
+      - title: Client Library
+        link: /api/javascript/admin/
+  - group: Advanced
+    items:
+      - title: Filtering
+        link: /api/javascript/filtering/

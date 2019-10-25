@@ -1,0 +1,157 @@
+<p>This guide is for installing a local development copy of Ghost from source, primarily for the purpose of modifying Ghost core</p>
+<h2 id="pre-requisites"><a href="#pre-requisites" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pre-requisites</h2>
+<p>Before getting started, you'll need these global packages to be installed:</p>
+<ul>
+<li><strong>A <a href="https://docs.ghost.org/faq/node-versions/">supported version</a> of <a href="https://nodejs.org" target="_blank" rel="nofollow noopener noreferrer">Node.js</a></strong> - Ideally installed via <a href="https://github.com/creationix/nvm#install-script" target="_blank" rel="nofollow noopener noreferrer">nvm</a></li>
+<li><strong><a href="https://yarnpkg.com/en/docs/install#alternatives-tab" target="_blank" rel="nofollow noopener noreferrer">Yarn</a></strong> - to manage all the packages</li>
+</ul>
+<h4 id="the-install-these-global-packages"><a href="#the-install-these-global-packages" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The install these global packages</h4>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">yarn global add knex-migrator grunt-cli ember-cli bower</code></pre></div>
+<hr>
+<h2 id="create-github-forks"><a href="#create-github-forks" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create GitHub forks</h2>
+<p>First you'll need to make forks of both the <a href="https://github.com/tryghost/ghost" target="_blank" rel="nofollow noopener noreferrer">Ghost</a> and <a href="https://github.com/tryghost/ghost-admin" target="_blank" rel="nofollow noopener noreferrer">Ghost-Admin</a> respositories. Click on the fork button right at the top, wait for a copy to be created over on your personal GitHub account, and you should be all set!</p>
+<p><img src="/images/setup/fork.gif" alt="Fork"></p>
+<hr>
+<h2 id="configure-repositories"><a href="#configure-repositories" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configure repositories</h2>
+<p>The next step is to configure the Git repositories for local development</p>
+<h3 id="ghost-core"><a href="#ghost-core" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ghost Core</h3>
+<p>The main Ghost repository contains the full Ghost package, including the Admin client and default theme which will also be automatically set up</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># First clone Ghost and make it your working dir</span>
+<span class="token function">git</span> clone git@github.com:TryGhost/Ghost.git <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> Ghost</code></pre></div>
+<h4 id="properly-rename-your-references"><a href="#properly-rename-your-references" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properly rename your references</h4>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># Rename origin to upstream</span>
+<span class="token function">git</span> remote <span class="token function">rename</span> origin upstream
+
+<span class="token comment"># Ensure it has the correct path</span>
+<span class="token function">git</span> remote set-url upstream git@github.com:TryGhost/Ghost.git
+
+<span class="token comment"># Add your fork as an origin, editing in &lt;YourUsername>!</span>
+<span class="token function">git</span> remote add origin git@github.com:<span class="token operator">&lt;</span>YourUsername<span class="token operator">></span>/Ghost.git</code></pre></div>
+<h3 id="ghost-admin"><a href="#ghost-admin" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ghost Admin</h3>
+<p>Because Ghost-Admin is a submodule repository of the main Ghost repository, the same steps need to be repeated to configure Git here, too.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># Switch to Ghost-Admin dir</span>
+<span class="token function">cd</span> core/client</code></pre></div>
+<h4 id="properly-rename-your-references-again"><a href="#properly-rename-your-references-again" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properly rename your references again</h4>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># Rename origin to upstream</span>
+<span class="token function">git</span> remote <span class="token function">rename</span> origin upstream
+
+<span class="token comment"># Ensure admin also has the correct path</span>
+<span class="token function">git</span> remote set-url upstream git@github.com:TryGhost/Ghost-Admin.git
+
+<span class="token comment"># Add your fork as an origin, editing in &lt;YourUsername>!</span>
+<span class="token function">git</span> remote add origin git@github.com:<span class="token operator">&lt;</span>YourUsername<span class="token operator">></span>/Ghost-Admin.git</code></pre></div>
+<h4 id="bring-ghost-admin-up-to-date"><a href="#bring-ghost-admin-up-to-date" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bring Ghost-Admin up to date</h4>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># Quick check that everything is on latest</span>
+<span class="token function">git</span> checkout master <span class="token operator">&amp;&amp;</span> <span class="token function">git</span> pull upstream master
+
+<span class="token comment"># Then return to Ghost root directory</span>
+<span class="token function">cd</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/</code></pre></div>
+<hr>
+<h2 id="run-setup--installation"><a href="#run-setup--installation" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run setup &#x26; installation</h2>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># Only ever run this once</span>
+yarn setup</code></pre></div>
+<p>The <code class="language-text">setup</code> task will install dependencies, initialise the database, set up git hooks &#x26; initialise submodules and run a first build of the admin. The very first build generally takes <strong>a while</strong>, so now's a good time to re-open that Reddit tab.</p>
+<hr>
+<h2 id="start-ghost"><a href="#start-ghost" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Start Ghost</h2>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># Run Ghost in development mode</span>
+grunt dev</code></pre></div>
+<p><mark><strong>Ghost is now running at</strong> <a href="http://localhost:2368/" target="_blank" rel="nofollow noopener noreferrer">http://localhost:2368/</a></mark></p>
+<hr>
+<h2 id="stay-up-to-date"><a href="#stay-up-to-date" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stay up to date</h2>
+<p>When your working copies become out of date due to upstream changes, this is the command always brings you back up to latest <code class="language-text">master</code></p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># Update EVERYTHING</span>
+grunt master</code></pre></div>
+<p>That's it, you're done with the install! The rest of this guide is about working with your new development copy of Ghost.</p>
+<hr>
+<h2 id="dev-commands"><a href="#dev-commands" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dev Commands</h2>
+<p>When running locally there are a number development utility commands which come in handy for running tests, building packages, and other helpful tasks.</p>
+<h3 id="running-ghost"><a href="#running-ghost" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Running Ghost</h3>
+<p>The most commonly used commands for running the core codebase locally</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">grunt dev
+<span class="token comment"># Default way of running Ghost in development mode</span>
+<span class="token comment"># Builds admin files on start &amp; then watches for changes</span>
+
+grunt dev --server
+<span class="token comment"># Ignores admin changes</span>
+
+grunt dev --no-server-watch
+<span class="token comment"># Ignores server changes</span>
+
+grunt build
+<span class="token comment"># Build admin client manually</span>
+
+grunt prod
+<span class="token comment"># Build full Ghost package for production</span></code></pre></div>
+<h3 id="database-tools"><a href="#database-tools" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Database tools</h3>
+<p>Ghost uses it's own tool called <code class="language-text">knex-migrator</code> to manage database migrations</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">knex-migrator reset
+<span class="token comment"># Wipe the database</span>
+
+knex-migrator init
+<span class="token comment"># Populate a fresh database</span></code></pre></div>
+<h3 id="server-tests"><a href="#server-tests" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Server Tests</h3>
+<p>Tests run with SQlite. To use MySQL, prepend commands with <code class="language-text">NODE_ENV=testing-mysql</code></p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">grunt test-all
+<span class="token comment"># Run all tests</span>
+
+grunt test-unit
+<span class="token comment"># Run unit tests</span>
+
+grunt test-integration
+<span class="token comment"># Run integration tests</span>
+
+grunt test-functional
+<span class="token comment"># Run functional tests</span>
+
+grunt test:path/to/test.js
+<span class="token comment"># Run a single test</span>
+
+grunt lint
+<span class="token comment"># Make sure your code doesn't suck</span></code></pre></div>
+<h3 id="client-tests"><a href="#client-tests" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Client Tests</h3>
+<p>Client tests should always be run inside the <code class="language-text">core/client</code> directory. Any time you have <code class="language-text">grunt dev</code> running the client tests will be available at <a href="http://localhost:4200/tests" target="_blank" rel="nofollow noopener noreferrer">http://localhost:4200/tests</a></p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">ember <span class="token function">test</span>
+<span class="token comment"># Run all tests in Chrome + Firefox</span>
+
+ember <span class="token function">test</span> --server
+<span class="token comment"># Run all tests, leave results open, and watch for changes</span>
+
+ember <span class="token function">test</span> -f <span class="token string">'gh-my-component'</span>
+<span class="token comment"># Run tests where `describe()` or `it()` matches supplied argument</span>
+<span class="token comment"># Note: Case sensitive</span>
+
+ember <span class="token function">test</span> --launch<span class="token operator">=</span>chrome
+<span class="token comment"># Run all tests in Chrome only</span>
+
+ember <span class="token function">test</span> -s -f <span class="token string">'Acceptance: Settings - General'</span> --launch<span class="token operator">=</span>chrome
+<span class="token comment"># Most useful test comment for continuous local development</span>
+<span class="token comment"># Targets specific test of area being worked on</span>
+<span class="token comment"># Only using Chrome to keep resource usage minimal</span></code></pre></div>
+<hr>
+<h2 id="troubleshooting"><a href="#troubleshooting" aria-hidden="true" class="anchor"><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Troubleshooting</h2>
+<p>Some common Ghost development problems and their solutions</p>
+<p><strong>ERROR: (EADDRINUSE) Cannot start Ghost</strong><br>
+This error means that Ghost is already running, and you need to stop it</p>
+<p><strong>ERROR: ENOENT</strong><br>
+This error means that the mentioned file doesn't exist</p>
+<p><strong>ERROR Error: Cannot find module</strong><br>
+Install did not complete. Remove your <code class="language-text">node_modules</code> and re-run <code class="language-text">yarn</code></p>
+<p><strong>Error: Cannot find module './build/default/DTraceProviderBindings'</strong><br>
+You switched node versions. Remove your <code class="language-text">node_modules</code> and re-run <code class="language-text">yarn</code></p>
+<p><strong>ENOENT: no such file or directory, stat 'path/to/favicon.ico' at Error (native)</strong><br>
+Your admin client has not been built. Run <code class="language-text">grunt prod</code> for production or <code class="language-text">grunt dev</code></p>
+<p><strong>TypeError: Cannot read property 'tagName' of undefined</strong><br>
+You can't run <code class="language-text">ember test</code> at the same time as <code class="language-text">grunt dev</code>. Wait for tests to finish before continuing and wait for the "Build successful" message before loading admin.</p>
+<p><strong>yarn.lock conflicts</strong><br>
+When rebasing a feature branch it's possible you'll get conflicts on <code class="language-text">yarn.lock</code> because there were dependency changes in both <code class="language-text">master</code> and <code class="language-text">&lt;feature-branch&gt;</code>.</p>
+<ol>
+<li>Note what dependencies have changed in <code class="language-text">package.json</code><br>
+<small>(Eg. <code class="language-text">dev-1</code> was added and dev dep <code class="language-text">dev-2</code> was removed)</small></li>
+<li><code class="language-text">git reset HEAD package.json yarn.lock</code> - unstages the files</li>
+<li><code class="language-text">git checkout -- package.json yarn.lock</code> - removes local changes</li>
+<li><code class="language-text">yarn add dev-1 -D</code> - re-adds the dependency and updates yarn.lock</li>
+<li><code class="language-text">yarn remove dev-2</code> - removes the dependency and updates yarn.lock</li>
+<li><code class="language-text">git add package.json yarn.lock</code> - re-stage the changes</li>
+<li><code class="language-text">git rebase --continue</code> - continue with the rebase</li>
+</ol>
+<p>It's always more reliable to let <code class="language-text">yarn</code> auto-generate the lockfile rather than trying to manually merge potentially incompatible changes.</p>

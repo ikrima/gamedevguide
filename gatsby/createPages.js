@@ -1,87 +1,47 @@
-const path = require('path');
+const path = require(`path`)
+const { allMarkdownPosts } = require(`../utils/node-queries`)
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+module.exports.createRedirects = ({ actions }) => {
+    const { createRedirect } = actions
 
-  const guidePageTemplate = path.resolve('src/templates/guidePageTemplate.js');
-  const blogPostTemplate = path.resolve('src/templates/blogPostTemplate.js');
+    // The /concepts page doesn't exist, we need to redirect to
+    // the first post of this section
+    createRedirect({
+        fromPath: `/concepts`,
+        isPermanent: true,
+        redirectInBrowser: true,
+        toPath: `/concepts/introduction/`,
+    })
+}
 
-  return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        guides: allFile(
-          filter: { ext: { in: [".md", ".mdx"] }, sourceInstanceName: { eq: "guides" } }
-        ) {
-          edges {
-            node {
-              childMdx {
-                fields {
-                  slug
+module.exports.createMarkdownPages = async ({ graphql, actions }) => {
+    const { createPage } = actions
+    const queryPromises = []
+
+    queryPromises.push(new Promise((resolve, reject) => {
+        graphql(allMarkdownPosts())
+            .then((result) => {
+                if (result.errors) {
+                    return reject(result.errors)
                 }
-                id
-              }
-              childMarkdownRemark {
-                fields {
-                  slug
-                }
-                id
-              }
-            }
-          }
-        }
-        blogposts: allFile(
-          filter: { ext: { in: [".md", ".mdx"] }, sourceInstanceName: { eq: "blogposts" } }
-        ) {
-          edges {
-            node {
-              childMdx {
-                fields {
-                  slug
-                }
-                id
-              }
-              childMarkdownRemark {
-                fields {
-                  slug
-                }
-                id
-              }
-            }
-          }
-        }
-      }
-    `).then(result => {
-      if (result.errors) {
-        // console.log(result.errors)
-        reject(result.errors);
-      }
 
-      // Create page templates
-      result.data.guides.edges.forEach(({ node }) => {
-        const mdNode = node.childMdx ? node.childMdx : node.childMarkdownRemark;
-        createPage({
-          path: mdNode.fields.slug,
-          component: guidePageTemplate,
-          context: {
-            id: node.id,
-          }, // additional data can be passed via context
-        });
-      });
+                return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+                    const DocTemplate = path.resolve(`./src/templates/markdown/post.js`)
 
-      result.data.blogposts.edges.forEach(({ node }) => {
-        const mdNode = node.childMdx ? node.childMdx : node.childMarkdownRemark;
-        createPage({
-          path: mdNode.fields.slug,
-          component: blogPostTemplate,
-          context: {
-            id: node.id,
-          }, // additional data can be passed via context
-        });
-      });
+                    createPage({
+                        path: node.fields.slug,
+                        component: DocTemplate,
+                        context: {
+                            // Data passed to context is available
+                            // in page queries as GraphQL variables.
+                            slug: node.fields.slug,
+                            section: node.fields.section,
+                        },
+                    })
+                    return resolve()
+                })
+            })
+    }))
 
-      resolve();
-    });
-  });
-};
-
-module.exports = exports.createPages;
+    return Promise.all(queryPromises)
+}

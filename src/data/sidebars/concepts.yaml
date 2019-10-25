@@ -1,0 +1,59 @@
+- groups:
+  - group: Getting Started
+    items:
+      - title: What is Ghost?
+        link: /concepts/introduction/
+      - title: Features
+        link: /concepts/features/
+      - title: Ecosystem overview
+        link: /concepts/ecosystem/
+  - group: Architecture
+    items:
+      - title: Overview
+        link: /concepts/architecture/
+      - title: Core API
+        link: /concepts/core/
+      - title: Admin client
+        link: /concepts/admin/
+      - title: Front-end
+        link: /concepts/front-end/
+  - group: Data Model
+    items:
+      - title: Posts
+        link: /concepts/posts/
+      - title: Pages
+        link: /concepts/pages/
+      - title: Tags
+        link: /concepts/tags/
+      - title: Users
+        link: /concepts/users/
+  - group: Hosting
+    items:
+      - title: Hosting overview
+        link: /concepts/hosting/
+      - title: Recommendations
+        link: /concepts/server-recommendations/
+      - title: Troubleshooting
+        link: /concepts/hosting-problems/
+  - group: Configuration
+    items:
+      - title: Config options
+        link: /concepts/config/
+      - title: Storage adapters
+        link: /concepts/storage-adapters/
+      - title: Custom schedulers
+        link: /concepts/custom-schedulers/
+  - group: Security
+    items:
+      - title: Overview
+        link: /concepts/security/
+      - title: Reporting vulnerabilities
+        link: /concepts/vulnerabilities/
+  - group: Roadmap
+    items:
+      - title: Governance
+        link: /concepts/governance/
+      - title: Development principles
+        link: /concepts/principles/
+      - title: Contributing
+        link: /concepts/contributing/

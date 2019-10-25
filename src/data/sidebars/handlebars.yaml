@@ -1,0 +1,127 @@
+- groups:
+  - group: Getting Started
+    items:
+      - title: Overview
+        link: /api/handlebars-themes/
+      - title: Structure
+        link: /api/handlebars-themes/structure/
+      - title: Package.json
+        link: /api/handlebars-themes/packagejson/
+  - group: Contexts & Templates
+    items:
+      - title: Overview
+        link: /api/handlebars-themes/context/
+      - title: Index
+        link: /api/handlebars-themes/context/index/
+      - title: Post
+        link: /api/handlebars-themes/context/post/
+      - title: Page
+        link: /api/handlebars-themes/context/page/
+      - title: Author
+        link: /api/handlebars-themes/context/author/
+      - title: Tag
+        link: /api/handlebars-themes/context/tag/
+  - group: Functional Helpers
+    items:
+      - title: Overview
+        link: /api/handlebars-themes/helpers/functional/
+      - title: is
+        link: /api/handlebars-themes/helpers/is/
+      - title: foreach
+        link: /api/handlebars-themes/helpers/foreach/
+      - title: has
+        link: /api/handlebars-themes/helpers/has/
+      - title: if
+        link: /api/handlebars-themes/helpers/if/
+      - title: unless
+        link: /api/handlebars-themes/helpers/unless/
+      - title: get
+        link: /api/handlebars-themes/helpers/get/
+  - group: Data Helpers
+    items:
+      - title: Overview
+        link: /api/handlebars-themes/helpers/data/
+      - title: '@config'
+        link: /api/handlebars-themes/helpers/config/
+      - title: '@site'
+        link: /api/handlebars-themes/helpers/site/
+      - title: navigation
+        link: /api/handlebars-themes/helpers/navigation/
+      - title: post
+        link: /api/handlebars-themes/helpers/post/
+      - title: url
+        link: /api/handlebars-themes/helpers/url/
+      - title: title
+        link: /api/handlebars-themes/helpers/title/
+      - title: img_url
+        link: /api/handlebars-themes/helpers/img_url/
+      - title: excerpt
+        link: /api/handlebars-themes/helpers/excerpt/
+      - title: content
+        link: /api/handlebars-themes/helpers/content/
+      - title: date
+        link: /api/handlebars-themes/helpers/date/
+      - title: tags
+        link: /api/handlebars-themes/helpers/tags/
+      - title: authors
+        link: /api/handlebars-themes/helpers/authors/
+      - title: twitter
+        link: /api/handlebars-themes/helpers/twitter/
+      - title: facebook
+        link: /api/handlebars-themes/helpers/facebook/
+  - group: Utility Helpers
+    items:
+      - title: Overview
+        link: /api/handlebars-themes/helpers/utility/
+      - title: asset
+        link: /api/handlebars-themes/helpers/asset/
+      - title: 'ghost_head/foot'
+        link: /api/handlebars-themes/helpers/ghost_head_foot/
+      - title: body_class
+        link: /api/handlebars-themes/helpers/body_class/
+      - title: post_class
+        link: /api/handlebars-themes/helpers/post_class/
+      - title: reading_time
+        link: /api/handlebars-themes/helpers/reading_time/
+      - title: pagination
+        link: /api/handlebars-themes/helpers/pagination/
+      - title: 'prev/next_post'
+        link: /api/handlebars-themes/helpers/prev_next_post/
+      - title: plural
+        link: /api/handlebars-themes/helpers/plural/
+      - title: translate
+        link: /api/handlebars-themes/helpers/translate/
+      - title: encode
+        link: /api/handlebars-themes/helpers/encode/
+      - title: log
+        link: /api/handlebars-themes/helpers/log/
+      - title: '@labs'
+        link: /api/handlebars-themes/helpers/labs/
+  - group: Extra Features
+    items:
+      - title: Editor Output
+        link: /api/handlebars-themes/editor/
+      - title: Responsive Images
+        link: /api/handlebars-themes/responsive-images/
+      - title: Google AMP
+        link: /api/handlebars-themes/google-amp/
+      - title: Subscribers
+        link: /api/handlebars-themes/subscribers/
+  - group: URLs & Routing
+    items:
+      - title: Overview
+        link: /api/handlebars-themes/routing/
+      - title: Routes
+        link: /api/handlebars-themes/routing/routes/
+      - title: Collections
+        link: /api/handlebars-themes/routing/collections/
+      - title: Taxonomies
+        link: /api/handlebars-themes/routing/taxonomies/
+      - title: Channels
+        link: /api/handlebars-themes/routing/channels/
+      - title: Properties
+        link: /api/handlebars-themes/routing/properties/
+      - title: Redirects
+        link: /api/handlebars-themes/routing/redirects/
+      - title: Further Reading
+        link: /api/handlebars-themes/routing/tips/

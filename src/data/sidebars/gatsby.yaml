@@ -1,0 +1,17 @@
+- groups:
+  - group: Working With Gatsby
+    items:
+      - title: Overview
+        link: /api/gatsby/
+  - group: GraphQL, Gatsby & Ghost API
+    items:
+      - title: Getting Started
+        link: /api/gatsby/graphql-gatsby-ghost-api/
+  - group: Use-Cases & Pitfalls
+    items:
+      - title: Overview
+        link: /api/gatsby/use-cases-pitfalls/
+  - group: GraphQL Recipes
+    items:
+      - title: Recipes
+        link: /api/gatsby/graphql-recipes-for-ghost
