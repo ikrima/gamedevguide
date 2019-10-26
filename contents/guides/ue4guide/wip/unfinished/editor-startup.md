@@ -1,7 +1,7 @@
 ## **Editor startup process**
 
 ```cpp
-// Editor起動処理の流れ(抜粋)
+// Flow of the Editor startup process (Excerpt)
 WinMain
   GuardedMain
     FEngineLoop::PreInit
@@ -60,9 +60,9 @@ WinMain
 
 ### **LevelOpen processing**
 
-// Process flow when selecting Level asset from ContentBrowser by double-clicking (excerpt)
 
 ```cpp
+// Process flow when selecting Level asset from ContentBrowser by double-clicking (excerpt)
 // ContentBrowserからLevelアセットをダブルクリックで選択した際の処理の流れ(抜粋)
 SContentBrowser::OnAssetsActivated
   FAssetTypeActions_Base::AssetsActivated

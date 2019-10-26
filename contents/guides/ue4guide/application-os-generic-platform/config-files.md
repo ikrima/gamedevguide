@@ -66,45 +66,6 @@ GGameUserSettingsIni | GameUserSettings  /* User Game Settings ini filename */
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*
 
-## Custom config file name for a class
-
-- Specify by this:
-
-  `UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
-
-- Get the name by this:
-
-   `cpp>GetClass()->GetDefaultConfigFilename()`
-
-   **or**
-
-  `cpp>ConfigFileName = uobj->GetDefaultConfigFilename();`
-
-- Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
-
-### Override Config Ini files with command line argument
-
-| **Commandline Argument**  | **INI Override**           |
-| ------------------------- | -------------------------- |
-| DEFEDITORINI=             | Default Editor             |
-| EDITORINI=                | Editor                     |
-| DEFEDITORUSERSETTINGSINI= | Default EditorUserSettings |
-| EDITORUSERSETTINGSINI=    | EditorUserSettings         |
-| DEFCOMPATINI=             | Default Compat             |
-| COMPATINI=                | Compat                     |
-| DEFLIGHTMASSINI=          | Default Lightmass          |
-| LIGHTMASSINI=             | Lightmass                  |
-| DEFENGINEINI=             | Default Engine             |
-| ENGINEINI=                | Engine                     |
-| DEFGAMEINI=               | Default Game               |
-| GAMEINI=                  | Game                       |
-| DEFINPUTINI=              | Default Input              |
-| INPUTINI=                 | Input                      |
-| DEFUIINI=                 | Default UI                 |
-| UIINI=                    | UI                         |
-
-*Reference From <https://docs.unrealengine.com/en-us/Programming/Basics/CommandLineArguments>*
-
 ## File Hierarchy
 
 The configuration file hierarchy is read in starting with Base.ini, with values in later files in the hierarchy overriding earlier values. All files in the Engine folder will be applied to all projects, while project-specific settings should be in files in the project directory. Finally, all project-specific and platform-specific differences are saved out to \[ProjectDirectory]/Saved/Config/\[Platform]/\[Category].ini
@@ -187,6 +148,40 @@ Most people seem to be under the impression that the semicolon denotes comments 
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*
 
+# Command Line Switches
+
+## Override Default Behavior
+
+- `-ENGLISHCOALESCED`: Revert to the default (English) coalesced .ini if the language-localized version cannot be found.
+- `-NOAUTOINIUPDATE`: Suppress prompts to update .ini files.
+- `-NOINI`: Do not update the .ini files.
+- `-REGENERATEINIS`: Forces .ini files to be regenerated
+
+## Override Default INI
+
+Use another command-line argument to temporarily override which INIs are loaded by the game or editor. For example, if a custom `MyGame.ini` is to be used instead of `MyOldGame.ini`, the argument would be `-GAMEINI=MyGame.ini`. This table lists the arguments used to override the different INI files used in UE4:
+
+| Command-Line Argument | INI Override |
+|---|---|
+| DEFEDITORINI= | Default Editor |
+| EDITORINI= | Editor |
+| DEFEDITORUSERSETTINGSINI= | Default EditorUserSettings |
+| EDITORUSERSETTINGSINI= | EditorUserSettings |
+| DEFCOMPATINI= | Default Compat |
+| COMPATINI= | Compat |
+| DEFLIGHTMASSINI= | Default Lightmass |
+| LIGHTMASSINI= | Lightmass |
+| DEFENGINEINI= | Default Engine |
+| ENGINEINI= | Engine |
+| DEFGAMEINI= | Default Game |
+| GAMEINI= | Game |
+| DEFINPUTINI= | Default Input |
+| INPUTINI= | Input |
+| DEFUIINI= | Default UI |
+| UIINI= | UI |
+
+*Reference From: <https://docs.unrealengine.com/en-US/Programming/Basics/CommandLineArguments/index.html>*
+
 # Programming
 
 ## Wait on this delegate for using Config
@@ -201,13 +196,48 @@ FCoreDelegates::ConfigReadyForUse.Broadcast();
 
   `cpp>UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
 
-- Get the name by this:
+- Full example getting the proper full config file path name:
 
-  `cpp>GetClass()->GetDefaultConfigFilename()`
+  ```cpp
+  FString RelativePath;
+  if (UsesPerObjectConfig(this))
+  {
+      RelativePath = GetConfigFilename(this);
+  }
+  else if (this->GetClass()->HasAnyClassFlags(CLASS_DefaultConfig))
+  {
+      RelativePath = this->GetClass()->GetDefaultConfigFilename();
+  }
+  else if (this->GetClass()->HasAnyClassFlags(CLASS_Config))
+  {
+      RelativePath = this->GetClass()->GetConfigName();
+  }
 
-   **or**
+  FString FullPath = FPaths::ConvertRelativePathToFull(RelativePath);
+  ```
 
-   `cpp>ConfigFileName = uobj->GetDefaultConfigFilename();`
+- Get custom config file name & load it
+
+  ```cpp
+  FString BebylonEngineIni;
+  FConfigCacheIni::LoadGlobalIniFile(BebylonEngineIni, TEXT("BebylonEngine"));
+  ```
+
+- Get the final config file name (aka coalesced between Base*.ini, Default*.ini, User*.ini, etc) by this: _*IMPORTANT!! This does not take into account perObjectConfig*_
+
+  ```cpp
+  GetClass()->GetConfigName();
+  uobj->GetConfigName();
+  ```
+
+- `cpp>GetConfigFilename()`: _*!!IMPORTANT!! DO NOT USE*_ It's supposed to take into account perObjectConfig but does not actually work. The code is ifdef'ed out and reverts to calling `GetConfigName()`
+
+- Get the Default*.ini config file name
+
+  ```cpp
+  GetClass()->GetDefaultConfigFilename();
+  uobj->GetDefaultConfigFilename();
+  ```
 
 - Custom config follows same hierarchy (BaseGameplayTags.ini, DefaultGameTags.ini, Windows\\WindowsGameplayTags.ini)
 
@@ -320,10 +350,10 @@ FString GetGlobalUserConfigFilename() const;
 /**
  * Imports property values from an .ini file.
  *
- * @param	Class				the class to use for determining which section of the ini to retrieve text values from
- * @param	Filename			indicates the filename to load values from; if not specified, uses ConfigClass's ClassConfigName
- * @param	PropagationFlags	indicates how this call to LoadConfig should be propagated; expects a bitmask of UE4::ELoadConfigPropagationFlags values.
- * @param	PropertyToLoad		if specified, only the ini value for the specified property will be imported.
+ * @param Class    the class to use for determining which section of the ini to retrieve text values from
+ * @param Filename   indicates the filename to load values from; if not specified, uses ConfigClass's ClassConfigName
+ * @param PropagationFlags indicates how this call to LoadConfig should be propagated; expects a bitmask of UE4::ELoadConfigPropagationFlags values.
+ * @param PropertyToLoad  if specified, only the ini value for the specified property will be imported.
  */
 void LoadConfig( UClass* ConfigClass=NULL, const TCHAR* Filename=NULL, uint32 PropagationFlags=UE4::LCPF_None, class UProperty* PropertyToLoad=NULL );
 
@@ -331,10 +361,10 @@ void LoadConfig( UClass* ConfigClass=NULL, const TCHAR* Filename=NULL, uint32 Pr
  * Wrapper method for LoadConfig that is used when reloading the config data for objects at runtime which have already loaded their config data at least once.
  * Allows the objects the receive a callback that its configuration data has been reloaded.
  *
- * @param	Class				the class to use for determining which section of the ini to retrieve text values from
- * @param	Filename			indicates the filename to load values from; if not specified, uses ConfigClass's ClassConfigName
- * @param	PropagationFlags	indicates how this call to LoadConfig should be propagated; expects a bitmask of UE4::ELoadConfigPropagationFlags values.
- * @param	PropertyToLoad		if specified, only the ini value for the specified property will be imported
+ * @param Class    the class to use for determining which section of the ini to retrieve text values from
+ * @param Filename   indicates the filename to load values from; if not specified, uses ConfigClass's ClassConfigName
+ * @param PropagationFlags indicates how this call to LoadConfig should be propagated; expects a bitmask of UE4::ELoadConfigPropagationFlags values.
+ * @param PropertyToLoad  if specified, only the ini value for the specified property will be imported
  */
 void ReloadConfig( UClass* ConfigClass=NULL, const TCHAR* Filename=NULL, uint32 PropagationFlags=UE4::LCPF_None, class UProperty* PropertyToLoad=NULL );
 ```
@@ -368,7 +398,7 @@ void UFbxAssetImportData::SaveOptions()
       FScriptArrayHelper_InContainer ArrayHelper(Array, this);
       for (int32 i = 0; i < ArrayHelper.Num(); i++)
       {
-        FString	Buffer;
+        FString Buffer;
         Array->Inner->ExportTextItem(Buffer, ArrayHelper.GetRawPtr(i), ArrayHelper.GetRawPtr(i), this, PortFlags);
         Sec->Add(*Key, *Buffer);
       }
@@ -384,7 +414,7 @@ void UFbxAssetImportData::SaveOptions()
           Key = TempKey;
         }
 
-        FString	Value;
+        FString Value;
         Property->ExportText_InContainer(Index, Value, this, this, this, PortFlags);
         GConfig->SetString(*Section, *Key, *Value, *GEditorPerProjectIni);
       }
@@ -489,38 +519,3 @@ static bool LoadExternalIniFile(FConfigFile& ConfigFile, const TCHAR* IniName, c
 static void LoadConsoleVariablesFromINI();
 
 ```
-
-
-# Command Line Switches
-
-## Override Default Behavior
-
-- `-ENGLISHCOALESCED`: Revert to the default (English) coalesced .ini if the language-localized version cannot be found.
-- `-NOAUTOINIUPDATE`: Suppress prompts to update .ini files.
-- `-NOINI`: Do not update the .ini files.
-- `-REGENERATEINIS`: Forces .ini files to be regenerated
-
-## Override Default INI
-
-Use another command-line argument to temporarily override which INIs are loaded by the game or editor. For example, if a custom `MyGame.ini` is to be used instead of `MyOldGame.ini`, the argument would be `-GAMEINI=MyGame.ini`. This table lists the arguments used to override the different INI files used in UE4:
-
-| Command-Line Argument | INI Override |
-|---|---|
-| DEFEDITORINI= | Default Editor |
-| EDITORINI= | Editor |
-| DEFEDITORUSERSETTINGSINI= | Default EditorUserSettings |
-| EDITORUSERSETTINGSINI= | EditorUserSettings |
-| DEFCOMPATINI= | Default Compat |
-| COMPATINI= | Compat |
-| DEFLIGHTMASSINI= | Default Lightmass |
-| LIGHTMASSINI= | Lightmass |
-| DEFENGINEINI= | Default Engine |
-| ENGINEINI= | Engine |
-| DEFGAMEINI= | Default Game |
-| GAMEINI= | Game |
-| DEFINPUTINI= | Default Input |
-| INPUTINI= | Input |
-| DEFUIINI= | Default UI |
-| UIINI= | UI |
-
-*Reference From: <https://docs.unrealengine.com/en-US/Programming/Basics/CommandLineArguments/index.html>*
