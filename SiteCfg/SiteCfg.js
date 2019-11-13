@@ -33,7 +33,7 @@ const SiteCfg = {
   googleAnalyticsID: 'UA-47614715-1',
 
   // Social Media Links
-  repoURL: 'https://github.com/kitelightning/gamedevguide',
+  repoURL: 'https://github.com/ikrima/gamedevguide',
   devRepoURL: 'https://github.com/ikrima/gamedevguide',
   twitterURL: 'https://twitter.com/ikrimae',
 
