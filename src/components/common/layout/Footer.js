@@ -18,7 +18,6 @@ const Footer = () => (
                     <li className={listItemClass}><a href="http://kiteandlightning.la" className="dib pt2 mr6">K&L </a></li>
                     <li className={`${listItemClass} dn db-l`}><a href=" http://bebylon.world/" className={linkClass}>Bebylon</a></li>
                     <li className={`${listItemClass} dn db-l`}><a href="http://blog.kiteandlightning.la/" className={linkClass}> Bebylon Blog</a></li>
-                    <li className={`${listItemClass} dn db-l`}><a href="https://status.ghost.org" className={linkClass}>Status</a></li>
                     <li className={`${listItemClass} dn db-l`}><a href="https://twitter.com/ikrimae" className={linkClass}>@ikrimae</a></li>
                 </ul>
 
