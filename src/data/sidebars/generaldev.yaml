@@ -1,0 +1,54 @@
+
+  - groups:
+      - group: "Git Commands"
+        items:
+          - title: "Git Commands"
+            link: "/generaldev/git-commands"
+      - group: "General Dev"
+        items:
+          - title: "General Dev"
+            link: "/generaldev"
+      - group: "Visual studio"
+        items:
+          - title: "Vs Tips Tricks"
+            link: "/generaldev/visual-studio/vs-tips-tricks"
+            sortIndex: 1
+          - title: "Hardware Breakpoints"
+            link: "/generaldev/visual-studio/hardware-breakpoints"
+            sortIndex: 2
+          - title: "Debug External Process Start"
+            link: "/generaldev/visual-studio/debug-external-process-start"
+            sortIndex: 3
+          - title: "Rpc Debugger Extension"
+            link: "/generaldev/visual-studio/rpc-debugger-extension"
+            sortIndex: 4
+          - title: "Register Filetype As Hlsl"
+            link: "/generaldev/visual-studio/register-filetype-as-hlsl"
+            sortIndex: 8
+      - group: "Os"
+        items:
+          - title: "File Io Performance"
+            link: "/generaldev/os/file-io-performance"
+            sortIndex: null
+          - title: "Api Hooking"
+            link: "/generaldev/os/api-hooking"
+            sortIndex: 1
+      - group: "Windows debugging"
+        items:
+          - title: "Techniques"
+            link: "/generaldev/windows-debugging/techniques"
+            sortIndex: 0
+          - title: "Windbg Commands"
+            link: "/generaldev/windows-debugging/windbg-commands"
+            sortIndex: 1
+          - title: "Windows Internals"
+            link: "/generaldev/windows-debugging/windows-internals"
+            sortIndex: 2
+          - title: "Sysinternals Winobj"
+            link: "/generaldev/windows-debugging/sysinternals-winobj"
+            sortIndex: 7
+      - group: "Scripting"
+        items:
+          - title: "Powershell Snippets"
+            link: "/generaldev/scripting/powershell-snippets"
+            sortIndex: 0

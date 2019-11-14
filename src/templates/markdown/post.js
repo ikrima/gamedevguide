@@ -63,7 +63,6 @@ class Post extends React.Component {
         const { location } = this.props
         const post = this.props.data.markdownRemark
 
-        const githubLink = getGitHubLink(post.fileAbsolutePath)
 
         const imageUrl = getMetaImageUrls()
         const sideBarLayout = {}
@@ -120,16 +119,7 @@ class Post extends React.Component {
                                 <article className="flex-auto pa5 pa8-m pa15-l pt10-ns pb10-ns pt10-l pb10-l relative">
                                     <div className="flex content-between items-baseline justify-between no-wrap">
                                         <h1 className={`${Spirit.h1} darkgrey`}>{post.frontmatter.title}</h1>
-                                        {githubLink &&
-                                            <a href={githubLink}
-                                                className="link no-underline midgrey flex-l dn items-start f8 absolute top-10 right-8 o-80 glow"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <Icon name="pencil" className="w3 h3 fill-midgrey db pr2 o-80" />
-                                                Edit on GitHub
-                                            </a>
-                                        }
+
                                     </div>
                                     <section
                                         className="post-content external-scripts"

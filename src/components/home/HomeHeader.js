@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-import { SearchModal } from '../common/search'
-import { NavBar } from '../common'
-import { Spirit } from '../../styles/spirit-styles'
-import HomeHeaderBox from './HomeHeaderBox'
+import { SearchModal } from "../common/search";
+import { NavBar } from "../common";
+import { Spirit } from "../../styles/spirit-styles";
+import HomeHeaderBox from "./HomeHeaderBox";
 
 // Custom headings must be React components. You should include the <NavBar /> component
 // somewhere in it. You can optionally set the theme of the navbar to `dark` or `light`.
@@ -12,40 +12,77 @@ const HomeHeader = () => (
         <header className="top-0 left-0 right-0 z-9999">
             <NavBar theme="light" />
         </header>
-        <div className={`${Spirit.page.xl} pb5 pt10 pt15-ns pt20-l pb10-ns pb15-l flex flex-column items-center bt bn-ns b--white-10`}>
-            <h1 className="ma0 pa0 f2 f1-ns f-headline-l white header-heading-shadow">Ghost Documentation</h1>
+        <div
+            className={`${Spirit.page.xl} pb5 pt10 pt15-ns pt20-l pb10-ns pb15-l flex flex-column items-center bt bn-ns b--white-10`}
+        >
+            <h1 className="ma0 pa0 f2 f1-ns f-headline-l white header-heading-shadow">
+                K&L GameDev Guide
+            </h1>
             <SearchModal isHome />
 
             <section className="grid-12 gutter-row-20 gutter-36-ns mt10 mt20-ns mt25-l miw-100 miw-auto-ns home-main-box-margin-ns z-999">
                 <HomeHeaderBox
-                    to="/concepts/introduction/"
-                    title="Core Concepts"
+                    to="/opensource"
+                    title="Open Source"
                     icon="blocks"
                     color="purple"
                 >
-                    Understand the fundamentals of Ghost development.
+                    Open Source
+                </HomeHeaderBox>
+                <HomeHeaderBox
+                    to="/ue4guide"
+                    title="Ue4 Guide"
+                    icon="blocks"
+                    color="purple"
+                >
+                    UE4 Guide.
                 </HomeHeaderBox>
 
                 <HomeHeaderBox
-                    to="/setup/"
-                    title="Setup Guide"
+                    to="/math"
+                    title="Math"
                     icon="rocket"
                     color="blue"
                 >
-                    Setting up a Ghost site on a server or locally.
+                    Math
                 </HomeHeaderBox>
 
                 <HomeHeaderBox
-                    to="https://docs.ghost.org/tutorials/"
-                    title="Tutorials"
+                    to="/graphics"
+                    title="Graphics"
                     icon="typing"
                     color="tutorial-green"
                 >
-                    Browse tutorials for most common setup and development use-cases.
+                    Graphics
+                </HomeHeaderBox>
+
+                <HomeHeaderBox
+                    to="/houdini"
+                    title="Houdini"
+                    icon="typing"
+                    color="tutorial-green"
+                >
+                   Houdini
+                </HomeHeaderBox>
+                <HomeHeaderBox
+                    to="/generaldev"
+                    title="General Dev"
+                    icon="typing"
+                    color="tutorial-green"
+                >
+                   General Dev
+                </HomeHeaderBox>
+                <HomeHeaderBox
+                    to="/blog"
+                    title="Blog"
+                    icon="typing"
+                    color="tutorial-green"
+                >
+                   Blog
                 </HomeHeaderBox>
             </section>
         </div>
     </div>
-)
+);
 
-export default HomeHeader
+export default HomeHeader;

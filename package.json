@@ -28,7 +28,7 @@
     "algoliasearch": "3.33.0",
     "autoprefixer": "9.6.0",
     "cssnano": "4.1.10",
-    "cypress": "3.3.1",
+    "cypress": "^3.6.0",
     "eslint": "5.16.0",
     "eslint-plugin-ghost": "0.2.0",
     "eslint-plugin-react": "7.13.0",
@@ -47,6 +47,8 @@
     "@tryghost/helpers": "1.1.6",
     "@tryghost/helpers-gatsby": "1.0.9",
     "algolia-html-extractor": "0.0.1",
+    "child_process": "^1.0.2",
+    "fs": "0.0.1-security",
     "gatsby": "2.9.5",
     "gatsby-image": "2.1.4",
     "gatsby-plugin-advanced-sitemap": "1.1.1",
@@ -68,9 +70,12 @@
     "gatsby-remark-prismjs": "3.2.11",
     "gatsby-source-filesystem": "2.0.40",
     "gatsby-source-ghost": "3.4.2",
+    "gatsby-transformer-json": "^2.2.16",
     "gatsby-transformer-remark": "2.4.0",
     "gatsby-transformer-sharp": "2.1.21",
     "gatsby-transformer-yaml": "2.1.12",
+    "module": "^1.2.5",
+    "net": "^1.0.2",
     "prismjs": "1.16.0",
     "react": "16.8.6",
     "react-autosuggest": "9.4.3",
@@ -78,6 +83,7 @@
     "react-helmet": "5.2.1",
     "react-instantsearch-dom": "5.7.0",
     "react-modal": "3.8.1",
+    "tls": "0.0.1",
     "tocbot": "4.7.0"
   }
 }

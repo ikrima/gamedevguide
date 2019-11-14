@@ -10,7 +10,7 @@ class TOC extends React.Component {
             // Where to grab the headings to build the table of contents.
             contentSelector: `.post-content`,
             // Which headings to grab inside of the contentSelector element.
-            headingSelector: `h2, h3`,
+            headingSelector: `h1, h2, h3`,
             headingsOffset: parseInt(this.props.headingsOffset),
         })
     }

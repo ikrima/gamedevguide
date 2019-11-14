@@ -1,24 +1,25 @@
-const postcssCustomMedia = require(`postcss-custom-media`)
-const autoprefixer = require(`autoprefixer`)
-const cssVariables = require(`postcss-css-variables`)
-const colorModFunction = require(`postcss-color-mod-function`)
-const cssNano = require(`cssnano`)
-const customProperties = require(`postcss-custom-properties`)
-const easyImport = require(`postcss-easy-import`)
-const algoliaQueries = require(`./utils/algolia-queries`)
-const path = require(`path`)
+const postcssCustomMedia = require(`postcss-custom-media`);
+const autoprefixer = require(`autoprefixer`);
+const cssVariables = require(`postcss-css-variables`);
+const colorModFunction = require(`postcss-color-mod-function`);
+const cssNano = require(`cssnano`);
+const customProperties = require(`postcss-custom-properties`);
+const easyImport = require(`postcss-easy-import`);
+const algoliaQueries = require(`./utils/algolia-queries`);
+const path = require(`path`);
+const siteCfg = require("./SiteCfg");
+const _ = require('lodash');
+
+const pathPrefix = siteCfg.pathPrefix === "/" ? "" : siteCfg.pathPrefix;
 
 require(`dotenv`).config({
-    path: `.env.${process.env.NODE_ENV}`,
-})
+    path: `.env.${process.env.NODE_ENV}`
+});
 
-if (!process.env.GHOST_API_URL || !process.env.GHOST_API_KEY) {
-    throw new Error(
-        `GHOST_API_URL and GHOST_API_KEY are required to build. Check the CONTRIBUTING guide.`
-    )
-}
 
-const SERVICE_WORKER_KILL_SWITCH = (process.env.SERVICE_WORKER_KILL_SWITCH === `true`) || false
+
+const SERVICE_WORKER_KILL_SWITCH =
+    process.env.SERVICE_WORKER_KILL_SWITCH === `true` || false;
 
 const plugins = [
     /**
@@ -28,15 +29,29 @@ const plugins = [
         resolve: `gatsby-source-filesystem`,
         options: {
             path: path.join(__dirname, `content`),
-            name: `markdown-pages`,
-        },
+            name: `markdown-pages`
+        }
     },
     {
         resolve: `gatsby-source-filesystem`,
         options: {
             path: path.join(__dirname, `src`, `images`),
-            name: `images`,
-        },
+            name: `images`
+        }
+    },
+    {
+        resolve: "gatsby-transformer-json",
+        options: {
+            typeName: ({ node }) =>
+                _.last(path.parse(node.absolutePath).dir.split("/"))
+        }
+    },
+    {
+        resolve: "gatsby-source-filesystem",
+        options: {
+            name: "menuItems",
+            path: `${__dirname}/SiteCfg/json/MenuItems`
+        }
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -47,31 +62,31 @@ const plugins = [
                 {
                     resolve: `gatsby-remark-images`,
                     options: {
-                        withWebp: true,
-                    },
+                        withWebp: true
+                    }
                 },
                 {
                     resolve: `gatsby-remark-snippets`,
                     options: {
                         // Example code links are relative to this dir.
                         // eg examples/path/to/file.js
-                        directory: `${__dirname}/content/.examples/`,
-                    },
+                        directory: `${__dirname}/content/.examples/`
+                    }
                 },
                 {
                     resolve: `gatsby-remark-embed-snippet`,
                     options: {
                         // Example code links are relative to this dir.
                         // eg examples/path/to/file.js
-                        directory: `${__dirname}/content/.examples/`,
-                    },
+                        directory: `${__dirname}/content/.examples/`
+                    }
                 },
                 `gatsby-remark-autolink-headers`,
                 `gatsby-remark-code-titles`,
                 `gatsby-remark-prismjs`,
-                `gatsby-remark-external-links`,
-            ],
-        },
+                `gatsby-remark-external-links`
+            ]
+        }
     },
     `gatsby-transformer-yaml`,
     `gatsby-plugin-catch-links`,
@@ -87,8 +102,8 @@ const plugins = [
             background_color: `#343f44`,
             theme_color: `#343f44`,
             display: `minimal-ui`,
-            icon: `static/favicon.png`,
-        },
+            icon: `static/favicon.png`
+        }
     },
     `gatsby-plugin-react-helmet`,
     {
@@ -113,8 +128,8 @@ const plugins = [
             }`,
             mapping: {
                 allMarkdownRemark: {
-                    sitemap: `pages`,
-                },
+                    sitemap: `pages`
+                }
             },
             exclude: [
                 `/dev-404-page`,
@@ -125,9 +140,9 @@ const plugins = [
                 `/data-schema-2`,
                 `/v0.11/README`,
                 `/README`,
-                /(\/)?hash-\S*/, // exclude internal tags
-            ],
-        },
+                /(\/)?hash-\S*/ // exclude internal tags
+            ]
+        }
     },
     `gatsby-plugin-force-trailing-slashes`,
     /**
@@ -143,49 +158,64 @@ const plugins = [
                 colorModFunction(),
                 customProperties({ preserve: false }),
                 postcssCustomMedia(),
-                cssNano({ zindex: false }),
-            ],
-        },
+                cssNano({ zindex: false })
+            ]
+        }
     },
     {
         resolve: `gatsby-plugin-react-svg`,
         options: {
             rule: {
-                include: /icons/,
-            },
-        },
+                include: /icons/
+            }
+        }
     },
-]
+    {
+        resolve: "gatsby-transformer-json",
+        options: {
+            typeName: ({ node }) =>
+                _.last(path.parse(node.absolutePath).dir.split("/"))
+        }
+    },
 
-const runAlgoliaBuild = () => (process.env.INCOMING_HOOK_TITLE && process.env.INCOMING_HOOK_TITLE === `Algolia`) || process.env.ALGOLIA
-const hasAlgoliaKey = () => process.env.ALGOLIA_ADMIN_KEY && !process.env.ALGOLIA_ADMIN_KEY.match(/<key>/)
+];
 
-if (runAlgoliaBuild() && hasAlgoliaKey()) {
+const runAlgoliaBuild = () =>
+    (process.env.INCOMING_HOOK_TITLE &&
+        process.env.INCOMING_HOOK_TITLE === `Algolia`) ||
+    process.env.ALGOLIA;
+const hasAlgoliaKey = () =>
+    process.env.ALGOLIA_ADMIN_KEY &&
+    !process.env.ALGOLIA_ADMIN_KEY.match(/<key>/);
+
+if ( hasAlgoliaKey()) {
     plugins.push({
         resolve: `gatsby-plugin-algolia`,
         options: {
-            appId: `6RCFK5TOI5`,
+            appId: `FULTPXSSOM`,
             apiKey: `${process.env.ALGOLIA_ADMIN_KEY}`,
             queries: algoliaQueries,
-            chunkSize: 10000, // default: 1000
-        },
-    })
+            chunkSize: 10000 // default: 1000
+        }
+    });
 }
 
 // Global switch to either use or remove service worker
 if (SERVICE_WORKER_KILL_SWITCH) {
-    console.log(`Remove service worker plugin`)
-    plugins.push(`gatsby-plugin-remove-serviceworker`)
+    console.log(`Remove service worker plugin`);
+    plugins.push(`gatsby-plugin-remove-serviceworker`);
 } else {
-    console.log(`Install service worker plugin`)
-    plugins.push(`gatsby-plugin-offline`)
+    console.log(`Install service worker plugin`);
+    plugins.push(`gatsby-plugin-offline`);
 }
 
 module.exports = {
+    pathPrefix: siteCfg.pathPrefix,
+
     siteMetadata: {
-        title: `Ghost Docs`,
-        siteUrl: process.env.SITE_URL || `https://docs.ghost.org`,
-        description: `Everything you need to know about working with the Ghost professional publishing platform.`,
+        title: siteCfg.siteNavTitle,
+        siteUrl: siteCfg.siteUrl + pathPrefix,
+        description: siteCfg.siteDescription
     },
-    plugins: plugins,
-}
+    plugins: plugins
+};

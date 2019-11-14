@@ -73,11 +73,15 @@ module.exports.fragmentTransformer = (recordAccumulator, node) => {
 
         // If fragments are too long, we need this to see which fragment it was
         console.log(`indexing`, objectID, fragment.url || node.url, fragment.html.length) // eslint-disable-line no-console
-
+        if (fragment.html.length>=9000){
+            fragment.html = "<h1></h1>"
+            console.log(`WARNING: the file ${objectID} is above 10kb it will not be indexed`)
+        }
         return [
             ...fragmentAccumulator,
             { ...node, ...fragment, objectID: objectID },
         ]
+
     }, [])
 
     return [...recordAccumulator, ...records]

@@ -12,7 +12,7 @@ const SidebarLink = ({ link, title, linkClasses }) => {
         }
     } else {
         return (
-            <>{this.props.title}</>
+            <>{title}</>
         )
     }
 }

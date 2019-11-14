@@ -108,12 +108,12 @@ class Results extends React.Component {
         searchConfig.integration = `Integrations`
 
         const labelClass = {
-            faq: `faq-color b--faq-color`,
-            concept: `concept-color b--concept-color`,
-            setup: `setup-color b--setup-color`,
-            api: `middarkgrey b--middarkgrey`,
-            tutorial: `tutorial-color b--tutorial-color`,
-            integration: `integration-color b--integration-color`,
+            graphics: `faq-color b--faq-color`,
+            houdini: `concept-color b--concept-color`,
+            math: `setup-color b--setup-color`,
+            generaldev: `middarkgrey b--middarkgrey`,
+            opensource: `tutorial-color b--tutorial-color`,
+            ue4guide: `integration-color b--integration-color`,
             blog: `concept-color b--concept-color`,
             marketplace: `setup-color b--setup-color`,
         }
@@ -165,14 +165,13 @@ class Results extends React.Component {
                     renderSectionTitle={this.renderSectionTitle}
                     getSectionSuggestions={this.getSectionSuggestions}
                 />
-                <Index indexName="faq" />
-                <Index indexName="concept" />
-                <Index indexName="setup" />
-                <Index indexName="api" />
-                <Index indexName="tutorial" />
-                <Index indexName="integration" />
+                <Index indexName="graphics" />
+                <Index indexName="houdini" />
+                <Index indexName="math" />
+                <Index indexName="generaldev" />
+                <Index indexName="opensource" />
+                <Index indexName="ue4guide" />
                 <Index indexName="blog" />
-                <Index indexName="marketplace" />
             </>
         )
     }

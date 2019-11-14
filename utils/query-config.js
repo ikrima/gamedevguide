@@ -1,23 +1,43 @@
 const markdownQueryConfig = [
     {
-        section: `concepts`,
-        indexName: `concept`,
-        niceName: `Concepts`,
+        section: `graphics`,
+        indexName: `graphics`,
+        niceName: `Graphics`,
     },
     {
-        section: `setup`,
-        indexName: `setup`,
-        niceName: `Setup Guide`,
+        section: `houdini`,
+        indexName: `houdini`,
+        niceName: `Houdini`,
     },
     {
-        section: `api`,
-        indexName: `api`,
-        niceName: `API Reference`,
+        section: `math`,
+        indexName: `math`,
+        niceName: `Math`,
+    },
+    {
+        section: `generaldev`,
+        indexName: `generaldev`,
+        niceName: `General Dev`,
+    },
+    {
+        section: `opensource`,
+        indexName: `opensource`,
+        niceName: `Open Source`,
+    },
+    {
+        section: `ue4guide`,
+        indexName: `ue4guide`,
+        niceName: `Ue4 Guide`,
+    },
+    {
+        section: `blog`,
+        indexName: `blog`,
+        niceName: `Blog`,
     },
 ]
 
 module.exports = {
-    defaultMarkdownSection: `setup`,
+    defaultMarkdownSection: `opensource`,
     markdownQueryConfig,
     searchConfig: markdownQueryConfig
         .reduce((acc, { indexName, niceName }) => {

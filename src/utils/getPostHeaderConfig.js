@@ -65,9 +65,9 @@ export const getPostHeaderConfig = ({ pathname }) => {
     }
 
     // Core Concepts
-    if (pathname.match(/^\/concepts\//i)) {
-        postHeaderConfig.title = `Core Concepts`
-        postHeaderConfig.mainLink = `/concepts/introduction/`
+    if (pathname.match(/^\/*\//i)) {
+        postHeaderConfig.title = pathname
+        postHeaderConfig.mainLink = `/${pathname}`
         postHeaderConfig.bgClass = `bg-concepts`
     }
 

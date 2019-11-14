@@ -1,0 +1,17 @@
+{
+  "slugPart": "graphics",
+  "childTOCs": [
+    {
+      "slugPart": "light-transport",
+      "childTOCs": []
+    },
+    {
+      "slugPart": "volume-rendering",
+      "childTOCs": []
+    },
+    {
+      "slugPart": "gpu-architecture",
+      "childTOCs": []
+    }
+  ]
+}
