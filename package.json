@@ -1,15 +1,19 @@
 {
-  "name": "docs",
+  "name": "gamedevguide",
   "version": "1.0.0",
-  "description": "Documentation for the Ghost publishing platform",
-  "repository": "git@github.com:TryGhost/docs.git",
-  "author": "Ghost Foundation",
+  "description": "K&L/Bebylon Battle Royale: Development Guide",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ikrima/gamedevguide"
+  },
+  "bugs": {
+    "url": "https://github.com/ikrima/gamedevguide/issues"
+  },
+  "author": "ikrima <hello@kiteandlightning.la>",
   "license": "MIT",
   "main": "app.js",
   "scripts": {
-    "serve": "gatsby build && NODE_ENV=production gatsby serve",
     "build": "gatsby build",
-    "dev": "netlify dev",
     "lint": "eslint . --ext .js --cache",
     "posttest": "yarn lint",
     "cy:open": "cypress open",
@@ -19,7 +23,12 @@
     "test": "NODE_ENV=testing mocha -- $(find test -name '*.test.js') && yarn test:e2e:ci",
     "preship": "yarn test",
     "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; fi",
-    "master": "git pull -r origin master --autostash && cd content/api/v2 && git pull -r origin master --autostash && cd ../../../ && yarn"
+    "master": "git pull -r origin master --autostash && cd content/api/v2 && git pull -r origin master --autostash && cd ../../../ && yarn",
+    "clean": "gatsby clean",
+    "dev": "gatsby develop",
+    "develop": "gatsby clean && gatsby develop",
+    "serve": "gatsby serve",
+    "deploy": "pushd ..\\..\\knl\\knl-gamedevguide & git pull & git push & git fetch & popd"
   },
   "devDependencies": {
     "@testing-library/cypress": "4.0.2",
