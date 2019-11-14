@@ -21,6 +21,115 @@ require(`dotenv`).config({
 const SERVICE_WORKER_KILL_SWITCH =
     process.env.SERVICE_WORKER_KILL_SWITCH === `true` || false;
 
+const gbRemarkPluginsList = [
+    {
+        resolve: `gatsby-remark-images`,
+        options: {
+            withWebp: true
+        }
+    },
+    {
+        resolve: `gatsby-remark-snippets`,
+        options: {
+            // Example code links are relative to this dir.
+            // eg examples/path/to/file.js
+            directory: `${__dirname}/content/snippets/`
+        }
+    },
+    {
+        resolve: `gatsby-remark-embed-snippet`,
+        options: {
+            // Example code links are relative to this dir.
+            // eg examples/path/to/file.js
+            directory: `${__dirname}/content/snippets/`
+        }
+    },
+    `gatsby-remark-autolink-headers`,
+    `gatsby-remark-code-titles`,
+    //`gatsby-remark-prismjs`,
+    `gatsby-remark-external-links`,
+
+
+  {
+    resolve: 'gatsby-remark-embed-video',
+    options: {
+      related: false,
+      noIframeBorder: true,
+    },
+  },
+  'gatsby-remark-responsive-iframe',
+  {
+    resolve: 'gatsby-remark-prismjs',
+    options: {
+      classPrefix: 'language-',
+      inlineCodeMarker: '>',
+      aliases: {},
+      showLineNumbers: true,
+      noInlineHighlight: false,
+      languageExtensions: [
+        {
+          language: 'ue4c',
+          definition: {
+            string: {
+              pattern: /"(?:""|[!#$%&'()*,/:;<=>?^_ +\-.A-Z\d])*"/i,
+              greedy: true,
+            },
+            number: /(?:\b\d+\.?\d*|\B\.\d+)(?:E[+-]?\d+)?/i,
+            cvar: [
+              { pattern: /^[ \t]*[^\s=]+?(?=[ \t]*=)/m, alias: 'variable' },
+              { pattern: /^\w+(?:\.\w+)/m, alias: 'variable' },
+            ],
+            'cvar-value': {
+              pattern: /=.*/,
+              inside: {
+                punctuation: /^[=]/,
+              },
+              alias: 'attr-value',
+            },
+            function: {
+              pattern: /^\w+/m,
+            },
+            operator: /<[=>]?|>=?|[+\-*/^=&]|\b(?:AND|EQV|IMP|NOT|OR|XOR)\b/i,
+          },
+        },
+      ],
+    },
+  },
+  //'gatsby-remark-smartypants',
+  {
+    resolve: 'gatsby-remark-katex',
+    options: {
+      // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+      strict: false,
+      // displayMode: true,
+    },
+  },
+//   {
+//     resolve: 'gatsby-remark-autolink-headers',
+//     options: {
+//       className: 'post-toc-anchor',
+//     },
+//   },
+//   {
+//     resolve: 'gatsby-remark-images-grid',
+//     options: {
+//       // className: 'myCustomClassName',
+//       // gridGap: '20px',
+//       // margin: '20px auto',
+//     },
+//   },
+//   {
+//     resolve: 'gatsby-remark-images',
+//     options: {
+//       // It's important to specify the maxWidth (in pixels) of
+//       // the content container as this plugin uses this as the
+//       // base for generating different widths of each image.
+//       maxWidth: 800,
+//     },
+//   },
+];
+
+
 const plugins = [
     /**
      *  Content Plugins
@@ -58,34 +167,8 @@ const plugins = [
     {
         resolve: `gatsby-transformer-remark`,
         options: {
-            plugins: [
-                {
-                    resolve: `gatsby-remark-images`,
-                    options: {
-                        withWebp: true
-                    }
-                },
-                {
-                    resolve: `gatsby-remark-snippets`,
-                    options: {
-                        // Example code links are relative to this dir.
-                        // eg examples/path/to/file.js
-                        directory: `${__dirname}/content/.examples/`
-                    }
-                },
-                {
-                    resolve: `gatsby-remark-embed-snippet`,
-                    options: {
-                        // Example code links are relative to this dir.
-                        // eg examples/path/to/file.js
-                        directory: `${__dirname}/content/.examples/`
-                    }
-                },
-                `gatsby-remark-autolink-headers`,
-                `gatsby-remark-code-titles`,
-                `gatsby-remark-prismjs`,
-                `gatsby-remark-external-links`
-            ]
+            excerpt_separator: `<!--excerpt-->`,
+            plugins: gbRemarkPluginsList,
         }
     },
     `gatsby-transformer-yaml`,
@@ -215,7 +298,20 @@ module.exports = {
     siteMetadata: {
         title: siteCfg.siteNavTitle,
         siteUrl: siteCfg.siteUrl + pathPrefix,
-        description: siteCfg.siteDescription
+        description: siteCfg.siteDescription,
+
+        //siteNavTitle: siteCfg.siteNavTitle,
+        //siteTitleLong: siteCfg.siteTitleLong,
+        //siteDescription: siteCfg.siteDescription,
+        siteKeywords: siteCfg.siteKeywords,
+
+        author: siteCfg.userTwitter,
+        logoText: siteCfg.siteLogoText,
+        copyrights: siteCfg.siteCopyrights,
+        logo: {
+            src: siteCfg.siteLogo,
+            alt: '',
+        },
     },
     plugins: plugins
 };

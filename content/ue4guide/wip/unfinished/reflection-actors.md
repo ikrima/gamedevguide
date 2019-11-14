@@ -1,7 +1,10 @@
 ---
 sidebar: ue4guide
 ---
-Reflection Actors: Buildtime scene cubemap captures projected onto spheres/boxes.
+
+# Reflection Actors
+
+- Buildtime scene cubemap captures projected onto spheres/boxes
 
 - Can nest them and at run time, shader will interpolate between them to fake parallax correct reflections
 
