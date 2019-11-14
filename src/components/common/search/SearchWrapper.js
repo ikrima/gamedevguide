@@ -7,14 +7,14 @@ import {
 
 const SearchWrapper = ({ children }) => (
     <InstantSearch
-        appId="FULTPXSSOM"
-        apiKey="8829fd8be7b036933bdbaa400722f56b"
+        appId={process.env.ALGOLIA_APPID}
+        apiKey={process.env.ALGOLIA_API_KEY}
         indexName="opensource"
     >
         <Configure attributesToSnippet="html" />
         {children}
     </InstantSearch>
-)
+);
 
 SearchWrapper.propTypes = {
     children: PropTypes.node.isRequired,

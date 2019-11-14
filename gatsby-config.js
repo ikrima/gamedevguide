@@ -192,7 +192,7 @@ if ( hasAlgoliaKey()) {
     plugins.push({
         resolve: `gatsby-plugin-algolia`,
         options: {
-            appId: `FULTPXSSOM`,
+            appId: `${process.env.ALGOLIA_APPID}`,
             apiKey: `${process.env.ALGOLIA_ADMIN_KEY}`,
             queries: algoliaQueries,
             chunkSize: 10000 // default: 1000
