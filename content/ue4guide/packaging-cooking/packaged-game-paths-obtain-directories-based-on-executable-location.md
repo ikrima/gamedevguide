@@ -78,3 +78,9 @@ FPlatformMisc::LaunchDir()
 ```
 
 *Reference From <https://wiki.unrealengine.com/Packaged_Game_Paths,_Obtain_Directories_Based_on_Executable_Location>*
+
+### Get Plugin File Path
+
+```cpp
+FString baseDir    = IPluginManager::Get().FindPlugin("LivePP").IsValid() ? IPluginManager::Get().FindPlugin("LivePP")->GetBaseDir() : "";
+```

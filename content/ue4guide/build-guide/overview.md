@@ -19,9 +19,7 @@ Reference: UnrealEngine\\Engine\\Source\\Programs\\UnrealBuildTool\\Configuratio
 
 - Make sure Coordinator is running on the build server
 
-## Build Automation:
-
-![](../assets/GameFlowChart.png)
+## Build Automation
 
 - **New script for making Installed Builds:** The ‘Rocket’ build process has been re-written using our new BuildGraph script (similar in style to MSBuild scripts), which should make the process easier to follow and modify for other users who want to make their own Installed builds. The main script can be found at Engine/Build/InstalledEngineBuild.xml and can be run using one of the following command lines from AutomationTool:
 
