@@ -14,7 +14,7 @@ require(`dotenv`).config({
 })
 
 const algoliasearch = require(`algoliasearch`)
-const client = algoliasearch(process.env.ALGOLIA_APPID, process.env.ALGOLIA_ADMIN_KEY)
+const client = algoliasearch(process.env.GATSBY_ALGOLIA_APPID, process.env.ALGOLIA_ADMIN_KEY)
 
 // Any defined settings will override those in the algolia UI
 const REQUIRED_SETTINGS = {

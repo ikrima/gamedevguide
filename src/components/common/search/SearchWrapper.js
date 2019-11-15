@@ -7,8 +7,8 @@ import {
 
 const SearchWrapper = ({ children }) => (
     <InstantSearch
-        appId={`${process.env.ALGOLIA_APPID}`}
-        apiKey={`${process.env.ALGOLIA_API_KEY}`}
+        appId="FULTPXSSOM"
+        apiKey="8829fd8be7b036933bdbaa400722f56b"
         indexName="opensource"
     >
         <Configure attributesToSnippet="html" />
