@@ -18,12 +18,12 @@ const SiteCfg = {
   siteUrl: 'https://bebylon.dev', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteHeadline: 'GameDev & Unreal Engine Programming Guide', // Headline for schema.org JSONLD
-  siteBanner: 'src/images/bebylon-icon.png', // Your image for og:image tag. You can find it in the /static folder
-  siteLogo: 'src/images/bebylon-icon.png', // Image for schemaORGJSONLD
+  siteBanner: 'static/bebylon-icon.png', // Your image for og:image tag. You can find it in the /static folder
+  siteLogo: 'static/bebylon-icon.png', // Image for schemaORGJSONLD
   siteDisplay: 'minimal-ui', // "minimal-ui"
   siteLogoText: 'K&L GameDev Guide',
   siteCopyrights: '',
-  favicon: 'src/images/bebylon-icon.png', // Your image for favicons. You can find it in the /src folder
+  favicon: 'static/bebylon-icon.png', // Your image for favicons. You can find it in the /src folder
   author: '@ikrima', // Author for schemaORGJSONLD
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional
