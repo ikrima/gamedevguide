@@ -16,12 +16,12 @@ import { searchConfig } from '../../../../utils/query-config'
 const HitTemplate = ({ hit }) => {
     let hitOnCurrentSite = false
 
-    // The Algolia app now contains indexes from Docs as well as ghost.org.
+    // The Algolia app now contains indexes from Docs as well as https://bebylon.dev.
     // We therefore send absolute URLs now to Algolia, but need to strip them
     // out again if the search result is on the current site, so we can determine
     // if we use Gatsby Link or standard <a> tag.
     // TODO: remove this again, once the move to G3 is fully completed
-    const siteUrl = `^${process.env.SITE_URL || `https://docs.ghost.org`}`
+    const siteUrl = `^${process.env.SITE_URL || `https://bebylon.dev`}`
     const siteUrlRegex = new RegExp(siteUrl)
 
     if (hit.url.match(siteUrlRegex)) {

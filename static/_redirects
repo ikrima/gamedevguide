@@ -1,41 +1,14 @@
-# Redirect default Netlify subdomain to primary domain
-https://tryghost.netlify.com/*      https://docs.ghost.org/:splat               301!
-http://tryghost.netlify.com/*       https://docs.ghost.org/:splat               301!
-
-# Redirect staging docs domain
-https://newdocs.ghost.org/*      https://docs.ghost.org/:splat                  301!
-
-
-# Temporary redirects - catch routes
-/faq                                          https://ghost.org/faq/                          301!
-/faq/*                                        https://ghost.org/faq/:splat                    301!
-/tutorials                                    https://ghost.org/tutorials/                    301!
-/tutorials/*                                  https://ghost.org/tutorials/:splat              301!
-/integrations                                 https://ghost.org/integrations/                 301!
-/integrations/*                               https://ghost.org/integrations/:splat           301!
-/                                             https://ghost.org/docs/                         301!
 
 
 # Make edit links work
-/api/*/edit                         https://github.com/tryghost/docs-api/tree/master/:splat.md  302!
-/concepts/*/edit                    https://github.com/TryGhost/docs/tree/master/content/concepts/:splat.md  302!
-/setup/*/edit                       https://github.com/TryGhost/docs/tree/master/content/setup/:splat.md     302!
-/install/*/edit                     https://github.com/TryGhost/docs/tree/master/content/setup/:splat.md     302!
+/graphics/*/edit                    https://github.com/ikrima/gamedevguide/tree/master/contents/guides/graphics/:splat.md     302!
+/ue4guide/*/edit                    https://github.com/ikrima/gamedevguide/tree/master/contents/guides/ue4guide/:splat.md     302!
 
 
 # General
 /favicon.ico                                /favicon.png                                    302!
 /install                                    /setup                                          301!
 
-
-# CURRENT REDIRECTS
-/concepts                                   /concepts/introduction/                         301!
-/api/handlebars-themes/helpers/blog         /api/handlebars-themes/helpers/site             301!
-/api/handlebars-themes/helpers/lang         /api/handlebars-themes/helpers/site             301!
-/concepts/routing                           /api/handlebars-themes/routing/                 301!
-/concepts/redirects                         /api/handlebars-themes/redirects/               301!
-/api/helpers                                /api/javascript/sdk/#helpers                    301!
-/integrations/google-analytics/             https://ghost.org/integrations/google/                           301!
 
 
 # ---------------- OLD CONTENT - PROBABLY DONT EDIT BELOW HERE ----------------
@@ -401,5 +374,3 @@ https://newdocs.ghost.org/*      https://docs.ghost.org/:splat                  
 /hc/en-us/articles/226511647-Setting-up-a-GoDaddy-Domain	/faq/godaddy-domain-setup-guide/    301!
 /hc/en-us/articles/224089787-Subscribers-Beta       /api/handlebars-themes/subscribers/         301!
 /hc/en-us/articles/115000301672-Public-API-Beta     /api/content/                               301!
-
-

@@ -179,14 +179,15 @@ const plugins = [
     {
         resolve: `gatsby-plugin-manifest`,
         options: {
-            name: `Ghost Docs`,
-            short_name: `Ghost`,
-            start_url: `/`,
-            background_color: `#343f44`,
-            theme_color: `#343f44`,
-            display: `minimal-ui`,
-            icon: `static/favicon.png`
-        }
+            name: siteCfg.siteTitleShort,
+            short_name: siteCfg.siteTitleShort,
+            description: siteCfg.siteDescription,
+            start_url: siteCfg.pathPrefix,
+            background_color: siteCfg.theme.BackgroundColor,
+            theme_color: siteCfg.theme.PrimaryColor,
+            display: siteCfg.siteDisplay,
+            icon: siteCfg.favicon,
+        },
     },
     `gatsby-plugin-react-helmet`,
     {

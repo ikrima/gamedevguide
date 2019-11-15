@@ -11,8 +11,7 @@ const NotFoundPage = () => (
             <h1 className={Spirit.h1}>404</h1>
             <p className={`${Spirit.p} midgrey`}>You just hit a route that doesn&#39;t exist... the sadness.</p>
             <div className="flex mt5">
-                <a href="https://ghost.org/docs/" className="pa2 dib blue hover-darkgrey link br b--whitegrey">Docs Home</a>
-                <a href="https://ghost.org/" className="pa2 dib blue hover-darkgrey link">Ghost.org</a>
+                <a href="https://bebylon.dev" className="pa2 dib blue hover-darkgrey link br b--whitegrey">Game Dev Guide Home</a>
             </div>
         </div>
     </Layout>
