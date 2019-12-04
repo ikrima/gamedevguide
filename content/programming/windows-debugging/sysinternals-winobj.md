@@ -1,6 +1,6 @@
 ---
 sortIndex: 7
-sidebar: generaldev
+sidebar: programming
 ---
 
 Some useful system troubleshooting tools

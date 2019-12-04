@@ -1,6 +1,6 @@
 ---
 sortIndex: 4
-sidebar: generaldev
+sidebar: programming
 ---
 
 # Visual Studio Debugger RPC Extension

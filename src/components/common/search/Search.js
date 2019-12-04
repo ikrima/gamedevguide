@@ -111,7 +111,7 @@ class Results extends React.Component {
             graphics: `faq-color b--faq-color`,
             houdini: `concept-color b--concept-color`,
             math: `setup-color b--setup-color`,
-            generaldev: `middarkgrey b--middarkgrey`,
+            programming: `middarkgrey b--middarkgrey`,
             opensource: `tutorial-color b--tutorial-color`,
             ue4guide: `integration-color b--integration-color`,
             blog: `concept-color b--concept-color`,
@@ -168,7 +168,7 @@ class Results extends React.Component {
                 <Index indexName="graphics" />
                 <Index indexName="houdini" />
                 <Index indexName="math" />
-                <Index indexName="generaldev" />
+                <Index indexName="programming" />
                 <Index indexName="opensource" />
                 <Index indexName="ue4guide" />
                 <Index indexName="blog" />

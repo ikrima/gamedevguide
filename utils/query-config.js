@@ -15,9 +15,9 @@ const markdownQueryConfig = [
         niceName: `Math`,
     },
     {
-        section: `generaldev`,
-        indexName: `generaldev`,
-        niceName: `General Dev`,
+        section: `programming`,
+        indexName: `programming`,
+        niceName: `Programming`,
     },
     {
         section: `opensource`,

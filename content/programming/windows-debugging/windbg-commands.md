@@ -1,6 +1,6 @@
 ---
 sortIndex: 1
-sidebar: generaldev
+sidebar: programming
 ---
 
 # Deadlocks

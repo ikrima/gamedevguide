@@ -65,12 +65,12 @@ const HomeHeader = () => (
                    Houdini
                 </HomeHeaderBox>
                 <HomeHeaderBox
-                    to="/generaldev"
-                    title="General Dev"
+                    to="/programming"
+                    title="Programming"
                     icon="typing"
                     color="tutorial-green"
                 >
-                   General Dev
+                   Programming
                 </HomeHeaderBox>
                 <HomeHeaderBox
                     to="/blog"

@@ -1,5 +1,5 @@
 ---
-sidebar: generaldev
+sidebar: programming
 ---
 
 **Git show config options:**

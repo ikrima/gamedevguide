@@ -1,6 +1,6 @@
 ---
 sortIndex: 3
-sidebar: generaldev
+sidebar: programming
 ---
 
 # Debugging Process Start/External Processes

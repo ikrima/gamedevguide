@@ -1,6 +1,6 @@
 ---
 sortIndex: 0
-sidebar: generaldev
+sidebar: programming
 ---
 
 # Reminders

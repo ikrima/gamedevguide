@@ -1,6 +1,6 @@
 ---
 sortIndex: 8
-sidebar: generaldev
+sidebar: programming
 ---
 
 To enable HLSL syntax highlighting for .usf files:
