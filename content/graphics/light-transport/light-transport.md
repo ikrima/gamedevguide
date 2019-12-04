@@ -20,6 +20,8 @@ sidebar: graphics
 
 - Some of practical problems with these models is albedo inversion - painting transmittence/absorption coefficients is very impossible for artists. Ideally want to say, here's the desired color properties and then renderer figures out co-efficients. Not trivial in practice
 
+- Super comprehensive collection of papers from [@max_tarpini](https://twitter.com/max_tarpini): <https://drive.google.com/drive/folders/16A6Yj2esRTk0FP-ALr6XfxkGQvTb_1dD>
+
 ## Highly explanative and parse-able papers
 
 **Best get up to speed quick**
