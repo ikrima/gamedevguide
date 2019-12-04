@@ -31,7 +31,7 @@ const HomeHeader = () => (
                 </HomeHeaderBox>
                 <HomeHeaderBox
                     to="/ue4guide"
-                    title="Ue4 Guide"
+                    title="UE4 Guide"
                     icon="blocks"
                     color="purple"
                 >

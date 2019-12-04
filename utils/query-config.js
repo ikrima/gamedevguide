@@ -27,7 +27,7 @@ const markdownQueryConfig = [
     {
         section: `ue4guide`,
         indexName: `ue4guide`,
-        niceName: `Ue4 Guide`,
+        niceName: `UE4`,
     },
     {
         section: `blog`,

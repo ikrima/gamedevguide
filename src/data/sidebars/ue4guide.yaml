@@ -18,7 +18,7 @@
           - title: "Part 4: Optimizing UE4 Compile Times"
             link: "/ue4guide/environment-setup/setup-guide-part-4"
             sortIndex: 3
-      - group: "Ue4 technical-crash-course"
+      - group: "UE4 Technical Crash Course"
         items:
           - title: "Ue 4 Technical Crash Course"
             link: "/ue4guide/ue4-technical-crash-course/ue4-technical-crash-course"
