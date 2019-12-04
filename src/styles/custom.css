@@ -97,7 +97,7 @@ kbd {
 .measure--1-0 { letter-spacing: -1.0px; }
 
 /* Overriding max page width */
-.mw-xl { max-width: 128.0rem; }
+.mw-xl { max-width: 192.0rem; }
 .mw-m { max-width: 80.0rem; }
 
 .miw-toc {
@@ -127,7 +127,7 @@ kbd {
 @media (--breakpoint-large) { .h0-l { height: 0; } }
 
 .mw-content {
-    max-width: 76rem;
+    max-width: 140rem;
 }
 
 .pv6px {
