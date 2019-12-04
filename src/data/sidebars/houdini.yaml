@@ -124,7 +124,7 @@
           - title: "Ui"
             link: "/houdini/quick-tips/ui"
             sortIndex: 1
-      - group: "Ue4"
+      - group: "UE4"
         items:
           - title: "Overview"
             link: "/houdini/ue4/overview"
