@@ -3,29 +3,55 @@ sortIndex: 8
 sidebar: ue4guide
 ---
 
-```cpp
-FSlateApplication::Get().GetInteractiveTopLevelWindows()
+# Common How-To
 
-// If the main frame exists parent the window to it
+- Get top level window
 
- TSharedPtr< SWindow > ParentWindow;
+  ```cpp
+  FSlateApplication::Get().GetActiveTopLevelWindow()
+  FSlateApplication::Get().GetInteractiveTopLevelWindows()
+  FSlateApplication::Get().GetAllVisibleWindowsOrdered(AllWindows);
+  TSharedPtr<SWindow> ParentWindow = FSlateApplication::Get().FindWidgetWindow(AsShared());
 
- if( FModuleManager::Get().IsModuleLoaded( "MainFrame" ) )
+  // If the main frame exists parent the window to it
+  TSharedPtr< SWindow > ParentWindow;
+  if (FModuleManager::Get().IsModuleLoaded( "MainFrame" ) )
+  {
+    IMainFrameModule& MainFrame = FModuleManager::GetModuleChecked<IMainFrameModule>( "MainFrame" );
+    ParentWindow = MainFrame.GetParentWindow();
+  }
 
- {
+  TSharedPtr<SWindow> ParentWindow = FGlobalTabmanager::Get()->GetRootWindow();
+  if (ParentWindow.IsValid())
+  {
+      // Parent the window to the main frame
+      FSlateApplication::Get().AddWindowAsNativeChild(NewSlateWindow, ParentWindow.ToSharedRef());
+  }
+  else
+  {
+      FSlateApplication::Get().AddWindow(NewSlateWindow);
+  }
+  ```
 
- IMainFrameModule& MainFrame = FModuleManager::GetModuleChecked<IMainFrameModule>( "MainFrame" );
+- Destroy window
 
- ParentWindow = MainFrame.GetParentWindow();
+  ```cpp
+  FSlateApplicationBase::Get().RequestDestroyWindow(Window);
+  ```
 
- }
+- Add as child window
 
-Get Application Slate Renderer (D3D, OpenGL, etc):
+  ```cpp
+  FSlateApplication::Get().AddWindowAsNativeChild(BrowserWindowWidget, ParentWindow.ToSharedRef());
+  ```
 
-- FSlateApplication::Get().GetRenderer()
-```
+- Get Application Slate Renderer (D3D, OpenGL, etc)
 
-#### Is it possible to choose the default screen in a multi monitor configuration?
+  ```cpp
+  FSlateApplication::Get().GetRenderer()
+  ```
+
+# Is it possible to choose the default screen in a multi monitor configuration?
 
 *Reference From <https://answers.unrealengine.com/questions/294650/is-it-possible-to-choose-the-default-screen-in-a-m.html>*
 
@@ -60,7 +86,6 @@ FVector2D WindowPosition = FVector2D(WidthPosition, 0.f);
 
  }
 ```
-
 *Reference From <https://answers.unrealengine.com/questions/294650/is-it-possible-to-choose-the-default-screen-in-a-m.html>*
 
 Everything happens in **UGameEngine::CreateGameViewport()** which can be found in **Engine\\Source\\Runtime\\Engine\\Private\\GameEngine.cpp**. Now look at the following lines of code :
@@ -92,18 +117,18 @@ FDisplayMetrics DisplayMetrics;
     //If monitor index is 0, we default to primary screen
     if( MonitorNumber == 0 )
     {
-        for( int i = 0; i < DisplayMetrics.MonitorInfo.Num(); i++ ) 
-        { 
+        for( int i = 0; i < DisplayMetrics.MonitorInfo.Num(); i++ )
+        {
             FString MonitorInfo = "_____ Found monitor \"" + DisplayMetrics.MonitorInfo[i].Name + "\" (is primary : ";
-            MonitorInfo += FString::FromInt( DisplayMetrics.MonitorInfo[i].bIsPrimary ) + FString(")"); 
-            UE_LOG(LogTemp, Warning, TEXT( "%s" ), *MonitorInfo); 
+            MonitorInfo += FString::FromInt( DisplayMetrics.MonitorInfo[i].bIsPrimary ) + FString(")");
+            UE_LOG(LogTemp, Warning, TEXT( "%s" ), *MonitorInfo);
  
-            if( DisplayMetrics.MonitorInfo[i].bIsPrimary ) 
-            { 
-                MonitorNumber = i + 1; 
-            } 
-        } 
-    } 
+            if( DisplayMetrics.MonitorInfo[i].bIsPrimary )
+            {
+                MonitorNumber = i + 1;
+            }
+        }
+    }
 ```
 
 *Reference From <http://www.froyok.fr/blog/2018-01-ue4-specify-default-monitor-at-launch>*
