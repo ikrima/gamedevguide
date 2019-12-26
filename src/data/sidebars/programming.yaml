@@ -19,9 +19,12 @@
           - title: "Debug External Process Start"
             link: "/programming/visual-studio/debug-external-process-start"
             sortIndex: 3
+          - title: "Debug Dll Dependencies"
+            link: "/programming/visual-studio/debug-dll-dependencies"
+            sortIndex: 4
           - title: "Rpc Debugger Extension"
             link: "/programming/visual-studio/rpc-debugger-extension"
-            sortIndex: 4
+            sortIndex: 5
           - title: "Register Filetype As Hlsl"
             link: "/programming/visual-studio/register-filetype-as-hlsl"
             sortIndex: 8
