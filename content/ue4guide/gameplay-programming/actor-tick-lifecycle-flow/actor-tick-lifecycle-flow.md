@@ -3,7 +3,18 @@ sortIndex: 1
 sidebar: ue4guide
 ---
 
-### Actor Tick Lifecycle Flow
+
+# Actor Load/Init Function Cheatsheet
+
+| Actor Function              | Component Function                                            | On CDO? | On Level Load? | On Place In Level? | On Play? | On Spawn? | On Open Blueprint? |
+| --------------------------- | ------------------------------------------------------------- | ------- | -------------- | ------------------ | -------- | --------- | ------------------ |
+| $PostInitProperties$        | -                                                             | ***Y*** | ***Y***        | ***Y***            | ***Y***  | ***Y***   | ***Y***            |
+| $PostLoad$                  | -                                                             | ***Y*** | ***Y***        | N                  | ***Y***  | N         | N                  |
+| $PostActorCreated$          | $OnComponentCreated$                                          | N       | N              | ***Y***            | ***Y***  | ***Y***   | ***Y***            |
+| $PostRegisterAllComponents$ | $OnRegister$                                                  | N       | ***Y***        | ***Y***            | ***Y***  | ***Y***   | ***Y***            |
+| $PostInitializeComponents$  | $InitializeComponent$ (iff bWantsInitializeComponent == true) | N       | N              | ***Y***            | ***Y***  | ***Y***   | ***Y***            |
+
+# Actor Tick Lifecycle Flow
 
 The functions of interest to initialization order for an Actor is roughly as follows:
 
@@ -42,7 +53,7 @@ Tick Groups:
 
 *Reference From <https://answers.unrealengine.com/questions/231386/tickgroup-how-to-understand-that.html>*
 
-#### Actor Tick():
+## Actor Tick()
 
 - Object ticking is done by registering a function delegate (FTickFunction) to the engine which is responsible for executing it. Ex: For Actors, FActorTickFunction::ExecuteTick() calls TickActor()
 
@@ -66,7 +77,7 @@ Tick Groups:
 
   - Afterwards, calls ProcessLatentActions() to process BP latent actions like delay events
 
-#### Notes:
+## Notes
 
 - ActorComponent's are not necessarily ticked in any order in relation to their owner Actor. Everything is just added onto the task graph. You have to use AddActorPrerequisite or AddActorComponentPrerequisite to define dependencies
 

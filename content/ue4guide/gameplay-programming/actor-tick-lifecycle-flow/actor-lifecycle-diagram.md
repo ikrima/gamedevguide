@@ -3,6 +3,16 @@ sortIndex: 3
 sidebar: ue4guide
 ---
 
+# Actor Load/Init Function Cheatsheet
+
+| Actor Function                  | Component Function                                              | On CDO? | On Level Load? | On Place In Level? | On Play? | On Spawn? | On Open Blueprint? |
+| ------------------------------- | --------------------------------------------------------------- | ------- | -------------- | ------------------ | -------- | --------- | ------------------ |
+| `cpp>PostInitProperties`        | -                                                               | **_Y_** | **_Y_**        | **_Y_**            | **_Y_**  | **_Y_**   | **_Y_**            |
+| `cpp>PostLoad`                  | -                                                               | **_Y_** | **_Y_**        | N                  | **_Y_**  | N         | N                  |
+| `cpp>PostActorCreated`          | `cpp>OnComponentCreated`                                        | N       | N              | **_Y_**            | **_Y_**  | **_Y_**   | **_Y_**            |
+| `cpp>PostRegisterAllComponents` | `cpp>OnRegister`                                                | N       | **_Y_**        | **_Y_**            | **_Y_**  | **_Y_**   | **_Y_**            |
+| `cpp>PostInitializeComponents`  | `cpp>InitializeComponent iff bWantsInitializeComponent == true` | N       | N              | **_Y_**            | **_Y_**  | **_Y_**   | **_Y_**            |
+
 # Actor Life Cycle
 
 <https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Actors/ActorLifecycle/index.html>
@@ -25,18 +35,17 @@ called.
 
 4. **RouteActorInitialize** for any non-initialized Actors (covers seamless travel carry over)
 
-   1. **PreInitializeComponents** - Called before InitializeComponent is called on the Actor's components
+    1. **PreInitializeComponents** - Called before InitializeComponent is called on the Actor's components
 
-   2. **InitializeComponent** - Helper function for the creation of each component defined on the Actor
+    2. **InitializeComponent** - Helper function for the creation of each component defined on the Actor
 
-   3. **PostInitializeComponents** - Called after the Actor's components have been initialized
+    3. **PostInitializeComponents** - Called after the Actor's components have been initialized
 
 5. **BeginPlay** - Called when the level is started
 
 ## Play in Editor
 
-The Play in Editor path is mostly the same as Load from Disk, however
- the Actors are never loaded from disk, they are copied from the Editor.
+The Play in Editor path is mostly the same as Load from Disk, however the Actors are never loaded from disk, they are copied from the Editor.
 
 1. Actors in the Editor are duplicated into a new World
 
@@ -46,11 +55,11 @@ The Play in Editor path is mostly the same as Load from Disk, however
 
 4. **RouteActorInitialize** for any non-initialized Actors (covers seamless travel carry over)
 
-   1. **PreInitializeComponents** - Called before InitializeComponent is called on the Actor's components
+    1. **PreInitializeComponents** - Called before InitializeComponent is called on the Actor's components
 
-   2. **InitializeComponent** - Helper function for the creation of each component defined on the Actor
+    2. **InitializeComponent** - Helper function for the creation of each component defined on the Actor
 
-   3. **PostInitializeComponents** - Called after the Actor's components have been initialized
+    3. **PostInitializeComponents** - Called after the Actor's components have been initialized
 
 5. **BeginPlay** - Called when the level is started
 
@@ -68,17 +77,17 @@ When spawning (instancing) an Actor, this is the path that will be followed.
 
 4. **ExecuteConstruction**:
 
-   - **OnConstruction** - The construction of the
+    - **OnConstruction** - The construction of the
       Actor, this is where Blueprint Actors have their components created and
       blueprint variables are initialized
 
 5. **PostActorConstruction**:
 
-   1. **PreInitializeComponents** - Called before InitializeComponent is called on the Actor's components
+    1. **PreInitializeComponents** - Called before InitializeComponent is called on the Actor's components
 
-   2. **InitializeComponent** - Helper function for the creation of each component defined on the Actor
+    2. **InitializeComponent** - Helper function for the creation of each component defined on the Actor
 
-   3. **PostInitializeComponents** - Called after the Actor's components have been initialized
+    3. **PostInitializeComponents** - Called after the Actor's components have been initialized
 
 6. **OnActorSpawned** broadcast on UWorld
 
@@ -92,9 +101,9 @@ An Actor can be Deferred Spawned by having any properties set to "Expose on Spaw
 
 2. Everything in SpawnActor occurs, but after PostActorCreated the following occurs:
 
-   1. Do setup / call various "initialization functions" with a valid but incomplete Actor instance
+    1. Do setup / call various "initialization functions" with a valid but incomplete Actor instance
 
-   2. **FinishSpawningActor** - called to Finalize the Actor, picks up at ExecuteConstruction in the Spawn Actor line.
+    2. **FinishSpawningActor** - called to Finalize the Actor, picks up at ExecuteConstruction in the Spawn Actor line.
 
 ## Coming to the End of Life
 
@@ -105,21 +114,21 @@ Actors can be destroyed in a number of ways, but the way they end their existenc
 These are completely optional, as many Actors will not actually die during play.
 
 **Destroy** - is called manually by game any time an
- Actor is meant to be removed, but gameplay is still occurring. The Actor is marked pending kill and removed from Level's array of Actors.
+Actor is meant to be removed, but gameplay is still occurring. The Actor is marked pending kill and removed from Level's array of Actors.
 
 **EndPlay** - Called in several places to guarantee the life of the Actor is coming to an end. During play, Destroy will fire this, as well Level Transitions, and if a streaming level containing the Actor is unloaded. All the places EndPlay is called from:
 
-- Explicit call to Destroy
+-   Explicit call to Destroy
 
-- Play in Editor Ended
+-   Play in Editor Ended
 
-- Level Transition (seamless travel or load map)
+-   Level Transition (seamless travel or load map)
 
-- A streaming level containing the Actor is unloaded
+-   A streaming level containing the Actor is unloaded
 
-- The lifetime of the Actor has expired
+-   The lifetime of the Actor has expired
 
-- Application shut down (All Actors are Destroyed)
+-   Application shut down (All Actors are Destroyed)
 
 Regardless of how this happens, the Actor will be marked RF_PendingKill so during the next garbage collection cycle it will be deallocated. Also, rather than checking for pending kill manually, consider using an `FWeakObjectPtr<AActor>` as it is cleaner.
 
@@ -127,12 +136,11 @@ Regardless of how this happens, the Actor will be marked RF_PendingKill so durin
 
 ## Garbage Collection
 
-Some time after an object has been marked for destruction, Garbage Collection will actually remove it from memory, freeing any resources it
- was using.
+Some time after an object has been marked for destruction, Garbage Collection will actually remove it from memory, freeing any resources it was using.
 
 The following functions are called on the object during its destruction:
 
-1. **BeginDestroy** - This is the object's    chance to free up memory and handle other multithreaded resources (ie:    graphics thread proxy objects). Most gameplay functionality related to being destroyed should have been handled earlier, in `EndPlay`.
+1. **BeginDestroy** - This is the object's chance to free up memory and handle other multithreaded resources (ie: graphics thread proxy objects). Most gameplay functionality related to being destroyed should have been handled earlier, in `EndPlay`.
 
 2. **IsReadyForFinishDestroy** - The garbage collection process will call this function to determine whether or not the object is ready to be deallocated permanently. By returning `false`, this function can defer actual destruction of the object until the next garbage collection pass.
 

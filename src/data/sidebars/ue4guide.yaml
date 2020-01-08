@@ -634,8 +634,6 @@
           - title: "Actor-tick-lifecycle-flow"
             sortIndex: 3
             subitems:
-              - title: "Overview"
-                link: "/ue4guide/gameplay-programming/actor-tick-lifecycle-flow/overview"
               - title: "Actor Lifecycle Diagram"
                 link: "/ue4guide/gameplay-programming/actor-tick-lifecycle-flow/actor-lifecycle-diagram"
               - title: "Actor Tick Lifecycle Flow"

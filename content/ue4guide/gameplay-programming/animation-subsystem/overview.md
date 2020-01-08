@@ -3,7 +3,11 @@ sortIndex: 2
 sidebar: ue4guide
 ---
 
-# Animation:
+# Animation Ticking
+
+![ActorTickLifeCycleFlow_Overview_Animation12](../../assets/ActorTickLifeCycleFlow_Overview_Animation12.png)
+
+# Animation Debug
 
 ![AnimationSubsystem_Overview_AnimationDiagram](../../assets/AnimationSubsystem_Overview_AnimationDiagram.jpg)
 
