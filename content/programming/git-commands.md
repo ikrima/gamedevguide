@@ -115,6 +115,31 @@ From <https://demisx.github.io/git/rebase/2015/07/02/git-rebase-keep-my-branch-c
 
 # Git-P4
 
+## TLDR
+
+- You need to use python 2.7
+- When doing git clone, you have to specify to use client spec `git p4 clone //depot/main/BBR/Source . --use-client-spec`
+  - You can also exlcude paths and have multiple depot paths
+- With different directory structures, you can reformat patch files: <https://stackoverflow.com/questions/931882/how-to-apply-a-git-patch-from-one-repository-to-another>
+
+  ```sh
+  $ cat patch_file | git am     \
+            -p1                 \ # remove 1 leading directory ('static/')
+          --directory='lib/'     # prepend 'lib/'
+  ```
+
+- You can also cherry pick commits directly (git will automatically resolve the different path )
+- Remember to have your git-p4 repo in a separate directory from your actual p4 directory
+- You can merge unrealted git histories with `git merge myotherbranch --allow-unrelated-histories`
+- Use these `git config -e` settings
+
+  ```ini
+  [git-p4]
+    skipSubmitEdit = true
+    useclientspec = true
+  ```
+
+## More Info
 You can use this to sync from perforce to a git and back (it's brittle)
 
 Links:
