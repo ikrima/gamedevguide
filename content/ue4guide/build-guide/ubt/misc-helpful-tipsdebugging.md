@@ -7,9 +7,9 @@ sidebar: ue4guide
 
 - **Set these buildconfiguration.xml settings**
 
-  - `xml><bPrintPerformanceInfo>true</bPrintPerformanceInfo>`
-  - `xml><bLogDetailedActionStats>true</bLogDetailedActionStats>`
-  - `xml><bPrintToolChainTimingInfo>true</bPrintToolChainTimingInfo>`
+  - `<bPrintPerformanceInfo>true</bPrintPerformanceInfo>`
+  - `<bLogDetailedActionStats>true</bLogDetailedActionStats>`
+  - `<bPrintToolChainTimingInfo>true</bPrintToolChainTimingInfo>`
 
 ## Debugging UBT/Unreal Build Tool
 
@@ -22,7 +22,7 @@ sidebar: ue4guide
   - \-noxge
   - \-installed
 
-- Add `xml><bPrintDebugInfo>true<bPrintDebugInfo>`
+- Add `<bPrintDebugInfo>true<bPrintDebugInfo>`
 
 - Also make sure to set working directory to Engine/Source for development profile project in vs
 
@@ -38,8 +38,8 @@ Use these cmdline switches:
 
 - Add -verbose cmdline
   - If using RunUAT, add -UbtArgs="-verbose" and -VeryVerbose
-- `xml><bLogDetailedActionStats>true</bLogDetailedActionStats>`
-- `xml><bPrintDebugInfo>true</bPrintDebugInfo>`
+- `<bLogDetailedActionStats>true</bLogDetailedActionStats>`
+- `<bPrintDebugInfo>true</bPrintDebugInfo>`
 - Log File will be at: Engine/Programs/UnrealBuildTool/Log.txt
 
 ## Debugging outdated files
