@@ -69,32 +69,33 @@ Override UAssetManager::ShouldSetManager for your project, this is the function 
 
 - This is a list of per module world data objects. These aren't
 
-- loaded/saved by default.
+- loaded/saved by default
 
-UPROPERTY(Transient)
-
-TArray&lt;UObject\*>                                                        PerModuleDataObjects;
+  ```cpp
+  UPROPERTY(Transient)
+  TArray<UObject*> PerModuleDataObjects;
+  ```
 
 **Primary Asset Picker:**
 
 ```cpp
-/**   
-         * Creates a simple version of a Primary Asset Type selector, not bound to a PropertyHandle   
-         * @param OnGetDisplayText Delegate that returns the text to display in body of combo box  
-         * @param OnSetType Delegate called when type is changed  
-         * @param bAllowClear If true, add None option to top  
-         * @param bAlowAll If true, add All Types option to bottom, returns AllPrimaryAssetTypes if selected  
-         */  
-        static TSharedRef<SWidget> MakePrimaryAssetTypeSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetType OnSetType, bool bAllowClear = true, bool bAllowAll = false);
+/**
+* Creates a simple version of a Primary Asset Type selector, not bound to a PropertyHandle 
+* @param OnGetDisplayText Delegate that returns the text to display in body of combo box
+* @param OnSetType Delegate called when type is changed
+* @param bAllowClear If true, add None option to top
+* @param bAlowAll If true, add All Types option to bottom, returns AllPrimaryAssetTypes if selected
+*/
+static TSharedRef<SWidget> MakePrimaryAssetTypeSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetType OnSetType, bool bAllowClear = true, bool bAllowAll = false);
 
-/**   
-         * Creates a simple version of a Primary Asset Id selector, not bound to a PropertyHandle  
-         * @param OnGetDisplayText Delegate that returns the text to display in body of combo box  
-         * @param OnSetId Delegate called when id is changed  
-         * @param bAllowClear If true, add None option to top  
-         */  
-        static TSharedRef<SWidget> MakePrimaryAssetIdSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetId OnSetId, bool bAllowClear = true, TArray<FPrimaryAssetType> AllowedTypes = TArray<FPrimaryAssetType>());
+/** 
+* Creates a simple version of a Primary Asset Id selector, not bound to a PropertyHandle
+* @param OnGetDisplayText Delegate that returns the text to display in body of combo box
+* @param OnSetId Delegate called when id is changed
+* @param bAllowClear If true, add None option to top
+*/
+static TSharedRef<SWidget> MakePrimaryAssetIdSelector(FOnGetPrimaryAssetDisplayText OnGetDisplayText, FOnSetPrimaryAssetId OnSetId, bool bAllowClear = true, TArray<FPrimaryAssetType> AllowedTypes = TArray<FPrimaryAssetType>());
 
-** Called to get list of valid primary asset types *  
-        static void GeneratePrimaryAssetTypeComboBoxStrings(TArray< TSharedPtr<FString> >> OutComboBoxStrings, TArray<TSharedPtr<SToolTip>>> OutToolTips, TArray<bool>> OutRestrictedItems, bool bAllowClear, bool bAllowAll);
+** Called to get list of valid primary asset types *
+static void GeneratePrimaryAssetTypeComboBoxStrings(TArray< TSharedPtr<FString> >> OutComboBoxStrings, TArray<TSharedPtr<SToolTip>>> OutToolTips, TArray<bool>> OutRestrictedItems, bool bAllowClear, bool bAllowAll);
 ```

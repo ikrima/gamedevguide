@@ -106,7 +106,7 @@ Default Value for structs in blueprints or parameters: `MakeStructureDefaultValu
 Default function parameter values:
 
 ```cpp
-UFUNCTION(BlueprintPure, Category=UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\"AssetTag.Item\")",GameplayTagFilter="AssetTag.Item"))
+UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\"AssetTag.Item\")",GameplayTagFilter="AssetTag.Item"))
 UBBItemVisualCfg* GetItemVisualCfg(FBBAssetTag ItemVisualStyle) const;
 ```
 
