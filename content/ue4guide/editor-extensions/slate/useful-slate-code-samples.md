@@ -31,45 +31,6 @@ More slate samples: SWidgetGallery.h & AppFramework/STestSuite/SWizard/STableVie
 
 - SCollisionAnalyzer shows how to implement sorting
 
-### Custom Array Properties
-
-- Simple example
-
-  ```cpp
-  IDetailCategoryBuilder& NodeCategory = DetailBuilder.EditCategory("Node");
-  TSharedRef<FDetailArrayBuilder> NodeArrayBuilder = MakeShareable(new FDetailArrayBuilder(NodesPropertyHandle.ToSharedRef()));
-  NodeArrayBuilder->OnGenerateArrayElementWidget(FOnGenerateArrayElementWidget::CreateSP(this, &FRigDetails::GenerateNodeArrayElementWidget, &DetailBuilder));
-
-  NodeCategory.AddCustomBuilder( NodeArrayBuilder, false );
-  ```
-
-- Complex example is `FNiagaraDetailSourcedArrayBuilder`
-
-### Working with IPropertyHandle & DetailChildrenBuilder
-
-- Getting a child IPropertyHandle
-
-  ```cpp
-  TSharedPtr<IPropertyHandle> VariantTypePropHndle = StructPropertyHandle->GetChildHandle(GET_MEMBER_NAME_CHECKED(TInSumType, VariantType));
-  ```
-
-- Adding said property
-
-  ```cpp
-  ChildBuilder.AddProperty(VariantTypePropHndle.ToSharedRef());
-  ```
-
-- Adding property with SProperty Widget
-
-  ```cpp
-  SNew( SProperty, DetailBuilder.GetProperty(GET_MEMBER_NAME_CHECKED(ABBStadiumRig, bDbgShowRootVis)))
-  ```
-
-- Getting Detail View from `IDetailChildrenBuilder`
-
-  ```cpp
-  TSharedRef<const SWidget> DetailsView = ChildBuilder.GetParentCategory().GetParentLayout().GetDetailsView()->AsShared();
-  ```
 
 ### Make Enum Combobox
 

@@ -1,31 +1,7 @@
 ---
 sidebar: ue4guide
 ---
-ULevel::LevelDirtiedEvent.Broadcast();
 
-​ FEditorSupportDelegates::RefreshPropertyWindows.Broadcast();
-
-​ FEditorDelegates::RefreshEditor.Broadcast();
-
-​ RedrawLevelEditingViewports( true );
-
-================
-
-GEngine->RedrawLevelEditingViewports();
-
-FEditorSupportDelegates::UpdateUI.Broadcast();
-
-GWorld->BroadcastLevelsChanged();
-
-ULevel::LevelDirtiedEvent.Broadcast();
-
-GEngine->BroadcastLevelActorListChanged();
-
-GEngine->BroadcastLevelActorDeleted();
-
-GLevelEditorModeTools().DeactivateAllModes();
-
-FAssetRegistryModule::AssetCreated(NewLevelWorld);
 
 ==============================
 

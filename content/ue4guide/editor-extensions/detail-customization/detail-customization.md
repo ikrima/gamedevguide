@@ -12,7 +12,7 @@ sidebar: ue4guide
 - Access by:
 
 ```cpp
-TSharedRef&lt; IPropertyHandle &gt; Prop = DetailBuilder.GetProperty(GET_MEMBER_NAME_CHECKED(UMyClass, BaseString));
+TSharedRef< IPropertyHandle > Prop = DetailBuilder.GetProperty(GET_MEMBER_NAME_CHECKED(UMyClass, BaseString));
 ```
 
 #### Categories:
@@ -70,13 +70,13 @@ DetailBuilder.GetObjectsBeingCustomized(Objects);
 If you're writing a customization, you probably want to do more than just rearrange properties. Custom rows let you add arbitrary Slate widgets to the details panel. Here's an example based on the class definition given above.
 
 ```cpp
-/\*
+/*
 
 Showing a warning message about invalid property values.
 
 (Note that customizations can also be used to enforce validation on user-entered property values).
 
-\*/
+*/
 
 auto OnGetWarningVisibility = [MyObject]
 
@@ -95,18 +95,16 @@ Cat.AddCustomRow(LOCTEXT("MyWarningRowFilterString", "Search Filter Keywords"))
 .WholeRowContent()
 
  [
-
  SNew(STextBlock)
 
  .Text(LOCTEXT("MyWarningTest", "BaseString should not be empty!"))
-
  ];
 
-/\*
+/*
 
 Displaying a button that triggers editor-time processing.
 
-\*/
+*/
 
 auto OnRegenerate = [MyObject]
 
@@ -160,34 +158,34 @@ DetailBuilder.ForceRefreshDetails();
 #### Create a widget for a particular property on a uobject inside detail customization:
 
 ```cpp
-- SNew(SProperty, DetailBuilder.GetProperty(GET_MEMBER_NAME_CHECKED(UInstanceToolEditorUISetting, SnapOffset)))
+ SNew(SProperty, DetailBuilder.GetProperty(GET_MEMBER_NAME_CHECKED(UInstanceToolEditorUISetting, SnapOffset)))
+```
 
 - To add it on a separate object, use CreateSingleProperty() from below
-```
 
 #### Listen on property changes and notifies/notifications:
 
-```cpp
-- CreatePropertyChangeListener()
+- CreatePropertyChangeListener(): Generic mechanism to hook into object modifications
 
-Generic mechanism to hook into object modifications:
+  ```cpp
+  TSet<UObject*> FCoreUObjectDelegates::ObjectsModifiedThisFrame;
 
-TSet<UObject\*> FCoreUObjectDelegates::ObjectsModifiedThisFrame;
+  FCoreUObjectDelegates::FOnObjectModified FCoreUObjectDelegates::OnObjectModified;
 
-FCoreUObjectDelegates::FOnObjectModified FCoreUObjectDelegates::OnObjectModified;
+  FCoreUObjectDelegates::FOnPreObjectPropertyChanged FCoreUObjectDelegates::OnPreObjectPropertyChanged;
 
-FCoreUObjectDelegates::FOnPreObjectPropertyChanged FCoreUObjectDelegates::OnPreObjectPropertyChanged;
-
-FCoreUObjectDelegates::FOnObjectPropertyChanged FCoreUObjectDelegates::OnObjectPropertyChanged;
+  FCoreUObjectDelegates::FOnObjectPropertyChanged FCoreUObjectDelegates::OnObjectPropertyChanged;
+  ```
 
 - Also look at Editor delegates that get called globally on property change modification: [Also FCoreUObjectDelegates in UObjectGlobals:](fixme_self_referential_link)
 
-virtual TSharedPtr&lt;class ISinglePropertyView&gt; CreateSingleProperty( UObject\* **InObject**, FName **InPropertyName**, const struct FSinglePropertyParams& InitParams );
+  ```cpp
+  virtual TSharedPtr<class ISinglePropertyView> CreateSingleProperty( UObject* **InObject**, FName **InPropertyName**, const struct FSinglePropertyParams& InitParams );
 
-virtual TSharedRef&lt;class IStructureDetailsView&gt; CreateStructureDetailView(const struct FDetailsViewArgs> DetailsViewArgs, const FStructureDetailsViewArgs> **StructureDetailsViewArgs**, TSharedPtr&lt;class FStructOnScope&gt; **StructData**, const FText& **CustomName** = FText::GetEmpty());
+  virtual TSharedRef<class IStructureDetailsView> CreateStructureDetailView(const struct FDetailsViewArgs> DetailsViewArgs, const FStructureDetailsViewArgs> **StructureDetailsViewArgs**, TSharedPtr<class FStructOnScope> **StructData**, const FText& **CustomName** = FText::GetEmpty());
 
-virtual UStructProperty\* RegisterStructOnScopeProperty(TSharedRef&lt;FStructOnScope&gt; **StructOnScope**);
-```
+  virtual UStructProperty* RegisterStructOnScopeProperty(TSharedRef<FStructOnScope> **StructOnScope**);
+  ```
 
 #### Customizing existing IDetailCustomization:
 
@@ -195,23 +193,23 @@ virtual UStructProperty\* RegisterStructOnScopeProperty(TSharedRef&lt;FStructO
 IDetailCategoryBuilder& **Category** = **DetailBuilder**.EditCategory("TrackEvent");
                         **Category**.AddProperty("EventReceivers").ShouldAutoExpand(true);
 
-virtual IDetailPropertyRow& AddProperty(FName **PropertyPath**, UClass\* **ClassOutermost** = nullptr, FName **InstanceName** = NAME_None, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
+virtual IDetailPropertyRow& AddProperty(FName **PropertyPath**, UClass* **ClassOutermost** = nullptr, FName **InstanceName** = NAME_None, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
 
-virtual IDetailPropertyRow\* AddExternalObjects(const TArray&lt;UObject\*&gt;> **Objects**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
+virtual IDetailPropertyRow* AddExternalObjects(const TArray<UObject*>> **Objects**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
 
-virtual IDetailPropertyRow\* AddExternalObjectProperty(const TArray&lt;UObject\*&gt;> **Objects**, FName **PropertyName**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
+virtual IDetailPropertyRow* AddExternalObjectProperty(const TArray<UObject*>> **Objects**, FName **PropertyName**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
 
-virtual IDetailPropertyRow\* AddExternalStructure(TSharedPtr&lt;FStructOnScope&gt; **StructData**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
+virtual IDetailPropertyRow* AddExternalStructure(TSharedPtr<FStructOnScope> **StructData**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
 
-virtual IDetailPropertyRow\* AddExternalStructureProperty(TSharedPtr&lt;FStructOnScope&gt; **StructData**, FName **PropertyName**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
+virtual IDetailPropertyRow* AddExternalStructureProperty(TSharedPtr<FStructOnScope> **StructData**, FName **PropertyName**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
 
-virtual TArray&lt;TSharedPtr&lt;IPropertyHandle&gt;&gt; AddAllExternalStructureProperties(TSharedRef&lt;FStructOnScope&gt; **StructData**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
+virtual TArray<TSharedPtr<IPropertyHandle>> AddAllExternalStructureProperties(TSharedRef<FStructOnScope> **StructData**, EPropertyLocation::Type **Location** = EPropertyLocation::Default) = 0;
 ```
 
 #### Create DetailView for a structure:
 
 ```cpp
-virtual TSharedRef&lt;class IStructureDetailsView&gt; CreateStructureDetailView(const struct FDetailsViewArgs> DetailsViewArgs, const FStructureDetailsViewArgs> **StructureDetailsViewArgs**, TSharedPtr&lt;class FStructOnScope&gt; **StructData**, const FText& **CustomName** = FText::GetEmpty());
+virtual TSharedRef<class IStructureDetailsView> CreateStructureDetailView(const struct FDetailsViewArgs> DetailsViewArgs, const FStructureDetailsViewArgs> **StructureDetailsViewArgs**, TSharedPtr<class FStructOnScope> **StructData**, const FText& **CustomName** = FText::GetEmpty());
 ```
 
 #### Add Property On External Object
@@ -223,24 +221,24 @@ IDetailCategoryBuilder::AddExternalProperty()
 #### Useful customization for adding properties, external properties, structures:
 
 ```cpp
-virtual UStructProperty\* RegisterStructOnScopeProperty(TSharedRef&lt;FStructOnScope&gt; **StructOnScope**);
+virtual UStructProperty* RegisterStructOnScopeProperty(TSharedRef<FStructOnScope> **StructOnScope**);
 ```
 
 #### Create Default Property Widget from IPropertyHandle:
 
 ```cpp
-**TSharedPtr&lt;IPropertyHandle&gt; OverrideLightmapRes = LightingCategory.GetProperty( "bOverrideLightmapRes" );**
+**TSharedPtr<IPropertyHandle> OverrideLightmapRes = LightingCategory.GetProperty( "bOverrideLightmapRes" );**
 
 **SNew( SProperty )**
 
-**InPropertyHandle**-&gt;CreatePropertyNameWidget( **DisplayName** )
+**InPropertyHandle**->CreatePropertyNameWidget( **DisplayName** )
 
-**InPropertyHandle**-&gt;CreatePropertyValueWidget()
+**InPropertyHandle**->CreatePropertyValueWidget()
 
-FPropertyEditorModule::CreateSingleProperty( UObject\* **InObject**, FName **InPropertyName**, const struct FSinglePropertyParams& InitParams );
+FPropertyEditorModule::CreateSingleProperty( UObject* **InObject**, FName **InPropertyName**, const struct FSinglePropertyParams& InitParams );
 
-TSharedPtr&lt;IPropertyHandle&gt; **manipPropHandle** = **DetailBuilder**.GetProperty(**ManipPropName**);  
-**manipPropHandle**-&gt;CreatePropertyValueWidget()
+TSharedPtr<IPropertyHandle> **manipPropHandle** = **DetailBuilder**.GetProperty(**ManipPropName**);  
+**manipPropHandle**->CreatePropertyValueWidget()
 ```
 
 ### Register Custom Class Customization:
@@ -252,89 +250,78 @@ TSharedPtr&lt;IPropertyHandle&gt; **manipPropHandle** = **DetailBuilder**.Get
 ### Register Custom Property/Struct Customization:
 
 ```cpp
-virtual void RegisterCustomPropertyTypeLayout( FName **PropertyTypeName**, FOnGetPropertyTypeCustomizationInstance PropertyTypeLayoutDelegate, TSharedPtr&lt;IPropertyTypeIdentifier&gt; **Identifier** = nullptr, TSharedPtr&lt;IDetailsView&gt; **ForSpecificInstance** = nullptr );
+virtual void RegisterCustomPropertyTypeLayout( FName **PropertyTypeName**, FOnGetPropertyTypeCustomizationInstance PropertyTypeLayoutDelegate, TSharedPtr<IPropertyTypeIdentifier> **Identifier** = nullptr, TSharedPtr<IDetailsView> **ForSpecificInstance** = nullptr );
 ```
 
 ### Register Custom Property/Struct Customization for only this instance:
 
 ```cpp
-virtual void RegisterInstancedCustomPropertyLayout( UStruct\* **Class**, FOnGetDetailCustomizationInstance **DetailLayoutDelegate** ) = 0;
+virtual void RegisterInstancedCustomPropertyLayout( UStruct* **Class**, FOnGetDetailCustomizationInstance **DetailLayoutDelegate** ) = 0;
 ```
 
 ### Create Custom Detail View:
 
 ```cpp
-virtual TSharedRef&lt;class IDetailsView&gt; CreateDetailView( const struct FDetailsViewArgs> DetailsViewArgs );
+virtual TSharedRef<class IDetailsView> CreateDetailView( const struct FDetailsViewArgs> DetailsViewArgs );
 
-virtual TSharedRef&lt;SWindow&gt; CreateFloatingDetailsView( const TArray&lt; UObject\* &gt;> **InObjects**, bool **bIsLockable** );
+virtual TSharedRef<SWindow> CreateFloatingDetailsView( const TArray< UObject* >> **InObjects**, bool **bIsLockable** );
 ```
 
 ### Override Property Visibility For DetailView:
 
 ```cpp
-objReflWidget-&gt;SetIsPropertyVisibleDelegate(FIsPropertyVisible::CreateLambda(\[**bHaveTemplate**\](const FPropertyAndParent& **PropertyAndParent**) { return true; }));
+objReflWidget->SetIsPropertyVisibleDelegate(FIsPropertyVisible::CreateLambda(\[**bHaveTemplate**\](const FPropertyAndParent& **PropertyAndParent**) { return true; }));
 ```
 
 ### Create Dynamic Property/Struct detail view customization:
 
 ```cpp
-/\*\* Specific details customization for the event track \*/
+/** Specific details customization for the event track */
+class FEventTrackCustomization : public IDetailCustomization
+{
+public:
+  virtual void CustomizeDetails(IDetailLayoutBuilder& DetailBuilder) override
+  {
+    DetailBuilder.HideCategory("Track");
+    DetailBuilder.HideCategory("General");
 
-        class FEventTrackCustomization : public IDetailCustomization
-        {
-        public:
-                FEventTrackCustomization(TSharedRef&lt;IDetailsView&gt; **InDetailsView**, TSharedPtr&lt;ISequencer&gt; **InSequencer**)
-                        : **WeakDetailsView**(**InDetailsView**)
-                {
-                        FOnGetPropertyTypeCustomizationInstance **Factory** = FOnGetPropertyTypeCustomizationInstance::CreateLambda(\[=\]{ return MakeShared&lt;FMovieSceneObjectBindingIDCustomization&gt;(**InSequencer**-&gt;GetFocusedTemplateID(), **InSequencer**); });
+    IDetailCategoryBuilder& Category = DetailBuilder.EditCategory("TrackEvent");
+    Category.AddProperty("EventReceivers").ShouldAutoExpand(true);
+  }
+};
 
-// Register an object binding ID customization that can use the current sequencer interface
-                        FPropertyEditorModule& **PropertyEditor** = FModuleManager::Get().LoadModuleChecked&lt;FPropertyEditorModule&gt;("PropertyEditor");
-                        **PropertyEditor**.RegisterCustomPropertyTypeLayout("MovieSceneObjectBindingID", **Factory**, nullptr, **InDetailsView**);
-                }
+auto PopulateSubMenu = [this, EventTrack](FMenuBuilder& SubMenuBuilder)
+{
+  FPropertyEditorModule& PropertyEditor = FModuleManager::Get().LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
 
-~FEventTrackCustomization()
-                {
-                        FPropertyEditorModule\* **PropertyEditor** = FModuleManager::Get().GetModulePtr&lt;FPropertyEditorModule&gt;("PropertyEditor");
-                        auto **PinnedDetailsView** = **WeakDetailsView**.Pin();
-                        if (**PropertyEditor** && **PinnedDetailsView**.IsValid())
-                        {
-                                **PropertyEditor**-&gt;UnregisterCustomPropertyTypeLayout("MovieSceneObjectBindingID", nullptr, **PinnedDetailsView**);
-                        }
-                }
+  // Create a details view for the track
+  FDetailsViewArgs DetailsViewArgs(false,false,false,FDetailsViewArgs::HideNameArea,true);
+  DetailsViewArgs.DefaultsOnlyVisibility = EEditDefaultsOnlyNodeVisibility::Automatic;
+  DetailsViewArgs.bShowOptions = false;
+  DetailsViewArgs.ColumnWidth = 0.55f;
 
-virtual void CustomizeDetails(IDetailLayoutBuilder& **DetailBuilder**) override
-                {
-                        **DetailBuilder**.HideCategory("Track");
-                        **DetailBuilder**.HideCategory("General");
+  TSharedRef<IDetailsView> DetailsView = PropertyEditor.CreateDetailView(DetailsViewArgs);
 
-IDetailCategoryBuilder& **Category** = **DetailBuilder**.EditCategory("TrackEvent");
-                        **Category**.AddProperty("EventReceivers").ShouldAutoExpand(true);
-                }
+  // Register the custom type layout for the class
+  FOnGetDetailCustomizationInstance CreateInstance = FOnGetDetailCustomizationInstance::CreateLambda(&MakeShared<FEventTrackCustomization>);
+  DetailsView->RegisterInstancedCustomPropertyLayout(UMovieSceneEventTrack::StaticClass(), CreateInstance);
 
-TWeakPtr&lt;IDetailsView&gt; **WeakDetailsView**;
-        };
+  GetSequencer()->OnInitializeDetailsPanel().Broadcast(DetailsView, GetSequencer().ToSharedRef());
 
-auto **PopulateSubMenu** = \[this, **EventTrack**\](FMenuBuilder& **SubMenuBuilder**)
-        {
-                FPropertyEditorModule& **PropertyEditor** = FModuleManager::Get().LoadModuleChecked&lt;FPropertyEditorModule&gt;("PropertyEditor");
+  // Assign the object
+  DetailsView->SetObject(EventTrack, true);
 
-// Create a details view for the track
-                FDetailsViewArgs **DetailsViewArgs**(false,false,false,FDetailsViewArgs::HideNameArea,true);
-                **DetailsViewArgs**.DefaultsOnlyVisibility = FDetailsViewArgs::EEditDefaultsOnlyNodeVisibility::Automatic;
-                **DetailsViewArgs**.bShowOptions = false;
+  // Add it to the menu
+  TSharedRef< SWidget > DetailsViewWidget =
+    SNew(SBox)
+    .MaxDesiredHeight(400.0f)
+    .WidthOverride(450.0f)
+  [
+    DetailsView
+  ];
 
-TSharedRef&lt;IDetailsView&gt; **DetailsView** = **PropertyEditor**.CreateDetailView(**DetailsViewArgs**);
-                // Register the custom type layout for the class
-                FOnGetDetailCustomizationInstance **CreateInstance** = FOnGetDetailCustomizationInstance::CreateLambda(\[=\]{ return MakeShared&lt;FEventTrackCustomization&gt;(**DetailsView**, GetSequencer()); });
-                **DetailsView**-&gt;RegisterInstancedCustomPropertyLayout(UMovieSceneEventTrack::StaticClass(), **CreateInstance**);
-
-// Assign the object
-                **DetailsView**-&gt;SetObject(**EventTrack**, true);
-
-// Add it to the menu
-                **SubMenuBuilder**.AddWidget(**DetailsView**, FText(), true, false);
-        };
+  SubMenuBuilder.AddWidget(DetailsViewWidget, FText(), true, false);
+};
 ```
 
 [also fcoreuobjectdelegates in uobjectglobals:]&#x3A; [fixme_self_referential_link]

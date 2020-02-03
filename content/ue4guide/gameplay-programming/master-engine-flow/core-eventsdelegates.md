@@ -74,6 +74,36 @@ struct ENGINE_API FEditorSupportDelegates
 };
 ```
 
+
+```cpp
+ULevel::LevelDirtiedEvent.Broadcast();
+
+FEditorSupportDelegates::RefreshPropertyWindows.Broadcast();
+
+FEditorDelegates::RefreshEditor.Broadcast();
+
+RedrawLevelEditingViewports( true );
+
+// Called when a map is opened, giving map name, and whether it was a template
+FEditorDelegates::OnMapOpened
+
+GEngine->RedrawLevelEditingViewports();
+
+FEditorSupportDelegates::UpdateUI.Broadcast();
+
+GWorld->BroadcastLevelsChanged();
+
+ULevel::LevelDirtiedEvent.Broadcast();
+
+GEngine->BroadcastLevelActorListChanged();
+
+GEngine->BroadcastLevelActorDeleted();
+
+GLevelEditorModeTools().DeactivateAllModes();
+
+FAssetRegistryModule::AssetCreated(NewLevelWorld);
+```
+
 # FCoreDelegates
 
 Located in `CoreDelegates.h`

@@ -547,8 +547,8 @@
                 link: "/ue4guide/editor-extensions/detail-customization/array-builder"
               - title: "Detail Customization"
                 link: "/ue4guide/editor-extensions/detail-customization/detail-customization"
-              - title: "Misc Detail Customization"
-                link: "/ue4guide/editor-extensions/detail-customization/misc-detail-customization"
+              - title: "Useful Examples"
+                link: "/ue4guide/editor-extensions/detail-customization/detail-customization-examples"
           - title: "Blueprint Editor Mapcheck Functions"
             link: "/ue4guide/editor-extensions/blueprint-editor-mapcheck-functions"
             sortIndex: 5
@@ -754,21 +754,24 @@
             sortIndex: null
       - group: "Misc ue4-editor"
         items:
-          - title: "Maya Pipeline"
-            link: "/ue4guide/misc-ue4-editor/maya-pipeline"
-            sortIndex: null
+          - title: "Search Syntax"
+            link: "/ue4guide/misc-ue4-editor/content-browser-search-syntax"
+            sortIndex: 1
           - title: "Particles"
             link: "/ue4guide/misc-ue4-editor/particles"
-            sortIndex: 1
+            sortIndex: 2
           - title: "Lighting"
             link: "/ue4guide/misc-ue4-editor/lighting"
-            sortIndex: 2
+            sortIndex: 3
           - title: "Streaming Levels"
             link: "/ue4guide/misc-ue4-editor/streaming-levels"
             sortIndex: 4
           - title: "Movingrenaming Files"
             link: "/ue4guide/misc-ue4-editor/movingrenaming-files"
             sortIndex: 5
+          - title: "Maya Pipeline"
+            link: "/ue4guide/misc-ue4-editor/maya-pipeline"
+            sortIndex: 6
       - group: "Wip"
         items:
           - title: "Unfinished"
