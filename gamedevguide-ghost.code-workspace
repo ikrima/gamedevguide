@@ -14,7 +14,6 @@
 			".cache": true,
 			".vscode/ipch": true,
 		},
-		"prettier.eslintIntegration": true,
 		"prettier.printWidth": 100,
 		"prettier.singleQuote": true,
 		"prettier.trailingComma": "es5",

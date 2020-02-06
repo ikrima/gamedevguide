@@ -1,5 +1,5 @@
 ---
-sortIndex: 3
+sortIndex: 4
 sidebar: ue4guide
 ---
 
@@ -26,22 +26,22 @@ sidebar: ue4guide
 Tracking Garbage Collector references to an object:
 
 ```cpp
- static int32 URamaStaticFunctionLib::GetObjReferenceCount(UObject* Obj, TArray<UObject*>* OutReferredToObjects = nullptr)  
- {  
-         if(!Obj || !Obj->IsValidLowLevelFast())  
-         {  
-                 return -1;  
+ static int32 URamaStaticFunctionLib::GetObjReferenceCount(UObject* Obj, TArray<UObject*>* OutReferredToObjects = nullptr)
+ {
+         if(!Obj || !Obj->IsValidLowLevelFast())
+         {
+                 return -1;
          }
 
- TArray<UObject*> ReferredToObjects;                                //req outer, ignore archetype, recursive, ignore transient  
-         FReferenceFinder ObjectReferenceCollector( ReferredToObjects, Obj, false, true, true, false);  
+ TArray<UObject*> ReferredToObjects;                                //req outer, ignore archetype, recursive, ignore transient
+         FReferenceFinder ObjectReferenceCollector( ReferredToObjects, Obj, false, true, true, false);
          ObjectReferenceCollector.FindReferences( Obj );
 
- if(OutReferredToObjects)  
-         {  
-                 OutReferredToObjects->Append(ReferredToObjects);  
-         }  
-         return OutReferredToObjects.Num();  
+ if(OutReferredToObjects)
+         {
+                 OutReferredToObjects->Append(ReferredToObjects);
+         }
+         return OutReferredToObjects.Num();
  }
 ```
 
@@ -52,20 +52,20 @@ Tracking Garbage Collector references to an object:
   Normal, non-UObjects can also have the ability to add a reference to an object and prevent garbage collection. To do that, your object must derive from **FGCObject** and override its **AddReferencedObjects** class.
 
 ```cpp
- class FMyNormalClass : public FGCObject  
- {  
- public:  
+ class FMyNormalClass : public FGCObject
+ {
+ public:
  UObject* SafeObject;
 
- FMyNormalClass(UObject* Object)  
- : SafeObject(Object)  
- {  
+ FMyNormalClass(UObject* Object)
+ : SafeObject(Object)
+ {
  }
 
- void AddReferencedObjects(FReferenceCollector& Collector) override  
- {  
- Collector.AddReferencedObject(SafeObject);  
- }  
+ void AddReferencedObjects(FReferenceCollector& Collector) override
+ {
+ Collector.AddReferencedObject(SafeObject);
+ }
  };
 ```
 

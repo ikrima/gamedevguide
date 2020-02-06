@@ -47,7 +47,7 @@ public:
 
 UPROPERTY(Instanced)
 
-UDuplicateTestSubObject\* SubObject;
+UDuplicateTestSubObject* SubObject;
 
 };
 
@@ -65,19 +65,19 @@ virtual void BeginPlay() override
 
 Super::BeginPlay();
 
-UDuplicateTestObject\* SrcObject = NewObject&lt;UDuplicateTestObject>();
+UDuplicateTestObject* SrcObject = NewObject<UDuplicateTestObject>();
 
-SrcObject->SubObject = NewObject&lt;UDuplicateTestSubObject>(SrcObject);
+SrcObject->SubObject = NewObject<UDuplicateTestSubObject>(SrcObject);
 
-UDuplicateTestObject\* DestObject = NewObject&lt;UDuplicateTestObject>();
+UDuplicateTestObject* DestObject = NewObject<UDuplicateTestObject>();
 
-for (int32 i = 0; i &lt; 100; ++i)
+for (int32 i = 0; i < 100; ++i)
 
 {
 
 SrcObject->SubObject->TestValue = i;
 
-DestObject = NewObject&lt;UDuplicateTestObject>(DestObject->GetOuter(), DestObject->GetFName(), RF_NoFlags, SrcObject);
+DestObject = NewObject<UDuplicateTestObject>(DestObject->GetOuter(), DestObject->GetFName(), RF_NoFlags, SrcObject);
 
 // DestObject = DuplicateObject(SrcObject, DestObject->GetOuter(), DestObject->GetFName());
 

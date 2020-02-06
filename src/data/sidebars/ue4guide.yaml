@@ -338,6 +338,11 @@
                 link: "/ue4guide/engine-programming/uobject-serialization/uobject-ustruct-serialization"
               - title: "Hooking Into Serialization"
                 link: "/ue4guide/engine-programming/uobject-serialization/hooking-into-saving-serialization"
+          - title: "UObject Internals"
+            sortIndex: 11
+            subitems:
+              - title: "Overview"
+                link: "/ue4guide/engine-programming/uobject-internals/overview"
           - title: "Memory"
             sortIndex: 12
             subitems:
@@ -345,6 +350,8 @@
                 link: "/ue4guide/engine-programming/memory/debuggingdevelopment-tools"
               - title: "Allocators Malloc"
                 link: "/ue4guide/engine-programming/memory/allocators-malloc"
+              - title: "Garbage Collection"
+                link: "/ue4guide/engine-programming/memory/tracking-references"
               - title: "Tracking References"
                 link: "/ue4guide/engine-programming/memory/tracking-references"
           - title: "Blueprint Vm Compiler"
