@@ -3,7 +3,7 @@ sortIndex: 1
 sidebar: ue4guide
 ---
 
-## Overview:
+## Overview
 
 There are three basic ways to allocate or free memory within the Unreal Engine 4:
 
