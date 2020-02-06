@@ -313,7 +313,7 @@
                 link: "/ue4guide/engine-programming/uht/custom-tproperties"
               - title: "Uht Parsing"
                 link: "/ue4guide/engine-programming/uht/uht-parsing"
-          - title: "Uobjects"
+          - title: "UObjects"
             sortIndex: 8
             subitems:
               - title: "Deprecating Uproperties Ufunctions"
@@ -324,8 +324,22 @@
                 link: "/ue4guide/engine-programming/uobjects/uobject-upackage-internals"
               - title: "New Uobject Allocation Flow"
                 link: "/ue4guide/engine-programming/uobjects/new-uobject-allocation-flow"
-          - title: "Memory"
+          - title: "UObject Reflection"
             sortIndex: 9
+            subitems:
+              - title: "Reflection Overview"
+                link: "/ue4guide/engine-programming/uobject-reflection/uobject-reflection"
+              - title: "Wrapper Structs"
+                link: "/ue4guide/engine-programming/uobject-reflection/wrapper-structs"
+          - title: "UObject Serialization"
+            sortIndex: 10
+            subitems:
+              - title: "Serialization Overview"
+                link: "/ue4guide/engine-programming/uobject-serialization/uobject-ustruct-serialization"
+              - title: "Hooking Into Serialization"
+                link: "/ue4guide/engine-programming/uobject-serialization/hooking-into-saving-serialization"
+          - title: "Memory"
+            sortIndex: 12
             subitems:
               - title: "Debuggingdevelopment Tools"
                 link: "/ue4guide/engine-programming/memory/debuggingdevelopment-tools"

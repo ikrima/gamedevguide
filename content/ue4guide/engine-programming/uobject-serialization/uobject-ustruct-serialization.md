@@ -11,7 +11,7 @@ Ar << ObjectClass;
 uStruct->SerializeItem(Ar, Allocation, nullptr);
 
 if (Ar.ArIsLoading)
-Object = NewObject&lt;UObject>(ObjectClass, ...);
+Object = NewObject<UObject>(ObjectClass, ...);
 
 if (Ar.WantBinaryPropertySerialization())
 ObjectClass->SerializeBin(Ar, Object);
@@ -22,13 +22,10 @@ ObjectClass->SerializeTaggedProperties(Ar,Object,...);
 **Serialize Enum:**
 
 ```cpp
-FORCEINLINE friend FArchive& operator&lt;&lt;(FArchive& Ar, EnumType& Value)
-
- {
-
- return Ar &lt;&lt; (\_\_underlying_type(EnumType)&)Value;
-
- }
+FORCEINLINE friend FArchive& operator<<(FArchive& Ar, EnumType& Value)
+{
+  return Ar << (\_\_underlying_type(EnumType)&)Value;
+}
 ```
 
 **UObject**
@@ -37,7 +34,7 @@ ObjectReader/ObjectWriter only to be able to serialize the actual objects into b
 
 *Reference From <https://udn.unrealengine.com/questions/299982/serialize-objects-for-loadsave.html>*
 
-These will iterate through the UProperties in the class and either write binary (fast but difficult or impossible to save delta properties during development) or tagged properties (slower but allows delta properties). So the idea is to first serialize the object class using Ar &lt;&lt; ObjectClass; then spawn an instance of that class (if loading), then serialize the properties using the class and instance.
+These will iterate through the UProperties in the class and either write binary (fast but difficult or impossible to save delta properties during development) or tagged properties (slower but allows delta properties). So the idea is to first serialize the object class using Ar << ObjectClass; then spawn an instance of that class (if loading), then serialize the properties using the class and instance.
 
 *Reference From <https://forums.unrealengine.com/development-discussion/c-gameplay-programming/1374656-how-to-load-an-object-from-binary-without-knowing-its-exact-class>*
 
@@ -108,13 +105,13 @@ BinaryData.Empty();
 **Alternate way to do it directly with proxy archive:**
 
 ```cpp
-FArchive\* FileWriter = IFileManager::Get().CreateFileWriter(\*ProfileFileName);
+FArchive* FileWriter = IFileManager::Get().CreateFileWriter(*ProfileFileName);
 
 if(FileWriter != nullptr)
 
 {
 
-FCollisionAnalyzerProxyArchive Ar(\*FileWriter);
+FCollisionAnalyzerProxyArchive Ar(*FileWriter);
 
 int32 Magic = COLLISION_ANALYZER_MAGIC;
 
@@ -132,7 +129,7 @@ delete FileWriter;
 
 FileWriter = NULL;
 
-UE_LOG(LogCollisionAnalyzer, Log, TEXT("Saved collision analyzer data to file '%s'."), \*ProfileFileName);
+UE_LOG(LogCollisionAnalyzer, Log, TEXT("Saved collision analyzer data to file '%s'."), *ProfileFileName);
 
 }
 ```
