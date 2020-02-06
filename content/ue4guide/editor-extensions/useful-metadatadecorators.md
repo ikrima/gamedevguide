@@ -283,7 +283,7 @@ Add \_DEPRECATED to its name along with `DeprecatedFunction` metadata:
 
 ## Gameplay Tags
 
-- `GameplayTagFilter` - Metadata to filter gameplay tags usd as function parameters
+- `GameplayTagFilter` - Metadata to filter gameplay tags as function parameters and provide default value
 
   ```cpp
   UFUNCTION(BlueprintPure, Category=UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\"AssetTag.Item\")",GameplayTagFilter="AssetTag.Item"))
