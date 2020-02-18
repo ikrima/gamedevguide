@@ -598,7 +598,9 @@
           - title: "Custom-blueprint-node"
             sortIndex: 8
             subitems:
-              - title: "Create Custom Bp K 2 Nodes"
+              - title: "Custom Blueprints"
+                link: "/ue4guide/editor-extensions/custom-blueprint-node/custom-blueprint"
+              - title: "Custom BP K2 Nodes"
                 link: "/ue4guide/editor-extensions/custom-blueprint-node/create-custom-bp-k2-nodes"
               - title: "Blueprint Static Analysis"
                 link: "/ue4guide/editor-extensions/custom-blueprint-node/blueprint-static-analysis"
