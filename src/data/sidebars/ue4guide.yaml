@@ -329,6 +329,12 @@
             subitems:
               - title: "Reflection Overview"
                 link: "/ue4guide/engine-programming/uobject-reflection/uobject-reflection"
+              - title: "Detailed Dive I"
+                link: "/ue4guide/engine-programming/uobject-reflection/reflection-internals-1"
+              - title: "Detailed Dive II"
+                link: "/ue4guide/engine-programming/uobject-reflection/reflection-internals-2"
+              - title: "Detailed Dive III"
+                link: "/ue4guide/engine-programming/uobject-reflection/reflection-internals-3"
               - title: "Wrapper Structs"
                 link: "/ue4guide/engine-programming/uobject-reflection/wrapper-structs"
           - title: "UObject Serialization"
@@ -354,9 +360,19 @@
                 link: "/ue4guide/engine-programming/memory/tracking-references"
               - title: "Tracking References"
                 link: "/ue4guide/engine-programming/memory/tracking-references"
-          - title: "Blueprint Vm Compiler"
-            link: "/ue4guide/engine-programming/blueprint-vm-compiler"
-            sortIndex: 10
+          - title: "Blueprints"
+            sortIndex: 12
+            subitems:
+              - title: "Blueprint Compilation"
+                link: "/ue4guide/engine-programming/blueprints/bp-compiler-overview"
+              - title: "Blueprint Virtual Machine"
+                link: "/ue4guide/engine-programming/blueprints/bp-virtualmachine-overview"
+              - title: "Compiler Internals I"
+                link: "/ue4guide/engine-programming/blueprints/bp-compiler-internals-1"
+              - title: "Compiler Internals II"
+                link: "/ue4guide/engine-programming/blueprints/bp-compiler-internals-2"
+              - title: "Compiler Internals III"
+                link: "/ue4guide/engine-programming/blueprints/bp-compiler-internals-3"
       - group: "Application os-generic-platform"
         items:
           - title: "Command Line Parsing"
