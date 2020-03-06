@@ -3,7 +3,7 @@ sortIndex: 1
 sidebar: ue4guide
 ---
 
-# Gaurded Main Loop
+# Guarded Main Loop
 
 ```cpp
 FCoreDelegates::GetPreMainInitDelegate().Broadcast()
