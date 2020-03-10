@@ -95,7 +95,7 @@ For BlueprintCallable functions, this indicates that the parameter pin should be
 
 Used by BlueprintCallable functions to indicate which parameter determines the World that the operation is occurring within.
 
-**CustomStructureParam="Parameter1, Parameter2, ..")**
+**CustomStructureParam="Parameter1, Parameter2, .."**
 
 The listed parameters are all treated as wildcards. This specifier requires the UFUNCTION-level specifier, CustomThunk, which will require the user to provide a custom exec function. In this function, the parameter types can be checked and the appropriate function calls can be made based on those parameter types. The base UFUNCTION should never be called, and should assert or log an error if it is.
 
@@ -109,7 +109,6 @@ Default function parameter values:
 UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\"AssetTag.Item\")",GameplayTagFilter="AssetTag.Item"))
 UBBItemVisualCfg* GetItemVisualCfg(FBBAssetTag ItemVisualStyle) const;
 ```
-
 
 **Execute in Editor:**
 Add `CallInEditor`:
