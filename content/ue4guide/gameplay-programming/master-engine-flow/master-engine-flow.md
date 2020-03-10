@@ -3,9 +3,14 @@ sortIndex: 1
 sidebar: ue4guide
 ---
 
-Numbers signify steps not necessarily at the same class nesting
+# Game Flow Diagram
 
-[Detailed Actor LifeCycle Diagram](/ue4guide/gameplay-programming/actor-tick-lifecycle-flow/actor-lifecycle-diagram/)
+![Highlevel GameFlowChart](../../assets/GameFlowChart.png)
+[Related: Detailed Actor LifeCycle Diagram](/ue4guide/gameplay-programming/actor-tick-lifecycle-flow/actor-lifecycle-diagram/)
+
+# Details
+
+Numbers signify steps not necessarily at the same class nesting
 
 - UGameEngine::Init
 

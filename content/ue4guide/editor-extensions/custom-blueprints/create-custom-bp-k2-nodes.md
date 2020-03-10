@@ -18,3 +18,12 @@ Blueprint Editor->File->Developer->Save Intermediate Build Products - this enabl
 The clipboard - use ctrl+c and paste into a text editor to view the complete state of a node, this will give you an idea of how you need to set up your intermediate nodes
 
 Reference <https://udn.unrealengine.com/questions/500542/custom-bp-node-development.html>
+
+## Hiding Blueprint Functions From Editor
+
+```ini
+[BlueprintEditor.Menu]
++BlueprintHiddenFields="/Script/Engine.PlayerController:ClientPlayCameraShake"
+```
+
+*Reference From <https://udn.unrealengine.com/questions/409862/gameplaystatics-and-custom-damageevents.html>*

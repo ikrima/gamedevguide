@@ -19,6 +19,7 @@
 		"prettier.trailingComma": "es5",
 		"workbench.colorCustomizations": {
 			"activityBar.background": "#ae4bd088",
+			"activityBar.activeBackground": "#ae4bd088",
 			"activityBar.activeBorder": "#d1af4e",
 			"activityBar.foreground": "#e7e7e7",
 			"activityBar.inactiveForeground": "#e7e7e799",

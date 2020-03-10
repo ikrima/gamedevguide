@@ -540,20 +540,35 @@
             sortIndex: 10
       - group: "Editor extensions"
         items:
-          - title: "Editor Extensions"
-            link: "/ue4guide/editor-extensions/editor-extensions"
-            sortIndex: null
-          - title: "Editor Utils"
-            link: "/ue4guide/editor-extensions/editor-utils"
-            sortIndex: null
-          - title: "Custom Content Browser Asset"
-            link: "/ue4guide/editor-extensions/custom-content-browser-asset"
+          - title: "Editor extensions"
+            link: "/ue4guide/editor-extensions/editor-extensions-overview"
             sortIndex: 1
-          - title: "Content Browser Search Syntax"
-            link: "/ue4guide/editor-extensions/content-browser-search-syntax"
+          - title: "Custom Tools"
             sortIndex: 2
-          - title: "Slate"
+            subitems:
+              - title: "Editor Tool Tutorial"
+                link: "/ue4guide/editor-extensions/custom-tools/custom-editor-tool-tutorial"
+              - title: "Custom Assets"
+                link: "/ue4guide/editor-extensions/custom-tools/custom-asset-type"
+              - title: "Editor Gizmos"
+                link: "/ue4guide/editor-extensions/editor-gizmos"
+              - title: "Viewports"
+                link: "/ue4guide/editor-extensions/viewports"
+          - title: "Blueprints"
             sortIndex: 3
+            subitems:
+              - title: "Custom Blueprints"
+                link: "/ue4guide/editor-extensions/custom-blueprints/custom-blueprint"
+              - title: "Custom BP K2 Nodes"
+                link: "/ue4guide/editor-extensions/custom-blueprints/create-custom-bp-k2-nodes"
+              - title: "Generic Or Wildcard Parameters"
+                link: "/ue4guide/editor-extensions/custom-blueprints/generic-or-wildcard-parameters"
+              - title: "Blutility Editor Extensions"
+                link: "/ue4guide/editor-extensions/custom-blueprints/blutility-editor-extensions"
+              - title: "Blueprint Static Analysis"
+                link: "/ue4guide/editor-extensions/custom-blueprints/blueprint-static-analysis"
+          - title: "Slate"
+            sortIndex: 4
             subitems:
               - title: "Slate"
                 link: "/ue4guide/editor-extensions/slate/slate"
@@ -569,14 +584,8 @@
                 link: "/ue4guide/editor-extensions/slate/useful-slate-classes"
               - title: "Useful Slate Code Samples"
                 link: "/ue4guide/editor-extensions/slate/useful-slate-code-samples"
-          - title: "Redirectrenaming Classespropertiespackages"
-            link: "/ue4guide/editor-extensions/redirectrenaming-classespropertiespackages"
-            sortIndex: 3
-          - title: "Blutility Blueprint Editor Extensions"
-            link: "/ue4guide/editor-extensions/blutility-blueprint-editor-extensions"
-            sortIndex: 4
           - title: "Detail-customization"
-            sortIndex: 4
+            sortIndex: 5
             subitems:
               - title: "Accessing Tmap"
                 link: "/ue4guide/editor-extensions/detail-customization/accessing-tmap"
@@ -586,11 +595,8 @@
                 link: "/ue4guide/editor-extensions/detail-customization/detail-customization"
               - title: "Useful Examples"
                 link: "/ue4guide/editor-extensions/detail-customization/detail-customization-examples"
-          - title: "Blueprint Editor Mapcheck Functions"
-            link: "/ue4guide/editor-extensions/blueprint-editor-mapcheck-functions"
-            sortIndex: 5
           - title: "Sequencer"
-            sortIndex: 5
+            sortIndex: 6
             subitems:
               - title: "Binding Objects Sequence Ids"
                 link: "/ue4guide/editor-extensions/sequencer/binding-objects-sequence-ids"
@@ -608,47 +614,29 @@
                 link: "/ue4guide/editor-extensions/sequencer/track-evaluation"
               - title: "Useful Functionsmisc"
                 link: "/ue4guide/editor-extensions/sequencer/useful-functionsmisc"
+          - title: "Utility Helpers"
+            sortIndex: 7
+            subitems:
+              - title: "Editor Utils"
+                link: "/ue4guide/editor-extensions/utility-helpers/editor-utils"
+              - title: "Checking Out Config File"
+                link: "/ue4guide/editor-extensions/utility-helpers/checking-out-config-file"
+              - title: "Useful Editor Functions"
+                link: "/ue4guide/editor-extensions/utility-helpers/useful-editor-functions"
+              - title: "Useful Actor Editor Functions"
+                link: "/ue4guide/editor-extensions/utility-helpers/useful-actor-editor-functions"
+              - title: "Save Object To A Package Or Asset"
+                link: "/ue4guide/editor-extensions/utility-helpers/save-object-to-a-package-or-asset"
+              - title: "Editor File Utils"
+                link: "/ue4guide/editor-extensions/utility-helpers/editor-file-utils"
+              - title: "Package Utils"
+                link: "/ue4guide/editor-extensions/utility-helpers/package-utils"
+          - title: "Redirectrenaming Classespropertiespackages"
+            link: "/ue4guide/editor-extensions/redirectrenaming-classespropertiespackages"
+            sortIndex: 8
           - title: "Useful Metadatadecorators"
             link: "/ue4guide/editor-extensions/useful-metadatadecorators"
-            sortIndex: 6
-          - title: "Custom-blueprint-node"
-            sortIndex: 8
-            subitems:
-              - title: "Custom Blueprints"
-                link: "/ue4guide/editor-extensions/custom-blueprint-node/custom-blueprint"
-              - title: "Custom BP K2 Nodes"
-                link: "/ue4guide/editor-extensions/custom-blueprint-node/create-custom-bp-k2-nodes"
-              - title: "Blueprint Static Analysis"
-                link: "/ue4guide/editor-extensions/custom-blueprint-node/blueprint-static-analysis"
-              - title: "Hide Blueprint Functions From Editor"
-                link: "/ue4guide/editor-extensions/custom-blueprint-node/hide-blueprint-functions-from-editor"
-          - title: "Useful Editor Functions"
-            link: "/ue4guide/editor-extensions/useful-editor-functions"
-            sortIndex: 8
-          - title: "Useful Actor Editor Functions"
-            link: "/ue4guide/editor-extensions/useful-actor-editor-functions"
             sortIndex: 9
-          - title: "Generic Or Wildcard Parameters"
-            link: "/ue4guide/editor-extensions/generic-or-wildcard-parameters"
-            sortIndex: 10
-          - title: "Save Object To A Package Or Asset"
-            link: "/ue4guide/editor-extensions/save-object-to-a-package-or-asset"
-            sortIndex: 11
-          - title: "Checking Out Config File"
-            link: "/ue4guide/editor-extensions/checking-out-config-file"
-            sortIndex: 12
-          - title: "Viewports"
-            link: "/ue4guide/editor-extensions/viewports"
-            sortIndex: 13
-          - title: "Editor Gizmos"
-            link: "/ue4guide/editor-extensions/editor-gizmos"
-            sortIndex: 14
-          - title: "Editor File Utils"
-            link: "/ue4guide/editor-extensions/editor-file-utils"
-            sortIndex: 16
-          - title: "Package Utils"
-            link: "/ue4guide/editor-extensions/package-utils"
-            sortIndex: 17
       - group: "Gameplay programming"
         items:
           - title: "Gameplay Programming"

@@ -44,6 +44,9 @@ If you split the path using dot as delimiter you will get:
 
 **PostInitProperties:**
 - Properties initialized, including any set from config inis
+- **NOTE:** Any properties set on default subobjects inside the constructor get stomped by the CDO's properties when the constructor exits
+  - So this is good place to put "per instance" constructor initialization data
+  - Ex: Initializing transient data that (e.g. CurrentOwner) that would be null on the CDO
 - Ready to interact with the world
 
 **Serialized Assets get PostLoad**

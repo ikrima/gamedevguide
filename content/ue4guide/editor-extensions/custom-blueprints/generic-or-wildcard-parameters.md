@@ -1,5 +1,5 @@
 ---
-sortIndex: 10
+sortIndex: 3
 sidebar: ue4guide
 ---
 

@@ -113,7 +113,7 @@ Tick Groups:
 PostInitProperties()
 
 - Gets called after the UPROPERTY member variables have been initialized for a class from the instance data/CDO
-
+  - **NOTE:** Any properties set on default subobjects inside the constructor get stomped by the CDO's properties when the constructor exits.
 - Good place to put computed values (e.g. Designer sets Damage & DamageTime => Computed DamagePerSecond)
 
 Actor::SpawnActor

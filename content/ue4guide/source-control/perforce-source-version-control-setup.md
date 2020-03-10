@@ -110,12 +110,17 @@ If you screw up you can delete a workspace. Go to Connection -> Choose Workspace
 
 - **Revert another users files**
 
+  - Force delete their shelved changelist
+    `batch>p4 shelve -df -c 8857`
+    `batch>p4 change -df 8857`
   - Find their workspace by username
     `batch>p4 opened -u janedoe`
+  - Revert all files in janedoe-workspace's workspace
+    `batch>p4 revert -C janedoe-workspace //...`
   - Revert one file in janedoe-workspace's workspace
     `batch>p4 revert  -C janedoe-workspace //depot/www/dev/Jam.html`
   - Revert all files in janedoe-workspace workspace
-    `batch>p4 revert  -c 1125 -C janedoe-workspace //…`
+    `batch>p4 revert  -c 1125 -C janedoe-workspace //...`
 
 ## Set editor
 
