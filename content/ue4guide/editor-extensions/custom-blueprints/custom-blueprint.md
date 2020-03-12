@@ -3,6 +3,15 @@ sortIndex: 1
 sidebar: ue4guide
 ---
 
+# Class Diagram Overview
+
+There's on overabundance of class/OOP and hard to track what is supposed to do what. Here's a great diagram from <http://www.ms.mff.cuni.cz/~polakma1/adventure-plugin/programming.html> that crystalizes the relationships.
+
+From a UI/MVC viewpoint:
+![Graph Editor Class UI Relationship](../../assets/Graph-Editor-Class-Relationship.png)
+
+From a functionality/responsibility viewpoint:
+![Graph Editor Class Feature Relationship](../../assets/Graph-Editor-Class-Relationship2.png)
 
 # How to use templates
 **IMPORTANT!** This is just a literal translation from the excellent github repo <https://github.com/Eragon-Brisingr/XD_GraphEditor_Template>
