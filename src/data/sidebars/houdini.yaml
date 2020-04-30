@@ -4,10 +4,14 @@
         items:
           - title: "Houdini"
             link: "/houdini"
-      - group: "Shortcut Cheatsheet"
+      - group: "General"
         items:
+          - title: "Setup Guide"
+            link: "/houdini/general/houdini-setup-guide"
+            sortIndex: 1
           - title: "Shortcut Cheatsheet"
-            link: "/houdini/shortcut-cheatsheet"
+            link: "/houdini/general/shortcut-cheatsheet"
+            sortIndex: 2
       - group: "Release notes"
         items:
           - title: "17 0"
