@@ -11,7 +11,9 @@ https://docs.unrealengine.com/en-US/API/Runtime/Core/Templates/index.html
 
 ParallelFor
 
-Threading Primitives: <https://de45xmedrsdbp.cloudfront.net/Resources/files/Multithreading-1112727176.pdf>
+Threading Primitives:
+  - <https://de45xmedrsdbp.cloudfront.net/Resources/files/Multithreading-1112727176.pdf>
+  - <https://conoscerelinux.org/wp-content/uploads/2019/11/Mischitelli-Slides-Nov2019.pdf>
 
 Look at the Algo namespace
 
@@ -27,7 +29,7 @@ KeyFrameAlgorithms::Translate
 
 ## Structs
 
-TNumericLimits&lt;>
+`TNumericLimits<>`
 
 TScopedCallback - Helper obj for batching callback requests
 
