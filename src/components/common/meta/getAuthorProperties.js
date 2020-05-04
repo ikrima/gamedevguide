@@ -12,9 +12,8 @@ export const getAuthorProperties = (primaryAuthor, fetchAuthorData) => {
         )
     } else {
         authorProfiles.push(
-            `https://ghost.org/`,
-            `https://twitter.com/ghost/`,
-            `https://www.facebook.com/ghost/`
+            `https://bebylon.dev/`,
+            `https://twitter.com/ikrimae/`,
         )
     }
 

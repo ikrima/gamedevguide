@@ -15,7 +15,7 @@ const SidebarNav = ({ sidebar, location }) => {
     return (
         <nav className="mt5 mb5 mt10-ns mb0-ns relative" data-cy="sidebar">
             {sidebarfile.groups.map((group, i) => (
-                <div key={i} className="mt1">
+                <div key={group.group} className="mt1">
                     {(group.items.some(
                         item => item.link === location.pathname
                     ) || group.items.some(item=> item.subitems ? (item.subitems.some(subitem=>subitem.link=== location.pathname)): false)) ? (
@@ -36,7 +36,7 @@ const SidebarNav = ({ sidebar, location }) => {
                             </h4>
 
                              <SidebarList
-                                    key={i}
+                                    key={group.group}
                                     items={group.items}
                                     location={location}
                                 />

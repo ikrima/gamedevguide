@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 const RelatedPosts = ({ relatedPosts, showImages }) => (
     <ul className="pa0 ma0 mb8 list">
         {relatedPosts.map(({ node }, i) => (
-            <li className="ma0" key={i}>
+            <li className="ma0" key={node.url}>
                 <Link to={node.url} className="flex items-center link darkgrey hover-blue pa2 pl0" >
                     {showImages && node.feature_image ?
                         <div className="flex justify-center items-center h6 w8 mr2">

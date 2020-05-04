@@ -9,15 +9,15 @@ const SidebarList = ({ items, location, subgroups }) => {
 
     return (
         <ul className="relative sidebar-list ma0 pa0 list mb5 pl6 mt1">
-            {items.map((item, j) => (
+            {items.map((item) => (
                 <>
                     {item.subitems ? (
-                        <li key={j}>
+                        <li>
                             <SidebarLink
                                 link={item.subitems[0].link}
                                 title={item.title}
                                 linkClasses={
-                                    item.link === location.pathname
+                                    item.subitems[0].link === location.pathname
                                         ? activeLinkClasses
                                         : linkClasses
                                 }
@@ -26,7 +26,7 @@ const SidebarList = ({ items, location, subgroups }) => {
                     ) : (
                         <>
                             {" "}
-                            <li key={j}>
+                            <li key={item.link}>
                                 <SidebarLink
                                     link={item.link}
                                     title={item.title}
@@ -45,13 +45,12 @@ const SidebarList = ({ items, location, subgroups }) => {
                             return (
                                 <>
                                     <ul>
-                                        <li key={j}>
+                                        <li key={subitem.link}>
                                             <SidebarLink
                                                 link={subitem.link}
                                                 title={subitem.title}
                                                 linkClasses={
-                                                    subitem.link ===
-                                                    location.pathname
+                                                    subitem.link === location.pathname
                                                         ? activeLinkClasses
                                                         : linkClasses
                                                 }

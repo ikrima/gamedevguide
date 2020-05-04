@@ -58,7 +58,7 @@ const NavBar = ({ theme }) => {
                 <div className="dn flex-ns flex-auto items-center overflow-x-auto mr12 mr0-l ml5 ml0-l pb20">
                     {menuItems.map(item => (
                         <Link
-                            key={menuItems.indexOf(item)}
+                            key={item.name}
                             to={item.link}
                             className={`${themeClasses[theme].menuItem} nowrap f8 pa3 mr1 mr3-l nl3`}
                         >
@@ -83,4 +83,3 @@ NavBar.propTypes = {
 };
 
 export default NavBar;
-

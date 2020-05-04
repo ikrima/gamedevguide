@@ -30,7 +30,7 @@ const ArticleMetaMD = ({ data, canonical }) => {
                 <meta property="og:description" content={fm.meta_description || post.excerpt} />
                 <meta property="og:url" content={canonical} />
                 <meta property="article:published_time" content={publishedAtISODate} />
-                {fm.keywords && fm.keywords.length ? fm.keywords.map((keyword, i) => (<meta property="article:tag" content={keyword} key={i} />)) : null}
+                {fm.keywords && fm.keywords.length ? fm.keywords.map((keyword, i) => (<meta property="article:tag" content={keyword} key={keyword} />)) : null}
                 <meta property="article:author" content="https://www.facebook.com/ghost/" />
 
                 <meta name="twitter:title" content={fm.meta_title || fm.title} />
@@ -40,8 +40,8 @@ const ArticleMetaMD = ({ data, canonical }) => {
                 <meta name="twitter:data1" content={`${post.timeToRead} min read`} />
                 {primaryTag ? <meta name="twitter:label2" content="Filed under" /> : null}
                 {primaryTag ? <meta name="twitter:data2" content={primaryTag} /> : null}
-                <meta name="twitter:site" content="@tryghost" />
-                <meta name="twitter:creator" content="@tryghost" />
+                <meta name="twitter:site" content="@ikrimae" />
+                <meta name="twitter:creator" content="@ikrimae" />
                 <script type="application/ld+json">{`
                     {
                         "@context": "https://schema.org/",
@@ -50,9 +50,8 @@ const ArticleMetaMD = ({ data, canonical }) => {
                             "@type": "Person",
                             "name": "Ghost",
                             "sameAs": [
-                                "https://ghost.org/",
-                                "https://www.facebook.com/ghost/",
-                                "https://twitter.com/tryghost/"
+                                "https://bebylon.dev/",
+                                "https://twitter.com/ikrimae/"
                             ]
                         },
                         ${fm.keywords && fm.keywords.length ? `"keywords": "${_.join(fm.keywords, `, `)}",` : ``}

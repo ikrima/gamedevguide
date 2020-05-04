@@ -45,7 +45,7 @@ const SiteCfg = {
     // See: https://developers.google.com/web/fundamentals/web-app-manifest/
 
     // PrimaryColor: '@geekblue-6',
-    PrimaryColor: '@blue-6',
+    PrimaryColor: '#6b23ae',
     BackgroundColor: ColorsConsts.WhitePoint,
 
     DefaultTheme: 'dark',
