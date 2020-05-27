@@ -103,7 +103,7 @@ Can also verify by looking at the cooked asset’s size, and the size in memory 
 
 - #### **Profiling AddToWorld**
 
-  - Enable this define **PERF_TRACK_DETAILED_ASYNC_STATS (AsyncLoading.h)**
+  - Enable this define `PERF_TRACK_DETAILED_ASYNC_STATS` (AsyncLoading.h)
 
   - This define dumps the details of AddToWorld()
 
