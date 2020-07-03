@@ -1,4 +1,4 @@
-# Game Development Notes
+# Home
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b04d49f2-9006-49ee-9f9a-569f59732aff/deploy-status)](https://app.netlify.com/sites/gamedevguide/deploys)
 
@@ -28,6 +28,6 @@ You can subscribe to the repo for updates
   - [x] Tooling
   - [x] Engine Programming
   - [x] Rendering
-- [-] Graphics
-- [-] Programming
-- [-] Houdini
+- [] Graphics
+- [] Programming
+- [] Houdini
