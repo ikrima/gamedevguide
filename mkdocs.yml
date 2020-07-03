@@ -1,0 +1,148 @@
+# Project information
+site_name: Gamedev Guide
+site_description: >-
+  Gamedev Guide: Programming with Unreal Engine, Houdini, Math, & Graphics
+site_author: ikrimae
+site_url: https://bebylon.dev/
+
+# Repository
+repo_name: ikrima/gamedevguide
+repo_url: "https://github.com/ikrima/gamedevguide/"
+
+# Copyright
+copyright: Copyright &copy; 2016 - 2020 ikrima
+
+
+# Configuration
+docs_dir: content
+
+nav:
+  - Home: index.md
+  - Open Source: opensource/index.md
+  - UE4: ue4guide/
+  - Math:
+      - Research Notes: math/research-notes/spectral-theory.md
+  - Graphics: graphics/index
+  - Houdini: houdini/index.md
+  - Programming: programming/index.md
+  - Computational Geometry: computational-geometry/chicken-scratch-notes.md
+  - Blog: blog/index.md
+
+
+# Theme Config
+# ----------- begin mkdocs-material -----------
+theme:
+  name: material
+  # custom_dir: themes/material/material
+  language: en
+  features:
+    - tabs
+    - instant
+  palette:
+    scheme: preference
+    primary: deep-purple
+    accent: deep-purple
+  font:
+    text: Roboto
+    code: Roboto Mono
+  # icon:
+  #   logo: logo
+  favicon: assets/favicon.png
+
+# Extras
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/ikrimae
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/ikrimae
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/ikrima
+
+# Plugins
+plugins:
+  - search
+  # - minify:
+  #     minify_html: true
+
+# Extensions
+markdown_extensions:
+  - smarty
+  - sane_lists
+  - admonition
+  - toc:
+      permalink: "#"
+  - codehilite:
+      guess_lang: false
+  # - markdown_katex:
+  #     no_inline_svg: True
+  #     insert_fonts_css: True
+  #     # macro-file: macros.tex
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: ikrima
+      repo: gamedevguide
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+
+  # Builtins
+  - markdown.extensions.attr_list
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+
+  # - pymdownx.keys
+  # - pymdownx.snippets:
+  #     check_paths: true
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js
+  - assets/arithmatexkatex.js
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css
+
+# Google Analytics
+google_analytics:
+  - UA-47614715-1
+  - auto
+# ----------- end mkdocs-material -----------
+
+# ----------- begin cinder -----------
+# theme:
+#   name: null
+#   custom_dir: themes/cinder/cinder
+#   colorscheme: atom-one-dark-reasonable
+#   highlightjs: true
+#   hljs_languages:
+#     - nim
+# google_analytics: ['UA-47614715-1', 'bebylon.dev']
+# shortcuts:
+#     help: 191
+#     next: 39
+#     previous: 37
+#     search: 83
+# markdown_extensions:
+#   - smarty
+#   - sane_lists
+#   - admonition
+#   - toc:
+#       permalink: "#"
+#   - codehilite:
+#       guess_lang: false
+# ----------- end cinder -----------
