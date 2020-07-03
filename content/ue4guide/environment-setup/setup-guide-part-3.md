@@ -22,10 +22,13 @@ Now tools I use. ⭐ => how must have it is to me
 - **⭐Cmder** - terminal emulator
 - **⭐Everything** - fast search
 - **⭐Rapidee** - environment vars editor
+- **⭐7PlusTaskbarTweaker** - saner taskbar settings
+- **⭐MS PowerToys** - better window manager and other niceties
+- ~~**⭐Display Fusion** - virtualize desktop; use it to split my 33" monitor into two virtual monitors~~
+- - **⭐XYplorer** - better and performant file manager
 - ScreenToGif - screen capture
 - Clover - Tabs in explorer
 - Youtube-dl - download youtube/vimeo files for offline viewing
-- **⭐Display Fusion** - virtualize desktop; use it to split my 33" monitor into two virtual monitors
 - Remote Desktop Connection Manager
 - Duet + iPad Pro 3rd Gen + Pencil - Turn my iPad Pro into a Cintiq
 - Firefox
@@ -48,6 +51,7 @@ Now tools I use. ⭐ => how must have it is to me
 # SysAdmin/Poor man's devops:
 
 - **⭐⭐⭐SysInternals** - Awesome set of windows sys tools
+-  **⭐⭐⭐ProcessHacker** - Built on sysinternals, it's a user friendly taskmanager/process explorer replacement
 - **⭐Rohitab Api Monitor** - Amazingly well written; use it for api hooking
   NTLite - I use it to help my ghetto bare metal provisioning for windows
   Powershell - Powershell Desired State Configuration for poor man provisioning
