@@ -17,6 +17,11 @@
           - title: "17 0"
             link: "/houdini/release-notes/17-0"
             sortIndex: 1
+      - group: "Usability"
+        items:
+          - title: "Hda"
+            link: "/houdini/usability/coord-system"
+            sortIndex: 2
       - group: "Extending"
         items:
           - title: "Hda"
