@@ -1,6 +1,0 @@
-
-  - groups:
-      - group: "Opensource"
-        items:
-          - title: "Opensource"
-            link: "/opensource"
