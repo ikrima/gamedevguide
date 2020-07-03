@@ -23,5 +23,8 @@
 - build:
   - `mkdocs build --clean`
 
+- deploy:
+  [![Deploy to Netlify from GitHub](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ikrima/gamedevguide)
+
 - tbd:
   - add blog: <https://github.com/fmaida/mkdocs-blog-plugin>
