@@ -1,5 +1,3 @@
-
-
 # Notes
 
 - install:
@@ -25,6 +23,5 @@
 - build:
   - `mkdocs build --clean`
 
-
 - tbd:
-  - add blog: https://github.com/fmaida/mkdocs-blog-plugin
+  - add blog: <https://github.com/fmaida/mkdocs-blog-plugin>
