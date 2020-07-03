@@ -1,5 +1,0 @@
-
-
-# Make edit links work
-/graphics/*/edit                    https://github.com/ikrima/gamedevguide/tree/master/contents/guides/graphics/:splat.md     302!
-/ue4guide/*/edit                    https://github.com/ikrima/gamedevguide/tree/master/contents/guides/ue4guide/:splat.md     302!
