@@ -1,4 +1,4 @@
-// This is for arithmatix support for katex
+// This is for arithmatex support for katex
 (function () {
   'use strict';
 
@@ -20,6 +20,7 @@
     var onReady = function onReady(fn) {
       if (document.addEventListener) {
         document.addEventListener("DOMContentLoaded", fn);
+        document.addEventListener("DOMContentSwitch", fn);
       } else {
         document.attachEvent("onreadystatechange", function () {
           if (document.readyState === "interactive") {

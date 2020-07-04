@@ -40,11 +40,13 @@ theme:
     - instant
   palette:
     scheme: preference
-    primary: deep-purple
-    accent: deep-purple
+    primary: blue
+    accent: blue
   font:
     text: Roboto
     code: Roboto Mono
+    # text: Open Sans
+    # code: Hack
   # icon:
   #   logo: logo
   favicon: assets/favicon.png
@@ -61,7 +63,8 @@ extra:
 
 # Plugins
 plugins:
-  - search
+  - search:
+      separator: '[\s\-\.]+'
   - git-revision-date-localized
   - awesome-pages:
       collapse_single_pages: true
@@ -77,7 +80,8 @@ markdown_extensions:
   - toc:
       permalink: "#"
   - codehilite:
-      guess_lang: false
+      pygments_style: solarized-dark
+      guess_lang: true
   # - markdown_katex:
   #     no_inline_svg: True
   #     insert_fonts_css: True
