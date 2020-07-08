@@ -39,7 +39,7 @@ theme:
     - tabs
     - instant
   palette:
-    scheme: preference
+    scheme: slate
     primary: blue
     accent: blue
   font:
