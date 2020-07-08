@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"eslint.packageManager": "npm",
+		"npm.packageManager": "npm",
+		"debug.node.autoAttach": "on",
+		"files.exclude": {
+			"public": true,
+			"node_modules": true,
+			".cache": true,
+			".vscode/ipch": true,
+		},
+		"prettier.printWidth": 100,
+		"prettier.singleQuote": true,
+		"prettier.trailingComma": "es5",
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#ae4bd088",
+			"activityBar.activeBackground": "#ae4bd088",
+			"activityBar.activeBorder": "#d1af4e",
+			"activityBar.foreground": "#e7e7e7",
+			"activityBar.inactiveForeground": "#e7e7e799",
+			"activityBarBadge.background": "#d1af4e",
+			"activityBarBadge.foreground": "#15202b",
+			"statusBar.background": "#ae4bd088",
+			"statusBarItem.hoverBackground": "#c073db88",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBar.border": "#ae4bd088"
+		},
+		"peacock.color": "#ae4bd088"
+	}
+}

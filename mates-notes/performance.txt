@@ -1,9 +1,0 @@
-Dont import the whole lodash only for some functions to be used
-
-import _ from 'lodash';
-
-This will work ok when you turn it to Electron but for now it will slow down loading since you are loading a huge library only for few functions.
-
-Correct way would be ex:
-
-import find from 'lodash/find';
