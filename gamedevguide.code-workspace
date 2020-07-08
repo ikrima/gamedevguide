@@ -19,13 +19,16 @@
 		"prettier.singleQuote": true,
 		"prettier.trailingComma": "es5",
 		"workbench.colorCustomizations": {
-			"activityBar.background": "#68217a88",
-			"activityBar.activeBorder": "#000000",
+			"activityBar.background": "#b52e31",
+			"activityBar.activeBorder": "#30b22d",
 			"activityBar.foreground": "#e7e7e7",
 			"activityBar.inactiveForeground": "#e7e7e799",
-			"activityBarBadge.background": "#000000",
-			"activityBarBadge.foreground": "#e7e7e7"
+			"activityBarBadge.background": "#30b22d",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"statusBar.background": "#b52e31",
+			"statusBarItem.hoverBackground": "#d04649",
+			"statusBar.foreground": "#e7e7e7"
 		},
-		"peacock.color": "#68217A88"
+		"peacock.color": "#b52e31"
 	}
 }
