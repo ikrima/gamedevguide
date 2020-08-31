@@ -5,6 +5,10 @@ sidebar: programming
 
 # Debugging
 
+## Useful Flags
+- `/d1PP`: print preprocessor macros
+- `/d1reportAllClassLayout & /d1reportSingleClassLayoutXXX`: dump class packing and alignment layout
+
 ## Debugger Tips
 
 ### Context Operator
