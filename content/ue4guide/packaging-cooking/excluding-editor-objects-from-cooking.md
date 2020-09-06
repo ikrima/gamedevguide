@@ -55,7 +55,9 @@ You can add a PakBlackList-Debug.txt in Root/Build/Win64/ to exclude directories
 
 <https://docs.unrealengine.com/latest/INT/Platforms/Android/ReducingAPKSize/index.html#packageblacklist>
 
-**[Undocumented Magic Folders That Get Cooked:][https://github.com/epicgames/unrealengine/blob/76085d1106078d8988e4404391428252ba1eb9a7/engine/source/editor/unrealed/private/cookontheflyserver.cpp#l5321]**
+**Undocumented Magic Folders That Get Cooked:**
+
+https://github.com/epicgames/unrealengine/blob/76085d1106078d8988e4404391428252ba1eb9a7/engine/source/editor/unrealed/private/cookontheflyserver.cpp#l5321
 
 If you have blueprints here, they & their dependencies will force get added (<https://udn.unrealengine.com/questions/351014/packaging-always-includes-content.html>)
 

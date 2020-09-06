@@ -23,7 +23,7 @@ TraceTag or TraceTagAll
 
 Misc:
 
-- Turn on show all properties while playing & unsafe properties
+- Turn on show all properties while playing & unsafe properties [Display All Blueprint Properties](ue4guide/general-debugging/display-all-blueprint-properties)
 - Toggle allow execution of script functions in editor
 - EditActor: to bring up detail view of actor
 
