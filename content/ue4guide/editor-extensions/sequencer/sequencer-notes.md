@@ -74,7 +74,7 @@ Spawning: happens through a struct called
 
   - Can override and has extensibility for managing your own cache of objects
 
-  - **FLevelSequenceObjectSpawner** is the default for actors. **FControlRigObjectSpawner** is a great example to study
+  - **FLevelSequenceActorSpawner** is the default for actors. **FControlRigObjectSpawner** is a great example to study
 
 - **SpawnExecutionTokens:**
 
