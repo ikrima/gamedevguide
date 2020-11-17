@@ -25,7 +25,7 @@ Use windbg.exe to open dump file
 Use following command:
 `!analyze -v`
 
-Debugging BSOD/Bugcheck/:
+Debugging BSOD/Bugcheck:
 <https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/index>
 
 Live Kernel Mode Debugging:
