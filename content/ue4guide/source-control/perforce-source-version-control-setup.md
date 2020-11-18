@@ -2,22 +2,18 @@
 sortIndex: 2
 sidebar: ue4guide
 ---
+# Perforce Source Control Setup
 
-# Connect To Epic Perforce Depot/Downloading Epic Engine Source Code:
+## Connect To Epic Perforce Depot/Downloading Epic Engine Source Code:
 
 <https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/index.html>
-
 <https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/index.html>
-
 <https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/setup/index.html>
-
 <https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/VPNSetup/index.html>
-
 <https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/Syncing/index.html>
-
 <https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/Integration/index.html>
 
-# Assembla performance optimizations
+## Assembla performance optimizations
 
 <https://articles.assembla.com/using-perforce/speed-up-your-perforce-repo-with-p4v>
 
@@ -28,9 +24,9 @@ p4 property -a -n filesys.bufsize -v 2M
 p4 property -a -n net.tcpsize -v 2M
 ```
 
-# Setting Up Perforce Source Control
+## Setting Up Perforce Source Control
 
-## Make Sure P4 Service is running
+### Make Sure P4 Service is running
 
 - Run as root:
 
@@ -38,25 +34,25 @@ p4 property -a -n net.tcpsize -v 2M
   /volume1/KnL/Perforce/start.sh
   ```
 
-## Set up ignore
+### Set up ignore
 
 ```batch
 p4 set P4IGNORE=.gitignore
 ```
 
-## Setting up new user
+### Setting up new user
 
 - Create access rights on our server
 
 - Create account in P4Admin
 
-## Disable user account creation for anyone but you:
+### Disable user account creation for anyone but you:
 
 - Open terminal in perforce workspace directory from super user account
 
 - `batch>p4 configure set dm.user.noautocreate=2`
 
-## Checking out a project
+### Checking out a project
 
 1. Open p4v and enter credentials to connect
 1. Go to Connection > New Workspace
@@ -65,11 +61,11 @@ p4 set P4IGNORE=.gitignore
 1. Right click on the folder in the depot that represents the project and choose "Include Tree". Right click on other projects and choose "Exclude Tree" (it doesn't work to just whitelist with "include tree", which seems silly -- is it configurable?).
 1. Check the box to automatically get latest revisions, otherwise you'll have to do it manually after the workspace is created.
 
-## Deleting a workspace
+### Deleting a workspace
 
 If you screw up you can delete a workspace. Go to Connection -> Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type `batch>p4 client -d [workspace-name]`
 
-# Useful commands
+## Useful commands
 
 - **(local workspace to depot) Fast Reconcile of local files that have been edited, added, deleted and with special characters in their name**
 
@@ -122,13 +118,13 @@ If you screw up you can delete a workspace. Go to Connection -> Choose Workspace
   - Revert all files in janedoe-workspace workspace
     `batch>p4 revert  -c 1125 -C janedoe-workspace //...`
 
-## Set editor
+### Set editor
 
 ```batch
 p4 set P4Editor="C:/Program Files/Sublime Text 3/subl.exe --wait"
 ```
 
-## Tell P4 That Local Files Are Already Synced
+### Tell P4 That Local Files Are Already Synced
 
 1. Note the last changelist synced
 
@@ -142,7 +138,7 @@ The [flush](https://www.perforce.com/manuals/v15.1/cmdref/p4_flush.html) command
 
 *Reference From <https://stackoverflow.com/questions/7030296/how-do-i-move-a-perforce-workspace-folder>*
 
-## Create fast branch stream
+### Create fast branch stream
 
 From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:
 
@@ -168,7 +164,7 @@ p4 sync
 >
 > *Reference From <https://stackoverflow.com/questions/32697907/how-to-efficiently-work-with-a-task-stream>*
 
-## Merge from parent stream
+### Merge from parent stream
 
 While we’re working on features in //Ace/DEV, other changes are being submitted to //Ace/MAIN. Here’s how we merge those changes into the //Ace/DEV branch:
 
@@ -180,7 +176,7 @@ While we’re working on features in //Ace/DEV, other changes are being submitte
 
 *Reference From <https://www.perforce.com/blog/streams-tiny-tutorial>*
 
-## Push stream changes back to mainline
+### Push stream changes back to mainline
 
 “Promote” is simply another way of saying “copy up after merging everything down”. So let’s make sure we’ve merged everything down first:
 
@@ -219,7 +215,7 @@ p4 property -a -n ***name*** -v ***value***
 
 *Reference From <https://community.perforce.com/s/article/1273>*
 
-## Setup the typemap
+### Setup the typemap
 
 ```batch
 p4 typemap
@@ -263,7 +259,7 @@ binary+l //depot/....udk
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceControl/Perforce/index.html>*
 
-## Set the typemap on existing files
+### Set the typemap on existing files
 
 - The P4 command
 
@@ -278,13 +274,13 @@ binary+l //depot/....udk
 
   *Reference From <https://community.perforce.com/s/article/3114>*
 
-- Or use our script
+- Or use the internal python utility scripts
 
   ```batch
   Utility/reconcile.py p4retypemap
   ```
 
-## Diff
+### Diff
 
 You can diff Blueprints using built-in diffing tool
 
