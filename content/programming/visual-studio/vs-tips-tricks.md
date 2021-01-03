@@ -1,4 +1,4 @@
----
+﻿---
 sortIndex: 1
 sidebar: programming
 ---
@@ -179,6 +179,7 @@ The way to scope the global is as follows using the Context Operator:
 
 # Misc
 
+## Dependencies
 When trying to find all the libraries the project is loading & the order, add this flag to linker additional options:
 `/verbose:lib`
 
@@ -189,3 +190,9 @@ dumpbin.exe /Directives (use to see the runtime library that is linked
 dumpbin.exe /HEADERS  (use to see if x86 vs x64 in the machine entry)
  DUMPBIN /LINKERMEMBER[:{1|2}] <libraryname.lib>      (output all the exported symbols in a lib)
 ```
+
+## Property Sheets
+
+Dump final merged properties from all .props files: `batch>msbuild /pp:temp.xml .build/es2.vcxproj`
+You can also set the MSBuild Logging level to Diagnostic
+![](../assets/propsheet-msbuild-diag.png)
