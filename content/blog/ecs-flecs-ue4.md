@@ -20,7 +20,7 @@ Over the last couple of years, I've been using [flecs](https://github.com/Sander
 
 - Initially using it for ECS for gameplay to simplify netcode
   - [Overwatch GDC talk](https://www.youtube.com/watch?v=W3aieHjyNvw) flipped my opinion of ECS a couple years back
-  - rolled my own "quick & dirty" but quickly became a support issue/time sink
+  - rolled my own "quick &amp; dirty" but quickly became a support issue/time sink
 - Since I'm slowly transitioning into *GrumpyOldProgrammer™* stage that complains about how broken everything is, I was reluctant to use a 3rd party lib
   - Don't want to subsume tech debt of the lib
   - Always thinking about the "debugging release stopping bug at 4 am, hours before go-live" scenario. Horrible position to be in but order of magnitude worse when it's in some third party lib
@@ -35,7 +35,7 @@ Over the last couple of years, I've been using [flecs](https://github.com/Sander
   - Turn off all the things!: Usually I start with a lib and try to use the minimal feature set to satisfy why I wanted the lib in the first place. Was pleasantly surprised with flecs that it was relatively easy to do this. I didn't have to pay the (dev) cost of figuring out any of it's feature set to get some simple systems running
   - The other green flag was how easy it was to default to "manual" mode for most things e.g. manual timestep, manual staging, manual triggering of systems.
     - Very important when integrating with very complicated codebases with lots of legacy code like UE4 like dealing with UE4's UObjects
-    - Seems obvious but subtle to get right while balancing api complexity & being bug free bc complexity grows combinatorially with every new flag/option.
+    - Seems obvious but subtle to get right while balancing api complexity &amp; being bug free bc complexity grows combinatorially with every new flag/option.
   - Over time, started to incorporate more and more features, often replacing simpler ones I'd already sketched out
 - Minimal API =&gt; easy to integrate
   - UE4's very complicated and often times forced to wrestle with how to get UE4 "out of the way"
