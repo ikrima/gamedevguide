@@ -7,7 +7,7 @@ root: '/blog'
 
 # Bringing ECS to UE4: My experience with flecs
 
-Over the last couple of years, I've been using [flecs](https://github.com/SanderMertens/flecs) to bring ECS to UE4.
+Over the last couple of years, I've been using [flecs](https://github.com/SanderMertens/flecs) to bring ECS to UE4. Wanted to jot some thoughts, mainly as a reminder to myself of useful design principles but also share my experience with others for anyone in the same boat.
 
 ## TLDR on why flecs sparks joy
 
