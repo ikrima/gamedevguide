@@ -1,11 +1,7 @@
 ---
 title: 'Source code: A radiative transfer framework for non-exponential media'
 date: '2019-01-17'
-coverImage: './assets/hello.jpg'
-author: 'Elliot'
-excerpt: '"Hello, friend?" That''s lame. Maybe I should give you a name...'
-tags: ['rob____ot', 'hello friend']
-parents: ['ue4guide']
+parents: ['blog']
 root: '/blog'
 ---
 
