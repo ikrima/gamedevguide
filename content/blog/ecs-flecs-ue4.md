@@ -10,6 +10,7 @@ root: '/blog'
 Over the last couple of years, I've been using [flecs](https://github.com/SanderMertens/flecs) to bring ECS to UE4.
 
 ## TLDR on why flecs sparks joy
+
 - *It Just Works™*
 - Well designed minimalist API => easy to integrate + easy to extend
 - C99 so easy to integrate with UE4's complex build system
@@ -21,11 +22,9 @@ Over the last couple of years, I've been using [flecs](https://github.com/Sander
 - Initially using it for ECS for gameplay to simplify netcode
   - [Overwatch GDC talk](https://www.youtube.com/watch?v=W3aieHjyNvw) flipped my opinion of ECS a couple years back
   - rolled my own "quick & dirty" but quickly became a support issue/time sink
-
 - Since I'm slowly transitioning into *GrumpyOldProgrammer™* stage that complains about how broken everything is, I was reluctant to use a 3rd party lib
   - Don't want to subsume tech debt of the lib
   - Always thinking about the "debugging release stopping bug at 4 am, hours before go-live" scenario. Horrible position to be in but order of magnitude worse when it's in some third party lib
-
 - Pleasantly surprised at flecs on this ie code quality,robustness and ofc, perf
 
 ## Minimal api/C99
@@ -33,15 +32,12 @@ Over the last couple of years, I've been using [flecs](https://github.com/Sander
 - imho, sign of a well designed lib is linear cost of using lib features vs. api cost. Most of time it's either
   - logarithmic: super complicated to do basic things but once you summit the cliff, complexity plateus
   - exponential: super easy to get going but a cliff once you start wanting to do meaningful stuff
-
-- I've found flecs to be pretty close to linear.
-  - "Turn off all the things!": Usually I start with a lib and try to use the minimal feature set to satisfy why I wanted the lib in the first place. Was pleasantly surprised with flecs that it was relatively easy to do this. I didn't have to pay the (dev) cost of figuring out any of it's feature set to get some simple systems running
-
+- I've found flecs to be pretty close to linear
+  - Turn off all the things!: Usually I start with a lib and try to use the minimal feature set to satisfy why I wanted the lib in the first place. Was pleasantly surprised with flecs that it was relatively easy to do this. I didn't have to pay the (dev) cost of figuring out any of it's feature set to get some simple systems running
   - The other green flag was how easy it was to default to "manual" mode for most things e.g. manual timestep, manual staging, manual triggering of systems.
-      - Very important when integrating with very complicated codebases with lots of legacy code like UE4 like dealing with UE4's UObjects
-      - Seems obvious but subtle to get right while balancing api complexity & being bug free bc complexity grows combinatorially with every new flag/option.
-    - Over time, started to incorporate more and more features, often replacing simpler ones I'd already sketched out
-
+    - Very important when integrating with very complicated codebases with lots of legacy code like UE4 like dealing with UE4's UObjects
+    - Seems obvious but subtle to get right while balancing api complexity & being bug free bc complexity grows combinatorially with every new flag/option.
+  - Over time, started to incorporate more and more features, often replacing simpler ones I'd already sketched out
 - Minimal API => easy to integrate
   - UE4's very complicated and often times forced to wrestle with how to get UE4 "out of the way"
   - Other libs I perused where either of suspect code quality or relied on too much C++ bullshittery.
@@ -53,7 +49,6 @@ Over the last couple of years, I've been using [flecs](https://github.com/Sander
     - Will it compile? 🤣 Playing nicely with UHT/UBT is non-trivial.
     - How likely will it play nicely with future UE4 engine updates?
     - If I run into a weird nightmare edgecase, most likely imposed by UE4, how easy will I be able to contort the library to workaround it? Can't count number of times I ran into a problem that could be fixed with a couple line change in UE4 but at a deep base layer and then forced into a herculean effort to get a tp lib working
-
   - For those with a physics bg, another complexity piece is that programming is "hamiltonian, not euclidian". You have to consider the whole path, not just the distance from where you started and where you wanted to end up. Ex: [Entt](https://github.com/skypjack/entt) is pretty solid but was immediately no-go given it's liberal use of C++ ~~bullshittery~~ advanced features 😜
     - I remember one of the VS2019 updates fixed a compiler bug that was crashing a plugin while introducing a new one that broke the latest UE4 version that an artist needed bc of some new feature. That is programmer hell 🤦‍♀️
     - Even though, I've replicated a lot of Entt's feature sets over time, sometimes even braving C++ bullshit (inevitably always ending in regret and questioning one's life choices), I wouldn't want to be forced into paying an upfront cost to all that complexity. Especially because at the start, I don't know what features I'll end up needing or not
