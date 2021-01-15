@@ -3,6 +3,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b04d49f2-9006-49ee-9f9a-569f59732aff/deploy-status)](https://app.netlify.com/sites/gamedevguide/deploys)
 
 [Site live @ https://bebylon.dev/](https://bebylon.dev/)
+
 [Github repo @ https://github.com/ikrima/gamedevguide](https://github.com/ikrima/gamedevguide)
 
 These are my personal notes from the past 4 years that I'm transforming from our internal dev onboarding guide.
