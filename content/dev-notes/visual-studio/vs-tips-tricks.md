@@ -13,13 +13,13 @@ Syntax
 
 * There are two ways of specifying context:
   1. `cpp>{,,[module] } expression`
-     
+
      * The braces must contain two commas and the module (executable or DLL) name or full path.
      * For example, to set a breakpoint at the SomeFunction function of EXAMPLE.dll:
        * `cpp>{,,EXAMPLE.dll}SomeFunction`
        * `cpp>module!expression`
   1. `cpp>module!expression`
-     
+
      * Ex: `cpp>EXAMPLE.dll!SomeFunction`
 * *module* is the name of a module. You can use a full path to disambiguate between modules with the same name.
   * If the module path includes a comma, an embedded space, or a brace, you must use quotation marks around the path so that the context parser can properly recognize the string. Single quotation marks are considered part of a Windows file name, so you must use double quotation marks. For example,
@@ -129,7 +129,7 @@ where foobar.dll defines g_pMyStruct as a global pointer. The same syntax can be
 ## Advanced Debugging
 
 * Common Visual Studio Commands:
-  
+
   * https://docs.microsoft.com/en-us/visualstudio/ide/reference/visual-studio-commands
   * Complete commands can be found in Keyboard, EnvironmentOptions dialog box
 * Can use VCMD to create macros as commands
@@ -138,22 +138,22 @@ where foobar.dll defines g_pMyStruct as a global pointer. The same syntax can be
   Ex: >Debug.AttachDetach
 
 * Execute code in a macro:
-  
+
   ````csharp
   DTE.Debugger.ExecuteStatement("variable_name=0")
   ````
-  
+
   *Reference From http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value*
 
 * Can execute code in Action:print message section of breakpoint settings by wrapping the value in textfield with {}. Ex:
-  
+
   * `{ variable_name=0}` will set variable_name=0
 * You can also concatenate several instructions on the same line. They simply have to be separated by curly braces:
-  
+
   ````cpp
   { {done = (i == 100);} { object.x -= 1.0f; } { data\[15] = 3; } }
   ````
-  
+
   *Reference From https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints*
 
 ## Tools
@@ -189,5 +189,5 @@ dumpbin.exe /HEADERS  (use to see if x86 vs x64 in the machine entry)
 ### Property Sheets
 
 Dump final merged properties from all .props files: `batch>msbuild /pp:temp.xml .build/es2.vcxproj`
-You can also set the MSBuild Logging level to Diagnostic 
-![propsheet-msbuild-diag.png](..\..\_assets\dev-notes\propsheet-msbuild-diag.png)
+You can also set the MSBuild Logging level to Diagnostic
+![propsheet-msbuild-diag.png](../../_assets/dev-notes/propsheet-msbuild-diag.png)

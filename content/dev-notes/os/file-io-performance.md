@@ -5,7 +5,7 @@ By default, Windows caches file data that is read from disks and written to disk
 Caching occurs under the direction of the cache manager, which operates continuously while Windows is running. File data in the system file cache is written to the disk at intervals determined by the operating system, and the memory previously used by that file data is freed—this is referred to as flushing the cache. The policy of delaying the writing of the data to the file and holding it in the cache until the cache is flushed is called lazy writing, and it is triggered by the cache manager at a determinate time interval. The time at which a block of file data is flushed is partially based on the amount of time it has been stored in the cache and the amount of time since the data was last accessed in a read operation. This ensures that file data that is frequently read will stay accessible in the system file cache for the maximum amount of time.
 
 This file data caching process is illustrated in the following figure.
-![os-filecaching-illustration.png](..\..\_assets\dev-notes\os-filecaching-illustration.png)
+![os-filecaching-illustration.png](../../_assets/dev-notes/os-filecaching-illustration.png)
 
 As depicted by the solid arrows in the previous figure, a 256 KB region of data is read into a 256 KB cache "slot" in system address space when it is first requested by the cache manager during a file read operation. A user-mode process then copies the data in this slot to its own address space.
 

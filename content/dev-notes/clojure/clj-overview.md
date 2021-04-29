@@ -44,7 +44,7 @@
 "a"
 
 ;; keyword is a first-class value type in clojure
-=> (def m {:key "value", :another-key "almost like js right?"}) 
+=> (def m {:key "value", :another-key "almost like js right?"})
 => (type :key)
 clojure.lang.Keyword
 
@@ -54,14 +54,14 @@ clojure.lang.Keyword
   * `'author` => get at symbol
 * vars (== symbol to value bindings) are also values
   * `#'author` => get at var
-    ![clj-bindings-are-values.png](..\..\_assets\dev-notes\clj-bindings-are-values.png)
+    ![clj-bindings-are-values.png](../../_assets/dev-notes/clj-bindings-are-values.png)
   * `binding` expr for rebind value temporarily inside this scope
   * must mark with `^:dynamic` meta data
   * convention is to name var with **
   ````clojure
   (def ^:dynamic *debug-enabled* false)
-  (defn debug [msg] 
-  	(if *debug-enabled* 
+  (defn debug [msg]
+  	(if *debug-enabled*
        (println msg)))
   (binding [*debug-enabled* true]
       (debug "Calling that darned function")
@@ -77,7 +77,7 @@ clojure.lang.Keyword
 
 ## DSL/Compiler
 
-![clojure-compiler-flow.png](..\..\_assets\dev-notes\clojure-compiler-flow.png)
+![clojure-compiler-flow.png](../../_assets/dev-notes/clojure-compiler-flow.png)
 
 * reader: parser that should use treesitter for
 
@@ -86,7 +86,7 @@ clojure.lang.Keyword
 * ferret
 
 * Tools/libs
-  
+
   * clojure.tools.analyzer: https://github.com/clojure/tools.analyzer
   * https://github.com/stuartsierra/dependency
   * Terra (Lua metaprogramming layer over C ): [http://terralang.org/](http://terralang.org/)
@@ -98,7 +98,7 @@ clojure.lang.Keyword
     * https://clojuredocs.org/clojure.core/tree-seq
     * https://github.com/clojure/core.match
     * clojure enlive
-  * treesitter implementations: 
+  * treesitter implementations:
     * https://github.com/sogaiu/tree-sitter-clojure
     * https://www.reddit.com/r/Clojure/comments/fkc6uv/is_anyone_working_on_a_treesitter_parser_for/fksmf67?utm_source=share&utm_medium=web2x
     * https://github.com/oakmac/tree-sitter-clojure
@@ -128,14 +128,14 @@ clojure.lang.Keyword
 ### Sequence Transformation
 
 * Desired Result
-  
+
   ````clojure
   ;EBNF
   ns <= "obj" | "oppas" | "dc"
   segattr <= ["/"] "@" alphanumeric
   segobj  <= ["/"] alphanumeric
   xpath   <= ns (segattr|segobj) {(segattr|segobj)}
-  
+
   ; Input
   "obj:/myobj/mychild/@myattrib"
   ;; Result =>
@@ -148,7 +148,7 @@ clojure.lang.Keyword
   ````
 
 * What this shows:
-  
+
   * Input: a tokenized string
   * Make sure tokens match order pattern (`nstoken xseg {xseg}` )
   * Transform each of the tokens based on the token
@@ -159,7 +159,7 @@ clojure.lang.Keyword
     ````
 
 * **Normal Clojure**
-  
+
   ````clojure
   (defn initOppath-clj [axpath]
       (let [nsandpath (str/split axpath #"[:]" 2)
@@ -180,9 +180,9 @@ clojure.lang.Keyword
   ````
 
 * **Meander**
-  
-  * **Naive attempt**: 
-    
+
+  * **Naive attempt**:
+
     ````clojure
     (defn initOppath-m1 [axpath]
       (let [axptokens (str/split axpath #"[/:]")]
@@ -195,9 +195,9 @@ clojure.lang.Keyword
                     (->OppathSeg :seg-chld %1))
                  (rest axptokens))}))
     ````
-  
+
   * **Second Attempt:** Better but a nitpick is the functional transformation is on the pattern matching clause where conceptually feels like it should go in the generation part
-    
+
     ````clojure
     (defn initOppath-m2 [axpath]
           (m/match (str/split axpath #"[/:]")
@@ -205,24 +205,24 @@ clojure.lang.Keyword
                      %segobj  (m/pred #(not= (first %1) \@) (m/app #(->OppathSeg :seg-chld %1) !seg))]
                     [(m/re #"obj|oppas|dc" ?ns)
                      . (m/or %segobj %segattr) ...])
-            {:ns (keyword ?ns) :xsegs !seg}))        
+            {:ns (keyword ?ns) :xsegs !seg}))
     ````
-  
+
   * **Cleaner Solution** Use a helper to construct the xseg:
-    
+
     ````clojure
     (defn make-xseg [val]
       (m/rewrite val
         (m/re #"@.*" ?val)
         {:kind :seg-attr :val ?val}
-    
+
         (m/re #"[^@].*" ?val)
         {:kind :seg-chld :val ?val}
-    
+
         ?val
         {:kind :unknown :val ?val}))
-    
-    
+
+
     (m/rewrite ["oppas" "obj1" "@attr1" "@attr2" "obj2"]
       [(m/re #"obj|oppas|dc" ?ns) . !segs ...]
       {:ns (m/keyword ?ns)
@@ -235,60 +235,60 @@ clojure.lang.Keyword
       {:kind :seg-attr, :val "@attr2"}
       {:kind :seg-chld, :val "obj2"}]}
     ````
-  
+
   * **Concise Using Recursion**: The second uses `m/cata` on the left or right side:
-    
+
     * Left side
-      
+
       ````clojure
       (m/rewrite ["oppas" "obj1" "@attr1" "@attr2" "obj2"]
         [(m/re #"obj|oppas|dc" ?ns) . (m/cata !segs) ...]
         {:ns (m/keyword ?ns)
          :xsegs [!segs ...]}
-      
+
         (m/re #"@.*" ?val)
         {:kind :seg-attr :val ?val}
-      
+
         (m/re #"[^@].*" ?val)
         {:kind :seg-chld :val ?val}
-      
+
         ?val
         {:kind :unknown :val ?val})
       ````
-    
+
     * Right side
-      
+
       ````clojure
       (m/rewrite ["oppas" "obj1" "@attr1" "@attr2" "obj2"]
         [(m/re #"obj|oppas|dc" ?ns) . !segs ...]
         {:ns (m/keyword ?ns)
          :xsegs [(m/cata !segs) ...]}
-      
+
         (m/re #"@.*" ?val)
         {:kind :seg-attr :val ?val}
-      
+
         (m/re #"[^@].*" ?val)
         {:kind :seg-chld :val ?val}
-      
+
         ?val
         {:kind :unknown :val ?val})
       ````
-  
+
   * **Final Solution:** Cata on the right side can be used to construct a value to be recursively rewritten. It’s the dual of the left.
-    
+
     ````clojure
     (m/rewrite ["oppas" "obj1" "@attr1" "@attr2" "obj2"]
       [(m/re #"obj|oppas|dc" ?ns) . !segs ...]
       {:ns (m/keyword ?ns)
        :xsegs [(m/cata ($EXAMPLE !segs)) ...]}
-    
+
       ($EXAMPLE (m/re #"@.*" ?val))
       {:kind :seg-attr :val ?val}
-    
+
       ($EXAMPLE (m/re #"[^@].*" ?val))
-    
+
       {:kind :seg-chld :val ?val}
-    
+
       ($EXAMPLE ?val)
       {:kind :unknown :val ?val})
     ;; =>
@@ -303,7 +303,7 @@ clojure.lang.Keyword
 ### Split stream based on filter and project   (1-to-many)
 
 * Pseudo code:
-  
+
   ````clojure
   filter(
     (predA? x) => (projA x) :as !projAseq
@@ -312,7 +312,7 @@ clojure.lang.Keyword
   ````
 
 * Clojure Code
-  
+
   ````clojure
   ;; Test Data
   (def arglist [{:name :inBoneTrk    :argFlags #{:EArg-In}}
@@ -330,14 +330,14 @@ clojure.lang.Keyword
   {:opmirArgIn  [{:name     :inBoneTrk
                   :argFlags #{:EArg-In}}]
    :opmirArgOut [{:name     :inoutBoneTrk
-                  :argFlags #{:EArg-Out :EArg-In}} 
+                  :argFlags #{:EArg-Out :EArg-In}}
                  {:name     :outBoneTrk
                   :argFlags #{:EArg-Out}}]}
-  
+
   ````
 
 * Now let's use m/search to see the difference
-  
+
   ````clojure
   (m/search
    arglist
@@ -348,15 +348,15 @@ clojure.lang.Keyword
     :opmirArgOut !argOut})
   ;; =>
   ({:opmirArgIn [{:name :inBoneTrk, :argFlags #{:EArg-In}}]
-    :opmirArgOut [{:name :inoutBoneTrk, :argFlags #{:EArg-Out :EArg-In}} 
+    :opmirArgOut [{:name :inoutBoneTrk, :argFlags #{:EArg-Out :EArg-In}}
                   {:name :outBoneTrk, :argFlags #{:EArg-Out}}]}
-   {:opmirArgIn [{:name :inBoneTrk, :argFlags #{:EArg-In}} 
+   {:opmirArgIn [{:name :inBoneTrk, :argFlags #{:EArg-In}}
                  {:name :inoutBoneTrk, :argFlags #{:EArg-Out :EArg-In}}]
     :opmirArgOut [{:name :outBoneTrk, :argFlags #{:EArg-Out}}]})
   ````
 
 * Now let's look using m/scan
-  
+
   ````clojure
   (m/search
    arglist
@@ -364,13 +364,13 @@ clojure.lang.Keyword
    ?argIn)
   ;; =>
   ({:name     :inBoneTrk
-    :argFlags #{:EArg-In}} 
+    :argFlags #{:EArg-In}}
    {:name     :inoutBoneTrk
     :argFlags #{:EArg-Out :EArg-In}})
   ````
 
 * Now let's look at m/scan with a memory variable
-  
+
   ````clojure
   (m/search
    arglist
@@ -387,10 +387,10 @@ clojure.lang.Keyword
 
 ## TODO
 
-* How to do EBNF like production rules.  Ex: 
+* How to do EBNF like production rules.  Ex:
   ````clojure
   token ::= (:arg-in|:arg-out) ?argname
-  pseudocode-result:: (str (emit-in ?arg-attr)|emit-out :arg-attr) ?argname)    
+  pseudocode-result:: (str (emit-in ?arg-attr)|emit-out :arg-attr) ?argname)
   ````
 
 ---

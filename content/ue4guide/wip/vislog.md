@@ -155,7 +155,7 @@ It can happen we want logs of one actor to be associated with logs of another, l
 
 A tool has been created to enable users (not only programmers) to view gathered information. It’s a very basic implementation that will be developed further, but it’s already usable and supplies basic functionality. The name is LogVisualizer and here is roughly what it does:
 
-![](assets/vislog.png)
+![](../assets/vislog.png)
 
 - Recording start/stop button
 

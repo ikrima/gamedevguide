@@ -23,12 +23,12 @@
 * expandMacros
 
 * treeRepr, repr, lispRepr
-  
+
   ````python
   macro myAssert(arg: untyped): untyped =
     echo arg.treeRepr
   ````
-  
+
   * see generated code
   ````python
   macro myAssert(arg: untyped): untyped =
@@ -39,7 +39,7 @@
     let op  = newLit(" " & arg[0].repr & " ")
     let lhs = arg[1]
     let rhs = arg[2]
-  
+
     result = quote do:
       if not `arg`:
         raise newException(AssertionError,$`lhs` & `op` & $`rhs`)
@@ -55,13 +55,13 @@
 * `getAst` (pass macro or template), `quote do:` pass statements/expressions, code inside the body of quote can be substituted by surrounding it with backticks.
 
 * extraction from ast nodes
-  
+
   * name(x) - name of proc
   * body(x) - body
   * createProcType
   * typeof
 
-![NimAstTable.png](..\_assets\dev-notes\NimAstTable.png)
+![NimAstTable.png](../_assets/dev-notes/NimAstTable.png)
 
 # Nim Script
 
@@ -103,11 +103,11 @@
 * https://github.com/nimterop/nimterop/wiki/Wrappers
 
 * Parsing
-  
+
   * https://github.com/loloicci/nimly
   * https://forum.nim-lang.org/t/3881
 * Learning
-  
+
   * Basics
     https://nim-lang.org/learn.html
     https://livebook.manning.com/book/nim-in-action/chapter-8/45
