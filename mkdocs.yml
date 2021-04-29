@@ -3,7 +3,7 @@ site_name: Gamedev Guide
 site_description: >-
   Gamedev Guide: Programming with Unreal Engine, Houdini, Math, & Graphics
 site_author: ikrimae
-site_url: https://bebylon.dev/
+site_url: https://ikrima.dev/
 
 # Repository
 repo_name: ikrima/gamedevguide
@@ -40,6 +40,7 @@ theme:
     - navigation.instant
     # - navigation.expand
     # - toc.integrate
+    # - navigation.indexes
   palette:
     scheme: slate
     primary: blue
@@ -51,7 +52,7 @@ theme:
     # code: Hack
   # icon:
   #   logo: logo
-  favicon: assets/favicon.png
+  # favicon: _sitefiles/favicon.png
 
 # Extras
 extra:
@@ -124,11 +125,11 @@ markdown_extensions:
   #     check_paths: true
 
 extra_javascript:
-  - assets/katex/katex.min.js
-  - assets/arithmatex-katex.js
+  - _sitefiles/katex/katex.min.js
+  - _sitefiles/arithmatex-katex.js
 extra_css:
-  - assets/katex.min.css
-  - assets/mkdocs-extra.css
+  - _sitefiles/katex/katex.min.css
+  - _sitefiles/mkdocs-extra.css
 
 # Google Analytics
 google_analytics:

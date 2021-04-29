@@ -6,6 +6,8 @@
 
 [Github repo @ https://github.com/ikrima/gamedevguide](https://github.com/ikrima/gamedevguide)
 
+## Wut is this
+
 These are my personal notes from the past 4 years that I'm transforming from our internal dev onboarding guide.
 
 I'm aiming to process about one section a day since the conversion from onenote/evernote/confluence is lossy and needs a final human pass to clean up little niggles.
@@ -15,8 +17,17 @@ You can subscribe to the repo for updates
 
 - Originally built with gatsby, migrating to mkdocs
 - My notes related to the webdev of the site are in the gitrepo/docs folder
+- Webdev is pita; I mostly use obsidian/vscode to access the markdown notes and recommend the same or another markdown app/sublime text or even [https://github1s.com/ikrima/gamedevguide](https://github1s.com/ikrima/gamedevguide) for the lazy
 
-## Conversion Status
+## Current Conversion Status
+
+Restarting of rationalizing all notes/guides into one place...
+
+- [-] Programming
+- [-] Graphics
+- [-] Houdini
+
+## Finished Conversion
 
 - [x] Conversion scripts from onenote/trillium to custom central store
 - [x] UE4
@@ -29,6 +40,3 @@ You can subscribe to the repo for updates
   - [x] Tooling
   - [x] Engine Programming
   - [x] Rendering
-- [-] Graphics
-- [-] Programming
-- [-] Houdini
