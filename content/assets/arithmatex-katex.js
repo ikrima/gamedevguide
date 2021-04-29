@@ -20,7 +20,9 @@
     var onReady = function onReady(fn) {
       if (document.addEventListener) {
         document.addEventListener("DOMContentLoaded", fn);
-        document.addEventListener("DOMContentSwitch", fn);
+        // document.addEventListener("DOMContentSwitch", fn);
+        document$.subscribe(fn);
+        // location$.subscribe(fn);
       } else {
         document.attachEvent("onreadystatechange", function () {
           if (document.readyState === "interactive") {
@@ -37,4 +39,4 @@
     });
   })();
 
-  }());
+}());

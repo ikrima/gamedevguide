@@ -36,8 +36,10 @@ theme:
   # custom_dir: themes/material/material
   language: en
   features:
-    - tabs
-    - instant
+    - navigation.tabs
+    - navigation.instant
+    # - navigation.expand
+    # - toc.integrate
   palette:
     scheme: slate
     primary: blue
@@ -65,6 +67,7 @@ extra:
 plugins:
   - search:
       separator: '[\s\-\.]+'
+      prebuild_index: true
   - git-revision-date-localized
   - awesome-pages:
       collapse_single_pages: true
@@ -79,6 +82,7 @@ markdown_extensions:
   - admonition
   - toc:
       permalink: "#"
+      toc_depth: 6
   - codehilite:
       pygments_style: solarized-dark
       guess_lang: true
@@ -120,10 +124,11 @@ markdown_extensions:
   #     check_paths: true
 
 extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js
-  - assets/arithmatexkatex.js
+  - assets/katex/katex.min.js
+  - assets/arithmatex-katex.js
 extra_css:
-  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css
+  - assets/katex.min.css
+  - assets/mkdocs-extra.css
 
 # Google Analytics
 google_analytics:
