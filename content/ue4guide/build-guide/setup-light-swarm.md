@@ -42,11 +42,11 @@ Add SwarmCoordinator.exe and SwarmAgent.exe to startup.
 
 Run SwarmCoordinator.exe.
 
-![](../../assets/RunSwarmCoordinator55420277.png)
+![](../assets/RunSwarmCoordinator55420277.png)
 
 Run SwarmAgent.exe and select **Settings** tab.
 
-![](../../assets/RunSwarmAgent82527089.png)
+![](../assets/RunSwarmAgent82527089.png)
 
 Set next values:
 
@@ -72,7 +72,7 @@ Most interesting options here – LocalJobsDefaultProcessorCount, LocalJobsDefau
 
 If you look in coordinator now, you can see first agent, which running on this computer.
 
-![](../../assets/SwarmCoordinator52162751.png)
+![](../assets/SwarmCoordinator52162751.png)
 
 So, optionally, coordinator can be an agent too.
 
@@ -98,7 +98,7 @@ Don’t forget to add SwarmAgent.exe to startup.
 
 When setup completed, and all agents visible through coordinator, try to build any map. You will see all processes of connected agents, in this machine’s agent. And instead of few hours, build takes only a few minutes.
 
-![](../../assets/SwarmAgentInAction2.png)
+![](../assets/SwarmAgentInAction2.png)
 
 Also, try to install agents only on powerful computers, it will prevent build delays, and decreases build time.
 

@@ -173,4 +173,4 @@ Structure of Plug-in Dependencies
 
  •Same build rules
 
-![](../assets/PluginsModules-plugindepend.png)
+![](../../assets/PluginsModules-plugindepend.png)
