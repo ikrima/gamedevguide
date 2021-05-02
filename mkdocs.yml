@@ -145,7 +145,7 @@ google_analytics:
 #   highlightjs: true
 #   hljs_languages:
 #     - nim
-# google_analytics: ['UA-47614715-1', 'bebylon.dev']
+# google_analytics: ['UA-47614715-1', 'ikrima.dev']
 # shortcuts:
 #     help: 191
 #     next: 39
