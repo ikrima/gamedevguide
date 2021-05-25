@@ -3,8 +3,13 @@
 * [Detailed how to override MSVC CRT's initialization](https://gist.github.com/vaualbus/622099d88334fbba1d4ae703642c2956)
 * [DllMainCRTStartup](https://docs.microsoft.com/en-us/cpp/build/run-time-library-behavior?view=vs-2019)
 * [https://stackoverflow.com/questions/1583193/what-functions-does-winmaincrtstartup-perform](https://stackoverflow.com/questions/1583193/what-functions-does-winmaincrtstartup-perform)
+* [https://stackoverflow.com/questions/22934206/what-is-the-difference-between-main-and-maincrtstartup](https://stackoverflow.com/questions/22934206/what-is-the-difference-between-main-and-maincrtstartup)
+* [https://stackoverflow.com/questions/36187320/maincrtstartup-vs-wmaincrtstartup](https://stackoverflow.com/questions/36187320/maincrtstartup-vs-wmaincrtstartup)
 * [http://zetcode.com/gui/winapi/main/](http://zetcode.com/gui/winapi/main/)
 * [https://internals.rust-lang.org/t/windows-does-rust-need-the-x86-x64-c-runtime-to-be-initalized/11581/7](https://internals.rust-lang.org/t/windows-does-rust-need-the-x86-x64-c-runtime-to-be-initalized/11581/7)
+* [https://docs.microsoft.com/en-us/cpp/build/reference/entry-entry-point-symbol?view=vs-2019](https://docs.microsoft.com/en-us/cpp/build/reference/entry-entry-point-symbol?view=vs-2019)
+* [https://docs.microsoft.com/en-us/cpp/build/run-time-library-behavior?view=vs-2019](https://docs.microsoft.com/en-us/cpp/build/run-time-library-behavior?view=vs-2019)
+* [http://coderdreambook.blogspot.com/2013/11/md-vs-mt-options-to-use-run-time-library.html](http://coderdreambook.blogspot.com/2013/11/md-vs-mt-options-to-use-run-time-library.html)
 
 ## Default DLL entry point \_DllMainCRTStartup
 
