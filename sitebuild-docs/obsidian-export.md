@@ -5,8 +5,9 @@
     - Cmd (Note: `obsidian-export.exe` won't override existing files)
 
       ```cmd
+      mkdir gdgTmpContent
       obsidian-export.exe tolva-docs/docs gdgTmpContent
-      robocopy /MIR gdgTmpContent gamedevguide/content
+      robocopy /MIR gdgTmpContent gamedevguide/content/dev-notes
       nukedir gdgTmpContent
       ```
 
