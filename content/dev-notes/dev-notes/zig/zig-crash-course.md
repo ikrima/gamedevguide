@@ -1,11 +1,126 @@
-# Basic Syntax
+# Zig Crash Course
 
-## Imports
+## Reference Material
+
+* [ZigLearn](https://ziglearn.org/)
+* [Zig in 30 minutes](https://gist.github.com/ityonemo/769532c2017ed9143f3571e5ac104e50)
+* [Understanding the Zig Programming Language](https://medium.com/swlh/zig-the-introduction-dcd173a86975)
+
+## Differences
+
+### Excluded features
+
+* string type
+* classes/inheritance/runtime polymorphism
+* interfaces/protocols
+* constructors/destructors/RAII (zig uses defer/errdefer keyword)
+* function/operator overloading
+* closures or lambdas
+* garbage collection
+* exceptions (zig uses error codes instead)
+
+### Added features
+
+* Optional Values are first class citizen, replacing null pointers
+* Errors as first class citizen algebraic types
+* Structs as namespaces
+* Compile time code execution replace macros
+* Loops, labeled blocks, and if statements are expressions
+
+### Semantic departures
+
+* const is immutable and enforced
+
+* variable shadowing not allowed
+
+* there are no truthy values for if statements
+
+* global scope constants are default comptime values; if type is omitted, they are comptime typed
+  
+  ````zig
+  const x: i32 = 47;
+  const y = -47;  // comptime integer.
+  
+  pub fn main() void {
+      var a: i32 = y; // comptime constant coerced into correct type
+      var b: i64 = y; // comptime constant coerced into correct type
+      var c: u32 = y; // error: cannot cast negative value -47 to unsigned integer
+  }
+  ````
+
+* return values must be used by default
+  
+  * ignore by assigning to `_ = foobar()`
+  * all function arguments are immutable
+* Integer conversion/overflow
+  
+  * Implicit integer widening casts allowed
+  
+  * `@intCast` for narrowing conversions. Out of range cast is detectable illegal behavior
+  
+  * Overflows are detectable illegal behavior
+  
+  * To explicitly allow overflow, use overflow operators
+    
+    |Normal Operator|Wrapping Operator|
+    |---------------|-----------------|
+    |+|+%|
+    |-|-%|
+    |\*|\*%|
+    |+=|+%=|
+    |-=|-%=|
+    |\*=|\*%=|
+  
+  ````zig
+  test "well defined overflow" {
+      var a: u8 = 255;
+      a +%= 1;
+      expect(a == 0);
+  }
+  ````
+
+* pointer syntax: (motivation: reduce ambiguities/make type inference easier)
+  
+  ````zig
+  u8           :  one u8
+  *u8          :  pointer to one u8
+  [2]u8        :  2 element fixed size u8 array
+  [*]u8        :  pointer to unknown number of u8
+  [*]const u8  :  pointer to unknown number of immutable u8
+  *[2]u8       :  pointer to 2 element fixed size u8 array
+  *const [2]u8 :  pointer to 2 element fixed size u8 immutable array
+  []u8         :  u8 array slice
+  []const u8   :  u8 immutable array slice
+  
+  var x: i32 = 4;
+  var ptr: *i32 = &x;
+  ptr.* = 15;
+  ````
+
+* Zig Pointer Syntax
+  
+  ````zig
+  
+  ````
+
+* pointers can't be assigned null by default (motivation: stricter type checking. Optional value types are used instead )
+
+* no automatic allocation by convention; any allocation functions explicitly take an allocator argument
+
+* compiler intrinsic functions are prefixed by @ e.g. `@This(), @typeInfo(@TypeOf(args))`
+
+## Basic Syntax
+
+### Imports
 
 * `@import` is built-in function, evaluated at compile time.
+
 * takes in a file, and gives you a struct type based on that file. All declarations labeled as `pub` will end up in result struct for use
+
 * `@import("std")` is a special case in the compiler, and gives you access to the standard library. Other `@import`s will take in a file path, or a package name
+
 * `@import` to import stdlib/files/etc and assign to a namespace
+  
   ````zig
   const std = @import("std");
   
@@ -13,7 +128,7 @@
 
 * almost everything needs to be assigned to an identifier
 
-## Variables
+### Variables
 
 * normal: `var x: i32 = 7;`
 * const: `const x: i32 = 7;`
@@ -21,7 +136,7 @@
   * Zig will fill with `0XAA` for debugging
 * type coercion: `const inferred_constant = @as(i32, 5); `
 
-## Integers
+### Integers
 
 * Zig supports hex, octal and binary integer literals
   ````zig
@@ -40,7 +155,7 @@
   const big_address: u64 = 0xFF80_0000_0000_0000;
   ````
 
-## Floats
+### Floats
 
 * use `@setFloatMode(.Optimized)` to enable -ffast-math
 
@@ -64,29 +179,34 @@
   const more_hex: f64 = 0x1234_5678.9ABC_CDEFp-10;
   ````
 
-* int \<-> float casts:  `@intToFloat` and `@floatToInt`.
+* int \<-> float casts: `@intToFloat` and `@floatToInt`.
   
   * `@intToFloat` is always safe
   * `@floatToInt` is detectable illegal behavior if the float can't fit into integer
 
-## Strings
+### Strings
 
 * string literals are null-terminated utf-8 encoded arrays of `const u8` bytes.
 * length does not include the null termination (officially called "sentinel termination")
 * it's safe to access the null terminator.
 * indices are by byte, not by unicode glyph
 
-## Functions
+### Functions
 
-````zig
-[pub] fn myFunName(arg: argType) returnType {
-  ...body...
-}
-````
+* general syntax
+  ````zig
+  [pub] fn myFunName(arg: argType) returnType {
+    ...body...
+  }
+  ````
 
-## Enums
+* `pub` to mark function as exportable from current scope
+* return values must be used but can be assigned to throw away e.g. `_ = foo();`
+
+### Enums
 
 * can be given namespaced methods
+  
   ````zig
   const Suit = enum {
       clubs,
@@ -100,6 +220,7 @@
   ````
 
 * can also be given namespaced `const/var` variables, which act as namespaced globals. Values are unrelated and unattached to instances of the enum
+  
   ````zig
   const Mode = enum {
       var count: u32 = 0;
@@ -113,7 +234,7 @@
   }
   ````
 
-## Structs
+### Structs
 
 * can be named/anonymous
 * can have default values and members can be init out of order
@@ -132,7 +253,7 @@ var foo = MyObj{.val=0};
 foo.print();
 ````
 
-## Unions
+### Unions
 
 * Bare union types do not have a guaranteed memory layout
 * bare unions cannot be used to reinterpret memory. Accessing a field in a union which is not active is detectable illegal behavior
@@ -148,7 +269,7 @@ foo.print();
   }
   ````
 
-## Tagged Unions
+### Tagged Unions
 
 * Tagged unions are unions which use an enum used to detect which field is active. Here we make use of a switch with payload capturing; captured values are immutable so pointers must be taken to mutate the values.
   
@@ -180,12 +301,12 @@ foo.print();
   const Tagged2 = union(enum) { a: u8, b: f32, c: bool, none };
   ````
 
-## Array
+### Array
 
 * normal array: `var array: [3]u32 = [_]u32{47, 47, 47};`
 * can also slice `[idxStart,idxEnd)`: `var slice: []u32 = array[0..2];`
 
-## Control flow
+### Control flow
 
 * if/switch
   ````zig
@@ -214,7 +335,7 @@ foo.print();
       }
   ````
 
-## Loops
+### Loops
 
 * for loops over arrays or slices
 
@@ -227,6 +348,7 @@ for (string) |_| {}
 ````
 
 * while: has three parts - a condition, a block and a continue expression
+  
   ````zig
   var i: u8 = 2;
   while (i < 100) {
@@ -242,7 +364,7 @@ for (string) |_| {}
   }
   ````
 
-## Pointers
+### Pointers
 
 * Pointer types are declared by prepending `*` to the front of the type. No spiral declarations like C!
 * dereference with the `.*` field
@@ -263,61 +385,9 @@ for (string) |_| {}
 * unbounded array: `[*]T`
   * works like `*T` but supports indexing, pointer arithmetic, & slicing syntax
 
-# Semantic Differences
+## New
 
-* const is immutable and enforced:
-
-* variable shadowing not allowed
-
-* there are no truthy values for if statements
-
-* global scope constants are default comptime values; if type is omitted, they are comptime typed
-  
-  ````zig
-  const x: i32 = 47;
-  const y = -47;  // comptime integer.
-  
-  pub fn main() void {
-      var a: i32 = y; // comptime constant coerced into correct type
-      var b: i64 = y; // comptime constant coerced into correct type
-      var c: u32 = y; // error: cannot cast negative value -47 to unsigned integer
-  }
-  ````
-
-* return values must be used by default
-  
-  * ignore by assigning to `_ = foobar()`
-  * All function arguments are immutable
-* Integer conversion/overflow
-  
-  * Implicit integer widening casts allowed
-  
-  * `@intCast` for narrowing conversions. Out of range cast is detectable illegal behavior
-  
-  * Overflows are detectable illegal behavior
-  
-  * To explicitly allow overflow, use overflow operators
-    
-    \| Normal Operator | Wrapping Operator |
-    \| --------------- | ----------------- |
-    \| +               | +%                |
-    \| -               | -%                |
-    \| *               | \*%               |
-    \| +=              | +%=               |
-    \| -=              | -%=               |
-    \| \*=             | \*%=              |
-  
-  ````zig
-  test "well defined overflow" {
-      var a: u8 = 255;
-      a +%= 1;
-      expect(a == 0);
-  }
-  ````
-
-# New
-
-## Defer
+### Defer
 
 * allow statement to execute on lexical scope exit.
 * multiple defers get executed in reverse order
@@ -330,13 +400,13 @@ for (string) |_| {}
   expect(x == 7);
   ````
 
-## Errors
+### Errors
 
 * No exceptions
 * Errors are values in a open union type, similar to enums
 * Error sets coerce to their supersets.
 
-## Safety
+### Safety
 
 * if enabled, "detectable illegal behavior" will cause panic; undefined if off
 * Ex: array out of bounds access
@@ -350,7 +420,7 @@ for (string) |_| {}
       };
   ````
 
-## Labeled blocks
+### Labeled blocks
 
 * Blocks in Zig are expressions and can be given labels, which are used to yield values. Here, we are using a label called blk. Blocks yield values, meaning that they can be used in place of a value. The value of an empty block `{}` is a value of the type `void`
   
@@ -409,7 +479,7 @@ for (string) |_| {}
   }
   ````
 
-## Optionals
+### Optionals
 
 * nullable: any type, not just pointers, can be nullable
   
@@ -483,7 +553,7 @@ for (string) |_| {}
 
 * This is how null pointers in Zig work - they must be unwrapped to a non-optional before dereferencing, which stops null pointer dereferences from happening accidentally.
 
-## Payload Captures
+### Payload Captures
 
 Payload captures use the syntax `|value|` and appear in many places. These are used to “capture” the value from something.
 
@@ -581,7 +651,7 @@ test "switch capture" {
             break :blk 1;
         },
         .c => 2,
-        //if these are of the same type, they 
+        //if these are of the same type, they
         //may be inside the same capture group
         .a, .d => |num| blk: {
             expect(@TypeOf(num) == u32);
@@ -602,7 +672,7 @@ test "for with pointer capture" {
 }
 ````
 
-## Inline Loops
+### Inline Loops
 
 `inline` loops are unrolled, and allow some things to happen which only work at compile time. Here we use a `for`, but a `while` works similarly.
 
@@ -617,7 +687,7 @@ test "inline for" {
 
 Using these for performance reasons is inadvisable unless you’ve tested that explicitly unrolling is faster; the compiler tends to make better decisions here than you.
 
-## Opaque
+### Opaque
 
 `opaque` types in Zig have an unknown (albeit non-zero) size and alignment. Because of this these data types cannot be stored directly. These are used to maintain type safety with pointers to types that we don’t have information about.
 
@@ -663,14 +733,14 @@ test "opaque with declarations" {
 
 The typical usecase of opaque is to maintain type safety when interoperating with C code that does not expose complete type information.
 
-## Anonymous Structs
+### Anonymous Structs
 
 The struct type may be omitted from a struct literal. These literals may coerce to other struct types.
 
 ````zig
 test "anonymous struct literal" {
     const Point = struct { x: i32, y: i32 };
-    
+
     var pt: Point = .{
         .x = 13,
         .y = 67,
@@ -701,7 +771,7 @@ fn dump(args: anytype) void {
 }
 ````
 
-## Tuples
+### Tuples
 
 Anonymous structs without field names may be created, and are referred to as **tuples**. These have many of the properties that arrays do; tuples can be iterated over, indexed, can be used with the `++` and `**` operators, and have a len field. Internally, these have numbered field names starting at `"0"`, which may be accessed with the special syntax `@"0"` which acts as an escape for the syntax - things inside `@""` are always recognised as identifiers.
 
@@ -726,7 +796,7 @@ test "tuple" {
 }
 ````
 
-## Sentinel Termination
+### Sentinel Termination
 
 Arrays, slices and many pointers may be terminated by a value of their child type. This is known as sentinel termination. These follow the syntax `[N:t]T`, `[:t]T`, and `[*:t]T`, where `t` is a value of the child type `T`.
 
@@ -785,8 +855,3 @@ test "sentinel terminated slicing" {
     const y = x[0..3 :0];
 }
 ````
-
-# Reference Material
-
-* [ZigLearn](https://ziglearn.org/)
-* [Zig in 30 minutes](https://gist.github.com/ityonemo/769532c2017ed9143f3571e5ac104e50)
