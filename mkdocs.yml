@@ -65,6 +65,9 @@ extra:
       link: https://twitter.com/ikrimae
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/ikrima
+  analytics:
+    provider: google
+    property: G-VWCEPP5L4L
 
 # Plugins
 plugins:
@@ -133,10 +136,7 @@ extra_css:
   - _sitefiles/katex/katex.min.css
   - _sitefiles/mkdocs-extra.css
 
-# Google Analytics
-google_analytics:
-  - UA-47614715-1
-  - auto
+
 # ----------- end mkdocs-material -----------
 
 # ----------- begin cinder -----------
