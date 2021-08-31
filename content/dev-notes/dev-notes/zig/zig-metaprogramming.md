@@ -1,6 +1,6 @@
 # Zig Metaprogramming
 
-# Overview
+## Overview
 
 Zig's metaprogramming is driven by a few basic concepts:
 
@@ -91,7 +91,7 @@ pub fn main() !void {
 }
 ````
 
-# Details
+## Details
 
 Blocks of code may be forcibly executed at compile time using the `comptime` keyword. In this example, the variables x and y are equivalent.
 
@@ -259,9 +259,9 @@ test "**" {
 }
 ````
 
-# Examples
+## Examples
 
-## Generic Types through Functors
+### Generic Types through Functors
 
 * The function returns a `type`, which means it can only be called at comptime. It defines two structs:
   ````zig
@@ -299,7 +299,7 @@ test "**" {
   my_list.len = 1;
   ````
 
-## Dynamic specialization
+### Dynamic specialization
 
 * type `var` binds to anything
   
@@ -342,4 +342,4 @@ test "**" {
   }
   ````
 
-## Snippets
+### Snippets

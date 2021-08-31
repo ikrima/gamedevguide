@@ -6,7 +6,7 @@
 * [Zig in 30 minutes](https://gist.github.com/ityonemo/769532c2017ed9143f3571e5ac104e50)
 * [Understanding the Zig Programming Language](https://medium.com/swlh/zig-the-introduction-dcd173a86975)
 
-## Differences
+## Highlevel Differences
 
 ### Excluded features
 
