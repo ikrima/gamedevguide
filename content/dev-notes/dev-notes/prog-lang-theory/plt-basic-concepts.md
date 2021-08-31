@@ -420,4 +420,4 @@
   * [Domain-Specific Languages book](https://martinfowler.com/books/dsl.html)
   * [DSL Engineering: Designing, Implementing and Using Domain-Specific Languages](http://voelter.de/dslbook/markusvoelter-dslengineering-1.0.pdf): good practical guide, covers things like debugging, editor services, etc
   * [DSL course](http://dsl-course.org/): course on creating DSL with language bench
-  * [Compiler Construction: The Art of Niklaus Wirth](../../_assets\dev-notes\compiler-construction-art-of-Niklaus-Wirth.pdf)
+  * [Compiler Construction: The Art of Niklaus Wirth](../../_assets/dev-notes/compiler-construction-art-of-Niklaus-Wirth.pdf)
