@@ -12,7 +12,7 @@
 * [https://abseil.io/](https://abseil.io/)
 * [https://github.com/bkaradzic/bx](https://github.com/bkaradzic/bx)
 * [https://github.com/septag/sx](https://github.com/septag/sx)
-* [MUtils](https://github.com/cmaughan/MUtils) Useful C++ 
+* [MUtils](https://github.com/cmaughan/MUtils) Useful C++
 * [Misc C Headers](https://github.com/RandyGaul/cute_headers)
 * [bitsquid foundation library](https://github.com/niklas-ourmachinery/bitsquid-foundation)
 * [foundation lib](https://github.com/mjansson/foundation_lib): rpmalloc's author's foundation lib
@@ -64,7 +64,7 @@
 * [https://github.com/TheLartians/StaticTypeInfo](https://github.com/TheLartians/StaticTypeInfo) Compile time type info
 * [Compile-time type info using constexpr](https://simoncoenen.com/blog/programming/StaticReflection.html)
 * [Refureku](https://github.com/jsoysouvanh/Refureku): C++ reflection library based on Kodgen
-* [Kodgen](https://github.com/jsoysouvanh/Kodgen): C++ parser & codegen 
+* [Kodgen](https://github.com/jsoysouvanh/Kodgen): C++ parser & codegen
 * [clReflect](https://bitbucket.org/dwilliamson/clreflect): C++ Reflection using clang
 
  
@@ -143,7 +143,7 @@
 
 * Math library: [https://github.com/nfrechette/rtm](https://github.com/nfrechette/rtm)
 * [cglm](https://github.com/recp/cglm) - better version of glm
-* Procedural math tricks: https://github.com/zalo/MathUtilities -  grab bag of some of the neat math and physics tricks 
+* Procedural math tricks: https://github.com/zalo/MathUtilities -  grab bag of some of the neat math and physics tricks
 * Curves Library: https://github.com/ethz-asl/curves/tree/master/curves/include/curves
 * Splines/Curves library: https://github.com/andrewwillmott/splines-lib
 
@@ -207,8 +207,8 @@
 
 * Windows PE file parser: https://github.com/serge1/COFFI
 * [Blink](https://github.com/crosire/blink) - function level runtime patching with pdb+COFF reader, linker, etc
-* Run code from object files: 
-  * http://h3.gd/posts/how-not-to-use-dlls/ 
+* Run code from object files:
+  * http://h3.gd/posts/how-not-to-use-dlls/
   * https://github.com/h3r2tic/relocdll
 * [CR](https://github.com/fungos/cr) - single file header-only live reload solution for C, written in C++
 
@@ -241,9 +241,14 @@
 
 * [https://github.com/thrust/thrust](https://github.com/thrust/thrust) (also [https://developer.nvidia.com/thrust](https://developer.nvidia.com/thrust))
 * [https://github.com/nlguillemot/CppSPMD](https://github.com/nlguillemot/CppSPMD)
-* SPIRV to ISPC: [https://twitter.com/*tim_jones*/status/1006208754004553728](https://twitter.com/_tim_jones_/status/1006208754004553728) 
+* SPIRV to ISPC: [https://twitter.com/*tim_jones*/status/1006208754004553728](https://twitter.com/_tim_jones_/status/1006208754004553728)
   [https://software.intel.com/en-us/articles/spir-v-to-ispc-convert-gpu-compute-to-the-cpu](https://software.intel.com/en-us/articles/spir-v-to-ispc-convert-gpu-compute-to-the-cpu)
 * Taichi Programming Language [http://taichi.graphics/](http://taichi.graphics/)
+
+## Algebraic Effects
+
+* [libhandler](https://github.com/koka-lang/libhandler): algebraic effects and handlers in portable C99
+* [libmprompt](https://github.com/koka-lang/libmprompt): robust multi-prompt delimited control and effect handlers in C/C++
 
 ## Parsing
 
@@ -307,7 +312,7 @@
 ## Libs
 
 * [https://sinusoid.es/lager/index.html](https://sinusoid.es/lager/index.html)
-* ImGui 
+* ImGui
   * Manual: https://pthom.github.io/imgui_manual_online/manual/imgui_manual.html
   * Net/Remote ImGui: https://github.com/sammyfreg/netImgui
 
@@ -396,5 +401,5 @@
 
 * `_ReturnAddress()` for debugging: http://www.virtualdub.org/blog/pivot/entry.php?id=181
 * Functional Property Modifiers
-  * https://twitter.com/Donzanoid/status/1164274159171584001 
+  * https://twitter.com/Donzanoid/status/1164274159171584001
   * https://gist.github.com/dwilliamson/8fb72ed4be7b5022b856eb4ff2d05d04

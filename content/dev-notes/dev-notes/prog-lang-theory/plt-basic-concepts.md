@@ -39,7 +39,7 @@
     value    := dynamic
     location := static if global variable, otherwise dynamic
     ````
-
+  
   * some common attributes
     * *type attribute:* type identifier of entity
     * *literal attribute:* value that has no memory
@@ -59,7 +59,7 @@
     * *function entities:* signature attribute, implementation attribute
 * **symbol:** identifier used as a typed reference to program entities minimally containing
   * analogue of pointers to values
-
+    
     |analogue|pointer|symbol|
     |--------|-------|------|
     |semantic|reference to value|reference to program entity|
@@ -68,15 +68,15 @@
     |type|points to values of type T|points to entities of entity category C|
     |dereferencing|based on pointer type + runtime state e.g. memory address in heap, offset in stack frame, device handle, etc|based on *name binding* + *environment context*|
     |using unbound instance behavior|pointer is uninit or null => null-deref/wild-pointer crash|symbol binding is not in scope => compilation error if static scoped language/runtime crash if dynamic scope|
-
+  
   * **identifier attribute:** (possibly scope qualified) name of symbol
-
+  
   * **entity category:** language entity tag implies set of attributes to expect
 
 ### Homoiconicity
 
 * **homoiconic languages** require the language constructs to also be in the type system to be able to support "code as data" manipulations
-
+  
   * **symbol table:** abstract data structure maintaining/mapping **symbol → entity** bindings
   * Example of Julia
     * [how julia is homoiconic?](https://stackoverflow.com/questions/31733766/in-what-sense-are-languages-like-elixir-and-julia-homoiconic/31734725#31734725)
@@ -142,9 +142,9 @@
 ## Variables
 
 * **variable**: an entity that abstracts a **storage location**  in an **abstract store** that contains a **value** with **lifetime, assignment, & equality semantics**
-
+  
   * *terminology:*
-
+    
     * they are *units of memory*; often bound to a *symbolic name* but they do not have a "name"
     * *aliasing:* is when multiple *symbols* reference the same variable i.e. storage location
     * they don't have a *type*; variables are *containers for storing values* and the *value* they point to has a *type*. language *semantics* dictate whether variable can be assigned a new value of a different type
@@ -156,24 +156,24 @@
       operator&() := x.attr['loc']
       operator*() := store_deref(x.attr['loc'])
       ````
-
+  
   * **assignment semantics:** how assigning a composite value to a variable
-
+    
     * **copy semantics:** copies all components of the composite value into the corresponding components of the composite variable
     * **reference semantics:** the composite variable contain a pointer (or reference) to the composite value
   * **equality semantics:** should be consistent with **assignment semantics**
-
+    
     * **copy semantics:** equality tests whether corresponding components of the two composite values are equal
     * **reference semantics:** equality tests whether the pointers to the two composite values are equal
   * **lifetime semantics:** interval between creation/allocation and destruction/deallocated
-
+    
     * *storage space* must be allocated before lifetime start and deallocated after lifetime end
     * *global variable:* lifetime is the program’s run-time.
     * *local variable:* lifetime is an activation of a block
     * *heap variable:* lifetime is arbitrary, but is bounded by the program’s run-time
     * *persistent variable:* lifetime is arbitrary, and may transcend the run-time of any particular program (e.g. file)
 * **symbolic constants:** immutable *unaddressable* values i.e. *r-values*
-
+  
   * *implementation detail* if/where they are stored is
     * for performance, might be opcode encoded immediate literal
     * for memory efficiency, stored in program text segment
@@ -183,7 +183,7 @@
 ## Storage
 
 * **store:** abstract model of where variables reside composed of **storage cells** with unique location
-
+  
   * **storable value:** the atomic unit that can be stored
     * usually primitive values and pointers are storable e.g. primitive values,pointers
     * composite values are not e.g. structs, arrays, unions, objects
@@ -194,7 +194,7 @@
     * **note:** implementation may implicitly define these (e.g. storage cells in stack frame implicitly allocated, location usually implicit)
   * **dereferencing:** operation that yielding current content of reference
 * **pointer:**  entity that abstracts how a *store* addresses *typed storage cells*
-
+  
   * i.e. `(loc: typeof(store::address) where typeof(store_val) == ptr_type)`
   * *note:*  usually heap memory address but not always. ex: generational handles, graphics handles, os file handles
 
@@ -218,7 +218,7 @@
 * **environment context:** (possibly named) set of *bindings* that expressions/statements are interpreted in
 
 * **scope:** program text over which declaration/binding is active
-
+  
   * **symbol's visibility attribute:** determines if a identifier can be reached outside of its scope (e.g. field/method names in C++)
   * **namespaces:** named scope and used to qualify an identifier for reference
   * **static scoping:** associations are determined at compile time
@@ -237,7 +237,7 @@
 * **name resolution:** determining which entity name refers to in a given *environment context* i.e. *dereferencing*
 
 * **binding:** mapping of identifier to an entity and it's associated attributes (e.g. value, variable, etc)
-
+  
   * **binding time:** when the attribute can be computed
     * *(static) definition time:* e.g. boolean, char, type, etc.
     * *(static) implementation time:* e.g. maxint, float, etc.
@@ -260,7 +260,7 @@
       * binding lifetime \< entity lifetime: in pass-by-ref variable to method, the param_name→variable binding \< variable binding
       * binding lifetime > entity lifetime: in use-after-free bug, identifier-to-entity binding > object
 * **declarations** are constructs that bind **identifiers** to **entities** in specific **environment context** denoted by **scopes** delimited by **blocks**
-
+  
   * **declaration:** construct that will be elaborated to produce bindings
     * all declarations produce bindings
     * may have side effects e.g. creating variables
@@ -305,7 +305,7 @@
     * top of stack is current scope, bottom is outermost
 * **environment context:** (runtime) mapping of variable identifier to location
   * **binding_of:** fn(scope,identifier)->location
-  * Ex: binding_of("local_var_foo") := env.current_scope.stack_bp + local_var_foo.attr\["stackOffset"]
+  * Ex: `binding_of("local_var_foo") := env.current_scope.stack_bp + local_var_foo.attr["stackOffset"]`
   * dynamic language features require more complicated *environment context* (e.g. walking up activation records for dynamic scoping)
 * **store:** runtime equivalent of symbol table (i.e. memory). defines semantics:
   * **value_at:** fn(location) → value : how a location attribute is resolved to a value
@@ -318,11 +318,11 @@
 * **argument/actual parameter:** value or entity that is passed to a method
 
 * **calling convention:** low level implementation detail of how methods receive/return parameters e.g.
-
+  
   * where (parameters, return values, return addresses, scope links,etc) are placed (registers,stack, memory,etc)
   * coordination details between caller/callee on how new *environment context* is created and restored between invocation/return
 * **parameter semantics:** how formal parameter is associated to corresponding argument
-
+  
   * **copy parameter semantics:** binds the formal parameter to a local variable that contains a copy of the argument
     * **copy-in parameter:** (aka pass-by-value) corresponds to an (initialized) variable declaration where identifier is bound to variable
       * on invocation, a local variable is created & initialized with the argument value
@@ -405,19 +405,24 @@
 
 ## Reference Material
 
-* [Programming language resources](https://tomassetti.me/resources-create-programming-languages/)
-* [Language Implementation Patterns book](http://index-of.es/Programming/Pragmatic%20Programmers/Language%20Implementation%20Patterns.pdf)
-* [Programming Language Design Concepts](http://www.dcc.ic.uff.br/~isabel/LP/D.Watt.pdf): great easily grokkable, pragmatic guide on programming language concepts without heavy theory
-* [Design Concepts in Programming Languages](https://doc.lagout.org/science/0_Computer%20Science/1_Principles%20of%20Programming%20Languages/Design%20Concepts%20in%20Programming%20Languages%20%28MIT%2C%202008%29.pdf): detailed reference for programming language design theory space, how the different programming languages behave and why
-* [Tiny Compiler](https://the-super-tiny-compiler.glitch.me/intro): ultra-simplified example of all the major pieces of a modern compiler written in easy to read JavaScript
-* [Crafting Interpreters](http://www.craftinginterpreters.com/): great practical guide of building end to end interpreter
-* [Programming Language Pragmatics](https://booksite.elsevier.com/9780124104099/)
-  * the most comprehensive book to understand contemporary programming languages
-  * discusses different aspects, of everything from C# to OCaml, and even the different kinds of programming languages such as functional and logical ones.
-  * covers the several steps and parts of the implementation, such as an intermediate language, linking, virtual machines, etc
+* Pragmatics oriented resources
+  * [Language Implementation Patterns book](http://index-of.es/Programming/Pragmatic%20Programmers/Language%20Implementation%20Patterns.pdf)
+  * [Programming Language Design Concepts](http://www.dcc.ic.uff.br/~isabel/LP/D.Watt.pdf): great easily grokkable, pragmatic guide on programming language concepts without heavy theory
+  * [Tiny Compiler](https://the-super-tiny-compiler.glitch.me/intro): ultra-simplified example of all the major pieces of a modern compiler written in easy to read JavaScript
+  * [Crafting Interpreters](http://www.craftinginterpreters.com/): great practical guide of building end to end interpreter
+  * [Compiler Construction: The Art of Niklaus Wirth](../../_assets/dev-notes/compiler-construction-art-of-niklaus-wirth.pdf)
+  * Incremental approach to compiler construction
+    * [An Incremental Approach to Compiler Construction](../../_assets/dev-notes/incremental-approach-to-compiler-construction.pdf)
+    * [Essentials of Compilation: The Incremental Nanopass Approach](../../_assets/dev-notes/essentials-of-compilation-incremental-nanopass-approach.pdf)
+* Theory oriented resources
+  * [Programming Language Pragmatics](https://booksite.elsevier.com/9780124104099/)
+    * the most comprehensive book to understand contemporary programming languages
+    * discusses different aspects, of everything from C# to OCaml, and even the different kinds of programming languages such as functional and logical ones.
+    * covers the several steps and parts of the implementation, such as an intermediate language, linking, virtual machines, etc
+  * [Design Concepts in Programming Languages](https://doc.lagout.org/science/0_Computer%20Science/1_Principles%20of%20Programming%20Languages/Design%20Concepts%20in%20Programming%20Languages%20%28MIT%2C%202008%29.pdf): detailed reference for programming language design theory space, how the different programming languages behave and why
+  * [Programming language resources](https://tomassetti.me/resources-create-programming-languages/)
 * Domain Specific Languages
   * [DSL Guide/Resources](https://tomassetti.me/domain-specific-languages/)
   * [Domain-Specific Languages book](https://martinfowler.com/books/dsl.html)
   * [DSL Engineering: Designing, Implementing and Using Domain-Specific Languages](http://voelter.de/dslbook/markusvoelter-dslengineering-1.0.pdf): good practical guide, covers things like debugging, editor services, etc
   * [DSL course](http://dsl-course.org/): course on creating DSL with language bench
-  * [Compiler Construction: The Art of Niklaus Wirth](../../_assets/dev-notes/compiler-construction-art-of-Niklaus-Wirth.pdf)

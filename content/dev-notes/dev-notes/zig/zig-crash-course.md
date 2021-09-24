@@ -97,12 +97,6 @@
   ptr.* = 15;
   ````
 
-* Zig Pointer Syntax
-  
-  ````zig
-  
-  ````
-
 * pointers can't be assigned null by default (motivation: stricter type checking. Optional value types are used instead )
 
 * no automatic allocation by convention; any allocation functions explicitly take an allocator argument
