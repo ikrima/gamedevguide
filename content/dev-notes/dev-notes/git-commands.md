@@ -30,7 +30,7 @@ git difftool --dir-diff release ~HEAD
 Create containing all commits in your current branch that are not in the master branch:
 `batch>git format-patch origin/master --stdout > mypatch.patch`
 
-From \<[https://stackoverflow.com/questions/5432396/create-a-patch-by-comparing-a-specific-branch-on-the-remote-with-a-specific-loca](https://stackoverflow.com/questions/5432396/create-a-patch-by-comparing-a-specific-branch-on-the-remote-with-a-specific-loca)\>
+From [https://stackoverflow.com/questions/5432396/create-a-patch-by-comparing-a-specific-branch-on-the-remote-with-a-specific-loca](https://stackoverflow.com/questions/5432396/create-a-patch-by-comparing-a-specific-branch-on-the-remote-with-a-specific-loca)
 
 **GitExtensions: filter a set of branches**
 Bebylon\* --remotes=upstream/release\* --remotes=upstream/dev\*
@@ -59,7 +59,7 @@ git checkout branch_old
 git merge branch_new
 ````
 
-From \<[https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git](https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git)\>
+From [https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git](https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git)
 
 **Remove a folder/file from history:**
 [http://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history](http://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history)
@@ -71,12 +71,12 @@ From \<[https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-th
 You want to nuke commit C and never see it again. You do this:
 `batch>git reset --hard HEAD~1`
 
-From \<[http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit](http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit)\>
+From [http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit](http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit)
 
 For the lightest touch, you can even undo your commit but leave your files and your [index](http://www.gitguys.com/topics/whats-the-deal-with-the-git-index/):
 `batch>git reset --soft HEAD~1`
 
-From \<[http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit](http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit)\>
+From [http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit](http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit)
 
 **Remove all untracked files and directories. (`-f` is *force*, `-d` is *remove directories*)**
 `batch>git clean -fd`
@@ -84,13 +84,13 @@ From \<[http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commi
 **Remove ignored files as well**
 `batch>git clean -fdx`
 
-From \<[http://stackoverflow.com/questions/5807137/how-to-revert-uncommitted-changes-including-files-and-folders](http://stackoverflow.com/questions/5807137/how-to-revert-uncommitted-changes-including-files-and-folders)\>
+From [http://stackoverflow.com/questions/5807137/how-to-revert-uncommitted-changes-including-files-and-folders](http://stackoverflow.com/questions/5807137/how-to-revert-uncommitted-changes-including-files-and-folders)
 
 *Squash/Merge previous two commits:*
 `batch>git rebase -i HEAD~2`
 
 Then select squash for the second commit
-From \<[https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git](https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git)\>
+From [https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git](https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git)
 
 **To move folders into a different folders in git:**
 `git filter-branch --tree-filter 'mkdir -p /path/to/tmp; mv * /path/to/tmp; mkdir subdir; mv /path/to/tmp/* subdir/' --tag-name-filter cat --prune-empty -- --all`

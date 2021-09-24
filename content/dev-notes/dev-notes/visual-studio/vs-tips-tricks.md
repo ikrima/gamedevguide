@@ -12,19 +12,22 @@
 Syntax
 
 * There are two ways of specifying context:
+  
   1. `cpp>{,,[module] } expression`
-
+     
      * The braces must contain two commas and the module (executable or DLL) name or full path.
      * For example, to set a breakpoint at the SomeFunction function of EXAMPLE.dll:
        * `cpp>{,,EXAMPLE.dll}SomeFunction`
        * `cpp>module!expression`
   1. `cpp>module!expression`
-
+     
      * Ex: `cpp>EXAMPLE.dll!SomeFunction`
 * *module* is the name of a module. You can use a full path to disambiguate between modules with the same name.
+  
   * If the module path includes a comma, an embedded space, or a brace, you must use quotation marks around the path so that the context parser can properly recognize the string. Single quotation marks are considered part of a Windows file name, so you must use double quotation marks. For example,
   * `cpp>{,,"a long, long, library name.dll"} g_Var`
 * *expression* is any valid C++ expression that resolves to a valid target, such as a function name, variable name, or pointer address in module.
+  
   * When the expression evaluator encounters a symbol in an expression, it searches for the symbol in the following order:
     * Lexical scope outward, starting with the current block, series of statements enclosed in braces, and continuing outward with the enclosing block. The current block is the code containing the current location, instruction pointer address.
     * Function scope. The current function.
@@ -83,8 +86,8 @@ https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables
 |env|Environment block (double-null terminated string)|\<location\> L"=::=::\\"|L"=::=::\\\0=C:=C:\\windows\\system32\0ALLUSERSPROFILE=...|
 |s32|UTF-32 string (with quotation marks)|\<location\> U"hello world"|U"hello world"|
 |s32b|UTF-32 string (no quotation marks)|\<location\> U"hello world"|hello world|
-|en|enum|Saturday(6)                                  \`|Saturday|
-|hv|Pointer type - indicates that the pointer value being inspected is the result of the heap allocation of an array, for example, new int\[3].|\<location\>{\<first member\>}|\<location\>{\<first member\>, \<second member\>, ...}|
+|en|enum|Saturday(6) \`|Saturday|
+|hv|Pointer type - indicates that the pointer value being inspected is the result of the heap allocation of an array, for example, new int\[3\].|\<location\>{\<first member\>}|\<location\>{\<first member\>, \<second member\>, ...}|
 |na|Suppresses the memory address of a pointer to an object.|\<location\>, {member=value...}|{member=value...}|
 |nd|Displays only the base class information, ignoring derived classes|(Shape\*) square includes base class and derived class information|Displays only base class information|
 |hr|HRESULT or Win32 error code. This specifier is no longer needed for HRESULTs as the debugger decodes them automatically.|S_OK|S_OK|
@@ -94,24 +97,24 @@ https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables
 |nvo|Show "Raw View" item for numeric values only|||
 |!|raw format, ignoring any data type views customizations|\<customized representation\>|4|
 
-\[https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp]
+From https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp
 
 ### Format Pointers as Arrays
 
 |Specifier|Format|Original Watch Value|Value Displayed|
 |---------|------|--------------------|---------------|
-|n|Decimal or hexadecimal integer|pBuffer,\[32] pBuffer,\[0x20]|Displays pBuffer as a 32 element array.|
-|\[exp]|A valid C++ expression that evaluates to an integer.|pBuffer,\[bufferSize]|Displays pBuffer as an array of bufferSize elements.|
-|expand(n)|A valid C++ expression that evaluates to an integer|pBuffer, expand(2)|Displays the third element of  pBuffer|
+|n|Decimal or hexadecimal integer|pBuffer,\[32\] pBuffer,\[0x20\]|Displays pBuffer as a 32 element array.|
+|\[exp\]|A valid C++ expression that evaluates to an integer.|pBuffer,\[bufferSize\]|Displays pBuffer as an array of bufferSize elements.|
+|expand(n)|A valid C++ expression that evaluates to an integer|pBuffer, expand(2)|Displays the third element of pBuffer|
 
 ### Magic Numbers
 
 |||
 |--|--|
 |CCCCCCCC|Used by Microsoft's C++ debugging runtime library and many DOS environments to mark uninitialized stack memory. CC resembles the opcode of the INT 3 debug breakpoint interrupt on x86 processors.|
-|CDCDCDCD|Used by Microsoft's C/C++ debug malloc() function to mark uninitialized heap memory, usually returned from HeapAlloc()\[15]|
-|FDFDFDFD|Used by Microsoft's C/C++ debug malloc() function to mark "no man's land" guard bytes before and after allocated heap memory\[15]|
-|FEEEFEEE|"Fee fee", Used by Microsoft's debug HeapFree() to mark freed heap memory. Some nearby internal bookkeeping values may have the high word set to FEEE as well.\[15]|
+|CDCDCDCD|Used by Microsoft's C/C++ debug malloc() function to mark uninitialized heap memory, usually returned from HeapAlloc()\[15\]|
+|FDFDFDFD|Used by Microsoft's C/C++ debug malloc() function to mark "no man's land" guard bytes before and after allocated heap memory\[15\]|
+|FEEEFEEE|"Fee fee", Used by Microsoft's debug HeapFree() to mark freed heap memory. Some nearby internal bookkeeping values may have the high word set to FEEE as well.\[15\]|
 
 From http://en.wikipedia.org/wiki/Magic_number\_(programming)
 
@@ -129,7 +132,7 @@ where foobar.dll defines g_pMyStruct as a global pointer. The same syntax can be
 ## Advanced Debugging
 
 * Common Visual Studio Commands:
-
+  
   * https://docs.microsoft.com/en-us/visualstudio/ide/reference/visual-studio-commands
   * Complete commands can be found in Keyboard, EnvironmentOptions dialog box
 * Can use VCMD to create macros as commands
@@ -138,22 +141,22 @@ where foobar.dll defines g_pMyStruct as a global pointer. The same syntax can be
   Ex: >Debug.AttachDetach
 
 * Execute code in a macro:
-
+  
   ````csharp
   DTE.Debugger.ExecuteStatement("variable_name=0")
   ````
-
+  
   *Reference From http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value*
 
 * Can execute code in Action:print message section of breakpoint settings by wrapping the value in textfield with {}. Ex:
-
+  
   * `{ variable_name=0}` will set variable_name=0
 * You can also concatenate several instructions on the same line. They simply have to be separated by curly braces:
-
+  
   ````cpp
   { {done = (i == 100);} { object.x -= 1.0f; } { data\[15] = 3; } }
   ````
-
+  
   *Reference From https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints*
 
 ## Tools
