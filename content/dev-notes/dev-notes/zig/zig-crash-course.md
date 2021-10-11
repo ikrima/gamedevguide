@@ -92,9 +92,21 @@
   []u8         :  u8 array slice
   []const u8   :  u8 immutable array slice
   
+  
   var x: i32 = 4;
   var ptr: *i32 = &x;
   ptr.* = 15;
+  ````
+
+* pointer type coercion
+  
+  ````zig
+  [2]u8  -> *[2]u8    : by using address operator (&)
+  [2]u8  -> []u8      : by using slice operator [..]
+  *[2]u8 -> []u8      : automatic coercion from pointer to fixed size array to slice
+  []u8   -> [*]u8     : by using .ptr
+  any    -> ?any      : automatic coercion from non-optional to optional
+  any    -> const any : automatic coercion from non-const to const
   ````
 
 * pointers can't be assigned null by default (motivation: stricter type checking. Optional value types are used instead )
@@ -231,21 +243,46 @@
 ### Structs
 
 * can be named/anonymous
+
+* the type name derived from the variable decl it's assigned to or the type constructor function
+
 * can have default values and members can be init out of order
+
+* can also contain namespaced functions
+
 * can be coerced into other structs
+
 * syntactic sugar: emulate member functions by having first param be a pointer to struct
-
-````zig
-const MyObj = struct{
-  val: i32,
-  fn print(self: *MyObj) void {
-    std.debug.print("value: {}\n", .{self.val});
+  
+  ````zig
+   
+  const Point = struct {
+    const Self = @This();
+    
+    x: f64,
+    y: f64,
+    z: f64,
+  
+    pub fn distance(self: Self, p: Point) f64 {
+      const x2 = math.pow(f64, self.x - p.x, 2);
+      const y2 = math.pow(f64, self.y - p.y, 2);
+      const z2 = math.pow(f64, self.z - p.z, 2);
+      return math.sqrt(x2 + y2 + z2);
+    }
+    fn print(self: Point) void {
+      std.debug.print("value: {}\n", .{self.x, self.y, self.z});
+    }
+  };
+  
+  pub fn main() !void {
+    const p1 = Point{ .x = 0, .y = 2, .z = 8 };
+    const p2 = .{ .x = 0, .y = 6, .z = 8 };
+    assert(p1.distance(p2) == 4);
+    assert(Point.distance(p1, p2) == 4);
+    p1.print();
+    Point.print(p2);
   }
-};
-
-var foo = MyObj{.val=0};
-foo.print();
-````
+  ````
 
 ### Unions
 
