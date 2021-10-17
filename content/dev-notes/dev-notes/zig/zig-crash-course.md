@@ -26,10 +26,11 @@
 * Structs as namespaces
 * Compile time code execution replace macros
 * Loops, labeled blocks, and if statements are expressions
+* Slices
 
 ### Semantic departures
 
-* const is immutable and enforced
+* `const` is immutable and enforced
 
 * variable shadowing not allowed
 
@@ -255,10 +256,10 @@
 * syntactic sugar: emulate member functions by having first param be a pointer to struct
   
   ````zig
-   
+  
   const Point = struct {
     const Self = @This();
-    
+  
     x: f64,
     y: f64,
     z: f64,
@@ -335,7 +336,7 @@
 ### Array
 
 * normal array: `var array: [3]u32 = [_]u32{47, 47, 47};`
-* can also slice `[idxStart,idxEnd)`: `var slice: []u32 = array[0..2];`
+* can also slice [zig-crash-course > Slices](zig-crash-course.md#slices)
 
 ### Control flow
 
@@ -762,7 +763,7 @@ test "opaque with declarations" {
 }
 ````
 
-The typical usecase of opaque is to maintain type safety when interoperating with C code that does not expose complete type information.
+The typical use case of opaque is to maintain type safety when interoperating with C code that does not expose complete type information.
 
 ### Anonymous Structs
 
@@ -804,7 +805,7 @@ fn dump(args: anytype) void {
 
 ### Tuples
 
-Anonymous structs without field names may be created, and are referred to as **tuples**. These have many of the properties that arrays do; tuples can be iterated over, indexed, can be used with the `++` and `**` operators, and have a len field. Internally, these have numbered field names starting at `"0"`, which may be accessed with the special syntax `@"0"` which acts as an escape for the syntax - things inside `@""` are always recognised as identifiers.
+Anonymous structs without field names may be created, and are referred to as **tuples**. These have many of the properties that arrays do; tuples can be iterated over, indexed, can be used with the `++` and `**` operators, and have a len field. Internally, these have numbered field names starting at `"0"`, which may be accessed with the special syntax `@"0"` which acts as an escape for the syntax - things inside `@""` are always recognized as identifiers.
 
 An `inline` loop must be used to iterate over the tuple here, as the type of each tuple field may differ.
 
@@ -826,6 +827,18 @@ test "tuple" {
     expect(values.@"3"[0] == 'h');
 }
 ````
+
+### Slices
+
+* can create slices of arrays/pointers/and other slices using `[n..m]` syntax
+* ***NOTE***: slice operator is `[n..m]` where n and m are `[idxStart,idxEnd)`
+  ````zig
+  var array = [_]u32{0,1,2,3,4,5};
+  var slice0: []u32 = array[0..];  // => {0,1,2,3,4,5}
+  var slice1: []u32 = array[3..5]; // => {3,4}
+  var slice2: []u32 = array[3..];  // => {3,4}
+  var slice3: []u32 = array[3..1]; // => invalid, will emit compile error
+  ````
 
 ### Sentinel Termination
 
@@ -878,7 +891,7 @@ test "coercion" {
 }
 ````
 
-Sentinel terminated slicing is provided which can be used to create a sentinel terminated slice with the syntax `x[n..m:t]`, where `t` is the terminator value. Doing this is an assertion from the programmer that the memory is terminated where it should be - getting this wrong is detectable illegal behaviour.
+Sentinel terminated slicing is provided which can be used to create a sentinel terminated slice with the syntax `x[n..m:t]`, where `t` is the terminator value. Doing this is an assertion from the programmer that the memory is terminated where it should be - getting this wrong is detectable illegal behavior.
 
 ````zig
 test "sentinel terminated slicing" {
