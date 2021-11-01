@@ -406,6 +406,10 @@
 ## Reference Material
 
 * Pragmatics oriented resources
+  * Ray Toal has excellent notes from his compiler courses 
+    * [Languages and Automata I](https://cs.lmu.edu/~ray/classes/pl/)
+    * [Languages and Automata II](https://cs.lmu.edu/~ray/classes/cc/)
+    * [Programming Language Semantics](https://cs.lmu.edu/~ray/classes/pls/)
   * [Language Implementation Patterns book](http://index-of.es/Programming/Pragmatic%20Programmers/Language%20Implementation%20Patterns.pdf)
   * [Programming Language Design Concepts](http://www.dcc.ic.uff.br/~isabel/LP/D.Watt.pdf): great easily grokkable, pragmatic guide on programming language concepts without heavy theory
   * [Tiny Compiler](https://the-super-tiny-compiler.glitch.me/intro): ultra-simplified example of all the major pieces of a modern compiler written in easy to read JavaScript
