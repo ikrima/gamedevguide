@@ -1,13 +1,11 @@
----
-sidebar: houdini
----
+# Performance Capture
 - VSR
   - Solve existing animation to control
   - Animate in Desired SPace
   - Constrain/Bakeout layered animation back to original control
-  - details  
-    bake to world space captured  
-    animate ctrl  
+  - details
+    bake to world space captured
+    animate ctrl
     constrain ctrl to target
 - LiveLink into Houdini
 - Mocap Data filtering

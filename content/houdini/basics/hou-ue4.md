@@ -1,16 +1,11 @@
----
-sortIndex: 1
-sidebar: houdini
----
+# UE4
 
-# Export Anim
-
+## Export Anim
 - Houdini:
   - Y-up, Z forward
   - Set keyframe on root skeleton at frame 0
   - Export ROP: Force Blend Shape Export + Force Skin Deform Export
-
-![](assets/hou-rop-fbx-xport.png)
+    ![](../assets/hou-rop-fbx-xport.png)
 
 - Unreal
   - Import with selecting existing skeleton if already exists
@@ -22,7 +17,7 @@ sidebar: houdini
   - Make sure prerot/postrot is set accordingly between bindpose & imported fbx
   - UE4 exported fbxs dont have prerot & postrot
 
-# Import Anim from UE4
+## Import Anim from UE4
 
 - Export with force X-axis front
 - Houdin import FBX convert Y-up=true

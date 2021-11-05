@@ -1,8 +1,4 @@
----
-sortIndex: 0
-sidebar: houdini
----
-
+# Levels
 - TrainSmash Level Activation
 - Level Transition to Ice World with hextiles
 - Snow bomb

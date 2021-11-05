@@ -1,23 +1,21 @@
----
-sortIndex: 4
-sidebar: houdini
----
+# Poly Workflow
 
-# Water Tight Mesh
+## Water Tight Mesh
 
 - GameDev Voxelize Mesh
 - VDB SDF Reshape: Close - Causes holes & valleys to be filled
 - VDB SDF Reshape: Open - Causes isolated islands to erase
 - VDB Segment By Connectivity: Can be used to get rid of islands
 
-# Remeshing/Refining/Subdivide: Here are useful nodes
+## Remeshing
 
+Here are useful nodes
 - Subdivide
 - Remesh
 - InstantMeshes
 - Divide
 
-# Poly Cleanup
+## Poly Cleanup
 
 [Houdini Game Dev Toolset tutorial by Michael Pavlovich](https://www.youtube.com/playlist?list=PLkzopwqcFevZLnQIIU8GTGwg4o7RaarZU)
 

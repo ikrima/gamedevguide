@@ -1,10 +1,6 @@
----
-sortIndex: 1
-sideMenuHeading: OpenCL
-sidebar: houdini
----
+# OpenCL
 
-# Tips
+## Tips
 
 - Pyro & Grains can make use of OpenCL
 - OpenCL fallsback to CPU OpenCL when GPU runs out of memory
@@ -13,12 +9,12 @@ sidebar: houdini
 - Grains - Increase number of iterations to 200 as a starter
 - Pyro - have to be careful with sourcing as that triggers GPU-CPU xfers which might dwarf benefits of OpenCL
 
-# Minimize GPU-CPU transfers
+## Minimize GPU-CPU transfers
 
 - Make sure to turn off DOP Caching in the dopnet node bc caching copies all the fields every frame
 - Only import minimal fields (eg density) to SOPs so you only have one field
 
-# Gas Upres
+## Gas Upres
 
 - Does not have built-in OpenCL toggle
 - Dive into the node network and toggle Use OpenCL for all the advection nodes

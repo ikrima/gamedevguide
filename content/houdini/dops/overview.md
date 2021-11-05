@@ -1,8 +1,3 @@
----
-sortIndex: 0
-sidebar: houdini
----
-
 # Dops
 
 - Simulation runs in 2 passes

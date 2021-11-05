@@ -1,10 +1,8 @@
-
-# Houdini Cheat Sheet
+# Houdini Crash Course
 
 ## Overview
 
 [http://forums.odforce.net/topic/17105-short-and-sweet-op-centric-lessons/#comment-104263](http://forums.odforce.net/topic/17105-short-and-sweet-op-centric-lessons/#comment-104263)
-
 - for every cook (frame change, parm change, etc), the network starts at the Display/Render node and then walks up the chain looking for nodes with changes and evaluates dependencies for each node also querying those nodes for changes until it hits the top nodes. The nodes marked dirty causing the network to evaluate the dirty nodes top down evaluating the dependencies that were found.
 - You can set a few options in the Performance Monitor to work in the older H11 way and see this evaluation tree order if you wish. Change that. It is "mandatory" that you do this if you want a deeper understanding of Houdini. You definitely need to use the Performance Monitor if you want to see how the networks have evaluated as it is based on creation order along with the set-up dependencies. Yes deleting and undeleting an object can and will change this evaluation order and can sometimes get you out of a spot with crashing.
 - Houdini is a file system, in memory, and on disk in the .hip "cpio" archive file. If you want, you can use a shell, and given any .hip file, run the hexpand shell command on the file. This will expand the Houdini file in to a directory structure that you can read and edit if you so wish. Then wrap it back up with hcollapse.
@@ -17,28 +15,57 @@
   ```
 
 
-### Attributes and parameters
-[Attributes](http://www.sidefx.com/docs/houdini/model/attributes)
-[Global expression variables](http://www.sidefx.com/docs/houdini14.0/expressions/_globals)
-[Standard variables](http://www.sidefx.com/docs/houdini/nodes/sop/standardvariables)
-[Local SOP variables](http://www.sidefx.com/docs/houdini/nodes/sop/point#locals)
-[Reference: https://github.com/kiryha/Houdini/wiki/houdini-basics](https://github.com/kiryha/Houdini/wiki/houdini-basics)
-
 ### Terminology
-[Reference: https://www.sidefx.com/forum/topic/43515/?page=1#post-227145](https://www.sidefx.com/forum/topic/43515/?page=1#post-227145)
 
-|            |                                                                                                                                                                                                                                                                                                                                                |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Object** | Object type nodes in an Object type folder. These Object nodes allow you build transform constraint hierarchies. Geometry type Object nodes contain SOP nodes that construct and modify geometry that inherit any transforms at the object level.                                                                                              |
-| **SOPs**   | Surface OPerators or geometry nodes that are inside an object folder. These are used to construct and modify geometry. Any kind of geometry from polygons to volumes.                                                                                                                                                                          |
-| **DOPs**   | Dynamic OPerators or simulation/solver nodes that are used to construct simulations. Simulations read in geometry from SOPs and passes this data in to the DOP solvers.                                                                                                                                                                        |
-| **SHOP**   | SHading Operators are materials that represent a shader to apply to geometry. Some are hard coded with vex and others are folders that you can dive in to and modify the VOPs inside.                                                                                                                                                          |
-| **VOPs**   | Vector OPerators inside VOP network nodes are used for everything from building shaders to modifying geometry, volumes, pixels, and more.                                                                                                                                                                                                      |
-| **VEX**    | Vector Expression Language. The code language used to write shaders. VOPs are wrappers around VEX code snippets.                                                                                                                                                                                                                               |
-| **CVEX**   | Context agnostic Vector Expression Language. This has replaced all the VEX specific contexts throughout Houdini. It is a generalized language that uses the same environment and functions anywhere inside Houdini.                                                                                                                            |
-| **COPs**   | Composite OPerators in composite type folders. Used in image compositing operations.                                                                                                                                                                                                                                                           |
-| **ROPs**   | Render OPerators in side ROP Output directories which are used to create render output dependency graphs for automating output of any type of data and for triggering external processes like rendering. Commonly used to generate sequences of geometry, simulation data and trigger Render tasks that generates sequences of images to disk. |
-| **CHOPs**  | CHannel OPerators used to create and modify any type of raw channel data from motion to audio and everything in between. Most users safely ignore the CHOP context, and so can you, for now. Put it on the “get to it later” list when learning Houdini. But definitely keep it on the list.                                                   |
+| Term        | Description                                                                                                                                                                                                                                                                                                                                    |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Object**  | Object type nodes in an Object type folder. These Object nodes allow you build transform constraint hierarchies. Geometry type Object nodes contain SOP nodes that construct and modify geometry that inherit any transforms at the object level.                                                                                              |
+| **SOPs**    | Surface OPerators or geometry nodes that are inside an object folder. These are used to construct and modify geometry. Any kind of geometry from polygons to volumes.                                                                                                                                                                          |
+| **DOPs**    | Dynamic OPerators or simulation/solver nodes that are used to construct simulations. Simulations read in geometry from SOPs and passes this data in to the DOP solvers.                                                                                                                                                                        |
+| **SHOP**    | SHading Operators are materials that represent a shader to apply to geometry. Some are hard coded with vex and others are folders that you can dive in to and modify the VOPs inside.                                                                                                                                                          |
+| **VOPs**    | Vector OPerators inside VOP network nodes are used for everything from building shaders to modifying geometry, volumes, pixels, and more.                                                                                                                                                                                                      |
+| **VEX**     | Vector Expression Language. The code language used to write shaders. VOPs are wrappers around VEX code snippets.                                                                                                                                                                                                                               |
+| **CVEX**    | Context agnostic Vector Expression Language. This has replaced all the VEX specific contexts throughout Houdini. It is a generalized language that uses the same environment and functions anywhere inside Houdini.                                                                                                                            |
+| **COPs**    | Composite OPerators in composite type folders. Used in image compositing operations.                                                                                                                                                                                                                                                           |
+| **ROPs**    | Render OPerators in side ROP Output directories which are used to create render output dependency graphs for automating output of any type of data and for triggering external processes like rendering. Commonly used to generate sequences of geometry, simulation data and trigger Render tasks that generates sequences of images to disk. |
+| **CHOPs**   | CHannel OPerators used to create and modify any type of raw channel data from motion to audio and everything in between. Most users safely ignore the CHOP context, and so can you, for now. Put it on the “get to it later” list when learning Houdini. But definitely keep it on the list.                                                   |
+| **Bundles** | Way to group things. Smart Bundles allow for patterns<br>![](assets/hou_bundles.png)                                                                                                                                                                                                                                                           |
+
+
+### Tutorials
+- General Tutorials
+  - [Maya To Houdini](https://www.youtube.com/watch?v=w9V8mvi-__A)
+  - [Houdini Training](https://www.youtube.com/playlist?list=PLjOCJrhSBGUG9uqJ2rMe6ByLJcTD9Jau)
+  - [Softimage to Houdin](https://www.sidefx.com/tutorials/softimage-to-houdini-transition-guide/)
+
+- Cvex_bsdf
+  - [http://www.sidefx.com/docs/houdini/vex/functions/cvex_bsdf](http://www.sidefx.com/docs/houdini/vex/functions/cvex_bsdf)
+  - [https://gist.github.com/WhileRomeBurns/38edb7ac5476f52ae3fd](https://gist.github.com/WhileRomeBurns/38edb7ac5476f52ae3fd)
+  - [https://github.com/groundflyer/physhader-for-mantra](https://github.com/groundflyer/physhader-for-mantra)
+  - ggx_eval, approxsss_sample
+
+- Irradiance Caching
+  - [https://groundflyer.github.io/point-based-gi.html#point-based-gi](https://groundflyer.github.io/point-based-gi.html#point-based-gi)
+
+- Illuminance
+  - [http://www.sidefx.com/docs/houdini/vex/functions/illuminance](http://www.sidefx.com/docs/houdini/vex/functions/illuminance)
+
+- OpenGL Shaders
+  - [http://www.sidefx.com/docs/houdini/shade/opengl](http://www.sidefx.com/docs/houdini/shade/opengl)
+  - [https://www.sidefx.com/docs/hdk/_h_d_k__viewport_g_l3.html](https://www.sidefx.com/docs/hdk/_h_d_k__viewport_g_l3.html)
+  - [http://www.sidefx.com/docs/houdini/shade/glsl.html](http://www.sidefx.com/docs/houdini/shade/glsl.html)
+
+- Scripting
+  - [http://www.sidefx.com/docs/houdini/render/soho](http://www.sidefx.com/docs/houdini/render/soho)
+
+### References
+- [Attributes](http://www.sidefx.com/docs/houdini/model/attributes)
+- [Global expression variables](http://www.sidefx.com/docs/houdini14.0/expressions/_globals)
+- [Standard variables](http://www.sidefx.com/docs/houdini/nodes/sop/standardvariables)
+- [Local SOP variables](http://www.sidefx.com/docs/houdini/nodes/sop/point#locals)
+- [Houdini basics](https://github.com/kiryha/Houdini/wiki/houdini-basics)
+- [Terminology](https://www.sidefx.com/forum/topic/43515/?page=1#post-195103)
+- [More Terminology](http://mikelyndon.online/2017/02/07/learning-houdini-like-a-language/)
 
 
 ### Coordinate System
@@ -62,6 +89,24 @@ For left to right inputs A, B, C =>
 
 are connected in a left to right order bc they are "post-multiply  implying a premultiply order (eg: WorldSpace * ObjectSpace * v).  Others like **transform** give you the option to premultiply or post multiply
 
+## Configuration
+- [Environment Variables](http://www.sidefx.com/docs/houdini/ref/env)
+- [Houdini Python Setup](https://amesyta.wordpress.com/2017/04/14/houdini-python-environment-setup/)
+- **hconfig:** for listing houdini config and environment variables
+  - *-a:* dump all the environment vars
+  - *-ap:* dump all the seach paths
+- **hgpuinfo:** dump GPU info
+  - *-c/-l:* dump OpenCL info for active/all devices
+  - *-g:* dump OpenGL info
+  - \-o: dump OptiX info
+- Special characters:
+  - "@" => expands to directories in HOUDINI_PATH. 
+    if the HOUDINI_PATH is `$HIP$HFS/houdini $HOME/houdini`
+    then the value `"@/vex"` would expand to `$HIP/vex $HFS/houdini/vex$HOME/houdini/vex`
+  - = => Equiv to `$HIP`
+  - & => default path for given envar
+  - ^ => For VEX-related variables, expands to the shader type
+    For example, if `HOUDINI_VEX_PATH="$HOME/vex/^"`, when loading Surface shaders it will expand to `"$HOME/vex/Surface"`
 
 ## Shortcuts
 
@@ -145,39 +190,3 @@ To set a shortcut, click on a menu option while holding ctrl+shift+alt to bring 
 | **Go to** quickmark 1                              | 1                                    |
 | **Togle** quickmarks                               | tilda                                |
 | Drop visualizer node                               | X+LMB                                |
-
-
-## Tutorials
-General Tutorials
-- Maya To Houdini [https://www.youtube.com/watch?v=w9V8mvi-__A](https://www.youtube.com/watch?v=w9V8mvi-__A)
-- Houdini Training [https://www.youtube.com/playlist?list=PLjOCJrhSBGUG9uqJ2rMe6ByLJcTD9Jau7](https://www.youtube.com/playlist?list=PLjOCJrhSBGUG9uqJ2rMe6ByLJcTD9Jau7)
-- Softimage to Houdini: [https://www.sidefx.com/tutorials/softimage-to-houdini-transition-guide/](https://www.sidefx.com/tutorials/softimage-to-houdini-transition-guide/)
-
-Cvex_bsdf
-- [http://www.sidefx.com/docs/houdini/vex/functions/cvex_bsdf](http://www.sidefx.com/docs/houdini/vex/functions/cvex_bsdf)
-- [https://gist.github.com/WhileRomeBurns/38edb7ac5476f52ae3fd](https://gist.github.com/WhileRomeBurns/38edb7ac5476f52ae3fd)
-- [https://github.com/groundflyer/physhader-for-mantra](https://github.com/groundflyer/physhader-for-mantra)
-- ggx_eval, approxsss_sample
-
-Irradiance Caching
-- [https://groundflyer.github.io/point-based-gi.html#point-based-gi](https://groundflyer.github.io/point-based-gi.html#point-based-gi)
-
-Illuminance()
-- [http://www.sidefx.com/docs/houdini/vex/functions/illuminance](http://www.sidefx.com/docs/houdini/vex/functions/illuminance)
-
-OpenGL Shaders
-- [http://www.sidefx.com/docs/houdini/shade/opengl](http://www.sidefx.com/docs/houdini/shade/opengl)
-- [https://www.sidefx.com/docs/hdk/_h_d_k__viewport_g_l3.html](https://www.sidefx.com/docs/hdk/_h_d_k__viewport_g_l3.html)
-- [http://www.sidefx.com/docs/houdini/shade/glsl.html](http://www.sidefx.com/docs/houdini/shade/glsl.html)
-
-Scripting
-- [http://www.sidefx.com/docs/houdini/render/soho](http://www.sidefx.com/docs/houdini/render/soho)
-
-[Environment Variables](http://www.sidefx.com/docs/houdini/ref/env)
-
-[Houdini Python Setup](https://amesyta.wordpress.com/2017/04/14/houdini-python-environment-setup/)
-
-Bundles
-- Way to group things
-- Smart Bundles allow for patterns
-  ![](assets/hou_bundles.png)
