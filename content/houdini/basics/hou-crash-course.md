@@ -2,19 +2,6 @@
 
 ## Overview
 
-[http://forums.odforce.net/topic/17105-short-and-sweet-op-centric-lessons/#comment-104263](http://forums.odforce.net/topic/17105-short-and-sweet-op-centric-lessons/#comment-104263)
-- for every cook (frame change, parm change, etc), the network starts at the Display/Render node and then walks up the chain looking for nodes with changes and evaluates dependencies for each node also querying those nodes for changes until it hits the top nodes. The nodes marked dirty causing the network to evaluate the dirty nodes top down evaluating the dependencies that were found.
-- You can set a few options in the Performance Monitor to work in the older H11 way and see this evaluation tree order if you wish. Change that. It is "mandatory" that you do this if you want a deeper understanding of Houdini. You definitely need to use the Performance Monitor if you want to see how the networks have evaluated as it is based on creation order along with the set-up dependencies. Yes deleting and undeleting an object can and will change this evaluation order and can sometimes get you out of a spot with crashing.
-- Houdini is a file system, in memory, and on disk in the .hip "cpio" archive file. If you want, you can use a shell, and given any .hip file, run the hexpand shell command on the file. This will expand the Houdini file in to a directory structure that you can read and edit if you so wish. Then wrap it back up with hcollapse.
-- Each node is captured as three distinct files: the file that that adds the node and wires it up to other nodes, the parameter file that sets the nodes parameters, and another file that captures additional info on the node. If you locked a SOP, then that binary information will be captured as a fourth file for that node.
-- different types of node networks and nodes of a specific type can only be worked on in specific directory node types.
-- Houdini textport pane and use the opcf (aliased to cd), opls (aliased to ls), and oppwf (aliased to oppwd and pwd) to navigate the houdini scene via the textport as you would in a unix shell. Ex:
-  ```
-  cd '/obj'
-  ls -al
-  ```
-
-
 ### Terminology
 
 | Term        | Description                                                                                                                                                                                                                                                                                                                                    |
@@ -30,7 +17,6 @@
 | **ROPs**    | Render OPerators in side ROP Output directories which are used to create render output dependency graphs for automating output of any type of data and for triggering external processes like rendering. Commonly used to generate sequences of geometry, simulation data and trigger Render tasks that generates sequences of images to disk. |
 | **CHOPs**   | CHannel OPerators used to create and modify any type of raw channel data from motion to audio and everything in between. Most users safely ignore the CHOP context, and so can you, for now. Put it on the “get to it later” list when learning Houdini. But definitely keep it on the list.                                                   |
 | **Bundles** | Way to group things. Smart Bundles allow for patterns<br>![](../assets/hou_bundles.png)                                                                                                                                                                                                                                                           |
-
 
 ### Tutorials
 - General Tutorials
@@ -58,7 +44,38 @@
 - Scripting
   - [http://www.sidefx.com/docs/houdini/render/soho](http://www.sidefx.com/docs/houdini/render/soho)
 
+
+### Internals
+- For every cook (frame change, parm change, etc)
+  - the network starts at the Display/Render node and then walks up the chain looking for nodes with changes and evaluates dependencies for each node also querying those nodes for changes until it hits the top nodes
+  - The nodes marked dirty causing the network to evaluate the dirty nodes top down evaluating the dependencies that were found
+- You can set a few options in the Performance Monitor to work in the older H11 way and see this evaluation tree order if you wish.
+  - It is "mandatory" that you do this if you want a deeper understanding of Houdini.
+  - You definitely need to use the Performance Monitor if you want to see how the networks have evaluated as it is based on creation order along with the set-up dependencies.
+  - Yes deleting and undeleting an object can and will change this evaluation order and can sometimes get you out of a spot with crashing.
+- Houdini is a file system, in memory, and on disk in the .hip "cpio" archive file.
+  - If you want, you can use a shell, and given any .hip file, run the hexpand shell command on the file
+  - This will expand the Houdini file in to a directory structure that you can read and edit if you so wish
+  - Then wrap it back up with hcollapse
+- Each node is captured as three distinct files:
+  - the file that that adds the node and wires it up to other nodes
+  - the parameter file that sets the nodes parameters
+  - another file that captures additional info on the node
+  - If you locked a SOP, then that binary information will be captured as a fourth file for that node
+- Different types of node networks and nodes of a specific type can only be worked on in specific directory node types
+- You can dig deeper with Houdini textport pane to navigate the houdini scene via the textport as you would in a unix shell
+  - opcf (aliased to cd)
+  - opls (aliased to ls)
+  - oppwf (aliased to oppwd and pwd)
+  - Ex
+    ```
+    cd '/obj'
+    ls -al
+    ```
+- [Reference this Excellent Houdini Internals Explanation](http://forums.odforce.net/topic/17105-short-and-sweet-op-centric-lessons/#comment-104263)
+
 ### References
+- [Excellent Houdini Internals Explanation](http://forums.odforce.net/topic/17105-short-and-sweet-op-centric-lessons/#comment-104263)
 - [Attributes](http://www.sidefx.com/docs/houdini/model/attributes)
 - [Global expression variables](http://www.sidefx.com/docs/houdini14.0/expressions/_globals)
 - [Standard variables](http://www.sidefx.com/docs/houdini/nodes/sop/standardvariables)
