@@ -1,6 +1,4 @@
----
-sidebar: houdini
----
+# Visuals
 - Character Upgrades
   - Clothes
     - Leather Jacket

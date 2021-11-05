@@ -1,6 +1,4 @@
----
-sidebar: houdini
----
+# Geo Processing
 - Heat Flow Method - Geodesic Distance
 - Mobius Registration - Find correspondance between two meshes
 - Vector Heat Method - Parallel transport across surface

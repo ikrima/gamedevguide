@@ -1,7 +1,4 @@
----
-sortIndex: 0
-sidebar: houdini
----
+# AR
 
 - Integrate with [6D.ai](http://6D.ai)
 - Integrate with that siggraph live lighting
