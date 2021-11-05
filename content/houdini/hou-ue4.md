@@ -10,7 +10,7 @@ sidebar: houdini
   - Set keyframe on root skeleton at frame 0
   - Export ROP: Force Blend Shape Export + Force Skin Deform Export
 
-![](../assets/hou-rop-fbx-xport.png)
+![](assets/hou-rop-fbx-xport.png)
 
 - Unreal
   - Import with selecting existing skeleton if already exists
