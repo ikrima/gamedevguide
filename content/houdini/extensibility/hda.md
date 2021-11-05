@@ -28,7 +28,7 @@ Vex Profiling
 ## UI
 Handles
 - Can expose handles by right click on operator and say promote to handle
-  [](../../assets/hda_handles.png)
+  [](../assets/hda_handles.png)
 - The movetool_candidate flag is used to indicate whether the handle can simply be changed to support one of the move tools (translate/rotate/scale).
 - The ownerop setting specifies an alternate node whose space is used for the handle to operate in.
 - The owneropgroup setting specifies the name of the group parameter on its owner node. This is used by the handle to know which geometry it should use to compute centroids for positioning itself.
