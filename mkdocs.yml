@@ -73,7 +73,6 @@ extra:
 plugins:
   - search:
       separator: '[\s\-\.\_]+'
-      prebuild_index: true
   - git-revision-date-localized
   - awesome-pages:
       collapse_single_pages: true
