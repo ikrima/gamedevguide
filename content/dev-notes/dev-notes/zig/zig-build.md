@@ -2,7 +2,8 @@
 
 ## Basics
 
-Zig toolchain compiles a Zig program (`build.zig`) that has special exported function (`pub fn build(b: *std.build.Builder) void`) invoked by `zig build`
+Zig build scripts (usually named `build.zig`) are ordinary Zig programs with a special exported function (`pub fn build(b: *std.build.Builder) void`) utilizing [`std.build.Builder`](https://github.com/ziglang/zig/blob/master/lib/std/build.zig)
+The build runner is invoked by `zig build` which in turn invokes  said `build.zig:build()`
 
 * create DAG of `std.build.Step` nodes where each `Step`
   * executes a part of our build process
@@ -165,7 +166,110 @@ Can run programs from build script for convenience
     zig build run -- -o foo.bin foo.asm
     ````
 
+## Recipes
+
+### Link zig library
+
+* Use `LibExeObjStep.addPackage/addPackagePath` with a `Pkg{ .name = "library", .path = "/path/to/the/library"}`.
+* use `const library = @import("library");` in your root source file
+
+### Use a native (C) library
+
+* Use `LibExeObjStep.linkSystemLibrary()` with your library's name
+* `@cInclude()` in your source code
+
+### Use build-time custom command line flags (`-Dsomething`)
+
+* Use `LibExeObjStep.addBuildOption()` to add a value to the `build_options` package
+* To get this value from the building user, use `Builder.option()`
+* Supported types for `option` are Strings and Enums (`-Dname=value` style), Booleans (`-Dname`, `-Dname=true`, `-Dname=false` style) and list of strings (`-Dname=value -Dname=value2` style)
+* Use from your source code like `const should_do_thing = @import("build_options").do_thing;`
+
+### Run commands as build steps
+
+* Use `Builder.addSystemCommand()` to get a step that runs your command
+* create a top level step using `b.step()`
+* make the top level step depend on your run step using `top.dependOn(&run.step)`
+
+### Generate documentation
+
+* Use `Builder.addTest()` to get a step that will test your program that we will call `test_doc`
+* make it emit documentation using `test_doc.emit_docs = true;`
+* make it stop emitting binary files using `test_doc.emit_bin = false`
+* finally set the output directory to some folder using for example `test_doc.output_dir = "docs"`
+* create a top level step using `b.step()`
+* make that newly created step depends on documentation step using `doc_step.dependOn(&test_doc.step)`
+
+## Internals
+
+### Overview
+
+* `std.build.Builder`: representing a pending build and a DAG of all of its associated steps and their respective settings
+* `build.zig:pub fn build(b: *Builder) void` is responsible for adding the custom build logic for module to said Builder
+* invoking `zig build` does under the hood is building and running [lib/std/special/build_runner.zig](https://github.com/ziglang/zig/blob/master/lib/std/special/build_runner.zig),
+  * just a normal Zig application with `pub fn main()` and all the things you might already know from your actual project
+  * `build_runner` imports your project's `build.zig` (it does this with a magic `@import("@build")`)
+  * somewhere in its belly invokes your `pub fn build(b: *Builder)` on a `Builder` it created earlier
+  * The very last thing it does is hand over to this `Builder` you got to modify using `make()`
+* the main workhorse is `LibExeObjStep.make` which spawns the actual zig compiler (e.g. `zig build-exe/zig build-lib/zig cc`) with the builder/step settings converted as command line args
+
+### std.build.Builder
+
+The core build graph coordinator. Main purpose:
+
+* Coordinate and execute `Step`s that describe different stages of a build
+* Provide default target and release mode for `Step`s
+* Provide `build_options`
+
+### std.build.Step
+
+the base node in the build DAG
+
+* two noteworthy properties:
+  * `makeFn`: does the actual work which implementing this step entails
+  * `dependencies`: an `ArrayList` of different `Step`s that must be executed before this one (though that isn't handled by `Step` itself)
+* you'll mostly use structs that wrap a bare `Step`
+  * `BuildExeObjStep`: this is the big one that actually does all of the compiling work
+  * `LogStep`: very simple step that writes something to stderr
+  * `RunStep`: which runs a system command
+  * these are usually constructed with one of many convenience methods on `Builder` like `builder.addTranslateC(std.build.FileSource)`
+  * to get a quick overview of them, grep for `pub fn add` while in the source file
+
+### std.build.LibExeObjStep
+
+main step capable of invoking the zig compiler on your sources and turning them into executables or shared objects/DLLs
+
+* usually constructed with one of `Builder`s `addX` methods and then its myriad settings modified
+* finally call `install()` to create a build artifact in `./zig-cache/bin` (this path is also adjustable using `setOutputDir`)
+* can also use a `LibExeObjStep` to run your tests as done in the [default build.zig for libraries](https://github.com/ziglang/zig/blob/master/lib/std/special/init-lib/build.zig)
+
+### std.zig.CrossTarget
+
+defines project Build Targets
+
+* `build.zig` template exposes the full power of Zig's cross-compiling to the building user
+* use `LibExeObjStep.setTarget(std.CrossTarget)` to set targets
+* easiest way is calling it with [`std.CrossTarget`](https://github.com/ziglang/zig/blob/master/lib/std/zig/cross_target.zig)`.parse(std.CrossTarget.ParseOptions)` to get a interface reminiscent of the `-target` CLI option
+  * The `ParseOptions` struct is fairly well documented in the source.
+  * `Builder.standardTargetOptions()` is convenience wrapper around `std.CrossTarget.parse()`
+
+### build_options
+
+provide compile-time configuration to your code
+
+* the build system can create a package called `build_options` to communicate values from `build.zig` to your project's source code
+* declarations are populated by calling `LibExeObjStep.addBuildOption(type, name, value)` in your build.zig
+* can provide user input for these in form of `-Dname=value` flags.
+* can get the value a user provided (or `null` if they didn't, so use `orelse` on anything you get from this) using `Builder.option(type, name, description)`
+
 ## Reference
 
-[Zig Build Explained: Part I](https://zig.news/xq/zig-build-explained-part-1-59lf)
-[Zig Build Explained: Part II](https://zig.news/xq/zig-build-explained-part-2-1850)
+* [Zig Build Explained: Part I](https://zig.news/xq/zig-build-explained-part-1-59lf)
+* [Zig Build Explained: Part II](https://zig.news/xq/zig-build-explained-part-2-1850)
+* [Zig Build System Wiki Entry](https://github.com/ziglang/zig/wiki/Zig-Build-System)
+* Relevant source files
+  * [std/build.zig](https://github.com/ziglang/zig/blob/master/lib/std/build.zig) for `Builder`, `LibExeObjStep` and some other steps
+  * [std/build/](https://github.com/ziglang/zig/tree/master/lib/std/build) for various other steps
+  * [std/special/init-exe/build.zig](https://github.com/ziglang/zig/blob/master/lib/std/special/init-exe/build.zig) for the default application build.zig template
+  * [std/special/init-lib/build.zig](https://github.com/ziglang/zig/blob/master/lib/std/special/init-exe/build.zig) for the default library build.zig template
+  * [std/special/build_runner.zig](https://github.com/ziglang/zig/blob/master/lib/std/special/build_runner.zig) for the file executed when you run `zig build`
