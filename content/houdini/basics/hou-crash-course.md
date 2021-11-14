@@ -19,6 +19,7 @@
 | **Bundles** | Way to group things. Smart Bundles allow for patterns<br>![](../assets/hou_bundles.png)                                                                                                                                                                                                                                                           |
 
 ### Tutorials
+
 - General Tutorials
   - [Maya To Houdini](https://www.youtube.com/watch?v=w9V8mvi-__A)
   - [Houdini Training](https://www.youtube.com/playlist?list=PLjOCJrhSBGUG9uqJ2rMe6ByLJcTD9Jau)
@@ -46,6 +47,7 @@
 
 
 ### Internals
+
 - For every cook (frame change, parm change, etc)
   - the network starts at the Display/Render node and then walks up the chain looking for nodes with changes and evaluates dependencies for each node also querying those nodes for changes until it hits the top nodes
   - The nodes marked dirty causing the network to evaluate the dirty nodes top down evaluating the dependencies that were found
@@ -75,6 +77,7 @@
 - [Reference this Excellent Houdini Internals Explanation](http://forums.odforce.net/topic/17105-short-and-sweet-op-centric-lessons/#comment-104263)
 
 ### References
+
 - [Excellent Houdini Internals Explanation](http://forums.odforce.net/topic/17105-short-and-sweet-op-centric-lessons/#comment-104263)
 - [Attributes](http://www.sidefx.com/docs/houdini/model/attributes)
 - [Global expression variables](http://www.sidefx.com/docs/houdini14.0/expressions/_globals)
@@ -110,20 +113,19 @@ are connected in a left to right order bc they are "post-multiply  implying a pr
 - [Environment Variables](http://www.sidefx.com/docs/houdini/ref/env)
 - [Houdini Python Setup](https://amesyta.wordpress.com/2017/04/14/houdini-python-environment-setup/)
 - **hconfig:** for listing houdini config and environment variables
-  - *-a:* dump all the environment vars
-  - *-ap:* dump all the seach paths
+  - `-a`: dump all the environment vars
+  - `-ap`: dump all the seach paths
 - **hgpuinfo:** dump GPU info
-  - *-c/-l:* dump OpenCL info for active/all devices
-  - *-g:* dump OpenGL info
-  - \-o: dump OptiX info
+  - `-c/-l`: dump OpenCL info for active/all devices
+  - `-g`: dump OpenGL info
+  - `-o`: dump OptiX info
 - Special characters:
-  - "@" => expands to directories in HOUDINI_PATH. 
-    if the HOUDINI_PATH is `$HIP$HFS/houdini $HOME/houdini`
-    then the value `"@/vex"` would expand to `$HIP/vex $HFS/houdini/vex$HOME/houdini/vex`
-  - = => Equiv to `$HIP`
-  - & => default path for given envar
-  - ^ => For VEX-related variables, expands to the shader type
-    For example, if `HOUDINI_VEX_PATH="$HOME/vex/^"`, when loading Surface shaders it will expand to `"$HOME/vex/Surface"`
+  - `@` => expands to directories in `HOUDINI_PATH` 
+    Ex: if `HOUDINI_PATH=$HIP;$HFS/houdini;$HOME/houdini`, then `@/vex` would expand to `$HIP/vex;$HFS/houdini/vex;$HOME/houdini/vex`
+  - `=` => equiv to `$HIP`
+  - `&` => default path for given envar
+  - `^` => expands to the shader type for VEX-related variables
+    Ex: if `HOUDINI_VEX_PATH="$HOME/vex/^"`, when loading Surface shaders it will expand to `"$HOME/vex/Surface"`
 
 ## Shortcuts
 
