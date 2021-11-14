@@ -1,6 +1,8 @@
 # IREE
 
-^ec1ecf
+## Overview
+
+[iree-architecture.svg](../../_assets/dev-notes/iree-architecture.svg)
 
 Hierarchy:
 
@@ -20,7 +22,7 @@ Hierarchy:
     * External, long-lived
     * Generational in a ringbuffer 
     * Read only/mapped
-* ## Schedule hierarchy
+* Schedule hierarchy
   => Input Compute Graph: value semantics
   => Data Flow: data + execution flow; separated from exec ops. defines concurrency domains across
   - across streams (persistent buffers)
@@ -28,17 +30,27 @@ Hierarchy:
   - within dispatches 
   => Alloc Model: allocation + execution model
   => Exec Model: VM exec ops
-  => VM: cod
+  => VM: cod 
+
+## Memory/Buffers
 
 Different allocators for different visibility scopes:
-Temporary memory used during execution is purely transient (stack/alloca)
-Temporary memory used across commands is transient within the command buffer (arena)
-Temporary memory used across command buffers is fenced (ringbuffer)
+
+* Temporary memory used during execution is purely transient (stack/alloca)
+* Temporary memory used across commands is transient within the command buffer (arena)
+* Temporary memory used across command buffers is fenced (ringbuffer)
+
 Persistent memory can be whatever it needs to be:
-External, long-lived
-Ringbuffer if generational
-Read-only/mapped
-etc ^4657a3
+
+* External, long-lived
+* Ringbuffer if generational
+* Read-only/mapped
+
+Memory Types:
+
+* **ptr:** Pointer to a typed value.
+* **byte_buffer:** A constant buffer of mapped host memory.
+* **mutable_byte_buffer:** A buffer of read-write host memory.
 
 ````cpp
 signature ::= 'I' length-prefixed(type-sequence)
@@ -109,16 +121,6 @@ optional<BufferDescription> BufferDescriptionOracle(
   throws UnsupportedBufferException;
 
 ````
-
-ptr
-
-Pointer to a typed value.
-byte_buffer
-
-A constant buffer of mapped host memory.
-mutable_byte_buffer
-
-A buffer of read-write host memory.
 
 ````cpp
 

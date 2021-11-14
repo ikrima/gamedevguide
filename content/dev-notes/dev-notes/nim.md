@@ -14,7 +14,7 @@
 * Nim language creator: [https://www.youtube.com/watch?v=-9SGIB946lw](https://www.youtube.com/watch?v=-9SGIB946lw)
 * DSL stuff
   * pattern matching [https://github.com/alehander92/gara](https://github.com/alehander92/gara)
-    * alternate:: [http://andreaferretti.github.io/patty/](http://andreaferretti.github.io/patty/)
+  * alternate:: [http://andreaferretti.github.io/patty/](http://andreaferretti.github.io/patty/)
 
 # Macro Codegen
 
