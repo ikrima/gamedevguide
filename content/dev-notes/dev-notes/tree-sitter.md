@@ -1,6 +1,6 @@
 # TreeSitter
 
-* Also cross-reference [notes in depot](tolva/exp/tree-sitter-dc/README.md)
+* Also cross-reference notes in depot: `tolva/exp/tree-sitter-dc/README.md`
 * Explanatory: [Clojure](https://github.com/sogaiu/tree-sitter-clojure)
 * Medium Complexity: Godot script
   * https://github.com/PrestonKnopp/tree-sitter-gdscript

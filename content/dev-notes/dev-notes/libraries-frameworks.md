@@ -159,6 +159,8 @@
 # Database
 
 * [https://github.com/LMDB/lmdb](https://github.com/LMDB/lmdb)
+  * https://mozilla.github.io/firefox-browser-architecture/text/0015-rkv.html
+  * https://dgraph.io/blog/post/badger-lmdb-boltdb/
 * [https://github.com/LMDB/sqlightning](https://github.com/LMDB/sqlightning)
 * [https://github.com/erthink/libmdbx](https://github.com/erthink/libmdbx)
 * [https://github.com/google/leveldb](https://github.com/google/leveldb)
