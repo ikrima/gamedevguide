@@ -61,7 +61,7 @@
   * createProcType
   * typeof
 
-![NimAstTable.png](../_assets/dev-notes/NimAstTable.png)
+![NimAstTable.png](_assets/NimAstTable.png)
 
 # Nim Script
 

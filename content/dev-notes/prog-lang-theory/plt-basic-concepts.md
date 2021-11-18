@@ -414,10 +414,10 @@
   * [Programming Language Design Concepts](http://www.dcc.ic.uff.br/~isabel/LP/D.Watt.pdf): great easily grokkable, pragmatic guide on programming language concepts without heavy theory
   * [Tiny Compiler](https://the-super-tiny-compiler.glitch.me/intro): ultra-simplified example of all the major pieces of a modern compiler written in easy to read JavaScript
   * [Crafting Interpreters](http://www.craftinginterpreters.com/): great practical guide of building end to end interpreter
-  * [Compiler Construction: The Art of Niklaus Wirth](../../_assets/dev-notes/compiler-construction-the-art-of-niklaus-wirth.pdf)
+  * [Compiler Construction: The Art of Niklaus Wirth](../_assets/compiler-construction-the-art-of-niklaus-wirth.pdf)
   * Incremental approach to compiler construction
-    * [An Incremental Approach to Compiler Construction](../../_assets/dev-notes/incremental-approach-to-compiler-construction.pdf)
-    * [Essentials of Compilation: The Incremental Nanopass Approach](../../_assets/dev-notes/essentials-of-compilation-incremental-nanopass-approach.pdf)
+    * [An Incremental Approach to Compiler Construction](../_assets/incremental-approach-to-compiler-construction.pdf)
+    * [Essentials of Compilation: The Incremental Nanopass Approach](../_assets/essentials-of-compilation-incremental-nanopass-approach.pdf)
 * Theory oriented resources
   * [Programming Language Pragmatics](https://booksite.elsevier.com/9780124104099/)
     * the most comprehensive book to understand contemporary programming languages

@@ -15,7 +15,7 @@ Usage
 
 * Run GFlags.exe (as admin) to set windows debug settings
 * Can then pass commands to trace stack, trace handles, etc
-  ![gflags-screenshot.png](../_assets/dev-notes/gflags-screenshot.png)
+  ![gflags-screenshot.png](_assets/gflags-screenshot.png)
 
 ### Tools
 

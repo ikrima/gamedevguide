@@ -1,6 +1,6 @@
 ## DSL/Compiler
 
-![clojure-compiler-flow.png](../../_assets/dev-notes/clojure-compiler-flow.png)
+![clojure-compiler-flow.png](../_assets/clojure-compiler-flow.png)
 
 * reader: parser that should use treesitter for
 

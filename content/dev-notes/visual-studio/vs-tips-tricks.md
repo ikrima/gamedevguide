@@ -193,4 +193,4 @@ dumpbin.exe /HEADERS  (use to see if x86 vs x64 in the machine entry)
 
 Dump final merged properties from all .props files: `batch>msbuild /pp:temp.xml .build/es2.vcxproj`
 You can also set the MSBuild Logging level to Diagnostic
-![propsheet-msbuild-diag.png](../../_assets/dev-notes/propsheet-msbuild-diag.png)
+![propsheet-msbuild-diag.png](../_assets/propsheet-msbuild-diag.png)
