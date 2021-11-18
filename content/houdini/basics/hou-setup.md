@@ -1,4 +1,4 @@
-# Houdini Setup Instructions
+# Houdini Setup
 
 ## Common
 - Install license server on each machine
@@ -8,6 +8,7 @@
   - Logon Account: ${env:EDEV_HOUSERVERACCOUNT} (ex: sa_server_account)
   - Make sure firewall is accessible
 - Update `MachineSetup-Config.ps1:${env:EDEV_HOUDIR}` to point to new path and rerun
+- Make sure `HOUDINI_USER_PREF_DIR` is set (e.g. `HOUDINI_USER_PREF_DIR=${env:EDEV_HOUPSITEDIR}/prefs/houdini__HVER__`)
 - Change symlink of C:\Program Files\Side Effects Software\Latest to point to new directory
 
 ### Optional
@@ -23,7 +24,8 @@ For major-minor version updates (i.e. from 17.0 to 17.5)
   - REDSHIFT_VER = 17.5.173
 - Create a new version specific dso folder (eg: `${env:EDEV_HOUPSITEDIR}\personal\dso-17.5`)
 - Compile dso's with new HDK (ex: SOP_ComputeTangents)
-  - ~~mikktspace-for-houdini: Update the visual studio HDK props file to point to new HDK location~~ Not needed anymore as PolyFrame node has builtin support for mikktspace
+  - ~~mikktspace-for-houdini: Update the visual studio HDK props file to point to new HDK location~~
+  - Not needed anymore as PolyFrame node has builtin support for mikktspace
 - Follow instructions for nightly build updates
 
 ## For Nightly Updates
