@@ -3,7 +3,19 @@
 ## Overview
 
 VEX is Houdini's SIMD streaming scripting language.
-Looks like it's bytecode interpreted with some simple optimizations builtin like constant folding and outlining using llvm for lowering
+
+## Internals
+
+- Houdini "JIT" compiles VEX code as part of node cook process  with `vcc.exe`
+- execution is runtime bytecode interpreter
+- using llvm for lowering/optimization for simple optimizations builtin like constant folding, dce, and outlining
+- some useful commmands
+  - dump ast: `vcc --vfl-input foo.vfl -c cvex --compile-all --compile-target dumpast`
+  - dump IR:
+    - vex program:             `vcc --vfl-input foo.vfl -c cvex`
+    - unoptimized vex program: `vcc --vfl-input foo.vfl -c cvex --no-optimize`
+    - force for all functions: `vcc --vfl-input foo.vfl -c cvex --compile-all --generate-intrinsic-lib`
+  - [more details](https://www.sidefx.com/docs/houdini/vex/vcc.html)
 
 ## Useful Functions
 
@@ -47,7 +59,9 @@ Looks like it's bytecode interpreted with some simple optimizations builtin like
   //Create array to store the primitive's point numbers
   v@primpoints;//This vector is used to store the 3 points instead of using an array, due to a limit with array attributes.
 
-  //NOTE: Basically if you want to access the array in another wrangle further down the chain, you need to use a data type other than an array instead, a vector or matrix can be used to store array like data structures.
+  //NOTE: Basically if you want to access the array in another wrangle
+  // further down the chain, you need to use a data type other than an
+  // array instead, a vector or matrix can be used to store array like data structures
 
   //Get the number of vertex for a given prim
   int nvtx = primvertexcount(0, @prim);
