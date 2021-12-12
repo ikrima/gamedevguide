@@ -178,6 +178,10 @@ Can run programs from build script for convenience
 * Use `LibExeObjStep.linkSystemLibrary()` with your library's name
 * `@cInclude()` in your source code
 
+### Use a native (C++) library
+
+* use `LibExeObjStep.linkSystemLibrary("c++");`
+
 ### Use build-time custom command line flags (`-Dsomething`)
 
 * Use `LibExeObjStep.addBuildOption()` to add a value to the `build_options` package
@@ -261,6 +265,15 @@ provide compile-time configuration to your code
 * declarations are populated by calling `LibExeObjStep.addBuildOption(type, name, value)` in your build.zig
 * can provide user input for these in form of `-Dname=value` flags.
 * can get the value a user provided (or `null` if they didn't, so use `orelse` on anything you get from this) using `Builder.option(type, name, description)`
+
+## Translate-C
+
+### Incrementally Porting C App Series
+
+* [Incrementally Porting C App: Part1](https://www.youtube.com/watch?v=xg7EZNf7cmE)
+* [Incrementally Porting C App: Part2](https://www.youtube.com/watch?v=zAd3LDe6A-4)
+* [Incrementally Porting C App: Part3](https://www.youtube.com/watch?v=t1n_1-bVpEI)
+* [Incrementally Porting C App: Part4](https://www.youtube.com/watch?v=tl-7oxLQEDY)
 
 ## Reference
 
