@@ -13,7 +13,7 @@
 * string type
 * classes/inheritance/runtime polymorphism
 * interfaces/protocols
-* constructors/destructors/RAII (zig uses defer/errdefer keyword)
+* constructors/destructors/RAII (zig uses `defer/errdefer` keyword)
 * function/operator overloading
 * closures or lambdas
 * garbage collection
@@ -57,8 +57,6 @@
   
   * Implicit integer widening casts allowed
   
-  * `@intCast` for narrowing conversions. Out of range cast is detectable illegal behavior
-  
   * Overflows are detectable illegal behavior
   
   * To explicitly allow overflow, use overflow operators
@@ -93,7 +91,6 @@
   []u8         :  u8 array slice
   []const u8   :  u8 immutable array slice
   
-  
   var x: i32 = 4;
   var ptr: *i32 = &x;
   ptr.* = 15;
@@ -115,6 +112,55 @@
 * no automatic allocation by convention; any allocation functions explicitly take an allocator argument
 
 * compiler intrinsic functions are prefixed by @ e.g. `@This(), @typeInfo(@TypeOf(args))`
+
+### Casting for C Programmers
+
+* **@as**: only allowed when the casting operation is unambiguous and safe
+  
+  * use case: casting a compile-time integer for use in type inference:
+    ````zig
+    var x = 5;              // not allowed - should x be signed? unsigned? what size?
+    var x = @as(u8, 5);     // type inference allows the compiler to determine that x is type u8
+    ````
+  
+  * use case: casting an unsigned int to a larger signed int:
+    ````zig
+    var x : u8 = 5;
+    var y = @as(i32, x);
+    ````
+  
+  * use case: casting an int to a larger-size int of the same sign
+    ````zig
+    var x : u8 = 5;
+    var y = @as(u32, x);
+    ````
+
+* **@truncate:** explicitly cast to a smaller-size integer with the same signedness, by removing the most-significant bits
+  
+  * **NOTE**: `@truncate()` on signed integers removes the most significant bits so the results may or may not remain negative
+    ````zig
+    var x = @as(u16, 513);    // x in binary: 0000001000000001
+    var y = @truncate(u8, x); // y in binary:         00000001
+    ````
+
+* **@bitCast:** Used to to cast between same sized types, preserving the bitpattern
+  
+  * relevant when casting between signed and unsigned types (i.e. reinterpret cast)
+    ````zig
+    var x = @as(u8, 180);     // x in binary: 10110100 (value is 180)
+    var y = @bitCast(i8, x);  // y in binary: 10110100 (value is -76)
+    ````
+
+* **@intCast:** for runtime safety-checked narrowing conversions
+  
+  * the dual of @bitCast i.e. preserves value but not the bitpattern
+  * out of range cast is detectable illegal behavior
+  * if `@setRuntimeSafety(true)`, invalid `@intCast` with panic; otherwise, it's undefined behavior
+    ````zig
+    var x = @as(i16, 180);
+    var y = @intCast(u8, x); // this is fine
+    var z = @intCast(i8, y); // this will crash
+    ````
 
 ## Basic Syntax
 

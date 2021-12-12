@@ -100,7 +100,7 @@ Zig's metaprogramming is driven by a few basic concepts:
 
 ### Gotchas/Surprises
 
-* no peer type resultion in comptime execution
+* no peer type resolution in comptime execution
 * all comptime values do not obey usual lifetime rules;
   * have "static" lifetimes (can think of values as garbage collected)
 * `anytype` struct fields are allowed
