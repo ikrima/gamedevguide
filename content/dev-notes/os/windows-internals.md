@@ -1,15 +1,13 @@
 # Windows Internals
 
-## Source code
+## Resources/Source code
 
 Use these repositories to get a sense of what windows might be doing underneath the covers
 
-* **ReactOS:** [https://doxygen.reactos.org/](https://doxygen.reactos.org/)
-* **WineHQ:**
-
-## Resources
-
-* **OSR Community:** [https://www.osr.com/developer-community/](https://www.osr.com/developer-community/)
+* [ReactOS](https://doxygen.reactos.org/)
+* [WineHQ](https://www.winehq.org/)
+* [Undocumented NT Internals](http://undocumented.ntinternals.net/): outdated but useful for historical context
+* [OSR Community](https://www.osr.com/developer-community/)
 
 ## Windows Kernel Syscall Notes
 
@@ -21,7 +19,7 @@ Use these repositories to get a sense of what windows might be doing underneath 
 
 ### Function Prefixes
 
-Reference from [https://www.codemachine.com/article_ntoskrnl_component_list.html](https://www.codemachine.com/article_ntoskrnl_component_list.html)
+[Reference](https://www.codemachine.com/article_ntoskrnl_component_list.html)
 
 |Prefix|Function|
 |------|--------|
