@@ -172,6 +172,9 @@ Can run programs from build script for convenience
 
 * Use `LibExeObjStep.addPackage/addPackagePath` with a `Pkg{ .name = "library", .path = "/path/to/the/library"}`.
 * use `const library = @import("library");` in your root source file
+* Set output directory: `foo_lib.setOutputDir(output_path);`
+  * *note:* this should be done before `foo_lib.setTarget(..)` as that will recompute the full output path
+* Get lib output lib path source: `exe.linkSystemLibrary(foo_lib.getOutputLibSource());`
 
 ### Use a native (C) library
 
@@ -216,6 +219,7 @@ Can run programs from build script for convenience
   * somewhere in its belly invokes your `pub fn build(b: *Builder)` on a `Builder` it created earlier
   * The very last thing it does is hand over to this `Builder` you got to modify using `make()`
 * the main workhorse is `LibExeObjStep.make` which spawns the actual zig compiler (e.g. `zig build-exe/zig build-lib/zig cc`) with the builder/step settings converted as command line args
+  * code at [src/main.zig](https://github.com/ziglang/zig/blob/master/src/main.zig),
 
 ### std.build.Builder
 
