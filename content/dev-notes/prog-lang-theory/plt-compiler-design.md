@@ -75,7 +75,7 @@ Instead of linear batch pass, implement compiler as a database that can be queri
 * [Overview And Use in Sixten](https://ollef.github.io/blog/posts/query-based-compilers.html)
 * [Salsa](https://github.com/salsa-rs/salsa): a generic framework for on-demand, incrementalized computation. Inspired by adapton, glimmer, and rustc's query system.
 
-## Compilers
+## Symbolic Assembly
 
 Symbolic Assembly: Using Clojure to Meta-program Bytecode - Ramsey Nasser: https://www.youtube.com/watch?v=eDad1pvwX34
 The Language of the Language: Comparing compiler construction in Clojure and F# - Ramsey Nasser https://www.youtube.com/watch?v=t8usj1fN9rs
