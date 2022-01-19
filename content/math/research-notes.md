@@ -1,4 +1,6 @@
-# Learning
+# Research Notes
+
+## Dictionary Learning
 
 Siggraph 2010 Spectral Mesh Processing Course:
 
@@ -30,7 +32,7 @@ Dictionary Learning Using Optimal Transport
 
 Optimal Transport for ComputerGraphics and Temporal Coherenceof Image Processing Algorithms Thesis: <https://perso.liris.cnrs.fr/nicolas.bonneel/hdr_nbonneel_compressed.pdf>
 
-# Software
+## Software
 
 AliceVision: <https://github.com/alicevision/AliceVision>
 LibIGL: <http://libigl.github.io/>
@@ -41,34 +43,34 @@ Graphite:
 - <http://alice.loria.fr/index.php/software/3-platform/22-graphite.html>
 - <http://alice.loria.fr/WIKI/index.php/Graphite/Graphite>
 
-# Resources
+## Resources
 
 Bruno Levy <https://members.loria.fr/BLevy/>
 Keenan Crane
 
-# Misc
+## Misc
 
-## Mean Curvature Skeleton
+### Mean Curvature Skeleton
 
 <https://github.com/ataiya/starlab-mcfskel>
 
-## L1 Medial Skeleton
+### L1 Medial Skeleton
 
 <https://github.com/HongqiangWei/L1-Skeleton>
 
-# Optimal Transport
+## Optimal Transport
 
 Optimal Transport is a mathematical theory that studies how to transform a shape into another one while minimizing a certain cost.
 
 - Graphite video: <https://www.youtube.com/watch?v=X7m7iSWuVK4>
 
-# Geom Loss Library
+## Geom Loss Library
 
 Geometric Loss functions between sampled measures, images and volumes
 
 - <https://www.kernel-operations.io/geomloss/>
 - <https://www.math.ens.fr/~feydy/Teaching/DataScience/gradient_flows.html>
 
-# WrapX
+## WrapX
 
 - <https://www.russian3dscanner.com/wrapx-tutorials/>
