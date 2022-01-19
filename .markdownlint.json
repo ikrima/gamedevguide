@@ -1,6 +1,7 @@
 {
   "default": true,
   "line-length": false,
+  "MD045": false,
   "MD012": false,
   "MD031": false
 }
