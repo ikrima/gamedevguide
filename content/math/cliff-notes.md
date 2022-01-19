@@ -53,7 +53,7 @@ $$
 \begin{aligned} f_{n}(x)=& f\left(x_{0}\right)+\left(x-x_{0}\right) f\left[x_{1}, x_{0}\right]+\left(x-x_{0}\right)\left(x-x_{1}\right) f\left[x_{2}, x_{1}, x_{0}\right] \\ &+\cdots+\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n-1}\right) f\left[x_{n}, x_{n-1}, \ldots, x_{0}\right] \end{aligned}
 $$
 
-![](../assets/newton-interp-visualization.png)
+![](assets/newton-interp-visualization.png)
 
 Lagrange interpolating polynomial scheme is just a reformulation of Newton scheme that avoids computation of divided differences
 
