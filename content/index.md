@@ -23,13 +23,17 @@ You can subscribe to the repo for updates
 
 Restarting of rationalizing all notes/guides into one place...
 
-- [x] Programming
-- [-] Graphics
-- [-] Houdini
+- [ ] Programming
+- [ ] Graphics
+- [ ] OneNote
+- [ ] Notion
+  - [x] export to obsidian
+  - [ ] clean and integrate
 
 ## Finished Conversion
 
 - [x] Conversion scripts from onenote/trillium to custom central store
+- [x] Houdini
 - [x] UE4
   - [x] Environment Setup
   - [x] Build Guide
