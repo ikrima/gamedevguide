@@ -5,15 +5,16 @@
 		}
 	],
 	"settings": {
-		"eslint.packageManager": "npm",
-		"npm.packageManager": "npm",
-		"debug.node.autoAttach": "on",
 		"files.exclude": {
 			"public": true,
 			"node_modules": true,
 			".cache": true,
 			".vscode/ipch": true,
 		},
+		"eslint.enable": true,
+		"eslint.packageManager": "npm",
+		"npm.packageManager": "npm",
+		"debug.node.autoAttach": "on",
 		"prettier.printWidth": 100,
 		"prettier.singleQuote": true,
 		"prettier.trailingComma": "es5",

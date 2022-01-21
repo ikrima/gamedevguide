@@ -1,9 +1,6 @@
----
-sortIndex: 1
-sidebar: houdini
----
+# Useful Volume Nodes
 
-# Visualization
+## Visualization
 
 - Visualize
 - Volume Slice

@@ -1,9 +1,4 @@
----
-sortIndex: 1
-sidebar: houdini
----
-
-# Vellum Nodes
+# Useful Vellum Nodes
 
 | Node          | Description                                                                                  |
 | ------------- | -------------------------------------------------------------------------------------------- |

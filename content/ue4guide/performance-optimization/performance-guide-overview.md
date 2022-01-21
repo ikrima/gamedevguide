@@ -1,15 +1,11 @@
----
-sortIndex: 1
-title: Performance Profiling & Optimization Guide
-sidebar: ue4guide
----
+# Performance Profiling & Optimization Guide
 
-# Overview
+## Overview
 
 The UE4 Documentation has been updated to be more useful (circa 4.22) \
 <https://docs.unrealengine.com/en-US/Engine/Performance/index.html>
 
-# Important settings
+## Important settings
 
 Make sure to perf profile under the right conditions:
 
@@ -18,7 +14,7 @@ Make sure to perf profile under the right conditions:
 - Make sure lighting is built; unbuilt lighting uses a slower path \
   <https://answers.unrealengine.com/questions/17151/what-are-the-in-engine-tools-for-cpu-and-gpu-profi.html?sort=newest>
 
-# Controlling Quality Settings
+## Controlling Quality Settings
 
 ```ini
 r.ScreenPercentage 25

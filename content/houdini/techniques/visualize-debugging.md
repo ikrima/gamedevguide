@@ -1,9 +1,6 @@
----
-sortIndex: 7
-sidebar: houdini
----
+# Debug Visualization
 
-# Volumes
+## Volumes
 
 - General Visualize Node: Another way to vizualize volume slices
   - Can show text

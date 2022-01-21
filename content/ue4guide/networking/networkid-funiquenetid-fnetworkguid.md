@@ -1,10 +1,6 @@
----
-title: Network IDs
-pageSubTitle: FUniqueNetID vs FNetworkGUID vs PlayerId
-sideMenuHeading: 'NetID: FUniqueNetID/FNetworkGUID'
-sortIndex: 9
-sidebar: ue4guide
----
+# Network IDs
+
+FUniqueNetID vs FNetworkGUID vs PlayerId
 
 ## GetUniqueID()
 

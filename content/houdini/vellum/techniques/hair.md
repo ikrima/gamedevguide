@@ -1,8 +1,4 @@
----
-sortIndex: 4
-sidebar: houdini
----
+# Vellum Hair
 
-# Grooming
-
+## Grooming
 - FFScatter Node to easily groom/comb fur (and short hair)

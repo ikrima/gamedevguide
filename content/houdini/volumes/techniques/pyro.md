@@ -1,9 +1,6 @@
----
-sortIndex: 4
-sidebar: houdini
----
+# Pyro
 
-# Redshift Rendering
+## Redshift Rendering
 
 - Parameters:
   - Scatter => color/diffuse

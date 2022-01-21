@@ -1,19 +1,11 @@
----
-title: Gamedev Development Environment Part 2
-pageSubTitle: A Yak Shaving for fun & profit series™
-sideMenuHeading: 'Part 2: OS Config'
-sortIndex: 1
-sidebar: ue4guide
----
-
-# Part II: One weird trick to get a 70% performance boost
+# Gamedev Environment Part II: One weird trick to get a 70% performance boost
 
 ![](https://pbs.twimg.com/media/DuuPHAbV4AAW5V0.jpg)]
 
 **\*TLDR**: Setting your CPU affinity off of Core 0/1 sometimes gets you a big perf boost. Windows scheduler was not designed with high NUMA core counts in mind
 You can use powershell scripts (Start /affinity [mask] “” [executable]) or if you're like me, use ProcessLasso\*
 
-# Windows Scheduler Pains
+## Windows Scheduler Pains
 
 Was seeing some very terrible performance behavior on TR2 where it was worse than TR1 or other small core count CPUs. After investigating on the net, turns out there's lots of contention on Core 0/1 with Windows
 

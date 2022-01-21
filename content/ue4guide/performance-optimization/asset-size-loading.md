@@ -1,12 +1,8 @@
----
-sortIndex: 6
-title: Asset Size Reduction and Loading Time Optimization
-sidebar: ue4guide
----
+# Asset Size Reduction and Loading Time Optimization
 
-# UnrealFest Europe 2018: Introduction to UE4 Asset Reduction Tools and Optimization Tips for Load Times and GC
+## UnrealFest Europe 2018: Introduction to UE4 Asset Reduction Tools and Optimization Tips for Load Times and GC
 
-## Find objects that take a lot of time to do vertex calculations using Graphics Debugger
+### Find objects that take a lot of time to do vertex calculations using Graphics Debugger
 
 Example:
 
@@ -31,7 +27,7 @@ Example:
 
 These commands affects all objects and can’t target individual objects specifically, but can use them to do a quick check of the whole scene
 
-## **Using “CompressAnimations” Commandlet, You can compress all animation sequences in your project.**
+### **Using “CompressAnimations” Commandlet, You can compress all animation sequences in your project.**
 
 - Example)
 
@@ -45,7 +41,7 @@ These commands affects all objects and can’t target individual objects specifi
 
 ![PerformanceProfiling_AssetSize_DoNotOverrideCompression](../assets/PerformanceProfiling_AssetSize_DoNotOverrideCompression.png)
 
-### **Animation Compression**
+#### **Animation Compression**
 
 **How to check the compressed asset data size 1**
 
@@ -57,13 +53,13 @@ in Content Browser.
 
 Can also verify by looking at the cooked asset’s size, and the size in memory with memreport
 
-- ### **Profiling & Optimization of load times: Two areas**
+- #### **Profiling & Optimization of load times: Two areas**
 
-1. #### **Load to Memory from Storage**
+1. ##### **Load to Memory from Storage**
 
-1. #### **AddToWorld (hitches when streaming)**
+1. ##### **AddToWorld (hitches when streaming)**
 
-- ### **Load To Memory Profiling**
+- #### **Load To Memory Profiling**
 
   - Stat Levels
 
@@ -101,7 +97,7 @@ Can also verify by looking at the cooked asset’s size, and the size in memory 
   - You have to call this command before stating load levels you want to profile.
 
 
-- #### **Profiling AddToWorld**
+- ##### **Profiling AddToWorld**
 
   - Enable this define `PERF_TRACK_DETAILED_ASYNC_STATS` (AsyncLoading.h)
 
@@ -129,7 +125,7 @@ Init Actors : 0.00 ms
 
 Initialize : 0.08 m
 
-### **Optimization**
+#### **Optimization**
 
 - Pak file should be used for load-time.
 
@@ -192,7 +188,7 @@ Initialize : 0.08 m
 
     - Construction Script runs at cook time. Construction scripts are evaluated at cook time, and the post-construction script object state is serialized
 
-- #### **Garbage Collection**
+- ##### **Garbage Collection**
 
   - Noticeable and unacceptable hitches due to GC
 
@@ -218,9 +214,9 @@ GC implementation
 - So, there are two types of costs here, the costs of checking each object in the array (marking), and the costs of deleting each unreferenced object (sweeping)
 - Means it is possible to see hitching even if no objects are actually being deleted if the number of UObjects is high
 
-### How to profile GC costs
+#### How to profile GC costs
 
-1. ##### Log loggarbage log (Log loggarbage verbose)
+1. ###### Log loggarbage log (Log loggarbage verbose)
 
 The main command is “log LogGarbage log”
 
@@ -232,7 +228,7 @@ You can see the Checking cost and the deletion cost are printed out in this mann
 
 ![PerformanceProfiling_AssetSize_GCCosts](../assets/PerformanceProfiling_AssetSize_GCCosts.png)
 
-2. ##### Stat dumphitches
+2. ###### Stat dumphitches
 
 ![PerformanceProfiling_AssetSize_DumpHitches](../assets/PerformanceProfiling_AssetSize_DumpHitches.png)
 
@@ -298,7 +294,7 @@ ObjectProperty 3251
 
   - This per-instance cost of macros is not true of blueprint functions, so if you have blueprint macros with a lot of input and output variables that are used in many places, we recommend converting them to blueprint functions
 
-#### **Project-side Optimization for Garbage Collection**
+##### **Project-side Optimization for Garbage Collection**
 
 - DisregardGCObject
 
@@ -357,7 +353,7 @@ Actor Clustering
 - This can happen, for example, if you later load a sequencer sequence that references a static mesh
 - In development builds there are warnings to help you correct the problem if you accidentally break that rule
 
-### Blueprint Clustering.
+#### Blueprint Clustering.
 
 - In general, Blueprint objects have a lot of UObjects (especially UProperties).
 
@@ -365,6 +361,6 @@ Actor Clustering
 
 - “Blueprint clustering has been enabled for Fortnite, which has significantly reduced garbage collection mark times (measured from ~66ms to ~22ms on PS4). Also made significant performance improvements to cluster verification code used in development builds, and started work on a technique that moves clustered objects into the disregard-to-GC pool for a faster early out during the scan.”
 
-# File Profiler
+## File Profiler
 
 <https://coconutlizard.co.uk/new/programming/improving-file-profiler>

@@ -1,8 +1,3 @@
----
-sortIndex: 0
-sidebar: graphics
----
-
 # Overview
 
 ![Jarosz 2008, Radiance Caching For Participating Media](../assets/rte-diagram1.png)

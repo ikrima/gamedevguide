@@ -1,9 +1,4 @@
----
-sortIndex: 0
-sidebar: houdini
----
-
-# Overview
+# Vellum Overview
 
 - Position Based Dynamics solver
 - 3 Nodes: Vellum Constraint + Solver + PostProcess
@@ -12,7 +7,7 @@ sidebar: houdini
   - Softbody: Cloth + Struts
   - Balloon: Cloth + Pressure
 
-# Nodes
+## Nodes
 
 - Vellum Weld Points: Stitches vertices together and allows you to specify tensile stress
 - Vellum PostProcess: Allows to blur the sim, detangle, remesh, etc

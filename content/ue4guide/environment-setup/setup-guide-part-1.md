@@ -1,12 +1,4 @@
----
-title: Gamedev Development Environment Part 1
-pageSubTitle: A Yak Shaving for fun & profit series™
-sideMenuHeading: 'Part 1: Hardware'
-sortIndex: 0
-sidebar: ue4guide
----
-
-# Part I: Hardware - Extremely Highend
+# Gamedev Environment Part I: Extremely Highend Hardware
 
 **TLDR:** Threadripper 2 high-end dev/workstation build, 2990 vs 1950x perf numbers, compatibility issues, [@UnrealEngine](https://twitter.com/UnrealEngine) fastbuild integration, my poor mans' automating/baremetal provisioning, and the programs I use\*
 
@@ -34,9 +26,9 @@ Ryzen has lots of PCI lanes but mobo pcie slots are not all x16. Lots of trial &
 - Airflow setup in pic
   ![](https://pbs.twimg.com/media/DuVGeo3UwAAAspV.jpg)
 
-# Compatibility gremlins:
+## Compatibility gremlins
 
-## HPET
+### HPET
 
 Disable hpet; it causes inordinate perf problems.
 
@@ -47,17 +39,17 @@ Disable hpet; it causes inordinate perf problems.
 - Credit to [@SebAaltonen](https://twitter.com/SebAaltonen/status/1001045044567126018) for root causing this.
   > Finally found a solution to my Threadripper performance woes. If I disable HPET (bcdedit /deletevalue useplatformclock) I get 2x SSD iOPS boost, UE4 editor with RenderDoc plugin active has 4x higher frame rate and VTune becomes usable. Visual Studio stalls are also reduced.
 
-## Raid-0 NVMe SSD
+### Raid-0 NVMe SSD
 
 Do not install AMD Raid Xpert2 driver/chipset. It's atrocious; use the standard windows one. Means you can't have your OS on an SSD raid but Optane is better anyway
 
 Details: [ASRock Ultra Quad M.2 Card & AMD RAIDXpert Benchmark](https://www.tweaktown.com/reviews/8542/asrock-ultra-quad-2-card-16-lane-aic-review/index10.html)
 
-## Houdini 17.0
+### Houdini 17.0
 
 [Houdini 17.0](https://threadreaderapp.com/hashtag/Houdini) will crash with nVidia drivers have a clash and houdini won't recognize your cards as cuda devices. This has been fixed in the latest [drivers](https://www.sidefx.com/forum/topic/59264/)
 
-# Memory
+## Memory
 
 - Rule of thumb is 2gb per core. For building UE4, I have to limit number of threads &lt; 64 as I run out of memory and stuff starts paging out to disk
 - Intel Optane drive is so fast it took me a bit to discover since the perf didn't tank an order of magnitude
@@ -66,9 +58,9 @@ Details: [ASRock Ultra Quad M.2 Card & AMD RAIDXpert Benchmark](https://www.twea
 - Reliably can only OC up to 2933mhz (officially 2133 iirc)
 - *conjecture* Past certain point, pushing memspeed is net loss esp. since hw errors induced from very tight memory/CPU timings >> latency stalls from CPU requesting memory in a Quad Channel config
 
-# Overclocking
+## Overclocking
 
-## Easy Mode
+### Easy Mode
 
 AMD made it really easy with [RyzenMaster](https://www.amd.com/en/technologies/ryzen-master)
 
@@ -82,7 +74,7 @@ AMD made it really easy with [RyzenMaster](https://www.amd.com/en/technologies/r
 
 I'm always suspect of these things but windows scheduler def. has issues. More on that later
 
-## Medium Mode (what I use)
+### Medium Mode (what I use)
 
 Dead simple:
 
@@ -93,7 +85,7 @@ Dead simple:
 
 Here's a [beginner's guide to overclocking](https://forums.tomshardware.com/faq/cpu-overclocking-guide-and-tutorial-for-beginners.3347428/)
 
-## Expert mode:
+### Expert mode
 
 Here's a [Overclocking Threadripper Guide](https://www.guru3d.com/articles-pages/amd-ryzen-threadripper-2990wx-review,31.html). Some advanced notes:
 
@@ -103,19 +95,19 @@ Here's a [Overclocking Threadripper Guide](https://www.guru3d.com/articles-pages
 - Here's a tutorial:
   `youtube: https://www.youtube.com/watch?v=1GTekAB1Zzc`
 
-# OC software:
+## OC software
 
-## Tools
+### Tools
 
 - **HWInfo:** Best detailed info on all sorts of sensors & summary rolled into one
 - **GPU Caps Viewer:** GPU capabilities
 
-## Benchmark:
+### Benchmark
 
 - **CPU:** Aida64Extreme, CineBench, Indigo Benchmark
 - **SSD:** Anvil SSD, ATTO, CrystalDiskMark
 
-## Stability:
+### Stability
 
 - **PassmarkBurnIn**
 - **AidaExtreme**

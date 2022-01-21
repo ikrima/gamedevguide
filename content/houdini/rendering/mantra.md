@@ -1,6 +1,4 @@
----
-sortIndex: 2
-sidebar: houdini
----
+
+# Mantra
 
 Understanding Mantra: <https://www.sidefx.com/docs/houdini/render/understanding.html>

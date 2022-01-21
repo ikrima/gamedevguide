@@ -1,9 +1,5 @@
----
-sortIndex: 1
-sidebar: houdini
----
-
-# Compositing Equation
+# Redshift
+## Compositing Equation
 
 - Beauty = DiffuseFilter_DiffuseLightingRaw + DiffuseFilter_GlobalIlluminationRaw + DiffuseFilter\*SubsurfaceScatteringRaw + SpecularLighting + Reflections + Refractions + Emission + Caustics
 - If using "Caustics Raw" instead of "Caustics", these would have to also be multiplied by "Diffuse Filter".
@@ -16,7 +12,7 @@ sidebar: houdini
   - **Add** the Volume Fog Emission AOV to the primary AOV composite.
     - Additive layer that contains only the emission component
 
-# Volume Rendering
+## Volume Rendering
 
 - If want to make volume darker but preserve approximate intensity, adjust scatter and absorption coefficients together
 - use the "Scatter Tint" to adjust the overall color of the volume

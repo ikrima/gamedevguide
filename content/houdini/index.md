@@ -1,14 +1,3 @@
----
-title: Houdini
-pageSubTitle: Coming soon
-sideMenuHeading: Houdini
-root: houdini
-parents:
-  - houdini
-sortIndex: 0
-sidebar: houdini
----
-
 # Houdini Guide
 
 A guide and personal notes for using Houdini

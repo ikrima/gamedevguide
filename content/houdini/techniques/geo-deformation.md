@@ -1,9 +1,6 @@
----
-sortIndex: 3
-sidebar: houdini
----
+# Geo Deformation
 
-# Deform by point
+## Deform by point
 
 - BlendPose Chop
 - ClothCapture

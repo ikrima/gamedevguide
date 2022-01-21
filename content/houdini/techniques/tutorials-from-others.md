@@ -1,11 +1,6 @@
----
-title: Cheatsheet
-pageSubTitle: Annoying shit I always lookup
-sortIndex: 2
-sidebar: houdini
----
+# Houdini Tutorials From Others
 
-# ODForce Tutorials
+## ODForce Tutorials
 
 Compiled by [Atom on odforce: https://forums.odforce.net/topic/25173-atoms-link-page](https://forums.odforce.net/topic/25173-atoms-link-page)
 

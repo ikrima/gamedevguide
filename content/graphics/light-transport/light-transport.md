@@ -1,10 +1,6 @@
----
-title: Light transport notes
-pageSubTitle: From Subsurface Scattering to Neutron Transport
-sidebar: graphics
----
+# Light transport notes
 
-# TLDR
+## TLDR: From Subsurface Scattering to Neutron Transport
 
 - All rendering is a lie: Specular/Diffuse => approx. of SSS => approx of volume tracing
 

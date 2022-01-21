@@ -1,7 +1,4 @@
----
-sortIndex: 3
-sidebar: houdini
----
+# Vellum Cloth
 
 - Edge Fracture: to randomly split cloth geo
 - Vellum Weld: to stitch the new separate geo together

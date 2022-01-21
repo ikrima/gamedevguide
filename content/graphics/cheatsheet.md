@@ -1,11 +1,7 @@
----
-title: Cheatsheet
-pageSubTitle: Annoying shit I always lookup
-sortIndex: 2
-sidebar: graphics
----
+# Graphics Cheatsheet
+Shit I annoyingly forget and always have to lookup
 
-# Lighting Units (Candela vs Lumens vs Lux)
+## Lighting Units (Candela vs Lumens vs Lux)
 
 ![](./assets/candela-vs-lumen-vslux.jpg)
 

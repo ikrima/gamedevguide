@@ -1,7 +1,3 @@
----
-sortIndex: 2
-sidebar: houdini
----
 
 # Enable OpenCL
 

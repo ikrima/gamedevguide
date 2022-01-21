@@ -1,8 +1,3 @@
----
-sortIndex: 1
-sidebar: graphics
----
-
 # Physics of Light: Absorption
 
 [From MIT Lecture Notes: A Classical Model for Spectroscopy](https://ocw.mit.edu/courses/chemistry/5-33-advanced-chemical-experimentation-and-instrumentation-fall-2007/lecture-notes/classicalspec.pdf)

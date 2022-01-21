@@ -1,19 +1,11 @@
----
-title: Gamedev Development Environment Part 3
-pageSubTitle: A Yak Shaving for fun & profit series™
-sideMenuHeading: 'Part 3: Windows Config'
-sortIndex: 2
-sidebar: ue4guide
----
-
-# Part III: Making Windows Tolerable + software I use + semi-auto imaging dev machines
+# Gamedev Environment Part III: Making Windows Tolerable + software I use + semi-auto imaging dev machines
 
 First, if you install adobe stuff, do yourself a favor and remove the 12 services they install for lulz even when you're not using any adobe product. You can uninstall CreativeCloud desktop app while keeping photoshop/premiere/etc
 
 [Remove Creative Cloud Desktop App](https://helpx.adobe.com/creative-cloud/help/uninstall-creative-cloud-desktop-app.html)
 ![](https://pbs.twimg.com/media/DuzvOgqVsAAmEEB.jpg)
 
-# Making Windows tolerable
+## Making Windows tolerable
 
 Now tools I use. ⭐ => how must have it is to me
 
@@ -25,7 +17,7 @@ Now tools I use. ⭐ => how must have it is to me
 - **⭐7PlusTaskbarTweaker** - saner taskbar settings
 - **⭐MS PowerToys** - better window manager and other niceties
 - ~~**⭐Display Fusion** - virtualize desktop; use it to split my 33" monitor into two virtual monitors~~
-- - **⭐XYplorer** - better and performant file manager
+- **⭐XYplorer** - better and performant file manager
 - ScreenToGif - screen capture
 - Clover - Tabs in explorer
 - Youtube-dl - download youtube/vimeo files for offline viewing
@@ -37,7 +29,7 @@ Now tools I use. ⭐ => how must have it is to me
 - Stylus - make youtube distraction free and remove notifications/likes showing up on page
 - uBlock Origin - ad block
 
-# DCC:
+## DCC
 
 - **⭐⭐⭐Houdini** - Deserves its own post but hands down my favorite program in recent memory. It's more like a platform with a built in DCC app. I use it for prototyping, machine learning, math visualization, everything
 - **⭐⭐⭐PureRef** - This is a god send for pulling references
@@ -48,15 +40,15 @@ Now tools I use. ⭐ => how must have it is to me
 - RedShift - for renders; fast GPU + constant development unlike Octane
 - Photoshop/Premiere
 
-# SysAdmin/Poor man's devops:
+## SysAdmin/Poor man's devops
 
 - **⭐⭐⭐SysInternals** - Awesome set of windows sys tools
--  **⭐⭐⭐ProcessHacker** - Built on sysinternals, it's a user friendly taskmanager/process explorer replacement
+- **⭐⭐⭐ProcessHacker** - Built on sysinternals, it's a user friendly taskmanager/process explorer replacement
 - **⭐Rohitab Api Monitor** - Amazingly well written; use it for api hooking
   NTLite - I use it to help my ghetto bare metal provisioning for windows
   Powershell - Powershell Desired State Configuration for poor man provisioning
 
-# Research/Personal Productivity
+## Research/Personal Productivity
 
 - **⭐⭐⭐RescueTime** - Auto track where my time goes
 - **Mathematica** - Preferred it over matlab but has annoying learning curve
@@ -70,7 +62,7 @@ Now tools I use. ⭐ => how must have it is to me
 - Desmos/Geogebra - Powerful Math grapher/calculator
 - Matcha - Math notebook bc screw latex. It's 2018. [mathcha.io](https://www.mathcha.io/)
 
-# Programming:
+## Programming
 
 - [**⭐⭐⭐@liveplusplus**](https://molecular-matters.com/products_livepp.html) - imho, absolute necessity with UE4. Makes iteration bearable with fast hotreload. With plugin, you can get up & running in 2 mins
 - BeyondCompare
@@ -88,7 +80,7 @@ Now tools I use. ⭐ => how must have it is to me
 - vcpkg - C++ library manager that surprisingly works
 - PVS Studio: Static Analyzer
 
-# Scripting:
+## Scripting
 
 - Python - MiniConda3 distro. Libs I use as python novice
   - **⭐click** - Make easy CLI apps

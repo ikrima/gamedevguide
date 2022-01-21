@@ -1,12 +1,4 @@
----
-title: Gamedev Development Environment Part 3
-pageSubTitle: A Yak Shaving for fun & profit series™
-sideMenuHeading: 'Part 4: Optimizing UE4 Compile Times'
-sortIndex: 3
-sidebar: ue4guide
----
-
-# Part IV: Optimizing Unreal Engine Builds, Visual Studio, and Final Benchmarks
+# Gamedev Environment Part IV: Optimizing Unreal Engine Builds, Visual Studio, and Final Benchmarks
 
 ***TLDR***: Optimal config for UE4:
 
@@ -16,7 +8,7 @@ sidebar: ue4guide
 - Build (no changes): 5.3s (wtf)
 - Clean + Rebuild (with caching): 120s
 
-# SSD results:
+## SSD results
 
 Here you can see the optane driver really shining with 4k *unthreaded* *single queue depth* random read/write latency. This is just amazing.
 
@@ -27,7 +19,7 @@ Here's the SSDx4 in Raid-0 and a single SSD \\
 ![](https://pbs.twimg.com/media/Du5YTDwU8AA6f7d.jpg) \\
 ![](https://pbs.twimg.com/media/Du5YW7UVYAA21vW.jpg)
 
-# Other benchmarks
+## Other benchmarks
 
 Indigo Benchmark \\
 ![](https://pbs.twimg.com/media/Du5Y5aKUUAAdL5T.jpg)
@@ -35,7 +27,7 @@ Indigo Benchmark \\
 AIDA Cache & Memtest Benchmark \\
 ![](https://pbs.twimg.com/media/Du5Y6bpUUAIq9ld.jpg)
 
-# UE4 build times:
+## UE4 build times
 
 Machines:
 

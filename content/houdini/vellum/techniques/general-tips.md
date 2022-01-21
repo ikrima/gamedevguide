@@ -1,9 +1,4 @@
----
-sortIndex: 2
-sidebar: houdini
----
-
-# General
+# General Vellum Tips
 
 - Add remesher or triangluate into your cloth mesh
 - **Edge Fracture**: to add random pattern of tears
@@ -13,7 +8,7 @@ sidebar: houdini
 - **Constraint Iterations:** Higher resolution cloth means you need higher constraint iterations
 - **Bend Plasticity:** allows cloth to update rest length on its bend constraints as it deforms. Useful for denim or heavy fabrics
 
-# Settings
+## Settings
 
 - Chiffon/Silk
   - Cloth mesh edge length: 0.01 (remesh to this)

@@ -1,8 +1,3 @@
----
-sortIndex: 0
-sidebar: houdini
----
-
 # Houdini Volumes
 
 - Old volumes use legacy volume primitive type
