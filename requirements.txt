@@ -1,4 +1,4 @@
-mkdocs-material==7.3.6
+mkdocs-material==8.1.7
 mkdocs-awesome-pages-plugin==2.6.0
 mkdocs-git-revision-date-localized-plugin==0.10.2
 mkdocs-plugin-progress==1.2.0

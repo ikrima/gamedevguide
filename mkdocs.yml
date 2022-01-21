@@ -39,17 +39,34 @@ theme:
   language: en
   features:
     - navigation.tabs
+    - navigation.top
     - navigation.instant
+    - search.suggest
+    - search.highlight
     # - navigation.expand
     # - toc.integrate
     # - navigation.indexes
   palette:
-    scheme: slate
-    primary: blue
-    accent: blue
+    scheme: ayu
+    # primary: indigo
+    # accent: indigo
+    # - scheme: default
+    #   primary: indigo
+    #   accent: indigo
+    #   toggle:
+    #     icon: material/toggle-switch-off-outline
+    #     name: Switch to dark mode
+    # - scheme: slate
+    #   primary: indigo
+    #   accent: indigo
+    #   toggle:
+    #     icon: material/toggle-switch
+    #     name: Switch to light mode
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Open Sans
+    code: Source Code Pro
+    # text: Roboto
+    # code: Roboto Mono
     # text: Open Sans
     # code: Hack
   # icon:
@@ -88,9 +105,10 @@ markdown_extensions:
   - toc:
       permalink: "#"
       toc_depth: 6
-  - codehilite:
+  - pymdownx.highlight:
       pygments_style: solarized-dark
       guess_lang: true
+  - pymdownx.inlinehilite
   # - markdown_katex:
   #     no_inline_svg: True
   #     insert_fonts_css: True
@@ -111,11 +129,12 @@ markdown_extensions:
       user: ikrima
       repo: gamedevguide
   - pymdownx.mark
-  - pymdownx.smartsymbols
+  # - pymdownx.smartsymbols
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tilde
 
   # Builtins
