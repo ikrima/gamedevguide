@@ -10,11 +10,10 @@
 
 * populateDecomposeCallGraphTypesPatterns: get types along callgraph edges; used in bufferize passes
 * getEffectsOnSymbol(): override to specify sideeffects on symbols
-* CallOpInterfaceLowering: good examples of lowering/conversion 
-* Function Signature rewriting: 
-  * https://github.com/google/iree/blob/main/iree/compiler/Dialect/Shape/Utils/TypeConversion.h
-  * https://llvm.discourse.group/t/rewriting-function-calls-and-signatures/1953/4
-* 
+* CallOpInterfaceLowering: good examples of lowering/conversio
+* Function Signature rewriting
+  * <https://github.com/google/iree/blob/main/iree/compiler/Dialect/Shape/Utils/TypeConversion.h>
+  * <https://llvm.discourse.group/t/rewriting-function-calls-and-signatures/1953/4>
 
 ## Graph Algorithms
 
@@ -25,62 +24,36 @@
 * `GraphWriter`: graph emitter
 * BreadthFirstIterator.h
 
----
+## Misc Code Fragments
 
-BarePtrFuncOpConversion
+````cpp
+struct BarePtrFuncOpConversion;
+getBranchSuccessorArgument()
+verifyBranchSuccessorOperands()
+verifyTypesAlongControlFlowEdges()
 
-getBranchSuccessorArgument
+RegionSuccessor::getSuccessor()
+RegionSuccessor::isParent()
+RegionSuccessor::getSuccessorInputs()
 
-verifyBranchSuccessorOperands
-verifyTypesAlongControlFlowEdges
-
-RegionSuccessor::getSuccessor,isParent,getSuccessorInputs
-
-CallOpOpConversion
-
-struct CallOpSignatureConversion : public OpConversionPattern<CallOp> {
-
----
-
-generateOpgraphAst
-generate Node Ast
-
-* Needs to be an object
-  - contains unoptimized code/syntax tree
-  - Compile to code instance/funcpointer
-  - UI binds to unoptimized version
-  * UI modifies AST
-    - Generate MLIR
-  * MLIR parses unoptimized version
-  * MLIR spits out ast of optimized versoin
-
-````
--Code to ast
--Ast to mlir
--mlir to emitted optimized version
-````
-
----
-
-struct TileAndVectorizeWorkgroups
-: public PassWrapper\<TileAndVectorizeWorkgroups, FunctionPass> {
-void getDependentDialects(DialectRegistry &registry) const override {
-registry.insert\<linalg::LinalgDialect, AffineDialect, scf::SCFDialect,
-vector::VectorDialect>();
-}
-void runOnFunction() override;
-};
-}  // namespace
-
-void TileAndVectorizeWorkgroups::runOnFunction() {
-
+struct CallOpSignatureConversion;
+     
+struct TileAndVectorizeWorkgroups : public PassWrapper<TileAndVectorizeWorkgroups, FunctionPass> {
+  void getDependentDialects(DialectRegistry &registry) const override {
+    registry.insert<linalg::LinalgDialect, AffineDialect, scf::SCFDialect,
+                    vector::VectorDialect>();
+  }
+}; 
+    
 /// Distribute linalg ops among iree.workgroup logical threads.
-std::unique_ptr\<OperationPass<ModuleOp>\> createLinalgTileAndDistributePass();
+std::unique_ptr<OperationPass<ModuleOp>> createLinalgTileAndDistributePass();
 
 /// Vectorize linalg ops executed in the same iree.workgroup.
 std::unique_ptr<FunctionPass> createLinalgTileAndVectorizeWorkgroupsPass();
-
-FuncBufferize
-createFuncBufferizePass
+    
+    
+mlir::createFuncBufferizePass();    
+    struct FuncBufferize;
 
 Linalgop::DeduplicateInputs
+````

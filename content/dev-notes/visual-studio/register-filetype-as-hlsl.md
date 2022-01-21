@@ -18,4 +18,4 @@ Windows Registry Editor Version 5.00
 "HLSLFile"=dword:00000001
 ````
 
-From [http://forum.unity3d.com/threads/vs-2012-and-2013-cg-syntax-highlighting-no-plugins-required.255209/](http://forum.unity3d.com/threads/vs-2012-and-2013-cg-syntax-highlighting-no-plugins-required.255209/)
+From <http://forum.unity3d.com/threads/vs-2012-and-2013-cg-syntax-highlighting-no-plugins-required.255209/>

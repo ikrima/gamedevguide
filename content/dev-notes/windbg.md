@@ -57,7 +57,7 @@ Use windbg.exe to open dump file and use following command:
 * Live Kernel Mode Debugging: https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/performing-local-kernel-debugging
 * System File Checker
 * BSOD/Crash Dump/Minidump
-* BlueScreenView  [http://www.nirsoft.net/utils/blue_screen_view.html](http://www.nirsoft.net/utils/blue_screen_view.html)
+* BlueScreenView  <http://www.nirsoft.net/utils/blue_screen_view.html>
 
 Resources: https://www.sysnative.com/forums/bsod-kernel-dump-analysis-debugging-information/284-bsod-method-tips.html
 

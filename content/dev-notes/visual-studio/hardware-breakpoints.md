@@ -24,4 +24,4 @@ A processor breakpoint is triggered when a specific memory location is accessed.
 |**w** (write)|Triggered when the processor writes memory at the specified address.|
 |**i** (i/o)|Triggered when the I/O port at the specified *Address* is accessed.|
 
-*Reference From [https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/processor-breakpoints---ba-breakpoints-](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/processor-breakpoints---ba-breakpoints-)*
+*Reference From <https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/processor-breakpoints---ba-breakpoints->*

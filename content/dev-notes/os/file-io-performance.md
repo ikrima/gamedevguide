@@ -13,7 +13,7 @@ The amount of I/O performance improvement that file data caching offers depends 
 
 In these situations, caching can be turned off. This is done at the time the file is opened by passingFILE_FLAG_NO_BUFFERING as a value for the dwFlagsAndAttributes parameter of CreateFile. When caching is disabled, all read and write operations directly access the physical disk. However, the file metadata may still be cached. To flush the metadata to disk, use the FlushFileBuffers function.
 
-From [http://msdn.microsoft.com/en-us/library/windows/desktop/aa364218(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/aa364218(v=vs.85).aspx)
+From <http://msdn.microsoft.com/en-us/library/windows/desktop/aa364218(v=vs.85).aspx>
 
 # File Buffering
 
@@ -21,14 +21,14 @@ When opening or creating a file with the CreateFile function, the FILE_FLAG_N
 
 In a simple example, the application would open a file for write access with the FILE_FLAG_NO_BUFFERING flag and then perform a call to the WriteFile function using a data buffer defined within the application. This local buffer is, in these circumstances, effectively the only file buffer that exists for this operation. Because of physical disk layout, file system storage layout, and system-level file pointer position tracking, this write operation will fail unless the locally-defined data buffers meet certain alignment criteria, discussed in the following section.
 
-From [http://msdn.microsoft.com/en-us/library/windows/desktop/cc644950(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/cc644950(v=vs.85).aspx)
+From <http://msdn.microsoft.com/en-us/library/windows/desktop/cc644950(v=vs.85).aspx>
 
 # File read performance
 
 Mmap vs fread http://lemire.me/blog/archives/2012/06/26/which-is-fastest-read-fread-ifstream-or-mmap/
 
 **FILE_FLAG_NO_BUFFERING**
-From [http://msdn.microsoft.com/en-us/library/windows/desktop/cc644950(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/cc644950(v=vs.85).aspx)
+From <http://msdn.microsoft.com/en-us/library/windows/desktop/cc644950(v=vs.85).aspx>
 
-[http://msdn.microsoft.com/en-us/library/windows/desktop/aa364218(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/windows/desktop/aa364218(v=vs.85).aspx)
-[http://stackoverflow.com/questions/236861/how-do-you-determine-the-ideal-buffer-size-when-using-fileinputstream](http://stackoverflow.com/questions/236861/how-do-you-determine-the-ideal-buffer-size-when-using-fileinputstream)
+<http://msdn.microsoft.com/en-us/library/windows/desktop/aa364218(v=vs.85).aspx>
+<http://stackoverflow.com/questions/236861/how-do-you-determine-the-ideal-buffer-size-when-using-fileinputstream>

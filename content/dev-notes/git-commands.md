@@ -94,7 +94,7 @@ From [https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-toget
 
 **To move folders into a different folders in git:**
 `git filter-branch --tree-filter 'mkdir -p /path/to/tmp; mv * /path/to/tmp; mkdir subdir; mv /path/to/tmp/* subdir/' --tag-name-filter cat --prune-empty -- --all`
-[https://gist.github.com/fabiomaggio/ce7ecd7dffd27b32a45325204288efce](https://gist.github.com/fabiomaggio/ce7ecd7dffd27b32a45325204288efce)
+<https://gist.github.com/fabiomaggio/ce7ecd7dffd27b32a45325204288efce>
 
 **Rebase against another branch overriding conflicts with your own branch changes:**
 
@@ -108,7 +108,7 @@ git rebase -Xtheirs branch-b # <- ours: branch-b, theirs: branch-a
 * For rebase: -Xtheirs refers to your local current branch that you want to replay ontop of the master branch.
 * For merge: -Xours refers to the local branch.
 
-From [https://demisx.github.io/git/rebase/2015/07/02/git-rebase-keep-my-branch-changes.html](https://demisx.github.io/git/rebase/2015/07/02/git-rebase-keep-my-branch-changes.html)
+From <https://demisx.github.io/git/rebase/2015/07/02/git-rebase-keep-my-branch-changes.html>
 
 ## Git-P4
 
@@ -119,7 +119,7 @@ From [https://demisx.github.io/git/rebase/2015/07/02/git-rebase-keep-my-branch-c
 * When doing git clone, you have to specify to use client spec `git p4 clone //depot/main/BBR/Source . --use-client-spec`
   
   * You can also exlcude paths and have multiple depot paths
-* With different directory structures, you can reformat patch files: [https://stackoverflow.com/questions/931882/how-to-apply-a-git-patch-from-one-repository-to-another](https://stackoverflow.com/questions/931882/how-to-apply-a-git-patch-from-one-repository-to-another)
+* With different directory structures, you can reformat patch files: <https://stackoverflow.com/questions/931882/how-to-apply-a-git-patch-from-one-repository-to-another>
   
   ````sh
   $ cat patch_file | git am     \
@@ -147,9 +147,9 @@ You can use this to sync from perforce to a git and back (it's brittle)
 
 Links:
 
-* [https://www.paraesthesia.com/archive/2016/10/27/migrating-perforce-to-git-in-windows/](https://www.paraesthesia.com/archive/2016/10/27/migrating-perforce-to-git-in-windows/)
-* [https://zzz.buzz/2016/04/30/git-p4-on-windows/](https://zzz.buzz/2016/04/30/git-p4-on-windows/)
-* [https://www.atlassian.com/git/tutorials/git-p4](https://www.atlassian.com/git/tutorials/git-p4)
+* <https://www.paraesthesia.com/archive/2016/10/27/migrating-perforce-to-git-in-windows/>
+* <https://zzz.buzz/2016/04/30/git-p4-on-windows/>
+* <https://www.atlassian.com/git/tutorials/git-p4>
 
 ### Install instructions
 

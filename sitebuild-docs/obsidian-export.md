@@ -1,6 +1,7 @@
 # Obsidian Export
 
 [obsidian exporter](https://github.com/ikrima/obsidian-export): markdown exporter
+
 - Build
   ```batch
   cd obsidian-export &
@@ -15,12 +16,13 @@
   ```
 
 [mkdocs-roamlinks-plugin](https://github.com/Jackiexiao/mkdocs-roamlinks-plugin)
+
 - Might be good for reference but not used
 
 ## Export from Notion
 
-- Worked better: https://github.com/connertennery/Notion-to-Obsidian-Converter
-- https://github.com/visualcurrent/Notion-2-Obsidan
+- Worked better: <https://github.com/connertennery/Notion-to-Obsidian-Converter>
+- <https://github.com/visualcurrent/Notion-2-Obsidan>
 
 ## Export from OneNote
 

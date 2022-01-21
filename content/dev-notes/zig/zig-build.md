@@ -170,7 +170,7 @@ Can run programs from build script for convenience
 
 ### Link zig library
 
-* Use `LibExeObjStep.addPackage/addPackagePath` with a `Pkg{ .name = "library", .path = "/path/to/the/library"}`.
+* Use `LibExeObjStep.addPackage/addPackagePath` with a `Pkg{ .name = "library", .path = "/path/to/the/library"}`
 * use `const library = @import("library");` in your root source file
 * Set output directory: `foo_lib.setOutputDir(output_path);`
   * *note:* this should be done before `foo_lib.setTarget(..)` as that will recompute the full output path

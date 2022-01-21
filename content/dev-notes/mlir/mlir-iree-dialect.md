@@ -2,7 +2,7 @@
 
 ## Overview
 
-[iree-architecture.svg](../_assets/iree-architecture.svg)
+![iree-architecture.svg](../_assets/iree-architecture.svg)
 
 Hierarchy:
 

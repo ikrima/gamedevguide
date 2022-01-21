@@ -4,7 +4,7 @@
 
 * Crash course: [https://dev.to/adasomg/10-life-changing-minutes-with-clojure-windows-3ofl](https://dev.to/adasomg/10-life-changing-minutes-with-clojure-windows-3ofl)
 * Syntax in 15 mins: [https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)
-* Brave Clojure: [https://www.braveclojure.com/do-things/](https://www.braveclojure.com/do-things/)
+* Brave Clojure: <https://www.braveclojure.com/do-things/>
 * S-expressions [http://www.buildyourownlisp.com/chapter9_s_expressions](http://www.buildyourownlisp.com/chapter9_s_expressions)
 * Clojure for DSL: [https://purelyfunctional.tv/courses/domain-specific-languages-in-clojure/](https://purelyfunctional.tv/courses/domain-specific-languages-in-clojure/)
 * Rich Hickey talks: [https://github.com/matthiasn/talk-transcripts](https://github.com/matthiasn/talk-transcripts)
@@ -89,7 +89,7 @@ clojure.lang.Keyword
   
   * clojure.tools.analyzer: https://github.com/clojure/tools.analyzer
   * https://github.com/stuartsierra/dependency
-  * Terra (Lua metaprogramming layer over C ): [http://terralang.org/](http://terralang.org/)
+  * Terra (Lua metaprogramming layer over C ): <http://terralang.org/>
   * Gamma  (clj > glsl compiler): https://github.com/kovasb/gamma
   * https://github.com/thi-ng/shadergraph
   * tree shaping

@@ -9,11 +9,11 @@
 * [Solving the expression problem in Python with object algebras](http://ponies.io/posts/2015-07-15-solving-the-expression-problem-in-python-object-algebras-and-mypy-static-types.html)
 * [Nim Memory Model](http://zevv.nl/nim-memory/)
 * Continuations
-  * http://people.csail.mit.edu/gregs/ll1-discuss-archive-html/msg03277.html
-  * http://wingolog.org/archives/2015/07/27/cps-soup
-  * http://mlton.org/pipermail/mlton/2003-January/023054.html
+  * <http://people.csail.mit.edu/gregs/ll1-discuss-archive-html/msg03277.html>
+  * <http://wingolog.org/archives/2015/07/27/cps-soup>
+  * <http://mlton.org/pipermail/mlton/2003-January/023054.html>
 * [JIT in python](https://csl.name/post/python-jit/)
 * Interpreter
-  https://francisstokes.wordpress.com/2017/08/16/programming-language-from-scratch/
-  https://github.com/Lel-Language/Lisp-esque-language
+  <https://francisstokes.wordpress.com/2017/08/16/programming-language-from-scratch/>
+  <https://github.com/Lel-Language/Lisp-esque-language>
 * [Category Theory in 15 minutes](http://chrislambda.github.io/blog/2014/01/30/catamorphisms-in-15-minutes/)

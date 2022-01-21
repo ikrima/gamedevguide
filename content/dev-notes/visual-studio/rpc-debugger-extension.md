@@ -34,4 +34,4 @@ Some references:
 * [VBScript Primer](http://technet.microsoft.com/en-us/library/ee198896.aspx)
 * [VBScript Error Handling](http://technet.microsoft.com/en-us/library/ee692852.aspx)
 
-From [https://github.com/dwilliamson/b/blob/623a4882561c0893e01488730896c6660794e257/Posts/2012-02-07-11-37-23.txt](https://github.com/dwilliamson/b/blob/623a4882561c0893e01488730896c6660794e257/Posts/2012-02-07-11-37-23.txt)
+From <https://github.com/dwilliamson/b/blob/623a4882561c0893e01488730896c6660794e257/Posts/2012-02-07-11-37-23.txt>

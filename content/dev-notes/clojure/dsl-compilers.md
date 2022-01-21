@@ -12,7 +12,7 @@
   
   * clojure.tools.analyzer: https://github.com/clojure/tools.analyzer
   * https://github.com/stuartsierra/dependency
-  * Terra (Lua metaprogramming layer over C ): [http://terralang.org/](http://terralang.org/)
+  * Terra (Lua metaprogramming layer over C ): <http://terralang.org/>
   * Gamma  (clj > glsl compiler): https://github.com/kovasb/gamma
   * https://github.com/thi-ng/shadergraph
   * tree shaping
