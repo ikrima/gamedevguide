@@ -6,11 +6,11 @@
   * Describe language grammar as functions that take a free-bound "evaluator" function param instead of data types (a "final algebra"/"object algebra")
   * ✔: Performance (no tag dispatch), allows for partial evaluation extension, and expression problem solution
 * Explanations:
-  * ELIU in C# https://higherlogics.blogspot.com/2008/09/mostly-tagless-interpreters-in-c.html
-  * http://lambda-the-ultimate.org/node/4572
-  * Papers: 
-    http://okmij.org/ftp/tagless-final/JFP.pdf
-    http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf
+  * ELIU in C# <https://higherlogics.blogspot.com/2008/09/mostly-tagless-interpreters-in-c.html>
+  * <http://lambda-the-ultimate.org/node/4572>
+  * Papers:
+    <http://okmij.org/ftp/tagless-final/JFP.pdf>
+    <http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf>
 * Sample implementations:
   * Simple C++ example 
     ````cpp
@@ -233,13 +233,13 @@
     }
     ````
   
-  * Implementations in different languages: https://i.cs.hku.hk/~bruno/oa/
-  * C# (2008) 
-    * Snippet: http://lambda-the-ultimate.org/node/4572#comment-72110
-    * More complete: http://lambda-the-ultimate.org/node/2569#comment-43805
-    * Expanded Version (2009): https://higherlogics.blogspot.com/2009/06/mobile-code-in-c-via-finally-tagless.html
-    * Advanced Query language in C#: https://higherlogics.blogspot.com/2019/09/building-query-dsl-in-c.html
-  * Snippet with Pratt parser (http://lambda-the-ultimate.org/node/4572#comment-72110)
+  * Implementations in different languages: <https://i.cs.hku.hk/~bruno/oa/>
+  * C# (2008)
+    * Snippet: <http://lambda-the-ultimate.org/node/4572#comment-72110>
+    * More complete: <http://lambda-the-ultimate.org/node/2569#comment-43805>
+      * Expanded Version (2009): <https://higherlogics.blogspot.com/2009/06/mobile-code-in-c-via-finally-tagless.html>
+    * Advanced Query language in C#: <https://higherlogics.blogspot.com/2019/09/building-query-dsl-in-c.html>
+  * Snippet with Pratt parser (<http://lambda-the-ultimate.org/node/4572#comment-72110>)
     * Syntax to semantic constructors
       
       ````csharp
@@ -258,17 +258,17 @@
       
       class MathGrammar<T> : Grammar<T>
       {
-          public MathGrammar(IMathSemantics<T> math)
-          {
-              Infix("+", 10, math.Add);   Infix("-", 10, math.Sub);
-              Infix("*", 20, math.Mul);   Infix("/", 20, math.Div);
-              InfixR("^", 30, math.Pow);  Postfix("!", 30, math.Fact);
-              Prefix("-", 100, math.Neg); Prefix("+", 100, math.Pos);
+        public MathGrammar(IMathSemantics<T> math)
+        {
+        Infix("+", 10, math.Add);   Infix("-", 10, math.Sub);
+        Infix("*", 20, math.Mul);   Infix("/", 20, math.Div);
+        InfixR("^", 30, math.Pow);  Postfix("!", 30, math.Fact);
+        Prefix("-", 100, math.Neg); Prefix("+", 100, math.Pos);
       
-              Group("(", ")", int.MaxValue);
-              Match("(digit)", char.IsDigit, 0, math.Int);
-              SkipWhile(char.IsWhiteSpace);
-          }
+        Group("(", ")", int.MaxValue);
+        Match("(digit)", char.IsDigit, 0, math.Int);
+        SkipWhile(char.IsWhiteSpace);
+        }
       }
       ````
     
@@ -285,10 +285,7 @@
       public int Pow(int lhs, int rhs) { return (int)Math.Pow(lhs, rhs); }
       public int Neg(int arg) { return -arg; }
       public int Pos(int arg) { return arg; }
-      public int Fact(int arg)
-      {
-          return arg == 0 || arg == 1 ? 1 : arg * Fact(arg - 1);
-      }
+      public int Fact(int arg) { return arg == 0 || arg == 1 ? 1 : arg * Fact(arg - 1); }
       }
       ````
     
@@ -297,15 +294,15 @@
       ````csharp
       interface IEquationSemantics<T> : IMathSemantics<T>
       {
-          T Var(string name);
-          T Let(T x, T value, T body);
+        T Var(string name);
+        T Let(T x, T value, T body);
       }
       class EquationParser<T> : MathGrammar<T>
       {
-          public EquationParser(IEquationSemantics<T> eq) : base(eq)
-          {
-              Match("(ident)", char.IsLetter, 0, eq.Var);
-              TernaryPrefix("let", "=", "in", 90, eq.Let);
-          }
+        public EquationParser(IEquationSemantics<T> eq) : base(eq)
+        {
+          Match("(ident)", char.IsLetter, 0, eq.Var);
+          TernaryPrefix("let", "=", "in", 90, eq.Let);
+        }
       }
       ````
