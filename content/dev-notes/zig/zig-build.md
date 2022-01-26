@@ -192,11 +192,44 @@ Can run programs from build script for convenience
 * Supported types for `option` are Strings and Enums (`-Dname=value` style), Booleans (`-Dname`, `-Dname=true`, `-Dname=false` style) and list of strings (`-Dname=value -Dname=value2` style)
 * Use from your source code like `const should_do_thing = @import("build_options").do_thing;`
 
+### build_options
+
+provide compile-time configuration to your code
+
+* the build system can create a package called `build_options` to communicate values from `build.zig` to your project's source code
+* how to use:
+  * create `OptionStep` in `build.zig` with declarations to populate:
+    ````zig
+    const build_options = b.addOptions();
+    build_options.addOption(bool, "enable_tracy", false);
+    build_options.addOption(bool, "enable_tracy_callstack", false);
+    build_options.addOption(bool, "enable_tracy_allocation", false);
+    ````
+
+* add the options package to exe artifact: `exe.addOptions("build_options", build_options);`
+* ***NOTE:*** if a package requires `build options`, must manually add it to its dependencies
+  ````zig
+  const fooPkg = Pkg{
+    .name = "foo",
+    .path = FileSource{ .path = "foo.zig" },
+    .dependencies = &[_]Pkg{
+      build_options.getPackage("build_options"),
+    }};
+  ````
+
+* can provide user input for these in form of `-Dname=value` flags.
+* can get the value a user provided (or `null` if they didn't, so use `orelse` on anything you get from this) using `Builder.option(type, name, description)`
+
 ### Run commands as build steps
 
 * Use `Builder.addSystemCommand()` to get a step that runs your command
 * create a top level step using `b.step()`
 * make the top level step depend on your run step using `top.dependOn(&run.step)`
+
+### Get actual compile/link flags
+
+* `zig build --verbose`: emits the actual command passed to `zig build-exe/lib/obj` with the compilation flags
+* `zig build --verbose-link`: will emit the linker flags passed to llvm
 
 ### Generate documentation
 
@@ -206,6 +239,15 @@ Can run programs from build script for convenience
 * finally set the output directory to some folder using for example `test_doc.output_dir = "docs"`
 * create a top level step using `b.step()`
 * make that newly created step depends on documentation step using `doc_step.dependOn(&test_doc.step)`
+
+## Translate-C
+
+### Incrementally Porting C App Series
+
+* [Incrementally Porting C App: Part1](https://www.youtube.com/watch?v=xg7EZNf7cmE)
+* [Incrementally Porting C App: Part2](https://www.youtube.com/watch?v=zAd3LDe6A-4)
+* [Incrementally Porting C App: Part3](https://www.youtube.com/watch?v=t1n_1-bVpEI)
+* [Incrementally Porting C App: Part4](https://www.youtube.com/watch?v=tl-7oxLQEDY)
 
 ## Internals
 
@@ -261,23 +303,9 @@ defines project Build Targets
   * The `ParseOptions` struct is fairly well documented in the source.
   * `Builder.standardTargetOptions()` is convenience wrapper around `std.CrossTarget.parse()`
 
-### build_options
+### Compiler Internals
 
-provide compile-time configuration to your code
-
-* the build system can create a package called `build_options` to communicate values from `build.zig` to your project's source code
-* declarations are populated by calling `LibExeObjStep.addBuildOption(type, name, value)` in your build.zig
-* can provide user input for these in form of `-Dname=value` flags.
-* can get the value a user provided (or `null` if they didn't, so use `orelse` on anything you get from this) using `Builder.option(type, name, description)`
-
-## Translate-C
-
-### Incrementally Porting C App Series
-
-* [Incrementally Porting C App: Part1](https://www.youtube.com/watch?v=xg7EZNf7cmE)
-* [Incrementally Porting C App: Part2](https://www.youtube.com/watch?v=zAd3LDe6A-4)
-* [Incrementally Porting C App: Part3](https://www.youtube.com/watch?v=t1n_1-bVpEI)
-* [Incrementally Porting C App: Part4](https://www.youtube.com/watch?v=tl-7oxLQEDY)
+* Linking: [Coff.zig:linkWithLLD](https://github.com/ziglang/zig/blob/35503b3d3fe1bfce19f1ea3e78a75ce87b0ed646/src/link/Coff.zig#L885)
 
 ## Reference
 

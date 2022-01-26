@@ -5,6 +5,8 @@
 * [ZigLearn](https://ziglearn.org/)
 * [Zig in 30 minutes](https://gist.github.com/ityonemo/769532c2017ed9143f3571e5ac104e50)
 * [Understanding the Zig Programming Language](https://medium.com/swlh/zig-the-introduction-dcd173a86975)
+* [Awesome Zig](https://github.com/catdevnull/awesome-zig)
+* [Awesome Zig Alternate](https://github.com/C-BJ/awesome-zig)
 
 ## Highlevel Differences
 
