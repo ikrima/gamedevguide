@@ -6,7 +6,6 @@
 * [Name Resolution](https://willcrichton.net/notes/specificity-programming-languages/)
 * [Uniting Language Embedding for Fast and Friendly DSLs](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.697.1002&rep=rep1&type=pdf)
   * [Thesis](https://infoscience.epfl.ch/record/218036/files/EPFL_TH6882.pdf)
-* [Solving the expression problem in Python with object algebras](http://ponies.io/posts/2015-07-15-solving-the-expression-problem-in-python-object-algebras-and-mypy-static-types.html)
 * [Nim Memory Model](http://zevv.nl/nim-memory/)
 * Continuations
   * <http://people.csail.mit.edu/gregs/ll1-discuss-archive-html/msg03277.html>
