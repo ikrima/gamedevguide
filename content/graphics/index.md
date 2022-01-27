@@ -1,3 +1,4 @@
-# chickenscratchnotes
+# Graphics Notes
 
-repo for easier sharing of gists/notes
+some chicken scratch notes/gists around graphics
+needs more cleanup

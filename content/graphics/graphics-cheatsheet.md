@@ -1,4 +1,5 @@
-# Graphics Cheatsheet
+# Graphics Cheat Sheet
+
 Shit I annoyingly forget and always have to lookup
 
 ## Lighting Units (Candela vs Lumens vs Lux)

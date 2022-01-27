@@ -1,4 +1,4 @@
-# Conda Cheatsheet
+# Conda Cheat Sheet
 
 * `conda info`: get version info
 * `conda update anaconda`: Update all packages to latest stable + compatible version of Anaconda

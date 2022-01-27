@@ -1,8 +1,9 @@
-arrange:
-  - index.md
-  - ue4guide
-  - math
-  - graphics
-  - houdini
-  - dev-notes
-  - blog
+nav:
+  - Home: index.md
+  - UE4: ue4guide
+  - Dev Notes: dev-notes
+  - Math: math
+  - Graphics: graphics
+  - Houdini: houdini
+  - Blog: blog
+  - Blog: blog

@@ -1,4 +1,4 @@
-# Cmder Cheatsheet
+# Cmder Cheat Sheet
 
 ## VSCode
 

@@ -92,7 +92,7 @@ plugins:
       separator: '[\s\-\.\_]+'
   - git-revision-date-localized
   - awesome-pages:
-      collapse_single_pages: true
+      collapse_single_pages: false
   - progress
   # - minify:
   #     minify_html: true

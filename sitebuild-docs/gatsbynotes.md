@@ -50,35 +50,9 @@
   npm run formatp:mdx  ; this uses prettier which isnt as configurable
   ```
 
-## OneNote Conversion
-
-- cinst -y pandoc
-- OneNote 2016 + OneNoteBatch to batch export to docx/html
-- Get-ChildItem -Path "./process*pendingdocx/\*.docx" | % {pandoc --extract-media "process_markdown/assets" -s \$*.FullName --wrap=none --reference-links -t markdown*strict -o "process_markdown/$($*.BaseName).md" }
-  - Can also use commonmark or gfm as markdown flavors
-- Typora & StackEdit are great markdown editors
-- Tools
-  - GitBook - Careful not to use V2
-    - https://www.gitbook.com/ 
-  - MkDocs https://www.mkdocs.org/
-    - Material For MkDocs: https://squidfunk.github.io/mkdocs-material/
-  - Useful links:
-    - Comparison [https://blog.strapi.io/gitbook-open-source-documentation/](https://blog.strapi.io/gitbook-open-source-documentation/)
-
-- OneNote Export
-  - Look at bookmark OneNote folder in firefox
-  - Batch export:
-    - Export to Word OneNote Batch: https://www.onenotegem.com/onenote-batch.html
-    - OneNote Gem: https://www.onenotegem.com/gem-for-onenote.html
-  - onenote-export https://github.com/Sjlver/onenote-export
-
-- Conversion To New Format
-  - gitbook convert: https://github.com/GitbookIO/gitbook-convert
-  - Pandoc: (https://pandoc.org/) to convert from word/pdf to markdown
-
 # Gatsby Notes
 
-## Cheatsheet
+## Cheat Sheet
 
 ```shell
 gatsby new gamedevguide https://github.com/ikrima/gamedevguide (or git clone + yarn)
