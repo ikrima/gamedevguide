@@ -10,6 +10,7 @@ nav:
   - optimization:     optimization
   - os:               os
   - prog lang theory: prog-lang-theory
+  - shells:           shells
   - ux:               ux
   - visual studio:    visual-studio
   - zig:              zig
