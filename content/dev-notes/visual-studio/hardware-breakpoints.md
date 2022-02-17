@@ -1,4 +1,4 @@
-# Overview
+# Hardware Breakpoints
 
 The processor can set up to 4 hardware breakpoints. When windows starts executing a thread, it will set the processors registers according to where the thread was last, and resume exectution, until it decides to move to another thread, it then stores the thread's registers and other information accociated with the thread and switches to another. This allows up to 4 HWBPs per a thread. The processor has 8 debug registeres. This is where understanding the window's paging system and virtual addresses will be helpful.
 
