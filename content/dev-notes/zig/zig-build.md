@@ -261,7 +261,20 @@ provide compile-time configuration to your code
   * somewhere in its belly invokes your `pub fn build(b: *Builder)` on a `Builder` it created earlier
   * The very last thing it does is hand over to this `Builder` you got to modify using `make()`
 * the main workhorse is `LibExeObjStep.make` which spawns the actual zig compiler (e.g. `zig build-exe/zig build-lib/zig cc`) with the builder/step settings converted as command line args
-  * code at [src/main.zig](https://github.com/ziglang/zig/blob/master/src/main.zig),
+  * code at [src/main.zig](https://github.com/ziglang/zig/blob/master/src/main.zig)
+
+### Compiler Stages
+
+Zig uses multiple compiler stages for bootstrapping the compiler:
+
+* **zig0**: is just the c++ compiler as a static library
+  * only implements the backend for build-exe/obj etc
+* **stage1**: is the current compiler, written in C++, compiled with Clang
+  * uses *zig0* library to build pieces of *stage2* in (subcommands like translate-c etc)
+* **stage2**: is the current project, written in Zig, compiled with *stage1*
+* **stage3**: is the fully self-hosted, *stage2* code compiled with *stage2*
+  * *stage1* doesn't implement full optimizations so *stage2* binary is not optimized
+  * *stage3* binary is optimized b/c *stage2* implements optimizations/much better codegen
 
 ### std.build.Builder
 
