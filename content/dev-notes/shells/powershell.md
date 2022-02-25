@@ -122,7 +122,7 @@ Foreach($file in dir C:\){$file.name}
 
 * Enabling `-WhatIf, -Confirm, etc`
   * add `[CmdletBinding(SupportsShouldProcess = $true)]` to param block
-  * inside function, wrap state change code with `if ($PSCmdlet.ShouldProcess(...)) {...}`
+  * inside function, wrap state change code with `if ($PSCmdlet.ShouldProcess(target,operation)) {...}`
 
 ## Resources
 
