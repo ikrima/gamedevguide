@@ -319,9 +319,15 @@ defines project Build Targets
 ### Compiler Internals
 
 * Linking: [Coff.zig:linkWithLLD](https://github.com/ziglang/zig/blob/35503b3d3fe1bfce19f1ea3e78a75ce87b0ed646/src/link/Coff.zig#L885)
+* [Zig Stage2 Compiler Internals](https://mitchellh.com/zig) by Mitchell Hashimoto
+  * [Zig Tokenizer](https://mitchellh.com/zig/tokenizer)
+  * [Zig Parser](https://mitchellh.com/zig/parser)
+  * [Zig AstGen: AST => ZIR](https://mitchellh.com/zig/astgen)
+  * [Zig Sema: ZIR => AIR](https://mitchellh.com/zig/sema)
 
 ## Reference
 
+* [Zig Build System Internals](https://mitchellh.com/zig/build-internals) by Mitchell Hashimoto
 * [Zig Build Explained: Part I](https://zig.news/xq/zig-build-explained-part-1-59lf)
 * [Zig Build Explained: Part II](https://zig.news/xq/zig-build-explained-part-2-1850)
 * [Zig Build System Wiki Entry](https://github.com/ziglang/zig/wiki/Zig-Build-System)

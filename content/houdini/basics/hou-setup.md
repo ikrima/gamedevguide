@@ -29,7 +29,7 @@ For major-minor version updates (i.e. from 17.0 to 17.5)
 - Follow instructions for nightly build updates
 
 ## For Nightly Updates
-- Run `HoudiniConfig.ps1:Update-HythonVenv`
+- Run `${env:EDEV_DEVOPSDIR}/MachineConfig/Houdini-Setup.ps1:Update-HythonVenv`
 - Change nvidia graphics custom 3d settings for new hindie.exe
 
 ## Houdini.env
