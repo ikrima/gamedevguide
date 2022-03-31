@@ -14,10 +14,8 @@
 		"eslint.enable": true,
 		"eslint.packageManager": "npm",
 		"npm.packageManager": "npm",
-		"debug.node.autoAttach": "on",
-		"prettier.printWidth": 100,
-		"prettier.singleQuote": true,
-		"prettier.trailingComma": "es5",
+
+		"peacock.color": "#ae4bd088",
 		"workbench.colorCustomizations": {
 			"activityBar.background": "#c073db88",
 			"activityBar.activeBackground": "#c073db88",
@@ -37,6 +35,12 @@
 			"titleBar.inactiveBackground": "#ae4bd099",
 			"titleBar.inactiveForeground": "#e7e7e799"
 		},
-		"peacock.color": "#ae4bd088"
-	}
+	},
+	"extensions": {
+		"recommendations": [
+			"esbenp.prettier-vscode",
+			"dbaeumer.vscode-eslint",
+			"davidanson.vscode-markdownlint",
+		],
+	},
 }
