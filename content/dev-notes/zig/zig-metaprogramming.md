@@ -304,42 +304,38 @@ Zig's metaprogramming is driven by a few basic concepts:
 
 ### Dynamic specialization
 
-* type `var` binds to anything
+* type `anytype` binds to anything
   
   ````zig
-  fn make_couple_of(x: var) [2]@typeOf(x) {
-      return [2]@typeOf(x) {x, x};
+  fn makeCoupleOf(x: anytype) [2]@TypeOf(x) {
+      return [2]@TypeOf(x){ x, x };
   }
   ````
 
 * allows specialization based on call types
   
   ````zig
-  fn decide_return_type(comptime T: type) type {
-      if (@typeId(T) == TypeId.Int) {
-          return @IntType(false, T.bit_count / 2);
+  fn ReturnType(comptime T: type) type {
+      comptime var info = @typeInfo(T);
+      if (info == .Int) {
+          info.Int.bits /= 2;
+          return @Type(info);
       } else {
           return T;
       }
   }
   
-  pub fn sqrt(x: var) decide_return_type(@typeOf(x)) {
-      const T = @typeOf(x);
-      switch (@typeId(T)) {
-          TypeId.ComptimeFloat => return T(@sqrt(f64, x)),
-          TypeId.Float => return @sqrt(T, x),
-          TypeId.ComptimeInt => comptime {
-              if (x > maxInt(u128)) {
-                  @compileError(
-                      "sqrt not implemented for " ++
-                      "comptime_int greater than 128 bits");
-              }
+  pub fn sqrt(x: anytype) ReturnType(@TypeOf(x)) {
+      const T = @TypeOf(x);
+      switch (@typeInfo(T)) {
+          .ComptimeFloat, .Float => return @sqrt(x),
+          .ComptimeInt => {
               if (x < 0) {
                   @compileError("sqrt on negative number");
               }
-              return T(sqrt_int(u128, x));
+              return T(sqrtInt(u128, x));
           },
-          TypeId.Int => return sqrt_int(T, x),
+          .Int => return sqrtInt(T, x),
           else => @compileError("not implemented for " ++ @typeName(T)),
       }
   }
