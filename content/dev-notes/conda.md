@@ -1,7 +1,11 @@
 # Conda Cheat Sheet
 
 * `conda info`: get version info
-* `conda update anaconda`: Update all packages to latest stable + compatible version of Anaconda
+* Update
+  * `conda update conda`: Update conda
+  * `conda update -n base conda`: Update base conda environment
+  * `conda update python`: Update python version
+  * `conda update anaconda`: Update all packages to latest stable + compatible version of Anaconda
 * `conda create --name ENVNAME python=3.6`: create new environment
 * `conda remove --name ENVNAME --all`: delete an entire environment
 * `conda activate ENVNAME / conda deactivate`: activate/deactivate environment
