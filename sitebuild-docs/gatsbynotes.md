@@ -3,25 +3,23 @@
 ## Bootstrap Install
 
 - Installing/Upgrade nodejs (upgrade is the same as installing a new nodejs version)
-
   From Powershell eleveated prompt:
-  ```shell
+  ```powershell
 
   cinst -y nvm.portable
-    nvm install 10.16.0
-    nvm install latest
+  nvm install 10.16.0
+  nvm install latest
 
-  nvm use 10.16.0 (or for each nodejs installation bc you globally installed modules arent shared)
-    npm install -g npm@latest
-    ; !!!!!! IMPORTANT
-    ; CAREFUL WITH THIS ONE: It does unbelievably dumb fucking shit like wreck your user path and then adds python27 directory to that path variable, wrecking existing python installs
-    npm install -g windows-build-tools
-    npm install -g gatsby-cli
+  nvm use 10.16.0 # (or for each nodejs installation bc you globally installed modules arent shared)
+  npm install -g npm@latest
+  # !!!!!! IMPORTANT
+  # CAREFUL WITH THIS ONE: It does unbelievably dumb fucking shit like wreck your user path and then adds python27 directory to that path variable, wrecking existing python installs
+  npm install -g windows-build-tools
+  npm install -g gatsby-cli
   ```
 
 - Upgrade Gatsby
-
-  ```shell
+  ```bash
   npm outdated ;  to identify new releases for all your dependencies
   gatsby info
   node -v
@@ -31,16 +29,14 @@
   ```
 
 - Building
-
-  ```shell
+  ```bash
   npm run dev
   npm run develop ; clean & start develop environment
   npm run build & npm run serve
   ```
 
 - Misc commands
-
-  ```shell
+  ```bash
   npm run lint
   npm run lint:fix
   npm run format:js
@@ -54,7 +50,7 @@
 
 ## Cheat Sheet
 
-```shell
+```bash
 gatsby new gamedevguide https://github.com/ikrima/gamedevguide (or git clone + yarn)
 gatsby develop (yarn develop)
 gatsby build
