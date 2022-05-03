@@ -1,16 +1,5 @@
 # CRT Initialization
 
-* [Detailed how to override MSVC CRT's initialization](https://gist.github.com/vaualbus/622099d88334fbba1d4ae703642c2956)
-* [DllMainCRTStartup](https://docs.microsoft.com/en-us/cpp/build/run-time-library-behavior?view=vs-2019)
-* [https://stackoverflow.com/questions/1583193/what-functions-does-winmaincrtstartup-perform](https://stackoverflow.com/questions/1583193/what-functions-does-winmaincrtstartup-perform)
-* [https://stackoverflow.com/questions/22934206/what-is-the-difference-between-main-and-maincrtstartup](https://stackoverflow.com/questions/22934206/what-is-the-difference-between-main-and-maincrtstartup)
-* [https://stackoverflow.com/questions/36187320/maincrtstartup-vs-wmaincrtstartup](https://stackoverflow.com/questions/36187320/maincrtstartup-vs-wmaincrtstartup)
-* [http://zetcode.com/gui/winapi/main/](http://zetcode.com/gui/winapi/main/)
-* [https://internals.rust-lang.org/t/windows-does-rust-need-the-x86-x64-c-runtime-to-be-initalized/11581/7](https://internals.rust-lang.org/t/windows-does-rust-need-the-x86-x64-c-runtime-to-be-initalized/11581/7)
-* [https://docs.microsoft.com/en-us/cpp/build/reference/entry-entry-point-symbol?view=vs-2019](https://docs.microsoft.com/en-us/cpp/build/reference/entry-entry-point-symbol?view=vs-2019)
-* [https://docs.microsoft.com/en-us/cpp/build/run-time-library-behavior?view=vs-2019](https://docs.microsoft.com/en-us/cpp/build/run-time-library-behavior?view=vs-2019)
-* [http://coderdreambook.blogspot.com/2013/11/md-vs-mt-options-to-use-run-time-library.html](http://coderdreambook.blogspot.com/2013/11/md-vs-mt-options-to-use-run-time-library.html)
-
 ## Default DLL entry point \_DllMainCRTStartup
 
 In Windows, all DLLs can contain an optional entry-point function, usually called `DllMain`, that is called for both initialization and termination. This gives you an opportunity to allocate or release additional resources as needed.
@@ -40,3 +29,17 @@ On process attach, the `_DllMainCRTStartup` function
   When the attachment counter goes to zero, the function returns `FALSE` to indicate to Windows that the DLL can be unloaded. 
   The `_DllMainCRTStartup` function is also called during thread attach and thread detach. In these cases, the VCRuntime code does no additional initialization or termination on its own, and just calls `DllMain` to pass the message along
   If `DllMain` returns `FALSE` from process attach, signaling failure, `_DllMainCRTStartup` calls `DllMain` again and passes `DLL_PROCESS_DETACH` as the *reason* argument, then goes through the rest of the termination process.
+
+## Reference
+
+* [Detailed how to override MSVC CRT's initialization](https://gist.github.com/vaualbus/622099d88334fbba1d4ae703642c2956)
+* [DllMainCRTStartup](https://docs.microsoft.com/en-us/cpp/build/run-time-library-behavior?view=vs-2019)
+* [https://stackoverflow.com/questions/1583193/what-functions-does-winmaincrtstartup-perform](https://stackoverflow.com/questions/1583193/what-functions-does-winmaincrtstartup-perform)
+* [https://stackoverflow.com/questions/22934206/what-is-the-difference-between-main-and-maincrtstartup](https://stackoverflow.com/questions/22934206/what-is-the-difference-between-main-and-maincrtstartup)
+* [https://stackoverflow.com/questions/36187320/maincrtstartup-vs-wmaincrtstartup](https://stackoverflow.com/questions/36187320/maincrtstartup-vs-wmaincrtstartup)
+* [http://zetcode.com/gui/winapi/main/](http://zetcode.com/gui/winapi/main/)
+* [https://internals.rust-lang.org/t/windows-does-rust-need-the-x86-x64-c-runtime-to-be-initalized/11581/7](https://internals.rust-lang.org/t/windows-does-rust-need-the-x86-x64-c-runtime-to-be-initalized/11581/7)
+* [https://docs.microsoft.com/en-us/cpp/build/reference/entry-entry-point-symbol?view=vs-2019](https://docs.microsoft.com/en-us/cpp/build/reference/entry-entry-point-symbol?view=vs-2019)
+* [https://docs.microsoft.com/en-us/cpp/build/run-time-library-behavior?view=vs-2019](https://docs.microsoft.com/en-us/cpp/build/run-time-library-behavior?view=vs-2019)
+* [http://coderdreambook.blogspot.com/2013/11/md-vs-mt-options-to-use-run-time-library.html](http://coderdreambook.blogspot.com/2013/11/md-vs-mt-options-to-use-run-time-library.html)
+* [MSVC CRT Initialization](https://www.codeguru.com/cpp/misc/misc/applicationcontrol/article.php/c6945/Running-Code-Before-and-After-Main.htm)
