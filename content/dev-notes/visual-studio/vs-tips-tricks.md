@@ -67,10 +67,10 @@ https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables
 |---------|------|--------------------|---------------|
 |d|decimal integer|0x00000066|102|
 |o|unsigned octal integer|0x00000066|000000000146|
-|x h|hexadecimal integer|102|0xcccccccc|
-|X H|hexadecimal integer|102|0xCCCCCCCC|
-|xb hb|hexadecimal integer (without leading 0x)|102|cccccccc|
-|Xb Hb|hexadecimal integer (without leading 0x)|102|CCCCCCCC|
+|x/h|hexadecimal integer|102|0xcccccccc|
+|X/H|hexadecimal integer|102|0xCCCCCCCC|
+|xb/hb|hexadecimal integer (without leading 0x)|102|cccccccc|
+|Xb/Hb|hexadecimal integer (without leading 0x)|102|CCCCCCCC|
 |b|unsigned binary integer|25|0b00000000000000000000000000011001|
 |bb|unsigned binary integer(without leading 0b)|25|00000000000000000000000000011001|
 |e|scientific notation|25000000|2.500000e+07|
@@ -105,6 +105,7 @@ From https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in
 |---------|------|--------------------|---------------|
 |n|Decimal or hexadecimal integer|pBuffer,\[32\] pBuffer,\[0x20\]|Displays pBuffer as a 32 element array.|
 |\[exp\]|A valid C++ expression that evaluates to an integer.|pBuffer,\[bufferSize\]|Displays pBuffer as an array of bufferSize elements.|
+|\[exp\]s|Format array with specifier e.g. string|pBuffer,\[bufferSize\]s|Displays pBuffer as a sized string array|
 |expand(n)|A valid C++ expression that evaluates to an integer|pBuffer, expand(2)|Displays the third element of pBuffer|
 
 ### Magic Numbers
