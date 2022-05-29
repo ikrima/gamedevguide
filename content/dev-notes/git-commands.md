@@ -3,16 +3,21 @@
 ## Git Config
 
 * [Git Config Best Practice](https://stackoverflow.com/questions/42675999/git-config-files-best-practice)
-* **Show Options:** `batch>git config --list --tshow-origin`
+* **Show Options:** `batch>git config --list --show-origin`
 * **Diff tool config**
-  * Araxis Merge
-    ````ini
-    [difftool "araxis"]
-    path = C:\\Program Files\\Araxis\\Araxis Merge\\compare.exe
-    [mergetool "Araxis"]
+  ````ini
+  [difftool "araxis"]
+    path = C:/Program Files/Araxis/Araxis Merge/compare.exe
+  [mergetool "araxis"]
     path = C:/Program Files/Araxis/Araxis Merge/Compare.exe
     cmd = \"C:/Program Files/Araxis/Araxis Merge/Compare.exe\" \"$REMOTE\" \"$BASE\" \"$LOCAL\" \"$MERGED\"
-    ````
+  [difftool "beyondcompare"]
+    path = C:/Program Files/Beyond Compare 4/bcomp.exe
+    cmd = \"C:/Program Files/Beyond Compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\"
+  [mergetool "beyondcompare"]
+    path = C:/Program Files/Beyond Compare 4/bcomp.exe
+    cmd = \"C:/Program Files/Beyond Compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+  ````
 
 ## Git Clone
 
@@ -24,6 +29,8 @@
   git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
   git fetch --unshallow
   ````
+
+* **Clone with specific line-endings:** `git clone --config core.autocrlf=false https://github.com/batiati/mustache-zig`
 
 ## Git Diffing
 
