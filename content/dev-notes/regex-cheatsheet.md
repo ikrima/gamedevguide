@@ -2,11 +2,24 @@
 
 ## Common Regex Patterns
 
-* Does not start with pattern: 
+* **not**: e.g. any character except  `a`, `b`, or `c`
+  
+  ````regex
+  [^abc]
+  ````
 
-````regex
-(?<!if\s|static\s)constexpr
-````
+* **!startsWith**: e.g. `b` not preceded by `a`
+  
+  ````regex
+  (?<!a)b
+  (?<!if\s|static\s)constexpr
+  ````
+
+* **!endsWith**: e.g. `a` not followed by `b`
+  
+  ````regex
+  a(?!b)
+  ````
 
 ## Useful  Links
 
