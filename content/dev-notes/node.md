@@ -14,6 +14,9 @@
 |`npm install -g npm@latest`|update npm|
 |`npm update [--omit=dev --package-lock=false]`|minor version package upgrade + package-lock.json|
 |`ncu -u && npm update`|major version package upgrade + package.json version hints|
+|`npm i -g npm-check-updates`|check outdated global packages|
+|`ncu -i`|interactive version of `ncu -u`|
+|`ncu`|'what if' version of `ncu -u` i.e. won't modify package.json|
 
 ## References
 
