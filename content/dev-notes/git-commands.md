@@ -7,16 +7,16 @@
 * **Diff tool config**
   ````ini
   [difftool "araxis"]
-    path = C:/Program Files/Araxis/Araxis Merge/compare.exe
+    path = 'C:/Program Files/Araxis/Araxis Merge/compare.exe'
   [mergetool "araxis"]
-    path = C:/Program Files/Araxis/Araxis Merge/Compare.exe
-    cmd = \"C:/Program Files/Araxis/Araxis Merge/Compare.exe\" \"$REMOTE\" \"$BASE\" \"$LOCAL\" \"$MERGED\"
+    path = 'C:/Program Files/Araxis/Araxis Merge/Compare.exe'
+    cmd  = \C:/Program Files/Araxis/Araxis Merge/Compare.exe\ '$REMOTE' '$BASE' '$LOCAL' '$MERGED'
   [difftool "beyondcompare"]
-    path = C:/Program Files/Beyond Compare 4/bcomp.exe
-    cmd = \"C:/Program Files/Beyond Compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\"
+    path = 'C:/Program Files/Beyond Compare 4/bcomp.exe'
+    cmd  = 'C:/Program Files/Beyond Compare 4/bcomp.exe' '$LOCAL' '$REMOTE'
   [mergetool "beyondcompare"]
-    path = C:/Program Files/Beyond Compare 4/bcomp.exe
-    cmd = \"C:/Program Files/Beyond Compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+    path = 'C:/Program Files/Beyond Compare 4/bcomp.exe'
+    cmd  = 'C:/Program Files/Beyond Compare 4/bcomp.exe' '$LOCAL' '$REMOTE' '$BASE' '$MERGED'
   ````
 
 ## Git Clone
@@ -32,6 +32,39 @@
 
 * **Clone with specific line-endings:** `git clone --config core.autocrlf=false https://github.com/batiati/mustache-zig`
 
+## Git Submodule
+
+* **init repo with submodules:** `batch>git submodule update --init --recursive`
+* **sync repo with submodules:** `batch>git submodule sync --recursive && git submodule update --init --recursive`
+* **shallow clone with submodules up to depth:**
+  ````batch
+  git clone --depth 1 [repo]
+  git submodule init
+  git submodule update --depth 1
+  ````
+
+* **remove submodule:** `batch>git rm path/to/submodule && git commit`
+  * 
+     > 
+     > \[!info\] can be undone with `batch>git revert`
+  
+  * 
+     > 
+     > \[!info\] submodule's .git directory (e.g. .git/modules/path/to/submodule) is not removed
+     > to make possible past commit checkout without requiring fetching from another repository [Reference](https://git-scm.com/docs/gitsubmodules#_forms)
+
+* **remove submodules completely:**
+  ````bash
+  # Remove the submodule entry from .git/config
+  git submodule deinit -f path/to/submodule
+  
+  # Remove the submodule directory from the superproject's .git/modules directory
+  rm -rf .git/modules/path/to/submodule
+  
+  # Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
+  git rm -f path/to/submodule
+  ````
+
 ## Git Diffing
 
 * **Diff working tree vs commit:**
@@ -44,13 +77,13 @@
 * **Diff staged changes vs HEAD:** `batch>git difftool --dir-diff --staged`
 * **Diff across branches:**
   ````batch
-  git difftool 4.17..bebylon -- /d/Ikrima/src/Public-Development/UnrealEngine/Engine/Source/Runtime/Renderer/Private/BasePassRendering.cpp
+  git difftool 4.17..bebylon -- /d/UnrealEngine/Engine/Source/Runtime/Renderer/Private/BasePassRendering.cpp
   git difftool --dir-diff release ~HEAD
   ````
 
 * **Folder history diff or folder diff between two different commits:** `batch>git difftool --dir-diff 27990a4451cf9458b280c9be027af41898721791~1 27990a4451cf9458b280c9be027af41898721791`
 
-## Git Commit/History Manipulation
+## Git Commit History Manipulation
 
 * Undo last commit [Reference](http://stackoverflow.com/questions/927358/how-to-undo-the-last-git-commit): `git reset --soft 'HEAD^'`
 
@@ -101,7 +134,9 @@
   
   ````bash
   # assuming branch-a is our current version
-  git rebase -Xtheirs branch-b # <- ours: branch-b, theirs: branch-a
+  #   ours:   branch-b
+  #   theirs: branch-a
+  git rebase -Xtheirs branch-b
   ````
   
    > 
@@ -113,33 +148,26 @@
 
 ### TLDR
 
-* You need to use python 2.7
-* When doing git clone, you have to specify to use client spec `git p4 clone //depot/main/BBR/Source . --use-client-spec`
-  * You can also exlcude paths and have multiple depot paths
-* With different directory structures, you can reformat patch files: <https://stackoverflow.com/questions/931882/how-to-apply-a-git-patch-from-one-repository-to-another>
+* you need to use python 2.7
+* you can use this to sync from perforce to a git and back (it's brittle)
+* when doing git clone, you have to specify to use client spec `git p4 clone //depot/main/BBR/Source . --use-client-spec`
+  * can also exlcude paths and have multiple depot paths
+* with different directory structures, you can reformat patch files: <https://stackoverflow.com/questions/931882/how-to-apply-a-git-patch-from-one-repository-to-another>
   ````bash
   $ cat patch_file | git am   \
           -p1                 \ # remove 1 leading directory ('static/')
           --directory='lib/'    # prepend 'lib/'
   ````
 
-* You can also cherry pick commits directly (git will automatically resolve the different path )
-* Remember to have your git-p4 repo in a separate directory from your actual p4 directory
-* You can merge unrealted git histories with `git merge myotherbranch --allow-unrelated-histories`
-* Use these `git config -e` settings
+* you can also cherry pick commits directly (git will automatically resolve the different path )
+* remember to have your git-p4 repo in a separate directory from your actual p4 directory
+* you can merge unrealted git histories with `git merge myotherbranch --allow-unrelated-histories`
+* use these `git config -e` settings
   ````ini
   [git-p4]
   skipSubmitEdit = true
   useclientspec = true
   ````
-
-### More Info
-
-* you can use this to sync from perforce to a git and back (it's brittle)
-* Reference
-  * <https://www.paraesthesia.com/archive/2016/10/27/migrating-perforce-to-git-in-windows/>
-  * <https://zzz.buzz/2016/04/30/git-p4-on-windows/>
-  * <https://www.atlassian.com/git/tutorials/git-p4>
 
 ### Install instructions
 
@@ -157,3 +185,10 @@
 
 * Clone repo: `git p4 clone --detect-branches //depot/perforce_software/p4jenkins`
 * Submit: `git p4 submit`
+
+### More Info
+
+* Reference
+  * <https://www.paraesthesia.com/archive/2016/10/27/migrating-perforce-to-git-in-windows/>
+  * <https://zzz.buzz/2016/04/30/git-p4-on-windows/>
+  * <https://www.atlassian.com/git/tutorials/git-p4>
