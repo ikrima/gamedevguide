@@ -1,6 +1,6 @@
 # Clojure
 
-# Learning Resources
+## Learning Resources
 
 * Crash course: [https://dev.to/adasomg/10-life-changing-minutes-with-clojure-windows-3ofl](https://dev.to/adasomg/10-life-changing-minutes-with-clojure-windows-3ofl)
 * Syntax in 15 mins: [https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes](https://github.com/shaunlebron/ClojureScript-Syntax-in-15-minutes)
@@ -9,9 +9,9 @@
 * Clojure for DSL: [https://purelyfunctional.tv/courses/domain-specific-languages-in-clojure/](https://purelyfunctional.tv/courses/domain-specific-languages-in-clojure/)
 * Rich Hickey talks: [https://github.com/matthiasn/talk-transcripts](https://github.com/matthiasn/talk-transcripts)
 * Get going fast
-  https://medium.com/@daniel.oliver.king/a-clojure-development-environment-that-gets-out-of-your-way-c11e6711ead3
-  https://medium.com/@daniel.oliver.king/getting-work-done-in-clojure-the-building-blocks-39ad82796926
-  https://medium.com/@daniel.oliver.king/getting-real-work-done-in-clojure-application-development-683c8129a313
+  * <https://medium.com/@daniel.oliver.king/a-clojure-development-environment-that-gets-out-of-your-way-c11e6711ead3>
+  * <https://medium.com/@daniel.oliver.king/getting-work-done-in-clojure-the-building-blocks-39ad82796926>
+  * <https://medium.com/@daniel.oliver.king/getting-real-work-done-in-clojure-application-development-683c8129a313>
 
 ## Calva Bindings
 
@@ -23,51 +23,52 @@
 * C-w => grow selection
 * Aldd C-A modifier to second chord to send to repl. Ex: C-A-c C-A-v
 
-# Environment
+## Environment
 
 * VSCode extension: [https://calva.io/](https://calva.io/)
 * Summary of vscode for clojure: [https://www.admiralbumblebee.com/programming/2020/01/04/Six-months-VS-Code.html](https://www.admiralbumblebee.com/programming/2020/01/04/Six-months-VS-Code.html)
 * Runtimes:
   * ClojureCLR: [https://github.com/clojure/clojure-clr/tree/newframework](https://github.com/clojure/clojure-clr/tree/newframework)
-  * ClojureCLR fork for  Unity:  [https://github.com/arcadia-unity/clojure-clr](https://github.com/arcadia-unity/clojure-clr)
+  * ClojureCLR fork for Unity: [https://github.com/arcadia-unity/clojure-clr](https://github.com/arcadia-unity/clojure-clr)
   * Magic Compiler: [https://github.com/nasser/magic](https://github.com/nasser/magic)
   * ClojureCLR nREPL: [https://github.com/arcadia-unity/Arcadia/blob/master/Editor/NRepl.cs](https://github.com/arcadia-unity/Arcadia/blob/master/Editor/NRepl.cs)
 
-# General Notes
+## General Notes
 
 * vectors,maps are functions
-
-````clojure
-() [] {} #{} ;lists,vector,maps,sets
-=> (def v ["a" "vector"]) ;; square brackets denote vectors
-=> (v 0) ;; a function just like "nth". Interesting.
-"a"
-
-;; keyword is a first-class value type in clojure
-=> (def m {:key "value", :another-key "almost like js right?"}) 
-=> (type :key)
-clojure.lang.Keyword
-
-````
+  
+  ````clojure
+  () [] {} #{} ;lists,vector,maps,sets
+  => (def v ["a" "vector"]) ;; square brackets denote vectors
+  => (v 0) ;; a function just like "nth". Interesting.
+  "a"
+  
+  ;; keyword is a first-class value type in clojure
+  => (def m {:key "value", :another-key "almost like js right?"})
+  => (type :key)
+  clojure.lang.Keyword
+  ````
 
 * symbols (== identifiers) are values i.e. take up memory
+  
   * `'author` => get at symbol
 * vars (== symbol to value bindings) are also values
+  
   * `#'author` => get at var
     ![clj-bindings-are-values.png](../_assets/clj-bindings-are-values.png)
-  * `binding` expr for rebind value temporarily inside this scope
-  * must mark with `^:dynamic` meta data
-  * convention is to name var with **
-  ````clojure
-  (def ^:dynamic *debug-enabled* false)
-  (defn debug [msg] 
-  	(if *debug-enabled* 
-       (println msg)))
-  (binding [*debug-enabled* true]
-      (debug "Calling that darned function")
-      (some-troublesome-function-that-needs-logging)
-      (debug "Back from that darned function"))
-  ````
+    * `binding` expr for rebind value temporarily inside this scope
+    * must mark with `^:dynamic` meta data
+    * convention is to name var with \*\*
+      ````clojure
+      (def ^:dynamic *debug-enabled* false)
+      (defn debug [msg]
+        (if *debug-enabled*
+          (println msg)))
+      (binding [*debug-enabled* true]
+          (debug "Calling that darned function")
+          (some-troublesome-function-that-needs-logging)
+          (debug "Back from that darned function"))
+      ````
 
 ## Debugging
 

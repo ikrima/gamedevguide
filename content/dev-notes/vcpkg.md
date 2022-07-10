@@ -1,7 +1,7 @@
 # Vcpkg Cheat Sheet
 
 * update:
-  * short version: \`git pull && bootstrap-vcpkg.bat -disableMetrics
+  * short version: `git pull && bootstrap-vcpkg.bat -disableMetrics`
   * safer version:
     ````bat
     cd <vcpkg_root>

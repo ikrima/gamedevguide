@@ -32,7 +32,7 @@ Ryzen has lots of PCI lanes but mobo pcie slots are not all x16. Lots of trial &
 
 Disable hpet; it causes inordinate perf problems.
 
-- Batch command: `batch>bcdedit /deletevalue useplatformclock`
+- Batch command: `#!shell bcdedit /deletevalue useplatformclock`
 
 - Some bios allow you to disable that in bios
 

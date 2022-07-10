@@ -41,7 +41,7 @@ sidebar: ue4guide
 
 - Go to your UE4/Engine/Build/BatchFiles folder, and run the following:
 
-```batch
+```bat
 "UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun -project="UnrealEngine\GENeuro\Neuro.uproject" -windows-noeditor -cook -build -stage -pak -package -clientconfig=Test
 ```
 
@@ -51,7 +51,7 @@ sidebar: ue4guide
 
 ## Only Cook Content
 
-```batch
+```bat
 "UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun -project="UnrealEngine\\GENeuro\\Neuro.uproject" -windows-noeditor -cook -iterate -clientconfig=Test
 ```
 
@@ -63,7 +63,7 @@ sidebar: ue4guide
 
 ## Cook On The Fly:
 
-```batch
+```bat
 "UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "UnrealEngine\\BBR\\BBR.uproject" -run=cook -targetplatform=Windows -cookonthefly -iterate -debug -log
 
 "UnrealEngine\Engine\BBR\Binaries\Win64\BBRProto-Win64-DebugGame.exe" -Game -debug -log -filehostip=127.0.0.1
@@ -77,15 +77,15 @@ sidebar: ue4guide
 
 #### Basic Command Line
 
-```batch
+```bat
 "UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe" "UnrealEngine\\BBR\\BBR.uproject" -run=cook -targetplatform=Windows -cookonthefly -iterate -debug -log
 ```
 
-#### *Project File*
+#### Project File
 
 If you do not specify the Unreal project file, you will get a message box telling you paper2D is not present, and the program will exit when you click it.
 
-#### *TargetPlatform*
+#### TargetPlatform
 
 When running the standalone version, the game will fail to connect to a cook server run with "-targetplatform=Windows"; it requires "-targetplatform=WindowsNoServer". The target platforms must match completely. I haven't tried it, but that should imply that the server requires "-targetplatform=WindowsServer". That means that a server cannot fulfill request to both a standalone game and a server. There is no command line argument for port number. Thus, to have both a client and a server running with data cooked on the fly requires two computers right now.
 
@@ -93,10 +93,10 @@ When running the standalone version, the game will fail to connect to a cook ser
 
 ### Basic Command Line
 
-```batch
+```bat
 UnrealEngine\Engine\Binaries\Win64\UE4Editor-Win64-Debug.exe" "UnrealEngine\BBR\BBR.uproject" -targetplatform=Windows -Game -debug -log -filehostip=127.0.0.1
 ```
 
-#### *TargetPlatform*
+#### TargetPlatform
 
 The -targetplatform argument is ignored when running the standalone. It always attempts to connect as WindowsNoServer. I don't know if the other builds make requests based on the argument.

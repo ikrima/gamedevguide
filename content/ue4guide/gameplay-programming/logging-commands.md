@@ -29,12 +29,12 @@ VeryVerbose
 
 Command line to stream log output to file
 
-```batch
+```bat
 -log LOG=Logfile.txt
 ```
 
 Log categories to separate files
 
-```batch
+```bat
 -LogCategoryFiles="Category1=Filename1, Category2=Filename2"
 ```

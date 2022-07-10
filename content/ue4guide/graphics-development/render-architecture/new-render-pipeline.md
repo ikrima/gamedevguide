@@ -167,7 +167,7 @@ Every frame, generate FMeshBatch from Scene proxies
 
 
 - Assigning state buckets for merging is slow so its cached at FPrimitive::AddToScene
-  - `cpp>TSet<FMeshDrawCommandStateBucket, MeshDrawCommandKeyFuncs> CachedMeshDrawCommandStateBuckets;`
+  - `#!cpp TSet<FMeshDrawCommandStateBucket, MeshDrawCommandKeyFuncs> CachedMeshDrawCommandStateBuckets;`
 
 - Actual merging operation is just transformation on visible FMeshDrawCommand list
   - For each drawcommand in the same statebucket, it gets replaced with an instanced mesh draw command
@@ -236,9 +236,9 @@ Every frame, generate FMeshBatch from Scene proxies
 - Forward renderer now supports only single global planar reflection
 - FMeshDrawCommand Performance Hazards
   - Going over inline allocator limit will cause performance hazard
-  - FMeshDrawShaderBindings assumes 2 shader frequencies (Vertex + Pixel): `cpp>TArray<FMeshDrawShaderBindingsLayout, TInlineAllocator<2>>ShaderLayouts`
-  - FMeshDrawCommand assumes 10 shader bindings among all frequencies: `cpp>const int32 NumInlineShaderBindings = 10;`
-  - FMeshDrawCommand assumes 4 vertex streams from the vertex factory: `cpp>typedef TArray<FVertexInputStream, TInlineAllocator<4>>FVertexInputStreamArray;`
+  - FMeshDrawShaderBindings assumes 2 shader frequencies (Vertex + Pixel): `#!cpp TArray<FMeshDrawShaderBindingsLayout, TInlineAllocator<2>>ShaderLayouts`
+  - FMeshDrawCommand assumes 10 shader bindings among all frequencies: `#!cpp const int32 NumInlineShaderBindings = 10;`
+  - FMeshDrawCommand assumes 4 vertex streams from the vertex factory: `#!cpp typedef TArray<FVertexInputStream, TInlineAllocator<4>>FVertexInputStreamArray;`
 
 # Upgrade Notes
 

@@ -1,10 +1,11 @@
 # Graphics Cheat Sheet
 
 Shit I annoyingly forget and always have to lookup
+- [Physical Units for Lights ](http://www.realtimerendering.com/blog/physical-units-for-lights): better summary from Eric Haines
 
 ## Lighting Units (Candela vs Lumens vs Lux)
 
-![](./assets/candela-vs-lumen-vslux.jpg)
+![[candela-vs-lumen-vslux.jpg]]
 
 |                               | Radiometric | Spectral           | Photopic              |
 | ----------------------------- | ----------- | ------------------ | --------------------- |

@@ -11,16 +11,16 @@ Write an interpreter and get a JIT for free by trace the execution of an interpr
 
 ### Details
 
-VM consists of two interpreters: *language interpreter* and *tracing interpreter* 
+VM consists of two interpreters: *language interpreter* and *tracing interpreter*
 
 * **language interpreter**
   * normal interpreter of language
 * **tracing interpreter**
   * second representation of the interpreter that creates traces
-  * when a hot loop is detected, insert marker 
-  * on next loop execution, tracing interpreter used to record each action 
+  * when a hot loop is detected, insert marker
+  * on next loop execution, tracing interpreter used to record each action
   * the execution trace is then JIT'ed into machine code that subsequent loop executions will use
-  * tracing interpreter automatically inserts guard checks to verify trace preconditions/code-paths taken match the JIT'ed code 
+  * tracing interpreter automatically inserts guard checks to verify trace preconditions/code-paths taken match the JIT'ed code
   * if guard fails, execution falls back to the tracing interpreter for the rest of that bytecode, and then back to the language interpreter
   * only need two meta functions for the JIT
     * `can_enter_jit`: mark hot loop entry and generate machine code
@@ -43,24 +43,24 @@ VM consists of two interpreters: *language interpreter* and *tracing interpreter
 
 ### Lua
 
-* Allocation Sinking: http://wiki.luajit.org/Allocation-Sinking-Optimization
-* Mike Pall Comments on LuaJIT & tracing JIT compilers: 
-  * http://lambda-the-ultimate.org/node/3851
-  * https://www.reddit.com/user/mikemike/comments
+* Allocation Sinking: <http://wiki.luajit.org/Allocation-Sinking-Optimization>
+* Mike Pall Comments on LuaJIT & tracing JIT compilers:
+  * <http://lambda-the-ultimate.org/node/3851>
+  * <https://www.reddit.com/user/mikemike/comments>
 
 ## Query Based Compilers
 
 ### Overview
 
-Instead of linear batch pass, implement compiler as a database that can be queried 
+Instead of linear batch pass, implement compiler as a database that can be queried
 
 * queries e.g. `type_of` are implemented as deterministic pure functions that explicitly declare their dependencies/outputs
 * compilation becomes just a big pure function
 * aim is to allow for incremental computation
-* internally, 
-  * just a big lazily constructed data dependency DAG 
+* internally,
+  * just a big lazily constructed data dependency DAG
   * queries are memoized for performance
-  * simple idea but lots of complex nuance implementation around memoization 
+  * simple idea but lots of complex nuance implementation around memoization
     * dependency/partial change tracking
     * caching
     * efficient result cloning e.g. structural sharing
@@ -77,12 +77,12 @@ Instead of linear batch pass, implement compiler as a database that can be queri
 
 ## Symbolic Assembly
 
-Symbolic Assembly: Using Clojure to Meta-program Bytecode - Ramsey Nasser: https://www.youtube.com/watch?v=eDad1pvwX34
-The Language of the Language: Comparing compiler construction in Clojure and F# - Ramsey Nasser https://www.youtube.com/watch?v=t8usj1fN9rs
+Symbolic Assembly: Using Clojure to Meta-program Bytecode - Ramsey Nasser: <https://www.youtube.com/watch?v=eDad1pvwX34>
+The Language of the Language: Comparing compiler construction in Clojure and F# - Ramsey Nasser <https://www.youtube.com/watch?v=t8usj1fN9rs>
 
 ## Example Repos
 
-* Symbolic bytecode	
-  https://github.com/nasser/mage
-  https://github.com/nasser/magic
-  https://github.com/kovasb/gamma
+* Symbolic bytecode
+  * <https://github.com/nasser/mage>
+  * <https://github.com/nasser/magic>
+  * <https://github.com/kovasb/gamma>

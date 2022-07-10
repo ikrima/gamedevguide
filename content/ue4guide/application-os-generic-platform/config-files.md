@@ -29,43 +29,43 @@ config => serialize property to config
 gobalconfig => load ini from baseclass only
 ConfigHierarchyEditable => Edit the values for the config hierarchy
 
-### **Configuration Categories**
+### Configuration Categories
 
-Each config category has its own file hierarchy that specifies engine-specific/project-specific/platform-specific configurations
-- Compat
-- DeviceProfiles
-- Editor
-- EditorGameAgnostic
-- EditorKeyBindings
-- EditorUserSettings
-- Engine
-- Game
-- Input
-- Lightmass
-- Scalability
+- Each config category has its own file hierarchy that specifies engine-specific/project-specific/platform-specific configurations
+  - Compat
+  - DeviceProfiles
+  - Editor
+  - EditorGameAgnostic
+  - EditorKeyBindings
+  - EditorUserSettings
+  - Engine
+  - Game
+  - Input
+  - Lightmass
+  - Scalability
 
-Config Category code name | metadata name (aka config=Game)
+- Config Category code name | metadata name (aka config=Game)
+  ```cpp
+  GEngineIni            | Engine            /* Engine ini filename */
 
-GEngineIni            | Engine            /* Engine ini filename */
+  /** Editor ini file locations - stored per engine version (shared across all projects). Migrated between versions on first run. */
+  GEditorIni            | Editor            /* Editor ini filename */
+  GEditorKeyBindingsIni | EditorKeyBindings /* Editor Key Bindings ini file */
+  GEditorLayoutIni      | EditorLayout      /* Editor UI Layout ini filename */
+  GEditorSettingsIni    | EditorSettings    /* Editor Settings ini filename */
 
-/** Editor ini file locations - stored per engine version (shared across all projects). Migrated between versions on first run. */
-GEditorIni            | Editor            /* Editor ini filename */
-GEditorKeyBindingsIni | EditorKeyBindings /* Editor Key Bindings ini file */
-GEditorLayoutIni      | EditorLayout      /* Editor UI Layout ini filename */
-GEditorSettingsIni    | EditorSettings    /* Editor Settings ini filename */
+  /** Editor per-project ini files - stored per project. */
+  GEditorPerProjectIni | EditorPerProjectUserSettings   /* Editor User Settings ini filename */
 
-/** Editor per-project ini files - stored per project. */
-GEditorPerProjectIni | EditorPerProjectUserSettings   /* Editor User Settings ini filename */
-
-GCompatIni           | Compat
-GLightmassIni        | Lightmass         /* Lightmass settings ini filename */
-GScalabilityIni      | Scalability       /* Scalability settings ini filename */
-GHardwareIni         | Hardware          /* Hardware ini filename */
-GInputIni            | Input             /* Input ini filename */
-GGameIni             | Game              /* Game ini filename */
-GGameUserSettingsIni | GameUserSettings  /* User Game Settings ini filename */
-
-*Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*
+  GCompatIni           | Compat
+  GLightmassIni        | Lightmass         /* Lightmass settings ini filename */
+  GScalabilityIni      | Scalability       /* Scalability settings ini filename */
+  GHardwareIni         | Hardware          /* Hardware ini filename */
+  GInputIni            | Input             /* Input ini filename */
+  GGameIni             | Game              /* Game ini filename */
+  GGameUserSettingsIni | GameUserSettings  /* User Game Settings ini filename */
+  ```
+- [Reference](https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html)
 
 ## File Hierarchy
 
@@ -73,13 +73,13 @@ The configuration file hierarchy is read in starting with Base.ini, with values
 
 The below file hierarchy example is for the Engine category of configuration files.
 
-1. `ini>Engine/Config/Base.ini`
+1. `#!ini Engine/Config/Base.ini`
    Base.ini is usually empty.
-1. `ini>Engine/Config/BaseEngine.ini`
-1. `ini>Engine/Config/[Platform]/[Platform]Engine.ini`
-1. `ini>[ProjectDirectory]/Config/DefaultEngine.ini`
-1. `ini>[ProjectDirectory]/Config/[Platform]/[Platform]Engine.ini`
-1. `ini>[ProjectDirectory]/Saved/Config/[Platform]/Engine.ini`
+1. `#!ini Engine/Config/BaseEngine.ini`
+1. `#!ini Engine/Config/[Platform]/[Platform]Engine.ini`
+1. `#!ini [ProjectDirectory]/Config/DefaultEngine.ini`
+1. `#!ini [ProjectDirectory]/Config/[Platform]/[Platform]Engine.ini`
+1. `#!ini [ProjectDirectory]/Saved/Config/[Platform]/Engine.ini`
    The configuration file in the Saved directory only stores the project-specific and platform-specific differences in the stack of configuration files.
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*
@@ -131,12 +131,12 @@ Key=Value
 
 You can use these config vars in your ini's that UE4 will replace accordingly with expanded out string
 
-- `ini>%GAME%`: Game Name
-- `ini>%GAMEDIR%`: Game Directory
-- `ini>%ENGINEDIR%`: Engine Directory
-- `ini>%ENGINEUSERDIR%`: User's Engine Directory
-- `ini>%ENGINEVERSIONAGNOSTICUSERDIR%`: User Engine Agnostic directory
-- `ini>%APPSETTINGSDIR%`: Application Settings Directory
+- `#!ini %GAME%`: Game Name
+- `#!ini %GAMEDIR%`: Game Directory
+- `#!ini %ENGINEDIR%`: Engine Directory
+- `#!ini %ENGINEUSERDIR%`: User's Engine Directory
+- `#!ini %ENGINEVERSIONAGNOSTICUSERDIR%`: User Engine Agnostic directory
+- `#!ini %APPSETTINGSDIR%`: Application Settings Directory
 
 ### Comments
 
@@ -195,7 +195,7 @@ FCoreDelegates::ConfigReadyForUse.Broadcast();
 
 - Specify by this:
 
-  `cpp>UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
+  `#!cpp UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
 
 - Full example getting the proper full config file path name:
 
@@ -231,7 +231,7 @@ FCoreDelegates::ConfigReadyForUse.Broadcast();
   uobj->GetConfigName();
   ```
 
-- `cpp>GetConfigFilename()`: _*!!IMPORTANT!! DO NOT USE*_ It's supposed to take into account perObjectConfig but does not actually work. The code is ifdef'ed out and reverts to calling `GetConfigName()`
+- `#!cpp GetConfigFilename()`: _*!!IMPORTANT!! DO NOT USE*_ It's supposed to take into account perObjectConfig but does not actually work. The code is ifdef'ed out and reverts to calling `GetConfigName()`
 
 - Get the Default*.ini config file name
 
@@ -281,7 +281,7 @@ void SaveConfig() const
 
 ### Using KeyValueStore
 
-The engine provides this functionality through `cpp>FGenericPlatformMisc::SetStoredValue/GetStoredValue`. Note: For Windows/iOS, this writes it out to the Registry/pList file
+The engine provides this functionality through `#!cpp FGenericPlatformMisc::SetStoredValue/GetStoredValue`. Note: For Windows/iOS, this writes it out to the Registry/pList file
 
 ```cpp
 bool FGenericPlatformMisc::SetStoredValue(const FString& InStoreId, const FString& InSectionName, const FString& InKeyName, const FString& InValue)

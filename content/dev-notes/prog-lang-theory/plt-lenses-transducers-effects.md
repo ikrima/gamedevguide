@@ -4,7 +4,7 @@
 
 Homomorphisms are a **structure preserving map** between **two algebraic structures of the same type** (e.g. two groups, vector spaces, etc.) that preserves the **operations** of the structures
 
-* suppose $f: A \to B$ is a homomorphism between two sets $A$, $B$ 
+* suppose $f: A \to B$ is a homomorphism between two sets $A$, $B$
 * suppose $\cdot$ is an operation of the structure (e.g. a *binary operation*)
 * $f(x\cdot y)=f(x)\cdot f(y)$ for every pair $x$, $y$ of elements of $A$
 
@@ -25,20 +25,20 @@ Common examples
 * [Functors == Homomorphisms](https://math.stackexchange.com/questions/405459/homomorphisms-vs-functors)
   
    > 
-   > You are correct, functors are the structure preserving entities between categories. They could have been called homomorphisms. 
+   > You are correct, functors are the structure preserving entities between categories. They could have been called homomorphisms.
    > I don't know much about the reason for the terminology used, but I think that Mac Lane and Eilenberg, when inventing category theory, borrowed terminology from philosophy where category and functor are known (at least to some)
-   > Polymorphism is common in mathematics. For instance, *the structure preserving entities between topological spaces are called continuous rather than homomorphisms*. 
-   > And an invertible continuous function with continuous inverse is called a homeomorphism rather than an isomorphism. A structure preserving entity between vectors spaces is called a linear transformation. 
-   > A structure preserving mappings between metric spaces is called a short map. And an invertible one is called an isometry rather than an isomorphism. Clearly, historical reasons play a role. 
+   > Polymorphism is common in mathematics. For instance, *the structure preserving entities between topological spaces are called continuous rather than homomorphisms*.
+   > And an invertible continuous function with continuous inverse is called a homeomorphism rather than an isomorphism. A structure preserving entity between vectors spaces is called a linear transformation.
+   > A structure preserving mappings between metric spaces is called a short map. And an invertible one is called an isometry rather than an isomorphism. Clearly, historical reasons play a role.
 
 * [Connections to transducers](https://news.ycombinator.com/item?id=10297337)
-  \>On the fancy Haskell lens hierarchy (hackage.haskell.org/package/lens) we have the notion of a fold or a "getter which touches multiple items". 
+  \>On the fancy Haskell lens hierarchy (hackage.haskell.org/package/lens) we have the notion of a fold or a "getter which touches multiple items".
   \>The existence of a fold for a type like `Fold s a` indicates that we can extract from the type `s` some number (0 to many) `a` values in sequence. This is the idea of "Foldable" in Haskell.
-  \>Given a foldable type `s` and a transducer we execute the transducer by passing the "build" reducer in and then "visiting" each value `a` inside of `s` with the reducer that 
-  \>the transducer returns (modulo the early stopping bit which is just sort of a Clojure-specific optimization). 
+  \>Given a foldable type `s` and a transducer we execute the transducer by passing the "build" reducer in and then "visiting" each value `a` inside of `s` with the reducer that
+  \>the transducer returns (modulo the early stopping bit which is just sort of a Clojure-specific optimization).
   \>Essentially, the transducer is a notion of "visitation" which is invariant to how the final summary is constructed—essentially the same thing that's captured in the "getter which touches multiple items" of a Fold.
   \>So there really ought to be a way to treat any specter optic as a possibly very limited transducer. Essentially, the "read" component of a lens will correspond pretty directly.
-  \>We can also see this by remembering that any *pure transducer is semantically equivalent to a function `a -> [b]`* which you can read as a way of finding 0-to-many `b` values "inside" of `a`. 
+  \>We can also see this by remembering that any *pure transducer is semantically equivalent to a function `a -> [b]`* which you can read as a way of finding 0-to-many `b` values "inside" of `a`.
 
 ## Lenses
 
@@ -56,11 +56,11 @@ Common examples
   * Decouple state shape dependencies, especially in UI. Instead of littering your codebase with code that dives deep into the shape of a particular object, import a lens. If you later need to change the state shape, you can do so in the lens, and none of the code that depends on the lens will need to change.
   * Immutable & composable niceness (getters are easy, but how do you do setters)?
 
-Lenses allow you to abstract state shape behind getters and setters. 
+Lenses allow you to abstract state shape behind getters and setters.
 
 This follows the principle that a small change in requirements should require only a small change in the system.
 
-* Sensible explanation: 
+* Sensible explanation
   [https://sinusoid.es/lager/lenses.html](https://sinusoid.es/lager/lenses.html)
   [https://medium.com/@reidev275/composable-immutable-property-access-with-lenses-in-typescript-798da4ddc30e](https://medium.com/@reidev275/composable-immutable-property-access-with-lenses-in-typescript-798da4ddc30e)
   [https://medium.com/javascript-scene/lenses-b85976cb0534](https://medium.com/javascript-scene/lenses-b85976cb0534)
@@ -129,8 +129,8 @@ A transducer is an object that incrementally transforms one (potentially infinit
 * starting the transducer to get an initial state
 * repeatedly updating that state by either consuming an element from the input sequence or by emitting an element to the output sequence
 * when input is exhausted, the transducer enters a half closed state where it may emit more output elements but it will never consume more input elements
-* when the transducer stops emitting elements, its finisher is called to clean up any resources held in the final transduction state. 
-* Optionally, a transducer may half close early, before the input sequence is fully consumed 
+* when the transducer stops emitting elements, its finisher is called to clean up any resources held in the final transduction state.
+* Optionally, a transducer may half close early, before the input sequence is fully consumed
 
 [Reference](https://docs.racket-lang.org/rebellion/Transducers.html)
 
@@ -167,20 +167,20 @@ A transducer is an object that incrementally transforms one (potentially infinit
     * C program puts stuff away in mem/registers, and tells kernel comeback and resume me when you're done
     * entire program is a continuation
     * the process is delimited continuation
-    * syscall are parameterized side-effects
-    * the process is a parameters (e.g. `fork`  the program continues ***twice***)
+      * syscall are parameterized side-effects
+      * the process is a parameters (e.g. `fork`  the program continues ***twice***)
   * **virtualization**
     * works by mocking syscall table
     * means can isolate side-effects and create a functional world for that process
     * algebraic effects give you the power of virtualization at the expression level
       * so you can virtualize any function like any process
-  * **common lisp condition system**: decouple the treatment of exceptional situations (or conditions) into three orthogonal roles: 
-    * signaling the condition (akin to “throwing”), 
-    * handling the condition (akin to “catching”), 
-    * recovering from the condition (which has no resemblance in popular languages). 
+  * **common lisp condition system**: decouple the treatment of exceptional situations (or conditions) into three orthogonal roles:
+    * signaling the condition (akin to “throwing”),
+    * handling the condition (akin to “catching”),
+    * recovering from the condition (which has no resemblance in popular languages).
     * The signaler, the handler, and the recoverer can be three disjoint bodies of code sitting in different parts of your call stack.
   * **interpreters**
-    * Tagless final algebras are another much more popular alternative that has been proven very effective in practical software. 
+    * Tagless final algebras are another much more popular alternative that has been proven very effective in practical software.
     * In tagless final, one writes composable DSLs (which are just records of functions) with the nature and interpretation of effects left abstract.
     * One then writes interpreters which interpret the DSL, giving meaning to the effects. This achieves the same fundamental goals as algebraic effects, but just using the ordinary language features of static FP languages.
 
@@ -201,7 +201,7 @@ with
 | c#decide () k -> k true
 ````
 
-* `effect` definition 
+* `effect` definition
   * =="interface" defining supported operations==
   * dictates the "type"
 * `effect` must be instanced to use
@@ -213,7 +213,7 @@ with
 ### F#'s Effect handlers
 
 * TLDR: Allow user plug in a definition of `yield`  and be able to call `resume` within `yield` block to resume continuation
-* Are really just delimited continuations) but seem better/more ergonomic than transducers: http://mikeinnes.github.io/2020/06/12/transducers.html
+* Are really just delimited continuations) but seem better/more ergonomic than transducers: <http://mikeinnes.github.io/2020/06/12/transducers.html>
 * Very much similar to `async/await`
 
 #### Motivating Examples
@@ -279,12 +279,12 @@ for x in xs {
 
 ### References
 
-* ELIU presentation: https://speakerdeck.com/paperswelove/brandon-bloom-on-programming-with-algebraic-effects-and-handlers-by-andrej-bauer-and-matija-pretnar
-* https://github.com/brandonbloom/eclj
-* More in style of CommonLisp's condition system: https://github.com/clojureman/special
-* https://lilac.town/writing/effects-in-clojure/
+* ELIU presentation: <https://speakerdeck.com/paperswelove/brandon-bloom-on-programming-with-algebraic-effects-and-handlers-by-andrej-bauer-and-matija-pretnar>
+* <https://github.com/brandonbloom/eclj>
+* More in style of CommonLisp's condition system: <https://github.com/clojureman/special>
+* <https://lilac.town/writing/effects-in-clojure/>
 * From Scratch Tutorial in javascript:
-  * https://gist.github.com/yelouafi/57825fdd223e5337ba0cd2b6ed757f53
-  * https://gist.github.com/yelouafi/bbc559aef92f00d9682b8d0531a36503
-  * https://gist.github.com/yelouafi/7261da07c97c5e6322da3894f6ea60e2
-  * https://gist.github.com/yelouafi/5f8550b887ab7ffcf3284602330bd37d
+  * <https://gist.github.com/yelouafi/57825fdd223e5337ba0cd2b6ed757f53>
+  * <https://gist.github.com/yelouafi/bbc559aef92f00d9682b8d0531a36503>
+  * <https://gist.github.com/yelouafi/7261da07c97c5e6322da3894f6ea60e2>
+  * <https://gist.github.com/yelouafi/5f8550b887ab7ffcf3284602330bd37d>

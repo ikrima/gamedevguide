@@ -3,7 +3,7 @@
 ## Git Config
 
 * [Git Config Best Practice](https://stackoverflow.com/questions/42675999/git-config-files-best-practice)
-* **Show Options:** `batch>git config --list --show-origin`
+* **Show Options:** `#!shell git config --list --show-origin`
 * **Diff tool config**
   ````toml
   [difftool "araxis"]
@@ -21,11 +21,11 @@
 
 ## Git Clone
 
-* **Shallow clone only the remote primary:** `batch>git clone url --single-branch`
-* **Shallow clone up to depth:** `batch>git clone url --depth 1 #implies --single-branch`
-* **Unshallow the current branch:** `batch>git fetch --unshallow`
+* **Shallow clone only the remote primary:** `#!shell git clone url --single-branch`
+* **Shallow clone up to depth:** `#!shell git clone url --depth 1 #implies --single-branch`
+* **Unshallow the current branch:** `#!shell git fetch --unshallow`
 * **Reverse unshallow all the branches:**
-  ````bash
+  ````shell
   git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
   git fetch --unshallow
   ````
@@ -34,28 +34,28 @@
 
 ## Git Submodule
 
-* **init repo with submodules:** `batch>git submodule update --init --recursive`
-* **sync repo with submodules:** `batch>git submodule sync --recursive && git submodule update --init --recursive`
+* **init repo with submodules:** `#!shell git submodule update --init --recursive`
+* **sync repo with submodules:** `#!shell git submodule sync --recursive && git submodule update --init --recursive`
 * **shallow clone with submodules up to depth:**
-  ````bash
+  ````shell
   git clone --depth 1 [repo]
   git submodule init
   git submodule update --depth 1
   ````
 
-* **remove submodule:** `bash>git rm path/to/submod && git commit`
+* **remove submodule:** `#!shell git rm path/to/submod && git commit`
   * 
      > 
-     > \[!info\] can be undone with `batch>git revert`
+     > \[!info\] can be undone with `#!shell git revert`
   
   * 
      > 
      > \[!info\] submodule's .git directory (e.g. .git/modules/path/to/submod) is not removed
      > to make possible past commit checkout without requiring fetching from another repository [Reference](https://git-scm.com/docs/gitsubmodules#_forms)
 
-* **move submodule:** `bash>git mv old/path/to/submod new/path/to/submod`
+* **move submodule:** `#!shell git mv old/path/to/submod new/path/to/submod`
 * **remove submodules completely:**
-  ````bash
+  ````shell
   # Remove the submodule entry from .git/config
   git submodule deinit -f path/to/submod
   
@@ -69,20 +69,20 @@
 ## Git Diffing
 
 * **Diff working tree vs commit:**
-  ````bash
+  ````shell
   # Use '--' for working tree e.g.
   git difftool --dir-diff HEAD --
   ````
 
-* **Diff staged changes vs working directory:** `batch>git difftool --dir-diff`
-* **Diff staged changes vs HEAD:** `batch>git difftool --dir-diff --staged`
+* **Diff staged changes vs working directory:** `#!shell git difftool --dir-diff`
+* **Diff staged changes vs HEAD:** `#!shell git difftool --dir-diff --staged`
 * **Diff across branches:**
-  ````bash
+  ````shell
   git difftool 4.17..bebylon -- /d/UnrealEngine/Engine/Source/Runtime/Renderer/Private/BasePassRendering.cpp
   git difftool --dir-diff release ~HEAD
   ````
 
-* **Folder history diff or folder diff between two different commits:** `batch>git difftool --dir-diff 27990a4451cf9458b280c9be027af41898721791~1 27990a4451cf9458b280c9be027af41898721791`
+* **Folder history diff or folder diff between two different commits:** `#!shell git difftool --dir-diff 27990a4451cf9458b280c9be027af41898721791~1 27990a4451cf9458b280c9be027af41898721791`
 
 ## Git Commit History Manipulation
 
@@ -92,15 +92,15 @@
 
 * **Create patch containing all commits in current but not in the master branch:** [Reference](https://stackoverflow.com/questions/5432396/create-a-patch-by-comparing-a-specific-branch-on-the-remote-with-a-specific-loca)
   
-  ````bash
+  ````shell
   git format-patch origin/master --stdout > mypatch.patch
   ````
 
-* **GitExtensions: filter a set of branches:** `batch>Bebylon* --remotes=upstream/release* --remotes=upstream/dev*`
+* **GitExtensions: filter a set of branches:** `#!shell Bebylon* --remotes=upstream/release* --remotes=upstream/dev*`
 
 * **Merge with force accept theirs:** [Reference](https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git)
   
-  ````bash
+  ````shell
   git checkout branch_new
   git merge -s ours branch_old
   git checkout branch_old
@@ -115,15 +115,15 @@
     * <https://help.github.com/articles/remove-sensitive-data>
 * **Undo/redo a commit:** [Reference](http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit)
   
-  * `batch>git reset --hard HEAD~1` You want to nuke commit C and never see it again
-  * `batch>git reset --soft HEAD~1` Undo your commit but leave your files and your index [Reference](http://www.gitguys.com/topics/whats-the-deal-with-the-git-index/):
-* **Remove all untracked files and directories. (`-f` is *force*, `-d` is *remove directories*):** `batch>git clean -fd`
+  * `#!shell git reset --hard HEAD~1` You want to nuke commit C and never see it again
+  * `#!shell git reset --soft HEAD~1` Undo your commit but leave your files and your index [Reference](http://www.gitguys.com/topics/whats-the-deal-with-the-git-index/):
+* **Remove all untracked files and directories. (`-f` is *force*, `-d` is *remove directories*):** `#!shell git clean -fd`
 
-* **Remove ignored files as well:** [Reference](http://stackoverflow.com/questions/5807137/how-to-revert-uncommitted-changes-including-files-and-folders) `batch>git clean -fdx`
+* **Remove ignored files as well:** [Reference](http://stackoverflow.com/questions/5807137/how-to-revert-uncommitted-changes-including-files-and-folders) `#!shell git clean -fdx`
 
 * **Squash/Merge previous two commits:** [Reference](https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git)
   
-  ````bash
+  ````shell
   git rebase -i HEAD~2
   # Then select squash for the second commit
   ````
@@ -133,7 +133,7 @@
 
 * **Rebase against another branch overriding conflicts with your own branch changes:** [Reference](https://demisx.github.io/git/rebase/2015/07/02/git-rebase-keep-my-branch-changes.html)
   
-  ````bash
+  ````shell
   # assuming branch-a is our current version
   #   ours:   branch-b
   #   theirs: branch-a
@@ -154,7 +154,7 @@
 * when doing git clone, you have to specify to use client spec `git p4 clone //depot/main/BBR/Source . --use-client-spec`
   * can also exclude paths and have multiple depot paths
 * with different directory structures, you can reformat patch files: <https://stackoverflow.com/questions/931882/how-to-apply-a-git-patch-from-one-repository-to-another>
-  ````bash
+  ````shell
   $ cat patch_file | git am   \
           -p1                 \ # remove 1 leading directory ('static/')
           --directory='lib/'    # prepend 'lib/'
@@ -178,7 +178,7 @@
 ### Using
 
 * Set P4 Vars:
-  ````bash
+  ````shell
   set P4PORT=public.perforce.com:1666
   set P4USER=yourusername
   set P4PASSWD=yourpassword

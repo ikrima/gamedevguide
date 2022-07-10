@@ -14,5 +14,5 @@ sidebar: ue4guide
   SLATE_VERBOSE_NAMED_EVENTS=0
   ```
 
-- You can also set `cpp>GCycleStatsShouldEmitNamedEvents = true|false` to prevent stat system from emitting cycle stats as named events
+- You can also set `#!cpp GCycleStatsShouldEmitNamedEvents = true|false` to prevent stat system from emitting cycle stats as named events
   - Passing `-statnamedevents` as a command line argument toggles this on/off as well

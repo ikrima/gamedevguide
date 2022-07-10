@@ -113,7 +113,7 @@ sidebar: ue4guide
 
 # Non-Blue­print Types
 
-- `cpp>DEPRECATED(version, message)` macro:
+- `#!cpp DEPRECATED(version, message)` macro:
 
   ```cpp
   virtual void foo();

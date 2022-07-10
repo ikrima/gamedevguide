@@ -2,9 +2,10 @@
 sortIndex: 2
 sidebar: ue4guide
 ---
+
 # Perforce Source Control Setup
 
-## Connect To Epic Perforce Depot/Downloading Epic Engine Source Code:
+## Connect To Epic Perforce Depot/Downloading Epic Engine Source Code
 
 <https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/index.html>
 <https://udn.unrealengine.com/docs/ue4/int/gettingstarted/downloadingunrealengine/perforce/index.html>
@@ -17,7 +18,7 @@ sidebar: ue4guide
 
 <https://articles.assembla.com/using-perforce/speed-up-your-perforce-repo-with-p4v>
 
-```batch
+```bat
 p4 property -a -n P4IGNORE -v .p4ignore
 p4 property -a -n P4V.Performance.ServerRefresh -v 60
 p4 property -a -n filesys.bufsize -v 2M
@@ -30,13 +31,13 @@ p4 property -a -n net.tcpsize -v 2M
 
 - Run as root:
 
-  ```batch
+  ```bat
   /volume1/KnL/Perforce/start.sh
   ```
 
 ### Set up ignore
 
-```batch
+```bat
 p4 set P4IGNORE=.gitignore
 ```
 
@@ -46,11 +47,11 @@ p4 set P4IGNORE=.gitignore
 
 - Create account in P4Admin
 
-### Disable user account creation for anyone but you:
+### Disable user account creation for anyone but you
 
 - Open terminal in perforce workspace directory from super user account
 
-- `batch>p4 configure set dm.user.noautocreate=2`
+- `#!shell p4 configure set dm.user.noautocreate=2`
 
 ### Checking out a project
 
@@ -63,32 +64,32 @@ p4 set P4IGNORE=.gitignore
 
 ### Deleting a workspace
 
-If you screw up you can delete a workspace. Go to Connection -> Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type `batch>p4 client -d [workspace-name]`
+If you screw up you can delete a workspace. Go to Connection -> Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type `#!shell p4 client -d [workspace-name]`
 
 ## Useful commands
 
 - **(local workspace to depot) Fast Reconcile of local files that have been edited, added, deleted and with special characters in their name**
 
-  `batch>p4 reconcile -meadf UnrealEngine\\Engine\\Binaries...`
+  `#!shell p4 reconcile -meadf UnrealEngine\\Engine\\Binaries...`
 
 - **Show me files that were ignored:**
 
-  `batch>p4 reconcile -nI UnrealEngine\\Engine\\Binaries...`
+  `#!shell p4 reconcile -nI UnrealEngine\\Engine\\Binaries...`
 
 - **Show me files that were ignored but need to be added**
 
-  `batch>p4 reconcile -naI UnrealEngine\\Engine\\Binaries...`
+  `#!shell p4 reconcile -naI UnrealEngine\\Engine\\Binaries...`
 
 - **Why something was ignored:**
 
-  `batch>p4 ignores -v -i UnrealEngine\\Engine\\Binaries\\ThirdParty\\svn\\Mac\\lib\\apr.exp`
+  `#!shell p4 ignores -v -i UnrealEngine\\Engine\\Binaries\\ThirdParty\\svn\\Mac\\lib\\apr.exp`
 
 - **See which files are out of sync from worktree**
-  `batch>p4 status -I -mead UnrealEngine\\Engine\\...`
+  `#!shell p4 status -I -mead UnrealEngine\\Engine\\...`
 
 - **(depot to workspace) Force resync only deleted files (deletes files that are only available locally and not in depot):**
 
-  `batch>p4 clean -I -ead UnrealEngine\\Engine\\Source\\Runtime...`
+  `#!shell p4 clean -I -ead UnrealEngine\\Engine\\Source\\Runtime...`
 
   - **Note: Using -m might skip files if you copied over stuff recently**
 
@@ -102,25 +103,25 @@ If you screw up you can delete a workspace. Go to Connection -> Choose Workspace
 
   - (p4 clean => p4 reconcile -w)
 
-  *Reference From <https://www.perforce.com/perforce/doc.current/manuals/cmdref/Content/CmdRef/p4_clean.html?Highlight=clean>*
+  _Reference From <https://www.perforce.com/perforce/doc.current/manuals/cmdref/Content/CmdRef/p4_clean.html?Highlight=clean>_
 
 - **Revert another users files**
 
   - Force delete their shelved changelist
-    `batch>p4 shelve -df -c 8857`
-    `batch>p4 change -df 8857`
+    `#!shell p4 shelve -df -c 8857`
+    `#!shell p4 change -df 8857`
   - Find their workspace by username
-    `batch>p4 opened -u janedoe`
+    `#!shell p4 opened -u janedoe`
   - Revert all files in janedoe-workspace's workspace
-    `batch>p4 revert -C janedoe-workspace //...`
+    `#!shell p4 revert -C janedoe-workspace //...`
   - Revert one file in janedoe-workspace's workspace
-    `batch>p4 revert  -C janedoe-workspace //depot/www/dev/Jam.html`
+    `#!shell p4 revert -C janedoe-workspace //depot/www/dev/Jam.html`
   - Revert all files in janedoe-workspace workspace
-    `batch>p4 revert  -c 1125 -C janedoe-workspace //...`
+    `#!shell p4 revert -c 1125 -C janedoe-workspace //...`
 
 ### Set editor
 
-```batch
+```bat
 p4 set P4Editor="C:/Program Files/Sublime Text 3/subl.exe --wait"
 ```
 
@@ -136,13 +137,13 @@ p4 set P4Editor="C:/Program Files/Sublime Text 3/subl.exe --wait"
 
 The [flush](https://www.perforce.com/manuals/v15.1/cmdref/p4_flush.html) command tells the server that you have the files at the path specified, at the changelist specified. It's a synonym for p4 sync -k.
 
-*Reference From <https://stackoverflow.com/questions/7030296/how-do-i-move-a-perforce-workspace-folder>*
+_Reference From <https://stackoverflow.com/questions/7030296/how-do-i-move-a-perforce-workspace-folder>_
 
 ### Create fast branch stream
 
 From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:
 
-```batch
+```bat
 p4 stream -t task -P //stream/parent //stream/mynewtask01
 p4 populate -r -S //stream/mynewtask01
 p4 client -s -S //stream/mynewtask01
@@ -162,32 +163,32 @@ p4 sync
 >
 > The "stream" and "client" commands don't actually operate on any files, so they'll be really quick no matter what. The "populate" will branch all 10k files, but it does it on the back end without actually moving any content around, so it'll also be really quick (if you got up into the millions or billions it might take an appreciable amount of time depending on the server hardware, but 10k is nothing). The "sync" will be very quick if you were already synced to //stream/parent, because all the files are already there; again, it's just moving pointers around on the server side rather than transferring the file content.
 >
-> *Reference From <https://stackoverflow.com/questions/32697907/how-to-efficiently-work-with-a-task-stream>*
+> _Reference From <https://stackoverflow.com/questions/32697907/how-to-efficiently-work-with-a-task-stream>_
 
 ### Merge from parent stream
 
 While we’re working on features in //Ace/DEV, other changes are being submitted to //Ace/MAIN. Here’s how we merge those changes into the //Ace/DEV branch:
 
-```batch
+```bat
 % p4 merge -S //Ace/DEV -r
 % p4 resolve
 % p4 submit -d ”Merged latest changes”
 ```
 
-*Reference From <https://www.perforce.com/blog/streams-tiny-tutorial>*
+_Reference From <https://www.perforce.com/blog/streams-tiny-tutorial>_
 
 ### Push stream changes back to mainline
 
 “Promote” is simply another way of saying “copy up after merging everything down”. So let’s make sure we’ve merged everything down first:
 
-```batch
+```bat
 % p4 merge -S //Ace/DEV -r
 All revisions already integrated.
 ```
 
 Switch to main workspace:
 
-```batch
+```bat
 % p4 workspace -s -S //Ace/MAIN
 % p4 sync
 ```
@@ -196,28 +197,28 @@ We run **p4 sync** after switching the workspace, because both streams have file
 
 Finally, we copy content from the //Ace/DEV stream to its parent:
 
-```batch
+```bat
 % p4 -I copy -S //Ace/DEV -v
 % p4 submit -d ”Here’s our new feature”
 
 % p4 sync
 ```
 
-*Et voilà* -- our work in the //Ace/DEV stream has just been promoted to //Ace/MAIN.
+_Et voilà_ -- our work in the //Ace/DEV stream has just been promoted to //Ace/MAIN.
 
-*Reference From <https://www.perforce.com/blog/streams-tiny-tutorial>*
+_Reference From <https://www.perforce.com/blog/streams-tiny-tutorial>_
 
 **Set global property settings:**
 
-```batch
+```bat
 p4 property -a -n ***name*** -v ***value***
 ```
 
-*Reference From <https://community.perforce.com/s/article/1273>*
+_Reference From <https://community.perforce.com/s/article/1273>_
 
 ### Setup the typemap
 
-```batch
+```bat
 p4 typemap
 ```
 
@@ -257,13 +258,13 @@ binary+l //depot/....upk
 binary+l //depot/....udk
 ```
 
-*Reference From <https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceControl/Perforce/index.html>*
+_Reference From <https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceControl/Perforce/index.html>_
 
 ### Set the typemap on existing files
 
 - The P4 command
 
-  ```batch
+  ```bat
   p4 retype -t binary+w .\....dll
 
   or
@@ -272,11 +273,11 @@ binary+l //depot/....udk
   p4 reopen -t binary+w .\....dll
   ```
 
-  *Reference From <https://community.perforce.com/s/article/3114>*
+  _Reference From <https://community.perforce.com/s/article/3114>_
 
 - Or use the internal python utility scripts
 
-  ```batch
+  ```bat
   Utility/reconcile.py p4retypemap
   ```
 

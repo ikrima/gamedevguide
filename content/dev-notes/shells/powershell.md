@@ -24,9 +24,9 @@ Basic terminology
   * `& foo @(arg0,arg2,...)`: call operator invokes expresion in child scope that's discarded (e.g. any global variable changes not persisted)
   * `. foo @(arg0,arg2,...)`: dot sourcing invokes expresion in current scope (e.g. global changes are persisted)
 * Common batch operations
-  * Get all items in a directory: `powershell>Get-ChildItem *`
-  * Get all subdirectories: `powershell>Get-ChildItem -Attributes Directory -Recurse`
-  * Operate foreach files in directory: `powershell>Get-ChildItem *.docx | % Name`
+  * Get all items in a directory: `#!powershell Get-ChildItem *`
+  * Get all subdirectories: `#!powershell Get-ChildItem -Attributes Directory -Recurse`
+  * Operate foreach files in directory: `#!powershell Get-ChildItem *.docx | % Name`
 
 ## Useful Commands
 

@@ -31,6 +31,6 @@
 - tbd:
   - add blog: [https://github.com/fmaida/mkdocs-blog-plugin]
   - katex instant support
-    - https://stackoverflow.com/questions/63145812/mkdocs-material-latex-not-rendering-in-instant-mode
-    - https://github.com/squidfunk/mkdocs-material/issues/1498#issuecomment-610700276
-    - https://github.com/squidfunk/mkdocs-material/issues/2290 on not using DOMContentSwitch
+    - <https://stackoverflow.com/questions/63145812/mkdocs-material-latex-not-rendering-in-instant-mode>
+    - <https://github.com/squidfunk/mkdocs-material/issues/1498#issuecomment-610700276>
+    - <https://github.com/squidfunk/mkdocs-material/issues/2290> on not using DOMContentSwitch

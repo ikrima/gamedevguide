@@ -91,7 +91,7 @@ SceneProxies implements:
 
   - REFERENCES: PositionOnlyDepthDrawList, DepthDrawList, BasePassUniformLightMapPolicyDrawList
       Here's where we create the drawlists:
-          `cpp>void FStaticMesh::AddToDrawLists(FRHICommandListImmediate& RHICmdList, FScene* Scene)`
+          `#!cpp void FStaticMesh::AddToDrawLists(FRHICommandListImmediate& RHICmdList, FScene* Scene)`
 
 - Depth: Prepass Render Arena
   - Prepass arena geo with stencil ops: Depth Test, Depth Write, Stencil=Keep (do not write), Stencil Test       - This is done in FDeferredShadingSceneRenderer::RenderPrePassView

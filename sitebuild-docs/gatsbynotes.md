@@ -19,7 +19,7 @@
   ```
 
 - Upgrade Gatsby
-  ```bash
+  ```shell
   npm outdated ;  to identify new releases for all your dependencies
   gatsby info
   node -v
@@ -29,14 +29,14 @@
   ```
 
 - Building
-  ```bash
+  ```shell
   npm run dev
   npm run develop ; clean & start develop environment
   npm run build & npm run serve
   ```
 
 - Misc commands
-  ```bash
+  ```shell
   npm run lint
   npm run lint:fix
   npm run format:js
@@ -50,7 +50,7 @@
 
 ## Cheat Sheet
 
-```bash
+```shell
 gatsby new gamedevguide https://github.com/ikrima/gamedevguide (or git clone + yarn)
 gatsby develop (yarn develop)
 gatsby build

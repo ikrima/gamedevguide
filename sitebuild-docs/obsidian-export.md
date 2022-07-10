@@ -3,12 +3,12 @@
 [obsidian exporter](https://github.com/ikrima/obsidian-export): markdown exporter
 
 - Build
-  ```batch
+  ```bat
   cd obsidian-export &
   cargo build --release
   ```
 - Running: (Note: `obsidian-export.exe` won't override existing files)
-  ```batch
+  ```bat
   mkdir %EDEV_SRCDIR%/personal/gdgTmpContent &
   %EDEV_SRCDIR%/personal/tolva-docs/obsidian-export/target/release/obsidian-export.exe %EDEV_SRCDIR%/personal/tolva-docs/docs %EDEV_SRCDIR%/personal/gdgTmpContent &
   robocopy /MIR %EDEV_SRCDIR%/personal/gdgTmpContent %EDEV_SRCDIR%/personal/gamedevguide/content/dev-notes &

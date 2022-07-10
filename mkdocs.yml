@@ -1,22 +1,17 @@
 # Project information
-site_name: Gamedev Guide
-site_description: >-
-  Gamedev Guide: Programming with Unreal Engine, Houdini, Math, & Graphics
-site_author: ikrimae
-site_url: https://ikrima.dev/
-
-# Repository
-repo_name: ikrima/gamedevguide
-repo_url: "https://github.com/ikrima/gamedevguide/"
-
-# Copyright
-copyright: Copyright &copy; 2016 - 2022 ikrima
-
+site_name:        Gamedev Guide
+site_author:      ikrimae
+site_url:         https://ikrima.dev/
+repo_name:        ikrima/gamedevguide
+repo_url:         https://github.com/ikrima/gamedevguide
+edit_uri:         https://github.com/ikrima/gamedevguide/edit/master/content
+site_description: Programming with Unreal Engine, Houdini, Math, & Graphics
+copyright:        Copyright &copy; 2016 - 2022 ikrima
 
 # Configuration
-docs_dir: content
+docs_dir:           content
 use_directory_urls: true
-strict: true
+strict:             true
 
 # nav:
 #   - Home: index.md
@@ -32,22 +27,29 @@ strict: true
 
 
 # Theme Config
-# ----------- begin mkdocs-material -----------
 theme:
   name: material
   # custom_dir: themes/material/material
   language: en
-  features:
-    - navigation.tabs
-    - navigation.top
-    - navigation.instant
-    - search.suggest
-    - search.highlight
-    # - navigation.expand
-    # - toc.integrate
-    # - navigation.indexes
+  # logo:    _sitefiles/logo.svg
+  # favicon: _sitefiles/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+    # logo: fontawesome/solid/sticky-note
   palette:
-    scheme: ayu
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: ayu
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # scheme: ayu
     # primary: indigo
     # accent: indigo
     # - scheme: default
@@ -63,15 +65,25 @@ theme:
     #     icon: material/toggle-switch
     #     name: Switch to light mode
   font:
-    text: Open Sans
-    code: Source Code Pro
+    text: Nunito ###revisit
+    code: Source Code Pro ###revisit
+    # text: Open Sans
+    # code: Source Code Pro
+    # text: Roboto
+    # code: JetBrains Mono
     # text: Roboto
     # code: Roboto Mono
     # text: Open Sans
     # code: Hack
-  # icon:
-  #   logo: logo
-  # favicon: _sitefiles/favicon.png
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    # - navigation.expand
+    # - navigation.indexes
+    # - toc.integrate
 
 # Extras
 extra:
@@ -86,7 +98,96 @@ extra:
     provider: google
     property: G-VWCEPP5L4L
 
-# Plugins
+extra_css:
+  # - _sitefiles/katex/katex.min.css # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css ###revisit
+  - _sitefiles/mkdocs-extra.css
+extra_javascript:
+  # - _sitefiles/katex/katex.min.js # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js ###revisit
+  # - _sitefiles/arithmatex-katex.js ###revisit
+  - _sitefiles/arithmatex-mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Plugins/Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.sane_lists
+  - markdown.extensions.smarty:
+      smart_quotes: false
+  - markdown.extensions.toc:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}} ###revisit
+      permalink: "#"
+      toc_depth: 6
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index:     !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.magiclink:
+      user:                    ikrima
+      repo:                    gamedevguide
+      repo_url_shorthand:      true
+      # repo_url_shortener:      true ###revisit
+      # social_url_shorthand:    true ###revisit
+      # social_url_shortener:    true ###revisit
+      # normalize_issue_symbols: true ###revisit
+  - pymdownx.mark
+  - pymdownx.saneheaders
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.arithmatex:
+      generic: true
+      # block_tag: 'pre' ###revisit
+  - pymdownx.highlight:
+      pygments_style: solarized-dark
+      linenums_style: pymdownx-inline
+      guess_lang: true ###revisit
+      extend_pygments_lang:
+        - name: ue4c
+          lang: bash
+        - name: vex
+          lang: glsl
+  - pymdownx.inlinehilite:
+      custom_inline:
+        - name:   math
+          class:  arithmatex
+          format: !!python/object/apply:pymdownx.arithmatex.arithmatex_inline_format {kwds: {mode: generic}}
+  - pymdownx.superfences:
+      preserve_tabs: true ###revisit
+      custom_fences:
+        - name:   math
+          class:  arithmatex
+          format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {kwds: {mode: generic }} ###revisit {mode: generic, tag: pre}
+
+  # - pymdownx.progressbar
+  # - pymdownx.smartsymbols
+  # - pymdownx.keys:
+  #     key_map:
+  #       click: "Click"
+  #       left-click: "Left Click"
+  #       right-click: "Right Click"
+  #     separator: "\uff0b"
+  # - pymdownx.striphtml
+  # - pymdownx.snippets:
+  #     check_paths: true
+  # - pymdownx.escapeall:
+  #     hardbreak: True
+  #     nbsp: True
+  # - markdown_katex:
+  #     no_inline_svg: True
+  #     insert_fonts_css: True
+  #     # macro-file: macros.tex
+
 plugins:
   - search:
       separator: '[\s\-\.\_]+'
@@ -96,87 +197,3 @@ plugins:
   - progress
   # - minify:
   #     minify_html: true
-
-# Extensions
-markdown_extensions:
-  - smarty
-  - sane_lists
-  - admonition
-  - toc:
-      permalink: "#"
-      toc_depth: 6
-  - pymdownx.highlight:
-      pygments_style: solarized-dark
-      guess_lang: true
-  - pymdownx.inlinehilite
-  # - markdown_katex:
-  #     no_inline_svg: True
-  #     insert_fonts_css: True
-  #     # macro-file: macros.tex
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.inlinehilite
-  - pymdownx.magiclink:
-      repo_url_shorthand: true
-      user: ikrima
-      repo: gamedevguide
-  - pymdownx.mark
-  # - pymdownx.smartsymbols
-  - pymdownx.superfences
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.tilde
-
-  # Builtins
-  - markdown.extensions.attr_list
-  - markdown.extensions.def_list
-  - markdown.extensions.footnotes
-  - markdown.extensions.meta
-
-  # - pymdownx.keys
-  # - pymdownx.snippets:
-  #     check_paths: true
-
-extra_javascript:
-  - _sitefiles/katex/katex.min.js
-  - _sitefiles/arithmatex-katex.js
-extra_css:
-  - _sitefiles/katex/katex.min.css
-  - _sitefiles/mkdocs-extra.css
-
-
-# ----------- end mkdocs-material -----------
-
-# ----------- begin cinder -----------
-# theme:
-#   name: null
-#   custom_dir: themes/cinder/cinder
-#   colorscheme: atom-one-dark-reasonable
-#   highlightjs: true
-#   hljs_languages:
-#     - nim
-# google_analytics: ['UA-47614715-1', 'ikrima.dev']
-# shortcuts:
-#     help: 191
-#     next: 39
-#     previous: 37
-#     search: 83
-# markdown_extensions:
-#   - smarty
-#   - sane_lists
-#   - admonition
-#   - toc:
-#       permalink: "#"
-#   - codehilite:
-#       guess_lang: false
-# ----------- end cinder -----------

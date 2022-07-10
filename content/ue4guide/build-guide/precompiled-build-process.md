@@ -7,7 +7,7 @@ sidebar: ue4guide
 
 1. Create the installed build
 
-```batch
+```bat
 "UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" BuildGraph -script="UnrealEngine\Engine\Build\InstalledEngineBuild.xml" -target="Make Installed Build Win64" -set:HostPlatformOnly=true -set:WithWin32=false -set:WithIOS=false
 ```
 
@@ -15,7 +15,7 @@ sidebar: ue4guide
 
 ## Sans BuildGraph
 
-```batch
+```bat
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 UE4Editor -project="BBR\BBR.uproject" -precompile
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBR -project="BBR\BBR.uproject" -useprecompiled
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBREditor -project="BBR\BBR.uproject" -useprecompiled
@@ -35,7 +35,7 @@ UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBREdi
 
 ## Generate project files
 
-```batch
+```bat
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBR -project="UnrealEngine\BBR\BBR.uproject" -useprecompiled -projectfiles -game -engine
 ```
 

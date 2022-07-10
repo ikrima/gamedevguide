@@ -5,8 +5,6 @@ sidebar: ue4guide
 
 # High Level Overview
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/rOZ78ABPJCoiRs" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-
 [UE4 Networking](https://www.slideshare.net/JoeGraf1/ue4-networking)
 
 Actor Relevancy: Trade CPU for network bandwidth
@@ -57,7 +55,7 @@ Can create custom netdrivers
   ConnectionlessHandler->AddHandler(TEXT("Engine.EngineHandlerComponentFactory(StatelessConnectHandlerComponent)"), true);
   ```
 
-- Good starter examples: `cpp>USteamNetDriver/UOculusNetDriver`
+- Good starter examples: `#!cpp USteamNetDriver/UOculusNetDriver`
 
 - `UDemoNetDriver` is a more fleshed out/advanced example
 
@@ -79,7 +77,7 @@ Can create custom UNetConnection
   Handler->AddHandler(TEXT("Engine.EngineHandlerComponentFactory(StatelessConnectHandlerComponent)"), true);
   ```
 
-- These are great examples: `cpp>USteamNetConnection,UOculusNetConnection,UDemoNetConnection`
+- These are great examples: `#!cpp USteamNetConnection,UOculusNetConnection,UDemoNetConnection`
 
 ## Custom UNetChannel
 
@@ -189,21 +187,21 @@ NetDriver::TickDispatch
 This is where main bunch processing happens and the function overridden by UActorChannel, UVoiceChannel,etc
 
 - UActorChannel::ReceivedBunch()
- - Resolve NetGuids: Logic for netguid pammping, packagemapclient, etc
- - ProcessBunch()
-   - Initialize client if first time through.
-     - Spawn New Actor if necessary
-       - Connection->PackageMap->SerializeNewActor(Bunch, this, NewChannelActor);
-     - Sets if replication is paused
-     - Sets up FReplicationFlags like bIgnoreRPCs, bReplay, bRepPhysics, etc
-   - Read chunks of actor content
-     - ReadContentBlockPayload(): Read the content block header and payload
-     - FObjectReplicator& Replicator = FindOrCreateReplicator(RepObj): Main workhorse for actor replication
-     - (FObjectReplicator)Replicator->ReceivedBunch()
-   - Cleanup
-     - Update UActorChannel.ReplicationMap
-     - ObjectReplicator->PostReceivedBunch()
-     - If new SpawnedActor: Actor->PostNetInit()
+- Resolve NetGuids: Logic for netguid pammping, packagemapclient, etc
+- ProcessBunch()
+  - Initialize client if first time through.
+    - Spawn New Actor if necessary
+      - Connection->PackageMap->SerializeNewActor(Bunch, this, NewChannelActor);
+    - Sets if replication is paused
+    - Sets up FReplicationFlags like bIgnoreRPCs, bReplay, bRepPhysics, etc
+  - Read chunks of actor content
+    - ReadContentBlockPayload(): Read the content block header and payload
+    - FObjectReplicator& Replicator = FindOrCreateReplicator(RepObj): Main workhorse for actor replication
+    - (FObjectReplicator)Replicator->ReceivedBunch()
+  - Cleanup
+    - Update UActorChannel.ReplicationMap
+    - ObjectReplicator->PostReceivedBunch()
+    - If new SpawnedActor: Actor->PostNetInit()
 
 ##### FObjectReplicator
 
@@ -280,4 +278,4 @@ This is where main bunch processing happens and the function overridden by UActo
 
 - LevelTick.cpp:UWorld:Tick()::BroadcastPostTickFlush()
   - UNetDriver::PostTickFlush() is the only thing that's bound
-    -  Only calls UOnlineEngineInterface::Get()->ClearVoicePackets()
+    - Only calls UOnlineEngineInterface::Get()->ClearVoicePackets()

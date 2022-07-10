@@ -15,7 +15,7 @@ When running an Editor build of your game, you can now use the command:
 
 Print Blueprint CallStack from Visual Studio:
 
-- In the immediate window: `cpp>{,,UE4Editor-Core}::PrintScriptCallstack(false)`
+- In the immediate window: `#!cpp {,,UE4Editor-Core}::PrintScriptCallstack(false)`
 
 - How to make a command alias & button for it with Visual Commander Macro
 
@@ -40,4 +40,4 @@ Print Blueprint CallStack from Visual Studio:
 
   - Then do this in Visual Studio to setup a command shortcut alias:
 
-    `cpp>alias pbs VCmd.CCommandPrintBPStack`
+    `#!cpp alias pbs VCmd.CCommandPrintBPStack`

@@ -3,10 +3,9 @@ sortIndex: 7
 sidebar: ue4guide
 ---
 
-## Performance:
+## Performance
 
 - **Set these buildconfiguration.xml settings**
-
   - `<bPrintPerformanceInfo>true</bPrintPerformanceInfo>`
   - `<bLogDetailedActionStats>true</bLogDetailedActionStats>`
   - `<bPrintToolChainTimingInfo>true</bPrintToolChainTimingInfo>`
@@ -52,7 +51,7 @@ If you run UBT with the -verbose option, it should print out a message showing t
 
 Build steps can use $(EngineDir),$(ProjectDir), $(TargetName),$(TargetPlatform), $(TargetConfiguration),$(TargetType), $(ProjectFile).
 
-In your Build.cs/Target.cs files, you can call `csharp>Utils.ExpandVariables(MyStringWithVars)` to expand the build/project variables in your own string
+In your Build.cs/Target.cs files, you can call `#!csharp Utils.ExpandVariables(MyStringWithVars)` to expand the build/project variables in your own string
 
 ## Debugging compile flags & link switches
 
@@ -72,7 +71,7 @@ The other option would be to look at the ActionGraph.IsActionOutdated() function
 
 - Header include paths no longer automatically bring every subdirectory (for perf in building)
 
-- `csharp>bLegacyPublicIncludePaths = false;` is the setting that controls it in .Target.cs
+- `#!csharp bLegacyPublicIncludePaths = false;` is the setting that controls it in .Target.cs
 
 - All entries in Public/PrivateIncludePaths are full paths, most easily done with "using System.IO;" at the top, then Path.Combine(ModuleDirectory, "relative/path")
 

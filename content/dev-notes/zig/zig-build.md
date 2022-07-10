@@ -162,7 +162,7 @@ Can run programs from build script for convenience
     }
     ````
     
-    ````batch
+    ````bat
     zig build run -- -o foo.bin foo.asm
     ````
 
