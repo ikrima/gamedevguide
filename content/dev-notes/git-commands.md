@@ -5,7 +5,7 @@
 * [Git Config Best Practice](https://stackoverflow.com/questions/42675999/git-config-files-best-practice)
 * **Show Options:** `batch>git config --list --show-origin`
 * **Diff tool config**
-  ````ini
+  ````toml
   [difftool "araxis"]
     path = 'C:/Program Files/Araxis/Araxis Merge/compare.exe'
   [mergetool "araxis"]
@@ -25,7 +25,7 @@
 * **Shallow clone up to depth:** `batch>git clone url --depth 1 #implies --single-branch`
 * **Unshallow the current branch:** `batch>git fetch --unshallow`
 * **Reverse unshallow all the branches:**
-  ````batch
+  ````bash
   git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
   git fetch --unshallow
   ````
@@ -37,32 +37,33 @@
 * **init repo with submodules:** `batch>git submodule update --init --recursive`
 * **sync repo with submodules:** `batch>git submodule sync --recursive && git submodule update --init --recursive`
 * **shallow clone with submodules up to depth:**
-  ````batch
+  ````bash
   git clone --depth 1 [repo]
   git submodule init
   git submodule update --depth 1
   ````
 
-* **remove submodule:** `batch>git rm path/to/submodule && git commit`
+* **remove submodule:** `bash>git rm path/to/submod && git commit`
   * 
      > 
      > \[!info\] can be undone with `batch>git revert`
   
   * 
      > 
-     > \[!info\] submodule's .git directory (e.g. .git/modules/path/to/submodule) is not removed
+     > \[!info\] submodule's .git directory (e.g. .git/modules/path/to/submod) is not removed
      > to make possible past commit checkout without requiring fetching from another repository [Reference](https://git-scm.com/docs/gitsubmodules#_forms)
 
+* **move submodule:** `bash>git mv old/path/to/submod new/path/to/submod`
 * **remove submodules completely:**
   ````bash
   # Remove the submodule entry from .git/config
-  git submodule deinit -f path/to/submodule
+  git submodule deinit -f path/to/submod
   
   # Remove the submodule directory from the superproject's .git/modules directory
-  rm -rf .git/modules/path/to/submodule
+  rm -rf .git/modules/path/to/submod
   
-  # Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
-  git rm -f path/to/submodule
+  # Remove the entry in .gitmodules and remove the submodule directory located at path/to/submod
+  git rm -f path/to/submod
   ````
 
 ## Git Diffing
@@ -76,7 +77,7 @@
 * **Diff staged changes vs working directory:** `batch>git difftool --dir-diff`
 * **Diff staged changes vs HEAD:** `batch>git difftool --dir-diff --staged`
 * **Diff across branches:**
-  ````batch
+  ````bash
   git difftool 4.17..bebylon -- /d/UnrealEngine/Engine/Source/Runtime/Renderer/Private/BasePassRendering.cpp
   git difftool --dir-diff release ~HEAD
   ````
@@ -91,7 +92,7 @@
 
 * **Create patch containing all commits in current but not in the master branch:** [Reference](https://stackoverflow.com/questions/5432396/create-a-patch-by-comparing-a-specific-branch-on-the-remote-with-a-specific-loca)
   
-  ````batch
+  ````bash
   git format-patch origin/master --stdout > mypatch.patch
   ````
 
@@ -99,7 +100,7 @@
 
 * **Merge with force accept theirs:** [Reference](https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git)
   
-  ````batch
+  ````bash
   git checkout branch_new
   git merge -s ours branch_old
   git checkout branch_old
@@ -151,7 +152,7 @@
 * you need to use python 2.7
 * you can use this to sync from perforce to a git and back (it's brittle)
 * when doing git clone, you have to specify to use client spec `git p4 clone //depot/main/BBR/Source . --use-client-spec`
-  * can also exlcude paths and have multiple depot paths
+  * can also exclude paths and have multiple depot paths
 * with different directory structures, you can reformat patch files: <https://stackoverflow.com/questions/931882/how-to-apply-a-git-patch-from-one-repository-to-another>
   ````bash
   $ cat patch_file | git am   \
@@ -161,9 +162,9 @@
 
 * you can also cherry pick commits directly (git will automatically resolve the different path )
 * remember to have your git-p4 repo in a separate directory from your actual p4 directory
-* you can merge unrealted git histories with `git merge myotherbranch --allow-unrelated-histories`
+* you can merge unrelated git histories with `git merge myotherbranch --allow-unrelated-histories`
 * use these `git config -e` settings
-  ````ini
+  ````toml
   [git-p4]
   skipSubmitEdit = true
   useclientspec = true
@@ -177,7 +178,7 @@
 ### Using
 
 * Set P4 Vars:
-  ````batch
+  ````bash
   set P4PORT=public.perforce.com:1666
   set P4USER=yourusername
   set P4PASSWD=yourpassword

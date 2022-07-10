@@ -13,6 +13,7 @@
   ````regex
   (?<!a)b
   (?<!if\s|static\s)constexpr
+  //(?! zig fmt: on|/).*
   ````
 
 * **!endsWith**: e.g. `a` not followed by `b`

@@ -17,7 +17,7 @@
 |Command|Desc|
 |-------|----|
 |`cargo build`|fetch and compile dependencies|
-|`cargo build -p <PKG> --release --target-dir <DIR> --features <X,Y...>`|'cargo build' PKG with release profile to target DIR with features X,Y,...|
+|`cargo build -p <PKG> --release --target-dir <DIR> --features <X,Y...> --all-features`|'cargo build' PKG with release profile to target DIR with features X,Y,...|
 |`cargo check`|'cargo build' without final code gen step|
 |`cargo doc`|build documentation|
 |`cargo doc --open --document-private-items --no-deps`|'cargo doc' including private items and excluding dependencies|
