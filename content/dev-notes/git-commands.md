@@ -5,7 +5,18 @@
 * [Git Config Best Practice](https://stackoverflow.com/questions/42675999/git-config-files-best-practice)
 * **Show Options:** `#!shell git config --list --show-origin`
 * **Diff tool config**
-  ````toml
+  ````ini
+  # Submodule settings
+  [alias]
+    ssync = git submodule sync --recursive && git submodule update --init --recursive
+    spull = !git pull && git submodule sync --recursive && git submodule update --init --recursive
+    spush = push --recurse-submodules=on-demand
+  [diff]
+    submodule = log # clearer container diffs when referenced submodule commits changed
+  [status]
+    submoduleSummary = true # git status is useful again when a referenced submodule commit changed
+  
+  # Diff tool settings
   [difftool "araxis"]
     path = 'C:/Program Files/Araxis/Araxis Merge/compare.exe'
   [mergetool "araxis"]
@@ -38,7 +49,7 @@
 * **sync repo with submodules:** `#!shell git submodule sync --recursive && git submodule update --init --recursive`
 * **shallow clone with submodules up to depth:**
   ````shell
-  git clone --depth 1 [repo]
+  git clone --depth 1 repo_url
   git submodule init
   git submodule update --depth 1
   ````
@@ -56,14 +67,24 @@
 * **move submodule:** `#!shell git mv old/path/to/submod new/path/to/submod`
 * **remove submodules completely:**
   ````shell
-  # Remove the submodule entry from .git/config
+  # remove the submodule entry from .git/config
   git submodule deinit -f path/to/submod
   
-  # Remove the submodule directory from the superproject's .git/modules directory
+  # remove the submodule directory from the superproject's .git/modules directory
   rm -rf .git/modules/path/to/submod
   
-  # Remove the entry in .gitmodules and remove the submodule directory located at path/to/submod
+  # remove the entry in .gitmodules and submodule directory located at path/to/submod
   git rm -f path/to/submod
+  ````
+
+* **tracking branch submodule:**
+  ````shell
+  # for a new submodule
+  git submodule add -b branch_name repo_url [path/to/submod]
+  git submodule update --remote
+  
+  # for existing submodule
+  git submodule set-branch -b branch_name -- path/to/submod
   ````
 
 ## Git Diffing
@@ -164,7 +185,7 @@
 * remember to have your git-p4 repo in a separate directory from your actual p4 directory
 * you can merge unrelated git histories with `git merge myotherbranch --allow-unrelated-histories`
 * use these `git config -e` settings
-  ````toml
+  ````ini
   [git-p4]
   skipSubmitEdit = true
   useclientspec = true
