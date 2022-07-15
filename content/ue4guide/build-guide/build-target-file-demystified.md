@@ -4,13 +4,12 @@ sidebar: ue4guide
 ---
 
 # Useful Links
-
-<http://dmitry-yanovsky.com/2015/08/unreal-engine-4-build-file-demystified>
-<https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4>
+- [[unreal-engine-4-build-file-demystified-dmitry-yanovsky]]
+- <https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4>
 
 ## **Project Generation**
 
-- UBT searches entire solution for \*.Build.cs files
+- UBT searches entire solution for `*.Build.cs` files
 - GenerateProjectFiles.bat invokes UBT to generate
 
 Visual Studio solution files containing all modules
@@ -19,7 +18,7 @@ Visual Studio solution files containing all modules
 
 - Visual Studio invokes UBT to...
 
-  - find all \*.Build.cs files
+  - find all `*.Build.cs` files
   - compile and instantiate them
   - create a module dependency graph
   - generate compiler and linker settings
@@ -31,10 +30,11 @@ Visual Studio solution files containing all modules
 
 ## **PublicDependencyModuleNames vs PrivateDependencyModuleNames:**
 
-Asked around, got some clarification. At the end of the day, yes both private and public stuff all gets linked when you include a given module. However, it controls include paths and defines available to a module
-So if **A** publicly requires **B** but privately requires **C**, the Include paths and defines specified by **C** don't get added to your module when you include **A**
-So if you had a plugin that privately included an SDK's include paths/etc., then including that plugin wouldn't make the SDKs include paths as part of your include paths.
-DynamicallyLoadedModuleNames are dynamically linked whereas others are statically/implicitly linked
+- Asked around, got some clarification. At the end of the day, yes both private and public stuff all gets linked when you include a given module
+- However, it controls include paths and defines available to a module
+- So if **A** publicly requires **B** but privately requires **C**, the Include paths and defines specified by **C** don't get added to your module when you include **A**
+- So if you had a plugin that privately included an SDK's include paths/etc., then including that plugin wouldn't make the SDKs include paths as part of your include paths.
+- DynamicallyLoadedModuleNames are dynamically linked whereas others are statically/implicitly linked
 
 ## **DynamicallyLoadedModuleNames:**
 
