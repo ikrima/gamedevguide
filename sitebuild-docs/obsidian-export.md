@@ -4,7 +4,7 @@
 
 - Build
   ```bat
-  cd obsidian-export &
+  cd obsidian-export
   cargo build --release
   ```
 - Running: (Note: `obsidian-export.exe` won't override existing files)

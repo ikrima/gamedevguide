@@ -1,5 +1,11 @@
 # Build Target File Demystified
 
+## Useful Links
+
+- [Unreal Engine 4 Build File Demystified](../archived_content/unreal-engine-4-build-file-demystified-dmitry-yanovsky.md)
+- [Plugins and ThirdParty SDKs in UE4](https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4)
+- [Intro To UE4 Plugins](https://wiki.unrealengine.com/An_Introduction_to_UE4_Plugins)
+
 ## Project Generation
 
 - UBT searches entire solution for `*.Build.cs` files
@@ -7,7 +13,7 @@
 
 ## Project Compilation
 
-- Visual Studio invokes UBT to...
+- Visual Studio invokes UBT to:
 
   - find all `*.Build.cs` files
   - compile and instantiate them
@@ -15,7 +21,7 @@
   - generate compiler and linker settings
   - compile all C++ modules
 
-- A module is compiled if it is...
+- A module is compiled if it is:
   - a dependency of another module
   - required by an enabled plug-in, or the project itself
 
@@ -32,8 +38,3 @@
 - Public and Private dependencies are staticly linked into your project and visible to public and or private code, respectively.
 - Public implies that you may also expose such functionality to whatever tools, editors or plugins are dependent on your game/module. It is also important to keep in mind that with the static linking, the header files are included.
 - Dynamically loaded modules do not include the header files at link time, and instead should be treated as an external dll, loaded when needed. The key difference is that because of the static linking, if the module is missing your code will fail out.
-
-## Useful Links
-- [Unreal Engine 4 build file demystified](unreal-engine-4-build-file-demystified-dmitry-yanovsky.md)
-- [Plugins and ThirdParty SDKs in UE4](https://www.slideshare.net/GerkeMaxPreussner/plugins-thirdparty-sdks-in-ue4)
-- [Intro To UE4 Plugins](https://wiki.unrealengine.com/An_Introduction_to_UE4_Plugins)
