@@ -55,7 +55,7 @@
 * vars (== symbol to value bindings) are also values
   
   * `#'author` => get at var
-    ![clj-bindings-are-values.png](../_assets/clj-bindings-are-values.png)
+    ![](../_assets/clj-bindings-are-values.png)
     * `binding` expr for rebind value temporarily inside this scope
     * must mark with `^:dynamic` meta data
     * convention is to name var with \*\*
@@ -78,7 +78,7 @@
 
 ## DSL/Compiler
 
-![clojure-compiler-flow.png](../_assets/clojure-compiler-flow.png)
+![](../_assets/clojure-compiler-flow.png)
 
 * reader: parser that should use treesitter for
 

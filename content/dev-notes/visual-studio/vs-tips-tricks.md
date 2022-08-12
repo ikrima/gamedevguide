@@ -170,4 +170,4 @@ where foobar.dll defines g_pMyStruct as a global pointer. The same syntax can be
 
 * Dump final merged properties from all .props files: `#!shell msbuild /pp:temp.xml .build/es2.vcxproj`
 * You can also set the MSBuild Logging level to Diagnostic
-  ![propsheet-msbuild-diag.png](../_assets/propsheet-msbuild-diag.png)
+  ![](../_assets/propsheet-msbuild-diag.png)

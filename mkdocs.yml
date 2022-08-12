@@ -157,6 +157,8 @@ markdown_extensions:
           lang: bash
         - name: vex
           lang: glsl
+        - name: hscript
+          lang: glsl
   - pymdownx.inlinehilite:
       custom_inline:
         - name:   math

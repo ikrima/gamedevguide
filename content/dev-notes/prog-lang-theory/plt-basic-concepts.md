@@ -33,7 +33,7 @@
 * **identifier:** a unique name within a given *environment context*
 * **attribute:** semantic aspect
   * may be **static** (compile time determined) or **dynamic** (determined at execution time)
-    ````c++
+    ````cpp
     int x;
     type     := static
     value    := dynamic
@@ -406,7 +406,7 @@
 ## Reference Material
 
 * Pragmatics oriented resources
-  * Ray Toal has excellent notes from his compiler courses 
+  * Ray Toal has excellent notes from his compiler courses
     * [Languages and Automata I](https://cs.lmu.edu/~ray/classes/pl/)
     * [Languages and Automata II](https://cs.lmu.edu/~ray/classes/cc/)
     * [Programming Language Semantics](https://cs.lmu.edu/~ray/classes/pls/)

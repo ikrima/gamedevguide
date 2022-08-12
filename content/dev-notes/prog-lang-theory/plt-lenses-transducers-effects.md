@@ -42,7 +42,7 @@ Common examples
 
 ## Lenses
 
-![lenses.png](../_assets/lenses.png)
+![](../_assets/lenses.png)
 
 * a composable *getter: whole → part* & *setter: (whole, part) → whole*
 * "Lens" because you're "zooming" into a part

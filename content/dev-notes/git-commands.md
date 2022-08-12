@@ -137,7 +137,7 @@
 * **Undo/redo a commit:** [Reference](http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit)
   
   * `#!shell git reset --hard HEAD~1` You want to nuke commit C and never see it again
-  * `#!shell git reset --soft HEAD~1` Undo your commit but leave your files and your index [Reference](http://www.gitguys.com/topics/whats-the-deal-with-the-git-index/):
+  * `#!shell git reset --soft HEAD~1` Undo your commit but leave your files and your index [Reference](http://www.gitguys.com/topics/whats-the-deal-with-the-git-index):
 * **Remove all untracked files and directories. (`-f` is *force*, `-d` is *remove directories*):** `#!shell git clean -fd`
 
 * **Remove ignored files as well:** [Reference](http://stackoverflow.com/questions/5807137/how-to-revert-uncommitted-changes-including-files-and-folders) `#!shell git clean -fdx`

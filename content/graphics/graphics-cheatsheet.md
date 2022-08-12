@@ -5,7 +5,7 @@ Shit I annoyingly forget and always have to lookup
 
 ## Lighting Units (Candela vs Lumens vs Lux)
 
-![[candela-vs-lumen-vslux.jpg]]
+![](./assets/candela-vs-lumen-vslux.jpg)
 
 |                               | Radiometric | Spectral           | Photopic              |
 | ----------------------------- | ----------- | ------------------ | --------------------- |

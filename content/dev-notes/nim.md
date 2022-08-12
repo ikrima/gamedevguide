@@ -5,7 +5,7 @@
 * Tuts
   * [https://nim-lang.org/docs/tut3.html](https://nim-lang.org/docs/tut3.html)
   * Debugging: [https://github.com/pragmagic/vscode-nim/issues/65](https://github.com/pragmagic/vscode-nim/issues/65)
-  * Nim In Actionn: Metaprogramming - [https://livebook.manning.com/book/nim-in-action/chapter-9/](https://livebook.manning.com/book/nim-in-action/chapter-9/)
+  * Nim In Actionn: Metaprogramming - [https://livebook.manning.com/book/nim-in-action/chapter-9/](https://livebook.manning.com/book/nim-in-action/chapter-9)
 * Disabling GC: [https://forum.nim-lang.org/t/5238](https://forum.nim-lang.org/t/5238)
 * Nim for C Programmers: [https://github.com/nim-lang/Nim/wiki/Nim-for-C-programmers](https://github.com/nim-lang/Nim/wiki/Nim-for-C-programmers)
 * Nim Html DSL: [https://github.com/flyx/emerald](https://github.com/flyx/emerald)
@@ -14,7 +14,7 @@
 * Nim language creator: [https://www.youtube.com/watch?v=-9SGIB946lw](https://www.youtube.com/watch?v=-9SGIB946lw)
 * DSL stuff
   * pattern matching [https://github.com/alehander92/gara](https://github.com/alehander92/gara)
-  * alternate:: [http://andreaferretti.github.io/patty/](http://andreaferretti.github.io/patty/)
+  * alternate: [http://andreaferretti.github.io/patty/](http://andreaferretti.github.io/patty)
 
 # Macro Codegen
 
@@ -61,7 +61,7 @@
   * createProcType
   * typeof
 
-![NimAstTable.png](_assets/NimAstTable.png)
+![](./_assets/NimAstTable.png)
 
 # Nim Script
 
@@ -72,8 +72,8 @@
 ## **References:**
 
 * [https://livebook.manning.com/book/nim-in-action/chapter-9/304](https://livebook.manning.com/book/nim-in-action/chapter-9/304)
-* [https://flenniken.net/blog/nim-macros/](https://flenniken.net/blog/nim-macros/)
-* [https://nim-by-example.github.io/macros/](https://nim-by-example.github.io/macros/)
+* [https://flenniken.net/blog/nim-macros/](https://flenniken.net/blog/nim-macros)
+* [https://nim-by-example.github.io/macros/](https://nim-by-example.github.io/macros)
 * [https://nim-lang.org/blog/2018/06/07/create-a-simple-macro.html](https://nim-lang.org/blog/2018/06/07/create-a-simple-macro.html)
 * [https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#macros](https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#macros)
 

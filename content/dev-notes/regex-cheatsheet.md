@@ -2,27 +2,53 @@
 
 ## Common Regex Patterns
 
-* **not**: e.g. any character except  `a`, `b`, or `c`
+* ***not***: `[^abc]` e.g. any character except  `a`, `b`, or `c`
+
+* **preceededBy/startsWith**: `(?<=a)b`: find+capture the first `expr b` that ***is*** preceeded by `expr a` i.e. positive lookbehind
   
-  ````regex
-  [^abc]
+  ````js
+  /(?<=foo)bar/
+  "foobar"   => captures 'bar'
+  "fffoobar" => captures 'bar'
+  "fuubar"   => false
   ````
 
-* **!startsWith**: e.g. `b` not preceded by `a`
+* **!preceededBy/!startsWith**: `(?<!a)b`: find+capture the first `expr b` that ***is not*** preceeded by `expr a` i.e. negative lookbehind
   
-  ````regex
-  (?<!a)b
-  (?<!if\s|static\s)constexpr
-  //(?! zig fmt: on|/).*
+  ````js
+  /(?<!not)foo/
+  "notfoo"    => false
+  "not foo"   => captures 'foo'
+  "foo"       => captures 'foo'
+  "foobaz"    => captures 'foo'
   ````
 
-* **!endsWith**: e.g. `a` not followed by `b`
+* **followedBy/endsWith**: `a(?=b)`: find+capture the first `expr a` that ***is*** followed by `expr b` i.e. positive lookahead
   
-  ````regex
-  a(?!b)
+  ````js
+  /foo(?=bar)/
+  "foobar"    => captures 'foo' 
+  "foobaz"    => false
+  "fffoobaz"  => false
+  ````
+
+* **!followedBy/!endsWith**: `a(?!b)`: find+capture the first `expr a` that ***is not*** followed by `expr b` i.e. negative lookahead
+  
+  ````js
+  /foo(?!bar)/
+  "foobar"   => false
+  "foobaz"   => captures 'foo'
+  "fffoobaz" => captures 'foo'
+  ````
+
+* more misc examples
+  
+  ````js
+  /(?<!if\s|static\s)constexpr/.match(["if constexpr", "static constexpr", "constexpr"]) => ['constexpr','constexpr', false]
+  /\/\/(?! zig fmt: on|\/).*/
   ````
 
 ## Useful  Links
 
-* [regex101](https://regex101.com/)
-* [regex debugger](https://www.debuggex.com/)
+* [regex101](https://regex101.com)
+* [regex debugger](https://www.debuggex.com)

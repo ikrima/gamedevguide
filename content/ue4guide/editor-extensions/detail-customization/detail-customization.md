@@ -48,9 +48,9 @@ Cat.AddProperty(Prop);
 Using Slate attributes, it's easy to have property state such as visibility and enabled state determined dynamically. The AddProperty method returns a reference to an IDetailPropertyRow interface that provides this functionality. Unfortunately sometimes you're forced to write some rather ugly boilerplate...
 
 ```cpp
-auto OnGetPropVisibility = [] { return /_ Query some state here _/ ? EVisibility::Visible : EVisibility::Collapsed; };
+auto OnGetPropVisibility = [] { return (do_some_state_query_here) ? EVisibility::Visible : EVisibility::Collapsed; };
 
-auto PropVisibilityAttr = TAttribute< EVisibility >::Create(TAttribute< EVisibility >::FGetter::CreateLambda(OnGetPropVisibility));
+auto PropVisibilityAttr = TAttribute<EVisibility>::Create(TAttribute<EVisibility>::FGetter::CreateLambda(OnGetPropVisibility));
 
 Cat.AddProperty(Prop).Visibility(PropVisibilityAttr);
 ```

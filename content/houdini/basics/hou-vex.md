@@ -2,7 +2,7 @@
 
 ## Overview
 
-VEX is Houdini's SIMD streaming scripting language.
+VEX is Houdini's SIMD streaming scripting language
 
 ## Internals
 
@@ -19,12 +19,12 @@ VEX is Houdini's SIMD streaming scripting language.
 
 ## Useful Functions
 
-| Function | Description                                                                               |
-| -------- | ----------------------------------------------------------------------------------------- |
-| primuv   |                                                                                           |
-| xyzdist  | return the distance from the sample point pt to the nearest point on the surface geometry |
-| chramp   |                                                                                           |
-| fit01    |                                                                                           |
+| Function  | Description                                                                               |
+| --------- | ----------------------------------------------------------------------------------------- |
+| `primuv`  |                                                                                           |
+| `xyzdist` | return the distance from the sample point pt to the nearest point on the surface geometry |
+| `chramp`  |                                                                                           |
+| `fit01`   |                                                                                           |
 
 ## Common Tasks
 - Print to Console: `printf("boobs %s %f", "wee", 1.0);`
@@ -35,7 +35,7 @@ VEX is Houdini's SIMD streaming scripting language.
 - [Ryoji CG Useful Snippets](https://sites.google.com/site/fujitarium/Houdini/useful-expressions-houdini)
 - [Create Geo](https://houdinitricks.com/cvex-wrangle-vop-nodes/)
 - Iterate over points in a primitive
-  ```c
+  ```vex
   int primpoints[] = primpoints(0, @primnum);
   int num_pts = len(primpoints);
 
@@ -48,7 +48,7 @@ VEX is Houdini's SIMD streaming scripting language.
   ```
 
 - More detailed method to iterate over vertices and points in a primitive
-  ```c
+  ```vex
   i@prim;
   v@uv;
   float dist = xyzdist(1, @P, @prim, @uv);
@@ -83,17 +83,17 @@ VEX is Houdini's SIMD streaming scripting language.
 
 ## Parameter Binding
 
-| VEX type             | Syntax   |
-| -------------------- | -------- |
-| float                | `f@name` |
-| vector2 (2 floats)   | `u@name` |
-| vector (3 floats)    | `v@name` |
-| vector4 (4 floats)   | `p@name` |
-| int                  | `i@name` |
-| matrix2 (2×2 floats) | `2@name` |
-| matrix3 (3×3 floats) | `3@name` |
-| matrix (4×4 floats)  | `4@name` |
-| string               | `s@name` |
+| VEX type               | Syntax   |
+| ---------------------- | -------- |
+| `float`                | `f@name` |
+| `vector2` (2 floats)   | `u@name` |
+| `vector` (3 floats)    | `v@name` |
+| `vector4` (4 floats)   | `p@name` |
+| `int`                  | `i@name` |
+| `matrix2` (2×2 floats) | `2@name` |
+| `matrix3` (3×3 floats) | `3@name` |
+| `matrix` (4×4 floats)  | `4@name` |
+| `string`               | `s@name` |
 [Reference](http://www.sidefx.com/docs/houdini/vex/snippets)
 
 ## Tutorials
@@ -108,7 +108,7 @@ VEX is Houdini's SIMD streaming scripting language.
 The VEX 101 and the most low-level solution blocks.
 
 #### Datatypes
-```C
+```vex
 // Integers
 int myInteger = 1;
 i@myInteger = 1;
@@ -128,7 +128,7 @@ s[]@variations = {'A','B','C'};
 ```
 
 #### Data type convertion
-```C
+```vex
 // interger >> string
 int number = 123;
 string text = itoa(number);
@@ -139,7 +139,7 @@ int number = atoi(text);
 ```
 
 #### Strings
-```C
+```vex
 // Print strings
 printf('Hello, World!');
 // Result: Hello, World!
@@ -173,7 +173,7 @@ reverse(text);
 ```
 
 #### Arrays
-```C
+```vex
 // Accessing, sorting, reversing elements
 int numbers[] = {5, 4, 3, 2, 1};
 printf(' %d\n', numbers[0]);                // Result: 5
@@ -221,7 +221,7 @@ printf('%s', reverse(sort(int_numbers)));
 ```
 
 #### Get and set attribute values
-```C
+```vex
 // Get attribute value from first Wrangle input:
 vector point_pos = v@opinput0_P;
 vector point_pos = point(0, "P", @ptnum);
@@ -246,7 +246,7 @@ v@vector_b = set(1, 2, @P.z);
 ```
 
 #### Modify input values
-```c
+```vex
 float input;
 // Modify with fit range
 input = fit(input, <currentMinValue>,<currentMaxValue>, <outMin>, <outMax>);
@@ -255,7 +255,7 @@ input = chramp('Modify_Value', input);
 ```
 
 #### Get points and primitives
-```c
+```vex
 // Run over points
 int points[] = expandpointgroup(0, "!*");
 int primitives[] = expandprimgroup(0, "!*");
@@ -264,12 +264,12 @@ int points[] = primpoints(0, @primnum);
 ```
 
 #### Add point attribute in Detail mode
-```c
+```vex
 addpoint(0, {0,0,0});
 setpointattrib(0, 'myAttribute', 0, 'attributrValue', "set");
 ```
 #### Debug VEX with print
-```c
+```vex
 // Basic print
 printf('Hello, World');
 
@@ -289,7 +289,7 @@ foreach (int currentPrim; primitives){
 ```
 
 #### Create groups
-```c
+```vex
 // Add points with X position > 1 to group "high"
 if (@P.x > 1){
     setpointgroup(0, 'high', @ptnum, 1, 'set');
@@ -302,15 +302,13 @@ if (@P.x > 1){
 ```
 
 #### Loops
-```C
-for(first; last; increment){ // Do something }
-
-foreach(element; array){ // Do something }
-
-foreach(index; element; array){ // Do something }
+```vex
+for(first; last; increment) { // Do something }
+foreach(element; array) { // Do something }
+foreach(index; element; array) { // Do something }
 ```
 
-```C
+```vex
 // Create OPEN shape
 
 // Create LINE primitive
@@ -320,11 +318,11 @@ int numberOfPoints = @numpt;
 
 // Create a vertex for each point in primitive
 for (int n=0; n<numberOfPoints; n++){
-    addvertex(0, primitive, n);
-    }
+  addvertex(0, primitive, n);
+}
 ```
 
-```C
+```vex
 // Create CLOSED shape
 
 // Create POLYGON primitive
@@ -334,24 +332,22 @@ int allPoints[] =  expandpointgroup(0, "!*");
 
 // Create a vertex for each point in primitive
 foreach(int currentPoint; allPoints){
-        addvertex(0, primitive, currentPoint);
-        }
+  addvertex(0, primitive, currentPoint);
+}
 ```
 
 #### Conditions
-```c
+```vex
 // Scale 10 times first and last points
 if ((@ptnum == 0) || (@ptnum == (@numpt-1))) f@pscale = 10;
 else f@pscale = 1;
-```
 
-```C
 // Scale 10 times first and last points, short form
 f@pscale = (@ptnum == 0) || @ptnum ==(@numpt-1) ? 10 : 1;
 ```
 
 #### Vectors
-```c
+```vex
 // Find a vector between two points A and B (coords B - coords A)
 vector vector_A = normalize(point(0, "P", <ptnum_B>));
 vector vector_B = normalize(point(0, "P", <ptnum_A>));
@@ -367,7 +363,7 @@ float angle = acos(dot(normalize(vector_A), normalize(vector_B)));
 ```
 
 ### Transformation matrix
-```c
+```vex
 // Get matrix from scene object
 matrix matrx = optransform('obj/geometry_01');
 // Apply object transforms to a points
@@ -375,7 +371,7 @@ matrix matrx = optransform('obj/geometry_01');
 ```
 
 #### VEX functions
-```C
+```vex
 // Create array from point positions (Detail mode)
 function vector[] get_point_positions(){
     vector points[];
@@ -389,20 +385,21 @@ function vector[] get_point_positions(){
 printf('Array = %s\n',  get_point_positions());
 // Result: Array = {{0,0,0}, {0,0.12,0}, {0,0.23,0}, {0,0.34,0}}
 ```
+
 ### Using custom VEX modules
 It is possible to create custom VEX functions, save them in `*.h` files, and import them into the Attribute Wrangle. Importing is possible via `#include` statement, followed by the file name.
 
 Import options:
- - Direct import with a full path:
-   `#include "D:/Eve/tools/houdini/vex/library.h"`
- - The path to `library.h` file set via environment variable (os.environ['HOUDINI_VEX_PATH'] = "D:/Eve/tools/houdini/vex/"):
-  `#include <library.h> `
- - The path set via UI parameter. lib_path = `$EVE_ROOT`, where $EVE_ROOT is "EVE_ROOT" env variable set to "D:/Eve"):
-   `#include "`chs('lib_path')`/tools/houdini/vex/library.h"`
+- Direct import with a full path:
+  `#include "D:/Eve/tools/houdini/vex/library.h"`
+- The path to `library.h` file set via environment variable (os.environ['HOUDINI_VEX_PATH'] = "D:/Eve/tools/houdini/vex/"):
+  `#include <library.h>`
+- The path set via UI parameter. lib_path = `$EVE_ROOT`, where $EVE_ROOT is "EVE_ROOT" env variable set to "D:/Eve"):
+  `#include "`chs('lib_path')`/tools/houdini/vex/library.h"`
 
 The `library.h` file, located in `D:/Eve/tools/houdini/vex/library.h`:
 
-```C
+```vex
 void hello(){
     printf('Hello, Eve!\n');
 }
@@ -410,7 +407,7 @@ void hello(){
 ```
 
 The code in Attribute Wrangle:
-```C
+```vex
 #include "D:/Eve/tools/houdini/vex/library.h"
 
 hello();
@@ -427,7 +424,7 @@ The **struct** works only if defined in a [custom module](#using-custom-vex-modu
 #### VEX Hash Table
 In this example, we would implement a Hash Table data structure, which allows storing key/value pairs. It is well known as a **dictionary** in Python or **object** in Javascript.
 
-```c
+```vex
 // The library.h content
 // VEX Hash Table implementation for {string:float} pairs
 struct hash_table{
@@ -460,7 +457,7 @@ struct hash_table{
 If we would need to store integer values for several items, e.g. amount of fruits we need to bye, we can use our `hash_table` structure.
 The Attribute Wrangle (detail mode) code:
 
-```c
+```vex
 #include <library.h>
 
 // Initialize hash table
@@ -484,18 +481,18 @@ printf('Amount = %s \n', number_of_apples);
 Using VEX in the parameter interface of Houdini nodes. See [documentation](http://www.sidefx.com/docs/houdini/expressions/index.html)
 
 #### Get Attributes
-```c
+```vex
 detail("../nodeName/", 'attributeName', 0)
 point("../nodeName/",@ptnum, 'attributeName',0)
 ```
 #### Every N frame
-```c
+```vex
 if(($F % N == 0),$F,0)
 // Hscript version: floor($F/N)*N
 ```
 
 #### Select corner points
-```c
+```vex
 # create Groupexpreesion SOP
 neighbourcount(0, @ptnum) == 2
 ```
@@ -505,7 +502,7 @@ In this section, there are a bit more sophisticated VEX solutions. Each solves s
 
 ### Hanging wire between two points controlled by ramp
 
-```C
+```vex
 /*
 Build a hanging wire between 2 anchor points
 
@@ -542,7 +539,7 @@ for(int i=1; i<number_of_points+1; i++){
 ```
 
 ### Hanging wire between two points
-```C
+```vex
 /*
 Build a hanging wire between 2 anchor points
 
@@ -589,7 +586,7 @@ for(int i=1; i<number_of_points+1; i++){
 ```
 
 ### Flatten mesh by UVs
-```c
+```vex
 // Plave points as UVs in 3d
 v@rest = @P;
 @P = vertex(0, "uv", pointvertex(0, @ptnum));
@@ -599,12 +596,12 @@ v@rest = @P;
 ```
 
 ### Remap random from 0:1 to -1:1
-```c
+```vex
 float random = rand(@ptnum)*2-1;
 ```
 
 ### Bend (curl) curves (hairs)
-```c
+```vex
 // Primitive wrangle
 int points[] = primpoints(0, @primnum);
 
@@ -631,7 +628,7 @@ for (int n=0; n<len(points); n++){
 
 
 ### Create UVs on curves (hairs) and paint with ramp and random color
-```c
+```vex
 // For input cluster of curves
 // Set uv attribute from 0 at a root, to the 1 at a tip
 f@uv = float(vertexprimindex(0, @ptnum))/(@numvtx-1);
@@ -647,7 +644,7 @@ if(rand(@primnum) > 0.9){
 
 ### Stick points to animated geometry
 Create TimeShift SOP after animated geo, Scatter SOP and Attribute Wrangler. Connect scatter, timeShift, animated geo to inputs 0, 1 and 2 of the wrangle.
-```c
+```vex
 int prim;
 vector uv;
 
@@ -659,7 +656,7 @@ xyzdist(1, @P, prim, uv);
 
 #### Move an object to the origin and return back
 Create wrangle to move object to the origin
-```c
+```vex
 // Get center of the oject bounding box (centroid)
 vector min = {0, 0, 0};
 vector max = {0, 0, 0};
@@ -678,12 +675,12 @@ matrix xform = invert(maketransform(0, 0, translate, rotate, scale));
 ```
 
 Create the second wrangle to return it to the original position
-```c
+```vex
 @P *= invert(4@xform_matrix);
 ```
 
 #### Use Noise function
-```c
+```vex
 // Visualise nose as Black and White values
 // Delete black and white points separatly
 
@@ -723,7 +720,7 @@ if(noseValues < chf('Noise_Threshold')){
 ```
 
 #### Flatten surface bottom
-```c
+```vex
 float min = ch("flatten_disrtance") + getbbox_min(0).y;
 float max = getbbox_max(0).y;
 float Y = clamp(@P.y, min, max);
@@ -733,12 +730,12 @@ float Y = clamp(@P.y, min, max);
 ```
 
 #### Multiply distribution (make small smaller, big bigger)
-```c
+```vex
 value = pow(value, 8.0);
 ```
 
 #### Noise the points
-```c
+```vex
 // Define UI controls
 float noise = chf('Noise_Power');
 float freq = chf('Noise_Frequency');
@@ -750,14 +747,14 @@ v@ns = fit(noiseXYZ, 0,1, -1, 1)*noise;
 @P.z  += @ns.z;
 ```
 #### Select mesh border points
-```c
+```vex
 // Get number of connectet points
 int nbPts = neighbourcount(0,@ptnum);
 // Create "border" group with border points
 i@group_border = nbPts == 3 | nbPts == 2;
 ```
 #### Shape Polywire with ramp for combined curves
-```c
+```vex
 // Create Primitive Wrangle before polywire, use @width as Wire Radius
 // Get array of points in each curve (primitive)
 i[]@primPts = primpoints(0, @primnum);
@@ -771,7 +768,7 @@ foreach (int i; int currentPoint; @primPts){
 ```
 
 #### VEX strings
-```C
+```vex
 // Build fileName_##.abc with variable
 int version = 1;
 string fileName = sprintf('fileName_%02d.abc', version);
@@ -779,7 +776,7 @@ string fileName = sprintf('fileName_%02d.abc', version);
 ```
 
 #### Find closest points
-```c
+```vex
 float maxdist = 0.8;
 int maxpoints = 10;
 
@@ -787,7 +784,7 @@ int closept[] = pcfind(0, 'P', @P, maxdist, maxpoints);
 ```
 
 #### Randomize file name
-```C
+```vex
 // Get random file from sim_A_01.abc, sim_B_01.abc, sim_C_01.abc
 string variations[] = {'A','B','C'};
 int variationIndex = rint(fit(rand(@ptnum), 0, 1, 0, 2));
@@ -795,7 +792,7 @@ string path = sprintf('D:/PROJECTS/VEX/geo/sim_%s_01.abc', variations[variationI
 ```
 
 #### Fade grid Y deformation closer to border
-```C
+```vex
 float objectSize = (getbbox_max(0).x + getbbox_max(0).z)/2;
 float dist = distance(0,@P);
 float offset = chf('offset');
@@ -804,7 +801,7 @@ float fade = chramp('fade', fit(dist, 0, objectSize + offset, 0, 1));
 ```
 
 #### Fade noise on curves with ramp
-```c
+```vex
 // Requires uvtexture SOP in "Pts and Columns" mode before this wrangle
 
 // Define UI controls
@@ -823,7 +820,7 @@ vector displace = fit(noiseXYZ, 0,1, -1, 1)*power*remap_uv;
 ```
 
 #### Rotate GEO with matrix along Y axis
-```C
+```vex
 // Create rotation matrix
 matrix3 matrx = ident();
 // Create angle control with UI
@@ -839,7 +836,7 @@ rotate ( matrx, angle, axis);
 ```
 
 #### Adjust pivot point of rotation matrix
-```C
+```vex
 matrix3 matrx = ident();
 float angle = radians(36);
 vector axis = {1, 0, 0};
@@ -850,7 +847,7 @@ rotate ( matrx, angle, axis);
 ```
 
 #### Rotate GEO with quaternion along XYZ axys
-```C
+```vex
 // Setup angle control with UI
 float angle_X = radians(chf('angle_X'));
 float angle_Y = radians(chf('angle_Y'));
@@ -862,7 +859,7 @@ vector rotations = set(angle_X,angle_Y,angle_Z);
 ```
 
 #### Rotate Y COPIES with quaternion multiply
-```C
+```vex
 @N;
 @up = {0,1,0};
 
@@ -872,7 +869,7 @@ vector4 rotate_Y = quaternion(radians(ch('Rotate_Y')),{0,1,0});
 ```
 
 #### Randomize copies
-```c
+```vex
 // Define orientation vectors
 @N;
 @up = {0,1,0};
@@ -905,7 +902,7 @@ vector4 rotate_Z = quaternion(radians(randRot_Z),{0,0,1});
 ```
 
 #### Spiral
-```C
+```vex
 float angle;
 vector pos = {0,0,0};
 int npoints = chi('number_of_points');
@@ -923,7 +920,7 @@ for (int n=0; n<npoints; n++) {
 ```
 
 #### Spiral grow
-```C
+```vex
 float angle;
 vector pos = {0,0,0};
 int npoints = chi('number_of_points');
@@ -940,7 +937,7 @@ for (int n=0; n<npoints; n++) {
 }
 ```
 #### Phylotaxis
-```C
+```vex
 int count = 400;
 float bound = 10.0;
 float tau = 6.28318530; // 2*$PI
@@ -970,8 +967,8 @@ for (int n=0; n<count; n++){
 }
 ```
 
-#### Create geometry from points array:
-```c
+#### Create geometry from points array
+```vex
 float searchRadius = ch('searchRadius');
 int nearpnts[] = nearpoints(0, @P, searchRadius);
 foreach (int pnt;  nearpnts){
@@ -986,7 +983,7 @@ foreach (int pnt;  nearpnts){
 ### Algorithms
 
 #### Swap variables
-```C
+```vex
 int varable_a = 256;
 int varable_b = 512;
 
@@ -999,7 +996,7 @@ printf('variable_a = %s, variable_b = %s', variable_a, variable_b);
 ```
 
 #### Reverse array
-```C
+```vex
 int int_numbers[] = {1,2,3,4,5,6};
 int rversed[];
 
@@ -1017,7 +1014,7 @@ printf('%s', rversed);
 ```
 
 #### Choise sort
-```C
+```vex
 int numbers[] = array(0,4,3,2,1);
 
 for(int i=0; i<len(numbers)-1; i++){
@@ -1036,7 +1033,7 @@ printf('Array = %s\n', numbers);
 ```
 
 #### Bubble sort
-```C
+```vex
 int numbers[] = array(0,4,3,2,1);
 
 for(int i=1; i<len(numbers); i++){
@@ -1055,7 +1052,7 @@ printf('Array = %s\n', numbers);
 ```
 
 #### Longest common prefix
-```C
+```vex
 // Leetcode #14:  Longest Common Prefix
 
 string names[] = array('floor', 'flower', 'flight');

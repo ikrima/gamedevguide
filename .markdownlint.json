@@ -6,5 +6,7 @@
   "MD031":       false,
   "MD032":       false,
   "MD045":       false,
-  "MD046":       { "style": "fenced" }
+  "MD046":       { "style": "fenced"     },
+  "MD049":       { "style": "underscore" },
+  "MD050":       { "style": "asterisk"   }
 }

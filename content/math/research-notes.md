@@ -1,6 +1,6 @@
 # Research Notes
 Machine Learning Cheatsheet (from [Scikit](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html)):
-![[scikit-machine-learning-cheatsheet.png]]
+![](./assets/scikit-machine-learning-cheatsheet.png)
 
 ## Dictionary Learning
 

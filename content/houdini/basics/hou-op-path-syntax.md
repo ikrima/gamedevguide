@@ -36,7 +36,7 @@ Should usually just use VEX but some places require hscript
   ```
 
 - Get Obj Transform/Node Transform/Operator Transform:
-  ```
+  ```hscript
   `matrix m = optransform('/obj/cam1')`
   origin/vtorigin/vrorigin/vorigin
   originoffset

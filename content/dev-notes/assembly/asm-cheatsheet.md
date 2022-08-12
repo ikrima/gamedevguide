@@ -25,7 +25,7 @@
 ||syscall number|holds syscall number argument for syscall instruction|
 |`rbx/r3`|base for index addressing|used as memory address base for indexed addressing|
 |`rcx/r1`|counter for iteration|used for holding loop count in loops|
-||this|storing *this* pointer in c++|
+||this|storing `this` pointer in c++|
 |`rdx/r2`|data|used in arithmetic and I/O operations|
 |`rdi/r7`|destination index|used in stream operations e.g. `stosb`|
 |`rsi/r6`|source index|used in stream operations e.g. `lodsb`|
@@ -168,5 +168,5 @@ add rsp,32+8 ; clean up stack
 
 ## Reference
 
-[NASM Tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial/)
+[NASM Tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial)
 [Some Assembly Required: An approachable introduction to assembly](https://github.com/hackclub/some-assembly-required)

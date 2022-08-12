@@ -3,8 +3,8 @@
 ## Colors and Formatting
 
 * [ANSI Escape Codes](https://www.wikiwand.com/en/ANSI_escape_code)
-  ![terminal-ansi-escape-codes.png](../_assets/terminal-ansi-escape-codes.png)
-  * `\e`:  0x1b ascii escape character 
+  ![](../_assets/terminal-ansi-escape-codes.png)
+  * `\e`:  0x1b ascii escape character
   * `\e[38;5;(n)m`: Select foreground color
   * `\e[48;5;(n)m`: Select background color
     * *0..7*:  standard colors (e.g. `\e[30–37m`)

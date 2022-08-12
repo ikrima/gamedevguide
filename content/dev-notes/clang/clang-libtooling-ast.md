@@ -81,7 +81,7 @@
     * mccabe index example
     * `buildCFG` - builds a graph consisting of basic blocks
       * computer number of nodes and edges
-    * clang Diagnostics (can use for your own tool) - [Emitting Diagnostics in Clang](http://www.goldsborough.me/c++/clang/llvm/tools/2017/02/24/00-00-06-emitting_diagnostics_and_fixithints_in_clang_tools/)
+    * clang Diagnostics (can use for your own tool) - [Emitting Diagnostics in Clang](http://www.goldsborough.me/c++/clang/llvm/tools/2017/02/24/00-00-06-emitting_diagnostics_and_fixithints_in_clang_tools)
       * create a diagnostics engine in clang
   * include sorting (using the preprocessor)
     * `BeginInvokeAction` - called before any source file is touched

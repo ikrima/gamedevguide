@@ -2,9 +2,10 @@
 
 ## Overview
 
-![expression-problem-type-focus.png](../_assets/expression-problem-type-focus.png) ![expression-problem-expr-focus.png](../_assets/expression-problem-expr-focus.png)
+![](../_assets/expression-problem-type-focus.png)
+![](../_assets/expression-problem-expr-focus.png)
 
-It refers to the difficulty of writing data abstractions that can be easily extended with both new operations and new data variants. 
+It refers to the difficulty of writing data abstractions that can be easily extended with both new operations and new data variants.
 
 * if your abstraction is function oriented (e.g. functional languages), adding new operations (functions) is easy but adding new data variants (types) is difficult
 * if your abstraction is type oriented (e.g. OOP), adding new data variants (classes) is easy but operations is difficult
@@ -20,7 +21,7 @@ So, there is an initial set of features comprised by the initial types of expres
 * Evolution 1: Add a new type of expressions. For example, subtraction.
 * Evolution 2: Add a new operation. For example pretty printing.
 
-Note that there is a lot more that can be done in terms of evolution, but those two basic evolutions serve to illustrate the essence of the problem. 
+Note that there is a lot more that can be done in terms of evolution, but those two basic evolutions serve to illustrate the essence of the problem.
 
 ### Requirements for a solution
 
@@ -30,7 +31,7 @@ Note that there is a lot more that can be done in terms of evolution, but those 
 * **Separate compilation and type-checking**: Safety checks or compilation steps must not be deferred until link or runtime
 * **Independent extensibility**: It should be possible to combine independently developed extensions so that they can be used jointly
 
-Expression Problem: another formulation https://oleksandrmanzyuk.wordpress.com/2014/06/18/from-object-algebras-to-finally-tagless-interpreters-2/
+Expression Problem: another formulation <https://oleksandrmanzyuk.wordpress.com/2014/06/18/from-object-algebras-to-finally-tagless-interpreters-2/>
 
 ## Object Algebras
 

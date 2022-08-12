@@ -1,7 +1,4 @@
----
-sortindex: 8
-sidebar: ue4guide
----
+# Precompiled Build Process
 
 ## Using BuildGraph
 

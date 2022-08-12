@@ -26,7 +26,7 @@ CoherentUIGTHUD->GetView()->RegisterForEvent(
 Coherent::UIGT::MakeHandler(this, &ACoUIGTTestFPSHUD::CalledFromJSUStructHandler));
 }
 
-\_From &lt;[http://coherent-labs.com/Documentation/UnrealEngine4-GT/d2/df6/\_coherent\_\_g_t_for\_\_unreal\_\_engine_4_plugin.html#Input\_\_C\_\_\_](http://coherent-labs.com/Documentation/UnrealEngine4-GT/d2/df6/_coherent__g_t_for__unreal__engine_4_plugin.html#Input__C___)>\_
+[Reference](http://coherent-labs.com/Documentation/UnrealEngine4-GT/d2/df6/_coherent__g_t_for__unreal__engine_4_plugin.html#Input__C___)
 
 engine.call
 
