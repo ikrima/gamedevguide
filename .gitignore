@@ -24,6 +24,6 @@ typings/
 !.env.example
 
 # Docs Custom
-/.cache/
-/.netlify
-/site/
+.cache/
+.netlify
+site/

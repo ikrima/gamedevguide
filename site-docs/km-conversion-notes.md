@@ -1,19 +1,27 @@
-# OneNote Export
+# Knowledge Management Conversion Notes
 
-## Latest Approach
+## OneNote Export
+
 Well this is a hellish nightmare. From best to worst:
-- [ConvertOneNote2MarkDown](https://github.com/theohbrothers/ConvertOneNote2MarkDown)
+- [ConvertOneNote2MarkDown](https://github.com/SjoerdV/ConvertOneNote2MarkDown)
+  - [Extended fork](https://github.com/theohbrothers/ConvertOneNote2MarkDown)
+  - [Obsidian fork](https://github.com/rab-bit/ConvertOneNote2MarkDown4Obsidian)
 - [onenote-md-exporter](https://github.com/alxnbl/onenote-md-exporter)
 - [Web OneNote Exporter](https://sspeiser.github.io/onenote-export)
+  - [Python Automation Script](https://www.sspaeti.com/blog/how-to-take-notes-in-2021/#how-did-i-export-my-10-of-onenote-to-markdown) variant of above using `Azure -> export html -> html2markdown`
 - [Semi-automatic pandoc export](https://gist.github.com/heardk/ded40b72056cee33abb18f3724e0a580)
 
 
-## Old Approach
+### Old Approach
 
-- cinst -y pandoc
+- `cinst -y pandoc`
 - OneNote 2016 + OneNoteBatch to batch export to docx/html
-- `Get-ChildItem -Path "./process*pendingdocx/\*.docx" | % {pandoc --extract-media "process_markdown/assets" -s \$*.FullName --wrap=none --reference-links -t markdown*strict -o "process_markdown/$($*.BaseName).md" }`
-  - Can also use commonmark or gfm as markdown flavors
+- pandoc export command (also supports commonmark/gfm as markdown flavors)
+  ```powershell
+  Get-ChildItem -Path './process/pendingdocx/*.docx' | % { 
+    pandoc.exe --extract-media "process_markdown/assets" -s $_.FullName --wrap=none --reference-links -t commonmark_x -o "process_markdown/$($_.BaseName).md" 
+  }
+  ```
 - Typora & StackEdit are great markdown editors
 - Tools
   - [GitBook](https://www.gitbook.com/) - Careful not to use V2
@@ -32,3 +40,8 @@ Well this is a hellish nightmare. From best to worst:
 - Conversion To New Format
   - [gitbook convert](https://github.com/GitbookIO/gitbook-convert)
   - [Pandoc](https://pandoc.org/): to convert from word/pdf to markdown
+
+## Notion Export
+
+- Worked better: <https://github.com/connertennery/Notion-to-Obsidian-Converter>
+- <https://github.com/visualcurrent/Notion-2-Obsidan>
