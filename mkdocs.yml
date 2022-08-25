@@ -31,8 +31,8 @@ theme:
   name: material
   # custom_dir: themes/material/material
   language: en
-  # logo:    _sitefiles/logo.svg
-  # favicon: _sitefiles/favicon.png
+  # logo:    _site/logo.svg
+  # favicon: _site/favicon.png
   icon:
     repo: fontawesome/brands/github
     # logo: fontawesome/solid/sticky-note
@@ -99,12 +99,12 @@ extra:
     property: G-VWCEPP5L4L
 
 extra_css:
-  # - _sitefiles/katex/katex.min.css # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css ###revisit
-  - _sitefiles/mkdocs-extra.css
+  # - _site/katex/katex.min.css # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css ###revisit
+  - _site/mkdocs-extra.css
 extra_javascript:
-  # - _sitefiles/katex/katex.min.js # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js ###revisit
-  # - _sitefiles/arithmatex-katex.js ###revisit
-  - _sitefiles/arithmatex-mathjax.js
+  # - _site/katex/katex.min.js # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js ###revisit
+  # - _site/arithmatex-katex.js ###revisit
+  - _site/arithmatex-mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
@@ -114,14 +114,15 @@ markdown_extensions:
   - markdown.extensions.attr_list
   - markdown.extensions.def_list
   - markdown.extensions.footnotes
-  - markdown.extensions.meta
-  - markdown.extensions.sane_lists
-  - markdown.extensions.smarty:
-      smart_quotes: false
+  # - markdown.extensions.meta ###revisit
+  # - markdown.extensions.sane_lists ###revisit
+  # - markdown.extensions.smarty: ###revisit
+  #     smart_quotes: false
   - markdown.extensions.toc:
       slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}} ###revisit
       permalink: "#"
       toc_depth: 6
+  # - pymdownx.saneheaders ###revisit
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
@@ -139,7 +140,6 @@ markdown_extensions:
       # social_url_shortener:    true ###revisit
       # normalize_issue_symbols: true ###revisit
   - pymdownx.mark
-  - pymdownx.saneheaders
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
@@ -149,9 +149,8 @@ markdown_extensions:
       generic: true
       # block_tag: 'pre' ###revisit
   - pymdownx.highlight:
-      pygments_style: solarized-dark
+      # pygments_style: solarized-dark ###revisit
       linenums_style: pymdownx-inline
-      guess_lang: true ###revisit
       extend_pygments_lang:
         - name: ue4c
           lang: bash
