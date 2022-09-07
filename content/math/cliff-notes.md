@@ -13,7 +13,6 @@ Condensed cheat sheet/mnemonics of stuff I forget
 - **Gradient**:      derivative
 - **Jacobian**:      how a differential patch area is skewed under a (linear only?) transformation
 - **Divergence**:    sink vs source aka volume density of outward flux
-- **Laplacian**:     average of neighborhood
 - **Manifold**:      fancy name of a curved space
   - **Reimannian manifold**: manifold with geodesic metric (Reimannian metric)
 - **Group**:         closed under multiplication, commutative, identity function, inverse
@@ -22,16 +21,18 @@ Condensed cheat sheet/mnemonics of stuff I forget
   - **Tangent        space**: linear approximation of a curved space
   - **Non-abelian    group**: non-commutative group i.e. $a*b \neq b*a$ (e.g. SO(3) rotation group)
   - **Dual number**: convenient for computation of Lie algebra
-- **Banach Space** (*norm+completeness*) ⊇ **Hilbert Space** (*inner-product norm*) ⊇ **Sobolev Space** (*"nice" derivatives up to order S*)
+- **Banach Space** (_norm+completeness_) ⊇ **Hilbert Space** (_inner-product norm_) ⊇ **Sobolev Space** (_"nice" derivatives up to order S_)
 - **Functionals**: functions that take functions as inputs (derivative/integral operators)
-- **Laplacian**: Avg of neighbors at a point - point value
+- **Laplacian**: difference average of neighborhood at a point - value at point
+  - Laplacian intuition from [CMU Discrete Differential Geometry Course: Lecture 18](https://www.youtube.com/watch?v=oEq9ROl9Umk)
+    ![[_assets/laplacian.mp4]]
   - Maximal smoothness/mean curvature is zero
-  - *Poisson equation*: $\Delta u$ = 0
+  - _Poisson equation_: $\Delta u$ = 0
     - Think of boundary condition being a wire and a soap film covering the wire
     - That's a $\Delta u(x,y) = 0$
   - Another interpretation is equilibrium state. Think of temperature
   - Another interpretation is that there are no bumps or local minimas in that surface
-  
+
 ## Spectral Theory
 
 ### Legendre polynomial
