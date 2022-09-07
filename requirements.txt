@@ -3,3 +3,4 @@ mkdocs-material==8.4.0
 mkdocs-awesome-pages-plugin==2.8.0
 mkdocs-git-revision-date-localized-plugin==1.1.0
 mkdocs-plugin-progress==1.2.0
+mkdocs-ezlinks-plugin==0.1.14

@@ -114,15 +114,17 @@ markdown_extensions:
   - markdown.extensions.attr_list
   - markdown.extensions.def_list
   - markdown.extensions.footnotes
-  # - markdown.extensions.meta ###revisit
-  # - markdown.extensions.sane_lists ###revisit
-  # - markdown.extensions.smarty: ###revisit
-  #     smart_quotes: false
+  - markdown.extensions.tables
   - markdown.extensions.toc:
       slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}} ###revisit
       permalink: "#"
       toc_depth: 6
-  # - pymdownx.saneheaders ###revisit
+  # - markdown.extensions.meta ###revisit
+  # - markdown.extensions.nl2br ###revisit
+  # - markdown.extensions.sane_lists ###revisit
+  # - markdown.extensions.smarty: ###revisit
+  #     smart_quotes: false
+
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
@@ -149,6 +151,7 @@ markdown_extensions:
       generic: true
       # block_tag: 'pre' ###revisit
   - pymdownx.highlight:
+      auto_title: true
       # pygments_style: solarized-dark ###revisit
       linenums_style: pymdownx-inline
       extend_pygments_lang:
@@ -170,6 +173,7 @@ markdown_extensions:
           class:  arithmatex
           format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {kwds: {mode: generic }} ###revisit {mode: generic, tag: pre}
 
+  # - pymdownx.saneheaders ###revisit
   # - pymdownx.progressbar
   # - pymdownx.smartsymbols
   # - pymdownx.keys:
@@ -192,9 +196,18 @@ markdown_extensions:
 plugins:
   - search:
       separator: '[\s\-\.\_]+'
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      type: iso_date
+      # fallback_to_build_date: true
   - awesome-pages:
       collapse_single_pages: false
   - progress
+  - ezlinks:
+      warn_ambiguities: true
+      wikilinks: true
+      reference_links: false
+  # - embed_file:
+  #     callouts: true
+  #     custom-attributes: 'assets/css/custom_attributes.css'
   # - minify:
   #     minify_html: true

@@ -1,4 +1,7 @@
-# Knowledge Management Conversion Notes
+# Personal Knowledge Management Conversion Notes
+
+## Kindle
+[Obsidian Kindle Importer](https://github.com/hadynz/obsidian-kindle-plugin)
 
 ## OneNote Export
 
