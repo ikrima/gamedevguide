@@ -1,5 +1,5 @@
 
-````cpp
+```cpp
 // From https://i.cs.hku.hk/~bruno/oa/
 #include <iostream>
 #include <string>
@@ -217,4 +217,4 @@ int main() {
      << "exp1: " << exp1(pa2) << "\n"
      << "exp2: " << exp2(pa2);
 }
-````
+```
