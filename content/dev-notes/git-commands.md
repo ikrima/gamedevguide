@@ -48,44 +48,40 @@
 - **init repo with submodules:** `#!shell git submodule update --init --recursive`
 - **sync repo with submodules:** `#!shell git submodule sync --recursive && git submodule update --init --recursive`
 - **shallow clone with submodules up to depth:**
-  ````shell
+  ```shell
   git clone --depth 1 repo_url
   git submodule init
   git submodule update --depth 1
-  ````
+  ```
 
-* **remove submodule:** `#!shell git rm path/to/submod && git commit`
-  * 
+- **add new submodule with tracking branch**
+  ```shell
+  git submodule add -b branch_name repo_url [path/to/submod]
+  git submodule update --remote
+  ```
+
+- **change existing submodule tracking branch**
+  ```shell
+  git submodule set-branch -b branch_name -- path/to/submod
+  ```
+
+- **move submodule:** `#!shell git mv old/path/to/submod new/path/to/submod`
+- **remove submodule:** `#!shell git rm path/to/submod && git commit`
+  - 
      > 
      > \[!info\] can be undone with `#!shell git revert`
   
-  * 
+  - 
      > 
      > \[!info\] submodule's .git directory (e.g. .git/modules/path/to/submod) is not removed
      > to make possible past commit checkout without requiring fetching from another repository [Reference](https://git-scm.com/docs/gitsubmodules#_forms)
 
-* **move submodule:** `#!shell git mv old/path/to/submod new/path/to/submod`
-* **remove submodules completely:**
-  ````shell
-  # remove the submodule entry from .git/config
-  git submodule deinit -f path/to/submod
-  
-  # remove the submodule directory from the superproject's .git/modules directory
-  rm -rf .git/modules/path/to/submod
-  
-  # remove the entry in .gitmodules and submodule directory located at path/to/submod
-  git rm -f path/to/submod
-  ````
-
-* **tracking branch submodule:**
-  ````shell
-  # for a new submodule
-  git submodule add -b branch_name repo_url [path/to/submod]
-  git submodule update --remote
-  
-  # for existing submodule
-  git submodule set-branch -b branch_name -- path/to/submod
-  ````
+- **remove submodules completely:**
+  ```shell
+  git submodule deinit -f path/to/submod # remove the submodule entry from .git/config
+  rm -rf .git/modules/path/to/submod # remove the submodule directory from the superproject's .git/modules directory
+  git rm -f path/to/submod # remove the entry in .gitmodules and submodule directory located at path/to/submod
+  ```
 
 ## Git Diffing
 
