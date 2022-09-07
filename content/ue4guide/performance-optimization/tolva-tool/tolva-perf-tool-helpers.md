@@ -136,7 +136,7 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 - See if you can bypass proximity sensor check. The Oculus Lost Frame Capture tool has a setting which probably means it writes to a registry key. You can snoop it using ProcMon:
 
-![Tolva_OculusDebugTool](../../assets/Tolva_OculusDebugTool.png)
+![Tolva_OculusDebugTool](../../_assets/Tolva_OculusDebugTool.png)
 
 <https://developer.oculus.com/documentation/pcsdk/latest/concepts/dg-performance-lostframes>
 

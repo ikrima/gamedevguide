@@ -33,7 +33,7 @@ sidebar: ue4guide
 
 # Game Thread
 
-![ThreadingModel_GameGPU](../assets/ThreadingModel_GameGPU.png)
+![ThreadingModel_GameGPU](../_assets/ThreadingModel_GameGPU.png)
 
 *Reference From <https://software.intel.com/en-us/articles/intel-software-engineers-assist-with-unreal-engine-419-optimizations>*
 

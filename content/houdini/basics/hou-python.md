@@ -9,8 +9,8 @@ Using houdini python libs in normal python
 ## Common Recipes
 - Execute Python Script internal to HDA
   - CallbackScript: source opdef:.?force_update.cmd
-    ![](../assets/hou_exec_pyscript1.png)
-    ![](../assets/hou_exec_pyscript2.png)
+    ![](../_assets/hou_exec_pyscript1.png)
+    ![](../_assets/hou_exec_pyscript2.png)
 
 
 - Using houdini python libs in normal python

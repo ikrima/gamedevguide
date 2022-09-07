@@ -4,18 +4,18 @@
 
 Use these repositories to get a sense of what windows might be doing underneath the covers
 
-* [ReactOS](https://doxygen.reactos.org/)
-* [WineHQ](https://www.winehq.org/)
-* [Undocumented NT Internals](http://undocumented.ntinternals.net/): outdated but useful for historical context
-* [OSR Community](https://www.osr.com/developer-community/)
+- [ReactOS](https://doxygen.reactos.org/)
+- [WineHQ](https://www.winehq.org/)
+- [Undocumented NT Internals](http://undocumented.ntinternals.net/): outdated but useful for historical context
+- [OSR Community](https://www.osr.com/developer-community/)
 
 ## Windows Kernel Syscall Notes
 
 ### Ntxxx vs Zwxxx
 
-* These are tiny syscall wrappers that enter the kernel
-  * User Mode initiated syscalls: are synonyms
-  * Kernel Mode drivers: handle parameters differently
+- These are tiny syscall wrappers that enter the kernel
+  - User Mode initiated syscalls: are synonyms
+  - Kernel Mode drivers: handle parameters differently
 
 ### Function Prefixes
 

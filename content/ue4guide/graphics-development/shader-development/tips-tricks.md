@@ -188,7 +188,7 @@ Provides intellisense support for your project shaders:
 ## Enable Visual Studio syntax highlighting in .usf files
 
 - Post-VS2017: Add extension support in options directly
-  ![ShaderDev_TipsnTricks](../../assets/VSTipsUE4_Overview.jpg)
+  ![ShaderDev_TipsnTricks](../../_assets/VSTipsUE4_Overview.jpg)
 
 - Pre-VS2017: Import this registery key:
 

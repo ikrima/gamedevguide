@@ -16,7 +16,7 @@
 | **COPs**    | Composite OPerators in composite type folders. Used in image compositing operations.                                                                                                                                                                                                                                                           |
 | **ROPs**    | Render OPerators in side ROP Output directories which are used to create render output dependency graphs for automating output of any type of data and for triggering external processes like rendering. Commonly used to generate sequences of geometry, simulation data and trigger Render tasks that generates sequences of images to disk. |
 | **CHOPs**   | CHannel OPerators used to create and modify any type of raw channel data from motion to audio and everything in between. Most users safely ignore the CHOP context, and so can you, for now. Put it on the “get to it later” list when learning Houdini. But definitely keep it on the list.                                                   |
-| **Bundles** | Way to group things. Smart Bundles allow for patterns<br>![](../assets/hou_bundles.png)                                                                                                                                                                                                                                                           |
+| **Bundles** | Way to group things. Smart Bundles allow for patterns<br>![](../_assets/hou_bundles.png)                                                                                                                                                                                                                                                           |
 
 ### Tutorials
 
@@ -130,7 +130,7 @@ are connected in a left to right order bc they are "post-multiply  implying a pr
 ## Shortcuts
 
 To set a shortcut, click on a menu option while holding ctrl+shift+alt to bring up the hotkey manager for that menu command
-![](../assets/h16_shortcuts_1080_win_linux.jpg)
+![](../_assets/h16_shortcuts_1080_win_linux.jpg)
 
 ### General
 
@@ -151,8 +151,8 @@ To set a shortcut, click on a menu option while holding ctrl+shift+alt to bring 
 | ;                 | Align manipulator mode                                                                                                                |
 | /                 | Align construction plane mode                                                                                                         |
 | Ins               | Go to move pivot mode                                                                                                                 |
-| Ctrl+"drag manip" | Will snap changes by units specified in handle params:<br>![](../assets/hou_ctrl_drag_manip.png)<br>![](../assets/hou_ctrl_drag_manip2.png) |
-| Alt+W             | Rename nodes:<br>![](../assets/hou_rename_nodes.png)                                                                                     |
+| Ctrl+"drag manip" | Will snap changes by units specified in handle params:<br>![](../_assets/hou_ctrl_drag_manip.png)<br>![](../_assets/hou_ctrl_drag_manip2.png) |
+| Alt+W             | Rename nodes:<br>![](../_assets/hou_rename_nodes.png)                                                                                     |
 | Ctrl+1/3/4        | Change view layout to single view/3-split/4-way split                                                                                 |
 | Alt+\\            | Maximize panel vertically                                                                                                             |
 

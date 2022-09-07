@@ -2,31 +2,31 @@
 
 ## IR Traversal
 
-* RegionUtils.h: utilities for usedef traversal
-* `CallGraph`: generate callgraph of `CallOpInterface` and `CallableOpInterface` ops
-* Block::findAncestorOpInBlock:  Returns 'op' if 'op' lies in this block, or otherwise finds the ancestor operation of 'op' that lies in this block. Returns nullptr if the latter fails.
+- RegionUtils.h: utilities for usedef traversal
+- `CallGraph`: generate callgraph of `CallOpInterface` and `CallableOpInterface` ops
+- Block::findAncestorOpInBlock:  Returns 'op' if 'op' lies in this block, or otherwise finds the ancestor operation of 'op' that lies in this block. Returns nullptr if the latter fails.
 
 ## Conversion/Pass Utils
 
-* populateDecomposeCallGraphTypesPatterns: get types along callgraph edges; used in bufferize passes
-* getEffectsOnSymbol(): override to specify sideeffects on symbols
-* CallOpInterfaceLowering: good examples of lowering/conversio
-* Function Signature rewriting
-  * <https://github.com/google/iree/blob/main/iree/compiler/Dialect/Shape/Utils/TypeConversion.h>
-  * <https://llvm.discourse.group/t/rewriting-function-calls-and-signatures/1953/4>
+- populateDecomposeCallGraphTypesPatterns: get types along callgraph edges; used in bufferize passes
+- getEffectsOnSymbol(): override to specify sideeffects on symbols
+- CallOpInterfaceLowering: good examples of lowering/conversio
+- Function Signature rewriting
+  - <https://github.com/google/iree/blob/main/iree/compiler/Dialect/Shape/Utils/TypeConversion.h>
+  - <https://llvm.discourse.group/t/rewriting-function-calls-and-signatures/1953/4>
 
 ## Graph Algorithms
 
-* `scc_iterator`: generate strongly connected nodes
-* `ReversePostOrderTraversal`
-* `GraphTraits`: traits class to specialize to be able to use llvm graph algorithms
-* `DirectedGraph`: directed graph class
-* `GraphWriter`: graph emitter
-* BreadthFirstIterator.h
+- `scc_iterator`: generate strongly connected nodes
+- `ReversePostOrderTraversal`
+- `GraphTraits`: traits class to specialize to be able to use llvm graph algorithms
+- `DirectedGraph`: directed graph class
+- `GraphWriter`: graph emitter
+- BreadthFirstIterator.h
 
 ## Misc Code Fragments
 
-````cpp
+```cpp
 struct BarePtrFuncOpConversion;
 getBranchSuccessorArgument()
 verifyBranchSuccessorOperands()
@@ -56,4 +56,4 @@ mlir::createFuncBufferizePass();
     struct FuncBufferize;
 
 Linalgop::DeduplicateInputs
-````
+```

@@ -20,32 +20,32 @@ You can subscribe to the repo for updates
 
 ## Site Build Instructions
 
-* Originally built with gatsby, migrating to mkdocs
-* My notes related to the webdev of the site are in the gitrepo/docs folder
-* Webdev is pita; I mostly use obsidian/vscode to access the markdown notes and recommend the same or another markdown app/sublime text or even [https://github1s.com/ikrima/gamedevguide](https://github1s.com/ikrima/gamedevguide) for the lazy
+- Originally built with gatsby, migrating to mkdocs
+- My notes related to the webdev of the site are in the gitrepo/docs folder
+- Webdev is pita; I mostly use obsidian/vscode to access the markdown notes and recommend the same or another markdown app/sublime text or even [https://github1s.com/ikrima/gamedevguide](https://github1s.com/ikrima/gamedevguide) for the lazy
 
 ## Current Conversion Status
 
 Restarting of rationalizing all notes/guides into one place...
 
-* [ ] Programming
-* [ ] Graphics
-* [ ] OneNote
-* [ ] Notion
-  * [x] export to obsidian
-  * [ ] clean and integrate
+- [ ] Programming
+- [ ] Graphics
+- [ ] OneNote
+- [ ] Notion
+  - [x] export to obsidian
+  - [ ] clean and integrate
 
 ## Finished Conversion
 
-* [x] Conversion scripts from onenote/trillium to custom central store
-* [x] Houdini
-* [x] UE4
-  * [x] Environment Setup
-  * [x] Build Guide
-  * [x] Packaging
-  * [x] Source Control
-  * [x] Gameplay
-  * [x] Editor Extensions
-  * [x] Tooling
-  * [x] Engine Programming
-  * [x] Rendering
+- [x] Conversion scripts from onenote/trillium to custom central store
+- [x] Houdini
+- [x] UE4
+  - [x] Environment Setup
+  - [x] Build Guide
+  - [x] Packaging
+  - [x] Source Control
+  - [x] Gameplay
+  - [x] Editor Extensions
+  - [x] Tooling
+  - [x] Engine Programming
+  - [x] Rendering

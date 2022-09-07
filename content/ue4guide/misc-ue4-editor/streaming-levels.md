@@ -19,15 +19,15 @@ If you wanted to stream in levels dynamically and offset them, for example to ma
 
 Streaming volume method:
 
-![image1](../assets/image1.jpg)
+![image1](../_assets/image1.jpg)
 
-![image2](../assets/image2.jpg)
+![image2](../_assets/image2.jpg)
 
 ### Blueprint Method:
 
 It is required that the level was added in the Levels panel, or nothing will happen!
 
-![image3](../assets/image3.png)
+![image3](../_assets/image3.png)
 
 ## Seamless Travel between Levels:
 

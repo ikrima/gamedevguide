@@ -7,11 +7,11 @@ sidebar: ue4guide
 
 gr\_\_busy_pct signal on the graph. High percentage => GPU bound
 
-![](../../assets/nvidia_breakdown_speedoflight.png)
+![](../../_assets/nvidia_breakdown_speedoflight.png)
 
-![](../../assets/nvidia_breakdown_computemetrics.png)
+![](../../_assets/nvidia_breakdown_computemetrics.png)
 
-![](../../assets/nvidia_breakdown_graphicsmetrics.png)
+![](../../_assets/nvidia_breakdown_graphicsmetrics.png)
 
 # Range Profiler
 

@@ -165,7 +165,7 @@ Building Engine Dependencies
 
 •Sometimes there are text files with instructions
 
-![](../../assets/PluginsModules-Linking.png)
+![](../../_assets/PluginsModules-Linking.png)
 
 Structure of Plug-in Dependencies
 
@@ -173,4 +173,4 @@ Structure of Plug-in Dependencies
 
  •Same build rules
 
-![](../../assets/PluginsModules-plugindepend.png)
+![](../../_assets/PluginsModules-plugindepend.png)

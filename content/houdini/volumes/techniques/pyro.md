@@ -16,4 +16,4 @@
     - Hottest part of flame is dark
     - Sharp Edge
 
-![](../../assets/pyro_flame_ref.png)
+![](../../_assets/pyro_flame_ref.png)

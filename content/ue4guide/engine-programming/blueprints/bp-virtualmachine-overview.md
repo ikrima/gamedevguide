@@ -131,7 +131,7 @@ add eax, 2
 
 Based on the "stack" in the stack refers to the "evaluation stack", the "evaluation stack" in the JVM is called the "operand stack".
 
-![](../../assets/155497-20161113232207608-1483770135.png)
+![](../../_assets/155497-20161113232207608-1483770135.png)
 
 ## Stack frame
 
@@ -435,8 +435,8 @@ Because our function has no parameters, a NULL is passed in all ProcessEvents. I
 
 ### ProcessEvent process
 
-![](../../assets/155497-20161113232208295-1088352206.png)
-![](../../assets/155497-20161113232209045-1819255197.png)
+![](../../_assets/155497-20161113232208295-1088352206.png)
+![](../../_assets/155497-20161113232209045-1819255197.png)
 
 ### Blueprint calls C ++ functions
 

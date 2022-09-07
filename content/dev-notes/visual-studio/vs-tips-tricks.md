@@ -2,38 +2,38 @@
 
 ## Useful Flags
 
-* `/d1PP`: print preprocessor macros
-* `/d1reportAllClassLayout & /d1reportSingleClassLayoutXXX`: dump class packing and alignment layout
+- `/d1PP`: print preprocessor macros
+- `/d1reportAllClassLayout & /d1reportSingleClassLayoutXXX`: dump class packing and alignment layout
 
 ## VS Debugger
 
 ### Context Operator Syntax
 
-* There are two ways of specifying context
+- There are two ways of specifying context
   1. `#!cpp {,,[module] } expression`
-     * The braces must contain two commas and the module (executable or DLL) name or full path.
-     * For example, to set a breakpoint at the SomeFunction function of EXAMPLE.dll:
-       * `#!cpp {,,EXAMPLE.dll}SomeFunction`
-       * `#!cpp module!expression`
+     - The braces must contain two commas and the module (executable or DLL) name or full path.
+     - For example, to set a breakpoint at the SomeFunction function of EXAMPLE.dll:
+       - `#!cpp {,,EXAMPLE.dll}SomeFunction`
+       - `#!cpp module!expression`
   1. `#!cpp module!expression`
-     * Ex: `#!cpp EXAMPLE.dll!SomeFunction`
-* *module* is the name of a module. You can use a full path to disambiguate between modules with the same name.
-  * If the module path includes a comma, an embedded space, or a brace, you must use quotation marks around the path so that the context parser can properly recognize the string. Single quotation marks are considered part of a Windows file name, so you must use double quotation marks. For example,
-  * `#!cpp {,,"a long, long, library name.dll"} g_Var`
-* *expression* is any valid C++ expression that resolves to a valid target, such as a function name, variable name, or pointer address in module.
-  * When the expression evaluator encounters a symbol in an expression, it searches for the symbol in the following order:
-    * Lexical scope outward, starting with the current block, series of statements enclosed in braces, and continuing outward with the enclosing block. The current block is the code containing the current location, instruction pointer address.
-    * Function scope. The current function.
-    * Class scope, if the current location is inside a C++ member function. Class scope includes all base classes. The expression evaluator uses the normal dominance rules.
-    * Global symbols in the current module.
-    * Public symbols in the current program.
-* [Reference](https://docs.microsoft.com/en-us/visualstudio/debugger/context-operator-cpp)
+     - Ex: `#!cpp EXAMPLE.dll!SomeFunction`
+- _module_ is the name of a module. You can use a full path to disambiguate between modules with the same name.
+  - If the module path includes a comma, an embedded space, or a brace, you must use quotation marks around the path so that the context parser can properly recognize the string. Single quotation marks are considered part of a Windows file name, so you must use double quotation marks. For example,
+  - `#!cpp {,,"a long, long, library name.dll"} g_Var`
+- _expression_ is any valid C++ expression that resolves to a valid target, such as a function name, variable name, or pointer address in module.
+  - When the expression evaluator encounters a symbol in an expression, it searches for the symbol in the following order:
+    - Lexical scope outward, starting with the current block, series of statements enclosed in braces, and continuing outward with the enclosing block. The current block is the code containing the current location, instruction pointer address.
+    - Function scope. The current function.
+    - Class scope, if the current location is inside a C++ member function. Class scope includes all base classes. The expression evaluator uses the normal dominance rules.
+    - Global symbols in the current module.
+    - Public symbols in the current program.
+- [Reference](https://docs.microsoft.com/en-us/visualstudio/debugger/context-operator-cpp)
 
 ### Commands & PseudoVars
 
-* `alias`: List useful commands
-* Command window: `? …` to execute immediate window things
-* Immediate window: `> …` to execute commands e.g. `>shell cmd`
+- `alias`: List useful commands
+- Command window: `? …` to execute immediate window things
+- Immediate window: `> …` to execute commands e.g. `>shell cmd`
 
 |Pseudovariable|Function|
 |--------------|--------|
@@ -123,51 +123,51 @@ where foobar.dll defines g_pMyStruct as a global pointer. The same syntax can be
 
 ## Advanced Debugging
 
-* Common Visual Studio Commands
-  * <https://docs.microsoft.com/en-us/visualstudio/ide/reference/visual-studio-commands>
-  * Complete commands can be found in Keyboard, EnvironmentOptions dialog box
-* Can use VCMD to create macros as commands
-* In the immediate window, prefix a command with > to execute e.g. `>Debug.AttachDetach`
-* Execute code in a macro
-  ````csharp
+- Common Visual Studio Commands
+  - <https://docs.microsoft.com/en-us/visualstudio/ide/reference/visual-studio-commands>
+  - Complete commands can be found in Keyboard, EnvironmentOptions dialog box
+- Can use VCMD to create macros as commands
+- In the immediate window, prefix a command with > to execute e.g. `>Debug.AttachDetach`
+- Execute code in a macro
+  ```csharp
   DTE.Debugger.ExecuteStatement("variable_name=0")
-  ````
+  ```
   
-  * [Reference](http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value)
-* Can execute code in Action:print message section of breakpoint settings by wrapping the value in textfield with {}. Ex:
-  * `{ variable_name=0}` will set variable_name=0
-* You can also concatenate several instructions on the same line. They simply have to be separated by curly braces:
-  ````cpp
+  - [Reference](http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value)
+- Can execute code in Action:print message section of breakpoint settings by wrapping the value in textfield with {}. Ex:
+  - `{ variable_name=0}` will set variable_name=0
+- You can also concatenate several instructions on the same line. They simply have to be separated by curly braces:
+  ```cpp
   { {done = (i == 100);} { object.x -= 1.0f; } { data\[15] = 3; } }
-  ````
+  ```
   
-  * [Reference](https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints)
+  - [Reference](https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints)
 
 ## Tools
 
-* WinDBG
-* Perfmon
-* Process Explorer
-* Windows Performance Toolkit
+- WinDBG
+- Perfmon
+- Process Explorer
+- Windows Performance Toolkit
 
 ### Rules of thumb
 
-* If CPU kernel utilization is high, then it's a driver problem
-* If System interrupts .1%, driver problem
-  * In process monitor, look at System|interrupts process and look at threads/modules to see what's pegging CPU
-* Driverquery |find "driverdllname" to find info about a driver (don't use
-* strings binary.exe: >bla.txt sysinternals tool to produce all string parameters for a binary
+- If CPU kernel utilization is high, then it's a driver problem
+- If System interrupts .1%, driver problem
+  - In process monitor, look at System|interrupts process and look at threads/modules to see what's pegging CPU
+- Driverquery |find "driverdllname" to find info about a driver (don't use
+- strings binary.exe: >bla.txt sysinternals tool to produce all string parameters for a binary
 
 ## Misc
 
 ### Debugging Dependencies
 
-* [LoadLibrary calls](debug-dll-dependencies.md#loadlibrary)
-* [Managed dependencies](debug-dll-dependencies.md#managed-dependencies)
-* [Dependency Walker](debug-dll-dependencies.md#dependency-walker)
+- [LoadLibrary calls](debug-dll-dependencies.md#loadlibrary)
+- [Managed dependencies](debug-dll-dependencies.md#managed-dependencies)
+- [Dependency Walker](debug-dll-dependencies.md#dependency-walker)
 
 ### Property Sheets
 
-* Dump final merged properties from all .props files: `#!shell msbuild /pp:temp.xml .build/es2.vcxproj`
-* You can also set the MSBuild Logging level to Diagnostic
+- Dump final merged properties from all .props files: `#!shell msbuild /pp:temp.xml .build/es2.vcxproj`
+- You can also set the MSBuild Logging level to Diagnostic
   ![](../_assets/propsheet-msbuild-diag.png)

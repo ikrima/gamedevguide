@@ -24,4 +24,4 @@ Things to note:
 
 - Launch with console command: SP.PanoramicMovie 0 \[EndFrame]
 
-![](../assets/stereo-capture-plugin.PNG)
+![](../_assets/stereo-capture-plugin.PNG)

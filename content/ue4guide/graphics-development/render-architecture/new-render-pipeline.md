@@ -95,11 +95,11 @@ Mesh Drawing/Render Refactor:
 - RHICommandList: Platform independent render commands
 
 Every frame, generate FMeshBatch from Scene proxies
-![](../../assets/newrenderpipeline-oldway-overview.png)
+![](../../_assets/newrenderpipeline-oldway-overview.png)
 
 # New Way
 
-![](../../assets/newrenderpipeline-newway-overview.png)
+![](../../_assets/newrenderpipeline-newway-overview.png)
 
 - FMeshDrawCommand: Stateless description of draw command
 - FMeshPassProcessor: Builds one ore more FMeshDrawCommands from FMeshBatch
@@ -115,7 +115,7 @@ Every frame, generate FMeshBatch from Scene proxies
 - Anything referenced by FMeshDrawCommands must not change frequently bc it will be invalidated
 - Instead, keep bindings stable and reference one big Uniform Buffer
   - Code path to update uniform buffer: RHIUpdateUniformBuffer
-    ![](../../assets/newrenderpipeline-shaderbinding-update.png)
+    ![](../../_assets/newrenderpipeline-shaderbinding-update.png)
 - Uniform Buffers: FPersistentUniformBuffers
   - PrimitiveUniformBuffer: Data unique to primitive like LocalToWorldTransform
   - MaterialUniformBuffer: Material params
@@ -126,7 +126,7 @@ Every frame, generate FMeshBatch from Scene proxies
   - Remember, shader bindings are cached so those need to be invalidated (eg: changing skylight)
 - VertexFactory: How UE4 generates vertex data from CPU to GPU
   - Only VFs that don't require View are cached (eg: FLocalVertexFactory)
-    ![](../../assets/newrenderpipeline-vf-caching.png)
+    ![](../../_assets/newrenderpipeline-vf-caching.png)
 
 ## High level Frame with Caching
 

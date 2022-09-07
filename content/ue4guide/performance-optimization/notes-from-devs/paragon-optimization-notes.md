@@ -11,7 +11,7 @@ Fast player effect targetting:
 
 - Easy to have lots of variation not in one being uber shader
 
-- ![ParagonOptimization_Bots](../../assets/ParagonOptimization_Bots.png)
+- ![ParagonOptimization_Bots](../../_assets/ParagonOptimization_Bots.png)
 
 Reduce number of components on characters
 

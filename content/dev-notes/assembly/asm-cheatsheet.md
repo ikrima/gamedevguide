@@ -2,19 +2,19 @@
 
 ## Register conventions
 
-* General registers
-  * Data registers: used for arithmetic, logical, and other operations
-    * AX: the primary accumulator
-    * BX: base register
-    * CX: count register
-    * DX: data register
-  * Pointer registers
-    * IP: Instruction Pointer
-    * SP: Stack Pointer
-    * BP: Base Pointer
-  * Index registers
-* Control registers
-* Segment registers
+- General registers
+  - Data registers: used for arithmetic, logical, and other operations
+    - AX: the primary accumulator
+    - BX: base register
+    - CX: count register
+    - DX: data register
+  - Pointer registers
+    - IP: Instruction Pointer
+    - SP: Stack Pointer
+    - BP: Base Pointer
+  - Index registers
+- Control registers
+- Segment registers
 
 ### General Purpose Registers
 
@@ -44,15 +44,15 @@
 |SF|sign flag condition code register|
 |OF|overflow flag condition code register|
 
-* Condition Code registers are single bit registers
-  * implicitly set by arithmetic instructions
-    * Ex: `addl a,b` where t is result value
-    * CF set if unsigned overflow
-    * ZF set if result is zero
-    * SF set if result \< 0
-    * OF set if signed overflow \`(a>0 && b>0 && t\<0) || (a\<0 && b\<0 && t>=0)
-  * explicitly set by compare instruction
-    * `cmp a,b` uses sets same flags as `a-b` instruction but without setting destination
+- Condition Code registers are single bit registers
+  - implicitly set by arithmetic instructions
+    - Ex: `addl a,b` where t is result value
+    - CF set if unsigned overflow
+    - ZF set if result is zero
+    - SF set if result \< 0
+    - OF set if signed overflow \`(a>0 && b>0 && t\<0) || (a\<0 && b\<0 && t>=0)
+  - explicitly set by compare instruction
+    - `cmp a,b` uses sets same flags as `a-b` instruction but without setting destination
 
 ### Segment Registers
 
@@ -88,10 +88,10 @@
 |double||`dq`|
 |extended precision||`dt`|
 
-* ***NOTE:*** dst can never be an immediate
-* ***NOTE:*** src and dst can't both be memory operands
-* ***NOTE:*** some assemblers will legalize memory operands through simple algebraic transform
-  * e.g. `[rax*5] => [rax*4+rax]`
+- **_NOTE:_** dst can never be an immediate
+- **_NOTE:_** src and dst can't both be memory operands
+- **_NOTE:_** some assemblers will legalize memory operands through simple algebraic transform
+  - e.g. `[rax*5] => [rax*4+rax]`
 
 ## Instructions
 
@@ -118,53 +118,53 @@ For more common instructions, check out the [Stanford CS107 list](https://web.st
 
 `cmp op1, op2` -> mimics `sub op1, op2` but only changes the zero and carry flag for comparing
 
-* Prefixes
+- Prefixes
   
-  * `j~ x`:       jump to x if ~
-  * `cmov~ x, y`: conditional mov x, y if ~
-  * `setc~ x`:    set x to 1 if ~, x is 8 bit reg
-* Many suffixes
+  - `j~ x`:       jump to x if ~
+  - `cmov~ x, y`: conditional mov x, y if ~
+  - `setc~ x`:    set x to 1 if ~, x is 8 bit reg
+- Many suffixes
   
-  * `a`:  above, >
-  * `ae`: above or equal, >=
-  * `b`:  below, \<
-  * `be`: below or equal, \<=
-  * `e`:  equal, =
-  * `ne`: not equal, !=
+  - `a`:  above, >
+  - `ae`: above or equal, >=
+  - `b`:  below, \<
+  - `be`: below or equal, \<=
+  - `e`:  equal, =
+  - `ne`: not equal, !=
 
 ## Calling Convention
 
 ### Linux/OS X
 
-* function parameters passed in registers
-  * ints/pointers: `rdi`, `rsi`, `rdx`, `rcx`, `r8`, `r9`
-  * floats/doubles: `xmm0`, `xmm1`, `xmm2`, `xmm3`, `xmm4`, `xmm5`, `xmm6`, `xmm7`
-* additional parameters get pushed on the stack in reverse order (must be cleaned up by caller)
-* return values are stored in `rax/xmm0` for int/float
-* stack pointer `rsp` must be aligned to 16-byte boundary before invocation
-  * call instruction pushes the return address (8 bytes) which unaligns `rsp`
-  * must manually align by pushing or subtracting 8 from `rsp`
-* callee-saved registers: `rbp`, `rbx`, `r12`, `r13`, `r14`, `r15`
+- function parameters passed in registers
+  - ints/pointers: `rdi`, `rsi`, `rdx`, `rcx`, `r8`, `r9`
+  - floats/doubles: `xmm0`, `xmm1`, `xmm2`, `xmm3`, `xmm4`, `xmm5`, `xmm6`, `xmm7`
+- additional parameters get pushed on the stack in reverse order (must be cleaned up by caller)
+- return values are stored in `rax/xmm0` for int/float
+- stack pointer `rsp` must be aligned to 16-byte boundary before invocation
+  - call instruction pushes the return address (8 bytes) which unaligns `rsp`
+  - must manually align by pushing or subtracting 8 from `rsp`
+- callee-saved registers: `rbp`, `rbx`, `r12`, `r13`, `r14`, `r15`
 
-````asm
+```asm
 extern putchar
 mov rdi,'H' ; function parameter: one char to print
 call putchar
-````
+```
 
 ### Windows
 
-* function parameters passed in registers: `rcx`, `rdx`, `r8`, `r9`
-* must allocate 32 bytes of shadow stack space
-* callee-saved registers: `rbx`, `rbp`, `rdi`, `rsi`, `rsp`, `r12`, `r13`, `r14`, `r15`, `xmm6..xmm15`
+- function parameters passed in registers: `rcx`, `rdx`, `r8`, `r9`
+- must allocate 32 bytes of shadow stack space
+- callee-saved registers: `rbx`, `rbp`, `rdi`, `rsi`, `rsp`, `r12`, `r13`, `r14`, `r15`, `xmm6..xmm15`
 
-````asm
+```asm
 sub rsp,32+8; parameter area, and stack alignment
 extern putchar
 mov rcx,'H' ; function parameter: one char to print
 call putchar
 add rsp,32+8 ; clean up stack
-````
+```
 
 ## Reference
 

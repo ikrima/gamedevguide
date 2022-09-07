@@ -25,5 +25,5 @@
 
 ## References
 
-* [manage environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-* [cheatsheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
+- [manage environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+- [cheatsheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)

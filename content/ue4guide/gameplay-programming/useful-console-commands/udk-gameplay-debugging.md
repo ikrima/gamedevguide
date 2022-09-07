@@ -51,7 +51,7 @@ This is a quick guide to using some of UE3's runtime gameplay debugging features
 
 ### Remote Control
 
-![UDKGameplay_Debugging_RemoteControl](../../assets/UDKGameplay_Debugging_RemoteControl.jpg)
+![UDKGameplay_Debugging_RemoteControl](../../_assets/UDKGameplay_Debugging_RemoteControl.jpg)
 
 The RemoteControl is a special window that can be opened while the game is running to provide information and control over certain aspects of the game.
 
@@ -107,9 +107,9 @@ The simplest method here is probably to use the trace argument and just aim at t
 
 For vehicles, it may be unlikely you will know the exact name of the vehicle as they are usually spawned dynamically from factories and not placed directly in a map.
 
-![UDKGameplay_Debugging_ExampleUsage_EditActor](../../assets/UDKGameplay_Debugging_ExampleUsage_EditActor.jpg)
+![UDKGameplay_Debugging_ExampleUsage_EditActor](../../_assets/UDKGameplay_Debugging_ExampleUsage_EditActor.jpg)
 
-![UDKGameplay_Debugging_Scorpion](../../assets/UDKGameplay_Debugging_Scorpion.jpg)
+![UDKGameplay_Debugging_Scorpion](../../_assets/UDKGameplay_Debugging_Scorpion.jpg)
 
 ### EditObject
 
@@ -147,9 +147,9 @@ editobject class=UDNCameraModule
 
 This will open the property window for the camera module currently in use.
 
-![UDKGameplay_Debugging_UDNCameraModule](../../assets/UDKGameplay_Debugging_UDNCameraModule.jpg)
+![UDKGameplay_Debugging_UDNCameraModule](../../_assets/UDKGameplay_Debugging_UDNCameraModule.jpg)
 
-![UDKGameplay_Debugging_CameraMod_TopDown](../../assets/UDKGameplay_Debugging_CameraMod_TopDown.jpg)
+![UDKGameplay_Debugging_CameraMod_TopDown](../../_assets/UDKGameplay_Debugging_CameraMod_TopDown.jpg)
 
 ### EditDefault
 
@@ -171,13 +171,13 @@ editdefault class=UTProj_LinkPlasma
 
 Both of these are functionally identical and will display the default properties of the UTProj_LinkPlasma class which can then be modified allowing you to adjust the behavior of all future instances of that class.
 
-![UDKGameplay_Debugging_UTProj_Linkplasma](../../assets/UDKGameplay_Debugging_UTProj_Linkplasma.jpg)
+![UDKGameplay_Debugging_UTProj_Linkplasma](../../_assets/UDKGameplay_Debugging_UTProj_Linkplasma.jpg)
 
 ### EditArchetype
 
 The editarchetype console command makes the properties of an archetype available. The archetype to edit is specified by passing the path (Package.Group.Name) to the archetype following the command. Like the editdefault command, this command is also extremely useful for archetypes that are used as templates for objects that are frequently spawned, such as projectiles or units in a real-time strategy game, or for archetypes used as data definitions or content holders.
 
-In addition to being able to edit the properties of the archetype, the settings can be saved to the archetype in the package using the ![saveButton](../../assets/saveButton.jpg) button in the properties window so they are not lost.
+In addition to being able to edit the properties of the archetype, the settings can be saved to the archetype in the package using the ![saveButton](../../_assets/saveButton.jpg) button in the properties window so they are not lost.
 
 **Note:** This command is not allowed when running a map from within UnrealEd through a Play In Editor session.
 
@@ -187,7 +187,7 @@ Say you have a weapon class set up to use archetypes as templates for its projec
 
 The projectile using the current settings of the archetype:
 
-![UDKGameplay_Debugging_Editarchetype](../../assets/UDKGameplay_Debugging_Editarchetype.jpg)
+![UDKGameplay_Debugging_Editarchetype](../../_assets/UDKGameplay_Debugging_Editarchetype.jpg)
 
 Simply use the editarchetype command and pass it the path of the archetype:
 
@@ -195,13 +195,13 @@ Simply use the editarchetype command and pass it the path of the archetype:
 editarchetype UDNProjectiles.RedPlasma
 ```
 
-![UDKGameplay_Debugging_Redplasma](../../assets/UDKGameplay_Debugging_Redplasma.jpg)
+![UDKGameplay_Debugging_Redplasma](../../_assets/UDKGameplay_Debugging_Redplasma.jpg)
 
 By modifying the proeprties, the look and behavior of the projectiles is changed in realtime:
 
-![UDKGameplay_Debugging_Editarchetype_Realtime](../../assets/UDKGameplay_Debugging_Editarchetype_Realtime.jpg)
+![UDKGameplay_Debugging_Editarchetype_Realtime](../../_assets/UDKGameplay_Debugging_Editarchetype_Realtime.jpg)
 
-Once you are satisfied with the settings, press the ![saveButton](../../assets/saveButton.jpg)button in the proeperties window to save the current settings to the archetype.
+Once you are satisfied with the settings, press the ![saveButton](../../_assets/saveButton.jpg)button in the proeperties window to save the current settings to the archetype.
 
 ### Static Object Data Inspection
 
@@ -223,7 +223,7 @@ getall UDNPlayerController PlayerCamera
 
 This will list out the Name and PlayerCamera of every UDNPlayerController actor in memory in the console in-game.
 
-![UDKGameplay_Debugging_GetAll](../../assets/UDKGameplay_Debugging_GetAll.jpg)
+![UDKGameplay_Debugging_GetAll](../../_assets/UDKGameplay_Debugging_GetAll.jpg)
 
 Since the PlayerCamera has a value and not None, you know the camera is being assigned properly.
 
@@ -255,7 +255,7 @@ getallstate UTPawn
 
 This will list the current state of every UTPawn in memory in the console in-game.
 
-![UDKGameplay_Debugging_GodModeOn](../../assets/UDKGameplay_Debugging_GodModeOn.jpg)
+![UDKGameplay_Debugging_GodModeOn](../../_assets/UDKGameplay_Debugging_GodModeOn.jpg)
 
 This gives you a quick overview of what the UTPawns in the game are doing. It can quickly point out an anomaly, such as you see in the screenshot as this snapshot was taken at the time the bots were spawning and yet one UTPawn is in the Dying state.
 
@@ -275,7 +275,7 @@ displayall UTPawn Location
 
 This will list the Name and Location of every UTPawn on the screen, updated every frame.
 
-![UDKGameplay_Debugging_DisplayAll](../../assets/UDKGameplay_Debugging_DisplayAll.jpg)
+![UDKGameplay_Debugging_DisplayAll](../../_assets/UDKGameplay_Debugging_DisplayAll.jpg)
 
 ### DisplayAllState
 
@@ -293,7 +293,7 @@ displayallstate UTBot
 
 This will list the current state of every UTBot in memory on the screen, updated every frame, making it extremely easy to see exactly what each bot is doing.
 
-![UDKGameplay_Debugging_DisplayALLSTATE](../../assets/UDKGameplay_Debugging_DisplayALLSTATE.jpg)
+![UDKGameplay_Debugging_DisplayALLSTATE](../../_assets/UDKGameplay_Debugging_DisplayALLSTATE.jpg)
 
 ### DisplayClear
 
@@ -307,9 +307,9 @@ displayclear
 
 This will clear the object data being displayed on the screen from a previous [DisplayAll](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll) or [DisplayAllState](https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState) command.
 
-![UDKGameplay_Debugging_DisplayClear](../../assets/UDKGameplay_Debugging_DisplayClear.jpg)
+![UDKGameplay_Debugging_DisplayClear](../../_assets/UDKGameplay_Debugging_DisplayClear.jpg)
 
-![UDKGameplay_Debugging_DisplayClear2](../../assets/UDKGameplay_Debugging_DisplayClear2.jpg)
+![UDKGameplay_Debugging_DisplayClear2](../../_assets/UDKGameplay_Debugging_DisplayClear2.jpg)
 
 ### Object Data Modification Set
 
@@ -329,13 +329,13 @@ set utweap_linkgun maxammocount 150
 
 This will increase the maximum ammo count that all link guns can hold.
 
-![UDKGameplay_Debugging_Objectmodificatiohn](../../assets/UDKGameplay_Debugging_Objectmodificatiohn.jpg)
+![UDKGameplay_Debugging_Objectmodificatiohn](../../_assets/UDKGameplay_Debugging_Objectmodificatiohn.jpg)
 
 ### Gameplay Code Profiling 
 
 The Gameplay Profiler is a tool that provides a detailed breakdown of where time is being spent when executing UnrealScript gameplay code.
 
-![UDKGameplay_Debugging_GameplayProfiling](../../assets/UDKGameplay_Debugging_GameplayProfiling.jpg)
+![UDKGameplay_Debugging_GameplayProfiling](../../_assets/UDKGameplay_Debugging_GameplayProfiling.jpg)
 
 For a detailed overview, see the [Gameplay Profiler](https://api.unrealengine.com/udk/Three/GameplayProfiler.html) page.
 
@@ -345,6 +345,6 @@ For more information on the command line arguments useful for profiling gameplay
 
 The STAT commands can be useful in getting a quick look at how much time certain aspects of your code are taking to execute. The STAT GAME command is especially useful as it shows the cumulative time your scripts are taking to update each tick.
 
-![UDKGameplay_Debugging_STATCOMMANDS](../../assets/UDKGameplay_Debugging_STATCOMMANDS.jpg)
+![UDKGameplay_Debugging_STATCOMMANDS](../../_assets/UDKGameplay_Debugging_STATCOMMANDS.jpg)
 
 For more information on this and other STAT commands, see the [Stats Description](https://api.unrealengine.com/udk/Three/StatsDescriptions.html) page.

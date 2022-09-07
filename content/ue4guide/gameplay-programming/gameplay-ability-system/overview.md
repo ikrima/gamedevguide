@@ -3,7 +3,7 @@ sortIndex: 1
 sidebar: ue4guide
 ---
 
-![](../../assets/AbilitySystem-Overview.png)
+![](../../_assets/AbilitySystem-Overview.png)
 
 # Overview
 

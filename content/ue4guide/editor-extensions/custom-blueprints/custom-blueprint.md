@@ -8,10 +8,10 @@ sidebar: ue4guide
 There's on overabundance of class/OOP and hard to track what is supposed to do what. Here's a great diagram from <http://www.ms.mff.cuni.cz/~polakma1/adventure-plugin/programming.html> that crystalizes the relationships.
 
 From a UI/MVC viewpoint:
-![Graph Editor Class UI Relationship](../../assets/Graph-Editor-Class-Relationship.png)
+![Graph Editor Class UI Relationship](../../_assets/Graph-Editor-Class-Relationship.png)
 
 From a functionality/responsibility viewpoint:
-![Graph Editor Class Feature Relationship](../../assets/Graph-Editor-Class-Relationship2.png)
+![Graph Editor Class Feature Relationship](../../_assets/Graph-Editor-Class-Relationship2.png)
 
 # How to use templates
 **IMPORTANT!** This is just a literal translation from the excellent github repo <https://github.com/Eragon-Brisingr/XD_GraphEditor_Template>
@@ -20,11 +20,11 @@ From a functionality/responsibility viewpoint:
 
 ### Create chart
 
-![Create chart](../../assets/custom-bp-create.png)
+![Create chart](../../_assets/custom-bp-create.png)
 
 ### use
 
-![Node effect](../../assets/custom-bp-nodeffect.png)
+![Node effect](../../_assets/custom-bp-nodeffect.png)
 
 ### Use the template
 
@@ -133,9 +133,9 @@ Created chart control
 
 ## Effect
 
-![Blueprint design chart](../../assets/custom-bp-designchart.png)
+![Blueprint design chart](../../_assets/custom-bp-designchart.png)
 
-![Blueprint coding chart](../../assets/custom-bp-codingchart.png)
+![Blueprint coding chart](../../_assets/custom-bp-codingchart.png)
 
 ## Inheritance Type
 

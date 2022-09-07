@@ -8,7 +8,7 @@ It is also worth noting that you can associate other types to hlsl here also buy
 
 Spoiler: VS2013ShaderCginc.reg
 
-````reg
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\12.0_Config\Languages\File Extensions\.shader]
@@ -18,6 +18,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\12.0_Config\Languages\File Extensions\.cginc]
 @="{B2F072B0-ABC1-11D0-9D62-00C04FD9DFD9}"
 "HLSLFile"=dword:00000001
-````
+```
 
 From <http://forum.unity3d.com/threads/vs-2012-and-2013-cg-syntax-highlighting-no-plugins-required.255209/>

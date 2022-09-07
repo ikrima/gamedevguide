@@ -3,7 +3,7 @@ sortIndex: 25
 sidebar: ue4guide
 ---
 
-![PorgrammingGuideNotes_ProjectModuleClassOrg](../assets/PorgrammingGuideNotes_ProjectModuleClassOrg.jpg)
+![PorgrammingGuideNotes_ProjectModuleClassOrg](../_assets/PorgrammingGuideNotes_ProjectModuleClassOrg.jpg)
 
 - AActor is base class Spawnable class
 

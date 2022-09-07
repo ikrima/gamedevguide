@@ -21,7 +21,7 @@ We only briefly introduce some terms here. If you want to learn compilation prin
 
 Generally, a compiler compiles a program into lexical analysis, syntax analysis, semantic analysis, intermediate code generation, code optimization, and target code generation.
 
-![](../../assets/155497-20161024225759031-1304384299.png)
+![](../../_assets/155497-20161024225759031-1304384299.png)
 
 ## Lexical analysis
 
@@ -33,21 +33,21 @@ Read the source program of the character stream from left to right and recognize
 
 Example:
 
-![](../../assets/155497-20161024225800078-706155511.png)
+![](../../_assets/155497-20161024225800078-706155511.png)
 
 ## Parsing
 
 Function: Hierarchical analysis. According to the grammar rules of the source program, the word sequence of the source program is composed into grammatical phrases (represented as a syntax tree). The grammar analysis program obtains the source code in the form of tokens from the scanning program and completes the grammatical analysis that defines the program structure syntax analysis), which is similar to the syntax analysis of sentences in natural language. Parsing defines the structural elements of a program and their relationships. The results of parsing are usually expressed as a parse tree or a syntax tree.
 
-![](../../assets/155497-20161024225800640-1543799186.png)
+![](../../_assets/155497-20161024225800640-1543799186.png)
 
 
 
-![](../../assets/155497-20161024225801265-1288519370.png)
+![](../../_assets/155497-20161024225801265-1288519370.png)
 
 Example:
 
-![](../../assets/155497-20161024225801640-1996731177.png)
+![](../../_assets/155497-20161024225801640-1996731177.png)
 
 ## Semantic Analysis
 
@@ -59,11 +59,11 @@ The semantics of a program is its "meaning", which is different from syntax or s
 
 Example:
 
-![](../../assets/155497-20161024225802000-892254968.png)
+![](../../_assets/155497-20161024225802000-892254968.png)
 
 Semantic analysis results:
 
-![](../../assets/155497-20161024225802796-1956244594.png)
+![](../../_assets/155497-20161024225802796-1956244594.png)
 
 ## Intermediate code generation
 
@@ -71,22 +71,22 @@ The internal (middle) representation of the source program:
 
 Ternary, quaternary, P-Code, C-Code, U-Code, bytecode
 
-![](../../assets/155497-20161024225804375-87769568.png)
+![](../../_assets/155497-20161024225804375-87769568.png)
 
 ## Code optimization
 
 * Intermediate code optimization
 * Objective code optimization
 
-![](../../assets/155497-20161024225805015-223964657.png)
+![](../../_assets/155497-20161024225805015-223964657.png)
 
-![](../../assets/155497-20161024225805750-246067988.png)
+![](../../_assets/155497-20161024225805750-246067988.png)
 
 ## Object code generation
 
 Object code generation is the last stage of compilation. The object code generator transforms the parsed or optimized intermediate code into object code.
 
-![](../../assets/155497-20161024225806421-933730886.png)
+![](../../_assets/155497-20161024225806421-933730886.png)
 
 ## Symbol Table Management
 

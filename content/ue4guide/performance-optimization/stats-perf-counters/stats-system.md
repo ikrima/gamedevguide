@@ -15,7 +15,7 @@ Description of stats: <https://docs.unrealengine.com/udk/Three/StatsDescriptions
 
 # Stats System Diagram
 
-![](../../assets/statsperfcounters-tracingstats.png)
+![](../../_assets/statsperfcounters-tracingstats.png)
 
 - FEventPayload
 

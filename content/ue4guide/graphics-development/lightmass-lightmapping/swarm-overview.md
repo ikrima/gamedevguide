@@ -134,7 +134,7 @@ Swarm Agent is designed to run on multiple machines across your network, buildin
 
   - Uninstall firewall exceptions: netsh advfirewall firewall delete rule name=”Unreal Swarm”
 
-> ![SwarmOverview_Networkconfig](../../assets/SwarmOverview_Networkconfig.png)
+> ![SwarmOverview_Networkconfig](../../_assets/SwarmOverview_Networkconfig.png)
 
 This diagram shows a scenario where the PC in the bottom center has kicked off a Unreal lighting bake. Three PCs have Unreal installed, but all the PCs are running Swarm Agents. The top center PC is running the Swarm Coordinator. Five PCs were chosen to participate in the bake. The other PC was busy (compiling code, etc.). Communication between the local agent and the remote agents, represented by the arrows, happens in a peer-to-peer fashion.
 

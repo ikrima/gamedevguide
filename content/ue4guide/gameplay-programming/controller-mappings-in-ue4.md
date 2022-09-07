@@ -5,4 +5,4 @@ sidebar: ue4guide
 
 Vive Controller Mappings
 
-![](../assets/controller-mappings-vive.png)
+![](../_assets/controller-mappings-vive.png)

@@ -2,18 +2,19 @@
 
 ## Tagless Shallow embedding approach to interpreters
 
-* TLDR: Use closures as AST nodes → interpreter becomes library
-  * Describe language grammar as functions that take a free-bound "evaluator" function param instead of data types (a "final algebra"/"object algebra")
-  * ✔: Performance (no tag dispatch), allows for partial evaluation extension, and expression problem solution
-* Explanations:
-  * ELIU in C# <https://higherlogics.blogspot.com/2008/09/mostly-tagless-interpreters-in-c.html>
-  * <http://lambda-the-ultimate.org/node/4572>
-  * Papers:
+- TLDR: Use closures as AST nodes → interpreter becomes library
+  - Describe language grammar as functions that take a free-bound "evaluator" function param instead of data types (a "final algebra"/"object algebra")
+  - ✔: Performance (no tag dispatch), allows for partial evaluation extension, and expression problem solution
+- Explanations:
+  - ELIU in C# <https://higherlogics.blogspot.com/2008/09/mostly-tagless-interpreters-in-c.html>
+  - <http://lambda-the-ultimate.org/node/4572>
+  - Papers:
     <http://okmij.org/ftp/tagless-final/JFP.pdf>
     <http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf>
-* Sample implementations:
-  * Simple C++ example 
-    ````cpp
+- Sample implementations:
+  - Simple C++ example
+    
+    ```cpp
     // From https://i.cs.hku.hk/~bruno/oa/
     #include <iostream>
     #include <string>
@@ -231,18 +232,18 @@
          << "exp1: " << exp1(pa2) << "\n"
          << "exp2: " << exp2(pa2);
     }
-    ````
+    ```
   
-  * Implementations in different languages: <https://i.cs.hku.hk/~bruno/oa/>
-  * C# (2008)
-    * Snippet: <http://lambda-the-ultimate.org/node/4572#comment-72110>
-    * More complete: <http://lambda-the-ultimate.org/node/2569#comment-43805>
-      * Expanded Version (2009): <https://higherlogics.blogspot.com/2009/06/mobile-code-in-c-via-finally-tagless.html>
-    * Advanced Query language in C#: <https://higherlogics.blogspot.com/2019/09/building-query-dsl-in-c.html>
-  * Snippet with Pratt parser (<http://lambda-the-ultimate.org/node/4572#comment-72110>)
-    * Syntax to semantic constructors
+  - Implementations in different languages: <https://i.cs.hku.hk/~bruno/oa/>
+  - C# (2008)
+    - Snippet: <http://lambda-the-ultimate.org/node/4572#comment-72110>
+    - More complete: <http://lambda-the-ultimate.org/node/2569#comment-43805>
+      - Expanded Version (2009): <https://higherlogics.blogspot.com/2009/06/mobile-code-in-c-via-finally-tagless.html>
+    - Advanced Query language in C#: <https://higherlogics.blogspot.com/2019/09/building-query-dsl-in-c.html>
+  - Snippet with Pratt parser (<http://lambda-the-ultimate.org/node/4572#comment-72110>)
+    - Syntax to semantic constructors
       
-      ````csharp
+      ```csharp
       interface IMathSemantics<T>
       {
         T Int(string lit);
@@ -270,11 +271,11 @@
         SkipWhile(char.IsWhiteSpace);
         }
       }
-      ````
+      ```
     
-    * Interpreter
+    - Interpreter
       
-      ````csharp
+      ```csharp
       sealed class MathInterpreter : IMathSemantics
       {
       public int Int(string lit) { return int.Parse(lit); }
@@ -287,11 +288,11 @@
       public int Pos(int arg) { return arg; }
       public int Fact(int arg) { return arg == 0 || arg == 1 ? 1 : arg * Fact(arg - 1); }
       }
-      ````
+      ```
     
-    * Extending abstract semantics to support local bindings:
+    - Extending abstract semantics to support local bindings:
       
-      ````csharp
+      ```csharp
       interface IEquationSemantics<T> : IMathSemantics<T>
       {
         T Var(string name);
@@ -305,4 +306,4 @@
           TernaryPrefix("let", "=", "in", 90, eq.Let);
         }
       }
-      ````
+      ```

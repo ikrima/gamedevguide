@@ -33,7 +33,7 @@ Enumeration is relatively simple, with only one step.
 
 Above we explained the process of registering information, and their execution is performed with the loading of the current module. We all know that the initialization of static variables is performed before the Main function. Below we briefly draw the startup process of Unreal Editor so that we can accurately see the entire process of registering reflection information.
 
-![Reflection Class Diagram](../../assets/UE4startup.png)
+![Reflection Class Diagram](../../_assets/UE4startup.png)
 
 You can see that the void ProcessNewlyLoadedUObjects () function is our main concern. The registration information we mentioned earlier, including reflection information of classes, structures, and enumeration types, will be registered here. Its code is as follows:
 

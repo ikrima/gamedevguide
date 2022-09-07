@@ -1,11 +1,11 @@
 # Graphics Cheat Sheet
 
 Shit I annoyingly forget and always have to lookup
-- [Physical Units for Lights ](http://www.realtimerendering.com/blog/physical-units-for-lights): better summary from Eric Haines
+- [Physical Units for Lights](http://www.realtimerendering.com/blog/physical-units-for-lights): better summary from Eric Haines
 
 ## Lighting Units (Candela vs Lumens vs Lux)
 
-![](./assets/candela-vs-lumen-vslux.jpg)
+![](_assets/candela-vs-lumen-vslux.jpg)
 
 |                               | Radiometric | Spectral           | Photopic              |
 | ----------------------------- | ----------- | ------------------ | --------------------- |
@@ -56,10 +56,10 @@ Shit I annoyingly forget and always have to lookup
 | 10,000–25,000     | Full daylight (not direct sun)[3]                 |
 | 32,000–100,000    | Direct sunlight                                   |
 
-![](./assets/lumens-vs-candelas.jpg)
+![](_assets/lumens-vs-candelas.jpg)
 
-![](./assets/lux-illuminance.jpg)
+![](_assets/lux-illuminance.jpg)
 
-![](./assets/luminance.jpg)
+![](_assets/luminance.jpg)
 
-![](./assets/lux-visualdefinition.png)
+![](_assets/lux-visualdefinition.png)

@@ -11,17 +11,17 @@ Over the last couple of years, I've been using [flecs](https://github.com/Sander
 
 ## TLDR on why flecs sparks joy
 
-- *It Just Works™*
-- Well designed minimalist API =&gt; easy to integrate + easy to extend
+- _It Just Works™_
+- Well designed minimalist API => easy to integrate + easy to extend
 - C99 so easy to integrate with UE4's complex build system
-- Amazing community + active development =&gt; fast turnaround
+- Amazing community + active development => fast turnaround
 
 ## It Just Works
 
 - Initially using it for ECS for gameplay to simplify netcode
   - [Overwatch GDC talk](https://www.youtube.com/watch?v=W3aieHjyNvw) flipped my opinion of ECS a couple years back
-  - rolled my own "quick &amp; dirty" but quickly became a support issue/time sink
-- Since I'm slowly transitioning into *GrumpyOldProgrammer™* stage that complains about how broken everything is, I was reluctant to use a 3rd party lib
+  - rolled my own "quick & dirty" but quickly became a support issue/time sink
+- Since I'm slowly transitioning into _GrumpyOldProgrammer™_ stage that complains about how broken everything is, I was reluctant to use a 3rd party lib
   - Don't want to subsume tech debt of the lib
   - Always thinking about the "debugging release stopping bug at 4 am, hours before go-live" scenario. Horrible position to be in but order of magnitude worse when it's in some third party lib
 - Pleasantly surprised at flecs on this ie code quality, robustness and ofc, perf
@@ -35,12 +35,12 @@ Over the last couple of years, I've been using [flecs](https://github.com/Sander
   - Turn off all the things!: Usually I start with a lib and try to use the minimal feature set to satisfy why I wanted the lib in the first place. Was pleasantly surprised with flecs that it was relatively easy to do this. I didn't have to pay the (dev) cost of figuring out any of it's feature set to get some simple systems running
   - The other green flag was how easy it was to default to "manual" mode for most things e.g. manual timestep, manual staging, manual triggering of systems.
     - Very important when integrating with very complicated codebases with lots of legacy code like UE4 like dealing with UE4's UObjects
-    - Seems obvious but subtle to get right while balancing api complexity &amp; being bug free bc complexity grows combinatorially with every new flag/option.
+    - Seems obvious but subtle to get right while balancing api complexity & being bug free bc complexity grows combinatorially with every new flag/option.
   - Over time, started to incorporate more and more features, often replacing simpler ones I'd already sketched out
-- Minimal API =&gt; easy to integrate
+- Minimal API => easy to integrate
   - UE4's very complicated and often times forced to wrestle with how to get UE4 "out of the way"
   - Other libs I perused where either of suspect code quality or relied on too much C++ bullshittery.
-  - Even with solid lib, am very cautious with complex "*mandatory batteries included*" libs after years of being burned by UE4 integration gremlins. For ex, here's some OTOH things I ask
+  - Even with solid lib, am very cautious with complex "_mandatory batteries included_" libs after years of being burned by UE4 integration gremlins. For ex, here's some OTOH things I ask
     - How will I get it to deal with UObjects/AActors/UComponents and all their wonderful peculiarities wrt allocation, ticking, execution
     - How will I deal with integrating it with Slate for editor UI?
     - Will it play nicely with UE4's builtin dev/debug utilities like perf counters, etc?
@@ -54,17 +54,17 @@ Over the last couple of years, I've been using [flecs](https://github.com/Sander
 
 ## Community
 
-- Libraries are much more than the code; they're more akin to micro-platforms/ecosystems. More active =&gt;
+- Libraries are much more than the code; they're more akin to micro-platforms/ecosystems. More active =>
   - more likely other people have run into bug, question, workaround
   - faster turnaround for bug fixes/workarounds
 
-Flecs has been *stellar* on this front. Also, the discord is full of great people. Since I'm turning into a *GrumpyOldDev™*, I usually try to avoid online communities but that discord is refreshing in that it's full of decent people who also know what they're talking about + know what they don't and humble enough to admit.
+Flecs has been _stellar_ on this front. Also, the discord is full of great people. Since I'm turning into a _GrumpyOldDev™_, I usually try to avoid online communities but that discord is refreshing in that it's full of decent people who also know what they're talking about + know what they don't and humble enough to admit.
 
 I doubt flecs will escape Eternal September forever but right now it's pretty great
 
 ## Conclusion
 
-For me personally, flecs is in a small handful of libs that *SparkJoy™* like imgui or sokol.
+For me personally, flecs is in a small handful of libs that _SparkJoy™_ like imgui or sokol.
 
 This is getting long so I'll save it for another post on how I've (ab)used flecs:
 

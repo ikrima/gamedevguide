@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD001 MD024 -->
-
 # Comprehensive Python Cheatsheet
 
 This is a cached version the awesome [gto76 cheatsheet](https://github.com/gto76/python-cheatsheet)
@@ -16,30 +14,30 @@ This is a cached version the awesome [gto76 cheatsheet](https://github.com/gto76
 
 ## Main
 
-````python
+```python
 if __name__ == '__main__':     # Runs main() if file wasn't imported.
     main()
-````
+```
 
 ## List
 
-````python
+```python
 <list> = <list>[<slice>]       # Or: <list>[from_inclusive : to_exclusive : ±step]
-````
+```
 
-````python
+```python
 <list>.append(<el>)            # Or: <list> += [<el>]
 <list>.extend(<collection>)    # Or: <list> += <collection>
-````
+```
 
-````python
+```python
 <list>.sort()                  # Sorts in ascending order.
 <list>.reverse()               # Reverses the list in-place.
 <list> = sorted(<collection>)  # Returns a new sorted list.
 <iter> = reversed(<list>)      # Returns reversed iterator.
-````
+```
 
-````python
+```python
 sum_of_elements  = sum(<collection>)
 elementwise_sum  = [sum(pair) for pair in zip(list_a, list_b)]
 sorted_by_second = sorted(<collection>, key=lambda el: el[1])
@@ -47,51 +45,51 @@ sorted_by_both   = sorted(<collection>, key=lambda el: (el[1], el[0]))
 flatter_list     = list(itertools.chain.from_iterable(<list>))
 product_of_elems = functools.reduce(lambda out, el: out * el, <collection>)
 list_of_chars    = list(<str>)
-````
+```
 
-* **For details about sorted(), min() and max() see [sortable](#sortable).**
-* **Module [operator](#operator) provides functions itemgetter() and mul() that offer the same functionality as [lambda](#lambda) expressions above.**
+- **For details about sorted(), min() and max() see [sortable](#sortable).**
+- **Module [operator](#operator) provides functions itemgetter() and mul() that offer the same functionality as [lambda](#lambda) expressions above.**
 
-````python
+```python
 <list>.insert(<int>, <el>)     # Inserts item at index and moves the rest to the right.
 <el>  = <list>.pop([<int>])    # Removes and returns item at index or from the end.
 <int> = <list>.count(<el>)     # Returns number of occurrences. Also works on strings.
 <int> = <list>.index(<el>)     # Returns index of the first occurrence or raises ValueError.
 <list>.remove(<el>)            # Removes first occurrence of the item or raises ValueError.
 <list>.clear()                 # Removes all items. Also works on dictionary and set.
-````
+```
 
 ## Dictionary
 
-````python
+```python
 <view> = <dict>.keys()                          # Coll. of keys that reflects changes.
 <view> = <dict>.values()                        # Coll. of values that reflects changes.
 <view> = <dict>.items()                         # Coll. of key-value tuples that reflects chgs.
-````
+```
 
-````python
+```python
 value  = <dict>.get(key, default=None)          # Returns default if key is missing.
 value  = <dict>.setdefault(key, default=None)   # Returns and writes default if key is missing.
 <dict> = collections.defaultdict(<type>)        # Returns a dict with default value of type.
 <dict> = collections.defaultdict(lambda: 1)     # Returns a dict with default value 1.
-````
+```
 
-````python
+```python
 <dict> = dict(<collection>)                     # Creates a dict from coll. of key-value pairs.
 <dict> = dict(zip(keys, values))                # Creates a dict from two collections.
 <dict> = dict.fromkeys(keys [, value])          # Creates a dict from collection of keys.
-````
+```
 
-````python
+```python
 <dict>.update(<dict>)                           # Adds items. Replaces ones with matching keys.
 value = <dict>.pop(key)                         # Removes item or raises KeyError.
 {k for k, v in <dict>.items() if v == value}    # Returns set of keys that point to the value.
 {k: v for k, v in <dict>.items() if k in keys}  # Returns a dictionary, filtered by keys.
-````
+```
 
 ### Counter
 
-````python
+```python
 >>> from collections import Counter
 >>> colors = ['blue', 'blue', 'blue', 'red', 'red']
 >>> counter = Counter(colors)
@@ -99,58 +97,58 @@ value = <dict>.pop(key)                         # Removes item or raises KeyErro
 Counter({'blue': 3, 'red': 2, 'yellow': 1})
 >>> counter.most_common()[0]
 ('blue', 3)
-````
+```
 
 ## Set
 
-````python
+```python
 <set> = set()                                   # `{}` returns a dictionary.
-````
+```
 
-````python
+```python
 <set>.add(<el>)                                 # Or: <set> |= {<el>}
 <set>.update(<collection> [, ...])              # Or: <set> |= <set>
-````
+```
 
-````python
+```python
 <set>  = <set>.union(<coll.>)                   # Or: <set> | <set>
 <set>  = <set>.intersection(<coll.>)            # Or: <set> & <set>
 <set>  = <set>.difference(<coll.>)              # Or: <set> - <set>
 <set>  = <set>.symmetric_difference(<coll.>)    # Or: <set> ^ <set>
 <bool> = <set>.issubset(<coll.>)                # Or: <set> <= <set>
 <bool> = <set>.issuperset(<coll.>)              # Or: <set> >= <set>
-````
+```
 
-````python
+```python
 <el> = <set>.pop()                              # Raises KeyError if empty.
 <set>.remove(<el>)                              # Raises KeyError if missing.
 <set>.discard(<el>)                             # Doesn't raise an error.
-````
+```
 
 ### Frozen Set
 
-* **Is immutable and hashable.**
-* **That means it can be used as a key in a dictionary or as an element in a set.**
+- **Is immutable and hashable.**
+- **That means it can be used as a key in a dictionary or as an element in a set.**
 
-````python
+```python
 <frozenset> = frozenset(<collection>)
-````
+```
 
 ## Tuple
 
 **Tuple is an immutable and hashable list.**
 
-````python
+```python
 <tuple> = ()                                # Empty tuple.
 <tuple> = (<el>,)                           # Or: <el>,
 <tuple> = (<el_1>, <el_2> [, ...])          # Or: <el_1>, <el_2> [, ...]
-````
+```
 
 ### Named Tuple
 
 **Tuple's subclass with named elements.**
 
-````python
+```python
 >>> from collections import namedtuple
 >>> Point = namedtuple('Point', 'x y')
 >>> p = Point(1, y=2)
@@ -161,112 +159,112 @@ Point(x=1, y=2)
 1
 >>> getattr(p, 'y')
 2
-````
+```
 
 ## Range
 
 **Immutable and hashable sequence of integers.**
 
-````python
+```python
 <range> = range(stop)                       # range(to_exclusive)
 <range> = range(start, stop)                # range(from_inclusive, to_exclusive)
 <range> = range(start, stop, ±step)         # range(from_inclusive, to_exclusive, ±step_size)
-````
+```
 
-````python
+```python
 >>> [i for i in range(3)]
 [0, 1, 2]
-````
+```
 
 ## Enumerate
 
-````python
+```python
 for i, el in enumerate(<collection> [, i_start]):
     ...
-````
+```
 
 ## Iterator
 
-````python
+```python
 <iter> = iter(<collection>)                 # `iter(<iter>)` returns unmodified iterator.
 <iter> = iter(<function>, to_exclusive)     # A sequence of return values until 'to_exclusive'.
 <el>   = next(<iter> [, default])           # Raises StopIteration or returns 'default' on end.
 <list> = list(<iter>)                       # Returns a list of iterator's remaining elements.
-````
+```
 
 ### Itertools
 
-````python
+```python
 from itertools import count, repeat, cycle, chain, islice
-````
+```
 
-````python
+```python
 <iter> = count(start=0, step=1)             # Returns updated value endlessly. Accepts floats.
 <iter> = repeat(<el> [, times])             # Returns element endlessly or 'times' times.
 <iter> = cycle(<collection>)                # Repeats the sequence endlessly.
-````
+```
 
-````python
+```python
 <iter> = chain(<coll_1>, <coll_2> [, ...])  # Empties collections in order (figuratively).
 <iter> = chain.from_iterable(<coll>)        # Empties collections inside a collection in order.
-````
+```
 
-````python
+```python
 <iter> = islice(<coll>, to_exclusive)       # Only returns first 'to_exclusive' elements.
 <iter> = islice(<coll>, from_inclusive, …)  # `to_exclusive, +step_size`. Indices can be None.
-````
+```
 
 ## Generator
 
-* **Any function that contains a yield statement returns a generator.**
-* **Generators and iterators are interchangeable.**
+- **Any function that contains a yield statement returns a generator.**
+- **Generators and iterators are interchangeable.**
 
-````python
+```python
 def count(start, step):
     while True:
         yield start
         start += step
-````
+```
 
-````python
+```python
 >>> counter = count(10, 2)
 >>> next(counter), next(counter), next(counter)
 (10, 12, 14)
-````
+```
 
 ## Type
 
-* **Everything is an object.**
-* **Every object has a type.**
-* **Type and class are synonymous.**
+- **Everything is an object.**
+- **Every object has a type.**
+- **Type and class are synonymous.**
 
-````python
+```python
 <type> = type(<el>)                          # Or: <el>.__class__
 <bool> = isinstance(<el>, <type>)            # Or: issubclass(type(<el>), <type>)
-````
+```
 
-````python
+```python
 >>> type('a'), 'a'.__class__, str
 (<class 'str'>, <class 'str'>, <class 'str'>)
-````
+```
 
 #### Some types do not have built-in names, so they must be imported
 
-````python
+```python
 from types import FunctionType, MethodType, LambdaType, GeneratorType, ModuleType
-````
+```
 
 ### Abstract Base Classes
 
 **Each abstract base class specifies a set of virtual subclasses. These classes are then recognized by isinstance() and issubclass() as subclasses of the ABC, although they are really not. ABC can also manually decide whether or not a specific class is its virtual subclass, usually based on which methods the class has implemented. For instance, Iterable ABC looks for method iter(), while Collection ABC looks for iter(), contains() and len().**
 
-````python
+```python
 >>> from collections.abc import Iterable, Collection, Sequence
 >>> isinstance([1, 2, 3], Iterable)
 True
-````
+```
 
-````text
+```text
 +------------------+------------+------------+------------+
 |                  |  Iterable  | Collection |  Sequence  |
 +------------------+------------+------------+------------+
@@ -274,15 +272,15 @@ True
 | dict, set        |    yes     |    yes     |            |
 | iter             |    yes     |            |            |
 +------------------+------------+------------+------------+
-````
+```
 
-````python
+```python
 >>> from numbers import Number, Complex, Real, Rational, Integral
 >>> isinstance(123, Number)
 True
-````
+```
 
-````text
+```text
 +--------------------+----------+----------+----------+----------+----------+
 |                    |  Number  |  Complex |   Real   | Rational | Integral |
 +--------------------+----------+----------+----------+----------+----------+
@@ -292,46 +290,46 @@ True
 | complex            |   yes    |   yes    |          |          |          |
 | decimal.Decimal    |   yes    |          |          |          |          |
 +--------------------+----------+----------+----------+----------+----------+
-````
+```
 
 ## String
 
-````python
+```python
 <str>  = <str>.strip()                       # Strips all whitespace characters from both ends.
 <str>  = <str>.strip('<chars>')              # Strips all passed characters from both ends.
-````
+```
 
-````python
+```python
 <list> = <str>.split()                       # Splits on one or more whitespace characters.
 <list> = <str>.split(sep=None, maxsplit=-1)  # Splits on 'sep' str at most 'maxsplit' times.
 <list> = <str>.splitlines(keepends=False)    # On [\n\r\f\v\x1c-\x1e\x85\u2028\u2029] and \r\n.
 <str>  = <str>.join(<coll_of_strings>)       # Joins elements using string as a separator.
-````
+```
 
-````python
+```python
 <bool> = <sub_str> in <str>                  # Checks if string contains a substring.
 <bool> = <str>.startswith(<sub_str>)         # Pass tuple of strings for multiple options.
 <bool> = <str>.endswith(<sub_str>)           # Pass tuple of strings for multiple options.
 <int>  = <str>.find(<sub_str>)               # Returns start index of the first match or -1.
 <int>  = <str>.index(<sub_str>)              # Same, but raises ValueError if missing.
-````
+```
 
-````python
+```python
 <str>  = <str>.replace(old, new [, count])   # Replaces 'old' with 'new' at most 'count' times.
 <str>  = <str>.translate(<table>)            # Use `str.maketrans(<dict>)` to generate table.
-````
+```
 
-````python
+```python
 <str>  = chr(<int>)                          # Converts int to Unicode character.
 <int>  = ord(<str>)                          # Converts Unicode character to int.
-````
+```
 
-* **Also: `'lstrip()'`, `'rstrip()'` and `'rsplit()'`.**
-* **Also: `'lower()'`, `'upper()'`, `'capitalize()'` and `'title()'`.**
+- **Also: `'lstrip()'`, `'rstrip()'` and `'rsplit()'`.**
+- **Also: `'lower()'`, `'upper()'`, `'capitalize()'` and `'title()'`.**
 
 ### Property Methods
 
-````text
+```text
 +---------------+----------+----------+----------+----------+----------+
 |               | [ !#$%…] | [a-zA-Z] |  [¼½¾]   |  [²³¹]   |  [0-9]   |
 +---------------+----------+----------+----------+----------+----------+
@@ -341,13 +339,13 @@ True
 | isdigit()     |          |          |          |   yes    |   yes    |
 | isdecimal()   |          |          |          |          |   yes    |
 +---------------+----------+----------+----------+----------+----------+
-````
+```
 
-* **Also: `'isspace()'` checks for `'[ \t\n\r\f\v\x1c-\x1f\x85\u2000…]'`.**
+- **Also: `'isspace()'` checks for `'[ \t\n\r\f\v\x1c-\x1f\x85\u2000…]'`.**
 
 ## Regex
 
-````python
+```python
 import re
 <str>   = re.sub(<regex>, new, text, count=0)  # Substitutes all occurrences with 'new'.
 <list>  = re.findall(<regex>, text)            # Returns all occurrences as strings.
@@ -355,82 +353,82 @@ import re
 <Match> = re.search(<regex>, text)             # Searches for first occurrence of the pattern.
 <Match> = re.match(<regex>, text)              # Searches only at the beginning of the text.
 <iter>  = re.finditer(<regex>, text)           # Returns all occurrences as Match objects.
-````
+```
 
-* **Argument 'new' can be a function that accepts a Match object and returns a string.**
-* **Search() and match() return None if they can't find a match.**
-* **Argument `'flags=re.IGNORECASE'` can be used with all functions.**
-* **Argument `'flags=re.MULTILINE'` makes `'^'` and `'$'` match the start/end of each line.**
-* **Argument `'flags=re.DOTALL'` makes dot also accept the `'\n'`.**
-* **Use `r'\1'` or `'\\1'` for backreference (`'\1'` returns a character with octal code 1).**
-* **Add `'?'` after `'*'` and `'+'` to make them non-greedy.**
+- **Argument 'new' can be a function that accepts a Match object and returns a string.**
+- **Search() and match() return None if they can't find a match.**
+- **Argument `'flags=re.IGNORECASE'` can be used with all functions.**
+- **Argument `'flags=re.MULTILINE'` makes `'^'` and `'$'` match the start/end of each line.**
+- **Argument `'flags=re.DOTALL'` makes dot also accept the `'\n'`.**
+- **Use `r'\1'` or `'\\1'` for backreference (`'\1'` returns a character with octal code 1).**
+- **Add `'?'` after `'*'` and `'+'` to make them non-greedy.**
 
 ### Match Object
 
-````python
+```python
 <str>   = <Match>.group()                      # Returns the whole match. Also group(0).
 <str>   = <Match>.group(1)                     # Returns part in the first bracket.
 <tuple> = <Match>.groups()                     # Returns all bracketed parts.
 <int>   = <Match>.start()                      # Returns start index of the match.
 <int>   = <Match>.end()                        # Returns exclusive end index of the match.
-````
+```
 
 ### Special Sequences
 
-````python
+```python
 '\d' == '[0-9]'                                # Matches decimal characters.
 '\w' == '[a-zA-Z0-9_]'                         # Matches alphanumerics and underscore.
 '\s' == '[ \t\n\r\f\v]'                        # Matches whitespaces.
-````
+```
 
-* **By default, decimal characters, alphanumerics and whitespaces from all alphabets are matched unless `'flags=re.ASCII'` argument is used.**
-* **As shown above, it restricts all special sequence matches to the first 128 characters and prevents `'\s'` from accepting `'[\x1c-\x1f]'` (the so-called separator characters).**
-* **Use a capital letter for negation (all non-ASCII characters will be matched when used in combination with ASCII flag).**
+- **By default, decimal characters, alphanumerics and whitespaces from all alphabets are matched unless `'flags=re.ASCII'` argument is used.**
+- **As shown above, it restricts all special sequence matches to the first 128 characters and prevents `'\s'` from accepting `'[\x1c-\x1f]'` (the so-called separator characters).**
+- **Use a capital letter for negation (all non-ASCII characters will be matched when used in combination with ASCII flag).**
 
 ## Format
 
-````python
+```python
 <str> = f'{<el_1>}, {<el_2>}'            # Curly brackets can also contain expressions.
 <str> = '{}, {}'.format(<el_1>, <el_2>)  # Or: '{0}, {a}'.format(<el_1>, a=<el_2>)
 <str> = '%s, %s' % (<el_1>, <el_2>)      # Redundant and inferior C style formatting.
-````
+```
 
 ### Attributes
 
-````python
+```python
 >>> Person = collections.namedtuple('Person', 'name height')
 >>> person = Person('Jean-Luc', 187)
 >>> f'{person.height}'
 '187'
 >>> '{p.height}'.format(p=person)
 '187'
-````
+```
 
 ### General Options
 
-````python
+```python
 {<el>:<10}                               # '<el>      '
 {<el>:^10}                               # '   <el>   '
 {<el>:>10}                               # '      <el>'
 {<el>:.<10}                              # '<el>......'
 {<el>:0}                                 # '<el>'
-````
+```
 
-* **Options can be generated dynamically: `f'{<el>:{<str/int>}[…]}'`.**
-* **Adding `'!r'` before the colon converts object to string by calling its [repr()](#class) method.**
+- **Options can be generated dynamically: `f'{<el>:{<str/int>}[…]}'`.**
+- **Adding `'!r'` before the colon converts object to string by calling its [repr()](#class) method.**
 
 ### Strings
 
-````python
+```python
 {'abcde':10}                             # 'abcde     '
 {'abcde':10.3}                           # 'abc       '
 {'abcde':.3}                             # 'abc'
 {'abcde'!r:10}                           # "'abcde'   "
-````
+```
 
 ### Numbers
 
-````python
+```python
 {123456:10}                              # '    123456'
 {123456:10,}                             # '   123,456'
 {123456:10_}                             # '   123_456'
@@ -438,20 +436,20 @@ import re
 {123456:=+10}                            # '+   123456'
 {123456: }                               # ' 123456'
 {-123456: }                              # '-123456'
-````
+```
 
 ### Floats
 
-````python
+```python
 {1.23456:10.3}                           # '      1.23'
 {1.23456:10.3f}                          # '     1.235'
 {1.23456:10.3e}                          # ' 1.235e+00'
 {1.23456:10.3%}                          # '  123.456%'
-````
+```
 
 #### Comparison of presentation types
 
-````text
+```text
 +--------------+----------------+----------------+----------------+----------------+
 |              |    {<float>}   |   {<float>:f}  |   {<float>:e}  |   {<float>:%}  |
 +--------------+----------------+----------------+----------------+----------------+
@@ -463,9 +461,9 @@ import re
 |  5.6789      |   '5.6789'     |    '5.678900'  | '5.678900e+00' |  '567.890000%' |
 | 56.789       |  '56.789'      |   '56.789000'  | '5.678900e+01' | '5678.900000%' |
 +--------------+----------------+----------------+----------------+----------------+
-````
+```
 
-````text
+```text
 +--------------+----------------+----------------+----------------+----------------+
 |              |  {<float>:.2}  |  {<float>:.2f} |  {<float>:.2e} |  {<float>:.2%} |
 +--------------+----------------+----------------+----------------+----------------+
@@ -477,234 +475,234 @@ import re
 |  5.6789      |    '5.7'       |      '5.68'    |   '5.68e+00'   |    '567.89%'   |
 | 56.789       |    '5.7e+01'   |     '56.79'    |   '5.68e+01'   |   '5678.90%'   |
 +--------------+----------------+----------------+----------------+----------------+
-````
+```
 
-* **When both rounding up and rounding down are possible, the one that returns result with even last digit is chosen. That makes `'{6.5:.0f}'` a `'6'` and `'{7.5:.0f}'` an `'8'`.**
-* **This rule only effects numbers that can be represented exactly by a float (`.5`, `.25`, …).**
+- **When both rounding up and rounding down are possible, the one that returns result with even last digit is chosen. That makes `'{6.5:.0f}'` a `'6'` and `'{7.5:.0f}'` an `'8'`.**
+- **This rule only effects numbers that can be represented exactly by a float (`.5`, `.25`, …).**
 
 ### Ints
 
-````python
+```python
 {90:c}                                   # 'Z'
 {90:b}                                   # '1011010'
 {90:X}                                   # '5A'
-````
+```
 
 ## Numbers
 
-````python
+```python
 <int>      = int(<float/str/bool>)       # Or: math.floor(<float>)
 <float>    = float(<int/str/bool>)       # Or: <real>e±<int>
 <complex>  = complex(real=0, imag=0)     # Or: <real> ± <real>j
 <Fraction> = fractions.Fraction(0, 1)    # Or: Fraction(numerator=0, denominator=1)
 <Decimal>  = decimal.Decimal(<str/int>)  # Or: Decimal((sign, digits, exponent))
-````
+```
 
-* **`'int(<str>)'` and `'float(<str>)'` raise ValueError on malformed strings.**
-* **Decimal numbers are stored exactly, unlike most floats where `'1.1 + 2.2 != 3.3'`.**
-* **Floats can be compared with: `'math.isclose(<float>, <float>)'`.**
-* **Precision of decimal operations is set with: `'decimal.getcontext().prec = <int>'`.**
+- **`'int(<str>)'` and `'float(<str>)'` raise ValueError on malformed strings.**
+- **Decimal numbers are stored exactly, unlike most floats where `'1.1 + 2.2 != 3.3'`.**
+- **Floats can be compared with: `'math.isclose(<float>, <float>)'`.**
+- **Precision of decimal operations is set with: `'decimal.getcontext().prec = <int>'`.**
 
 ### Basic Functions
 
-````python
+```python
 <num> = pow(<num>, <num>)                # Or: <num> ** <num>
 <num> = abs(<num>)                       # <float> = abs(<complex>)
 <num> = round(<num> [, ±ndigits])        # `round(126, -1) == 130`
-````
+```
 
 ### Math
 
-````python
+```python
 from math import e, pi, inf, nan, isinf, isnan
 from math import sin, cos, tan, asin, acos, atan, degrees, radians
 from math import log, log10, log2
-````
+```
 
 ### Statistics
 
-````python
+```python
 from statistics import mean, median, variance, stdev, quantiles, groupby
-````
+```
 
 ### Random
 
-````python
+```python
 from random import random, randint, choice, shuffle, gauss, seed
 
 <float> = random()                       # A float inside [0, 1).
 <int>   = randint(from_inc, to_inc)      # An int inside [from_inc, to_inc].
 <el>    = choice(<sequence>)             # Keeps the sequence intact.
-````
+```
 
 ### Bin, Hex
 
-````python
+```python
 <int> = ±0b<bin>                         # Or: ±0x<hex>
 <int> = int('±<bin>', 2)                 # Or: int('±<hex>', 16)
 <int> = int('±0b<bin>', 0)               # Or: int('±0x<hex>', 0)
 <str> = bin(<int>)                       # Returns '[-]0b<bin>'.
-````
+```
 
 ### Bitwise Operators
 
-````python
+```python
 <int> = <int> & <int>                    # And (0b1100 & 0b1010 == 0b1000).
 <int> = <int> | <int>                    # Or  (0b1100 | 0b1010 == 0b1110).
 <int> = <int> ^ <int>                    # Xor (0b1100 ^ 0b1010 == 0b0110).
 <int> = <int> << n_bits                  # Left shift. Use >> for right.
 <int> = ~<int>                           # Not. Also -<int> - 1.
-````
+```
 
 ## Combinatorics
 
-* **Every function returns an iterator.**
-* **If you want to print the iterator, you need to pass it to the list() function first!**
+- **Every function returns an iterator.**
+- **If you want to print the iterator, you need to pass it to the list() function first!**
 
-````python
+```python
 from itertools import product, combinations, combinations_with_replacement, permutations
-````
+```
 
-````python
+```python
 >>> product([0, 1], repeat=3)
 [(0, 0, 0), (0, 0, 1), (0, 1, 0), (0, 1, 1), ..., (1, 1, 1)]
-````
+```
 
-````python
+```python
 >>> product('abc', 'abc')                    #   a  b  c
 [('a', 'a'), ('a', 'b'), ('a', 'c'),         # a x  x  x
  ('b', 'a'), ('b', 'b'), ('b', 'c'),         # b x  x  x
  ('c', 'a'), ('c', 'b'), ('c', 'c')]         # c x  x  x
-````
+```
 
-````python
+```python
 >>> combinations('abc', 2)                   #   a  b  c
 [('a', 'b'), ('a', 'c'),                     # a .  x  x
  ('b', 'c')]                                 # b .  .  x
-````
+```
 
-````python
+```python
 >>> combinations_with_replacement('abc', 2)  #   a  b  c
 [('a', 'a'), ('a', 'b'), ('a', 'c'),         # a x  x  x
  ('b', 'b'), ('b', 'c'),                     # b .  x  x
  ('c', 'c')]                                 # c .  .  x
-````
+```
 
-````python
+```python
 >>> permutations('abc', 2)                   #   a  b  c
 [('a', 'b'), ('a', 'c'),                     # a .  x  x
  ('b', 'a'), ('b', 'c'),                     # b x  .  x
  ('c', 'a'), ('c', 'b')]                     # c x  x  .
-````
+```
 
 ## Datetime
 
-* **Module 'datetime' provides 'date' `<D>`, 'time' `<T>`, 'datetime' `<DT>` and 'timedelta' `<TD>` classes. All are immutable and hashable.**
-* **Time and datetime objects can be 'aware' `<a>`, meaning they have defined timezone, or 'naive' `<n>`, meaning they don't.**
-* **If object is naive, it is presumed to be in the system's timezone.**
+- **Module 'datetime' provides 'date' `<D>`, 'time' `<T>`, 'datetime' `<DT>` and 'timedelta' `<TD>` classes. All are immutable and hashable.**
+- **Time and datetime objects can be 'aware' `<a>`, meaning they have defined timezone, or 'naive' `<n>`, meaning they don't.**
+- **If object is naive, it is presumed to be in the system's timezone.**
 
-````python
+```python
 from datetime import date, time, datetime, timedelta
 from dateutil.tz import UTC, tzlocal, gettz, datetime_exists, resolve_imaginary
-````
+```
 
 ### Constructors
 
-````python
+```python
 <D>  = date(year, month, day)               # Only accepts valid dates from 1 to 9999 AD.
 <T>  = time(hour=0, minute=0, second=0)     # Also: `microsecond=0, tzinfo=None, fold=0`.
 <DT> = datetime(year, month, day, hour=0)   # Also: `minute=0, second=0, microsecond=0, …`.
 <TD> = timedelta(weeks=0, days=0, hours=0)  # Also: `minutes=0, seconds=0, microsecond=0`.
-````
+```
 
-* **Use `'<D/DT>.weekday()'` to get the day of the week as an int, with Monday being 0.**
-* **`'fold=1'` means the second pass in case of time jumping back for one hour.**
-* **Timedelta normalizes arguments to ±days, seconds (\< 86 400) and microseconds (\< 1M).**
+- **Use `'<D/DT>.weekday()'` to get the day of the week as an int, with Monday being 0.**
+- **`'fold=1'` means the second pass in case of time jumping back for one hour.**
+- **Timedelta normalizes arguments to ±days, seconds (\< 86 400) and microseconds (\< 1M).**
 
 ### Now
 
-````python
+```python
 <D/DTn>  = D/DT.today()                     # Current local date or naive datetime.
 <DTn>    = DT.utcnow()                      # Naive datetime from current UTC time.
 <DTa>    = DT.now(<tzinfo>)                 # Aware datetime from current tz time.
-````
+```
 
-* **To extract time use `'<DTn>.time()'`, `'<DTa>.time()'` or `'<DTa>.timetz()'`.**
+- **To extract time use `'<DTn>.time()'`, `'<DTa>.time()'` or `'<DTa>.timetz()'`.**
 
 ### Timezone
 
-````python
+```python
 <tzinfo> = UTC                              # UTC timezone. London without DST.
 <tzinfo> = tzlocal()                        # Local timezone. Also gettz().
 <tzinfo> = gettz('<Continent>/<City>')      # 'Continent/City_Name' timezone or None.
 <DTa>    = <DT>.astimezone(<tzinfo>)        # Datetime, converted to the passed timezone.
 <Ta/DTa> = <T/DT>.replace(tzinfo=<tzinfo>)  # Unconverted object with a new timezone.
-````
+```
 
 ### Encode
 
-````python
+```python
 <D/T/DT> = D/T/DT.fromisoformat('<iso>')    # Object from ISO string. Raises ValueError.
 <DT>     = DT.strptime(<str>, '<format>')   # Datetime from str, according to format.
 <D/DTn>  = D/DT.fromordinal(<int>)          # D/DTn from days since the Gregorian NYE 1.
 <DTn>    = DT.fromtimestamp(<real>)         # Local time DTn from seconds since the Epoch.
 <DTa>    = DT.fromtimestamp(<real>, <tz.>)  # Aware datetime from seconds since the Epoch.
-````
+```
 
-* **ISO strings come in following forms: `'YYYY-MM-DD'`, `'HH:MM:SS.mmmuuu[±HH:MM]'`, or both separated by an arbitrary character. All parts following hours are optional.**
-* **Python uses the Unix Epoch: `'1970-01-01 00:00 UTC'`, `'1970-01-01 01:00 CET'`, ...**
+- **ISO strings come in following forms: `'YYYY-MM-DD'`, `'HH:MM:SS.mmmuuu[±HH:MM]'`, or both separated by an arbitrary character. All parts following hours are optional.**
+- **Python uses the Unix Epoch: `'1970-01-01 00:00 UTC'`, `'1970-01-01 01:00 CET'`, ...**
 
 ### Decode
 
-````python
+```python
 <str>    = <D/T/DT>.isoformat(sep='T')      # Also: `timespec='auto/hours/minutes/seconds/…'`.
 <str>    = <D/T/DT>.strftime('<format>')    # Custom string representation.
 <int>    = <D/DT>.toordinal()               # Days since Gregorian NYE 1, ignoring time and tz.
 <float>  = <DTn>.timestamp()                # Seconds since the Epoch, from DTn in local tz.
 <float>  = <DTa>.timestamp()                # Seconds since the Epoch, from aware datetime.
-````
+```
 
 ### Format
 
-````python
+```python
 >>> dt = datetime.strptime('2015-05-14 23:39:00.00 +2000', '%Y-%m-%d %H:%M:%S.%f %z')
 >>> dt.strftime("%A, %dth of %B '%y, %I:%M%p %Z")
 "Thursday, 14th of May '15, 11:39PM UTC+02:00"
-````
+```
 
-* **`'%Z'` only accepts `'UTC/GMT'` and local timezone's code. `'%z'` also accepts `'±HH:MM'`.**
-* **For abbreviated weekday and month use `'%a'` and `'%b'`.**
+- **`'%Z'` only accepts `'UTC/GMT'` and local timezone's code. `'%z'` also accepts `'±HH:MM'`.**
+- **For abbreviated weekday and month use `'%a'` and `'%b'`.**
 
 ### Arithmetics
 
-````python
+```python
 <D/DT>   = <D/DT>  ± <TD>                   # Returned datetime can fall into missing hour.
 <TD>     = <D/DTn> - <D/DTn>                # Returns the difference, ignoring time jumps.
 <TD>     = <DTa>   - <DTa>                  # Ignores time jumps if they share tzinfo object.
 <TD>     = <TD>    * <real>                 # Also: <TD> = abs(<TD>) and <TD> = <TD> ±% <TD>.
 <float>  = <TD>    / <TD>                   # How many weeks/years there are in TD. Also //.
-````
+```
 
 ## Arguments
 
 ### Inside Function Call
 
-````python
+```python
 func(<positional_args>)                           # func(0, 0)
 func(<keyword_args>)                              # func(x=0, y=0)
 func(<positional_args>, <keyword_args>)           # func(0, y=0)
-````
+```
 
 ### Inside Function Definition
 
-````python
+```python
 def func(<nondefault_args>): ...                  # def func(x, y): ...
 def func(<default_args>): ...                     # def func(x=0, y=0): ...
 def func(<nondefault_args>, <default_args>): ...  # def func(x, y=0): ...
-````
+```
 
-* **Default values are evaluated when function is first encountered in the scope.**
-* **Any mutation of a mutable default value will persist between invocations.**
+- **Default values are evaluated when function is first encountered in the scope.**
+- **Any mutation of a mutable default value will persist between invocations.**
 
 ## Splat Operator
 
@@ -712,199 +710,199 @@ def func(<nondefault_args>, <default_args>): ...  # def func(x, y=0): ...
 
 **Splat expands a collection into positional arguments, while splatty-splat expands a dictionary into keyword arguments.**
 
-````python
+```python
 args   = (1, 2)
 kwargs = {'x': 3, 'y': 4, 'z': 5}
 func(*args, **kwargs)
-````
+```
 
 #### Is the same as
 
-````python
+```python
 func(1, 2, x=3, y=4, z=5)
-````
+```
 
 ### Inside Function Definition
 
 **Splat combines zero or more positional arguments into a tuple, while splatty-splat combines zero or more keyword arguments into a dictionary.**
 
-````python
+```python
 def add(*a):
     return sum(a)
-````
+```
 
-````python
+```python
 >>> add(1, 2, 3)
 6
-````
+```
 
 #### Legal argument combinations
 
-````python
+```python
 def f(*, x, y, z): ...          # f(x=1, y=2, z=3)
 def f(x, *, y, z): ...          # f(x=1, y=2, z=3) | f(1, y=2, z=3)
 def f(x, y, *, z): ...          # f(x=1, y=2, z=3) | f(1, y=2, z=3) | f(1, 2, z=3)
-````
+```
 
-````python
+```python
 def f(*args): ...               # f(1, 2, 3)
 def f(x, *args): ...            # f(1, 2, 3)
 def f(*args, z): ...            # f(1, 2, z=3)
-````
+```
 
-````python
+```python
 def f(**kwargs): ...            # f(x=1, y=2, z=3)
 def f(x, **kwargs): ...         # f(x=1, y=2, z=3) | f(1, y=2, z=3)
 def f(*, x, **kwargs): ...      # f(x=1, y=2, z=3)
-````
+```
 
-````python
+```python
 def f(*args, **kwargs): ...     # f(x=1, y=2, z=3) | f(1, y=2, z=3) | f(1, 2, z=3) | f(1, 2, 3)
 def f(x, *args, **kwargs): ...  # f(x=1, y=2, z=3) | f(1, y=2, z=3) | f(1, 2, z=3) | f(1, 2, 3)
 def f(*args, y, **kwargs): ...  # f(x=1, y=2, z=3) | f(1, y=2, z=3)
-````
+```
 
 ### Other Uses
 
-````python
+```python
 <list>  = [*<coll.> [, ...]]    # Or: list(<collection>) [+ ...]
 <tuple> = (*<coll.>, [...])     # Or: tuple(<collection>) [+ ...]
 <set>   = {*<coll.> [, ...]}    # Or: set(<collection>) [| ...]
 <dict>  = {**<dict> [, ...]}    # Or: dict(**<dict> [, ...])
-````
+```
 
-````python
+```python
 head, *body, tail = <coll.>     # Head or tail can be omitted.
-````
+```
 
 ## Inline
 
 ### Lambda
 
-````python
+```python
 <func> = lambda: <return_value>                     # A single statement function.
 <func> = lambda <arg_1>, <arg_2>: <return_value>    # Also accepts default arguments.
-````
+```
 
 ### Comprehensions
 
-````python
+```python
 <list> = [i+1 for i in range(10)]                   # Or: [1, 2, ..., 10]
 <iter> = (i for i in range(10) if i > 5)            # Or: iter([6, 7, 8, 9])
 <set>  = {i+5 for i in range(10)}                   # Or: {5, 6, ..., 14}
 <dict> = {i: i*2 for i in range(10)}                # Or: {0: 0, 1: 2, ..., 9: 18}
-````
+```
 
-````python
+```python
 >>> [l+r for l in 'abc' for r in 'abc']
 ['aa', 'ab', 'ac', ..., 'cc']
-````
+```
 
 ### Map, Filter, Reduce
 
-````python
+```python
 <iter> = map(lambda x: x + 1, range(10))            # Or: iter([1, 2, ..., 10])
 <iter> = filter(lambda x: x > 5, range(10))         # Or: iter([6, 7, 8, 9])
 <obj>  = reduce(lambda out, x: out + x, range(10))  # Or: 45
-````
+```
 
-* **Reduce must be imported from the functools module.**
+- **Reduce must be imported from the functools module.**
 
 ### Any, All
 
-````python
+```python
 <bool> = any(<collection>)                          # Is `bool(el)` True for any element.
 <bool> = all(<collection>)                          # Is True for all elements or empty.
-````
+```
 
 ### Conditional Expression
 
-````python
+```python
 <obj> = <exp> if <condition> else <exp>             # Only one expression gets evaluated.
-````
+```
 
-````python
+```python
 >>> [a if a else 'zero' for a in (0, 1, 2, 3)]
 ['zero', 1, 2, 3]
-````
+```
 
 ### Named Tuple, Enum, Dataclass
 
-````python
+```python
 from collections import namedtuple
 Point = namedtuple('Point', 'x y')                  # Creates a tuple's subclass.
 point = Point(0, 0)                                 # Returns its instance.
-````
+```
 
-````python
+```python
 from enum import Enum
 Direction = Enum('Direction', 'n e s w')            # Creates an enum.
 direction = Direction.n                             # Returns its member.
-````
+```
 
-````python
+```python
 from dataclasses import make_dataclass
 Player = make_dataclass('Player', ['loc', 'dir'])   # Creates a class.
 player = Player(point, direction)                   # Returns its instance.
-````
+```
 
 ## Imports
 
-````python
+```python
 import <module>            # Imports a built-in or '<module>.py'.
 import <package>           # Imports a built-in or '<package>/__init__.py'.
 import <package>.<module>  # Imports a built-in or '<package>/<module>.py'.
-````
+```
 
-* **Package is a collection of modules, but it can also define its own objects.**
-* **On a filesystem this corresponds to a directory of Python files with an optional init script.**
-* **Running `'import <package>'` does not automatically provide access to the package's modules unless they are explicitly imported in its init script.**
+- **Package is a collection of modules, but it can also define its own objects.**
+- **On a filesystem this corresponds to a directory of Python files with an optional init script.**
+- **Running `'import <package>'` does not automatically provide access to the package's modules unless they are explicitly imported in its init script.**
 
 ## Closure
 
 **We have/get a closure in Python when:**
 
-* **A nested function references a value of its enclosing function and then**
-* **the enclosing function returns the nested function.**
+- **A nested function references a value of its enclosing function and then**
+- **the enclosing function returns the nested function.**
 
-````python
+```python
 def get_multiplier(a):
     def out(b):
         return a * b
     return out
-````
+```
 
-````python
+```python
 >>> multiply_by_3 = get_multiplier(3)
 >>> multiply_by_3(10)
 30
-````
+```
 
-* **If multiple nested functions within enclosing function reference the same value, that value gets shared.**
-* **To dynamically access function's first free variable use `'<function>.__closure__[0].cell_contents'`.**
+- **If multiple nested functions within enclosing function reference the same value, that value gets shared.**
+- **To dynamically access function's first free variable use `'<function>.__closure__[0].cell_contents'`.**
 
 ### Partial
 
-````python
+```python
 from functools import partial
 <function> = partial(<function> [, <arg_1>, <arg_2>, ...])
-````
+```
 
-````python
+```python
 >>> import operator as op
 >>> multiply_by_3 = partial(op.mul, 3)
 >>> multiply_by_3(10)
 30
-````
+```
 
-* **Partial is also useful in cases when function needs to be passed as an argument because it enables us to set its arguments beforehand.**
-* **A few examples being: `'defaultdict(<function>)'`, `'iter(<function>, to_exclusive)'` and dataclass's `'field(default_factory=<function>)'`.**
+- **Partial is also useful in cases when function needs to be passed as an argument because it enables us to set its arguments beforehand.**
+- **A few examples being: `'defaultdict(<function>)'`, `'iter(<function>, to_exclusive)'` and dataclass's `'field(default_factory=<function>)'`.**
 
 ### Non-Local
 
 **If variable is being assigned to anywhere in the scope, it is regarded as a local variable, unless it is declared as a 'global' or a 'nonlocal'.**
 
-````python
+```python
 def get_counter():
     i = 0
     def out():
@@ -912,30 +910,30 @@ def get_counter():
         i += 1
         return i
     return out
-````
+```
 
-````python
+```python
 >>> counter = get_counter()
 >>> counter(), counter(), counter()
 (1, 2, 3)
-````
+```
 
 ## Decorator
 
-* **A decorator takes a function, adds some functionality and returns it.**
-* **It can be any [callable](#callable), but is usually implemented as a function that returns a [closure](#closure).**
+- **A decorator takes a function, adds some functionality and returns it.**
+- **It can be any [callable](#callable), but is usually implemented as a function that returns a [closure](#closure).**
 
-````python
+```python
 @decorator_name
 def function_that_gets_passed_to_decorator():
     ...
-````
+```
 
 ### Debugger Example
 
 **Decorator that prints function's name every time the function is called.**
 
-````python
+```python
 from functools import wraps
 
 def debug(func):
@@ -948,31 +946,31 @@ def debug(func):
 @debug
 def add(x, y):
     return x + y
-````
+```
 
-* **Wraps is a helper decorator that copies the metadata of the passed function (func) to the function it is wrapping (out).**
-* **Without it `'add.__name__'` would return `'out'`.**
+- **Wraps is a helper decorator that copies the metadata of the passed function (func) to the function it is wrapping (out).**
+- **Without it `'add.__name__'` would return `'out'`.**
 
 ### LRU Cache
 
 **Decorator that caches function's return values. All function's arguments must be hashable.**
 
-````python
+```python
 from functools import lru_cache
 
 @lru_cache(maxsize=None)
 def fib(n):
     return n if n < 2 else fib(n-2) + fib(n-1)
-````
+```
 
-* **Default size of the cache is 128 values. Passing `'maxsize=None'` makes it unbounded.**
-* **CPython interpreter limits recursion depth to 1000 by default. To increase it use `'sys.setrecursionlimit(<depth>)'`.**
+- **Default size of the cache is 128 values. Passing `'maxsize=None'` makes it unbounded.**
+- **CPython interpreter limits recursion depth to 1000 by default. To increase it use `'sys.setrecursionlimit(<depth>)'`.**
 
 ### Parametrized Decorator
 
 **A decorator that accepts arguments and returns a normal decorator that accepts a function.**
 
-````python
+```python
 from functools import wraps
 
 def debug(print_result=False):
@@ -988,13 +986,13 @@ def debug(print_result=False):
 @debug(print_result=True)
 def add(x, y):
     return x + y
-````
+```
 
-* **Using only `'@debug'` to decorate the add() function would not work here, because debug would then receive the add() function as a 'print_result' argument. Decorators can however manually check if the argument they received is a function and act accordingly.**
+- **Using only `'@debug'` to decorate the add() function would not work here, because debug would then receive the add() function as a 'print_result' argument. Decorators can however manually check if the argument they received is a function and act accordingly.**
 
 ## Class
 
-````python
+```python
 class <name>:
     def __init__(self, a):
         self.a = a
@@ -1007,42 +1005,42 @@ class <name>:
     @classmethod
     def get_class_name(cls):
         return cls.__name__
-````
+```
 
-* **Return value of repr() should be unambiguous and of str() readable.**
-* **If only repr() is defined, it will also be used for str().**
-* **Methods decorated with `'@staticmethod'` do not receive 'self' nor 'cls' as their first arg.**
+- **Return value of repr() should be unambiguous and of str() readable.**
+- **If only repr() is defined, it will also be used for str().**
+- **Methods decorated with `'@staticmethod'` do not receive 'self' nor 'cls' as their first arg.**
 
 #### Str() use cases
 
-````python
+```python
 print(<el>)
 f'{<el>}'
 logging.warning(<el>)
 csv.writer(<file>).writerow([<el>])
 raise Exception(<el>)
-````
+```
 
 #### Repr() use cases
 
-````python
+```python
 print/str/repr([<el>])
 f'{<el>!r}'
 Z = dataclasses.make_dataclass('Z', ['a']); print/str/repr(Z(<el>))
 >>> <el>
-````
+```
 
 ### Constructor Overloading
 
-````python
+```python
 class <name>:
     def __init__(self, a=None):
         self.a = a
-````
+```
 
 ### Inheritance
 
-````python
+```python
 class Person:
     def __init__(self, name, age):
         self.name = name
@@ -1052,28 +1050,28 @@ class Employee(Person):
     def __init__(self, name, age, staff_num):
         super().__init__(name, age)
         self.staff_num = staff_num
-````
+```
 
 ### Multiple Inheritance
 
-````python
+```python
 class A: pass
 class B: pass
 class C(A, B): pass
-````
+```
 
 **MRO determines the order in which parent classes are traversed when searching for a method or an attribute:**
 
-````python
+```python
 >>> C.mro()
 [<class 'C'>, <class 'A'>, <class 'B'>, <class 'object'>]
-````
+```
 
 ### Property
 
 **Pythonic way of implementing getters and setters.**
 
-````python
+```python
 class Person:
     @property
     def name(self):
@@ -1082,20 +1080,20 @@ class Person:
     @name.setter
     def name(self, value):
         self._name = value.split()
-````
+```
 
-````python
+```python
 >>> person = Person()
 >>> person.name = '\t Guido  van Rossum \n'
 >>> person.name
 'Guido van Rossum'
-````
+```
 
 ### Dataclass
 
 **Decorator that automatically generates init(), repr() and eq() special methods.**
 
-````python
+```python
 from dataclasses import dataclass, field
 
 @dataclass(order=False, frozen=False)
@@ -1103,48 +1101,48 @@ class <class_name>:
     <attr_name_1>: <type>
     <attr_name_2>: <type> = <default_value>
     <attr_name_3>: list/dict/set = field(default_factory=list/dict/set)
-````
+```
 
-* **Objects can be made sortable with `'order=True'` and immutable with `'frozen=True'`.**
-* **For object to be hashable, all attributes must be hashable and 'frozen' must be True.**
-* **Function field() is needed because `'<attr_name>: list = []'` would make a list that is shared among all instances. Its 'default_factory' argument can be any [callable](#callable).**
-* **For attributes of arbitrary type use `'typing.Any'`.**
+- **Objects can be made sortable with `'order=True'` and immutable with `'frozen=True'`.**
+- **For object to be hashable, all attributes must be hashable and 'frozen' must be True.**
+- **Function field() is needed because `'<attr_name>: list = []'` would make a list that is shared among all instances. Its 'default_factory' argument can be any [callable](#callable).**
+- **For attributes of arbitrary type use `'typing.Any'`.**
 
 #### Inline
 
-````python
+```python
 from dataclasses import make_dataclass
 <class> = make_dataclass('<class_name>', <coll_of_attribute_names>)
 <class> = make_dataclass('<class_name>', <coll_of_tuples>)
 <tuple> = ('<attr_name>', <type> [, <default_value>])
-````
+```
 
 #### Rest of type annotations (CPython interpreter ignores them all)
 
-````python
+```python
 def func(<arg_name>: <type> [= <obj>]) -> <type>: ...
 <var_name>: typing.List/Set/Iterable/Sequence/Optional[<type>]
 <var_name>: typing.Dict/Tuple/Union[<type>, ...]
-````
+```
 
 ### Slots
 
 **Mechanism that restricts objects to attributes listed in 'slots' and significantly reduces their memory footprint.**
 
-````python
+```python
 class MyClassWithSlots:
     __slots__ = ['a']
     def __init__(self):
         self.a = 1
-````
+```
 
 ### Copy
 
-````python
+```python
 from copy import copy, deepcopy
 <object> = copy(<object>)
 <object> = deepcopy(<object>)
-````
+```
 
 ## Duck Types
 
@@ -1152,12 +1150,12 @@ from copy import copy, deepcopy
 
 ### Comparable
 
-* **If eq() method is not overridden, it returns `'id(self) == id(other)'`, which is the same as `'self is other'`.**
-* **That means all objects compare not equal by default.**
-* **Only the left side object has eq() method called, unless it returns NotImplemented, in which case the right object is consulted. False is returned if both return NotImplemented.**
-* **Ne() automatically works on any object that has eq() defined.**
+- **If eq() method is not overridden, it returns `'id(self) == id(other)'`, which is the same as `'self is other'`.**
+- **That means all objects compare not equal by default.**
+- **Only the left side object has eq() method called, unless it returns NotImplemented, in which case the right object is consulted. False is returned if both return NotImplemented.**
+- **Ne() automatically works on any object that has eq() defined.**
 
-````python
+```python
 class MyComparable:
     def __init__(self, a):
         self.a = a
@@ -1165,15 +1163,15 @@ class MyComparable:
         if isinstance(other, type(self)):
             return self.a == other.a
         return NotImplemented
-````
+```
 
 ### Hashable
 
-* **Hashable object needs both hash() and eq() methods and its hash value should never change.**
-* **Hashable objects that compare equal must have the same hash value, meaning default hash() that returns `'id(self)'` will not do.**
-* **That is why Python automatically makes classes unhashable if you only implement eq().**
+- **Hashable object needs both hash() and eq() methods and its hash value should never change.**
+- **Hashable objects that compare equal must have the same hash value, meaning default hash() that returns `'id(self)'` will not do.**
+- **That is why Python automatically makes classes unhashable if you only implement eq().**
 
-````python
+```python
 class MyHashable:
     def __init__(self, a):
         self._a = a
@@ -1186,15 +1184,15 @@ class MyHashable:
         return NotImplemented
     def __hash__(self):
         return hash(self.a)
-````
+```
 
 ### Sortable
 
-* **With 'total_ordering' decorator, you only need to provide eq() and one of lt(), gt(), le() or ge() special methods and the rest will be automatically generated.**
-* **Functions sorted() and min() only require lt() method, while max() only requires gt(). However, it is best to define them all so that confusion doesn't arise in other contexts.**
-* **When two lists, strings or dataclasses are compared, their values get compared in order until a pair of unequal values is found. The comparison of this two values is then returned. The shorter sequence is considered smaller in case of all values being equal.**
+- **With 'total_ordering' decorator, you only need to provide eq() and one of lt(), gt(), le() or ge() special methods and the rest will be automatically generated.**
+- **Functions sorted() and min() only require lt() method, while max() only requires gt(). However, it is best to define them all so that confusion doesn't arise in other contexts.**
+- **When two lists, strings or dataclasses are compared, their values get compared in order until a pair of unequal values is found. The comparison of this two values is then returned. The shorter sequence is considered smaller in case of all values being equal.**
 
-````python
+```python
 from functools import total_ordering
 
 @total_ordering
@@ -1209,15 +1207,15 @@ class MySortable:
         if isinstance(other, type(self)):
             return self.a < other.a
         return NotImplemented
-````
+```
 
 ### Iterator
 
-* **Any object that has methods next() and iter() is an iterator.**
-* **Next() should return next item or raise StopIteration.**
-* **Iter() should return 'self'.**
+- **Any object that has methods next() and iter() is an iterator.**
+- **Next() should return next item or raise StopIteration.**
+- **Iter() should return 'self'.**
 
-````python
+```python
 class Counter:
     def __init__(self):
         self.i = 0
@@ -1226,49 +1224,49 @@ class Counter:
         return self.i
     def __iter__(self):
         return self
-````
+```
 
-````python
+```python
 >>> counter = Counter()
 >>> next(counter), next(counter), next(counter)
 (1, 2, 3)
-````
+```
 
 #### Python has many different iterator objects
 
-* **Sequence iterators returned by the [iter()](#iterator) function, such as list_iterator and set_iterator.**
-* **Objects returned by the [itertools](#itertools) module, such as count, repeat and cycle.**
-* **Generators returned by the [generator functions](#generator) and [generator expressions](#comprehensions).**
-* **File objects returned by the [open()](#open) function, etc.**
+- **Sequence iterators returned by the [iter()](#iterator) function, such as list_iterator and set_iterator.**
+- **Objects returned by the [itertools](#itertools) module, such as count, repeat and cycle.**
+- **Generators returned by the [generator functions](#generator) and [generator expressions](#comprehensions).**
+- **File objects returned by the [open()](#open) function, etc.**
 
 ### Callable
 
-* **All functions and classes have a call() method, hence are callable.**
-* **When this cheatsheet uses `'<function>'` as an argument, it actually means `'<callable>'`.**
+- **All functions and classes have a call() method, hence are callable.**
+- **When this cheatsheet uses `'<function>'` as an argument, it actually means `'<callable>'`.**
 
-````python
+```python
 class Counter:
     def __init__(self):
         self.i = 0
     def __call__(self):
         self.i += 1
         return self.i
-````
+```
 
-````python
+```python
 >>> counter = Counter()
 >>> counter(), counter(), counter()
 (1, 2, 3)
-````
+```
 
 ### Context Manager
 
-* **Enter() should lock the resources and optionally return an object.**
-* **Exit() should release the resources.**
-* **Any exception that happens inside the with block is passed to the exit() method.**
-* **If it wishes to suppress the exception it must return a true value.**
+- **Enter() should lock the resources and optionally return an object.**
+- **Exit() should release the resources.**
+- **Any exception that happens inside the with block is passed to the exit() method.**
+- **If it wishes to suppress the exception it must return a true value.**
 
-````python
+```python
 class MyOpen:
     def __init__(self, filename):
         self.filename = filename
@@ -1277,24 +1275,24 @@ class MyOpen:
         return self.file
     def __exit__(self, exc_type, exception, traceback):
         self.file.close()
-````
+```
 
-````python
+```python
 >>> with open('test.txt', 'w') as file:
 ...     file.write('Hello World!')
 >>> with MyOpen('test.txt') as file:
 ...     print(file.read())
 Hello World!
-````
+```
 
 ## Iterable Duck Types
 
 ### Iterable
 
-* **Only required method is iter(). It should return an iterator of object's items.**
-* **Contains() automatically works on any object that has iter() defined.**
+- **Only required method is iter(). It should return an iterator of object's items.**
+- **Contains() automatically works on any object that has iter() defined.**
 
-````python
+```python
 class MyIterable:
     def __init__(self, a):
         self.a = a
@@ -1302,23 +1300,23 @@ class MyIterable:
         return iter(self.a)
     def __contains__(self, el):
         return el in self.a
-````
+```
 
-````python
+```python
 >>> obj = MyIterable([1, 2, 3])
 >>> [el for el in obj]
 [1, 2, 3]
 >>> 1 in obj
 True
-````
+```
 
 ### Collection
 
-* **Only required methods are iter() and len(). Len() should return the number of items.**
-* **This cheatsheet actually means `'<iterable>'` when it uses `'<collection>'`.**
-* **I chose not to use the name 'iterable' because it sounds scarier and more vague than 'collection'. The only drawback of this decision is that a reader could think a certain function doesn't accept iterators when it does, since iterators are the only built-in objects that are iterable but are not collections.**
+- **Only required methods are iter() and len(). Len() should return the number of items.**
+- **This cheatsheet actually means `'<iterable>'` when it uses `'<collection>'`.**
+- **I chose not to use the name 'iterable' because it sounds scarier and more vague than 'collection'. The only drawback of this decision is that a reader could think a certain function doesn't accept iterators when it does, since iterators are the only built-in objects that are iterable but are not collections.**
 
-````python
+```python
 class MyCollection:
     def __init__(self, a):
         self.a = a
@@ -1328,16 +1326,16 @@ class MyCollection:
         return el in self.a
     def __len__(self):
         return len(self.a)
-````
+```
 
 ### Sequence
 
-* **Only required methods are len() and getitem().**
-* **Getitem() should return an item at the passed index or raise IndexError.**
-* **Iter() and contains() automatically work on any object that has getitem() defined.**
-* **Reversed() automatically works on any object that has len() and getitem() defined.**
+- **Only required methods are len() and getitem().**
+- **Getitem() should return an item at the passed index or raise IndexError.**
+- **Iter() and contains() automatically work on any object that has getitem() defined.**
+- **Reversed() automatically works on any object that has len() and getitem() defined.**
 
-````python
+```python
 class MySequence:
     def __init__(self, a):
         self.a = a
@@ -1351,20 +1349,20 @@ class MySequence:
         return self.a[i]
     def __reversed__(self):
         return reversed(self.a)
-````
+```
 
 #### Discrepancies between glossary definitions and abstract base classes
 
-* **Glossary defines iterable as any object with iter() or getitem() and sequence as any object with getitem() and len(). It does not define collection.**
-* **Passing ABC Iterable to isinstance() or issubclass() checks whether object/class has method iter(), while ABC Collection checks for iter(), contains() and len().**
+- **Glossary defines iterable as any object with iter() or getitem() and sequence as any object with getitem() and len(). It does not define collection.**
+- **Passing ABC Iterable to isinstance() or issubclass() checks whether object/class has method iter(), while ABC Collection checks for iter(), contains() and len().**
 
 ### ABC Sequence
 
-* **It's a richer interface than the basic sequence.**
-* **Extending it generates iter(), contains(), reversed(), index() and count().**
-* **Unlike `'abc.Iterable'` and `'abc.Collection'`, it is not a duck type. That is why `'issubclass(MySequence, abc.Sequence)'` would return False even if MySequence had all the methods defined. It however recognizes list, tuple, range, str, bytes, bytearray, memoryview and deque, because they are registered as Sequence's virtual subclasses.**
+- **It's a richer interface than the basic sequence.**
+- **Extending it generates iter(), contains(), reversed(), index() and count().**
+- **Unlike `'abc.Iterable'` and `'abc.Collection'`, it is not a duck type. That is why `'issubclass(MySequence, abc.Sequence)'` would return False even if MySequence had all the methods defined. It however recognizes list, tuple, range, str, bytes, bytearray, memoryview and deque, because they are registered as Sequence's virtual subclasses.**
 
-````python
+```python
 from collections import abc
 
 class MyAbcSequence(abc.Sequence):
@@ -1374,11 +1372,11 @@ class MyAbcSequence(abc.Sequence):
         return len(self.a)
     def __getitem__(self, i):
         return self.a[i]
-````
+```
 
 #### Table of required and automatically available special methods
 
-````text
+```text
 +------------+------------+------------+------------+--------------+
 |            |  Iterable  | Collection |  Sequence  | abc.Sequence |
 +------------+------------+------------+------------+--------------+
@@ -1390,79 +1388,79 @@ class MyAbcSequence(abc.Sequence):
 | index()    |            |            |            |     Yes      |
 | count()    |            |            |            |     Yes      |
 +------------+------------+------------+------------+--------------+
-````
+```
 
-* **Other ABCs that generate missing methods are: MutableSequence, Set, MutableSet, Mapping and MutableMapping.**
-* **Names of their required methods are stored in `'<abc>.__abstractmethods__'`.**
+- **Other ABCs that generate missing methods are: MutableSequence, Set, MutableSet, Mapping and MutableMapping.**
+- **Names of their required methods are stored in `'<abc>.__abstractmethods__'`.**
 
 ## Enum
 
-````python
+```python
 from enum import Enum, auto
-````
+```
 
-````python
+```python
 class <enum_name>(Enum):
     <member_name_1> = <value_1>
     <member_name_2> = <value_2_a>, <value_2_b>
     <member_name_3> = auto()
-````
+```
 
-* **If there are no numeric values before auto(), it returns 1.**
-* **Otherwise it returns an increment of the last numeric value.**
+- **If there are no numeric values before auto(), it returns 1.**
+- **Otherwise it returns an increment of the last numeric value.**
 
-````python
+```python
 <member> = <enum>.<member_name>                 # Returns a member.
 <member> = <enum>['<member_name>']              # Returns a member or raises KeyError.
 <member> = <enum>(<value>)                      # Returns a member or raises ValueError.
 <str>    = <member>.name                        # Returns member's name.
 <obj>    = <member>.value                       # Returns member's value.
-````
+```
 
-````python
+```python
 list_of_members = list(<enum>)
 member_names    = [a.name for a in <enum>]
 member_values   = [a.value for a in <enum>]
 random_member   = random.choice(list(<enum>))
-````
+```
 
-````python
+```python
 def get_next_member(member):
     members = list(member.__class__)
     index   = (members.index(member) + 1) % len(members)
     return members[index]
-````
+```
 
 ### Inline
 
-````python
+```python
 Cutlery = Enum('Cutlery', 'fork knife spoon')
 Cutlery = Enum('Cutlery', ['fork', 'knife', 'spoon'])
 Cutlery = Enum('Cutlery', {'fork': 1, 'knife': 2, 'spoon': 3})
-````
+```
 
 #### User-defined functions cannot be values, so they must be wrapped
 
-````python
+```python
 from functools import partial
 LogicOp = Enum('LogicOp', {'AND': partial(lambda l, r: l and r),
                            'OR':  partial(lambda l, r: l or r)})
-````
+```
 
-* **Member names are in all caps because trying to access a member that is named after a reserved keyword raises SyntaxError.**
+- **Member names are in all caps because trying to access a member that is named after a reserved keyword raises SyntaxError.**
 
 ## Exceptions
 
-````python
+```python
 try:
     <code>
 except <exception>:
     <code>
-````
+```
 
 ### Complex Example
 
-````python
+```python
 try:
     <code_1>
 except <exception_a>:
@@ -1473,44 +1471,44 @@ else:
     <code_2_c>
 finally:
     <code_3>
-````
+```
 
-* **Code inside the `'else'` block will only be executed if `'try'` block had no exceptions.**
-* **Code inside the `'finally'` block will always be executed (unless a signal is received).**
+- **Code inside the `'else'` block will only be executed if `'try'` block had no exceptions.**
+- **Code inside the `'finally'` block will always be executed (unless a signal is received).**
 
 ### Catching Exceptions
 
-````python
+```python
 except <exception>: ...
 except <exception> as <name>: ...
 except (<exception>, [...]): ...
 except (<exception>, [...]) as <name>: ...
-````
+```
 
-* **Also catches subclasses of the exception.**
-* **Use `'traceback.print_exc()'` to print the error message to stderr.**
-* **Use `'print(<name>)'` to print just the cause of the exception (its arguments).**
-* **Use `'logging.exception(<message>)'` to log the exception.**
+- **Also catches subclasses of the exception.**
+- **Use `'traceback.print_exc()'` to print the error message to stderr.**
+- **Use `'print(<name>)'` to print just the cause of the exception (its arguments).**
+- **Use `'logging.exception(<message>)'` to log the exception.**
 
 ### Raising Exceptions
 
-````python
+```python
 raise <exception>
 raise <exception>()
 raise <exception>(<el> [, ...])
-````
+```
 
 #### Re-raising caught exception
 
-````python
+```python
 except <exception> as <name>:
     ...
     raise
-````
+```
 
 ### Exception Object
 
-````python
+```python
 arguments = <name>.args
 exc_type  = <name>.__class__
 filename  = <name>.__traceback__.tb_frame.f_code.co_filename
@@ -1518,11 +1516,11 @@ func_name = <name>.__traceback__.tb_frame.f_code.co_name
 line      = linecache.getline(filename, <name>.__traceback__.tb_lineno)
 traceback = ''.join(traceback.format_tb(<name>.__traceback__))
 error_msg = ''.join(traceback.format_exception(exc_type, <name>, <name>.__traceback__))
-````
+```
 
 ### Built-in Exceptions
 
-````text
+```text
 BaseException
  +-- SystemExit                   # Raised by the sys.exit() function.
  +-- KeyboardInterrupt            # Raised when the user hits the interrupt key (ctrl-c).
@@ -1545,11 +1543,11 @@ BaseException
       +-- TypeError               # Raised when an argument is of wrong type.
       +-- ValueError              # When an argument is of right type but inappropriate value.
            +-- UnicodeError       # Raised when encoding/decoding strings to/from bytes fails.
-````
+```
 
 #### Collections and their exceptions
 
-````text
+```text
 +-----------+------------+------------+------------+
 |           |    List    |    Set     |    Dict    |
 +-----------+------------+------------+------------+
@@ -1558,75 +1556,75 @@ BaseException
 | remove()  | ValueError |  KeyError  |            |
 | index()   | ValueError |            |            |
 +-----------+------------+------------+------------+
-````
+```
 
 #### Useful built-in exceptions
 
-````python
+```python
 raise TypeError('Argument is of wrong type!')
 raise ValueError('Argument is of right type but inappropriate value!')
 raise RuntimeError('None of above!')
-````
+```
 
 ### User-defined Exceptions
 
-````python
+```python
 class MyError(Exception): pass
 class MyInputError(MyError): pass
-````
+```
 
 ## Exit
 
 **Exits the interpreter by raising SystemExit exception.**
 
-````python
+```python
 import sys
 sys.exit()                        # Exits with exit code 0 (success).
 sys.exit(<el>)                    # Prints to stderr and exits with 1.
 sys.exit(<int>)                   # Exits with passed exit code.
-````
+```
 
 ## Print
 
-````python
+```python
 print(<el_1>, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
-````
+```
 
-* **Use `'file=sys.stderr'` for messages about errors.**
-* **Use `'flush=True'` to forcibly flush the stream.**
+- **Use `'file=sys.stderr'` for messages about errors.**
+- **Use `'flush=True'` to forcibly flush the stream.**
 
 ### Pretty Print
 
-````python
+```python
 from pprint import pprint
 pprint(<collection>, width=80, depth=None, compact=False, sort_dicts=True)
-````
+```
 
-* **Levels deeper than 'depth' get replaced by '...'.**
+- **Levels deeper than 'depth' get replaced by '...'.**
 
 ## Input
 
 **Reads a line from user input or pipe if present.**
 
-````python
+```python
 <str> = input(prompt=None)
-````
+```
 
-* **Trailing newline gets stripped.**
-* **Prompt string is printed to the standard output before reading input.**
-* **Raises EOFError when user hits EOF (ctrl-d/ctrl-z⏎) or input stream gets exhausted.**
+- **Trailing newline gets stripped.**
+- **Prompt string is printed to the standard output before reading input.**
+- **Raises EOFError when user hits EOF (ctrl-d/ctrl-z⏎) or input stream gets exhausted.**
 
 ## Command Line Arguments
 
-````python
+```python
 import sys
 scripts_path = sys.argv[0]
 arguments    = sys.argv[1:]
-````
+```
 
 ### Argument Parser
 
-````python
+```python
 from argparse import ArgumentParser, FileType
 p = ArgumentParser(description=<str>)
 p.add_argument('-<short_name>', '--<name>', action='store_true')  # Flag.
@@ -1636,318 +1634,318 @@ p.add_argument('<name>', type=<type>, nargs='+')                  # Remaining ar
 p.add_argument('<name>', type=<type>, nargs='*')                  # Optional arguments.
 args  = p.parse_args()                                            # Exits on error.
 value = args.<name>
-````
+```
 
-* **Use `'help=<str>'` to set argument description that will be displayed in help message.**
-* **Use `'default=<el>'` to set the default value.**
-* **Use `'type=FileType(<mode>)'` for files. Accepts 'encoding', but 'newline' is None.**
+- **Use `'help=<str>'` to set argument description that will be displayed in help message.**
+- **Use `'default=<el>'` to set the default value.**
+- **Use `'type=FileType(<mode>)'` for files. Accepts 'encoding', but 'newline' is None.**
 
 ## Open
 
 **Opens the file and returns a corresponding file object.**
 
-````python
+```python
 <file> = open(<path>, mode='r', encoding=None, newline=None)
-````
+```
 
-* **`'encoding=None'` means that the default encoding is used, which is platform dependent. Best practice is to use `'encoding="utf-8"'` whenever possible.**
-* **`'newline=None'` means all different end of line combinations are converted to '\n' on read, while on write all '\n' characters are converted to system's default line separator.**
-* **`'newline=""'` means no conversions take place, but input is still broken into chunks by readline() and readlines() on every '\n', '\r' and '\r\n'.**
+- **`'encoding=None'` means that the default encoding is used, which is platform dependent. Best practice is to use `'encoding="utf-8"'` whenever possible.**
+- **`'newline=None'` means all different end of line combinations are converted to '\n' on read, while on write all '\n' characters are converted to system's default line separator.**
+- **`'newline=""'` means no conversions take place, but input is still broken into chunks by readline() and readlines() on every '\n', '\r' and '\r\n'.**
 
 ### Modes
 
-* **`'r'` - Read (default).**
-* **`'w'` - Write (truncate).**
-* **`'x'` - Write or fail if the file already exists.**
-* **`'a'` - Append.**
-* **`'w+'` - Read and write (truncate).**
-* **`'r+'` - Read and write from the start.**
-* **`'a+'` - Read and write from the end.**
-* **`'t'` - Text mode (default).**
-* **`'b'` - Binary mode (`'br'`, `'bw'`, `'bx'`, …).**
+- **`'r'` - Read (default).**
+- **`'w'` - Write (truncate).**
+- **`'x'` - Write or fail if the file already exists.**
+- **`'a'` - Append.**
+- **`'w+'` - Read and write (truncate).**
+- **`'r+'` - Read and write from the start.**
+- **`'a+'` - Read and write from the end.**
+- **`'t'` - Text mode (default).**
+- **`'b'` - Binary mode (`'br'`, `'bw'`, `'bx'`, …).**
 
 ### Exceptions
 
-* **`'FileNotFoundError'` can be raised when reading with `'r'` or `'r+'`.**
-* **`'FileExistsError'` can be raised when writing with `'x'`.**
-* **`'IsADirectoryError'` and `'PermissionError'` can be raised by any.**
-* **`'OSError'` is the parent class of all listed exceptions.**
+- **`'FileNotFoundError'` can be raised when reading with `'r'` or `'r+'`.**
+- **`'FileExistsError'` can be raised when writing with `'x'`.**
+- **`'IsADirectoryError'` and `'PermissionError'` can be raised by any.**
+- **`'OSError'` is the parent class of all listed exceptions.**
 
 ### File Object
 
-````python
+```python
 <file>.seek(0)                      # Moves to the start of the file.
 <file>.seek(offset)                 # Moves 'offset' chars/bytes from the start.
 <file>.seek(0, 2)                   # Moves to the end of the file.
 <bin_file>.seek(±offset, <anchor>)  # Anchor: 0 start, 1 current position, 2 end.
-````
+```
 
-````python
+```python
 <str/bytes> = <file>.read(size=-1)  # Reads 'size' chars/bytes or until EOF.
 <str/bytes> = <file>.readline()     # Returns a line or empty string/bytes on EOF.
 <list>      = <file>.readlines()    # Returns a list of remaining lines.
 <str/bytes> = next(<file>)          # Returns a line using buffer. Do not mix.
-````
+```
 
-````python
+```python
 <file>.write(<str/bytes>)           # Writes a string or bytes object.
 <file>.writelines(<collection>)     # Writes a coll. of strings or bytes objects.
 <file>.flush()                      # Flushes write buffer. Runs every 4096/8192 B.
-````
+```
 
-* **Methods do not add or strip trailing newlines, even writelines().**
+- **Methods do not add or strip trailing newlines, even writelines().**
 
 ### Read Text from File
 
-````python
+```python
 def read_file(filename):
     with open(filename, encoding='utf-8') as file:
         return file.readlines()
-````
+```
 
 ### Write Text to File
 
-````python
+```python
 def write_to_file(filename, text):
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(text)
-````
+```
 
 ## Paths
 
-````python
+```python
 from os import getcwd, path, listdir, scandir
 from glob import glob
-````
+```
 
-````python
+```python
 <str>  = getcwd()                   # Returns the current working directory.
 <str>  = path.join(<path>, ...)     # Joins two or more pathname components.
 <str>  = path.abspath(<path>)       # Returns absolute path.
-````
+```
 
-````python
+```python
 <str>  = path.basename(<path>)      # Returns final component of the path.
 <str>  = path.dirname(<path>)       # Returns path without the final component.
 <tup.> = path.splitext(<path>)      # Splits on last period of the final component.
-````
+```
 
-````python
+```python
 <list> = listdir(path='.')          # Returns filenames located at path.
 <list> = glob('<pattern>')          # Returns paths matching the wildcard pattern.
-````
+```
 
-````python
+```python
 <bool> = path.exists(<path>)        # Or: <Path>.exists()
 <bool> = path.isfile(<path>)        # Or: <DirEntry/Path>.is_file()
 <bool> = path.isdir(<path>)         # Or: <DirEntry/Path>.is_dir()
-````
+```
 
-````python
+```python
 <stat> = os.stat(<path>)            # Or: <DirEntry/Path>.stat()
 <real> = <stat>.st_mtime/st_size/…  # Modification time, size in bytes, …
-````
+```
 
 ### DirEntry
 
 **Unlike listdir(), scandir() returns DirEntry objects that cache isfile, isdir and on Windows also stat information, thus significantly increasing the performance of code that requires it.**
 
-````python
+```python
 <iter> = scandir(path='.')          # Returns DirEntry objects located at path.
 <str>  = <DirEntry>.path            # Returns whole path as a string.
 <str>  = <DirEntry>.name            # Returns final component as a string.
 <file> = open(<DirEntry>)           # Opens the file and returns a file object.
-````
+```
 
 ### Path Object
 
-````python
+```python
 from pathlib import Path
-````
+```
 
-````python
+```python
 <Path> = Path(<path> [, ...])       # Accepts strings, Paths and DirEntry objects.
 <Path> = <path> / <path> [/ ...]    # First or second path must be a Path object.
-````
+```
 
-````python
+```python
 <Path> = Path()                     # Returns relative cwd. Also Path('.').
 <Path> = Path.cwd()                 # Returns absolute cwd. Also Path().resolve().
 <Path> = Path.home()                # Returns user's home directory (absolute).
 <Path> = Path(__file__).resolve()   # Returns script's path if cwd wasn't changed.
-````
+```
 
-````python
+```python
 <Path> = <Path>.parent              # Returns Path without the final component.
 <str>  = <Path>.name                # Returns final component as a string.
 <str>  = <Path>.stem                # Returns final component without extension.
 <str>  = <Path>.suffix              # Returns final component's extension.
 <tup.> = <Path>.parts               # Returns all components as strings.
-````
+```
 
-````python
+```python
 <iter> = <Path>.iterdir()           # Returns directory contents as Path objects.
 <iter> = <Path>.glob('<pattern>')   # Returns Paths matching the wildcard pattern.
-````
+```
 
-````python
+```python
 <str>  = str(<Path>)                # Returns path as a string.
 <file> = open(<Path>)               # Also <Path>.read/write_text/bytes().
-````
+```
 
 ## OS Commands
 
-````python
+```python
 import os, shutil, subprocess
-````
+```
 
-````python
+```python
 os.chdir(<path>)                 # Changes the current working directory.
 os.mkdir(<path>, mode=0o777)     # Creates a directory. Mode is in octal.
 os.makedirs(<path>, mode=0o777)  # Creates all path's dirs. Also: `exist_ok=False`.
-````
+```
 
-````python
+```python
 shutil.copy(from, to)            # Copies the file. 'to' can exist or be a dir.
 shutil.copytree(from, to)        # Copies the directory. 'to' must not exist.
-````
+```
 
-````python
+```python
 os.rename(from, to)              # Renames/moves the file or directory.
 os.replace(from, to)             # Same, but overwrites 'to' if it exists.
-````
+```
 
-````python
+```python
 os.remove(<path>)                # Deletes the file.
 os.rmdir(<path>)                 # Deletes the empty directory.
 shutil.rmtree(<path>)            # Deletes the directory.
-````
+```
 
-* **Paths can be either strings, Paths or DirEntry objects.**
-* **Functions report OS related errors by raising either OSError or one of its [subclasses](#exceptions-1).**
+- **Paths can be either strings, Paths or DirEntry objects.**
+- **Functions report OS related errors by raising either OSError or one of its [subclasses](#exceptions-1).**
 
 ### Shell Commands
 
-````python
+```python
 <pipe> = os.popen('<command>')   # Executes command in sh/cmd and returns its stdout pipe.
 <str>  = <pipe>.read(size=-1)    # Reads 'size' chars or until EOF. Also readline/s().
 <int>  = <pipe>.close()          # Closes the pipe. Returns None on success, int on error.
-````
+```
 
 #### Sends '1 + 1' to the basic calculator and captures its output
 
-````python
+```python
 >>> subprocess.run('bc', input='1 + 1\n', capture_output=True, text=True)
 CompletedProcess(args='bc', returncode=0, stdout='2\n', stderr='')
-````
+```
 
 #### Sends test.in to the basic calculator running in standard mode and saves its output to test.out
 
-````python
+```python
 >>> from shlex import split
 >>> os.popen('echo 1 + 1 > test.in')
 >>> subprocess.run(split('bc -s'), stdin=open('test.in'), stdout=open('test.out', 'w'))
 CompletedProcess(args=['bc', '-s'], returncode=0)
 >>> open('test.out').read()
 '2\n'
-````
+```
 
 ## JSON
 
 **Text file format for storing collections of strings and numbers.**
 
-````python
+```python
 import json
 <str>    = json.dumps(<object>)    # Converts object to JSON string.
 <object> = json.loads(<str>)       # Converts JSON string to object.
-````
+```
 
 ### Read Object from JSON File
 
-````python
+```python
 def read_json_file(filename):
     with open(filename, encoding='utf-8') as file:
         return json.load(file)
-````
+```
 
 ### Write Object to JSON File
 
-````python
+```python
 def write_to_json_file(filename, an_object):
     with open(filename, 'w', encoding='utf-8') as file:
         json.dump(an_object, file, ensure_ascii=False, indent=2)
-````
+```
 
 ## Pickle
 
 **Binary file format for storing Python objects.**
 
-````python
+```python
 import pickle
 <bytes>  = pickle.dumps(<object>)  # Converts object to bytes object.
 <object> = pickle.loads(<bytes>)   # Converts bytes object to object.
-````
+```
 
 ### Read Object from File
 
-````python
+```python
 def read_pickle_file(filename):
     with open(filename, 'rb') as file:
         return pickle.load(file)
-````
+```
 
 ### Write Object to File
 
-````python
+```python
 def write_to_pickle_file(filename, an_object):
     with open(filename, 'wb') as file:
         pickle.dump(an_object, file)
-````
+```
 
 ## CSV
 
 **Text file format for storing spreadsheets.**
 
-````python
+```python
 import csv
-````
+```
 
 ### Read
 
-````python
+```python
 <reader> = csv.reader(<file>)       # Also: `dialect='excel', delimiter=','`.
 <list>   = next(<reader>)           # Returns next row as a list of strings.
 <list>   = list(<reader>)           # Returns a list of remaining rows.
-````
+```
 
-* **File must be opened with a `'newline=""'` argument, or newlines embedded inside quoted fields will not be interpreted correctly!**
-* **To print the spreadsheet to the console use [Tabulate](#table) library.**
-* **For XML and binary Excel files (xlsx, xlsm and xlsb) use [Pandas](#dataframe-plot-encode-decode) library.**
+- **File must be opened with a `'newline=""'` argument, or newlines embedded inside quoted fields will not be interpreted correctly!**
+- **To print the spreadsheet to the console use [Tabulate](#table) library.**
+- **For XML and binary Excel files (xlsx, xlsm and xlsb) use [Pandas](#dataframe-plot-encode-decode) library.**
 
 ### Write
 
-````python
+```python
 <writer> = csv.writer(<file>)       # Also: `dialect='excel', delimiter=','`.
 <writer>.writerow(<collection>)     # Encodes objects using `str(<el>)`.
 <writer>.writerows(<coll_of_coll>)  # Appends multiple rows.
-````
+```
 
-* **File must be opened with a `'newline=""'` argument, or '\r' will be added in front of every '\n' on platforms that use '\r\n' line endings!**
+- **File must be opened with a `'newline=""'` argument, or '\r' will be added in front of every '\n' on platforms that use '\r\n' line endings!**
 
 ### Parameters
 
-* **`'dialect'` - Master parameter that sets the default values. String or a Dialect object.**
-* **`'delimiter'` - A one-character string used to separate fields.**
-* **`'quotechar'` - Character for quoting fields that contain special characters.**
-* **`'doublequote'` - Whether quotechars inside fields are/get doubled or escaped.**
-* **`'skipinitialspace'` - Is space character at the start of the field stripped by the reader.**
-* **`'lineterminator'` - How writer terminates rows. Reader is hardcoded to '\n', '\r', '\r\n'.**
-* **`'quoting'` - 0: As necessary, 1: All, 2: All but numbers which are read as floats, 3: None.**
-* **`'escapechar'` - Character for escaping quotechars if doublequote is False.**
+- **`'dialect'` - Master parameter that sets the default values. String or a Dialect object.**
+- **`'delimiter'` - A one-character string used to separate fields.**
+- **`'quotechar'` - Character for quoting fields that contain special characters.**
+- **`'doublequote'` - Whether quotechars inside fields are/get doubled or escaped.**
+- **`'skipinitialspace'` - Is space character at the start of the field stripped by the reader.**
+- **`'lineterminator'` - How writer terminates rows. Reader is hardcoded to '\n', '\r', '\r\n'.**
+- **`'quoting'` - 0: As necessary, 1: All, 2: All but numbers which are read as floats, 3: None.**
+- **`'escapechar'` - Character for escaping quotechars if doublequote is False.**
 
 ### Dialects
 
-````text
+```text
 +------------------+--------------+--------------+--------------+
 |                  |     excel    |   excel-tab  |     unix     |
 +------------------+--------------+--------------+--------------+
@@ -1959,24 +1957,24 @@ import csv
 | quoting          |         0    |         0    |         1    |
 | escapechar       |      None    |      None    |      None    |
 +------------------+--------------+--------------+--------------+
-````
+```
 
 ### Read Rows from CSV File
 
-````python
+```python
 def read_csv_file(filename, dialect='excel'):
     with open(filename, encoding='utf-8', newline='') as file:
         return list(csv.reader(file, dialect))
-````
+```
 
 ### Write Rows to CSV File
 
-````python
+```python
 def write_to_csv_file(filename, rows, dialect='excel'):
     with open(filename, 'w', encoding='utf-8', newline='') as file:
         writer = csv.writer(file, dialect)
         writer.writerows(rows)
-````
+```
 
 ## SQLite
 
@@ -1986,66 +1984,66 @@ def write_to_csv_file(filename, rows, dialect='excel'):
 
 **Opens a connection to the database file. Creates a new file if path doesn't exist.**
 
-````python
+```python
 import sqlite3
 <conn> = sqlite3.connect(<path>)                # Also ':memory:'.
 <conn>.close()                                  # Closes the connection.
-````
+```
 
 ### Read
 
 **Returned values can be of type str, int, float, bytes or None.**
 
-````python
+```python
 <cursor> = <conn>.execute('<query>')            # Can raise a subclass of sqlite3.Error.
 <tuple>  = <cursor>.fetchone()                  # Returns next row. Also next(<cursor>).
 <list>   = <cursor>.fetchall()                  # Returns remaining rows. Also list(<cursor>).
-````
+```
 
 ### Write
 
-````python
+```python
 <conn>.execute('<query>')                       # Can raise a subclass of sqlite3.Error.
 <conn>.commit()                                 # Saves all changes since the last commit.
 <conn>.rollback()                               # Discards all changes since the last commit.
-````
+```
 
 #### Or
 
-````python
+```python
 with <conn>:                                    # Exits the block with commit() or rollback(),
     <conn>.execute('<query>')                   # depending on whether any exception occurred.
-````
+```
 
 ### Placeholders
 
-* **Passed values can be of type str, int, float, bytes, None, bool, datetime.date or datetime.datetime.**
-* **Bools will be stored and returned as ints and dates as [ISO formatted strings](#encode).**
+- **Passed values can be of type str, int, float, bytes, None, bool, datetime.date or datetime.datetime.**
+- **Bools will be stored and returned as ints and dates as [ISO formatted strings](#encode).**
 
-````python
+```python
 <conn>.execute('<query>', <list/tuple>)         # Replaces '?'s in query with values.
 <conn>.execute('<query>', <dict/namedtuple>)    # Replaces ':<key>'s with values.
 <conn>.executemany('<query>', <coll_of_above>)  # Runs execute() multiple times.
-````
+```
 
 ### Example
 
 **Values are not actually saved in this example because `'conn.commit()'` is omitted!**
 
-````python
+```python
 >>> conn = sqlite3.connect('test.db')
 >>> conn.execute('CREATE TABLE person (person_id INTEGER PRIMARY KEY, name, height)')
 >>> conn.execute('INSERT INTO person VALUES (NULL, ?, ?)', ('Jean-Luc', 187)).lastrowid
 1
 >>> conn.execute('SELECT * FROM person').fetchall()
 [(1, 'Jean-Luc', 187)]
-````
+```
 
 ### MySQL
 
 **Has a very similar interface, with differences listed below.**
 
-````python
+```python
 # $ pip3 install mysql-connector
 from mysql import connector
 <conn>   = connector.connect(host=<str>, …)     # `user=<str>, password=<str>, database=<str>`.
@@ -2053,259 +2051,259 @@ from mysql import connector
 <cursor>.execute('<query>')                     # Can raise a subclass of connector.Error.
 <cursor>.execute('<query>', <list/tuple>)       # Replaces '%s's in query with values.
 <cursor>.execute('<query>', <dict/namedtuple>)  # Replaces '%(<key>)s's with values.
-````
+```
 
 ## Bytes
 
 **Bytes object is an immutable sequence of single bytes. Mutable version is called bytearray.**
 
-````python
+```python
 <bytes> = b'<str>'                          # Only accepts ASCII characters and \x00-\xff.
 <int>   = <bytes>[<index>]                  # Returns an int in range from 0 to 255.
 <bytes> = <bytes>[<slice>]                  # Returns bytes even if it has only one element.
 <bytes> = <bytes>.join(<coll_of_bytes>)     # Joins elements using bytes as a separator.
-````
+```
 
 ### Encode
 
-````python
+```python
 <bytes> = bytes(<coll_of_ints>)             # Ints must be in range from 0 to 255.
 <bytes> = bytes(<str>, 'utf-8')             # Or: <str>.encode('utf-8')
 <bytes> = <int>.to_bytes(n_bytes, …)        # `byteorder='little/big', signed=False`.
 <bytes> = bytes.fromhex('<hex>')            # Hex pairs can be separated by whitespaces.
-````
+```
 
 ### Decode
 
-````python
+```python
 <list>  = list(<bytes>)                     # Returns ints in range from 0 to 255.
 <str>   = str(<bytes>, 'utf-8')             # Or: <bytes>.decode('utf-8')
 <int>   = int.from_bytes(<bytes>, …)        # `byteorder='little/big', signed=False`.
 '<hex>' = <bytes>.hex()                     # Returns hex pairs. Accepts `sep=<str>`.
-````
+```
 
 ### Read Bytes from File
 
-````python
+```python
 def read_bytes(filename):
     with open(filename, 'rb') as file:
         return file.read()
-````
+```
 
 ### Write Bytes to File
 
-````python
+```python
 def write_bytes(filename, bytes_obj):
     with open(filename, 'wb') as file:
         file.write(bytes_obj)
-````
+```
 
 ## Struct
 
-* **Module that performs conversions between a sequence of numbers and a bytes object.**
-* **System’s type sizes, byte order, and alignment rules are used by default.**
+- **Module that performs conversions between a sequence of numbers and a bytes object.**
+- **System’s type sizes, byte order, and alignment rules are used by default.**
 
-````python
+```python
 from struct import pack, unpack
 <bytes> = pack('<format>', <el_1> [, ...])  # Packages arguments into bytes object.
 <tuple> = unpack('<format>', <bytes>)       # Use iter_unpack() for iterator of tuples.
-````
+```
 
-````python
+```python
 >>> pack('>hhl', 1, 2, 3)
 b'\x00\x01\x00\x02\x00\x00\x00\x03'
 >>> unpack('>hhl', b'\x00\x01\x00\x02\x00\x00\x00\x03')
 (1, 2, 3)
-````
+```
 
 ### Format
 
 #### For standard type sizes and manual alignment (padding) start format string with
 
-* **`'='` - System's byte order (usually little-endian).**
-* **`'<'` - Little-endian.**
-* **`'>'` - Big-endian (also `'!'`).**
+- **`'='` - System's byte order (usually little-endian).**
+- **`'<'` - Little-endian.**
+- **`'>'` - Big-endian (also `'!'`).**
 
 #### Besides numbers, pack() and unpack() also support bytes objects as part of the sequence
 
-* **`'c'` - A bytes object with a single element. For pad byte use `'x'`.**
-* **`'<n>s'` - A bytes object with n elements.**
+- **`'c'` - A bytes object with a single element. For pad byte use `'x'`.**
+- **`'<n>s'` - A bytes object with n elements.**
 
 #### Integer types. Use a capital letter for unsigned type. Minimum and standard sizes are in brackets
 
-* **`'b'` - char (1/1)**
-* **`'h'` - short (2/2)**
-* **`'i'` - int (2/4)**
-* **`'l'` - long (4/4)**
-* **`'q'` - long long (8/8)**
+- **`'b'` - char (1/1)**
+- **`'h'` - short (2/2)**
+- **`'i'` - int (2/4)**
+- **`'l'` - long (4/4)**
+- **`'q'` - long long (8/8)**
 
 #### Floating point types
 
-* **`'f'` - float (4/4)**
-* **`'d'` - double (8/8)**
+- **`'f'` - float (4/4)**
+- **`'d'` - double (8/8)**
 
 ## Array
 
 **List that can only hold numbers of a predefined type. Available types and their minimum sizes in bytes are listed above. Sizes and byte order are always determined by the system.**
 
-````python
+```python
 from array import array
 <array> = array('<typecode>', <collection>)    # Array from collection of numbers.
 <array> = array('<typecode>', <bytes>)         # Array from bytes object.
 <array> = array('<typecode>', <array>)         # Treats array as a sequence of numbers.
 <bytes> = bytes(<array>)                       # Or: <array>.tobytes()
 <file>.write(<array>)                          # Writes array to the binary file.
-````
+```
 
 ## Memory View
 
-* **A sequence object that points to the memory of another object.**
-* **Each element can reference a single or multiple consecutive bytes, depending on format.**
-* **Order and number of elements can be changed with slicing.**
-* **Casting only works between char and other types and uses system's sizes.**
-* **Byte order is always determined by the system.**
+- **A sequence object that points to the memory of another object.**
+- **Each element can reference a single or multiple consecutive bytes, depending on format.**
+- **Order and number of elements can be changed with slicing.**
+- **Casting only works between char and other types and uses system's sizes.**
+- **Byte order is always determined by the system.**
 
-````python
+```python
 <mview> = memoryview(<bytes/bytearray/array>)  # Immutable if bytes, else mutable.
 <real>  = <mview>[<index>]                     # Returns an int or a float.
 <mview> = <mview>[<slice>]                     # Mview with rearranged elements.
 <mview> = <mview>.cast('<typecode>')           # Casts memoryview to the new format.
 <mview>.release()                              # Releases the object's memory buffer.
-````
+```
 
 ### Decode
 
-````python
+```python
 <bytes> = bytes(<mview>)                       # Returns a new bytes object.
 <bytes> = <bytes>.join(<coll_of_mviews>)       # Joins mviews using bytes object as sep.
 <array> = array('<typecode>', <mview>)         # Treats mview as a sequence of numbers.
 <file>.write(<mview>)                          # Writes mview to the binary file.
-````
+```
 
-````python
+```python
 <list>  = list(<mview>)                        # Returns a list of ints or floats.
 <str>   = str(<mview>, 'utf-8')                # Treats mview as a bytes object.
 <int>   = int.from_bytes(<mview>, …)           # `byteorder='little/big', signed=False`.
 '<hex>' = <mview>.hex()                        # Treats mview as a bytes object.
-````
+```
 
 ## Deque
 
 **A thread-safe list with efficient appends and pops from either side. Pronounced "deck".**
 
-````python
+```python
 from collections import deque
 <deque> = deque(<collection>, maxlen=None)
-````
+```
 
-````python
+```python
 <deque>.appendleft(<el>)                       # Opposite element is dropped if full.
 <deque>.extendleft(<collection>)               # Collection gets reversed.
 <el> = <deque>.popleft()                       # Raises IndexError if empty.
 <deque>.rotate(n=1)                            # Rotates elements to the right.
-````
+```
 
 ## Threading
 
-* **CPython interpreter can only run a single thread at a time.**
-* **That is why using multiple threads won't result in a faster execution, unless at least one of the threads contains an I/O operation.**
+- **CPython interpreter can only run a single thread at a time.**
+- **That is why using multiple threads won't result in a faster execution, unless at least one of the threads contains an I/O operation.**
 
-````python
+```python
 from threading import Thread, RLock, Semaphore, Event, Barrier
 from concurrent.futures import ThreadPoolExecutor
-````
+```
 
 ### Thread
 
-````python
+```python
 <Thread> = Thread(target=<function>)           # Use `args=<collection>` to set the arguments.
 <Thread>.start()                               # Starts the thread.
 <bool> = <Thread>.is_alive()                   # Checks if the thread has finished executing.
 <Thread>.join()                                # Waits for the thread to finish.
-````
+```
 
-* **Use `'kwargs=<dict>'` to pass keyword arguments to the function.**
-* **Use `'daemon=True'`, or the program will not be able to exit while the thread is alive.**
+- **Use `'kwargs=<dict>'` to pass keyword arguments to the function.**
+- **Use `'daemon=True'`, or the program will not be able to exit while the thread is alive.**
 
 ### Lock
 
-````python
+```python
 <lock> = RLock()                               # Lock that can only be released by acquirer.
 <lock>.acquire()                               # Waits for the lock to be available.
 <lock>.release()                               # Makes the lock available again.
-````
+```
 
 #### Or
 
-````python
+```python
 with <lock>:                                   # Enters the block by calling acquire(),
     ...                                        # and exits it with release().
-````
+```
 
 ### Semaphore, Event, Barrier
 
-````python
+```python
 <Semaphore> = Semaphore(value=1)               # Lock that can be acquired by 'value' threads.
 <Event>     = Event()                          # Method wait() blocks until set() is called.
 <Barrier>   = Barrier(n_times)                 # Wait() blocks until it's called n_times.
-````
+```
 
 ### Thread Pool Executor
 
-* **Object that manages thread execution.**
-* **An object with the same interface called ProcessPoolExecutor provides true parallelism by running a separate interpreter in each process. All arguments must be [pickable](#pickle).**
+- **Object that manages thread execution.**
+- **An object with the same interface called ProcessPoolExecutor provides true parallelism by running a separate interpreter in each process. All arguments must be [pickable](#pickle).**
 
-````python
+```python
 <Exec> = ThreadPoolExecutor(max_workers=None)  # Or: `with ThreadPoolExecutor() as <name>: …`
 <Exec>.shutdown(wait=True)                     # Blocks until all threads finish executing.
-````
+```
 
-````python
+```python
 <iter> = <Exec>.map(<func>, <args_1>, ...)     # A multithreaded and non-lazy map().
 <Futr> = <Exec>.submit(<func>, <arg_1>, ...)   # Starts a thread and returns its Future object.
 <bool> = <Futr>.done()                         # Checks if the thread has finished executing.
 <obj>  = <Futr>.result()                       # Waits for thread to finish and returns result.
-````
+```
 
 ### Queue
 
 **A thread-safe FIFO queue. For LIFO queue use LifoQueue.**
 
-````python
+```python
 from queue import Queue
 <Queue> = Queue(maxsize=0)
-````
+```
 
-````python
+```python
 <Queue>.put(<el>)                              # Blocks until queue stops being full.
 <Queue>.put_nowait(<el>)                       # Raises queue.Full exception if full.
 <el> = <Queue>.get()                           # Blocks until queue stops being empty.
 <el> = <Queue>.get_nowait()                    # Raises queue.Empty exception if empty.
-````
+```
 
 ## Operator
 
 **Module of functions that provide the functionality of operators.**
 
-````python
+```python
 import operator as op
 <el>      = op.add/sub/mul/truediv/floordiv/mod(<el>, <el>)  # +, -, *, /, //, %
 <int/set> = op.and_/or_/xor(<int/set>, <int/set>)            # &, |, ^
 <bool>    = op.eq/ne/lt/le/gt/ge(<sortable>, <sortable>)     # ==, !=, <, <=, >, >=
 <func>    = op.itemgetter/attrgetter/methodcaller(<obj>)     # [index/key], .name, .name()
-````
+```
 
-````python
+```python
 elementwise_sum  = map(op.add, list_a, list_b)
 sorted_by_second = sorted(<collection>, key=op.itemgetter(1))
 sorted_by_both   = sorted(<collection>, key=op.itemgetter(1, 0))
 product_of_elems = functools.reduce(op.mul, <collection>)
 union_of_sets    = functools.reduce(op.or_, <coll_of_sets>)
 first_element    = op.methodcaller('pop', 0)(<list>)
-````
+```
 
-* **Binary operators require objects to have and(), or(), xor() and invert() special methods, unlike logical operators that work on all types of objects.**
-* **Also: `'<bool> = <bool> &|^ <bool>'` and `'<int> = <bool> &|^ <int>'`.**
+- **Binary operators require objects to have and(), or(), xor() and invert() special methods, unlike logical operators that work on all types of objects.**
+- **Also: `'<bool> = <bool> &|^ <bool>'` and `'<int> = <bool> &|^ <int>'`.**
 
 ## Introspection
 
@@ -2313,32 +2311,32 @@ first_element    = op.methodcaller('pop', 0)(<list>)
 
 ### Variables
 
-````python
+```python
 <list> = dir()                             # Names of local variables (incl. functions).
 <dict> = vars()                            # Dict of local variables. Also locals().
 <dict> = globals()                         # Dict of global variables.
-````
+```
 
 ### Attributes
 
-````python
+```python
 <list> = dir(<object>)                     # Names of object's attributes (incl. methods).
 <dict> = vars(<object>)                    # Dict of writable attributes. Also <obj>.__dict__.
 <bool> = hasattr(<object>, '<attr_name>')  # Checks if getattr() raises an AttributeError.
 value  = getattr(<object>, '<attr_name>')  # Raises AttributeError if attribute is missing.
 setattr(<object>, '<attr_name>', value)    # Only works on objects with '__dict__' attribute.
 delattr(<object>, '<attr_name>')           # Same. Also `del <object>.<attr_name>`.
-````
+```
 
 ### Parameters
 
-````python
+```python
 <Sig>  = inspect.signature(<function>)     # Function's Signature object.
 <dict> = <Sig>.parameters                  # Dict of Parameter objects.
 <memb> = <Param>.kind                      # Member of ParameterKind enum.
 <obj>  = <Param>.default                   # Default value or <Param>.empty.
 <type> = <Param>.annotation                # Type or <Param>.empty.
-````
+```
 
 ## Metaprogramming
 
@@ -2348,61 +2346,61 @@ delattr(<object>, '<attr_name>')           # Same. Also `del <object>.<attr_name
 
 **Type is the root class. If only passed an object it returns its type (class). Otherwise it creates a new class.**
 
-````python
+```python
 <class> = type('<class_name>', <tuple_of_parents>, <dict_of_class_attributes>)
-````
+```
 
-````python
+```python
 >>> Z = type('Z', (), {'a': 'abcde', 'b': 12345})
 >>> z = Z()
-````
+```
 
 ### Meta Class
 
 **A class that creates classes.**
 
-````python
+```python
 def my_meta_class(name, parents, attrs):
     attrs['a'] = 'abcde'
     return type(name, parents, attrs)
-````
+```
 
 #### Or
 
-````python
+```python
 class MyMetaClass(type):
     def __new__(cls, name, parents, attrs):
         attrs['a'] = 'abcde'
         return type.__new__(cls, name, parents, attrs)
-````
+```
 
-* **New() is a class method that gets called before init(). If it returns an instance of its class, then that instance gets passed to init() as a 'self' argument.**
-* **It receives the same arguments as init(), except for the first one that specifies the desired type of the returned instance (MyMetaClass in our case).**
-* **Like in our case, new() can also be called directly, usually from a new() method of a child class (**`def __new__(cls): return super().__new__(cls)`**).**
-* **The only difference between the examples above is that my_meta_class() returns a class of type type, while MyMetaClass() returns a class of type MyMetaClass.**
+- **New() is a class method that gets called before init(). If it returns an instance of its class, then that instance gets passed to init() as a 'self' argument.**
+- **It receives the same arguments as init(), except for the first one that specifies the desired type of the returned instance (MyMetaClass in our case).**
+- **Like in our case, new() can also be called directly, usually from a new() method of a child class (**`def __new__(cls): return super().__new__(cls)`**).**
+- **The only difference between the examples above is that my_meta_class() returns a class of type type, while MyMetaClass() returns a class of type MyMetaClass.**
 
 ### Metaclass Attribute
 
 **Right before a class is created it checks if it has the 'metaclass' attribute defined. If not, it recursively checks if any of his parents has it defined and eventually comes to type().**
 
-````python
+```python
 class MyClass(metaclass=MyMetaClass):
     b = 12345
-````
+```
 
-````python
+```python
 >>> MyClass.a, MyClass.b
 ('abcde', 12345)
-````
+```
 
 ### Type Diagram
 
-````python
+```python
 type(MyClass) == MyMetaClass         # MyClass is an instance of MyMetaClass.
 type(MyMetaClass) == type            # MyMetaClass is an instance of type.
-````
+```
 
-````text
+```text
 +-------------+-------------+
 |   Classes   | Metaclasses |
 +-------------+-------------|
@@ -2412,16 +2410,16 @@ type(MyMetaClass) == type            # MyMetaClass is an instance of type.
 |             |     ^ +--+  |
 |     str ----------+       |
 +-------------+-------------+
-````
+```
 
 ### Inheritance Diagram
 
-````python
+```python
 MyClass.__base__ == object           # MyClass is a subclass of object.
 MyMetaClass.__base__ == type         # MyMetaClass is a subclass of type.
-````
+```
 
-````text
+```text
 +-------------+-------------+
 |   Classes   | Metaclasses |
 +-------------+-------------|
@@ -2431,29 +2429,29 @@ MyMetaClass.__base__ == type         # MyMetaClass is a subclass of type.
 |      ^      |             |
 |     str     |             |
 +-------------+-------------+
-````
+```
 
 ## Eval
 
-````python
+```python
 >>> from ast import literal_eval
 >>> literal_eval('[1, 2, 3]')
 [1, 2, 3]
 >>> literal_eval('1 + 2')
 ValueError: malformed node or string
-````
+```
 
 ## Coroutines
 
-* **Coroutines have a lot in common with threads, but unlike threads, they only give up control when they call another coroutine and they don’t use as much memory.**
-* **Coroutine definition starts with `'async'` and its call with `'await'`.**
-* **`'asyncio.run(<coroutine>)'` is the main entry point for asynchronous programs.**
-* **Functions wait(), gather() and as_completed() can be used when multiple coroutines need to be started at the same time.**
-* **Asyncio module also provides its own [Queue](#queue), [Event](#semaphore-event-barrier), [Lock](#lock) and [Semaphore](#semaphore-event-barrier) classes.**
+- **Coroutines have a lot in common with threads, but unlike threads, they only give up control when they call another coroutine and they don’t use as much memory.**
+- **Coroutine definition starts with `'async'` and its call with `'await'`.**
+- **`'asyncio.run(<coroutine>)'` is the main entry point for asynchronous programs.**
+- **Functions wait(), gather() and as_completed() can be used when multiple coroutines need to be started at the same time.**
+- **Asyncio module also provides its own [Queue](#queue), [Event](#semaphore-event-barrier), [Lock](#lock) and [Semaphore](#semaphore-event-barrier) classes.**
 
 #### Runs a terminal game where you control an asterisk that must avoid numbers
 
-````python
+```python
 import asyncio, collections, curses, curses.textpad, enum, random
 
 P = collections.namedtuple('P', 'x y')         # Position
@@ -2505,24 +2503,24 @@ async def view(state, screen):
 
 if __name__ == '__main__':
     curses.wrapper(main)
-````
+```
 
 # Libraries
 
 ## Progress Bar
 
-````python
+```python
 # $ pip3 install tqdm
 >>> from tqdm import tqdm
 >>> from time import sleep
 >>> for el in tqdm([1, 2, 3], desc='Processing'):
 ...     sleep(1)
 Processing: 100%|████████████████████| 3/3 [00:03<00:00,  1.00s/it]
-````
+```
 
 ## Plot
 
-````python
+```python
 # $ pip3 install matplotlib
 import matplotlib.pyplot as plt
 plt.plot(<x_data>, <y_data> [, label=<str>])   # Or: plt.plot(<y_data>)
@@ -2530,13 +2528,13 @@ plt.legend()                                   # Adds a legend.
 plt.savefig(<path>)                            # Saves the figure.
 plt.show()                                     # Displays the figure.
 plt.clf()                                      # Clears the figure.
-````
+```
 
 ## Table
 
 #### Prints a CSV file as an ASCII table
 
-````python
+```python
 # $ pip3 install tabulate
 import csv, tabulate
 with open('test.csv', encoding='utf-8', newline='') as file:
@@ -2544,13 +2542,13 @@ with open('test.csv', encoding='utf-8', newline='') as file:
     header = next(rows)
     table  = tabulate.tabulate(rows, header)
 print(table)
-````
+```
 
 ## Curses
 
 #### Runs a basic file explorer in the terminal
 
-````python
+```python
 from curses import wrapper, ascii, A_REVERSE, KEY_DOWN, KEY_UP, KEY_LEFT, KEY_RIGHT, KEY_ENTER
 from os import listdir, path, chdir
 
@@ -2573,64 +2571,64 @@ def main(screen):
 
 if __name__ == '__main__':
     wrapper(main)
-````
+```
 
 ## Logging
 
-````python
+```python
 # $ pip3 install loguru
 from loguru import logger
-````
+```
 
-````python
+```python
 logger.add('debug_{time}.log', colorize=True)  # Connects a log file.
 logger.add('error_{time}.log', level='ERROR')  # Another file for errors or higher.
 logger.<level>('A logging message.')           # Logs to file/s and prints to stderr.
-````
+```
 
-* **Levels: `'debug'`, `'info'`, `'success'`, `'warning'`, `'error'`, `'critical'`.**
+- **Levels: `'debug'`, `'info'`, `'success'`, `'warning'`, `'error'`, `'critical'`.**
 
 ### Exceptions
 
 **Exception description, stack trace and values of variables are appended automatically.**
 
-````python
+```python
 try:
     ...
 except <exception>:
     logger.exception('An error happened.')
-````
+```
 
 ### Rotation
 
 **Argument that sets a condition when a new log file is created.**
 
-````python
+```python
 rotation=<int>|<datetime.timedelta>|<datetime.time>|<str>
-````
+```
 
-* **`'<int>'` - Max file size in bytes.**
-* **`'<timedelta>'` - Max age of a file.**
-* **`'<time>'` - Time of day.**
-* **`'<str>'` - Any of above as a string: `'100 MB'`, `'1 month'`, `'monday at 12:00'`, ...**
+- **`'<int>'` - Max file size in bytes.**
+- **`'<timedelta>'` - Max age of a file.**
+- **`'<time>'` - Time of day.**
+- **`'<str>'` - Any of above as a string: `'100 MB'`, `'1 month'`, `'monday at 12:00'`, ...**
 
 ### Retention
 
 **Sets a condition which old log files get deleted.**
 
-````python
+```python
 retention=<int>|<datetime.timedelta>|<str>
-````
+```
 
-* **`'<int>'` - Max number of files.**
-* **`'<timedelta>'` - Max age of a file.**
-* **`'<str>'` - Max age as a string: `'1 week, 3 days'`, `'2 months'`, ...**
+- **`'<int>'` - Max number of files.**
+- **`'<timedelta>'` - Max age of a file.**
+- **`'<str>'` - Max age as a string: `'1 week, 3 days'`, `'2 months'`, ...**
 
 ## Scraping
 
 #### Scrapes Python's URL, version number and logo from its Wikipedia page
 
-````python
+```python
 # $ pip3 install requests beautifulsoup4
 import requests, bs4, os, sys
 
@@ -2649,53 +2647,53 @@ try:
     print(f'{python_url}, {version}, file://{os.path.abspath(filename)}')
 except requests.exceptions.ConnectionError:
     print("You've got problems with connection.", file=sys.stderr)
-````
+```
 
 ## Web
 
-````python
+```python
 # $ pip3 install bottle
 from bottle import run, route, static_file, template, post, request, response
 import json
-````
+```
 
 ### Run
 
-````python
+```python
 run(host='localhost', port=8080)        # Runs locally.
 run(host='0.0.0.0', port=80)            # Runs globally.
-````
+```
 
 ### Static Request
 
-````python
+```python
 @route('/img/<filename>')
 def send_file(filename):
     return static_file(filename, root='img_dir/')
-````
+```
 
 ### Dynamic Request
 
-````python
+```python
 @route('/<sport>')
 def send_html(sport):
     return template('<h1>{{title}}</h1>', title=sport)
-````
+```
 
 ### REST Request
 
-````python
+```python
 @post('/<sport>/odds')
 def send_json(sport):
     team = request.forms.get('team')
     response.headers['Content-Type'] = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
     return json.dumps({'team': team, 'odds': [2.09, 3.74, 3.68]})
-````
+```
 
 #### Test
 
-````python
+```python
 # $ pip3 install requests
 >>> import threading, requests
 >>> threading.Thread(target=run, daemon=True).start()
@@ -2704,40 +2702,40 @@ def send_json(sport):
 >>> response = requests.post(url, data=request_data)
 >>> response.json()
 {'team': 'arsenal f.c.', 'odds': [2.09, 3.74, 3.68]}
-````
+```
 
 ## Profiling
 
 ### Stopwatch
 
-````python
+```python
 from time import perf_counter
 start_time = perf_counter()
 ...
 duration_in_seconds = perf_counter() - start_time
-````
+```
 
 ### Timing a Snippet
 
-````python
+```python
 >>> from timeit import timeit
 >>> timeit("''.join(str(i) for i in range(100))",
 ...        number=10000, globals=globals(), setup='pass')
 0.34986
-````
+```
 
 ### Profiling by Line
 
-````python
+```python
 # $ pip3 install line_profiler memory_profiler
 @profile
 def main():
     a = [*range(10000)]
     b = {*range(10000)}
 main()
-````
+```
 
-````text
+```text
 $ kernprof -lv test.py
 Line #   Hits     Time  Per Hit   % Time  Line Contents
 =======================================================
@@ -2745,9 +2743,9 @@ Line #   Hits     Time  Per Hit   % Time  Line Contents
      2                                    def main():
      3      1    955.0    955.0     43.7      a = [*range(10000)]
      4      1   1231.0   1231.0     56.3      b = {*range(10000)}
-````
+```
 
-````text
+```text
 $ python3 -m memory_profiler test.py
 Line #         Mem usage      Increment   Line Contents
 =======================================================
@@ -2755,13 +2753,13 @@ Line #         Mem usage      Increment   Line Contents
      2                                    def main():
      3        38.012 MiB      0.344 MiB       a = [*range(10000)]
      4        38.477 MiB      0.465 MiB       b = {*range(10000)}
-````
+```
 
 ### Call Graph
 
 #### Generates a PNG image of the call graph with highlighted bottlenecks
 
-````python
+```python
 # $ pip3 install pycallgraph2; apt/brew install graphviz
 import pycallgraph2 as cg, datetime
 
@@ -2769,80 +2767,80 @@ filename = f'profile-{datetime.datetime.now():%Y%m%d_%H%M%S}.png'
 drawer = cg.output.GraphvizOutput(output_file=filename)
 with cg.PyCallGraph(drawer):
     <code_to_be_profiled>
-````
+```
 
 ## NumPy
 
 **Array manipulation mini-language. It can run up to one hundred times faster than the equivalent Python code. An even faster alternative that runs on a GPU is called CuPy.**
 
-````python
+```python
 # $ pip3 install numpy
 import numpy as np
-````
+```
 
-````python
+```python
 <array> = np.array(<list/list_of_lists>)                # Returns 1d/2d NumPy array.
 <array> = np.zeros/ones(<shape>)                        # Also np.full(<shape>, <el>).
 <array> = np.arange(from_inc, to_exc, ±step)            # Also np.linspace(start, stop, num).
 <array> = np.random.randint(from_inc, to_exc, <shape>)  # Also np.random.random(<shape>).
-````
+```
 
-````python
+```python
 <view>  = <array>.reshape(<shape>)                      # Also `<array>.shape = <shape>`.
 <array> = <array>.flatten()                             # Collapses array into one dimension.
 <view>  = <array>.squeeze()                             # Removes dimensions of length one.
-````
+```
 
-````python
+```python
 <array> = <array>.sum/min/mean/var/std(axis)            # Passed dimension gets aggregated.
 <array> = <array>.argmin(axis)                          # Returns indexes of smallest elements.
 <array> = np.apply_along_axis(<func>, axis, <array>)    # Func can return a scalar or array.
-````
+```
 
-* **Shape is a tuple of dimension sizes. A 100x50 RGB image has shape (50, 100, 3).**
-* **Axis is an index of the dimension that gets aggregated. Leftmost dimension has index 0. Summing the RGB image along axis 2 will return a greyscale image with shape (50, 100).**
-* **Passing a tuple of axes will chain the operations like this: `'<array>.<method>(axis_1, keepdims=True).<method>(axis_2).squeeze()'`.**
+- **Shape is a tuple of dimension sizes. A 100x50 RGB image has shape (50, 100, 3).**
+- **Axis is an index of the dimension that gets aggregated. Leftmost dimension has index 0. Summing the RGB image along axis 2 will return a greyscale image with shape (50, 100).**
+- **Passing a tuple of axes will chain the operations like this: `'<array>.<method>(axis_1, keepdims=True).<method>(axis_2).squeeze()'`.**
 
 ### Indexing
 
-````bash
+```bash
 <el>       = <2d_array>[row_index, column_index]        # <3d_a>[table_i, row_i, column_i]
 <1d_view>  = <2d_array>[row_index]                      # <3d_a>[table_i, row_i]
 <1d_view>  = <2d_array>[:, column_index]                # <3d_a>[table_i, :, column_i]
-````
+```
 
-````bash
+```bash
 <1d_array> = <2d_array>[row_indexes, column_indexes]    # <3d_a>[table_is, row_is, column_is]
 <2d_array> = <2d_array>[row_indexes]                    # <3d_a>[table_is, row_is]
 <2d_array> = <2d_array>[:, column_indexes]              # <3d_a>[table_is, :, column_is]
-````
+```
 
-````bash
+```bash
 <2d_bools> = <2d_array> ><== <el>                       # <3d_array> ><== <1d_array>
 <1d_array> = <2d_array>[<2d_bools>]                     # <3d_array>[<2d_bools>]
-````
+```
 
-* **All examples also allow assignments.**
+- **All examples also allow assignments.**
 
 ### Broadcasting
 
 **Broadcasting is a set of rules by which NumPy functions operate on arrays of different sizes and/or dimensions.**
 
-````python
+```python
 left  = [[0.1], [0.6], [0.8]]                           # Shape: (3, 1)
 right = [ 0.1 ,  0.6 ,  0.8 ]                           # Shape: (3,)
-````
+```
 
 #### 1. If array shapes differ in length, left-pad the shorter shape with ones
 
-````python
+```python
 left  = [[0.1], [0.6], [0.8]]                           # Shape: (3, 1)
 right = [[0.1 ,  0.6 ,  0.8]]                           # Shape: (1, 3) <- !
-````
+```
 
 #### 2. If any dimensions differ in size, expand the ones that have size 1 by duplicating their elements
 
-````python
+```python
 left  = [[0.1,  0.1,  0.1],                             # Shape: (3, 3) <- !
          [0.6,  0.6,  0.6],
          [0.8,  0.8,  0.8]]
@@ -2850,7 +2848,7 @@ left  = [[0.1,  0.1,  0.1],                             # Shape: (3, 3) <- !
 right = [[0.1,  0.6,  0.8],                             # Shape: (3, 3) <- !
          [0.1,  0.6,  0.8],
          [0.1,  0.6,  0.8]]
-````
+```
 
 #### 3. If neither non-matching dimension has size 1, raise an error
 
@@ -2858,7 +2856,7 @@ right = [[0.1,  0.6,  0.8],                             # Shape: (3, 3) <- !
 
 #### For each point returns index of its nearest point (`[0.1, 0.6, 0.8] => [1, 2, 1]`)
 
-````python
+```python
 >>> points = np.array([0.1, 0.6, 0.8])
  [ 0.1,  0.6,  0.8]
 >>> wrapped_points = points.reshape(3, 1)
@@ -2881,94 +2879,94 @@ right = [[0.1,  0.6,  0.8],                             # Shape: (3, 3) <- !
  [ 0.7,  0.2,  inf]]
 >>> distances.argmin(1)
 [1, 2, 1]
-````
+```
 
 ## Image
 
-````python
+```python
 # $ pip3 install pillow
 from PIL import Image
-````
+```
 
-````python
+```python
 <Image> = Image.new('<mode>', (width, height))   # Also: `color=<int/tuple/str>`.
 <Image> = Image.open(<path>)                     # Identifies format based on file contents.
 <Image> = <Image>.convert('<mode>')              # Converts image to the new mode.
 <Image>.save(<path>)                             # Selects format based on the path extension.
 <Image>.show()                                   # Opens image in default preview app.
-````
+```
 
-````python
+```python
 <int/tuple> = <Image>.getpixel((x, y))           # Returns a pixel.
 <Image>.putpixel((x, y), <int/tuple>)            # Writes a pixel to the image.
 <ImagingCore> = <Image>.getdata()                # Returns a flattened sequence of pixels.
 <Image>.putdata(<list/ImagingCore>)              # Writes a flattened sequence of pixels.
 <Image>.paste(<Image>, (x, y))                   # Writes passed image to the image.
-````
+```
 
-````bash
+```bash
 <2d_array> = np.array(<Image_L>)                 # Creates NumPy array from greyscale image.
 <3d_array> = np.array(<Image_RGB/A>)             # Creates NumPy array from color image.
 <Image>    = Image.fromarray(np.uint8(<array>))  # Use <array>.clip(0, 255) to clip the values.
-````
+```
 
 ### Modes
 
-* **`'1'` - 1-bit pixels, black and white, stored with one pixel per byte.**
-* **`'L'` - 8-bit pixels, greyscale.**
-* **`'RGB'` - 3x8-bit pixels, true color.**
-* **`'RGBA'` - 4x8-bit pixels, true color with transparency mask.**
-* **`'HSV'` - 3x8-bit pixels, Hue, Saturation, Value color space.**
+- **`'1'` - 1-bit pixels, black and white, stored with one pixel per byte.**
+- **`'L'` - 8-bit pixels, greyscale.**
+- **`'RGB'` - 3x8-bit pixels, true color.**
+- **`'RGBA'` - 4x8-bit pixels, true color with transparency mask.**
+- **`'HSV'` - 3x8-bit pixels, Hue, Saturation, Value color space.**
 
 ### Examples
 
 #### Creates a PNG image of a rainbow gradient
 
-````python
+```python
 WIDTH, HEIGHT = 100, 100
 n_pixels = WIDTH * HEIGHT
 hues = (255 * i/n_pixels for i in range(n_pixels))
 img = Image.new('HSV', (WIDTH, HEIGHT))
 img.putdata([(int(h), 255, 255) for h in hues])
 img.convert('RGB').save('test.png')
-````
+```
 
 #### Adds noise to a PNG image
 
-````python
+```python
 from random import randint
 add_noise = lambda value: max(0, min(255, value + randint(-20, 20)))
 img = Image.open('test.png').convert('HSV')
 img.putdata([(add_noise(h), s, v) for h, s, v in img.getdata()])
 img.convert('RGB').save('test.png')
-````
+```
 
 ### Image Draw
 
-````python
+```python
 from PIL import ImageDraw
 <ImageDraw> = ImageDraw.Draw(<Image>)
-````
+```
 
-````python
+```python
 <ImageDraw>.point((x, y))                        # Truncates floats into ints.
 <ImageDraw>.line((x1, y1, x2, y2 [, ...]))       # To get anti-aliasing use Image's resize().
 <ImageDraw>.arc((x1, y1, x2, y2), deg1, deg2)    # Always draws in clockwise direction.
 <ImageDraw>.rectangle((x1, y1, x2, y2))          # To rotate use Image's rotate() and paste().
 <ImageDraw>.polygon((x1, y1, x2, y2, ...))       # Last point gets connected to the first.
 <ImageDraw>.ellipse((x1, y1, x2, y2))            # To rotate use Image's rotate() and paste().
-````
+```
 
-* **Use `'fill=<color>'` to set the primary color.**
-* **Use `'width=<int>'` to set the width of lines or contours.**
-* **Use `'outline=<color>'` to set the color of the contours.**
-* **Color can be an int, tuple, `'#rrggbb[aa]'` string or a color name.**
+- **Use `'fill=<color>'` to set the primary color.**
+- **Use `'width=<int>'` to set the width of lines or contours.**
+- **Use `'outline=<color>'` to set the color of the contours.**
+- **Color can be an int, tuple, `'#rrggbb[aa]'` string or a color name.**
 
 ## Animation
 
 #### Creates a GIF of a bouncing ball
 
-````python
+```python
 # $ pip3 install imageio
 from PIL import Image, ImageDraw
 import imageio
@@ -2983,15 +2981,15 @@ for velocity in range(1, 16):
     frames.append(frame)
 frames += reversed(frames[1:-1])
 imageio.mimsave('test.gif', frames, duration=0.03)
-````
+```
 
 ## Audio
 
-````python
+```python
 import wave
-````
+```
 
-````python
+```python
 <Wave_read>  = wave.open('<path>', 'rb')        # Opens the WAV file.
 framerate    = <Wave_read>.getframerate()       # Number of frames per second.
 nchannels    = <Wave_read>.getnchannels()       # Number of samples per frame.
@@ -2999,26 +2997,26 @@ sampwidth    = <Wave_read>.getsampwidth()       # Sample size in bytes.
 nframes      = <Wave_read>.getnframes()         # Number of frames.
 <params>     = <Wave_read>.getparams()          # Immutable collection of above.
 <bytes>      = <Wave_read>.readframes(nframes)  # Returns next 'nframes' frames.
-````
+```
 
-````python
+```python
 <Wave_write> = wave.open('<path>', 'wb')        # Truncates existing file.
 <Wave_write>.setframerate(<int>)                # 44100 for CD, 48000 for video.
 <Wave_write>.setnchannels(<int>)                # 1 for mono, 2 for stereo.
 <Wave_write>.setsampwidth(<int>)                # 2 for CD quality sound.
 <Wave_write>.setparams(<params>)                # Sets all parameters.
 <Wave_write>.writeframes(<bytes>)               # Appends frames to the file.
-````
+```
 
-* **Bytes object contains a sequence of frames, each consisting of one or more samples.**
-* **In a stereo signal, the first sample of a frame belongs to the left channel.**
-* **Each sample consists of one or more bytes that, when converted to an integer, indicate the displacement of a speaker membrane at a given moment.**
-* **If sample width is one byte, then the integer should be encoded unsigned.**
-* **For all other sizes, the integer should be encoded signed with little-endian byte order.**
+- **Bytes object contains a sequence of frames, each consisting of one or more samples.**
+- **In a stereo signal, the first sample of a frame belongs to the left channel.**
+- **Each sample consists of one or more bytes that, when converted to an integer, indicate the displacement of a speaker membrane at a given moment.**
+- **If sample width is one byte, then the integer should be encoded unsigned.**
+- **For all other sizes, the integer should be encoded signed with little-endian byte order.**
 
 ### Sample Values
 
-````text
+```text
 +-----------+-----------+------+-----------+
 | sampwidth |    min    | zero |    max    |
 +-----------+-----------+------+-----------+
@@ -3026,11 +3024,11 @@ nframes      = <Wave_read>.getnframes()         # Number of frames.
 |     2     |    -32768 |    0 |     32767 |
 |     3     |  -8388608 |    0 |   8388607 |
 +-----------+-----------+------+-----------+
-````
+```
 
 ### Read Float Samples from WAV File
 
-````python
+```python
 def read_wav_file(filename):
     def get_int(bytes_obj):
         an_int = int.from_bytes(bytes_obj, 'little', signed=(sampwidth != 1))
@@ -3040,11 +3038,11 @@ def read_wav_file(filename):
         frames = file.readframes(-1)
     bytes_samples = (frames[i : i+sampwidth] for i in range(0, len(frames), sampwidth))
     return [get_int(b) / pow(2, sampwidth * 8 - 1) for b in bytes_samples]
-````
+```
 
 ### Write Float Samples to WAV File
 
-````python
+```python
 def write_to_wav_file(filename, float_samples, nchannels=1, sampwidth=2, framerate=44100):
     def get_bytes(a_float):
         a_float = max(-1, min(1 - 2e-16, a_float))
@@ -3056,53 +3054,53 @@ def write_to_wav_file(filename, float_samples, nchannels=1, sampwidth=2, framera
         file.setsampwidth(sampwidth)
         file.setframerate(framerate)
         file.writeframes(b''.join(get_bytes(f) for f in float_samples))
-````
+```
 
 ### Examples
 
 #### Saves a 440 Hz sine wave to a mono WAV file
 
-````python
+```python
 from math import pi, sin
 samples_f = (sin(i * 2 * pi * 440 / 44100) for i in range(100000))
 write_to_wav_file('test.wav', samples_f)
-````
+```
 
 #### Adds noise to a mono WAV file
 
-````python
+```python
 from random import random
 add_noise = lambda value: value + (random() - 0.5) * 0.03
 samples_f = (add_noise(f) for f in read_wav_file('test.wav'))
 write_to_wav_file('test.wav', samples_f)
-````
+```
 
 #### Plays a WAV file
 
-````python
+```python
 # $ pip3 install simpleaudio
 from simpleaudio import play_buffer
 with wave.open('test.wav', 'rb') as file:
     p = file.getparams()
     frames = file.readframes(-1)
     play_buffer(frames, p.nchannels, p.sampwidth, p.framerate)
-````
+```
 
 ### Text to Speech
 
-````python
+```python
 # $ pip3 install pyttsx3
 import pyttsx3
 engine = pyttsx3.init()
 engine.say('Sally sells seashells by the seashore.')
 engine.runAndWait()
-````
+```
 
 ## Synthesizer
 
 #### Plays Popcorn by Gershon Kingsley
 
-````python
+```python
 # $ pip3 install simpleaudio
 import itertools as it, math, struct, simpleaudio
 
@@ -3118,11 +3116,11 @@ get_samples = lambda note: get_wave(*parse_note(note)) if note else get_pause(1/
 samples_f   = it.chain.from_iterable(get_samples(n) for n in f'{P1},{P1},{P2}'.split(','))
 samples_b   = b''.join(struct.pack('<h', int(f * 30000)) for f in samples_f)
 simpleaudio.play_buffer(samples_b, 1, 2, F)
-````
+```
 
 ## Pygame
 
-````python
+```python
 # $ pip3 install pygame
 import pygame as pg
 
@@ -3136,75 +3134,75 @@ while all(event.type != pg.QUIT for event in pg.event.get()):
     screen.fill((0, 0, 0))
     pg.draw.rect(screen, (255, 255, 255), rect)
     pg.display.flip()
-````
+```
 
 ### Rectangle
 
 **Object for storing rectangular coordinates.**
 
-````python
+```python
 <Rect> = pg.Rect(x, y, width, height)           # Floats get truncated into ints.
 <int>  = <Rect>.x/y/centerx/centery/…           # Top, right, bottom, left. Allows assignments.
 <tup.> = <Rect>.topleft/center/…                # Topright, bottomright, bottomleft. Same.
 <Rect> = <Rect>.move((x, y))                    # Use move_ip() to move in-place.
-````
+```
 
-````python
+```python
 <bool> = <Rect>.collidepoint((x, y))            # Checks if rectangle contains a point.
 <bool> = <Rect>.colliderect(<Rect>)             # Checks if two rectangles overlap.
 <int>  = <Rect>.collidelist(<list_of_Rect>)     # Returns index of first colliding Rect or -1.
 <list> = <Rect>.collidelistall(<list_of_Rect>)  # Returns indexes of all colliding rectangles.
-````
+```
 
 ### Surface
 
 **Object for representing images.**
 
-````python
+```python
 <Surf> = pg.display.set_mode((width, height))   # Returns a display surface.
 <Surf> = pg.Surface((width, height))            # New RGB surface. RGBA if `flags=pg.SRCALPHA`.
 <Surf> = pg.image.load('<path>')                # Loads the image. Format depends on source.
 <Surf> = <Surf>.subsurface(<Rect>)              # Returns a subsurface.
-````
+```
 
-````python
+```python
 <Surf>.fill(color)                              # Tuple, Color('#rrggbb[aa]') or Color(<name>).
 <Surf>.set_at((x, y), color)                    # Updates pixel.
 <Surf>.blit(<Surf>, (x, y))                     # Draws passed surface to the surface.
-````
+```
 
-````python
+```python
 from pygame.transform import scale, ...
 <Surf> = scale(<Surf>, (width, height))         # Returns scaled surface.
 <Surf> = rotate(<Surf>, anticlock_degrees)      # Returns rotated and scaled surface.
 <Surf> = flip(<Surf>, x_bool, y_bool)           # Returns flipped surface.
-````
+```
 
-````python
+```python
 from pygame.draw import line, ...
 line(<Surf>, color, (x1, y1), (x2, y2), width)  # Draws a line to the surface.
 arc(<Surf>, color, <Rect>, from_rad, to_rad)    # Also: ellipse(<Surf>, color, <Rect>, width=0)
 rect(<Surf>, color, <Rect>, width=0)            # Also: polygon(<Surf>, color, points, width=0)
-````
+```
 
 ### Font
 
-````python
+```python
 <Font> = pg.font.SysFont('<name>', size)        # Loads the system font or default if missing.
 <Font> = pg.font.Font('<path>', size)           # Loads the TTF file. Pass None for default.
 <Surf> = <Font>.render(text, antialias, color)  # Background color can be specified at the end.
-````
+```
 
 ### Sound
 
-````python
+```python
 <Sound> = pg.mixer.Sound('<path>')              # Loads the WAV file.
 <Sound>.play()                                  # Starts playing the sound.
-````
+```
 
 ### Basic Mario Brothers Example
 
-````python
+```python
 import collections, dataclasses, enum, io, itertools as it, pygame as pg, urllib.request
 from random import randint
 
@@ -3278,86 +3276,86 @@ def draw(screen, images, mario, tiles, pressed):
 
 if __name__ == '__main__':
     main()
-````
+```
 
 ## Pandas
 
-````python
+```python
 # $ pip3 install pandas matplotlib
 import pandas as pd
 from pandas import Series, DataFrame
 import matplotlib.pyplot as plt
-````
+```
 
 ### Series
 
 **Ordered dictionary with a name.**
 
-````python
+```python
 >>> Series([1, 2], index=['x', 'y'], name='a')
 x    1
 y    2
 Name: a, dtype: int64
-````
+```
 
-````python
+```python
 <Sr> = Series(<list>)                          # Assigns RangeIndex starting at 0.
 <Sr> = Series(<dict>)                          # Takes dictionary's keys for index.
 <Sr> = Series(<dict/Series>, index=<list>)     # Only keeps items with keys specified in index.
-````
+```
 
-````python
+```python
 <el> = <Sr>.loc[key]                           # Or: <Sr>.iloc[index]
 <Sr> = <Sr>.loc[keys]                          # Or: <Sr>.iloc[indexes]
 <Sr> = <Sr>.loc[from_key : to_key_inclusive]   # Or: <Sr>.iloc[from_i : to_i_exclusive]
-````
+```
 
-````python
+```python
 <el> = <Sr>[key/index]                         # Or: <Sr>.key
 <Sr> = <Sr>[keys/indexes]                      # Or: <Sr>[<key_range/range>]
 <Sr> = <Sr>[bools]                             # Or: <Sr>.i/loc[bools]
-````
+```
 
-````python
+```python
 <Sr> = <Sr> ><== <el/Sr>                       # Returns a Series of bools.
 <Sr> = <Sr> +-*/ <el/Sr>                       # Items with non-matching keys get value NaN.
-````
+```
 
-````python
+```python
 <Sr> = <Sr>.append(<Sr>)                       # Or: pd.concat(<coll_of_Sr>)
 <Sr> = <Sr>.combine_first(<Sr>)                # Adds items that are not yet present.
 <Sr>.update(<Sr>)                              # Updates items that are already present.
-````
+```
 
-````python
+```python
 <Sr>.plot.line/area/bar/pie/hist()             # Generates a Matplotlib plot.
 plt.show()                                     # Displays the plot. Also plt.savefig(<path>).
-````
+```
 
 #### Series — Aggregate, Transform, Map
 
-````python
+```python
 <el> = <Sr>.sum/max/mean/idxmax/all()          # Or: <Sr>.agg(lambda <Sr>: <el>)
 <Sr> = <Sr>.rank/diff/cumsum/ffill/interpl()   # Or: <Sr>.agg/transform(lambda <Sr>: <Sr>)
 <Sr> = <Sr>.fillna(<el>)                       # Or: <Sr>.agg/transform/map(lambda <el>: <el>)
-````
+```
 
-````python
+```python
 >>> sr = Series([1, 2], index=['x', 'y'])
 x    1
 y    2
-````
+```
 
-````text
+```text
 +-----------------+-------------+-------------+---------------+
 |                 |    'sum'    |   ['sum']   | {'s': 'sum'}  |
 +-----------------+-------------+-------------+---------------+
 | sr.apply(…)     |      3      |    sum  3   |     s  3      |
 | sr.agg(…)       |             |             |               |
 +-----------------+-------------+-------------+---------------+
-````
+```
 
-````text
+```text
 +-----------------+-------------+-------------+---------------+
 |                 |    'rank'   |   ['rank']  | {'r': 'rank'} |
 +-----------------+-------------+-------------+---------------+
@@ -3365,54 +3363,54 @@ y    2
 | sr.agg(…)       |     x  1    |   x     1   |    r  x  1    |
 | sr.transform(…) |     y  2    |   y     2   |       y  2    |
 +-----------------+-------------+-------------+---------------+
-````
+```
 
-* **Last result has a hierarchical index. Use `'<Sr>[key_1, key_2]'` to get its values.**
+- **Last result has a hierarchical index. Use `'<Sr>[key_1, key_2]'` to get its values.**
 
 ### DataFrame
 
 **Table with labeled rows and columns.**
 
-````python
+```python
 >>> DataFrame([[1, 2], [3, 4]], index=['a', 'b'], columns=['x', 'y'])
    x  y
 a  1  2
 b  3  4
-````
+```
 
-````python
+```python
 <DF>    = DataFrame(<list_of_rows>)            # Rows can be either lists, dicts or series.
 <DF>    = DataFrame(<dict_of_columns>)         # Columns can be either lists, dicts or series.
-````
+```
 
-````python
+```python
 <el>    = <DF>.loc[row_key, column_key]        # Or: <DF>.iloc[row_index, column_index]
 <Sr/DF> = <DF>.loc[row_key/s]                  # Or: <DF>.iloc[row_index/es]
 <Sr/DF> = <DF>.loc[:, column_key/s]            # Or: <DF>.iloc[:, column_index/es]
 <DF>    = <DF>.loc[row_bools, column_bools]    # Or: <DF>.iloc[row_bools, column_bools]
-````
+```
 
-````python
+```python
 <Sr/DF> = <DF>[column_key/s]                   # Or: <DF>.column_key
 <DF>    = <DF>[row_bools]                      # Keeps rows as specified by bools.
 <DF>    = <DF>[<DF_of_bools>]                  # Assigns NaN to False values.
-````
+```
 
-````python
+```python
 <DF>    = <DF> ><== <el/Sr/DF>                 # Returns DF of bools. Sr is treated as a row.
 <DF>    = <DF> +-*/ <el/Sr/DF>                 # Items with non-matching keys get value NaN.
-````
+```
 
-````python
+```python
 <DF>    = <DF>.set_index(column_key)           # Replaces row keys with values from a column.
 <DF>    = <DF>.reset_index()                   # Moves row keys to a column named index.
 <DF>    = <DF>.sort_index(ascending=True)      # Sorts rows by row keys.
 <DF>    = <DF>.sort_values(column_key/s)       # Sorts rows by the passed column/s.
-````
+```
 
 #### DataFrame — Merge, Join, Concat
 
-````python
+```python
 >>> l = DataFrame([[1, 2], [3, 4]], index=['a', 'b'], columns=['x', 'y'])
    x  y
 a  1  2
@@ -3421,9 +3419,9 @@ b  3  4
    y  z
 b  4  5
 c  6  7
-````
+```
 
-````text
+```text
 +------------------------+---------------+------------+------------+--------------------------+
 |                        |    'outer'    |   'inner'  |   'left'   |       Description        |
 +------------------------+---------------+------------+------------+--------------------------+
@@ -3453,26 +3451,26 @@ c  6  7
 |                        | b  3   4   5  |            |            | items that contain NaN.  |
 |                        | c  .   6   7  |            |            | R must be a DataFrame.   |
 +------------------------+---------------+------------+------------+--------------------------+
-````
+```
 
 #### DataFrame — Aggregate, Transform, Map
 
-````python
+```python
 <Sr> = <DF>.sum/max/mean/idxmax/all()          # Or: <DF>.apply/agg(lambda <Sr>: <el>)
 <DF> = <DF>.rank/diff/cumsum/ffill/interpl()   # Or: <DF>.apply/agg/transfrm(lambda <Sr>: <Sr>)
 <DF> = <DF>.fillna(<el>)                       # Or: <DF>.applymap(lambda <el>: <el>)
-````
+```
 
-* **All operations operate on columns by default. Pass `'axis=1'` to process the rows instead.**
+- **All operations operate on columns by default. Pass `'axis=1'` to process the rows instead.**
 
-````python
+```python
 >>> df = DataFrame([[1, 2], [3, 4]], index=['a', 'b'], columns=['x', 'y'])
    x  y
 a  1  2
 b  3  4
-````
+```
 
-````text
+```text
 +-----------------+-------------+-------------+---------------+
 |                 |    'sum'    |   ['sum']   | {'x': 'sum'}  |
 +-----------------+-------------+-------------+---------------+
@@ -3480,9 +3478,9 @@ b  3  4
 | df.agg(…)       |     x  4    |  sum  4  6  |     x  4      |
 |                 |     y  6    |             |               |
 +-----------------+-------------+-------------+---------------+
-````
+```
 
-````text
+```text
 +-----------------+-------------+-------------+---------------+
 |                 |    'rank'   |   ['rank']  | {'x': 'rank'} |
 +-----------------+-------------+-------------+---------------+
@@ -3491,66 +3489,66 @@ b  3  4
 | df.transform(…) |   b  2  2   | a    1    1 |     b  2      |
 |                 |             | b    2    2 |               |
 +-----------------+-------------+-------------+---------------+
-````
+```
 
-* **Use `'<DF>[col_key_1, col_key_2][row_key]'` to get the fifth result's values.**
+- **Use `'<DF>[col_key_1, col_key_2][row_key]'` to get the fifth result's values.**
 
 #### DataFrame — Plot, Encode, Decode
 
-````python
+```python
 <DF>.plot.line/bar/hist/scatter/box()          # Also: `x=column_key, y=column_key/s`.
 plt.show()                                     # Displays the plot. Also plt.savefig(<path>).
-````
+```
 
-````python
+```python
 <DF> = pd.read_json/html('<str/path/url>')     # Run `$ pip3 install beautifulsoup4 lxml`.
 <DF> = pd.read_csv/pickle/excel('<path/url>')  # Use `sheet_name=None` to get all Excel sheets.
 <DF> = pd.read_sql('<table/query>', <conn.>)   # Accepts SQLite3 or SQLAlchemy connection.
 <DF> = pd.read_clipboard()                     # Reads a copied table from the clipboard.
-````
+```
 
-````python
+```python
 <dict> = <DF>.to_dict(['d/l/s/…'])             # Returns columns as dicts, lists or series.
 <str>  = <DF>.to_json/html/csv([<path>])       # Also to_markdown/latex([<path>]).
 <DF>.to_pickle/excel(<path>)                   # Run `$ pip3 install openpyxl` for xlsx files.
 <DF>.to_sql('<table_name>', <connection>)      # Accepts SQLite3 or SQLAlchemy connection.
-````
+```
 
 ### GroupBy
 
 **Object that groups together rows of a dataframe based on the value of the passed column.**
 
-````python
+```python
 >>> df = DataFrame([[1, 2, 3], [4, 5, 6], [7, 8, 6]], index=list('abc'), columns=list('xyz'))
 >>> df.groupby('z').get_group(6)
    x  y
 b  4  5
 c  7  8
-````
+```
 
-````python
+```python
 <GB> = <DF>.groupby(column_key/s)              # Splits DF into groups based on passed column.
 <DF> = <GB>.apply(<func>)                      # Maps each group. Func can return DF, Sr or el.
 <GB> = <GB>[column_key]                        # Single column GB. All operations return a Sr.
-````
+```
 
 #### GroupBy — Aggregate, Transform, Map
 
-````python
+```python
 <DF> = <GB>.sum/max/mean/idxmax/all()          # Or: <GB>.agg(lambda <Sr>: <el>)
 <DF> = <GB>.rank/diff/cumsum/ffill()           # Or: <GB>.transform(lambda <Sr>: <Sr>)
 <DF> = <GB>.fillna(<el>)                       # Or: <GB>.transform(lambda <Sr>: <Sr>)
-````
+```
 
-````python
+```python
 >>> gb = df.groupby('z')
       x  y  z
 3: a  1  2  3
 6: b  4  5  6
    c  7  8  6
-````
+```
 
-````text
+```text
 +-----------------+-------------+-------------+-------------+---------------+
 |                 |    'sum'    |    'rank'   |   ['rank']  | {'x': 'rank'} |
 +-----------------+-------------+-------------+-------------+---------------+
@@ -3565,33 +3563,33 @@ c  7  8
 |                 |  b  11  13  |   b  1  1   |             |               |
 |                 |  c  11  13  |   c  2  2   |             |               |
 +-----------------+-------------+-------------+-------------+---------------+
-````
+```
 
 ### Rolling
 
 **Object for rolling window calculations.**
 
-````python
+```python
 <RSr/RDF/RGB> = <Sr/DF/GB>.rolling(win_size)   # Also: `min_periods=None, center=False`.
 <RSr/RDF/RGB> = <RDF/RGB>[column_key/s]        # Or: <RDF/RGB>.column_key
 <Sr/DF>       = <R>.mean/sum/max()             # Or: <R>.apply/agg(<agg_func/str>)
-````
+```
 
 ## Plotly
 
-````python
+```python
 # $ pip3 install plotly kaleido
 from plotly.express import line
 <Figure> = line(<DF>, x=<col_name>, y=<col_name>)        # Or: line(x=<list>, y=<list>)
 <Figure>.update_layout(margin=dict(t=0, r=0, b=0, l=0))  # Or: paper_bgcolor='rgba(0, 0, 0, 0)'
 <Figure>.write_html/json/image('<path>')                 # Also: <Figure>.show()
-````
+```
 
 #### Covid deaths by continent
 
 ![Covid Deaths](../_assets/covid_deaths.png)
 
-````python
+```python
 covid = pd.read_csv('https://covid.ourworldindata.org/data/owid-covid-data.csv',
                     usecols=['iso_code', 'date', 'total_deaths', 'population'])
 continents = pd.read_csv('https://gist.githubusercontent.com/stevewithington/20a69c0b6d2ff'
@@ -3603,13 +3601,13 @@ df['Total Deaths per Million'] = df.total_deaths * 1e6 / df.population
 df = df[df.date > '2020-03-14']
 df = df.rename({'date': 'Date', 'Continent_Name': 'Continent'}, axis='columns')
 line(df, x='Date', y='Total Deaths per Million', color='Continent').show()
-````
+```
 
 #### Confirmed covid cases, Dow Jones, Gold, and Bitcoin price
 
 ![Covid Cases](../_assets/covid_cases.png)
 
-````python
+```python
 import pandas as pd
 import plotly.graph_objects as go
 
@@ -3652,18 +3650,18 @@ def display_data(df):
 
 if __name__ == '__main__':
     main()
-````
+```
 
 ## PySimpleGUI
 
-````python
+```python
 # $ pip3 install PySimpleGUI
 import PySimpleGUI as sg
 layout = [[sg.Text("What's your name?")], [sg.Input()], [sg.Button('Ok')]]
 window = sg.Window('Window Title', layout)
 event, values = window.read()
 print(f'Hello {values[0]}!' if event == 'Ok' else '')
-````
+```
 
 ## Appendix
 
@@ -3671,50 +3669,50 @@ print(f'Hello {values[0]}!' if event == 'Ok' else '')
 
 **Library that compiles Python code into C.**
 
-````python
+```python
 # $ pip3 install cython
 import pyximport; pyximport.install()
 import <cython_script>
 <cython_script>.main()
-````
+```
 
 #### Definitions
 
-* **All `'cdef'` definitions are optional, but they contribute to the speed-up.**
-* **Script needs to be saved with a `'pyx'` extension.**
+- **All `'cdef'` definitions are optional, but they contribute to the speed-up.**
+- **Script needs to be saved with a `'pyx'` extension.**
 
-````python
+```python
 cdef <ctype> <var_name> = <el>
 cdef <ctype>[n_elements] <var_name> = [<el_1>, <el_2>, ...]
 cdef <ctype/void> <func_name>(<ctype> <arg_name>): ...
-````
+```
 
-````python
+```python
 cdef class <class_name>:
     cdef public <ctype> <attr_name>
     def __init__(self, <ctype> <arg_name>):
         self.<attr_name> = <arg_name>
-````
+```
 
-````python
+```python
 cdef enum <enum_name>: <member_name_1>, <member_name_2>, ...
-````
+```
 
 ### PyInstaller
 
-````bash
+```bash
 pip3 install pyinstaller
 pyinstaller script.py                        # Compiles into './dist/script' directory.
 pyinstaller script.py --onefile              # Compiles into './dist/script' console app.
 pyinstaller script.py --windowed             # Compiles into './dist/script' windowed app.
 pyinstaller script.py --add-data '<path>:.'  # Adds file to the root of the executable.
-````
+```
 
-* **File paths need to be updated to `'os.path.join(sys._MEIPASS, <path>)'`.**
+- **File paths need to be updated to `'os.path.join(sys._MEIPASS, <path>)'`.**
 
 ### Basic Script Template
 
-````python
+```python
 #!/usr/bin/env python3
 #
 # Usage: .py
@@ -3742,10 +3740,10 @@ def read_file(filename):
 
 if __name__ == '__main__':
     main()
-````
+```
 
 ## Index
 
-* **Only available in the [PDF](https://transactions.sendowl.com/products/78175486/4422834F/view).**
-* **Ctrl+F / ⌘F is usually sufficient.**
-* **Searching `'#<title>'` on the [webpage](https://gto76.github.io/python-cheatsheet/) will limit the search to the titles.**
+- **Only available in the [PDF](https://transactions.sendowl.com/products/78175486/4422834F/view).**
+- **Ctrl+F / ⌘F is usually sufficient.**
+- **Searching `'#<title>'` on the [webpage](https://gto76.github.io/python-cheatsheet/) will limit the search to the titles.**

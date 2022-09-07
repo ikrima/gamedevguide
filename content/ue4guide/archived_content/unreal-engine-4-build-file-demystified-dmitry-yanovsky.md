@@ -170,11 +170,11 @@ Unreal Engine makes use of NMake build system. You can find more information abo
 
 If you go to your project’s properties and go under NMake category you will find ‘Include search paths’ section.
 
-![](../assets/unreal-engine-4-build-file-demystified-dmitry-yanovsky-includes.png)
+![](../_assets/unreal-engine-4-build-file-demystified-dmitry-yanovsky-includes.png)
 
 When you generate your project file using GenerateProjectFiles.bat or UnrealVS plugin this list gets populated by UBT depending on the contents of your project’s `*.Build.cs` file.
 
-![](../assets/unreal-engine-4-build-file-demystified-dmitry-yanovsky-includes_list.png)
+![](../_assets/unreal-engine-4-build-file-demystified-dmitry-yanovsky-includes_list.png)
 
 But since UBT appends all these include paths using /I compiler option on each build of your project anyways, this list is mostly here for IntelliSense error-checking. So if you start getting weird IntelliSense related errors, it’s a good idea to regenerate your project solution file. Perhaps, you’ve recently added new include paths to your build file of which IntelliSense is not aware yet.
 

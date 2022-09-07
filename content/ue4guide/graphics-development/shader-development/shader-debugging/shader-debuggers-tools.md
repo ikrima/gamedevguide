@@ -99,7 +99,7 @@ Download and detailed configuration instructions: <http://developer.nvidia.com/
 
 - **Problem:** For some reason, when the file gets sync'ed over, the app bitches when it gets launched on the target machine, saying it can't find the \[project]\_Data folder. Still investigating this, but for now, workaround is to just manually copy over the project directory to the target machine.  (Default: C:\\Users\\\[current-user-on-target]\\AppData\\Roaming\\NVIDIA Corporation\\Nsight\\Monitor\\Mirror\\\[hostname]\\\[host-outdir] so for example
 
-![Debugging_wNsight_NVidiaInsight](../../../assets/Debugging_wNsight_NVidiaInsight.jpg)
+![Debugging_wNsight_NVidiaInsight](../../../_assets/Debugging_wNsight_NVidiaInsight.jpg)
 
 All the Paths you specify are relative to the target machine's synchronization directory (the default is specified above). However, if you select "Don't synchronize", all of the paths will be relative to the machine
 
@@ -179,15 +179,15 @@ Using NVIDIA Nsight Debugging with Other Project Types
 
    Enter the name for your project and click OK.
 
-![LaunchingNsight_2DebuggingExternal](../../../assets/LaunchingNsight_2DebuggingExternal.png)
+![LaunchingNsight_2DebuggingExternal](../../../_assets/LaunchingNsight_2DebuggingExternal.png)
 
 3. Select the project's **Nsight User Properties** to edit the default settings. (As an alternative, you can also go to the **Project** menu > **Nsight User Properties**.)
 
-![LaunchingNsight_SolutionExplorer](../../../assets/LaunchingNsight_SolutionExplorer.png)
+![LaunchingNsight_SolutionExplorer](../../../_assets/LaunchingNsight_SolutionExplorer.png)
 
 4. Select **Launch external program**, and enter the path to the external program for the application that is to be debugged.
 
-![LaunchingNsight_4Launch](../../../assets/LaunchingNsight_4Launch.png)
+![LaunchingNsight_4Launch](../../../_assets/LaunchingNsight_4Launch.png)
 
 5. Configure any other launch options or file synchronization settings which may be necessary for your particular debugging environment.
 

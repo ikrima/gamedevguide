@@ -5,7 +5,7 @@ sidebar: ue4guide
 
 <https://forums.unrealengine.com/development-discussion/vr-ar-development/1371458-make-maintain-framerate-technical-postmortem-for-robo-recall-and-beyond-by-nick-whiting>
 
-![RoboRecall_UnderstandingThreadingModel](../../assets/RoboRecall_UnderstandingThreadingModel.png)
+![RoboRecall_UnderstandingThreadingModel](../../_assets/RoboRecall_UnderstandingThreadingModel.png)
 
 # Ticking is not multithreaded
 
@@ -41,7 +41,7 @@ OdinScoreManager
 
 OdinPopulationManager
 
-![RoboRecall_TG_DuringPhysics](../../assets/RoboRecall_TG_DuringPhysics.png)
+![RoboRecall_TG_DuringPhysics](../../_assets/RoboRecall_TG_DuringPhysics.png)
 
 # Render Thread:
 
@@ -73,7 +73,7 @@ Use stat physics & stat anim
 
 Forward Renderer
 
-![RoboRecall_ForwardRenderer](../../assets/RoboRecall_ForwardRenderer.png)
+![RoboRecall_ForwardRenderer](../../_assets/RoboRecall_ForwardRenderer.png)
 
 Can do 70%-90% scale down with MSAA 2x/4x
 

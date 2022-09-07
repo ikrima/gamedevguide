@@ -105,13 +105,13 @@ bool FOculusRiftHMD::Exec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevi
 - World Scale can be changed in Window->World Settings. Default is 100 uu => 1m (i.e. 1 uu = 1cm)
 ```
 
-  ![Oculus_RiftGotchas_worldsettings](../../assets/Oculus_RiftGotchas_worldsettings.jpg)
+  ![Oculus_RiftGotchas_worldsettings](../../_assets/Oculus_RiftGotchas_worldsettings.jpg)
 
 - Player Settings: Can be changed in the Defaults or Components of your characters BluePrint
 
-  ![Oculus_RiftGotchas_Playersettings](../../assets/Oculus_RiftGotchas_Playersettings.jpg)
+  ![Oculus_RiftGotchas_Playersettings](../../_assets/Oculus_RiftGotchas_Playersettings.jpg)
 
-  ![Oculus_RiftGotchas_playersettings2](../../assets/Oculus_RiftGotchas_playersettings2.jpg)
+  ![Oculus_RiftGotchas_playersettings2](../../_assets/Oculus_RiftGotchas_playersettings2.jpg)
 
 
 - Height & Width are based off Capsule Half Height & Capsule Radius
@@ -142,7 +142,7 @@ Regarding cloning multiple monitors, I personally had the **best performance wi
 
 But to make vsync work (so that the Rift doesn't inherit the vsync timing of your primary monitor), at least with an Nvidia card, you can **set the Rift as your clone source** in the Nvidia Control Panel (#3 is my Rift in the screenshot below). This way the Rift's refresh timing will be used for vsync and you won't see any tearing on your headset, although if you primary monitor timing is even slightly different (probably the case) you will still see tearing on the primary monitor. Of course this shouldn't be a problem since only other people in the room will see your primary monitor while your Rift is on your head.
 
-![Oculus_RiftGotchas_CloningMultiMonitor](../../assets/Oculus_RiftGotchas_CloningMultiMonitor.png)
+![Oculus_RiftGotchas_CloningMultiMonitor](../../_assets/Oculus_RiftGotchas_CloningMultiMonitor.png)
 
 *Reference From <https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>*
 

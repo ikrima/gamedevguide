@@ -3,7 +3,7 @@ sortIndex: 4
 sidebar: ue4guide
 ---
 
-![InputProcessingArchitectureDiagram_Flow](../../assets/InputProcessingArchitectureDiagram_Flow.jpg)
+![InputProcessingArchitectureDiagram_Flow](../../_assets/InputProcessingArchitectureDiagram_Flow.jpg)
 
 <https://docs.unrealengine.com/latest/INT/Gameplay/Input/index.html>
 

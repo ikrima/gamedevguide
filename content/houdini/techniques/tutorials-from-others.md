@@ -38,7 +38,7 @@ Compiled by [Atom on odforce: https://forums.odforce.net/topic/25173-atoms-link-
 [Matt's Galaxy](https://forums.odforce.net/topic/24999-galaxy/#entry145840)
 [Diego's Vortex Cloud](https://forums.odforce.net/topic/22547-how-can-creat-vortex-cloud/#entry133799)
 [Loopable Flag In Wind](https://forums.odforce.net/topic/23415-honestly-i-needed-the-flag-blowing-in-the-wind/#entry137958)
-[Eetu's Lab &lt;--Must See!](https://forums.odforce.net/topic/8471-eetus-lab/)
+[Eetu's Lab <--Must See!](https://forums.odforce.net/topic/8471-eetus-lab/)
 [Wolverine's Claws (Fracture By Impact)](https://forums.odforce.net/topic/24815-fracture-examples-like-blenders-new-modifier/#entry144950)
 [Houdini To Clarisse OBJ Exporter](https://forums.odforce.net/topic/25260-clarisse-work-flow/#entry147996)
 [Skrinkwrap One Mesh Over Another](https://forums.odforce.net/topic/25280-methods-for-shrink-wrapping-a-mesh-onto-a-different-topology/#entry148115)

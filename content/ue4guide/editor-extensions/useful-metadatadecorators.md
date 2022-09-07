@@ -241,7 +241,7 @@ Restrict types of classes selectable in fstringassetreference properties: `meta=
   };
   ```
 
-  ![Useful_Metadata_Decorators_defaultvalue](../assets/Useful_Metadata_Decorators_defaultvalue.png)
+  ![Useful_Metadata_Decorators_defaultvalue](../_assets/Useful_Metadata_Decorators_defaultvalue.png)
 
   *Reference From <https://udn.unrealengine.com/questions/279525/create-custom-view-in-ue-for-tarray-of-ustructs.html>*
 

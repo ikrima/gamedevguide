@@ -4,14 +4,14 @@ The processor can set up to 4 hardware breakpoints. When windows starts executin
 
 They are :
 
-* DR0 - Linear address of the first breakpoint
-* DR1 - Linear address of the second breakpoint
-* DR2 - Linear address of the thrid breakpoint
-* DR3 - Linear address of the fourth breakpoint
-* DR4 - Irrelevent to this tutorial, read intel developers manual Vol.3
-* DR5 - Irrelevent to this tutorial, read intel developers manual Vol.3
-* DR6 - Irrelevent to this tutorial, read intel developers manual Vol.3
-* DR7 - Bits representing whether the breakpoint is enabled(locally or globally), the breakpoint's condition, and the breakpoint's size. Along with a few other irrelevent(to this tutorial) variables.
+- DR0 - Linear address of the first breakpoint
+- DR1 - Linear address of the second breakpoint
+- DR2 - Linear address of the thrid breakpoint
+- DR3 - Linear address of the fourth breakpoint
+- DR4 - Irrelevent to this tutorial, read intel developers manual Vol.3
+- DR5 - Irrelevent to this tutorial, read intel developers manual Vol.3
+- DR6 - Irrelevent to this tutorial, read intel developers manual Vol.3
+- DR7 - Bits representing whether the breakpoint is enabled(locally or globally), the breakpoint's condition, and the breakpoint's size. Along with a few other irrelevent(to this tutorial) variables.
 
 # Processor Breakpoints
 
@@ -22,6 +22,6 @@ A processor breakpoint is triggered when a specific memory location is accessed.
 |**e** (execute)|Triggered when the processor retrieves an instruction from the specified address.|
 |**r** (read/write)|Triggered when the processor reads or writes memory at the specified address.|
 |**w** (write)|Triggered when the processor writes memory at the specified address.|
-|**i** (i/o)|Triggered when the I/O port at the specified *Address* is accessed.|
+|**i** (i/o)|Triggered when the I/O port at the specified _Address_ is accessed.|
 
-*Reference From <https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/processor-breakpoints---ba-breakpoints->*
+_Reference From <https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/processor-breakpoints---ba-breakpoints->_

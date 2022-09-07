@@ -24,7 +24,7 @@ sidebar: ue4guide
 - USF/USH/HLSL intellisense
   - <https://marketplace.visualstudio.com/items?itemName=TimGJones.HLSLToolsforVisualStudio>
   - Enable USF/USH in options menu:
-  - Screenshot: ![VSTipsUE4_Overview](../assets/VSTipsUE4_Overview.jpg)
+  - Screenshot: ![VSTipsUE4_Overview](../_assets/VSTipsUE4_Overview.jpg)
 
 - Setting up Visual Studio with UE4: <https://docs.unrealengine.com/latest/INT/Programming/Development/VisualStudioSetup>
 
@@ -62,13 +62,13 @@ sidebar: ue4guide
 
 If you can open the options dialog of Visual Assist, enable logging:
 
-![](../assets/VSTipsUE4_VAssistXDebug_options.png)
+![](../_assets/VSTipsUE4_VAssistXDebug_options.png)
 
 *(Logging begins the moment you enable the checkbox. If you close and re-open the options dialog, the checkbox may not be enabled even though logging is in effect.)*
 
 Note the location of va.log.
 
-![](../assets/VSTipsUE4_VisualAssist.png)
+![](../_assets/VSTipsUE4_VisualAssist.png)
 
 If you cannot open the options dialog of Visual Assist or are so directed by customer support, use regedit to enable logging before Visual Studio starts:
 

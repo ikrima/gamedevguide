@@ -17,7 +17,7 @@ sidebar: ue4guide
 
 <https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Actors/ActorLifecycle/index.html>
 
-![ActorLifeCycle1](../../assets/ActorLifeCycle1.png)
+![ActorLifeCycle1](../../_assets/ActorLifeCycle1.png)
 
 ## Load from Disk
 

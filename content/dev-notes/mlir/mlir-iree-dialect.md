@@ -6,53 +6,54 @@
 
 Hierarchy:
 
-* Submissions
+- Submissions
   
-  * Command Buffers
-    * Commands
-      * Dispatches
-        * Subgroups
-          * Instructions
-* Memory
+  - Command Buffers
+    - Commands
+      - Dispatches
+        - Subgroups
+          - Instructions
+- Memory
   
-  * Temporary memory, transient within execution (stack/alloca)
-  * Temporary memory across commands, transient within command buffer (arena)
-  * Temp memory across command buffers (fenced ringbuffer)
-  * Persistent mem
-    * External, long-lived
-    * Generational in a ringbuffer 
-    * Read only/mapped
-* Schedule hierarchy
-  => Input Compute Graph: value semantics
-  => Data Flow: data + execution flow; separated from exec ops. defines concurrency domains across
-  - across streams (persistent buffers)
-  - within streams (transientt buffers)
-  - within dispatches 
-  => Alloc Model: allocation + execution model
-  => Exec Model: VM exec ops
-  => VM: cod 
+  - Temporary memory, transient within execution (stack/alloca)
+  - Temporary memory across commands, transient within command buffer (arena)
+  - Temp memory across command buffers (fenced ringbuffer)
+  - Persistent mem
+    - External, long-lived
+    - Generational in a ringbuffer
+    - Read only/mapped
+- Schedule hierarchy
+  
+  - Input Compute Graph: value semantics
+  - Data Flow: data + execution flow; separated from exec ops. defines concurrency domains across
+    - across streams (persistent buffers)
+    - within streams (transientt buffers)
+    - within dispatches
+  - Alloc Model: allocation + execution model
+  - Exec Model: VM exec ops
+  - VM: cod
 
 ## Memory/Buffers
 
 Different allocators for different visibility scopes:
 
-* Temporary memory used during execution is purely transient (stack/alloca)
-* Temporary memory used across commands is transient within the command buffer (arena)
-* Temporary memory used across command buffers is fenced (ringbuffer)
+- Temporary memory used during execution is purely transient (stack/alloca)
+- Temporary memory used across commands is transient within the command buffer (arena)
+- Temporary memory used across command buffers is fenced (ringbuffer)
 
 Persistent memory can be whatever it needs to be:
 
-* External, long-lived
-* Ringbuffer if generational
-* Read-only/mapped
+- External, long-lived
+- Ringbuffer if generational
+- Read-only/mapped
 
 Memory Types:
 
-* **ptr:** Pointer to a typed value.
-* **byte_buffer:** A constant buffer of mapped host memory.
-* **mutable_byte_buffer:** A buffer of read-write host memory.
+- **ptr:** Pointer to a typed value.
+- **byte_buffer:** A constant buffer of mapped host memory.
+- **mutable_byte_buffer:** A buffer of read-write host memory.
 
-````cpp
+```cpp
 signature ::= 'I' length-prefixed(type-sequence)
               'R' length-prefixed(type-sequence)
 
@@ -87,9 +88,9 @@ length ::= [0-9]+
 # The `length` encodes the length in bytes of `production`, plus 1 for the '!'.
 length-prefixed(production) ::= length '!' production
 any-byte-sequence ::= <any byte sequence>
-````
+```
 
-````cpp
+```cpp
 // Inspired heavily by the Py_buffer type.
 // See: https://docs.python.org/3/c-api/buffer.html
 struct BufferDescription {
@@ -120,9 +121,9 @@ optional<BufferDescription> BufferDescriptionOracle(
     DeviceContext*, SignatureBufferType, BufferDescription)
   throws UnsupportedBufferException;
 
-````
+```
 
-````cpp
+```cpp
 
 Operation definition
     flow.dispatch.entry (::mlir::iree_compiler::IREE::Flow::DispatchEntryOp)
@@ -182,4 +183,4 @@ Operation definition
     flow.variable.store (::mlir::iree_compiler::IREE::Flow::VariableStoreOp)
         Attributes:
         Operands:
-````
+```

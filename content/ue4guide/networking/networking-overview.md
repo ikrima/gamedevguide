@@ -59,9 +59,9 @@ GameSession is meant to handle interactions with OnlineSubsystem like accepting 
 
 - Owning Client
 
-![NetworkingOverview_ObjectsCategories](../assets/NetworkingOverview_ObjectsCategories.png)
+![NetworkingOverview_ObjectsCategories](../_assets/NetworkingOverview_ObjectsCategories.png)
 
-![NetworkOverview_VennDiagram](../assets/NetworkOverview_VennDiagram.png)
+![NetworkOverview_VennDiagram](../_assets/NetworkOverview_VennDiagram.png)
 
 #### Engine Practicalities:
 

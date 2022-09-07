@@ -25,7 +25,7 @@ The CreateClassVariablesFromBlueprint () function traverses the Blueprint's NewV
 
 Functions are created by processing event graphs, regular function graphs, agents, and interfaces.
 
-![](../../assets/155497-20161031082616846-938102663.png)
+![](../../_assets/155497-20161031082616846-938102663.png)
 
 ## Processing event chart
 
@@ -44,7 +44,7 @@ The function's precompilation is achieved by calling PrecompileFunction () for e
 3. For each remaining RegisterNets () function that runs each node processor (FNodeHandlingFunctor), it creates FBPTerminal for the value in the function.
 4. Create UFunction objects and related properties.
 
-![](../../assets/155497-20161031082617643-1093344303.png)
+![](../../_assets/155497-20161031082617643-1093344303.png)
 ## Binding and Linking Classes
 
 Now that the class has UFunctions and UProperties, it is now possible to bind and link classes. It contains a list of populated property chains, property sizes, and functions. At this time it is related to having a class header file, excluding the final markup, metadata, and CDO objects.
@@ -52,13 +52,13 @@ Now that the class has UFunctions and UProperties, it is now possible to bind an
 ## Compile function
 
 Next, you need to use the AppendStatementForNode() function of the Compile() function of each node processor (FNodeHanlingFunctor) to add FKismetBlueprintStatement for this node. This function may also create FBPTerminal objects as long as they are only used locally.
-![](../../assets/155497-20161031082618533-81558361.png)
+![](../../_assets/155497-20161031082618533-81558361.png)
 
 ## Post-compiled functions
 
 PostCompileFunction () is the last stage of compiling functions. It is called after all functions call CompileFunction (), mainly to repair cross-references.
 
-![](../../assets/155497-20161031082619065-62507138.png)
+![](../../_assets/155497-20161031082619065-62507138.png)
 
 ## Completed compilation class
 
@@ -70,7 +70,7 @@ The compiler backend converts all statements in the function into code. There ar
 
 1. FKismetCompilerVMBackend converts FKismetCompilerStatement to bytecode and serializes it into a script array.
 
-   ![](../../assets/155497-20161031082619518-1440914481.png)
+   ![](../../_assets/155497-20161031082619518-1440914481.png)
 
 1. FKismetCppBackend generates C ++ code for debugging purposes only.
 
@@ -211,11 +211,11 @@ I created a new Blueprint in the blueprint that inherits from Actor. It has a va
 
 The following are the definitions of BeginPlay and FunctionTest:
 
-![](../../assets/155497-20161031082619908-250714023.png)
+![](../../_assets/155497-20161031082619908-250714023.png)
 
 
 
-![](../../assets/155497-20161031082620549-515212311.png)
+![](../../_assets/155497-20161031082620549-515212311.png)
 
 In order to see the compilation results, we need to modify the setting in BaseEngine.ini to set CompileDisplaysBinaryBackend to true. If you want to display the generated cpp file, you can also set CompileDisplaysTextBackend to true. Note that you need to restart the editor. The result obtained after clicking compile in OutputLog is shown in the following code:
 

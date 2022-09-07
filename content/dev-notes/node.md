@@ -2,9 +2,9 @@
 
 ## Nvm
 
-* [nvm-windows](https://github.com/coreybutler/nvm-windows): hassle free install means on windows
-* [npm-check-updates](https://www.npmjs.com/package/npm-check-updates): utility package for major version package upgrades
-  * `npm install -g npm-check-updates`
+- [nvm-windows](https://github.com/coreybutler/nvm-windows): hassle free install means on windows
+- [npm-check-updates](https://www.npmjs.com/package/npm-check-updates): utility package for major version package upgrades
+  - `npm install -g npm-check-updates`
 
 ## Npm
 
@@ -20,4 +20,4 @@
 
 ## References
 
-* [Update Node.js dependencies](https://nodejs.dev/learn/update-all-the-nodejs-dependencies-to-their-latest-version)
+- [Update Node.js dependencies](https://nodejs.dev/learn/update-all-the-nodejs-dependencies-to-their-latest-version)

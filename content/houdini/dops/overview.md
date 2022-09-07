@@ -19,7 +19,7 @@
 - DOP network to simulate
 - DOP IO node to import the dop fields and visualize
 
-![](../assets/pyro_nodes.svg)
+![](../_assets/pyro_nodes.svg)
 
 
 ## Nodes

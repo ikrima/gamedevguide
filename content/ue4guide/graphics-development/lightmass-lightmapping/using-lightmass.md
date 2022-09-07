@@ -17,13 +17,13 @@ sidebar: ue4guide
 
 <img src="process_markdown/assets/media/image2.png" alt="Liľltrna;s Deeo Dve XII 8 " style="width:4.42708in;height:3.69792in" >
 
-![image1](../../assets/image1-1556561794310.png)
+![image1](../../_assets/image1-1556561794310.png)
 
 ### Taming lightmass guide/Lightmass For Large Console Games
 
 [UE4 Lightmass for Large Console Games (UE4 Lightmass Deep Dive)](https://www.slideshare.net/EpicGamesJapan/ue4-lightmass-for-large-console-games)
 
-![image2](../../assets/image2.png)
+![image2](../../_assets/image2.png)
 
 <img src="process_markdown/assets/media/image3.png" alt="Rich web content titled: UE4 Lightmass for Large Console Games (UE4 Lightmass Deep Dive)" style="width:4.42708in;height:3.69792in" >
 

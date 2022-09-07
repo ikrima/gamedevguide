@@ -4,8 +4,8 @@
 
 ### Capture Variable From Pattern Match
 
-* How to capture a variable from a pattern match? Use `:as`
-  ````clojure
+- How to capture a variable from a pattern match? Use `:as`
+  ```clojure
   (def a_opprmdefblk [(ophirPrmDef :inBoneTrk ctidChannel #{:EArg-In})
                       (ophirPrmDef :inoutBoneTrk ctidChannel #{:EArg-In :EArg-Out})
                       (ophirPrmDef :outBoneTrk ctidChannel #{:EArg-Out})])
@@ -16,13 +16,13 @@
     ...]
    {:opmirArgIn !argIn
     :opmirArgOut !argOut})
-  ````
+  ```
 
 ### Sequence Transformation
 
-* Desired Result
+- Desired Result
   
-  ````clojure
+  ```clojure
   ;EBNF
   ns <= "obj" | "oppas" | "dc"
   segattr <= ["/"] "@" alphanumeric
@@ -38,22 +38,22 @@
     {:segkind :seg-chld, :segpath "myobj"}
     {:segkind :seg-chld, :segpath "mychild"}
     {:segkind :seg-attr, :segpath "@myattrib"})}
-  ````
+  ```
 
-* What this shows:
+- What this shows:
   
-  * Input: a tokenized string
-  * Make sure tokens match order pattern (`nstoken xseg {xseg}` )
-  * Transform each of the tokens based on the token
-    ````clojure
+  - Input: a tokenized string
+  - Make sure tokens match order pattern (`nstoken xseg {xseg}` )
+  - Transform each of the tokens based on the token
+    ```clojure
     nstoken =>
       case "obj": :objstore
       default: (keyword nstoken)
-    ````
+    ```
 
-* **Normal Clojure**
+- **Normal Clojure**
   
-  ````clojure
+  ```clojure
   (defn initOppath-clj [axpath]
       (let [nsandpath (str/split axpath #"[:]" 2)
             nsstr (first nsandpath)
@@ -70,13 +70,13 @@
                     (->OppathSeg :seg-attr %1)
                     (->OppathSeg :seg-chld %1))
                  pathtokens)}))
-  ````
+  ```
 
-* **Meander**
+- **Meander**
   
-  * **Naive attempt**: 
+  - **Naive attempt**: 
     
-    ````clojure
+    ```clojure
     (defn initOppath-m1 [axpath]
       (let [axptokens (str/split axpath #"[/:]")]
         {:ns (m/match (first axptokens)
@@ -87,11 +87,11 @@
                     (->OppathSeg :seg-attr %1)
                     (->OppathSeg :seg-chld %1))
                  (rest axptokens))}))
-    ````
+    ```
   
-  * **Second Attempt:** Better but a nitpick is the functional transformation is on the pattern matching clause where conceptually feels like it should go in the generation part
+  - **Second Attempt:** Better but a nitpick is the functional transformation is on the pattern matching clause where conceptually feels like it should go in the generation part
     
-    ````clojure
+    ```clojure
     (defn initOppath-m2 [axpath]
           (m/match (str/split axpath #"[/:]")
             (m/with [%segattr (m/pred #(= (first %1) \@)    (m/app #(->OppathSeg :seg-attr %1) !seg))
@@ -99,11 +99,11 @@
                     [(m/re #"obj|oppas|dc" ?ns)
                      . (m/or %segobj %segattr) ...])
             {:ns (keyword ?ns) :xsegs !seg}))        
-    ````
+    ```
   
-  * **Cleaner Solution** Use a helper to construct the xseg:
+  - **Cleaner Solution** Use a helper to construct the xseg:
     
-    ````clojure
+    ```clojure
     (defn make-xseg [val]
       (m/rewrite val
         (m/re #"@.*" ?val)
@@ -127,13 +127,13 @@
       {:kind :seg-attr, :val "@attr1"}
       {:kind :seg-attr, :val "@attr2"}
       {:kind :seg-chld, :val "obj2"}]}
-    ````
+    ```
   
-  * **Concise Using Recursion**: The second uses `m/cata` on the left or right side:
+  - **Concise Using Recursion**: The second uses `m/cata` on the left or right side:
     
-    * Left side
+    - Left side
       
-      ````clojure
+      ```clojure
       (m/rewrite ["oppas" "obj1" "@attr1" "@attr2" "obj2"]
         [(m/re #"obj|oppas|dc" ?ns) . (m/cata !segs) ...]
         {:ns (m/keyword ?ns)
@@ -147,11 +147,11 @@
       
         ?val
         {:kind :unknown :val ?val})
-      ````
+      ```
     
-    * Right side
+    - Right side
       
-      ````clojure
+      ```clojure
       (m/rewrite ["oppas" "obj1" "@attr1" "@attr2" "obj2"]
         [(m/re #"obj|oppas|dc" ?ns) . !segs ...]
         {:ns (m/keyword ?ns)
@@ -165,11 +165,11 @@
       
         ?val
         {:kind :unknown :val ?val})
-      ````
+      ```
   
-  * **Final Solution:** Cata on the right side can be used to construct a value to be recursively rewritten. It’s the dual of the left.
+  - **Final Solution:** Cata on the right side can be used to construct a value to be recursively rewritten. It’s the dual of the left.
     
-    ````clojure
+    ```clojure
     (m/rewrite ["oppas" "obj1" "@attr1" "@attr2" "obj2"]
       [(m/re #"obj|oppas|dc" ?ns) . !segs ...]
       {:ns (m/keyword ?ns)
@@ -191,22 +191,22 @@
       {:kind :seg-attr, :val "@attr1"}
       {:kind :seg-attr, :val "@attr2"}
       {:kind :seg-chld, :val "obj2"}]}
-    ````
+    ```
 
 ### Split stream based on filter and project   (1-to-many)
 
-* Pseudo code:
+- Pseudo code:
   
-  ````clojure
+  ```clojure
   filter(
     (predA? x) => (projA x) :as !projAseq
     (predB? x) => (projB x) :as !projBseq
   )
-  ````
+  ```
 
-* Clojure Code
+- Clojure Code
   
-  ````clojure
+  ```clojure
   ;; Test Data
   (def arglist [{:name :inBoneTrk    :argFlags #{:EArg-In}}
                 {:name :inoutBoneTrk :argFlags #{:EArg-In :EArg-Out}}
@@ -227,11 +227,11 @@
                  {:name     :outBoneTrk
                   :argFlags #{:EArg-Out}}]}
   
-  ````
+  ```
 
-* Now let's use m/search to see the difference
+- Now let's use m/search to see the difference
   
-  ````clojure
+  ```clojure
   (m/search
    arglist
    [(m/or {:argFlags #{:EArg-Out} :as !argOut}
@@ -246,11 +246,11 @@
    {:opmirArgIn [{:name :inBoneTrk, :argFlags #{:EArg-In}} 
                  {:name :inoutBoneTrk, :argFlags #{:EArg-Out :EArg-In}}]
     :opmirArgOut [{:name :outBoneTrk, :argFlags #{:EArg-Out}}]})
-  ````
+  ```
 
-* Now let's look using m/scan
+- Now let's look using m/scan
   
-  ````clojure
+  ```clojure
   (m/search
    arglist
    (m/scan {:argFlags #{:EArg-In} :as ?argIn})
@@ -260,11 +260,11 @@
     :argFlags #{:EArg-In}} 
    {:name     :inoutBoneTrk
     :argFlags #{:EArg-Out :EArg-In}})
-  ````
+  ```
 
-* Now let's look at m/scan with a memory variable
+- Now let's look at m/scan with a memory variable
   
-  ````clojure
+  ```clojure
   (m/search
    arglist
    (m/scan {:argFlags #{:EArg-In} :as !argIn})
@@ -274,16 +274,16 @@
      :argFlags #{:EArg-In}}]
    [{:name     :inoutBoneTrk
      :argFlags #{:EArg-Out :EArg-In}}])
-  ````
+  ```
 
 ---
 
 ## TODO
 
-* How to do EBNF like production rules.  Ex: 
-  ````clojure
+- How to do EBNF like production rules.  Ex: 
+  ```clojure
   token ::= (:arg-in|:arg-out) ?argname
   pseudocode-result:: (str (emit-in ?arg-attr)|emit-out :arg-attr) ?argname)    
-  ````
+  ```
 
 ---

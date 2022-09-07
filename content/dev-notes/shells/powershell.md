@@ -1,32 +1,32 @@
 # Powershell
 
-Basic terminology
+## Basic terminology
 
-* **Cmdlet**: Commands built into shell written in .NET
-* **Functions**: Commands written in PowerShell language
-* **Parameter**: Argument to a Cmdlet/Function/Script
-* **Alias**: Shortcut for a Cmdlet or Function
-* **Scripts**: Text files with .ps1 extension
-* **Applications**: Existing windows programs
+- **Cmdlet**: Commands built into shell written in .NET
+- **Functions**: Commands written in PowerShell language
+- **Parameter**: Argument to a Cmdlet/Function/Script
+- **Alias**: Shortcut for a Cmdlet or Function
+- **Scripts**: Text files with .ps1 extension
+- **Applications**: Existing windows programs
 
 ## Snippets/Reminders
 
-* `%`: alias for `foreach-object`
-* `$_`: current item in `foreach-object`
-* `Get-Member`: object introspection
-* pretty print
-  * object: `Write-Host ($foo | Format-Table | Out-String)`
-  * array: `Write-Host ($foo | Format-List | Out-String)`
-* string interpolation
-  * use `$` in double quotes e.g. `"blaaa $myvar"` or `"blaaaa$($myobjVar.name)"`
-  * no string expansion: `'$blaaa'`
-* invoke command/script
-  * `& foo @(arg0,arg2,...)`: call operator invokes expresion in child scope that's discarded (e.g. any global variable changes not persisted)
-  * `. foo @(arg0,arg2,...)`: dot sourcing invokes expresion in current scope (e.g. global changes are persisted)
-* Common batch operations
-  * Get all items in a directory: `#!powershell Get-ChildItem *`
-  * Get all subdirectories: `#!powershell Get-ChildItem -Attributes Directory -Recurse`
-  * Operate foreach files in directory: `#!powershell Get-ChildItem *.docx | % Name`
+- `%`: alias for `foreach-object`
+- `$_`: current item in `foreach-object`
+- `Get-Member`: object introspection
+- pretty print
+  - object: `Write-Host ($foo | Format-Table | Out-String)`
+  - array: `Write-Host ($foo | Format-List | Out-String)`
+- string interpolation
+  - use `$` in double quotes e.g. `"blaaa $myvar"` or `"blaaaa$($myobjVar.name)"`
+  - no string expansion: `'$blaaa'`
+- invoke command/script
+  - `& foo @(arg0,arg2,...)`: call operator invokes expresion in child scope that's discarded (e.g. any global variable changes not persisted)
+  - `. foo @(arg0,arg2,...)`: dot sourcing invokes expresion in current scope (e.g. global changes are persisted)
+- Common batch operations
+  - Get all items in a directory: `#!powershell Get-ChildItem *`
+  - Get all subdirectories: `#!powershell Get-ChildItem -Attributes Directory -Recurse`
+  - Operate foreach files in directory: `#!powershell Get-ChildItem *.docx | % Name`
 
 ## Useful Commands
 
@@ -89,15 +89,15 @@ Basic terminology
 `|`:  Pipeline operator to pass objects (ex: `Get-process word | Stop-Process |`)
 `>, >>`: enables sending particular types of output (success, error, warning, verbose, and debug) to output stream
 
-* Output streams
-  * \* All output
-  * 1 Success output
-  * 2 Errors
-  * 3 Warning messages
-  * 4 Verbose output
-  * 5 Debug messages
-* Ex:
-  ````powershell
+- Output streams
+  - \* All output
+  - 1 Success output
+  - 2 Errors
+  - 3 Warning messages
+  - 4 Verbose output
+  - 5 Debug messages
+- Ex:
+  ```powershell
   # Writes warning output to warning.txt
   Do-Something 3> warning.txt
   # Appends verbose.txt with the verbose output
@@ -106,28 +106,28 @@ Basic terminology
   Do-Something 5>&1
   # Redirects all streams to out.txt
   Do-Something *> out.txt
-  ````
+  ```
 
 ### Flow Control
 
-````powershell
-If(){} Elseif(){ } Else{ }
-while(){}
-For($i=0; $i -lt 10; $i++){}
-Foreach($file in dir C:\){$file.name}
-1..10 | foreach{$_}
-````
+```powershell
+if (expr) {} elseif (expr) { } else { }
+while (expr) {}
+for ($i = 0; $i -lt 10; $i++) {}
+foreach ($file in Get-ChildItem 'C:\') { $file.name }
+1..10 | ForEach-Object { $_ }
+```
 
 ## Scripting
 
-* Enabling `-WhatIf, -Confirm, etc`
-  * add `[CmdletBinding(SupportsShouldProcess = $true)]` to param block
-  * inside function, wrap state change code with `if ($PSCmdlet.ShouldProcess(target,operation)) {...}`
+- Enabling `-WhatIf, -Confirm, etc`
+  - add `[CmdletBinding(SupportsShouldProcess = $true)]` to param block
+  - inside function, wrap state change code with `if ($PSCmdlet.ShouldProcess(target,operation)) {...}`
 
 ## Resources
 
-* [Powershell CheatSheet](../_assets/powershell-4-lang-ref.pdf)
-* [Everything You Wanted To Know About Arrays](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-arrays)
-* [Everything You Wanted To Know About Hashtable](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-hashtable)
-* [Everything You Wanted To Know About PsCustomObject](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-pscustomobject)
-* [Everything You Wanted To Know About String Interpolation](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-string-substitutions)
+- [PowerShell Cheatsheet](../_assets/powershell-4-lang-ref.pdf)
+- [Everything You Wanted To Know About Arrays](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-arrays)
+- [Everything You Wanted To Know About Hashtable](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-hashtable)
+- [Everything You Wanted To Know About PsCustomObject](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-pscustomobject)
+- [Everything You Wanted To Know About String Interpolation](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-string-substitutions)

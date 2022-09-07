@@ -5,7 +5,7 @@
 - All rendering is a lie: Specular/Diffuse => approx. of SSS => approx of volume tracing
 
 - Even "expensive" volume tracing is approximations. Single-scattering (deBeers law) => approx. of multiple scatter radiative transfer equation/participating media => approx. of non-exponential path walks => approx. of EM/Quantum optics
-  ![](../assets/theoryoflight.png)
+  ![](../_assets/theoryoflight.png)
 
 - Game state of art (+- 2 yrs circa 2016) use variants of approx of approx of dipole model for SSS.
 
@@ -126,18 +126,18 @@ Henyey-Greenstein phase function:
 
 ## Radiative Transfer Equation
 
-![](../assets/volrendering.png)
+![](../_assets/volrendering.png)
 
 <http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/09volpath.pdf>
 <http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/08radiative-transfer.pdf>
 The RTE is a macroscale, empirical model that has proved extremely useful for a variety of problems, though it is not a physical theory derived by first principles from Maxwell’s equations. Rather, it describes the behavior of incoherent light on a large scale, and is derived from intuitive arguments about the interaction of light with small particles suspended in the medium—for instance, water droplets in a cloud or particles of ash and soot in smoke
-![](../assets/rteeq.png)
+![](../_assets/rteeq.png)
 Absorption coefficient:
 q = density of charged particles
 Ap = cross sectional area of particle
 
 σs = Product q\*Ap (1 / length) = absorption coefficient. Theory derived from particles but generally just a value because we use it to model things like tissue
-![](../assets/rteeq2.png)
+![](../_assets/rteeq2.png)
 
 Steve Marschner's (of hair rendering fame)'s lecture notes are very informative and parse-able:
 <http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/08radiative-transfer.pdf>
@@ -164,24 +164,24 @@ Dipole Approximation: Making subsurface translucency more accurate
   The assumption underlying such model is the same as lots of other models for skin rendering; the subsurface scattering can be approximated as a diffusion phenomenon. This is good because in highly scattering media, the distribution of light loses dependency from the angle and tends to isotropy.
   The dipole approximation is a formulation for the resolution of such diffusion problem in an analytical fashion.
   Basically they start by approximating the BSSRDF as a multiple scattering and single scattering component. The multiple scattering is then defined as:
-  ![](../assets/dipoleeq.png)
+  ![](../_assets/dipoleeq.png)
   Where FtFt are Fresnel terms and RR is the diffusion profile expressed as function of the distance between the entry and exit point.
   This RR is referred to as diffusion profile and they formulate this profile via a dipole approximation. The contribution of the incoming light ray is considered to be the one of two virtual sources: one negative beneath the surface and one positive above it (that's why dipole)
-  ![](../assets/dipolesearchlight.png)
+  ![](../_assets/dipolesearchlight.png)
 
   Why one positive and one negative light? Is the goal for them to cancel each other in some way?
   Yes, the dipole source method (which dates way before Jensen's paper) is such defined to satisfy some boundary condition. Specifically the fluence must be zero at a certain extrapolated boundary that has a distance from the surface of 2AD2AD where
-  ![](../assets/2ad2adeq.gif)
+  ![](../_assets/2ad2adeq.gif)
   Being FdrFdr the fresnel reflectivity of the slab considered and that sigma value is the reduced extinction coefficient described below.
 
 
 - Mean free path & Transport mean free path: (note, u_s here is rho_t, the extinction co-efficient)
   This lecture notes from biophotonics class describes mfp affects in digestable form <http://www.its.caltech.edu/~bi177/private/L6_handout.pdf>
-  ![](../assets/mfp.png)
+  ![](../_assets/mfp.png)
 
 - In homogenous objects, diffusion profiles are radially symmetric
-  ![](../assets/dipolefunc.png)
-  ![](../assets/multipoledipole.png)
+  ![](../_assets/dipolefunc.png)
+  ![](../_assets/multipoledipole.png)
 
 # Foundational knowledge (but questionable if practically useful):
 
@@ -194,7 +194,7 @@ Dipole Approximation: Making subsurface translucency more accurate
 - Electric field propagates at the speed of light
 
 - And we see that as light
-  ![](../assets/emradiation.png)
+  ![](../_assets/emradiation.png)
   Great lecture series on physics of light: - <https://www.youtube.com/user/ilectureonline/playlists?sort=dd&view=50&shelf_id=10> - <https://www.youtube.com/playlist?list=PLX2gX-ftPVXWDWYVe6oJwZCpZy-92Kd1k>
 
 - Frequency of vibration of the atom is the frequency of the light wavelength
@@ -226,7 +226,7 @@ Dipole Approximation: Making subsurface translucency more accurate
 
 
 - General scattering mechanism which gives diffuse reflection by a solid surface
-  ![](../assets/diffreflection.gif)
+  ![](../_assets/diffreflection.gif)
   Main article: Diffuse reflection
   When light strikes the surface of a (non-metallic) material it bounces off in all directions due to multiple reflections by the microscopic irregularities inside the material (e.g. the grain boundaries of a polycrystalline material, or the cell or fiber boundaries of an organic material) and by its surface, if it is rough. Thus, an 'image' is not formed.
 
@@ -250,13 +250,13 @@ On the other hand, if a photon has an energy beyond the phonon spectrum, then wh
 
 - Quantum theory describes radiation as photons being wave packets, not continuous waves
   <https://www.quora.com/How-does-the-amplitude-of-an-electromagnetic-wave-affect-its-energy>
-  ![](../assets/quantumpacket.png)
+  ![](../_assets/quantumpacket.png)
 
   - The usual description does assume that the “lattice” (because it is a collective behavior, see this FAQ) briefly vibrates with a non-resonant frequency and then re-emits it. That brief stop and ensuing delay is what would explain that light travels more slowly in the medium. Whether that is "scattering" or not is another question. I would say, yes, the light is scattered/re-emitted in random directions. How is it that it keeps its original direction? What I read (classical explanation) is that the network of atoms acts cooperatively so that there is destructive interference except in the original direction, but someone objected once to that in a discussion… Reference <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796>
-    ![](../assets/collimatedlightsource.png)
+    ![](../_assets/collimatedlightsource.png)
 
     The theory of light is described by a series of increasingly complete optical models, where each successive model is able to account for more optical phenomena. In computer graphics and this dissertation, we will restrict ourselves to the simplest model, ray optics.
-    ![](../assets/theoryoflight.png)
+    ![](../_assets/theoryoflight.png)
 
 ## Neutron Transport
 
@@ -272,12 +272,12 @@ The difference between the microscopic and macroscopic cross sections is extreme
 the nuclei contained in certain volume.
 
 From <http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/microscopic-cross-section>
-![](../assets/neutrinotransport.png)
+![](../_assets/neutrinotransport.png)
 
 Different cross-sections indicate characteristic target area that defines type of nuclear reaction that would occur
 
 Types of scattering + microscopic cross-sections:
-![](../assets/neutrinotransport2.png)
+![](../_assets/neutrinotransport2.png)
 
 The transport length in a strongly diffusing medium (noted l*) is the length over which the direction of propagation of the photon is randomized. It is related to the mean free path l by the relation:[1]
 $l*\\ =\\ \\frac{l}{1\\ -\\ g}$

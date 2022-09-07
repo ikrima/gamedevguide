@@ -5,9 +5,9 @@ sidebar: ue4guide
 
 # GPUView
 
-![GPUView_Graphics_WDDM](../../assets/GPUView_Graphics_WDDM.png)
+![GPUView_Graphics_WDDM](../../_assets/GPUView_Graphics_WDDM.png)
 
-![GPUView_FeedingtheGPU](../../assets/GPUView_FeedingtheGPU.png)
+![GPUView_FeedingtheGPU](../../_assets/GPUView_FeedingtheGPU.png)
 
 # Useful Links
 

@@ -11,7 +11,7 @@ Molecules are composed of charged particles. Light (an E&M field) exerts a force
 - Light: an oscillating electric magnetic field
 - Matter: we treat it as a harmonic oscilattor
 - Interactions: oscillating external force field driving a harmonic oscillator
-  ![](../assets/why-molecules-absorb.png)
+  ![](../_assets/why-molecules-absorb.png)
 
 ### 1. Light
 
@@ -43,7 +43,7 @@ $$
 \mathrm{E}(\mathrm{x}, \mathrm{t})=\mathrm{E}_{0} \cos (\omega \mathrm{t}-\mathrm{kx})
 $$
 
-![](../assets/light-oscillation-in-space.png)
+![](../_assets/light-oscillation-in-space.png)
 
 We can also drop the wave vector $(|\mathrm{k}| \rightarrow 0, \text { since } \lambda>>\mathrm{x} \text { and we consider molecules at } \mathrm{x}=0)$
 
@@ -74,15 +74,15 @@ This analogy works for other systems also
 - Magnetic resonance—In a magnetic field, magnetic spin moments—nuclear spins—align with field.\\
   If we push a spin away from field, it will want to relax back.
 
-![](../assets/classic-eq-of-harmonic-oscillation.png)
+![](../_assets/classic-eq-of-harmonic-oscillation.png)
 
-![](../assets/draft-physics-absorption-derivation1.png)
-![](../assets/draft-physics-absorption-derivation2.png)
-![](../assets/draft-physics-absorption-derivation3.png)
-![](../assets/draft-physics-absorption-derivation4.png)
-![](../assets/draft-physics-absorption-derivation5.png)
-![](../assets/draft-physics-absorption-derivation6.png)
-![](../assets/draft-physics-absorption-derivation7.png)
+![](../_assets/draft-physics-absorption-derivation1.png)
+![](../_assets/draft-physics-absorption-derivation2.png)
+![](../_assets/draft-physics-absorption-derivation3.png)
+![](../_assets/draft-physics-absorption-derivation4.png)
+![](../_assets/draft-physics-absorption-derivation5.png)
+![](../_assets/draft-physics-absorption-derivation6.png)
+![](../_assets/draft-physics-absorption-derivation7.png)
 
 Summary:
 

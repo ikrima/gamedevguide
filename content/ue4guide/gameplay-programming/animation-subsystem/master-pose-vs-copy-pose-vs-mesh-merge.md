@@ -23,7 +23,7 @@ sidebar: ue4guide
 
 - It allows you to copy from any SkeletalMeshComponent. You also want to make sure the SkeletalMeshComponent (I'll call this **Body**) you copy from ALREADY has ticked. Otherwise you're going to copy last frame's animation. To ensure this, you can just attach **Child** to the **Body**. Once you attach, it will ensure parent ticks first before child.
 
-![MasterPosevsCopyvsMesh_Chart](../../assets/MasterPosevsCopyvsMesh_Chart.jpg)
+![MasterPosevsCopyvsMesh_Chart](../../_assets/MasterPosevsCopyvsMesh_Chart.jpg)
 
 - This only copies the bones that matching, and everything else will stay on reference pose.
 

@@ -32,6 +32,6 @@ public class C : VisualCommanderExt.ICommand
 
 - To add it to the toolbar:
 
-  ![GeneralDebugging_Addingbutton](../assets/GeneralDebugging_Addingbutton.png)
+  ![GeneralDebugging_Addingbutton](../_assets/GeneralDebugging_Addingbutton.png)
 
-  ![GeneralDebugging_Addingbutton2](../assets/GeneralDebugging_Addingbutton2.png)
+  ![GeneralDebugging_Addingbutton2](../_assets/GeneralDebugging_Addingbutton2.png)
