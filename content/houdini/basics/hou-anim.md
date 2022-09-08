@@ -1,13 +1,15 @@
 # Animation & Rigging
 
+[Rigging Tutorial Series](https://www.sidefx.com/tutorials/rigging-series-intro/)
+
 ## Channel Scoping
 
 - Channels that will be keyed if you press k
 - Can create Animation Layer from scoped channels
-  ![](../assets/hou_anim_layer_channel_scope.png)
+  ![](../_assets/hou_anim_layer_channel_scope.png)
 - Attach to parent and keep relative offset: select keep positioning when parenting
 - Child Compensation: Tells houdini to keep world space xform of children
-  ![](../assets/hou_child_compensation.png)
+  ![](../_assets/hou_child_compensation.png)
   - you will need to do clean transform after on children to reset their xform.
   - Also make sure child compensation is unticked when you do this)
 
@@ -35,7 +37,7 @@ Be wary of recursion problems if you get too involved in intercepting/rebuilding
 
 ## CHOPS
 
-![](../assets/hou_chops_overview.png)
+![](../_assets/hou_chops_overview.png)
 
 [Reference](http://www.sidefx.com/docs/houdini/ref/panes/changraph)
 
