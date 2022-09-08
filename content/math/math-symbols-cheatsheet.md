@@ -18,6 +18,7 @@
 | $\widehat{AAA}$       | `\widehat{AAA}`   |
 | $\widetilde{AAA}$     | `\widetilde{AAA}` |
 
+
 | **Arrow Accents**          |                            |
 | -------------------------- | -------------------------- |
 | $\overrightarrow{AB}$      | `\overrightarrow{AB}`      |
@@ -73,6 +74,7 @@
 | $\Psi$            | `\Psi`        |
 | $\Omega$          | `\Omega`      |
 
+
 | **Hebrew**  |             |
 | ----------- | ----------- |
 | `\digamma`  | $\digamma$  |
@@ -124,6 +126,7 @@
 | $\unrhd$             | `\unrhd`           |
 | $\wr$                | `\wr`              |
 
+
 | **Big Operators** |              |
 | ----------------- | ------------ |
 | $\sum$            | `\sum`       |
@@ -140,6 +143,7 @@
 | $\bigodot$        | `\bigodot`   |
 | $\bigoplus$       | `\bigoplus`  |
 | $\bigotimes$      | `\bigotimes` |
+
 
 | **AMS Binary Operators** |                    |
 | ------------------------ | ------------------ |
@@ -213,6 +217,7 @@
 | $:$                  | `:`           |
 | $\notin$             | `\notin`      |
 | $\neq$               | `\neq`,`\ne`  |
+
 
 | **AMS Binary Relations** |                       |
 | ------------------------ | --------------------- |
@@ -310,6 +315,7 @@
 | $\rceil$              | `\rceil`       |
 | $\lceil$              | `\lceil`       |
 
+
 | **Large Delimiters** |               |
 | -------------------- | ------------- |
 | $\lgroup$            | `\lgroup`     |
@@ -319,6 +325,7 @@
 | $\Arrowvert$         | `\Arrowvert`  |
 | $\bracevert$         | `\bracevert`  |
 | $\rmoustache$        | `\rmoustache` |
+
 
 | **AMS Delimiters** |             |
 | ------------------ | ----------- |
@@ -369,6 +376,7 @@
 | $\nwarrow$            | `\nwarrow`            |
 | $\leadsto$            | `\leadsto`            |
 
+
 | **Miscellaneous Symbols** |                |
 | ------------------------- | -------------- |
 | $\dots$                   | `\dots`        |
@@ -407,6 +415,7 @@
 | $\flat$                   | `\flat`        |
 | $\natural$                | `\natural`     |
 | $\sharp$                  | `\sharp`       |
+
 
 | **Non-Math Symbols** |                   |
 | -------------------- | ----------------- |

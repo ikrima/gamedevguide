@@ -2803,19 +2803,19 @@ import numpy as np
 
 ### Indexing
 
-```bash
+```shell
 <el>       = <2d_array>[row_index, column_index]        # <3d_a>[table_i, row_i, column_i]
 <1d_view>  = <2d_array>[row_index]                      # <3d_a>[table_i, row_i]
 <1d_view>  = <2d_array>[:, column_index]                # <3d_a>[table_i, :, column_i]
 ```
 
-```bash
+```shell
 <1d_array> = <2d_array>[row_indexes, column_indexes]    # <3d_a>[table_is, row_is, column_is]
 <2d_array> = <2d_array>[row_indexes]                    # <3d_a>[table_is, row_is]
 <2d_array> = <2d_array>[:, column_indexes]              # <3d_a>[table_is, :, column_is]
 ```
 
-```bash
+```shell
 <2d_bools> = <2d_array> ><== <el>                       # <3d_array> ><== <1d_array>
 <1d_array> = <2d_array>[<2d_bools>]                     # <3d_array>[<2d_bools>]
 ```
@@ -2904,7 +2904,7 @@ from PIL import Image
 <Image>.paste(<Image>, (x, y))                   # Writes passed image to the image.
 ```
 
-```bash
+```shell
 <2d_array> = np.array(<Image_L>)                 # Creates NumPy array from greyscale image.
 <3d_array> = np.array(<Image_RGB/A>)             # Creates NumPy array from color image.
 <Image>    = Image.fromarray(np.uint8(<array>))  # Use <array>.clip(0, 255) to clip the values.
@@ -3700,7 +3700,7 @@ cdef enum <enum_name>: <member_name_1>, <member_name_2>, ...
 
 ### PyInstaller
 
-```bash
+```shell
 pip3 install pyinstaller
 pyinstaller script.py                        # Compiles into './dist/script' directory.
 pyinstaller script.py --onefile              # Compiles into './dist/script' console app.

@@ -2,7 +2,7 @@
 
 A guide and personal notes for using Houdini
 
-# TODO Action Items
+## TODO Action Items
 
 - [x] add trillium notes
 - [x] add onenote notes
