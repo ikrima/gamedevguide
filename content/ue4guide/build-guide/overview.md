@@ -21,7 +21,7 @@ Reference: UnrealEngine\\Engine\\Source\\Programs\\UnrealBuildTool\\Configuratio
 
 ## Build Automation
 
-- **New script for making Installed Builds:** The ‘Rocket’ build process has been re-written using our new BuildGraph script (similar in style to MSBuild scripts), which should make the process easier to follow and modify for other users who want to make their own Installed builds. The main script can be found at Engine/Build/InstalledEngineBuild.xml and can be run using one of the following command lines from AutomationTool:
+- **New script for making Installed Builds:** The ‘Rocket’ build process has been re-written using our new BuildGraph script (similar in style to MSBuild scripts), which should make the process easier to follow and modify for other users who want to make their own Installed builds. The main script can be found at Engine/Build/InstalledEngineBuild.xml and can be run using one of the following command lines from AutomationTool:
 
   - BuildGraph -target=”Make Installed Build Win64” -script=Engine/Build/InstalledEngineBuild.xml
 
@@ -147,7 +147,7 @@ Builds have 2 parts which you can combine, there also some hiddden options you c
 
 2nd part:
 
-- *nothing* - With client and server code, without editor
+- *nothing* - With client and server code, without editor
 
 - Editor - With everything
 
@@ -159,13 +159,13 @@ Builds have 2 parts which you can combine, there also some hiddden options you c
 
 ## Derived Data Cache
 
-The Derived Data Cache (DDC) stores versions of assets in the formats used by the engine and its target platforms, as opposed to the source formats artists create that are imported into the editor and stored in .uasset files. Content stored in the DDC is disposable in that it can always be regenerated at any time using the data stored in the .uasset file. Storing these derived formats externally makes it possible to easily add or change the formats used by the engine without needing to modify the source asset file.
+The Derived Data Cache (DDC) stores versions of assets in the formats used by the engine and its target platforms, as opposed to the source formats artists create that are imported into the editor and stored in .uasset files. Content stored in the DDC is disposable in that it can always be regenerated at any time using the data stored in the .uasset file. Storing these derived formats externally makes it possible to easily add or change the formats used by the engine without needing to modify the source asset file.
 
 ### Using a Shared DDC
 
 Studios should use a shared DDC that all users in a particular location can access. This way, only one person needs to build the derived asset format(s) and they are automatically available to all other users. There will occasionally be stalls when assets need to be processed, but the results are remembered and shared. So with a handful of developers or more, most people will not notice any impact.
 
-To set up a shared DDC, override the paths for the \[DerivedDataBackendGraph] by declaring this section in your game's **DefaultEngine.ini**. This section is originally declared in the **BaseEngine.ini** where the paths are set to Epic's internal DDC share. Re-declare the section and change the paths to point to a share on your network (e.g. Path=\\\\mystudio.net\\DDC):
+To set up a shared DDC, override the paths for the \[DerivedDataBackendGraph] by declaring this section in your game's **DefaultEngine.ini**. This section is originally declared in the **BaseEngine.ini** where the paths are set to Epic's internal DDC share. Re-declare the section and change the paths to point to a share on your network (e.g. Path=\\\\mystudio.net\\DDC):
 
 ```ini
 [DerivedDataBackendGraph]
@@ -181,13 +181,13 @@ Pak=(Type=ReadPak, Filename=%GAMEDIR%DerivedDataCache/DDC.ddp)
 EnginePak=(Type=ReadPak, Filename=../../../Engine/DerivedDataCache/DDC.ddp)
 ```
 
-Satellite studios working out of a single shared code base can set the **UE-SharedDataCachePath** environment variable to a path that all users at each location can read and write to. This allows each location to have its own shared DDC.
+Satellite studios working out of a single shared code base can set the **UE-SharedDataCachePath** environment variable to a path that all users at each location can read and write to. This allows each location to have its own shared DDC.
 
 For example:
 
 UE-SharedDataCachePath=\\\\mystudio.net\\DDC
 
-###  
+###  
 
 ### Building Derived Data
 

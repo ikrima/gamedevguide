@@ -331,7 +331,7 @@ This will increase the maximum ammo count that all link guns can hold.
 
 ![UDKGameplay_Debugging_Objectmodificatiohn](../../_assets/UDKGameplay_Debugging_Objectmodificatiohn.jpg)
 
-### Gameplay Code Profiling 
+### Gameplay Code Profiling 
 
 The Gameplay Profiler is a tool that provides a detailed breakdown of where time is being spent when executing UnrealScript gameplay code.
 

@@ -32,7 +32,7 @@ A much more powerful debugger than Visual Studio but annoyingly must be download
 
 - run analysis: `!analyze -v -hang`
 - look at the stack and rerun the stack dump command (eg: `~0s ; .cxr ; kb`)
-- most likely will be `NtWaitForSingleObject`.  Grab the handle pointer and `fe`
+- most likely will be `NtWaitForSingleObject`.  Grab the handle pointer and `fe`
 
 ### Crash/Dump Analysis
 

@@ -55,7 +55,7 @@ sidebar: ue4guide
 
 - Lightmass Importance Volume controls photon distribution. Movable objects outside of Lightmass Importance Volume get zero indirect. Static geo gets one bounce indirect
 
-- *Static Lighting Level Scale:* Set physical scale of the world for baking (adjusts heuristics for photon firing)
+- *Static Lighting Level Scale:* Set physical scale of the world for baking (adjusts heuristics for photon firing)
 
 ## Reflection Capture
 

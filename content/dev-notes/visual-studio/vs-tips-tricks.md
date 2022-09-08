@@ -103,10 +103,10 @@ From <https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-i
 
 |||
 |--|--|
-|CCCCCCCC|Used by Microsoft's C++ debugging runtime library and many DOS environments to mark uninitialized stack memory. CC resembles the opcode of the INT 3 debug breakpoint interrupt on x86 processors.|
-|CDCDCDCD|Used by Microsoft's C/C++ debug malloc() function to mark uninitialized heap memory, usually returned from HeapAlloc()\[15\]|
-|FDFDFDFD|Used by Microsoft's C/C++ debug malloc() function to mark "no man's land" guard bytes before and after allocated heap memory\[15\]|
-|FEEEFEEE|"Fee fee", Used by Microsoft's debug HeapFree() to mark freed heap memory. Some nearby internal bookkeeping values may have the high word set to FEEE as well.\[15\]|
+|CCCCCCCC|Used by Microsoft's C++ debugging runtime library and many DOS environments to mark uninitialized stack memory. CC resembles the opcode of the INT 3 debug breakpoint interrupt on x86 processors.|
+|CDCDCDCD|Used by Microsoft's C/C++ debug malloc() function to mark uninitialized heap memory, usually returned from HeapAlloc()\[15\]|
+|FDFDFDFD|Used by Microsoft's C/C++ debug malloc() function to mark "no man's land" guard bytes before and after allocated heap memory\[15\]|
+|FEEEFEEE|"Fee fee", Used by Microsoft's debug HeapFree() to mark freed heap memory. Some nearby internal bookkeeping values may have the high word set to FEEE as well.\[15\]|
 
 From <http://en.wikipedia.org/wiki/Magic_number_(programming>)
 

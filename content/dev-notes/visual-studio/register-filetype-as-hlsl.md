@@ -6,7 +6,7 @@ You can save the below text as .reg files and run them, alternatively you can na
 
 It is also worth noting that you can associate other types to hlsl here also buy just changing .shader to whatever you want.
 
-Spoiler: VS2013ShaderCginc.reg
+Spoiler: VS2013ShaderCginc.reg
 
 ```reg
 Windows Registry Editor Version 5.00

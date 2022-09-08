@@ -166,29 +166,29 @@ FWidgetPath WidgetPath;
 #### Asset Picker:
 
 ```cpp
-FAssetPickerConfig **AssetPickerConfig**;
-        **AssetPickerConfig**.OnAssetDoubleClicked = FOnAssetDoubleClicked::CreateStatic(&SBlutilityShelf::OnBlutilityDoubleClicked);
-        **AssetPickerConfig**.OnGetAssetContextMenu = FOnGetAssetContextMenu::CreateSP(this, &SBlutilityShelf::OnBlutilityGetContextMenu);
-        **AssetPickerConfig**.InitialAssetViewType = EAssetViewType::Tile;
-        **AssetPickerConfig**.bAllowNullSelection = false;
-        **AssetPickerConfig**.bShowBottomToolbar = false;
-        **AssetPickerConfig**.bAutohideSearchBar = bInFavoritesMode ? true : false;
+FAssetPickerConfig **AssetPickerConfig**;
+        **AssetPickerConfig**.OnAssetDoubleClicked = FOnAssetDoubleClicked::CreateStatic(&SBlutilityShelf::OnBlutilityDoubleClicked);
+        **AssetPickerConfig**.OnGetAssetContextMenu = FOnGetAssetContextMenu::CreateSP(this, &SBlutilityShelf::OnBlutilityGetContextMenu);
+        **AssetPickerConfig**.InitialAssetViewType = EAssetViewType::Tile;
+        **AssetPickerConfig**.bAllowNullSelection = false;
+        **AssetPickerConfig**.bShowBottomToolbar = false;
+        **AssetPickerConfig**.bAutohideSearchBar = bInFavoritesMode ? true : false;
 
 **AssetPickerConfig**.Filter.ClassNames.Add(UEditorUtilityBlueprint::StaticClass()->GetFName());
-        if (bInFavoritesMode)
-        {
-                new (**AssetPickerConfig**.Collections) FCollectionNameType(BlutilityModule::**BlutilityShelfCollectionName**, ECollectionShareType::CST_Local);
-        }
+        if (bInFavoritesMode)
+        {
+                new (**AssetPickerConfig**.Collections) FCollectionNameType(BlutilityModule::**BlutilityShelfCollectionName**, ECollectionShareType::CST_Local);
+        }
 
 ChildSlot
-        \[
-                SNew(SVerticalBox)
-                +SVerticalBox::Slot()
-                .FillHeight(1.0f)
-                \[
-                        **ContentBrowserModule**.Get().CreateAssetPicker(**AssetPickerConfig**)
-                \]
-        \];
+        \[
+                SNew(SVerticalBox)
+                +SVerticalBox::Slot()
+                .FillHeight(1.0f)
+                \[
+                        **ContentBrowserModule**.Get().CreateAssetPicker(**AssetPickerConfig**)
+                \]
+        \];
 ```
 
 #### Class Picker/Class Viewer
@@ -202,25 +202,25 @@ TSharedRef<SWidget> ClassViewer = ClassViewerModule.CreateClassViewer(Options, F
 
 Create Dynamic Context Menu:
 
-FLevelEditorModule& **LevelEditorModule** = FModuleManager::GetModuleChecked<FLevelEditorModule>( "LevelEditor");
-        TSharedPtr< ILevelEditor > **LevelEditor** = **LevelEditorModule**.GetFirstLevelEditor();
+FLevelEditorModule& **LevelEditorModule** = FModuleManager::GetModuleChecked<FLevelEditorModule>( "LevelEditor");
+        TSharedPtr< ILevelEditor > **LevelEditor** = **LevelEditorModule**.GetFirstLevelEditor();
 
-TSharedPtr<SWidget> **MenuWidget**;
+TSharedPtr<SWidget> **MenuWidget**;
 
-if (**ComponentsWithSockets**.Num() > 1)
-        {                        
-                **MenuWidget** = 
-                        SNew(SComponentChooserPopup)
-                        .Actor(**ParentActor**)
-                        .**OnComponentChosen**(this, &FActorPickerTrackEditor::ActorComponentPicked, **ParentActor**, **ObjectGuid**, **Section**);
+if (**ComponentsWithSockets**.Num() > 1)
+        {                        
+                **MenuWidget** = 
+                        SNew(SComponentChooserPopup)
+                        .Actor(**ParentActor**)
+                        .**OnComponentChosen**(this, &FActorPickerTrackEditor::ActorComponentPicked, **ParentActor**, **ObjectGuid**, **Section**);
 
-// Create as context menu
-                FSlateApplication::Get().PushMenu(
-                        **LevelEditor**.ToSharedRef(),
-                        FWidgetPath(),
-                        **MenuWidget**.ToSharedRef(),
-                        FSlateApplication::Get().GetCursorPos(),
-                        FPopupTransitionEffect( FPopupTransitionEffect::ContextMenu )
-                        );
-        }
+// Create as context menu
+                FSlateApplication::Get().PushMenu(
+                        **LevelEditor**.ToSharedRef(),
+                        FWidgetPath(),
+                        **MenuWidget**.ToSharedRef(),
+                        FSlateApplication::Get().GetCursorPos(),
+                        FPopupTransitionEffect( FPopupTransitionEffect::ContextMenu )
+                        );
+        }
 ```

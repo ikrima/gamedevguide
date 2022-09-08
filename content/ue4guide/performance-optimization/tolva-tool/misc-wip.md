@@ -5,7 +5,7 @@ sidebar: ue4guide
 
 Development Debugging:
 
-[Useful Console Commands](fixme_self_referential_link)
+[Useful Console Commands](../../gameplay-programming/useful-console-commands/useful-console-commands)
 
 Memory Leaking:
 
@@ -53,19 +53,18 @@ Actor Select Relevant Lights
 
 - Go through UDK console commands and make a list of applicable ones:
 
-- [UDK Console Commands](fixme_self_referential_link)
-
-  <https://docs.unrealengine.com/udk/Three/GameplayDebugging.html> \
-  <https://docs.unrealengine.com/udk/Three/StatsDescriptions.html> \
-  <https://docs.unrealengine.com/udk/Three/RemoteControl.html> \
-  <https://docs.unrealengine.com/udk/Three/GameplayProgrammingHome.html> \
-  <https://docs.unrealengine.com/udk/Three/PerformanceHome.html> \
-  <https://docs.unrealengine.com/udk/Three/GameplayPerformanceOptimization.html> \
-  <https://docs.unrealengine.com/udk/Three/PerfStats.html> \
-  <https://docs.unrealengine.com/udk/Three/GameplayProfiler.html> \
-  <https://docs.unrealengine.com/udk/Three/RenderingHome.html> \
-  <https://docs.unrealengine.com/udk/Three/WebHome.html> \
-  <https://docs.unrealengine.com/udk/Three/PerformanceDebugging.html> \
+- [UDK Console Commands](../../gameplay-programming/useful-console-commands/udk-console-commands)
+  <https://docs.unrealengine.com/udk/Three/GameplayDebugging.html>
+  <https://docs.unrealengine.com/udk/Three/StatsDescriptions.html>
+  <https://docs.unrealengine.com/udk/Three/RemoteControl.html>
+  <https://docs.unrealengine.com/udk/Three/GameplayProgrammingHome.html>
+  <https://docs.unrealengine.com/udk/Three/PerformanceHome.html>
+  <https://docs.unrealengine.com/udk/Three/GameplayPerformanceOptimization.html>
+  <https://docs.unrealengine.com/udk/Three/PerfStats.html>
+  <https://docs.unrealengine.com/udk/Three/GameplayProfiler.html>
+  <https://docs.unrealengine.com/udk/Three/RenderingHome.html>
+  <https://docs.unrealengine.com/udk/Three/WebHome.html>
+  <https://docs.unrealengine.com/udk/Three/PerformanceDebugging.html>
   <http://www.hourences.com/tutorials-ue3-performance-profiling-introduction>
 
 Go to bool StaticExec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevice& Ar ) in Obj.cpp and extract out useful commands and arguments (eg listprops, getall, singleref, refs, etc)
@@ -77,4 +76,4 @@ Go to bool StaticExec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevice& Ar ) in
   - Also enable UCheatManager() built-in functions on Dev Tool
   - Fixed Random Seed & Set Fixed Timestep dev options
 
-[Networking Tips & Tricks](fixme_self_referential_link)
+[Networking Tips & Tricks](../../networking/debugging-tips-tricks)

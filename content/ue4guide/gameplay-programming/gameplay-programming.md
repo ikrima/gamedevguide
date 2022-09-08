@@ -112,39 +112,39 @@ Constructors:
 - Pattern of using static function scoped structs for complex one-time initialization in class constructors. ConstructorHelpers namespace has helpers to use in these situations
 
 ```cpp
-// Structure to hold one-time initialization  
-                struct FConstructorStatics  
-                {  
-                        ConstructorHelpers::FObjectFinderOptional&lt;UTexture2D> SpriteTexture;  
-                        FName ID_Wind;  
-                        FText NAME_Wind;  
-                        FConstructorStatics()  
-                                : SpriteTexture(TEXT("/Engine/EditorResources/S_WindDirectional"))  
-                                , ID_Wind(TEXT("Wind"))  
-                                , NAME_Wind(NSLOCTEXT("SpriteCategory", "Wind", "Wind"))  
-                        {  
-                        }  
-                };  
-                static FConstructorStatics ConstructorStatics;
+// Structure to hold one-time initialization  
+                struct FConstructorStatics  
+                {  
+                        ConstructorHelpers::FObjectFinderOptional&lt;UTexture2D> SpriteTexture;  
+                        FName ID_Wind;  
+                        FText NAME_Wind;  
+                        FConstructorStatics()  
+                                : SpriteTexture(TEXT("/Engine/EditorResources/S_WindDirectional"))  
+                                , ID_Wind(TEXT("Wind"))  
+                                , NAME_Wind(NSLOCTEXT("SpriteCategory", "Wind", "Wind"))  
+                        {  
+                        }  
+                };  
+                static FConstructorStatics ConstructorStatics;
 
-if (ArrowComponent)  
-                {  
-                        ArrowComponent->ArrowColor = FColor(150, 200, 255);  
-                        ArrowComponent->bTreatAsASprite = true;  
-                        ArrowComponent->SpriteInfo.Category = ConstructorStatics.ID_Wind;  
-                        ArrowComponent->SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
-                        ArrowComponent->AttachParent = Component;  
-                        ArrowComponent->bIsScreenSizeScaled = true;  
-                        ArrowComponent->bUseInEditorScaling = true;  
-                }
+if (ArrowComponent)  
+                {  
+                        ArrowComponent->ArrowColor = FColor(150, 200, 255);  
+                        ArrowComponent->bTreatAsASprite = true;  
+                        ArrowComponent->SpriteInfo.Category = ConstructorStatics.ID_Wind;  
+                        ArrowComponent->SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
+                        ArrowComponent->AttachParent = Component;  
+                        ArrowComponent->bIsScreenSizeScaled = true;  
+                        ArrowComponent->bUseInEditorScaling = true;  
+                }
 
-if (SpriteComponent)  
-                {  
-                        SpriteComponent->Sprite = ConstructorStatics.SpriteTexture.Get();  
-                        SpriteComponent->SpriteInfo.Category = ConstructorStatics.ID_Wind;  
-                        SpriteComponent->SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
-                        SpriteComponent->AttachParent = Component;  
-                }
+if (SpriteComponent)  
+                {  
+                        SpriteComponent->Sprite = ConstructorStatics.SpriteTexture.Get();  
+                        SpriteComponent->SpriteInfo.Category = ConstructorStatics.ID_Wind;  
+                        SpriteComponent->SpriteInfo.DisplayName = ConstructorStatics.NAME_Wind;  
+                        SpriteComponent->AttachParent = Component;  
+                }
 ```
 
 - Create components in the constructor using ConstructorHelpers::CreateComponent&lt;>()
@@ -187,7 +187,7 @@ if (SpriteComponent)
 
  Delegates allow you to call member functions on C++ objects in a generic, yet type-safe way. Using delegates, you can dynamically bind to a member function of an arbitrary object, then call functions on the object, even if the caller does not know the object's type.
 
- It is perfectly safe to copy delegate objects. Delegates can be passed around by value but this is generally not recommended since they do have to allocate memory on the heap. **You should always pass delegates by reference when possible.**
+ It is perfectly safe to copy delegate objects. Delegates can be passed around by value but this is generally not recommended since they do have to allocate memory on the heap. **You should always pass delegates by reference when possible.**
 
  Both single-cast and multi-cast delegates are supported, as well as **"dynamic" delegates which can be safely serialized to disk.**
 
@@ -199,14 +199,14 @@ if (SpriteComponent)
 
 - [Dynamic (UObject, serializable)](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates/Dynamic)
 
-  See the [Delegates](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates) page for reference and usage information.
+  See the [Delegates](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/Delegates) page for reference and usage information.
 
   *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.html>*
 
 #### Timer Management
 
-Timers are managed in a global FTimerManager, outside the confines of AActor, and can have any of the full range of delegate types assigned. There are several functions in FTimerManager available for managing timers. It is safe to use these functions inside of a timer delegate as the system is ok with manipulating timers while handling a timer. This means, for example, it is ok to set or clear timers inside a timer delegate.
+Timers are managed in a global FTimerManager, outside the confines of AActor, and can have any of the full range of delegate types assigned. There are several functions in FTimerManager available for managing timers. It is safe to use these functions inside of a timer delegate as the system is ok with manipulating timers while handling a timer. This means, for example, it is ok to set or clear timers inside a timer delegate.
 
-The AActor::GetWorldTimerManager() function is used to access the timer manager instance for the current world.
+The AActor::GetWorldTimerManager() function is used to access the timer manager instance for the current world.
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Timers/index.html>*

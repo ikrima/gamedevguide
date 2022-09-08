@@ -3,7 +3,7 @@ sortIndex: 12
 sidebar: ue4guide
 ---
 
-####  Delegates:
+####  Delegates:
 
 // Callback when an ensure has occurred
 

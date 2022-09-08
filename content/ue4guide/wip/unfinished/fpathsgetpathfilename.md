@@ -33,7 +33,7 @@ PrimaryActorTick.bStartWithTickEnabled = false;
 
 *From <https://www.unrealengine.com/blog/how-to-improve-game-thread-cpu-performance>*
 
-class FLayoutUV
+class FLayoutUV
 
 - Handles generating lightmap Uvs
 
@@ -41,27 +41,27 @@ FMeshUtilities::CacheOptimizeVertexAndIndexBuffer
 
 - Optimizes the VertexBuffer/IndexBuffer by re-ordering Indices for post-transform cache and then re-orders the indices to be coherent along with the vertex array so its optimized for the pre-transform cache
 
-void FRenderCommandFence::BeginFence()
+void FRenderCommandFence::BeginFence()
 
-FString MeshName = ObjectTools::SanitizeObjectName(InName.ToString());
+FString MeshName = ObjectTools::SanitizeObjectName(InName.ToString());
 
 **Error reporting in asset importer/factory:**
 
-\[FFeedbackContext\*]        Warn->BeginSlowTask( NSLOCTEXT("FbxFactory", "BeginImportingFbxMeshTask", "Importing FBX mesh"), true );
+\[FFeedbackContext\*]        Warn->BeginSlowTask( NSLOCTEXT("FbxFactory", "BeginImportingFbxMeshTask", "Importing FBX mesh"), true );
 
-Warn->Log(ELogVerbosity::Error, FbxImporter->GetErrorMessage() );
+Warn->Log(ELogVerbosity::Error, FbxImporter->GetErrorMessage() );
 
 **Create a uasset file:**
 
-NewPackageName = FPackageName::GetLongPackagePath(Parent->GetOutermost()->GetName()) + TEXT("/") + MeshName;
-                NewPackageName = PackageTools::SanitizePackageName(NewPackageName);
-                Package = CreatePackage(NULL, \*NewPackageName);
+NewPackageName = FPackageName::GetLongPackagePath(Parent->GetOutermost()->GetName()) + TEXT("/") + MeshName;
+                NewPackageName = PackageTools::SanitizePackageName(NewPackageName);
+                Package = CreatePackage(NULL, \*NewPackageName);
 
-StaticMesh = new(Package,FName(\*MeshName),Flags|RF_Public) UStaticMesh(FPostConstructInitializeProperties());
+StaticMesh = new(Package,FName(\*MeshName),Flags|RF_Public) UStaticMesh(FPostConstructInitializeProperties());
 
 **Creating Mesh Material:**
 
-void UnFbx::FFbxImporter::CreateUnrealMaterial(FbxSurfaceMaterial& FbxMaterial, TArray&lt;UMaterialInterface\*>> OutMaterials, TArray&lt;FString>> UVSets)
+void UnFbx::FFbxImporter::CreateUnrealMaterial(FbxSurfaceMaterial& FbxMaterial, TArray&lt;UMaterialInterface\*>> OutMaterials, TArray&lt;FString>> UVSets)
 
 Mesh Data:
 
@@ -97,15 +97,15 @@ UStaticMesh - UE4 Uobject that's placed in the world
 
     - FStaticMeshLODResources
 
-struct FStaticMeshSourceModel
+struct FStaticMeshSourceModel
 
-class FRawMeshBulkData
+class FRawMeshBulkData
 
-void FRawMeshBulkData::Serialize(FArchive& Ar, UObject\* Owner)
+void FRawMeshBulkData::Serialize(FArchive& Ar, UObject\* Owner)
 
-void FRawMeshBulkData::SaveRawMesh(FRawMesh& InMesh)
+void FRawMeshBulkData::SaveRawMesh(FRawMesh& InMesh)
 
-void FRawMeshBulkData::LoadRawMesh(FRawMesh& OutMesh)
+void FRawMeshBulkData::LoadRawMesh(FRawMesh& OutMesh)
 
 SetupActorComponentTickFunction(&PostPhysicsComponentTick)
 PostPhysicsComponentTick.AddPrerequisite(this,PrimaryComponentTick);
@@ -151,20 +151,20 @@ A component is anything that is a subclass of UActorComponent, and is a subobjec
 
 - Called by UStaticMesh::Build() -> FStaticMeshRenderData()::Cache()->FMeshUtilities::BuildStaticMesh()
 
-TArray&lt;FMatrix>> ReferenceToLocalMatrices = DynamicData->ReferenceToLocal;
-                        const int32 NumReferenceToLocal = ReferenceToLocalMatrices.Num();
-                        for( int32 BoneIdx=0; BoneIdx &lt; NumBones; BoneIdx++ )
-                        {
-                                FPlatformMisc::Prefetch( ChunkMatrices.GetTypedData() + BoneIdx + PreFetchStride ); 
-                                FPlatformMisc::Prefetch( ChunkMatrices.GetTypedData() + BoneIdx + PreFetchStride, CACHE_LINE_SIZE ); 
-                                FPlatformMisc::Prefetch( ReferenceToLocalMatrices.GetTypedData() + BoneIdx + PreFetchStride );
-                                FPlatformMisc::Prefetch( ReferenceToLocalMatrices.GetTypedData() + BoneIdx + PreFetchStride, CACHE_LINE_SIZE );
+TArray&lt;FMatrix>> ReferenceToLocalMatrices = DynamicData->ReferenceToLocal;
+                        const int32 NumReferenceToLocal = ReferenceToLocalMatrices.Num();
+                        for( int32 BoneIdx=0; BoneIdx &lt; NumBones; BoneIdx++ )
+                        {
+                                FPlatformMisc::Prefetch( ChunkMatrices.GetTypedData() + BoneIdx + PreFetchStride ); 
+                                FPlatformMisc::Prefetch( ChunkMatrices.GetTypedData() + BoneIdx + PreFetchStride, CACHE_LINE_SIZE ); 
+                                FPlatformMisc::Prefetch( ReferenceToLocalMatrices.GetTypedData() + BoneIdx + PreFetchStride );
+                                FPlatformMisc::Prefetch( ReferenceToLocalMatrices.GetTypedData() + BoneIdx + PreFetchStride, CACHE_LINE_SIZE );
 
-FBoneSkinning& BoneMat = ChunkMatrices\[BoneIdx];
-                                const FBoneIndexType RefToLocalIdx = Chunk.BoneMap\[BoneIdx];
-                                const FMatrix& RefToLocal = ReferenceToLocalMatrices\[RefToLocalIdx];
-                                RefToLocal.To3x4MatrixTranspose( (float\*)BoneMat.M );
-                        }
+FBoneSkinning& BoneMat = ChunkMatrices\[BoneIdx];
+                                const FBoneIndexType RefToLocalIdx = Chunk.BoneMap\[BoneIdx];
+                                const FMatrix& RefToLocal = ReferenceToLocalMatrices\[RefToLocalIdx];
+                                RefToLocal.To3x4MatrixTranspose( (float\*)BoneMat.M );
+                        }
 
 AStaticMeshActor > UStaticMeshComponent > UStaticMesh & FStaticMeshSceneProxy
 
@@ -203,7 +203,7 @@ GetDynamicMeshElements
 
 The primary method of communication between the two threads is through the ENQUEUE_UNIQUE_RENDER_COMMAND_XXXPARAMETER macro. This macro creates a local class with a virtual Execute function that contains the code you enter into the macro. The game thread inserts the command into the rendering command queue, and the rendering thread calls the Execute function when it gets around to it.
 
-FRenderCommandFence provides a convenient way to track the progress of the rendering thread on the game thread. The game thread calls FRenderCommandFence::BeginFence to begin the fence. The game thread can then call FRenderCommandFence::Wait to block until the rendering thread has processed the fence, or it can just poll the progress of the rendering thread by checking GetNumPendingFences. When GetNumPendingFences returns 0, the rendering thread has processed the fence.
+FRenderCommandFence provides a convenient way to track the progress of the rendering thread on the game thread. The game thread calls FRenderCommandFence::BeginFence to begin the fence. The game thread can then call FRenderCommandFence::Wait to block until the rendering thread has processed the fence, or it can just poll the progress of the rendering thread by checking GetNumPendingFences. When GetNumPendingFences returns 0, the rendering thread has processed the fence.
 
 *From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/ThreadedRendering/index.html>*
 
@@ -215,7 +215,7 @@ Normalized Data Types expect you to store the actual value (e.g. 0 - 255, or 0 -
 
 **FName**
 
-When you name a new asset in the **Content Browser**, change a parameter in a Dynamic Material Instance, or access a bone in a Skeletal Mesh, you are using FNames. FNames provide a very lightweight system for using strings, where a given string is stored only once in a data table, even if it is reused. FNames are case-insensitive. They are immutable, and cannot be manipulated. The storage system and static nature of FNames means that it is fast to look up and access FNames with keys. Another feature of the FName subsystem is the use of a hash table to provide fast string to FName conversions.
+When you name a new asset in the **Content Browser**, change a parameter in a Dynamic Material Instance, or access a bone in a Skeletal Mesh, you are using FNames. FNames provide a very lightweight system for using strings, where a given string is stored only once in a data table, even if it is reused. FNames are case-insensitive. They are immutable, and cannot be manipulated. The storage system and static nature of FNames means that it is fast to look up and access FNames with keys. Another feature of the FName subsystem is the use of a hash table to provide fast string to FName conversions.
 
 - [\[FName Reference Guide\]](https://docs.unrealengine.com/en-us/Programming/UnrealArchitecture/StringHandling/FName)
 
@@ -231,7 +231,7 @@ Unlike FName and FText, FString is the only string class that allows for manipul
 
 *From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/StringHandling/index.html>*
 
-There is a lot of rendering code in UE4 so it is hard to get a quick high level view of what is going on. A good place to start reading through the code is FDeferredShadingSceneRenderer::Render, which is where a new frame is rendered on the rendering thread. It is also useful to do a 'profilegpu' command and look through the draw events. You can then do a **Find in Files** in Visual Studio on the draw event name to find the corresponding C++ implementation.
+There is a lot of rendering code in UE4 so it is hard to get a quick high level view of what is going on. A good place to start reading through the code is FDeferredShadingSceneRenderer::Render, which is where a new frame is rendered on the rendering thread. It is also useful to do a 'profilegpu' command and look through the draw events. You can then do a **Find in Files** in Visual Studio on the draw event name to find the corresponding C++ implementation.
 
 *From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>*
 
@@ -247,13 +247,13 @@ Primitive components are the basic unit of visibility and relevance determinatio
 
 Parallel Task evaluation:
 
-// start parallel work
-                FGraphEventRef EvaluationTickEvent = TGraphTask&lt;FParallelAnimationEvaluationTask>::CreateTask().ConstructAndDispatchWhenReady(this);
+// start parallel work
+                FGraphEventRef EvaluationTickEvent = TGraphTask&lt;FParallelAnimationEvaluationTask>::CreateTask().ConstructAndDispatchWhenReady(this);
 
-// set up a task to run on the game thread to accept the results
-                FGraphEventArray Prerequistes;
-                Prerequistes.Add(EvaluationTickEvent);
-                FGraphEventRef TickCompletionEvent = TGraphTask&lt;FParallelAnimationCompletionTask>::CreateTask(&Prerequistes).ConstructAndDispatchWhenReady(this);
+// set up a task to run on the game thread to accept the results
+                FGraphEventArray Prerequistes;
+                Prerequistes.Add(EvaluationTickEvent);
+                FGraphEventRef TickCompletionEvent = TGraphTask&lt;FParallelAnimationCompletionTask>::CreateTask(&Prerequistes).ConstructAndDispatchWhenReady(this);
 
 TickFunction->GetCompletionHandle()->DontCompleteUntil(TickCompletionEvent);
 

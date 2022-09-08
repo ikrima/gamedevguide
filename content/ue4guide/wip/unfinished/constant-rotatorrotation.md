@@ -31,7 +31,7 @@ Add Custom World Settings
 
 ===========================================
 
-void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*>> Graphs) const
+void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*>> Graphs) const
 
 /\*\* Set of pages that combine into a single uber-graph \*/
 

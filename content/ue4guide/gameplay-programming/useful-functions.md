@@ -4,11 +4,11 @@ sidebar: ue4guide
 ---
 
 ```cpp
-virtual void RerunConstructionScripts();
+virtual void RerunConstructionScripts();
 
-UActorComponent* CreateComponentFromTemplate(UActorComponent* **Template**, const FName **InName** = NAME_None );
+UActorComponent* CreateComponentFromTemplate(UActorComponent* **Template**, const FName **InName** = NAME_None );
 
-UActorComponent* CreateComponentFromTemplateData(…);
+UActorComponent* CreateComponentFromTemplateData(…);
 ```
 
 LoadedLevel will not be set on the ULevelStreaming object until the level is fully loaded. And at that same point the ULevelStreaming.OnLevelLoaded will be broadcast.

@@ -28,20 +28,20 @@ Tracking Garbage Collector references to an object:
 ```cpp
  static int32 URamaStaticFunctionLib::GetObjReferenceCount(UObject* Obj, TArray<UObject*>* OutReferredToObjects = nullptr)
  {
-         if(!Obj || !Obj->IsValidLowLevelFast())
-         {
-                 return -1;
-         }
+         if(!Obj || !Obj->IsValidLowLevelFast())
+         {
+                 return -1;
+         }
 
- TArray<UObject*> ReferredToObjects;                                //req outer, ignore archetype, recursive, ignore transient
-         FReferenceFinder ObjectReferenceCollector( ReferredToObjects, Obj, false, true, true, false);
-         ObjectReferenceCollector.FindReferences( Obj );
+ TArray<UObject*> ReferredToObjects;                                //req outer, ignore archetype, recursive, ignore transient
+         FReferenceFinder ObjectReferenceCollector( ReferredToObjects, Obj, false, true, true, false);
+         ObjectReferenceCollector.FindReferences( Obj );
 
  if(OutReferredToObjects)
-         {
-                 OutReferredToObjects->Append(ReferredToObjects);
-         }
-         return OutReferredToObjects.Num();
+         {
+                 OutReferredToObjects->Append(ReferredToObjects);
+         }
+         return OutReferredToObjects.Num();
  }
 ```
 

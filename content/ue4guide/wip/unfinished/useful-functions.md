@@ -5,17 +5,17 @@ sidebar: ue4guide
 
 ULocalPlayer::GetPixelPoint()
 
-ULocalPlayer::GetProjectionData(FViewport\* **Viewport**, EStereoscopicPass **StereoPass**, FSceneViewProjectionData& **ProjectionData**) const;
+ULocalPlayer::GetProjectionData(FViewport\* **Viewport**, EStereoscopicPass **StereoPass**, FSceneViewProjectionData& **ProjectionData**) const;
 
-GetWorldTimerManager().SetTimerForNextTick(this, &AUTGameMode::StartMatch);
+GetWorldTimerManager().SetTimerForNextTick(this, &AUTGameMode::StartMatch);
 
 UShooterGameViewportClient::ShowDialog()
 
 Dodging:
 
-bool UUTCharacterMovement::PerformDodge(FVector &**DodgeDir**, FVector &**DodgeCross**)
+bool UUTCharacterMovement::PerformDodge(FVector &**DodgeDir**, FVector &**DodgeCross**)
 
-bool AUTCharacter::Dodge(FVector **DodgeDir**, FVector **DodgeCross**)
+bool AUTCharacter::Dodge(FVector **DodgeDir**, FVector **DodgeCross**)
 
 Fapp::UseVRFocus
 
@@ -23,17 +23,17 @@ Set Maximum Delta Time between frames; helpful for debugging by t.OverrideFPS or
 
 - MaxDeltaTime is unusable in network games (look at UpdateTimeAndHandleMaxTickRate)
 
-FixupDeltaSeconds(**DeltaSeconds**, **RealDeltaSeconds**);
+FixupDeltaSeconds(**DeltaSeconds**, **RealDeltaSeconds**);
 
 APawn::MoveIgnoreActorAdd()
 
-\* Handles game-specific networking management (cheat detection, bandwidth management, etc.).
+\* Handles game-specific networking management (cheat detection, bandwidth management, etc.).
 
 AGameNetworkManager
 
 For both Actors & Components
 
-virtual void CheckForErrors();
+virtual void CheckForErrors();
 
 virtual void CheckForDeprecated();
 
@@ -59,12 +59,12 @@ Histogram.h
 
 MallocProfiler
 
-for( TArray&lt;ULevel\*>::TConstIterator **it** = GetWorld()->GetLevels().CreateConstIterator(); **it**; ++**it** )
+for( TArray&lt;ULevel\*>::TConstIterator **it** = GetWorld()->GetLevels().CreateConstIterator(); **it**; ++**it** )
 {
-        ULevel\* **CurLevel** = \***it**;
-        if( **CurLevel** && **CurLevel**->bIsVisible )
-        {
-                ALevelScriptActor\* **LSA** = **CurLevel**->GetLevelScriptActor();
+        ULevel\* **CurLevel** = \***it**;
+        if( **CurLevel** && **CurLevel**->bIsVisible )
+        {
+                ALevelScriptActor\* **LSA** = **CurLevel**->GetLevelScriptActor();
 
 ### Changing Component Ownership:
 

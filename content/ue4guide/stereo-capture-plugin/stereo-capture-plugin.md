@@ -19,8 +19,8 @@ Things to note:
 
   r.SceneRenderTargetResizeMethod=2
 
-//NOTE: ikrimae: Ensure that the main gameview is > CaptureWidth x CaptureHeight. Bug in UE4 that won't re-alloc scene render targets to the correct size
-//               when the scenecapture component > current window render target. <https://answers.unrealengine.com/questions/80531/scene-capture-2d-max-resolution.html>
+//NOTE: ikrimae: Ensure that the main gameview is > CaptureWidth x CaptureHeight. Bug in UE4 that won't re-alloc scene render targets to the correct size
+//               when the scenecapture component > current window render target. <https://answers.unrealengine.com/questions/80531/scene-capture-2d-max-resolution.html>
 
 - Launch with console command: SP.PanoramicMovie 0 \[EndFrame]
 

@@ -5,7 +5,7 @@ sidebar: ue4guide
 
 ##### UE4 is a Left Handed Coordinate System
 
-**Coordinate System: **Left handed, Z-Up, X-axis is forward, Y-axis is right
+**Coordinate System: **Left handed, Z-Up, X-axis is forward, Y-axis is right
 
 - UV (0,0) => is Top Left corner of image
 

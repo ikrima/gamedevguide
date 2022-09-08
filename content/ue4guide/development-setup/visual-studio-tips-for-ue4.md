@@ -5,13 +5,13 @@ sidebar: ue4guide
 
 # General Tips
 
-- [Adding a button to attach the debugger directly to the UE4 instance](/ue4guide/general-debugging/add-vs-autoattach-to-ue4-button)
+- [Adding a button to attach the debugger directly to the UE4 instance](../general-debugging/add-vs-autoattach-to-ue4-button)
 
-- [Print Blueprint/BP Callstack](/ue4guide/general-debugging/print-bp-callstack)
+- [Print Blueprint/BP Callstack](../general-debugging/print-bp-callstack)
 
 - Crash Course Visual Assist Shortcuts
   - ALT+G - Context menu to go to places where a function/variable/class is referenced
-  - ALT+SHIFT+G - Context menu to see the declaration/implementation of a function, see instances of a type, see base symbols (classes/function/variables it might be inherting from)
+  - ALT+SHIFT+G - Context menu to see the declaration/implementation of a function, see instances of a type, see base symbols (classes/function/variables it might be inheriting from)
   - ALT+O - Toggle Header/Code file
   - ALT+SHIFT+S - Search for symbols (Really useful!)
   - ALT+SHIFT+F -
@@ -19,7 +19,7 @@ sidebar: ue4guide
   - ALT+SHIFT+R - Rename symbol
   - CTRL+SHIFT+V
 
-# Configuration
+## Configuration
 
 - USF/USH/HLSL intellisense
   - <https://marketplace.visualstudio.com/items?itemName=TimGJones.HLSLToolsforVisualStudio>
@@ -30,13 +30,13 @@ sidebar: ue4guide
 
 - Add exceptions to Windows Defender to your project directories, for devenv, unrealheader tool, msbuild, cl.exe, incredibuild, link.exe
   - Our devops scripts (setupmachine.py) automatically does this.
-  - Here's a [powershell script](/ue4guide/development-setup/windows-defender-exclusions-script) that does the same thing
+  - Here's a [powershell script](../development-setup/windows-defender-exclusions-script) that does the same thing
 
 - VS2017 Disable lightweight solutions
 
 - Make Visual Studio 2017 faster: <https://medium.com/burak-tasci/tweaking-the-environment-to-speed-up-visual-studio-79cd1920fed9>
-  - [Adding a button to attach the debugger directly to the UE4 instance](/ue4guide/vs-autoattach-to-ue4-button)
-  - [Print Blueprint/BP Callstack](/print-blueprint-callstack)
+  - [Adding a button to attach the debugger directly to the UE4 instance](../general-debugging/add-vs-autoattach-to-ue4-button)
+  - [Print Blueprint/BP Callstack](../general-debugging/print-bp-callstack)
 
 ## Visual Assist
 
@@ -64,7 +64,7 @@ If you can open the options dialog of Visual Assist, enable logging:
 
 ![](../_assets/VSTipsUE4_VAssistXDebug_options.png)
 
-*(Logging begins the moment you enable the checkbox. If you close and re-open the options dialog, the checkbox may not be enabled even though logging is in effect.)*
+(_Logging begins the moment you enable the checkbox. If you close and re-open the options dialog, the checkbox may not be enabled even though logging is in effect._)
 
 Note the location of va.log.
 
@@ -72,7 +72,7 @@ Note the location of va.log.
 
 If you cannot open the options dialog of Visual Assist or are so directed by customer support, use regedit to enable logging before Visual Studio starts:
 
-1. Navigate to HKCU\\Software\\Whole Tomato
+1. Navigate to `HKCU\\Software\\Whole Tomato`
 2. Set the value of Logging to 1
 
-*From <https://support.wholetomato.com/default.asp?W305>*
+[Reference Source](https://support.wholetomato.com/default.asp?W305)

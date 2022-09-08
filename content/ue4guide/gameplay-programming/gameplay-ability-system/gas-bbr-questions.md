@@ -37,22 +37,22 @@ For rollback/rollforth:
 
 - UAutomatedLevelSequenceCapture::FMovieSceneTimeController_FrameStep
 
-- class TIMEMANAGEMENT_API UFixedFrameRateCustomTimeStep : public UEngineCustomTimeStep
+- class TIMEMANAGEMENT_API UFixedFrameRateCustomTimeStep : public UEngineCustomTimeStep
 
-  UMovieScene::EUpdateClockSource ClockSource;
+  UMovieScene::EUpdateClockSource ClockSource;
   MovieScene->GetTickResolution();
   MovieScene->GetDisplayRate();
-  PlayPosition.SetTimeBase(DisplayRate, TickResolution, EvaluationType);
+  PlayPosition.SetTimeBase(DisplayRate, TickResolution, EvaluationType);
 
       {
-        // Set up the default frame range from the sequence's play range
-        TRange<FFrameNumber> PlaybackRange   = MovieScene->GetPlaybackRange();
+        // Set up the default frame range from the sequence's play range
+        TRange<FFrameNumber> PlaybackRange   = MovieScene->GetPlaybackRange();
 
-        const FFrameNumber SrcStartFrame = MovieScene::DiscreteInclusiveLower(PlaybackRange);
-        const FFrameNumber SrcEndFrame   = MovieScene::DiscreteExclusiveUpper(PlaybackRange);
+        const FFrameNumber SrcStartFrame = MovieScene::DiscreteInclusiveLower(PlaybackRange);
+        const FFrameNumber SrcEndFrame   = MovieScene::DiscreteExclusiveUpper(PlaybackRange);
 
-        const FFrameNumber StartingFrame = ConvertFrameTime(SrcStartFrame, TickResolution, DisplayRate).FloorToFrame();
-        const FFrameNumber EndingFrame   = ConvertFrameTime(SrcEndFrame,   TickResolution, DisplayRate).FloorToFrame();
+        const FFrameNumber StartingFrame = ConvertFrameTime(SrcStartFrame, TickResolution, DisplayRate).FloorToFrame();
+        const FFrameNumber EndingFrame   = ConvertFrameTime(SrcEndFrame,   TickResolution, DisplayRate).FloorToFrame();
 
-        SetFrameRange(StartingFrame.Value, (EndingFrame - StartingFrame).Value);
+        SetFrameRange(StartingFrame.Value, (EndingFrame - StartingFrame).Value);
       }

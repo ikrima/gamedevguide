@@ -14,11 +14,11 @@ sidebar: ue4guide
 
 # Custom Content Browser Asset Category
 
-You can register custom categories using the RegisterAdvancedAssetCategory function from the AssetToolsmodule. You'd then need to use the registered category flag in the GetCategories function of your custom type asset actions.
+You can register custom categories using the RegisterAdvancedAssetCategory function from the AssetToolsmodule. You'd then need to use the registered category flag in the GetCategories function of your custom type asset actions.
 
-The AI module provides an example of doing this. See FAIModule::StartupModule for the registration, and FAssetTypeActions_Blackboard::GetCategories for an example of using the registered flag in the asset type actions.
+The AI module provides an example of doing this. See FAIModule::StartupModule for the registration, and FAssetTypeActions_Blackboard::GetCategories for an example of using the registered flag in the asset type actions.
 
-I notice that tutorial doesn't actually cover creating asset type actions, however they're pretty simple. FAssetTypeActions_Enum provides a pretty basic example, just remember to register them with the AssetTools module (via RegisterAssetTypeActions).
+I notice that tutorial doesn't actually cover creating asset type actions, however they're pretty simple. FAssetTypeActions_Enum provides a pretty basic example, just remember to register them with the AssetTools module (via RegisterAssetTypeActions).
 
 *Reference From <https://answers.unrealengine.com/questions/337715/custom-asset-category.html>*
 
@@ -38,5 +38,5 @@ I notice that tutorial doesn't actually cover creating asset type actions, howev
 
     ```cpp
     UDataTable::Serialize() & UWorld::AddReferencedObjects &
-    UWorld::PreSaveRoot(const TCHAR* Filename, TArray<FString>& AdditionalPackagesToCook)
+    UWorld::PreSaveRoot(const TCHAR* Filename, TArray<FString>& AdditionalPackagesToCook)
     ```

@@ -19,4 +19,4 @@ Useful command lines when working on rendering:
 
 *From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/index.html>*
 
-\* \*
+\* \*

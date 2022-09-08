@@ -20,90 +20,90 @@ Depending on how you do it, it may also be useful to use a UK2Node_CallFunction,
 
 ```cpp
 USTRUCT()
-struct FMovieSceneEventParameters
+struct FMovieSceneEventParameters
 {
   GENERATED_BODY()
 
-  FMovieSceneEventParameters() {}
+  FMovieSceneEventParameters() {}
 
-  /** Construction from a struct type */
-  FMovieSceneEventParameters(UStruct& InStruct)
-    : StructType(&InStruct)
+  /** Construction from a struct type */
+  FMovieSceneEventParameters(UStruct& InStruct)
+    : StructType(&InStruct)
   {
   }
 
-  FMovieSceneEventParameters(const FMovieSceneEventParameters& RHS) = default;
-  FMovieSceneEventParameters& operator=(const FMovieSceneEventParameters& RHS) = default;
+  FMovieSceneEventParameters(const FMovieSceneEventParameters& RHS) = default;
+  FMovieSceneEventParameters& operator=(const FMovieSceneEventParameters& RHS) = default;
 
-#if PLATFORM_COMPILER_HAS_DEFAULTED_FUNCTIONS
-  FMovieSceneEventParameters(FMovieSceneEventParameters&&) = default;
-  FMovieSceneEventParameters& operator=(FMovieSceneEventParameters&&) = default;
+#if PLATFORM_COMPILER_HAS_DEFAULTED_FUNCTIONS
+  FMovieSceneEventParameters(FMovieSceneEventParameters&&) = default;
+  FMovieSceneEventParameters& operator=(FMovieSceneEventParameters&&) = default;
 #else
-  FMovieSceneEventParameters(FMovieSceneEventParameters&& RHS)
+  FMovieSceneEventParameters(FMovieSceneEventParameters&& RHS)
   {
-    *this = MoveTemp(RHS);
+    *this = MoveTemp(RHS);
   }
-  FMovieSceneEventParameters& operator=(FMovieSceneEventParameters&& RHS)
+  FMovieSceneEventParameters& operator=(FMovieSceneEventParameters&& RHS)
   {
-    StructType = MoveTemp(RHS.StructType);
-    StructBytes = MoveTemp(RHS.StructBytes);
-    return *this;
+    StructType = MoveTemp(RHS.StructType);
+    StructBytes = MoveTemp(RHS.StructBytes);
+    return *this;
   }
 #endif
 
-  void OverwriteWith(const TArray<uint8>& Bytes)
+  void OverwriteWith(const TArray<uint8>& Bytes)
   {
-    StructBytes = Bytes;
+    StructBytes = Bytes;
   }
 
-  void GetInstance(FStructOnScope& OutStruct) const
+  void GetInstance(FStructOnScope& OutStruct) const
   {
-    UStruct* StructPtr = StructType.Get();
+    UStruct* StructPtr = StructType.Get();
     OutStruct.Initialize(StructPtr);
-    uint8* Memory = OutStruct.GetStructMemory();
-    if (StructPtr && StructPtr->GetStructureSize() > 0 && StructBytes.Num())
+    uint8* Memory = OutStruct.GetStructMemory();
+    if (StructPtr && StructPtr->GetStructureSize() > 0 && StructBytes.Num())
     {
-      FMemoryReader Reader(StructBytes);
-      StructPtr->SerializeTaggedProperties(Reader, Memory, StructPtr, nullptr);
+      FMemoryReader Reader(StructBytes);
+      StructPtr->SerializeTaggedProperties(Reader, Memory, StructPtr, nullptr);
     }
   }
 
-  UStruct* GetStructType() const
+  UStruct* GetStructType() const
   {
-    return StructType.Get();
+    return StructType.Get();
   }
 
-  void Reassign(UStruct* NewStruct)
+  void Reassign(UStruct* NewStruct)
   {
-    StructType = NewStruct;
+    StructType = NewStruct;
 
-    if (!NewStruct)
+    if (!NewStruct)
     {
       StructBytes.Reset();
     }
   }
 
-  bool Serialize(FArchive& Ar)
+  bool Serialize(FArchive& Ar)
   {
-    UStruct* StructTypePtr = StructType.Get();
-    Ar << StructTypePtr;
-    StructType = StructTypePtr;
+    UStruct* StructTypePtr = StructType.Get();
+    Ar << StructTypePtr;
+    StructType = StructTypePtr;
 
-    Ar << StructBytes;
+    Ar << StructBytes;
 
-    return true;
+    return true;
   }
 
-  friend FArchive& operator<<(FArchive& Ar, FMovieSceneEventParameters& Payload)
+  friend FArchive& operator<<(FArchive& Ar, FMovieSceneEventParameters& Payload)
   {
     Payload.Serialize(Ar);
-    return Ar;
+    return Ar;
   }
 
 private:
 
-  TWeakObjectPtr<UStruct> StructType;
-  TArray<uint8> StructBytes;
+  TWeakObjectPtr<UStruct> StructType;
+  TArray<uint8> StructBytes;
 };
 
 ```

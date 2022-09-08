@@ -13,7 +13,7 @@ When you are making a new vertex factory be sure not to just return true from th
 
 <http://docs.alembic.io/python/examples.html>
 
-In this example, given a node in an Alembic Archive, we’ll figure out what the final xform is. We proceed from the leaf to the root. We’re going to change **visitObject()** slightly. Instead of checking the object’s name, we’re going to call a new function, **getBounds()**. This example is adapted from
+In this example, given a node in an Alembic Archive, we’ll figure out what the final xform is. We proceed from the leaf to the root. We’re going to change **visitObject()** slightly. Instead of checking the object’s name, we’re going to call a new function, **getBounds()**. This example is adapted from
 
 <http://code.google.com/p/alembic/wiki/CookingWithAlembic#Accumulating_a_Transform>
 

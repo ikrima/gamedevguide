@@ -62,10 +62,10 @@ Generic Delta Replication is implemented by UStructProperty::NetDeltaSerializeIt
 It works by first NetSerializing the current state of the object (the 'full' state) and using memcmp to compare it to previous base state. UProperty
 is what actually implements the comparison, writing the current state to the diff state if it has changed, and always writing to the full state otherwise.
 
-The UStructProperty and UArrayProperty functions work by iterating their fields or array elements and calling the UProperty function, while also embedding meta data.
+The UStructProperty and UArrayProperty functions work by iterating their fields or array elements and calling the UProperty function, while also embedding meta data.
 
- For example UArrayProperty basically writes:
- "Array has X elements now" -> "Here is element Y" -> Output from UProperty::NetDeltaSerialize -> "Here is element Z" -> etc
+ For example UArrayProperty basically writes:
+ "Array has X elements now" -> "Here is element Y" -> Output from UProperty::NetDeltaSerialize -> "Here is element Z" -> etc
 
 Generic Data Replication is the 'default' way of handling UArrayProperty and UStructProperty serialization. This will work for any array or struct with any
 
@@ -79,7 +79,7 @@ function will be called instead of going through the Generic Delta Replication c
 
 #### Fast TArray Replication
 
-Fast TArray Replication is implemented through custom net delta serialization. Instead of a flat TArray buffer to repesent states, it only is concerned with a TMap of IDs and ReplicationKeys. The IDs map to items in the array, which all have a ReplicationID field defined in FFastArraySerializerItem.
+Fast TArray Replication is implemented through custom net delta serialization. Instead of a flat TArray buffer to repesent states, it only is concerned with a TMap of IDs and ReplicationKeys. The IDs map to items in the array, which all have a ReplicationID field defined in FFastArraySerializerItem.
 
 FFastArraySerializerItem also has a ReplicationKey field. When items are marked dirty with MarkItemDirty, they are given a new ReplicationKey, and assigned a new ReplicationID if they don't have one.
 

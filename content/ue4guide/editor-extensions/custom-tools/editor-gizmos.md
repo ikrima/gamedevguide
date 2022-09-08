@@ -65,7 +65,7 @@ class UGizmoHandleMeshComponent\* UGizmoHandleGroup::CreateMeshHandle( class USt
 
 {
 
- const bool bAllowGizmoLighting = false;        // @todo vreditor: Not sure if we want this for gizmos or not yet. Needs feedback. Also they're translucent right now.
+ const bool bAllowGizmoLighting = false;        // @todo vreditor: Not sure if we want this for gizmos or not yet. Needs feedback. Also they're translucent right now.
 
  UGizmoHandleMeshComponent\* HandleComponent = CreateDefaultSubobject&lt;UGizmoHandleMeshComponent>( \*ComponentName );
 

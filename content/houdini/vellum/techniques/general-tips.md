@@ -22,7 +22,7 @@
   - Thickness: 0.001
   - Rest Length: 0.94
   - Compression Stiffness: 100,000
-  - Bend Plasticity 
+  - Bend Plasticity
     - Low: 0.005
     - High: 100
     - Hardening: 10

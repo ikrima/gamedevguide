@@ -8,11 +8,11 @@ sidebar: ue4guide
 ```cpp
 import pprint
 
-pprint.pprint(randomObj.\_\_dict\_\_)          =>     Prints all the attributes & their values in an object
+pprint.pprint(randomObj.\_\_dict\_\_)          =>     Prints all the attributes & their values in an object
 
-dir(randomObj)                                   =>     enumerates attributes & methods in an object
+dir(randomObj)                                   =>     enumerates attributes & methods in an object
 
-inspect(module)                                 =>     Allows you to inspect a module
+inspect(module)                                 =>     Allows you to inspect a module
 ```
 
 ## Import statements:
@@ -60,7 +60,7 @@ os.environ.get('KEY') will return None if the key doesn't exist instead of raisi
 
 <https://docs.python.org/2/library/filesys.html>
 
-You can use glob:
+You can use glob:
 
 ```python
 import glob 
@@ -68,7 +68,7 @@ import os
 os.chdir("/mydir")for file in glob.glob("*.txt"): 
 print file
 
-or simply os.listdir:
+or simply os.listdir:
 
 import os 
 for file in os.listdir("/mydir"): 
@@ -107,7 +107,7 @@ for i in xrange(0, len(files)):
 
 filename,ext = os.path.splitext(os.path.basename(files[i]))
 
-os.rename(files[i], os.path.join(os.path.dirname(files[i]), filename + ".%07d" % i + ext))
+os.rename(files[i], os.path.join(os.path.dirname(files[i]), filename + ".%07d" % i + ext))
 ```
 
 #### Executing shell commands

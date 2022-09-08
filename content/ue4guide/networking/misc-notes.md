@@ -8,19 +8,19 @@ sidebar: ue4guide
 Manage ParticleSpawning:
 
 ```cpp
-class AParticleEventManager : public AActor
-FString ParticleEventManagerClassPath;
+class AParticleEventManager : public AActor
+FString ParticleEventManagerClassPath;
 
-struct CORE_API FNetworkVersion
+struct CORE_API FNetworkVersion
 
-INetworkPredictionInterface\* **NetworkPredictionInterface** = Cast<INetworkPredictionInterface>(**PawnMovement**);
+INetworkPredictionInterface\* **NetworkPredictionInterface** = Cast<INetworkPredictionInterface>(**PawnMovement**);
 ```
 
-**bNetLoadOnClient** : If true the Actor will load from a level file on a network client. This should be set to true for Actors you place in a map that you want to exist on a client (typically most Actors want this).
+**bNetLoadOnClient** : If true the Actor will load from a level file on a network client. This should be set to true for Actors you place in a map that you want to exist on a client (typically most Actors want this).
 
 *Reference From <https://wiki.unrealengine.com/Replication>*
 
-**IsNetStartupActor()**: Returns true if this is a replicated actor that was placed in the map
+**IsNetStartupActor()**: Returns true if this is a replicated actor that was placed in the map
 
 # Useful Functions
 
@@ -58,25 +58,25 @@ FHttpModule/IHttpRequest/IHttpResponse: Wrapper to easily make http requests
 JSON documentation: http://www.wraiyth.com/?p=198
 
 ```cpp
-/** Class that handles converting Json objects to and from UStructs */
-class JSONUTILITIES_API FJsonObjectConverter
+/** Class that handles converting Json objects to and from UStructs */
+class JSONUTILITIES_API FJsonObjectConverter
 
 /**
- * Base class for a JSON serializable object. Derive from this to make your object serializable
- */
-struct FJsonSerializable
+ * Base class for a JSON serializable object. Derive from this to make your object serializable
+ */
+struct FJsonSerializable
 
-// FJsonSerializable
+// FJsonSerializable
 BEGIN_JSON_SERIALIZER
-  JSON_SERIALIZE( "AppName",		AppName );
-  JSON_SERIALIZE( "SessionName",	SessionName );
-  JSON_SERIALIZE( "FriendlyName",	FriendlyName );
-  JSON_SERIALIZE( "Timestamp",		Timestamp );
-  JSON_SERIALIZE( "SizeInBytes",	SizeInBytes );
-  JSON_SERIALIZE( "DemoTimeInMs",	DemoTimeInMs );
-  JSON_SERIALIZE( "NumViewers",	NumViewers );
-  JSON_SERIALIZE( "bIsLive",		bIsLive );
-  JSON_SERIALIZE( "Changelist",	Changelist );
-  JSON_SERIALIZE( "shouldKeep",	bShouldKeep );
+  JSON_SERIALIZE( "AppName",		AppName );
+  JSON_SERIALIZE( "SessionName",	SessionName );
+  JSON_SERIALIZE( "FriendlyName",	FriendlyName );
+  JSON_SERIALIZE( "Timestamp",		Timestamp );
+  JSON_SERIALIZE( "SizeInBytes",	SizeInBytes );
+  JSON_SERIALIZE( "DemoTimeInMs",	DemoTimeInMs );
+  JSON_SERIALIZE( "NumViewers",	NumViewers );
+  JSON_SERIALIZE( "bIsLive",		bIsLive );
+  JSON_SERIALIZE( "Changelist",	Changelist );
+  JSON_SERIALIZE( "shouldKeep",	bShouldKeep );
 END_JSON_SERIALIZER
 ```

@@ -108,61 +108,61 @@ UnrealEngine\\Engine\\Source\\Runtime\\Eengine\\Private\\Particles\\ParticleVert
 To bind LocalVertexFactory with a shader you have to use:
 
 ```cpp
-DECLARE_VERTEX_FACTORY_TYPE( FFluidSurfaceVertexFactory );
+DECLARE_VERTEX_FACTORY_TYPE( FFluidSurfaceVertexFactory );
 
-IMPLEMENT_VERTEX_FACTORY_TYPE( FFluidSurfaceVertexFactory, "FluidSurfaceVertexFactory", true, true, true, true, false );
+IMPLEMENT_VERTEX_FACTORY_TYPE( FFluidSurfaceVertexFactory, "FluidSurfaceVertexFactory", true, true, true, true, false );
 ```
 
 VertexFactory::InitRHI() is where the vertex declaration is created
 
 ```cpp
-void FLocalVertexFactory::InitRHI()
+void FLocalVertexFactory::InitRHI()
 
-BEGIN_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters, )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, AxisLockRight, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, AxisLockUp, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, TangentSelector, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, NormalsSphereCenter, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, NormalsCylinderUnitDirection, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, SubImageSize, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER( FVector4, MacroUVParameters )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, RotationScale, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, RotationBias, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, NormalsType, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, InvDeltaSeconds, EShaderPrecisionModifier::Half )
-        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector2D, PivotOffset, EShaderPrecisionModifier::Half )
-END_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters )
-typedef TUniformBufferRef&lt;FParticleSpriteUniformParameters> FParticleSpriteUniformBufferRef;
+BEGIN_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters, )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, AxisLockRight, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, AxisLockUp, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, TangentSelector, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, NormalsSphereCenter, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, NormalsCylinderUnitDirection, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector4, SubImageSize, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER( FVector4, MacroUVParameters )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, RotationScale, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, RotationBias, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, NormalsType, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( float, InvDeltaSeconds, EShaderPrecisionModifier::Half )
+        DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER_EX( FVector2D, PivotOffset, EShaderPrecisionModifier::Half )
+END_UNIFORM_BUFFER_STRUCT( FParticleSpriteUniformParameters )
+typedef TUniformBufferRef&lt;FParticleSpriteUniformParameters> FParticleSpriteUniformBufferRef;
 
 FParticleVertexFactoryBase
 
 FParticleSpriteVertexFactory
 
-void FParticleSpriteVertexFactory::InitRHI()
+void FParticleSpriteVertexFactory::InitRHI()
 {
-        InitStreams();
-        SetDeclaration(GetParticleSpriteVertexDeclaration(GetFeatureLevel()).VertexDeclarationRHI);
+        InitStreams();
+        SetDeclaration(GetParticleSpriteVertexDeclaration(GetFeatureLevel()).VertexDeclarationRHI);
 }
 
-virtual void InitDynamicRHI()
-        {
-                FVertexDeclarationElementList Elements;
-                int32        Offset = 0;
+virtual void InitDynamicRHI()
+        {
+                FVertexDeclarationElementList Elements;
+                int32        Offset = 0;
 
-FillDeclElements(Elements, Offset);
+FillDeclElements(Elements, Offset);
 
-// Create the vertex declaration for rendering the factory normally.
-                // This is done in InitDynamicRHI instead of InitRHI to allow FParticleSpriteVertexFactory::InitRHI
-                // to rely on it being initialized, since InitDynamicRHI is called before InitRHI.
-                VertexDeclarationRHI = RHICreateVertexDeclaration(Elements);
-        }
+// Create the vertex declaration for rendering the factory normally.
+                // This is done in InitDynamicRHI instead of InitRHI to allow FParticleSpriteVertexFactory::InitRHI
+                // to rely on it being initialized, since InitDynamicRHI is called before InitRHI.
+                VertexDeclarationRHI = RHICreateVertexDeclaration(Elements);
+        }
 ```
 
 1. Need to run with -d3ddebug in order to set debug flag to device. Now I have informative errors descriptions.
 
 1. float3 to float4 conversion is automatic for position elements, so thats why its defined as a float3 in code and float4 in the shader, And of course it's legal to use VET_Float4 for initialization.
 
-1. this Data.PositionComponent = FVertexStreamComponent actually says which field in vertex structure points to which field in the stream. The actual binding of \*.usf and code fields are done, for example, in FLocalVertexFactory::InitRHI - attribute index is plays main role.
+1. this Data.PositionComponent = FVertexStreamComponent actually says which field in vertex structure points to which field in the stream. The actual binding of \*.usf and code fields are done, for example, in FLocalVertexFactory::InitRHI - attribute index is plays main role.
 
 1. Similar way other attributes initialized in appropriate classes. In FInstancedStaticMeshVertexFactory::InitRHI, for example.
 

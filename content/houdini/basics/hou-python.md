@@ -93,9 +93,9 @@ Using houdini python libs in normal python
 
 - Basic Code to get selected prim string
   ```python
-  import toolutils 
-  viewer = toolutils.sceneViewer() 
-  geo = viewer.selectGeometry() 
+  import toolutils 
+  viewer = toolutils.sceneViewer() 
+  geo = viewer.selectGeometry() 
   prims = geo.mergedSelectionString()
   ```
 

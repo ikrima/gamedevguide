@@ -44,7 +44,7 @@ Run SwarmCoordinator.exe.
 
 ![](../_assets/RunSwarmCoordinator55420277.png)
 
-Run SwarmAgent.exe and select **Settings** tab.
+Run SwarmAgent.exe and select **Settings** tab.
 
 ![](../_assets/RunSwarmAgent82527089.png)
 

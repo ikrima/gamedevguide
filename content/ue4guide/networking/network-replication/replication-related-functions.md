@@ -150,17 +150,17 @@ virtual void OnNetCleanup(class UNetConnection* Connection) {};
 virtual bool DestroyNetworkActorHandled();
 
 Actor Connection Functions:
-/** @return the actor responsible for replication, if any.  Typically the player controller */
-virtual const AActor* GetNetOwner() const;
+/** @return the actor responsible for replication, if any.  Typically the player controller */
+virtual const AActor* GetNetOwner() const;
 
-/** @return the owning UPlayer (if any) of this actor. This will be a local player, a net connection, or NULL. */
-virtual class UPlayer* GetNetOwningPlayer();
+/** @return the owning UPlayer (if any) of this actor. This will be a local player, a net connection, or NULL. */
+virtual class UPlayer* GetNetOwningPlayer();
 
 /**
- * Get the owning connection used for communicating between client/server 
- * @return NetConnection to the client or server for this actor
- */
-virtual class UNetConnection* GetNetConnection() const;
+ * Get the owning connection used for communicating between client/server 
+ * @return NetConnection to the client or server for this actor
+ */
+virtual class UNetConnection* GetNetConnection() const;
 
 virtual bool IsNetRelevantFor(const AActor* RealViewer, const AActor* ViewTarget, const FVector& SrcLocation) const override;
 ```

@@ -9,29 +9,29 @@ sidebar: ue4guide
 
 # Unreal Engine 4: Naming Convention
 
- The goal of this document is to share our internal naming conventions with the community to give everyone something to start out with. Using and getting comfortable with  a strict naming convention is essential before your projects grows beyond a few dozen files.
+ The goal of this document is to share our internal naming conventions with the community to give everyone something to start out with. Using and getting comfortable with  a strict naming convention is essential before your projects grows beyond a few dozen files.
 
  \***Disclaimer**: This document is a constant work in progress, more asset types are added over time as we start using them with our game projects. If you have suggestions or comments you can leave them at the bottom of this page. Feedback is appreciated to improve this page.\*
 
- Last Revision: ***July 15, 2014***
+ Last Revision: ***July 15, 2014***
 
  **Contents** [hide](http://www.tomlooman.com/ue4-naming-convention/#)
 
-- [1 General Naming](http://www.tomlooman.com/ue4-naming-convention/#General_Naming)
+- [1 General Naming](http://www.tomlooman.com/ue4-naming-convention/#General_Naming)
 
-- [2 Prefixes](http://www.tomlooman.com/ue4-naming-convention/#Prefixes)
+- [2 Prefixes](http://www.tomlooman.com/ue4-naming-convention/#Prefixes)
 
-- [3 Suffixes](http://www.tomlooman.com/ue4-naming-convention/#Suffixes)
+- [3 Suffixes](http://www.tomlooman.com/ue4-naming-convention/#Suffixes)
 
-- [3.1 Textures](http://www.tomlooman.com/ue4-naming-convention/#Textures)
+- [3.1 Textures](http://www.tomlooman.com/ue4-naming-convention/#Textures)
 
-- [3.2 Animation](http://www.tomlooman.com/ue4-naming-convention/#Animation)
+- [3.2 Animation](http://www.tomlooman.com/ue4-naming-convention/#Animation)
 
-- [4 Texture Masks](http://www.tomlooman.com/ue4-naming-convention/#Texture_Masks)
+- [4 Texture Masks](http://www.tomlooman.com/ue4-naming-convention/#Texture_Masks)
 
-- [5 Content Directories](http://www.tomlooman.com/ue4-naming-convention/#Content_Directories)
+- [5 Content Directories](http://www.tomlooman.com/ue4-naming-convention/#Content_Directories)
 
-- [6 Coding Standards](http://www.tomlooman.com/ue4-naming-convention/#Coding_Standards)
+- [6 Coding Standards](http://www.tomlooman.com/ue4-naming-convention/#Coding_Standards)
 
 ## General Naming
 
@@ -41,11 +41,11 @@ sidebar: ue4guide
 
 - Asset type determines prefix.
 
-- *Blueprint is** BP\_**assetname_01*
+- *Blueprint is** BP\_**assetname_01*
 
-- Certain types (eg. textures) use a suffix to specify sub-types. 
+- Certain types (eg. textures) use a suffix to specify sub-types. 
 
-- *T_Grass_01**\_N **for normal maps*
+- *T_Grass_01**\_N **for normal maps*
 
 - Use underscores to split type from identifier and numeric values.
 
@@ -136,9 +136,9 @@ sidebar: ue4guide
 
  **Coding Standards**
 
- Epic has set up a [Coding Standards] page at the Unreal documentation pages.
+ Epic has set up a [Coding Standards] page at the Unreal documentation pages.
 
- Parts of this document were taken and/or modified from the [naming convention page] over at Unreal’s wiki.
+ Parts of this document were taken and/or modified from the [naming convention page] over at Unreal’s wiki.
 
  **Old Asset Naming Convention**
 
@@ -146,17 +146,17 @@ sidebar: ue4guide
 
 [hide](http://www.tomlooman.com/ue4-naming-convention/)
 
-- [1 Overview](https://wiki.unrealengine.com/Assets_Naming_Convention#Overview)
+- [1 Overview](https://wiki.unrealengine.com/Assets_Naming_Convention#Overview)
 
-- [2 Basics](https://wiki.unrealengine.com/Assets_Naming_Convention#Basics)
+- [2 Basics](https://wiki.unrealengine.com/Assets_Naming_Convention#Basics)
 
-- [3 Assets folders](https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_folders)
+- [3 Assets folders](https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_folders)
 
-- [4 Folders by categories](https://wiki.unrealengine.com/Assets_Naming_Convention#Folders_by_categories)
+- [4 Folders by categories](https://wiki.unrealengine.com/Assets_Naming_Convention#Folders_by_categories)
 
-- [5 Assets names](https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_names)
+- [5 Assets names](https://wiki.unrealengine.com/Assets_Naming_Convention#Assets_names)
 
-- [6 Texture Masks](https://wiki.unrealengine.com/Assets_Naming_Convention#Texture_Masks)
+- [6 Texture Masks](https://wiki.unrealengine.com/Assets_Naming_Convention#Texture_Masks)
 
 ### Overview
 

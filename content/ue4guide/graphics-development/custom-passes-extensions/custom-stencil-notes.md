@@ -29,16 +29,16 @@ The gist is to search for "CustomDepth" and do almost the exact same thing, exce
 
 #### Forward Shading Forces EarlyZPassMovable & DDM_AllOccluders
 
- // DBuffer decals force a full prepass
- EarlyZPassMode = DDM_AllOccluders;
- bEarlyZPassMovable = true;
+ // DBuffer decals force a full prepass
+ EarlyZPassMode = DDM_AllOccluders;
+ bEarlyZPassMovable = true;
 
 Look at Landscape material for getting custom attributes in a material (LandscapelayerBlend,LandscapeLayerCoords)
 
 #### Useful functions
 
 ```cpp
-static void SetDecalDepthState(FDecalDepthState DecalDepthState, FRHICommandListImmediate& RHICmdList, FDrawingPolicyRenderState& DrawRenderState)
+static void SetDecalDepthState(FDecalDepthState DecalDepthState, FRHICommandListImmediate& RHICmdList, FDrawingPolicyRenderState& DrawRenderState)
 
 SetDepthStencilStateForBasePass()
 
@@ -61,9 +61,9 @@ SetDepthStencilStateForBasePass
 MeshDecalPrimSet
 CustomDepthSet
 
-FMaterialRelevance MaterialRelevance;
+FMaterialRelevance MaterialRelevance;
 
-FScene::AddDecal(UDecalComponent\* Component)
+FScene::AddDecal(UDecalComponent\* Component)
 
 FMaterialAttributeDefinitionMap::InitializeAttributeMap()
 
@@ -71,7 +71,7 @@ EMaterialProperty
 
 FMaterialAttributeDefinitionMap::AddCustomAttribute
 
-RHICmdList.SetDepthStencilState(TStaticDepthStencilState&lt; false, CF_Always >::GetRHI());
+RHICmdList.SetDepthStencilState(TStaticDepthStencilState&lt; false, CF_Always >::GetRHI());
 
 SetUniformBufferParameter
 
@@ -229,18 +229,18 @@ Early Z Hierarchical Z Shader depth output Disabled Disabled Alpha test, alpha t
 
 ```cpp
 /*
-* Stencil layout during basepass / deferred decals:
-*                BIT ID    | USE
-*                [0]       | sandbox bit (bit to be use by any rendering passes, but must be properly reset to 0 after using)
-*                [1]       | unallocated
-*                [2]       | unallocated
-*                [3]       | Temporal AA mask for translucent object.
-*                [4]       | Lighting channels
-*                [5]       | Lighting channels
-*                [6]       | Lighting channels
-*                [7]       | primitive receive decal bit
+* Stencil layout during basepass / deferred decals:
+*                BIT ID    | USE
+*                [0]       | sandbox bit (bit to be use by any rendering passes, but must be properly reset to 0 after using)
+*                [1]       | unallocated
+*                [2]       | unallocated
+*                [3]       | Temporal AA mask for translucent object.
+*                [4]       | Lighting channels
+*                [5]       | Lighting channels
+*                [6]       | Lighting channels
+*                [7]       | primitive receive decal bit
 *
-* After deferred decals, stencil is cleared to 0 and no longer packed in this way, to ensure use of fast hardware clears and HiStencil.
+* After deferred decals, stencil is cleared to 0 and no longer packed in this way, to ensure use of fast hardware clears and HiStencil.
 */
 ```
 

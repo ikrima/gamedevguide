@@ -25,7 +25,9 @@ Condensed cheat sheet/mnemonics of stuff I forget
 - **Functionals**: functions that take functions as inputs (derivative/integral operators)
 - **Laplacian**: difference average of neighborhood at a point - value at point
   - Laplacian intuition from [CMU Discrete Differential Geometry Course: Lecture 18](https://www.youtube.com/watch?v=oEq9ROl9Umk)
-    ![[_assets/laplacian.mp4]]
+
+    ![](_assets/laplacian.mp4)
+
   - Maximal smoothness/mean curvature is zero
   - _Poisson equation_: $\Delta u$ = 0
     - Think of boundary condition being a wire and a soap film covering the wire

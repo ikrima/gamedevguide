@@ -63,7 +63,7 @@ I would encourage you to actually submit correctly versioned binaries to avoid a
 
 ## Build ID
 
-Unreal Engine 4 eliminates potential errors arising from outdated DLLs via the **Build ID** system. This system ensures that the Engine will only load DLLs that were compiled at the same time as the executable file itself, preventing not only crashes or failed library linkage, but also hard-to-track bugs that could arise from stale binaries. The Build ID is usually generated automatically at compile-time, producing a new, unique value every time the Engine is built, but it is possible to override with a manually-specified value.
+Unreal Engine 4 eliminates potential errors arising from outdated DLLs via the **Build ID** system. This system ensures that the Engine will only load DLLs that were compiled at the same time as the executable file itself, preventing not only crashes or failed library linkage, but also hard-to-track bugs that could arise from stale binaries. The Build ID is usually generated automatically at compile-time, producing a new, unique value every time the Engine is built, but it is possible to override with a manually-specified value.
 
 ### Automatically-Generated Build ID
 

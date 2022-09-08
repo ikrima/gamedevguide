@@ -193,7 +193,7 @@ Switch to main workspace:
 % p4 sync
 ```
 
-We run **p4 sync** after switching the workspace, because both streams have files in them at this point. (You'll be happy to know that **p4 sync** will be smart enough to swap out only the files that aren't the same in both streams.)
+We run **p4 sync** after switching the workspace, because both streams have files in them at this point. (You'll be happy to know that **p4 sync** will be smart enough to swap out only the files that aren't the same in both streams.)
 
 Finally, we copy content from the //Ace/DEV stream to its parent:
 

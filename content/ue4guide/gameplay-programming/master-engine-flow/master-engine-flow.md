@@ -6,7 +6,7 @@ sidebar: ue4guide
 # Game Flow Diagram
 
 ![Highlevel GameFlowChart](../../_assets/GameFlowChart.png)
-[Related: Detailed Actor LifeCycle Diagram](/ue4guide/gameplay-programming/actor-tick-lifecycle-flow/actor-lifecycle-diagram/)
+[Related: Detailed Actor LifeCycle Diagram](../../gameplay-programming/actor-tick-lifecycle-flow/actor-lifecycle-diagram)
 
 # Details
 

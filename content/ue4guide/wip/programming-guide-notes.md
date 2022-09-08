@@ -89,7 +89,7 @@ Don't use the C++ int type in portable code, since it's dependent on the compile
 
 - Use #pragma once
 
-- Fine-grained header inclusion: Include every header you need directl. **Don't rely on a header that is included indirectly by another header you include**
+- Fine-grained header inclusion: Include every header you need directl. **Don't rely on a header that is included indirectly by another header you include**
 
 - Place definitions needed by other modules in the Public directory of a module. Everything else should be in the Private directory. (Old UE modules use Src/Inc for this distinction).
 
@@ -97,13 +97,13 @@ Don't use the C++ int type in portable code, since it's dependent on the compile
 
 - Interface classes (prefixed with "I") should always be abstract and must not have member variables. Interfaces are allowed to contain methods that are not pure-virtual, and even methods that are non-virtual or static, as long as they are implemented inline.
 
-- *Use const wherever possible.* Particularly on reference parameters and class methods. const is documentation as much as it is a compiler directive.
+- *Use const wherever possible.* Particularly on reference parameters and class methods. const is documentation as much as it is a compiler directive.
 
 - Pointers & references declared with one space. Ex: FShaderType\* Type
 
 - Use virtual & OVERRIDE when defining derived functions.
 
-- Leave a blank line at the end of the file. All .cpp and .h files for gcc
+- Leave a blank line at the end of the file. All .cpp and .h files for gcc
 
 **Namespaces**
 
@@ -184,7 +184,7 @@ UCLASS() macro tags classes into the Uobject handling system:
 
 ## Object Creation
 
-There are several functions that can be used to create new UObject instances as well as the standard new operator; each of which have their own use case:
+There are several functions that can be used to create new UObject instances as well as the standard new operator; each of which have their own use case:
 
 | **Method**                                                                                                                                      | **Description**                                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -271,7 +271,7 @@ When a component is registered, the events below are fired off.
 
 #### UnRegistering Components
 
-**ActorComponents** can be unregistered as well to avoid them being updated, simulated, or rendered. Unregistering a component is performed by callingUActorComponent::UnregisterComponent().
+**ActorComponents** can be unregistered as well to avoid them being updated, simulated, or rendered. Unregistering a component is performed by callingUActorComponent::UnregisterComponent().
 
 void UActorComponent::UnregisterComponent()
 
@@ -289,15 +289,15 @@ The events below are fired off when a component is unregistered.
 
 **Component Transforms**
 
-- **FTransform** struct contains a **Translation vector, a Rotation quaternion, and a Scale3D vector**.
+- **FTransform** struct contains a **Translation vector, a Rotation quaternion, and a Scale3D vector**.
 
-- They also have an additional **RelativeLocation vector**,**RelativeRotation rotator**, and **RelativeScale3D vector**
+- They also have an additional **RelativeLocation vector**,**RelativeRotation rotator**, and **RelativeScale3D vector**
 
   - Can be relative to world or parent
 
   - Generally used for getting & setting transform for a component
 
-  - Default relative to AttachParent. Control relative by setting **bAbsoluteLocation, bAbsoluteRotation, and bAbsoluteScale properties**
+  - Default relative to AttachParent. Control relative by setting **bAbsoluteLocation, bAbsoluteRotation, and bAbsoluteScale properties**
 
   - Can also set the absolute world position (internally converted to relative xform) by these functions
 
@@ -312,7 +312,7 @@ The events below are fired off when a component is unregistered.
 
 Delegates allow you to call member functions on C++ objects in a generic, yet type-safe way. Using delegates, you can dynamically bind to a member function of an arbitrary object, then call functions on the object, even if the caller does not know the object's type.
 
-It is perfectly safe to copy delegate objects. Delegates can be passed around by value but this is generally not recommended since they do have to allocate memory on the heap. **You should always pass delegates by reference when possible.**
+It is perfectly safe to copy delegate objects. Delegates can be passed around by value but this is generally not recommended since they do have to allocate memory on the heap. **You should always pass delegates by reference when possible.**
 
 Both single-cast and multi-cast delegates are supported, as well as "dynamic" delegates which can be safely serialized to disk.
 
@@ -324,6 +324,6 @@ Both single-cast and multi-cast delegates are supported, as well as "dynamic" de
 
 - [Dynamic (UObject, serializable)](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/Dynamic/index.html)
 
-See the [Delegates](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/index.html) page for reference and usage information.
+See the [Delegates](https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Delegates/index.html) page for reference and usage information.
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Functions/index.htm>*

@@ -322,36 +322,36 @@ template<> struct TBlendableTokenTraits<double> { typedef MovieScene::FBlendable
 - Sequencer:
 
   ```cpp
-  void DrawTransformTrack(const FSceneView* View, FPrimitiveDrawInterface* PDI, UMovieScene3DTransformTrack* TransformTrack, const TArray<TWeakObjectPtr<UObject>>& BoundObjects, const bool& bIsSelected)
+  void DrawTransformTrack(const FSceneView* View, FPrimitiveDrawInterface* PDI, UMovieScene3DTransformTrack* TransformTrack, const TArray<TWeakObjectPtr<UObject>>& BoundObjects, const bool& bIsSelected)
 
-  Player.GetPlaybackStatus() != EMovieScenePlayerStatus::Playing;
+  Player.GetPlaybackStatus() != EMovieScenePlayerStatus::Playing;
   ```
 
 - Sequencer Scale/Dilate parameters:
 
   ```cpp
-  KeyFrameAlgorithms::Scale(CurveInterface.GetValue(), Origin, DilationFactor, KeyHandles);
-  KeyFrameAlgorithms::Translate(CurveInterface.GetValue(), DeltaPosition, KeyHandles);
-  Params.BlendWeight.ShiftCurve(DeltaTime, KeyHandles);
-  Params.BlendWeight.ScaleCurve(Origin, DilationFactor, KeyHandles);
+  KeyFrameAlgorithms::Scale(CurveInterface.GetValue(), Origin, DilationFactor, KeyHandles);
+  KeyFrameAlgorithms::Translate(CurveInterface.GetValue(), DeltaPosition, KeyHandles);
+  Params.BlendWeight.ShiftCurve(DeltaTime, KeyHandles);
+  Params.BlendWeight.ScaleCurve(Origin, DilationFactor, KeyHandles);
   ```
 
 - Track Editor Helpers:
 
   ```cpp
-  virtual UMovieSceneSequence* GetRootMovieSceneSequence() const = 0;
-  virtual UMovieSceneSequence* GetFocusedMovieSceneSequence() const = 0;
-  virtual FMovieSceneSequenceIDRef GetRootTemplateID() const = 0;
-  virtual FMovieSceneSequenceIDRef GetFocusedTemplateID() const = 0;
-  TArrayView<TWeakObjectPtr<>> FindObjectsInCurrentSequence(const FGuid& InObjectBinding)
-  UMovieScene* FocusedMovieScene = GetFocusedMovieScene();
+  virtual UMovieSceneSequence* GetRootMovieSceneSequence() const = 0;
+  virtual UMovieSceneSequence* GetFocusedMovieSceneSequence() const = 0;
+  virtual FMovieSceneSequenceIDRef GetRootTemplateID() const = 0;
+  virtual FMovieSceneSequenceIDRef GetFocusedTemplateID() const = 0;
+  TArrayView<TWeakObjectPtr<>> FindObjectsInCurrentSequence(const FGuid& InObjectBinding)
+  UMovieScene* FocusedMovieScene = GetFocusedMovieScene();
   ```
 
 - TrackEditor Find Objects In Current Sequence/Add new ones to it:
 
   ```cpp
-  TArray<TWeakObjectPtr<>> OutObjects;
-  for (TWeakObjectPtr<> Object : GetSequencer()->FindObjectsInCurrentSequence(ObjectGuid))
+  TArray<TWeakObjectPtr<>> OutObjects;
+  for (TWeakObjectPtr<> Object : GetSequencer()->FindObjectsInCurrentSequence(ObjectGuid))
   {
     OutObjects.Add(Object);
   }
@@ -360,13 +360,13 @@ template<> struct TBlendableTokenTraits<double> { typedef MovieScene::FBlendable
 - Extend the actor reference binding submenu/add custom object bind types:
 
   ```cpp
-  class FControlRigEditorObjectBinding : public ISequencerEditorObjectBinding
+  class FControlRigEditorObjectBinding : public ISequencerEditorObjectBinding
   {
   public:
-    FControlRigEditorObjectBinding(TSharedRef<ISequencer> InSequencer);
-    static TSharedRef<ISequencerEditorObjectBinding> CreateEditorObjectBinding(TSharedRef<ISequencer> InSequencer);
-    // ISequencerEditorObjectBinding interface
-    virtual void BuildSequencerAddMenu(FMenuBuilder& MenuBuilder) override;
+    FControlRigEditorObjectBinding(TSharedRef<ISequencer> InSequencer);
+    static TSharedRef<ISequencerEditorObjectBinding> CreateEditorObjectBinding(TSharedRef<ISequencer> InSequencer);
+    // ISequencerEditorObjectBinding interface
+    virtual void BuildSequencerAddMenu(FMenuBuilder& MenuBuilder) override;
 
   ```
 

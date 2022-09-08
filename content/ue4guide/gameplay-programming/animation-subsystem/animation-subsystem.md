@@ -130,7 +130,7 @@ GetBoneTransform
 Function to update physics data from animated data
 
 ```cpp
-USkeletalMeshComponent::UpdateKinematicBonesToAnim(const TArray&lt;FTransform>> **InSpaceBases**, ETeleportType **Teleport**, bool **bNeedsSkinning**)
+USkeletalMeshComponent::UpdateKinematicBonesToAnim(const TArray&lt;FTransform>> **InSpaceBases**, ETeleportType **Teleport**, bool **bNeedsSkinning**)
 
-USkeletalMeshComponent::PerformBlendPhysicsBones(const TArray&lt;FBoneIndexType>> **InRequiredBones**, TArray&lt;FTransform>> **InLocalAtoms**)
+USkeletalMeshComponent::PerformBlendPhysicsBones(const TArray&lt;FBoneIndexType>> **InRequiredBones**, TArray&lt;FTransform>> **InLocalAtoms**)
 ```

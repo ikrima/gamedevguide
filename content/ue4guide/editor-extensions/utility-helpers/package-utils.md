@@ -14,9 +14,9 @@ namespace PackageTools
 
  \*
 
- \* @param        OutGroupPackages                        The map that receives the filtered list of group packages.
+ \* @param        OutGroupPackages                        The map that receives the filtered list of group packages.
 
- \* @param        OutPackageList                                The array that will contain the list of filtered packages.
+ \* @param        OutPackageList                                The array that will contain the list of filtered packages.
 
  \*/
 
@@ -30,9 +30,9 @@ namespace PackageTools
 
  \*
 
- \* @param        InPackages                        Filters objects based on package.
+ \* @param        InPackages                        Filters objects based on package.
 
- \* @param        OutObjects                        \[out] Receives the list of objects
+ \* @param        OutObjects                        \[out] Receives the list of objects
 
  \*/
 
@@ -44,9 +44,9 @@ namespace PackageTools
 
  *
 
- * @param        TopLevelPackages        Packages to be fully loaded.
+ * @param        TopLevelPackages        Packages to be fully loaded.
 
- * @param        OperationText                Text describing the operation; appears in the warning string presented to the user.
+ * @param        OperationText                Text describing the operation; appears in the warning string presented to the user.
 
  *
 
@@ -62,11 +62,11 @@ namespace PackageTools
 
  *
 
- * @param        InFilename        File name of package to load
+ * @param        InFilename        File name of package to load
 
  *
 
- * @return        The loaded package (or NULL if something went wrong.)
+ * @return        The loaded package (or NULL if something went wrong.)
 
  */
 
@@ -78,11 +78,11 @@ namespace PackageTools
 
  *
 
- * @param        PackagesToUnload        the list of packages that should be unloaded
+ * @param        PackagesToUnload        the list of packages that should be unloaded
 
  *
 
- * @return        true if the set of loaded packages was changed
+ * @return        true if the set of loaded packages was changed
 
  */
 
@@ -94,13 +94,13 @@ namespace PackageTools
 
  *
 
- * @param        PackagesToUnload        the list of packages that should be unloaded
+ * @param        PackagesToUnload        the list of packages that should be unloaded
 
- * @param        OutErrorMessage                An error message specifying any problems with unloading packages
+ * @param        OutErrorMessage                An error message specifying any problems with unloading packages
 
  *
 
- * @return        true if the set of loaded packages was changed
+ * @return        true if the set of loaded packages was changed
 
  */
 
@@ -112,11 +112,11 @@ namespace PackageTools
 
  *
 
- * @param        PackagesToReload        The list of packages that should be reloaded
+ * @param        PackagesToReload        The list of packages that should be reloaded
 
  *
 
- * @return        true if the set of loaded packages was changed
+ * @return        true if the set of loaded packages was changed
 
  */
 
@@ -128,15 +128,15 @@ namespace PackageTools
 
  *
 
- * @param        PackagesToReload        The list of packages that should be reloaded
+ * @param        PackagesToReload        The list of packages that should be reloaded
 
- * @param        OutErrorMessage                An error message specifying any problems with reloading packages
+ * @param        OutErrorMessage                An error message specifying any problems with reloading packages
 
- * @param        bInteractive                Whether the function is allowed to ask the user questions (such as whether to reload dirty packages)
+ * @param        bInteractive                Whether the function is allowed to ask the user questions (such as whether to reload dirty packages)
 
  *
 
- * @return        true if the set of loaded packages was changed
+ * @return        true if the set of loaded packages was changed
 
  */
 
@@ -144,15 +144,15 @@ namespace PackageTools
 
  /**
 
- *        Exports the given packages to files.
+ *        Exports the given packages to files.
 
  *
 
- * @param        PackagesToExport                The set of packages to export.
+ * @param        PackagesToExport                The set of packages to export.
 
- * @param        ExportPath                                receives the value of the path the user chose for exporting.
+ * @param        ExportPath                                receives the value of the path the user chose for exporting.
 
- * @param        bUseProvidedExportPath        If true and ExportPath is specified, use ExportPath as the user's export path w/o prompting for a directory, where applicable
+ * @param        bUseProvidedExportPath        If true and ExportPath is specified, use ExportPath as the user's export path w/o prompting for a directory, where applicable
 
  */
 
@@ -164,17 +164,17 @@ namespace PackageTools
 
  *
 
- * @param        TopLevelPackages                the packages to be export
+ * @param        TopLevelPackages                the packages to be export
 
- * @param        LastExportPath                        the path that the user last exported assets to
+ * @param        LastExportPath                        the path that the user last exported assets to
 
- * @param        FilteredClasses                        if specified, set of classes that should be the only types exported if not exporting to single file
+ * @param        FilteredClasses                        if specified, set of classes that should be the only types exported if not exporting to single file
 
- * @param        bUseProvidedExportPath        If true, use LastExportPath as the user's export path w/o prompting for a directory, where applicable
+ * @param        bUseProvidedExportPath        If true, use LastExportPath as the user's export path w/o prompting for a directory, where applicable
 
  *
 
- * @return        the path that the user chose for the export.
+ * @return        the path that the user chose for the export.
 
  */
 
@@ -190,9 +190,9 @@ namespace PackageTools
 
  \*
 
- \* @param        PackagePath        Path of the package to check, relative or absolute
+ \* @param        PackagePath        Path of the package to check, relative or absolute
 
- \* @return        true if PackagePath points to an external location
+ \* @return        true if PackagePath points to an external location
 
  \*/
 
@@ -204,9 +204,9 @@ namespace PackageTools
 
  *
 
- * @param        Package        The package to check
+ * @param        Package        The package to check
 
- * @return        true if the package points to an external filename
+ * @return        true if the package points to an external filename
 
  */
 
@@ -218,15 +218,15 @@ namespace PackageTools
 
  *
 
- * @param        PackagesToCheck                                        The packages to check
+ * @param        PackagesToCheck                                        The packages to check
 
- * @param        OutPackagesWithExternalRefs                Optional list of packages that do have external references
+ * @param        OutPackagesWithExternalRefs                Optional list of packages that do have external references
 
- * @param        LevelToCheck                                        The ULevel to check
+ * @param        LevelToCheck                                        The ULevel to check
 
- * @param        OutObjectsWithExternalRefs                List of objects gathered from within the given ULevel that have external references
+ * @param        OutObjectsWithExternalRefs                List of objects gathered from within the given ULevel that have external references
 
- * @return        true if PackagesToCheck has references to an externally loaded package
+ * @return        true if PackagesToCheck has references to an externally loaded package
 
  */
 

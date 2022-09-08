@@ -102,16 +102,16 @@ Masters/Undergrad thesis are usually super great for getting up to speed on foun
 Modeled through beam transmittence. Assumes out-scattering coefficient, absorption coefficient, & in-scattering
 
 - Mathematically defined: Beer's law
-- Transmission = $T_{r} \ =\ e^{-\sigma _{a} r}$
+- Transmission = $T_{r} \ =\ e^{-\sigma_{a} r}$
 
   Where ro is absorption coefficient. Most materials this is constant, for some like marble it's position dependent, and for smoke, it's direction dependent as well
-  $\sigma _{t} =\sigma _{a} \ +\ \sigma _{s}$
+  $\sigma_{t} =\sigma_{a} \ +\ \sigma_{s}$
 
-  $\sigma _{t}$ = attenuation coefficient, which is sum of absorption & out-scattering
+  $\sigma_{t}$ = attenuation coefficient, which is sum of absorption & out-scattering
 
-  Avg distance a photon can travel: $\frac{1}{\sigma _{t}}$
+  Avg distance a photon can travel: $\frac{1}{\sigma_{t}}$
 
-  Albedo = fraction of energy that is re-emitted: $\frac{\sigma _{s}}{\sigma _{t}}$
+  Albedo = fraction of energy that is re-emitted: $\frac{\sigma_{s}}{\sigma_{t}}$
 
   - Phase function tells us what direction photon will be scattered, which is a pdf taking incoming direction and outgoing ray and gives a probability that photon coming in from w_in will scatter in w_out
   - For almost all naturally ocurring media, phase function only depends on the angle between w_in & w_out
@@ -165,14 +165,14 @@ Dipole Approximation: Making subsurface translucency more accurate
   The dipole approximation is a formulation for the resolution of such diffusion problem in an analytical fashion.
   Basically they start by approximating the BSSRDF as a multiple scattering and single scattering component. The multiple scattering is then defined as:
   ![](../_assets/dipoleeq.png)
-  Where FtFt are Fresnel terms and RR is the diffusion profile expressed as function of the distance between the entry and exit point.
-  This RR is referred to as diffusion profile and they formulate this profile via a dipole approximation. The contribution of the incoming light ray is considered to be the one of two virtual sources: one negative beneath the surface and one positive above it (that's why dipole)
+  Where FtFt are Fresnel terms and RR is the diffusion profile expressed as function of the distance between the entry and exit point.
+  This RR is referred to as diffusion profile and they formulate this profile via a dipole approximation. The contribution of the incoming light ray is considered to be the one of two virtual sources: one negative beneath the surface and one positive above it (that's why dipole)
   ![](../_assets/dipolesearchlight.png)
 
   Why one positive and one negative light? Is the goal for them to cancel each other in some way?
-  Yes, the dipole source method (which dates way before Jensen's paper) is such defined to satisfy some boundary condition. Specifically the fluence must be zero at a certain extrapolated boundary that has a distance from the surface of 2AD2AD where
+  Yes, the dipole source method (which dates way before Jensen's paper) is such defined to satisfy some boundary condition. Specifically the fluence must be zero at a certain extrapolated boundary that has a distance from the surface of 2AD2AD where
   ![](../_assets/2ad2adeq.gif)
-  Being FdrFdr the fresnel reflectivity of the slab considered and that sigma value is the reduced extinction coefficient described below.
+  Being FdrFdr the fresnel reflectivity of the slab considered and that sigma value is the reduced extinction coefficient described below.
 
 
 - Mean free path & Transport mean free path: (note, u_s here is rho_t, the extinction co-efficient)
@@ -207,7 +207,7 @@ Dipole Approximation: Making subsurface translucency more accurate
 
 - This is primarily limited by the allowed energies that the atoms can have. For example, the allowed energies of the hydrogen atom are EE = 13.6 eV / n2n2, where nn can be any positive integer (1 eV = 1 electron volt = 1.6×10−191.6×10−19 joules).
 
-- Another lesson of quantum mechanics is that light itself is quantized, meaning that it can only give or take energy in discrete packets, called photons. If ff is the frequency of the oscillating electromagnetic wave, then the energy of each photon is hfhf, where hhis the Planck constant. Hence, when light gives energy to the atom, in driving this oscillation of the charged particles, it can only give it one photon at a time.
+- Another lesson of quantum mechanics is that light itself is quantized, meaning that it can only give or take energy in discrete packets, called photons. If ff is the frequency of the oscillating electromagnetic wave, then the energy of each photon is hfhf, where hhis the Planck constant. Hence, when light gives energy to the atom, in driving this oscillation of the charged particles, it can only give it one photon at a time.
 
 - When light passes through a gas, it interacts with the lone atoms and the above description tells (almost) the whole story.
 
@@ -219,22 +219,22 @@ Dipole Approximation: Making subsurface translucency more accurate
   From <https://www.quora.com/How-does-light-get-absorbed-by-different-objects>
   From <https://www.quora.com/Why-are-some-materials-transparent-and-others-not>
 
-- In classical electrodynamics, light is considered as an electromagnetic wave, which is described by Maxwell's equations. Light waves incident on a material induce small oscillations of polarisation in the individual atoms (or oscillation of electrons, in metals), causing each particle to radiate a small secondary wave in all directions, like a dipole antenna. All these waves add up to give specular reflection and refraction, according to the Huygens–Fresnel principle.
+- In classical electrodynamics, light is considered as an electromagnetic wave, which is described by Maxwell's equations. Light waves incident on a material induce small oscillations of polarisation in the individual atoms (or oscillation of electrons, in metals), causing each particle to radiate a small secondary wave in all directions, like a dipole antenna. All these waves add up to give specular reflection and refraction, according to the Huygens–Fresnel principle.
   In the case of dielectrics such as glass, the electric field of the light acts on the electrons in the material, and the moving electrons generate fields and become new radiators. The refracted light in the glass is the combination of the forward radiation of the electrons and the incident light. The reflected light is the combination of the backward radiation of all of the electrons.
   In metals, electrons with no binding energy are called free electrons. When these electrons oscillate with the incident light, the phase difference between their radiation field and the incident field is π (180°), so the forward radiation cancels the incident light, and backward radiation is just the reflected light.
   From <https://en.wikipedia.org/wiki/Reflection_(physics)>
 
 
-- General scattering mechanism which gives diffuse reflection by a solid surface
+- General scattering mechanism which gives diffuse reflection by a solid surface
   ![](../_assets/diffreflection.gif)
-  Main article: Diffuse reflection
-  When light strikes the surface of a (non-metallic) material it bounces off in all directions due to multiple reflections by the microscopic irregularities inside the material (e.g. the grain boundaries of a polycrystalline material, or the cell or fiber boundaries of an organic material) and by its surface, if it is rough. Thus, an 'image' is not formed.
+  Main article: Diffuse reflection
+  When light strikes the surface of a (non-metallic) material it bounces off in all directions due to multiple reflections by the microscopic irregularities inside the material (e.g. the grain boundaries of a polycrystalline material, or the cell or fiber boundaries of an organic material) and by its surface, if it is rough. Thus, an 'image' is not formed.
 
   From <https://en.wikipedia.org/wiki/Reflection_(physics)>
 
   - SCHLICK PHASE FUNCTION. While the Henyey-Greenstein phase function is a good approximation to Mie scattering, it is still relatively expensive to evaluate. Schlick observed that the accurate shape is often not crucial for rendering applications and he replaced a relatively expensive exponentiation with even simpler expression [7]&#x3A; P(ω ,ω ) = 1−k2 (1+k cosθ)2 (4) where k is a parameter similar to the asymmetry parameter g: −1 ≤ k ≤ 1. The phase function still needs to be normalized by multiplying it by 1/4π, so that it will integrate to 1. R
 
-  - Case A, where the E of the incident photon matches a gap between E levels of the atom, so the atom is excited into a higher state (electron transition). This is often called "resonance absorption". Case B, where the E of the incident photon is lower than such gap, so there is no such excitation / transition, and the photon goes out as it came in. This is called "Rayleigh scattering". When the E of the incident photon is higher than the gap, the photon loses energy to the particle but we don't say that there is partial absorption (?) and this is called "Raman scattering" (also Stokes scattering, but there is also an anti-Stokes effect, let us leave that aside...). But then you learn that in case A the excitation lasts for an incredibly short time after which the photon is re-emitted with the same E as it came in, just as in case B. May it be that the duration of "excitation" in A is longer than "whatever happens" in B? (but it doesn't look like a great difference, given that the time is very short).  From <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796>
+  - Case A, where the E of the incident photon matches a gap between E levels of the atom, so the atom is excited into a higher state (electron transition). This is often called "resonance absorption". Case B, where the E of the incident photon is lower than such gap, so there is no such excitation / transition, and the photon goes out as it came in. This is called "Rayleigh scattering". When the E of the incident photon is higher than the gap, the photon loses energy to the particle but we don't say that there is partial absorption (?) and this is called "Raman scattering" (also Stokes scattering, but there is also an anti-Stokes effect, let us leave that aside...). But then you learn that in case A the excitation lasts for an incredibly short time after which the photon is re-emitted with the same E as it came in, just as in case B. May it be that the duration of "excitation" in A is longer than "whatever happens" in B? (but it doesn't look like a great difference, given that the time is very short).  From <https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796>
 
 A common explanation that has been provided is that a photon moving through the material still moves at the speed of c, but when it encounters the atom of the material, it is absorbed by the atom via an atomic transition. After a very slight delay, a photon is then re-emitted. This explanation is incorrect and inconsistent with empirical observations. If this is what actually occurs, then the absorption spectrum will be discrete because atoms have only discrete energy states. Yet, in glass for example, we see almost the whole visible spectrum being transmitted with no discrete disruption in the measured speed. In fact, the index of refraction (which reflects the speed of light through that medium) varies continuously, rather than abruptly, with the frequency of light.
 
@@ -268,8 +268,8 @@ This is the most useful literature I found on describing the nature of scatterin
 
 <http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/microscopic-cross-section>
 Difference between microscopic cross-section vs macroscopic crosssection:
-The difference between the microscopic and macroscopic cross sections is extremely important. The microscopic cross section represents the effective target area of a single nucleus, while the macroscopic cross section represents the effective target area of all of
-the nuclei contained in certain volume.
+The difference between the microscopic and macroscopic cross sections is extremely important. The microscopic cross section represents the effective target area of a single nucleus, while the macroscopic cross section represents the effective target area of all of
+the nuclei contained in certain volume.
 
 From <http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/microscopic-cross-section>
 ![](../_assets/neutrinotransport.png)
@@ -279,6 +279,6 @@ Different cross-sections indicate characteristic target area that defines type o
 Types of scattering + microscopic cross-sections:
 ![](../_assets/neutrinotransport2.png)
 
-The transport length in a strongly diffusing medium (noted l*) is the length over which the direction of propagation of the photon is randomized. It is related to the mean free path l by the relation:[1]
+The transport length in a strongly diffusing medium (noted l*) is the length over which the direction of propagation of the photon is randomized. It is related to the mean free path l by the relation:[1]
 $l*\\ =\\ \\frac{l}{1\\ -\\ g}$
 From <https://en.wikipedia.org/wiki/Transport_length>

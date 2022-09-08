@@ -83,9 +83,9 @@ The high level flow looks like this:
 
 *Reference From <https://docs.unrealengine.com/en-us/Gameplay/Networking/Actors/ReplicationFlow>*
 
-# Detailed Actor Replication Flow
+# Detailed Actor Replication Flow
 
-The bulk of actor replication happens inside UNetDriver::ServerReplicateActor
+The bulk of actor replication happens inside UNetDriver::ServerReplicateActor
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Gameplay/Networking/Actors/ReplicationFlow/index.html>*
 
@@ -153,15 +153,15 @@ Reference:
 
   ```cpp
   /**
-   *Standard method of serializing a new actor.
-   *For static actors, this will just be a single call to SerializeObject, since they can be referenced by their path name.
-   *For dynamic actors, first the actor's reference is serialized but will not resolve on clients since they haven't spawned the actor yet.
-   *The actor archetype is then serialized along with the starting location, rotation, and velocity.
-   *After reading this information, the client spawns this actor in the NetDriver's World and assigns it the NetGUID it read at the top of the function.
-   *
-  *returns true if a new actor was spawned. false means an existing actor was found for the netguid.
+   *Standard method of serializing a new actor.
+   *For static actors, this will just be a single call to SerializeObject, since they can be referenced by their path name.
+   *For dynamic actors, first the actor's reference is serialized but will not resolve on clients since they haven't spawned the actor yet.
+   *The actor archetype is then serialized along with the starting location, rotation, and velocity.
+   *After reading this information, the client spawns this actor in the NetDriver's World and assigns it the NetGUID it read at the top of the function.
+   *
+  *returns true if a new actor was spawned. false means an existing actor was found for the netguid.
   */
-  bool UPackageMapClient::SerializeNewActor(FArchive& Ar, class UActorChannel *Channel, class AActor*& Actor)
+  bool UPackageMapClient::SerializeNewActor(FArchive& Ar, class UActorChannel *Channel, class AActor*& Actor)
   ```
 
 ## How to dynamically add component in begin play C++ with replication
@@ -174,47 +174,47 @@ MyDynamicRepComponent->SetIsReplicated(true);
 MyDynamicRepComponent->RegisterComponent();
 ```
 
-This must be executed only on the server (components will be spawned automatically on clients), and at an appropriate time when all the net plumbing is initialized (my test was in AMyController::BeginPlay). I did not need the function SetNetAddressable() anywhere, and doing so in fact causes the "Stably named sub-object not found" error to occur as in the OP. Outer is a pointer to the object this component is being created for/in, and MyComponentClass is a TSubclassOf. As you can see from the usage of ConstructObject, you do *not* need to provide your own (i.e. stable by convention) name for this new component.
+This must be executed only on the server (components will be spawned automatically on clients), and at an appropriate time when all the net plumbing is initialized (my test was in AMyController::BeginPlay). I did not need the function SetNetAddressable() anywhere, and doing so in fact causes the "Stably named sub-object not found" error to occur as in the OP. Outer is a pointer to the object this component is being created for/in, and MyComponentClass is a TSubclassOf. As you can see from the usage of ConstructObject, you do *not* need to provide your own (i.e. stable by convention) name for this new component.
 
 *Reference From <https://udn.unrealengine.com/questions/236164/dynamically-add-component-in-begin-play.html>*
 
 ## Replication Keys
 
 ```cpp
-bool UActorChannel::ReplicateSubobject(UObject *Obj, FOutBunch &Bunch, const FReplicationFlags &RepFlags)
+bool UActorChannel::ReplicateSubobject(UObject *Obj, FOutBunch &Bunch, const FReplicationFlags &RepFlags)
 {
-  // Hack for now: subobjects are SupportsObject==false until they are replicated via ::ReplicateSUbobject, and then we make them supported
-  // here, by forcing the packagemap to give them a NetGUID.
+  // Hack for now: subobjects are SupportsObject==false until they are replicated via ::ReplicateSUbobject, and then we make them supported
+  // here, by forcing the packagemap to give them a NetGUID.
   //
-  // Once we can lazily handle unmapped references on the client side, this can be simplified.
-  if ( !Connection->Driver->GuidCache->SupportsObject( Obj ) )
+  // Once we can lazily handle unmapped references on the client side, this can be simplified.
+  if ( !Connection->Driver->GuidCache->SupportsObject( Obj ) )
   {
-    FNetworkGUID NetGUID = Connection->Driver->GuidCache->AssignNewNetGUID_Server( Obj );	//Make sure he gets a NetGUID so that he is now 'supported'
+    FNetworkGUID NetGUID = Connection->Driver->GuidCache->AssignNewNetGUID_Server( Obj );	//Make sure he gets a NetGUID so that he is now 'supported'
   }
 
-  bool NewSubobject = false;
+  bool NewSubobject = false;
 
-  TWeakObjectPtr<UObject> WeakObj(Obj);
+  TWeakObjectPtr<UObject> WeakObj(Obj);
 
-  if (!ObjectHasReplicator(WeakObj))
+  if (!ObjectHasReplicator(WeakObj))
   {
-    // This is the first time replicating this subobject
-    // This bunch should be reliable and we should always return true
-    // even if the object properties did not diff from the CDO
-    // (this will ensure the content header chunk is sent which is all we care about
-    // to spawn this on the client).
-    Bunch.bReliable = true;
-    NewSubobject = true;
+    // This is the first time replicating this subobject
+    // This bunch should be reliable and we should always return true
+    // even if the object properties did not diff from the CDO
+    // (this will ensure the content header chunk is sent which is all we care about
+    // to spawn this on the client).
+    Bunch.bReliable = true;
+    NewSubobject = true;
   }
-  bool WroteSomething = FindOrCreateReplicator(WeakObj).Get().ReplicateProperties(Bunch, RepFlags);
-  if (NewSubobject && !WroteSomething)
+  bool WroteSomething = FindOrCreateReplicator(WeakObj).Get().ReplicateProperties(Bunch, RepFlags);
+  if (NewSubobject && !WroteSomething)
   {
-    // Write empty payload to force object creation
-    FNetBitWriter EmptyPayload;
-    WriteContentBlockPayload( Obj, Bunch, false, EmptyPayload );
-    WroteSomething= true;
+    // Write empty payload to force object creation
+    FNetBitWriter EmptyPayload;
+    WriteContentBlockPayload( Obj, Bunch, false, EmptyPayload );
+    WroteSomething= true;
   }
 
-  return WroteSomething;
+  return WroteSomething;
 }
 ```

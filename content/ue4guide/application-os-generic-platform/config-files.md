@@ -69,18 +69,18 @@ ConfigHierarchyEditable => Edit the values for the config hierarchy
 
 ## File Hierarchy
 
-The configuration file hierarchy is read in starting with Base.ini, with values in later files in the hierarchy overriding earlier values. All files in the Engine folder will be applied to all projects, while project-specific settings should be in files in the project directory. Finally, all project-specific and platform-specific differences are saved out to \[ProjectDirectory]/Saved/Config/\[Platform]/\[Category].ini
+The configuration file hierarchy is read in starting with Base.ini, with values in later files in the hierarchy overriding earlier values. All files in the Engine folder will be applied to all projects, while project-specific settings should be in files in the project directory. Finally, all project-specific and platform-specific differences are saved out to \[ProjectDirectory]/Saved/Config/\[Platform]/\[Category].ini
 
-The below file hierarchy example is for the Engine category of configuration files.
+The below file hierarchy example is for the Engine category of configuration files.
 
 1. `#!ini Engine/Config/Base.ini`
-   Base.ini is usually empty.
+   Base.ini is usually empty.
 1. `#!ini Engine/Config/BaseEngine.ini`
 1. `#!ini Engine/Config/[Platform]/[Platform]Engine.ini`
 1. `#!ini [ProjectDirectory]/Config/DefaultEngine.ini`
 1. `#!ini [ProjectDirectory]/Config/[Platform]/[Platform]Engine.ini`
 1. `#!ini [ProjectDirectory]/Saved/Config/[Platform]/Engine.ini`
-   The configuration file in the Saved directory only stores the project-specific and platform-specific differences in the stack of configuration files.
+   The configuration file in the Saved directory only stores the project-specific and platform-specific differences in the stack of configuration files.
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html>*
 
@@ -97,13 +97,13 @@ Key=Value
 
 ### Special Characters
 
-- *+* - Adds a line if that property doesn't exist yet (from a previous configuration file or earlier in the same configuration file).
+- *+* - Adds a line if that property doesn't exist yet (from a previous configuration file or earlier in the same configuration file).
 
-- *-* - Removes a line (but it has to be an exact match).
+- *-* - Removes a line (but it has to be an exact match).
 
-- *.* - Adds a new property.
+- *.* - Adds a new property.
 
-  - **Note**: _**. is like +**_ except it will potentially add a duplicate line. This is useful for the bindings (as seen in DefaultInput.ini), for instance, where the bottom-most binding takes effect, so if you add something like:
+  - **Note**: _**. is like +**_ except it will potentially add a duplicate line. This is useful for the bindings (as seen in DefaultInput.ini), for instance, where the bottom-most binding takes effect, so if you add something like:
 
     ```ini
     [/Script/Engine.PlayerInput]
@@ -112,9 +112,9 @@ Key=Value
     .Bindings=(Name="Q",Command="Foo")
     ```
 
-    It will work appropriately. Using a *+* there would fail to add the last line, and your bindings would be incorrect. Due to configuration file combining, the above usage pattern can happen.
+    It will work appropriately. Using a *+* there would fail to add the last line, and your bindings would be incorrect. Due to configuration file combining, the above usage pattern can happen.
 
-- *!* - Removes a property; but you don't have to have an exact match, just the name of the property.
+- *!* - Removes a property; but you don't have to have an exact match, just the name of the property.
   - To clear an array, use ClearArray:
 
     ```ini
@@ -140,7 +140,7 @@ You can use these config vars in your ini's that UE4 will replace accordingly wi
 
 ### Comments
 
-Most people seem to be under the impression that the semicolon denotes comments in configuration files, but they aren't (FConfigFile::ProcessInputFileContents doesn't actually treat them, or any other string, as a comment delimiter). This behavior is intentional. Technically any character can represent a different key-value pair. Typically, a semicolon is placed at the beginning of a new line. It works like a comment, but it's not actually.
+Most people seem to be under the impression that the semicolon denotes comments in configuration files, but they aren't (FConfigFile::ProcessInputFileContents doesn't actually treat them, or any other string, as a comment delimiter). This behavior is intentional. Technically any character can represent a different key-value pair. Typically, a semicolon is placed at the beginning of a new line. It works like a comment, but it's not actually.
 
 ```ini
 ; This is a Comment
@@ -195,7 +195,7 @@ FCoreDelegates::ConfigReadyForUse.Broadcast();
 
 - Specify by this:
 
-  `#!cpp UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
+  `#!cpp UCLASS(config=GameplayTags, defaultconfig, notplaceable)`
 
 - Full example getting the proper full config file path name:
 
@@ -309,7 +309,7 @@ bool FGenericPlatformMisc::SetStoredValue(const FString& InStoreId, const FStrin
 ## Get value from Config
 
 ```cpp
-GConfig->GetBool(TEXT("/Script/UnrealEd.EditorLoadingSavingSettings"), TEXT("bForceCompilationAtStartup"), bNeedCompile, GEditorPerProjectIni)
+GConfig->GetBool(TEXT("/Script/UnrealEd.EditorLoadingSavingSettings"), TEXT("bForceCompilationAtStartup"), bNeedCompile, GEditorPerProjectIni)
 static const FBoolConfigValueHelper DisplayPrintStringSource(TEXT("Kismet"), TEXT("bLogPrintStringSource"), GEngineIni);
 GConfig->GetString(*IniSection, *(InConfigKey + TEXT(".EditorShowFlags")), ViewportInstanceSettings.EditorShowFlagsString, GEditorPerProjectIni);
 ```

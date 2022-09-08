@@ -29,11 +29,11 @@ namespace EditorUtilities
 
  \*
 
- \* @param    Actor   The simulation world actor that we want to find a counterpart for
+ \* @param    Actor   The simulation world actor that we want to find a counterpart for
 
  \*
 
- \* @return      The found editor world actor, or NULL if we couldn't find a counterpart
+ \* @return      The found editor world actor, or NULL if we couldn't find a counterpart
 
  \*/
 
@@ -45,11 +45,11 @@ namespace EditorUtilities
 
  \*
 
- \* @param      Actor      The editor world actor that we want to find a counterpart for
+ \* @param      Actor      The editor world actor that we want to find a counterpart for
 
  \*
 
- \* @return        The found Simulation or PIE world actor, or NULL if we couldn't find a counterpart
+ \* @return        The found Simulation or PIE world actor, or NULL if we couldn't find a counterpart
 
  \*/
 
@@ -63,13 +63,13 @@ namespace EditorUtilities
 
  \*
 
- \* @param        SourceComponent        SouceCompoent in SIM world
+ \* @param        SourceComponent        SouceCompoent in SIM world
 
- \* @param        TargetActor                TargetActor in editor world
+ \* @param        TargetActor                TargetActor in editor world
 
  \*
 
- \* @return        the sound editor component or NULL if we couldn't find
+ \* @return        the sound editor component or NULL if we couldn't find
 
  \*/
 
@@ -161,15 +161,15 @@ namespace EditorUtilities
 
  \*
 
- \* @param        SourceActor                Actor to copy properties from
+ \* @param        SourceActor                Actor to copy properties from
 
- \* @param        TargetActor                Actor that will be modified with properties propagated from the source actor
+ \* @param        TargetActor                Actor that will be modified with properties propagated from the source actor
 
- \* @param        Options                        Optional options for this copy action (see ECopyOptions::Type)
+ \* @param        Options                        Optional options for this copy action (see ECopyOptions::Type)
 
  \*
 
- \* @return        The number of properties that were copied over (properties that were filtered out, or were already identical, are not counted.)
+ \* @return        The number of properties that were copied over (properties that were filtered out, or were already identical, are not counted.)
 
  \*/
 

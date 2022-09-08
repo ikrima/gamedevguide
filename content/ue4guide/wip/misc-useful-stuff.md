@@ -10,5 +10,5 @@ Debug Drawing Utilities:
 **Set a function call on the next tick:**
 
 ```cpp
-GetWorldTimerManager().SetTimerForNextTick(this, &AUTGameMode::StartMatch);
+GetWorldTimerManager().SetTimerForNextTick(this, &AUTGameMode::StartMatch);
 ```

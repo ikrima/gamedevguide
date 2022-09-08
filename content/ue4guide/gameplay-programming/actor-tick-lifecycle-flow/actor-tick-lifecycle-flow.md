@@ -92,22 +92,22 @@ Tick Groups:
 *Reference From <https://udn.unrealengine.com/questions/285100/component-creation-overview.html>*
 
 ```cpp
-// General flow here is like so
-        // - Actor sets up the basics.
-        // - Actor gets PreInitializeComponents()
-        // - Actor constructs itself, after which its components should be fully assembled
-        // - Actor components get OnComponentCreated
+// General flow here is like so
+        // - Actor sets up the basics.
+        // - Actor gets PreInitializeComponents()
+        // - Actor constructs itself, after which its components should be fully assembled
+        // - Actor components get OnComponentCreated
 
-// - Actor components get OnRegister
+// - Actor components get OnRegister
 
-// - Actor components get InitializeComponent
+// - Actor components get InitializeComponent
 
-// - Actor gets PostInitializeComponents() once everything is set up
+// - Actor gets PostInitializeComponents() once everything is set up
 
-// - Actor components get RegisterComponentTickFunctions
-        // This should be the same sequence for deferred or nondeferred spawning.
+// - Actor components get RegisterComponentTickFunctions
+        // This should be the same sequence for deferred or nondeferred spawning.
 
-// It's not safe to call UWorld accessor functions till the world info has been spawned.
+// It's not safe to call UWorld accessor functions till the world info has been spawned.
 ```
 
 PostInitProperties()

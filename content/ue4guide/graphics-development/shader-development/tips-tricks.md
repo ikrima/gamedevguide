@@ -154,12 +154,12 @@ _Reference From <https://forums.unrealengine.com/development-discussion/renderin
 Compile out Compute shader instructions with a define. Ex:
 
 ```glsl
-float DDY(float Input)
+float DDY(float Input)
 {
-#if COMPUTESHADER
-        return 0;
+#if COMPUTESHADER
+        return 0;
 #else
-        return ddy(Input);
+        return ddy(Input);
 #endif
 }
 ```

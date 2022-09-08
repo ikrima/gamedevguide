@@ -1,13 +1,13 @@
 ---
 sidebar: ue4guide
 ---
-/\*\* Called to send a transform 1 for this component to the rendering thread
-        \*
-        \* \*\*Caution\*\*, this is called concurrently on multiple threads (but never the same component concurrently)
-        \*/
-virtual void SendRenderTransform_Concurrent();
+/\*\* Called to send a transform 1 for this component to the rendering thread
+        \*
+        \* \*\*Caution\*\*, this is called concurrently on multiple threads (but never the same component concurrently)
+        \*/
+virtual void SendRenderTransform_Concurrent();
 
-void [UActorComponent::DoDeferredRenderUpdates_Concurrent](http://api.unrealengine.com/INT/API/Runtime/Engine/Components/UActorComponent/DoDeferredRenderUpdates_Concurre-/index.html)()
+void [UActorComponent::DoDeferredRenderUpdates_Concurrent](http://api.unrealengine.com/INT/API/Runtime/Engine/Components/UActorComponent/DoDeferredRenderUpdates_Concurre-/index.html)()
 
 {
 
@@ -21,7 +21,7 @@ if(! [IsRegistered](http://api.unrealengine.com/INT/API/Runtime/Engine/Component
 
 {
 
-UE_LOG(LogActorComponent, \[[Log](http://api.unrealengine.com/INT/API/Runtime/Core/Misc/ELogVerbosity__Type/index.html)], TEXT("UpdateComponent: (%s) Not registered, Aborting."), \*[GetPathName][]());
+UE_LOG(LogActorComponent, \[[Log](http://api.unrealengine.com/INT/API/Runtime/Core/Misc/ELogVerbosity__Type/index.html)], TEXT("UpdateComponent: (%s) Not registered, Aborting."), \*[GetPathName][]());
 
 return;
 
@@ -69,7 +69,7 @@ if(bRenderDynamicDataDirty)
 
 *From <https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Components/UActorComponent/DoDeferredRenderUpdates_Concurre-/index.html>*
 
-void [UActorComponent::MarkRenderDynamicDataDirty][]()
+void [UActorComponent::MarkRenderDynamicDataDirty][]()
 
 {
 

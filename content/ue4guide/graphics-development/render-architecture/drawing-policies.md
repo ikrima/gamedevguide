@@ -54,7 +54,7 @@ Materials are defined by a set of states that control how the material is render
 
 **Vertex Factories**
 
-Materials have to support being applied to different mesh types, and this is accomplished with vertex factories. A **FVertexFactoryType**represents a unique mesh type, and a FVertexFactory instance stores the per-instance data to support that unique mesh type. For example, FGPUSkinVertexFactory stores the bone matrices needed for skinning, as well as references to the various vertex buffers that the GPU skin vertex factory shader code needs as input. The vertex factory shader code is an implicit interface which is used by the various pass shaders to abstract mesh type differences. Vertex factories consist of mainly vertex shader code, but some pixel shader code as well. Some important components of the vertex factory shader code are:
+Materials have to support being applied to different mesh types, and this is accomplished with vertex factories. A **FVertexFactoryType**represents a unique mesh type, and a FVertexFactory instance stores the per-instance data to support that unique mesh type. For example, FGPUSkinVertexFactory stores the bone matrices needed for skinning, as well as references to the various vertex buffers that the GPU skin vertex factory shader code needs as input. The vertex factory shader code is an implicit interface which is used by the various pass shaders to abstract mesh type differences. Vertex factories consist of mainly vertex shader code, but some pixel shader code as well. Some important components of the vertex factory shader code are:
 
 | **Function**                       | **Description**                                                                                                                                                                                                                                                                                                                          |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -69,9 +69,9 @@ Materials have to support being applied to different mesh types, and this is acc
 
 #### Material Shaders
 
-Shaders using **FMaterialShaderType** are pass specific shaders which need access to some of the material's attributes, and therefore must be compiled for each material, but do not need to access any mesh attributes. The light function pass shaders are an example of FMaterialShaderTypes.
+Shaders using **FMaterialShaderType** are pass specific shaders which need access to some of the material's attributes, and therefore must be compiled for each material, but do not need to access any mesh attributes. The light function pass shaders are an example of FMaterialShaderTypes.
 
-Shaders using **FMeshMaterialShaderType** are pass specific shaders which depend on the material's attributes AND the mesh type, and therefore must be compiled for each material/vertex factory combination. For example TBasePassVS / TBasePassPS need to evaluate all of the material inputs in a forward rendering pass.
+Shaders using **FMeshMaterialShaderType** are pass specific shaders which depend on the material's attributes AND the mesh type, and therefore must be compiled for each material/vertex factory combination. For example TBasePassVS / TBasePassPS need to evaluate all of the material inputs in a forward rendering pass.
 
 A material's set of required shaders is contained in a FMaterialShaderMap. It looks like this:
 
@@ -102,7 +102,7 @@ IMPLEMENT_MATERIAL_SHADER_TYPE(,FLightFunctionPixelShader,TEXT("LightFunctionPix
 
 This generates the material shader type's global metadata, which allows us to do things like iterate through all shaders using a given shader type at runtime.
 
-A typical material pixel shader type will first create a FMaterialPixelParameters struct by calling the GetMaterialPixelParameters vertex factoryfunction. GetMaterialPixelParameters transforms the vertex factory specific inputs into properties like WorldPosition, TangentNormal, etc that any pass might want to access. Then a material shader will call CalcMaterialParameters, which writes out the rest of the members of FMaterialPixelParameters, after which FMaterialPixelParameters is fully initialized. The material shader will then access some of the material's inputs through functions in MaterialTemplate.usf (GetMaterialEmissive for the material's emissive input for example), do some shading and output a final color for that pass.
+A typical material pixel shader type will first create a FMaterialPixelParameters struct by calling the GetMaterialPixelParameters vertex factoryfunction. GetMaterialPixelParameters transforms the vertex factory specific inputs into properties like WorldPosition, TangentNormal, etc that any pass might want to access. Then a material shader will call CalcMaterialParameters, which writes out the rest of the members of FMaterialPixelParameters, after which FMaterialPixelParameters is fully initialized. The material shader will then access some of the material's inputs through functions in MaterialTemplate.usf (GetMaterialEmissive for the material's emissive input for example), do some shading and output a final color for that pass.
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Programming/Rendering/ShaderDevelopment/index.html>*
 
@@ -126,20 +126,20 @@ The actual compiling work is done in helper processes called the Shader Compile 
 
 **Debugging shader compilers**
 
-There are some settings to control how compilation is done which can simplify debugging of the shader compilers. These can be found in the*\[DevOptions.Shaders]* section of *BaseEngine.ini*.
+There are some settings to control how compilation is done which can simplify debugging of the shader compilers. These can be found in the*\[DevOptions.Shaders]* section of *BaseEngine.ini*.
 
 | **Setting**                       | **Description**                                                                                                                                          |
 | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | bAllowCompilingThroughWorkers     | Whether to launch the SCW to call the compiler DLL's or whether UE4 should call the compiler DLL's directly. If disabled, compiling will be single-core. |
 | bAllowAsynchronousShaderCompiling | Whether compiling should be done on another thread within UE4.                                                                                           |
 
-If you want to step into the shader compiler DLL's directly from UE4 (CompileD3D11Shader for example), you should set both of these to *false*. Compilation will take a long time though, so make sure all other shaders have been cached.
+If you want to step into the shader compiler DLL's directly from UE4 (CompileD3D11Shader for example), you should set both of these to *false*. Compilation will take a long time though, so make sure all other shaders have been cached.
 
 **Retrying on compile errors**
 
 With r.ShaderDevelopmentMode enabled, you will get the opportunity to retry on shader compile error. This is especially important for global shaders since it is a fatal error if they do not compile sucessfully.
 
-In debug, with the debugger attached, you will hit a breakpoint and get the compile error in the Visual Studio output window. **You can then double-click the error log to be taken directly to the offending line.**
+In debug, with the debugger attached, you will hit a breakpoint and get the compile error in the Visual Studio output window. **You can then double-click the error log to be taken directly to the offending line.**
 
 ![DrawingPolicies_Shaders](../../_assets/DrawingPolicies_Shaders.jpg)
 
@@ -151,7 +151,7 @@ Otherwise you will get a Yes/No dialog
 
 **Dumping debug info**
 
-You can also use *r.DumpShaderDebugInfo=1* to get files saved out to disk for all the shaders that get compiled. It can be useful to set this inConsoleVariables.ini just like r.ShaderDevelopmentMode. Files are saved to *GameName/Saved/ShaderDebugInfo*, including
+You can also use *r.DumpShaderDebugInfo=1* to get files saved out to disk for all the shaders that get compiled. It can be useful to set this inConsoleVariables.ini just like r.ShaderDevelopmentMode. Files are saved to *GameName/Saved/ShaderDebugInfo*, including
 
 - Source files and includes
 

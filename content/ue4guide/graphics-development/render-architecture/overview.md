@@ -7,15 +7,15 @@ sidebar: ue4guide
 
 <https://www.blaenkdenum.com/notes/unreal-engine/#rendering>
 
-**Global Shaders **- Shaders that are not created using the material editor, typically compute shaders, post-processing shaders, etc. This is one of the meta types (i.e., Global, Material, Mesh); the remaining meta types will be covered in the future.
+**Global Shaders **- Shaders that are not created using the material editor, typically compute shaders, post-processing shaders, etc. This is one of the meta types (i.e., Global, Material, Mesh); the remaining meta types will be covered in the future.
 
-**FShaderType** - A ‘template’ or ‘class’ specified by shader code, which maps to a physical C++ class specified in the code.
+**FShaderType** - A ‘template’ or ‘class’ specified by shader code, which maps to a physical C++ class specified in the code.
 
-**FShaderResource** - The compiled shader microcode and its runtime RHI resource.
+**FShaderResource** - The compiled shader microcode and its runtime RHI resource.
 
-**FShader** - A compiled shader instance of an FShaderType, built from the information of an FShaderResource.
+**FShader** - A compiled shader instance of an FShaderType, built from the information of an FShaderResource.
 
-**TShaderMap** - A collection of shaders of different FShaderTypes, but with the same meta type (Global).
+**TShaderMap** - A collection of shaders of different FShaderTypes, but with the same meta type (Global).
 
 *Reference From <https://www.unrealengine.com/en-US/blog/how-to-add-global-shaders-to-ue4>*
 

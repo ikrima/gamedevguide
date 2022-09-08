@@ -35,7 +35,7 @@ sidebar: ue4guide
 
 - Of course more expensive than Master Pose because this runs animation on each Child.
 
-#### 3. Mesh merge. 
+#### 3. Mesh merge. 
 
 - Mesh merge allows you to create SkeletalMesh from multiple meshes
 

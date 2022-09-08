@@ -44,11 +44,11 @@ this is not relative to the current viewport. RelativePixelPosition = MaterialPa
 
 - **PreViewTranslation** = -ViewOrigin
 
-- ViewRotationMatrix = FInverseRotationMatrix(ViewRotation) \* ViewPlanesMatrix;
+- ViewRotationMatrix = FInverseRotationMatrix(ViewRotation) \* ViewPlanesMatrix;
 
-- **TranslatedViewMatrix** = ViewRotationMatrix;
+- **TranslatedViewMatrix** = ViewRotationMatrix;
 
-- ViewMatrix = FTranslationMatrix(-ViewLocation) \* ViewRotationMatrix;
+- ViewMatrix = FTranslationMatrix(-ViewLocation) \* ViewRotationMatrix;
 
 
 - WorldPosition_CamRelative => PixelPosWS - CameraOrigina1\`

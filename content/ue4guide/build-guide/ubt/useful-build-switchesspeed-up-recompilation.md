@@ -67,15 +67,15 @@ Also, bUseUBTMakefiles = true => means you have to force regenerate UBT Makefile
 
 /// Events that can invalidate the 'UBT Makefile':
 
-///                - Adding/removing .cpp files
+///                - Adding/removing .cpp files
 
-///                - Adding/removing .h files with UObjects
+///                - Adding/removing .h files with UObjects
 
-///                - Adding new UObject types to a file that didn't previously have any
+///                - Adding new UObject types to a file that didn't previously have any
 
-///                - Changing global build settings (most settings in this file qualify.)
+///                - Changing global build settings (most settings in this file qualify.)
 
-///                - Changed code that affects how Unreal Header Tool works
+///                - Changed code that affects how Unreal Header Tool works
 
 ///
 

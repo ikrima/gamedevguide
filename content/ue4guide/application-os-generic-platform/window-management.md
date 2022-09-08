@@ -101,34 +101,34 @@ You can see the **Window->MoveWindowTo()** function call which is exactly what w
 
 ```cpp
 FDisplayMetrics DisplayMetrics;
-    FSlateApplication::Get().GetDisplayMetrics(DisplayMetrics);
- 
-    int MonitorNumber = 0;
-    FParse::Value(FCommandLine::Get(), L"monitor=", MonitorNumber);
- 
-    //Reset to primary if the monitor index is invalid
-    if( MonitorNumber >= DisplayMetrics.MonitorInfo.Num() || MonitorNumber < 0 )
-    {
-        FString Message = "_____ Incorrect monitor index, will use primary screen instead";
-        UE_LOG(LogTemp, Warning, TEXT( "%s" ), *Message);
-        MonitorNumber = 0;
-    }
- 
-    //If monitor index is 0, we default to primary screen
-    if( MonitorNumber == 0 )
-    {
-        for( int i = 0; i < DisplayMetrics.MonitorInfo.Num(); i++ )
-        {
-            FString MonitorInfo = "_____ Found monitor \"" + DisplayMetrics.MonitorInfo[i].Name + "\" (is primary : ";
-            MonitorInfo += FString::FromInt( DisplayMetrics.MonitorInfo[i].bIsPrimary ) + FString(")");
-            UE_LOG(LogTemp, Warning, TEXT( "%s" ), *MonitorInfo);
- 
-            if( DisplayMetrics.MonitorInfo[i].bIsPrimary )
-            {
-                MonitorNumber = i + 1;
-            }
-        }
-    }
+    FSlateApplication::Get().GetDisplayMetrics(DisplayMetrics);
+ 
+    int MonitorNumber = 0;
+    FParse::Value(FCommandLine::Get(), L"monitor=", MonitorNumber);
+ 
+    //Reset to primary if the monitor index is invalid
+    if( MonitorNumber >= DisplayMetrics.MonitorInfo.Num() || MonitorNumber < 0 )
+    {
+        FString Message = "_____ Incorrect monitor index, will use primary screen instead";
+        UE_LOG(LogTemp, Warning, TEXT( "%s" ), *Message);
+        MonitorNumber = 0;
+    }
+ 
+    //If monitor index is 0, we default to primary screen
+    if( MonitorNumber == 0 )
+    {
+        for( int i = 0; i < DisplayMetrics.MonitorInfo.Num(); i++ )
+        {
+            FString MonitorInfo = "_____ Found monitor \"" + DisplayMetrics.MonitorInfo[i].Name + "\" (is primary : ";
+            MonitorInfo += FString::FromInt( DisplayMetrics.MonitorInfo[i].bIsPrimary ) + FString(")");
+            UE_LOG(LogTemp, Warning, TEXT( "%s" ), *MonitorInfo);
+ 
+            if( DisplayMetrics.MonitorInfo[i].bIsPrimary )
+            {
+                MonitorNumber = i + 1;
+            }
+        }
+    }
 ```
 
 *Reference From <http://www.froyok.fr/blog/2018-01-ue4-specify-default-monitor-at-launch>*

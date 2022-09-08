@@ -3,7 +3,7 @@ sidebar: ue4guide
 ---
 Unreal Engine 4 Game Framework diagram for relation of all major base object types
 
-[Unreal Engine 4 Input Event diagram, scroll down to section Input Processing Procedura ]
+[Unreal Engine 4 Input Event diagram, scroll down to section Input Processing Procedura ]
 
 [RPCs official document, Must Read]
 

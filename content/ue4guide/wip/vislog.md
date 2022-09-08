@@ -125,7 +125,7 @@ class FVisualLoggerExtension : public FVisualLogExtensionInterface
 
 Visual Log gathers data in two ways:
 
-- Actors request logging of data
+- Actors request logging of data
 
 - VisualLog asking Actors’ status at the time logging request is made
 

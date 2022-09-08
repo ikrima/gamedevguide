@@ -5,9 +5,9 @@
 - If using "Caustics Raw" instead of "Caustics", these would have to also be multiplied by "Diffuse Filter".
 - [Redshift Doc](https://docs.redshift3d.com/display/RSDOCS/AOV+Tutorial?product=houdini)
 - Volume AOVs
-  - **Multiply** the primary AOV composite by the Volume Fog Tint AOV
+  - **Multiply** the primary AOV composite by the Volume Fog Tint AOV
     - Volume Fog Tint AOV is a multiplicative layer/volume transmittance
-  - **Add** the Volume Lighting AOV to the primary AOV composite.
+  - **Add** the Volume Lighting AOV to the primary AOV composite.
     - Additive layer that contains only the volume lighting information
   - **Add** the Volume Fog Emission AOV to the primary AOV composite.
     - Additive layer that contains only the emission component

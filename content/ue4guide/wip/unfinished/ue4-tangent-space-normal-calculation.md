@@ -31,9 +31,9 @@ For details,
 
 Look at MaterialTemplate.usf:
 
-Parameters.TangentNormal = GetMaterialNormal(Parameters);
-Parameters.TangentNormal = normalize(Parameters.TangentNormal);
-Parameters.WorldNormal = normalize(TransformTangentVectorToWorld(Parameters.TangentToWorld, Parameters.TangentNormal));
+Parameters.TangentNormal = GetMaterialNormal(Parameters);
+Parameters.TangentNormal = normalize(Parameters.TangentNormal);
+Parameters.WorldNormal = normalize(TransformTangentVectorToWorld(Parameters.TangentToWorld, Parameters.TangentNormal));
 
 ### **Pixel Shader Transformation**
 

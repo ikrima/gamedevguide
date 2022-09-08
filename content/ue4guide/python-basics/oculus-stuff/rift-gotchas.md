@@ -52,8 +52,8 @@ sidebar: ue4guide
 - Useful Oculus Config settings & console commands are all defined in OculusRiftHMD.cpp:
 
 ```cpp
-bool FOculusRiftHMD::Exec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevice& Ar )
-  void FOculusRiftHMD::LoadFromIni()
+bool FOculusRiftHMD::Exec( UWorld* InWorld, const TCHAR* Cmd, FOutputDevice& Ar )
+  void FOculusRiftHMD::LoadFromIni()
 ```
 
 - Oculus Config settings are in the DefaultEngine.ini file (\[root]/Config/DefaultEngine.ini)
@@ -130,17 +130,17 @@ The dimensions of this virtual head model are determined by the HeadModel_v2 con
 
 1. First of all, be sure to use the rift as recommand (by Oculus VR) as an extended monitor (not in clone mode, as it breaks things like vsync).
 
-1. [Disable the "Aero" Windows desktop composition engine. Right-click on your desktop, click "Personalize" and then select one of the "Basic" or "Classic" themes instead of an "Aero" theme.](https://wiki.teamfortress.com/wiki/Oculus_Rift_User_Guide) I did not bother to measure impact about this; does anyone did?
+1. [Disable the "Aero" Windows desktop composition engine. Right-click on your desktop, click "Personalize" and then select one of the "Basic" or "Classic" themes instead of an "Aero" theme.](https://wiki.teamfortress.com/wiki/Oculus_Rift_User_Guide) I did not bother to measure impact about this; does anyone did?
 
 1. Then, launch the game in standalone mode, without opening the Editor. Right click in you project ".uproject" file and hit "Launch game". This helps a lot!
 
-1. By then, you would run the game in default graphic config, that is "Epic mode"! This is a big problem here! You should tweak scalability parameters from Epic to High, at least. Read [this official post to learn about its effect on Editor mode] then read [my explanation on how to make this dynamic into your standalone game using blueprints]
+1. By then, you would run the game in default graphic config, that is "Epic mode"! This is a big problem here! You should tweak scalability parameters from Epic to High, at least. Read [this official post to learn about its effect on Editor mode] then read [my explanation on how to make this dynamic into your standalone game using blueprints]
 
 *Reference From <https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization>*
 
-Regarding cloning multiple monitors, I personally had the **best performance with cloning enabled, and my game running in fullscreen mode**, instead of running with my desktop extended and the game running in a "fullscreen" window.
+Regarding cloning multiple monitors, I personally had the **best performance with cloning enabled, and my game running in fullscreen mode**, instead of running with my desktop extended and the game running in a "fullscreen" window.
 
-But to make vsync work (so that the Rift doesn't inherit the vsync timing of your primary monitor), at least with an Nvidia card, you can **set the Rift as your clone source** in the Nvidia Control Panel (#3 is my Rift in the screenshot below). This way the Rift's refresh timing will be used for vsync and you won't see any tearing on your headset, although if you primary monitor timing is even slightly different (probably the case) you will still see tearing on the primary monitor. Of course this shouldn't be a problem since only other people in the room will see your primary monitor while your Rift is on your head.
+But to make vsync work (so that the Rift doesn't inherit the vsync timing of your primary monitor), at least with an Nvidia card, you can **set the Rift as your clone source** in the Nvidia Control Panel (#3 is my Rift in the screenshot below). This way the Rift's refresh timing will be used for vsync and you won't see any tearing on your headset, although if you primary monitor timing is even slightly different (probably the case) you will still see tearing on the primary monitor. Of course this shouldn't be a problem since only other people in the room will see your primary monitor while your Rift is on your head.
 
 ![Oculus_RiftGotchas_CloningMultiMonitor](../../_assets/Oculus_RiftGotchas_CloningMultiMonitor.png)
 
@@ -154,7 +154,7 @@ But to make vsync work (so that the Rift doesn't inherit the vsync timing of you
 
 I did some digging into the Oculus plugin in the UE4 source, and came up with the following strategy which will enable you to get a rock-solid 60 FPS in UE4 demos, while also getting the highest visual fidelity your GPU can handle. Be careful to follow the steps and not skip any.
 
-**1)** If you've messed with your GameUserSettings.ini file, change the following settings back:
+**1)** If you've messed with your GameUserSettings.ini file, change the following settings back:
 
 ```cpp
 ResolutionSizeX=1280
@@ -165,15 +165,15 @@ FullscreenMode=0
 
 The following steps will work at higher resolutions, but results will not be as good.
 
-**2)** Start up the demo. If you're not already in stereo mode, do ~ to enter the console and then "stereo on".
+**2)** Start up the demo. If you're not already in stereo mode, do ~ to enter the console and then "stereo on".
 
-**3)** Put on your Rift and type the following to pop up an FPS monitor in your view:
+**3)** Put on your Rift and type the following to pop up an FPS monitor in your view:
 
 stat fps
 
 Find the most complex scene in the demo exhibiting the poorest frame rate for testing. If your frame rate is good throughout, increase your ScreenPercentage with "hmd sp 200" or "hmd sp 300" and try again.
 
-**4)** Enter the console with ~ and type the following commands:
+**4)** Enter the console with ~ and type the following commands:
 
 ```cpp
 oculusdev on
@@ -182,13 +182,13 @@ hmdwarp 1=1
 
 These commands have no apparent effect, but unless you do both of them, the command in the next step will have no effect (the second command is a workaround for a bug).
 
-**5)** Set your DistortionScale to 0.5 using "hmdwarp s=0.5". This should cause your view in each eye to shrink to a small rectangle. Increase it gradually by 0.1 (e.g. "hmdwarp s=0.6") until you can no longer see black around the image. For me this happens around 1.3. (If you wish, you can fine tune it by increments of 0.01 at this point). The UE4 default is 1.715, which is really high.
+**5)** Set your DistortionScale to 0.5 using "hmdwarp s=0.5". This should cause your view in each eye to shrink to a small rectangle. Increase it gradually by 0.1 (e.g. "hmdwarp s=0.6") until you can no longer see black around the image. For me this happens around 1.3. (If you wish, you can fine tune it by increments of 0.01 at this point). The UE4 default is 1.715, which is really high.
 
-This parameter setting does *not* affect your frame rate at all, but does improve image quality dramatically. Once you've found a DistortionScale parameter you like, you can reuse it in every demo - it only depends on your vision and how close you put your eyes to the lenses.
+This parameter setting does *not* affect your frame rate at all, but does improve image quality dramatically. Once you've found a DistortionScale parameter you like, you can reuse it in every demo - it only depends on your vision and how close you put your eyes to the lenses.
 
-**You will need to repeat steps 4 and 5 each time you run the demo.** DistortionScale cannot currently be set in Engine.ini, and I don't know if it can be set programmatically. It might be possible to bind a key.
+**You will need to repeat steps 4 and 5 each time you run the demo.** DistortionScale cannot currently be set in Engine.ini, and I don't know if it can be set programmatically. It might be possible to bind a key.
 
-**6)** ScreenPercentage varies between 30 and 300, and determines the resolution of the offscreen buffer. Start it at 30 with "hmd sp 30". Wait for 10-20 seconds for your "stat fps" reading to climb to a maximum value. Your frame rate should be maxed out, but the image will look terribly blurry.
+**6)** ScreenPercentage varies between 30 and 300, and determines the resolution of the offscreen buffer. Start it at 30 with "hmd sp 30". Wait for 10-20 seconds for your "stat fps" reading to climb to a maximum value. Your frame rate should be maxed out, but the image will look terribly blurry.
 
 Increase it in steps of 10 while watching your frame rate (e.g. "hmd sp 40") - once your frame rate drops below your refresh rate, take it back down by 10 and you are done. If you later encounter frame drops, you can bring it down a little more.
 
@@ -198,7 +198,7 @@ Very high ScreenPercentage values (e.g. in the 150-300 range) result in SSAA beh
 
 If you close the demo normally, it will save your modified ScreenPercentage to your Engine.ini file automatically, and you will not have to repeat this step.
 
-**7)** Hide your FPS again with "stat fps".
+**7)** Hide your FPS again with "stat fps".
 
 That's it! I've tried this on both the Starship Bridge Demo (for which I got ScreenPercentage up to 250 on my GTX 780 Ti) and UE4EffectsCave (I got up to 130). Let me know what kind of results you get!
 

@@ -24,7 +24,7 @@ that's the biggest point of divergence for some of the native classes
 
 [@epicnick][]: Gotcha; and to double check, all UPROPERTY markups turn naked pointer references to UObjects to strong references?
 
-###### [epicnick][@epicnick] [*\[*8:59 PM*\]*][2]
+###### [epicnick][@epicnick] [*\[*8:59 PM*\]*][2]
 
 All EXCEPT TWeakObjPtr UPROPERTIES
 

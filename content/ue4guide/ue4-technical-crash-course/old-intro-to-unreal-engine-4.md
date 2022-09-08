@@ -235,13 +235,13 @@ Can layer different materials together
 
 - BluePrints can communicate with each other through Events (these are more like class member functions) & Event Dispatchers (true events)
 
-Calling the Event Dispatcher will have no effect if there are no events bound to it. Consider that each Event Dispatcher has a list of events associated with it. The way to add an event to this list is by using a **Bind Event** node, and the way to remove an event from this list is by using an **Unbind Event** node. It is also possible to unbind all of the events currently bound to an Event Dispatcher with an **Unbind All Events** node.
+Calling the Event Dispatcher will have no effect if there are no events bound to it. Consider that each Event Dispatcher has a list of events associated with it. The way to add an event to this list is by using a **Bind Event** node, and the way to remove an event from this list is by using an **Unbind Event** node. It is also possible to unbind all of the events currently bound to an Event Dispatcher with an **Unbind All Events** node.
 
-Each event can be bound only once, even if the **Bind Event** node is executed multiple times. Also, events in the *Class Blueprint* and the *Level Blueprint* are both added to the same event list, so an **Unbind All Events** node will unbind events in both the *Class Blueprint* and the *Level Blueprint*.
+Each event can be bound only once, even if the **Bind Event** node is executed multiple times. Also, events in the *Class Blueprint* and the *Level Blueprint* are both added to the same event list, so an **Unbind All Events** node will unbind events in both the *Class Blueprint* and the *Level Blueprint*.
 
-- An **Unbind All Events** node executed in the *Class Blueprint* will unbind events in both the *Class Blueprint* and the *Level Blueprint* for all instances of the class.
+- An **Unbind All Events** node executed in the *Class Blueprint* will unbind events in both the *Class Blueprint* and the *Level Blueprint* for all instances of the class.
 
-- An **Unbind All Events** node executed in the *Level Blueprint* will unbind events in both the *Class Blueprint* and the *Level Blueprint*, but just for the **Target**supplied.
+- An **Unbind All Events** node executed in the *Level Blueprint* will unbind events in both the *Class Blueprint* and the *Level Blueprint*, but just for the **Target**supplied.
 
 - Blueprints can implement interfaces (same concept as programming language interfaces). Interface functions are implemented using Events in BluePrint
 
@@ -251,9 +251,9 @@ Each event can be bound only once, even if the **Bind Event** node is executed
 
 **In Level Blueprints**
 
-A special type of Event Dispatcher event can be set up in the Level Blueprint, and it is the one case where an event is automatically bound to the Event Dispatcher. These events are created with the same steps as the default events such as **OnClicked** or **OnOverlap** events. The [Level Blueprint documentation]provides a walkthrough for this process.
+A special type of Event Dispatcher event can be set up in the Level Blueprint, and it is the one case where an event is automatically bound to the Event Dispatcher. These events are created with the same steps as the default events such as **OnClicked** or **OnOverlap** events. The [Level Blueprint documentation]provides a walkthrough for this process.
 
-These particular events are unique, and are automatically bound at the start of gameplay. As a result, an **Unbind All** node executed at any point will unbind these events as well. It is possible to rebind them, however, by wiring their delegate pins to **Bind Event** nodes that are executed at other points in gameplay.
+These particular events are unique, and are automatically bound at the start of gameplay. As a result, an **Unbind All** node executed at any point will unbind these events as well. It is possible to rebind them, however, by wiring their delegate pins to **Bind Event** nodes that are executed at other points in gameplay.
 
 *Reference From <https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/EventDispatcher/CreatingEvents/index.html>*
 
@@ -263,9 +263,9 @@ These particular events are unique, and are automatically bound at the start of 
 
 **Emitters, Particle Systems, and Emitter Actors**
 
-As you work with Cascade to create your own particle effects, it is important to keep in mind how each one of the objects relate to one another. In this document, we have already discussed the concept of modules, but they only make up one component of a complete particle effect. All told, the components of a particle system are **modules**, **emitters**, **particle systems**, and **emitter actors**. A solid way to remember how they relate is like so:
+As you work with Cascade to create your own particle effects, it is important to keep in mind how each one of the objects relate to one another. In this document, we have already discussed the concept of modules, but they only make up one component of a complete particle effect. All told, the components of a particle system are **modules**, **emitters**, **particle systems**, and **emitter actors**. A solid way to remember how they relate is like so:
 
-- **Modules** define particle behavior and are placed within...
+- **Modules** define particle behavior and are placed within...
 
 - **Emitters**, which are used to emit a specific type of particle for an effect, and any number of which can be placed within a...
 

@@ -46,36 +46,36 @@ You can control when an actor ticks:
 - Each actor has a ETickingGroup that can define when it will tick
 
   UENUM(BlueprintType)  
-  enum ETickingGroup  
+  enum ETickingGroup  
   {  
-          /\*\* Any item that needs to be executed before physics simulation starts. \*/  
-          TG_PrePhysics UMETA(DisplayName="Pre Physics"),
+          /\*\* Any item that needs to be executed before physics simulation starts. \*/  
+          TG_PrePhysics UMETA(DisplayName="Pre Physics"),
 
-  /\*\* Special tick group that starts physics simulation. \*/                                                          
-          TG_StartPhysics UMETA(Hidden, DisplayName="Start Physics"),
+  /\*\* Special tick group that starts physics simulation. \*/                                                          
+          TG_StartPhysics UMETA(Hidden, DisplayName="Start Physics"),
 
-  /\*\* Any item that can be run in parallel with our physics simulation work. \*/  
-          TG_DuringPhysics UMETA(DisplayName="During Physics"),
+  /\*\* Any item that can be run in parallel with our physics simulation work. \*/  
+          TG_DuringPhysics UMETA(DisplayName="During Physics"),
 
-  /\*\* Special tick group that ends physics simulation. \*/         TG_EndPhysics UMETA(Hidden, DisplayName="End Physics"),
+  /\*\* Special tick group that ends physics simulation. \*/         TG_EndPhysics UMETA(Hidden, DisplayName="End Physics"),
 
-  /\*\* Any item that needs physics to be complete before being executed. \*/  
-          TG_PreCloth UMETA(Hidden, DisplayName="Pre Cloth"),
+  /\*\* Any item that needs physics to be complete before being executed. \*/  
+          TG_PreCloth UMETA(Hidden, DisplayName="Pre Cloth"),
 
-  /\*\* Any item that needs to be updated after rigid body simulation is done, but before cloth is simulation is done. \*/  
-          TG_StartCloth UMETA(Hidden, DisplayName = "Start Cloth"),
+  /\*\* Any item that needs to be updated after rigid body simulation is done, but before cloth is simulation is done. \*/  
+          TG_StartCloth UMETA(Hidden, DisplayName = "Start Cloth"),
 
-  /\*\* Any item that needs rigid body and cloth simulation to be complete before being executed. \*/  
-          TG_PostPhysics UMETA(DisplayName="Post Physics"),
+  /\*\* Any item that needs rigid body and cloth simulation to be complete before being executed. \*/  
+          TG_PostPhysics UMETA(DisplayName="Post Physics"),
 
-  /\*\* Any item that needs the update work to be done before being ticked. \*/  
-          TG_PostUpdateWork UMETA(DisplayName="Post Update Work"),
+  /\*\* Any item that needs the update work to be done before being ticked. \*/  
+          TG_PostUpdateWork UMETA(DisplayName="Post Update Work"),
 
-  /\*\* Special tick group that ends cloth simulation. \*/  
-          TG_EndCloth UMETA(Hidden, DisplayName="End Cloth"),
+  /\*\* Special tick group that ends cloth simulation. \*/  
+          TG_EndCloth UMETA(Hidden, DisplayName="End Cloth"),
 
-  /\*\* Special tick group that is not actually a tick group. After every tick group this is repeatedly re-run until there are no more newly spawned items to run. \*/  
-          TG_NewlySpawned UMETA(Hidden, DisplayName="Newly Spawned"),
+  /\*\* Special tick group that is not actually a tick group. After every tick group this is repeatedly re-run until there are no more newly spawned items to run. \*/  
+          TG_NewlySpawned UMETA(Hidden, DisplayName="Newly Spawned"),
 
   TG_MAX,  
   };

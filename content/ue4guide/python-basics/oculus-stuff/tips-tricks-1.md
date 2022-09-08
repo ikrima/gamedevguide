@@ -51,7 +51,7 @@ Don't minimize the editor window while in VR Mode
 - You can maintain the Editor window during VR Preview mode by commenting out this line in PlayLevel.cpp:
 
 ```cpp
-//TODO: ikrimae: Pipe disabling this based on a config variable. Not sure if this will crash the editor & also it's a perf hit 
+//TODO: ikrimae: Pipe disabling this based on a config variable. Not sure if this will crash the editor & also it's a perf hit 
 //RootWindow->Minimize();
 ```
 
@@ -65,10 +65,10 @@ How to detect if VR Headset is Vive or Oculus
 
 ```cpp
 if (GEngine->HMDDevice.IsValid() && GEngine->HMDDevice->IsHMDEnabled()) 
-        {  
-                if (GEngine->HMDDevice->GetHMDDeviceType() == EHMDDeviceType::DT_SteamVR)  
-                {  
-                        // BLAH!
+        {  
+                if (GEngine->HMDDevice->GetHMDDeviceType() == EHMDDeviceType::DT_SteamVR)  
+                {  
+                        // BLAH!
 ```
 
 *Reference From <https://forums.unrealengine.com/showthread.php?87727-How-to-Detect-if-using-Rift-or-Vive>*

@@ -100,7 +100,7 @@ D3D Debugging
 
 - VTune
 
-For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onenote section [Application/OS/Generic Platform](fixme_self_referential_link)
+For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath())
 
 - Command to build + cook + launch game
 
@@ -196,27 +196,27 @@ For Paths, look at FPaths struct (e.g. FPaths::GetProjectFilePath()) or the onen
 
 1. Make sure to launch nsmonitor with admin priv
 
-1. Adjust WDDM TDR for Nsight
+2. Adjust WDDM TDR for Nsight
 
-1. Enable Driver Instrumentation
+3. Enable Driver Instrumentation
 
-1. Make sure to warn if these settings arent set:
+4. Make sure to warn if these settings arent set:
 
    - t.maxfps=0
 
    - Set BBIsGPUProfiling = true
 
-1. Remember to pass -d3ddebug
+5. Remember to pass -d3ddebug
 
-1. Exhaustive D3D11 shader collection
+6. Exhaustive D3D11 shader collection
 
-1. Make sure to set shader include paths
+7. Make sure to set shader include paths
 
-1. Make sure to set application is a launcher
+8. Make sure to set application is a launcher
 
-1. Set Force Assembly debugging if you cant find source = true
+9. Set Force Assembly debugging if you cant find source = true
 
-1. Set Preferred remote shader debugging mode = Replay-based debugging
+10. Set Preferred remote shader debugging mode = Replay-based debugging
 
 - Tick One Frame Forward at Fixed Interval
 

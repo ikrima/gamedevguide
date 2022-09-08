@@ -64,7 +64,7 @@ FNiagaraEmitterDetails::OnGenerateEventReceiverEntry(TSharedRef<IPropertyHandle>
   TSharedPtr<IPropertyHandle> NameProperty = ElementProperty->GetChildHandle(GET_MEMBER_NAME_CHECKED(FNiagaraEventReceiverProperties, Name));
   FName DisplayName;
   NameProperty->GetValue(DisplayName);
-  //         ChildrenBuilder.AddChildProperty(ElementProperty).DisplayName(FText::FromName(DisplayName));
+  //         ChildrenBuilder.AddChildProperty(ElementProperty).DisplayName(FText::FromName(DisplayName));
   IDetailGroup& Group = ChildrenBuilder.AddGroup(DisplayName, FText::FromName(DisplayName));
   uint32 NumChildren = 0;
   if (ElementProperty->GetNumChildren(NumChildren) == FPropertyAccess::Success)

@@ -16,11 +16,11 @@ Reference <https://udn.unrealengine.com/questions/513017/blueprint-static-analys
 
 Check KismetEditorUtilities.h/BlueprintEditorUtils.h/BlueprintEditorUtils.cpp/ComponentEditorUtils.h
 
-GetSimpleConstructionScript(USceneComponent const\* **Component**);
+GetSimpleConstructionScript(USceneComponent const\* **Component**);
 
-FindCorrespondingSCSNode(USceneComponent const\* **ComponentObj**);
+FindCorrespondingSCSNode(USceneComponent const\* **ComponentObj**);
 
-virtual void EditorReplacedActor(AActor\* **OldActor**) {}
+virtual void EditorReplacedActor(AActor\* **OldActor**) {}
 
 Useful editor tool class:
 
@@ -29,7 +29,7 @@ FBlueprintEditorUtils
 ===========================================
 
 ```cpp
-void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*>> Graphs) const
+void UBlueprint::GetAllGraphs(TArray&lt;UEdGraph\*>> Graphs) const
 
 /\*\* Set of pages that combine into a single uber-graph \*/
 

@@ -188,7 +188,7 @@ Compiling the code, we will get the following code in the .generated.h file, whi
 ## .Related code in generated.cpp
 
 ```cpp
-    UEnum * Z_Construct_UEnum_ReflectionStudy_EReflectionTest ()
+    UEnum * Z_Construct_UEnum_ReflectionStudy_EReflectionTest ()
     {
       UPackage * Outer = Z_Construct_UPackage__Script_ReflectionStudy ();
       extern uint32 Get_Z_Construct_UEnum_ReflectionStudy_EReflectionTest_CRC ();

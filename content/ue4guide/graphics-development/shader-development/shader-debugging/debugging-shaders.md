@@ -117,9 +117,9 @@ A lot of these are now configurable through environment flags/switches:
 - D3D11ShaderCompiler.cpp: Force TranslateCompilerFlagD3D11 to always return D3D10_SHADER_DEBUG | D3D10_SHADER_SKIP_OPTIMIZATION
 - D3D11ShaderCompiler.cpp: Force the fxc command line to contain "/Gfp /Zi /Od", and comment out the usage of /O1 and /O3
 - D3D11ShaderCompiler.cpp: Remove the "Strip shader reflection" step in CompileD3DShader()
-- ShaderCompiler.cpp: Force bAllowCompilingThroughWorkers and bAllowAsynchronousShaderCompiling to be false
+- ShaderCompiler.cpp: Force bAllowCompilingThroughWorkers and bAllowAsynchronousShaderCompiling to be false
 - Sacrifice a chicken to the dark lords of GPU debugging
-- Delete any .shaderbin files that you want to be rebuilt
+- Delete any .shaderbin files that you want to be rebuilt
 - Delete the entire contents of your DerivedDataCache folders (in both Engine and your game-specific subdirectory)
 - Start Unreal Editor. It should sit on the splash screen for around 45 minutes while it rebuilds the shaders, rather than going directly into the editor and showing the "Compiling Shaders" notification in the lower-right corner of your screen.
 - Suggestions on things to do while waiting for the shaders to rebuild: Watch your favorite TV show, eat a sandwich, enjoy a leisurely glass of soda, annoy the QA department, spin around in a circle for 45 minutes

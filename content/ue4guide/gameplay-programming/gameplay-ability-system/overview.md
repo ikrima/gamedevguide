@@ -9,7 +9,7 @@ sidebar: ue4guide
 
 Excellent in-depth overview with an example project: https://github.com/tranek/GASDocumentation
 
-####  FGameplayAttributeData /UAttributeSet:
+####  FGameplayAttributeData /UAttributeSet:
 
 - Define what can be changed
 

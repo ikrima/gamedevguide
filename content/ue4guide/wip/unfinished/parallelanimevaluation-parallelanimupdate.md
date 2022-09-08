@@ -2,7 +2,7 @@
 sidebar: ue4guide
 ---
 
-# What's the diff between a.ParallelAnimEvaluation & a.ParallelAnimUpdate? 
+# What's the diff between a.ParallelAnimEvaluation & a.ParallelAnimUpdate? 
 
 From <https://twitter.com/ikrimae/with_replies>>\*
 

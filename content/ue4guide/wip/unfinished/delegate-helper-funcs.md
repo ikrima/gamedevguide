@@ -27,7 +27,7 @@ SLATE ATTRIBUTES:
 
 Something defined as a
 
-​ SLATE_ATTRIBUTE( FMargin, ContentPadding )
+​ SLATE_ATTRIBUTE( FMargin, ContentPadding )
 
 Can be bound with:
 
@@ -47,7 +47,7 @@ AttrName(TSharedRef&lt;obj>)
 
 Same with SLATE_EVENTS:
 
-​ SLATE_EVENT( FOnClicked, OnValueCommitted )
+​ SLATE_EVENT( FOnClicked, OnValueCommitted )
 
 Can be bound with:
 

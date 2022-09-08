@@ -66,7 +66,7 @@ return LodComponent;
 
 *Reference From <https://udn.unrealengine.com/questions/457850/view.html>*
 
-[gerardo.perez](https://accounts.unrealengine.com/login/index?response_type=code&client_id=bc742d26f8314469aa997373f39c876e)  ( Disruptive Games Inc. ) 3 days ago Newest
+[gerardo.perez](https://accounts.unrealengine.com/login/index?response_type=code&client_id=bc742d26f8314469aa997373f39c876e)  ( Disruptive Games Inc. ) 3 days ago Newest
 
 We ended up adding it to the actor's InstanceComponents list, which is serialized. Using a uproperty on the component alone was not working at some point but I'm not aware of the details. Anyway, thank you. Our problem is resolved.
 

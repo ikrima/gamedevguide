@@ -18,7 +18,7 @@ The type hierarchy for the property system looks like this:
   - UProperty (C++ member variable or function parameter)
     - (Many subclasses for different types)
 
-UStruct is the basic type of aggregate structures (anything that contains other members, such as a C++ class, struct, or function), and shouldn’t be confused with a C++ struct (that's UScriptStruct). UClass can contain functions or properties as their children, while UFunction and UScriptStruct are limited to just properties.
+UStruct is the basic type of aggregate structures (anything that contains other members, such as a C++ class, struct, or function), and shouldn’t be confused with a C++ struct (that's UScriptStruct). UClass can contain functions or properties as their children, while UFunction and UScriptStruct are limited to just properties.
 
 # UScriptStructs
 
@@ -105,13 +105,13 @@ Each type has a unique set of flags (EClassFlags + HasAnyClassFlags, etc…), as
 ## Look up / Find a property
 
 ```cpp
-FindField<UProperty>(Struct, VarDesc->VarName)
+FindField<UProperty>(Struct, VarDesc->VarName)
 ```
 
 ## Export/Import text from UProperty
 
 ```cpp
-Property->ExportText_InContainer(0, PropertyValue, RowData, RowData, nullptr, PPF_None);
+Property->ExportText_InContainer(0, PropertyValue, RowData, RowData, nullptr, PPF_None);
 ```
 
 ## Comparison
@@ -155,9 +155,9 @@ virtual void PostEditComponentMove(bool bFinished) override;
 ## Export UStruct to String
 
 ```cpp
-UScriptStruct* structClass = FBBStadCamManip::StaticStruct();
-FString outStr;
-structClass->ExportText(outStr, &stadCamManipVal, nullptr, nullptr, PPF_None, nullptr);
+UScriptStruct* structClass = FBBStadCamManip::StaticStruct();
+FString outStr;
+structClass->ExportText(outStr, &stadCamManipVal, nullptr, nullptr, PPF_None, nullptr);
 ```
 
 # UFunctions
@@ -173,24 +173,24 @@ These are helpful functions to look at for examples:
 
 ```cpp
 UFunction::IsSignatureCompatibleWith
-TFieldIterator<UProperty> IteratorA(ufunc);
+TFieldIterator<UProperty> IteratorA(ufunc);
 ```
 
 ## Check if a UFunction is latent
 
 ```cpp
-bIsLatent = (Function->HasMetaData(FBlueprintMetadata::MD_Latent) != false);
+bIsLatent = (Function->HasMetaData(FBlueprintMetadata::MD_Latent) != false);
 ```
 
-## Find No Parameters Event
+## Find No Parameters Event
 
 ```cpp
-this->GetClass()->FindFunctionByName("ReceiveBeginPlay", EIncludeSuperFlag::ExcludeSuper)
-UFunction* EventTarget = this->FindFunction(EventName);
-if( EventTarget && EventTarget->NumParms == 0)
+this->GetClass()->FindFunctionByName("ReceiveBeginPlay", EIncludeSuperFlag::ExcludeSuper)
+UFunction* EventTarget = this->FindFunction(EventName);
+if( EventTarget && EventTarget->NumParms == 0)
 {
-  LSA->ProcessEvent(EventTarget, NULL);
-  bFoundEvent = true;
+  LSA->ProcessEvent(EventTarget, NULL);
+  bFoundEvent = true;
 }
 ```
 
@@ -210,9 +210,9 @@ UFunction::IsSignatureCompatibleWith(const UFunction* OtherFunction, uint64 Igno
 ### Iterate UFunction Parameters
 
 ```cpp
-for (TFieldIterator<UFunction> FunctionIt(this->GetClass(), EFieldIteratorFlags::ExcludeSuper); FunctionIt; ++FunctionIt)
+for (TFieldIterator<UFunction> FunctionIt(this->GetClass(), EFieldIteratorFlags::ExcludeSuper); FunctionIt; ++FunctionIt)
 {
-  UFunction* Function = *FunctionIt;
+  UFunction* Function = *FunctionIt;
 }
 ```
 
@@ -263,8 +263,8 @@ UClass* Result = FindObject<UClass>(ClassPackage, ClassName);
 ## Programmatically Create UUserDefinedStruct
 
 ```cpp
-return FStructureEditorUtils::CreateUserDefinedStruct(InParent, Name, Flags);
-FStructureEditorUtils::AddVariable(StructureDetailsSP->GetUserDefinedStruct(), InitialPinType);
+return FStructureEditorUtils::CreateUserDefinedStruct(InParent, Name, Flags);
+FStructureEditorUtils::AddVariable(StructureDetailsSP->GetUserDefinedStruct(), InitialPinType);
 ```
 
 ## Change UUserDefinedStruct's Parent Struct
@@ -277,8 +277,8 @@ FStructureEditorUtils::CreateUserDefinedStruct():
 ## Programmatically Construct Struct/UScriptStruct
 
 ```cpp
-template<typename T>
-T ConstructTInlineValue(UScriptStruct* Struct)
-static void SetStructurePropertyByName(UObject* Object, FName PropertyName, const T& Value)
-UKismetSystemLibrary::Generic_SetStructurePropertyByName(Object, PropertyName, &Value);
+template<typename T>
+T ConstructTInlineValue(UScriptStruct* Struct)
+static void SetStructurePropertyByName(UObject* Object, FName PropertyName, const T& Value)
+UKismetSystemLibrary::Generic_SetStructurePropertyByName(Object, PropertyName, &Value);
 ```

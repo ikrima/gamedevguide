@@ -85,7 +85,7 @@ High-level installation steps:
 
   - Visual Studio needs to have an exception on the host
 
-Download and detailed configuration instructions: <http://developer.nvidia.com/nvidia-nsight-visual-studio-edition> (You'll need to register for a free dev account).
+Download and detailed configuration instructions: <http://developer.nvidia.com/nvidia-nsight-visual-studio-edition> (You'll need to register for a free dev account).
 
 ## Debug the Unity Project
 
@@ -97,7 +97,7 @@ Download and detailed configuration instructions: <http://developer.nvidia.com/
 
 - Select the Launch External Program option and set the path to your Unity project
 
-- **Problem:** For some reason, when the file gets sync'ed over, the app bitches when it gets launched on the target machine, saying it can't find the \[project]\_Data folder. Still investigating this, but for now, workaround is to just manually copy over the project directory to the target machine.  (Default: C:\\Users\\\[current-user-on-target]\\AppData\\Roaming\\NVIDIA Corporation\\Nsight\\Monitor\\Mirror\\\[hostname]\\\[host-outdir] so for example
+- **Problem:** For some reason, when the file gets sync'ed over, the app bitches when it gets launched on the target machine, saying it can't find the \[project]\_Data folder. Still investigating this, but for now, workaround is to just manually copy over the project directory to the target machine.  (Default: C:\\Users\\\[current-user-on-target]\\AppData\\Roaming\\NVIDIA Corporation\\Nsight\\Monitor\\Mirror\\\[hostname]\\\[host-outdir] so for example
 
 ![Debugging_wNsight_NVidiaInsight](../../../_assets/Debugging_wNsight_NVidiaInsight.jpg)
 
@@ -153,11 +153,11 @@ Attaching to an application requires some manual steps, so it takes a few second
 
 To create an EXE project for an existing executable
 
-1. On the **File** menu, click **Open** and select **Project**.
+1. On the **File** menu, click **Open** and select **Project**.
 
-2. In the **Open Project** dialog box, click the drop-down list next to the **File name** box, and select **All Project Files**.
+2. In the **Open Project** dialog box, click the drop-down list next to the **File name** box, and select **All Project Files**.
 
-3. Locate the executable, and click **OK**.
+3. Locate the executable, and click **OK**.
 
    This creates a temporary solution that contains the executable.
 
@@ -167,36 +167,36 @@ To create an EXE project for an existing executable
 
 NVIDIA® Nsight™ Development Platform, Visual Studio Edition 4.2 User Guide
 
-Early versions of NVIDIA Nsight were only able to debug projects built in Visual C++. However, with NVIDIA Nsight 4.2, CUDA and graphics debugging are now supported for both C++ and C# projects.
+Early versions of NVIDIA Nsight were only able to debug projects built in Visual C++. However, with NVIDIA Nsight 4.2, CUDA and graphics debugging are now supported for both C++ and C# projects.
 
-If you would like to use NVIDIA Nsight to debug an application that is built in an environment other than C++ or C#, use the tutorial outlined below.
+If you would like to use NVIDIA Nsight to debug an application that is built in an environment other than C++ or C#, use the tutorial outlined below.
 
-Using NVIDIA Nsight Debugging with Other Project Types
+Using NVIDIA Nsight Debugging with Other Project Types
 
-1. In Visual Studio, create a "dummy" project by going to **File** > **New** > **Project**.
+1. In Visual Studio, create a "dummy" project by going to **File** > **New** > **Project**.
 
-1. On the node for **Visual C++** templates, select **Empty Project**.
+1. On the node for **Visual C++** templates, select **Empty Project**.
 
    Enter the name for your project and click OK.
 
 ![LaunchingNsight_2DebuggingExternal](../../../_assets/LaunchingNsight_2DebuggingExternal.png)
 
-3. Select the project's **Nsight User Properties** to edit the default settings. (As an alternative, you can also go to the **Project** menu > **Nsight User Properties**.)
+3. Select the project's **Nsight User Properties** to edit the default settings. (As an alternative, you can also go to the **Project** menu > **Nsight User Properties**.)
 
 ![LaunchingNsight_SolutionExplorer](../../../_assets/LaunchingNsight_SolutionExplorer.png)
 
-4. Select **Launch external program**, and enter the path to the external program for the application that is to be debugged.
+4. Select **Launch external program**, and enter the path to the external program for the application that is to be debugged.
 
 ![LaunchingNsight_4Launch](../../../_assets/LaunchingNsight_4Launch.png)
 
-5. Configure any other launch options or file synchronization settings which may be necessary for your particular debugging environment.
+5. Configure any other launch options or file synchronization settings which may be necessary for your particular debugging environment.
 
-(For assistance, refer to [Host Basics](https://docs.nvidia.com/gameworks/content/developertools/desktop/host_basics.htm) and [Synchronization](https://docs.nvidia.com/gameworks/content/developertools/desktop/synchronization.htm).)
+(For assistance, refer to [Host Basics](https://docs.nvidia.com/gameworks/content/developertools/desktop/host_basics.htm) and [Synchronization](https://docs.nvidia.com/gameworks/content/developertools/desktop/synchronization.htm).)
 
 6. Click OK to save your settings.
 
-6. You can now begin debugging your application with NVIDIA Nsight.
+6. You can now begin debugging your application with NVIDIA Nsight.
 
-To do so, go to the **Nsight** menu or right-click on your project, then select the appropriate activity (**Start CUDA Debugging**, **Start Graphics Debugging**, etc.).
+To do so, go to the **Nsight** menu or right-click on your project, then select the appropriate activity (**Start CUDA Debugging**, **Start Graphics Debugging**, etc.).
 
 *Reference From <http://docs.nvidia.com/gameworks/content/developertools/desktop/debug_external_applications.htm>*

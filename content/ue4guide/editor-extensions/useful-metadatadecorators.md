@@ -106,8 +106,8 @@ Default Value for structs in blueprints or parameters: `MakeStructureDefaultValu
 Default function parameter values:
 
 ```cpp
-UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\"AssetTag.Item\")",GameplayTagFilter="AssetTag.Item"))
-UBBItemVisualCfg* GetItemVisualCfg(FBBAssetTag ItemVisualStyle) const;
+UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\"AssetTag.Item\")",GameplayTagFilter="AssetTag.Item"))
+UBBItemVisualCfg* GetItemVisualCfg(FBBAssetTag ItemVisualStyle) const;
 ```
 
 **Execute in Editor:**
@@ -285,8 +285,8 @@ Add \_DEPRECATED to its name along with `DeprecatedFunction` metadata:
 - `GameplayTagFilter` - Metadata to filter gameplay tags as function parameters and provide default value
 
   ```cpp
-  UFUNCTION(BlueprintPure, Category=UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\"AssetTag.Item\")",GameplayTagFilter="AssetTag.Item"))
-  UBBItemVisualCfg* GetItemVisualCfg(FBBAssetTag ItemVisualStyle) const;
+  UFUNCTION(BlueprintPure, Category=UFUNCTION(BlueprintPure, Category="Bebylon", meta=(ItemVisualStyle="(TagName=\"AssetTag.Item\")",GameplayTagFilter="AssetTag.Item"))
+  UBBItemVisualCfg* GetItemVisualCfg(FBBAssetTag ItemVisualStyle) const;
   ```
 
 - `Categories` - Use to specify tag hierarchy base for a gameplaytag property
