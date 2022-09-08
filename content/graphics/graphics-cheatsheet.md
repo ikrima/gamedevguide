@@ -1,7 +1,7 @@
 # Graphics Cheat Sheet
 
 Shit I annoyingly forget and always have to lookup
-- [Physical Units for Lights](http://www.realtimerendering.com/blog/physical-units-for-lights): better summary from Eric Haines
+- [[physical-units-for-lights|Physical Units for Lights]]: better summary from Eric Haines
 
 ## Lighting Units (Candela vs Lumens vs Lux)
 
@@ -21,7 +21,7 @@ Shit I annoyingly forget and always have to lookup
 
 - Measures *Luminous flux*
 - Photometric so it's radiant flux (power) weighted according to a luminosity function (modeling human eye's sensitivity to various wavelengths)
-- $1 \operatorname{lm}=1 \  \mathrm{cd} \cdot \mathrm{sr}$
+- $1 \operatorname{lm}=1 \  \mathrm{cd} \cdot \mathrm{sr} $
 
 **Lux:**
 

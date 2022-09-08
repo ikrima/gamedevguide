@@ -8,7 +8,7 @@
 1. Particle Rendering with Slabs sampling
 1. Channel Lighting
    - Volume Filtering with mips
-   - ## Turn Zeus into Cloud Volume
+   - Turn Zeus into Cloud Volume
 1. IsoSurface Tracking
    - Mean Occlusion
    - Directional Occlusion
@@ -24,14 +24,14 @@
   - Do it inside the volume
   - Can also do it on the surface and tangent basis (use burley's normalized diffusion profile as it provides super simple artistic control)
     - Reference: Approximate Reflectance Profiles for Efficient Subsurface Scattering
-    - Reference: *Extending the Disney BRDF to a BSDF with Integrated Subsurface Scattering*
+    - Reference: _Extending the Disney BRDF to a BSDF with Integrated Subsurface Scattering_
 
 1. Multiple Scattering approximations
    - Contrast approximation for art directable multiple scattering
      - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf>
      - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf>
      - Technique is basically exponentiation of single scattering with multiple octaves
-     - Must make sure a &lt;= b to be energy conserving
+     - Must make sure $a \leq b$ to be energy conserving
        $$
        \left(x, \omega_{i}\right)=\sum_{0}^{(N-1)} L \operatorname{scat}\left(x, \omega_{i}\right) \\
        \begin{aligned} \sigma_{s}^{\prime} &=\sigma_{s} \times a^{n} \\
@@ -97,7 +97,7 @@
       - VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);
 
 - Basic Scaffolding
-  - Make a simple houdini &lt;> ue4 plugin then iterate.
+  - Make a simple houdini -> ue4 plugin then iterate.
 
 - Houdini:
   - ~~create voxel grid~~
