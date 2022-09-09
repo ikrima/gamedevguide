@@ -69,7 +69,7 @@
   - [more usecases](https://ss64.com/nt/call.html)
 - 
    > 
-   > \[!warning\] **Note:** invoking batch script from another without `#!bat call` or `#!bat start` terminates first script and allows second one to take over
+   > \[!warning\] invoking batch script from another without `#!bat call` or `#!bat start` terminates first script and allows second one to take over
 
 - `#!bat pause` or `#!bat puase >nul`: to pause execution until keypress [Reference](https://stackoverflow.com/questions/988403/how-to-prevent-auto-closing-of-console-after-the-execution-of-batch-file)
 
