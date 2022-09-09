@@ -4,19 +4,34 @@
 
 - [nvm-windows](https://github.com/coreybutler/nvm-windows): hassle free install means on windows
 - [npm-check-updates](https://www.npmjs.com/package/npm-check-updates): utility package for major version package upgrades
-  - `npm install -g npm-check-updates`
+- install/upgrade `nvm`, `node`, `npm`, `yarn`, `TypeScript`
+  ```shell
+  nvm install [version]
+  nvm use [version]
+  npm install -g npm@latest
+  npm install -g typescript@4.8.2
+  npm install -g yarn@latest
+  npm install -g npm-check-updates@latest
+  ```
 
 ## Npm
 
 |Command|Desc|
 |-------|----|
-|`npm outdated`|find outdated files|
-|`npm install -g npm@latest`|update npm|
+|`nvm list available`|list available node versions to install|
+|`nvm install [version]`|install node version; **note:** global npm modules are not shared so must be reinstalled|
+|`nvm use [version]`|switch node version|
+|`nvm current`|info on currently selected node version|
+|`npm install -g npm@latest`|upgrade npm to the latest version|
 |`npm update [--omit=dev --package-lock=false]`|minor version package upgrade + package-lock.json|
-|`ncu -u && npm update`|major version package upgrade + package.json version hints|
-|`npm i -g npm-check-updates`|check outdated global packages|
-|`ncu -i`|interactive version of `ncu -u`|
+|`npm cache verify`|verify npm cache|
+|`npm -g list`|list globally installed packages|
+|`npm cache clean [-force]`|clean npm cache|
+|`npm outdated`|find outdated packages|
+|`npm install -g npm-check-updates@latest`|install ncu package|
 |`ncu`|'what if' version of `ncu -u` i.e. won't modify package.json|
+|`ncu -u && npm update`|major version package upgrade + package.json version hints|
+|`ncu -i`|interactive version of `ncu -u`|
 
 ## References
 
