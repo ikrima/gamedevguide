@@ -83,15 +83,29 @@
 - pointer syntax: (motivation: reduce ambiguities/make type inference easier)
   
   ```zig
-  u8           :  one u8
-  *u8          :  pointer to one u8
-  [2]u8        :  2 element fixed size u8 array
-  [*]u8        :  pointer to unknown number of u8
-  [*]const u8  :  pointer to unknown number of immutable u8
-  *[2]u8       :  pointer to 2 element fixed size u8 array
-  *const [2]u8 :  pointer to 2 element fixed size u8 immutable array
-  []u8         :  u8 array slice
-  []const u8   :  u8 immutable array slice
+  u8            : one u8 value
+  ?u8           : one optional u8 value
+  [2]u8         : array of 2 u8 values
+  [2:0]u8       : zero-terminated array of 2 u8 values
+  [2]*u8        : array of 2 u8 pointers
+  *u8           : pointer to one u8 value
+  *?u8          : pointer to one optional u8 value
+  ?*u8          : optional pointer to u8 value
+  *const u8     : pointer to immutable u8 value
+  *const ?u8    : pointer to immutable optional u8 value
+  ?*const u8    : optional pointer to immutable u8 value
+  *[2]u8        : pointer to array of 2 u8 values      
+  *[2:0]u8      : pointer to zero-terminated array of 2 u8 values      
+  *const [2]u8  : pointer to immutable array of 2 u8 values      
+  []u8          : slice(pointer + runtime len) of u8 values
+  []?u8         : slice(pointer + runtime len) of optional u8 values
+  ?[]u8         : optional slice(pointer + runtime len) of u8 values
+  []*u8         : slice(pointer + runtime len) of pointers to u8 values      
+  []*const u8   : slice(pointer + runtime len) of pointers to immutable u8 values      
+  [*]u8         : pointer(unknown len) to of u8
+  [*:0]u8       : pointer(unknown len) to but zero-terminated of u8 values
+  *[]const u8   : pointer to slice of immutable u8 values      
+  *[]*const ?u8 : pointer to slice of pointers to immutable optional u8 values  
   
   var x: i32 = 4;
   var ptr: *i32 = &x;
@@ -189,7 +203,7 @@
 - const: `const x: i32 = 7;`
 - uninit: `var x: i32 = undefined;`
   - Zig will fill with `0XAA` for debugging
-- type coercion: `const inferred_constant = @as(i32, 5); `
+- type coercion: `const inferred_constant = @as(i32, 5);`
 
 ### Integers
 
@@ -786,7 +800,7 @@ test "opaque" {
 }
 ```
 
-```
+```zig
 ./test-c1.zig:653:17: error: expected type '*Window', found '*Button'
     show_window(ok_button);
                 ^
@@ -879,7 +893,7 @@ test "tuple" {
 ### Slices
 
 - can create slices of arrays/pointers/and other slices using `[n..m]` syntax
-- _**NOTE**_: slice operator is `[n..m]` where n and m are `[idxStart,idxEnd)`
+- **_NOTE_**: slice operator is `[n..m]` where n and m are `[idxStart,idxEnd)`
   ```zig
   var array = [_]u32{0,1,2,3,4,5};
   var slice0: []u32 = array[0..];  // => {0,1,2,3,4,5}
