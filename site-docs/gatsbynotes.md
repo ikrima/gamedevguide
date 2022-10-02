@@ -5,7 +5,6 @@
 - Installing/Upgrade nodejs (upgrade is the same as installing a new nodejs version)
   From Powershell eleveated prompt:
   ```powershell
-
   cinst -y nvm.portable
   nvm install 10.16.0
   nvm install latest
@@ -65,17 +64,17 @@ gatsby serve
   - Lifecycle: <https://medium.com/narative/understanding-gatsbys-lifecycle-31c473ba2f2d>
 
 - Useful Examples
-  - Narative.co: https://github.com/narative/narative.co
+  - Narative.co: <https://github.com/narative/narative.co>
     - Has example of modal shortcut key launcher
-  - https://gatsby-docz.netlify.com/docs/
-  - https://using-remark.gatsbyjs.org/ & https://github.com/gatsbyjs/gatsby/tree/master/examples/using-remark
-  - https://github.com/LekoArts/gatsby-starter-minimal-blog
-  - https://mkdevdiary.netlify.com/gatsby-plugins-seo-and-images
-  - http://github.com/kyleamathews/blog
-  - Advanced Gatsby starter with better performance: https://github.com/ericwindmill/gatsby-starter-docs
+  - <https://gatsby-docz.netlify.com/docs/>
+  - <https://using-remark.gatsbyjs.org/> & <https://github.com/gatsbyjs/gatsby/tree/master/examples/using-remark>
+  - <https://github.com/LekoArts/gatsby-starter-minimal-blog>
+  - <https://mkdevdiary.netlify.com/gatsby-plugins-seo-and-images>
+  - <http://github.com/kyleamathews/blog>
+  - Advanced Gatsby starter with better performance: <https://github.com/ericwindmill/gatsby-starter-docs>
   - gatsby-remark-external-links
-  - Ant Design Pro: http://pro.ant.design/docs/use-components-alone
-  - Ant Design Kitchen Sink: http://kitchen.alipay.com/
+  - Ant Design Pro: <http://pro.ant.design/docs/use-components-alone>
+  - Ant Design Kitchen Sink: <http://kitchen.alipay.com/>
 
 ----------------
 
@@ -85,39 +84,39 @@ gatsby serve
 
 - [ ] Algolia Search integration
   - [ ] Still need the fast elasticlunar search component to be available. For now, can you add a config var in SiteCfg.js to toggle whether the site is built with the algolia component vs elastic lunr
-  - [ ] https://blog.tability.io/switching-to-documentation-as-code-with-gatsby-js-and-netlify-search-analytics-3-3/
+  - [ ] <https://blog.tability.io/switching-to-documentation-as-code-with-gatsby-js-and-netlify-search-analytics-3-3/>
 - [ ] #Perf: Sidebar search is slow.
-    - This is probably bc of the hierarchy construction of the sidebar and related to the other perf issues. This can happen just once during the build process and cache it into a generated json as an easy solution.
+  - This is probably bc of the hierarchy construction of the sidebar and related to the other perf issues. This can happen just once during the build process and cache it into a generated json as an easy solution.
 - [ ] Webpage's title tag != the current page title
-    - [ ] What other SEO/sitemap/etc things need to be done?
+  - [ ] What other SEO/sitemap/etc things need to be done?
 - [ ] Sidebar doesn't respond to touch controls on mobile/ipad
-- [ ] Integrate Jeri image viewer for use in mdx: https://jeri.io/
+- [ ] Integrate Jeri image viewer for use in mdx: <https://jeri.io/>
 - [ ] #Perf: The site responsiveness in clicking around is sluggish compared to how fast it should be (ignoring initial load)
-    - [ ] This is the level of site responsiveness to reach: Live Site: https://gatsby-docs-starter.netlify.com/lesson-one & Source: https://github.com/ericwindmill/gatsby-starter-docs
-        - Ofcourse look at the code or perf profile, but some thoughts on what it could be:
-            - Might be reloading the entire page
-            - Some expensive initialization might be reperformed on every page click vs being persistent
-            - Some advanced gatsby configuration settings might be set wrong. For example, the gatsby starter used for our site was the basic gatsby starter while the Gatsby Docs Starter used the Gatsby Advanced Starter. In the [Readme](https://github.com/ericwindmill/gatsby-starter-docs), it references "fast loading times thanks to pre-rendered HTML & automatic chunk loading of JS files"
-            - Defintely seems evident that it's reloading the entire page or sidebar as you click around. If you sync to #4f5ce285417af3ae9be19521d5aacc36a5e2d271 with the bug of autoexpanding sidebar, you can notice it
+  - [ ] This is the level of site responsiveness to reach: Live Site: <https://gatsby-docs-starter.netlify.com/lesson-one> & Source: <https://github.com/ericwindmill/gatsby-starter-docs>
+    - Ofcourse look at the code or perf profile, but some thoughts on what it could be:
+      - Might be reloading the entire page
+      - Some expensive initialization might be reperformed on every page click vs being persistent
+      - Some advanced gatsby configuration settings might be set wrong. For example, the gatsby starter used for our site was the basic gatsby starter while the Gatsby Docs Starter used the Gatsby Advanced Starter. In the [Readme](https://github.com/ericwindmill/gatsby-starter-docs), it references "fast loading times thanks to pre-rendered HTML & automatic chunk loading of JS files"
+      - Defintely seems evident that it's reloading the entire page or sidebar as you click around. If you sync to #4f5ce285417af3ae9be19521d5aacc36a5e2d271 with the bug of autoexpanding sidebar, you can notice it
 - [ ] Add Blog section
-    - Use netlify CMS: <https://www.netlifycms.org/docs/gatsby/> <https://www.gatsbyjs.org/docs/sourcing-from-netlify-cms/>
+  - Use netlify CMS: <https://www.netlifycms.org/docs/gatsby/> <https://www.gatsbyjs.org/docs/sourcing-from-netlify-cms/>
 
 ## Webdev bs Pt 4
 
-- [ ] CSS help: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ http://grid.malven.co/ https://visme.co/blog/layout-design/
-- [ ] Further prettification: Look at css styling from https://casual-effects.com/markdeep/#examples
+- [ ] CSS help: <https://css-tricks.com/snippets/css/a-guide-to-flexbox/> <http://grid.malven.co/> <https://visme.co/blog/layout-design/>
+- [ ] Further prettification: Look at css styling from <https://casual-effects.com/markdeep/#examples>
 - [ ] Add autodemarcation of notes still to be fully transitioned
 - [ ] Paginate search results
-- [ ] #Perf: Use Emotion - https://jenniferwadella.com/blog/all-the-dumb-mistakes-i-made-building-my-first-gatsby-site
-- [ ] #Perf: Image Optimization - https://medium.com/@kyle.robert.gill/ridiculously-easy-image-optimization-with-gatsby-js-59d48e15db6e
-- [ ] #Visual: Find a decent visual theme for markdown (https://github.com/pedronauck/gatsby-starter-docz)
+- [ ] #Perf: Use Emotion - <https://jenniferwadella.com/blog/all-the-dumb-mistakes-i-made-building-my-first-gatsby-site>
+- [ ] #Perf: Image Optimization - <https://medium.com/@kyle.robert.gill/ridiculously-easy-image-optimization-with-gatsby-js-59d48e15db6e>
+- [ ] #Visual: Find a decent visual theme for markdown (<https://github.com/pedronauck/gatsby-starter-docz>)
 - [ ] Prettify site with Gatsby Theme support: Examples
-      - https://medium.com/@kyle.robert.gill/a-simple-guide-to-gatsbyjs-themes-a4f9765c5ac7
-      - https://www.christopherbiscardi.com/post/running-a-gatsby-starter-as-a-theme
-      - https://github.com/jannikbuschke/gatsby-antd-docs
-      - https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs
-      - https://github.com/alxshelepenok/gatsby-starter-lumen
-      - https://unrealartoptimization.github.io/
+      - <https://medium.com/@kyle.robert.gill/a-simple-guide-to-gatsbyjs-themes-a4f9765c5ac7>
+      - <https://www.christopherbiscardi.com/post/running-a-gatsby-starter-as-a-theme>
+      - <https://github.com/jannikbuschke/gatsby-antd-docs>
+      - <https://github.com/apollographql/gatsby-theme-apollo/tree/master/packages/gatsby-theme-apollo-docs>
+      - <https://github.com/alxshelepenok/gatsby-starter-lumen>
+      - <https://unrealartoptimization.github.io/>
 - [ ] Edit on github sidebar link for markdown pages
 
 ----------------
@@ -129,18 +128,18 @@ gatsby serve
   - [x] Material UI:
     - This looks like it has an easy integration with Gatsby and easy styling support
     - If it'd be fast to update the code from ant design to this, I'd prefer this
-    - https://www.gatsbyjs.org/packages/gatsby-plugin-material-ui/
+    - <https://www.gatsbyjs.org/packages/gatsby-plugin-material-ui/>
   - [x] Ant Design UI System **_(choosing this)_**
     - The other option is to stick with Ant Design.
-    - Here's an example integration with gatsby: https://github.com/jannikbuschke/gatsby-antd-docs
-- [x] Add search bar on the left column to search headings (example: https://gatsby-docz.netlify.com/docs/)
+    - Here's an example integration with gatsby: <https://github.com/jannikbuschke/gatsby-antd-docs>
+- [x] Add search bar on the left column to search headings (example: <https://gatsby-docz.netlify.com/docs/>)
 - [x] Make submenu headings in sidebar more noticable and more vertically more compact
 - [x] #Perf: The site responsiveness in clicking around is sluggish compared to how fast it should be
-    - [x] This should also not reset the scroll position of the sidebar toc menu
+  - [x] This should also not reset the scroll position of the sidebar toc menu
 - [x] Improve the search components
-    - [x] Inline seach should display a list of excerpts and highlights
-    - [x] Search results page should also display excerpts and highlights
-    - [x] Allow search for specific guides
+  - [x] Inline seach should display a list of excerpts and highlights
+  - [x] Search results page should also display excerpts and highlights
+  - [x] Allow search for specific guides
 - [x] Add support for ordering between sidebar toc submenu headers and site pages
 
 ## Webdev bs Pt 1
@@ -154,10 +153,10 @@ gatsby serve
 - [x] ~~General simplifications~~
 - [x] ~~Convert all markdown files to kebab case~~
 - [x] ~~Visual: Make sidebar collapsible~~
-- [x] ~~Visual: Fix CSS typography for content. Looks like CSS fighting each other. The main guide content should match the styling of the St. Annes preset in https://kyleamathews.github.io/typography.js/~~
-    - ~~Specifically, the margins around headings & paragraphs is zero on the site~~
+- [x] ~~Visual: Fix CSS typography for content. Looks like CSS fighting each other. The main guide content should match the styling of the St. Annes preset in <https://kyleamathews.github.io/typography.js/>~~
+  - ~~Specifically, the margins around headings & paragraphs is zero on the site~~
 - [x] Visual: When you click to another page in a guide, the sidebar menu's headers will reset to their default state (fully toggled open and expanded). Instead, the menu state should persist from page to page. (Ex: click on some of the menu headers to collapse them. Then navigate to another page in the guide. The headers that you collapsed should stay collapsed)
-- [x] ~~Add search - https://www.gatsbyjs.org/docs/adding-search/~~
+- [x] ~~Add search - <https://www.gatsbyjs.org/docs/adding-search/>~~
   - [x] ~~Use elastic lunr & corresponding gatsby plugin~~
   - [x] ~~Should support partial matches, searching titles, and content of guides md file~~
   - [x] ~~Add Ant design Search react component in header~~

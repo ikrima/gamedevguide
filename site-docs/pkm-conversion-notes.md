@@ -3,8 +3,11 @@
 ## Kindle
 [Obsidian Kindle Importer](https://github.com/hadynz/obsidian-kindle-plugin)
 
-## OneNote Export
+## Notion Export
+- Worked better: <https://github.com/connertennery/Notion-to-Obsidian-Converter>
+- <https://github.com/visualcurrent/Notion-2-Obsidan>
 
+## OneNote Export
 Well this is a hellish nightmare. From best to worst:
 - [ConvertOneNote2MarkDown](https://github.com/SjoerdV/ConvertOneNote2MarkDown)
   - [Extended fork](https://github.com/theohbrothers/ConvertOneNote2MarkDown)
@@ -43,8 +46,3 @@ Well this is a hellish nightmare. From best to worst:
 - Conversion To New Format
   - [gitbook convert](https://github.com/GitbookIO/gitbook-convert)
   - [Pandoc](https://pandoc.org/): to convert from word/pdf to markdown
-
-## Notion Export
-
-- Worked better: <https://github.com/connertennery/Notion-to-Obsidian-Converter>
-- <https://github.com/visualcurrent/Notion-2-Obsidan>
