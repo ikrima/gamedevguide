@@ -81,8 +81,8 @@
   |------|---------|--------|-------|-------|
   |new|continue|auto close|non-persistent|`#!bat start "title" cmd /c bar.exe arg1 arg2`|
   |new|continue|keep open|non-persistent|`#!bat start "title" cmd /k bar.exe arg1 arg2`|
-  |new|block|auto close|non-persistent|`#!bat start /wait "title" cmd /c foo.cmd arg1 arg2`|
-  |new|block|keep open|non-persistent|`#!bat start /wait "title" cmd /k foo.cmd arg1 arg2`|
+  |new|block|auto close|non-persistent|`#!bat start "title" /wait cmd /c foo.cmd arg1 arg2`|
+  |new|block|keep open|non-persistent|`#!bat start "title" /wait cmd /k foo.cmd arg1 arg2`|
   |same|block|auto close|non-persistent|`#!bat cmd /c foo.bat arg1 arg2`|
   |same|block|keep open|non-persistent|`#!bat cmd /k foo.bat arg1 arg2`|
   |same|block|keep open|persistent|`#!bat call foo.bat arg1 arg2`|

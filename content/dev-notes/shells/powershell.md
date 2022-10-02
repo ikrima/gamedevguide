@@ -216,3 +216,4 @@ foreach ($file in Get-ChildItem 'C:\') { $file.name }
 - [Everything You Wanted To Know About Hashtable](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-hashtable)
 - [Everything You Wanted To Know About PsCustomObject](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-pscustomobject)
 - [Everything You Wanted To Know About String Interpolation](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-string-substitutions)
+- [PowerShell Best Practices and Style Guide](https://poshcode.gitbook.io/powershell-practice-and-style)

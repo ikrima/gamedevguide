@@ -37,6 +37,7 @@
     import ifm             from "./IFoo"; // import IFoo module
     import { kFoo }        from "./IFoo"; // import 'kFoo' constant
     import type { IFoo }   from "./IFoo"; // type only import 'IFoo' interface
+    import { kFoo, type IFoo} from "./IFoo"; // Explicitly pull out a value (kFoo) and a type (IFoo) 
     import IFoo = ifm.IFoo;               // type only import statement version
     import { CFoo as CFA } from "./CFoo"; // import 'CFoo' class as 'CFA' class alias
     let myFoo = new CFA();
