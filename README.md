@@ -1,9 +1,7 @@
 # Game Development Notes
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b04d49f2-9006-49ee-9f9a-569f59732aff/deploy-status)](https://app.netlify.com/sites/gamedevguide/deploys)
-
-[Site live @ https://ikrima.dev/](https://ikrima.dev/)
-
+[Site live @ https://ikrima.dev/](https://ikrima.dev)
 [Github repo @ https://github.com/ikrima/gamedevguide](https://github.com/ikrima/gamedevguide)
 
 ## Wut is this
