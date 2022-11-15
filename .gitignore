@@ -1,29 +1,5 @@
-# Node template
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.grunt
-node_modules/
-jspm_packages/
-typings/
-.npm
-.eslintcache
-.node_repl_history
-.yarn-integrity
-
-# IDE
-.idea/*
-*.iml
-*.sublime-*
-
-# OSX
-.DS_Store
-
-# config files
-.env.*
-!.env.example
-
-# Docs Custom
+﻿# Docs Custom
+.build/
 .cache/
 .netlify
 site/

@@ -1,0 +1,27 @@
+{
+  "recommendations": [
+    "bierner.markdown-preview-github-styles",
+    "cgtoolbox-guillaume-jobst.houdinivexhelp",
+    "darkriszty.markdown-table-prettify",
+    "davidanson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "donjayamanne.python-environment-manager",
+    "esbenp.prettier-vscode",
+    "goessner.mdmath",
+    "jebbs.markdown-extended",
+    "melmass.vex",
+    "mikestead.dotenv",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-vscode.powershell",
+    "redhat.vscode-yaml",
+    "slevesque.shader",
+    "yzhang.markdown-all-in-one",
+    "mechatroner.rainbow-csv",
+
+    // "rust-lang.rust-analyzer",
+    // "kortina.vscode-markdown-notes",
+    // "errata-ai.vale-server",
+  ],
+  "unwantedRecommendations": [ ]
+}

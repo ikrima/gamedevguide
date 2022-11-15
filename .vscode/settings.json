@@ -1,0 +1,54 @@
+{
+  "files.exclude": {
+    ".build":                true,
+    "**/zig-out":            true,
+    "**/zig-cache":          true,
+  },
+  "files.associations": {
+    ".pages": "yaml",
+  },
+  "yaml.schemas": {
+    "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+  },
+  "yaml.customTags": [
+    "!ENV scalar",
+    "!ENV sequence",
+    "tag:yaml.org,2002:python/name:materialx.emoji.to_svg",
+    "tag:yaml.org,2002:python/name:materialx.emoji.twemoji",
+    "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format",
+    "tag:yaml.org,2002:python/object/apply:pymdownx.arithmatex.arithmatex_inline_format mapping",
+    "tag:yaml.org,2002:python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format mapping",
+    "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping",
+  ],
+
+  "powershell.startAutomatically":              true,
+  "powershell.promptToUpdatePowerShell":        true,
+  "powershell.integratedConsole.showOnStartup": true,
+
+  "npm.packageManager":      "npm",
+  "eslint.enable":           true,
+  "eslint.packageManager":   "npm",
+  // "markdownlint.config":  { "extends": ".markdownlint.jsonc", },
+  "python.linting.enabled": true,
+
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#c073db88",
+    "activityBar.background": "#c073db88",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#e5d19a",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#c073db88",
+    "statusBar.background": "#ae4bd088",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#c073db88",
+    "statusBarItem.remoteBackground": "#ae4bd088",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#ae4bd088",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#ae4bd099",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#ae4bd088",
+}
