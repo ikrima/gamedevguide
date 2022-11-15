@@ -1,13 +1,14 @@
-# MkDocs Cheat Sheet
+# MkDocs CheatSheet
 
 ## Usage
 
-| Command                | Desc              |
-| ---------------------- | ----------------- |
-| `mkdocs serve`         | hot reload builds |
-| `mkdocs build --clean` | clean build       |
+|Command|Desc|
+|-------|----|
+|`mkdocs serve`|hot reload builds|
+|`mkdocs build --clean --site-dir ./build/site`|clean build|
 
 ## Setup
+
 - install:
   - using requirements: `pip install -r requirements.txt`
   - manually:
