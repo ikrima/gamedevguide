@@ -1,4 +1,4 @@
-# Regex Cheat Sheet
+# Regex CheatSheet
 
 ## Common Regex Patterns
 

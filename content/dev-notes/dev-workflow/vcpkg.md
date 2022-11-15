@@ -1,15 +1,15 @@
-# Vcpkg Cheat Sheet
+# Vcpkg CheatSheet
 
 - update:
   - short version: `git pull && bootstrap-vcpkg.bat -disableMetrics`
   - safer version:
-    ```bat
+    ```bash
     cd <vcpkg_root>
-    vcpkg list > installed_ports.txt @rem save a list of all installed ports somewhere 
+    vcpkg list > installed_ports.txt  # save a list of all installed ports somewhere 
     git pull
     nukedir installed/
-    bootstrap-vcpkg.bat -disableMetrics
-    vcpkg install <...> @rem reinstall all ports:triplets you need
+    bootstrap-vcpkg.bat -disableMetrics # reinstall all ports:triplets you need
+    vcpkg install <...> 
     ```
   
   - 

@@ -1,11 +1,11 @@
-# Node Cheat Sheet
+# NodeJS CheatSheet
 
 ## Nvm
 
 - [nvm-windows](https://github.com/coreybutler/nvm-windows): hassle free install means on windows
 - [npm-check-updates](https://www.npmjs.com/package/npm-check-updates): utility package for major version package upgrades
 - install/upgrade `nvm`, `node`, `npm`, `yarn`, `TypeScript`
-  ```shell
+  ```bash
   nvm install [version]
   nvm use [version]
   npm install -g npm@latest
@@ -19,7 +19,7 @@
 |Command|Desc|
 |-------|----|
 |`nvm list available`|list available node versions to install|
-|`nvm install [version]`|install node version; **note:** global npm modules are not shared so must be reinstalled|
+|`nvm install [version]`|install node version; **_NOTE:_** global npm modules are not shared so must be reinstalled|
 |`nvm use [version]`|switch node version|
 |`nvm current`|info on currently selected node version|
 |`npm install -g npm@latest`|upgrade npm to the latest version|

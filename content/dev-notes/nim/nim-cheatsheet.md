@@ -1,6 +1,6 @@
-# Nim
+# Nim CheatSheet
 
-# Resources
+## Resources
 
 - Tuts
   - [https://nim-lang.org/docs/tut3.html](https://nim-lang.org/docs/tut3.html)
@@ -16,7 +16,7 @@
   - pattern matching [https://github.com/alehander92/gara](https://github.com/alehander92/gara)
   - alternate: [http://andreaferretti.github.io/patty/](http://andreaferretti.github.io/patty)
 
-# Macro Codegen
+## Macro Codegen
 
 - dumpTree, dumpAstGen, dumpLisp, dump
 
@@ -63,13 +63,13 @@
 
 ![](_assets/NimAstTable.png)
 
-# Nim Script
+### Nim Script
 
 - runtime eval of nim subset
 - [https://nim-lang.github.io/Nim/nims.html](https://nim-lang.github.io/Nim/nims.html)
 - [https://peterme.net/how-to-embed-nimscript-into-a-nim-program-embedding-nimscript-pt-2.html](https://peterme.net/how-to-embed-nimscript-into-a-nim-program-embedding-nimscript-pt-2.html)
 
-## **References:**
+### References
 
 - [https://livebook.manning.com/book/nim-in-action/chapter-9/304](https://livebook.manning.com/book/nim-in-action/chapter-9/304)
 - [https://flenniken.net/blog/nim-macros/](https://flenniken.net/blog/nim-macros)
@@ -77,7 +77,7 @@
 - [https://nim-lang.org/blog/2018/06/07/create-a-simple-macro.html](https://nim-lang.org/blog/2018/06/07/create-a-simple-macro.html)
 - [https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#macros](https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#macros)
 
-# Nim DSL
+## Nim DSL
 
 - [https://github.com/mratsim/compute-graph-optim](https://github.com/mratsim/compute-graph-optim)
 - [https://github.com/numforge/laser/tree/master/laser/lux_compiler](https://github.com/numforge/laser/tree/master/laser/lux_compiler)
@@ -88,7 +88,7 @@
 - [https://github.com/mratsim/trace-of-radiance/blob/master/trace_of_radiance/physics/materials.nim#L91-L96](https://github.com/mratsim/trace-of-radiance/blob/master/trace_of_radiance/physics/materials.nim#L91-L96)
 - [https://github.com/mratsim/trace-of-radiance/blob/master/trace_of_radiance/physics/core.nim#L24-L28](https://github.com/mratsim/trace-of-radiance/blob/master/trace_of_radiance/physics/core.nim#L24-L28)
 
-# Useful Libraries/links
+## Useful Libraries/links
 
 - https://github.com/zevv/npeg
 

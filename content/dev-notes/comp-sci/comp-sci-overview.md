@@ -1,4 +1,4 @@
-# General Comp Sci
+# Computer Science Theory
 
 ## Data Structures
 

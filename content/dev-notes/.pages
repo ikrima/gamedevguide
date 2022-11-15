@@ -3,16 +3,23 @@ nav:
   - assembly:         assembly
   - clang:            clang
   - clojure:          clojure
+  - comp sci:         comp-sci
   - cpp:              cpp
-  - databases:        databases
+  - debugging:        debugging
+  - dev workflow:     dev-workflow
+  - devops:           devops
   - imgui:            imgui
   - mlir:             mlir
+  - nim:              nim
+  - nodejs:           nodejs
   - optimization:     optimization
   - os:               os
   - prog lang theory: prog-lang-theory
   - python:           python
+  - rust:             rust
   - shells:           shells
-  - ux:               ux
+  - typescript:       typescript
   - visual studio:    visual-studio
+  - vscode:           vscode
   - zig:              zig
   - ...

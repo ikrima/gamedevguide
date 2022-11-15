@@ -1,4 +1,4 @@
-# Rust Cheat Sheet
+# Rust CheatSheet
 
 [rustup](https://www.rust-lang.org/tools/install) is the preferred rust toolchain manager
 [cargo](https://doc.rust-lang.org/cargo) is the rust package manager
