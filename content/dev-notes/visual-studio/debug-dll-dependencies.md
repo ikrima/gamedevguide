@@ -15,7 +15,7 @@
 
 - When trying to find all the libraries the project is loading & the order, build with this linker flag: `/verbose:lib`
 - Use dumpbin & dependencywalker to find what libraries/dlls are linked against (MSVCRT/MSVCRTD/LIBCMT/x64 vs x86)
-  ```shell
+  ```bash
   dumpbin.exe /Directives                         # use to see the runtime library that is linked
   dumpbin.exe /HEADERS                            # use to see if x86 vs x64 in the machine entry
   DUMPBIN /LINKERMEMBER[:{1|2}] <libraryname.lib> # output all the exported symbols in a lib

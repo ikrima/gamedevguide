@@ -1,4 +1,4 @@
-# Conda Cheat Sheet
+# Conda CheatSheet
 
 ## Managing Environments
 
@@ -26,4 +26,4 @@
 ## References
 
 - [manage environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-- [cheatsheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
+- [Official CheatSheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)

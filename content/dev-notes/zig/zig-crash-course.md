@@ -153,7 +153,7 @@
 
 - **@truncate:** explicitly cast to a smaller-size integer with the same signedness, by removing the most-significant bits
   
-  - **NOTE**: `@truncate()` on signed integers removes the most significant bits so the results may or may not remain negative
+  - **_NOTE:_** `@truncate()` on signed integers removes the most significant bits so the results may or may not remain negative
     ```zig
     var x = @as(u16, 513);    // x in binary: 0000001000000001
     var y = @truncate(u8, x); // y in binary:         00000001
@@ -893,7 +893,7 @@ test "tuple" {
 ### Slices
 
 - can create slices of arrays/pointers/and other slices using `[n..m]` syntax
-- **_NOTE_**: slice operator is `[n..m]` where n and m are `[idxStart,idxEnd)`
+- **_NOTE:_** slice operator is `[n..m]` where n and m are `[idxStart,idxEnd)`
   ```zig
   var array = [_]u32{0,1,2,3,4,5};
   var slice0: []u32 = array[0..];  // => {0,1,2,3,4,5}

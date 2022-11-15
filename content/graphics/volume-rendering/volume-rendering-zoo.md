@@ -3,22 +3,22 @@
 
 ## Techniques
 
-1. Reference pathtrace/raymarch
-1. Volume Flipbook
-1. Particle Rendering with Slabs sampling
-1. Channel Lighting
-   - Volume Filtering with mips
-   - Turn Zeus into Cloud Volume
-1. IsoSurface Tracking
-   - Mean Occlusion
-   - Directional Occlusion
-   - Directional Lightfield
-1. Vertex Baking
-1. Basis Functions
-   - Spherical Harmonics
-   - Spherical Gaussians
-   - Fourier Opacity Maps
-   - Extinction Transmittance Maps \[Extinction Transmittance Maps]
+- Reference pathtrace/raymarch
+- Volume Flipbook
+- Particle Rendering with Slabs sampling
+- Channel Lighting
+  - Volume Filtering with mips
+  - Turn Zeus into Cloud Volume
+- IsoSurface Tracking
+  - Mean Occlusion
+  - Directional Occlusion
+  - Directional Lightfield
+- Vertex Baking
+- Basis Functions
+  - Spherical Harmonics
+  - Spherical Gaussians
+  - Fourier Opacity Maps
+  - Extinction Transmittance Maps \[Extinction Transmittance Maps]
 
 - Precomputed Radiance Transfer for Volume Rendering
   - Do it inside the volume

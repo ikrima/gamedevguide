@@ -1,4 +1,4 @@
-# Graphics Cheat Sheet
+# Graphics CheatSheet
 
 Shit I annoyingly forget and always have to lookup
 - [[physical-units-for-lights|Physical Units for Lights]]: better summary from Eric Haines
@@ -26,7 +26,8 @@ Shit I annoyingly forget and always have to lookup
 **Lux:**
 
 - Measures *illuminance* aka luminous flux per unit area or how much light is falling on a surface
-- Can also be used for *luminous emittance* which is emitted lumens (**note:** this is different from luminance)
+- Can also be used for *luminous emittance* which is emitted lumens
+  - **_NOTE:_** this is different from luminance
 - $1 \operatorname{lx}=1 \ \mathrm{lm} / \mathrm{m}^{2}=1 \mathrm{cd} \cdot \mathrm{sr} / \mathrm{m}^{2}$
 
 **Luminance:**

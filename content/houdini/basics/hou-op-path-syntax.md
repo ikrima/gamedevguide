@@ -6,7 +6,7 @@ Operator parameters can be set with expressions, either in VEX or HScript
 HScript is Houdini's older scripting language, primarly used for expressions in parameters
 Should usually just use VEX but some places require hscript
 
-## Cheat Sheet
+## CheatSheet
 
 - \` \` means evaluate expression inside of this string
 - `Op:...` path reference syntax in VEX

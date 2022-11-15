@@ -59,7 +59,7 @@ VEX is Houdini's SIMD streaming scripting language
   //Create array to store the primitive's point numbers
   v@primpoints;//This vector is used to store the 3 points instead of using an array, due to a limit with array attributes.
 
-  //NOTE: Basically if you want to access the array in another wrangle
+  // NOTE: Basically if you want to access the array in another wrangle
   // further down the chain, you need to use a data type other than an
   // array instead, a vector or matrix can be used to store array like data structures
 

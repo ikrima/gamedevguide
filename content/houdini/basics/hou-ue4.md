@@ -12,7 +12,7 @@
   - Use T0 as ref pose = True
   - Convert Scene = True
   - Force X-Axis = True
-- NOTE: Not sure how to export morph targets into UE4
+- **_NOTE:_** Not sure how to export morph targets into UE4
 - GOTCHAS:
   - Make sure prerot/postrot is set accordingly between bindpose & imported fbx
   - UE4 exported fbxs dont have prerot & postrot

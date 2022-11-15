@@ -105,7 +105,7 @@ Zig's metaprogramming is driven by a few basic concepts:
   - have "static" lifetimes (can think of values as garbage collected)
 - `anytype` struct fields are allowed
   - turns the struct into a comptime type
-  - _**NOTE:**_ allows the type of the field to be mutable
+  - **_NOTE:_** allows the type of the field to be mutable
     ```zig
     const ArgTuple = struct {
       tuple: anytype = .{},

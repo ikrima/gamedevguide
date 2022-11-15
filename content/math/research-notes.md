@@ -1,5 +1,5 @@
 # Math Research Notes
-Machine Learning Cheatsheet from [Scikit](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html):
+Machine Learning CheatSheet from [Scikit](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html):
 ![](_assets/scikit-ml-cheatsheet.png)
 
 ## Geometry Processing

@@ -137,7 +137,7 @@
     - **collateral**
     - **conditional**
     - **iterative**
-  - **note:** language should provide all or most of the above; additional statement forms indication language is probably bloated
+  - **_NOTE:_** language should provide all or most of the above; additional statement forms indication language is probably bloated
 
 ## Variables
 
@@ -191,7 +191,7 @@
     - **status:** either **allocated** or **unallocated**
     - **location:** unique address to reference this cell
     - **content:** for allocated cells either **storable value** or **undefined**
-    - **note:** implementation may implicitly define these (e.g. storage cells in stack frame implicitly allocated, location usually implicit)
+    - **_NOTE:_** implementation may implicitly define these (e.g. storage cells in stack frame implicitly allocated, location usually implicit)
   - **dereferencing:** operation that yielding current content of reference
 - **pointer:**  entity that abstracts how a _store_ addresses _typed storage cells_
   

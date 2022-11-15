@@ -84,7 +84,7 @@ Let me try to lay out some of the rules: [Reference](https://www.sidefx.com/foru
 
 - Changing the Splash Screen by [Setting Houdini Environment Variables](https://www.sidefx.com/docs/houdini/basics/config_env.html).
   - Modify `$HOME/houdiniX.x/houdini.env`
-    ```shell
+    ```bash
     HOUDINI_SPLASH_FILE = ~/Pictures/splashscreen_001.png
     HOUDINI_SPLASH_MESSAGE = "Welcome//n${USER} @ ${HOSTNAME}//n${HOUDINI_VERSION}//nGood Luck!"
     HOUDINI_NO_START_PAGE_SPLASH = 1

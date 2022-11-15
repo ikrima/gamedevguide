@@ -1,6 +1,6 @@
 # Cliff Notes
 
-Condensed cheat sheet/mnemonics of stuff I forget
+Condensed CheatSheet/mnemonics of stuff I forget
 
 ## Differential Geometry
 

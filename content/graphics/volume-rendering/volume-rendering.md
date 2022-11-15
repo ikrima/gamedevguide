@@ -57,7 +57,8 @@ $$
   - If density varies along path segment, we can just average it between the start and end: $\frac{1-e^{-0.5\left( \sigma_{t}\left(\boldsymbol{x}^{1}\right) +\sigma_{t}\left(\boldsymbol{x}^{1}\right)\right) \Delta s}}{\sigma_{t}}$
 - The medium is a collection of microscopic particles where their size is >> size of light wavelength
 - We assume particle positions are statistically independent so that we can multiply individual particle cross-sections by density to yield scattering coefficients
-- We usually assume an _isotropic_ medium aka the collision coefficients do not depend on the direction of light propagation and the phase function is only parameterized by angle between incoming light and scattered outgoing light. **NOTE:** The phase function itself can still be anisotropic
+- We usually assume an _isotropic_ medium aka the collision coefficients do not depend on the direction of light propagation and the phase function is only parameterized by angle between incoming light and scattered outgoing light. 
+  - **_NOTE:_** The phase function itself can still be anisotropic
 - **Nerd-out assumptions:** Also assuming elastic scattering where photon packet can only change direction (and not energy/wavelength) at scattering events. So we can't simulate flourescene/phosphorescence but allows us to simulate individual wavelengths of light independently of each other. What does this mean in practice in 2019 for realtime rendering? Nothing other than providing fodder for people who like to "Well actually..." derail conversation threads.
 
 ## Derivation of lambert-beer

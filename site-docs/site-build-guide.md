@@ -7,12 +7,12 @@ Use instructions in [pkm-conversion-notes] to convert from OneNote, Notion, etc
 ### Export
 - [obsidian export](https://github.com/ikrima/obsidian-export): export obsidian vault to markdown files
   - build
-    ```bat
-    pushd site-tools\obsidian-export && cargo build --release && popd
+    ```bash
+    pushd site-tools/obsidian-export && cargo build --release && popd
     ```
   - run
     > [!note] `obsidian-export` won't override existing files
-    ```bat
+    ```bash
     mkdir %EDEV_SRCDIR%/personal/gdgTmpContent &
     %EDEV_SRCDIR%/personal/tolva-docs/obsidian-export/target/release/obsidian-export.exe %EDEV_SRCDIR%/personal/tolva-docs/docs %EDEV_SRCDIR%/personal/gdgTmpContent &
     robocopy /MIR %EDEV_SRCDIR%/personal/gdgTmpContent %EDEV_SRCDIR%/personal/gamedevguide/content/dev-notes &
@@ -39,7 +39,7 @@ Use instructions in [pkm-conversion-notes] to convert from OneNote, Notion, etc
 [Vale](https://earthly.dev/blog/markdown-lint/): grammar linter
 
 - install
-  ```bat
+  ```bash
   choco install vale
   vale sync
   ```

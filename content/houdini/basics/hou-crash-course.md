@@ -70,7 +70,7 @@
   - opls (aliased to ls)
   - oppwf (aliased to oppwd and pwd)
   - Ex
-    ```shell
+    ```bash
     cd '/obj'
     ls -al
     ```

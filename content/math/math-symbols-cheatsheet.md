@@ -1,4 +1,4 @@
-# Math Symbols LaTeX Cheatsheet
+# Math Symbols LaTeX CheatSheet
 
 ## Accents
 

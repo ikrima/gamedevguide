@@ -73,7 +73,7 @@
 
 - `#!bat pause` or `#!bat puase >nul`: to pause execution until keypress [Reference](https://stackoverflow.com/questions/988403/how-to-prevent-auto-closing-of-console-after-the-execution-of-batch-file)
 
-### Cheatsheet
+### CheatSheet
 
 - launching commands/scripts
   
@@ -98,7 +98,7 @@
   |Spaces in Program Path + parameters with spaces|`#!bat cmd /k ""c:\batch files\demo.cmd" "Parameter 1 with space" "Parameter2 with space""`|
   |Launch Demo1 and then Launch Demo2|`cmd /c ""demo1.cmd" & "demo2.cmd""`|
 
-- Command redirection/ pipe command. \[Reference\]<https://ss64.com/nt/syntax-redirection.html>
+- Command redirection/pipe command. \[Reference\]<https://ss64.com/nt/syntax-redirection.html>
   
   |Scenario|Example|
   |--------|-------|

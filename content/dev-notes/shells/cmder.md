@@ -1,4 +1,4 @@
-# Cmder Cheat Sheet
+# Cmder CheatSheet
 
 ## Setup
 
@@ -27,10 +27,10 @@
   
   ```ini
   [cmder]
-    status    = false  # Opt out of Git status for 'ALL' Cmder supported shells.
-    cmdstatus = false  # Opt out of Git status for 'Cmd.exe' shells.
-    psstatus  = false  # Opt out of Git status for 'Powershell.exe and 'Pwsh.exe' shells.
-    shstatus  = false  # Opt out of Git status for 'bash.exe' shells.
+  status    = false  # Opt out of Git status for 'ALL' Cmder supported shells.
+  cmdstatus = false  # Opt out of Git status for 'Cmd.exe' shells.
+  psstatus  = false  # Opt out of Git status for 'Powershell.exe and 'Pwsh.exe' shells.
+  shstatus  = false  # Opt out of Git status for 'bash.exe' shells.
   ```
 
 ## VSCode

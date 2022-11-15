@@ -18,38 +18,38 @@
   ```
 
 - Upgrade Gatsby
-  ```shell
-  npm outdated ;  to identify new releases for all your dependencies
+  ```bash
+  npm outdated         # to identify new releases for all your dependencies
   gatsby info
   node -v
   npm -v
-  npm update -g gatsby ; upgrade gatsby globally
-  npm update --dev ; update all packages in project
+  npm update -g gatsby # upgrade gatsby globally
+  npm update --dev     # update all packages in project
   ```
 
 - Building
-  ```shell
+  ```bash
   npm run dev
-  npm run develop ; clean & start develop environment
+  npm run develop # clean & start develop environment
   npm run build & npm run serve
   ```
 
 - Misc commands
-  ```shell
+  ```bash
   npm run lint
   npm run lint:fix
   npm run format:js
   npm run format:md
   npm run format:mdx
-  npm run formatp:md   ; this uses prettier which isnt as configurable
-  npm run formatp:mdx  ; this uses prettier which isnt as configurable
+  npm run formatp:md   # this uses prettier which isnt as configurable
+  npm run formatp:mdx  # this uses prettier which isnt as configurable
   ```
 
 # Gatsby Notes
 
 ## Cheat Sheet
 
-```shell
+```bash
 gatsby new gamedevguide https://github.com/ikrima/gamedevguide (or git clone + yarn)
 gatsby develop (yarn develop)
 gatsby build
