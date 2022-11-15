@@ -19,17 +19,16 @@
 ## Macro Codegen
 
 - dumpTree, dumpAstGen, dumpLisp, dump
-
 - expandMacros
-
 - treeRepr, repr, lispRepr
-  
+
   ```python
   macro myAssert(arg: untyped): untyped =
     echo arg.treeRepr
   ```
-  
+
   - see generated code
+
   ```python
   macro myAssert(arg: untyped): untyped =
   # all node kind identifiers are prefixed with "nnk"
@@ -39,7 +38,7 @@
     let op  = newLit(" " & arg[0].repr & " ")
     let lhs = arg[1]
     let rhs = arg[2]
-  
+
     result = quote do:
       if not `arg`:
         raise newException(AssertionError,$`lhs` & `op` & $`rhs`)
@@ -47,21 +46,16 @@
   ```
 
 - staticRead & staticExec to read files/process at compile time
-
 - `do notation` multiple code blocks to macros [https://nim-lang.org/docs/manual_experimental.html#do-notation](https://nim-lang.org/docs/manual_experimental.html#do-notation)
-
 - parseStmt & parseExpr
-
 - `getAst` (pass macro or template), `quote do:` pass statements/expressions, code inside the body of quote can be substituted by surrounding it with backticks.
-
 - extraction from ast nodes
-  
   - name(x) - name of proc
   - body(x) - body
   - createProcType
   - typeof
 
-![](_assets/NimAstTable.png)
+![](../_assets/NimAstTable.png)
 
 ### Nim Script
 
@@ -91,23 +85,17 @@
 ## Useful Libraries/links
 
 - https://github.com/zevv/npeg
-
 - https://nim-lang.org/docs/nimc.html#compiler-usage-generated-c-code-directory
-
 - https://github.com/nim-lang/c2nim/blob/master/doc/c2nim.rst#embedding-nim-code
-
 - https://github.com/nim-lang/c2nim/blob/master/doc/c2nim.rst#embedding-nim-code
-
 - https://github.com/nimterop/nimterop
-
 - https://github.com/nimterop/nimterop/wiki/Wrappers
-
 - Parsing
-  
+
   - https://github.com/loloicci/nimly
   - https://forum.nim-lang.org/t/3881
+
 - Learning
-  
   - Basics
     https://nim-lang.org/learn.html
     https://livebook.manning.com/book/nim-in-action/chapter-8/45
@@ -128,7 +116,7 @@
     https://nim-lang.org/docs/tables.html#initOrderedTable,int
     https://nim-lang.org/docs/macros.html#children.i%2CNimNode
     https://nim-lang.org/docs/filters.html
-    \[https://nim-lang.org/docs/tables.html#\[\],OrderedTable\[A,B\],A\]
+    [https://nim-lang.org/docs/tables.html#[],OrderedTable[A,B],A]
     https://nim-lang.org/docs/typeinfo.html#fields.i%2CAny
     https://github.com/zero-functional/zero-functional#filter
     https://github.com/zero-functional/zero-functional/blob/master/test.nim
