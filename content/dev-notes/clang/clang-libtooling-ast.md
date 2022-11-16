@@ -106,8 +106,10 @@
 
 - clang tidy search foe specific clang-tidy nodes
 - Clang Tidy Matcher
-  - registerMatchers(MatchFiner\* finder) { finder->addMatcher(MY_MATCHER...); }
-  - virtual void check(const MatchFinder::MatchResult& result)
+  ```cpp
+  registerMatchers(MatchFiner* finder) { finder->addMatcher(MY_MATCHER...); }
+  virtual void check(const MatchFinder::MatchResult& result)
+  ```
 
 ## Clang Tidy Check Talk
 
@@ -137,4 +139,4 @@
   - `diag(MatchExpr->getExprLoc(), "message");`
 - use .bind to give matcher a name
 
-- run-clang-tidy.py -clang-tidy-binary \<path/to/exe> -checks ...
+- `run-clang-tidy.py -clang-tidy-binary <path/to/exe> -checks ...`

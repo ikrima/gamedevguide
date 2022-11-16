@@ -210,8 +210,8 @@ from itertools import count, repeat, cycle, chain, islice
 ```
 
 ```python
-<iter> = islice(<coll>, to_exclusive)       # Only returns first 'to_exclusive' elements.
-<iter> = islice(<coll>, from_inclusive, …)  # `to_exclusive, +step_size`. Indices can be None.
+<iter> = islice(<coll>, to_exclusive)         # Only returns first 'to_exclusive' elements.
+<iter> = islice(<coll>, from_inclusive, ...)  # `to_exclusive, +step_size`. Indices can be None.
 ```
 
 ## Generator
@@ -330,18 +330,18 @@ True
 ### Property Methods
 
 ```text
-+---------------+----------+----------+----------+----------+----------+
-|               | [ !#$%…] | [a-zA-Z] |  [¼½¾]   |  [²³¹]   |  [0-9]   |
-+---------------+----------+----------+----------+----------+----------+
-| isprintable() |   yes    |   yes    |   yes    |   yes    |   yes    |
-| isalnum()     |          |   yes    |   yes    |   yes    |   yes    |
-| isnumeric()   |          |          |   yes    |   yes    |   yes    |
-| isdigit()     |          |          |          |   yes    |   yes    |
-| isdecimal()   |          |          |          |          |   yes    |
-+---------------+----------+----------+----------+----------+----------+
++---------------+------------+----------+----------+----------+----------+
+|               | [ !#$%...] | [a-zA-Z] |  [¼½¾]   |  [²³¹]   |  [0-9]   |
++---------------+------------+----------+----------+----------+----------+
+| isprintable() |   yes      |   yes    |   yes    |   yes    |   yes    |
+| isalnum()     |            |   yes    |   yes    |   yes    |   yes    |
+| isnumeric()   |            |          |   yes    |   yes    |   yes    |
+| isdigit()     |            |          |          |   yes    |   yes    |
+| isdecimal()   |            |          |          |          |   yes    |
++---------------+------------+----------+----------+----------+----------+
 ```
 
-- **Also: `'isspace()'` checks for `'[ \t\n\r\f\v\x1c-\x1f\x85\u2000…]'`.**
+- **Also: `'isspace()'` checks for `'[ \t\n\r\f\v\x1c-\x1f\x85\u2000...]'`.**
 
 ## Regex
 
@@ -414,7 +414,7 @@ import re
 {<el>:0}                                 # '<el>'
 ```
 
-- **Options can be generated dynamically: `f'{<el>:{<str/int>}[…]}'`.**
+- **Options can be generated dynamically: `f'{<el>:{<str/int>}[...]}'`.**
 - **Adding `'!r'` before the colon converts object to string by calling its [repr()](#class) method.**
 
 ### Strings
@@ -478,7 +478,7 @@ import re
 ```
 
 - **When both rounding up and rounding down are possible, the one that returns result with even last digit is chosen. That makes `'{6.5:.0f}'` a `'6'` and `'{7.5:.0f}'` an `'8'`.**
-- **This rule only effects numbers that can be represented exactly by a float (`.5`, `.25`, …).**
+- **This rule only effects numbers that can be represented exactly by a float (`.5`, `.25`, ...).**
 
 ### Ints
 
@@ -611,13 +611,13 @@ from dateutil.tz import UTC, tzlocal, gettz, datetime_exists, resolve_imaginary
 ```python
 <D>  = date(year, month, day)               # Only accepts valid dates from 1 to 9999 AD.
 <T>  = time(hour=0, minute=0, second=0)     # Also: `microsecond=0, tzinfo=None, fold=0`.
-<DT> = datetime(year, month, day, hour=0)   # Also: `minute=0, second=0, microsecond=0, …`.
+<DT> = datetime(year, month, day, hour=0)   # Also: `minute=0, second=0, microsecond=0, ...`.
 <TD> = timedelta(weeks=0, days=0, hours=0)  # Also: `minutes=0, seconds=0, microsecond=0`.
 ```
 
 - **Use `'<D/DT>.weekday()'` to get the day of the week as an int, with Monday being 0.**
 - **`'fold=1'` means the second pass in case of time jumping back for one hour.**
-- **Timedelta normalizes arguments to ±days, seconds (\< 86 400) and microseconds (\< 1M).**
+- **Timedelta normalizes arguments to ±days, seconds (\< 86 400) and microseconds (\< 1M).**
 
 ### Now
 
@@ -655,7 +655,7 @@ from dateutil.tz import UTC, tzlocal, gettz, datetime_exists, resolve_imaginary
 ### Decode
 
 ```python
-<str>    = <D/T/DT>.isoformat(sep='T')      # Also: `timespec='auto/hours/minutes/seconds/…'`.
+<str>    = <D/T/DT>.isoformat(sep='T')      # Also: `timespec='auto/hours/minutes/seconds/...'`.
 <str>    = <D/T/DT>.strftime('<format>')    # Custom string representation.
 <int>    = <D/DT>.toordinal()               # Days since Gregorian NYE 1, ignoring time and tz.
 <float>  = <DTn>.timestamp()                # Seconds since the Epoch, from DTn in local tz.
@@ -1662,7 +1662,7 @@ value = args.<name>
 - **`'r+'` - Read and write from the start.**
 - **`'a+'` - Read and write from the end.**
 - **`'t'` - Text mode (default).**
-- **`'b'` - Binary mode (`'br'`, `'bw'`, `'bx'`, …).**
+- **`'b'` - Binary mode (`'br'`, `'bw'`, `'bx'`, ...).**
 
 ### Exceptions
 
@@ -1742,8 +1742,8 @@ from glob import glob
 ```
 
 ```python
-<stat> = os.stat(<path>)            # Or: <DirEntry/Path>.stat()
-<real> = <stat>.st_mtime/st_size/…  # Modification time, size in bytes, …
+<stat> = os.stat(<path>)              # Or: <DirEntry/Path>.stat()
+<real> = <stat>.st_mtime/st_size/...  # Modification time, size in bytes, ...
 ```
 
 ### DirEntry
@@ -2046,7 +2046,7 @@ with <conn>:                                    # Exits the block with commit() 
 ```python
 # $ pip3 install mysql-connector
 from mysql import connector
-<conn>   = connector.connect(host=<str>, …)     # `user=<str>, password=<str>, database=<str>`.
+<conn>   = connector.connect(host=<str>, ...)   # `user=<str>, password=<str>, database=<str>`.
 <cursor> = <conn>.cursor()                      # Only cursor has execute() method.
 <cursor>.execute('<query>')                     # Can raise a subclass of connector.Error.
 <cursor>.execute('<query>', <list/tuple>)       # Replaces '%s's in query with values.
@@ -2069,7 +2069,7 @@ from mysql import connector
 ```python
 <bytes> = bytes(<coll_of_ints>)             # Ints must be in range from 0 to 255.
 <bytes> = bytes(<str>, 'utf-8')             # Or: <str>.encode('utf-8')
-<bytes> = <int>.to_bytes(n_bytes, …)        # `byteorder='little/big', signed=False`.
+<bytes> = <int>.to_bytes(n_bytes, ...)      # `byteorder='little/big', signed=False`.
 <bytes> = bytes.fromhex('<hex>')            # Hex pairs can be separated by whitespaces.
 ```
 
@@ -2078,7 +2078,7 @@ from mysql import connector
 ```python
 <list>  = list(<bytes>)                     # Returns ints in range from 0 to 255.
 <str>   = str(<bytes>, 'utf-8')             # Or: <bytes>.decode('utf-8')
-<int>   = int.from_bytes(<bytes>, …)        # `byteorder='little/big', signed=False`.
+<int>   = int.from_bytes(<bytes>, ...)      # `byteorder='little/big', signed=False`.
 '<hex>' = <bytes>.hex()                     # Returns hex pairs. Accepts `sep=<str>`.
 ```
 
@@ -2183,7 +2183,7 @@ from array import array
 ```python
 <list>  = list(<mview>)                        # Returns a list of ints or floats.
 <str>   = str(<mview>, 'utf-8')                # Treats mview as a bytes object.
-<int>   = int.from_bytes(<mview>, …)           # `byteorder='little/big', signed=False`.
+<int>   = int.from_bytes(<mview>, ...)         # `byteorder='little/big', signed=False`.
 '<hex>' = <mview>.hex()                        # Treats mview as a bytes object.
 ```
 
@@ -2254,7 +2254,7 @@ with <lock>:                                   # Enters the block by calling acq
 - **An object with the same interface called ProcessPoolExecutor provides true parallelism by running a separate interpreter in each process. All arguments must be [pickable](#pickle).**
 
 ```python
-<Exec> = ThreadPoolExecutor(max_workers=None)  # Or: `with ThreadPoolExecutor() as <name>: …`
+<Exec> = ThreadPoolExecutor(max_workers=None)  # Or: `with ThreadPoolExecutor() as <name>: ...`
 <Exec>.shutdown(wait=True)                     # Blocks until all threads finish executing.
 ```
 
@@ -3142,8 +3142,8 @@ while all(event.type != pg.QUIT for event in pg.event.get()):
 
 ```python
 <Rect> = pg.Rect(x, y, width, height)           # Floats get truncated into ints.
-<int>  = <Rect>.x/y/centerx/centery/…           # Top, right, bottom, left. Allows assignments.
-<tup.> = <Rect>.topleft/center/…                # Topright, bottomright, bottomleft. Same.
+<int>  = <Rect>.x/y/centerx/centery/...         # Top, right, bottom, left. Allows assignments.
+<tup.> = <Rect>.topleft/center/...              # Topright, bottomright, bottomleft. Same.
 <Rect> = <Rect>.move((x, y))                    # Use move_ip() to move in-place.
 ```
 
@@ -3350,19 +3350,19 @@ y    2
 +-----------------+-------------+-------------+---------------+
 |                 |    'sum'    |   ['sum']   | {'s': 'sum'}  |
 +-----------------+-------------+-------------+---------------+
-| sr.apply(…)     |      3      |    sum  3   |     s  3      |
-| sr.agg(…)       |             |             |               |
+| sr.apply(...)   |      3      |    sum  3   |     s  3      |
+| sr.agg(...)     |             |             |               |
 +-----------------+-------------+-------------+---------------+
 ```
 
 ```text
-+-----------------+-------------+-------------+---------------+
-|                 |    'rank'   |   ['rank']  | {'r': 'rank'} |
-+-----------------+-------------+-------------+---------------+
-| sr.apply(…)     |             |      rank   |               |
-| sr.agg(…)       |     x  1    |   x     1   |    r  x  1    |
-| sr.transform(…) |     y  2    |   y     2   |       y  2    |
-+-----------------+-------------+-------------+---------------+
++-------------------+-------------+-------------+---------------+
+|                   |    'rank'   |   ['rank']  | {'r': 'rank'} |
++-------------------+-------------+-------------+---------------+
+| sr.apply(...)     |             |      rank   |               |
+| sr.agg(...)       |     x  1    |   x     1   |    r  x  1    |
+| sr.transform(...) |     y  2    |   y     2   |       y  2    |
++-------------------+-------------+-------------+---------------+
 ```
 
 - **Last result has a hierarchical index. Use `'<Sr>[key_1, key_2]'` to get its values.**
@@ -3426,24 +3426,24 @@ c  6  7
 |                        |    'outer'    |   'inner'  |   'left'   |       Description        |
 +------------------------+---------------+------------+------------+--------------------------+
 | l.merge(r, on='y',     |    x   y   z  | x   y   z  | x   y   z  | Joins/merges on column.  |
-|            how=…)      | 0  1   2   .  | 3   4   5  | 1   2   .  | Also accepts left_on and |
+|            how=...)    | 0  1   2   .  | 3   4   5  | 1   2   .  | Also accepts left_on and |
 |                        | 1  3   4   5  |            | 3   4   5  | right_on parameters.     |
 |                        | 2  .   6   7  |            |            | Uses 'inner' by default. |
 +------------------------+---------------+------------+------------+--------------------------+
 | l.join(r, lsuffix='l', |    x yl yr  z |            | x yl yr  z | Joins/merges on row keys.|
 |           rsuffix='r', | a  1  2  .  . | x yl yr  z | 1  2  .  . | Uses 'left' by default.  |
-|           how=…)       | b  3  4  4  5 | 3  4  4  5 | 3  4  4  5 | If r is a Series, it is  |
+|           how=...)     | b  3  4  4  5 | 3  4  4  5 | 3  4  4  5 | If r is a Series, it is  |
 |                        | c  .  .  6  7 |            |            | treated as a column.     |
 +------------------------+---------------+------------+------------+--------------------------+
 | pd.concat([l, r],      |    x   y   z  |     y      |            | Adds rows at the bottom. |
 |           axis=0,      | a  1   2   .  |     2      |            | Uses 'outer' by default. |
-|           join=…)      | b  3   4   .  |     4      |            | A Series is treated as a |
+|           join=...)    | b  3   4   .  |     4      |            | A Series is treated as a |
 |                        | b  .   4   5  |     4      |            | column. Use l.append(sr) |
 |                        | c  .   6   7  |     6      |            | to add a row instead.    |
 +------------------------+---------------+------------+------------+--------------------------+
 | pd.concat([l, r],      |    x  y  y  z |            |            | Adds columns at the      |
 |           axis=1,      | a  1  2  .  . | x  y  y  z |            | right end. Uses 'outer'  |
-|           join=…)      | b  3  4  4  5 | 3  4  4  5 |            | by default. A Series is  |
+|           join=...)    | b  3  4  4  5 | 3  4  4  5 |            | by default. A Series is  |
 |                        | c  .  .  6  7 |            |            | treated as a column.     |
 +------------------------+---------------+------------+------------+--------------------------+
 | l.combine_first(r)     |    x   y   z  |            |            | Adds missing rows and    |
@@ -3474,21 +3474,21 @@ b  3  4
 +-----------------+-------------+-------------+---------------+
 |                 |    'sum'    |   ['sum']   | {'x': 'sum'}  |
 +-----------------+-------------+-------------+---------------+
-| df.apply(…)     |             |       x  y  |               |
-| df.agg(…)       |     x  4    |  sum  4  6  |     x  4      |
+| df.apply(...)   |             |       x  y  |               |
+| df.agg(...)     |     x  4    |  sum  4  6  |     x  4      |
 |                 |     y  6    |             |               |
 +-----------------+-------------+-------------+---------------+
 ```
 
 ```text
-+-----------------+-------------+-------------+---------------+
-|                 |    'rank'   |   ['rank']  | {'x': 'rank'} |
-+-----------------+-------------+-------------+---------------+
-| df.apply(…)     |      x  y   |      x    y |        x      |
-| df.agg(…)       |   a  1  1   |   rank rank |     a  1      |
-| df.transform(…) |   b  2  2   | a    1    1 |     b  2      |
-|                 |             | b    2    2 |               |
-+-----------------+-------------+-------------+---------------+
++-------------------+-------------+-------------+---------------+
+|                   |    'rank'   |   ['rank']  | {'x': 'rank'} |
++-------------------+-------------+-------------+---------------+
+| df.apply(...)     |      x  y   |      x    y |        x      |
+| df.agg(...)       |   a  1  1   |   rank rank |     a  1      |
+| df.transform(...) |   b  2  2   | a    1    1 |     b  2      |
+|                   |             | b    2    2 |               |
++-------------------+-------------+-------------+---------------+
 ```
 
 - **Use `'<DF>[col_key_1, col_key_2][row_key]'` to get the fifth result's values.**
@@ -3508,7 +3508,7 @@ plt.show()                                     # Displays the plot. Also plt.sav
 ```
 
 ```python
-<dict> = <DF>.to_dict(['d/l/s/…'])             # Returns columns as dicts, lists or series.
+<dict> = <DF>.to_dict(['d/l/s/...'])           # Returns columns as dicts, lists or series.
 <str>  = <DF>.to_json/html/csv([<path>])       # Also to_markdown/latex([<path>]).
 <DF>.to_pickle/excel(<path>)                   # Run `$ pip3 install openpyxl` for xlsx files.
 <DF>.to_sql('<table_name>', <connection>)      # Accepts SQLite3 or SQLAlchemy connection.
@@ -3549,20 +3549,20 @@ c  7  8
 ```
 
 ```text
-+-----------------+-------------+-------------+-------------+---------------+
-|                 |    'sum'    |    'rank'   |   ['rank']  | {'x': 'rank'} |
-+-----------------+-------------+-------------+-------------+---------------+
-| gb.agg(…)       |      x   y  |      x  y   |      x    y |        x      |
-|                 |  z          |   a  1  1   |   rank rank |     a  1      |
-|                 |  3   1   2  |   b  1  1   | a    1    1 |     b  1      |
-|                 |  6  11  13  |   c  2  2   | b    1    1 |     c  2      |
-|                 |             |             | c    2    2 |               |
-+-----------------+-------------+-------------+-------------+---------------+
-| gb.transform(…) |      x   y  |      x  y   |             |               |
-|                 |  a   1   2  |   a  1  1   |             |               |
-|                 |  b  11  13  |   b  1  1   |             |               |
-|                 |  c  11  13  |   c  2  2   |             |               |
-+-----------------+-------------+-------------+-------------+---------------+
++-------------------+-------------+-------------+-------------+---------------+
+|                   |    'sum'    |    'rank'   |   ['rank']  | {'x': 'rank'} |
++-------------------+-------------+-------------+-------------+---------------+
+| gb.agg(...)       |      x   y  |      x  y   |      x    y |        x      |
+|                   |  z          |   a  1  1   |   rank rank |     a  1      |
+|                   |  3   1   2  |   b  1  1   | a    1    1 |     b  1      |
+|                   |  6  11  13  |   c  2  2   | b    1    1 |     c  2      |
+|                   |             |             | c    2    2 |               |
++-------------------+-------------+-------------+-------------+---------------+
+| gb.transform(...) |      x   y  |      x  y   |             |               |
+|                   |  a   1   2  |   a  1  1   |             |               |
+|                   |  b  11  13  |   b  1  1   |             |               |
+|                   |  c  11  13  |   c  2  2   |             |               |
++-------------------+-------------+-------------+-------------+---------------+
 ```
 
 ### Rolling
