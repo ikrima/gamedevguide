@@ -5,7 +5,7 @@
 |Command|Desc|
 |-------|----|
 |`mkdocs serve`|hot reload builds|
-|`mkdocs build --clean --site-dir ./build/site`|clean build|
+|`mkdocs build --clean --site-dir ./.build/site`|clean build|
 
 ## Setup
 

@@ -202,10 +202,10 @@ plugins:
   - awesome-pages:
       collapse_single_pages: false
   - progress
-  - ezlinks:
-      warn_ambiguities: true
-      wikilinks: true
-      reference_links: false
+  # - ezlinks:
+  #     warn_ambiguities: true
+  #     wikilinks:        true
+  #     reference_links:  false
   # - embed_file:
   #     callouts: true
   #     custom-attributes: 'assets/css/custom_attributes.css'

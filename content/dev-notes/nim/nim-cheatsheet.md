@@ -19,16 +19,17 @@
 ## Macro Codegen
 
 - dumpTree, dumpAstGen, dumpLisp, dump
-- expandMacros
-- treeRepr, repr, lispRepr
 
+- expandMacros
+
+- treeRepr, repr, lispRepr
+  
   ```python
   macro myAssert(arg: untyped): untyped =
     echo arg.treeRepr
   ```
-
+  
   - see generated code
-
   ```python
   macro myAssert(arg: untyped): untyped =
   # all node kind identifiers are prefixed with "nnk"
@@ -38,7 +39,7 @@
     let op  = newLit(" " & arg[0].repr & " ")
     let lhs = arg[1]
     let rhs = arg[2]
-
+  
     result = quote do:
       if not `arg`:
         raise newException(AssertionError,$`lhs` & `op` & $`rhs`)
@@ -46,10 +47,15 @@
   ```
 
 - staticRead & staticExec to read files/process at compile time
+
 - `do notation` multiple code blocks to macros [https://nim-lang.org/docs/manual_experimental.html#do-notation](https://nim-lang.org/docs/manual_experimental.html#do-notation)
+
 - parseStmt & parseExpr
+
 - `getAst` (pass macro or template), `quote do:` pass statements/expressions, code inside the body of quote can be substituted by surrounding it with backticks.
+
 - extraction from ast nodes
+  
   - name(x) - name of proc
   - body(x) - body
   - createProcType
@@ -84,52 +90,58 @@
 
 ## Useful Libraries/links
 
-- https://github.com/zevv/npeg
-- https://nim-lang.org/docs/nimc.html#compiler-usage-generated-c-code-directory
-- https://github.com/nim-lang/c2nim/blob/master/doc/c2nim.rst#embedding-nim-code
-- https://github.com/nim-lang/c2nim/blob/master/doc/c2nim.rst#embedding-nim-code
-- https://github.com/nimterop/nimterop
-- https://github.com/nimterop/nimterop/wiki/Wrappers
+- <https://github.com/zevv/npeg>
+
+- <https://nim-lang.org/docs/nimc.html#compiler-usage-generated-c-code-directory>
+
+- <https://github.com/nim-lang/c2nim/blob/master/doc/c2nim.rst#embedding-nim-code>
+
+- <https://github.com/nim-lang/c2nim/blob/master/doc/c2nim.rst#embedding-nim-code>
+
+- <https://github.com/nimterop/nimterop>
+
+- <https://github.com/nimterop/nimterop/wiki/Wrappers>
+
 - Parsing
-
-  - https://github.com/loloicci/nimly
-  - https://forum.nim-lang.org/t/3881
-
+  
+  - <https://github.com/loloicci/nimly>
+  - <https://forum.nim-lang.org/t/3881>
 - Learning
+  
   - Basics
-    https://nim-lang.org/learn.html
-    https://livebook.manning.com/book/nim-in-action/chapter-8/45
-    https://nim-lang.org/docs/theindex.html#toSeq
-    https://nim-lang.org/docs/manual.html#types-object-variants
-    https://nim-lang.org/docs/nimc.html
-    https://nim-lang.org/docs/manual_experimental.html
-    https://nim-lang.org/docs/nims.html
-    https://nim-lang.org/docs/tut1.html#basic-types-strings
-    https://nim-lang.org/docs/tut2.html#object-oriented-programming-inheritance
-    https://nim-lang.org/docs/tut3.html#introduction-code-blocks-as-arguments
-    https://scripter.co/notes/nim/#accessing-tuple-fields
-    https://scripter.co/notes/nim-fmt/#fmt-and-amp
-    https://scripter.co/notes/string-fns-nim-vs-python/#starts-ends-with
-    https://nim-lang.org/docs/typetraits.html#genericHead%2Ctypedesc
-    https://nim-lang.org/docs/sugar.html
-    https://nim-lang.org/docs/sexp.html#SexpParser
-    https://nim-lang.org/docs/tables.html#initOrderedTable,int
-    https://nim-lang.org/docs/macros.html#children.i%2CNimNode
-    https://nim-lang.org/docs/filters.html
-    [https://nim-lang.org/docs/tables.html#[],OrderedTable[A,B],A]
-    https://nim-lang.org/docs/typeinfo.html#fields.i%2CAny
-    https://github.com/zero-functional/zero-functional#filter
-    https://github.com/zero-functional/zero-functional/blob/master/test.nim
-    https://github.com/zer0-star/matsuri
-    https://github.com/zer0-star/matsuri/blob/master/examples/figures.nim
-    https://github.com/alehander92/gara
-    https://github.com/nim-lang/Nim/wiki/Tips-and-tricks
-    https://totallywearingpants.com/posts/nim-language-highlights/
+    <https://nim-lang.org/learn.html>
+    <https://livebook.manning.com/book/nim-in-action/chapter-8/45>
+    <https://nim-lang.org/docs/theindex.html#toSeq>
+    <https://nim-lang.org/docs/manual.html#types-object-variants>
+    <https://nim-lang.org/docs/nimc.html>
+    <https://nim-lang.org/docs/manual_experimental.html>
+    <https://nim-lang.org/docs/nims.html>
+    <https://nim-lang.org/docs/tut1.html#basic-types-strings>
+    <https://nim-lang.org/docs/tut2.html#object-oriented-programming-inheritance>
+    <https://nim-lang.org/docs/tut3.html#introduction-code-blocks-as-arguments>
+    <https://scripter.co/notes/nim/#accessing-tuple-fields>
+    <https://scripter.co/notes/nim-fmt/#fmt-and-amp>
+    <https://scripter.co/notes/string-fns-nim-vs-python/#starts-ends-with>
+    <https://nim-lang.org/docs/typetraits.html#genericHead%2Ctypedesc>
+    <https://nim-lang.org/docs/sugar.html>
+    <https://nim-lang.org/docs/sexp.html#SexpParser>
+    <https://nim-lang.org/docs/tables.html#initOrderedTable>
+    <https://nim-lang.org/docs/macros.html#children.i%2CNimNode>
+    <https://nim-lang.org/docs/filters.html>
+    <https://nim-lang.org/docs/tables.html#OrderedTable>
+    <https://nim-lang.org/docs/typeinfo.html#fields.i%2CAny>
+    <https://github.com/zero-functional/zero-functional#filter>
+    <https://github.com/zero-functional/zero-functional/blob/master/test.nim>
+    <https://github.com/zer0-star/matsuri>
+    <https://github.com/zer0-star/matsuri/blob/master/examples/figures.nim>
+    <https://github.com/alehander92/gara>
+    <https://github.com/nim-lang/Nim/wiki/Tips-and-tricks>
+    <https://totallywearingpants.com/posts/nim-language-highlights/>
   - Meta programming
-    - https://nim-by-example.github.io/macros/
-    - https://flenniken.net/blog/nim-macros/
-    - https://livebook.manning.com/book/nim-in-action/chapter-9/1
-    - https://nim-lang.org/blog/2018/06/07/create-a-simple-macro.html
-    - https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#macros
-    - https://nim-lang.github.io/Nim/nims.html
-    - https://peterme.net/how-to-embed-nimscript-into-a-nim-program-embedding-nimscript-pt-2.html
+    - <https://nim-by-example.github.io/macros/>
+    - <https://flenniken.net/blog/nim-macros/>
+    - <https://livebook.manning.com/book/nim-in-action/chapter-9/1>
+    - <https://nim-lang.org/blog/2018/06/07/create-a-simple-macro.html>
+    - <https://hookrace.net/blog/introduction-to-metaprogramming-in-nim/#macros>
+    - <https://nim-lang.github.io/Nim/nims.html>
+    - <https://peterme.net/how-to-embed-nimscript-into-a-nim-program-embedding-nimscript-pt-2.html>

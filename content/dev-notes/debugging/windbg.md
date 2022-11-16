@@ -1,37 +1,41 @@
 # WinDBG
-A much more powerful debugger than Visual Studio but annoyingly must be downloaded as a [Windows App Store](https://www.microsoft.com/en-us/p/windbg-preview/9pgjgd53tn86?activetab=pivot:overviewtab)
 
+A much more powerful debugger than Visual Studio but annoyingly must be downloaded as a [Windows App Store](https://www.microsoft.com/en-us/p/windbg-preview/9pgjgd53tn86?activetab=pivot:overviewtab)
 
 ## Command CheatSheet
 
 ### Debugger Analysis
-| Command      | Desc                                               |
-| ------------ | -------------------------------------------------- |
-| `k`          | Display backtrace                                  |
-| `!locks`     | Display all resource locks held by any thread      |
-| `!uniqstack` | Display all thread stacks excluding duplicates     |
-| `!findstack` | Find all stacks containing specified symbol/module |
+
+|Command|Desc|
+|-------|----|
+|`k`|Display backtrace|
+|`!locks`|Display all resource locks held by any thread|
+|`!uniqstack`|Display all thread stacks excluding duplicates|
+|`!findstack`|Find all stacks containing specified symbol/module|
 
 ### Breakpoints Analysis
-| Command        | Desc                                                                                                                                          |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bp`           | *Set Breakpoint*: new breakpoint using address                                                                                                |
-| `bu`           | *Set Unresolved Breakpoint*: new unresolved/deferred breakpoint using symbolic reference. Persists across module load/unload                  |
-| `bm`           | *Set Symbol Breakpoint*: new breakpoints on symbols using pattern match; defaults to unresolved but can associate to address with `/d` switch |
-| `ba`           | *Break on Access*: new data hardware breakpoint                                                                                               |
-| `be`/`bd`/`bc` | *Breakpoint Enable/Disable/Clear*: enable/disable/clear breakpoints                                                                           |
-| `bl`           | *Breakpoint List*: list breakpoints with current status                                                                                       |
-| `.bpcmds`      | *Display Breakpoint Commands*: list breakpoints with commands                                                                                 |
-| `br`           | *Breakpoint Renumber*: change breakpoint ID                                                                                                   |
-| `bs`           | *Update Breakpoint Command*: change breakpoint command                                                                                        |
-| `bsc`          | *Update Conditional Breakpoint*: change breakpoint condition                                                                                  |
+
+|Command|Desc|
+|-------|----|
+|`bp`|_Set Breakpoint_: new breakpoint using address|
+|`bu`|_Set Unresolved Breakpoint_: new unresolved/deferred breakpoint using symbolic reference. Persists across module load/unload|
+|`bm`|_Set Symbol Breakpoint_: new breakpoints on symbols using pattern match; defaults to unresolved but can associate to address with `/d` switch|
+|`ba`|_Break on Access_: new data hardware breakpoint|
+|`be`/`bd`/`bc`|_Breakpoint Enable/Disable/Clear_: enable/disable/clear breakpoints|
+|`bl`|_Breakpoint List_: list breakpoints with current status|
+|`.bpcmds`|_Display Breakpoint Commands_: list breakpoints with commands|
+|`br`|_Breakpoint Renumber_: change breakpoint ID|
+|`bs`|_Update Breakpoint Command_: change breakpoint command|
+|`bsc`|_Update Conditional Breakpoint_: change breakpoint condition|
 
 ### Hang Analysis
+
 - run analysis: `!analyze -v -hang`
 - look at the stack and rerun the stack dump command (eg: `~0s ; .cxr ; kb`)
 - most likely will be `NtWaitForSingleObject`.  Grab the handle pointer and `fe`
 
 ### Crash/Dump Analysis
+
 - open dump file and analyze: `!analyze -v`
 - [Debugging BSOD/Bugcheck](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/index)
 - [Live Kernel Mode Debugging](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/performing-local-kernel-debugging)
@@ -40,6 +44,7 @@ A much more powerful debugger than Visual Studio but annoyingly must be download
 - [BSOD/Crash Dump/Minidump Tips](https://www.sysnative.com/forums/bsod-kernel-dump-analysis-debugging-information/284-bsod-method-tips.html)
 
 ## WinDBG Notes
+
 - BreakPoints
   - can specify the location of a breakpoint by virtual address, module and function offsets, or source file and line number (when in source mode)
     - function breakpoint without offset is triggered on function entry
@@ -56,18 +61,24 @@ A much more powerful debugger than Visual Studio but annoyingly must be download
 ## Windows Debugging Tips
 
 ### GFlags
+
 Global Flags Editor (`WindowsSDK\Debuggers\x64\gflags.exe`) enables/disables advanced windows diagnostic settings/registry keys
+
 - features
   ![](../_assets/gflags-screenshot.png)
   - advanced debugging settings e.g. break on process launch
   - page heap allocation monitoring/verification
   - kernel object reference tracing
-- > [!warning] `gflags.exe` **must be run as admin** to set windows debug settings
+- 
+   > 
+   > \[!warning\] `gflags.exe` **must be run as admin** to set windows debug settings
+
 - [GFlags Reference](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/gflags)
 
-
 ### SysInternals
+
 Collection of useful system troubleshooting tools
+
 - `WinObj` shows all the OS objects
 - `SigCheck -a sftvolwin7.sys`: verify valid signature and shows file version info
 - `TCPView`: see all network traffic
