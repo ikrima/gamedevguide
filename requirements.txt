@@ -4,8 +4,8 @@ mkdocs-material==8.5.8
 mkdocs-awesome-pages-plugin==2.8.0
 mkdocs-git-revision-date-localized-plugin==1.1.0
 mkdocs-plugin-progress==1.2.0
-# mkdocs-minify-plugin==0.6.1
-# mkdocs-redirects==1.2.0
+mkdocs-minify-plugin==0.6.1
+mkdocs-redirects==1.2.0
 # mkdocs-roamlinks-plugin==0.2.0
 # mkdocs-ezlinks-plugin==0.1.14
 # requests==2.28.1
