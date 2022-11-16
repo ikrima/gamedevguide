@@ -50,7 +50,7 @@
     - CF set if unsigned overflow
     - ZF set if result is zero
     - SF set if result \< 0
-    - OF set if signed overflow \`(a>0 && b>0 && t\<0) || (a\<0 && b\<0 && t>=0)
+    - OF set if signed overflow `(a>0 && b>0 && t<0) || (a<0 && b<0 && t>=0)`
   - explicitly set by compare instruction
     - `cmp a,b` uses sets same flags as `a-b` instruction but without setting destination
 
