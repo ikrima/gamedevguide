@@ -1,4 +1,4 @@
-# NodeJS CheatSheet
+# NodeJS Cheatsheet
 
 ## Nvm
 

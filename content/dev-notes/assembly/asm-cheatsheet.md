@@ -1,4 +1,4 @@
-# Assembly CheatSheet
+# Assembly Cheatsheet
 
 ## Register conventions
 

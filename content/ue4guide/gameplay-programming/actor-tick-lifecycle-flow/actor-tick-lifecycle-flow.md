@@ -4,7 +4,7 @@ sidebar: ue4guide
 ---
 
 
-# Actor Load/Init Function CheatSheet
+# Actor Load/Init Function Cheatsheet
 
 | Actor Function              | Component Function                                            | On CDO? | On Level Load? | On Place In Level? | On Play? | On Spawn? | On Open Blueprint? |
 | --------------------------- | ------------------------------------------------------------- | ------- | -------------- | ------------------ | -------- | --------- | ------------------ |

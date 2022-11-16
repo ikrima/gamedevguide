@@ -1,4 +1,4 @@
-# Nim CheatSheet
+# Nim Cheatsheet
 
 ## Resources
 

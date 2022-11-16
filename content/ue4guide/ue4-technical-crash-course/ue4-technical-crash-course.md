@@ -13,7 +13,7 @@ sidebar: ue4guide
 - <http://nikoladimitroff.github.io/Game-Engine-Architecture>
 - <https://www.blaenkdenum.com/notes/unreal-engine>
 - <https://jip.dev/notes/unreal-engine/>
-- <https://github.com/jbtronics/UE4-CheatSheet>
+- <https://github.com/jbtronics/UE4-Cheatsheet>
 
 ## Modules
 

@@ -1,4 +1,4 @@
-# MkDocs CheatSheet
+# MkDocs Cheatsheet
 
 ## Usage
 

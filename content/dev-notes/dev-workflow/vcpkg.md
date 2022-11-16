@@ -1,4 +1,4 @@
-# Vcpkg CheatSheet
+# Vcpkg Cheatsheet
 
 - update:
   - short version: `git pull && bootstrap-vcpkg.bat -disableMetrics`

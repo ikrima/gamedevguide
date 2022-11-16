@@ -1,6 +1,6 @@
-# Comprehensive Python CheatSheet
+# Comprehensive Python Cheatsheet
 
-This is a cached version the awesome [gto76 CheatSheet](https://github.com/gto76/python-cheatsheet)
+This is a cached version the awesome [gto76 Cheatsheet](https://github.com/gto76/python-cheatsheet)
 
 |Contents|Subjects|
 |--------|--------|
@@ -1242,7 +1242,7 @@ class Counter:
 ### Callable
 
 - **All functions and classes have a call() method, hence are callable.**
-- **When this CheatSheet uses `'<function>'` as an argument, it actually means `'<callable>'`.**
+- **When this Cheatsheet uses `'<function>'` as an argument, it actually means `'<callable>'`.**
 
 ```python
 class Counter:
@@ -1313,7 +1313,7 @@ True
 ### Collection
 
 - **Only required methods are iter() and len(). Len() should return the number of items.**
-- **This CheatSheet actually means `'<iterable>'` when it uses `'<collection>'`.**
+- **This Cheatsheet actually means `'<iterable>'` when it uses `'<collection>'`.**
 - **I chose not to use the name 'iterable' because it sounds scarier and more vague than 'collection'. The only drawback of this decision is that a reader could think a certain function doesn't accept iterators when it does, since iterators are the only built-in objects that are iterable but are not collections.**
 
 ```python

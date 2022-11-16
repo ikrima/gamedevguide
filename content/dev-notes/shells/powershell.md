@@ -172,7 +172,7 @@ Do-Something 5>&1             # Writes debug output to the output stream
 Do-Something *>   out.txt     # Redirects all streams to out.txt
 ```
 
-## CheatSheet
+## Cheatsheet
 
 ### Useful Commands
 
@@ -392,7 +392,7 @@ Do-Something *>   out.txt     # Redirects all streams to out.txt
 
 ## Resources
 
-- [PowerShell CheatSheet](../_assets/powershell-4-lang-ref.pdf)
+- [PowerShell Cheatsheet](../_assets/powershell-4-lang-ref.pdf)
 - [ss64 Powershell](https://ss64.com/ps/): concise reference
 - [powershell.one](https://powershell.one/): dives into more intermediate scripting topics like modules, scripting, etc
 - Everything You Wanted To Know About: series geared towards fast ramp up

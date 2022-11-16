@@ -2,7 +2,7 @@
 
 A much more powerful debugger than Visual Studio but annoyingly must be downloaded as a [Windows App Store](https://www.microsoft.com/en-us/p/windbg-preview/9pgjgd53tn86?activetab=pivot:overviewtab)
 
-## Command CheatSheet
+## Command Cheatsheet
 
 ### Debugger Analysis
 

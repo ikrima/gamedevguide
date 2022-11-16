@@ -1,4 +1,4 @@
-# Cmder CheatSheet
+# Cmder Cheatsheet
 
 ## Setup
 

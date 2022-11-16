@@ -1,4 +1,4 @@
-# Clang CheatSheet
+# Clang Cheatsheet
 
 ## Misc Gotchas
 

@@ -73,7 +73,7 @@
 
 - `#!bat pause` or `#!bat puase >nul`: to pause execution until keypress [Reference](https://stackoverflow.com/questions/988403/how-to-prevent-auto-closing-of-console-after-the-execution-of-batch-file)
 
-### CheatSheet
+### Cheatsheet
 
 - launching commands/scripts
   

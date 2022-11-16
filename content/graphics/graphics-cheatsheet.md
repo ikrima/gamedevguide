@@ -1,4 +1,4 @@
-# Graphics CheatSheet
+# Graphics Cheatsheet
 
 Shit I annoyingly forget and always have to lookup
 - [[physical-units-for-lights|Physical Units for Lights]]: better summary from Eric Haines

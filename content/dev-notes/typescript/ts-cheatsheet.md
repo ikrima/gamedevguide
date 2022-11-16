@@ -1,11 +1,11 @@
-# TypeScript CheatSheet
+# TypeScript Cheatsheet
 
 ## Resources
 
 - [Typescript Handbook](https://www.typescriptlang.org/docs/handbook)
 - [Typescript Type Search](https://www.typescriptlang.org/dt/search): find npm packages with queried type declarations
 - [Typescript Playground](https://www.typescriptlang.org/play)
-- [Typescript CheatSheet](https://www.typescriptlang.org/cheatsheets)
+- [Typescript Cheatsheet](https://www.typescriptlang.org/cheatsheets)
 
 ## Highlevel Differences
 
