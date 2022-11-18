@@ -14,7 +14,7 @@ sidebar: ue4guide
   <WindowsPlatform>
   <StaticAnalyzer>VisualCpp</StaticAnalyzer>
   <!-- <StaticAnalyzer>PVSStudio</StaticAnalyzer> -->
-  <WindowsPlatform>
+  </WindowsPlatform>
   ```
 
 ## Devops script
