@@ -49,45 +49,44 @@
 |$exceptionstack|Displays the stack trace of the current Windows Runtime exception. $ exceptionstack works only in UWP apps. $ exceptionstack is not supported for C++ and SEH exceptions|
 |$returnvalue|Displays the return value of a .NET Framework method.|
 
-<https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables>
-
 ### Format Specifiers
 
 |Specifier|Format|Original Watch Value|Value Displayed|
 |---------|------|--------------------|---------------|
-|d|decimal integer|0x00000066|102|
-|o|unsigned octal integer|0x00000066|000000000146|
-|x/h|hexadecimal integer|102|0xcccccccc|
-|X/H|hexadecimal integer|102|0xCCCCCCCC|
-|xb/hb|hexadecimal integer (without leading 0x)|102|cccccccc|
-|Xb/Hb|hexadecimal integer (without leading 0x)|102|CCCCCCCC|
-|b|unsigned binary integer|25|0b00000000000000000000000000011001|
-|bb|unsigned binary integer(without leading 0b)|25|00000000000000000000000000011001|
-|e|scientific notation|25000000|2.500000e+07|
-|g|shorter of scientific or floating point|25000000|2.5e+07|
-|c|single character|0x0065, c|101 'e'|
-|s|const char\* string (with quotation marks)|\<location\> "hello world"|"hello world"|
-|sb|const char\* string (no quotation marks)|\<location\> "hello world"|hello world|
-|s8|UTF-8 string|\<location\> "This is a UTF-8 coffee cup â˜•"|"This is a UTF-8 coffee cup ☕"|
-|s8b|UTF-8 string (no quotation marks)|\<location\> "hello world"|hello world|
-|su|Unicode (UTF-16 encoding) string (with quotation marks)|\<location\> L"hello world"|L"hello world" u"hello world"|
-|sub|Unicode (UTF-16 encoding) string (no quotation marks)|\<location\> L"hello world"|hello world|
-|bstr|BSTR binary string (with quotation marks)|\<location\> L"hello world"|L"hello world"|
-|env|Environment block (double-null terminated string)|\<location\> L"=::=::\\"|L"=::=::\\\0=C:=C:\\windows\\system32\0ALLUSERSPROFILE=...|
-|s32|UTF-32 string (with quotation marks)|\<location\> U"hello world"|U"hello world"|
-|s32b|UTF-32 string (no quotation marks)|\<location\> U"hello world"|hello world|
-|en|enum|Saturday(6) \`|Saturday|
-|hv|Pointer type - indicates that the pointer value being inspected is the result of the heap allocation of an array, for example, new int\[3\].|\<location\>{\<first member\>}|\<location\>{\<first member\>, \<second member\>, ...}|
-|na|Suppresses the memory address of a pointer to an object.|\<location\>, {member=value...}|{member=value...}|
-|nd|Displays only the base class information, ignoring derived classes|(Shape\*) square includes base class and derived class information|Displays only base class information|
-|hr|HRESULT or Win32 error code. This specifier is no longer needed for HRESULTs as the debugger decodes them automatically.|S_OK|S_OK|
-|wc|Window class flag|0x0010|WC_DEFAULTCHAR|
-|wm|Windows message numbers|16|WM_CLOSE|
-|nr|Suppress "Raw View" item|||
-|nvo|Show "Raw View" item for numeric values only|||
-|!|raw format, ignoring any data type views customizations|\<customized representation\>|4|
+|`d`|decimal integer|`0x00000066`|`102`|
+|`o`|unsigned octal integer|`0x00000066`|`000000000146`|
+|`x`,`h`|hexadecimal integer (with leading 0x)|`102`|`0xcccccccc`|
+|`X`,`H`|hexadecimal integer (with leading 0x)|`102`|`0xCCCCCCCC`|
+|`xb`,`hb`|hexadecimal integer (no leading 0x)|`102`|`cccccccc`|
+|`Xb`,`Hb`|hexadecimal integer (no leading 0x)|`102`|`CCCCCCCC`|
+|`b`|unsigned binary integer (with leading 0b)|`25`|`0b00000000000000000000000000011001`|
+|`bb`|unsigned binary integer (no leading 0b)|`25`|`00000000000000000000000000011001`|
+|`e`|scientific notation|`25000000`|`2.500000e+07`|
+|`g`|shorter of scientific or floating point|`25000000`|`2.5e+07`|
+|`c`|single character|`0x0065`|`101 'e'`|
+|`s`|`const char*` string (with quotes)|`<location> "hello world"`|`"hello world"`|
+|`sb`|`const char*` string (no quotes)|`<location> "hello world"`|`hello world`|
+|`s8`|UTF-8 string (with quotes)|`<location> "This is a UTF-8 coffee cup â˜-"`|`"This is a UTF-8 coffee cup ☕"`|
+|`s8b`|UTF-8 string (no quotes)|`<location> "hello world"`|`hello world`|
+|`su`|Unicode (UTF-16 encoding) string (with quotes)|`<location> L"hello world"`|`L"hello world"`,`u"hello world"`|
+|`sub`|Unicode (UTF-16 encoding) string (no quotes)|`<location> L"hello world"`|`hello world`|
+|`bstr`|BSTR binary string (with quotes)|`<location> L"hello world"`|`L"hello world"`|
+|`env`|Environment block (double-null terminated string)|`<location> L"=::=::\\"`|`L"=::=::\\\0=C:=C:\\windows\\system32\0ALLUSERSPROFILE=...`|
+|`s32`|UTF-32 string (with quotes)|`<location> U"hello world"`|`U"hello world"`|
+|`s32b`|UTF-32 string (no quotes)|`<location> U"hello world"`|`hello world`|
+|`en`|enum|`Saturday(6)`|`Saturday`|
+|`hv`|Pointer type indicating value is array heap allocation address e.g. `new int[3]`.|`<location>{<first member>}`|`<location>{<first member>, <second member>, ...}`|
+|`na`|Suppresses the memory address of a pointer to an object.|`<location>, {member=value...}`|`{member=value...}`|
+|`nd`|Displays only the base class information, ignoring derived classes|`(Shape*) square` including base+derived class information|Displays only base class information|
+|`hr`|Win32/HRESULT error code; unnecessary for HRESULTs bc debugger auto decodes them|`S_OK`|`S_OK`|
+|`wc`|Window class flag|`0x0010`|`WC_DEFAULTCHAR`|
+|`wm`|Windows message numbers|`16`|`WM_CLOSE`|
+|`nr`|Suppress "Raw View" item|||
+|`nvo`|Show "Raw View" item for numeric values only|||
+|`!`|Raw format, ignoring any data type views customizations|`<customized representation>`|`4`|
+|`handle`|Displays information about win32 handle|`0x000000000000009c`|Displays useful information about handle such as thread ID, etc.|
 
-From <https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp>
+[(Reference)](https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp)
 
 ### Format Pointers as Arrays
 
@@ -100,14 +99,12 @@ From <https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-i
 
 ### Magic Numbers
 
-|||
-|--|--|
-|CCCCCCCC|Used by Microsoft's C++ debugging runtime library and many DOS environments to mark uninitialized stack memory. CC resembles the opcode of the INT 3 debug breakpoint interrupt on x86 processors.|
-|CDCDCDCD|Used by Microsoft's C/C++ debug malloc() function to mark uninitialized heap memory, usually returned from HeapAlloc()\[15\]|
-|FDFDFDFD|Used by Microsoft's C/C++ debug malloc() function to mark "no man's land" guard bytes before and after allocated heap memory\[15\]|
-|FEEEFEEE|"Fee fee", Used by Microsoft's debug HeapFree() to mark freed heap memory. Some nearby internal bookkeeping values may have the high word set to FEEE as well.\[15\]|
-
-From <http://en.wikipedia.org/wiki/Magic_number_(programming>)
+|Code|Description [(Reference)](https://www.wikiwand.com/en/Magic%20number%20(programming))|
+|----|-----------------------|
+|`0xCCCCCCCC`|Used by Microsoft's C++ debugging runtime library and many DOS environments to mark uninitialized stack memory. CC resembles the opcode of the INT 3 debug breakpoint interrupt on x86 processors.|
+|`0xCDCDCDCD`|Used by Microsoft's C/C++ debug malloc() function to mark uninitialized heap memory, usually returned from HeapAlloc()\[15\]|
+|`0xFDFDFDFD`|Used by Microsoft's C/C++ debug malloc() function to mark "no man's land" guard bytes before and after allocated heap memory\[15\]|
+|`0xFEEEFEEE`|"Fee fee", Used by Microsoft's debug HeapFree() to mark freed heap memory. Some nearby internal bookkeeping values may have the high word set to FEEE as well.\[15\]|
 
 ### CRT runtime Debugging Techniques
 
