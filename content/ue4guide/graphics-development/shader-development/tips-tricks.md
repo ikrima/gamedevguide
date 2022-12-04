@@ -103,7 +103,7 @@ _Reference From <https://forums.unrealengine.com/development-discussion/renderin
 
 - In newer UE4 (I'm using 4.18 but I think it was added in 4.17) you can have per-plugin and per-project directories. For example, in my project I have:
 
-  ```bat
+  ```batch
   myprj\myprj.uproject
   myprj\Content
   ...

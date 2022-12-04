@@ -10,7 +10,7 @@
   - DevManView
   - InstalledDriverList
   - command line
-    ```bat
+    ```batch
     driverquery /V
     pnputil /enum-drivers
     pnputil /enum-devices 
@@ -21,7 +21,7 @@
   - BCUninstaller
   - BleachBit
   - command line
-    ```bat
+    ```batch
     pnputil /delete-driver oem####.inf /uninstall /force
     ```
     

@@ -4,7 +4,7 @@
 
 - set `CMDER` environment variables
   
-  ```bat
+  ```batch
   setx CMDER_ROOT         C:/tools/cmdermini
   setx ConEmuDir          C:/tools/cmdermini/vendor/conemu-maximus5
   setx CMDER_USER_CONFIG  "%USERPROFILE%/cmder_config"
@@ -12,13 +12,13 @@
 
 - `user_profile.cmd`: add utf8 support
   
-  ```bat
+  ```batch
   chcp 65001 
   ```
 
 - check unicode
   
-  ```bat
+  ```batch
   ConEmuC -CheckUnicode
   cmd /c %ConEmuDir%/ConEmu/Addons/utf-8-test.cmd
   ```

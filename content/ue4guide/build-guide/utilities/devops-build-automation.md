@@ -36,7 +36,7 @@ UBT or RunUAT or AutomationTool.exe
 
 ## Using BuildGraph
 
-```bat
+```batch
 "UnrealEngine\\Engine\\Build\\BatchFiles\\RunUAT.bat" BuildGraph -script="UnrealEngine\\Engine\\Build\\InstalledEngineBuild.xml" -target="Make Installed Build Win64" -set:HostPlatformOnly=true -set:WithWin32=false -set:WithIOS=false
 ```
 
@@ -44,7 +44,7 @@ Create InstalledBuild.txt and place in Engine\\Build
 
 ## Sans BuildGraph
 
-```bat
+```batch
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 UE4Editor -project="BBR\\BBR.uproject" -precompile
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBR -project="BBR\\BBR.uproject" -useprecompiled
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBREditor -project="BBR\\BBR.uproject" -useprecompiled
@@ -61,7 +61,7 @@ UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBREdi
 
 ## Generate project files
 
-```bat
+```batch
 UnrealEngine/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Win64 BBR -project="BBR\\BBR.uproject" -useprecompiled -projectfiles -game -engine
 ```
 
@@ -71,7 +71,7 @@ Problems:
 
 - ShaderCompilerWorker is generated as a dependency to the GameProject. This causes project build to error out with -useprecompiled:
 
-  ```bat
+  ```batch
   2> EXEC : error : No modules found to build. All requested binaries were already built.
   ```
 

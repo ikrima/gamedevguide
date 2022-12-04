@@ -32,10 +32,8 @@ Ryzen has lots of PCI lanes but mobo pcie slots are not all x16. Lots of trial &
 
 Disable hpet; it causes inordinate perf problems.
 
-- Batch command: `#!shell bcdedit /deletevalue useplatformclock`
-
+- Batch command: `#!batch bcdedit /deletevalue useplatformclock`
 - Some bios allow you to disable that in bios
-
 - Credit to [@SebAaltonen](https://twitter.com/SebAaltonen/status/1001045044567126018) for root causing this.
   > Finally found a solution to my Threadripper performance woes. If I disable HPET (bcdedit /deletevalue useplatformclock) I get 2x SSD iOPS boost, UE4 editor with RenderDoc plugin active has 4x higher frame rate and VTune becomes usable. Visual Studio stalls are also reduced.
 
