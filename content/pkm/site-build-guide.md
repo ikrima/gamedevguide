@@ -22,7 +22,7 @@ Use instructions in \[pkm-conversion-notes\] to convert from OneNote, Notion, et
     ```bash
     mkdir %EDEV_SRCDIR%/personal/gdgTmpContent &
     %EDEV_SRCDIR%/personal/tolva-docs/obsidian-export/target/release/obsidian-export.exe %EDEV_SRCDIR%/personal/tolva-docs/docs %EDEV_SRCDIR%/personal/gdgTmpContent &
-    robocopy /MIR %EDEV_SRCDIR%/personal/gdgTmpContent %EDEV_SRCDIR%/personal/gamedevguide/content/dev-notes &
+    robocopy %EDEV_SRCDIR%/personal/gdgTmpContent %EDEV_SRCDIR%/personal/gamedevguide/content/dev-notes /MIR &
     rmdir /s/q %EDEV_SRCDIR%/personal/gdgTmpContent
     ```
   
@@ -47,19 +47,45 @@ Use instructions in \[pkm-conversion-notes\] to convert from OneNote, Notion, et
 [Vale](https://earthly.dev/blog/markdown-lint/): grammar linter
 
 - install
-  
   ```bash
   choco install vale
   vale sync
   ```
 
-- usage
-  
-  - disable specific rule: `#!md <!-- vale gitlab.rulename = NO -->,<!-- vale gitlab.rulename = YES -->`
-  - disable all rules:     `#!md <!-- vale off -->/<!-- vale on -->`
+|Usage|Syntax|
+|-----|------|
+|disable specific rule|`#!markdown <!-- vale gitlab.rulename = NO -->,<!-- vale gitlab.rulename = YES -->`|
+|disable all rules|`#!markdown <!-- vale off -->/<!-- vale on -->`|
 
 ### Markdown Lint
 
-- usage
-  - disable specific rule: `#!md <!-- markdownlint-disable MDXXX -->,<!-- markdownlint-enable MDXXX -->`
-  - disable all rules:     `#!md <!-- markdownlint-disable -->,<!-- markdownlint-enable -->`
+|Usage|Scope|Syntax|
+|-----|-----|------|
+|disable/enable rule(s)|Region|`<!-- markdownlint-disable [RULE(S)...] -->`,`<!-- markdownlint-enable [RULE(S)...] -->`|
+|disable rule(s)|Inline|`<!-- markdownlint-disable-line [RULE(S)...] -->`|
+|disable rule(s)|Next line|`<!-- markdownlint-disable-next-line [RULE(S)...] -->`|
+|disable/enable rule(s)|File|`<!-- markdownlint-disable-file [RULE(S)...] -->`,`<!-- markdownlint-enable-file [RULE(S)...] -->`|
+|capture/restore rule config|Region|`<!-- markdownlint-capture -->`,`<!-- markdownlint-restore -->`|
+
+- examples
+  ```markdown
+  <!-- markdownlint-disable MD005 no-space-in-emphasis -->
+  Scope-Region: Deliberate space * in * emphasis
+  <!-- markdownlint-enable MD005 no-space-in-emphasis -->
+  
+  Scope-Inline: Deliberate space * in * emphasis <!-- markdownlint-disable-line no-space-in-emphasis -->
+  
+  <!-- markdownlint-disable-next-line no-space-in-emphasis -->
+  Scope-NextLine: Deliberate space * in * emphasis
+  
+  Temporarily disable rule(s) then restore former config:
+  <!-- markdownlint-capture -->
+  <!-- markdownlint-disable -->
+  Any violations you want
+  <!-- markdownlint-restore -->
+  
+  Initial config is captured by default so pattern above can be simplified:
+  <!-- markdownlint-disable -->
+  Any violations you want
+  <!-- markdownlint-restore -->
+  ```
