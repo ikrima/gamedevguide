@@ -19,10 +19,8 @@ Use these repositories to get a sense of what windows might be doing underneath 
 
 ### Function Prefixes
 
-[Reference](https://www.codemachine.com/article_ntoskrnl_component_list.html)
-
-|Prefix|Function|
-|------|--------|
+|Prefix|Function [(Reference)](https://www.codemachine.com/article_ntoskrnl_component_list.html)|
+|------|--------------------|
 |Cc|Cache manager|
 |Cm|Configuration manager; registry implementation|
 |Csr|Client Server support functions(LPC; related: CSRSS.EXE)|

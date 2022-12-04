@@ -94,7 +94,8 @@ VEX is Houdini's SIMD streaming scripting language
 | `matrix3` (3×3 floats) | `3@name` |
 | `matrix` (4×4 floats)  | `4@name` |
 | `string`               | `s@name` |
-[Reference](http://www.sidefx.com/docs/houdini/vex/snippets)
+
+[(Reference)](http://www.sidefx.com/docs/houdini/vex/snippets)
 
 ## Tutorials
 - [VEX tutorial](https://github.com/jtomori/vex_tutorial)

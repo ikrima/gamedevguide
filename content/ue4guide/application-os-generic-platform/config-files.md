@@ -44,7 +44,7 @@ ConfigHierarchyEditable => Edit the values for the config hierarchy
   - Lightmass
   - Scalability
 
-- Config Category code name | metadata name (aka config=Game)
+- Config Category code name | metadata name (aka config=Game) [(Reference)](https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html)
   ```cpp
   GEngineIni            | Engine            /* Engine ini filename */
 
@@ -65,7 +65,6 @@ ConfigHierarchyEditable => Edit the values for the config hierarchy
   GGameIni             | Game              /* Game ini filename */
   GGameUserSettingsIni | GameUserSettings  /* User Game Settings ini filename */
   ```
-- [Reference](https://docs.unrealengine.com/latest/INT/Programming/Basics/ConfigurationFiles/index.html)
 
 ## File Hierarchy
 

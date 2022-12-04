@@ -9,7 +9,7 @@
 
 ### Context Operator Syntax
 
-- There are two ways of specifying context
+- There are two ways of specifying context [(Reference)](https://docs.microsoft.com/en-us/visualstudio/debugger/context-operator-cpp)
   1. `#!cpp {,,[module] } expression`
      - The braces must contain two commas and the module (executable or DLL) name or full path.
      - For example, to set a breakpoint at the SomeFunction function of EXAMPLE.dll:
@@ -27,7 +27,6 @@
     - Class scope, if the current location is inside a C++ member function. Class scope includes all base classes. The expression evaluator uses the normal dominance rules.
     - Global symbols in the current module.
     - Public symbols in the current program.
-- [Reference](https://docs.microsoft.com/en-us/visualstudio/debugger/context-operator-cpp)
 
 ### Commands & PseudoVars
 
@@ -35,8 +34,8 @@
 - Command window: `? …` to execute immediate window things
 - Immediate window: `> …` to execute commands e.g. `>shell cmd`
 
-|Pseudovariable|Function|
-|--------------|--------|
+|Pseudovariable|Function [(Reference)](https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables)|
+|--------------|--------------------|
 |$err|Displays the last error value set with the function SetLastError. The value that is displayed represents what would be returned by the GetLastError function. Use $err,hr to see the decoded form of this value. For example, if the last error was 3, the $err,hr would display ERROR_PATH_NOT_FOUND : The system cannot find the path specified.|
 |$handles|Displays the number of handles allocated in your application.|
 |$vframe|Displays the address of the current stack frame.|
@@ -128,20 +127,17 @@ where foobar.dll defines g_pMyStruct as a global pointer. The same syntax can be
   - Complete commands can be found in Keyboard, EnvironmentOptions dialog box
 - Can use VCMD to create macros as commands
 - In the immediate window, prefix a command with > to execute e.g. `>Debug.AttachDetach`
-- Execute code in a macro
+- Execute code in a macro [(Reference)](http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value)
   ```csharp
   DTE.Debugger.ExecuteStatement("variable_name=0")
   ```
-  
-  - [Reference](http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value)
+
 - Can execute code in Action:print message section of breakpoint settings by wrapping the value in textfield with {}. Ex:
   - `{ variable_name=0}` will set variable_name=0
-- You can also concatenate several instructions on the same line. They simply have to be separated by curly braces:
+- You can also concatenate several instructions on the same line. They simply have to be separated by curly braces [(Reference)](https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints)
   ```cpp
   { {done = (i == 100);} { object.x -= 1.0f; } { data\[15] = 3; } }
   ```
-  
-  - [Reference](https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints)
 
 ## Tools
 

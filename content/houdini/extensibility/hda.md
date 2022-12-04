@@ -21,9 +21,8 @@ Structs
   - Examples: `$HFS/houdini/vop/structs.json`
   - Schema is located `$HFS/houdini/vop/TypeDefinitions.json.schema`
 
-Vex Profiling
+Vex Profiling [(Reference)](https://www.sidefx.com/docs/houdini/commands/vexprofile.html)
 - command: `vexprofile -n -a start opcook /obj/geo1/v_mountain1 vexprofile > /tmp/mountain.stats`
-- [Reference](https://www.sidefx.com/docs/houdini/commands/vexprofile.html)
 
 ## UI
 Handles

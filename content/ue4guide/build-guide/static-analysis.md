@@ -27,7 +27,7 @@ build.py bbr --analyzer=PVSStudio
 UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=pvsstudio
 UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodebuginfo
 ```
-[Reference](https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html)
+[(Reference)](https://udn.unrealengine.com/questions/419598/how-to-integrate-pvs-studio-static-analysis.html)
 
 ## Manually setting up PVS Studio for Static Analysis
 - Download [PVS Studio](http://www.viva64.com/en/pvs-studio)

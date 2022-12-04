@@ -30,7 +30,7 @@ In your case you'll be wanting to use the node listed as ‘Object (Constraints)
 
 Be wary of recursion problems if you get too involved in intercepting/rebuilding transform hierarchies through constraints… Even though the ‘Get World Space’ chop node grabs the pre-constraint transform of the target object, that pre-constraint transform still contains any post-constraint transforms that are present in its parents. So attempting to set constraints on a parent object based upon a child object's preconstraint transform will still result in ‘infinite recursion’ errors.
 
-[Reference](https://www.sidefx.com/forum/topic/56060/)
+[(Reference)](https://www.sidefx.com/forum/topic/56060/)
 
 ## PoseScope
 - Allow you to select/define group polygons on a geo to drive bone controller
@@ -38,8 +38,7 @@ Be wary of recursion problems if you get too involved in intercepting/rebuilding
 ## CHOPS
 
 ![](../_assets/hou_chops_overview.png)
-
-[Reference](http://www.sidefx.com/docs/houdini/ref/panes/changraph)
+[(Reference)](http://www.sidefx.com/docs/houdini/ref/panes/changraph)
 
 - Broadcast export to multiple objects by using glob pattern in export:
   - you can put a rename node/export node and set the export prefix to `/obj/hammer*`

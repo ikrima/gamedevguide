@@ -124,15 +124,13 @@ This follows the principle that a small change in requirements should require on
 
 ## Transducers
 
-A transducer is an object that incrementally transforms one (potentially infinite) sequence of elements into another sequence; effectively "state machines" involving
+A transducer is an object that incrementally transforms one (potentially infinite) sequence of elements into another sequence; effectively "state machines" involving [(Reference)](https://docs.racket-lang.org/rebellion/Transducers.html)
 
 - starting the transducer to get an initial state
 - repeatedly updating that state by either consuming an element from the input sequence or by emitting an element to the output sequence
 - when input is exhausted, the transducer enters a half closed state where it may emit more output elements but it will never consume more input elements
 - when the transducer stops emitting elements, its finisher is called to clean up any resources held in the final transduction state.
 - Optionally, a transducer may half close early, before the input sequence is fully consumed
-
-[Reference](https://docs.racket-lang.org/rebellion/Transducers.html)
 
 ## Algebraic Effects
 

@@ -2,7 +2,7 @@
 
 ## Common
 - Install license server on each machine
-- Install HQueue Client [Reference](http://kunani.com/how-to-setup-hqueue-for-sidefx-houdini-indie-on-your-windows-10-local-network/)
+- Install HQueue Client [(Reference)](http://kunani.com/how-to-setup-hqueue-for-sidefx-houdini-indie-on-your-windows-10-local-network/)
   - Directory in D:\knl\hou\HQClient
   - Server: ${env:EDEV_HOUSERVER}:5000 (ex: ikrima-ryzen:5000)
   - Logon Account: ${env:EDEV_HOUSERVERACCOUNT} (ex: sa_server_account)
@@ -36,7 +36,7 @@ For major-minor version updates (i.e. from 17.0 to 17.5)
 Use `$HSITE` and `$HFS` to point site specific configuration & houdini install directory
 The problem is that no one seems to understand the fully correct syntax, while some slightly bad variations happen to work depending on the platform/method.
 
-Let me try to lay out some of the rules: [Reference](https://www.sidefx.com/forum/topic/26537/?page=1#post-122495)
+Let me try to lay out some of the rules: [(Reference)](https://www.sidefx.com/forum/topic/26537/?page=1#post-122495)
 - Houdini only expands environment variables in the hscript syntax. ie. $HOME, not the DOS syntax like %HOME%.
 - The path separators should be semi-colon (;) instead of colon (:). This works on all platforms. Linux/OSX happen to also accept colon (:) as well.
 - When you override a variable, you should have “&” in there somewhere so that the default path is still used. Depending on your shell, this is sometimes a special character, in which case you need to ensure that you set it with the correct escaping.

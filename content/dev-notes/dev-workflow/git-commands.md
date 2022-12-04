@@ -45,7 +45,7 @@
   git clone --config core.autocrlf=false https://github.com/batiati/mustache-zig
   ```
 
-- **Shallow clone** ([Reference](https://stackoverflow.com/questions/2144406/how-to-make-shallow-git-submodules/17692710#17692710))
+- **Shallow clone** [(Reference)](https://stackoverflow.com/questions/2144406/how-to-make-shallow-git-submodules/17692710#17692710)
   
   ```bash
   git clone url --single-branch
@@ -118,7 +118,7 @@
      > 
      > \[!info\] can be undone with `#!bash git revert`
      > submodule's .git directory (e.g. `.git/modules/[path/to/submod]`) is not removed
-     > to make possible past commit checkout without requiring fetching from another repository ([Reference](https://git-scm.com/docs/gitsubmodules#_forms))
+     > to make possible past commit checkout without requiring fetching from another repository [(Reference)](https://git-scm.com/docs/gitsubmodules#_forms)
 
 - **remove submodules completely**
   
@@ -155,11 +155,11 @@
 
 ## Git Commit History Manipulation
 
-- Undo last commit ([Reference](http://stackoverflow.com/questions/927358/how-to-undo-the-last-git-commit)): `git reset --soft 'HEAD^'`
+- Undo last commit [(Reference)](http://stackoverflow.com/questions/927358/how-to-undo-the-last-git-commit): `git reset --soft 'HEAD^'`
 
-- Force clean local repository (including deleting unchecked in files) ([Reference](http://stackoverflow.com/questions/673407/how-do-i-clear-my-local-working-directory-in-git)): `git clean -d -x -f`
+- Force clean local repository (including deleting unchecked in files) [(Reference)](http://stackoverflow.com/questions/673407/how-do-i-clear-my-local-working-directory-in-git): `git clean -d -x -f`
 
-- **Create patch containing all commits in current but not in the master branch** ([Reference](https://stackoverflow.com/questions/5432396/create-a-patch-by-comparing-a-specific-branch-on-the-remote-with-a-specific-loca))
+- **Create patch containing all commits in current but not in the master branch** [(Reference)](https://stackoverflow.com/questions/5432396/create-a-patch-by-comparing-a-specific-branch-on-the-remote-with-a-specific-loca)
   
   ```bash
   git format-patch origin/master --stdout > mypatch.patch
@@ -171,7 +171,7 @@
   Bebylon* --remotes=upstream/release* --remotes=upstream/dev*
   ```
 
-- **Merge with force accept theirs** ([Reference](https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git))
+- **Merge with force accept theirs** [(Reference)](https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git)
   
   ```bash
   git checkout branch_new
@@ -186,12 +186,12 @@
     - <http://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history>
     - <https://confluence.atlassian.com/display/BITBUCKET/Maintaining+a+Git+Repository>
     - <https://help.github.com/articles/remove-sensitive-data>
-- **Undo/redo a commit** ([Reference](http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit))
+- **Undo/redo a commit** [(Reference)](http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit)
   
   ```bash
   # You want to nuke commit C and never see it again
   git reset --hard HEAD~1
-  # Undo your commit but leave your files and your index ([Reference](http://www.gitguys.com/topics/whats-the-deal-with-the-git-index))
+  # Undo your commit but leave your files and your index [(Reference)](http://www.gitguys.com/topics/whats-the-deal-with-the-git-index)
   git reset --soft HEAD~1
   ```
 
@@ -201,26 +201,26 @@
   git clean -fd
   ```
 
-- **Remove ignored files as well** ([Reference](http://stackoverflow.com/questions/5807137/how-to-revert-uncommitted-changes-including-files-and-folders))
+- **Remove ignored files as well** [(Reference)](http://stackoverflow.com/questions/5807137/how-to-revert-uncommitted-changes-including-files-and-folders)
   
   ```bash
   git clean -fdx
   ```
 
-- **Squash/Merge previous two commits** ([Reference](https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git))
+- **Squash/Merge previous two commits** [(Reference)](https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git)
   
   ```bash
   git rebase -i HEAD~2
   # Then select squash for the second commit
   ```
 
-- **To move folders into a different folders in git** ([Reference](https://gist.github.com/fabiomaggio/ce7ecd7dffd27b32a45325204288efce))
+- **To move folders into a different folders in git** [(Reference)](https://gist.github.com/fabiomaggio/ce7ecd7dffd27b32a45325204288efce)
   
   ```bash
   git filter-branch --tree-filter 'mkdir -p /path/to/tmp; mv * /path/to/tmp; mkdir subdir; mv /path/to/tmp/* subdir/' --tag-name-filter cat --prune-empty -- --all
   ```
 
-- **Rebase against another branch overriding conflicts with your own branch changes** ([Reference](https://demisx.github.io/git/rebase/2015/07/02/git-rebase-keep-my-branch-changes.html))
+- **Rebase against another branch overriding conflicts with your own branch changes** [(Reference)](https://demisx.github.io/git/rebase/2015/07/02/git-rebase-keep-my-branch-changes.html)
   
   ```bash
   # assuming branch-a is our current version
