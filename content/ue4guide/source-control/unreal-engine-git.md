@@ -10,14 +10,14 @@ sidebar: ue4guide
 - Add our own private github [repo](https://github.com/kitelightning/UnrealEngine):
 - Make sure to add an 'upstream' remote too:
 
-  ```shell
+  ```bash
   git remote add upstream https://github.com/EpicGames/UnrealEngine
   git fetch upstream
   git checkout release
   ```
 
 - Optimize git behavior
-  ```shell
+  ```bash
   git config --global gc.auto 1024
   ```
 
@@ -28,7 +28,7 @@ sidebar: ue4guide
 1. Sync from github into a clean directory so BBR subdirectory/game cruft or intermediate files aren't getting in the way
 1. Create a patch from the bebylon branch ranging from it's parent in the release branch to current
 
-   ```bat
+   ```bash
    git checkout -b tmpsquash 4.21.2-release
    git merge --squash Bebylon
    git commit -a -m "Squashed 4.21.2 to Bebylon commits"
@@ -40,11 +40,11 @@ sidebar: ue4guide
    ```
 
 1. Create a new branch at the sync off point off of the new engine release branch (e.g. branch: release, tag: 4.22.2-release). Call it bebylon-{new engine version}-merge{oldversion} (eg bebylon-4.22.2-merged4.21.2)
-   ```bat
+   ```bash
    git checkout -f -b bebylon-4.22.2-merged4.21.2 4.22.2-release
    ```
 1. Apply patch to new said branch & manually solve the conflicts. Push this up to github
-   ```bat
+   ```bash
    git am --3way --signoff 0001-Squashed-4.21.2-to-Bebylon-commits.patch
    ```
 1. Sync down into proper directory and actually solve the conflicts to get UE4 building & compiling
@@ -52,7 +52,7 @@ sidebar: ue4guide
    **\*Note:** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict\*
    Use these commands to do that:
 
-   ```bat
+   ```bash
    git merge -s ours Bebylon
    git checkout Bebylon
    git merge bebylon-4.22.2-merged4.21.2
@@ -66,14 +66,14 @@ sidebar: ue4guide
       <http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch>
 1. Rerun Setup.bat to get the latest binary dependencies and reconcile
 1. Reconcile for perforce:
-   ```bat
+   ```bash
    Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs
    ```
 1. Rationalize the worktree and remove outdated files
    1. Preview the files that will be nuked
-      `#!shell p4 status -I -mead UnrealEngine\\Engine\\...`
+      `#!bash p4 status -I -mead UnrealEngine\\Engine\\...`
    1. **_DANGEROUS & DESTRUCTIVE_** Force the worktree to match (remove old files that are in the tree but need to be removed)
-      `#!shell p4 clean -I -mead UnrealEngine\\Engine\\...`
+      `#!bash p4 clean -I -mead UnrealEngine\\Engine\\...`
 1. Run FullBuildClean on Jenkins to verify that the new build works as expected
    - This will sync the perforce tree
    - Nuke all files locally that are not in the perforce tree

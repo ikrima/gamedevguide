@@ -18,12 +18,12 @@ sidebar: ue4guide
   ```
 
 ## Devops script
-```shell
+```bash
 build.py bbr --analyzer=PVSStudio
 ```
 
 ## UBT Command line
-```shell
+```bash
 UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=pvsstudio
 UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodebuginfo
 ```
@@ -41,7 +41,7 @@ UnrealBuildTool.exe UE4Editor Win64 Development -staticanalyzer=visualcpp -nodeb
    ```
 - for now, you need to have Incredibuild disabled
   - go to BBProto.Build.cs and add `#!csharp BuildConfiguration.bAllowXGE = false;`
-- Open a shell in the PVS Studio folder and run `#!shell CLMonitor.exe monitor`
+- Open a shell in the PVS Studio folder and run `#!bash CLMonitor.exe monitor`
 - Do a full build of BBProto project
-- Go back to the shell, and type `#!shell CLMonitor.exe analyze -l "sample.plog"`
+- Go back to the shell, and type `#!batch CLMonitor.exe analyze -l "sample.plog"`
 - Double clicking sample.plog should launch the analysis results in PVS Studio

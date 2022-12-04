@@ -18,7 +18,7 @@ sidebar: ue4guide
 
 <https://articles.assembla.com/using-perforce/speed-up-your-perforce-repo-with-p4v>
 
-```bat
+```bash
 p4 property -a -n P4IGNORE -v .p4ignore
 p4 property -a -n P4V.Performance.ServerRefresh -v 60
 p4 property -a -n filesys.bufsize -v 2M
@@ -31,13 +31,13 @@ p4 property -a -n net.tcpsize -v 2M
 
 - Run as root:
 
-  ```bat
+  ```bash
   /volume1/KnL/Perforce/start.sh
   ```
 
 ### Set up ignore
 
-```bat
+```bash
 p4 set P4IGNORE=.gitignore
 ```
 
@@ -51,7 +51,7 @@ p4 set P4IGNORE=.gitignore
 
 - Open terminal in perforce workspace directory from super user account
 
-- `#!shell p4 configure set dm.user.noautocreate=2`
+- `#!bash p4 configure set dm.user.noautocreate=2`
 
 ### Checking out a project
 
@@ -64,32 +64,32 @@ p4 set P4IGNORE=.gitignore
 
 ### Deleting a workspace
 
-If you screw up you can delete a workspace. Go to Connection -> Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type `#!shell p4 client -d [workspace-name]`
+If you screw up you can delete a workspace. Go to Connection -> Choose Workspace… which will show you a list of your workspaces. Then open the command prompt and type `#!bash p4 client -d [workspace-name]`
 
 ## Useful commands
 
 - **(local workspace to depot) Fast Reconcile of local files that have been edited, added, deleted and with special characters in their name**
 
-  `#!shell p4 reconcile -meadf UnrealEngine\\Engine\\Binaries...`
+  `#!bash p4 reconcile -meadf UnrealEngine\\Engine\\Binaries...`
 
 - **Show me files that were ignored:**
 
-  `#!shell p4 reconcile -nI UnrealEngine\\Engine\\Binaries...`
+  `#!bash p4 reconcile -nI UnrealEngine\\Engine\\Binaries...`
 
 - **Show me files that were ignored but need to be added**
 
-  `#!shell p4 reconcile -naI UnrealEngine\\Engine\\Binaries...`
+  `#!bash p4 reconcile -naI UnrealEngine\\Engine\\Binaries...`
 
 - **Why something was ignored:**
 
-  `#!shell p4 ignores -v -i UnrealEngine\\Engine\\Binaries\\ThirdParty\\svn\\Mac\\lib\\apr.exp`
+  `#!bash p4 ignores -v -i UnrealEngine\\Engine\\Binaries\\ThirdParty\\svn\\Mac\\lib\\apr.exp`
 
 - **See which files are out of sync from worktree**
-  `#!shell p4 status -I -mead UnrealEngine\\Engine\\...`
+  `#!bash p4 status -I -mead UnrealEngine\\Engine\\...`
 
 - **(depot to workspace) Force resync only deleted files (deletes files that are only available locally and not in depot):**
 
-  `#!shell p4 clean -I -ead UnrealEngine\\Engine\\Source\\Runtime...`
+  `#!bash p4 clean -I -ead UnrealEngine\\Engine\\Source\\Runtime...`
 
   - **Note: Using -m might skip files if you copied over stuff recently**
 
@@ -108,20 +108,20 @@ If you screw up you can delete a workspace. Go to Connection -> Choose Workspace
 - **Revert another users files**
 
   - Force delete their shelved changelist
-    `#!shell p4 shelve -df -c 8857`
-    `#!shell p4 change -df 8857`
+    `#!bash p4 shelve -df -c 8857`
+    `#!bash p4 change -df 8857`
   - Find their workspace by username
-    `#!shell p4 opened -u janedoe`
+    `#!bash p4 opened -u janedoe`
   - Revert all files in janedoe-workspace's workspace
-    `#!shell p4 revert -C janedoe-workspace //...`
+    `#!bash p4 revert -C janedoe-workspace //...`
   - Revert one file in janedoe-workspace's workspace
-    `#!shell p4 revert -C janedoe-workspace //depot/www/dev/Jam.html`
+    `#!bash p4 revert -C janedoe-workspace //depot/www/dev/Jam.html`
   - Revert all files in janedoe-workspace workspace
-    `#!shell p4 revert -c 1125 -C janedoe-workspace //...`
+    `#!bash p4 revert -c 1125 -C janedoe-workspace //...`
 
 ### Set editor
 
-```bat
+```bash
 p4 set P4Editor="C:/Program Files/Sublime Text 3/subl.exe --wait"
 ```
 
@@ -143,7 +143,7 @@ _Reference From <https://stackoverflow.com/questions/7030296/how-do-i-move-a-per
 
 From the command line, starting from a workspace of //stream/parent, here's what you'd do to make a new task stream:
 
-```bat
+```bash
 p4 stream -t task -P //stream/parent //stream/mynewtask01
 p4 populate -r -S //stream/mynewtask01
 p4 client -s -S //stream/mynewtask01
@@ -169,7 +169,7 @@ p4 sync
 
 While we’re working on features in //Ace/DEV, other changes are being submitted to //Ace/MAIN. Here’s how we merge those changes into the //Ace/DEV branch:
 
-```bat
+```bash
 % p4 merge -S //Ace/DEV -r
 % p4 resolve
 % p4 submit -d ”Merged latest changes”
@@ -181,14 +181,14 @@ _Reference From <https://www.perforce.com/blog/streams-tiny-tutorial>_
 
 “Promote” is simply another way of saying “copy up after merging everything down”. So let’s make sure we’ve merged everything down first:
 
-```bat
+```bash
 % p4 merge -S //Ace/DEV -r
 All revisions already integrated.
 ```
 
 Switch to main workspace:
 
-```bat
+```bash
 % p4 workspace -s -S //Ace/MAIN
 % p4 sync
 ```
@@ -197,7 +197,7 @@ We run **p4 sync** after switching the workspace, because both streams have file
 
 Finally, we copy content from the //Ace/DEV stream to its parent:
 
-```bat
+```bash
 % p4 -I copy -S //Ace/DEV -v
 % p4 submit -d ”Here’s our new feature”
 
@@ -210,7 +210,7 @@ _Reference From <https://www.perforce.com/blog/streams-tiny-tutorial>_
 
 **Set global property settings:**
 
-```bat
+```bash
 p4 property -a -n ***name*** -v ***value***
 ```
 
@@ -218,7 +218,7 @@ _Reference From <https://community.perforce.com/s/article/1273>_
 
 ### Setup the typemap
 
-```bat
+```bash
 p4 typemap
 ```
 
@@ -264,11 +264,10 @@ _Reference From <https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceCo
 
 - The P4 command
 
-  ```bat
+  ```bash
   p4 retype -t binary+w .\....dll
 
-  or
-
+  # alternate
   p4 edit .\....dll
   p4 reopen -t binary+w .\....dll
   ```
@@ -277,7 +276,7 @@ _Reference From <https://docs.unrealengine.com/latest/INT/Engine/Basics/SourceCo
 
 - Or use the internal python utility scripts
 
-  ```bat
+  ```bash
   Utility/reconcile.py p4retypemap
   ```
 
