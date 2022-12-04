@@ -5,7 +5,7 @@
 |Command|Desc|
 |-------|----|
 |`conda info`|get version info|
-|`conda create --name ENVNAME python=3.6`|create new environment|
+|`conda create --name ENVNAME python=3.10`|create new environment|
 |`conda remove --name ENVNAME --all`|delete an entire environment|
 |`conda activate ENVNAME / conda deactivate`|activate/deactivate environment|
 |`conda install PKGNAME==3.1.4`|install specific package|

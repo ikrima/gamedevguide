@@ -169,6 +169,7 @@ Get-Process word* | Stop-Process
 Do-Something 3>   warning.txt # Writes warning output to warning.txt
 Do-Something 4>>  verbose.txt # Appends verbose.txt with the verbose output
 Do-Something 5>&1             # Writes debug output to the output stream
+Do-Something *>&1             # Redirects all streams to stdout
 Do-Something *>   out.txt     # Redirects all streams to out.txt
 ```
 
