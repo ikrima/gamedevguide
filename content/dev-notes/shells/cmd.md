@@ -2,8 +2,43 @@
 
 ## Useful Shell Commands
 
-- Fast clone directory: `#!bat robocopy /MIR src dest`
-- Remove empty directories: `#!bat robocopy dirpath dirpath /S /Move`
+- Fast clone directory:
+  
+  ```batch
+  robocopy "%SRC%" "%DST%" /MIR
+  ```
+
+- Fast directory erase [(Reference)](https://stackoverflow.com/questions/186737/whats-the-fastest-way-to-delete-a-large-folder-in-windows/6208144#6208144)
+  
+   > 
+   > \[!danger\]\- `del` will erase symlink's **_actual_** target, not just the symlink
+   > To list all symlinks in a folder
+   > 
+   > ```batch
+   > @rem list all symlinks
+   > @rem  /al: display files with Reparse Points attribute
+   > @rem  /s: recurse
+   > @rem  /b: leave out heading information/summary
+   > dir /al/s/b "%FOLDER%"
+   > ```
+  
+  ```batch
+  @rem del: needed bc 'rmdir' cannot erase directory containing files
+  @rem  /f: force delete read-only files
+  @rem  /s: deletes specified files from all subdirectories
+  @rem  /q: quiet mode, suppress confirmation to delete with global wildcard
+  @rem rmdir:
+  @rem  /s: recursive erase of directory including files
+  @rem  /q: quiet mode, suppress confirmation to delete directory tree
+  del /f/s/q "%FOLDER%" > nul
+  rmdir /s/q "%FOLDER%"
+  ```
+
+- Remove empty directories
+  
+  ```batch
+  robocopy "%FOLDER%" "%FOLDER%" /S/PURGE
+  ```
 
 ## Windows SymLink
 
