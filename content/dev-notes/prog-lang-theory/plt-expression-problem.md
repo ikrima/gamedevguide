@@ -39,8 +39,8 @@ We begin again by considering the language containing only literals and addition
 
 ```cpp
 interface ExpAlg<T> {
-    T lit(int n);
-    T add(T x, T y);
+  T lit(int n);
+  T add(T x, T y);
 }
 ```
 
@@ -51,11 +51,11 @@ For example, the expression (1 + (2 + 3)) is represented as follows
 
 ```cpp
 <T> T e1(ExpAlg<T> f) {
-    return f.add(
-        f.lit(1),
-        f.add(
-            f.lit(2),
-            f.lit(3)));
+  return f.add(
+    f.lit(1),
+    f.add(
+      f.lit(2),
+      f.lit(3)));
 }
 ```
 
@@ -75,20 +75,20 @@ Next we define a concrete factory `EvalExp`, which is going to manufacture expre
 
 ```cpp
 class EvalExp implements ExpAlg<Eval> {
-    Eval lit(final int n) {
-        return new Eval() {
-            int eval() {
-                return n;
-            }
-        };
-    }
-    Eval add(final Eval x, final Eval y) {
-         return new Eval() {
-             int eval() {
-                 return x.eval() + y.eval();
-             }
-         };
-    }
+  Eval lit(final int n) {
+    return new Eval() {
+      int eval() {
+        return n;
+      }
+    };
+  }
+  Eval add(final Eval x, final Eval y) {
+    return new Eval() {
+      int eval() {
+        return x.eval() + y.eval();
+      }
+    };
+  }
 }
 ```
 
@@ -100,7 +100,7 @@ Instead, we introduce a _new_ interface `MulAlg<T>` that _extends_ the interface
 
 ```cpp
 interface MulAlg<T> extends ExpAlg<T> {
-    T mul(T x, T y);
+  T mul(T x, T y);
 }
 ```
 
@@ -108,11 +108,11 @@ Expressions containing multiplication are now going to be represented as functio
 
 ```cpp
 <T> T e2(MulAlg<T> f) {
-    return f.mul(
-        f.lit(4),
-        f.add(
-            f.lit(5),
-            f.lit(6)));
+  return f.mul(
+    f.lit(4),
+    f.add(
+      f.lit(5),
+      f.lit(6)));
 }
 ```
 
@@ -120,13 +120,13 @@ To extend the implementation of evaluation of expressions to expressions contain
 
 ```cpp
 class EvalMul extends EvalExp implements MulAlg<Eval> {
-    Eval mul(final Eval x, final Eval y) {
-        return new Eval() {
-            int eval() {
-                return x.eval() \* y.eval();
-            }
-        };
-    }
+  Eval mul(final Eval x, final Eval y) {
+    return new Eval() {
+      int eval() {
+        return x.eval() * y.eval();
+      }
+    };
+  }
 }
 ```
 

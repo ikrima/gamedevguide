@@ -72,7 +72,7 @@
 - ⭐⭐⭐ **[Obsidian](https://obsidian.md)**: Knowledge management alternate since OneNote isnt progressing
   - Trillium: Currently trying this out as my onenote replacement
   - Notion: Knowledge management alternate since OneNote isnt progressing
-  - ~~\*OneNote: This was such an amazing program but hasn't seen much innovation in 4 years~~ I've abandoned this since it's been rotting over the last 4 years.
+  - ~~OneNote: This was such an amazing program but hasn't seen much innovation in 4 years~~ I've abandoned this since it's been rotting over the last 4 years.
 - ⭐ **Diigo**: Knowledge repository integrated with google search
 - **Mathematica**: Preferred it over matlab but has annoying learning curve
 - Desmos/Geogebra: Powerful Math grapher/calculator

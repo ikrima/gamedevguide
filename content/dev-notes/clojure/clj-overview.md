@@ -58,7 +58,7 @@
     ![](../_assets/clj-bindings-are-values.png)
     - `binding` expr for rebind value temporarily inside this scope
     - must mark with `^:dynamic` meta data
-    - convention is to name var with \*\*
+    - convention is to name var with `**`
       ```clojure
       (def ^:dynamic *debug-enabled* false)
       (defn debug [msg]

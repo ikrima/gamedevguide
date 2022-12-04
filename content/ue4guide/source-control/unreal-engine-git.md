@@ -26,8 +26,7 @@ sidebar: ue4guide
 **_Note: Examples are assuming 4.21.2-release tag is on the release branch and is the base, Bebylon is forked from that, and we're trying to update to 4.22.2-release (tag) on the upstream/release branch_**
 
 1. Sync from github into a clean directory so BBR subdirectory/game cruft or intermediate files aren't getting in the way
-1. Create a patch from the bebylon branch ranging from it's parent in the release branch to current
-
+2. Create a patch from the bebylon branch ranging from it's parent in the release branch to current
    ```bash
    git checkout -b tmpsquash 4.21.2-release
    git merge --squash Bebylon
@@ -38,18 +37,17 @@ sidebar: ue4guide
    git pull upstream release:release
    git branch -D tmpsquash
    ```
-
-1. Create a new branch at the sync off point off of the new engine release branch (e.g. branch: release, tag: 4.22.2-release). Call it bebylon-{new engine version}-merge{oldversion} (eg bebylon-4.22.2-merged4.21.2)
+3. Create a new branch at the sync off point off of the new engine release branch (e.g. branch: release, tag: 4.22.2-release). Call it bebylon-{new engine version}-merge{oldversion} (eg bebylon-4.22.2-merged4.21.2)
    ```bash
    git checkout -f -b bebylon-4.22.2-merged4.21.2 4.22.2-release
    ```
-1. Apply patch to new said branch & manually solve the conflicts. Push this up to github
+4. Apply patch to new said branch & manually solve the conflicts. Push this up to github
    ```bash
    git am --3way --signoff 0001-Squashed-4.21.2-to-Bebylon-commits.patch
    ```
-1. Sync down into proper directory and actually solve the conflicts to get UE4 building & compiling
-1. Merge bebylon into the new branch with merge override from the new branch. We want to merge Bebylon with bebylon-4.22.2-merged4.21.2 but not actually do any merging but instead take bebylon-4.22.2-merged4.21.2 as authoritative.
-   **\*Note:** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict\*
+5. Sync down into proper directory and actually solve the conflicts to get UE4 building & compiling
+6. Merge bebylon into the new branch with merge override from the new branch. We want to merge Bebylon with bebylon-4.22.2-merged4.21.2 but not actually do any merging but instead take bebylon-4.22.2-merged4.21.2 as authoritative.
+   **_Note:_** git merge -X theirs private won't work bc it will still apply a merge strategy when there is no conflict*
    Use these commands to do that:
 
    ```bash
@@ -60,38 +58,38 @@ sidebar: ue4guide
 
    _Reference From <https://stackoverflow.com/questions/4624357/how-do-i-overwrite-rather-than-merge-a-branch-on-another-branch-in-git>_
 
-1. Create tag at merge point bebylon-4.22.2-merged4.21.2
-1. Now you can push Bebylon up to github
-   1. Optional Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
+7. Create tag at merge point bebylon-4.22.2-merged4.21.2
+8. Now you can push Bebylon up to github
+   - Optional Rebase our private branch on top of the new UE4 repository. Make sure everyone has their stuff checked in before you rebase + force push the history rewrite. Otherwise the rest of the team will want to burn you alive after de-syncing their git tree
       <http://stackoverflow.com/questions/14893399/rebase-feature-branch-onto-another-feature-branch>
-1. Rerun Setup.bat to get the latest binary dependencies and reconcile
-1. Reconcile for perforce:
-   ```bash
-   Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs
-   ```
-1. Rationalize the worktree and remove outdated files
-   1. Preview the files that will be nuked
+9. Rerun Setup.bat to get the latest binary dependencies and reconcile
+10. Reconcile for perforce:
+    ```bash
+    Utility/reconcile.py eng_upgrade_reconcile --uebinaries --uetemplatecontent --uecontent --uesrc --ueplugins --uedocs
+    ```
+11. Rationalize the worktree and remove outdated files
+    - Preview the files that will be nuked
       `#!bash p4 status -I -mead UnrealEngine\\Engine\\...`
-   1. **_DANGEROUS & DESTRUCTIVE_** Force the worktree to match (remove old files that are in the tree but need to be removed)
+    - **_DANGEROUS & DESTRUCTIVE_** Force the worktree to match (remove old files that are in the tree but need to be removed)
       `#!bash p4 clean -I -mead UnrealEngine\\Engine\\...`
-1. Run FullBuildClean on Jenkins to verify that the new build works as expected
-   - This will sync the perforce tree
-   - Nuke all files locally that are not in the perforce tree
-   - Fully rebuild everything (engine, editor, cook, etc); this will take ~4-6 hours
+12. Run FullBuildClean on Jenkins to verify that the new build works as expected
+    - This will sync the perforce tree
+    - Nuke all files locally that are not in the perforce tree
+    - Fully rebuild everything (engine, editor, cook, etc); this will take ~4-6 hours
 
 ## Building The Source
 
 1. **Download the source** and unzip it to a folder, or [**create a fork**] and **clone the repository**. If you clone, don't forget to switch to the correct branch for this release! (The 'master' branch has unstable code, so you will want to make sure to choose a release branch.)
-1. You should now have an *UnrealEngine* folder on your computer. All of the source and dependencies will go into this folder. The folder name might have a branch suffix (such as *UnrealEngine-4.1*), but that's totally fine.
-1. Download the **required dependencies** files for the [latest release][]: [Required\_1of2.zip], [Required\_2of2.zip].
-1. Unzip the dependencies into the *UnrealEngine* folder alongside the source. Be careful to make sure the folders are merged together correctly. On Mac, we recommend **Option + dragging** the unzipped files into the *UnrealEngine* folder, then selecting **Keep Newer** if prompted.
-1. Okay, platform stuff comes next. Depending on whether you are on Windows or Mac, follow one of the sections below:
+2. You should now have an _UnrealEngine_ folder on your computer. All of the source and dependencies will go into this folder. The folder name might have a branch suffix (such as _UnrealEngine-4.1_), but that's totally fine.
+3. Download the **required dependencies** files for the latest release: [Required\_1of2.zip], [Required\_2of2.zip].
+4. Unzip the dependencies into the _UnrealEngine_ folder alongside the source. Be careful to make sure the folders are merged together correctly. On Mac, we recommend **Option + dragging** the unzipped files into the _UnrealEngine_ folder, then selecting **Keep Newer** if prompted.
+5. Okay, platform stuff comes next. Depending on whether you are on Windows or Mac, follow one of the sections below:
 
 ### Windows
 
 1. Be sure to have [Visual Studio 2013](https://visualstudio.microsoft.com/vs/older-downloads/) installed. You can use any desktop version of Visual Studio 2013, including the free version: [Visual Studio 2013 Express for Windows Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=40769)
 2. Make sure you have [June 2010 DirectX runtime](https://www.microsoft.com/en-us/download/details.aspx?id=8109) installed. You don't need the SDK, just the runtime.
-3. You'll need project files in order to compile. In the *UnrealEngine* folder, double-click on**GenerateProjectFiles.bat**. It should take less than a minute to complete. On Windows 8, a warning from SmartScreen may appear. Click "More info", then "Run anyway" to continue.
+3. You'll need project files in order to compile. In the _UnrealEngine_ folder, double-click on**GenerateProjectFiles.bat**. It should take less than a minute to complete. On Windows 8, a warning from SmartScreen may appear. Click "More info", then "Run anyway" to continue.
 4. Load the project into Visual Studio by double-clicking on the **UE4.sln** file.
 5. It's time to **compile the editor**! In Visual Studio, make sure your solution configuration is set to**Development Editor**, and your solution platform is set to **Win64**. Right click on the **UE4** target and select**Build**. It will take between 15 and 40 minutes to finish compiling, depending on your system specs.
 6. After compiling finishes, you can **load the editor** from Visual Studio by setting your startup project to **UE4**and pressing **F5** to debug.
