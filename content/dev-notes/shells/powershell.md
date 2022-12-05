@@ -17,6 +17,7 @@
 |--|--|
 |`=`,`+=`,`-=`,`*=`,`/=`,`%=`,`++`,`--`|assigns one or more values to variable|
 |`-and`,`-or`,`-xor`,`-not`/`!`|logical operators|
+|`-band`,`-bor`,`-bxor`,`-bnot`,`-shr`,`-shl`|bitwise operators|
 |`-split`|splits a string (ex: `“abcdefghi” -split “de”`)|
 |`-join`|joins multiple strings (ex: `“abc”,”def”,”ghi” -join “;”`)|
 |\`|\`|
