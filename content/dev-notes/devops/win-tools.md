@@ -56,7 +56,7 @@
 
 - ⭐⭐⭐ **SysInternals**: Awesome set of windows sys tools
 - ⭐⭐⭐ **[AllTools](https://github.com/zodiacon/AllTools)**: another awesome set of sysadmin tools by Pavel Yosifovich of Windows Internals fame
-- ⭐⭐⭐ **ProcessHacker**: Built on sysinternals, it's a user friendly taskmanager/process explorer replacement
+- ⭐⭐⭐ **[SystemInformer](https://systeminformer.sourceforge.io)**: Built on sysinternals, it's a user friendly taskmanager/process explorer replacement
 - ⭐⭐ **[TotalRegistry](https://github.com/zodiacon/TotalRegistry)**: advanced registry editor by Pavel Yosifovich
 - ⭐⭐ **[O&O RegEditor](https://www.oo-software.com/en/ooregeditor)**: better registry editor
 - ⭐ **Rohitab Api Monitor**: Amazingly well written; use it for api hooking
