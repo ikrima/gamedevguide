@@ -2,6 +2,14 @@
 
 ⭐ => _how must have it is to me_
 
+### Windows Privacy
+
+- ⭐⭐⭐ **[privacy.sexy](https://privacy.sexy)**: open-source tool to enforce privacy & security best-practices on Windows and macOS
+  - [github repo](https://github.com/undergroundwires/privacy.sexy)
+- ⭐⭐ **[O&O ShutUp10++](https://www.oo-software.com/en/shutup10)**: Free antispy tool for Windows 10 and 11
+- ⭐⭐ **[O&O AppBuster](https://www.oo-software.com/en/ooappbuster)**: uninstall useless preinstalled windows apps/bloatware
+- [WPD](https://wpd.app/): windows privacy dashboard
+
 ## Making Windows tolerable
 
 - ⭐ **Chocolatey**: package manager for windows
@@ -15,31 +23,28 @@
 - ⭐ **uBlock Origin**: ad block
 - ⭐ **[Sioyek](https://sioyek.info)**: PDF viewer designed for reading research papers and technical books
 - ⭐ **[BleachBit](https://www.bleachbit.org)**: disk space cleaner, Privacy Manager and System Optimizer
+- ⭐ **[Safing Portmaster](https://safing.io/)**: excellent firewall
 - [WizTree](https://diskanalyzer.com): fast disk space analyzer
 - [BCUninstaller](https://www.bcuninstaller.com): bulk program uninstaller with advanced automation
-- ScreenToGif: screen capture
-- Youtube-dl: download youtube/vimeo files for offline viewing
 - Remote Desktop Connection Manager
-- Firefox
+- [1Password](https://1password.com/): password manager with better integration across mobile apps/sites
+- [Adobe Creative Cloud Uninstaller](https://helpx.adobe.com/creative-cloud/help/uninstall-creative-cloud-desktop-app.html)
+  - if you install adobe stuff, do yourself a favor and remove the 12 services they install for lulz even when you're not using any adobe product
+    ![](_assets/../../_assets/adobe-cc-remove.jpg)
+  - you can uninstall CreativeCloud desktop app while keeping photoshop/premiere/etc
+- [Firefox](https://www.mozilla.org/en-US/firefox)
   - Tree Style Tab Extension: Tree column view of all your tabs
   - Stylus Extension: make youtube distraction free and remove notifications/likes showing up on page
-- 1Password: password manager with better integration across mobile apps/sites
-  - Lastpass: password manager
-- [Remove Creative Cloud Desktop App](https://helpx.adobe.com/creative-cloud/help/uninstall-creative-cloud-desktop-app.html)
-  ![](https://pbs.twimg.com/media/DuzvOgqVsAAmEEB.jpg)
-  - First, if you install adobe stuff, do yourself a favor and remove the 12 services they install for lulz even when you're not using any adobe product.
-  - You can uninstall CreativeCloud desktop app while keeping photoshop/premiere/etc
-- ~~Clover: Tabs in explorer~~
-- ~~⭐ **Display Fusion**: virtualize desktop; use it to split my 33" monitor into two virtual monitors~~
-- ~~Duet + iPad Pro 3rd Gen + Pencil: Turn my iPad Pro into a Cintiq~~
+- Discommends
+  - ~~Clover: Tabs in explorer~~
+  - ~~⭐ **Display Fusion**: virtualize desktop; use it to split my 33" monitor into two virtual monitors~~
+  - ~~Duet + iPad Pro 3rd Gen + Pencil: Turn my iPad Pro into a Cintiq~~
 
-### Windows Privacy
+## Media Apps
 
-- ⭐⭐⭐ **[privacy.sexy](https://privacy.sexy)**: open-source tool to enforce privacy & security best-practices on Windows and macOS
-  - [github repo](https://github.com/undergroundwires/privacy.sexy)
-- ⭐⭐ **[O&O ShutUp10++](https://www.oo-software.com/en/shutup10)**: Free antispy tool for Windows 10 and 11
-- ⭐⭐ **[O&O AppBuster](https://www.oo-software.com/en/ooappbuster)**: uninstall useless preinstalled windows apps/bloatware
-- [WPD](https://wpd.app/): windows privacy dashboard
+- ⭐ **[yt-dlp](https://github.com/yt-dlp/yt-dlp)**: youtube-dl fork with additional features and fixes for downloading videos
+- [LosslessCut](https://mifi.no/losslesscut/): swiss army knife of lossless video/audio editing
+- [ScreenToGif](https://www.screentogif.com/): screen capture
 
 ## DCC
 
@@ -59,7 +64,8 @@
 - ⭐⭐⭐ **[SystemInformer](https://systeminformer.sourceforge.io)**: Built on sysinternals, it's a user friendly taskmanager/process explorer replacement
 - ⭐⭐ **[TotalRegistry](https://github.com/zodiacon/TotalRegistry)**: advanced registry editor by Pavel Yosifovich
 - ⭐⭐ **[O&O RegEditor](https://www.oo-software.com/en/ooregeditor)**: better registry editor
-- ⭐ **Rohitab Api Monitor**: Amazingly well written; use it for api hooking
+- ⭐ **[Rohitab Api Monitor](http://www.rohitab.com/apimonitor)**: Amazingly well written; use it for api hooking
+- [Fermion](https://github.com/FuzzySecurity/Fermion): UI wrapper for [Frida](https://frida.re/), a dynamic instrumentation toolkit
 - NTLite: I use it to help my ghetto bare metal provisioning for windows
 - Powershell: Powershell Desired State Configuration for poor man provisioning
 - [boxstarter](https://boxstarter.org/)
@@ -69,21 +75,24 @@
 - ⭐⭐⭐ **RescueTime**: Auto track where my time goes
 - ⭐⭐⭐ **Houdini**
 - ⭐⭐⭐ **Workflowy**: tasking software
-- ⭐⭐⭐ **[Obsidian](https://obsidian.md)**: Knowledge management alternate since OneNote isnt progressing
+- ⭐⭐⭐ **[Obsidian](https://obsidian.md)**: Knowledge management alternate since OneNote isn't progressing
   - Trillium: Currently trying this out as my onenote replacement
   - Notion: Knowledge management alternate since OneNote isnt progressing
-  - ~~OneNote: This was such an amazing program but hasn't seen much innovation in 4 years~~ I've abandoned this since it's been rotting over the last 4 years.
 - ⭐ **Diigo**: Knowledge repository integrated with google search
-- **Mathematica**: Preferred it over matlab but has annoying learning curve
-- Desmos/Geogebra: Powerful Math grapher/calculator
-- [Mathcha](https://www.mathcha.io/): Math notebook bc screw latexm it's 2018
+- ⭐ **Mathematica**: Preferred it over matlab but has annoying learning curve
+- [Geogebra](https://www.geogebra.org/): powerful Math graphing calculator
+  - [Desmos](https://www.desmos.com/): online only Math graphing calculator
+- [Mathcha](https://www.mathcha.io/): math notebook bc screw latex; it's 2018
+- [SpeedCrunch](https://speedcrunch.org/): cli driven scientific calculator
+- [Qalculate!](https://qalculate.github.io/): multi-purpose desktop calculator
+- ~~OneNote: This was such an amazing program but hasn't seen much innovation in 4 years~~ I've abandoned this since it's been rotting over the last 4 years.
 - ~~Mendeley: Knowledge repository for papers (where I store all my Siggraph papers)~~ Turned to shit post Elsevier acquisition
 
 ## Programming
 
 - ⭐⭐⭐ **[liveplusplus](https://molecular-matters.com/products_livepp.html)**: imho, absolute necessity with UE4. Makes iteration bearable with fast hotreload. With plugin, you can get up & running in 2 mins
 - BeyondCompare
-- Sublime
+- Sublime Text
 - Sublime Merge/Git Extensions
 - UIForETW: Use this over Very Sleepy; pays dividends
 - VS2017:
