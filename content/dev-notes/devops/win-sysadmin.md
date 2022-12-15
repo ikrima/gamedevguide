@@ -203,3 +203,31 @@
     Get-CimInstance Win32_SystemDriver -Filter "name='LGVirHid'" | Invoke-CimMethod -MethodName Delete
     Get-CimInstance Win32_SystemDriver -Filter "name='LVRS64'" | Invoke-CimMethod -MethodName Delete
     ```
+
+## Misc
+
+- Export GroupPolicy modifications: `gpresult /h './GPReport.html'`
+- Query Sids:
+  ```batch
+  wmic useraccount where sid='S-1-5-18' get name,caption,FullName  ;@rem get user by SID
+  wmic useraccount get disabled,domain,name,sid                    ;@rem list all the users and their SIDs
+  wmic sysaccount get domain,name,sid                              ;@rem list built-in accounts
+  wmic group get domain,name,sid                                   ;@rem list Active Directory groups
+  net user <username>                                              ;@rem list all info for one user
+  net localgroup Administrators                                    ;@rem list users in the local Administrators group
+  ```
+
+- Network Adapter:
+  ```batch
+  ipconfig [/all]                      ;@rem show basic/detailed information
+  ipconfig [/renew   | /renew6 foo*]   ;@rem renew the IPv4/IPv6 address for all/matching adapter
+  ipconfig [/release | /release6 foo*] ;@rem release IPv4/IPv6 address for all/matching adapter
+  ipconfig /displaydns                 ;@rem show DNS Resolver cache contents
+  ipconfig /flushdns                   ;@rem purge DNS Resolver cache
+  ipconfig /registerdns                ;@rem refreshes all DHCP leases and re-registers DNS name
+  
+  @rem Reset network state/adaptors
+  netsh int ip reset
+  netsh winsock reset catalog
+  <reboot>
+  ```
