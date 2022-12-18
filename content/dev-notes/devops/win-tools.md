@@ -2,7 +2,7 @@
 
 ⭐ => _how must have it is to me_
 
-### Windows Privacy
+## Windows Privacy
 
 - ⭐⭐⭐ **[privacy.sexy](https://privacy.sexy)**: open-source tool to enforce privacy & security best-practices on Windows and macOS
   - [github repo](https://github.com/undergroundwires/privacy.sexy)
