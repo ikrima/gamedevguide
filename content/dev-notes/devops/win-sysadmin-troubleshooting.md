@@ -1,4 +1,4 @@
-# Windows SysAdmin: Dealing With The Bullshit
+# Windows SysAdmin: Troubleshooting
 
 ## Drivers
 
@@ -59,7 +59,10 @@
   - **_Logon_**: subtle footguns abound
     
     - safest to mainly disable uninstalled/'yellow' registry keys
-    - then use another tool to disable startups e.g. [NirSoft WhatInStartup](https://www.nirsoft.net/utils/what_run_in_startup.html), [SystemInformer](https://systeminformer.sourceforge.io), TaskManager/msconfig, etc
+    - then use another tool to disable startups e.g. 
+      - [NirSoft WhatInStartup](https://www.nirsoft.net/utils/what_run_in_startup.html)
+      - [SystemInformer](https://systeminformer.sourceforge.io)
+      - TaskManager/msconfig
 
 ### Approach 2: SCManager
 
@@ -69,12 +72,12 @@
   
   - query driver to glean useful info
     ```batch
+    sc queryex        ssgdio
+    sc qc             ssgdio
+    sc qdescription   ssgdio
     sc GetDisplayName ssgdio
     sc GetKeyName     ssgdio
     sc EnumDepend     ssgdio
-    sc queryex        ssgdio
-    sc qdescription   ssgdio
-    sc qc             ssgdio
     ```
   
   - disable service and reboot

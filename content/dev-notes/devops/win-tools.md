@@ -1,6 +1,9 @@
 # Developer Tools For Windows
 
-⭐ => _how must have it is to me_
+|Key||
+|---|--|
+|⭐|_how must have it is to me_|
+|strike-through|recommended in past but discommend now|
 
 ## Windows Privacy
 
@@ -35,14 +38,17 @@
 - [Firefox](https://www.mozilla.org/en-US/firefox)
   - Tree Style Tab Extension: Tree column view of all your tabs
   - Stylus Extension: make youtube distraction free and remove notifications/likes showing up on page
-- Discommends
-  - ~~Clover: Tabs in explorer~~
-  - ~~⭐ **Display Fusion**: virtualize desktop; use it to split my 33" monitor into two virtual monitors~~
-  - ~~Duet + iPad Pro 3rd Gen + Pencil: Turn my iPad Pro into a Cintiq~~
+- ~~Clover: Tabs in explorer~~
+- ~~⭐ **Display Fusion**: virtualize desktop; use it to split my 33" monitor into two virtual monitors~~
+- ~~Duet + iPad Pro 3rd Gen + Pencil: Turn my iPad Pro into a Cintiq~~
 
 ## Media Apps
 
 - ⭐ **[yt-dlp](https://github.com/yt-dlp/yt-dlp)**: youtube-dl fork with additional features and fixes for downloading videos
+- [YouTube Transcript](https://youtubetranscript.com/): web-based youtube transcripts
+  - [yt-wsp](https://github.com/ggerganov/whisper.cpp/blob/master/examples/yt-wsp.sh): script to transcribe live stream VODs using
+    - [whisper.cpp](https://github.com/ggerganov/whisper.cpp): OpenAI Whisper C/C++ port
+  - [yt-whisper](https://github.com/m1guelpf/yt-whisper): automatic youtube subtitle generation
 - [LosslessCut](https://mifi.no/losslesscut/): swiss army knife of lossless video/audio editing
 - [ScreenToGif](https://www.screentogif.com/): screen capture
 
@@ -83,7 +89,7 @@
 - [Geogebra](https://www.geogebra.org/): powerful Math graphing calculator
   - [Desmos](https://www.desmos.com/): online only Math graphing calculator
 - [Mathcha](https://www.mathcha.io/): math notebook bc screw latex; it's 2018
-- [SpeedCrunch](https://speedcrunch.org/): cli driven scientific calculator
+- [SpeedCrunch](https://speedcrunch.org/): cli driven, high precision scientific calculator
 - [Qalculate!](https://qalculate.github.io/): multi-purpose desktop calculator
 - ~~OneNote: This was such an amazing program but hasn't seen much innovation in 4 years~~ I've abandoned this since it's been rotting over the last 4 years.
 - ~~Mendeley: Knowledge repository for papers (where I store all my Siggraph papers)~~ Turned to shit post Elsevier acquisition
