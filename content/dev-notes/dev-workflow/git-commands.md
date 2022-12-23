@@ -5,7 +5,8 @@
 - [Git Config Best Practice](https://stackoverflow.com/questions/42675999/git-config-files-best-practice)
 - **Show Options**
   ```bash
-  git config --list --show-origin # all with origin
+  git config --list --show-origin # all variables with origin i.e. file, standard input, blob, command line
+  git config --list --show-scope  # all variables with scope i.e. worktree, local, global, system, command
   git config --list --system      # system-wide variables i.e. from git installation folder
   git config --list --global      # global variables i.e. from ~/.gitconfig
   git config --list --local       # repository variables i.e. from .git/config
