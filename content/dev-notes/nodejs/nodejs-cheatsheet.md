@@ -30,6 +30,7 @@
 |`npm outdated`|find outdated packages|
 |`npm install -g npm-check-updates@latest`|install ncu package|
 |`ncu`|'what if' version of `ncu -u` i.e. won't modify package.json|
+|`ncu -g`|find global outdated packages|
 |`ncu -u && npm update`|major version package upgrade + package.json version hints|
 |`ncu -i`|interactive version of `ncu -u`|
 
