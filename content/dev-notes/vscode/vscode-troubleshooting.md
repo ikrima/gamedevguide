@@ -14,9 +14,20 @@
   - workspace: `%APPDATA%/Code/User/workspaceStorage/<workspace ID>/state.vscdb`
   - can view with [SQLite Browser](https://sqlitebrowser.org/)
 
-## Troubleshooting
+## Troubleshooting Tips
 
-[Perf Tools](https://github.com/microsoft/vscode/wiki/%5BDEV%5D-Perf-Tools-for-VS-Code-Development)
+- Performance
+  - [Perf Tools](https://github.com/microsoft/vscode/wiki/%5BDEV%5D-Perf-Tools-for-VS-Code-Development)
+  - `application.experimental.rendererProfiling`: automatically profile slow renderer-processes
+- Diagnostics
+  - enable log level per output channel per extension from command line
+    ```bash
+    # starts with debug logging enabled for Git extension output channels
+    code --log vscode.git:debug
+    ```
+
+- Extensions
+  - [VSCode Discussions](https://github.com/microsoft/vscode-discussions)
 
 ## CLI
 

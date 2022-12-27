@@ -9,7 +9,7 @@
   nvm install [version]
   nvm use [version]
   npm install -g npm@latest
-  npm install -g typescript@4.8.2
+  npm install -g typescript@latest
   npm install -g yarn@latest
   npm install -g npm-check-updates@latest
   ```

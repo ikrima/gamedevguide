@@ -1,7 +1,7 @@
 # Developer Tools For Windows
 
-|Key||
-|---|--|
+|Legend||
+|------|--|
 |⭐|_how must have it is to me_|
 |strike-through|recommended in past but discommend now|
 
@@ -134,6 +134,7 @@
   - [@kenpex's Tools That I Use](https://c0de517e.blogspot.com/2011/04/2011-tools-that-i-use.html)
   - [Scott Hanselman's Ultimate Developer and Power Users Tool List for Windows](https://hanselman.com/tools)
   - [Curated List of Windows Utilities](https://orga.cat/windows-utilities)
+  - [Portapps](https://portapps.io/): collection of portable applications for Windows
 - privacy resources
   - [JustGetMyData](https://justgetmydata.com)
   - [JustDeleteMe](https://justdeleteme.xyz)
