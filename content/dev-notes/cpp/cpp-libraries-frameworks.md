@@ -259,8 +259,17 @@
 
 ### Decompiler
 
-- [https://github.com/avast/retdec](https://github.com/avast/retdec)
-- [https://github.com/serge1/COFFI](https://github.com/serge1/COFFI)
+- [RetDec](https://github.com/avast/retdec)
+- [COFFI](https://github.com/serge1/COFFI)
+- [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
+  - [Software Reverse Engineering with Ghidra](https://youtube.com/playlist?list=PLRAe18TJ_NTE9cr18OPphn82WS8gVv-te): video tutorial series
+  - [Introduction to Decompiling C++ with Ghidra](https://www.retroreversing.com/intro-decompiling-with-ghidra): abridged version of above
+- [Binary Ninja](https://binary.ninja/)
+- [IDA Pro Decompiler Plugin](https://www.hex-rays.com/decompiler)
+  - [HexRaysCodeXplorer](https://github.com/REhints/HexRaysCodeXplorer)
+- [Radare2](https://github.com/radareorg/radare2)
+  - [Redare2 Book](https://book.rada.re/)
+- [Reko](https://github.com/uxmal/reko)
 
 ### Debugger
 

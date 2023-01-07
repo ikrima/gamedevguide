@@ -17,16 +17,16 @@ A much more powerful debugger than Visual Studio but annoyingly must be download
 
 |Command|Desc|
 |-------|----|
-|`bp`|_Set Breakpoint_: new breakpoint using address|
-|`bu`|_Set Unresolved Breakpoint_: new unresolved/deferred breakpoint using symbolic reference. Persists across module load/unload|
-|`bm`|_Set Symbol Breakpoint_: new breakpoints on symbols using pattern match; defaults to unresolved but can associate to address with `/d` switch|
-|`ba`|_Break on Access_: new data hardware breakpoint|
-|`be`/`bd`/`bc`|_Breakpoint Enable/Disable/Clear_: enable/disable/clear breakpoints|
-|`bl`|_Breakpoint List_: list breakpoints with current status|
-|`.bpcmds`|_Display Breakpoint Commands_: list breakpoints with commands|
-|`br`|_Breakpoint Renumber_: change breakpoint ID|
-|`bs`|_Update Breakpoint Command_: change breakpoint command|
-|`bsc`|_Update Conditional Breakpoint_: change breakpoint condition|
+|`bp`|_Set Breakpoint:_ new breakpoint using address|
+|`bu`|_Set Unresolved Breakpoint:_ new unresolved/deferred breakpoint using symbolic reference. Persists across module load/unload|
+|`bm`|_Set Symbol Breakpoint:_ new breakpoints on symbols using pattern match; defaults to unresolved but can associate to address with `/d` switch|
+|`ba`|_Break on Access:_ new data hardware breakpoint|
+|`be`/`bd`/`bc`|_Breakpoint Enable/Disable/Clear:_ enable/disable/clear breakpoints|
+|`bl`|_Breakpoint List:_ list breakpoints with current status|
+|`.bpcmds`|_Display Breakpoint Commands:_ list breakpoints with commands|
+|`br`|_Breakpoint Renumber:_ change breakpoint ID|
+|`bs`|_Update Breakpoint Command:_ change breakpoint command|
+|`bsc`|_Update Conditional Breakpoint:_ change breakpoint condition|
 
 ### Hang Analysis
 
