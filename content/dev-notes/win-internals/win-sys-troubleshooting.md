@@ -1,4 +1,4 @@
-# Windows SysAdmin: Troubleshooting Guide
+# Windows System Troubleshooting Guide
 
 ## Drivers
 

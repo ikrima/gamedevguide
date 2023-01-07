@@ -1,4 +1,4 @@
-# Windows Internals
+# Windows Kernel Cheatsheet
 
 ## Resources/Source code
 

@@ -1,25 +1,24 @@
 nav:
-  - summary:          index.md
-  - assembly:         assembly
-  - clang:            clang
-  - clojure:          clojure
-  - comp sci:         comp-sci
-  - cpp:              cpp
-  - debugging:        debugging
-  - dev workflow:     dev-workflow
-  - devops:           devops
-  - imgui:            imgui
-  - mlir:             mlir
-  - nim:              nim
-  - nodejs:           nodejs
-  - optimization:     optimization
-  - os:               os
-  - prog lang theory: prog-lang-theory
-  - python:           python
-  - rust:             rust
-  - shells:           shells
-  - typescript:       typescript
-  - visual studio:    visual-studio
-  - vscode:           vscode
-  - zig:              zig
+  - summary:            index.md
+  - assembly:           assembly
+  - clang:              clang
+  - clojure:            clojure
+  - comp sci:           comp-sci
+  - cpp:                cpp
+  - dev workflow:       dev-workflow
+  - devops:             devops
+  - imgui:              imgui
+  - mlir:               mlir
+  - nim:                nim
+  - nodejs:             nodejs
+  - optimization:       optimization
+  - prog lang theory:   prog-lang-theory
+  - python:             python
+  - rust:               rust
+  - shells:             shells
+  - typescript:         typescript
+  - visual studio:      visual-studio
+  - vscode:             vscode
+  - zig:                zig
+  - windows internals:  win-internals
   - ...
