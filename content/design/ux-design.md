@@ -12,6 +12,11 @@
 - [Google Fonts Knowledge](https://fonts.google.com/knowledge)
 - [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/overview/themes/)
 - [Practical Typography](https://practicaltypography.com/)
+- [Type Wolf](https://www.typewolf.com/): typography checklist
+
+## Dev Resources
+- [What The Font](https://www.myfonts.com/pages/whatthefont): font identification/finder
+- [Wappalyzer](https://www.wappalyzer.com/): web stack analyzer
 
 ## Design References
 - [Future of Coding or Programming: Project Comparison](https://docs.google.com/spreadsheets/d/12sTu7RT-s_QlAupY1v-3DfI1Mm9NEX5YMWWTDAKHLfc/edit#gid=0)
