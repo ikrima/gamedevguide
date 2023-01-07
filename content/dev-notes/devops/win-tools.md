@@ -144,4 +144,5 @@
 - non-spammy review/write-up sites
   - [ghacks](https://www.ghacks.net/)
   - [AlternativeTo](https://alternativeto.net/)
+  - [Slant](https://www.slant.co/)
   - [ProductHunt](https://www.producthunt.com)

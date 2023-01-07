@@ -174,6 +174,11 @@ Do-Something *>&1             # Redirects all streams to stdout
 Do-Something *>   out.txt     # Redirects all streams to out.txt
 ```
 
+### Gotchas
+
+- Common Parameters/Preference Variables not inherited across module scopes
+  - [Details](https://devblogs.microsoft.com/powershell-community/how-to-have-more-control-of-preferences-in-functions-and-the-role-of-modules-on-inheritance/)
+
 ## Cheatsheet
 
 ### Useful Commands
