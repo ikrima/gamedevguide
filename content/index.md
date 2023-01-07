@@ -1,23 +1,25 @@
 # Game Development Notes
 
-[Site build: ![Netlify Status](https://api.netlify.com/api/v1/badges/b04d49f2-9006-49ee-9f9a-569f59732aff/deploy-status)](https://app.netlify.com/sites/gamedevguide/deploys)
-
-[Site live @ https://ikrima.dev](https://ikrima.dev)
-
-[Github repo @ https://github.com/ikrima/gamedevguide](https://github.com/ikrima/gamedevguide)
+[Live site build @ ![Netlify Status](https://api.netlify.com/api/v1/badges/b04d49f2-9006-49ee-9f9a-569f59732aff/deploy-status)](https://app.netlify.com/sites/gamedevguide/deploys)  
+[Live site @ ikrima.dev](https://ikrima.dev)  
+[Github repo @ github.com/ikrima/gamedevguide](https://github.com/ikrima/gamedevguide)
 
 ## Wut is this
 
 These are my personal notes from the past 4 years that I'm transforming from our internal dev onboarding guide.
 
 I'm aiming to process about one section a day since the conversion from onenote/evernote/confluence is lossy and needs a final human pass to clean up little niggles.
+
 You can subscribe to the repo for updates
 
 ## Site Build Instructions
 
 - Originally built with gatsby, migrating to mkdocs
 - My notes related to the webdev of the site are in the gitrepo/docs folder
-- Webdev is pita; I mostly use obsidian/vscode to access the markdown notes and recommend the same or another markdown app/sublime text or even [https://github1s.com/ikrima/gamedevguide](https://github1s.com/ikrima/gamedevguide) for the lazy
+- Webdev is pita. I never use the live site anymore so ymmv; your best bet experience is cloning and opening locally
+  - I use and _✨ recommend ✨_ [obsidian](https://obsidian.md); no affiliation, it's just free, fast, sparks joy with zero setup (just open the notes folder)
+  - [foam](https://foambubble.github.io/) or [vscode](https://code.visualstudio.com/) are also great alternatives
+  - or for the lazy, [vscode.dev//gamedevguide](https://vscode.dev/github/ikrima/gamedevguide) or [github.dev//gamedevguide](https://github.dev/ikrima/gamedevguide)
 
 ## Current Conversion Status
 
