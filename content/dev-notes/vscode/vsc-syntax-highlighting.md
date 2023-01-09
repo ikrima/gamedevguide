@@ -4,7 +4,7 @@
 
 ### Semantic Token Types
 
-|Semantic Token Type[^1]|Desc|
+|[Semantic Token Type](https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#standard-token-types-and-modifiers)|Desc|
 |-------------------|----|
 |`namespace`|identifiers that declare or reference a namespace, module, or package|
 |`class`|identifiers that declare or reference a class type|
@@ -32,7 +32,7 @@
 
 ### Semantic Token Modifiers
 
-|Semantic Token Modifier[^1]|Desc|
+|[Semantic Token Modifier](https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#standard-token-types-and-modifiers)|Desc|
 |-----------------------|----|
 |`declaration`|declarations of symbols|
 |`definition`|definitions of symbols, for example, in header files|
@@ -47,7 +47,18 @@
 
 ### Semantic Token Scope Map
 
-|Semantic Token Selector[^2]|TextMate Scope|
+theme applies highlighting with selector rule and style pair
+
+- selector syntax: `(*|tokenType)(.tokenModifier)*(:tokenLanguage)?`
+- on match rule: apply style to token; style format is same as in `tokenColors`
+- on match fail: vscode attempts evaluating semantic rule as normal TextMate scope using `Semantic Token Scope Map`
+- ex:
+  ```json
+  `"*.declaration": { "bold": true } // all declarations are bold
+  `"class:java":    { "foreground": "#0f0", "italic": true } // classes in java
+  ```
+
+|[Semantic Token Selector](https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map)|TextMate Scope|
 |-----------------------|--------------|
 |`namespace`|`entity.name.namespace`|
 |`type`|`entity.name.type`|
@@ -70,10 +81,59 @@
 |`enumMember`|`variable.other.enummember`|
 |`event`|`variable.other.event`|
 
+### Custom Semantic Tokens
+
+- extensions can extend/create new token types/modifiers/scope maps
+  
+  - `semanticTokenTypes`: contribution point for types
+    - `id`: new type id
+    - `superType`: optionally inherit styling rules from this type
+  - `semanticTokenModifiers`: contribution point for modifiers
+    - `id`: new modifier id
+  - `semanticTokenScopes`: contribution point for scope mappings
+    - `language`: optional language-specific scopes
+    - `scopes`: semanticToken-to-textmateScopes map; each entry can be 1-to-many
+- Ex:
+  
+  - 'my.foo-ext': _package.json_ file
+    ```json
+    {
+      "contributes": {
+        "semanticTokenTypes": [{
+          "id":          "barType",
+          "superType":   "type",
+          "description": "custom bar type"
+        }],
+        "semanticTokenModifiers": [{
+          "id":          "native",
+          "description": "annotate symbol as native"
+        }],
+        "semanticTokenScopes": [{
+          "language": "typescript",
+          "scopes":   { "property.readonly": [ "variable.other.constant.property.ts" ] }
+        }],
+      }
+    }
+    ```
+    
+    - adds new semantic token type `barType` and semantic modifier `native`
+    - theme styling rules for `type` will also apply to `barType`
+- theme/color config elsewhere
+  
+  ```json
+  {
+    "name": "MyRedTheme",
+    "semanticTokenColors": { "type": "#ff0011" }
+  }
+  ```
+  
+  - `semanticTokenColors` value `"#ff0011"` applies to both `type` and `barType`
+
 ## Resources
 
+- [Scope Naming Conventions](https://macromates.com/manual/en/language_grammars#naming-conventions)
+- [Scope Selectors](https://macromates.com/manual/en/scope_selectors)
+- [Scope Inspector](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#scope-inspector): extension dev tool for live inspecting scopes, semantic tokens, matched theme rules
+- [Semantic Tokens Sample](https://github.com/microsoft/vscode-extension-samples/tree/main/semantic-tokens-sample)
 - [Syntax Highlight Guide](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide)
 - [Semantic Highlight Guide](https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide)
-
-[^1]: https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#standard-token-types-and-modifiers
-[^2]: https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-scope-map
