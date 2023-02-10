@@ -6,7 +6,7 @@ nav:
   - comp sci:           comp-sci
   - cpp:                cpp
   - dev workflow:       dev-workflow
-  - devops:             devops
+  - devbox:             devbox
   - imgui:              imgui
   - mlir:               mlir
   - nim:                nim
