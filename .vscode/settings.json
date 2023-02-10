@@ -1,8 +1,10 @@
 {
   "files.exclude": {
-    ".build":                true,
-    "**/zig-out":            true,
-    "**/zig-cache":          true,
+    "**/zig-out":   true,
+    "**/zig-cache": true,
+  },
+  "search.exclude": {
+    ".build": true,
   },
   "files.associations": {
     ".pages": "yaml",
@@ -21,15 +23,24 @@
     "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping",
   ],
 
+  // "markdown.extension.tableFormatter.enabled":               true,
+  // "markdown.extension.tableFormatter.normalizeIndentation":  true,
+  // "markdown.extension.tableFormatter.delimiterRowNoPadding": false,
+
+  "highlight-bad-chars.asciiOnly": true,
+
   "powershell.startAutomatically":              true,
   "powershell.promptToUpdatePowerShell":        true,
   "powershell.integratedConsole.showOnStartup": true,
 
-  "npm.packageManager":      "npm",
-  "eslint.enable":           true,
-  "eslint.packageManager":   "npm",
-  // "markdownlint.config":  { "extends": ".markdownlint.jsonc", },
-  "python.linting.enabled": true,
+  "npm.packageManager":     "npm",
+  "eslint.enable":          true,
+  "eslint.packageManager":  "npm",
+  // "markdownlint.config": { "extends": ".markdownlint.jsonc", },
+  "vale.valeCLI.config":    "${workspaceFolder}/site-tools/vale/.vale.ini",
+
+  "python.defaultInterpreterPath": "${env:EDEV_CONDA_ROOT}/envs/mkdocs/python.exe",
+  "python.linting.enabled":        true,
 
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#c073db88",

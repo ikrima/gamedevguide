@@ -1,27 +1,39 @@
 {
   "recommendations": [
-    "bierner.markdown-preview-github-styles",
-    "cgtoolbox-guillaume-jobst.houdinivexhelp",
-    "darkriszty.markdown-table-prettify",
-    "davidanson.vscode-markdownlint",
+    // LangExt: Lint
     "dbaeumer.vscode-eslint",
-    "donjayamanne.python-environment-manager",
     "esbenp.prettier-vscode",
-    "goessner.mdmath",
-    "jebbs.markdown-extended",
-    "melmass.vex",
+    "wengerk.highlight-bad-chars",
+    "connor4312.esbuild-problem-matchers",
+    // LangExt: Misc
     "mikestead.dotenv",
-    "ms-python.python",
-    "ms-python.vscode-pylance",
     "ms-vscode.powershell",
     "redhat.vscode-yaml",
-    "slevesque.shader",
-    "yzhang.markdown-all-in-one",
+    "rust-lang.rust-analyzer",
     "mechatroner.rainbow-csv",
-
-    // "rust-lang.rust-analyzer",
-    // "kortina.vscode-markdown-notes",
-    // "errata-ai.vale-server",
+    "spmeesseman.vscode-taskexplorer",
+    // LangExt: Markdown
+    "jebbs.markdown-extended",
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "goessner.mdmath",
+    "darkriszty.markdown-table-prettify",
+    "telesoho.vscode-markdown-paste-image",
+    "bierner.markdown-preview-github-styles",
+    // LangExt: Shaders
+    "melmass.vex",
+    "cgtoolbox-guillaume-jobst.houdinivexhelp",
+    "slevesque.shader",
+    // LangExt: Python
+    "ms-python.python",
+    "ms-python.pylint",
+    "ms-python.flake8",
+    "ms-python.vscode-pylance",
+    "donjayamanne.python-environment-manager",
   ],
-  "unwantedRecommendations": [ ]
+  "unwantedRecommendations": [
+    "shd101wyy.markdown-preview-enhanced",
+    "kortina.vscode-markdown-notes",
+    "errata-ai.vale-server",
+  ]
 }

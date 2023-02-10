@@ -20,10 +20,10 @@ Use instructions in \[pkm-conversion-notes\] to convert from OneNote, Notion, et
      > \[!note\] `obsidian-export` won't override existing files
     
     ```bash
-    mkdir %EDEV_SRCDIR%/personal/gdgTmpContent &
-    %EDEV_SRCDIR%/personal/tolva-docs/obsidian-export/target/release/obsidian-export.exe %EDEV_SRCDIR%/personal/tolva-docs/docs %EDEV_SRCDIR%/personal/gdgTmpContent &
-    robocopy %EDEV_SRCDIR%/personal/gdgTmpContent %EDEV_SRCDIR%/personal/gamedevguide/content/dev-notes /MIR &
-    rmdir /s/q %EDEV_SRCDIR%/personal/gdgTmpContent
+    mkdir %EDEV_VF_SRC%/personal/gdgTmpContent &
+    %EDEV_VF_SRC%/personal/tolva-docs/obsidian-export/target/release/obsidian-export.exe %EDEV_VF_SRC%/personal/tolva-docs/docs %EDEV_VF_SRC%/personal/gdgTmpContent &
+    robocopy %EDEV_VF_SRC%/personal/gdgTmpContent %EDEV_VF_SRC%/personal/gamedevguide/content/dev-notes /MIR &
+    rmdir /s/q %EDEV_VF_SRC%/personal/gdgTmpContent
     ```
   
   - deploy: [![Deploy to Netlify from GitHub](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ikrima/ikrima)
