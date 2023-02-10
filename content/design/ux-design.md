@@ -17,6 +17,8 @@
 ## Dev Resources
 - [What The Font](https://www.myfonts.com/pages/whatthefont): font identification/finder
 - [Wappalyzer](https://www.wappalyzer.com/): web stack analyzer
+- [Color Name & Hue](http://www.color-blindness.com/color-name-hue/)
+- [Name That Color](http://chir.ag/projects/name-that-color)
 
 ## Design References
 - [Future of Coding or Programming: Project Comparison](https://docs.google.com/spreadsheets/d/12sTu7RT-s_QlAupY1v-3DfI1Mm9NEX5YMWWTDAKHLfc/edit#gid=0)
