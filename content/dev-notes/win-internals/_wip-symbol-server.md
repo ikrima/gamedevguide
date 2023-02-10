@@ -79,10 +79,47 @@
 
 ## SymSrv Examples
 
-- use symbols from remote share:                                                       `SRV*\\buildsShare\fooSymbols`
-- copy symbols from remote to local folder: C:\localSymbols:                           `SRV*C:\localSymbols*\\buildsShare\fooSymbols`
-- copy symbols from remote to default downstream store, usually `C:\debuggers\sym`:    `SRV**\\buildsShare\fooSymbols`
-- use multiple stores with cascading downstream copy: `SRV*C:\localSymbols*\\nearbyServer\store*https://DistantServer`
+- use symbols from remote share
+  
+  ```batch
+  set _NT_SYMBOL_PATH=SRV*\\buildsShare\fooSymbols
+  ```
+
+- copy symbols from remote to local folder
+  
+  ```batch
+  set _NT_SYMBOL_PATH=SRV*C:\localSymbols*\\buildsShare\fooSymbols
+  ```
+
+- copy symbols from remote to default downstream store (usually `C:\debuggers\sym`)
+  
+  ```batch
+  set _NT_SYMBOL_PATH=SRV**\\buildsShare\fooSymbols
+  ```
+
+- use multiple stores with cascading downstream copy
+  
+  ```batch
+  set _NT_SYMBOL_PATH=SRV*C:\localSymbols*\\nearbyServer\store*https://DistantServer
+  ```
+  
   - `SymSrv` searches `C:\localSymbols`;       if found, return local file path
   - `SymSrv` searches `\\nearbyServer\store`;  if found, copy file to `C:\localSymbols`, return local file path e.g. `C:\localSymbols\bar.pdbg`
   - `SymSrv` searches `https://DistantServer`; if found, copy file to `\\nearbyServer\store` **_and_** `C:\localSymbols`
+- multiple HTTP stores, caching, and local uncached symbols
+  
+  ```batch
+  set _NT_SYMBOL_PATH=CACHE*D:\scratch\symbols;SRV*https://msdl.microsoft.com/download/symbols;SRV*https://driver-symbols.nvidia.com;SRV*https://download.amd.com/dir/bin
+  
+  set _NT_SYMBOL_PATH=SRV*C:\Symbols*\\Machine1\Symbols*https://SymProxyName/Symbols;SRV*C:\WebSymbols*https://msdl.microsoft.com/download/symbols
+  set _NT_SYMBOL_PATH=\\notCached\share;SRV*C:\cached\localSymbolDir*https://msdl.microsoft.com/download/symbols;CACHE*C:\cached\localSymbolDir;\\alsoCached\share
+  ```
+
+- `symchk.exe`: use to download/verify symbols
+  
+   > 
+   > \[!example\]\- symchk.exe /r C:\Windows\System32 /s %\_NT_SYMBOL_PATH%
+   > 
+   > - downloads symbols for every component in `C:\Windows\System32`
+   > - `/r C:\Windows\System32`: recursive symbol search for all files in the System32 and its subfolders
+   > - `/s %_NT_SYMBOL_PATH%`: specifies the symbol path to use for symbol resolution
