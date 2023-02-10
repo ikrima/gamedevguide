@@ -26,7 +26,8 @@
 Global Flags Editor (`WindowsSDK\Debuggers\x64\gflags.exe`) enables/disables advanced windows diagnostic settings/registry keys
 
 - features
-  ![](../_assets/gflags-screenshot.png)
+  ![](../../../_assets/gflags-screenshot.png)
+  
   - advanced debugging settings e.g. break on process launch
   - page heap allocation monitoring/verification
   - kernel object reference tracing

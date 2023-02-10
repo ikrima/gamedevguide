@@ -9,12 +9,12 @@
   nvm install [version]
   nvm use [version]
   npm install -g npm@latest
-  npm install -g typescript@latest
-  npm install -g yarn@latest
   npm install -g npm-check-updates@latest
+  npm install -g typescript@latest
+  ncu -g --deprecated
   ```
 
-## Npm
+## nvm
 
 |Command|Desc|
 |-------|----|
@@ -22,17 +22,28 @@
 |`nvm install [version]`|install node version; **_NOTE:_** global npm modules are not shared so must be reinstalled|
 |`nvm use [version]`|switch node version|
 |`nvm current`|info on currently selected node version|
+
+## npm
+
+|Command|Desc|
+|-------|----|
 |`npm install -g npm@latest`|upgrade npm to the latest version|
 |`npm update [--omit=dev --package-lock=false]`|minor version package upgrade + package-lock.json|
 |`npm cache verify`|verify npm cache|
 |`npm -g list`|list globally installed packages|
 |`npm cache clean [-force]`|clean npm cache|
 |`npm outdated`|find outdated packages|
-|`npm install -g npm-check-updates@latest`|install ncu package|
+|\`npm run \[\-d|\--verbose\]\`|
+|`npm config ls -l`|show all defaults|
+
+## ncu
+
+|Command|Desc|
+|-------|----|
 |`ncu`|'what if' version of `ncu -u` i.e. won't modify package.json|
-|`ncu -g`|find global outdated packages|
+|`ncu -g [--deprecated]`|find global outdated + deprecated packages|
 |`ncu -u && npm update`|major version package upgrade + package.json version hints|
-|`ncu -i`|interactive version of `ncu -u`|
+|`ncu -i [--deprecated]`|interactive version of `ncu -u`|
 
 ## References
 
