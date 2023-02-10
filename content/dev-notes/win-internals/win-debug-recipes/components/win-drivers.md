@@ -1,8 +1,6 @@
-# Windows System Troubleshooting Guide
+# Drivers
 
-## Drivers
-
-### Approach 1: AutoRuns
+## Approach 1: AutoRuns
 
 - TLDR: use **_SysInternals: AutoRuns_** to find bad behaving/suspect drivers [(Reference)](https://www.overclock.net/threads/official-amd-ryzen-ddr4-24-7-memory-stability-thread.1628751/page-1041)
   - Configuration
@@ -64,7 +62,7 @@
       - [SystemInformer](https://systeminformer.sourceforge.io)
       - TaskManager/msconfig
 
-### Approach 2: SCManager
+## Approach 2: SCManager
 
 `sc.exe`: **Service Control Manager CLI** to manipulate services; drivers run as special kernel service
 
@@ -175,7 +173,7 @@
     sc query   type= driver group= NDIS     - Enumerates all NDIS drivers
     ```
 
-### Approach 3: pnputil
+## Approach 3: pnputil
 
 - find bad offender's by looking at [zombie processes](https://scorpiosoftware.net/2022/05/14/zombie-processes/) using Pavel's Object Explorer
   - ex: Razer's shitty GameManagerService.exe that's forced on users for no reason
@@ -206,59 +204,3 @@
     Get-CimInstance Win32_SystemDriver -Filter "name='LGVirHid'" | Invoke-CimMethod -MethodName Delete
     Get-CimInstance Win32_SystemDriver -Filter "name='LVRS64'" | Invoke-CimMethod -MethodName Delete
     ```
-
-## Misc
-
-- Export GroupPolicy modifications: `gpresult /h './GPReport.html'`
-- Query Sids:
-  ```batch
-  wmic useraccount where sid='S-1-5-18' get domain,name,sid ;@rem get user by SID
-  wmic useraccount get disabled,domain,name,sid             ;@rem list all the users and their SIDs
-  wmic sysaccount get domain,name,sid                       ;@rem list built-in accounts
-  wmic group get domain,name,sid                            ;@rem list Active Directory groups
-  net user <username>                                       ;@rem list all info for one user
-  net localgroup Administrators                             ;@rem list users in the local Administrators group
-  ```
-
-- Network Adapter:
-  ```batch
-  ipconfig [/all]                      ;@rem show basic/detailed information
-  ipconfig [/renew   | /renew6 foo*]   ;@rem renew the IPv4/IPv6 address for all/matching adapter
-  ipconfig [/release | /release6 foo*] ;@rem release IPv4/IPv6 address for all/matching adapter
-  ipconfig /displaydns                 ;@rem show DNS Resolver cache contents
-  ipconfig /flushdns                   ;@rem purge DNS Resolver cache
-  ipconfig /registerdns                ;@rem refreshes all DHCP leases and re-registers DNS name
-  
-  @rem Reset network state/adaptors
-  netsh int ip reset
-  netsh winsock reset catalog
-  <reboot>
-  ```
-
-## FontCache
-
-- Delete for font duplicates in user/system-wide installations
-  
-  ```powershell
-  (Get-Item "$env:SystemRoot\Fonts\Iosevka*"                    ).FullName | Remove-Item
-  (Get-Item "$env:LOCALAPPDATA\Microsoft\Windows\Fonts\Iosevka*").FullName | Remove-Item
-  ```
-
-- Rebuild [Windows Font Cache](https://www.thewindowsclub.com/rebuild-font-cache-in-windows)
-  
-  ```powershell
-  # stop/disable font cache services
-  $fcStartType       = (Get-Service 'FontCache').StartType        # WindowsFontCacheService
-  $fc3StartType      = (Get-Service 'FontCache3.0.0.0').StartType # WindowsPresentationFoundationFontCache3.0.0.0
-  'FontCache'        | Stop-Service -PassThru | Set-Service -StartupType:Disabled
-  'FontCache3.0.0.0' | Stop-Service -PassThru | Set-Service -StartupType:Disabled
-  
-  # delete font cache files
-  "$env:SystemRoot/System32/FNTCACHE.dat"                                    | Remove-Item
-  "$env:SystemRoot/ServiceProfiles/LocalService/AppData/Local/FontCache.dat" | Remove-Item
-  "$env:SystemRoot/ServiceProfiles/LocalService/AppData/Local/FontCache/"    | Get-ChildItem | Remove-Item
-  
-  # reenable/restart font cache services
-  'FontCache'        | Set-Service -StartupType:$fcStartType  -PassThru | Start-Service
-  'FontCache3.0.0.0' | Set-Service -StartupType:$fc3StartType -PassThru | Start-Service
-  ```

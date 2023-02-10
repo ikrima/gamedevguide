@@ -1,4 +1,4 @@
-# Windows Debugging
+# Configuring Windows Debugging Settings
 
 ## Postmortem Debugging
 
