@@ -296,8 +296,7 @@ Every frame, generate FMeshBatch from Scene proxies
 # Misc:
 
 - <https://github.com/EpicGames/UnrealEngine/commit/b5d7db368977e263092be9b97f78944739f80476>
-
-`youtube: https://www.youtube.com/watch?v=UJ6f1pm_sdU`
+  ![](https://www.youtube.com/watch?v=UJ6f1pm_sdU)
 
 ## Add Immediate Mode Custom Mesh Pass
 

@@ -5,7 +5,7 @@ sidebar: ue4guide
 
 [UE4 Performance and Profiling | Unreal Dev Day Montreal 2017 | Unreal Engine](https://www.youtube.com/watch?v=hcxetY8g_fs)
 
-`youtube: https://www.youtube.com/watch?v=hcxetY8g_fs`
+![](https://www.youtube.com/watch?v=hcxetY8g_fs)
 
 Dev build -> Noise in draw thread; Test is cleanest
 
