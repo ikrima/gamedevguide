@@ -211,9 +211,9 @@ Using houdini python libs in normal python
 def enableHouModule():
   '''Set up the environment so that "import hou" works.'''
   import sys, os
-  os.environ['HFS'] = os.environ['EDEV_HOUDIR']
-  os.environ['PATH'] = os.environ['PATH'] + os.pathsep + os.path.abspath(os.path.join(os.environ['EDEV_HOUDIR'], 'bin'))
-  sys.path.append( os.path.abspath(os.path.join(os.environ['EDEV_HOUDIR'], 'bin')) )
+  os.environ['HFS'] = os.environ['EDEV_HOU_ROOT']
+  os.environ['PATH'] = os.environ['PATH'] + os.pathsep + os.path.abspath(os.path.join(os.environ['EDEV_HOU_ROOT'], 'bin'))
+  sys.path.append( os.path.abspath(os.path.join(os.environ['EDEV_HOU_ROOT'], 'bin')) )
 
   # Importing hou will load in Houdini's libraries and initialize Houdini.
   # In turn, Houdini will load any HDK extensions written in C++.  These
