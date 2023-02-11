@@ -6,7 +6,7 @@ repo_name:        ikrima/gamedevguide
 repo_url:         https://github.com/ikrima/gamedevguide
 edit_uri:         https://github.com/ikrima/gamedevguide/edit/master/content
 site_description: Programming with Unreal Engine, Houdini, Math, & Graphics
-copyright:        Copyright &copy; 2016 - 2022 ikrima
+copyright:        Copyright &copy; 2016 - 2023 ikrima
 
 # Configuration
 docs_dir:           content

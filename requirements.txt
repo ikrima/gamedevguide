@@ -7,14 +7,14 @@
 
 # MkDocs Core: actively used
 mkdocs==1.4.2
-pymdown-extensions==9.7
-mkdocs-material==8.5.10
+pymdown-extensions==9.9.2
+mkdocs-material==9.0.12
 mkdocs-awesome-pages-plugin==2.8.0
 mkdocs-git-revision-date-localized-plugin==1.1.0
 mkdocs-plugin-progress==1.2.0
 
 # MkDocs Extra: not deployed to production yet
-mkdocs-minify-plugin==0.6.1
+mkdocs-minify-plugin==0.6.2
 mkdocs-redirects==1.2.0
 
 # MkDocs Broken: these have Obsidian compat issues
