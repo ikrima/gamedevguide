@@ -6,6 +6,7 @@
 |-------|----|
 |`mkdocs serve`|hot reload builds|
 |`mkdocs build --clean --site-dir ./.build/site`|clean build|
+|`python -m http.server -d ./.build/site`|start simple server|
 
 ## Setup
 
