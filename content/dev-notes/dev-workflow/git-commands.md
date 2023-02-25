@@ -117,7 +117,7 @@
   
   - 
      > 
-     > \[!info\] can be undone with `#!bash git revert`
+     > \[!info\] can be undone with `git revert`
      > submodule's .git directory (e.g. `.git/modules/[path/to/submod]`) is not removed
      > to make possible past commit checkout without requiring fetching from another repository [(Reference)](https://git-scm.com/docs/gitsubmodules#_forms)
 
@@ -156,9 +156,17 @@
 
 ## Git Commit History Manipulation
 
-- Undo last commit [(Reference)](http://stackoverflow.com/questions/927358/how-to-undo-the-last-git-commit): `git reset --soft 'HEAD^'`
+- Undo last commit [(Reference)](http://stackoverflow.com/questions/927358/how-to-undo-the-last-git-commit)
+  
+  ```bash
+  git reset --soft 'HEAD^'
+  ```
 
-- Force clean local repository (including deleting unchecked in files) [(Reference)](http://stackoverflow.com/questions/673407/how-do-i-clear-my-local-working-directory-in-git): `git clean -d -x -f`
+- Force clean local repository (including deleting unchecked in files) [(Reference)](http://stackoverflow.com/questions/673407/how-do-i-clear-my-local-working-directory-in-git)
+  
+  ```bash
+  git clean -d -x -f
+  ```
 
 - **Create patch containing all commits in current but not in the master branch** [(Reference)](https://stackoverflow.com/questions/5432396/create-a-patch-by-comparing-a-specific-branch-on-the-remote-with-a-specific-loca)
   
