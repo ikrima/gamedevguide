@@ -27,9 +27,10 @@
 |Command|Desc|
 |-------|----|
 |`conda update conda`:|Update conda|
-|`conda update -n base conda`:|Update base conda environment|
 |`conda update python`:|Update python version|
 |`conda update anaconda`:|Update all packages to latest stable + compatible version of Anaconda|
+|`conda update -n base conda`:|Update base conda environment|
+|`conda env update -n myenv -f env.yml --prune`:|Update and uninstall dependencies from environment using file|
 
 ## References
 
