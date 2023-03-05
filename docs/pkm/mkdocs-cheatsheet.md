@@ -2,11 +2,15 @@
 
 ## Usage
 
-|Command|Desc|
-|-------|----|
-|`mkdocs serve`|hot reload builds|
-|`mkdocs build --clean --site-dir ./.build/site`|clean build|
-|`python -m http.server -d ./.build/site`|start simple server|
+- live preview with hot reload builds: `mkdocs serve --dirtyreload`
+  
+  - [`--dirtyreload`](https://www.mkdocs.org/about/release-notes/#support-for-dirty-builds-990) only rebuilds dirty pages with changed source timestamps
+- clean build: `mkdocs build --clean --dirty --site-dir ./.build/site`
+  
+  - `--clean`: clean build
+  - `--site-dir`: specify output directory
+  - `-dirty`: only rebuilds dirty pages
+- start simple server: `python -m http.server -d ./.build/site`
 
 ## Setup
 
