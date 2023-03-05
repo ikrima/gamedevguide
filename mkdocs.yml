@@ -9,7 +9,7 @@ site_description: Programming with Unreal Engine, Houdini, Math, & Graphics
 copyright:        Copyright &copy; 2016 - 2023 ikrima
 
 # Configuration
-docs_dir:           content
+docs_dir:           docs
 use_directory_urls: true
 strict:             true
 
