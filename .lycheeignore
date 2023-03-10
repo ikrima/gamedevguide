@@ -1,0 +1,20 @@
+# Generic Addresses
+# http://localhost/*
+# https://localhost/*
+# http://127.0.0.1/*
+# https://127.0.0.1/*
+# http://192.168.1.1/*
+# http://192.168.1.2/*
+# http://0.0.0.0/*
+# https://1.1.1.1/*
+# https://8.8.8.8/*
+# file:///github/*
+
+# Email And SSH Users
+# example@*
+# you@*
+# root@*
+# user@*
+
+# Other
+# https://developers.cloudflare.com/*
