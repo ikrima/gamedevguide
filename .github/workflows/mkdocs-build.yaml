@@ -1,0 +1,25 @@
+name: mkdocs-build
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Deploy docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          set-safe-directory: false
+
+      - name: Deploy MkDocs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_DOMAIN: ikrima.dev
+          CONFIG_FILE: ./mkdocs.yml
+          # EXTRA_PACKAGES: build-base
+          REQUIREMENTS: ./requirements.txt
