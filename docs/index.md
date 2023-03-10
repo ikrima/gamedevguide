@@ -1,6 +1,6 @@
 # Game Development Notes
 
-[Live site build @ ![Netlify Status](https://api.netlify.com/api/v1/badges/b04d49f2-9006-49ee-9f9a-569f59732aff/deploy-status)](https://app.netlify.com/sites/gamedevguide/deploys)  
+[Live site build @ ![mkdocs-build](https://github.com/ikrima/gamedevguide/actions/workflows/mkdocs-build.yaml/badge.svg)](https://github.com/ikrima/gamedevguide/actions/workflows/mkdocs-build.yaml)
 [Live site @ ikrima.dev](https://ikrima.dev)  
 [Github repo @ github.com/ikrima/gamedevguide](https://github.com/ikrima/gamedevguide)
 
