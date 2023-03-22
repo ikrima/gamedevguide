@@ -7,17 +7,33 @@
 
 # MkDocs Core: actively used
 mkdocs==1.4.2
-pymdown-extensions==9.9.2
-mkdocs-material==9.1.0
+pymdown-extensions==9.10
+mkdocs-material==9.1.3
 mkdocs-awesome-pages-plugin==2.8.0
-mkdocs-git-revision-date-localized-plugin==1.1.0
+mkdocs-git-revision-date-localized-plugin==1.2.0
 mkdocs-plugin-progress==1.2.0
 
 # MkDocs Extra: not deployed to production yet
-mkdocs-minify-plugin==0.6.2
+mkdocs-minify-plugin==0.6.4
 mkdocs-redirects==1.2.0
 
 # MkDocs Broken: these have Obsidian compat issues
 # mkdocs-roamlinks-plugin==0.2.0
-# mkdocs-ezlinked-plugin==0.3.2
+mkdocs-ezlinked-plugin==0.3.3
 # mkdocs-ezlinks-plugin==0.1.14
+
+# Obsidian Markdown: actively used
+obsidiantools==0.10.0
+mdx_breakless_lists==1.0.1
+mkdocs-callouts==1.9.0
+mkdocs-meta-descriptions-plugin==2.2.0
+
+# Obsidian Markdown: not deployed
+# mkdocs-embed-file-plugins==2.0.5
+# mkdocs-glightbox==0.3.2
+# mkdocs-preview-links-plugin==0.6.2
+# mkdocs-mermaid2-plugin==0.6.0
+# mkdocs-custom-tags-attributes==0.3.0
+# pyvis==0.3.2
+# cairosvg==2.7.0
+# pillow==9.4.0

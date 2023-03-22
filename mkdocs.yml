@@ -4,7 +4,7 @@ site_author:      ikrimae
 site_url:         https://ikrima.dev/
 repo_name:        ikrima/gamedevguide
 repo_url:         https://github.com/ikrima/gamedevguide
-edit_uri:         https://github.com/ikrima/gamedevguide/edit/master/content
+edit_uri:         edit/master/docs/
 site_description: Programming with Unreal Engine, Houdini, Math, & Graphics
 copyright:        Copyright &copy; 2016 - 2023 ikrima
 
@@ -35,6 +35,8 @@ theme:
   # favicon: _site/favicon.png
   icon:
     repo: fontawesome/brands/github
+    edit: material/file-edit-outline
+    view: material/file-eye-outline
     # logo: fontawesome/solid/sticky-note
   palette:
     # Dark mode
@@ -79,10 +81,15 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.instant
+    - navigation.indexes
     - search.suggest
     - search.highlight
+    - search.share
+    - content.action.edit
+    - content.action.view
+    - toc.follow
     # - navigation.expand
-    # - navigation.indexes
+    # - navigation.tabs.sticky
     # - toc.integrate
 
 # Extras
@@ -101,6 +108,7 @@ extra:
 extra_css:
   # - _site/katex/katex.min.css # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css ###revisit
   - _site/mkdocs-extra.css
+  - _site/obsidian-admonition.css
 extra_javascript:
   # - _site/katex/katex.min.js # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js ###revisit
   # - _site/arithmatex-katex.js ###revisit
@@ -110,6 +118,7 @@ extra_javascript:
 
 # Plugins/Extensions
 markdown_extensions:
+  - mdx_breakless_lists
   - markdown.extensions.admonition
   - markdown.extensions.attr_list
   - markdown.extensions.def_list
@@ -119,9 +128,9 @@ markdown_extensions:
       slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}} ###revisit
       permalink: "#"
       toc_depth: 6
-  # - markdown.extensions.meta ###revisit
-  # - markdown.extensions.nl2br ###revisit
-  # - markdown.extensions.sane_lists ###revisit
+  - markdown.extensions.meta ###revisit
+  - markdown.extensions.nl2br ###revisit
+  - markdown.extensions.sane_lists ###revisit
   # - markdown.extensions.smarty: ###revisit
   #     smart_quotes: false
 
@@ -144,6 +153,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tabbed:
       alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}} ###revisit
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
@@ -154,6 +164,9 @@ markdown_extensions:
       auto_title: true
       # pygments_style: solarized-dark ###revisit
       linenums_style: pymdownx-inline
+      line_spans: __span
+      use_pygments: true
+      pygments_lang_class: true
       extend_pygments_lang:
         - name: ue4c
           lang: bash
@@ -171,7 +184,7 @@ markdown_extensions:
       custom_fences:
         - name:   math
           class:  arithmatex
-          format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {kwds: {mode: generic }} ###revisit {mode: generic, tag: pre}
+          format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {kwds: {mode: generic, tag: pre}}  ###revisit {mode: generic}
 
   # - pymdownx.saneheaders ###revisit
   # - pymdownx.progressbar
@@ -183,11 +196,11 @@ markdown_extensions:
   #       right-click: "Right Click"
   #     separator: "\uff0b"
   # - pymdownx.striphtml
-  # - pymdownx.snippets:
-  #     check_paths: true
-  # - pymdownx.escapeall:
-  #     hardbreak: True
-  #     nbsp: True
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.escapeall:
+      hardbreak: false
+      nbsp:      false
   # - markdown_katex:
   #     no_inline_svg: True
   #     insert_fonts_css: True
@@ -195,20 +208,28 @@ markdown_extensions:
 
 plugins:
   - search:
-      separator: '[\s\-\.\_]+'
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
   - git-revision-date-localized:
       type: iso_date
+      enable_creation_date: true
       # fallback_to_build_date: true
   - awesome-pages:
       collapse_single_pages: false
   - progress
+  - callouts
+  - meta-descriptions
   # - roamlinks
-  # - ezlinks:
-  #     warn_ambiguities: true
-  #     wikilinks:        true
-  #     reference_links:  false
+  - ezlinks:
+      warn_ambiguities: true
+      wikilinks:        true
+      reference_links:  false
+  # - glightbox
   # - embed_file:
   #     callouts: true
-  #     custom-attributes: 'assets/css/custom_attributes.css'
+  #     custom-attributes: _site/custom_attributes.css
+  # - custom-attributes:
+  #     file: _site/custom_attributes.css
   # - minify:
   #     minify_html: true
+  # - offline:
+  #     enabled: !ENV [OFFLINE, false]
