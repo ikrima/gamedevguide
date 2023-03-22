@@ -1,26 +1,64 @@
 # Linux Basics
 
+## Resources
+
+- [Introduction to Linux Technology and Philosophy by Jeremy Hajek](../_assets/intro-to-linux-textbook.pdf)
+  - [github source](https://github.com/jhajek/Linux-text-book-part-1)
+- [explainshell](https://explainshell.com/): match command-line arguments to their help text
+- [tldr pages](https://tldr.sh/)
+- [DigitalOcean Linux Basics Tutorials](https://www.digitalocean.com/community/tutorials?q=%5BLinux%20Basics%5D)
+  - [Introduction to Linux Basics](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-basics)
+  - [Linux Command Line Primer](https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer)
+  - [How To Use ps, kill, and nice to Manage Linux Processes](https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux)
+
 ## Filesystem
 
-- pretty print stats about file
+- `stat`: pretty print stats about file
   
   ```bash
   stat [file]
   ```
 
-- delete directory
+- `rm`: delete directory
   
   ```bash
   rm -rf
   ```
 
-- find file/directory recursively
+- `find`: find file/directory recursively
   
   ```bash
   find . -name _gsdata_ -exec rm {} +
   find . -type d -name _gsdata_ -print -exec rm -rfv {} +
   find . -type f -name \( -name .DS_Store -o -name Thumbs.db \) -print -exec rm {} +
   ```
+
+- `df`: display free disk space
+  
+  ```bash
+  df -lhT # show usage of all mounted filesystems
+  ```
+
+## Console Management
+
+- `env`: print the environment variables
+  ```bash
+  stat [file]
+  ```
+
+- `tail`: displays the last part of a file
+  ```bash
+  tail -f [file]      # outputs last lines in realtime
+  tail -n 100 [file]  # outputs last n lines
+  ```
+
+- `bind`: keybinds
+  ```bash
+  bind -l   # List bindable editing functions names
+  bind -p   # List bindable editing functions names with their bindings are
+  ```
+
+## Permissions
 
 - `chmod`: change permissions to folders and files
   
@@ -45,53 +83,59 @@
             | sets all to `000`
   ```
 
-## Processes/Services
+## Processes
 
 - `id`: find UID/GID for user
-  
   ```bash
   id [username]
   ```
 
-- list running processes
-  
+- `ps`: list running processes
   ```bash
   ps aux
   ```
 
-- start/stop/restart the specified service
-  
+- `pkill`: kill process by name
   ```bash
-  systemctl start [service]
-  systemctl stop [service]
-  systemctl restart [service]
+  ps chrome
   ```
 
-- enable/disable service to auto start at boot time
-  
-  ```bash
-  systemctl enable [service]
-  systemctl disable [service]
-  ```
+## Services
 
-- show/check service current status/runtime information
+- `systemctl`: manage services/daemons
+  - start/stop/restart the specified service
+    
+    ```bash
+    systemctl start [service]
+    systemctl stop [service]
+    systemctl restart [service]
+    ```
   
-  ```bash
-  systemctl status [service]
-  systemctl is-active [service]
-  systemctl is-enabled [service]
-  systemctl is-failed [service]
-  systemctl list-dependencies [service]
-  ```
-
-- list running services
+  - enable/disable service to auto start at boot time
+    
+    ```bash
+    systemctl enable [service]
+    systemctl disable [service]
+    ```
   
-  ```bash
-  systemctl | grep running # Loaded+Active
-  systemctl --no-pager | grep running | column -t # For more readable output
-  systemctl list-units --all # Loaded services
-  systemctl list-units --all --state=inactive # Inactive services
-  systemctl list-units --type=service
-  systemctl list-units --type=service --state=running 
-  systemctl list-unit-files # All installed i.e. Loaded+Unloaded
-  ```
+  - show/check service current status/runtime information
+    
+    ```bash
+    systemctl status [service]
+    systemctl is-active [service]
+    systemctl is-enabled [service]
+    systemctl is-failed [service]
+    systemctl list-dependencies [service]
+    ```
+  
+  - list running services
+    
+    ```bash
+    systemctl | grep running # Loaded+Active
+    systemctl --no-pager | grep running | column -t # For more readable output
+    systemctl list-units --all # Loaded services
+    systemctl list-units --all --state=inactive # Inactive services
+    systemctl list-units --type=service
+    systemctl list-units --type=service --state=running 
+    systemctl list-unit-files # All installed i.e. Loaded+Unloaded
+    ```
