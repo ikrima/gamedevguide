@@ -6,7 +6,7 @@
   
   ```bash
   mkdir ~/.ssh
-  ssh-keygen -t ed25519 -C "[user@server]" -f ~./.ssh/[server]/id_ed25519
+  ssh-keygen -t ed25519 -C "[user@server]" -f ~/.ssh/[server]/id_ed25519
   ```
 
 - create the `authorized_keys`
@@ -14,6 +14,7 @@
   ```bash
   touch ~/.ssh/authorized_keys
   echo "[public-key-sting]" >> ~/.ssh/authorized_keys
+  type ~/.ssh/[server]/id_ed25519.pub | ssh [user]@[server] "cat >> ~/.ssh/authorized_keys"
   ```
 
 - set permissions/ownership on `.ssh`
