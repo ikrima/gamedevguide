@@ -118,22 +118,28 @@ extra_javascript:
 
 # Plugins/Extensions
 markdown_extensions:
+  # ThirdParty Extensions
   - mdx_breakless_lists
+
+  # Python Markdown
+  - markdown.extensions.abbr
   - markdown.extensions.admonition
   - markdown.extensions.attr_list
   - markdown.extensions.def_list
   - markdown.extensions.footnotes
   - markdown.extensions.tables
+  - markdown.extensions.md_in_html
   - markdown.extensions.toc:
       slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}} ###revisit
       permalink: "#"
       toc_depth: 6
-  - markdown.extensions.meta ###revisit
-  - markdown.extensions.nl2br ###revisit
+  - markdown.extensions.meta       ###revisit
+  - markdown.extensions.nl2br      ###revisit
   - markdown.extensions.sane_lists ###revisit
-  # - markdown.extensions.smarty: ###revisit
+  # - markdown.extensions.smarty:  ###revisit
   #     smart_quotes: false
 
+  # Python Markdown Extensions
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
@@ -186,21 +192,21 @@ markdown_extensions:
           class:  arithmatex
           format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {kwds: {mode: generic, tag: pre}}  ###revisit {mode: generic}
 
-  # - pymdownx.saneheaders ###revisit
-  # - pymdownx.progressbar
-  # - pymdownx.smartsymbols
-  # - pymdownx.keys:
-  #     key_map:
-  #       click: "Click"
-  #       left-click: "Left Click"
-  #       right-click: "Right Click"
-  #     separator: "\uff0b"
-  # - pymdownx.striphtml
+  - pymdownx.smartsymbols
+  - pymdownx.keys:
+      separator: '+'
+      key_map:
+        click:       'Click'
+        left-click:  'Left Click'
+        right-click: 'Right Click'
   - pymdownx.snippets:
       check_paths: true
   - pymdownx.escapeall:
       hardbreak: false
       nbsp:      false
+  # - pymdownx.saneheaders ###revisit
+  # - pymdownx.progressbar
+  # - pymdownx.striphtml
   # - markdown_katex:
   #     no_inline_svg: True
   #     insert_fonts_css: True
@@ -215,15 +221,15 @@ plugins:
       # fallback_to_build_date: true
   - awesome-pages:
       collapse_single_pages: false
+  - glightbox
+  - meta-descriptions
   - progress
   - callouts
-  - meta-descriptions
-  # - roamlinks
   - ezlinks:
       warn_ambiguities: true
       wikilinks:        true
       reference_links:  false
-  # - glightbox
+  # - roamlinks
   # - embed_file:
   #     callouts: true
   #     custom-attributes: _site/custom_attributes.css
