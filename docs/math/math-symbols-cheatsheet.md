@@ -1,5 +1,9 @@
 # Math Symbols LaTeX Cheatsheet
 
+## Resources
+- [EquationSheet](https://www.equationsheet.com/): latex examples using widge range of physics/math equations
+- [Mathcha](https://www.mathcha.io/): math notebook editor with excellent ux
+
 ## Accents
 
 | **Math Mode Accents** |                   |
