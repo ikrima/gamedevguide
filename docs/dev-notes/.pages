@@ -8,6 +8,7 @@ nav:
   - dev workflow:       dev-workflow
   - devbox:             devbox
   - imgui:              imgui
+  - linux:              linux
   - mlir:               mlir
   - nim:                nim
   - nodejs:             nodejs
