@@ -18,6 +18,7 @@ nav:
   - rust:               rust
   - shells:             shells
   - typescript:         typescript
+  - unraid:             unraid
   - visual studio:      visual-studio
   - vscode:             vscode
   - zig:                zig
