@@ -1,0 +1,21 @@
+:root {
+  --md-admonition-icon--dictionnary: url('data:image/svg+xml;charset=utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 22a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12z"/></svg>')
+}
+
+.md-typeset .admonition.dictionnary,
+.md-typeset details.dictionnary {
+  border-color: rgb(43, 155, 70);
+}
+
+.md-typeset .dictionnary>.admonition-title,
+.md-typeset .dictionnary>.summary {
+  background-color: rgba(43, 155, 70, 0.1);
+  border-color: rgb(43, 155, 70);
+}
+
+.md-typeset .dictionnary>.admonition-title::before,
+.md-typeset .dictionnary>summary::before {
+  background-color: rgb(43, 155, 70);
+  -webkit-mask-image: var(--md-admonition-icon--dictionnary);
+  mask-image: var(--md-admonition-icon--dictionnary);
+}

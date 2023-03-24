@@ -1,0 +1,4862 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Programming notes for Unreal Engine, Houdini, Game Development, Math, &amp; Graphics" name="description"/>
+<meta content="ikrimae" name="author"/>
+<link href="https://ikrima.dev/dev-notes/visual-studio/vs-tips-tricks/" rel="canonical"/>
+<link href="../rpc-debugger-extension/" rel="prev"/>
+<link href="../../vscode/vsc-syntax-highlighting/" rel="next"/>
+<link href="../../../_site/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.4" name="generator"/>
+<title>Visual Studio Tips &amp; Tricks - Gamedev Guide</title>
+<link href="../../../assets/stylesheets/main.240905d7.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Nunito";--md-code-font:"Source Code Pro"}</style>
+<link href="../../../_site/mkdocs-extra.css" rel="stylesheet"/>
+<link href="../../../_site/obsidian-admonition.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-VWCEPP5L4L"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-VWCEPP5L4L",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-VWCEPP5L4L",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="ayu" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#visual-studio-tips--tricks">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Gamedev Guide" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Gamedev Guide">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M192 64C86 64 0 150 0 256s86 192 192 192h256c106 0 192-86 192-192S554 64 448 64H192zm304 184c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm-24 56c0 22.1-17.9 40-40 40s-40-17.9-40-40 17.9-40 40-40 40 17.9 40 40zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32v32c0 13.3-10.7 24-24 24s-24-10.7-24-24v-32h-32c-13.3 0-24-10.7-24-24s10.7-24 24-24h32v-32z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Gamedev Guide
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Visual Studio Tips &amp; Tricks
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Dark mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="" data-md-color-scheme="ayu" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+<input aria-label="Light mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ikrima/gamedevguide" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    ikrima/gamedevguide
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+      Home
+    </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../ue4guide/">
+        UE4
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../">
+        Dev Notes
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../math/cliff-notes/">
+        Math
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../graphics/">
+        Graphics
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../houdini/">
+        Houdini
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../design/art-resources/">
+        Design
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../blog/">
+        Blog
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Gamedev Guide" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Gamedev Guide">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M192 64C86 64 0 150 0 256s86 192 192 192h256c106 0 192-86 192-192S554 64 448 64H192zm304 184c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm-24 56c0 22.1-17.9 40-40 40s-40-17.9-40-40 17.9-40 40-40 40 17.9 40 40zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24h-32v32c0 13.3-10.7 24-24 24s-24-10.7-24-24v-32h-32c-13.3 0-24-10.7-24-24s10.7-24 24-24h32v-32z"></path></svg>
+</a>
+    Gamedev Guide
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ikrima/gamedevguide" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    ikrima/gamedevguide
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../ue4guide/">UE4</a>
+<label for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          UE4
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/kl-opensource-ue4-repos/">
+        Open Source UE4 Repo
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Application os generic platform
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Application os generic platform
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/capturingshowing-mouse-input/">
+        Capturingshowing mouse input
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/command-line-parsing/">
+        Command line parsing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/config-files/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/crash-handling-crash-reporter/">
+        Crash handling crash reporter
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/dll-management/">
+        Setting the DLL binary path
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/hooking-into-windows-message-pump/">
+        Hooking into windows message pump
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/loading-screen/">
+        Loading screen
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/processthread-management/">
+        Processthread management
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/readingwriting-files/">
+        Readingwriting files
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/targetbuild-configurationplatform-properties/">
+        Targetbuild configurationplatform properties
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/useful-classes/">
+        Useful classes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/useful-generic-function-list/">
+        Useful generic function list
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/application-os-generic-platform/window-management/">
+        Common How-To
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Build guide
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Build guide
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/build-target-file-demystified/">
+        Build Target File Demystified
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/custom-warnings-as-errors/">
+        Custom warnings as errors
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/how-to-set-up-build-dedicated-servers-for-windows-and-linux-for-your-ue4-game-using-windows/">
+        How to set up build dedicated servers for windows and linux for your ue4 game using windows
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/locating-project-log-file-output-directory-paths/">
+        Editor Session Log
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/precompiled-build-process/">
+        Precompiled Build Process
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/resources-on-udn/">
+        Resources on udn
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/setup-light-swarm/">
+        Setup light swarm
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/static-analysis/">
+        Enabling UE4 Static Analysis
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4_10" id="__nav_2_4_10_label" tabindex="0">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_10_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_10">
+<span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/docker/docker-overview/">
+        Docker overview
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4_11" id="__nav_2_4_11_label" tabindex="0">
+          Plugins modules
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_11_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_11">
+<span class="md-nav__icon md-icon"></span>
+          Plugins modules
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/plugins-modules/commandlet-plugin-example/">
+        Commandlet plugin example
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/plugins-modules/linking-external-dlls-or-libraries/">
+        Linking external dlls or libraries
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/plugins-modules/plugin-module-loading/">
+        Plugin module loading
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/plugins-modules/uprojectuplugin-descriptor/">
+        Uprojectuplugin descriptor
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4_12" id="__nav_2_4_12_label" tabindex="0">
+          Ubt
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_12_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_12">
+<span class="md-nav__icon md-icon"></span>
+          Ubt
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/ubt/automationtool-exe-unrealbuildtool-exe-reference/">
+        AutomationTool.exe Reference:
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/ubt/build-target-cs-with-useful-switches-parameters/">
+        Build target cs with useful switches parameters
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/ubt/buildconfiguration-xml-example/">
+        Buildconfiguration xml example
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/ubt/debugging-shipping-configuration/">
+        Debugging shipping configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/ubt/engine-versionbuildid/">
+        Overview of Engine Versioning:
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/ubt/misc-helpful-tipsdebugging/">
+        Misc helpful tipsdebugging
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/ubt/project-generator-options/">
+        Project generator options
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/ubt/useful-build-switchesspeed-up-recompilation/">
+        Useful build switchesspeed up recompilation
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4_13" id="__nav_2_4_13_label" tabindex="0">
+          Utilities
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_13_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_13">
+<span class="md-nav__icon md-icon"></span>
+          Utilities
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/utilities/build-binary-only-plugin-distribution/">
+        Building the plugin
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/utilities/devops-build-automation/">
+        Useful UBT Flags
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/build-guide/utilities/kl-automation-scripts/">
+        Kl automation scripts
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Development setup
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Development setup
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/development-setup/visual-studio-tips-for-ue4/">
+        General Tips
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/development-setup/windows-defender-exclusions-script/">
+        Windows defender exclusions script
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Editor extensions
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          Editor extensions
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/editor-extensions-overview/">
+        UE4 Editor Extensions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/redirectrenaming-classespropertiespackages/">
+        Redirectrenaming classespropertiespackages
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/useful-metadatadecorators/">
+        General
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_4" id="__nav_2_6_4_label" tabindex="0">
+          Custom blueprints
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_4">
+<span class="md-nav__icon md-icon"></span>
+          Custom blueprints
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/custom-blueprints/blueprint-static-analysis/">
+        Adding Blueprint Static Analysis Tool
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/custom-blueprints/blutility-editor-extensions/">
+        Blutility editor extensions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/custom-blueprints/create-custom-bp-k2-nodes/">
+        Custom Blueprint Nodes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/custom-blueprints/custom-blueprint/">
+        Class Diagram Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/custom-blueprints/generic-or-wildcard-parameters/">
+        Generic or wildcard parameters
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_5" id="__nav_2_6_5_label" tabindex="0">
+          Custom tools
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_5">
+<span class="md-nav__icon md-icon"></span>
+          Custom tools
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/custom-tools/custom-asset-type/">
+        Custom Content Browser References
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/custom-tools/custom-editor-tool-tutorial/">
+        Class Diagram Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/custom-tools/editor-gizmos/">
+        Editor gizmos
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/custom-tools/viewports/">
+        Viewports
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_6" id="__nav_2_6_6_label" tabindex="0">
+          Detail customization
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_6">
+<span class="md-nav__icon md-icon"></span>
+          Detail customization
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/detail-customization/accessing-tmap/">
+        TMap DetailsView Customizations
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/detail-customization/array-builder/">
+        Array builder
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/detail-customization/detail-customization-examples/">
+        Detail customization examples
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/detail-customization/detail-customization/">
+        Overview
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_7" id="__nav_2_6_7_label" tabindex="0">
+          Sequencer
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_7">
+<span class="md-nav__icon md-icon"></span>
+          Sequencer
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/sequencer/binding-objects-sequence-ids/">
+        Binding objects sequence ids
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/sequencer/design-notes-from-epic/">
+        Design notes from epic
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/sequencer/preanimated-state-caching/">
+        Preanimated state caching
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/sequencer/sequencer-4-20-upgrade/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/sequencer/sequencer-notes/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/sequencer/subject-matter-experts/">
+        Subject matter experts
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/sequencer/track-evaluation/">
+        Track evaluation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/sequencer/useful-functionsmisc/">
+        Useful functionsmisc
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_8" id="__nav_2_6_8_label" tabindex="0">
+          Slate
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_8_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_8">
+<span class="md-nav__icon md-icon"></span>
+          Slate
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/slate/custom-state-machine-graph/">
+        Custom state machine graph
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/slate/editor-customization/">
+        Tutorials &amp; Reference
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/slate/slate-layout/">
+        Slate layout
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/slate/slate-style/">
+        Slate style
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/slate/slate/">
+        Slate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/slate/useful-slate-classes/">
+        Useful slate classes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/slate/useful-slate-code-samples/">
+        Useful slate code samples
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_9" id="__nav_2_6_9_label" tabindex="0">
+          Utility helpers
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_9_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_9">
+<span class="md-nav__icon md-icon"></span>
+          Utility helpers
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/utility-helpers/checking-out-config-file/">
+        Checking Out Default*.ini file for a class
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/utility-helpers/editor-file-utils/">
+        Editor file utils
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/utility-helpers/editor-utils/">
+        Useful classes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/utility-helpers/package-utils/">
+        Package utils
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/utility-helpers/save-object-to-a-package-or-asset/">
+        Save object to a package or asset
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/utility-helpers/useful-actor-editor-functions/">
+        Useful actor editor functions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/editor-extensions/utility-helpers/useful-editor-functions/">
+        Useful Editor Functions
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Engine programming
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          Engine programming
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/main-engine-loop/">
+        Guarded Main Loop
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/threading-model/">
+        Thread Pools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/useful-classes/">
+        Useful classes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/useful-typetraits/">
+        Unreal Template Type Traits
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uworld-creation-flow/">
+        UWorld Creation Flow
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7_6" id="__nav_2_7_6_label" tabindex="0">
+          Blueprints
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_7_6">
+<span class="md-nav__icon md-icon"></span>
+          Blueprints
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/blueprints/bp-compiler-internals-1/">
+        Blueprint Compiler Internals I
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/blueprints/bp-compiler-internals-2/">
+        Blueprint Compiler Internals II
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/blueprints/bp-compiler-internals-3/">
+        Blueprint Compiler Internals III
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/blueprints/bp-compiler-overview/">
+        Blueprint Compilation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/blueprints/bp-virtualmachine-overview/">
+        Anatomy of the Unreal 4 blueprint virtual machine
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7_7" id="__nav_2_7_7_label" tabindex="0">
+          Memory
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_7_7">
+<span class="md-nav__icon md-icon"></span>
+          Memory
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/memory/allocators-malloc/">
+        Allocators malloc
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/memory/debuggingdevelopment-tools/">
+        Debuggingdevelopment tools
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/memory/garbage-collection/">
+        Garbage Collection Internals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/memory/tracking-references/">
+        Tracking references
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7_8" id="__nav_2_7_8_label" tabindex="0">
+          Uht
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_8_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_7_8">
+<span class="md-nav__icon md-icon"></span>
+          Uht
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uht/custom-tproperties/">
+        Custom tproperties
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uht/uht-parsing/">
+        Uht parsing
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7_9" id="__nav_2_7_9_label" tabindex="0">
+          Uobject internals
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_9_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_7_9">
+<span class="md-nav__icon md-icon"></span>
+          Uobject internals
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobject-internals/overview/">
+        UObject Internals &amp; Type System
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7_10" id="__nav_2_7_10_label" tabindex="0">
+          Uobject reflection
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_10_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_7_10">
+<span class="md-nav__icon md-icon"></span>
+          Uobject reflection
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobject-reflection/reflection-internals-1/">
+        Reflection System Details: Part 1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobject-reflection/reflection-internals-2/">
+        Reflection System Details: Part 2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobject-reflection/reflection-internals-3/">
+        Reflection System Details: Part 3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobject-reflection/uobject-reflection/">
+        UE4 Reflection Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobject-reflection/wrapper-structs/">
+        Exposing Wrapper/SumType/Variant Structs to Blueprints
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7_11" id="__nav_2_7_11_label" tabindex="0">
+          Uobject serialization
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_11_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_7_11">
+<span class="md-nav__icon md-icon"></span>
+          Uobject serialization
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobject-serialization/hooking-into-saving-serialization/">
+        Hooking into saving serialization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobject-serialization/uobject-ustruct-serialization/">
+        Uobject ustruct serialization
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7_12" id="__nav_2_7_12_label" tabindex="0">
+          Uobjects
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_12_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_7_12">
+<span class="md-nav__icon md-icon"></span>
+          Uobjects
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobjects/deprecating-uproperties-ufunctions/">
+        UP­ROP­ER­TY
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobjects/duplicate-or-copy-object/">
+        Duplicate or copy object
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobjects/new-uobject-allocation-flow/">
+        UObject Creation/Initialization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/engine-programming/uobjects/uobject-upackage-internals/">
+        Uobject upackage internals
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          Environment setup
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          Environment setup
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/environment-setup/setup-guide-part-1/">
+        Gamedev Environment Part I: Extremely Highend Hardware
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/environment-setup/setup-guide-part-2/">
+        Gamedev Environment Part II: One weird trick to get a 70% performance boost
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/environment-setup/setup-guide-part-3/">
+        Gamedev Environment Part III: Making Windows Tolerable + software I use + semi-auto imaging dev machines
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/environment-setup/setup-guide-part-4/">
+        Gamedev Environment Part IV: Optimizing Unreal Engine Builds, Visual Studio, and Final Benchmarks
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+          Gameplay programming
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          Gameplay programming
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/asset-manager/">
+        Asset Manager
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/controller-mappings-in-ue4/">
+        Controller mappings in ue4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/gameplay-debugging/">
+        Gameplay debugging
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/gameplay-programming/">
+        Gameplay programming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/instantiating-destroying-objects/">
+        Instantiating destroying objects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/logging-commands/">
+        Commands
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/replicated-singleton/">
+        Replicated singleton
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/useful-functions/">
+        Useful functions
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_9" id="__nav_2_9_9_label" tabindex="0">
+          Actor tick lifecycle flow
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_9_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_9">
+<span class="md-nav__icon md-icon"></span>
+          Actor tick lifecycle flow
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/actor-tick-lifecycle-flow/actor-lifecycle-diagram/">
+        Actor Load/Init Function Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/actor-tick-lifecycle-flow/actor-tick-lifecycle-flow/">
+        Actor Load/Init Function Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/actor-tick-lifecycle-flow/creating-components-at-runtime-or-dynamically-in-c-programming/">
+        Creating components at runtime or dynamically in c programming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/actor-tick-lifecycle-flow/dynamically-create-components-from-other-components/">
+        Dynamically create components from other components
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_10" id="__nav_2_9_10_label" tabindex="0">
+          Animation subsystem
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_10_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_10">
+<span class="md-nav__icon md-icon"></span>
+          Animation subsystem
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/animation-subsystem/animation-playback-syncing/">
+        Animation playback syncing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/animation-subsystem/animation-subsystem/">
+        Animation Subsystem
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/animation-subsystem/master-pose-vs-copy-pose-vs-mesh-merge/">
+        Master pose vs copy pose vs mesh merge
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/animation-subsystem/overview/">
+        Animation Ticking
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/animation-subsystem/skeletal-mesh-merge/">
+        Skeletal mesh merge
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/animation-subsystem/uskeletalmesh-fskeletalmeshresource-fskeletalmeshrenderdata-fskeletalmeshlodmodel/">
+        Uskeletalmesh fskeletalmeshresource fskeletalmeshrenderdata fskeletalmeshlodmodel
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_11" id="__nav_2_9_11_label" tabindex="0">
+          Gameplay ability system
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_11_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_11">
+<span class="md-nav__icon md-icon"></span>
+          Gameplay ability system
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/gameplay-ability-system/epic-technical-brief/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/gameplay-ability-system/gas-bbr-questions/">
+        Questions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/gameplay-ability-system/gas-networking/">
+        Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/gameplay-ability-system/overview/">
+        Overview
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_12" id="__nav_2_9_12_label" tabindex="0">
+          Gameplay framework
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_12_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_12">
+<span class="md-nav__icon md-icon"></span>
+          Gameplay framework
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/gameplay-framework/gamemode-game-flow-diagram/">
+        Gamemode game flow diagram
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/gameplay-framework/gamemode/">
+        Gamemode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/gameplay-framework/gameplay-framework/">
+        Gameplay framework
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_13" id="__nav_2_9_13_label" tabindex="0">
+          Master engine flow
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_13_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_13">
+<span class="md-nav__icon md-icon"></span>
+          Master engine flow
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/master-engine-flow/actor-spawning-flow/">
+        Actor spawning flow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/master-engine-flow/core-eventsdelegates/">
+        Editor Delegates
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/master-engine-flow/input-processing-architecture-diagram-flow/">
+        Input processing architecture diagram flow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/master-engine-flow/master-engine-flow/">
+        Game Flow Diagram
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/master-engine-flow/ticking-order-execution-dependencygraph/">
+        Ticking order execution dependencygraph
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_14" id="__nav_2_9_14_label" tabindex="0">
+          Physics
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_14_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_14">
+<span class="md-nav__icon md-icon"></span>
+          Physics
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/physics/async-physics-traces/">
+        Async physics traces
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_9_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_15" id="__nav_2_9_15_label" tabindex="0">
+          Useful console commands
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_9_15_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_15">
+<span class="md-nav__icon md-icon"></span>
+          Useful console commands
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/useful-console-commands/udk-console-commands/">
+        Udk console commands
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/useful-console-commands/udk-editor-console-commands/">
+        Udk editor console commands
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/useful-console-commands/udk-gameplay-debugging/">
+        Udk gameplay debugging
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/gameplay-programming/useful-console-commands/useful-console-commands/">
+        Console Tips &amp; Tricks
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+          General debugging
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+          General debugging
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/general-debugging/add-vs-autoattach-to-ue4-button/">
+        Add vs autoattach to ue4 button
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/general-debugging/display-all-blueprint-properties/">
+        Display all blueprint properties
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/general-debugging/print-bp-callstack/">
+        Print bp callstack
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+          Graphics development
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_11">
+<span class="md-nav__icon md-icon"></span>
+          Graphics development
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/coordinate-spaces/">
+        Coordinate spaces
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/lit-translucency-settings/">
+        Alter Translucency Lighting
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_11_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11_3" id="__nav_2_11_3_label" tabindex="0">
+          Custom passes extensions
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_11_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_11_3">
+<span class="md-nav__icon md-icon"></span>
+          Custom passes extensions
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/custom-passes-extensions/color-gradingpostprocess/">
+        Color gradingpostprocess
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/custom-passes-extensions/custom-primitive/">
+        Custom primitive
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/custom-passes-extensions/custom-stencil-notes/">
+        Custom stencil notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/custom-passes-extensions/custom-stencil-walkthrough-pt1/">
+        GOAL/Endresult
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/custom-passes-extensions/custom-stencil-walkthrough-pt2/">
+        STATIC PATH FOR STATICMESHCOMPONENT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/custom-passes-extensions/custom-stencil-walkthrough-pt3/">
+        Custom stencil walkthrough pt3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/custom-passes-extensions/custom-stencil-walkthrough-pt4/">
+        Stencil Layers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/custom-passes-extensions/custom-stencil-walkthrough-pt5/">
+        Custom stencil walkthrough pt5
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/custom-passes-extensions/stencil-masking-feature/">
+        Approach
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_11_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11_4" id="__nav_2_11_4_label" tabindex="0">
+          How to
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_11_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_11_4">
+<span class="md-nav__icon md-icon"></span>
+          How to
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/how-to/explicit-render-to-rendertarget/">
+        Explicit RenderTarget Operations
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/how-to/render-with-pipelinestateobject/">
+        Render With PipelineStateObject
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/how-to/rendering-outside-normal-render-path/">
+        Rendering Outside Normal Render Path
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_11_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11_5" id="__nav_2_11_5_label" tabindex="0">
+          Lightmass lightmapping
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_11_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_11_5">
+<span class="md-nav__icon md-icon"></span>
+          Lightmass lightmapping
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/lightmass-lightmapping/debugging-lightmass/">
+        Debugging lightmass
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/lightmass-lightmapping/indirect-lighting-cachevolumetric-lightmap-notes/">
+        Indirect lighting cachevolumetric lightmap notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/lightmass-lightmapping/lightmass-2d-lightmaps/">
+        Lightmass 2d lightmaps
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/lightmass-lightmapping/lightmass-misc-lightmapping-notes/">
+        Lightmass misc lightmapping notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/lightmass-lightmapping/lightmass-volumetric-lightmaps/">
+        Lightmass volumetric lightmaps
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/lightmass-lightmapping/swarm-overview/">
+        Swarm overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/lightmass-lightmapping/using-lightmass/">
+        Using Lightmass
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_11_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11_6" id="__nav_2_11_6_label" tabindex="0">
+          Render architecture
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_11_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_11_6">
+<span class="md-nav__icon md-icon"></span>
+          Render architecture
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/base-usf-shaders-code-flow/">
+        Common Info:
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/detailed-render-flow/">
+        Detailed render flow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/drawing-policies/">
+        Drawing policies
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/game-thread-update-code-flow/">
+        Game thread update code flow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/misc-useful-functions/">
+        Misc useful functions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/new-render-pipeline/">
+        TLDR
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/render-thread-code-flow/">
+        Threading Model
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/shader-common-params/">
+        Shader common params
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/shader-compilation-code-flow/">
+        Shader compilation code flow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/render-architecture/shader-uniform-buffers/">
+        Shader uniform buffers
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_11_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11_7" id="__nav_2_11_7_label" tabindex="0">
+          Shader development
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_11_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_11_7">
+<span class="md-nav__icon md-icon"></span>
+          Shader development
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/shader-development/add-custom-shading-model/">
+        Add Custom Shading Model
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/shader-development/tips-tricks/">
+        Fast Custom Shader Iteration Tips
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/shader-development/useful-functions/">
+        Brain Dump of Useful Functions
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_11_7_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_11_7_4" id="__nav_2_11_7_4_label" tabindex="0">
+          Shader debugging
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_11_7_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_11_7_4">
+<span class="md-nav__icon md-icon"></span>
+          Shader debugging
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/shader-development/shader-debugging/debugging-shaders/">
+        Commands for toggling debug &amp; perf markers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/shader-development/shader-debugging/shader-debuggers-tools/">
+        RenderDoc
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/graphics-development/shader-development/shader-debugging/shader-validation/">
+        Debugging Shader Compilation Process
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+          Misc ue4 editor
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_12">
+<span class="md-nav__icon md-icon"></span>
+          Misc ue4 editor
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/misc-ue4-editor/content-browser-search-syntax/">
+        Content Browser Advanced Search Syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/misc-ue4-editor/lighting/">
+        3 classes of lights:
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/misc-ue4-editor/maya-pipeline/">
+        Maya pipeline
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/misc-ue4-editor/movingrenaming-files/">
+        Movingrenaming files
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/misc-ue4-editor/particles/">
+        Particles
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/misc-ue4-editor/streaming-levels/">
+        Streaming levels
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+          Networking
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_13_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_13">
+<span class="md-nav__icon md-icon"></span>
+          Networking
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/character-movement/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/configuration/">
+        Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/connection-flow/">
+        Connection flow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/debugging-tips-tricks/">
+        Debug Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/dedicated-server-on-aws/">
+        Dedicated server on aws
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/epic-networking-experts/">
+        Networking Subject Matter Experts
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/misc-notes/">
+        Misc Brain Dump
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/networkid-funiquenetid-fnetworkguid/">
+        Network IDs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/networking-overview/">
+        Networking overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/replay-system/">
+        Useful Posts
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/server-travel-connection-flow/">
+        Server travel connection flow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/useful-functions/">
+        Useful functions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/vr-preview-with-networking/">
+        Vr preview with networking
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_13_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_13_14" id="__nav_2_13_14_label" tabindex="0">
+          Low level networking
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_13_14_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_13_14">
+<span class="md-nav__icon md-icon"></span>
+          Low level networking
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/low-level-networking/adding-custom-multicast/">
+        Networking server call from unauthenticated client
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/low-level-networking/low-level-networking-overview/">
+        High Level Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/low-level-networking/message-buspassingtcpudp/">
+        Message buspassingtcpudp
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/low-level-networking/send-udp-packets-samplecustom-socket/">
+        Send udp packets samplecustom socket
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/low-level-networking/thin-client-wrappers-and-custom-transport-messaging-example/">
+        Thin client wrappers and custom transport messaging example
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_13_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_13_15" id="__nav_2_13_15_label" tabindex="0">
+          Network replication
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_13_15_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_13_15">
+<span class="md-nav__icon md-icon"></span>
+          Network replication
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/custom-replication/">
+        Custom replication
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/custom-struct-serialization-for-networking/">
+        Custom struct serialization for networking
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/detailed-network-serialization/">
+        Detailed network serialization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/detailed-replication-flow/">
+        Code Flow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/fast-tarray-replication/">
+        Fast tarray replication
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/general-replication/">
+        General replication
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/physics-replication/">
+        Physics replication
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/replication-cheat-sheet/">
+        Replication cheat sheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/replication-related-functions/">
+        UObject:
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/network-replication/sublevellevel-instance-streaming-replication/">
+        Sublevels aren't directly associated with ULevels
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_13_16" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_13_16" id="__nav_2_13_16_label" tabindex="0">
+          Online subsystem
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_13_16_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_13_16">
+<span class="md-nav__icon md-icon"></span>
+          Online subsystem
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/online-subsystem/create-dedicated-server-session-and-wait/">
+        Create dedicated server session and wait
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/online-subsystem/disconnecting-players-steam-lobbies-vs-ue4-game-session/">
+        Disconnecting players steam lobbies vs ue4 game session
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/online-subsystem/online-networking-delegates-events/">
+        Online networking delegates events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/online-subsystem/online-subsystem/">
+        Online subsystem
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/online-subsystem/useful-posts-on-playfab/">
+        Useful posts on playfab
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/networking/online-subsystem/using-multiple-custom-online-subsystems/">
+        Using multiple custom online subsystems
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+          Oculus stuff
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_14_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_14">
+<span class="md-nav__icon md-icon"></span>
+          Oculus stuff
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/oculus-stuff/controlling-rift-overscan-in-unreal-rendering/">
+        Controlling rift overscan in unreal rendering
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/oculus-stuff/how-to-get-hmd-camera-in-worldspace--camera-issues/">
+        How to get hmd camera in worldspace  camera issues
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/oculus-stuff/rift-gotchas/">
+        Rift gotchas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/oculus-stuff/tips-tricks-1/">
+        Tips tricks 1
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+          Packaging cooking
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_15_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_15">
+<span class="md-nav__icon md-icon"></span>
+          Packaging cooking
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/cooking-witheditoronlydata-vs-witheditor/">
+        Cooking witheditoronlydata vs witheditor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/excluding-directories-using-pakblacklist/">
+        Excluding directories using pakblacklist
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/excluding-editor-objects-from-cooking/">
+        Excluding editor objects from cooking
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/optimizing-cooking/">
+        Optimizing cooking
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/packaged-game-paths-obtain-directories-based-on-executable-location/">
+        Config File Paths Locations:
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/packaging-cooking/">
+        TODO:
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/packaging/">
+        Packaging
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/selecting-maps-to-cook/">
+        Selecting maps to cook
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/speed-up-cooking-or-deploying-to-ps4/">
+        Speed up cooking or deploying to ps4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/packaging-cooking/strip-ps4-or-xbox-one-files-from-staging/">
+        Strip ps4 or xbox one files from staging
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_16" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_16" id="__nav_2_16_label" tabindex="0">
+          Performance optimization
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_16_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_16">
+<span class="md-nav__icon md-icon"></span>
+          Performance optimization
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/asset-size-loading/">
+        Asset Size Reduction and Loading Time Optimization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/blueprint-optimization/">
+        Blueprint optimization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/memory/">
+        Memory
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/misc-helper-functions/">
+        Reducing Stat System Overhead
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/performance-guide-overview/">
+        Performance Profiling &amp; Optimization Guide
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/vr-performance-optimizations/">
+        Oculus Specific
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_16_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_16_7" id="__nav_2_16_7_label" tabindex="0">
+          Gpu perf optimization
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_16_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_16_7">
+<span class="md-nav__icon md-icon"></span>
+          Gpu perf optimization
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/gpu-perf-optimization/debugging-shaders-in-ue4/">
+        Debugging shaders in ue4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/gpu-perf-optimization/gpuview/">
+        GPUView
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/gpu-perf-optimization/nvidia-nsight-breakdown/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/gpu-perf-optimization/render-budget/">
+        Render budget
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_16_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_16_8" id="__nav_2_16_8_label" tabindex="0">
+          Notes from devs
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_16_8_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_16_8">
+<span class="md-nav__icon md-icon"></span>
+          Notes from devs
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/notes-from-devs/deprecated-performance-profiling-guide-in-ue4/">
+        Deprecated performance profiling guide in ue4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/notes-from-devs/deprecated-scaling-down/">
+        Deprecated scaling down
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/notes-from-devs/deprecated-useful-console-commands/">
+        Deprecated useful console commands
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/notes-from-devs/nick-whitingdonaldson-notes/">
+        Nick whitingdonaldson notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/notes-from-devs/paragon-optimization-notes/">
+        Paragon optimization notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/notes-from-devs/robo-recall-optimization-talk-notes/">
+        Robo recall optimization talk notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/notes-from-devs/unreal-dev-day-montreal-performance-profiling/">
+        Unreal dev day montreal performance profiling
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/notes-from-devs/vanishing-of-ethan-carter/">
+        Vanishing of ethan carter
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_16_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_16_9" id="__nav_2_16_9_label" tabindex="0">
+          Stats perf counters
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_16_9_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_16_9">
+<span class="md-nav__icon md-icon"></span>
+          Stats perf counters
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/stats-perf-counters/accessing-single-stat-values/">
+        Accessing single stat values
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/stats-perf-counters/misc-functions/">
+        Misc functions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/stats-perf-counters/stats-system/">
+        Overview
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_16_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_16_10" id="__nav_2_16_10_label" tabindex="0">
+          Tolva tool
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_16_10_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_16_10">
+<span class="md-nav__icon md-icon"></span>
+          Tolva tool
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/tolva-tool/misc-wip/">
+        Misc wip
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/tolva-tool/tolva-deep-shader/">
+        Tolva deep shader
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/tolva-tool/tolva-enabling-debug-tools-notes/">
+        Tolva enabling debug tools notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/tolva-tool/tolva-perf-analyzer-mode/">
+        Quick Profiling Guide
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/performance-optimization/tolva-tool/tolva-perf-tool-helpers/">
+        Tolva perf tool helpers
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_17" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_17" id="__nav_2_17_label" tabindex="0">
+          Python basics
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_17_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_17">
+<span class="md-nav__icon md-icon"></span>
+          Python basics
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/python-basics/embeddable-python-distro/">
+        Embeddable python distro
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/python-basics/python-basics/">
+        Python basics
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/python-basics/references/">
+        References
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/python-basics/useful-snippets/">
+        Useful snippets
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_17_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_17_5" id="__nav_2_17_5_label" tabindex="0">
+          Oculus stuff
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_17_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_17_5">
+<span class="md-nav__icon md-icon"></span>
+          Oculus stuff
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/python-basics/oculus-stuff/controlling-rift-overscan-in-unreal-rendering/">
+        Controlling rift overscan in unreal rendering
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/python-basics/oculus-stuff/how-to-get-hmd-camera-in-worldspace--camera-issues/">
+        How to get hmd camera in worldspace  camera issues
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/python-basics/oculus-stuff/rift-gotchas/">
+        Rift gotchas
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/python-basics/oculus-stuff/tips-tricks-1/">
+        Tips tricks 1
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_18" id="__nav_2_18_label" tabindex="0">
+          Source control
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_18">
+<span class="md-nav__icon md-icon"></span>
+          Source control
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/source-control/perforce-source-version-control-setup/">
+        Perforce Source Control Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/source-control/unreal-engine-git/">
+        Unreal Engine Git
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_19" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_19" id="__nav_2_19_label" tabindex="0">
+          Stereo capture plugin
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_19_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_19">
+<span class="md-nav__icon md-icon"></span>
+          Stereo capture plugin
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/stereo-capture-plugin/referencesdocumentation/">
+        Referencesdocumentation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/stereo-capture-plugin/stereo-capture-plugin/">
+        Stereo capture plugin
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_20" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_20" id="__nav_2_20_label" tabindex="0">
+          Ue4 technical crash course
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_20_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_20">
+<span class="md-nav__icon md-icon"></span>
+          Ue4 technical crash course
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/ue4-technical-crash-course/old-intro-to-unreal-engine-4/">
+        Old intro to unreal engine 4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/ue4-technical-crash-course/ue4-technical-crash-course/">
+        Overview Of Engine
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_21" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_21" id="__nav_2_21_label" tabindex="0">
+          Wip
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_21_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_21">
+<span class="md-nav__icon md-icon"></span>
+          Wip
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/architectural-overview/">
+        Architectural overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/assets-naming-convention/">
+        Assets naming convention
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/htc-vive/">
+        Htc vive
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/misc-useful-stuff/">
+        Misc useful stuff
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/programming-guide-notes/">
+        Programming guide notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unreal-developer-day-gameplay-framework-notes/">
+        Unreal developer day gameplay framework notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unreal-engine-4-game-framework-diagram-for-relation-of-all-major-base-object-types/">
+        Unreal engine 4 game framework diagram for relation of all major base object types
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/useful-command-line-arguments/">
+        Useful command line arguments
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/useful-config-settings/">
+        Useful config settings
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/vislog/">
+        Vislog
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_21_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_21_11" id="__nav_2_21_11_label" tabindex="0">
+          Unfinished
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_21_11_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_21_11">
+<span class="md-nav__icon md-icon"></span>
+          Unfinished
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/add-custom-clip-plane/">
+        Add custom clip plane
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/beforetonemapping/">
+        Beforetonemapping
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/called-to-send-a-transform-1-for-this-component-to-the-rendering-thread/">
+        Called to send a transform 1 for this component to the rendering thread
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/checkout-file-from-source-control/">
+        Checkout file from source control
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/class-ssequencersplitteroverlay--public-soverlay/">
+        Class ssequencersplitteroverlay  public soverlay
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/coherent-ui-notes/">
+        Coherent ui notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/collision-detection/">
+        Collision detection
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/constant-rotatorrotation/">
+        Constant rotatorrotation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/create-component-thats-not-tied-to-actor/">
+        Create component thats not tied to actor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/create-custom-collision-on-static-mesh/">
+        Create custom collision on static mesh
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/curhmdposition/">
+        Curhmdposition
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/dear-angelica/">
+        Dear angelica
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/debug-canvas-rendering-and-drawing/">
+        Debug canvas rendering and drawing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/delegate-helper-funcs/">
+        Delegate helper funcs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/dlc-architecture/">
+        Dlc architecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/dlcs-patching/">
+        Dlcs patching
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/editor-only-actors-stripping-actors-from-cooking/">
+        Editor only actors stripping actors from cooking
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/editor-settings-for-primitive-components/">
+        Editor settings for primitive components
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/editor-startup/">
+        Editor startup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/encryption/">
+        Encryption
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/epicnick-854-pm-with-respect-to-blueprints-the-only-strong-refs-are-the-variables-you-create-and-references-to-components/">
+        Epicnick 854 pm with respect to blueprints the only strong refs are the variables you create and references to components
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/fpathsgetpathfilename/">
+        Fpathsgetpathfilename
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/gameplay/">
+        Gameplay
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/geditor-requestplaysession/">
+        Geditor requestplaysession
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/how-to-view-specific-data-in-idetailcustomization/">
+        **How to "View Specific" Data In IDetailCustomization?**
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/how-vr-camera-transform-gets-applied/">
+        How vr camera transform gets applied
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/jumping-character-movement-functionality-double-jump-extended-jump/">
+        Jumping character movement functionality double jump extended jump
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/keep-simulation-or-play-in-editor-changes/">
+        Keep simulation or play in editor changes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/make-sure-stationarydynamic-lights-do-not-overlap/">
+        Make sure stationarydynamic lights do not overlap
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/move-component-across-actors/">
+        Move component across actors
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/networking-bandwidth-mtu/">
+        Networking bandwidth mtu
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/parallelanimevaluation-parallelanimupdate/">
+        What's the diff between a.ParallelAnimEvaluation &amp; a.ParallelAnimUpdate?
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/pausing-renderclock/">
+        Pausing renderclock
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/precomputed-visibility/">
+        Precomputed visibility
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/propertyhandle-markhiddenbycustomization/">
+        Propertyhandle markhiddenbycustomization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/reflection-actors/">
+        Reflection Actors
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/savingloading-layout-to-config/">
+        Savingloading layout to config
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/scenecapturecomponent2d/">
+        Scenecapturecomponent2d
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/stat-slow-12-10/">
+        Stat slow 12 10
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/staticanalyzer-windowsstaticanalyzer/">
+        Staticanalyzer windowsstaticanalyzer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/ucommandletscommandlets-are-ways-to-do-editor-functionality-through-command-line/">
+        Ucommandletscommandlets are ways to do editor functionality through command line
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/udataassets-are-customizableblueprintable-and-can-serialize-data-to-contentbrowser/">
+        Udataassets are customizableblueprintable and can serialize data to contentbrowser
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/ue4-tangent-space-normal-calculation/">
+        Ue4 tangent space normal calculation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/ue4-volumetric-rendering-notes/">
+        Ue4 volumetric rendering notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/ulevelleveldirtiedevent-broadcast/">
+        Ulevelleveldirtiedevent broadcast
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/unreal-developer-day-gameplay-framework-notes/">
+        Unreal developer day gameplay framework notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/unreal-engine-4-game-framework-diagram-for-relation-of-all-major-base-object-types/">
+        Unreal engine 4 game framework diagram for relation of all major base object types
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/uparamref/">
+        Uparamref
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/useful-functions/">
+        Useful functions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/usf-changes/">
+        Usf changes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ue4guide/wip/unfinished/ustaticmeshcomponent/">
+        Ustaticmeshcomponent
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../">Dev Notes</a>
+<label for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Dev Notes
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          assembly
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          assembly
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../assembly/asm-cheatsheet/">
+        Assembly Cheatsheet
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          clang
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          clang
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../clang/clang-cheatsheet/">
+        Clang Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../clang/clang-libtooling-ast/">
+        Clang/LibTooling AST Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          clojure
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          clojure
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../clojure/clj-meander/">
+        Meander
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../clojure/clj-overview/">
+        Clojure
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../clojure/dsl-compilers/">
+        Dsl compilers
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          comp sci
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+          comp sci
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../comp-sci/comp-sci-overview/">
+        Computer Science Theory
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../comp-sci/databases-overview/">
+        Database Learning Resources
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+          cpp
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+          cpp
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cpp/api-hooking/">
+        API Hooking
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cpp/cpp-libraries-frameworks/">
+        Libraries &amp; Frameworks
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cpp/crt-init/">
+        CRT Initialization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cpp/hot-reload/">
+        Hot-reload
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+          dev workflow
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+          dev workflow
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev-workflow/git-commands/">
+        Git Commands
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev-workflow/ini-formats/">
+        INI Formats
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev-workflow/misc-workflow/">
+        Dev Workflow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev-workflow/regex-cheatsheet/">
+        Regex Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../dev-workflow/vcpkg/">
+        Vcpkg Cheatsheet
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+          devbox
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_8">
+<span class="md-nav__icon md-icon"></span>
+          devbox
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devbox/devbox-benchmarks/">
+        Gamedev Environment Part IV: Optimizing Unreal Engine Builds, Visual Studio, and Final Benchmarks
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devbox/devbox-hw-guide/">
+        Devbox Hardware Guide
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devbox/devbox-win-optimization/">
+        Devbox Windows OS Optimization
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../devbox/devbox-win-tools/">
+        Developer Tools For Windows
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+          imgui
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_9">
+<span class="md-nav__icon md-icon"></span>
+          imgui
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../imgui/imgui-debugging/">
+        Debugging
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../imgui/imgui-multiviewport/">
+        Multi-Viewport
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+          linux
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_10">
+<span class="md-nav__icon md-icon"></span>
+          linux
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/linux-basics/">
+        Linux Basics
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../linux/openssh/">
+        OpenSSH
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+          mlir
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_11_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_11">
+<span class="md-nav__icon md-icon"></span>
+          mlir
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mlir/mlir-iree-dialect/">
+        IREE
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../mlir/mlir-useful-code-snippets/">
+        MLIR Useful API/Code Snippets
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+          nim
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_12_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_12">
+<span class="md-nav__icon md-icon"></span>
+          nim
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../nim/nim-cheatsheet/">
+        Nim Cheatsheet
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+          nodejs
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_13_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_13">
+<span class="md-nav__icon md-icon"></span>
+          nodejs
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../nodejs/nodejs-cheatsheet/">
+        NodeJS Cheatsheet
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_14" id="__nav_3_14_label" tabindex="0">
+          optimization
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_14_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_14">
+<span class="md-nav__icon md-icon"></span>
+          optimization
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../optimization/cpp-optimizing-guide/">
+        C++ Optimization Guide
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_15" id="__nav_3_15_label" tabindex="0">
+          prog lang theory
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_15_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_15">
+<span class="md-nav__icon md-icon"></span>
+          prog lang theory
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog-lang-theory/plt-analysis/">
+        Programming Language Theory: Analysis
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog-lang-theory/plt-basic-concepts/">
+        Programming Language Theory: Basic Concepts
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog-lang-theory/plt-compiler-design/">
+        Programming Language Theory: Compiler design
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog-lang-theory/plt-expression-problem/">
+        Type Expression Problem
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog-lang-theory/plt-interpreters/">
+        Interpreters
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog-lang-theory/plt-lenses-transducers-effects/">
+        Lenses, Transducers, and Algebraic Effects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog-lang-theory/plt-misc-resources/">
+        Programming Language Theory: Misc Resources
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../prog-lang-theory/plt-parsing/">
+        Programming Language Theory: Parsing
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_16" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_16" id="__nav_3_16_label" tabindex="0">
+          python
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_16_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_16">
+<span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/conda/">
+        Conda Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/py-cheatsheet/">
+        Comprehensive Python Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/py-snippets/">
+        Python Snippets
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_17" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_17" id="__nav_3_17_label" tabindex="0">
+          rust
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_17_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_17">
+<span class="md-nav__icon md-icon"></span>
+          rust
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rust/rust-cheatsheet/">
+        Rust Cheatsheet
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+          shells
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+          shells
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../shells/bash/">
+        Bash
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../shells/cmd/">
+        Windows Command Shell
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../shells/cmder/">
+        Cmder Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../shells/powershell/">
+        Powershell
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_19" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_19" id="__nav_3_19_label" tabindex="0">
+          typescript
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_19_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_19">
+<span class="md-nav__icon md-icon"></span>
+          typescript
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../typescript/ts-cheatsheet/">
+        TypeScript Cheatsheet
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_20" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_20" id="__nav_3_20_label" tabindex="0">
+          unraid
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_20_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_20">
+<span class="md-nav__icon md-icon"></span>
+          unraid
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../unraid/unraid-backup/">
+        Unraid Backup Guide
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../unraid/unraid-docker-troubleshooting/">
+        Unraid Docker Troubleshooting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../unraid/unraid-setup/">
+        Unraid Setup
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_21" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_21" id="__nav_3_21_label" tabindex="0">
+          visual studio
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_21_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_21">
+<span class="md-nav__icon md-icon"></span>
+          visual studio
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../debug-dll-dependencies/">
+        Debugging DLL Dependencies
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../debug-external-process-start/">
+        Debugging Process Start/External Processes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hardware-breakpoints/">
+        Hardware Breakpoints
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../register-filetype-as-hlsl/">
+        Registering HLSL File Types
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../rpc-debugger-extension/">
+        Visual Studio Debugger RPC Extension
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Visual Studio Tips &amp; Tricks
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Visual Studio Tips &amp; Tricks
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#useful-flags">
+    Useful Flags
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vs-debugger">
+    VS Debugger
+  </a>
+<nav aria-label="VS Debugger" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#context-operator-syntax">
+    Context Operator Syntax
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#commands--pseudovars">
+    Commands &amp; PseudoVars
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#format-specifiers">
+    Format Specifiers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#format-pointers-as-arrays">
+    Format Pointers as Arrays
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#magic-numbers">
+    Magic Numbers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#crt-runtime-debugging-techniques">
+    CRT runtime Debugging Techniques
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#global-in-watch-window">
+    Global in Watch Window
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#advanced-debugging">
+    Advanced Debugging
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tools">
+    Tools
+  </a>
+<nav aria-label="Tools" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rules-of-thumb">
+    Rules of thumb
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#misc">
+    Misc
+  </a>
+<nav aria-label="Misc" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#debugging-dependencies">
+    Debugging Dependencies
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#property-sheets">
+    Property Sheets
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_22" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_22" id="__nav_3_22_label" tabindex="0">
+          vscode
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_22_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_22">
+<span class="md-nav__icon md-icon"></span>
+          vscode
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../vscode/vsc-syntax-highlighting/">
+        VSCode Syntax Highlighting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../vscode/vsc-troubleshooting/">
+        VSCode Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_23" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_23" id="__nav_3_23_label" tabindex="0">
+          zig
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_23_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_23">
+<span class="md-nav__icon md-icon"></span>
+          zig
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../zig/zig-build/">
+        Zig Build
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../zig/zig-crash-course/">
+        Zig Crash Course
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../zig/zig-metaprogramming/">
+        Zig Metaprogramming
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../zig/zig-test/">
+        Zig Testing
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_24" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_24" id="__nav_3_24_label" tabindex="0">
+          windows internals
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_24_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_24">
+<span class="md-nav__icon md-icon"></span>
+          windows internals
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-file-io-perf/">
+        Windows File IO Performance
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-path-formats/">
+        Windows File Paths
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-symbol-server/">
+        Symbol Server For Windows Debuggers
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_24_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_24_4" id="__nav_3_24_4_label" tabindex="0">
+          Win debug recipes
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_24_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_24_4">
+<span class="md-nav__icon md-icon"></span>
+          Win debug recipes
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-debug-recipes/win-debug-recipes/">
+        Windows Debugging Recipes
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_24_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_24_4_2" id="__nav_3_24_4_2_label" tabindex="0">
+          Components
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_24_4_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_24_4_2">
+<span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-debug-recipes/components/win-drivers/">
+        Drivers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-debug-recipes/components/win-fontcache/">
+        FontCache
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-debug-recipes/components/win-gpo/">
+        Group Policy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-debug-recipes/components/win-image/">
+        Windows Image Repair
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_24_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_24_4_3" id="__nav_3_24_4_3_label" tabindex="0">
+          Debugger
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_24_4_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_24_4_3">
+<span class="md-nav__icon md-icon"></span>
+          Debugger
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-debug-recipes/debugger/win-debugging-config/">
+        Configuring Windows Debugging Settings
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-debug-recipes/debugger/windbg/">
+        WinDBG
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-debug-recipes/kernel/win-kernel-cheatsheet/">
+        Windows Kernel Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/win-debug-recipes/network/win-network/">
+        Network
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Math
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Math
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../math/cliff-notes/">
+        Cliff Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../math/math-symbols-cheatsheet/">
+        Math Symbols LaTeX Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../math/research-notes/">
+        Math Research Notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../graphics/">Graphics</a>
+<label for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Graphics
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../graphics/graphics-cheatsheet/">
+        Graphics Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../graphics/pbr-crashcourse/">
+        Physically Based Rendering Crash Course
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../graphics/physical-units-for-lights/">
+        Physical Units for Lights
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          Gpu architecture
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_5">
+<span class="md-nav__icon md-icon"></span>
+          Gpu architecture
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../graphics/gpu-architecture/technical-overview/">
+        2019 GPU Architecture Crash Course
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+          Light transport
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_6">
+<span class="md-nav__icon md-icon"></span>
+          Light transport
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../graphics/light-transport/light-transport/">
+        Light transport notes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          Volume rendering
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_7">
+<span class="md-nav__icon md-icon"></span>
+          Volume rendering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../graphics/volume-rendering/volume-rendering-math/">
+        Physics of Light: Absorption
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../graphics/volume-rendering/volume-rendering-zoo/">
+        TODO
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../graphics/volume-rendering/volume-rendering/">
+        Overview
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../houdini/">Houdini</a>
+<label for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Houdini
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/basics/hou-anim/">
+        Animation &amp; Rigging
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/basics/hou-crash-course/">
+        Houdini Crash Course
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/basics/hou-groups/">
+        Groups
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/basics/hou-op-path-syntax/">
+        Operator Path &amp; Expression Syntax
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/basics/hou-python/">
+        Houdini Python
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/basics/hou-setup/">
+        Houdini Setup
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/basics/hou-ue4/">
+        UE4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/basics/hou-vex/">
+        VEX
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+          Dops
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+          Dops
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/dops/dop-opencl/">
+        OpenCL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/dops/overview/">
+        Dops
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+          Techniques
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Techniques
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/dops/techniques/general-tips/">
+        General Tips
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/dops/techniques/upres/">
+        Enable OpenCL
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+          Extensibility
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+          Extensibility
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/extensibility/hda/">
+        Houdini Digital Assets
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/extensibility/hdk/">
+        Houdini Development Kit
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          Funtimes
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          Funtimes
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/funtimes/fun-experiments/">
+        Fun Experiments
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/funtimes/geo-processing/">
+        Geo Processing
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/funtimes/hou-ar/">
+        AR
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/funtimes/level/">
+        Levels
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/funtimes/performance-capture/">
+        Performance Capture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/funtimes/visuals/">
+        Visuals
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+          Release notes
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
+          Release notes
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/release-notes/17-0/">
+        17.0
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+          Rendering
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_7">
+<span class="md-nav__icon md-icon"></span>
+          Rendering
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/rendering/mantra/">
+        Mantra
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/rendering/redshift/">
+        Redshift
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+          Techniques
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_8_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_8">
+<span class="md-nav__icon md-icon"></span>
+          Techniques
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/techniques/baking/">
+        Baking
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/techniques/common-tech/">
+        Common Techniques
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/techniques/detangle/">
+        Detangling wires
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/techniques/geo-deformation/">
+        Geo Deformation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/techniques/misc-useful/">
+        Misc Useful
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/techniques/poly-workflow/">
+        Poly Workflow
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/techniques/pyroclastic-noise/">
+        Pyroclastic Noise
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/techniques/tutorials-from-others/">
+        Houdini Tutorials From Others
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/techniques/visualize-debugging/">
+        Debug Visualization
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
+          Vellum
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_9_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_9">
+<span class="md-nav__icon md-icon"></span>
+          Vellum
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/vellum/overview/">
+        Vellum Overview
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_9_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_9_2" id="__nav_6_9_2_label" tabindex="0">
+          Techniques
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_9_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_9_2">
+<span class="md-nav__icon md-icon"></span>
+          Techniques
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/vellum/techniques/general-tips/">
+        General Vellum Tips
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/vellum/techniques/hair/">
+        Vellum Hair
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/vellum/techniques/tear-cloth/">
+        Vellum Cloth
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/vellum/techniques/useful-vellum-nodes/">
+        Useful Vellum Nodes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="0">
+          Volumes
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_10_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_10">
+<span class="md-nav__icon md-icon"></span>
+          Volumes
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/volumes/overview/">
+        Houdini Volumes
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6_10_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_10_2" id="__nav_6_10_2_label" tabindex="0">
+          Techniques
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_10_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_10_2">
+<span class="md-nav__icon md-icon"></span>
+          Techniques
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/volumes/techniques/dense-clouds/">
+        Dense Clouds
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/volumes/techniques/pyro/">
+        Pyro
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/volumes/techniques/realtime-clouds/">
+        Real-time Clouds
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../houdini/volumes/techniques/useful-volume-nodes/">
+        Useful Volume Nodes
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Design
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Design
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../design/art-resources/">
+        Art Resources
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../design/ux-design/">
+        UX Design
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../blog/">Blog</a>
+<label for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../blog/ecs-flecs-ue4/">
+        Bringing ECS to UE4: Thoughts on flecs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../blog/radiative-nonexponential-media-src/">
+        Source code: A radiative transfer framework for non-exponential media
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#useful-flags">
+    Useful Flags
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vs-debugger">
+    VS Debugger
+  </a>
+<nav aria-label="VS Debugger" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#context-operator-syntax">
+    Context Operator Syntax
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#commands--pseudovars">
+    Commands &amp; PseudoVars
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#format-specifiers">
+    Format Specifiers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#format-pointers-as-arrays">
+    Format Pointers as Arrays
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#magic-numbers">
+    Magic Numbers
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#crt-runtime-debugging-techniques">
+    CRT runtime Debugging Techniques
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#global-in-watch-window">
+    Global in Watch Window
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#advanced-debugging">
+    Advanced Debugging
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tools">
+    Tools
+  </a>
+<nav aria-label="Tools" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rules-of-thumb">
+    Rules of thumb
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#misc">
+    Misc
+  </a>
+<nav aria-label="Misc" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#debugging-dependencies">
+    Debugging Dependencies
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#property-sheets">
+    Property Sheets
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/ikrima/gamedevguide/edit/master/docs/dev-notes/visual-studio/vs-tips-tricks.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
+</a>
+<a class="md-content__button md-icon" href="https://github.com/ikrima/gamedevguide/raw/master/docs/dev-notes/visual-studio/vs-tips-tricks.md" title="View source of this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"></path></svg>
+</a>
+<h1 id="visual-studio-tips--tricks">Visual Studio Tips &amp; Tricks<a class="headerlink" href="#visual-studio-tips--tricks" title="Permanent link">#</a></h1>
+<h2 id="useful-flags">Useful Flags<a class="headerlink" href="#useful-flags" title="Permanent link">#</a></h2>
+<ul>
+<li><code>/d1PP</code>: print preprocessor macros</li>
+<li><code>/d1reportAllClassLayout &amp; /d1reportSingleClassLayoutXXX</code>: dump class packing and alignment layout</li>
+</ul>
+<h2 id="vs-debugger">VS Debugger<a class="headerlink" href="#vs-debugger" title="Permanent link">#</a></h2>
+<h3 id="context-operator-syntax">Context Operator Syntax<a class="headerlink" href="#context-operator-syntax" title="Permanent link">#</a></h3>
+<ul>
+<li>There are two ways of specifying context <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/context-operator-cpp">(Reference)</a><br/>
+  1. <code class="language-cpp highlight"><span class="p">{,,[</span><span class="k">module</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">expression</span></code><ul>
+<li>The braces must contain two commas and the module (executable or DLL) name or full path.</li>
+<li>For example, to set a breakpoint at the SomeFunction function of EXAMPLE.dll:</li>
+<li><code class="language-cpp highlight"><span class="p">{,,</span><span class="n">EXAMPLE</span><span class="p">.</span><span class="n">dll</span><span class="p">}</span><span class="n">SomeFunction</span></code></li>
+<li><code class="language-cpp highlight"><span class="k">module</span><span class="o">!</span><span class="n">expression</span></code><br/>
+  1. <code class="language-cpp highlight"><span class="k">module</span><span class="o">!</span><span class="n">expression</span></code></li>
+<li>Ex: <code class="language-cpp highlight"><span class="n">EXAMPLE</span><span class="p">.</span><span class="n">dll</span><span class="o">!</span><span class="n">SomeFunction</span></code></li>
+</ul>
+</li>
+<li><em>module</em> is the name of a module. You can use a full path to disambiguate between modules with the same name.</li>
+<li>If the module path includes a comma, an embedded space, or a brace, you must use quotation marks around the path so that the context parser can properly recognize the string. Single quotation marks are considered part of a Windows file name, so you must use double quotation marks. For example,</li>
+<li><code class="language-cpp highlight"><span class="p">{,,</span><span class="s">"a long, long, library name.dll"</span><span class="p">}</span><span class="w"> </span><span class="n">g_Var</span></code></li>
+<li><em>expression</em> is any valid C++ expression that resolves to a valid target, such as a function name, variable name, or pointer address in module.</li>
+<li>When the expression evaluator encounters a symbol in an expression, it searches for the symbol in the following order:<ul>
+<li>Lexical scope outward, starting with the current block, series of statements enclosed in braces, and continuing outward with the enclosing block. The current block is the code containing the current location, instruction pointer address.</li>
+<li>Function scope. The current function.</li>
+<li>Class scope, if the current location is inside a C++ member function. Class scope includes all base classes. The expression evaluator uses the normal dominance rules.</li>
+<li>Global symbols in the current module.</li>
+<li>Public symbols in the current program.</li>
+</ul>
+</li>
+</ul>
+<h3 id="commands--pseudovars">Commands &amp; PseudoVars<a class="headerlink" href="#commands--pseudovars" title="Permanent link">#</a></h3>
+<ul>
+<li><code>alias</code>: List useful commands</li>
+<li>Command window: <code>? …</code> to execute immediate window things</li>
+<li>Immediate window: <code>&gt; …</code> to execute commands e.g. <code>&gt;shell cmd</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Pseudovariable</th>
+<th>Function <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables">(Reference)</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$err</td>
+<td>Displays the last error value set with the function SetLastError. The value that is displayed represents what would be returned by the GetLastError function. Use $err,hr to see the decoded form of this value. For example, if the last error was 3, the $err,hr would display ERROR_PATH_NOT_FOUND : The system cannot find the path specified.</td>
+</tr>
+<tr>
+<td>$handles</td>
+<td>Displays the number of handles allocated in your application.</td>
+</tr>
+<tr>
+<td>$vframe</td>
+<td>Displays the address of the current stack frame.</td>
+</tr>
+<tr>
+<td>$tid</td>
+<td>Displays the thread ID for the current thread.</td>
+</tr>
+<tr>
+<td>$env</td>
+<td>Displays the environment block in the string viewer.</td>
+</tr>
+<tr>
+<td>$cmdline</td>
+<td>Displays the command line string that launched the program.</td>
+</tr>
+<tr>
+<td>$pid</td>
+<td>Displays the process id.</td>
+</tr>
+<tr>
+<td>$registername/<a class="magiclink magiclink-github magiclink-mention" href="https://github.com/registername" title="GitHub User: registername">@registername</a></td>
+<td>Displays the contents of the register registername. Normally, you can display register contents just by entering the register name. The only time you need to use this syntax is when the register name overloads a variable name. If the register name is the same as a variable name in the current scope, the debugger interprets the name as a variable name. That's when $registername or <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/registername" title="GitHub User: registername">@registername</a> comes in handy.</td>
+</tr>
+<tr>
+<td>$clk</td>
+<td>Displays the time in clock cycles.</td>
+</tr>
+<tr>
+<td>$user</td>
+<td>Displays a structure with account information for the account running the application. For security reasons, the password information is not displayed.</td>
+</tr>
+<tr>
+<td>$exceptionstack</td>
+<td>Displays the stack trace of the current Windows Runtime exception. $ exceptionstack works only in UWP apps. $ exceptionstack is not supported for C++ and SEH exceptions</td>
+</tr>
+<tr>
+<td>$returnvalue</td>
+<td>Displays the return value of a .NET Framework method.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="format-specifiers">Format Specifiers<a class="headerlink" href="#format-specifiers" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Specifier</th>
+<th>Format</th>
+<th>Original Watch Value</th>
+<th>Value Displayed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>d</code></td>
+<td>decimal integer</td>
+<td><code>0x00000066</code></td>
+<td><code>102</code></td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>unsigned octal integer</td>
+<td><code>0x00000066</code></td>
+<td><code>000000000146</code></td>
+</tr>
+<tr>
+<td><code>x</code>,<code>h</code></td>
+<td>hexadecimal integer (with leading 0x)</td>
+<td><code>102</code></td>
+<td><code>0xcccccccc</code></td>
+</tr>
+<tr>
+<td><code>X</code>,<code>H</code></td>
+<td>hexadecimal integer (with leading 0x)</td>
+<td><code>102</code></td>
+<td><code>0xCCCCCCCC</code></td>
+</tr>
+<tr>
+<td><code>xb</code>,<code>hb</code></td>
+<td>hexadecimal integer (no leading 0x)</td>
+<td><code>102</code></td>
+<td><code>cccccccc</code></td>
+</tr>
+<tr>
+<td><code>Xb</code>,<code>Hb</code></td>
+<td>hexadecimal integer (no leading 0x)</td>
+<td><code>102</code></td>
+<td><code>CCCCCCCC</code></td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>unsigned binary integer (with leading 0b)</td>
+<td><code>25</code></td>
+<td><code>0b00000000000000000000000000011001</code></td>
+</tr>
+<tr>
+<td><code>bb</code></td>
+<td>unsigned binary integer (no leading 0b)</td>
+<td><code>25</code></td>
+<td><code>00000000000000000000000000011001</code></td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>scientific notation</td>
+<td><code>25000000</code></td>
+<td><code>2.500000e+07</code></td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>shorter of scientific or floating point</td>
+<td><code>25000000</code></td>
+<td><code>2.5e+07</code></td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>single character</td>
+<td><code>0x0065</code></td>
+<td><code>101 'e'</code></td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td><code>const char*</code> string (with quotes)</td>
+<td><code>&lt;location&gt; "hello world"</code></td>
+<td><code>"hello world"</code></td>
+</tr>
+<tr>
+<td><code>sb</code></td>
+<td><code>const char*</code> string (no quotes)</td>
+<td><code>&lt;location&gt; "hello world"</code></td>
+<td><code>hello world</code></td>
+</tr>
+<tr>
+<td><code>s8</code></td>
+<td>UTF-8 string (with quotes)</td>
+<td><code>&lt;location&gt; "This is a UTF-8 coffee cup â˜-"</code></td>
+<td><code>"This is a UTF-8 coffee cup ☕"</code></td>
+</tr>
+<tr>
+<td><code>s8b</code></td>
+<td>UTF-8 string (no quotes)</td>
+<td><code>&lt;location&gt; "hello world"</code></td>
+<td><code>hello world</code></td>
+</tr>
+<tr>
+<td><code>su</code></td>
+<td>Unicode (UTF-16 encoding) string (with quotes)</td>
+<td><code>&lt;location&gt; L"hello world"</code></td>
+<td><code>L"hello world"</code>,<code>u"hello world"</code></td>
+</tr>
+<tr>
+<td><code>sub</code></td>
+<td>Unicode (UTF-16 encoding) string (no quotes)</td>
+<td><code>&lt;location&gt; L"hello world"</code></td>
+<td><code>hello world</code></td>
+</tr>
+<tr>
+<td><code>bstr</code></td>
+<td>BSTR binary string (with quotes)</td>
+<td><code>&lt;location&gt; L"hello world"</code></td>
+<td><code>L"hello world"</code></td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td>Environment block (double-null terminated string)</td>
+<td><code>&lt;location&gt; L"=::=::\\"</code></td>
+<td><code>L"=::=::\\\0=C:=C:\\windows\\system32\0ALLUSERSPROFILE=...</code></td>
+</tr>
+<tr>
+<td><code>s32</code></td>
+<td>UTF-32 string (with quotes)</td>
+<td><code>&lt;location&gt; U"hello world"</code></td>
+<td><code>U"hello world"</code></td>
+</tr>
+<tr>
+<td><code>s32b</code></td>
+<td>UTF-32 string (no quotes)</td>
+<td><code>&lt;location&gt; U"hello world"</code></td>
+<td><code>hello world</code></td>
+</tr>
+<tr>
+<td><code>en</code></td>
+<td>enum</td>
+<td><code>Saturday(6)</code></td>
+<td><code>Saturday</code></td>
+</tr>
+<tr>
+<td><code>hv</code></td>
+<td>Pointer type indicating value is array heap allocation address e.g. <code>new int[3]</code>.</td>
+<td><code>&lt;location&gt;{&lt;first member&gt;}</code></td>
+<td><code>&lt;location&gt;{&lt;first member&gt;, &lt;second member&gt;, ...}</code></td>
+</tr>
+<tr>
+<td><code>na</code></td>
+<td>Suppresses the memory address of a pointer to an object.</td>
+<td><code>&lt;location&gt;, {member=value...}</code></td>
+<td><code>{member=value...}</code></td>
+</tr>
+<tr>
+<td><code>nd</code></td>
+<td>Displays only the base class information, ignoring derived classes</td>
+<td><code>(Shape*) square</code> including base+derived class information</td>
+<td>Displays only base class information</td>
+</tr>
+<tr>
+<td><code>hr</code></td>
+<td>Win32/HRESULT error code; unnecessary for HRESULTs bc debugger auto decodes them</td>
+<td><code>S_OK</code></td>
+<td><code>S_OK</code></td>
+</tr>
+<tr>
+<td><code>wc</code></td>
+<td>Window class flag</td>
+<td><code>0x0010</code></td>
+<td><code>WC_DEFAULTCHAR</code></td>
+</tr>
+<tr>
+<td><code>wm</code></td>
+<td>Windows message numbers</td>
+<td><code>16</code></td>
+<td><code>WM_CLOSE</code></td>
+</tr>
+<tr>
+<td><code>nr</code></td>
+<td>Suppress "Raw View" item</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>nvo</code></td>
+<td>Show "Raw View" item for numeric values only</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Raw format, ignoring any data type views customizations</td>
+<td><code>&lt;customized representation&gt;</code></td>
+<td><code>4</code></td>
+</tr>
+<tr>
+<td><code>handle</code></td>
+<td>Displays information about win32 handle</td>
+<td><code>0x000000000000009c</code></td>
+<td>Displays useful information about handle such as thread ID, etc.</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp">(Reference)</a></p>
+<h3 id="format-pointers-as-arrays">Format Pointers as Arrays<a class="headerlink" href="#format-pointers-as-arrays" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Specifier</th>
+<th>Format</th>
+<th>Original Watch Value</th>
+<th>Value Displayed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n</td>
+<td>Decimal or hexadecimal integer</td>
+<td>pBuffer,[32] pBuffer,[0x20]</td>
+<td>Displays pBuffer as a 32 element array.</td>
+</tr>
+<tr>
+<td>[exp]</td>
+<td>A valid C++ expression that evaluates to an integer.</td>
+<td>pBuffer,[bufferSize]</td>
+<td>Displays pBuffer as an array of bufferSize elements.</td>
+</tr>
+<tr>
+<td>[exp]s</td>
+<td>Format array with specifier e.g. string</td>
+<td>pBuffer,[bufferSize]s</td>
+<td>Displays pBuffer as a sized string array</td>
+</tr>
+<tr>
+<td>expand(n)</td>
+<td>A valid C++ expression that evaluates to an integer</td>
+<td>pBuffer, expand(2)</td>
+<td>Displays the third element of pBuffer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="magic-numbers">Magic Numbers<a class="headerlink" href="#magic-numbers" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description <a href="https://www.wikiwand.com/en/Magic%20number%20(programming)">(Reference)</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0xCCCCCCCC</code></td>
+<td>Used by Microsoft's C++ debugging runtime library and many DOS environments to mark uninitialized stack memory. CC resembles the opcode of the INT 3 debug breakpoint interrupt on x86 processors.</td>
+</tr>
+<tr>
+<td><code>0xCDCDCDCD</code></td>
+<td>Used by Microsoft's C/C++ debug malloc() function to mark uninitialized heap memory, usually returned from HeapAlloc()[15]</td>
+</tr>
+<tr>
+<td><code>0xFDFDFDFD</code></td>
+<td>Used by Microsoft's C/C++ debug malloc() function to mark "no man's land" guard bytes before and after allocated heap memory[15]</td>
+</tr>
+<tr>
+<td><code>0xFEEEFEEE</code></td>
+<td>"Fee fee", Used by Microsoft's debug HeapFree() to mark freed heap memory. Some nearby internal bookkeeping values may have the high word set to FEEE as well.[15]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="crt-runtime-debugging-techniques">CRT runtime Debugging Techniques<a class="headerlink" href="#crt-runtime-debugging-techniques" title="Permanent link">#</a></h3>
+<p><a href="http://msdn.microsoft.com/en-us/library/zh712wwf(v=vs.120).aspx">http://msdn.microsoft.com/en-us/library/zh712wwf(v=vs.120).aspx</a><br/>
+<a href="http://msdn.microsoft.com/en-us/library/k70yt3e2.aspx">http://msdn.microsoft.com/en-us/library/k70yt3e2.aspx</a></p>
+<h3 id="global-in-watch-window">Global in Watch Window<a class="headerlink" href="#global-in-watch-window" title="Permanent link">#</a></h3>
+<p>The way to scope the global is as follows using the Context Operator:<br/>
+<code class="language-cpp highlight"><span class="p">{,,</span><span class="n">foobar</span><span class="p">.</span><span class="n">dll</span><span class="p">}</span><span class="n">g_pMyStruct</span></code><br/>
+where foobar.dll defines g_pMyStruct as a global pointer. The same syntax can be used to scope breakpoints as well.</p>
+<h2 id="advanced-debugging">Advanced Debugging<a class="headerlink" href="#advanced-debugging" title="Permanent link">#</a></h2>
+<ul>
+<li>Common Visual Studio Commands</li>
+<li><a href="https://docs.microsoft.com/en-us/visualstudio/ide/reference/visual-studio-commands">https://docs.microsoft.com/en-us/visualstudio/ide/reference/visual-studio-commands</a></li>
+<li>Complete commands can be found in Keyboard, EnvironmentOptions dialog box</li>
+<li>Can use VCMD to create macros as commands</li>
+<li>In the immediate window, prefix a command with &gt; to execute e.g. <code>&gt;Debug.AttachDetach</code></li>
+<li>
+<p>Execute code in a macro <a href="http://stackoverflow.com/questions/3868810/visual-studio-breakpoint-macro-to-modify-a-value">(Reference)</a><br/>
+<div class="language-csharp highlight"><span class="filename">C#</span><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">DTE</span><span class="p">.</span><span class="n">Debugger</span><span class="p">.</span><span class="n">ExecuteStatement</span><span class="p">(</span><span class="s">"variable_name=0"</span><span class="p">)</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Can execute code in Action:print message section of breakpoint settings by wrapping the value in textfield with {}. Ex:</p>
+</li>
+<li><code>{ variable_name=0}</code> will set variable_name=0</li>
+<li>You can also concatenate several instructions on the same line. They simply have to be separated by curly braces <a href="https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints">(Reference)</a><br/>
+<div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="n">done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">100</span><span class="p">);}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">data</span><span class="err">\</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></li>
+</ul>
+<h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">#</a></h2>
+<ul>
+<li>WinDBG</li>
+<li>Perfmon</li>
+<li>Process Explorer</li>
+<li>Windows Performance Toolkit</li>
+</ul>
+<h3 id="rules-of-thumb">Rules of thumb<a class="headerlink" href="#rules-of-thumb" title="Permanent link">#</a></h3>
+<ul>
+<li>If CPU kernel utilization is high, then it's a driver problem</li>
+<li>If System interrupts .1%, driver problem</li>
+<li>In process monitor, look at System|interrupts process and look at threads/modules to see what's pegging CPU</li>
+<li>Driverquery |find "driverdllname" to find info about a driver (don't use</li>
+<li>strings binary.exe: &gt;bla.txt sysinternals tool to produce all string parameters for a binary</li>
+</ul>
+<h2 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">#</a></h2>
+<h3 id="debugging-dependencies">Debugging Dependencies<a class="headerlink" href="#debugging-dependencies" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="../debug-dll-dependencies/#loadlibrary">LoadLibrary calls</a></li>
+<li><a href="../debug-dll-dependencies/#managed-dependencies">Managed dependencies</a></li>
+<li><a href="../debug-dll-dependencies/#dependency-walker">Dependency Walker</a></li>
+</ul>
+<h3 id="property-sheets">Property Sheets<a class="headerlink" href="#property-sheets" title="Permanent link">#</a></h3>
+<ul>
+<li>Dump final merged properties from all .props files: <code class="language-batch highlight">msbuild /pp:temp.xml .build/es2.vcxproj</code></li>
+<li>You can also set the MSBuild Logging level to Diagnostic<br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../_assets/propsheet-msbuild-diag.png"><img alt="" src="../../_assets/propsheet-msbuild-diag.png"/></a></li>
+</ul>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-05</span>
+<br/>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2021-04-29</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2016 - 2023 ikrima
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/ikrima" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/ikrimae" rel="noopener" target="_blank" title="twitter.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+</a>
+<a class="md-social__link" href="https://linkedin.com/in/ikrima" rel="noopener" target="_blank" title="linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.19047be9.min.js"></script>
+<script src="../../../_site/arithmatex-mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
