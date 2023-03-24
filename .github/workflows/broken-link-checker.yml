@@ -1,0 +1,27 @@
+name: broken-link-checker
+on:
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - master
+  # schedule:
+  #   - cron: "0 5 * * 5"
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Broken Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1.6.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Issue From File
+        if: ${{ steps.lychee.outputs.exit_code != 0 }}
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: report, automated issue

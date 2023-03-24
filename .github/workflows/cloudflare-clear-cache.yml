@@ -1,0 +1,17 @@
+name: cloudflare-clear-cache
+
+on:
+  workflow_dispatch:
+  # workflow_run:
+  #   workflows: [pages-build-deployment]
+  #   types: [completed]
+
+jobs:
+  cloudflare-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clear Cloudflare Cache
+        uses: jakejarvis/cloudflare-purge-action@master
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
