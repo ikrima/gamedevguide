@@ -9,7 +9,7 @@ on:
 
 env:
   PYTHON_VERSION: 3.11
-  CUSTOM_DOMAIN: ikrima.dev
+  CUSTOM_DOMAIN:  ikrima.dev
   # EXTRA_PACKAGES: libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pngquant
 
 permissions:
