@@ -42,9 +42,14 @@ jobs:
         uses: actions/cache@v3
         id:   cache
         with:
-          key:   ${{ github.sha }}
-          # key: ${{ runner.os }}-${{ hashFiles('.cache/**') }}
-          path:  .cache
+          # key:  ${{ runner.os }}-${{ github.sha }}
+          # path: ~/.cache
+          # key:            ${{ runner.os }}-${{ hashFiles('~/.cache/**') }}
+          # restore-keys:   ${{ runner.os }}-
+          # path:           ~/.cache
+          key:          ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+          path:         ~/.cache/pip
 
       - name: Install Native dependencies
         if: ${{ env.EXTRA_PACKAGES }}
