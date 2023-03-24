@@ -7,60 +7,57 @@ on:
   # schedule:
   #   - cron: '0 4 * * *'
 
+env:
+  PYTHON_VERSION: 3.11
+  CUSTOM_DOMAIN: ikrima.dev
+  # EXTRA_PACKAGES: libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pngquant
+
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build MkDocs
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout master
+      - name: Checkout repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          set-safe-directory: false
+          # set-safe-directory: false
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Set up build cache
         uses: actions/cache@v3
         id:   cache
         with:
-          key:    ${{ github.ref }}
-          # key:  ${{ runner.os }}-${{ hashFiles('.cache/**') }}
-          path:   .cache
+          # key: ${{ github.ref }}
+          key:   ${{ runner.os }}-${{ hashFiles('.cache/**') }}
+          path:  .cache
+
+      - name: Install dependencies
+        if: ${{ env.EXTRA_PACKAGES }}
+        run: |
+          for package in ${EXTRA_PACKAGES}; do
+            sudo apt-get install "${package}"
+          done
+
+      - name: Install Python dependencies
+        run: |
+          # pip install --upgrade pip build
+          pip install -r "${GITHUB_WORKSPACE}/requirements.txt"
 
       - name: Deploy MkDocs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        env:
-          GITHUB_TOKEN:     ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_DOMAIN:    ikrima.dev
-          CONFIG_FILE:      ./mkdocs.yml
-          EXTRA_PACKAGES:   build-base
-          # EXTRA_PACKAGES: build-base libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
-          REQUIREMENTS:     ./requirements.txt
+        run: |
+          function print_info() { echo -e "\e[36mINFO: ${1}\e[m"; }
 
-# Vanilla deploy workflow
-# permissions:
-#   contents: write
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout master
-#         uses: actions/checkout@v3
-#
-#       - name: Set up Python 3.11
-#         uses: actions/setup-python@v4
-#         with:
-#           python-version: 3.11
-#
-#       - name: Cache Artifacts
-#         uses: actions/cache@v3
-#         with:
-#           key: ${{ github.ref }}
-#           path: .cache
-#
-#       - name: Install dependencies
-#         run: |
-#           pip install --upgrade pip build
-#           pip install -r requirements.txt
-#
-#       - name: Deploy MkDocs
-#         run: mkdocs gh-deploy --force
+          print_info "Setting custom domain for gh-pages"
+          echo "${CUSTOM_DOMAIN}" > "${GITHUB_WORKSPACE}/docs/CNAME"
+
+          print_info "Exec mkdocs gh-deploy"
+          mkdocs gh-deploy --config-file "${GITHUB_WORKSPACE}/mkdocs.yml" --force
+          mkdocs --version
