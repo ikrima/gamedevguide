@@ -2,8 +2,7 @@ name: mkdocs-build
 on:
   workflow_dispatch:
   push:
-    branches:
-      - master
+    branches: ["master"]
   # schedule:
   #   - cron: '0 4 * * *'
 
@@ -13,7 +12,14 @@ env:
   # EXTRA_PACKAGES: libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pngquant
 
 permissions:
-  contents: write
+  contents: read
+  pages:    write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build_mkdocs:
@@ -36,7 +42,7 @@ jobs:
         uses: actions/cache@v3
         id:   cache
         with:
-          key:   ${{ github.ref }}
+          key:   ${{ github.sha }}
           # key: ${{ runner.os }}-${{ hashFiles('.cache/**') }}
           path:  .cache
 
