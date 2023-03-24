@@ -23,3 +23,32 @@ jobs:
           CONFIG_FILE: ./mkdocs.yml
           EXTRA_PACKAGES: build-base
           REQUIREMENTS: ./requirements.txt
+
+# Vanilla deploy workflow
+# permissions:
+#   contents: write
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout master
+#         uses: actions/checkout@v3
+#
+#       - name: Set up Python 3.11
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: 3.11
+#
+#       - name: Cache Artifacts@v2
+#         uses: actions/cache@v3
+#         with:
+#           key: ${{ github.ref }}
+#           path: .cache
+#
+#       - name: Install dependencies
+#         run: |
+#           pip install --upgrade pip build
+#           pip install -r requirements.txt
+#
+#       - name: Deploy MkDocs
+#         run: mkdocs gh-deploy --force
