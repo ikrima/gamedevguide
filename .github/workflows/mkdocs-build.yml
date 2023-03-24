@@ -20,27 +20,27 @@ jobs:
     name: Build MkDocs
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repo ${{ github.ref }}
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
           # set-safe-directory: false
 
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+      - name: Setup Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          # cache: 'pip'
+          cache: 'pip'
 
-      - name: Set up build cache
+      - name: Setup Github cache
         uses: actions/cache@v3
         id:   cache
         with:
-          # key: ${{ github.ref }}
-          key:   ${{ runner.os }}-${{ hashFiles('.cache/**') }}
+          key:   ${{ github.ref }}
+          # key: ${{ runner.os }}-${{ hashFiles('.cache/**') }}
           path:  .cache
 
-      - name: Install dependencies
+      - name: Install Native dependencies
         if: ${{ env.EXTRA_PACKAGES }}
         run: |
           for package in ${EXTRA_PACKAGES}; do
