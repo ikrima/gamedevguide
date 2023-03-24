@@ -42,14 +42,16 @@ jobs:
         uses: actions/cache@v3
         id:   cache
         with:
-          # key:  ${{ runner.os }}-${{ github.sha }}
           # path: ~/.cache
-          # key:            ${{ runner.os }}-${{ hashFiles('~/.cache/**') }}
-          # restore-keys:   ${{ runner.os }}-
-          # path:           ~/.cache
-          key:          ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: ${{ runner.os }}-pip-
-          path:         ~/.cache/pip
+          # key:  ${{ runner.os }}-${{ github.sha }}
+          path: ~/.cache
+          key:  ${{ runner.os }}-${{ hashFiles('~/.cache/**') }}
+          restore-keys: |
+            ${{ runner.os }}-
+          # path: ~/.cache/pip
+          # key:  ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          # restore-keys: |
+          #   ${{ runner.os }}-pip-
 
       - name: Install Native dependencies
         if: ${{ env.EXTRA_PACKAGES }}
@@ -72,4 +74,3 @@ jobs:
 
           print_info "Exec mkdocs gh-deploy"
           mkdocs gh-deploy --config-file "${GITHUB_WORKSPACE}/mkdocs.yml" --force
-          mkdocs --version
