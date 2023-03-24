@@ -12,7 +12,7 @@ env:
   # EXTRA_PACKAGES: libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pngquant
 
 permissions:
-  contents: read
+  contents: write
   pages:    write
   id-token: write
 
