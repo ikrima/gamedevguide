@@ -18,11 +18,13 @@ jobs:
           fetch-depth: 0
           set-safe-directory: false
 
-      - name: Cache Artifacts
+      - name: Set up build cache
         uses: actions/cache@v3
+        id:   cache
         with:
-          key: ${{ github.ref }}
-          path: .cache
+          key:    ${{ github.ref }}
+          # key:  ${{ runner.os }}-${{ hashFiles('.cache/**') }}
+          path:   .cache
 
       - name: Deploy MkDocs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
