@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  build_mkdocs:
     name: Build MkDocs
     runs-on: ubuntu-latest
     steps:
