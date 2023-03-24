@@ -45,7 +45,7 @@ jobs:
           # path: ~/.cache
           # key:  ${{ runner.os }}-${{ github.sha }}
           path: ~/.cache
-          key:  ${{ runner.os }}-${{ hashFiles('~/.cache/**') }}
+          key:  ${{ runner.os }}-${{ hashFiles('.cache/**') }}
           restore-keys: |
             ${{ runner.os }}-
           # path: ~/.cache/pip
