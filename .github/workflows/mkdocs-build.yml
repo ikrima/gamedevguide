@@ -1,12 +1,15 @@
 name: mkdocs-build
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
+  # schedule:
+  #   - cron: '0 4 * * *'
 
 jobs:
   build:
-    name: Deploy docs
+    name: Build MkDocs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master
@@ -15,14 +18,21 @@ jobs:
           fetch-depth: 0
           set-safe-directory: false
 
+      - name: Cache Artifacts
+        uses: actions/cache@v3
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+
       - name: Deploy MkDocs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_DOMAIN: ikrima.dev
-          CONFIG_FILE: ./mkdocs.yml
-          EXTRA_PACKAGES: build-base
-          REQUIREMENTS: ./requirements.txt
+          GITHUB_TOKEN:     ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_DOMAIN:    ikrima.dev
+          CONFIG_FILE:      ./mkdocs.yml
+          EXTRA_PACKAGES:   build-base
+          # EXTRA_PACKAGES: build-base libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
+          REQUIREMENTS:     ./requirements.txt
 
 # Vanilla deploy workflow
 # permissions:
@@ -39,7 +49,7 @@ jobs:
 #         with:
 #           python-version: 3.11
 #
-#       - name: Cache Artifacts@v2
+#       - name: Cache Artifacts
 #         uses: actions/cache@v3
 #         with:
 #           key: ${{ github.ref }}
