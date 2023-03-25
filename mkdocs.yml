@@ -41,19 +41,19 @@ theme:
       # accent:  indigo
       toggle:
         icon: material/weather-night
-        name: Dark mode
+        name: Dark Mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       # primary: indigo
       # accent: indigo
       toggle:
-        icon: material/weather-sunny
-        name: Light mode
+        icon: material/flare
+        name: Light Mode
   font:
     text: Nunito
     code: Source Code Pro
   icon:
-    logo: fontawesome/solid/gamepad
+    logo: material/gamepad-variant
     repo: fontawesome/brands/github
     edit: material/file-edit-outline
     view: material/file-eye-outline
