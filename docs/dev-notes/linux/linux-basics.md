@@ -39,6 +39,16 @@
   df -lhT # show usage of all mounted filesystems
   ```
 
+## Package Management
+
+|Command|Description|
+|-------|-----------|
+|`apt list --installed`|list installed `pkgs`|
+|`sudo apt install <pkg>`|install `<pkg>`|
+|`sudo apt remove <pkg>`|uninstall `<pkg>`|
+|`sudo apt autoremove`|uninstall unused dependencies e.g. `<pkg>` leftover deps that were auto installed but longer required|
+|`sudo apt purge <pkg>`|uninstall `<pkg>` configuration files e.g. located under `/etc`|
+
 ## Console Management
 
 - `env`: print the environment variables
