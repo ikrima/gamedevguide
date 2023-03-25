@@ -10,7 +10,7 @@ docker network create omninet
 
 ### Advanced Disk Settings
 
-- Query/Disable/Enable Write Caching
+- Query/Disable/Enable Write Caching [(Reference)](https://forums.unraid.net/topic/72862-drive-write-speeds-really-slow-solved/?do=findComment&comment=670028)
   
    > 
    > \[!note\] SATA drives
@@ -30,9 +30,9 @@ docker network create omninet
    > sdparm -c WCE    /dev/sdd # Disable
    > ```
   
-  - [reference](https://forums.unraid.net/topic/72862-drive-write-speeds-really-slow-solved/?do=findComment&comment=670028)
-  - [WD drives workarounds](https://forums.unraid.net/topic/79966-enable-write-cache/?do=findComment&comment=1182577)
-  - [Seagate IronWolf Drives workarounds](https://forums.unraid.net/topic/79966-enable-write-cache/?do=findComment&comment=844323)
+  - Workarounds
+    - [WD Drives](https://forums.unraid.net/topic/79966-enable-write-cache/?do=findComment&comment=1182577)
+    - [Seagate IronWolf Drives](https://forums.unraid.net/topic/79966-enable-write-cache/?do=findComment&comment=844323)
 - Turn on `Turbo Write`/`Reconstruct Write`
   
   - <https://wiki.unraid.net/Tips_and_Tweaks#Turn_on_Reconstruct_Write>

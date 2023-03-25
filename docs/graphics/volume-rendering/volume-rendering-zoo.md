@@ -18,7 +18,7 @@
   - Spherical Harmonics
   - Spherical Gaussians
   - Fourier Opacity Maps
-  - Extinction Transmittance Maps \[Extinction Transmittance Maps]
+  - Extinction Transmittance Maps [Extinction Transmittance Maps]
 
 - Precomputed Radiance Transfer for Volume Rendering
   - Do it inside the volume
@@ -42,7 +42,7 @@
 - Take Mean Free Path/Transport mean free path into account
   - The scattering mean free path is the average distance between scattering events (in biological tissues around 100 μm)
   - The transport mean free path can be thought of as the mean distance after which a photon’s direction becomes random (in biological tissues around 1 mm)
-  - The **transport length** in a strongly diffusing medium (noted l\*) is the length over which the direction of propagation of the [photon](https://www.wikiwand.com/en/Photon) is randomized. It is related to the [mean free path](https://www.wikiwand.com/en/Mean_free_path) l by the relation
+  - The **transport length** in a strongly diffusing medium (noted l\*) is the length over which the direction of propagation of the [photon](https://en.wikipedia.org/wiki/Photon) is randomized. It is related to the [mean free path](https://en.wikipedia.org/wiki/Mean_free_path) l by the relation
 
 - \#nicetohave Incorporate Baked VLM
   - VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);
@@ -182,7 +182,7 @@
 - Incremental averaging:
   - NewAvg = OldAvg + (NewVal - OldAvg) / NewSampleCount
   - Optimized: Avg = lerp(avg, NewVal, rcp(NewSampleCount))
-  - For calculating variance as well: <https://www.wikiwand.com/en/Algorithms\_for\_calculating\_variance#/Online\_algorithm>
+  - For calculating variance as well: <https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm>
 - Closest Point Transform
   - ∇\_sdf() is always unit vector. (SDF is 3D levleset of function embedded in 4D so all level set rules apply)
   - Xcpt(x) = x - sdf(x) \* ∇\_sdf(x)

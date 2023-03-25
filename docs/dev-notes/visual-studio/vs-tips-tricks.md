@@ -99,7 +99,7 @@
 
 ### Magic Numbers
 
-|Code|Description [(Reference)](https://www.wikiwand.com/en/Magic%20number%20(programming))|
+|Code|Description [(Reference)](https://en.wikipedia.org/wiki/Magic_number_(programming))|
 |----|-----------------------|
 |`0xCCCCCCCC`|Used by Microsoft's C++ debugging runtime library and many DOS environments to mark uninitialized stack memory. CC resembles the opcode of the INT 3 debug breakpoint interrupt on x86 processors.|
 |`0xCDCDCDCD`|Used by Microsoft's C/C++ debug malloc() function to mark uninitialized heap memory, usually returned from HeapAlloc()\[15\]|
@@ -130,10 +130,10 @@ where foobar.dll defines g_pMyStruct as a global pointer. The same syntax can be
   ```
 
 - Can execute code in Action:print message section of breakpoint settings by wrapping the value in textfield with {}. Ex:
-  - `{ variable_name=0}` will set variable_name=0
+  - `{variable_name=0}` will set variable_name=0
 - You can also concatenate several instructions on the same line. They simply have to be separated by curly braces [(Reference)](https://colinbarrebrisebois.com/2011/05/19/a-taste-of-live-code-editing-with-visual-studios-tracepoints)
   ```cpp
-  { {done = (i == 100);} { object.x -= 1.0f; } { data\[15] = 3; } }
+  { {done = (i == 100);} { object.x -= 1.0f; } { data[15] = 3; } }
   ```
 
 ## Tools

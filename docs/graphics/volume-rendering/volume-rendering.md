@@ -77,7 +77,7 @@ $$
 
 ### Contrast adjustment
 
-\[Wrenninge 2013, Art-Directable Multiple Volumetric Scattering]
+[Wrenninge 2013, Art-Directable Multiple Volumetric Scattering]
 - Main idea is to reduce extinction coefficient $\sigma_{t}$ along shadow ray to let more light reach shaded point
 - But instead of fixed scaling factor, use a summation over several scales
 - Also adjust phase function and local scattering coefficient $\sigma_{s} $
@@ -98,9 +98,9 @@ Notes:
 
 ## Adjusting mean-free path
 
-\[2011, Production Volume Rendering at Weta Digital]
+[2011, Production Volume Rendering at Weta Digital]
 
-Premise: each order of scattering can be computed separately or in discrete groups rather than to be considered as either single scattering or multiple scat- tering. Moreover the multiple scattering studies done in \[Bou08] show that higher orders of scattering display a behavior similar to that of single scattering
+Premise: each order of scattering can be computed separately or in discrete groups rather than to be considered as either single scattering or multiple scat- tering. Moreover the multiple scattering studies done in [Bou08] show that higher orders of scattering display a behavior similar to that of single scattering
 - Lengthen mean-free path and make the phase function more isotropic for each higher order bounce
 - Can also blur the deep shadow map
 

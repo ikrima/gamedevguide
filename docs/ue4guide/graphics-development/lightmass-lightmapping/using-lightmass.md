@@ -57,7 +57,7 @@ Assuming static skylight, stationary is a bit different
 
 So now you can see why static sky lights have limited quality and only support one indirect lighting bounce. This is something we could improve, but it's a lot of work and complexity. Specifically, we should actually export a cubemap to Lightmass, and do importance sampling of the cubemap's contents (trace more rays to the brighter texels).
 
-[Reference Source](https://forums.unrealengine.com/development-discussion/architectural-and-design-visualization/60547-lets-make-lightmass-epic-and-understandable?88952-Lets-make-Lightmass-EPIC-(and-understandable)=&highlight=swarm)
+[(Reference)](https://forums.unrealengine.com/development-discussion/architectural-and-design-visualization/60547-lets-make-lightmass-epic-and-understandable?88952-Lets-make-Lightmass-EPIC-(and-understandable)=&highlight=swarm)
 
 ## Lightmass Lightmap Config
 
@@ -74,4 +74,4 @@ Look at `BaseLightmass.ini` for all of the settings to tweak baking lightmaps
 
 Tweak multiple skybounce lighting
 
-[Reference Source](https://forums.unrealengine.com/development-discussion/rendering/112827-lightmass-multi-bounced-sky-lighting/page17)
+[(Reference)](https://forums.unrealengine.com/development-discussion/rendering/112827-lightmass-multi-bounced-sky-lighting/page17)

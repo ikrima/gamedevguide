@@ -75,4 +75,4 @@ If you cannot open the options dialog of Visual Assist or are so directed by cus
 1. Navigate to `HKCU\\Software\\Whole Tomato`
 2. Set the value of Logging to 1
 
-[Reference Source](https://support.wholetomato.com/default.asp?W305)
+[(Reference)](https://support.wholetomato.com/default.asp?W305)

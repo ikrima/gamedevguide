@@ -47,7 +47,7 @@ Let me try to lay out some of the rules: [(Reference)](https://www.sidefx.com/fo
 
 ## UI Customization
 
-- [Original Source](https://wiki.johnkunz.com/index.php?title=Customizing_the_Houdini_Interface)
+- [(Reference)](https://wiki.johnkunz.com/index.php?title=Customizing_the_Houdini_Interface)
   - <iframe width="560" height="315" src="https://www.youtube.com/embed/VdiEd84Kjsw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   - [Houdini Interface Customization Docs](https://www.sidefx.com/docs/houdini/basics/config.html)
 

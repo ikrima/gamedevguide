@@ -63,7 +63,7 @@ sidebar: ue4guide
 
 Override UAssetManager::ShouldSetManager for your project, this is the function that figures out what Primary Assets "manage" other things. You could add a specific check where if your main menu primary asset is asking it it should reference Map primary assets, return DoNotSet. Fortnite does this so our "list of maps to display" asset doesn't acquire management over specific maps
 
-[Reference From](https://udn.unrealengine.com/questions/452756/view.html)
+[(Reference)](https://udn.unrealengine.com/questions/452756/view.html)
 
 - External modules can have additional data associated with this UWorld.
 
