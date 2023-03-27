@@ -82,6 +82,34 @@
 /*   max-width: initial;             */
 /* }                                 */
 
+/* Font adjustments */
+/* px2rem($size, $base: 20px) => math.div($size, $base) * 1rem */
+/* html {                                                                                                        */
+/*   Hack: mkdocs wants to set base `font-size: 62.5%` to base all calculations on `10px`                        */
+/*   But Chrome defines minimal `font-size: 12px` if language is Chinese                                         */
+/*   so it just doubles `font-size` to use `20px` base; https://github.com/squidfunk/mkdocs-material/issues/911  */
+/*   font-size: 125%                                                                                             */
+/* }                                                                                                             */
+@media screen and (min-width: 100em) {
+  /* [screen medium +]: Set base `font-size` to `11px` i.e. `137.5%` */
+  html {
+    font-size: 137.5%
+  }
+}
+@media screen and (min-width: 125em) {
+  /* [screen large +]: Set base `font-size` to `12px` i.e. `150%` */
+  html {
+    font-size: 137.5%
+  }
+}
+/* body {                       */
+/* mkdocs default: px2rem(12px) */
+/* font-size: 0.5rem            */
+/* }                            */
+/* .md-typeset {        */
+/*   font-size: 0.7rem; */
+/* }                    */
+
 /* Hide images for light mode */
 /* img[src$="#only-light"] {  */
 /*   display: none;           */

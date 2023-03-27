@@ -10,14 +10,14 @@
 <link href="https://ikrima.dev/dev-notes/python/conda/" rel="canonical"/>
 <link href="../../prog-lang-theory/plt-parsing/" rel="prev"/>
 <link href="../py-cheatsheet/" rel="next"/>
-<link href="../../../_site/favicon.png" rel="icon"/>
+<link href="../../../_site/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.1.4" name="generator"/>
 <title>Conda Cheatsheet - Gamedev Guide</title>
 <link href="../../../assets/stylesheets/main.240905d7.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-<style>:root{--md-text-font:"Nunito";--md-code-font:"Source Code Pro"}</style>
+<link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Source Serif Pro";--md-code-font:"Source Code Pro"}</style>
 <link href="../../../_site/mkdocs-extra.css" rel="stylesheet"/>
 <link href="../../../_site/obsidian-admonition.css" rel="stylesheet"/>
 <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -3241,18 +3241,22 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#managing-environments">
-    Managing Environments
+<a class="md-nav__link" href="#conda">
+    Conda
   </a>
-</li>
+<nav aria-label="Conda" class="md-nav">
+<ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#migrating-environments">
     Migrating Environments
   </a>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#update">
-    Update
+<a class="md-nav__link" href="#mamba">
+    Mamba
   </a>
 </li>
 <li class="md-nav__item">
@@ -4215,18 +4219,22 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#managing-environments">
-    Managing Environments
+<a class="md-nav__link" href="#conda">
+    Conda
   </a>
-</li>
+<nav aria-label="Conda" class="md-nav">
+<ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#migrating-environments">
     Migrating Environments
   </a>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#update">
-    Update
+<a class="md-nav__link" href="#mamba">
+    Mamba
   </a>
 </li>
 <li class="md-nav__item">
@@ -4248,7 +4256,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"></path></svg>
 </a>
 <h1 id="conda-cheatsheet">Conda Cheatsheet<a class="headerlink" href="#conda-cheatsheet" title="Permanent link">#</a></h1>
-<h2 id="managing-environments">Managing Environments<a class="headerlink" href="#managing-environments" title="Permanent link">#</a></h2>
+<h2 id="conda">Conda<a class="headerlink" href="#conda" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -4258,24 +4266,56 @@
 </thead>
 <tbody>
 <tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Managing Environments</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td><code>conda info</code></td>
 <td>get version info</td>
 </tr>
 <tr>
-<td><code>conda create --name ENVNAME python=3.10</code></td>
+<td><code>conda create --name &lt;ENV&gt; python=3.10</code></td>
 <td>create new environment with package list</td>
 </tr>
 <tr>
-<td><code>conda env create --name ENVNAME --file environment.yml</code></td>
+<td><code>conda env create --name &lt;ENV&gt; --file env.yml</code></td>
 <td>create new environment from file</td>
 </tr>
 <tr>
-<td><code>conda env remove --name ENVNAME --all</code></td>
+<td><code>conda env remove --name &lt;ENV&gt; --all</code></td>
 <td>delete an entire environment</td>
 </tr>
 <tr>
-<td><code>conda activate ENVNAME / conda deactivate</code></td>
+<td><code>conda activate &lt;ENV&gt;</code>/<code>conda deactivate</code></td>
 <td>activate/deactivate environment</td>
+</tr>
+<tr>
+<td><code>conda list --explicit &gt; spec.txt</code></td>
+<td>produce an environment spec file</td>
+</tr>
+<tr>
+<td><code>conda env export --from-history &gt; env.yml</code></td>
+<td>export environment to file</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Managing Packages</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td><code>conda install PKGNAME==3.1.4</code></td>
@@ -4286,23 +4326,35 @@
 <td>install from requirements file</td>
 </tr>
 <tr>
-<td><code>conda list --explicit &gt; spec.txt</code></td>
-<td>produce an environment spec file</td>
+<td><code>conda update conda</code></td>
+<td>update conda</td>
 </tr>
 <tr>
-<td><code>conda env export --from-history &gt; environment.yml</code></td>
-<td>export environment to file</td>
+<td><code>conda update python</code></td>
+<td>update python version</td>
+</tr>
+<tr>
+<td><code>conda update anaconda</code></td>
+<td>update all packages to latest stable + compatible version of Anaconda</td>
+</tr>
+<tr>
+<td><code>conda update -n base conda</code></td>
+<td>update base conda environment</td>
+</tr>
+<tr>
+<td><code>conda env update -n myenv -f env.yml --prune</code></td>
+<td>update and uninstall dependencies from environment using file</td>
 </tr>
 </tbody>
 </table>
-<h2 id="migrating-environments">Migrating Environments<a class="headerlink" href="#migrating-environments" title="Permanent link">#</a></h2>
+<h3 id="migrating-environments">Migrating Environments<a class="headerlink" href="#migrating-environments" title="Permanent link">#</a></h3>
 <ul>
 <li>Using <code>conda-minify</code> to export minimal environment<br/>
 <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>conda<span class="w"> </span>install<span class="w"> </span>conda-minify<span class="w"> </span>-c<span class="w"> </span>jamespreed
-</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>conda-minify<span class="w"> </span>--name<span class="w"> </span>EnvName<span class="w"> </span><span class="o">[</span>--relax<span class="o">]</span><span class="w"> </span><span class="o">[</span>--how<span class="w"> </span><span class="o">[</span>full<span class="p">|</span>minor<span class="o">]]</span><span class="w"> </span><span class="o">[</span>-f<span class="w"> </span>./test_env.yml<span class="o">]</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>conda-minify<span class="w"> </span>--name<span class="w"> </span>&lt;ENV&gt;<span class="w"> </span><span class="o">[</span>--relax<span class="o">]</span><span class="w"> </span><span class="o">[</span>--how<span class="w"> </span><span class="o">[</span>full<span class="p">|</span>minor<span class="o">]]</span><span class="w"> </span><span class="o">[</span>-f<span class="w"> </span>./test_env.yml<span class="o">]</span>
 </span></code></pre></div></li>
 </ul>
-<h2 id="update">Update<a class="headerlink" href="#update" title="Permanent link">#</a></h2>
+<h2 id="mamba">Mamba<a class="headerlink" href="#mamba" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -4312,24 +4364,104 @@
 </thead>
 <tbody>
 <tr>
-<td><code>conda update conda</code>:</td>
-<td>Update conda</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td><code>conda update python</code>:</td>
-<td>Update python version</td>
+<td>Managing Environments</td>
+<td></td>
 </tr>
 <tr>
-<td><code>conda update anaconda</code>:</td>
-<td>Update all packages to latest stable + compatible version of Anaconda</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td><code>conda update -n base conda</code>:</td>
-<td>Update base conda environment</td>
+<td><code>mamba info</code></td>
+<td>get version info</td>
 </tr>
 <tr>
-<td><code>conda env update -n myenv -f env.yml --prune</code>:</td>
-<td>Update and uninstall dependencies from environment using file</td>
+<td><code>conda env list</code></td>
+<td>list environments</td>
+</tr>
+<tr>
+<td><code>conda env export --no-builds</code></td>
+<td>show environment</td>
+</tr>
+<tr>
+<td><code>mamba create -n &lt;ENV&gt; &lt;PKG&gt;</code></td>
+<td>create an environment</td>
+</tr>
+<tr>
+<td><code>mamba env create --file env.yml</code></td>
+<td>import an environment</td>
+</tr>
+<tr>
+<td><code>mamba env export -n &lt;ENV&gt; &gt; env.yml</code></td>
+<td>export an environment</td>
+</tr>
+<tr>
+<td><code>mamba env remove -n &lt;ENV&gt;</code></td>
+<td>remove an environment</td>
+</tr>
+<tr>
+<td><code>conda create --name CLONE_ENV_NAME --clone &lt;ENV&gt;</code></td>
+<td>clone an existing environment</td>
+</tr>
+<tr>
+<td><code>conda activate &lt;ENV&gt;</code>/<code>conda deactivate</code></td>
+<td>activate/deactivate environment</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Managing Packages</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mamba repoquery search &lt;PKG&gt;</code></td>
+<td>finding package</td>
+</tr>
+<tr>
+<td><code>mamba install -n &lt;ENV&gt; &lt;PKG&gt;</code></td>
+<td>install package</td>
+</tr>
+<tr>
+<td><code>mamba update -n base mamba</code></td>
+<td>updating mamba</td>
+</tr>
+<tr>
+<td><code>mamba update -n &lt;ENV&gt; --all</code></td>
+<td>update package</td>
+</tr>
+<tr>
+<td><code>mamba remove -n &lt;ENV&gt; &lt;PKG&gt;</code></td>
+<td>removing a package</td>
+</tr>
+<tr>
+<td><code>mamba repoquery search &lt;PKG&gt;</code></td>
+<td>search for pacakge</td>
+</tr>
+<tr>
+<td><code>mamba repoquery depends &lt;PKG&gt; [--recursive]</code></td>
+<td>show pkg direct/transitive dependencies</td>
+</tr>
+<tr>
+<td><code>mamba repoquery depends -t &lt;PKG&gt;</code></td>
+<td>show pkg transitive dependencies as tree</td>
+</tr>
+<tr>
+<td><code>mamba repoquery whoneeds &lt;PKG&gt;</code></td>
+<td>show pkg dependants i.e. inverse of depends</td>
+</tr>
+<tr>
+<td><code>mamba repoquery whoneeds -t &lt;PKG&gt;</code></td>
+<td>show pkg dependants as tree</td>
 </tr>
 </tbody>
 </table>
@@ -4337,13 +4469,14 @@
 <ul>
 <li><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">manage environments</a></li>
 <li><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html">Official Cheatsheet</a></li>
+<li><a href="https://mamba.readthedocs.io/en/latest/user_guide/mamba.html#quickstart">mamba quickstart</a></li>
 </ul>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-27</span>
 <br/>
         Created:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2021-08-24</span>
