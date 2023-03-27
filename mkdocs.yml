@@ -57,7 +57,7 @@ theme:
     repo: fontawesome/brands/github
     edit: material/file-edit-outline
     view: material/file-eye-outline
-  favicon: _site/favicon.png
+  favicon: _site/favicon.ico
 
 
 # Theme Customization
