@@ -50,7 +50,8 @@ theme:
         icon: material/flare
         name: Light Mode
   font:
-    text: Nunito
+    # text: Nunito
+    text: Source Serif Pro
     code: Source Code Pro
   icon:
     logo: material/gamepad-variant
