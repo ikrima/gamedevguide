@@ -1,38 +1,70 @@
 # Conda Cheatsheet
 
-## Managing Environments
+## Conda
 
 |Command|Desc|
 |-------|----|
+|||
+|Managing Environments||
+|||
 |`conda info`|get version info|
-|`conda create --name ENVNAME python=3.10`|create new environment with package list|
-|`conda env create --name ENVNAME --file environment.yml`|create new environment from file|
-|`conda env remove --name ENVNAME --all`|delete an entire environment|
-|`conda activate ENVNAME / conda deactivate`|activate/deactivate environment|
+|`conda create --name <ENV> python=3.10`|create new environment with package list|
+|`conda env create --name <ENV> --file env.yml`|create new environment from file|
+|`conda env remove --name <ENV> --all`|delete an entire environment|
+|`conda activate <ENV>`/`conda deactivate`|activate/deactivate environment|
+|`conda list --explicit > spec.txt`|produce an environment spec file|
+|`conda env export --from-history > env.yml`|export environment to file|
+|||
+|Managing Packages||
+|||
 |`conda install PKGNAME==3.1.4`|install specific package|
 |`conda install --file requirements.txt`|install from requirements file|
-|`conda list --explicit > spec.txt`|produce an environment spec file|
-|`conda env export --from-history > environment.yml`|export environment to file|
+|`conda update conda`|update conda|
+|`conda update python`|update python version|
+|`conda update anaconda`|update all packages to latest stable + compatible version of Anaconda|
+|`conda update -n base conda`|update base conda environment|
+|`conda env update -n myenv -f env.yml --prune`|update and uninstall dependencies from environment using file|
 
-## Migrating Environments
+### Migrating Environments
 
 - Using `conda-minify` to export minimal environment
   ```bash
   conda install conda-minify -c jamespreed
-  conda-minify --name EnvName [--relax] [--how [full|minor]] [-f ./test_env.yml]
+  conda-minify --name <ENV> [--relax] [--how [full|minor]] [-f ./test_env.yml]
   ```
 
-## Update
+## Mamba
 
 |Command|Desc|
 |-------|----|
-|`conda update conda`:|Update conda|
-|`conda update python`:|Update python version|
-|`conda update anaconda`:|Update all packages to latest stable + compatible version of Anaconda|
-|`conda update -n base conda`:|Update base conda environment|
-|`conda env update -n myenv -f env.yml --prune`:|Update and uninstall dependencies from environment using file|
+|||
+|Managing Environments||
+|||
+|`mamba info`|get version info|
+|`conda env list`|list environments|
+|`conda env export --no-builds`|show environment|
+|`mamba create -n <ENV> <PKG>`|create an environment|
+|`mamba env create --file env.yml`|import an environment|
+|`mamba env export -n <ENV> > env.yml`|export an environment|
+|`mamba env remove -n <ENV>`|remove an environment|
+|`conda create --name CLONE_ENV_NAME --clone <ENV>`|clone an existing environment|
+|`conda activate <ENV>`/`conda deactivate`|activate/deactivate environment|
+|||
+|Managing Packages||
+|||
+|`mamba repoquery search <PKG>`|finding package|
+|`mamba install -n <ENV> <PKG>`|install package|
+|`mamba update -n base mamba`|updating mamba|
+|`mamba update -n <ENV> --all`|update package|
+|`mamba remove -n <ENV> <PKG>`|removing a package|
+|`mamba repoquery search <PKG>`|search for pacakge|
+|`mamba repoquery depends <PKG> [--recursive]`|show pkg direct/transitive dependencies|
+|`mamba repoquery depends -t <PKG>`|show pkg transitive dependencies as tree|
+|`mamba repoquery whoneeds <PKG>`|show pkg dependants i.e. inverse of depends|
+|`mamba repoquery whoneeds -t <PKG>`|show pkg dependants as tree|
 
 ## References
 
 - [manage environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 - [Official Cheatsheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
+- [mamba quickstart](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html#quickstart)
