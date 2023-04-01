@@ -2,39 +2,43 @@
 
 ## Resources
 
+- [explainshell](https://explainshell.com/): match command-line arguments to their help text
+- [tldr pages](https://tldr.sh/): more concise man pages
 - [Introduction to Linux Technology and Philosophy by Jeremy Hajek](../_assets/intro-to-linux-textbook.pdf)
   - [github source](https://github.com/jhajek/Linux-text-book-part-1)
-- [explainshell](https://explainshell.com/): match command-line arguments to their help text
-- [tldr pages](https://tldr.sh/)
 - [DigitalOcean Linux Basics Tutorials](https://www.digitalocean.com/community/tutorials?q=%5BLinux%20Basics%5D)
   - [Introduction to Linux Basics](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-basics)
   - [Linux Command Line Primer](https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer)
   - [How To Use ps, kill, and nice to Manage Linux Processes](https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux)
+- [bash beginner series](https://linuxhandbook.com/tag/bash-beginner/)
 
 ## Filesystem
 
 - `stat`: pretty print stats about file
-  
   ```bash
   stat [file]
   ```
 
 - `rm`: delete directory
-  
   ```bash
   rm -rf
   ```
 
 - `find`: find file/directory recursively
-  
   ```bash
   find . -name _gsdata_ -exec rm {} +
   find . -type d -name _gsdata_ -print -exec rm -rfv {} +
   find . -type f -name \( -name .DS_Store -o -name Thumbs.db \) -print -exec rm {} +
   ```
 
+- `tree`: show directory structure as tree
+  ```bash
+  tree -d [dir]   # list directories only
+  tree -ah        # include hidden, human readable
+  tree -fp -L <n> # include paths, permissions, limit up to N levels
+  ```
+
 - `df`: display free disk space
-  
   ```bash
   df -lhT # show usage of all mounted filesystems
   ```
