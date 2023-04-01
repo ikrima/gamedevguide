@@ -37,6 +37,61 @@ docker network create omninet
   
   - <https://wiki.unraid.net/Tips_and_Tweaks#Turn_on_Reconstruct_Write>
 
+### VM
+
+- enable _**performance** cpu governor_ bc the boost trigger from within a vm doesn't consistently work
+  
+   > 
+   > \[!note\] Enable _**performance** cpu governor_
+   > 
+   > ```bash
+   > #!/bin/bash
+   > cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+   > for file in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do echo "performance" > $file; done
+   > cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+   > ```
+  
+   > 
+   > \[!note\] Restore _**on-demand**_ cpu governor\_
+   > 
+   > ```bash
+   > #!/bin/bash
+   > cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+   > for file in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do echo "ondemand" > $file; done
+   > cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+   > ```
+
+- ensure `clock source=tsc`
+  
+  ```bash
+  cat /sys/devices/system/clocksource/clocksource0/current_clocksource
+  ```
+
+- install Win11 without networking
+  
+  ```bat
+  Shift-F10
+  OOBE\BYPASSNRO 
+  ```
+
+### SMB
+
+- SMB hardening
+  ```config
+  #disable SMB1 for security reasons
+  [global]
+    server min protocol     = SMB3_02
+    client ipc min protocol = SMB3_02
+    restrict anonymous      = 2
+    # client signing        = mandatory
+    # server signing        = mandatory
+    # client ipc signing    = mandatory
+    # client NTLMv2 auth    = yes
+    # smb encrypt           = required
+    # null passwords        = no
+    # raw NTLMv2 auth       = no
+  ```
+
 ## Backup
 
 [What do you use for backup?](https://www.reddit.com/r/selfhosted/comments/l2kuzs/comment/gk7s8lg/)
