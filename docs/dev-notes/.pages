@@ -16,7 +16,6 @@ nav:
   - prog lang theory:   prog-lang-theory
   - python:             python
   - rust:               rust
-  - shells:             shells
   - typescript:         typescript
   - unraid:             unraid
   - visual studio:      visual-studio

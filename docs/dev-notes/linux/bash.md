@@ -2,10 +2,18 @@
 
 ## Resources
 
-- [devhints cheatsheet](https://devhints.io/bash)
-- [learn bash in y minutes](https://learnxinyminutes.com/docs/bash/): short quickstart crash course
+- [Devhints Cheatsheet](https://devhints.io/bash)
+- [Learn Bash in Y Minutes](https://learnxinyminutes.com/docs/bash/): short quickstart crash course
+- [Bash Scripting 101](https://help.ubuntu.com/community/Beginners/BashScripting)
+- [Bash Beginner Series](https://linuxhandbook.com/tag/bash-beginner/)
 
-## Startup Scripts
+## Shell Customization
+
+### Dotfiles
+
+- [more details](https://www.webpro.nl/articles/getting-started-with-dotfiles)
+
+### Startup Scripts
 
 - [(reference)](https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/)
 
@@ -24,10 +32,6 @@
 |BASH_ENV||||1|1|
 |||||||
 |~/.bash_logout|3|3||||
-
-### Shell Customization
-
-[more details](https://www.webpro.nl/articles/getting-started-with-dotfiles)
 
 ## Variables
 

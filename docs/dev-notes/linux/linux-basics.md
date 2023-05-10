@@ -2,18 +2,31 @@
 
 ## Resources
 
-- [explainshell](https://explainshell.com/): match command-line arguments to their help text
-- [tldr pages](https://tldr.sh/): more concise man pages
 - [Introduction to Linux Technology and Philosophy by Jeremy Hajek](../_assets/intro-to-linux-textbook.pdf)
   - [github source](https://github.com/jhajek/Linux-text-book-part-1)
 - [DigitalOcean Linux Basics Tutorials](https://www.digitalocean.com/community/tutorials?q=%5BLinux%20Basics%5D)
   - [Introduction to Linux Basics](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-basics)
   - [Linux Command Line Primer](https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer)
   - [How To Use ps, kill, and nice to Manage Linux Processes](https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux)
-- [bash beginner series](https://linuxhandbook.com/tag/bash-beginner/)
+
+### Manuals
+
+- [ManKier](https://www.mankier.com/): concise pretty man pages with an API
+- [explainshell](https://explainshell.com/): match command-line arguments to their help text
+- [tldr pages](https://tldr.sh/): more concise man pages
+- [manned](https://manned.org/): man page versions across a range of distributions
+- [ubuntu](https://manpages.ubuntu.com/): ubuntu man pages and documentation
+
+### Guides
+
+- [Ubuntu Community Documentation](https://help.ubuntu.com/community/CommunityHelpWiki): useful beginner series
+- [Ultimate Linux Guide for Windows users](https://www.dedoimedo.com/computers/ultimate-linux-guide-for-windows-users.html)
+- [Learning the Shell](https://linuxcommand.org/)
 
 ## Filesystem
 
+- `which`: display executable's location
+- `type`: describe a command
 - `stat`: pretty print stats about file
   ```bash
   stat [file]
@@ -26,9 +39,9 @@
 
 - `find`: find file/directory recursively
   ```bash
-  find . -name _gsdata_ -exec rm {} +
+  find . -iname _gsdata_ -exec rm {} +
   find . -type d -name _gsdata_ -print -exec rm -rfv {} +
-  find . -type f -name \( -name .DS_Store -o -name Thumbs.db \) -print -exec rm {} +
+  find . -type f \( -name .DS_Store -o -name Thumbs.db \) -print -exec rm {} +
   ```
 
 - `tree`: show directory structure as tree
@@ -48,6 +61,8 @@
 |Command|Description|
 |-------|-----------|
 |`apt list --installed`|list installed `pkgs`|
+|`sudo apt policy`|list installed \`repositories'|
+|`apt show <pkg>`|show dependencies of `pkgs`|
 |`sudo apt install <pkg>`|install `<pkg>`|
 |`sudo apt remove <pkg>`|uninstall `<pkg>`|
 |`sudo apt autoremove`|uninstall unused dependencies e.g. `<pkg>` leftover deps that were auto installed but longer required|
@@ -56,21 +71,47 @@
 ## Console Management
 
 - `env`: print the environment variables
-  ```bash
-  stat [file]
-  ```
 
 - `tail`: displays the last part of a file
+  
   ```bash
   tail -f [file]      # outputs last lines in realtime
   tail -n 100 [file]  # outputs last n lines
   ```
 
-- `bind`: keybinds
+- `bind`: query keybinds
+  
   ```bash
-  bind -l   # List bindable editing functions names
-  bind -p   # List bindable editing functions names with their bindings are
+  bind -l      # List bindable readline functions
+  bind -v      # List variables and values
+  bind -psX    # List keys bound to readline functions, macros, and shell executions
+  bind -q <fn> # Query about which keys invoke the named function
   ```
+
+- `bind`: change keybinds
+  
+  ```bash
+  bind -u <fn>                 # Unbind all keys which are bound to the named function
+  bind -r <keys>               # Remove the binding for <keys>
+  bind -f <filename>           # Read key bindings from <filename>
+  bind -x '"<keys>": "<cmds>"' # Execute <cmds> when <keys> is entered
+  ```
+
+## Networking
+
+- list connections
+
+```bash
+netstat --all | head -n 15
+sudo netstat --tcp --udp --listening --program --numeric --extend
+```
+
+- query interaces
+
+```bash
+ip a
+netstat -ie
+```
 
 ## Permissions
 
@@ -97,7 +138,7 @@
             | sets all to `000`
   ```
 
-## Processes
+## Process Management
 
 - `id`: find UID/GID for user
   ```bash
@@ -107,6 +148,7 @@
 - `ps`: list running processes
   ```bash
   ps aux
+  pstree
   ```
 
 - `pkill`: kill process by name
