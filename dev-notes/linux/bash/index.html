@@ -7,12 +7,12 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Programming notes for Unreal Engine, Houdini, Game Development, Math, &amp; Graphics" name="description"/>
 <meta content="ikrimae" name="author"/>
-<link href="https://ikrima.dev/dev-notes/shells/powershell/" rel="canonical"/>
-<link href="../cmder/" rel="prev"/>
-<link href="../../typescript/ts-cheatsheet/" rel="next"/>
+<link href="https://ikrima.dev/dev-notes/linux/bash/" rel="canonical"/>
+<link href="../../imgui/imgui-multiviewport/" rel="prev"/>
+<link href="../linux-basics/" rel="next"/>
 <link href="../../../_site/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.1.4" name="generator"/>
-<title>Powershell - Gamedev Guide</title>
+<title>Bash Cheatsheet - Gamedev Guide</title>
 <link href="../../../assets/stylesheets/main.240905d7.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -41,7 +41,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#powershell">
+<a class="md-skip" href="#bash-cheatsheet">
           Skip to content
         </a>
 </div>
@@ -65,7 +65,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Powershell
+              Bash Cheatsheet
             
           </span>
 </div>
@@ -2961,6 +2961,11 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../dev-workflow/cmder/">
+        Cmder Cheatsheet
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../dev-workflow/git-commands/">
         Git Commands
       </a>
@@ -3048,26 +3053,267 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_10" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_10" type="checkbox"/>
 <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
           linux
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_10_label" class="md-nav" data-md-level="2">
+<nav aria-expanded="true" aria-labelledby="__nav_3_10_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_3_10">
 <span class="md-nav__icon md-icon"></span>
           linux
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Bash Cheatsheet
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Bash Cheatsheet
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../linux/linux-basics/">
+<a class="md-nav__link" href="#resources">
+    Resources
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#shell-customization">
+    Shell Customization
+  </a>
+<nav aria-label="Shell Customization" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dotfiles">
+    Dotfiles
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#startup-scripts">
+    Startup Scripts
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#variables">
+    Variables
+  </a>
+<nav aria-label="Variables" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#special-variables">
+    Special Variables
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#string-quotes">
+    String Quotes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditionals">
+    Conditionals
+  </a>
+<nav aria-label="Conditionals" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditions">
+    Conditions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#file-conditions">
+    File Conditions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#examples">
+    Examples
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command-execution">
+    Command Execution
+  </a>
+<nav aria-label="Command Execution" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#shell-execution">
+    Shell Execution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditional-execution">
+    Conditional Execution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command-substitution">
+    Command substitution
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#strict-mode">
+    Strict Mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameter-expansions">
+    Parameter Expansions
+  </a>
+<nav aria-label="Parameter Expansions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-examples">
+    Basic Examples
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expanded-examples">
+    Expanded Examples
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#substitution">
+    Substitution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+    Comments
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#substrings">
+    Substrings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#length">
+    Length
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#manipulation">
+    Manipulation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#default-values">
+    Default values
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#loops">
+    Loops
+  </a>
+<nav aria-label="Loops" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-for-loop">
+    Basic for loop
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#c-like-for-loop">
+    C-like for loop
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ranges">
+    Ranges
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reading-lines">
+    Reading lines
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#forever">
+    Forever
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#functions">
+    Functions
+  </a>
+<nav aria-label="Functions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#defining-functions">
+    Defining functions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returning-values">
+    Returning values
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#raising-errors">
+    Raising errors
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arguments">
+    Arguments
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#special-parameters">
+    Special Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#color-formatting">
+    Color Formatting
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../linux-basics/">
         Linux Basics
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../linux/openssh/">
+<a class="md-nav__link" href="../openssh/">
         OpenSSH
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../rsync/">
+        Rsync
       </a>
 </li>
 </ul>
@@ -3263,135 +3509,14 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
-          shells
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="true" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_18">
-<span class="md-nav__icon md-icon"></span>
-          shells
-        </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../bash/">
-        Bash Cheatsheet
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../cmd/">
-        Windows Command Shell
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../cmder/">
-        Cmder Cheatsheet
-      </a>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Powershell
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
-        Powershell
-      </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#crash-course">
-    Crash Course
-  </a>
-<nav aria-label="Crash Course" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#basic-operators">
-    Basic Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#comparison-operators">
-    Comparison Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#type-operators">
-    Type Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#flow-control">
-    Flow Control
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#special-operators">
-    Special Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#redirection-operators">
-    Redirection Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#gotchas">
-    Gotchas
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#cheatsheet">
-    Cheatsheet
-  </a>
-<nav aria-label="Cheatsheet" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#useful-commands">
-    Useful Commands
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#scripting">
-    Scripting
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#psscriptanalyzer-linter">
-    PSScriptAnalyzer Linter
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#resources">
-    Resources
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_19" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_19" id="__nav_3_19_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
           typescript
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_19_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_19">
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
 <span class="md-nav__icon md-icon"></span>
           typescript
         </label>
@@ -3405,13 +3530,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_20" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_20" id="__nav_3_20_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_3_19" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_19" id="__nav_3_19_label" tabindex="0">
           unraid
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_20_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_20">
+<nav aria-expanded="false" aria-labelledby="__nav_3_19_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_19">
 <span class="md-nav__icon md-icon"></span>
           unraid
         </label>
@@ -3427,6 +3552,11 @@
       </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../../unraid/unraid-filesystem/">
+        Unraid File System
+      </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../../unraid/unraid-setup/">
         Unraid Setup
       </a>
@@ -3435,13 +3565,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_21" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_21" id="__nav_3_21_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_3_20" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_20" id="__nav_3_20_label" tabindex="0">
           visual studio
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_21_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_21">
+<nav aria-expanded="false" aria-labelledby="__nav_3_20_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_20">
 <span class="md-nav__icon md-icon"></span>
           visual studio
         </label>
@@ -3480,13 +3610,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_22" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_22" id="__nav_3_22_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_3_21" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_21" id="__nav_3_21_label" tabindex="0">
           vscode
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_22_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_22">
+<nav aria-expanded="false" aria-labelledby="__nav_3_21_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_21">
 <span class="md-nav__icon md-icon"></span>
           vscode
         </label>
@@ -3505,13 +3635,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_23" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_23" id="__nav_3_23_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_3_22" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_22" id="__nav_3_22_label" tabindex="0">
           zig
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_23_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_23">
+<nav aria-expanded="false" aria-labelledby="__nav_3_22_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_22">
 <span class="md-nav__icon md-icon"></span>
           zig
         </label>
@@ -3540,17 +3670,27 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_24" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_24" id="__nav_3_24_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_3_23" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_23" id="__nav_3_23_label" tabindex="0">
           windows internals
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_24_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_24">
+<nav aria-expanded="false" aria-labelledby="__nav_3_23_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_23">
 <span class="md-nav__icon md-icon"></span>
           windows internals
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/cmd/">
+        Windows Command Shell
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../win-internals/powershell/">
+        Powershell
+      </a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../win-internals/win-file-io-perf/">
         Windows File IO Performance
@@ -3567,13 +3707,13 @@
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_24_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_24_4" id="__nav_3_24_4_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_3_23_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_23_6" id="__nav_3_23_6_label" tabindex="0">
           Win debug recipes
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_24_4_label" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_3_24_4">
+<nav aria-expanded="false" aria-labelledby="__nav_3_23_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_23_6">
 <span class="md-nav__icon md-icon"></span>
           Win debug recipes
         </label>
@@ -3584,13 +3724,13 @@
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_24_4_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_24_4_2" id="__nav_3_24_4_2_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_3_23_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_23_6_2" id="__nav_3_23_6_2_label" tabindex="0">
           Components
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_24_4_2_label" class="md-nav" data-md-level="4">
-<label class="md-nav__title" for="__nav_3_24_4_2">
+<nav aria-expanded="false" aria-labelledby="__nav_3_23_6_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_23_6_2">
 <span class="md-nav__icon md-icon"></span>
           Components
         </label>
@@ -3619,13 +3759,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3_24_4_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_24_4_3" id="__nav_3_24_4_3_label" tabindex="0">
+<input class="md-nav__toggle md-toggle" id="__nav_3_23_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_23_6_3" id="__nav_3_23_6_3_label" tabindex="0">
           Debugger
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_24_4_3_label" class="md-nav" data-md-level="4">
-<label class="md-nav__title" for="__nav_3_24_4_3">
+<nav aria-expanded="false" aria-labelledby="__nav_3_23_6_3_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_23_6_3">
 <span class="md-nav__icon md-icon"></span>
           Debugger
         </label>
@@ -4268,76 +4408,221 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#crash-course">
-    Crash Course
-  </a>
-<nav aria-label="Crash Course" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#basic-operators">
-    Basic Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#comparison-operators">
-    Comparison Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#type-operators">
-    Type Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#flow-control">
-    Flow Control
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#special-operators">
-    Special Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#redirection-operators">
-    Redirection Operators
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#gotchas">
-    Gotchas
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#cheatsheet">
-    Cheatsheet
-  </a>
-<nav aria-label="Cheatsheet" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#useful-commands">
-    Useful Commands
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#scripting">
-    Scripting
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#psscriptanalyzer-linter">
-    PSScriptAnalyzer Linter
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#resources">
     Resources
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#shell-customization">
+    Shell Customization
+  </a>
+<nav aria-label="Shell Customization" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dotfiles">
+    Dotfiles
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#startup-scripts">
+    Startup Scripts
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#variables">
+    Variables
+  </a>
+<nav aria-label="Variables" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#special-variables">
+    Special Variables
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#string-quotes">
+    String Quotes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditionals">
+    Conditionals
+  </a>
+<nav aria-label="Conditionals" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditions">
+    Conditions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#file-conditions">
+    File Conditions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#examples">
+    Examples
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command-execution">
+    Command Execution
+  </a>
+<nav aria-label="Command Execution" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#shell-execution">
+    Shell Execution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditional-execution">
+    Conditional Execution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command-substitution">
+    Command substitution
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#strict-mode">
+    Strict Mode
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameter-expansions">
+    Parameter Expansions
+  </a>
+<nav aria-label="Parameter Expansions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-examples">
+    Basic Examples
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expanded-examples">
+    Expanded Examples
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#substitution">
+    Substitution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+    Comments
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#substrings">
+    Substrings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#length">
+    Length
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#manipulation">
+    Manipulation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#default-values">
+    Default values
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#loops">
+    Loops
+  </a>
+<nav aria-label="Loops" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-for-loop">
+    Basic for loop
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#c-like-for-loop">
+    C-like for loop
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ranges">
+    Ranges
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reading-lines">
+    Reading lines
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#forever">
+    Forever
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#functions">
+    Functions
+  </a>
+<nav aria-label="Functions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#defining-functions">
+    Defining functions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returning-values">
+    Returning values
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#raising-errors">
+    Raising errors
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arguments">
+    Arguments
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#special-parameters">
+    Special Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#color-formatting">
+    Color Formatting
   </a>
 </li>
 </ul>
@@ -4347,1080 +4632,730 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/ikrima/gamedevguide/edit/master/docs/dev-notes/shells/powershell.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/ikrima/gamedevguide/edit/master/docs/dev-notes/linux/bash.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
 </a>
-<a class="md-content__button md-icon" href="https://github.com/ikrima/gamedevguide/raw/master/docs/dev-notes/shells/powershell.md" title="View source of this page">
+<a class="md-content__button md-icon" href="https://github.com/ikrima/gamedevguide/raw/master/docs/dev-notes/linux/bash.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"></path></svg>
 </a>
-<h1 id="powershell">Powershell<a class="headerlink" href="#powershell" title="Permanent link">#</a></h1>
-<h2 id="crash-course">Crash Course<a class="headerlink" href="#crash-course" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>Basic terminology</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cmdlet</td>
-<td>Commands built into shell written in .NET</td>
-</tr>
-<tr>
-<td>Functions</td>
-<td>Commands written in PowerShell language</td>
-</tr>
-<tr>
-<td>Parameter</td>
-<td>Argument to a Cmdlet/Function/Script</td>
-</tr>
-<tr>
-<td>Alias</td>
-<td>Shortcut for a Cmdlet or Function</td>
-</tr>
-<tr>
-<td>Scripts</td>
-<td>Text files with .ps1 extension</td>
-</tr>
-<tr>
-<td>Applications</td>
-<td>Existing windows programs</td>
-</tr>
-</tbody>
-</table>
-<h3 id="basic-operators">Basic Operators<a class="headerlink" href="#basic-operators" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>=</code>,<code>+=</code>,<code>-=</code>,<code>*=</code>,<code>/=</code>,<code>%=</code>,<code>++</code>,<code>--</code></td>
-<td>assigns one or more values to variable</td>
-</tr>
-<tr>
-<td><code>-and</code>,<code>-or</code>,<code>-xor</code>,<code>-not</code>/<code>!</code></td>
-<td>logical operators</td>
-</tr>
-<tr>
-<td><code>-band</code>,<code>-bor</code>,<code>-bxor</code>,<code>-bnot</code>,<code>-shr</code>,<code>-shl</code></td>
-<td>bitwise operators</td>
-</tr>
-<tr>
-<td><code>-split</code></td>
-<td>splits a string (ex: <code>“abcdefghi” -split “de”</code>)</td>
-</tr>
-<tr>
-<td><code>-join</code></td>
-<td>joins multiple strings (ex: <code>“abc”,”def”,”ghi” -join “;”</code>)</td>
-</tr>
-<tr>
-<td>`</td>
-<td>`</td>
-</tr>
-<tr>
-<td><code>,</code></td>
-<td>comma operator (array constructor)</td>
-</tr>
-<tr>
-<td><code>@()</code></td>
-<td>array subexpression operator</td>
-</tr>
-</tbody>
-</table>
-<h3 id="comparison-operators">Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-eq</code>,<code>-ieq</code>,<code>-ceq</code></td>
-<td>equal</td>
-</tr>
-<tr>
-<td><code>-ne</code>,<code>-ine</code>,<code>-cne</code></td>
-<td>not equal</td>
-</tr>
-<tr>
-<td><code>-gt</code>,<code>-igt</code>,<code>-cgt</code></td>
-<td>greater than</td>
-</tr>
-<tr>
-<td><code>-ge</code>,<code>-ige</code>,<code>-cge</code></td>
-<td>greater than or equal to</td>
-</tr>
-<tr>
-<td><code>-lt</code>,<code>-ilt</code>,<code>-clt</code></td>
-<td>less than</td>
-</tr>
-<tr>
-<td><code>-le</code>,<code>-ile</code>,<code>-cle</code></td>
-<td>less than or equal to</td>
-</tr>
-<tr>
-<td><code>-like</code>,<code>-ilike</code>,<code>-clike</code></td>
-<td>wildcard matching</td>
-</tr>
-<tr>
-<td><code>-notlike</code>,<code>-inotlike</code>,<code>-cnotlike</code></td>
-<td>negation of <code>-like</code></td>
-</tr>
-<tr>
-<td><code>-match</code>,<code>-imatch</code>,<code>-cmatch</code></td>
-<td>regular expression match</td>
-</tr>
-<tr>
-<td><code>-notmatch</code>,<code>-inotmatch</code>,<code>-cnotmatch</code></td>
-<td>negation of <code>-match</code></td>
-</tr>
-<tr>
-<td><code>-replace</code>, <code>-ireplace</code>, <code>-creplace</code></td>
-<td>replace matching elements (ex: <code>“abcde” -replace “bc”, “TEST”</code>)</td>
-</tr>
-<tr>
-<td><code>-contains</code>,<code>-icontains</code>,<code>-ccontains</code></td>
-<td>check if value in array (ex: <code>1,2,3,4,5 -contains 3</code>)</td>
-</tr>
-<tr>
-<td><code>-notcontains</code>,<code>-inotcontains</code>,<code>-cnotcontains</code></td>
-<td>negation of <code>-contains</code></td>
-</tr>
-<tr>
-<td><code>-in</code>,<code>-notin</code></td>
-<td>syntactic reverse of <code>-contains/-notcontains</code> (ex: <code>3 -in 1,2,3,4,5</code>)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><em>string comparisons</em>: default case-insensitive</li>
-<li><code>-c</code> prefix: case sensitive variant e.g. <code>-ceq</code></li>
-<li><code>-i</code> prefix: case-insensitive variant e.g. <code>-ieq</code></li>
-<li><code>$list -op $foo</code>: shortcut for using operator as filter i.e. returns list items satisfying <code>-op</code><blockquote>
-<p>[!important]<br/>
-<code>-contains, -in, -is, -replace</code>: can't be used this way</p>
-</blockquote>
-</li>
-</ul>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="nv">$a</span> <span class="p">=</span> <span class="p">(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">)</span> <span class="o">-eq</span> <span class="n">3</span> 
-</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>  <span class="p">:=</span> <span class="p">(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">)</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">-eq</span> <span class="n">2</span> <span class="p">}</span>
-</span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="nv">$a</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span> <span class="c"># result: Object[]</span>
-</span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="nv">$a</span><span class="p">.</span><span class="n">Count</span>          <span class="c"># result: 0</span>
-</span></code></pre></div>
-<h3 id="type-operators">Type Operators<a class="headerlink" href="#type-operators" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-is</code>,<code>-isnot</code></td>
-<td>test if object is an instance of a specified .NET type (ex: <code>42 –is [int]</code>)</td>
-</tr>
-<tr>
-<td><code>-as</code></td>
-<td>attempt type conversion to .NET type (ex: <code>$a = 42 –as [String]</code>)</td>
-</tr>
-<tr>
-<td><code>[]</code></td>
-<td>type cast (ex: <code>[datetime]$birthday = "1/10/66"</code>)</td>
-</tr>
-<tr>
-<td><code>()</code></td>
-<td>grouping expression operator</td>
-</tr>
-</tbody>
-</table>
-<h3 id="flow-control">Flow Control<a class="headerlink" href="#flow-control" title="Permanent link">#</a></h3>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="p">(</span><span class="nv">$expr</span><span class="p">)</span> <span class="p">{...}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$expr</span><span class="p">)</span> <span class="p">{...}</span> <span class="k">else</span> <span class="p">{...}</span>
-</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="k">while</span> <span class="p">(</span><span class="nv">$expr</span><span class="p">)</span> <span class="p">{...}</span>
-</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="p">=</span> <span class="n">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-lt</span> <span class="n">10</span><span class="p">;</span> <span class="nv">$i</span><span class="p">++)</span> <span class="p">{...}</span>
-</span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$file</span> <span class="k">in</span> <span class="nb">Get-ChildItem</span> <span class="s1">'C:\'</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$file</span><span class="p">.</span><span class="n">name</span> <span class="p">}</span>
-</span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="n">1</span><span class="p">..</span><span class="n">10</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="nv">$_</span> <span class="p">}</span>
-</span></code></pre></div>
-<h3 id="special-operators">Special Operators<a class="headerlink" href="#special-operators" title="Permanent link">#</a></h3>
-<ul>
-<li><code>($list).property/method</code>: Member Access Enumeration i.e. shortcut for map on collection</li>
-</ul>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="p">(</span><span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">event</span><span class="p">*).</span><span class="n">DisplayName</span> 
-</span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>  <span class="p">:=</span> <span class="p">(</span><span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">event</span><span class="p">*).</span><span class="k">ForEach</span><span class="p">({</span> <span class="nv">$_</span><span class="p">.</span><span class="n">DisplayName</span> <span class="p">})</span>
-</span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>  <span class="p">:=</span> <span class="p">(</span><span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">event</span><span class="p">*)</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">DisplayName</span> <span class="p">}</span>
-</span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="c"># result: @('Windows Event Log', 'COM+ Event System', ...)</span>
-</span></code></pre></div>
-<blockquote>
-<p>[!note] Nuances</p>
-<ul>
-<li>
-<p>if property exists on collection, only the collection property is returned<br/>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="p">(</span><span class="nb">Get-Service</span><span class="p">).</span><span class="n">Count</span> <span class="p">=&gt;</span> <span class="n">176</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>if error occurs during enumeration, method is invoked only on the items enumerated before error</p>
-</li>
-<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_member-access_enumeration">more details</a> around undefined members, <code>$null</code> values, errors, etc</li>
-</ul>
-</blockquote>
-<ul>
-<li>
-<p><code>$()</code>: subexpression operator that evaluates inner expression with result treated as a variable i.e. <code>expr</code> form of <code>block stmts</code></p>
-</li>
-<li>
-<p>can contain statements e.g. i.e. expression operator</p>
-</li>
-<li>
-<p>each statement's output appends to final scalar or array result<br/>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="p">($(</span><span class="n">code</span> <span class="n">returning</span> <span class="n">value</span><span class="p">)</span> <span class="o">-eq</span> <span class="s2">"somevalue"</span><span class="p">)</span> <span class="p">{</span> <span class="n">do_something</span> <span class="p">}</span>
-</span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="nv">$city</span><span class="p">=</span><span class="s2">"Copenhagen"</span>
-</span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span><span class="nv">$strLength</span> <span class="p">=</span> <span class="s2">"</span><span class="p">$(</span><span class="nv">$city</span><span class="p">.</span><span class="n">length</span><span class="p">)</span><span class="s2">"</span>
-</span><span id="__span-4-4"><span class="linenos" data-linenos="4 "></span><span class="s2">"The result of 2 + 3 = </span><span class="p">$(</span><span class="n">2</span><span class="p">+</span><span class="n">3</span><span class="p">)</span><span class="s2">"</span>
-</span><span id="__span-4-5"><span class="linenos" data-linenos="5 "></span><span class="p">$(</span><span class="nb">Get-WMIObject</span> <span class="n">win32_Directory</span><span class="p">)</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p><code>&amp;</code>: call/invocation operator to run command, script, or script block</p>
-</li>
-<li>
-<p>can run commands stored in variables and represented by strings</p>
-</li>
-<li>
-<p>does not parse or interpret command parameters<br/>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="nv">$c</span> <span class="p">=</span> <span class="s2">"get-executionpolicy"</span>
-</span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="p">&amp;</span> <span class="nv">$c</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p><code>.</code>: dot sourcing operator to run script in current scope</p>
-</li>
-<li>
-<p>all script created functions/aliases/variables are added to the current scope<br/>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="p">.</span> <span class="n">c</span><span class="p">:/</span><span class="n">scripts</span><span class="p">/</span><span class="n">sample</span><span class="p">.</span><span class="n">ps1</span>
-</span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="p">.</span> <span class="p">./</span><span class="n">sample2</span><span class="p">.</span><span class="n">ps1</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p><code>-f</code>: format operator for string interpolation with format args e.g. padding, alignment, hex etc</p>
-</li>
-</ul>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">1</span><span class="p">..</span><span class="n">10</span> <span class="p">|</span> <span class="k">foreach</span> <span class="p">{</span> <span class="s2">"{0:N2}"</span> <span class="o">-f</span> <span class="nv">$_</span> <span class="p">}</span>
-</span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="nb">Get-ChildItem</span> <span class="n">c</span><span class="p">:\</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span><span class="s1">'File {0} Created {1}'</span> <span class="o">-f</span> <span class="nv">$_</span><span class="p">.</span><span class="n">fullname</span><span class="p">,</span><span class="nv">$_</span><span class="p">.</span><span class="n">creationtime</span><span class="p">}</span>
-</span></code></pre></div>
-<ul>
-<li><code>..</code>: range operator to produce number sequence</li>
-</ul>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="n">10</span><span class="p">..</span><span class="n">20</span>
-</span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="n">1</span><span class="p">..</span><span class="n">10</span> <span class="p">|</span> <span class="k">foreach</span> <span class="p">{</span><span class="nv">$_</span> <span class="p">*</span> <span class="n">5</span><span class="p">}</span>
-</span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span><span class="p">-</span><span class="n">5</span><span class="p">..</span><span class="n">0</span><span class="p">.</span><span class="n">9</span> <span class="c"># a more readable version of the same thing.</span>
-</span></code></pre></div>
-<h3 id="redirection-operators">Redirection Operators<a class="headerlink" href="#redirection-operators" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>n</th>
-<th>Output streams</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>1</code></td>
-<td><code>success</code> stream i.e. <code>stdout</code></td>
-</tr>
-<tr>
-<td><code>2</code></td>
-<td><code>error</code> stream i.e. <code>stderr</code></td>
-</tr>
-<tr>
-<td><code>3</code></td>
-<td><code>warning</code> stream</td>
-</tr>
-<tr>
-<td><code>4</code></td>
-<td><code>verbose</code> stream</td>
-</tr>
-<tr>
-<td><code>5</code></td>
-<td><code>debug</code> stream</td>
-</tr>
-<tr>
-<td><code>6</code></td>
-<td><code>information</code> stream</td>
-</tr>
-<tr>
-<td><code>*</code></td>
-<td><code>all</code> Streams</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>[n]&gt;</code></td>
-<td><strong>send</strong> stream to <em>file</em> (default: <code>n=1</code>)</td>
-</tr>
-<tr>
-<td><code>[n]&gt;&gt;</code></td>
-<td><strong>append</strong> stream to <em>file</em> (default: <code>n=1</code>)</td>
-</tr>
-<tr>
-<td><code>[n]&gt;&amp;1</code></td>
-<td><strong>redirects</strong> stream to <code>success</code> stream (default: <code>n=1</code>)</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>[!note] limitations<br/>
-can only redirect to <code>success</code> stream</p>
-</blockquote>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="nb">Get-Process</span> <span class="n">word</span><span class="p">*</span> <span class="p">|</span> <span class="nb">Stop-Process</span>
-</span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span><span class="k">Do</span><span class="n">-Something</span> <span class="n">3</span><span class="p">&gt;</span>   <span class="n">warning</span><span class="p">.</span><span class="n">txt</span> <span class="c"># Writes warning output to warning.txt</span>
-</span><span id="__span-9-3"><span class="linenos" data-linenos="3 "></span><span class="k">Do</span><span class="n">-Something</span> <span class="n">4</span><span class="p">&gt;&gt;</span>  <span class="n">verbose</span><span class="p">.</span><span class="n">txt</span> <span class="c"># Appends verbose.txt with the verbose output</span>
-</span><span id="__span-9-4"><span class="linenos" data-linenos="4 "></span><span class="k">Do</span><span class="n">-Something</span> <span class="n">5</span><span class="p">&gt;&amp;</span><span class="n">1</span>             <span class="c"># Writes debug output to the output stream</span>
-</span><span id="__span-9-5"><span class="linenos" data-linenos="5 "></span><span class="k">Do</span><span class="n">-Something</span> <span class="p">*&gt;&amp;</span><span class="n">1</span>             <span class="c"># Redirects all streams to stdout</span>
-</span><span id="__span-9-6"><span class="linenos" data-linenos="6 "></span><span class="k">Do</span><span class="n">-Something</span> <span class="p">*&gt;</span>   <span class="n">out</span><span class="p">.</span><span class="n">txt</span>     <span class="c"># Redirects all streams to out.txt</span>
-</span></code></pre></div>
-<h3 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">#</a></h3>
-<ul>
-<li>Common Parameters/Preference Variables not inherited across module scopes</li>
-<li><a href="https://devblogs.microsoft.com/powershell-community/how-to-have-more-control-of-preferences-in-functions-and-the-role-of-modules-on-inheritance/">Details</a></li>
-</ul>
-<h2 id="cheatsheet">Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permanent link">#</a></h2>
-<h3 id="useful-commands">Useful Commands<a class="headerlink" href="#useful-commands" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Command</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Update-Help</code></td>
-<td>Downloads and installs newest help files</td>
-</tr>
-<tr>
-<td><code>Get-Help get-process</code></td>
-<td>Get help for command</td>
-</tr>
-<tr>
-<td><code>Get-Command</code></td>
-<td>Get all commands</td>
-</tr>
-<tr>
-<td><code>Get-Command -Module RGHS</code></td>
-<td>Get all commands in RGHS module</td>
-</tr>
-<tr>
-<td><code>Get-Command Get-p*</code></td>
-<td>Get all commands starting with get-p</td>
-</tr>
-<tr>
-<td><code>Get-Member</code></td>
-<td>Gets the properties and methods of objects</td>
-</tr>
-<tr>
-<td><code>Get-Module</code></td>
-<td>Gets all imported and importable modules</td>
-</tr>
-<tr>
-<td><code>Get-Process \| Get-Member</code></td>
-<td>Get members of the object</td>
-</tr>
-<tr>
-<td><code>Get-Process \| format-list -properties *</code></td>
-<td>Get-Process as list with all properties</td>
-</tr>
-<tr>
-<td><code>Ctrl</code>+<code>c</code></td>
-<td>Interrupt current command</td>
-</tr>
-<tr>
-<td><code>Left</code>/<code>Right</code></td>
-<td>Navigate editing cursor</td>
-</tr>
-<tr>
-<td><code>Ctrl</code>+<code>Left</code>/<code>Right</code></td>
-<td>Navigate a word at a time</td>
-</tr>
-<tr>
-<td><code>Home</code>/<code>End</code></td>
-<td>Move to start / end of line</td>
-</tr>
-<tr>
-<td><code>Up'/'Down</code></td>
-<td>Move up and down through history</td>
-</tr>
-<tr>
-<td><code>Insert</code></td>
-<td>Toggles between insert/overwrite mode</td>
-</tr>
-<tr>
-<td><code>F7</code></td>
-<td>Command history in a window</td>
-</tr>
-<tr>
-<td><code>Tab</code>/<code>Shift</code>+<code>Tab</code></td>
-<td>Command line completion</td>
-</tr>
-</tbody>
-</table>
-<h3 id="scripting">Scripting<a class="headerlink" href="#scripting" title="Permanent link">#</a></h3>
-<ul>
-<li>
-<p><code>%</code>: alias for <code>foreach-object</code></p>
-</li>
-<li>
-<p><code>$_</code>: current item in <code>foreach-object</code></p>
-</li>
-<li>
-<p><code>Get-Member</code>: object introspection</p>
-</li>
-<li>
-<p>pretty print</p>
-</li>
-<li>
-<p>object: <code>Write-Host ($foo | Format-Table | Out-String)</code></p>
-</li>
-<li>array: <code>Write-Host ($foo | Format-List | Out-String)</code></li>
-<li>
-<p>string interpolation</p>
-</li>
-<li>
-<p>use <code>$</code> in double quotes e.g. <code>"blaaa $myvar"</code> or <code>"blaaaa$($myobjVar.name)"</code></p>
-</li>
-<li>no string expansion: <code>'$blaaa'</code></li>
-<li>
-<p>invoke command/script</p>
-</li>
-<li>
-<p><code>&amp; foo @(arg0,arg2,...)</code>: call operator invokes expression in child scope that's discarded (e.g. any global variable changes not persisted)</p>
-</li>
-<li><code>. foo @(arg0,arg2,...)</code>: dot sourcing invokes expression in current scope (e.g. global changes are persisted)</li>
-<li>
-<p>common batch operations</p>
-</li>
-<li>
-<p>get all items in a directory: <code class="language-powershell highlight"><span class="nb">Get-ChildItem</span> <span class="p">*</span></code></p>
-</li>
-<li>get all subdirectories: <code class="language-powershell highlight"><span class="nb">Get-ChildItem</span> <span class="n">-Attributes</span> <span class="n">Directory</span> <span class="n">-Recurse</span></code></li>
-<li>get all files in directory: <code class="language-powershell highlight"><span class="nb">Get-ChildItem</span> <span class="p">*.</span><span class="n">docx</span> <span class="p">|</span> <span class="p">%</span> <span class="n">Name</span></code></li>
-<li>
-<p>enabling <code>-WhatIf, -Confirm, etc</code></p>
-</li>
-<li>
-<p>add <code>[CmdletBinding(SupportsShouldProcess = $true)]</code> to param block</p>
-</li>
-<li>inside function, wrap state change code with <code>if ($PSCmdlet.ShouldProcess(target,operation)) {...}</code></li>
-<li>dump variables in a scope e.g. scope captured by <code>GetNewClosure()</code></li>
-</ul>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="nv">$m</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Command</span> <span class="n">testFunc2</span><span class="p">).</span><span class="n">Module</span>
-</span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span><span class="p">&amp;</span> <span class="nv">$m</span> <span class="nb">Get-Variable</span> <span class="n">-Scope</span> <span class="n">0</span>
-</span></code></pre></div>
-<ul>
-<li>dump function definition</li>
-</ul>
-<blockquote>
-<p>[!warning] Function provider has no containers and is always rooted</p>
-</blockquote>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="k">Function</span><span class="p">:</span>              <span class="c"># Dump all the functions in the current session</span>
-</span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span><span class="p">(</span><span class="nb">Get-Item</span> <span class="n">-Path</span> <span class="k">function</span><span class="p">:</span><span class="n">mkdir</span><span class="p">).</span><span class="n">Definition</span> <span class="c"># Dump Function Definition</span>
-</span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span><span class="nv">$function</span><span class="p">:</span><span class="n">mkdir</span>                            <span class="c"># Alternate Syntax for above</span>
-</span></code></pre></div>
-<ul>
-<li>create function closure</li>
-</ul>
-<blockquote>
-<p>[!warning] appears to capture "only" local variables i.e. those from the caller's current scope</p>
-</blockquote>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="k">function</span> <span class="nb">New-Function</span> <span class="p">{</span>
-</span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span>  <span class="nv">$x</span> <span class="p">=</span> <span class="nv">$global:x</span>
-</span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span>  <span class="nv">$function</span><span class="p">:</span><span class="k">global:</span><span class="n">testFunc2</span> <span class="p">=</span> <span class="p">{</span><span class="nv">$x</span><span class="p">}.</span><span class="n">GetNewClosure</span><span class="p">()</span>
-</span><span id="__span-12-4"><span class="linenos" data-linenos="4 "></span><span class="p">}</span>
-</span></code></pre></div>
-<ul>
-<li>
-<p>invocation info</p>
-</li>
-<li>
-<p><code>$PSScriptRoot, $PSCommandPath</code>: info about the current script</p>
-</li>
-<li>
-<p><code>$MyInvocation.PSScriptRoot, $MyInvocation.PSCommandPath</code>: info about the invoker or calling script</p>
-</li>
-<li>
-<p><code>$MyInvocation</code> Properties</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>$MyInvocation.BoundParameters</code></td>
-<td>This member provides a dictionary of the parameters that were bound for this script or command.</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.CommandOrigin</code></td>
-<td>This property tells you if you were being invoked inside the runspace or if it was an external request.</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.DisplayScriptPosition</code></td>
-<td>The position for the invocation or error.</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.ExpectingInput</code></td>
-<td>Is true if this command is expecting input...</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.HistoryId</code></td>
-<td>History ID that represents the command. If unavailable, this will be -1.</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.InvocationName</code></td>
-<td>Command name used to invoke this string - if invoked through an alias, then this would be the alias name.</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.Line</code></td>
-<td>The text of the line that contained this cmdlet invocation.</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.MyCommand</code></td>
-<td>Provide basic information about the command</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.OffsetInLine</code></td>
-<td>Command's character offset in that line. If the command was executed directly through the host interfaces, this will be -1.</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.PipelineLength</code></td>
-<td>How many elements are in the containing pipeline</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.PipelinePosition</code></td>
-<td>which element this command was in the containing pipeline</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.PositionMessage</code></td>
-<td>Formatted message indicating where the cmdlet appeared in the line</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.PSCommandPath</code></td>
-<td>This property tells you the full path to the command from where you were being invoked</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.PSScriptRoot</code></td>
-<td>This property tells you the directory from where you were being invoked</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.ScriptLineNumber</code></td>
-<td>The line number in the executing script that contained this cmdlet.</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.ScriptName</code></td>
-<td>The name of the script containing the cmdlet.</td>
-</tr>
-<tr>
-<td><code>$MyInvocation.UnboundArguments</code></td>
-<td>This member provides a list of the arguments that were not bound to any parameter</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ul>
-<h3 id="psscriptanalyzer-linter">PSScriptAnalyzer Linter<a class="headerlink" href="#psscriptanalyzer-linter" title="Permanent link">#</a></h3>
-<ul>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer/blob/master/README.md">PSScriptAnalyzer Overview</a></li>
-<li><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/using-scriptanalyzer#settings-support-in-scriptanalyzer">PSScriptAnalyzerSettings</a></li>
-<li><a href="https://github.com/PowerShell/PSScriptAnalyzer/tree/master/Engine/Settings">Built-in Presets</a></li>
-<li><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme">Built-in Rules</a></li>
-</ul>
-<blockquote>
-<p>[!info] <a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/readme">Built-in Rules</a></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Rule</th>
-<th align="center">Enabled</th>
-<th align="center">Config</th>
-<th>Severity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/alignassignmentstatement">PSAlignAssignmentStatement</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidassignmenttoautomaticvariable">PSAvoidAssignmentToAutomaticVariable</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoiddefaultvalueformandatoryparameter">PSAvoidDefaultValueForMandatoryParameter</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoiddefaultvalueswitchparameter">PSAvoidDefaultValueSwitchParameter</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidglobalaliases">PSAvoidGlobalAliases</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidglobalfunctions">PSAvoidGlobalFunctions</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidglobalvars">PSAvoidGlobalVars</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidinvokingemptymembers">PSAvoidInvokingEmptyMembers</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidlonglines">PSAvoidLongLines</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidmultipletypeattributes">PSAvoidMultipleTypeAttributes</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidnulloremptyhelpmessageattribute">PSAvoidNullOrEmptyHelpMessageAttribute</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidoverwritingbuiltincmdlets">PSAvoidOverwritingBuiltInCmdlets</a></td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidsemicolonsaslineterminators">PSAvoidSemicolonsAsLineTerminators</a></td>
-<td align="center">No</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidshouldcontinuewithoutforce">PSAvoidShouldContinueWithoutForce</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidtrailingwhitespace">PSAvoidTrailingWhitespace</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingbrokenhashalgorithms">PSAvoidUsingBrokenHashAlgorithms</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingcmdletaliases">PSAvoidUsingCmdletAliases</a></td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingcomputernamehardcoded">PSAvoidUsingComputerNameHardcoded</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingconverttosecurestringwithplaintext">PSAvoidUsingConvertToSecureStringWithPlainText</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingdeprecatedmanifestfields">PSAvoidUsingDeprecatedManifestFields</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingdoublequotesforconstantstring">PSAvoidUsingDoubleQuotesForConstantString</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingemptycatchblock">PSAvoidUsingEmptyCatchBlock</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusinginvokeexpression">PSAvoidUsingInvokeExpression</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingplaintextforpassword">PSAvoidUsingPlainTextForPassword</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingpositionalparameters">PSAvoidUsingPositionalParameters</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingusernameandpasswordparams">PSAvoidUsingUsernameAndPasswordParams</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingwmicmdlet">PSAvoidUsingWMICmdlet</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/avoidusingwritehost">PSAvoidUsingWriteHost</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/dscdscexamplespresent">PSDSCDscExamplesPresent</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Information</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/dscdsctestspresent">PSDSCDscTestsPresent</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Information</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/dscreturncorrecttypesfordscfunctions">PSDSCReturnCorrectTypesForDSCFunctions</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Information</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/dscstandarddscfunctionsinresource">PSDSCStandardDSCFunctionsInResource</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/dscuseidenticalmandatoryparametersfordsc">PSDSCUseIdenticalMandatoryParametersForDSC</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/dscuseidenticalparametersfordsc">PSDSCUseIdenticalParametersForDSC</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/dscuseverbosemessageindscresource">PSDSCUseVerboseMessageInDSCResource</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/misleadingbacktick">PSMisleadingBacktick</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/missingmodulemanifestfield">PSMissingModuleManifestField</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/placeclosebrace">PSPlaceCloseBrace</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/placeopenbrace">PSPlaceOpenBrace</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/possibleincorrectcomparisonwithnull">PSPossibleIncorrectComparisonWithNull</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/possibleincorrectusageofassignmentoperator">PSPossibleIncorrectUsageOfAssignmentOperator</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/possibleincorrectusageofredirectionoperator">PSPossibleIncorrectUsageOfRedirectionOperator</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/providecommenthelp">PSProvideCommentHelp</a></td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td>Information</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/reservedcmdletchar">PSReservedCmdletChar</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/reservedparams">PSReservedParams</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/reviewunusedparameter">PSReviewUnusedParameter</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/shouldprocess">PSShouldProcess</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useapprovedverbs">PSUseApprovedVerbs</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usebomforunicodeencodedfile">PSUseBOMForUnicodeEncodedFile</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usecmdletcorrectly">PSUseCmdletCorrectly</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usecompatiblecmdlets">PSUseCompatibleCmdlets</a></td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usecompatiblecommands">PSUseCompatibleCommands</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usecompatiblesyntax">PSUseCompatibleSyntax</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usecompatibletypes">PSUseCompatibleTypes</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useconsistentindentation">PSUseConsistentIndentation</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useconsistentwhitespace">PSUseConsistentWhitespace</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usecorrectcasing">PSUseCorrectCasing</a></td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td>Information</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usedeclaredvarsmorethanassignments">PSUseDeclaredVarsMoreThanAssignments</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useliteralinitializerforhashtable">PSUseLiteralInitializerForHashtable</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useoutputtypecorrectly">PSUseOutputTypeCorrectly</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Information</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useprocessblockforpipelinecommand">PSUseProcessBlockForPipelineCommand</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usepscredentialtype">PSUsePSCredentialType</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useshouldprocessforstatechangingfunctions">PSUseShouldProcessForStateChangingFunctions</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usesingularnouns">PSUseSingularNouns</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usesupportsshouldprocess">PSUseSupportsShouldProcess</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/usetoexportfieldsinmanifest">PSUseToExportFieldsInManifest</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useusingscopemodifierinnewrunspaces">PSUseUsingScopeModifierInNewRunspaces</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-<tr>
-<td><a href="https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules/useutf8encodingforhelpfile">PSUseUTF8EncodingForHelpFile</a></td>
-<td align="center">Yes</td>
-<td align="center"></td>
-<td>Warning</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>disable rule</li>
-</ul>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="p">[</span><span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">CodeAnalysis</span><span class="p">.</span><span class="n">SuppressMessage</span><span class="p">(</span><span class="s1">'PSAvoidUsingWriteHost'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)]</span>
-</span></code></pre></div>
-<blockquote>
-<p>[!note] can control scoping</p>
-<ul>
-<li>
-<p>scope to file, add to top of file and <code>param()</code> below attribute<br/>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span><span class="p">[</span><span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">CodeAnalysis</span><span class="p">.</span><span class="n">SuppressMessage</span><span class="p">(</span><span class="s1">'PSAvoidUsingWriteHost'</span><span class="p">,</span><span class="s1">''</span><span class="p">)]</span>
-</span><span id="__span-14-2"><span class="linenos" data-linenos="2 "></span><span class="k">param</span><span class="p">()</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>namespace scope<br/>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos="1 "></span><span class="p">[</span><span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">CodeAnalysis</span><span class="p">.</span><span class="n">SuppressMessage</span><span class="p">(</span><span class="s1">'PSAvoidUsingWriteHost'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="n">Scope</span><span class="p">=</span><span class="s1">'Namespace'</span><span class="p">)]</span>
-</span></code></pre></div></p>
-</li>
-</ul>
-</blockquote>
-<ul>
-<li>list approved powershell verbs</li>
-</ul>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span><span class="nb">Get-Verb</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">Verb</span>
-</span></code></pre></div>
+<h1 id="bash-cheatsheet">Bash Cheatsheet<a class="headerlink" href="#bash-cheatsheet" title="Permanent link">#</a></h1>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="../../_assets/powershell-4-lang-ref.pdf">PowerShell Cheatsheet</a></li>
-<li><a href="https://ss64.com/ps/">ss64 Powershell</a>: concise reference</li>
-<li><a href="https://powershell.one/">powershell.one</a>: dives into more intermediate scripting topics like modules, scripting, etc</li>
-<li>Everything You Wanted To Know About: series geared towards fast ramp up</li>
-<li><a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-arrays">Arrays</a></li>
-<li><a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-hashtable">Hashtable</a></li>
-<li><a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-pscustomobject">PsCustomObject</a></li>
-<li><a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-string-substitutions">String Interpolation</a></li>
-<li><a href="https://poshcode.gitbook.io/powershell-practice-and-style">PowerShell Best Practices and Style Guide</a></li>
+<li><a href="https://devhints.io/bash">Devhints Cheatsheet</a></li>
+<li><a href="https://learnxinyminutes.com/docs/bash/">Learn Bash in Y Minutes</a>: short quickstart crash course</li>
+<li><a href="https://help.ubuntu.com/community/Beginners/BashScripting">Bash Scripting 101</a></li>
+<li><a href="https://linuxhandbook.com/tag/bash-beginner/">Bash Beginner Series</a></li>
+</ul>
+<h2 id="shell-customization">Shell Customization<a class="headerlink" href="#shell-customization" title="Permanent link">#</a></h2>
+<h3 id="dotfiles">Dotfiles<a class="headerlink" href="#dotfiles" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://www.webpro.nl/articles/getting-started-with-dotfiles">more details</a></li>
+</ul>
+<h3 id="startup-scripts">Startup Scripts<a class="headerlink" href="#startup-scripts" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/">(reference)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">Login Interactive</th>
+<th align="center">Login Non-Interactive</th>
+<th align="center">Non-Login Interactive</th>
+<th align="center">Non-Login Non-Interactive</th>
+<th align="center">Script</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/profile</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>/etc/bash.bashrc</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>~/.bashrc</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>~/.bash_profile</td>
+<td align="center">2.A</td>
+<td align="center">2.A</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>~/.bash_login</td>
+<td align="center">2.B</td>
+<td align="center">2.B</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>~/.profile</td>
+<td align="center">2.C</td>
+<td align="center">2.C</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>BASH_ENV</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>~/.bash_logout</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">#</a></h2>
+<ul>
+<li>generally quote your variables unless they contain wildcards to expand or command fragments<br/>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="nv">name</span><span class="o">=</span><span class="s2">"John"</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$name</span><span class="w">  </span><span class="c1"># see below</span>
+</span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
+</span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!"</span>
+</span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="nv">wildcard</span><span class="o">=</span><span class="s2">"*.txt"</span>
+</span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="nv">option</span><span class="o">=</span><span class="s2">"iv"</span>
+</span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span>cp<span class="w"> </span>-<span class="nv">$options</span><span class="w"> </span><span class="nv">$wildcard</span><span class="w"> </span>/tmp
+</span></code></pre></div></li>
+</ul>
+<h3 id="special-variables">Special Variables<a class="headerlink" href="#special-variables" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables">(Reference)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$?</code></td>
+<td>Exit status of last task</td>
+</tr>
+<tr>
+<td><code>$!</code></td>
+<td>PID of last background task</td>
+</tr>
+<tr>
+<td><code>$$</code></td>
+<td>PID of shell</td>
+</tr>
+<tr>
+<td><code>$0</code></td>
+<td>Filename of the shell script</td>
+</tr>
+<tr>
+<td><code>$_</code></td>
+<td>Last argument of the previous command</td>
+</tr>
+<tr>
+<td><code>${PIPESTATUS[n]}</code></td>
+<td>return value of piped commands (array)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="string-quotes">String Quotes<a class="headerlink" href="#string-quotes" title="Permanent link">#</a></h2>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="nv">name</span><span class="o">=</span><span class="s2">"John"</span>
+</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hi </span><span class="nv">$name</span><span class="s2">"</span><span class="w">  </span><span class="c1">#=&gt; Hi John</span>
+</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Hi $name'</span><span class="w">  </span><span class="c1">#=&gt; Hi $name</span>
+</span></code></pre></div>
+<h2 id="conditionals">Conditionals<a class="headerlink" href="#conditionals" title="Permanent link">#</a></h2>
+<h3 id="conditions">Conditions<a class="headerlink" href="#conditions" title="Permanent link">#</a></h3>
+<p>Note that <code>[[</code> is actually a command/program that returns either <code>0</code> (true) or <code>1</code> (false)<br/>
+Any program that obeys the same logic (like all base utils, such as <code>grep(1)</code> or <code>ping(1)</code>) can be used as condition, see examples.</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[[ -z STRING ]]</code></td>
+<td>Empty string</td>
+</tr>
+<tr>
+<td><code>[[ -n STRING ]]</code></td>
+<td>Not empty string</td>
+</tr>
+<tr>
+<td><code>[[ STRING == STRING ]]</code></td>
+<td>Equal</td>
+</tr>
+<tr>
+<td><code>[[ STRING != STRING ]]</code></td>
+<td>Not Equal</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>[[ NUM -eq NUM ]]</code></td>
+<td>Equal</td>
+</tr>
+<tr>
+<td><code>[[ NUM -ne NUM ]]</code></td>
+<td>Not equal</td>
+</tr>
+<tr>
+<td><code>[[ NUM -lt NUM ]]</code></td>
+<td>Less than</td>
+</tr>
+<tr>
+<td><code>[[ NUM -le NUM ]]</code></td>
+<td>Less than or equal</td>
+</tr>
+<tr>
+<td><code>[[ NUM -gt NUM ]]</code></td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td><code>[[ NUM -ge NUM ]]</code></td>
+<td>Greater than or equal</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>[[ STRING =~ STRING ]]</code></td>
+<td>Regexp</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>(( NUM &lt; NUM ))</code></td>
+<td>Numeric conditions</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>[[ -o noclobber ]]</code></td>
+<td>If OPTIONNAME is enabled</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>[[ ! EXPR ]]</code></td>
+<td>Not</td>
+</tr>
+<tr>
+<td><code>[[ X &amp;&amp; Y ]]</code></td>
+<td>And</td>
+</tr>
+<tr>
+<td>`[[ X</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="file-conditions">File Conditions<a class="headerlink" href="#file-conditions" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[ -e FILE ](../../%20-e%20FILE%20 " -e FILE ")</code></td>
+<td>Exists</td>
+</tr>
+<tr>
+<td><code>[ -r FILE ](../../%20-r%20FILE%20 " -r FILE ")</code></td>
+<td>Readable</td>
+</tr>
+<tr>
+<td><code>[ -h FILE ](../../%20-h%20FILE%20 " -h FILE ")</code></td>
+<td>Symlink</td>
+</tr>
+<tr>
+<td><code>[ -d FILE ](../../%20-d%20FILE%20 " -d FILE ")</code></td>
+<td>Directory</td>
+</tr>
+<tr>
+<td><code>[ -w FILE ](../../%20-w%20FILE%20 " -w FILE ")</code></td>
+<td>Writable</td>
+</tr>
+<tr>
+<td><code>[ -s FILE ](../../%20-s%20FILE%20 " -s FILE ")</code></td>
+<td>Size is &gt; 0 bytes</td>
+</tr>
+<tr>
+<td><code>[ -f FILE ](../../%20-f%20FILE%20 " -f FILE ")</code></td>
+<td>File</td>
+</tr>
+<tr>
+<td><code>[ -x FILE ](../../%20-x%20FILE%20 " -x FILE ")</code></td>
+<td>Executable</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>[ FILE1 -nt FILE2 ](../../%20FILE1%20-nt%20FILE2%20 " FILE1 -nt FILE2 ")</code></td>
+<td>1 is more recent than 2</td>
+</tr>
+<tr>
+<td><code>[ FILE1 -ot FILE2 ](../../%20FILE1%20-ot%20FILE2%20 " FILE1 -ot FILE2 ")</code></td>
+<td>2 is more recent than 1</td>
+</tr>
+<tr>
+<td><code>[ FILE1 -ef FILE2 ](../../%20FILE1%20-ef%20FILE2%20 " FILE1 -ef FILE2 ")</code></td>
+<td>Same files</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># String</span>
+</span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="nv">$string</span><span class="s2">"</span><span class="w"> </span><span class="o">](</span>../../%20-z%20%22%24string%22%20<span class="w"> </span><span class="s2">" -z "</span><span class="nv">$string</span><span class="s2">" "</span><span class="o">)</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"String is empty"</span>
+</span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="nv">$string</span><span class="s2">"</span><span class="w"> </span><span class="o">](</span>../../%20-n%20%22%24string%22%20<span class="w"> </span><span class="s2">" -n "</span><span class="nv">$string</span><span class="s2">" "</span><span class="o">)</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"String is not empty"</span>
+</span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span><span class="k">else</span>
+</span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"This never happens"</span>
+</span><span id="__span-2-8"><span class="linenos" data-linenos="8 "></span><span class="k">fi</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Combinations</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>X<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>Y<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span>...
+</span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span><span class="k">fi</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Equal</span>
+</span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$A</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"</span><span class="nv">$B</span><span class="s2">"</span><span class="w"> </span><span class="o">]]</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Regex</span>
+</span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"A"</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>.<span class="w"> </span><span class="o">]]</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> is smaller than </span><span class="nv">$b</span><span class="s2">"</span>
+</span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="k">fi</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">"file.txt"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"file exists"</span>
+</span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span><span class="k">fi</span>
+</span></code></pre></div>
+<h2 id="command-execution">Command Execution<a class="headerlink" href="#command-execution" title="Permanent link">#</a></h2>
+<h3 id="shell-execution">Shell Execution<a class="headerlink" href="#shell-execution" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"I'm in </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">"</span>
+</span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"I'm in `pwd`"</span><span class="w">  </span><span class="c1"># obsolescent</span>
+</span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span><span class="c1"># Same</span>
+</span></code></pre></div>
+<h3 id="conditional-execution">Conditional Execution<a class="headerlink" href="#conditional-execution" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>commit<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>push
+</span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>commit<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Commit failed"</span>
+</span></code></pre></div>
+<h3 id="command-substitution">Command substitution<a class="headerlink" href="#command-substitution" title="Permanent link">#</a></h3>
+<p><a href="http://wiki.bash-hackers.org/syntax/expansion/cmdsubst">(Reference)</a></p>
+<h2 id="strict-mode">Strict Mode<a class="headerlink" href="#strict-mode" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">Reference</a></li>
+</ul>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+</span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span><span class="nv">IFS</span><span class="o">=</span><span class="s1">$'\n\t'</span>
+</span></code></pre></div>
+<h2 id="parameter-expansions">Parameter Expansions<a class="headerlink" href="#parameter-expansions" title="Permanent link">#</a></h2>
+<h3 id="basic-examples">Basic Examples<a class="headerlink" href="#basic-examples" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="nv">name</span><span class="o">=</span><span class="s2">"John"</span>
+</span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">name</span><span class="p">/J/j</span><span class="si">}</span><span class="s2">"</span><span class="w">    </span><span class="c1">#=&gt; "john" (substitution)</span>
+</span><span id="__span-11-4"><span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">name</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">2</span><span class="si">}</span><span class="s2">"</span><span class="w">    </span><span class="c1">#=&gt; "Jo" (slicing)</span>
+</span><span id="__span-11-5"><span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">name</span><span class="p">::</span><span class="nv">2</span><span class="si">}</span><span class="s2">"</span><span class="w">     </span><span class="c1">#=&gt; "Jo" (slicing)</span>
+</span><span id="__span-11-6"><span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">name</span><span class="p">:</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span><span class="w">    </span><span class="c1">#=&gt; "Joh" (slicing)</span>
+</span><span id="__span-11-7"><span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">name</span><span class="p">:(-1)</span><span class="si">}</span><span class="s2">"</span><span class="w">   </span><span class="c1">#=&gt; "n" (slicing from right)</span>
+</span><span id="__span-11-8"><span class="linenos" data-linenos="8 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">name</span><span class="p">:(-2):</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="c1">#=&gt; "h" (slicing from right)</span>
+</span><span id="__span-11-9"><span class="linenos" data-linenos="9 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">food</span><span class="k">:-</span><span class="nv">Cake</span><span class="si">}</span><span class="s2">"</span><span class="w">  </span><span class="c1">#=&gt; $food or "Cake"</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="nv">length</span><span class="o">=</span><span class="m">2</span>
+</span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">name</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">length</span><span class="si">}</span><span class="s2">"</span><span class="w">  </span><span class="c1">#=&gt; "Jo"</span>
+</span></code></pre></div>
+<h3 id="expanded-examples">Expanded Examples<a class="headerlink" href="#expanded-examples" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="http://wiki.bash-hackers.org/syntax/pe">(Reference)</a></li>
+</ul>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos=" 1 "></span><span class="nv">str</span><span class="o">=</span><span class="s2">"/path/to/foo.cpp"</span>
+</span><span id="__span-13-2"><span class="linenos" data-linenos=" 2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">%.cpp</span><span class="si">}</span><span class="s2">"</span><span class="w">    </span><span class="c1"># /path/to/foo</span>
+</span><span id="__span-13-3"><span class="linenos" data-linenos=" 3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">%.cpp</span><span class="si">}</span><span class="s2">.o"</span><span class="w">  </span><span class="c1"># /path/to/foo.o</span>
+</span><span id="__span-13-4"><span class="linenos" data-linenos=" 4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">%/*</span><span class="si">}</span><span class="s2">"</span><span class="w">      </span><span class="c1"># /path/to</span>
+</span><span id="__span-13-5"><span class="linenos" data-linenos=" 5 "></span>
+</span><span id="__span-13-6"><span class="linenos" data-linenos=" 6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">##*.</span><span class="si">}</span><span class="s2">"</span><span class="w">     </span><span class="c1"># cpp (extension)</span>
+</span><span id="__span-13-7"><span class="linenos" data-linenos=" 7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">##*/</span><span class="si">}</span><span class="s2">"</span><span class="w">     </span><span class="c1"># foo.cpp (basepath)</span>
+</span><span id="__span-13-8"><span class="linenos" data-linenos=" 8 "></span>
+</span><span id="__span-13-9"><span class="linenos" data-linenos=" 9 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">#*/</span><span class="si">}</span><span class="s2">"</span><span class="w">      </span><span class="c1"># path/to/foo.cpp</span>
+</span><span id="__span-13-10"><span class="linenos" data-linenos="10 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">##*/</span><span class="si">}</span><span class="s2">"</span><span class="w">     </span><span class="c1"># foo.cpp</span>
+</span><span id="__span-13-11"><span class="linenos" data-linenos="11 "></span>
+</span><span id="__span-13-12"><span class="linenos" data-linenos="12 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">/foo/bar</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="c1"># /path/to/bar.cpp</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span><span class="nv">str</span><span class="o">=</span><span class="s2">"Hello world"</span>
+</span><span id="__span-14-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">:</span><span class="nv">6</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span><span class="s2">"</span><span class="w">   </span><span class="c1"># "world"</span>
+</span><span id="__span-14-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">: -5:</span><span class="nv">5</span><span class="si">}</span><span class="s2">"</span><span class="w">  </span><span class="c1"># "world"</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos="1 "></span><span class="nv">src</span><span class="o">=</span><span class="s2">"/path/to/foo.cpp"</span>
+</span><span id="__span-15-2"><span class="linenos" data-linenos="2 "></span><span class="nv">base</span><span class="o">=</span><span class="si">${</span><span class="nv">src</span><span class="p">##*/</span><span class="si">}</span><span class="w">   </span><span class="c1">#=&gt; "foo.cpp" (basepath)</span>
+</span><span id="__span-15-3"><span class="linenos" data-linenos="3 "></span><span class="nv">dir</span><span class="o">=</span><span class="si">${</span><span class="nv">src</span><span class="p">%</span><span class="nv">$base</span><span class="si">}</span><span class="w">  </span><span class="c1">#=&gt; "/path/to/" (dirpath)</span>
+</span></code></pre></div>
+<h3 id="substitution">Substitution<a class="headerlink" href="#substitution" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${foo%suffix}</code></td>
+<td>Remove suffix</td>
+</tr>
+<tr>
+<td><code>${foo#prefix}</code></td>
+<td>Remove prefix</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>${foo%%suffix}</code></td>
+<td>Remove long suffix</td>
+</tr>
+<tr>
+<td><code>${foo/%suffix}</code></td>
+<td>Remove long suffix</td>
+</tr>
+<tr>
+<td><code>${foo##prefix}</code></td>
+<td>Remove long prefix</td>
+</tr>
+<tr>
+<td><code>${foo/#prefix}</code></td>
+<td>Remove long prefix</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>${foo/from/to}</code></td>
+<td>Replace first match</td>
+</tr>
+<tr>
+<td><code>${foo//from/to}</code></td>
+<td>Replace all</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>${foo/%from/to}</code></td>
+<td>Replace suffix</td>
+</tr>
+<tr>
+<td><code>${foo/#from/to}</code></td>
+<td>Replace prefix</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Single line comment</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos="1 "></span>:<span class="w"> </span><span class="s1">'</span>
+</span><span id="__span-17-2"><span class="linenos" data-linenos="2 "></span><span class="s1">This is a</span>
+</span><span id="__span-17-3"><span class="linenos" data-linenos="3 "></span><span class="s1">multi line</span>
+</span><span id="__span-17-4"><span class="linenos" data-linenos="4 "></span><span class="s1">comment</span>
+</span><span id="__span-17-5"><span class="linenos" data-linenos="5 "></span><span class="s1">'</span>
+</span></code></pre></div>
+<h3 id="substrings">Substrings<a class="headerlink" href="#substrings" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${foo:0:3}</code></td>
+<td>Substring <em>(position, length)</em></td>
+</tr>
+<tr>
+<td><code>${foo:(-3):3}</code></td>
+<td>Substring from the right</td>
+</tr>
+</tbody>
+</table>
+<h3 id="length">Length<a class="headerlink" href="#length" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${#foo}</code></td>
+<td>Length of <code>$foo</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="manipulation">Manipulation<a class="headerlink" href="#manipulation" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-18-1"><span class="linenos" data-linenos="1 "></span><span class="nv">str</span><span class="o">=</span><span class="s2">"HELLO WORLD!"</span>
+</span><span id="__span-18-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">,</span><span class="si">}</span><span class="s2">"</span><span class="w">   </span><span class="c1">#=&gt; "hELLO WORLD!" (lowercase 1st letter)</span>
+</span><span id="__span-18-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">,,</span><span class="si">}</span><span class="s2">"</span><span class="w">  </span><span class="c1">#=&gt; "hello world!" (all lowercase)</span>
+</span><span id="__span-18-4"><span class="linenos" data-linenos="4 "></span>
+</span><span id="__span-18-5"><span class="linenos" data-linenos="5 "></span><span class="nv">str</span><span class="o">=</span><span class="s2">"hello world!"</span>
+</span><span id="__span-18-6"><span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">^</span><span class="si">}</span><span class="s2">"</span><span class="w">   </span><span class="c1">#=&gt; "Hello world!" (uppercase 1st letter)</span>
+</span><span id="__span-18-7"><span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">str</span><span class="p">^^</span><span class="si">}</span><span class="s2">"</span><span class="w">  </span><span class="c1">#=&gt; "HELLO WORLD!" (all uppercase)</span>
+</span></code></pre></div>
+<h3 id="default-values">Default values<a class="headerlink" href="#default-values" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${foo:-val}</code></td>
+<td><code>$foo</code>, or <code>val</code> if unset (or null)</td>
+</tr>
+<tr>
+<td><code>${foo:=val}</code></td>
+<td>Set <code>$foo</code> to <code>val</code> if unset (or null)</td>
+</tr>
+<tr>
+<td><code>${foo:+val}</code></td>
+<td><code>val</code> if <code>$foo</code> is set (and not null)</td>
+</tr>
+<tr>
+<td><code>${foo:?message}</code></td>
+<td>Show error message and exit if <code>$foo</code> is unset (or null)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!note] Omitting the <code>:</code> removes the (non)nullity checks<br/>
+e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <code>$foo</code></p>
+</blockquote>
+<h2 id="loops">Loops<a class="headerlink" href="#loops" title="Permanent link">#</a></h2>
+<h3 id="basic-for-loop">Basic for loop<a class="headerlink" href="#basic-for-loop" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-19-1"><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>/etc/rc.*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-19-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span>
+</span><span id="__span-19-3"><span class="linenos" data-linenos="3 "></span><span class="k">done</span>
+</span></code></pre></div>
+<h3 id="c-like-for-loop">C-like for loop<a class="headerlink" href="#c-like-for-loop" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-20-1"><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>i<span class="w"> </span>&lt;<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>i++<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-20-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span>
+</span><span id="__span-20-3"><span class="linenos" data-linenos="3 "></span><span class="k">done</span>
+</span></code></pre></div>
+<h3 id="ranges">Ranges<a class="headerlink" href="#ranges" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-21-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Basic</span>
+</span><span id="__span-21-2"><span class="linenos" data-linenos="2 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..5<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-21-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Welcome </span><span class="nv">$i</span><span class="s2">"</span>
+</span><span id="__span-21-4"><span class="linenos" data-linenos="4 "></span><span class="k">done</span>
+</span><span id="__span-21-5"><span class="linenos" data-linenos="5 "></span>
+</span><span id="__span-21-6"><span class="linenos" data-linenos="6 "></span><span class="c1"># With step size</span>
+</span><span id="__span-21-7"><span class="linenos" data-linenos="7 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">5</span>..50..5<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-21-8"><span class="linenos" data-linenos="8 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Welcome </span><span class="nv">$i</span><span class="s2">"</span>
+</span><span id="__span-21-9"><span class="linenos" data-linenos="9 "></span><span class="k">done</span>
+</span></code></pre></div>
+<h3 id="reading-lines">Reading lines<a class="headerlink" href="#reading-lines" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-22-1"><span class="linenos" data-linenos="1 "></span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>line<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-22-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$line</span><span class="s2">"</span>
+</span><span id="__span-22-3"><span class="linenos" data-linenos="3 "></span><span class="k">done</span><span class="w"> </span>&lt;file.txt
+</span></code></pre></div>
+<h3 id="forever">Forever<a class="headerlink" href="#forever" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-23-1"><span class="linenos" data-linenos="1 "></span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-23-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span>...
+</span><span id="__span-23-3"><span class="linenos" data-linenos="3 "></span><span class="k">done</span>
+</span></code></pre></div>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">#</a></h2>
+<h3 id="defining-functions">Defining functions<a class="headerlink" href="#defining-functions" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-24-1"><span class="linenos" data-linenos="1 "></span>myfunc<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-24-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"hello </span><span class="nv">$1</span><span class="s2">"</span>
+</span><span id="__span-24-3"><span class="linenos" data-linenos="3 "></span><span class="o">}</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-25-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Same as above (alternate syntax)</span>
+</span><span id="__span-25-2"><span class="linenos" data-linenos="2 "></span><span class="k">function</span><span class="w"> </span>myfunc<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-25-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"hello </span><span class="nv">$1</span><span class="s2">"</span>
+</span><span id="__span-25-4"><span class="linenos" data-linenos="4 "></span><span class="o">}</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-26-1"><span class="linenos" data-linenos="1 "></span>myfunc<span class="w"> </span><span class="s2">"John"</span>
+</span></code></pre></div>
+<h3 id="returning-values">Returning values<a class="headerlink" href="#returning-values" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-27-1"><span class="linenos" data-linenos="1 "></span>myfunc<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-27-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">myresult</span><span class="o">=</span><span class="s1">'some value'</span>
+</span><span id="__span-27-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$myresult</span><span class="s2">"</span>
+</span><span id="__span-27-4"><span class="linenos" data-linenos="4 "></span><span class="o">}</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-28-1"><span class="linenos" data-linenos="1 "></span><span class="nv">result</span><span class="o">=</span><span class="k">$(</span>myfunc<span class="k">)</span>
+</span></code></pre></div>
+<h3 id="raising-errors">Raising errors<a class="headerlink" href="#raising-errors" title="Permanent link">#</a></h3>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-29-1"><span class="linenos" data-linenos="1 "></span>myfunc<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-29-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-29-3"><span class="linenos" data-linenos="3 "></span><span class="o">}</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-30-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span>myfunc<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-30-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"success"</span>
+</span><span id="__span-30-3"><span class="linenos" data-linenos="3 "></span><span class="k">else</span>
+</span><span id="__span-30-4"><span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"failure"</span>
+</span><span id="__span-30-5"><span class="linenos" data-linenos="5 "></span><span class="k">fi</span>
+</span></code></pre></div>
+<h3 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$#</code></td>
+<td>Number of arguments</td>
+</tr>
+<tr>
+<td><code>$*</code></td>
+<td>All positional arguments  (as a single word)</td>
+</tr>
+<tr>
+<td><code>$@</code></td>
+<td>All positional arguments (as separate strings)</td>
+</tr>
+<tr>
+<td><code>$1</code></td>
+<td>First argument</td>
+</tr>
+<tr>
+<td><code>$_</code></td>
+<td>Last argument of the previous command</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!note] <code>$@</code> and <code>$*</code> must be quoted in order<br/>
+Otherwise, they do exactly the same thing (arguments as separate strings)</p>
+</blockquote>
+<h3 id="special-parameters">Special Parameters<a class="headerlink" href="#special-parameters" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables">(Reference)</a></li>
+</ul>
+<h2 id="color-formatting">Color Formatting<a class="headerlink" href="#color-formatting" title="Permanent link">#</a></h2>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../../_assets/terminal-ansi-escape-codes.png"><img alt="ANSI Escape Codes" src="../../_assets/terminal-ansi-escape-codes.png"/></a></p>
+<ul>
+<li>
+<p><code>\e</code>:  0x1b ascii escape character</p>
+</li>
+<li>
+<p><code>\e[38;5;(n)m</code>: Select foreground color</p>
+</li>
+<li>
+<p><code>\e[48;5;(n)m</code>: Select background color</p>
+</li>
+<li>
+<p><em>0..7:</em>      standard colors (e.g. <code>\e[30-37m</code>)</p>
+</li>
+<li><em>8..15:</em>     high intensity colors (e.g. <code>\e[90-97m</code>)</li>
+<li><em>16..231:</em>   6 x 6 x 6 cube (216 colors): 16 + 36 x r + 6 x g + b (0 &lt;= r, g, b &lt;= 5)</li>
+<li><em>232..255:</em>  grayscale from black to white in 24 steps</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/ANSI_escape_code">(Reference)</a></p>
+</li>
+<li>
+<p><a href="https://misc.flogisoft.com/bash/tip_colors_and_formatting">more details</a></p>
+</li>
 </ul>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-10</span>
 <br/>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2021-04-29</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-01-28</span>
 </small>
 </div>
 </article>
