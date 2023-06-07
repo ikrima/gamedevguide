@@ -1,7 +1,7 @@
 # Math Symbols LaTeX Cheatsheet
 
 ## Resources
-- [EquationSheet](https://www.equationsheet.com/): latex examples using widge range of physics/math equations
+- [List of mathematical symbols by subject](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)
 - [Mathcha](https://www.mathcha.io/): math notebook editor with excellent ux
 
 ## Accents
@@ -380,45 +380,49 @@
 | $\nwarrow$            | `\nwarrow`            |
 | $\leadsto$            | `\leadsto`            |
 
-
-| **Miscellaneous Symbols** |                |
-| ------------------------- | -------------- |
-| $\dots$                   | `\dots`        |
-| $\cdots$                  | `\cdots`       |
-| $\vdots$                  | `\vdots`       |
-| $\ddots$                  | `\ddots`       |
-| $\hbar$                   | `\hbar`        |
-| $\imath$                  | `\imath`       |
-| $\jmath$                  | `\jmath`       |
-| $\ell$                    | `\ell`         |
-| $\Re$                     | `\Re`          |
-| $\Im$                     | `\Im`          |
-| $\aleph$                  | `\aleph`       |
-| $\wp$                     | `\wp`          |
-| $\forall$                 | `\forall`      |
-| $\exists$                 | `\exists`      |
-| $\mho$                    | `\mho`         |
-| $\partial$                | `\partial`     |
-| $'$                       | `'`            |
-| $\prime$                  | `\prime`       |
-| $\emptyset$               | `\emptyset`    |
-| $\infty$                  | `\infty`       |
-| $\nabla$                  | `\nabla`       |
-| $\triangle$               | `\triangle`    |
-| $\Box$                    | `\Box`         |
-| $\Diamond$                | `\Diamond`     |
-| $\bot$                    | `\bot`         |
-| $\top$                    | `\top`         |
-| $\angle$                  | `\angle`       |
-| $\surd$                   | `\surd`        |
-| $\diamondsuit$            | `\diamondsuit` |
-| $\heartsuit$              | `\heartsuit`   |
-| $\clubsuit$               | `\clubsuit`    |
-| $\spadesuit$              | `\spadesuit`   |
-| $\neg$                    | `\neg`,`\lnot` |
-| $\flat$                   | `\flat`        |
-| $\natural$                | `\natural`     |
-| $\sharp$                  | `\sharp`       |
+| **Miscellaneous Symbols**            |                |
+| ------------------------------------ | -------------- |
+| $\dots$                              | `\dots`        |
+| $\cdots$                             | `\cdots`       |
+| $\vdots$                             | `\vdots`       |
+| $\ddots$                             | `\ddots`       |
+| $\dotsc$ _(for dots with commas)_    | `\dotsc`       |
+| $\dotsb$ _(for dots with binary op)_ | `\dotsb`       |
+| $\dotsm$ _(for multiplication dots)_ | `\dotsm`       |
+| $\dotsi$ _(for dots with integrals)_ | `\dotsi`       |
+| $\dotso$ _(for everything else)_     | `\dotso`       |
+| $\hbar$                              | `\hbar`        |
+| $\imath$                             | `\imath`       |
+| $\jmath$                             | `\jmath`       |
+| $\ell$                               | `\ell`         |
+| $\Re$                                | `\Re`          |
+| $\Im$                                | `\Im`          |
+| $\aleph$                             | `\aleph`       |
+| $\wp$                                | `\wp`          |
+| $\forall$                            | `\forall`      |
+| $\exists$                            | `\exists`      |
+| $\mho$                               | `\mho`         |
+| $\partial$                           | `\partial`     |
+| $'$                                  | `'`            |
+| $\prime$                             | `\prime`       |
+| $\emptyset$                          | `\emptyset`    |
+| $\infty$                             | `\infty`       |
+| $\nabla$                             | `\nabla`       |
+| $\triangle$                          | `\triangle`    |
+| $\Box$                               | `\Box`         |
+| $\Diamond$                           | `\Diamond`     |
+| $\bot$                               | `\bot`         |
+| $\top$                               | `\top`         |
+| $\angle$                             | `\angle`       |
+| $\surd$                              | `\surd`        |
+| $\diamondsuit$                       | `\diamondsuit` |
+| $\heartsuit$                         | `\heartsuit`   |
+| $\clubsuit$                          | `\clubsuit`    |
+| $\spadesuit$                         | `\spadesuit`   |
+| $\neg$                               | `\neg`,`\lnot` |
+| $\flat$                              | `\flat`        |
+| $\natural$                           | `\natural`     |
+| $\sharp$                             | `\sharp`       |
 
 
 | **Non-Math Symbols** |                   |
