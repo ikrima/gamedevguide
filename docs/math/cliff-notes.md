@@ -2,38 +2,104 @@
 
 Condensed Cheatsheet/mnemonics of stuff I forget
 
+## Linear Algebra
+[The Matrix Cookbook](_assets/matrix-cookbook.pdf)
+
 ## Differential Geometry
+  
+- **Inner Product**:  Angle
+- **Norm**:           Length
+- **Metric**:         Distance
+- **Measure**:        Volume/Size
+- **$L_p$ norm**:     `max()` Vector Component
+- **$L_0$ norm**:     Counting Norm
 
-- **Inner Product**: Angle
-- **Norm**:          Length
-- **Metric**:        Distance
-- **Measure**:       Size
-- **$L_{p}$ norm**:  Max() component
-- **$L_{0}$ norm**:  Counting norm
-- **Gradient**:      derivative
-- **Jacobian**:      how a differential patch area is skewed under a (linear only?) transformation
-- **Divergence**:    sink vs source aka volume density of outward flux
-- **Manifold**:      fancy name of a curved space
-  - **Reimannian manifold**: manifold with geodesic metric (Reimannian metric)
-- **Group**:         closed under multiplication, commutative, identity function, inverse
-  - **Lie Group**:   curved space with a group structure i.e. a group that is a manifold where multiplication is smooth/infinitely differentiable
-  - **Lie Algebra**: tangent space of Lie group
-  - **Tangent        space**: linear approximation of a curved space
-  - **Non-abelian    group**: non-commutative group i.e. $a*b \neq b*a$ (e.g. SO(3) rotation group)
-  - **Dual number**: convenient for computation of Lie algebra
-- **Banach Space** (_norm+completeness_) ⊇ **Hilbert Space** (_inner-product norm_) ⊇ **Sobolev Space** (_"nice" derivatives up to order S_)
-- **Functionals**: functions that take functions as inputs (derivative/integral operators)
-- **Laplacian**: difference average of neighborhood at a point - value at point
-  - Laplacian intuition from [CMU Discrete Differential Geometry Course: Lecture 18](https://www.youtube.com/watch?v=oEq9ROl9Umk)
+- **Gradient**:       Derivative of scalar field
+- **Divergence**:     Sink vs Source aka volume density of outward flux
+- **Curl**:           Rotation Rate around point
+- **Laplacian**:      Difference average of neighborhood at a point - value at point
+- **Jacobian**:       Gradient of vector field
+  - describes skew/rotatation/distortion of differential patch around $f(\vec p)$
+  - analogue of 1st order Taylor polynomial i.e. best linear approximation rate of change
+    $f(\vec{p} + \varepsilon \vec{h})\approx f(\vec{p} )+\mathbf{J}_{f} (\vec{p})\cdot \varepsilon \vec{h}$
 
+- **Laplace Equation**: Maximal smoothness/mean curvature is zero
+  - intuitive as equilibrium steady-state state e.g. diffuse heat flow
+  - intuitive as surface has no bumps or local minimas
+  - intuition from [CMU Discrete Differential Geometry Course: Lecture 18](https://www.youtube.com/watch?v=oEq9ROl9Umk)
     ![](_assets/laplacian.mp4)
+- **Poisson Equation**: Generalization of Laplace Equation
+  - intuitive as soap film (_pde solution_) covering a wire (_boundary condition_)
 
-  - Maximal smoothness/mean curvature is zero
-  - _Poisson equation_: $\Delta u$ = 0
-    - Think of boundary condition being a wire and a soap film covering the wire
-    - That's a $\Delta u(x,y) = 0$
-  - Another interpretation is equilibrium state. Think of temperature
-  - Another interpretation is that there are no bumps or local minimas in that surface
+
+- **Manifold**:            fancy name of a curved space
+- **Reimannian manifold**: manifold with geodesic metric (Reimannian metric)
+- **Functionals**:         Functions that take functions as inputs (derivative/integral operators)
+
+- **Spaces**:              `Banach Space` ⊇ `Hilbert Space` ⊇ `Sobolev Space`
+- **Banach Space**:        norm+completeness
+- **Hilbert Space**:       inner-product norm
+- **Sobolev Space**:       _nice_ derivatives up to order S
+
+- **Group**:               closed under multiplication, commutative, identity function, inverse
+- **Lie Group**:           curved space with a group structure i.e. a group that is a manifold where multiplication is smooth/infinitely differentiable
+- **Lie Algebra**:         tangent space of Lie group
+- **Tangent space**:       linear approximation of a curved space
+- **Non-abelian group**:   non-commutative group i.e. $a*b \neq b*a$ (e.g. SO(3) rotation group)
+- **Dual number**:         convenient for computation of Lie algebra
+
+### Equations
+$$
+\begin{align*}
+del :=  &  & \nabla  & = \left(\frac{\partial}{\partial x_1}, \dotsc, \frac{\partial}{\partial x_n}\right)\\
+ &  &  & \\
+Gradient :=  &  & \nabla f(\boldsymbol{\vec{x}}) & = \left(\frac{\partial f(\boldsymbol{\vec{x}})}{\partial x_1} ,\dotsc ,\frac{\partial f (\boldsymbol{\vec{x}})}{\partial x_n}\right)\\
+ &  &  & = \begin{bmatrix}
+\frac{\partial f}{\partial x_1} (\boldsymbol{\vec{x}})\\
+\vdots \\
+\frac{\partial f}{\partial x_n} (\boldsymbol{\vec{x}})
+\end{bmatrix}\\
+ &  &  & \\
+Divergence :=  &  & \operatorname{div}\mathbf{F} & = \nabla \cdot \mathbf{F}\\
+ &  &  & = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right) \cdot (F_x ,F_y ,F_z)\\
+ &  &  & = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}\\
+ &  &  & \\
+Curl :=  &  & \nabla \times \mathbf{F} & = \begin{vmatrix}
+\hat{\imath} & \hat{\jmath} & \boldsymbol{\hat{k}}\\
+\dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z}\\
+F_x & F_y & F_z
+\end{vmatrix}\\
+ &  &  & =
+ \left(\frac{\partial F_z}{\partial y} -\frac{\partial F_y}{\partial z}\right)\boldsymbol{\hat{\imath}} +
+ \left(\frac{\partial F_x}{\partial z} -\frac{\partial F_z}{\partial x}\right)\boldsymbol{\hat{\jmath}} +
+ \left(\frac{\partial F_y}{\partial x} -\frac{\partial F_x}{\partial y}\right)\boldsymbol{\hat{k}}\\
+ &  &  & = \begin{bmatrix}
+\frac{\partial F_z}{\partial y} -\frac{\partial F_y}{\partial z}\\
+\frac{\partial F_x}{\partial z} -\frac{\partial F_z}{\partial x}\\
+\frac{\partial F_y}{\partial x} -\frac{\partial F_x}{\partial y}
+\end{bmatrix}\\
+ &  &  & \\
+Jacobian :=  &  & \mathbf{f} & :\mathbb{R}^{n}\to \mathbb{R}^{m}\\
+ &  & \mathbf{J}_f & = \begin{bmatrix}
+\dfrac{\partial f(\boldsymbol{\vec{x}})}{\partial x_1} & \cdots  & \dfrac{\partial \mathbf{f} (\boldsymbol{\vec{x}})}{\partial x_n}
+\end{bmatrix}\\
+ &  &  & = \begin{bmatrix}
+\nabla f_1 (\boldsymbol{\vec{x}})\\
+\vdots \\
+\nabla f_m (\boldsymbol{\vec{x}})
+\end{bmatrix}\\
+ &  &  & = \begin{bmatrix}
+\dfrac{\partial f_1 (\boldsymbol{\vec{x}})}{\partial x_1} & \cdots  & \dfrac{\partial f_1 (\boldsymbol{\vec{x}})}{\partial x_n}\\
+\vdots  & \ddots  & \vdots \\
+\dfrac{\partial f_m (\boldsymbol{\vec{x}})}{\partial x_1} & \cdots  & \dfrac{\partial f_m (\boldsymbol{\vec{x}})}{\partial x_n}
+\end{bmatrix}\\
+ &  &  & \\
+Laplacian :=  &  & \Delta f & = \nabla^2 f = \nabla \cdot \nabla f = \sum_{i=1}^n \frac{\partial^2 f}{\partial x_i^2}\\
+ &  &  & \\
+Laplace Equation :=  &  & \Delta f & = 0\\
+Poisson Equation :=  &  & \Delta f & = h
+\end{align*}
+$$
 
 ## Spectral Theory
 
@@ -48,7 +114,7 @@ $\boldsymbol{L}_{n}$ has n real roots and they are all $\in [-1,1]$
 
 Harmonic functions => $\Delta u(x) = 0$
 
-Homogenous function => $f : \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}, \ f(\lambda \mathbf{v})=\lambda^{k} f(\mathbf{v})$ where $k,\lambda \in \mathbb{R}$
+Homogenous function => $f : \mathbb{R}^{n} \to \mathbb{R}^{n}, \ f(\lambda \mathbf{v})=\lambda^{k} f(\mathbf{v})$ where $k,\lambda \in \mathbb{R}$
 
 General form of Newton's divided-difference polynomial interpolation:
 
