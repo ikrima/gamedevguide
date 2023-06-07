@@ -23,7 +23,7 @@
 |`conda update python`|update python version|
 |`conda update anaconda`|update all packages to latest stable + compatible version of Anaconda|
 |`conda update -n base conda`|update base conda environment|
-|`conda env update -n myenv -f env.yml --prune`|update and uninstall dependencies from environment using file|
+|`conda env update -n myenv -f env.yml --prune`|update environment from file and uninstall unused dependencies|
 
 ### Migrating Environments
 
@@ -65,6 +65,6 @@
 
 ## References
 
-- [manage environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-- [Official Cheatsheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
+- [Conda Official Cheatsheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
+- [conda manage environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 - [mamba quickstart](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html#quickstart)
