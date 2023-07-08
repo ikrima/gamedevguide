@@ -81,11 +81,11 @@
 
 | **Hebrew**  |             |
 | ----------- | ----------- |
-| `\digamma`  | $\digamma$  |
-| `\varkappa` | $\varkappa$ |
-| `\beth`     | $\beth$     |
-| `\gimel`    | $\gimel$    |
-| `\daleth`   | $\daleth$   |
+| $\digamma$  | `\digamma`  |
+| $\varkappa$ | `\varkappa` |
+| $\beth$     | `\beth`     |
+| $\gimel$    | `\gimel`    |
+| $\daleth$   | `\daleth`   |
 
 ## Binary Operators
 
