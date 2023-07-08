@@ -14,3 +14,5 @@
 - [AlternativeTo](https://alternativeto.net/)
 - [Slant](https://www.slant.co/)
 - [ProductHunt](https://www.producthunt.com)
+- [RTINGS](https://www.rtings.com/)
+- [Wccftech](https://wccftech.com/)
