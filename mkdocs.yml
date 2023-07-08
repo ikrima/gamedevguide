@@ -74,15 +74,15 @@ extra:
     provider: google
     property: G-VWCEPP5L4L
 extra_css:
-  # - _site/katex/katex.min.css # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css ###revisit
   - _site/mkdocs-extra.css
   - _site/obsidian-admonition.css
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css ###revisit
 extra_javascript:
-  # - _site/katex/katex.min.js # https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js ###revisit
-  # - _site/arithmatex-katex.js ###revisit
   - _site/arithmatex-mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  # - _site/arithmatex-katex.js ###revisit
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js ###revisit
 
 
 # Markdown Extensions
