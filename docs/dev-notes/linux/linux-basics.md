@@ -56,6 +56,11 @@
   df -lhT # show usage of all mounted filesystems
   ```
 
+- `du`: disk usage/size of directory
+  ```bash
+  du -sh fooDir/
+  ```
+
 ## Package Management
 
 |Command|Description|

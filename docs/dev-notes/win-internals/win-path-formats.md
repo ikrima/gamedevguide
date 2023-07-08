@@ -113,3 +113,4 @@ These all point to the same file
 
 - [.Net API Reference](https://learn.microsoft.com/en-us/dotnet/standard/io/file-path-formats)
 - [Win32 API Reference](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file)
+- [Definitive Guide on Win32 to NT Path Conversion](https://googleprojectzero.blogspot.com/2016/02/the-definitive-guide-on-win32-to-nt.html)
