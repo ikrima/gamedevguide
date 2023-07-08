@@ -5,42 +5,31 @@ sidebar: ue4guide
 
 ## Debugging:
 
-```cpp
+```python
 import pprint
 
-pprint.pprint(randomObj.\_\_dict\_\_)          =>     Prints all the attributes & their values in an object
-
-dir(randomObj)                                   =>     enumerates attributes & methods in an object
-
-inspect(module)                                 =>     Allows you to inspect a module
+pprint.pprint(randomObj.__dict__) => Prints all the attributes & their values in an object
+dir(randomObj)                    => enumerates attributes & methods in an object
+inspect(module)                   => Allows you to inspect a module
 ```
 
 ## Import statements:
 
 Absolute vs. Relative Import
-
-- An absolute import uses the full path (starting from the project’s root folder) to the desired module to import.
-
+- An absolute import uses the full path (starting from the project's root folder) to the desired module to import.
 - A relative import uses the relative path (starting from the path of the current module) to the desired desired module to import. There are two types of relative imports:
-
-  - explicit relative import follows the format from .&lt;module/package> import X, where &lt;module/package> is prefixed by dots . that indicate how many directories upwards to traverse. A single dot . corresponds to the current directory; two dots .. indicate one folder up; etc.
-
-  - Implicit: deprecated. Don't use
-
-
+  - explicit relative import follows the format `from ./module/package import X`, where `module/package` is prefixed by dots `.` that indicate how many directories upwards to traverse. A single dot . corresponds to the current directory; two dots .. indicate one folder up; etc.
+  - implicit: deprecated. Don't use
 - Use absolute imports rooted at the test/ directory (i.e. middle column in the table above). This guarantees that running start.py directly will always work. In order to run a2.py directly, we can modify sys.path in a2.py to include test/packA/, before sa2 is imported.
+  ```python
+  import os, sys
+  sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
-```cpp
- import os, sys
+  # now this works, even when a2.py is run directly
+  from packA.subA import sa2
+  ```
 
- sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-```
-
-## Now this works, even when a2.py is run directly
-
- from packA.subA import sa2
-
-<https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html>
+*Reference From <https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html>*
 
 ### Logging:
 
@@ -176,13 +165,14 @@ The general form of a standard format specifier is:
 
 *Reference From <https://www.python.org/dev/peps/pep-3101/#standard-format-specifiers>*
 
-[\[fill\]align][sign] [#][0] [width][,] [.precision][type] 
-where, the options are 
+```bnf
+[\[fill\]align][sign] [#][0] [width][,] [.precision][type] where, the options are 
 fill ::= any character 
-align ::= "&lt;" | ">" | "=" | "^" 
+align ::= "<" | ">" | "=" | "^" 
 sign ::= "+" | "-" | " " 
 width ::= integer 
 precision ::= integer 
 type ::= "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X" | "%"
+```
 
 *Reference From <https://www.programiz.com/python-programming/methods/built-in/format>*

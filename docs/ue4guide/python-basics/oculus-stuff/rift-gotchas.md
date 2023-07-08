@@ -39,7 +39,7 @@ sidebar: ue4guide
 
   - stereo reset: Resets IPD and clears stereo overrides
 
-  - stereo e=&lt;value>: Sets IPD
+  - stereo e=<value>: Sets IPD
 
   - hmd enable/disable: Enable/Disable HMD
 

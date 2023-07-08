@@ -19,7 +19,7 @@ Condensed Cheatsheet/mnemonics of stuff I forget
 - **Curl**:           Rotation Rate around point
 - **Laplacian**:      Difference average of neighborhood at a point - value at point
 - **Jacobian**:       Gradient of vector field
-  - describes skew/rotatation/distortion of differential patch around $f(\vec p)$
+  - describes skew/rotation/distortion of differential patch around $f(\vec p)$
   - analogue of 1st order Taylor polynomial i.e. best linear approximation rate of change
     $f(\vec{p} + \varepsilon \vec{h})\approx f(\vec{p} )+\mathbf{J}_{f} (\vec{p})\cdot \varepsilon \vec{h}$
 
