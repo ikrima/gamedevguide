@@ -41,14 +41,15 @@
 |Managing Environments||
 |||
 |`mamba info`|get version info|
-|`conda env list`|list environments|
-|`conda env export --no-builds`|show environment|
+|`mamba env list`|list environments|
+|`mamba env export --no-builds`|show environment|
 |`mamba create -n <ENV> <PKG>`|create an environment|
 |`mamba env create --file env.yml`|import an environment|
 |`mamba env export -n <ENV> > env.yml`|export an environment|
 |`mamba env remove -n <ENV>`|remove an environment|
-|`conda create --name CLONE_ENV_NAME --clone <ENV>`|clone an existing environment|
-|`conda activate <ENV>`/`conda deactivate`|activate/deactivate environment|
+|`mamba env update -n myenv -f env.yml --prune`|update environment from file/uninstall unused dependencies|
+|`mamba create --name CLONE_ENV_NAME --clone <ENV>`|clone an existing environment|
+|`mamba activate <ENV>`/`conda deactivate`|activate/deactivate environment|
 |||
 |Managing Packages||
 |||

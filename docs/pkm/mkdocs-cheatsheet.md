@@ -12,6 +12,12 @@
   - `-dirty`: only rebuilds dirty pages
 - start simple server: `python -m http.server -d ./.build/site`
 
+- upgrade `mkdocs`
+  
+  - install `pip-check-updates`: `pip install pip-check-updates; pip update pip-check-updates`
+  - find outdated:               `pcu requirements.txt`
+  - update __requirements.txt__: `pcu requirements.txt -u`
+
 ## Setup
 
 - install:

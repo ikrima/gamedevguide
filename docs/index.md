@@ -1,8 +1,8 @@
 # Game Development Notes
 
-[Live site build @ ![mkdocs-build](https://github.com/ikrima/gamedevguide/actions/workflows/mkdocs-build.yml/badge.svg)](https://github.com/ikrima/gamedevguide/actions/workflows/mkdocs-build.yml)
-[Live site @ ikrima.dev](https://ikrima.dev)  
-[Github repo @ github.com/ikrima/gamedevguide](https://github.com/ikrima/gamedevguide)
+__site build:__ [![mkdocs-build](https://github.com/ikrima/gamedevguide/actions/workflows/mkdocs-build.yml/badge.svg)](https://github.com/ikrima/gamedevguide/actions/workflows/mkdocs-build.yml)  
+__site live:__ [ikrima.dev](https://ikrima.dev)  
+__site repo:__ [github.com/ikrima/gamedevguide](https://github.com/ikrima/gamedevguide)
 
 ## Wut is this
 
