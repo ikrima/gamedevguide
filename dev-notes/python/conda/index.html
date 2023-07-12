@@ -9696,6 +9696,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_3_19" id="__nav_3_19_label" tabindex="0">
@@ -9760,6 +9762,20 @@
     <li class="md-nav__item">
       <a href="../../unraid/unraid-filesystem/" class="md-nav__link">
         Unraid File System
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unraid/unraid-os-update/" class="md-nav__link">
+        Unraid OS Update
       </a>
     </li>
   
@@ -12386,11 +12402,11 @@
 <td>get version info</td>
 </tr>
 <tr>
-<td><code>conda env list</code></td>
+<td><code>mamba env list</code></td>
 <td>list environments</td>
 </tr>
 <tr>
-<td><code>conda env export --no-builds</code></td>
+<td><code>mamba env export --no-builds</code></td>
 <td>show environment</td>
 </tr>
 <tr>
@@ -12410,11 +12426,15 @@
 <td>remove an environment</td>
 </tr>
 <tr>
-<td><code>conda create --name CLONE_ENV_NAME --clone &lt;ENV&gt;</code></td>
+<td><code>mamba env update -n myenv -f env.yml --prune</code></td>
+<td>update environment from file/uninstall unused dependencies</td>
+</tr>
+<tr>
+<td><code>mamba create --name CLONE_ENV_NAME --clone &lt;ENV&gt;</code></td>
 <td>clone an existing environment</td>
 </tr>
 <tr>
-<td><code>conda activate &lt;ENV&gt;</code>/<code>conda deactivate</code></td>
+<td><code>mamba activate &lt;ENV&gt;</code>/<code>conda deactivate</code></td>
 <td>activate/deactivate environment</td>
 </tr>
 <tr>
@@ -12483,7 +12503,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-12</span>
       
         <br>
         Created:
