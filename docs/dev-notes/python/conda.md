@@ -1,5 +1,13 @@
 # Conda Cheatsheet
 
+## pip
+
+|Command|Desc|
+|-------|----|
+|`pcu requirements.txt`|_what if_ version of `pip-check-updates` i.e. won't modify `requirements.txt`|
+|`pcu requirements.txt -u`|update requirements.txt  package file|
+|`pcu requirements.txt -i`|interactive version of `pip-check-updates`|
+
 ## Conda
 
 |Command|Desc|
