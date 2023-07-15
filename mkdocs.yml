@@ -6,7 +6,7 @@ site_url:         https://ikrima.dev/
 site_description: Programming notes for Unreal Engine, Houdini, Game Development, Math, & Graphics
 repo_name:        ikrima/gamedevguide
 repo_url:         https://github.com/ikrima/gamedevguide
-edit_uri:         edit/master/docs/
+edit_uri:         blob/master/docs/
 
 # Site Configuration
 docs_dir:           docs
