@@ -3,7 +3,8 @@
 Condensed Cheatsheet/mnemonics of stuff I forget
 
 ## Linear Algebra
-[The Matrix Cookbook](_assets/matrix-cookbook.pdf)
+- [The Matrix Cookbook](_assets/matrix-cookbook.pdf)
+- [Matrix Forensics](_assets/matrix-forensics.pdf)
 
 ## Differential Geometry
   
