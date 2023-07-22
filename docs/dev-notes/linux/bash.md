@@ -69,9 +69,23 @@ echo 'Hi $name'  #=> Hi $name
 
 ## Conditionals
 
+### `[` vs `[[`
+
+- `[`: shell command shorthand for `test` command
+- `[[`: shell keyword with quality of life nicities
+  - integer comparison operators: `==`,`!=`,`<`,`<=`,`>`,`>=`
+    ```bash
+    [[ 1 < 2 ]] && echo "true"
+    [ 1 \< 2  ] && echo "true"
+    [ 1 -lt 2 ] && echo "true"
+    ```
+  
+  - logic/grouping operators: `&&`,`||`,`(`,`)`
+  - pattern matching: `[ $name = *c* ]`
+  - regular expressions: `[[ $name =~ ^Ali ]]`
+
 ### Conditions
 
-Note that `[[` is actually a command/program that returns either `0` (true) or `1` (false)
 Any program that obeys the same logic (like all base utils, such as `grep(1)` or `ping(1)`) can be used as condition, see examples.
 
 |Condition|Description|
