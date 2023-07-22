@@ -87,7 +87,7 @@
 - `bind`: query keybinds
   
   ```bash
-  bind -l      # List bindable readline functions
+  bind -l      # List all bindable readline functions
   bind -v      # List variables and values
   bind -psX    # List keys bound to readline functions, macros, and shell executions
   bind -q <fn> # Query about which keys invoke the named function

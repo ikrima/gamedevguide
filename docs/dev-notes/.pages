@@ -22,4 +22,3 @@ nav:
   - vscode:             vscode
   - zig:                zig
   - windows internals:  win-internals
-  - ...

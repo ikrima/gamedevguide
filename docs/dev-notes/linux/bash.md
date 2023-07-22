@@ -163,7 +163,7 @@ fi
 
 ```bash
 echo "I'm in $(pwd)"
-echo "I'm in `pwd`"  # obsolescent
+echo "I'm in `pwd`"  # deprecated
 # Same
 ```
 
