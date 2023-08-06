@@ -21,7 +21,7 @@
         <link rel="next" href="../openssh/">
       
       <link rel="icon" href="../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.21">
     
     
       
@@ -7757,7 +7757,7 @@
   
     <li class="md-nav__item">
       <a href="../../../ue4guide/wip/unfinished/how-to-view-specific-data-in-idetailcustomization/" class="md-nav__link">
-        **How to "View Specific" Data In IDetailCustomization?**
+        How to "View Specific" Data In IDetailCustomization?
       </a>
     </li>
   
@@ -9035,6 +9035,13 @@
           <li class="md-nav__item">
   <a href="#guides" class="md-nav__link">
     Guides
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modern-linux-tools" class="md-nav__link">
+    Modern Linux Tools
   </a>
   
 </li>
@@ -12276,6 +12283,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#modern-linux-tools" class="md-nav__link">
+    Modern Linux Tools
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12364,8 +12378,10 @@
 <h1 id="linux-basics">Linux Basics<a class="headerlink" href="#linux-basics" title="Permanent link">#</a></h1>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="../../_assets/intro-to-linux-textbook.pdf">Introduction to Linux Technology and Philosophy by Jeremy Hajek</a></li>
+<li><a href="../../_assets/intro-to-linux-tech-philosophy.pdf">Introduction to Linux Technology and Philosophy by Jeremy Hajek</a></li>
 <li><a href="https://github.com/jhajek/Linux-text-book-part-1">github source</a></li>
+<li><a href="../../_assets/linux-command-line.pdf">The Linux Command Line by William Shotts</a></li>
+<li><a href="../../_assets/bite-size-linux.pdf">Bite Size Linux by Julia Evans</a></li>
 <li><a href="https://www.digitalocean.com/community/tutorials?q=%5BLinux%20Basics%5D">DigitalOcean Linux Basics Tutorials</a></li>
 <li><a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-basics">Introduction to Linux Basics</a></li>
 <li><a href="https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer">Linux Command Line Primer</a></li>
@@ -12385,6 +12401,151 @@
 <li><a href="https://www.dedoimedo.com/computers/ultimate-linux-guide-for-windows-users.html">Ultimate Linux Guide for Windows users</a></li>
 <li><a href="https://linuxcommand.org/">Learning the Shell</a></li>
 </ul>
+<h3 id="modern-linux-tools">Modern Linux Tools<a class="headerlink" href="#modern-linux-tools" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool Alternative</th>
+<th><a href="https://github.com/ibraheemdev/modern-unix">(reference)</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/sharkdp/bat"><code>bat</code></a></td>
+<td><code>cat</code> clone with syntax highlighting and <code>git</code> integration</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ogham/exa"><code>exa</code></a></td>
+<td>modern replacement for <code>ls</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Peltoche/lsd"><code>lsd</code></a></td>
+<td>next gen replacement for <code>ls</code>, backwards compatible</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dandavison/delta"><code>delta</code></a></td>
+<td>viewer for <code>git</code> and <code>diff</code> output</td>
+</tr>
+<tr>
+<td><a href="https://dev.yorhel.nl/ncdu"><code>ncdu</code></a></td>
+<td>intuitive <code>du</code> with ncurses interface</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bootandy/dust"><code>dust</code></a></td>
+<td>more intuitive version of <code>du</code> written in rust</td>
+</tr>
+<tr>
+<td><a href="https://github.com/muesli/duf"><code>duf</code></a></td>
+<td>better <code>df</code> alternative</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Canop/broot"><code>broot</code></a></td>
+<td>better <code>tree</code> with navigation support</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sharkdp/fd"><code>fd</code></a></td>
+<td>simple, fast and user-friendly alternative to <code>find</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/BurntSushi/ripgrep"><code>ripgrep</code></a></td>
+<td>extremely fast alternative to <code>grep</code> that respects your gitignore</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ggreer/the_silver_searcher"><code>ag</code></a></td>
+<td>code searching tool similar to <code>ack</code>, but faster</td>
+</tr>
+<tr>
+<td><a href="https://github.com/junegunn/fzf"><code>fzf</code></a></td>
+<td>general purpose command-line fuzzy finder</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cantino/mcfly"><code>mcfly</code></a></td>
+<td>fly through your shell <code>history</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/theryangeary/choose"><code>choose</code></a></td>
+<td>human-friendly and fast alternative to <code>cut</code> and (sometimes) <code>awk</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/stedolan/jq"><code>jq</code></a></td>
+<td><code>sed</code> for JSON data</td>
+</tr>
+<tr>
+<td><a href="https://github.com/chmln/sd"><code>sd</code></a></td>
+<td>intuitive find/replace CLI. <code>sed</code> alternative</td>
+</tr>
+<tr>
+<td><a href="https://cheat.sh/"><code>cheat.sh</code></a></td>
+<td>unified cheatsheets, including tldr-pages</td>
+</tr>
+<tr>
+<td><a href="https://github.com/tldr-pages/tldr"><code>tldr</code></a></td>
+<td>community effort to simplify <code>man</code> pages with practical examples</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ClementTsang/bottom"><code>bottom</code></a></td>
+<td>another cross-platform graphical process/system monitor</td>
+</tr>
+<tr>
+<td><a href="https://github.com/nicolargo/glances"><code>glances</code></a></td>
+<td><code>top</code>/<code>htop</code> alternative</td>
+</tr>
+<tr>
+<td><a href="https://github.com/aksakalli/gtop"><code>gtop</code></a></td>
+<td>System monitoring dashboard for terminal</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sharkdp/hyperfine"><code>hyperfine</code></a></td>
+<td>command-line benchmarking tool</td>
+</tr>
+<tr>
+<td><a href="https://github.com/orf/gping"><code>gping</code></a></td>
+<td><code>ping</code> with a graph</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dalance/procs"><code>procs</code></a></td>
+<td><code>ps</code> rust replacement</td>
+</tr>
+<tr>
+<td><a href="https://github.com/httpie/httpie"><code>httpie</code></a></td>
+<td>modern, user-friendly command-line HTTP client for the API era</td>
+</tr>
+<tr>
+<td><a href="https://github.com/rs/curlie"><code>curlie</code></a></td>
+<td>power of <code>curl</code>, the ease of use of <code>httpie</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/ducaale/xh"><code>xh</code></a></td>
+<td>performance focused alternative of <code>httpie</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/ajeetdsouza/zoxide"><code>zoxide</code></a></td>
+<td>smarter <code>cd</code> command inspired by <code>z</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/ogham/dog"><code>dog</code></a></td>
+<td>user-friendly command-line DNS client. <code>dig</code> on steroids</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>GUI Tools</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://gitlab.gnome.org/GNOME/baobab"><code>baobab</code></a></td>
+<td>gui disk usage analyzer</td>
+</tr>
+<tr>
+<td><a href="https://github.com/oguzhaninan/Stacer"><code>stacer</code></a></td>
+<td>gui system optimizer/monitoring</td>
+</tr>
+</tbody>
+</table>
 <h2 id="filesystem">Filesystem<a class="headerlink" href="#filesystem" title="Permanent link">#</a></h2>
 <ul>
 <li><code>which</code>: display executable's location</li>
@@ -12540,7 +12701,7 @@
 </li>
 <li>
 <p><code>pkill</code>: kill process by name<br />
-  <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span>ps<span class="w"> </span>chrome
+  <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span>pkill<span class="w"> </span>chrome
 </span></code></pre></div></p>
 </li>
 </ul>
@@ -12548,36 +12709,52 @@
 <ul>
 <li><code>systemctl</code>: manage services/daemons</li>
 <li>
+<p>unit types</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos=" 1 "></span>systemctl<span class="w"> </span>list-unit<span class="w"> </span>--type<span class="o">=</span><span class="nb">help</span>
+</span><span id="__span-17-2"><span class="linenos" data-linenos=" 2 "></span>service
+</span><span id="__span-17-3"><span class="linenos" data-linenos=" 3 "></span>mount
+</span><span id="__span-17-4"><span class="linenos" data-linenos=" 4 "></span>swap
+</span><span id="__span-17-5"><span class="linenos" data-linenos=" 5 "></span>socket
+</span><span id="__span-17-6"><span class="linenos" data-linenos=" 6 "></span>target
+</span><span id="__span-17-7"><span class="linenos" data-linenos=" 7 "></span>device
+</span><span id="__span-17-8"><span class="linenos" data-linenos=" 8 "></span>automount
+</span><span id="__span-17-9"><span class="linenos" data-linenos=" 9 "></span>timer
+</span><span id="__span-17-10"><span class="linenos" data-linenos="10 "></span>path
+</span><span id="__span-17-11"><span class="linenos" data-linenos="11 "></span>slice
+</span><span id="__span-17-12"><span class="linenos" data-linenos="12 "></span>scope
+</span></code></pre></div>
+</li>
+<li>
+<p>list services</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-18-1"><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>running<span class="w">                                       </span><span class="c1"># Loaded+Active</span>
+</span><span id="__span-18-2"><span class="linenos" data-linenos="2 "></span>systemctl<span class="w"> </span>--no-pager<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>running<span class="w"> </span><span class="p">|</span><span class="w"> </span>column<span class="w"> </span>-t<span class="w">                </span><span class="c1"># For more readable output</span>
+</span><span id="__span-18-3"><span class="linenos" data-linenos="3 "></span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--no-pager<span class="w"> </span>--all<span class="w">                          </span><span class="c1"># Loaded services: Active+Pending+Failed+Inactive+Dependents</span>
+</span><span id="__span-18-4"><span class="linenos" data-linenos="4 "></span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--no-pager<span class="w"> </span>--all<span class="w"> </span>--state<span class="o">=</span>inactive<span class="w">         </span><span class="c1"># Loaded services: Inactive</span>
+</span><span id="__span-18-5"><span class="linenos" data-linenos="5 "></span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--no-pager<span class="w"> </span>--type<span class="o">=</span>service<span class="w">                 </span><span class="c1"># Loaded services: Active+Pending+Failed</span>
+</span><span id="__span-18-6"><span class="linenos" data-linenos="6 "></span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--no-pager<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span>--state<span class="o">=</span>running<span class="w"> </span><span class="c1"># Loaded services: Running</span>
+</span><span id="__span-18-7"><span class="linenos" data-linenos="7 "></span>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span>--no-pager<span class="w"> </span>--type<span class="o">=</span>service<span class="w">            </span><span class="c1"># Installed services: Loaded+Unloaded</span>
+</span></code></pre></div>
+</li>
+<li>
 <p>start/stop/restart the specified service</p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span>start<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
-</span><span id="__span-17-2"><span class="linenos" data-linenos="2 "></span>systemctl<span class="w"> </span>stop<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
-</span><span id="__span-17-3"><span class="linenos" data-linenos="3 "></span>systemctl<span class="w"> </span>restart<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-19-1"><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span>start<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
+</span><span id="__span-19-2"><span class="linenos" data-linenos="2 "></span>systemctl<span class="w"> </span>stop<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
+</span><span id="__span-19-3"><span class="linenos" data-linenos="3 "></span>systemctl<span class="w"> </span>restart<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>enable/disable service to auto start at boot time</p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-18-1"><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
-</span><span id="__span-18-2"><span class="linenos" data-linenos="2 "></span>systemctl<span class="w"> </span>disable<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-20-1"><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
+</span><span id="__span-20-2"><span class="linenos" data-linenos="2 "></span>systemctl<span class="w"> </span>disable<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>show/check service current status/runtime information</p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-19-1"><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span>status<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
-</span><span id="__span-19-2"><span class="linenos" data-linenos="2 "></span>systemctl<span class="w"> </span>is-active<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
-</span><span id="__span-19-3"><span class="linenos" data-linenos="3 "></span>systemctl<span class="w"> </span>is-enabled<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
-</span><span id="__span-19-4"><span class="linenos" data-linenos="4 "></span>systemctl<span class="w"> </span>is-failed<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
-</span><span id="__span-19-5"><span class="linenos" data-linenos="5 "></span>systemctl<span class="w"> </span>list-dependencies<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
-</span></code></pre></div>
-</li>
-<li>
-<p>list running services</p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-20-1"><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>running<span class="w"> </span><span class="c1"># Loaded+Active</span>
-</span><span id="__span-20-2"><span class="linenos" data-linenos="2 "></span>systemctl<span class="w"> </span>--no-pager<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>running<span class="w"> </span><span class="p">|</span><span class="w"> </span>column<span class="w"> </span>-t<span class="w"> </span><span class="c1"># For more readable output</span>
-</span><span id="__span-20-3"><span class="linenos" data-linenos="3 "></span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--all<span class="w"> </span><span class="c1"># Loaded services</span>
-</span><span id="__span-20-4"><span class="linenos" data-linenos="4 "></span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--all<span class="w"> </span>--state<span class="o">=</span>inactive<span class="w"> </span><span class="c1"># Inactive services</span>
-</span><span id="__span-20-5"><span class="linenos" data-linenos="5 "></span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>service
-</span><span id="__span-20-6"><span class="linenos" data-linenos="6 "></span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span>--state<span class="o">=</span>running<span class="w"> </span>
-</span><span id="__span-20-7"><span class="linenos" data-linenos="7 "></span>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span><span class="c1"># All installed i.e. Loaded+Unloaded</span>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-21-1"><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span>status<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
+</span><span id="__span-21-2"><span class="linenos" data-linenos="2 "></span>systemctl<span class="w"> </span>is-active<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
+</span><span id="__span-21-3"><span class="linenos" data-linenos="3 "></span>systemctl<span class="w"> </span>is-enabled<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
+</span><span id="__span-21-4"><span class="linenos" data-linenos="4 "></span>systemctl<span class="w"> </span>is-failed<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
+</span><span id="__span-21-5"><span class="linenos" data-linenos="5 "></span>systemctl<span class="w"> </span>list-dependencies<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
 </span></code></pre></div>
 </li>
 </ul>
@@ -12587,7 +12764,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-06</span>
       
         <br>
         Created:
