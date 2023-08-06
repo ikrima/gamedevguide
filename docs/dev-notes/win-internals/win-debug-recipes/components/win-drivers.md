@@ -1,5 +1,13 @@
 # Drivers
 
+## SetupAPI Logs
+
+|Log|Purpose<sup>
+[1](https://github.com/MicrosoftDocs/windows-driver-docs/blob/staging/windows-driver-docs-pr/install/setupapi-text-logs.md "SetupAPI Logs Reference")</sup>|
+|---|--------|
+|`C:\Windows\INF\setupapi.dev.log`|_Device Installation Log_ on device/driver installs|
+|`C:\Windows\INF\setupapi.app.log`|_App Installation Log_ on app installs associated w/device driver installs|
+
 ## Approach 1: AutoRuns
 
 - TLDR: use **_SysInternals: AutoRuns_** to find bad behaving/suspect drivers [(Reference)](https://www.overclock.net/threads/official-amd-ryzen-ddr4-24-7-memory-stability-thread.1628751/page-1041)
