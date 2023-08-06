@@ -113,7 +113,7 @@ To obtain the SMART info for a drive, including some identity and
 configuration information, and physical statistics and error history.
 For more information about SMART and `smartctl`, see
 [here](https://forums.unraid.net/forum/index.php?topic=1521) and
-[here](/unraid-os/manual/troubleshooting#data-recovery) and
+[here](https://docs.unraid.net/unraid-os/manual/troubleshooting#data-recovery) and
 [here](https://forums.unraid.net/forum/index.php?topic=1845.msg13042#msg13042)
 and [here](https://forums.unraid.net/forum/index.php?topic=2097) and
 [here](https://forums.unraid.net/forum/index.php?topic=2074.0).

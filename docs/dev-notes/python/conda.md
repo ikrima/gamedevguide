@@ -31,7 +31,7 @@
 |`conda update python`|update python version|
 |`conda update anaconda`|update all packages to latest stable + compatible version of Anaconda|
 |`conda update -n base conda`|update base conda environment|
-|`conda env update -n myenv -f env.yml --prune`|update environment from file and uninstall unused dependencies|
+|`conda env update -n <ENV> -f env.yml --prune`|update environment from file and uninstall unused dependencies|
 
 ### Migrating Environments
 
@@ -55,7 +55,7 @@
 |`mamba env create --file env.yml`|import an environment|
 |`mamba env export -n <ENV> > env.yml`|export an environment|
 |`mamba env remove -n <ENV>`|remove an environment|
-|`mamba env update -n myenv -f env.yml --prune`|update environment from file/uninstall unused dependencies|
+|`mamba env update -n <ENV> -f env.yml --prune`|update environment from file/uninstall unused dependencies|
 |`mamba create --name CLONE_ENV_NAME --clone <ENV>`|clone an existing environment|
 |`mamba activate <ENV>`/`conda deactivate`|activate/deactivate environment|
 |||

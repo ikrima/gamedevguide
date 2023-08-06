@@ -14,7 +14,7 @@
   - **Pkgs**:                `SettingsTab -> NerdTools -> Check For Updates`
 - Disable/Shutdown:
   
-  - **Custom Plugins**:      `un-get -update; un-get installed; un-get remove bat; un-get cleanup`
+  - **Custom Plugins**:      `un-get update; un-get installed; un-get remove bat; un-get cleanup`
   - **Background Jobs**:     `ParityCheck/Tuner, Mover, AutoUpdate, AutoBackup`
   - **Docker**:              `SettingsTab -> Docker     -> Enable Docker = No`
   - **VM Manager**:          `SettingsTab -> VM Manager -> Enable VMs    = No`

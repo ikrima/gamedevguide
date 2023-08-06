@@ -33,7 +33,7 @@
 - [1Password](https://1password.com/): password manager with better integration across mobile apps/sites
 - [Adobe Creative Cloud Uninstaller](https://helpx.adobe.com/creative-cloud/help/uninstall-creative-cloud-desktop-app.html)
   - if you install adobe stuff, do yourself a favor and remove the 12 services they install for lulz even when you're not using any adobe product
-    ![](_assets/../../_assets/adobe-cc-remove.jpg)
+    ![](../../_assets/adobe-cc-remove.jpg)
   - you can uninstall CreativeCloud desktop app while keeping photoshop/premiere/etc
 - [Firefox](https://www.mozilla.org/en-US/firefox)
   - Tree Style Tab Extension: Tree column view of all your tabs
