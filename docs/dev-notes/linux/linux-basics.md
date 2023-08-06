@@ -2,8 +2,10 @@
 
 ## Resources
 
-- [Introduction to Linux Technology and Philosophy by Jeremy Hajek](../_assets/intro-to-linux-textbook.pdf)
+- [Introduction to Linux Technology and Philosophy by Jeremy Hajek](../_assets/intro-to-linux-tech-philosophy.pdf)
   - [github source](https://github.com/jhajek/Linux-text-book-part-1)
+- [The Linux Command Line by William Shotts](../_assets/linux-command-line.pdf)
+- [Bite Size Linux by Julia Evans](../_assets/bite-size-linux.pdf)
 - [DigitalOcean Linux Basics Tutorials](https://www.digitalocean.com/community/tutorials?q=%5BLinux%20Basics%5D)
   - [Introduction to Linux Basics](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-basics)
   - [Linux Command Line Primer](https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer)
@@ -22,6 +24,45 @@
 - [Ubuntu Community Documentation](https://help.ubuntu.com/community/CommunityHelpWiki): useful beginner series
 - [Ultimate Linux Guide for Windows users](https://www.dedoimedo.com/computers/ultimate-linux-guide-for-windows-users.html)
 - [Learning the Shell](https://linuxcommand.org/)
+
+### Modern Linux Tools
+
+|Tool Alternative|[(reference)](https://github.com/ibraheemdev/modern-unix)|
+|----------------|-----------|
+|[`bat`](https://github.com/sharkdp/bat)|`cat` clone with syntax highlighting and `git` integration|
+|[`exa`](https://github.com/ogham/exa)|modern replacement for `ls`|
+|[`lsd`](https://github.com/Peltoche/lsd)|next gen replacement for `ls`, backwards compatible|
+|[`delta`](https://github.com/dandavison/delta)|viewer for `git` and `diff` output|
+|[`ncdu`](https://dev.yorhel.nl/ncdu)|intuitive `du` with ncurses interface|
+|[`dust`](https://github.com/bootandy/dust)|more intuitive version of `du` written in rust|
+|[`duf`](https://github.com/muesli/duf)|better `df` alternative|
+|[`broot`](https://github.com/Canop/broot)|better `tree` with navigation support|
+|[`fd`](https://github.com/sharkdp/fd)|simple, fast and user-friendly alternative to `find`|
+|[`ripgrep`](https://github.com/BurntSushi/ripgrep)|extremely fast alternative to `grep` that respects your gitignore|
+|[`ag`](https://github.com/ggreer/the_silver_searcher)|code searching tool similar to `ack`, but faster|
+|[`fzf`](https://github.com/junegunn/fzf)|general purpose command-line fuzzy finder|
+|[`mcfly`](https://github.com/cantino/mcfly)|fly through your shell `history`|
+|[`choose`](https://github.com/theryangeary/choose)|human-friendly and fast alternative to `cut` and (sometimes) `awk`|
+|[`jq`](https://github.com/stedolan/jq)|`sed` for JSON data|
+|[`sd`](https://github.com/chmln/sd)|intuitive find/replace CLI. `sed` alternative|
+|[`cheat.sh`](https://cheat.sh/)|unified cheatsheets, including tldr-pages|
+|[`tldr`](https://github.com/tldr-pages/tldr)|community effort to simplify `man` pages with practical examples|
+|[`bottom`](https://github.com/ClementTsang/bottom)|another cross-platform graphical process/system monitor|
+|[`glances`](https://github.com/nicolargo/glances)|`top`/`htop` alternative|
+|[`gtop`](https://github.com/aksakalli/gtop)|System monitoring dashboard for terminal|
+|[`hyperfine`](https://github.com/sharkdp/hyperfine)|command-line benchmarking tool|
+|[`gping`](https://github.com/orf/gping)|`ping` with a graph|
+|[`procs`](https://github.com/dalance/procs)|`ps` rust replacement|
+|[`httpie`](https://github.com/httpie/httpie)|modern, user-friendly command-line HTTP client for the API era|
+|[`curlie`](https://github.com/rs/curlie)|power of `curl`, the ease of use of `httpie`|
+|[`xh`](https://github.com/ducaale/xh)|performance focused alternative of `httpie`|
+|[`zoxide`](https://github.com/ajeetdsouza/zoxide)|smarter `cd` command inspired by `z`|
+|[`dog`](https://github.com/ogham/dog)|user-friendly command-line DNS client. `dig` on steroids|
+
+|GUI Tools||
+|---------|--|
+|[`baobab`](https://gitlab.gnome.org/GNOME/baobab)|gui disk usage analyzer|
+|[`stacer`](https://github.com/oguzhaninan/Stacer)|gui system optimizer/monitoring|
 
 ## Filesystem
 
@@ -158,12 +199,41 @@ netstat -ie
 
 - `pkill`: kill process by name
   ```bash
-  ps chrome
+  pkill chrome
   ```
 
 ## Services
 
 - `systemctl`: manage services/daemons
+  - unit types
+    
+    ```bash
+    systemctl list-unit --type=help
+    service
+    mount
+    swap
+    socket
+    target
+    device
+    automount
+    timer
+    path
+    slice
+    scope
+    ```
+  
+  - list services
+    
+    ```bash
+    systemctl | grep running                                       # Loaded+Active
+    systemctl --no-pager | grep running | column -t                # For more readable output
+    systemctl list-units --no-pager --all                          # Loaded services: Active+Pending+Failed+Inactive+Dependents
+    systemctl list-units --no-pager --all --state=inactive         # Loaded services: Inactive
+    systemctl list-units --no-pager --type=service                 # Loaded services: Active+Pending+Failed
+    systemctl list-units --no-pager --type=service --state=running # Loaded services: Running
+    systemctl list-unit-files --no-pager --type=service            # Installed services: Loaded+Unloaded
+    ```
+  
   - start/stop/restart the specified service
     
     ```bash
@@ -187,16 +257,4 @@ netstat -ie
     systemctl is-enabled [service]
     systemctl is-failed [service]
     systemctl list-dependencies [service]
-    ```
-  
-  - list running services
-    
-    ```bash
-    systemctl | grep running # Loaded+Active
-    systemctl --no-pager | grep running | column -t # For more readable output
-    systemctl list-units --all # Loaded services
-    systemctl list-units --all --state=inactive # Inactive services
-    systemctl list-units --type=service
-    systemctl list-units --type=service --state=running 
-    systemctl list-unit-files # All installed i.e. Loaded+Unloaded
     ```
