@@ -126,17 +126,49 @@ netstat -ie
 
 ## Permissions
 
+- `stat`: pretty print stats about file
+  
+  ```bash
+  stat [file]
+  ```
+
+- `permission attributes`
+  
+  ```txt
+  .rwxrwxrwx  path/to/file
+  ││││││││││ 
+  └│││││││││─ file type attribute
+   │││││││││   -: file
+   │││││││││   d: directory
+   │││││││││   l: symbolic link
+   │││││││││   c: character special file representing byte stream device e.g. /dev/null
+   │││││││││   b: block special file representing block stream device e.g. hard drive
+   │││││││││
+   ├││││││││─ u: user owner
+   └││││││││─  r: read
+    └│││││││─  w: write
+     └││││││─  x: execute
+      ││││││
+      ├│││││─ g: group owner
+      └│││││─  r: read
+       └││││─  w: write
+        └│││─  x: execute
+         │││
+         ├││─ o: other
+         └││─  r: read
+          └│─  w: write
+           └─  x: execute
+  ```
+
+- `id`:    display user identity
+
+- `umask`: set the default file permissions
+
 - `chmod`: change permissions to folders and files
   
   ```bash
   find . -type d -exec chmod 755 {} +
   find . -type f -exec chmod 644 {} +
-  ```
-
-- `chown`: change ownership to user/group recursively
-  
-  ```bash
-  chown -R user:group /some/path/here
   ```
 
 - `chmod` recursively to 775/664
@@ -147,6 +179,12 @@ netstat -ie
             |  |    | adds write to user
             |  | adds read to all and execute to all folders (which controls access)
             | sets all to `000`
+  ```
+
+- `chown`: change ownership to user/group recursively
+  
+  ```bash
+  chown -R user:group /some/path/here
   ```
 
 ## Process Management
