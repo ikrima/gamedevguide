@@ -6,6 +6,7 @@
   "MD013":   false,                     // line-length:           Line length
   "MD022":   false,                     // blanks-around-headers: Headings should be surrounded by blank lines
   "MD024":   { "siblings_only": true }, // no-duplicate-header:   Multiple headings with the same content
+  "MD028":   false,                     // no-blanks-blockquote:  Blank line inside blockquote
   "MD029":   { "style": "ordered" },    // ol-prefix:             Ordered list item prefix
   "MD031":   false,                     // blanks-around-fences:  Fenced code blocks should be surrounded by blank lines
   "MD032":   false,                     // blanks-around-lists:   Lists should be surrounded by blank lines
