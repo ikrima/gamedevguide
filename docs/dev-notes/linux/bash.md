@@ -15,23 +15,42 @@
 
 ### Startup Scripts
 
-- [(reference)](https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/)
-
-||Login Interactive|Login Non-Interactive|Non-Login Interactive|Non-Login Non-Interactive|Script|
-|--|:---------------:|:-------------------:|:-------------------:|:-----------------------:|:----:|
-|/etc/profile|1|2||||
-|||||||
-|/etc/bash.bashrc|||1|||
-|||||||
-|~/.bashrc|||2|||
-|||||||
-|~/.bash_profile|2.A|2.A||||
-|~/.bash_login|2.B|2.B||||
-|~/.profile|2.C|2.C||||
-|||||||
-|BASH_ENV||||1|1|
-|||||||
-|~/.bash_logout|3|3||||
+- simplified flow [(reference)](https://stackoverflow.com/a/9954208/21979545)
+  
+  ```txt
+                      +-----------------+   +------FIRST------+   +-----------------+
+                      |                 |   | ~/.bash_profile |   |                 |
+  login shell -------->|  /etc/profile   |-->| ~/.bash_login ----->|  ~/.bashrc      |
+                      |                 |   | ~/.profile      |   |                 |
+                      +-----------------+   +-----------------+   +-----------------+
+                      +-----------------+   +-----------------+
+                      |                 |   |                 |
+  interactive shell -->|  /etc/bashrc ------>| ~/.bashrc       |
+                      |                 |   |                 |
+                      +-----------------+   +-----------------+
+                      +-----------------+
+                      |                 |
+  logout shell ------->|  ~/.bash_logout |
+                      |                 |
+                      +-----------------+
+  ```
+  
+  - `[]-->[]`:  _**automatically**_ sourced by workflow
+  - `[--->[]`:  _**manually**_ sourced by convention
+  - `FIRST`:    _**only first available**_ executed
+  - `echo "${BASH_SOURCE[0]}"`: use to inspect script's sourcing origins
+- detailed flow [(reference)](https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/)
+  
+  ||Interactive Login|Non-Interactive Login|Interactive Non-Login|Non-Interactive Non-Login|Script|
+  |--|:---------------:|:-------------------:|:-------------------:|:-----------------------:|:----:|
+  |/etc/profile|1|1||||
+  |/etc/bash.bashrc|||1|||
+  |~/.bashrc|||2|||
+  |~/.bash_profile|2.A|2.A||||
+  |~/.bash_login|2.B|2.B||||
+  |~/.profile|2.C|2.C||||
+  |BASH_ENV||||1|1|
+  |~/.bash_logout|3|3||||
 
 ## Variables
 
@@ -65,6 +84,47 @@
 name="John"
 echo "Hi $name"  #=> Hi John
 echo 'Hi $name'  #=> Hi $name
+```
+
+## Arrays
+
+### Array Declaration
+
+```bash
+Fruits=('Apple' 'Banana' 'Orange')
+
+Fruits[0]="Apple"
+Fruits[1]="Banana"
+Fruits[2]="Orange"
+```
+
+### Array Access
+
+```bash
+echo "${Fruits[0]}"              # Element #0
+echo "${Fruits[-1]}"             # Last element
+echo "${Fruits[@]}"              # All elements, space-separated
+echo "${Fruits[*]}"              # All elements, space-separated
+echo "${#Fruits[@]}"             # Number of elements
+echo "${#Fruits}"                # String length of the 1st element
+echo "${#Fruits[3]}"             # String length of the Nth element
+echo "${Fruits[@]:3:2}"          # Range (from position 3, length 2)
+echo "${!Fruits[@]}"             # Keys of all elements, space-separated
+for item in "${Fruits[@]}"; do   # Array iteration
+  echo "$item"
+done
+```
+
+### Array Operations
+
+```bash
+Fruits=("${Fruits[@]}" "Watermelon")    # Push
+Fruits+=('Watermelon')                  # Also Push
+Fruits=( "${Fruits[@]/Ap*/}" )          # Remove by regex match
+unset Fruits[2]                         # Remove one item
+Fruits=("${Fruits[@]}")                 # Duplicate
+Fruits=("${Fruits[@]}" "${Veggies[@]}") # Concatenate
+lines=(`cat "logfile"`)                 # Read from file
 ```
 
 ## Conditionals
