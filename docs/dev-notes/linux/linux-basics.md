@@ -21,6 +21,7 @@
 
 ### Guides
 
+- [The Art of the Command Line](./art-of-command-line): one-sheet condensed linux study guide
 - [Ubuntu Community Documentation](https://help.ubuntu.com/community/CommunityHelpWiki): useful beginner series
 - [Ultimate Linux Guide for Windows users](https://www.dedoimedo.com/computers/ultimate-linux-guide-for-windows-users.html)
 - [Learning the Shell](https://linuxcommand.org/)
@@ -33,11 +34,6 @@
 
 - `which`: display executable's location
 - `type`: describe a command
-- `stat`: pretty print stats about file
-  ```bash
-  stat [file]
-  ```
-
 - `rm`: delete directory
   ```bash
   rm -rf
@@ -207,22 +203,37 @@ netstat -ie
 
 ## Services
 
+- `systemd`: initialization system and service manager
+  ![](../_assets/linux/systemd-components.png)
+  
+  - [systemd quickstart guide](https://www.linode.com/docs/guides/what-is-systemd/)
 - `systemctl`: manage services/daemons
+  
+  - [systemctl quickstart guide](https://www.linode.com/docs/guides/introduction-to-systemctl/)
+    
+    - `systemctl start [name.service]`
+    - `systemctl stop [name.service]`
+    - `systemctl restart [name.service]`
+    - `systemctl reload [name.service]`
+    - `systemctl status [name.service]`
+    - `systemctl is-active [name.service]`
+    - `systemctl list-units --type service --all`
   - unit types
     
     ```bash
-    systemctl list-unit --type=help
-    service
-    mount
-    swap
-    socket
-    target
-    device
-    automount
-    timer
-    path
-    slice
-    scope
+    $systemctl list-unit --type=help
+    service   # service
+    target    # group of units
+    mount     # filesystem mountpoint
+    automount # filesystem auto-mountpoint
+    device    # kernel device names, which you can see in sysfs and udev
+    path      # file or directory
+    scope     # external processes not started by systemd
+    slice     # a management unit of processes
+    snapshot  # systemd saved state
+    socket    # IPC (inter-process communication) socket
+    swap      # swap file
+    timer     # systemd timer
     ```
   
   - list services
