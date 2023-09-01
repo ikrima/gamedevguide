@@ -21,7 +21,10 @@
   
   ```bash
   chmod 700 -R ~/.ssh
+  chmod 600 ~/.ssh/config
+  chmod 644 ~/.ssh/*.pub
   chmod 644 ~/.ssh/authorized_keys
+  chmod 644 ~/.ssh/known_hosts
   chown [user]:[group] ~/.ssh/authorized_keys
   ll -R ~/.ssh | grep 'ssh\|auth'
   ```

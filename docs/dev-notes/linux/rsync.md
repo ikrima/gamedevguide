@@ -73,7 +73,7 @@
 ```txt
 YXcstpoguax  path/to/file
 |||||||||||
-`----------- the type of update being done::
+`----------- the type of update being done:
  ||||||||||   <: file is being transferred to the remote host (sent).
  ||||||||||   >: file is being transferred to the local host (received).
  ||||||||||   c: local change/creation for the item, such as:
