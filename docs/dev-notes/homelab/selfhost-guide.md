@@ -1,4 +1,4 @@
-# Self Host Guide
+# SelfHost Guide
 
 ## Resources
 

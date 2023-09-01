@@ -1,4 +1,4 @@
-# Selfhost Backup Guide
+# SelfHost Backup Guide
 
 ## Overview
 
