@@ -11,6 +11,11 @@
   - [Linux Command Line Primer](https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer)
   - [How To Use ps, kill, and nice to Manage Linux Processes](https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux)
 
+### Communities
+
+- [linux4noobs](https://old.reddit.com/r/linux4noobs/)
+- [bashonubuntuonwindows](https://old.reddit.com/r/bashonubuntuonwindows/)
+
 ### Manuals
 
 - [ManKier](https://www.mankier.com/): concise pretty man pages with an API
@@ -86,23 +91,34 @@
   tail -n 100 [file]  # outputs last n lines
   ```
 
-- `bind`: query keybinds
+- `bind`: configure keybinds for terminal
   
-  ```bash
-  bind -l      # List all bindable readline functions
-  bind -v      # List variables and values
-  bind -psX    # List keys bound to readline functions, macros, and shell executions
-  bind -q <fn> # Query about which keys invoke the named function
-  ```
+  - `bind`: query keybinds
+    ```bash
+    bind -l      # List all bindable readline functions
+    bind -v      # List variables and values
+    bind -psX    # List keys bound to readline functions, macros, and shell executions
+    bind -q <fn> # Query about which keys invoke the named function
+    ```
+  
+  - `bind`: change keybinds
+    ```bash
+    bind -u <fn>                 # Unbind all keys which are bound to the named function
+    bind -r <keys>               # Remove the binding for <keys>
+    bind -f <filename>           # Read key bindings from <filename>
+    bind -x '"<keys>": "<cmds>"' # Execute <cmds> when <keys> is entered
+    ```
 
-- `bind`: change keybinds
-  
-  ```bash
-  bind -u <fn>                 # Unbind all keys which are bound to the named function
-  bind -r <keys>               # Remove the binding for <keys>
-  bind -f <filename>           # Read key bindings from <filename>
-  bind -x '"<keys>": "<cmds>"' # Execute <cmds> when <keys> is entered
-  ```
+- `less`: console pager
+  \| Navigation Key        | Action                                |
+  \| --------------------- | ------------------------------------- |
+  \| `down`/`up`,`j`/`k`   | move down/up one line                 |
+  \| `space bar`/`b`       | move down/up one page                 |
+  \| `left`/`right`        | scroll left/right horizontally        |
+  \| `g`/`G`,`Home`/`End`  | go to start/end line                  |
+  \| `/pattern`/`?pattern` | search forward/backward for `pattern` |
+  \| `n`/`N`               | go to next/previous occurrence        |
+  \| `q`                   | Quit `less`                           |
 
 ## Networking
 
@@ -271,4 +287,13 @@ netstat -ie
     systemctl is-enabled [service]
     systemctl is-failed [service]
     systemctl list-dependencies [service]
+    ```
+  
+  - viewing basic log information
+    
+    ```bash
+    journalctl       # all boot log entries
+    journalctl -k    # all boot kernel entries
+    journalctl -b    # current boot entries
+    journalctl -b -k # current boot kernel entries
     ```
