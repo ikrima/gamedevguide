@@ -61,12 +61,11 @@
 |||
 |Managing Packages||
 |||
-|`mamba repoquery search <PKG>`|finding package|
 |`mamba install -n <ENV> <PKG>`|install package|
 |`mamba update -n base mamba`|updating mamba|
 |`mamba update -n <ENV> --all`|update package|
 |`mamba remove -n <ENV> <PKG>`|removing a package|
-|`mamba repoquery search <PKG>`|search for pacakge|
+|`mamba repoquery search <PKG>`|finding a package|
 |`mamba repoquery depends <PKG> [--recursive]`|show pkg direct/transitive dependencies|
 |`mamba repoquery depends -t <PKG>`|show pkg transitive dependencies as tree|
 |`mamba repoquery whoneeds <PKG>`|show pkg dependants i.e. inverse of depends|

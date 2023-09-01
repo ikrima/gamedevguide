@@ -470,7 +470,7 @@ macro file (with the file name of `macros`) that you can use and
 modify. It requires being executed from your `go` file, so insert a
 line into `/boot/config/go` similar to `/boot/macros`.
 
-```shell
+```bash
 #!/bin/bash
 
 # set dn like Windows dir/o-d, newest files first

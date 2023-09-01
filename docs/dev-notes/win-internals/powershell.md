@@ -157,9 +157,9 @@ foreach ($file in Get-ChildItem 'C:\') { $file.name }
 
 |||
 |--|--|
-|`[n]>`|**send** stream to _file_ (default: `n=1`)|
-|`[n]>>`|**append** stream to _file_ (default: `n=1`)|
-|`[n]>&1`|**redirects** stream to `success` stream (default: `n=1`)|
+|`n>`|**send** stream to _file_ (default: `n=1`)|
+|`n>>`|**append** stream to _file_ (default: `n=1`)|
+|`n>&1`|**redirects** stream to `success` stream (default: `n=1`)|
 
  > 
  > \[!note\] limitations
