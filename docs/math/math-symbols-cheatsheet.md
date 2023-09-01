@@ -2,6 +2,7 @@
 
 ## Resources
 - [List of mathematical symbols by subject](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)
+- [List of common physics notations](https://en.wikipedia.org/wiki/List_of_common_physics_notations)
 - [Mathcha](https://www.mathcha.io/): math notebook editor with excellent ux
 
 ## Accents
@@ -408,6 +409,7 @@
 | $\emptyset$                          | `\emptyset`    |
 | $\infty$                             | `\infty`       |
 | $\nabla$                             | `\nabla`       |
+| $\degree$                            | `\degree`      |
 | $\triangle$                          | `\triangle`    |
 | $\Box$                               | `\Box`         |
 | $\Diamond$                           | `\Diamond`     |
