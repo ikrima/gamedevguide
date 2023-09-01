@@ -2,6 +2,14 @@
 
 Condensed Cheatsheet/mnemonics of stuff I forget
 
+## Overview: Map of Mathematics
+- Algebra: abstraction of numbers
+- Group Theory: abstraction of symmetry
+- Ring Theory: abstraction of arithmetic
+- Graph Theory: abstraction of relationships
+- Category Theory: abstraction of composition
+
+
 ## Linear Algebra
 - [The Matrix Cookbook](_assets/matrix-cookbook.pdf)
 - [Matrix Forensics](_assets/matrix-forensics.pdf)
