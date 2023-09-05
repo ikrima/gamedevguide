@@ -12197,6 +12197,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-debug-messages" class="md-nav__link">
+    Enable Debug Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strace-failing-command" class="md-nav__link">
+    Strace Failing Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#networking-issues" class="md-nav__link">
+    Networking Issues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collect-wsl-logs" class="md-nav__link">
+    Collect WSL Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collect-wsl-crashdump" class="md-nav__link">
+    Collect WSL Crashdump
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collect-wslservice-time-travel-trace" class="md-nav__link">
+    Collect wslservice Time Travel Trace
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -16360,6 +16415,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-debug-messages" class="md-nav__link">
+    Enable Debug Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strace-failing-command" class="md-nav__link">
+    Strace Failing Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#networking-issues" class="md-nav__link">
+    Networking Issues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collect-wsl-logs" class="md-nav__link">
+    Collect WSL Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collect-wsl-crashdump" class="md-nav__link">
+    Collect WSL Crashdump
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collect-wslservice-time-travel-trace" class="md-nav__link">
+    Collect wslservice Time Travel Trace
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -16461,7 +16571,7 @@
 <td>list installed Linux distributions</td>
 </tr>
 <tr>
-<td><code>wsl --unregister &lt;distro&gt;</code></td>
+<td><code>wsl --unregister [distro]</code></td>
 <td>unregister and uninstall wsl distro</td>
 </tr>
 <tr>
@@ -16475,6 +16585,22 @@
 <tr>
 <td><code>wsl --status</code></td>
 <td>check WSL status</td>
+</tr>
+<tr>
+<td><code>wsl --system</code></td>
+<td>launch system distro</td>
+</tr>
+<tr>
+<td><code>wsl -d [distro] --exec '...'</code></td>
+<td>run command without using the default Linux shell</td>
+</tr>
+<tr>
+<td>`wsl -d [distro] --shell-type [standard</td>
+<td>login</td>
+</tr>
+<tr>
+<td><code>wsl --debug-shell</code></td>
+<td>launch debug shell for diagnostics purposes</td>
 </tr>
 <tr>
 <td><code>wsl hostname --all-ip-addresses</code></td>
@@ -16697,13 +16823,106 @@
 <li>can also use this to source <code>/etc/profile</code> and <code>~/.profile</code></li>
 <li>does not exist by default so you must create it</li>
 </ul>
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">#</a></h2>
+<h3 id="enable-debug-messages">Enable Debug Messages<a class="headerlink" href="#enable-debug-messages" title="Permanent link">#</a></h3>
+<ul>
+<li><code>.wslconfig</code>: enable WSL2 instance's debug console displaying <code>dmesg</code> output</li>
+</ul>
+<div class="language-ini highlight"><span class="filename">INI</span><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="k">[wsl2]</span>
+</span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="na">debugConsole</span><span class="o">=</span><span class="s">true</span>
+</span></code></pre></div>
+<ul>
+<li><code>wsl.exe dmesg</code>: manually dump <code>dmesg</code> output</li>
+</ul>
+<h3 id="strace-failing-command">Strace Failing Command<a class="headerlink" href="#strace-failing-command" title="Permanent link">#</a></h3>
+<ul>
+<li>Run the failing command under <a href="http://manpages.ubuntu.com/manpages/wily/man1/strace.1.html">strace</a>.  Normal command structure is:</li>
+</ul>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>strace<span class="w"> </span>-ff<span class="w"> </span>&lt;command&gt;
+</span></code></pre></div>
+<blockquote>
+<p>[!note] <code>strace</code> can produce lengthy output. If the generated trace is more than about 20 lines please paste this into a <a href="https://gist.github.com/">Gist</a> or another paste service and link in the bug.</p>
+</blockquote>
+<ul>
+<li>Example</li>
+</ul>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>strace<span class="w"> </span>traceroute<span class="w"> </span>www.microsoft.com
+</span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>execve<span class="o">(</span><span class="s2">&quot;/usr/bin/traceroute&quot;</span>,<span class="w"> </span><span class="o">[</span><span class="s2">&quot;traceroute&quot;</span>,<span class="w"> </span><span class="s2">&quot;www.microsoft.com&quot;</span><span class="o">]</span>,<span class="w"> </span><span class="o">[</span>/*<span class="w"> </span><span class="m">22</span><span class="w"> </span>vars<span class="w"> </span>*/<span class="o">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>brk<span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="w">                                  </span><span class="o">=</span><span class="w"> </span>0x7fffdd3bc000
+</span><span id="__span-4-4"><span class="linenos" data-linenos="4 "></span>access<span class="o">(</span><span class="s2">&quot;/etc/ld.so.nohwcap&quot;</span>,<span class="w"> </span>F_OK<span class="o">)</span><span class="w">      </span><span class="o">=</span><span class="w"> </span>-1<span class="w"> </span>ENOENT<span class="w"> </span><span class="o">(</span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory<span class="o">)</span>
+</span><span id="__span-4-5"><span class="linenos" data-linenos="5 "></span>mmap<span class="o">(</span>NULL,<span class="w"> </span><span class="m">8192</span>,<span class="w"> </span>PROT_READ<span class="p">|</span>PROT_WRITE,<span class="w"> </span>MAP_PRIVATE<span class="p">|</span>MAP_ANONYMOUS,<span class="w"> </span>-1,<span class="w"> </span><span class="m">0</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>0x7f1f4e820000
+</span><span id="__span-4-6"><span class="linenos" data-linenos="6 "></span>access<span class="o">(</span><span class="s2">&quot;/etc/ld.so.preload&quot;</span>,<span class="w"> </span>R_OK<span class="o">)</span><span class="w">      </span><span class="o">=</span><span class="w"> </span>-1<span class="w"> </span>ENOENT<span class="w"> </span><span class="o">(</span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory<span class="o">)</span>
+</span><span id="__span-4-7"><span class="linenos" data-linenos="7 "></span>...
+</span><span id="__span-4-8"><span class="linenos" data-linenos="8 "></span>...
+</span><span id="__span-4-9"><span class="linenos" data-linenos="9 "></span>...
+</span></code></pre></div>
+<h3 id="networking-issues">Networking Issues<a class="headerlink" href="#networking-issues" title="Permanent link">#</a></h3>
+<ul>
+<li>Run <a href="https://github.com/Microsoft/WSL/blob/master/diagnostics/networking.bat">networking.bat</a> in an administrative command prompt:</li>
+</ul>
+<div class="language-batch highlight"><span class="filename">Batchfile</span><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>git clone https://github.com/microsoft/WSL --depth=1 <span class="nv">%tmp%</span>\WSL
+</span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="k">cd</span> <span class="nv">%tmp%</span>\WSL\diagnostics
+</span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>networking.bat
+</span></code></pre></div>
+<ul>
+<li>Once the script execution is completed, include <strong>both</strong> its output and the generated log file, <code>wsl.etl</code> on the issue.</li>
+</ul>
+<h3 id="collect-wsl-logs">Collect WSL Logs<a class="headerlink" href="#collect-wsl-logs" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p>To collect WSL logs, download and execute <a href="https://github.com/Microsoft/WSL/blob/master/diagnostics/collect-wsl-logs.ps1">collect-wsl-logs.ps1</a> in an administrative powershell prompt:<br />
+  <div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="nb">Invoke-WebRequest</span> <span class="n">-UseBasicParsing</span> <span class="s2">&quot;https://raw.githubusercontent.com/microsoft/WSL/master/diagnostics/collect-wsl-logs.ps1&quot;</span> <span class="n">-OutFile</span> <span class="n">collect-wsl-logs</span><span class="p">.</span><span class="n">ps1</span>
+</span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span>
+</span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="p">.\</span><span class="n">collect-wsl-logs</span><span class="p">.</span><span class="n">ps1</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>The script will output the path of the log file once done</p>
+</li>
+</ul>
+<h3 id="collect-wsl-crashdump">Collect WSL Crashdump<a class="headerlink" href="#collect-wsl-crashdump" title="Permanent link">#</a></h3>
+<p>Easiest way to introspect WSL process crash is by <a href="https://learn.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps">collecting a user-mode crash dump</a>.</p>
+<ul>
+<li>To enable automatic crash dumps, run the following commands in an elevated command prompt:</li>
+</ul>
+<div class="language-batch highlight"><span class="filename">Batchfile</span><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="k">md</span> C:\crashes
+</span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span>reg.exe add <span class="s2">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&quot;</span> /f
+</span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>reg.exe add <span class="s2">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&quot;</span> /v DumpFolder /t REG_EXPAND_SZ /d C:\crashes /f
+</span><span id="__span-7-4"><span class="linenos" data-linenos="4 "></span>reg.exe add <span class="s2">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&quot;</span> /v DumpType /t REG_DWORD /d 2 /f
+</span></code></pre></div>
+<ul>
+<li>
+<p>Crash dumps will then automatically be written to C:crashes.</p>
+</li>
+<li>
+<p>Once you're done, crash dump collection can be disabled by running the following command in an elevated command prompt:</p>
+</li>
+</ul>
+<div class="language-batch highlight"><span class="filename">Batchfile</span><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>reg.exe delete <span class="s2">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps&quot;</span> /f
+</span></code></pre></div>
+<h3 id="collect-wslservice-time-travel-trace">Collect wslservice Time Travel Trace<a class="headerlink" href="#collect-wslservice-time-travel-trace" title="Permanent link">#</a></h3>
+<p>To collect time travel debugging traces:</p>
+<ul>
+<li><a href="https://apps.microsoft.com/store/detail/windbg-preview/9PGJGD53TN86?hl=en-us&amp;gl=us&amp;rtc=1">Install Windbg preview</a></li>
+<li>Open windbg preview as administrator by running <code>windbgx</code> in an elevated command prompt</li>
+<li>Navigate to <code>file</code> -&gt; <code>Attach to process</code></li>
+<li>Check <code>Record with Time Travel Debugging</code> (at the bottom right)</li>
+<li>Check <code>Show processes from all users</code> (at the bottom)</li>
+<li>Select <code>wslservice.exe</code>. Note, if wslservice.exe is not running, you make it start it with: <code>wsl.exe -l</code></li>
+<li>Click <code>Configure and Record</code> (write down the folder you chose for the traces)</li>
+<li>Reproduce the issue</li>
+<li>Go back to windbg and click <code>Stop and Debug</code></li>
+<li>Once the trace is done collecting, click <code>Stop Debugging</code> and close Windbg</li>
+<li>Go to the folder where the trace was colleced, and locate the .run file. It should look like: <code>wslservice*.run</code></li>
+<li>Share that file on the issue</li>
+</ul>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-05</span>
       
         <br>
         Created:

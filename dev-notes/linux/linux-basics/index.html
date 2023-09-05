@@ -12105,6 +12105,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    Diagnostics
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -16336,6 +16343,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    Diagnostics
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -16686,13 +16700,34 @@
 </span><span id="__span-22-5"><span class="linenos" data-linenos="5 "></span>systemctl<span class="w"> </span>list-dependencies<span class="w"> </span><span class="o">[</span>service<span class="o">]</span>
 </span></code></pre></div>
 </li>
+</ul>
+<h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">#</a></h2>
+<ul>
+<li><code>syslog</code>: a protocol for transferring log messages</li>
 <li>
-<p>viewing basic log information</p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-23-1"><span class="linenos" data-linenos="1 "></span>journalctl<span class="w">       </span><span class="c1"># all boot log entries</span>
-</span><span id="__span-23-2"><span class="linenos" data-linenos="2 "></span>journalctl<span class="w"> </span>-k<span class="w">    </span><span class="c1"># all boot kernel entries</span>
-</span><span id="__span-23-3"><span class="linenos" data-linenos="3 "></span>journalctl<span class="w"> </span>-b<span class="w">    </span><span class="c1"># current boot entries</span>
-</span><span id="__span-23-4"><span class="linenos" data-linenos="4 "></span>journalctl<span class="w"> </span>-b<span class="w"> </span>-k<span class="w"> </span><span class="c1"># current boot kernel entries</span>
-</span></code></pre></div>
+<p><code>dmesg</code>: command that prints kernel logs<br />
+  <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-23-1"><span class="linenos" data-linenos="1 "></span>dmesg<span class="w"> </span>-H<span class="w">         </span><span class="c1"># command that prints kernel logs</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>journalctl: service that collects logs from <code>systemd</code><br />
+  <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-24-1"><span class="linenos" data-linenos=" 1 "></span>journalctl<span class="w">                              </span><span class="c1"># all boot log entries</span>
+</span><span id="__span-24-2"><span class="linenos" data-linenos=" 2 "></span>journalctl<span class="w"> </span>-k<span class="w">                           </span><span class="c1"># all boot kernel entries</span>
+</span><span id="__span-24-3"><span class="linenos" data-linenos=" 3 "></span>journalctl<span class="w"> </span>-b<span class="w">                           </span><span class="c1"># current boot entries</span>
+</span><span id="__span-24-4"><span class="linenos" data-linenos=" 4 "></span>journalctl<span class="w"> </span>-b<span class="w"> </span>-k<span class="w">                        </span><span class="c1"># current boot kernel entries</span>
+</span><span id="__span-24-5"><span class="linenos" data-linenos=" 5 "></span>journalctl<span class="w"> </span>-b<span class="w"> </span>--priority<span class="o">=</span>err<span class="w">            </span><span class="c1"># all error or higher logs since last boot</span>
+</span><span id="__span-24-6"><span class="linenos" data-linenos=" 6 "></span>journalctl<span class="w"> </span>-b<span class="w"> </span>--priority<span class="o">=</span>err..warning<span class="w">   </span><span class="c1"># all warning to notice since last boot</span>
+</span><span id="__span-24-7"><span class="linenos" data-linenos=" 7 "></span>
+</span><span id="__span-24-8"><span class="linenos" data-linenos=" 8 "></span><span class="c1"># Log Levels</span>
+</span><span id="__span-24-9"><span class="linenos" data-linenos=" 9 "></span><span class="c1">#  emerg (0): system is unusable</span>
+</span><span id="__span-24-10"><span class="linenos" data-linenos="10 "></span><span class="c1">#  alert (1): action must be taken immediately</span>
+</span><span id="__span-24-11"><span class="linenos" data-linenos="11 "></span><span class="c1">#   crit (2): critical conditions</span>
+</span><span id="__span-24-12"><span class="linenos" data-linenos="12 "></span><span class="c1">#    err (3): error conditions</span>
+</span><span id="__span-24-13"><span class="linenos" data-linenos="13 "></span><span class="c1">#   warn (4): warning conditions</span>
+</span><span id="__span-24-14"><span class="linenos" data-linenos="14 "></span><span class="c1"># notice (5): normal but significant condition</span>
+</span><span id="__span-24-15"><span class="linenos" data-linenos="15 "></span><span class="c1">#   info (6): informational</span>
+</span><span id="__span-24-16"><span class="linenos" data-linenos="16 "></span><span class="c1">#  debug (7): debug-level messages</span>
+</span></code></pre></div></p>
 </li>
 </ul>
 
@@ -16701,7 +16736,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-05</span>
       
         <br>
         Created:
