@@ -43,10 +43,14 @@
 |--|--|
 |`wsl --list --online`|list available Linux distributions|
 |`wsl --list --verbose`|list installed Linux distributions|
-|`wsl --unregister <distro>`|unregister and uninstall wsl distro|
+|`wsl --unregister [distro]`|unregister and uninstall wsl distro|
 |\`wsl --set-default-version \[1|2\]\`|
 |`wsl --update`|update WSL|
 |`wsl --status`|check WSL status|
+|`wsl --system`|launch system distro|
+|`wsl -d [distro] --exec '...'`|run command without using the default Linux shell|
+|\`wsl -d \[distro\] --shell-type \[standard|login|
+|`wsl --debug-shell`|launch debug shell for diagnostics purposes|
 |`wsl hostname --all-ip-addresses`|get all Host IP address|
 |\`grep -m1 nameserver /etc/resolv.conf|awk '{print $2}'\`|
 |\`ip route|grep default|
@@ -173,3 +177,102 @@
   - set env vars or run once-off utilities at launch (e.g `xrandr`/`xmodmap`)
   - can also use this to source `/etc/profile` and `~/.profile`
   - does not exist by default so you must create it
+
+## Debugging
+
+### Enable Debug Messages
+
+- `.wslconfig`: enable WSL2 instance's debug console displaying `dmesg` output
+  
+  ```ini
+  [wsl2]
+  debugConsole=true
+  ```
+
+- `wsl.exe dmesg`: manually dump `dmesg` output
+
+### Strace Failing Command
+
+- Run the failing command under [strace](http://manpages.ubuntu.com/manpages/wily/man1/strace.1.html).  Normal command structure is:
+  
+  ```bash
+  strace -ff <command>
+  ```
+  
+   > 
+   > \[!note\] `strace` can produce lengthy output. If the generated trace is more than about 20 lines please paste this into a [Gist](https://gist.github.com/) or another paste service and link in the bug.
+
+- Example
+  
+  ```bash
+  $ strace traceroute www.microsoft.com
+  execve("/usr/bin/traceroute", ["traceroute", "www.microsoft.com"], [/* 22 vars */]) = 0
+  brk(0)                                  = 0x7fffdd3bc000
+  access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+  mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f1f4e820000
+  access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+  ...
+  ...
+  ...
+  ```
+
+### Networking Issues
+
+- Run [networking.bat](https://github.com/Microsoft/WSL/blob/master/diagnostics/networking.bat) in an administrative command prompt:
+  
+  ```batch
+  git clone https://github.com/microsoft/WSL --depth=1 %tmp%\WSL
+  cd %tmp%\WSL\diagnostics
+  networking.bat
+  ```
+
+- Once the script execution is completed, include **both** its output and the generated log file, `wsl.etl` on the issue.
+
+### Collect WSL Logs
+
+- To collect WSL logs, download and execute [collect-wsl-logs.ps1](https://github.com/Microsoft/WSL/blob/master/diagnostics/collect-wsl-logs.ps1) in an administrative powershell prompt:
+  ```powershell
+  Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/WSL/master/diagnostics/collect-wsl-logs.ps1" -OutFile collect-wsl-logs.ps1
+  Set-ExecutionPolicy Bypass -Scope Process -Force
+  .\collect-wsl-logs.ps1
+  ```
+
+- The script will output the path of the log file once done
+
+### Collect WSL Crashdump
+
+Easiest way to introspect WSL process crash is by [collecting a user-mode crash dump](https://learn.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps).
+
+- To enable automatic crash dumps, run the following commands in an elevated command prompt:
+  
+  ```batch
+  md C:\crashes
+  reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /f
+  reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpFolder /t REG_EXPAND_SZ /d C:\crashes /f
+  reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpType /t REG_DWORD /d 2 /f
+  ```
+
+- Crash dumps will then automatically be written to C:\crashes.
+
+- Once you're done, crash dump collection can be disabled by running the following command in an elevated command prompt:
+  
+  ```batch
+  reg.exe delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /f
+  ```
+
+### Collect wslservice Time Travel Trace
+
+To collect time travel debugging traces:
+
+- [Install Windbg preview](https://apps.microsoft.com/store/detail/windbg-preview/9PGJGD53TN86?hl=en-us&gl=us&rtc=1)
+- Open windbg preview as administrator by running `windbgx` in an elevated command prompt
+- Navigate to `file` -> `Attach to process`
+- Check `Record with Time Travel Debugging` (at the bottom right)
+- Check `Show processes from all users` (at the bottom)
+- Select `wslservice.exe`. Note, if wslservice.exe is not running, you make it start it with: `wsl.exe -l`
+- Click `Configure and Record` (write down the folder you chose for the traces)
+- Reproduce the issue
+- Go back to windbg and click `Stop and Debug`
+- Once the trace is done collecting, click `Stop Debugging` and close Windbg
+- Go to the folder where the trace was colleced, and locate the .run file. It should look like: `wslservice*.run`
+- Share that file on the issue
