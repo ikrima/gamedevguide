@@ -29,7 +29,8 @@
 |[`curlie`](https://github.com/rs/curlie)|power of `curl`, the ease of use of `httpie`|
 |[`xh`](https://github.com/ducaale/xh)|performance focused alternative of `httpie`|
 |[`zoxide`](https://github.com/ajeetdsouza/zoxide)|smarter `cd` command inspired by `z`|
-|[`dog`](https://github.com/ogham/dog)|user-friendly command-line DNS client. `dig` on steroids|
+|[`micro`](https://github.com/zyedidia/micro)|modern terminal text editor|
+|[`nnn`](https://github.com/jarun/nnn)|fast lean terminal file manager|
 
 |Help Tools||
 |----------|--|

@@ -288,12 +288,31 @@ netstat -ie
     systemctl is-failed [service]
     systemctl list-dependencies [service]
     ```
+
+## Diagnostics
+
+- `syslog`: a protocol for transferring log messages
+- `dmesg`: command that prints kernel logs
+  ```bash
+  dmesg -H         # command that prints kernel logs
+  ```
+
+- journalctl: service that collects logs from `systemd`
+  ```bash
+  journalctl                              # all boot log entries
+  journalctl -k                           # all boot kernel entries
+  journalctl -b                           # current boot entries
+  journalctl -b -k                        # current boot kernel entries
+  journalctl -b --priority=err            # all error or higher logs since last boot
+  journalctl -b --priority=err..warning   # all warning to notice since last boot
   
-  - viewing basic log information
-    
-    ```bash
-    journalctl       # all boot log entries
-    journalctl -k    # all boot kernel entries
-    journalctl -b    # current boot entries
-    journalctl -b -k # current boot kernel entries
-    ```
+  # Log Levels
+  #  emerg (0): system is unusable
+  #  alert (1): action must be taken immediately
+  #   crit (2): critical conditions
+  #    err (3): error conditions
+  #   warn (4): warning conditions
+  # notice (5): normal but significant condition
+  #   info (6): informational
+  #  debug (7): debug-level messages
+  ```
