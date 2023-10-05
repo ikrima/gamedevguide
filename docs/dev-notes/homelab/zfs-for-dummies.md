@@ -391,7 +391,7 @@ If any of the file systems fail to unmount you can forcefully unmount them by us
 
 #### 1.7.Destroying/Deleting Pools
 
-We can use the `zfs destroy` command to delete pools and all it’s child datasets and/or volumes.
+We can use the `zpool destroy` command to delete pools and all its child datasets and/or volumes.
 
 ⚠️ **WARNING:** _This will delete all your data, including any snapshots your may have._
 
