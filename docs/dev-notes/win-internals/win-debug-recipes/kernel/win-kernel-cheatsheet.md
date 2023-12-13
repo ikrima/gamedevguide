@@ -8,6 +8,8 @@ Use these repositories to get a sense of what windows might be doing underneath 
 - [WineHQ](https://www.winehq.org/)
 - [Undocumented NT Internals](http://undocumented.ntinternals.net/): outdated but useful for historical context
 - [OSR Community](https://www.osr.com/developer-community/)
+- [vergiliusproject](https://www.vergiliusproject.com/): collection of kernel structures/unions/enumerations, most not officially documented/WDK headers
+- [terminus (unmaintained)](http://terminus.rewolf.pl/terminus/): automatically generated diff of Windows structures with nice presentation layer
 
 ## Windows Kernel Syscall Notes
 

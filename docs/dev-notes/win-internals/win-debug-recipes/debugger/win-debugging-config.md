@@ -17,6 +17,19 @@
     - `1`: enable auto invoke and hide user interaction dialog
   - _**`.\AutoExclusionList\[ExeName]=dword:00000001` value:**_ exclude `[ExeName]` from automatic debugging e.g.
     - `"DWM.exe"=dword:00000001`
+  - **`AeDebug` default registry entries**
+    ```txt
+    HKEY_LOCAL_MACHINE
+      SOFTWARE
+        Microsoft
+          Windows NT
+            CurrentVersion
+              AeDebug
+                Auto = 1
+                AutoExclusionList
+                  DWM.exe = 1
+    ```
+
 - [(Reference)](https://learn.microsoft.com/en-us/windows/win32/debug/configuring-automatic-debugging)
 
 ## Windows Debugging Tips
