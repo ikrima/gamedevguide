@@ -122,7 +122,7 @@
   |`ignoredPorts` **|`null`|(if `experimental.networkingMode=mirrored`) specifies bindable ports for Linux apps even if ports under active use by Windows (e.g. `3000,9000,9090`); enables unblocking apps using a port for purely Linux side traffic. Ex: port `53` for _Linux Docker Desktop_|
   |`hostAddressLoopback` **|`false`|(if `experimental.networkingMode=mirrored`) enables additional local IP address assigned to Host; allows connectivity Container to Host, or Host to Container|
   
-  - `path` values must be escaped Windows paths  e.g: `C:\\Temp\\myCustomKernel`
+  - `path` values must be escaped Windows paths e.g: `C:\\Temp\\myCustomKernel`
   - `size` values must be a size followed by a unit e.g. `8GB` or `512MB`
   - `*` only for Windows 11
   - `**` only for [Windows Insiders Program](https://www.microsoft.com/windowsinsider/)
@@ -132,12 +132,62 @@
 - `%USERPROFILE%/.wslgconfig`: _**global**_ settings for WSLg
   - [WSLg Configuration/Debug Options](https://github.com/microsoft/wslg/wiki/WSLg-Configuration-Options-for-Debugging)
 
-## X11
+## X Window System
 
-### Overview
+### Terminology
+
+![](../_assets/linux/x11-arch-overview.png)
+
+- `Window System`:       provides an interface between keyboard, mouse, gpu and monitor
+- `Window Manager`:      responsible for window layout, moving, resizing
+- `Desktop Environment`: responsible for common graphical UI elements (e.g. icons, toolbars, wallpapers) through bundle components/applications meant to work with each other
+- `Display Manager`:     graphical login manager responsible for starting login session
+- `Session Manager`:     responsible for persisting/restoring _desktop session state_ i.e. state of window manager/running applications
+
+### Window System vs Window Manager vs Desktop Environment
+
+_ELI5_ from [source](https://old.reddit.com/r/linuxquestions/comments/8euccd/what_is_the_difference_between_a_window_system_eg/dxye6of/)
+
+- _**Window System**_ (`Xorg`/`Wayland`) talking to _**Kernel**_:
+  
+  - The entire screen is mine now
+  - Only I can draw to it
+  - Put it in pretty color mode
+  - The entire mouse and keyboard is mine now
+  - Only tell me if the mouse or keyboard does anything
+- _**Programs**_ talking to _**Window System**_:
+  
+  - Give me a square of screen to draw on
+  - How big is that square?
+  - Put a white box in that screen square
+  - Put a black line in that square
+  - Did the mouse just click in my square
+  - Where did it click
+  - How long for
+  - Did it move while it was clicked
+- _**Window Manager**_ (`i3`/`awesome`) talking to _**Window System**_:
+  
+  - When you make a square for a program, make a extra bit at the top
+  - When the mouse clicks and drags that extra bit, move the entire square
+  - Put an X in that extra bit
+  - If the mouse clickes that X tell the program to stop, and then delete it's square
+  - Put an empty box in that extra bit
+  - When the mouse clicks that empty box in the extra bit, make the square as BIG as you can
+  - Let's pretend there is a line arround the programs square
+  - If the mouse clicks and drags that line, change the size of the square, and tell the program it's a different size now
+  - Maybe put the title of the program in human words in the extra bit too, humans like that
+- _**Desktop Environment**_ (`kde`/`gnome`) talking to _**Window System**_:
+  
+  - Draw loads of pretty little pictures on the screen, but behind everything else
+  - This picture is a planet with a fox arround it
+  - Put the human word 'firefox' under that picture
+  - If the mouse clicks twice really fast on that picture, tell me, and I can start the /usr/bin/firefox program
+  - HEY, if the mouse ever clicks twice on a picture that is a file, not a program, let me know, I can find the program the mouse needs to open that file
+  - Hey, if the user ever taps the `super` key on the keyboard, let's move ALL the windows side by side, so the mouse can choose the one it wants
+
+### X11
 
 - `X11`: client-server system for managing GUI using `X protocol` [(reference)](https://goteleport.com/blog/x11-forwarding/)
-  ![](../_assets/linux/x11-program.png)
   
    > 
    > \[!warning\] `X Server` runs on _**physical/local user machine**_; `X Client` runs on _**server/remote machine**_
@@ -158,6 +208,8 @@
   - `unix`/`tcp socket` associated to display:
     - `hostname:n`      -> `localhost:6000+n`
     - `hostname/unix:n` -> `/tmp/.X11-unix/Xn`
+
+![X11 Architecture details](../_assets/linux/x11-arch-detailed.png)
 
 ### X11 Startup files
 
