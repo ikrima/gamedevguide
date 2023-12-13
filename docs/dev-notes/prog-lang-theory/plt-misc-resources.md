@@ -1,5 +1,6 @@
 # Programming Language Theory: Misc Resources
 
+- [awesome compilers](https://github.com/aalhour/awesome-compilers)
 - [Very Thorough Link Dump](https://wiki.nikitavoloboev.xyz/compilers)
 - [YAIR](https://github.com/sheredom/yair): Yet Another Intermediate Representation from @sheredom/Neil Henning (Unity compiler)
 - [Resources for Amateur Compiler Writers](https://c9x.me/compile/bib/)
@@ -13,6 +14,6 @@
   - <http://mlton.org/pipermail/mlton/2003-January/023054.html>
 - [JIT in python](https://csl.name/post/python-jit/)
 - Interpreter
-  <https://francisstokes.wordpress.com/2017/08/16/programming-language-from-scratch/>
-  <https://github.com/Lel-Language/Lisp-esque-language>
+  - <https://francisstokes.wordpress.com/2017/08/16/programming-language-from-scratch/>
+  - <https://github.com/Lel-Language/Lisp-esque-language>
 - [Category Theory in 15 minutes](http://chrislambda.github.io/blog/2014/01/30/catamorphisms-in-15-minutes/)

@@ -35,13 +35,6 @@
      > |`gdrv`,`gdrv2`|GigaByte software, 2nd worse after ASUS, remove everything. Known to cause BSODs|
      > |`NTIOLib_MSISimple_OC`,`NTIOLib_OCKit`,`MSI Command Center`|not the worst but hitting performances. Remove all MSI software, you can do the same without usually. Nice to change options without rebooting but then once done disable the driver|
      > |`NPF*`,`Network Packet Filter drivers`|used by many network utils (e.g. PowerLine adapters, etc) so must check if needed; can always disable/re-enable on-demand instead of deleting|
-     > |`AMDRyzenMasterDriverV*`|seems latest versions are less dangerous and gets uninstalled, anyway better to remove RM unless you have gun pointed at your head|
-     > |`AsrDrv*`|ASRock drivers, anything ASRock should be removed; literally banned as it provides [full kernel access](https://github.com/stong/CVE-2020-15368)|
-     > |`Asusgio2`|anything ASUS should be removed, the worst. If you have ROG peripherals you may need to keep the ROG drivers. Armoury-Crate software is a virus-like, will cause BSOD and all sort of issues, stay away|
-     > |`EneIo`,`EneTechIo`,`*Io64.sys`|RGB software drivers usually terrible written, suffering from performance **and** serious security holes|
-     > |`gdrv`,`gdrv2`|GigaByte software, 2nd worse after ASUS, remove everything. Known to cause BSODs|
-     > |`NTIOLib_MSISimple_OC`,`NTIOLib_OCKit`,`MSI Command Center`|not the worst but hitting performances. Remove all MSI software, you can do the same without usually. Nice to change options without rebooting but then once done disable the driver|
-     > |`NPF*`,`Network Packet Filter drivers`|used by many network utils (e.g. PowerLine adapters, etc) so must check if needed; can always disable/re-enable on-demand instead of deleting|
     
     - Application Drivers: usually fine since they should only be loaded on demand on app start (e.g. CPU-z,HWInfo,GPU-z,)
     - HW drivers: dangerous as can  can cause your system to stop booting; always use system snapshots
@@ -194,7 +187,7 @@
     ```batch
     driverquery /V
     pnputil /enum-drivers
-    pnputil /enum-devices 
+    pnputil /enum-devices
     pnputil /enum-interfaces
     ```
 

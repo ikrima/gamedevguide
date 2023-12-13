@@ -27,7 +27,7 @@
 |||
 |`conda install PKGNAME==3.1.4`|install specific package|
 |`conda install --file requirements.txt`|install from requirements file|
-|`conda update conda`|update conda|
+|`conda update conda`|update conda base|
 |`conda update python`|update python version|
 |`conda update anaconda`|update all packages to latest stable + compatible version of Anaconda|
 |`conda update -n base conda`|update base conda environment|
@@ -62,7 +62,7 @@
 |Managing Packages||
 |||
 |`mamba install -n <ENV> <PKG>`|install package|
-|`mamba update -n base mamba`|updating mamba|
+|`mamba update -n base mamba`|update mamba base|
 |`mamba update -n <ENV> --all`|update package|
 |`mamba remove -n <ENV> <PKG>`|removing a package|
 |`mamba repoquery search <PKG>`|finding a package|
