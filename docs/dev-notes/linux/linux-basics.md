@@ -2,34 +2,37 @@
 
 ## Resources
 
-- [Introduction to Linux Technology and Philosophy by Jeremy Hajek](../_assets/intro-to-linux-tech-philosophy.pdf)
-  - [github source](https://github.com/jhajek/Linux-text-book-part-1)
-- [The Linux Command Line by William Shotts](../_assets/linux-command-line.pdf)
-- [Bite Size Linux by Julia Evans](../_assets/bite-size-linux.pdf)
-- [DigitalOcean Linux Basics Tutorials](https://www.digitalocean.com/community/tutorials?q=%5BLinux%20Basics%5D)
-  - [Introduction to Linux Basics](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-basics)
-  - [Linux Command Line Primer](https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer)
-  - [How To Use ps, kill, and nice to Manage Linux Processes](https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux)
-
-### Communities
-
-- [linux4noobs](https://old.reddit.com/r/linux4noobs/)
-- [bashonubuntuonwindows](https://old.reddit.com/r/bashonubuntuonwindows/)
-
-### Manuals
-
-- [ManKier](https://www.mankier.com/): concise pretty man pages with an API
-- [explainshell](https://explainshell.com/): match command-line arguments to their help text
-- [tldr pages](https://tldr.sh/): more concise man pages
-- [manned](https://manned.org/): man page versions across a range of distributions
-- [ubuntu](https://manpages.ubuntu.com/): ubuntu man pages and documentation
-
 ### Guides
 
 - [The Art of the Command Line](./art-of-command-line): one-sheet condensed linux study guide
 - [Ubuntu Community Documentation](https://help.ubuntu.com/community/CommunityHelpWiki): useful beginner series
 - [Ultimate Linux Guide for Windows users](https://www.dedoimedo.com/computers/ultimate-linux-guide-for-windows-users.html)
 - [Learning the Shell](https://linuxcommand.org/)
+- [DigitalOcean Linux Basics Tutorials](https://www.digitalocean.com/community/tutorials?q=%5BLinux%20Basics%5D): beginner oriented tutorials
+  - [Introduction to Linux Basics](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-basics)
+  - [Linux Command Line Primer](https://www.digitalocean.com/community/tutorials/a-linux-command-line-primer)
+  - [How To Use `ps`, `kill`, `nice` to Manage Linux Processes](https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux)
+
+### References
+
+- [commandlinefu](https://www.commandlinefu.com/commands/browse/sort-by-votes): command-line gems/one liners
+- [archlinux wiki](https://wiki.archlinux.org): unusually comprehensive with high signal/noise ratio
+- [Introduction to Linux Technology and Philosophy by Jeremy Hajek](../_assets/intro-to-linux-tech-philosophy.pdf): [(github source)](https://github.com/jhajek/Linux-text-book-part-1)
+- [The Linux Command Line by William Shotts](../_assets/linux-command-line.pdf)
+- [Bite Size Linux by Julia Evans](../_assets/bite-size-linux.pdf)
+- Help/Manuals
+  - [ManKier explain](https://www.mankier.com/): concise pretty man pages with an API
+  - [explainshell](https://explainshell.com/): match command-line arguments to their help text
+  - [tldr pages](https://tldr.sh/): more concise man pages
+  - [manned](https://manned.org/): man page versions across a range of distributions
+  - [ubuntu](https://manpages.ubuntu.com/): ubuntu man pages and documentation
+
+### Communities
+
+- [/r/linux4noobs](https://old.reddit.com/r/linux4noobs/)
+- [/r/bashonubuntuonwindows](https://old.reddit.com/r/bashonubuntuonwindows/)
+- [/r/linuxquestions](https://old.reddit.com/r/linuxquestions)
+- [askubuntu](https://askubuntu.com/)
 
 ### Tools
 

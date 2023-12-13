@@ -1,10 +1,21 @@
 # Modern Linux Tools
 
-|Tool Alternative|[(reference)](https://github.com/ibraheemdev/modern-unix)|
-|----------------|-----------|
+## Other Resources
+
+- [modern unix](https://github.com/ibraheemdev/modern-unix): modern/faster/saner alternatives to common unix commands
+- [new(ish) command line tools](https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/)
+- [book of secret knowledge](https://github.com/trimstray/the-book-of-secret-knowledge): various materials/cheatsheets/tools
+- [awesome linux software](https://github.com/luong-komorebi/Awesome-Linux-Software): awesome list of linux apps
+- [archlinux utilities](https://wiki.archlinux.org/title/List_of_applications/Utilities): comprehensive list with descriptions
+
+## CLI Replacements
+
+|||
+|--|--|
 |[`bat`](https://github.com/sharkdp/bat)|`cat` clone with syntax highlighting and `git` integration|
-|[`exa`](https://github.com/ogham/exa)|modern replacement for `ls`|
-|[`lsd`](https://github.com/Peltoche/lsd)|next gen replacement for `ls`, backwards compatible|
+|[`exa`](https://github.com/ogham/exa)|modern replacement for `ls`/`tree`, not maintained|
+|[`eza`](https://github.com/eza-community/eza/)|modern `ls`/`tree` based on `exa` fork|
+|[`lsd`](https://github.com/Peltoche/lsd)|next gen `ls`, backwards compatible|
 |[`delta`](https://github.com/dandavison/delta)|viewer for `git` and `diff` output|
 |[`ncdu`](https://dev.yorhel.nl/ncdu)|intuitive `du` with ncurses interface|
 |[`dust`](https://github.com/bootandy/dust)|more intuitive version of `du` written in rust|
@@ -32,15 +43,25 @@
 |[`micro`](https://github.com/zyedidia/micro)|modern terminal text editor|
 |[`nnn`](https://github.com/jarun/nnn)|fast lean terminal file manager|
 
-|Help Tools||
-|----------|--|
+## New CLI tools
+
+|||
+|--|--|
+|[`up`](https://github.com/akavel/up)|pipes with instant live preview|
+
+## Help Tools
+
+|||
+|--|--|
 |[`ManKier`](https://www.mankier.com/)|explain shell command with concise pretty man pages|
 |[`tldr`](https://github.com/tldr-pages/tldr)|concise `man` pages with practical examples|
 |[`tealdeer`](https://github.com/dbrgn/tealdeer)|`tldr` fast rust implementation|
 |[`explainshell`](https://explainshell.com/)|match command-line arguments to their help text|
-|[`cheat.sh`](https://cheat.sh/)|unified cheatsheets, including tldr-pages|
+|[`cheat.sh`](https://cheat.sh/)|unified `cheatsheets` with `tldr` pages|
 
-|GUI Tools||
-|---------|--|
+## GUI Tools
+
+|||
+|--|--|
 |[`baobab`](https://gitlab.gnome.org/GNOME/baobab)|gui disk usage analyzer|
 |[`stacer`](https://github.com/oguzhaninan/Stacer)|gui system optimizer/monitoring|

@@ -46,6 +46,14 @@
   git clone --config core.autocrlf=false https://github.com/batiati/mustache-zig
   ```
 
+- **Re-normalize line-endings**
+  
+  ```bash
+  git add --renormalize .
+  git status
+  git commit -m "Introduce end-of-line normalization"
+  ```
+
 - **Shallow clone** [(Reference)](https://stackoverflow.com/questions/2144406/how-to-make-shallow-git-submodules/17692710#17692710)
   
   ```bash
