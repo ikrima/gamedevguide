@@ -481,7 +481,7 @@ else
 fi
 ```
 
-### Arguments
+## Positional Parameters
 
 |Expression|Description|
 |----------|-----------|
@@ -492,8 +492,46 @@ fi
 |`$_`|Last argument of the previous command|
 
  > 
- > \[!note\] `$@` and `$*` must be quoted in order
- > Otherwise, they do exactly the same thing (arguments as separate strings)
+ > \[!note\] `$@` and `$*` must be quoted; unquoted behavior is exactly the same i.e. args as separate strings
+
+### `$@` vs `$*` Example
+
+```bash
+print_params() { 
+  echo "\$1 = $1"
+  echo "\$2 = $2"
+  echo "\$3 = $3"
+  echo "\$4 = $4"
+}
+pass_params() {
+  echo -e "\n" '$* =>';   print_params $*
+  echo -e "\n" '"$*" =>'; print_params "$*"
+  echo -e "\n" '$@ =>';   print_params $@
+  echo -e "\n" '"$@" =>'; print_params "$@"
+}
+
+pass_params "word" "words with spaces"
+$* =>
+  $1 = word
+  $2 = words
+  $3 = with
+  $4 = spaces
+"$*" =>
+  $1 = word words with spaces
+  $2 =
+  $3 =
+  $4 =
+$@ =>
+  $1 = word
+  $2 = words
+  $3 = with
+  $4 = spaces
+"$@" =>
+  $1 = word
+  $2 = words with spaces
+  $3 =
+  $4 =
+```
 
 ### Special Parameters
 
