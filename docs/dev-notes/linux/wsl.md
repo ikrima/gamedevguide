@@ -89,8 +89,8 @@
 
 - `%USERPROFILE%/.wslconfig`: _**global**_ settings for WSL2
   
-  |`[wsl2]` section setting|default|notes|
-  |------------------------|-------|-----|
+  |`[wsl2]` section|default|notes|
+  |----------------|-------|-----|
   |`kernel`|Microsoft built kernel provided inbox|absolute Windows path to a custom Linux kernel|
   |`memory`|50% Windows total memory capped at 8GB|WSL2 VM memory allocation|
   |`processors`|Windows logical processors count|WSL2 VM logical processors count|
@@ -105,9 +105,27 @@
   |`nestedVirtualization`\*|`true`|enable other nested VMs to run inside WSL2|
   |`vmIdleTimeout`\*|`60000`|WSL2 VM idle milliseconds before it is shut down|
   
+  |`[experimental]` section|default|opt-in previews of experimental features|
+  |------------------------|-------|----------------------------------------|
+  |`autoMemoryReclaim`|`disabled`|Automatically releases cached memory after detecting idle CPU usage. Set to `gradual` for slow release, and `dropcache` for instant release of cached memory|
+  |`sparseVhd`|`false`|When set to true, any newly created VHD will be set to sparse automatically|
+  |`networkingMode`\*\*|`NAT`|If the value is `mirrored` then this turns on mirrored networking mode. Default or unrecognized strings result in NAT networking|
+  |`firewall`\*\*|`false`|Setting this to true allows the Windows Firewall rules, as well as rules specific to Hyper-V traffic, to filter WSL network traffic|
+  |`dnsTunneling`\*\*|`false`|Changes how DNS requests are proxied from WSL to Windows|
+  |`autoProxy`\*|`false`|Enforces WSL to use Windows’ HTTP proxy information|
+  
+  |`[experimental]` section|default|configures aspects of the experimental settings|
+  |------------------------|-------|-----------------------------------------------|
+  |`useWindowsDnsCache` **|`false`|(if `experimental.dnsTunneling=true`) DNS requests tunneled from Linux will bypass cached names within Windows to always put the requests on the wire|
+  |`bestEffortDnsParsing` **|`false`|(if `experimental.dnsTunneling=true`) Windows will extract the question from the DNS request and attempt to resolve it, ignoring the unknown records|
+  |`initialAutoProxyTimeout` *|`1000`|(if `experimental.autoProxy=true`) configures WSL wait milliseconds timeout for retrieving HTTP proxy information when starting a WSL container|
+  |`ignoredPorts` **|`null`|(if `experimental.networkingMode=mirrored`) specifies bindable ports for Linux apps even if ports under active use by Windows (e.g. `3000,9000,9090`); enables unblocking apps using a port for purely Linux side traffic. Ex: port `53` for _Linux Docker Desktop_|
+  |`hostAddressLoopback` **|`false`|(if `experimental.networkingMode=mirrored`) enables additional local IP address assigned to Host; allows connectivity Container to Host, or Host to Container|
+  
   - `path` values must be escaped Windows paths  e.g: `C:\\Temp\\myCustomKernel`
   - `size` values must be a size followed by a unit e.g. `8GB` or `512MB`
   - `*` only for Windows 11
+  - `**` only for [Windows Insiders Program](https://www.microsoft.com/windowsinsider/)
 
 ### .wslgconfig
 
