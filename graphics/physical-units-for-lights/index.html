@@ -15129,7 +15129,7 @@
         
   
   <span class="md-ellipsis">
-    TODO
+    Volume Rendering Zoo
   </span>
   
 
@@ -17046,7 +17046,7 @@
 
 
 <h1 id="physical-units-for-lights">Physical Units for Lights<a class="headerlink" href="#physical-units-for-lights" title="Permanent link">#</a></h1>
-<p><a href="http://www.realtimerendering.com/blog/physical-units-for-lights">Original</a> from Eric Haines; cached here locally for offline reference</p>
+<p><a href="https://www.realtimerendering.com/blog/physical-units-for-lights">Original</a> from Eric Haines; cached here locally for offline reference</p>
 <p>I expect most of us have a passing knowledge of physical units for lights. We have some sense of what lumens and candelas are about, we’ve maybe heard of nits with regard to our monitors, and <em>maybe</em> have a vague sense of what lux is about. This was, at least, my level of understanding for the past lessee 38 years I’ve been in the field of computer graphics. My usual attitude with lights was (and still is, most of the time), “make them brighter” if the scene is too dim. That’s all most of us normally need, to be honest.</p>
 <p>These past months I’ve been learning a fair bit about this area, as proper specification of lights is critical if you want to, for example, move a fully modeled scene from one application to another, or are merging real-world data with synthetic. APIs and programs with “0.7” or “90% brightness” or other relative units don’t hack it, as they are not anchored to any physical meaning. So, here’s my summary of the four main light units, with others mentioned along the way. My focus is on the practical, real-world use of these units. Some of this knowledge was hard won, for me. Lux, in particular, is a term where I have been misled by many pages on the internet that attempt to define it. My thanks to Luca Fascione and Anders Langlands in particular for correcting me along the way. I may still have a bug or two in this post (though am trying hard not to), so tell me if I do and I’ll fix it: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#114;&#105;&#99;&#104;&#64;&#97;&#99;&#109;&#46;&#111;&#114;&#103;">&#101;&#114;&#105;&#99;&#104;&#64;&#97;&#99;&#109;&#46;&#111;&#114;&#103;</a>.</p>
 <p>The PBR book <a href="https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry">gives the textbook basics</a>, starting with radiometric units and going on to photometric. Here’s <a href="https://www.pbr-book.org/3ed-2018/Color_and_Radiometry/Radiometry#LuminanceandPhotometry">their useful table</a>:</p>
@@ -17075,7 +17075,7 @@
 </tr>
 <tr>
 <td>Intensity</td>
-<td>$mathrm{W} / mathrm{sr} $</td>
+<td><span class="arithmatex">\(\mathrm{W} / \mathrm{sr}\)</span></td>
 <td>Luminous intensity</td>
 <td><span class="arithmatex">\(\operatorname{lm} / \mathrm{sr}=\mathrm{candela}(\mathrm{cd})\)</span></td>
 </tr>
@@ -17089,7 +17089,7 @@
 <td>Radiance</td>
 <td><span class="arithmatex">\(\mathrm{W} / \left(\mathrm{m}^2 \mathrm{sr}\right)\)</span></td>
 <td>Luminance</td>
-<td>$operatorname{lm} / left(mathrm{m}^2 mathrm{sr}right)=mathrm{cd} / mathrm{m}^2=mathrm{nit} $</td>
+<td><span class="arithmatex">\(\operatorname{lm} / \left(\mathrm{m}^2 \mathrm{sr}\right)=\mathrm{cd} / \mathrm{m}^2=\mathrm{nit}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -17151,7 +17151,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-17</span>
   </span>
 
     

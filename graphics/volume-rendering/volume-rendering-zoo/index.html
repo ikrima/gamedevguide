@@ -26,7 +26,7 @@
     
     
       
-        <title>TODO - Gamedev Guide</title>
+        <title>Volume Rendering Zoo - Gamedev Guide</title>
       
     
     
@@ -103,7 +103,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#todo" class="md-skip">
+        <a href="#volume-rendering-zoo" class="md-skip">
           Skip to content
         </a>
       
@@ -137,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TODO
+              Volume Rendering Zoo
             
           </span>
         </div>
@@ -15130,7 +15130,7 @@
           
   
   <span class="md-ellipsis">
-    TODO
+    Volume Rendering Zoo
   </span>
   
 
@@ -15141,7 +15141,7 @@
         
   
   <span class="md-ellipsis">
-    TODO
+    Volume Rendering Zoo
   </span>
   
 
@@ -15166,15 +15166,6 @@
   <a href="#techniques" class="md-nav__link">
     <span class="md-ellipsis">
       Techniques
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tasks
     </span>
   </a>
   
@@ -17081,15 +17072,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tasks
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -17121,7 +17103,7 @@
   
 
 
-<h1 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link">#</a></h1>
+<h1 id="volume-rendering-zoo">Volume Rendering Zoo<a class="headerlink" href="#volume-rendering-zoo" title="Permanent link">#</a></h1>
 <h2 id="techniques">Techniques<a class="headerlink" href="#techniques" title="Permanent link">#</a></h2>
 <ul>
 <li>Reference pathtrace/raymarch</li>
@@ -17146,37 +17128,41 @@
 <p>Precomputed Radiance Transfer for Volume Rendering</p>
 </li>
 <li>Do it inside the volume</li>
-<li>Can also do it on the surface and tangent basis (use burley's normalized diffusion profile as it provides super simple artistic control)<ul>
+<li>
+<p>Can also do it on the surface and tangent basis (use burley's normalized diffusion profile as it provides super simple artistic control)</p>
+<ul>
 <li>Reference: Approximate Reflectance Profiles for Efficient Subsurface Scattering</li>
 <li>Reference: <em>Extending the Disney BRDF to a BSDF with Integrated Subsurface Scattering</em></li>
 </ul>
 </li>
-</ul>
-<ol>
-<li>Multiple Scattering approximations<br />
-   - Contrast approximation for art directable multiple scattering<ul>
-<li><a href="http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf">http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf</a></li>
-<li><a href="http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf">http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf</a></li>
+<li>
+<p>Multiple Scattering approximations</p>
+</li>
+<li>
+<p>Contrast approximation for art directable multiple scattering</p>
+<ul>
+<li><a href="https://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf">Oz: The Great and Volumetric</a></li>
+<li><a href="https://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf">Art-Directable Multiple Volumetric Scattering</a></li>
 <li>Technique is basically exponentiation of single scattering with multiple octaves</li>
 <li>Must make sure <span class="arithmatex">\(a \leq b\)</span> to be energy conserving<br />
-   $$<br />
-   left(x, omega_{i}right)=sum_{0}^{(N-1)} L operatorname{scat}left(x, omega_{i}right) \<br />
-   begin{aligned} sigma_{s}^{prime} &amp;=sigma_{s} times a^{n} \<br />
-   sigma_{e}^{prime} &amp;=sigma_{e} times b^{n} \<br />
-   p^{prime}(theta) &amp;=pleft(theta times c^{n}right) end{aligned}<br />
-   $$</li>
+  $$<br />
+  left(x, omega_{i}right)=sum_{0}^{(N-1)} L operatorname{scat}left(x, omega_{i}right) \<br />
+  begin{aligned} sigma_{s}^{prime} &amp;=sigma_{s} times a^{n} \<br />
+  sigma_{e}^{prime} &amp;=sigma_{e} times b^{n} \<br />
+  p^{prime}(theta) &amp;=pleft(theta times c^{n}right) end{aligned}<br />
+  $$</li>
 </ul>
 </li>
-</ol>
-<ul>
-<li>Take Mean Free Path/Transport mean free path into account</li>
+<li>
+<p>Take Mean Free Path/Transport mean free path into account</p>
+</li>
 <li>The scattering mean free path is the average distance between scattering events (in biological tissues around 100 μm)</li>
 <li>The transport mean free path can be thought of as the mean distance after which a photon’s direction becomes random (in biological tissues around 1 mm)</li>
 <li>
 <p>The <strong>transport length</strong> in a strongly diffusing medium (noted l*) is the length over which the direction of propagation of the <a href="https://en.wikipedia.org/wiki/Photon">photon</a> is randomized. It is related to the <a href="https://en.wikipedia.org/wiki/Mean_free_path">mean free path</a> l by the relation</p>
 </li>
 <li>
-<p>#nicetohave Incorporate Baked VLM</p>
+<h1 id="nicetohave-incorporate-baked-vlm">NiceToHave Incorporate Baked VLM<a class="headerlink" href="#nicetohave-incorporate-baked-vlm" title="Permanent link">#</a></h1>
 </li>
 <li>VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);</li>
 <li>Radiance caching gradients</li>
@@ -17188,7 +17174,7 @@
 <li><a href="https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch22.html">https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch22.html</a></li>
 <li><a href="https://www.gamedev.net/blogs/entry/2265248-voxel-traversal-algorithm-ray-casting">https://www.gamedev.net/blogs/entry/2265248-voxel-traversal-algorithm-ray-casting</a></li>
 <li><a href="https://github.com/francisengelmann/fast_voxel_traversal">https://github.com/francisengelmann/fast_voxel_traversal</a></li>
-<li>Survey olf grid traversal: <a href="http://www.cosenza.eu/papers/CosenzaEGITA08Grid.pdf">http://www.cosenza.eu/papers/CosenzaEGITA08Grid.pdf</a></li>
+<li><a href="https://www.cosenza.eu/papers/CosenzaEGITA08Grid.pdf">Survey on Exploiting Grids for Ray Tracing</a></li>
 </ul>
 </li>
 <li>
@@ -17199,7 +17185,7 @@
 <li><a href="https://github.com/selfshadow/ltc_code">https://github.com/selfshadow/ltc_code</a></li>
 <li>GPU Zen Chapter: Linear-Light Shading with Linearly Transformed Cosines</li>
 </ul>
-<h2 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">#</a></h2>
+<h2 id="todo-tasks">Todo Tasks<a class="headerlink" href="#todo-tasks" title="Permanent link">#</a></h2>
 <ul>
 <li>Create ShowcaseZoo</li>
 <li>Reference</li>
@@ -17241,7 +17227,9 @@
 <li>Spherical Harmonics</li>
 <li>Spherical Gaussians</li>
 <li>HBasis</li>
-<li>#nicetohave Incorporate Baked VLM</li>
+<li>
+<h1 id="nicetohave-incorporate-baked-vlm_1">NiceToHave Incorporate Baked VLM<a class="headerlink" href="#nicetohave-incorporate-baked-vlm_1" title="Permanent link">#</a></h1>
+</li>
 <li>VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);</li>
 </ul>
 </li>
@@ -17314,22 +17302,30 @@
 </ul>
 </li>
 <li>
-<p>Nice2Have:</p>
+<h1 id="nicetohave">NiceToHave<a class="headerlink" href="#nicetohave" title="Permanent link">#</a></h1>
 </li>
 <li>make a UE4 HDA</li>
 <li>incorporate UE4 VLM</li>
 <li>PRT Compression: Manny Ko - Practical Spherical Harmonics Based PRT Methods</li>
 <li>Sloan - Efficient Spherical Harmonic Evaluation</li>
 <li>Noise-Resistant Fitting for Spherical Harmonics</li>
-<li>#nicetohave Volume Filtering with mips</li>
-<li>#nicetohave linear regression on basis function</li>
+<li>
+<h1 id="nicetohave-volume-filtering-with-mips">NiceToHave Volume Filtering with mips<a class="headerlink" href="#nicetohave-volume-filtering-with-mips" title="Permanent link">#</a></h1>
+</li>
+<li>
+<h1 id="nicetohave-linear-regression-on-basis-function">NiceToHave Linear Regression on Basis Function<a class="headerlink" href="#nicetohave-linear-regression-on-basis-function" title="Permanent link">#</a></h1>
+</li>
+<li>
+<h1 id="nicetohave-instant-neural-graphics-primitives-with-a-multiresolution-hash-encoding">NiceToHave Instant Neural Graphics Primitives with a Multiresolution Hash Encoding<a class="headerlink" href="#nicetohave-instant-neural-graphics-primitives-with-a-multiresolution-hash-encoding" title="Permanent link">#</a></h1>
+</li>
+<li>
+<h1 id="nicetohave-smerf-streamable-memory-efficient-radiance-fields-for-real-time-large-scene-exploration">NiceToHave SMERF: Streamable Memory Efficient Radiance Fields for Real-Time Large-Scene Exploration<a class="headerlink" href="#nicetohave-smerf-streamable-memory-efficient-radiance-fields-for-real-time-large-scene-exploration" title="Permanent link">#</a></h1>
+</li>
 </ul>
-<h1 id="notes"><strong>Notes:</strong><a class="headerlink" href="#notes" title="Permanent link">#</a></h1>
-<h2 id="channel-lighting-magik">Channel Lighting Magik<a class="headerlink" href="#channel-lighting-magik" title="Permanent link">#</a></h2>
+<h2 id="research-snippets">Research Snippets<a class="headerlink" href="#research-snippets" title="Permanent link">#</a></h2>
+<h3 id="channel-lighting-magic">Channel Lighting Magic<a class="headerlink" href="#channel-lighting-magic" title="Permanent link">#</a></h3>
 <ul>
-<li>Devon's overview of his technique</li>
-</ul>
-<blockquote>
+<li>Devon Penney's overview of his technique from Alumette<blockquote>
 <p>Right now the rays terminate with the max samples per ray, which is ~25, and in general the rays early terminate with a density close to 1. This works for my clouds because they are so dense, and most rays early terminate except for gazing angles.</p>
 <p>Try to do some experiments with straight ray marching, just for comparison. In my tests, I got nicely convergent renders with a 970 + Vive @ ~1.2ms GPU time, and some overhead for rendering the cloud shell into custom depth (.3-.4ms). There isn't much CPU overhead. This is with 25 samples per ray and my dense clouds with a 3d texture that is 950x950x600</p>
 <p>So yes, I did bake in 3 lights and denisty into the grid as a preprocess in Houdini</p>
@@ -17344,13 +17340,19 @@ VolumeRadianceAtSample = VolumeSample.r * KeyLightColor + VolumeSample.g * Multi
 <p>and I had a really good lighting artist tweak the lighting channel remapping a lot 🙂</p>
 <p>I could try to dig up the math I used too if you get stuck on the numerical integratio</p>
 </blockquote>
-<h2 id="math-reminders"><strong>Math Reminders</strong><a class="headerlink" href="#math-reminders" title="Permanent link">#</a></h2>
+</li>
+</ul>
+<h3 id="math-reminders">Math Reminders<a class="headerlink" href="#math-reminders" title="Permanent link">#</a></h3>
 <ul>
-<li>Incremental averaging:</li>
+<li><strong>Incremental averaging</strong></li>
 <li>NewAvg = OldAvg + (NewVal - OldAvg) / NewSampleCount</li>
 <li>Optimized: Avg = lerp(avg, NewVal, rcp(NewSampleCount))</li>
-<li>For calculating variance as well: <a href="https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm">https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm</a></li>
-<li>Closest Point Transform</li>
+<li>
+<p>For calculating variance as well: <a href="https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm">https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm</a></p>
+</li>
+<li>
+<p><strong>Closest Point Transform</strong></p>
+</li>
 <li>∇_sdf() is always unit vector. (SDF is 3D levleset of function embedded in 4D so all level set rules apply)</li>
 <li>Xcpt(x) = x - sdf(x) * ∇_sdf(x)</li>
 <li>Xcpt(x) =&gt; is a conservative field<ul>
@@ -17360,30 +17362,44 @@ VolumeRadianceAtSample = VolumeSample.r * KeyLightColor + VolumeSample.g * Multi
 </ul>
 </li>
 </ul>
-<p>Optimization Reminders</p>
+<h3 id="optimization-reminders">Optimization Reminders<a class="headerlink" href="#optimization-reminders" title="Permanent link">#</a></h3>
 <ul>
-<li>Optimizing Graphics Pipeline: <a href="https://www.slideshare.net/gwihlidal/optimizing-the-graphics-pipeline-with-compute-gdc-2016">https://www.slideshare.net/gwihlidal/optimizing-the-graphics-pipeline-with-compute-gdc-2016</a></li>
-<li>~.9 prim/cy is a target. 2 prims/cycle is optimistic</li>
+<li><a href="https://www.wihlidal.com/projects/fb-gdc16/">Optimizing the Graphics Pipeline with Compute</a></li>
+<li><a href="https://www.slideshare.net/gwihlidal/optimizing-the-graphics-pipeline-with-compute-gdc-2016">Presentation</a></li>
+<li><code>~0.9 prims/cycle</code> is a target</li>
+<li><code>2 prims/cycle</code> is optimistic</li>
 </ul>
-<h3 id="curve-fitting"><strong>Curve Fitting</strong><a class="headerlink" href="#curve-fitting" title="Permanent link">#</a></h3>
+<h3 id="curve-fitting">Curve Fitting<a class="headerlink" href="#curve-fitting" title="Permanent link">#</a></h3>
 <ul>
-<li>Fast Polynomial Eval</li>
-<li>Horner form for fast polynomial evaluation:<br />
+<li><strong>Fast Polynomial Eval</strong></li>
+<li>
+<p>Horner form for fast polynomial evaluation:<br />
     y = x + a*x*x*x + b*x*x*x*x*x + c*x*x*x*x*x*x*x + d*x*x*x*x*x*x*x*x*x*;* // 24 mults, 4 adds<br />
-    z = x*x; y = ((((z*d+c)*z+b)*z+a)*z+1)*x; // 2 mults, 4 madds</li>
-<li>Error metrics</li>
+    z = x*x; y = ((((z*d+c)*z+b)*z+a)*z+1)*x; // 2 mults, 4 madds</p>
+</li>
+<li>
+<p><strong>Error metrics</strong></p>
+</li>
 <li>Absolute error metric: error_abs = abs(f_actual - f_approx)<ul>
 <li>good measure of accuracy but not of importance of any error</li>
 <li>Ex: Error of 3 is fine if f(x) returns 38,000. Terrible if function returns 0.0001</li>
 </ul>
 </li>
-<li>Relative error metric: 1 - f_approx / f_abs</li>
-<li>Gaussian Quadrature</li>
-<li>Spherical Splines/Polynomials</li>
-<li>Spherical RBFs</li>
-<li>Is There Anything Comparable to Spherical Harmonics But Simpler? <a href="http://www.cs.cuhk.hk/~ttwong/papers/srbf/srbf.html">http://www.cs.cuhk.hk/~ttwong/papers/srbf/srbf.html</a><ul>
-<li><a href="http://www.cs.cuhk.hk/~ttwong/demo/srbf/srbf.html">http://www.cs.cuhk.hk/~ttwong/demo/srbf/srbf.html</a></li>
-<li><a href="http://www.cs.cuhk.hk/~ttwong">http://www.cs.cuhk.hk/~ttwong</a></li>
+<li>
+<p>Relative error metric: 1 - f_approx / f_abs</p>
+</li>
+<li>
+<p><strong>Gaussian Quadrature</strong></p>
+</li>
+<li>
+<p><strong>Spherical Splines/Polynomials</strong></p>
+</li>
+<li>
+<p><strong>Spherical RBFs</strong></p>
+</li>
+<li><a href="http://www.cs.cuhk.hk/~ttwong/papers/srbf/srbf.html">Is There Anything Comparable to Spherical Harmonics But Simpler?</a><ul>
+<li><a href="http://www.cs.cuhk.hk/~ttwong/demo/srbf/srbf.html">Demo</a></li>
+<li><a href="http://www.cs.cuhk.hk/~ttwong">Project</a></li>
 </ul>
 </li>
 <li>Von Mises Basis Functions vs Gaussian Spherical Radial Basis Functions:<ul>
@@ -17397,15 +17413,16 @@ VolumeRadianceAtSample = VolumeSample.r * KeyLightColor + VolumeSample.g * Multi
 </ul>
 </li>
 </ul>
-<h3 id="promising"><strong>Promising:</strong><a class="headerlink" href="#promising" title="Permanent link">#</a></h3>
+<h2 id="future-research">Future Research<a class="headerlink" href="#future-research" title="Permanent link">#</a></h2>
+<h3 id="promising-future-directions">Promising Future Directions<a class="headerlink" href="#promising-future-directions" title="Permanent link">#</a></h3>
 <ul>
-<li>Quantization baking: Noise-Resistant Fitting for Spherical Harmonics</li>
-<li>Gaussian Mixture Models</li>
-<li>Dynamic Diffuse Global Illumination with Ray-Traced Irradiance Fields</li>
+<li><strong>Quantization baking: Noise-Resistant Fitting for Spherical Harmonics</strong></li>
+<li><strong>Gaussian Mixture Models</strong></li>
+<li><strong>Dynamic Diffuse Global Illumination with Ray-Traced Irradiance Fields</strong></li>
 <li>Might have some utility in sampling scheme/filtering with moment based approach</li>
 <li><a href="https://devblogs.nvidia.com/dynamic-diffuse-global-illumination-part-i/">https://devblogs.nvidia.com/dynamic-diffuse-global-illumination-part-i/</a></li>
 </ul>
-<h3 id="misc-reminders"><strong>Misc reminders:</strong><a class="headerlink" href="#misc-reminders" title="Permanent link">#</a></h3>
+<h3 id="misc-thoughts">Misc Thoughts<a class="headerlink" href="#misc-thoughts" title="Permanent link">#</a></h3>
 <ul>
 <li>Extinction Transmittance Maps</li>
 <li>Deep Shadow Maps</li>
@@ -17414,21 +17431,27 @@ VolumeRadianceAtSample = VolumeSample.r * KeyLightColor + VolumeSample.g * Multi
 <li>Volumetric Billboards</li>
 <li>Interactive Light Scattering with Principal-Ordinate Propagation</li>
 <li>Try monochromatic scattering/absorption</li>
-<li>Volume Temporal Reprojection Unity implementation: <a href="http://advances.realtimerendering.com/s2018/Siggraph%202018%20HDRP%20talk_with%20notes.pdf">http://advances.realtimerendering.com/s2018/Siggraph%202018%20HDRP%20talk_with%20notes.pdf</a></li>
+<li>Volume Temporal Reprojection Unity implementation in <a href="https://advances.realtimerendering.com/s2018/Siggraph%202018%20HDRP%20talk_with%20notes.pdf">Siggraph 2018: The Road toward Unified Rendering with Unity’s High Definition Render Pipeline</a></li>
 <li>Review material</li>
 <li>Physically Based and Unified Volumetric Rendering in Frostbite: Physically Based and Unified Volumetric Rendering in Frostbite</li>
-<li>Volume Modeling and Rendering</li>
-<li><a href="https://www.scratchapixel.com/lessons/advanced-rendering/volume-rendering-for-artists">https://www.scratchapixel.com/lessons/advanced-rendering/volume-rendering-for-artists</a></li>
-<li><a href="https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf">https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf</a></li>
+<li>Volume Modeling and Rendering<ul>
+<li><a href="https://www.scratchapixel.com/lessons/advanced-rendering/volume-rendering-for-artists">Scratchapixel: Volume Rendering For Artists</a></li>
+<li><a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/volume-rendering-for-developers/intro-volume-rendering.html">Scratchapixel: Volume Rendering For Developers</a></li>
+<li><a href="https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf">Fast, Flexible, Physically-Based Volumetric Light Scattering</a></li>
+</ul>
+</li>
 <li>The Magic of Computer Graphics</li>
 <li>Dissertation - Efficient Monte Carlo Methods For Light Transport In Scattering Media</li>
 <li>Transfer Equations in Global Illumination</li>
-<li>Deep Compositing: <a href="https://zero-radiance.github.io/post/deep-compositing">https://zero-radiance.github.io/post/deep-compositing</a></li>
-<li>Spherical Harmonic Clipped integration: <a href="https://belcour.github.io/blog/research/2018/02/01/sh-integral.html">https://belcour.github.io/blog/research/2018/02/01/sh-integral.html</a></li>
-<li>Disney Subsurface Scattering Unity implementation: <a href="http://advances.realtimerendering.com/s2018/Efficient%20screen%20space%20subsurface%20scattering%20Siggraph%202018.pdf">http://advances.realtimerendering.com/s2018/Efficient%20screen%20space%20subsurface%20scattering%20Siggraph%202018.pdf</a></li>
-<li>Cone Step Relief Mapping:</li>
-<li><a href="http://www.lonesock.net/files/ConeStepMapping.pdf">http://www.lonesock.net/files/ConeStepMapping.pdf</a> <a href="https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch18.html">https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch18.html</a></li>
-<li>Hemisphere basis: A Novel HemisphericalBasisforAccurateandEfcientRendering</li>
+<li><a href="https://zero-radiance.github.io/post/deep-compositing">Deep Compositing</a></li>
+<li><a href="https://belcour.github.io/blog/research/2018/02/01/sh-integral.html">Spherical Harmonic Clipped integration</a></li>
+<li><a href="https://advances.realtimerendering.com/s2018/Efficient%20screen%20space%20subsurface%20scattering%20Siggraph%202018.pdf">Disney's Subsurface Scattering using Burley’s Normalized Diffusion implemented in Unity</a></li>
+<li>Cone Step Relief Mapping<ul>
+<li><a href="http://www.lonesock.net/files/ConeStepMapping.pdf">Cone Step Mapping: An Iterative Ray-Heightfield Intersection Algorithm</a></li>
+<li><a href="https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch18.html">GPUGems3 Chapter 18: Relaxed Cone Stepping for Relief Mapping</a></li>
+</ul>
+</li>
+<li>Hemisphere Basis: A Novel Hemispherical Basis for Accurate and Efficient Rendering</li>
 </ul>
 
 
@@ -17452,7 +17475,7 @@ VolumeRadianceAtSample = VolumeSample.r * KeyLightColor + VolumeSample.g * Multi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-17</span>
   </span>
 
     
