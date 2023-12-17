@@ -1,8 +1,6 @@
-
-# TODO
+# Volume Rendering Zoo
 
 ## Techniques
-
 - Reference pathtrace/raymarch
 - Volume Flipbook
 - Particle Rendering with Slabs sampling
@@ -26,43 +24,43 @@
     - Reference: Approximate Reflectance Profiles for Efficient Subsurface Scattering
     - Reference: _Extending the Disney BRDF to a BSDF with Integrated Subsurface Scattering_
 
-1. Multiple Scattering approximations
-   - Contrast approximation for art directable multiple scattering
-     - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf>
-     - <http://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf>
-     - Technique is basically exponentiation of single scattering with multiple octaves
-     - Must make sure $a \leq b$ to be energy conserving
-       $$
-       \left(x, \omega_{i}\right)=\sum_{0}^{(N-1)} L \operatorname{scat}\left(x, \omega_{i}\right) \\
-       \begin{aligned} \sigma_{s}^{\prime} &=\sigma_{s} \times a^{n} \\
-       \sigma_{e}^{\prime} &=\sigma_{e} \times b^{n} \\
-       p^{\prime}(\theta) &=p\left(\theta \times c^{n}\right) \end{aligned}
-       $$
+- Multiple Scattering approximations
+  - Contrast approximation for art directable multiple scattering
+    - [Oz: The Great and Volumetric](https://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-OzTheGreatAndVolumetric.pdf)
+    - [Art-Directable Multiple Volumetric Scattering](https://magnuswrenninge.com/wp-content/uploads/2010/03/Wrenninge-ArtDirectableMultipleVolumetricScattering.pdf)
+    - Technique is basically exponentiation of single scattering with multiple octaves
+    - Must make sure $a \leq b$ to be energy conserving
+      $$
+      \left(x, \omega_{i}\right)=\sum_{0}^{(N-1)} L \operatorname{scat}\left(x, \omega_{i}\right) \\
+      \begin{aligned} \sigma_{s}^{\prime} &=\sigma_{s} \times a^{n} \\
+      \sigma_{e}^{\prime} &=\sigma_{e} \times b^{n} \\
+      p^{\prime}(\theta) &=p\left(\theta \times c^{n}\right) \end{aligned}
+      $$
 
 - Take Mean Free Path/Transport mean free path into account
   - The scattering mean free path is the average distance between scattering events (in biological tissues around 100 μm)
   - The transport mean free path can be thought of as the mean distance after which a photon’s direction becomes random (in biological tissues around 1 mm)
   - The **transport length** in a strongly diffusing medium (noted l\*) is the length over which the direction of propagation of the [photon](https://en.wikipedia.org/wiki/Photon) is randomized. It is related to the [mean free path](https://en.wikipedia.org/wiki/Mean_free_path) l by the relation
 
-- \#nicetohave Incorporate Baked VLM
+- #NiceToHave Incorporate Baked VLM
   - VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);
   - Radiance caching gradients
   - A Novel Sampling Algorithm for Fast and Stable Real-Time Volume Rendering: <https://github.com/huwb/volsample>
   - Amanatide ray marching: A Fast Voxel Traversal Algorithm for Ray Tracing
     - Gives list of voxel coordinates that will be hit
-    - <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3\_ch22.html>
+    - <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch22.html>
     - <https://www.gamedev.net/blogs/entry/2265248-voxel-traversal-algorithm-ray-casting>
-    - <https://github.com/francisengelmann/fast\_voxel\_traversal>
-    - Survey olf grid traversal: <http://www.cosenza.eu/papers/CosenzaEGITA08Grid.pdf>
+    - <https://github.com/francisengelmann/fast_voxel_traversal>
+    - [Survey on Exploiting Grids for Ray Tracing](https://www.cosenza.eu/papers/CosenzaEGITA08Grid.pdf)
 
 - Linearly transformed cosines
   - Use them as a basis. Linear transform of cosine lobe (scale, skew, rotation) doesn't affect integral product and has closed form solution
   - <https://blog.magnum.graphics/guest-posts/area-lights-with-ltcs>
-  - <https://github.com/selfshadow/ltc\_code>
+  - <https://github.com/selfshadow/ltc_code>
   - GPU Zen Chapter: Linear-Light Shading with Linearly Transformed Cosines
 
-## Tasks
 
+## Todo Tasks
 - Create ShowcaseZoo
   - Reference
   - Particle Slab
@@ -93,7 +91,7 @@
       - Spherical Harmonics
       - Spherical Gaussians
       - HBasis
-    - \#nicetohave Incorporate Baked VLM
+    - #NiceToHave Incorporate Baked VLM
       - VolumetricFog.usf: LightScatteringCS() - GetVolumetricLightmapSH2(BrickTextureUVs);
 
 - Basic Scaffolding
@@ -138,21 +136,21 @@
   - Basis Func UE4 Debug Visualization
     - Peak basis function
 
-- Nice2Have:
+- #NiceToHave
   - make a UE4 HDA
   - incorporate UE4 VLM
   - PRT Compression: Manny Ko - Practical Spherical Harmonics Based PRT Methods
   - Sloan - Efficient Spherical Harmonic Evaluation
   - Noise-Resistant Fitting for Spherical Harmonics
-  - \#nicetohave Volume Filtering with mips
-  - \#nicetohave linear regression on basis function
+  - #NiceToHave Volume Filtering with mips
+  - #NiceToHave Linear Regression on Basis Function
+  - #NiceToHave Instant Neural Graphics Primitives with a Multiresolution Hash Encoding
+  - #NiceToHave SMERF: Streamable Memory Efficient Radiance Fields for Real-Time Large-Scene Exploration
 
-# **Notes:**
+## Research Snippets
 
-## Channel Lighting Magik
-
-- Devon's overview of his technique
-
+### Channel Lighting Magic
+- Devon Penney's overview of his technique from Alumette
   > Right now the rays terminate with the max samples per ray, which is ~25, and in general the rays early terminate with a density close to 1. This works for my clouds because they are so dense, and most rays early terminate except for gazing angles.
   >
   > Try to do some experiments with straight ray marching, just for comparison. In my tests, I got nicely convergent renders with a 970 + Vive @ ~1.2ms GPU time, and some overhead for rendering the cloud shell into custom depth (.3-.4ms). There isn't much CPU overhead. This is with 25 samples per ray and my dense clouds with a 3d texture that is 950x950x600
@@ -177,13 +175,13 @@
   >
   > I could try to dig up the math I used too if you get stuck on the numerical integratio
 
-## **Math Reminders**
-
-- Incremental averaging:
+### Math Reminders
+- **Incremental averaging**
   - NewAvg = OldAvg + (NewVal - OldAvg) / NewSampleCount
   - Optimized: Avg = lerp(avg, NewVal, rcp(NewSampleCount))
   - For calculating variance as well: <https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm>
-- Closest Point Transform
+
+- **Closest Point Transform**
   - ∇\_sdf() is always unit vector. (SDF is 3D levleset of function embedded in 4D so all level set rules apply)
   - Xcpt(x) = x - sdf(x) \* ∇\_sdf(x)
   - Xcpt(x) => is a conservative field
@@ -191,28 +189,32 @@
     - U(x) = 0.5 \* (|x|^2 - f^2(x))
     - Has no curl
 
-Optimization Reminders
+### Optimization Reminders
+- [Optimizing the Graphics Pipeline with Compute](https://www.wihlidal.com/projects/fb-gdc16/)
+  - [Presentation](https://www.slideshare.net/gwihlidal/optimizing-the-graphics-pipeline-with-compute-gdc-2016)
+  - `~0.9 prims/cycle` is a target
+  - `2 prims/cycle` is optimistic
 
-- Optimizing Graphics Pipeline: <https://www.slideshare.net/gwihlidal/optimizing-the-graphics-pipeline-with-compute-gdc-2016>
-  - ~.9 prim/cy is a target. 2 prims/cycle is optimistic
-
-### **Curve Fitting**
-
-- Fast Polynomial Eval
+### Curve Fitting
+- **Fast Polynomial Eval**
   - Horner form for fast polynomial evaluation:
     y = x + a\*x\*x\*x + b\*x\*x\*x\*x\*x + c\*x\*x\*x\*x\*x\*x\*x + d\*x\*x\*x\*x\*x\*x\*x\*x\*x*;* // 24 mults, 4 adds
     z = x\*x; y = ((((z\*d+c)\*z+b)\*z+a)\*z+1)\*x; // 2 mults, 4 madds
-- Error metrics
+
+- **Error metrics**
   - Absolute error metric: error_abs = abs(f_actual - f_approx)
     - good measure of accuracy but not of importance of any error
     - Ex: Error of 3 is fine if f(x) returns 38,000. Terrible if function returns 0.0001
   - Relative error metric: 1 - f_approx / f_abs
-- Gaussian Quadrature
-- Spherical Splines/Polynomials
-- Spherical RBFs
-  - Is There Anything Comparable to Spherical Harmonics But Simpler? <http://www.cs.cuhk.hk/~ttwong/papers/srbf/srbf.html>
-    - <http://www.cs.cuhk.hk/~ttwong/demo/srbf/srbf.html>
-    - <http://www.cs.cuhk.hk/~ttwong>
+
+- **Gaussian Quadrature**
+
+- **Spherical Splines/Polynomials**
+
+- **Spherical RBFs**
+  - [Is There Anything Comparable to Spherical Harmonics But Simpler?](http://www.cs.cuhk.hk/~ttwong/papers/srbf/srbf.html)
+    - [Demo](http://www.cs.cuhk.hk/~ttwong/demo/srbf/srbf.html)
+    - [Project](http://www.cs.cuhk.hk/~ttwong)
   - Von Mises Basis Functions vs Gaussian Spherical Radial Basis Functions:
     - A Comparison of the von Mises and Gaussian Basis Functions for Approximating Spherical Acoustic Scatter
     - 3 orders of magnitude better than guassian
@@ -220,16 +222,16 @@ Optimization Reminders
     - All-Frequency Precomputed Radiance Transfer using Spherical RadialBasis Functions and Clustered Tensor Approximation
     - <https://mynameismjp.wordpress.com/2016/10/09/sg-series-part-1-a-brief-and-incomplete-history-of-baked-lighting-representations>
 
-### **Promising:**
+## Future Research
 
-- Quantization baking: Noise-Resistant Fitting for Spherical Harmonics
-- Gaussian Mixture Models
-- Dynamic Diffuse Global Illumination with Ray-Traced Irradiance Fields
+### Promising Future Directions
+- **Quantization baking: Noise-Resistant Fitting for Spherical Harmonics**
+- **Gaussian Mixture Models**
+- **Dynamic Diffuse Global Illumination with Ray-Traced Irradiance Fields**
   - Might have some utility in sampling scheme/filtering with moment based approach
   - <https://devblogs.nvidia.com/dynamic-diffuse-global-illumination-part-i/>
 
-### **Misc reminders:**
-
+### Misc Thoughts
 - Extinction Transmittance Maps
 - Deep Shadow Maps
 - Fourier Opacity Mapping
@@ -237,18 +239,20 @@ Optimization Reminders
 - Volumetric Billboards
 - Interactive Light Scattering with Principal-Ordinate Propagation
 - Try monochromatic scattering/absorption
-- Volume Temporal Reprojection Unity implementation: <http://advances.realtimerendering.com/s2018/Siggraph%202018%20HDRP%20talk\_with%20notes.pdf>
+- Volume Temporal Reprojection Unity implementation in [Siggraph 2018: The Road toward Unified Rendering with Unity’s High Definition Render Pipeline](https://advances.realtimerendering.com/s2018/Siggraph%202018%20HDRP%20talk_with%20notes.pdf)
 - Review material
   - Physically Based and Unified Volumetric Rendering in Frostbite: Physically Based and Unified Volumetric Rendering in Frostbite
   - Volume Modeling and Rendering
-  - <https://www.scratchapixel.com/lessons/advanced-rendering/volume-rendering-for-artists>
-  - <https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast\_Flexible\_Physically-Based\_Volumetric\_Light\_Scattering.pdf>
+    - [Scratchapixel: Volume Rendering For Artists](https://www.scratchapixel.com/lessons/advanced-rendering/volume-rendering-for-artists)
+    - [Scratchapixel: Volume Rendering For Developers](https://www.scratchapixel.com/lessons/3d-basic-rendering/volume-rendering-for-developers/intro-volume-rendering.html)
+    - [Fast, Flexible, Physically-Based Volumetric Light Scattering](https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf)
   - The Magic of Computer Graphics
   - Dissertation - Efficient Monte Carlo Methods For Light Transport In Scattering Media
   - Transfer Equations in Global Illumination
-  - Deep Compositing: <https://zero-radiance.github.io/post/deep-compositing>
-  - Spherical Harmonic Clipped integration: <https://belcour.github.io/blog/research/2018/02/01/sh-integral.html>
-  - Disney Subsurface Scattering Unity implementation: <http://advances.realtimerendering.com/s2018/Efficient%20screen%20space%20subsurface%20scattering%20Siggraph%202018.pdf>
-  - Cone Step Relief Mapping:
-  - <http://www.lonesock.net/files/ConeStepMapping.pdf> <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3\_ch18.html>
-  - Hemisphere basis: A Novel HemisphericalBasisforAccurateandEfcientRendering
+  - [Deep Compositing](https://zero-radiance.github.io/post/deep-compositing)
+  - [Spherical Harmonic Clipped integration](https://belcour.github.io/blog/research/2018/02/01/sh-integral.html)
+  - [Disney's Subsurface Scattering using Burley’s Normalized Diffusion implemented in Unity](https://advances.realtimerendering.com/s2018/Efficient%20screen%20space%20subsurface%20scattering%20Siggraph%202018.pdf)
+  - Cone Step Relief Mapping
+    - [Cone Step Mapping: An Iterative Ray-Heightfield Intersection Algorithm](http://www.lonesock.net/files/ConeStepMapping.pdf)
+    - [GPUGems3 Chapter 18: Relaxed Cone Stepping for Relief Mapping](https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch18.html)
+  - Hemisphere Basis: A Novel Hemispherical Basis for Accurate and Efficient Rendering

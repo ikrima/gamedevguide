@@ -1,5 +1,5 @@
 # Physical Units for Lights
-[Original](http://www.realtimerendering.com/blog/physical-units-for-lights) from Eric Haines; cached here locally for offline reference
+[Original](https://www.realtimerendering.com/blog/physical-units-for-lights) from Eric Haines; cached here locally for offline reference
 
 I expect most of us have a passing knowledge of physical units for lights. We have some sense of what lumens and candelas are about, we’ve maybe heard of nits with regard to our monitors, and _maybe_ have a vague sense of what lux is about. This was, at least, my level of understanding for the past lessee 38 years I’ve been in the field of computer graphics. My usual attitude with lights was (and still is, most of the time), “make them brighter” if the scene is too dim. That’s all most of us normally need, to be honest.
 
@@ -9,13 +9,13 @@ The PBR book [gives the textbook basics](https://www.pbr-book.org/3ed-2018/Color
 
 Table 5.2: Radiometric Measurements and Their Photometric Analogs
 
-| **Radiometric** | **Unit**                                             | **Photometric**    | **Unit**                                                                                             |
-| --------------- | ---------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
-| Radiant energy  | joule $(\mathrm{Q})$                                 | Luminous energy    | talbot $(\mathrm{T})$                                                                                |
-| Radiant flux    | watt $(\mathrm{W})$                                  | Luminous flux      | lumen $(\mathrm{lm})$                                                                                |
-| Intensity       | $\mathrm{W} / \mathrm{sr} $                          | Luminous intensity | $\operatorname{lm} / \mathrm{sr}=\mathrm{candela}(\mathrm{cd})$                                      |
-| Irradiance      | $\mathrm{W} / \mathrm{m}^2$                          | Illuminance        | $\operatorname{lm} / \mathrm{m}^2=\mathrm{lux}(\mathrm{lx})$                                         |
-| Radiance        | $\mathrm{W} / \left(\mathrm{m}^2 \mathrm{sr}\right)$ | Luminance          | $\operatorname{lm} / \left(\mathrm{m}^2 \mathrm{sr}\right)=\mathrm{cd} / \mathrm{m}^2=\mathrm{nit} $ |
+| **Radiometric** | **Unit**                                             | **Photometric**    | **Unit**                                                                                            |
+| --------------- | ---------------------------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------- |
+| Radiant energy  | joule $(\mathrm{Q})$                                 | Luminous energy    | talbot $(\mathrm{T})$                                                                               |
+| Radiant flux    | watt $(\mathrm{W})$                                  | Luminous flux      | lumen $(\mathrm{lm})$                                                                               |
+| Intensity       | $\mathrm{W} / \mathrm{sr}$                           | Luminous intensity | $\operatorname{lm} / \mathrm{sr}=\mathrm{candela}(\mathrm{cd})$                                     |
+| Irradiance      | $\mathrm{W} / \mathrm{m}^2$                          | Illuminance        | $\operatorname{lm} / \mathrm{m}^2=\mathrm{lux}(\mathrm{lx})$                                        |
+| Radiance        | $\mathrm{W} / \left(\mathrm{m}^2 \mathrm{sr}\right)$ | Luminance          | $\operatorname{lm} / \left(\mathrm{m}^2 \mathrm{sr}\right)=\mathrm{cd} / \mathrm{m}^2=\mathrm{nit}$ |
 
 You’ll see similar tables in many other places, including page 272 of [our own book](https://smile.amazon.com/Real-Time-Rendering-Fourth-Tomas-Akenine-M%C3%B6ller/dp/1138627003?tag=realtimerenderin). I like theirs better: more columns. [Radiometry](https://en.wikipedia.org/wiki/Radiometry) is concerned with any electromagnetic radiation – radio, microwaves, x-rays, etc.; [photometry](https://en.wikipedia.org/wiki/Photometry_(optics)) factors in how our eyes respond to light, described by the [luminous efficiency function](https://en.wikipedia.org/wiki/Luminous_efficiency_function) (well, functions: there’s the photopic function, for brightly lit conditions, and the scotopic, for dim). I’m focusing on photometric units.  
 
