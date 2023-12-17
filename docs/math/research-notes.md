@@ -3,7 +3,6 @@ Machine Learning Cheatsheet from [Scikit](https://scikit-learn.org/stable/tutori
 ![](_assets/scikit-ml-cheatsheet.png)
 
 ## Geometry Processing
-
 - [Discrete Differential Geometry Course](https://www.cs.cmu.edu/~kmcrane/Projects/DDG): An Applied Introduction
   - [Course Videos](https://www.youtube.com/playlist?list=PL9_jI1bdZmz0hIrNCMQW1YmZysAiIYSSS)
   - [Course Slides](https://brickisland.net/DDGSpring2022/category/slides/?order=asc)
@@ -37,10 +36,9 @@ Machine Learning Cheatsheet from [Scikit](https://scikit-learn.org/stable/tutori
 - Mesh Unwrapping Techniques
   - [Boundary First Flattening](https://geometrycollective.github.io/boundary-first-flattening): minimizes conformal mapping energy but insight is that doesn't matter; where you place the cuts is more important
     - [Code](https://github.com/GeometryCollective/boundary-first-flattening)
-  - Arap/Arap++: minimizes a different energy than LSCM
+  - ARAP/ARAP++: minimizes a different energy than LSCM
 
 ## Optimal Transport
-
 Optimal Transport is a mathematical theory that studies how to transform a shape into another one while minimizing a certain cost.
 - [SGP2018 Course: Computational Optimal Transport](http://school.geometryprocessing.org/summerschool-2018/index.html#course7)
   - [Presentation](https://www.youtube.com/watch?v=pKQJujt7Kbs)
@@ -48,7 +46,6 @@ Optimal Transport is a mathematical theory that studies how to transform a shape
 - [Optimal Transport for Computer Graphics and Temporal Coherence of Image Processing Algorithms Thesis](https://perso.liris.cnrs.fr/nicolas.bonneel/hdr_nbonneel_compressed.pdf)
 
 ## Dictionary Learning
-
 - [Siggraph 2010 Course: Spectral Mesh Processing](http://alice.loria.fr/WIKI/index.php/Graphite/SpectralMeshProcessing)
   - [Course Notes](http://alice.loria.fr/publications/papers/2010/spectral_course/spectral_course.pdf)
 - [Spectral Geometry Processing with Manifold Harmonics](https://hal.inria.fr/inria-00331894/document)
