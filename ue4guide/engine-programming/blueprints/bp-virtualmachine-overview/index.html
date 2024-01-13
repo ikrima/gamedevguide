@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -17228,7 +17228,7 @@
    * Register-based: the code is relatively large, but requires less code conditions</li>
 </ol>
 <p>Based on the "stack" in the stack refers to the "evaluation stack", the "evaluation stack" in the JVM is called the "operand stack".</p>
-<p><a class="glightbox" href="../../../_assets/155497-20161113232207608-1483770135.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161113232207608-1483770135.png" /></a></p>
+<p><a class="glightbox" href="../../../_assets/155497-20161113232207608-1483770135.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161113232207608-1483770135.png" /></a></p>
 <h2 id="stack-frame">Stack frame<a class="headerlink" href="#stack-frame" title="Permanent link">#</a></h2>
 <p>A stack frame is also called a process activity record. It is a data structure used by the compiler to implement a procedure / function call. Logically, a stack frame is a function execution environment: function parameters, function local variables, where to return after the function is executed, and so on.</p>
 <h2 id="blueprint-virtual-machine-implementation">Blueprint virtual machine implementation<a class="headerlink" href="#blueprint-virtual-machine-implementation" title="Permanent link">#</a></h2>
@@ -17486,8 +17486,8 @@
 </span></code></pre></div>
 <p>Because our function has no parameters, a NULL is passed in all ProcessEvents. If there are parameters and return values, then UHT will automatically generate a structure for storing parameters and return values, so that when the function is called in C ++, It will go to the blueprint UFunction corresponding to the name REFLECTIONSTUDY_ImplementableFuncTest, and if it finds it, it will call ProcessEvent for further processing.</p>
 <h3 id="processevent-process">ProcessEvent process<a class="headerlink" href="#processevent-process" title="Permanent link">#</a></h3>
-<p><a class="glightbox" href="../../../_assets/155497-20161113232208295-1088352206.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161113232208295-1088352206.png" /></a><br />
-<a class="glightbox" href="../../../_assets/155497-20161113232209045-1819255197.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161113232209045-1819255197.png" /></a></p>
+<p><a class="glightbox" href="../../../_assets/155497-20161113232208295-1088352206.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161113232208295-1088352206.png" /></a><br />
+<a class="glightbox" href="../../../_assets/155497-20161113232209045-1819255197.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161113232209045-1819255197.png" /></a></p>
 <h3 id="blueprint-calls-c--functions">Blueprint calls C ++ functions<a class="headerlink" href="#blueprint-calls-c--functions" title="Permanent link">#</a></h3>
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;AReflectionStudyGameMode&quot;</span><span class="p">)</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">void</span><span class="w"> </span><span class="n">CallableFuncTest</span><span class="p">();</span>

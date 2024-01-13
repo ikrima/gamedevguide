@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -17254,11 +17254,11 @@
 
 
 <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h1>
-<p><a class="glightbox" href="../../_assets/rte-diagram1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Jarosz 2008, Radiance Caching For Participating Media" src="../../_assets/rte-diagram1.png" /></a><br />
-<a class="glightbox" href="../../_assets/rte-diagram2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Jarosz 2008, Radiance Caching For Participating Media" src="../../_assets/rte-diagram2.png" /></a><br />
-<a class="glightbox" href="../../_assets/rte-diagram3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Jarosz 2008, Radiance Caching For Participating Media" src="../../_assets/rte-diagram3.png" /></a><br />
-<a class="glightbox" href="../../_assets/rte-diagram4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Jarosz 2008, Radiance Caching For Participating Media" src="../../_assets/rte-diagram4.png" /></a></p>
-<p><a class="glightbox" href="../../_assets/volrenderingdiagram.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/volrenderingdiagram.jpg" /></a> <a class="glightbox" href="../../_assets/participationmedia.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/participationmedia.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/rte-diagram1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Jarosz 2008, Radiance Caching For Participating Media" src="../../_assets/rte-diagram1.png" /></a><br />
+<a class="glightbox" href="../../_assets/rte-diagram2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Jarosz 2008, Radiance Caching For Participating Media" src="../../_assets/rte-diagram2.png" /></a><br />
+<a class="glightbox" href="../../_assets/rte-diagram3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Jarosz 2008, Radiance Caching For Participating Media" src="../../_assets/rte-diagram3.png" /></a><br />
+<a class="glightbox" href="../../_assets/rte-diagram4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Jarosz 2008, Radiance Caching For Participating Media" src="../../_assets/rte-diagram4.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/volrenderingdiagram.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/volrenderingdiagram.jpg" /></a> <a class="glightbox" href="../../_assets/participationmedia.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/participationmedia.png" /></a></p>
 <p>Volume rendering is pretty simple. Hard part is making it fast.</p>
 <p>The derivation of the prevelant volume rendering model is motivated by a simple starting point. Let's try construct it from first principles and consider a differential volume unit (imagine a volume split up into tiny little cubes) made up of a bunch of molecule particles. For this dV, what would contribute to light radiance <span class="arithmatex">\(L_{o}\)</span>, in direction <span class="arithmatex">\(\overrightarrow{w_{o}}\)</span>? What can happen to light as it interacts with the particles?</p>
 <ul>
@@ -17281,7 +17281,7 @@ p( w,w_{o}) Longrightarrow percentage of light coming from direction w that scat
 $$</p>
 <p>That's it. Like most things in rendering, the physics of it is simple (ofc just at this layer and this empirical model that's not reality based). You could write a brute force volume renderer that rivals the quality of Arnold or Octane in an hour or so, maybe a weekend if you're new to rendering. Now, it may take 6 days to render one frame but you're final output will be photoreal. Everything afterwards is how to make it fast.</p>
 <p>So for the math, let's formulate everything in differential forms to inspire what some of these functions (e.g. <span class="arithmatex">\(\sigma_{t}(), \sigma_{a}()\)</span>) should be. And then we can solve the integrals to derive <span class="arithmatex">\(L( x,w)\)</span></p>
-<p><a class="glightbox" href="../../_assets/participatingmediainteractions.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/participatingmediainteractions.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/participatingmediainteractions.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/participatingmediainteractions.png" /></a></p>
 <div class="arithmatex">\[
 \begin{aligned}
 \mathnormal{dL}(\boldsymbol{x} ,\ \boldsymbol{\vec{w}} ) &amp; =\ \mathnormal{L}_{i}(\boldsymbol{x} ,\ \boldsymbol{\vec{w}} )\ -\ \mathnormal{L}_{o}(\boldsymbol{x} ,\ \boldsymbol{\vec{w}} )\\

@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -17677,7 +17677,7 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p>This is a quick guide to using some of UE3's runtime gameplay debugging features. When implementing new features, actors, or gameplay elements, things seldom work exactly as intended the first time through. Being able to quickly adjust property values on the fly or easily view property values, Actor states, or other information while the game is running is imperative to an efficient process. Unreal Engine 3 contains several features, in the form of console commands and applications, which make this debugging process as painless and as efficient as possible. These features can be quite useful for making tweaks, inspecting variables, and tracking down issues without needing to rebuild the engine, rebuild scripts, or restart the game; each of which is a time-consuming process.</p>
 <h3 id="remote-control">Remote Control<a class="headerlink" href="#remote-control" title="Permanent link">#</a></h3>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_RemoteControl.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_RemoteControl" src="../../../_assets/UDKGameplay_Debugging_RemoteControl.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_RemoteControl.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_RemoteControl" src="../../../_assets/UDKGameplay_Debugging_RemoteControl.jpg" /></a></p>
 <p>The RemoteControl is a special window that can be opened while the game is running to provide information and control over certain aspects of the game.</p>
 <p>As this window is external to the game window and is created using wxWindows, it is unavailable if wxWindows is disabled, which it is by default except when running a <a href="https://api.unrealengine.com/udk/Three/PlayInEditor.html">Play In Editor</a> game session from within UnrealEd. To enable wxWindows and the RemoteControl, the game must be run with the -wxwindows <a href="https://api.unrealengine.com/udk/Three/CommandLineArguments.html">command line argument</a>.</p>
 <p>For more information and a complete guide to using this feature, see the <a href="https://api.unrealengine.com/udk/Three/RemoteControl.html">Remote Control</a> page.</p>
@@ -17705,8 +17705,8 @@
 <p>In the case of creating a new vehicle, the need to fine-tune the properties of the vehicle to make driving feel right will no doubt arise. Setting the property values in the defaultproperties or even in an .ini file would require starting the game up, testing out the current values, shutting the game down, tweaking the values, starting the game up again, testing the values, etc. This is obviously less than ideal and not very efficient by any means. Using the editactor command allows any and all of the properties of the vehicle to be tweaked while the game is running, even while the player is sitting in the vehicle ready to test it out. This is a much more efficient and intuitive method of tuning gameplay.</p>
 <p>The simplest method here is probably to use the trace argument and just aim at the vehicle in question, but specifying the class is easy enough as well.</p>
 <p>For vehicles, it may be unlikely you will know the exact name of the vehicle as they are usually spawned dynamically from factories and not placed directly in a map.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_ExampleUsage_EditActor.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_ExampleUsage_EditActor" src="../../../_assets/UDKGameplay_Debugging_ExampleUsage_EditActor.jpg" /></a></p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Scorpion.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Scorpion" src="../../../_assets/UDKGameplay_Debugging_Scorpion.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_ExampleUsage_EditActor.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_ExampleUsage_EditActor" src="../../../_assets/UDKGameplay_Debugging_ExampleUsage_EditActor.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Scorpion.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Scorpion" src="../../../_assets/UDKGameplay_Debugging_Scorpion.jpg" /></a></p>
 <h3 id="editobject">EditObject<a class="headerlink" href="#editobject" title="Permanent link">#</a></h3>
 <p>The editobject console command makes the properties of a specific object in the game available in the property window. This command is functionally identical to the editactor command without the limitation that the class must extend from Actor and it has no optional trace argument.</p>
 <p><strong>Note:</strong> This command may not work for certain classes or objects when running a map from within UnrealEd through a Play In Editor session.</p>
@@ -17726,8 +17726,8 @@
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">editobject</span><span class="w"> </span><span class="k">class</span><span class="o">=</span><span class="n">UDNCameraModule</span>
 </span></code></pre></div>
 <p>This will open the property window for the camera module currently in use.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_UDNCameraModule.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_UDNCameraModule" src="../../../_assets/UDKGameplay_Debugging_UDNCameraModule.jpg" /></a></p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_CameraMod_TopDown.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_CameraMod_TopDown" src="../../../_assets/UDKGameplay_Debugging_CameraMod_TopDown.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_UDNCameraModule.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_UDNCameraModule" src="../../../_assets/UDKGameplay_Debugging_UDNCameraModule.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_CameraMod_TopDown.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_CameraMod_TopDown" src="../../../_assets/UDKGameplay_Debugging_CameraMod_TopDown.jpg" /></a></p>
 <h3 id="editdefault">EditDefault<a class="headerlink" href="#editdefault" title="Permanent link">#</a></h3>
 <p>The editdefault console command makes the properties of a class default object available, similar to specifying a class with the editobject console command. The class can be specified using the class= prefix, but it is not necessary. This command is extremely useful for classes that are frequently spawned, such as projectiles or units in a real-time strategy game.</p>
 <p><strong>Note:</strong> This command is not allowed when running a map from within UnrealEd through a Play In Editor session.</p>
@@ -17739,22 +17739,22 @@
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="n">editdefault</span><span class="w"> </span><span class="k">class</span><span class="o">=</span><span class="n">UTProj_LinkPlasma</span>
 </span></code></pre></div>
 <p>Both of these are functionally identical and will display the default properties of the UTProj_LinkPlasma class which can then be modified allowing you to adjust the behavior of all future instances of that class.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_UTProj_Linkplasma.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_UTProj_Linkplasma" src="../../../_assets/UDKGameplay_Debugging_UTProj_Linkplasma.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_UTProj_Linkplasma.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_UTProj_Linkplasma" src="../../../_assets/UDKGameplay_Debugging_UTProj_Linkplasma.jpg" /></a></p>
 <h3 id="editarchetype">EditArchetype<a class="headerlink" href="#editarchetype" title="Permanent link">#</a></h3>
 <p>The editarchetype console command makes the properties of an archetype available. The archetype to edit is specified by passing the path (Package.Group.Name) to the archetype following the command. Like the editdefault command, this command is also extremely useful for archetypes that are used as templates for objects that are frequently spawned, such as projectiles or units in a real-time strategy game, or for archetypes used as data definitions or content holders.</p>
-<p>In addition to being able to edit the properties of the archetype, the settings can be saved to the archetype in the package using the <a class="glightbox" href="../../../_assets/saveButton.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="saveButton" src="../../../_assets/saveButton.jpg" /></a> button in the properties window so they are not lost.</p>
+<p>In addition to being able to edit the properties of the archetype, the settings can be saved to the archetype in the package using the <a class="glightbox" href="../../../_assets/saveButton.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="saveButton" src="../../../_assets/saveButton.jpg" /></a> button in the properties window so they are not lost.</p>
 <p><strong>Note:</strong> This command is not allowed when running a map from within UnrealEd through a Play In Editor session.</p>
 <h4 id="example-usage_2">Example Usage<a class="headerlink" href="#example-usage_2" title="Permanent link">#</a></h4>
 <p>Say you have a weapon class set up to use archetypes as templates for its projectiles. This allows the look and behavior of the projectiles to easily be tweaked without having to modify and recompile the scripts. However, it would also usually require running the game and testing, closing the game and making changes, running the game and testing, etc. By using the editarchetype command, the modifications can be made while the game is running for an easy and efficient workflow.</p>
 <p>The projectile using the current settings of the archetype:</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Editarchetype.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Editarchetype" src="../../../_assets/UDKGameplay_Debugging_Editarchetype.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Editarchetype.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Editarchetype" src="../../../_assets/UDKGameplay_Debugging_Editarchetype.jpg" /></a></p>
 <p>Simply use the editarchetype command and pass it the path of the archetype:</p>
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">editarchetype</span><span class="w"> </span><span class="n">UDNProjectiles</span><span class="p">.</span><span class="n">RedPlasma</span>
 </span></code></pre></div>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Redplasma.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Redplasma" src="../../../_assets/UDKGameplay_Debugging_Redplasma.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Redplasma.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Redplasma" src="../../../_assets/UDKGameplay_Debugging_Redplasma.jpg" /></a></p>
 <p>By modifying the proeprties, the look and behavior of the projectiles is changed in realtime:</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Editarchetype_Realtime.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Editarchetype_Realtime" src="../../../_assets/UDKGameplay_Debugging_Editarchetype_Realtime.jpg" /></a></p>
-<p>Once you are satisfied with the settings, press the <a class="glightbox" href="../../../_assets/saveButton.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="saveButton" src="../../../_assets/saveButton.jpg" /></a>button in the proeperties window to save the current settings to the archetype.</p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Editarchetype_Realtime.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Editarchetype_Realtime" src="../../../_assets/UDKGameplay_Debugging_Editarchetype_Realtime.jpg" /></a></p>
+<p>Once you are satisfied with the settings, press the <a class="glightbox" href="../../../_assets/saveButton.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="saveButton" src="../../../_assets/saveButton.jpg" /></a>button in the proeperties window to save the current settings to the archetype.</p>
 <h3 id="static-object-data-inspection">Static Object Data Inspection<a class="headerlink" href="#static-object-data-inspection" title="Permanent link">#</a></h3>
 <p>These <a href="https://api.unrealengine.com/udk/Three/ConsoleCommands.html">console commands</a> are useful for inspecting a static snapshot of object data while the game is running. They will capture the values of the specified data at the time the command is executed and display that data in the console and output it to the log as well.</p>
 <h4 id="getall">GetAll<a class="headerlink" href="#getall" title="Permanent link">#</a></h4>
@@ -17765,7 +17765,7 @@
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="n">getall</span><span class="w"> </span><span class="n">UDNPlayerController</span><span class="w"> </span><span class="n">PlayerCamera</span>
 </span></code></pre></div>
 <p>This will list out the Name and PlayerCamera of every UDNPlayerController actor in memory in the console in-game.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_GetAll.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_GetAll" src="../../../_assets/UDKGameplay_Debugging_GetAll.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_GetAll.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_GetAll" src="../../../_assets/UDKGameplay_Debugging_GetAll.jpg" /></a></p>
 <p>Since the PlayerCamera has a value and not None, you know the camera is being assigned properly.</p>
 <h4 id="additional-parameters">Additional Parameters:<a class="headerlink" href="#additional-parameters" title="Permanent link">#</a></h4>
 <p>This command can also be used to obtain the value of a particular variable for a single instance of a particular class by specifying some optional parameters.</p>
@@ -17795,7 +17795,7 @@
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="n">getallstate</span><span class="w"> </span><span class="n">UTPawn</span>
 </span></code></pre></div>
 <p>This will list the current state of every UTPawn in memory in the console in-game.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_GodModeOn.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_GodModeOn" src="../../../_assets/UDKGameplay_Debugging_GodModeOn.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_GodModeOn.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_GodModeOn" src="../../../_assets/UDKGameplay_Debugging_GodModeOn.jpg" /></a></p>
 <p>This gives you a quick overview of what the UTPawns in the game are doing. It can quickly point out an anomaly, such as you see in the screenshot as this snapshot was taken at the time the bots were spawning and yet one UTPawn is in the Dying state.</p>
 <h2 id="dynamic-object-data-inspection">Dynamic Object Data Inspection<a class="headerlink" href="#dynamic-object-data-inspection" title="Permanent link">#</a></h2>
 <p>These <a href="https://api.unrealengine.com/udk/Three/ConsoleCommands.html">console commands</a> are useful for inspecting object data as it changes over time. They will display a set of data which dynamically updates each frame directly on the screen overlaying the game as part of the HUD.</p>
@@ -17805,7 +17805,7 @@
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="n">displayall</span><span class="w"> </span><span class="n">UTPawn</span><span class="w"> </span><span class="n">Location</span>
 </span></code></pre></div>
 <p>This will list the Name and Location of every UTPawn on the screen, updated every frame.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_DisplayAll.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_DisplayAll" src="../../../_assets/UDKGameplay_Debugging_DisplayAll.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_DisplayAll.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_DisplayAll" src="../../../_assets/UDKGameplay_Debugging_DisplayAll.jpg" /></a></p>
 <h3 id="displayallstate">DisplayAllState<a class="headerlink" href="#displayallstate" title="Permanent link">#</a></h3>
 <p>The displayallstate console command returns the current state of all objects of a particular class and displays them on the screen. The command is followed by the name of the class to access.</p>
 <p><strong>Example usage:</strong></p>
@@ -17814,15 +17814,15 @@
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="n">displayallstate</span><span class="w"> </span><span class="n">UTBot</span>
 </span></code></pre></div>
 <p>This will list the current state of every UTBot in memory on the screen, updated every frame, making it extremely easy to see exactly what each bot is doing.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_DisplayALLSTATE.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_DisplayALLSTATE" src="../../../_assets/UDKGameplay_Debugging_DisplayALLSTATE.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_DisplayALLSTATE.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_DisplayALLSTATE" src="../../../_assets/UDKGameplay_Debugging_DisplayALLSTATE.jpg" /></a></p>
 <h3 id="displayclear">DisplayClear<a class="headerlink" href="#displayclear" title="Permanent link">#</a></h3>
 <p>The displayclear console command clears all object data currently being displayed on the screen. This command takes no arguments.</p>
 <p><strong>Example usage:</strong></p>
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="n">displayclear</span>
 </span></code></pre></div>
 <p>This will clear the object data being displayed on the screen from a previous <a href="https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAll">DisplayAll</a> or <a href="https://api.unrealengine.com/udk/Three/GameplayDebugging.html#DisplayAllState">DisplayAllState</a> command.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_DisplayClear.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_DisplayClear" src="../../../_assets/UDKGameplay_Debugging_DisplayClear.jpg" /></a></p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_DisplayClear2.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_DisplayClear2" src="../../../_assets/UDKGameplay_Debugging_DisplayClear2.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_DisplayClear.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_DisplayClear" src="../../../_assets/UDKGameplay_Debugging_DisplayClear.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_DisplayClear2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_DisplayClear2" src="../../../_assets/UDKGameplay_Debugging_DisplayClear2.jpg" /></a></p>
 <h3 id="object-data-modification-set">Object Data Modification Set<a class="headerlink" href="#object-data-modification-set" title="Permanent link">#</a></h3>
 <p>The set console command will set the value of a variable for all instances of a particular class, as well as the class default object. The command is followed by the name of the class, the variable within the class to modify, and the value to set the variable to. This can be very useful for tweaking weapons, projectiles, bots, units in an RTS, etc.</p>
 <p><strong>Note:</strong> This command is not allowed when running a map from within UnrealEd through a Play In Editor session.</p>
@@ -17832,15 +17832,15 @@
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="n">set</span><span class="w"> </span><span class="n">utweap_linkgun</span><span class="w"> </span><span class="n">maxammocount</span><span class="w"> </span><span class="mi">150</span>
 </span></code></pre></div>
 <p>This will increase the maximum ammo count that all link guns can hold.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Objectmodificatiohn.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Objectmodificatiohn" src="../../../_assets/UDKGameplay_Debugging_Objectmodificatiohn.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_Objectmodificatiohn.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_Objectmodificatiohn" src="../../../_assets/UDKGameplay_Debugging_Objectmodificatiohn.jpg" /></a></p>
 <h3 id="gameplay-code-profiling">Gameplay Code Profiling<a class="headerlink" href="#gameplay-code-profiling" title="Permanent link">#</a></h3>
 <p>The Gameplay Profiler is a tool that provides a detailed breakdown of where time is being spent when executing UnrealScript gameplay code.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_GameplayProfiling.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_GameplayProfiling" src="../../../_assets/UDKGameplay_Debugging_GameplayProfiling.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_GameplayProfiling.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_GameplayProfiling" src="../../../_assets/UDKGameplay_Debugging_GameplayProfiling.jpg" /></a></p>
 <p>For a detailed overview, see the <a href="https://api.unrealengine.com/udk/Three/GameplayProfiler.html">Gameplay Profiler</a> page.</p>
 <p>For more information on the command line arguments useful for profiling gameplay, see the <a href="https://api.unrealengine.com/udk/Three/GameplayProfiling">Gameplay Profiling</a> page.</p>
 <h3 id="stat-commands">STAT Commands<a class="headerlink" href="#stat-commands" title="Permanent link">#</a></h3>
 <p>The STAT commands can be useful in getting a quick look at how much time certain aspects of your code are taking to execute. The STAT GAME command is especially useful as it shows the cumulative time your scripts are taking to update each tick.</p>
-<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_STATCOMMANDS.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_STATCOMMANDS" src="../../../_assets/UDKGameplay_Debugging_STATCOMMANDS.jpg" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UDKGameplay_Debugging_STATCOMMANDS.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="UDKGameplay_Debugging_STATCOMMANDS" src="../../../_assets/UDKGameplay_Debugging_STATCOMMANDS.jpg" /></a></p>
 <p>For more information on this and other STAT commands, see the <a href="https://api.unrealengine.com/udk/Three/StatsDescriptions.html">Stats Description</a> page.</p>
 
 

@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -17131,11 +17131,11 @@
 <p>Levels need to be positioned relative to one another, even within their own file. You can't offset a level when it is streamed in, even though there is a place to set a level's position, it has no effect.</p>
 <p>If you wanted to stream in levels dynamically and offset them, for example to make a procedurally generated map, you should create the level as a blueprint Class instead (so technically, it isn't a level in that case, but it works in pretty much the exact same way).</p>
 <p>Streaming volume method:</p>
-<p><a class="glightbox" href="../../_assets/image1.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image1" src="../../_assets/image1.jpg" /></a></p>
-<p><a class="glightbox" href="../../_assets/image2.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image2" src="../../_assets/image2.jpg" /></a></p>
+<p><a class="glightbox" href="../../_assets/image1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image1" src="../../_assets/image1.jpg" /></a></p>
+<p><a class="glightbox" href="../../_assets/image2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image2" src="../../_assets/image2.jpg" /></a></p>
 <h3 id="blueprint-method">Blueprint Method:<a class="headerlink" href="#blueprint-method" title="Permanent link">#</a></h3>
 <p>It is required that the level was added in the Levels panel, or nothing will happen!</p>
-<p><a class="glightbox" href="../../_assets/image3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image3" src="../../_assets/image3.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/image3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image3" src="../../_assets/image3.png" /></a></p>
 <h2 id="seamless-travel-between-levels">Seamless Travel between Levels:<a class="headerlink" href="#seamless-travel-between-levels" title="Permanent link">#</a></h2>
 <p>At the moment there are few ways to keep actors alive between levels, and we are discussing a new idea to help this going forward.</p>
 <p>For now you'll want to use "seamless travel", which keeps network connections alive between server/clients while loading the next map/level. On the AGameMode there is a boolean "bUseSeamlessTravel", that will make sure calls to ServerTravel will go a different path when loading maps. Seamless travel basically loads a small map as a transition so that it can garbage collect the previous map. It then continues to load the destination map afterward. This way, we can prevent a memory high watermark and possible out of memory conditions on limited memory platforms (ie console). You'll need to specify a small transition map in DefaultEngine.ini</p>

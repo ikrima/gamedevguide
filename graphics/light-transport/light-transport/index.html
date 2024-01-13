@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -17201,7 +17201,7 @@
 </li>
 <li>
 <p>Even "expensive" volume tracing is approximations. Single-scattering (deBeers law) =&gt; approx. of multiple scatter radiative transfer equation/participating media =&gt; approx. of non-exponential path walks =&gt; approx. of EM/Quantum optics<br />
-<a class="glightbox" href="../../_assets/theoryoflight.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/theoryoflight.png" /></a></p>
+<a class="glightbox" href="../../_assets/theoryoflight.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/theoryoflight.png" /></a></p>
 </li>
 <li>
 <p>Game state of art (+- 2 yrs circa 2016) use variants of approx of approx of dipole model for SSS.</p>
@@ -17320,16 +17320,16 @@ Imho, the easiest/comprehensive path are the Volume rendering siggraph courses. 
 <li><a href="http://www.astro.umd.edu/~jph/HG_note.pdf">http://www.astro.umd.edu/~jph/HG_note.pdf</a></li>
 </ul>
 <h2 id="radiative-transfer-equation">Radiative Transfer Equation<a class="headerlink" href="#radiative-transfer-equation" title="Permanent link">#</a></h2>
-<p><a class="glightbox" href="../../_assets/volrendering.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/volrendering.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/volrendering.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/volrendering.png" /></a></p>
 <p><a href="http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/09volpath.pdf">http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/09volpath.pdf</a><br />
 <a href="http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/08radiative-transfer.pdf">http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/08radiative-transfer.pdf</a><br />
 The RTE is a macroscale, empirical model that has proved extremely useful for a variety of problems, though it is not a physical theory derived by first principles from Maxwell’s equations. Rather, it describes the behavior of incoherent light on a large scale, and is derived from intuitive arguments about the interaction of light with small particles suspended in the medium—for instance, water droplets in a cloud or particles of ash and soot in smoke<br />
-<a class="glightbox" href="../../_assets/rteeq.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/rteeq.png" /></a><br />
+<a class="glightbox" href="../../_assets/rteeq.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/rteeq.png" /></a><br />
 Absorption coefficient:<br />
 q = density of charged particles<br />
 Ap = cross sectional area of particle</p>
 <p>σs = Product q*Ap (1 / length) = absorption coefficient. Theory derived from particles but generally just a value because we use it to model things like tissue<br />
-<a class="glightbox" href="../../_assets/rteeq2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/rteeq2.png" /></a></p>
+<a class="glightbox" href="../../_assets/rteeq2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/rteeq2.png" /></a></p>
 <p>Steve Marschner's (of hair rendering fame)'s lecture notes are very informative and parse-able:<br />
 <a href="http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/08radiative-transfer.pdf">http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/08radiative-transfer.pdf</a></p>
 <h2 id="diffusion-theory-of-subsurface-scattering">Diffusion Theory of subsurface scattering:<a class="headerlink" href="#diffusion-theory-of-subsurface-scattering" title="Permanent link">#</a></h2>
@@ -17350,25 +17350,25 @@ Ap = cross sectional area of particle</p>
   The assumption underlying such model is the same as lots of other models for skin rendering; the subsurface scattering can be approximated as a diffusion phenomenon. This is good because in highly scattering media, the distribution of light loses dependency from the angle and tends to isotropy.<br />
   The dipole approximation is a formulation for the resolution of such diffusion problem in an analytical fashion.<br />
   Basically they start by approximating the BSSRDF as a multiple scattering and single scattering component. The multiple scattering is then defined as:<br />
-<a class="glightbox" href="../../_assets/dipoleeq.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/dipoleeq.png" /></a><br />
+<a class="glightbox" href="../../_assets/dipoleeq.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/dipoleeq.png" /></a><br />
   Where FtFt are Fresnel terms and RR is the diffusion profile expressed as function of the distance between the entry and exit point.<br />
   This RR is referred to as diffusion profile and they formulate this profile via a dipole approximation. The contribution of the incoming light ray is considered to be the one of two virtual sources: one negative beneath the surface and one positive above it (that's why dipole)<br />
-<a class="glightbox" href="../../_assets/dipolesearchlight.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/dipolesearchlight.png" /></a></li>
+<a class="glightbox" href="../../_assets/dipolesearchlight.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/dipolesearchlight.png" /></a></li>
 </ul>
 <p>Why one positive and one negative light? Is the goal for them to cancel each other in some way?<br />
   Yes, the dipole source method (which dates way before Jensen's paper) is such defined to satisfy some boundary condition. Specifically the fluence must be zero at a certain extrapolated boundary that has a distance from the surface of 2AD2AD where<br />
-<a class="glightbox" href="../../_assets/2ad2adeq.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/2ad2adeq.gif" /></a><br />
+<a class="glightbox" href="../../_assets/2ad2adeq.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/2ad2adeq.gif" /></a><br />
   Being FdrFdr the fresnel reflectivity of the slab considered and that sigma value is the reduced extinction coefficient described below.</p>
 <ul>
 <li>
 <p>Mean free path &amp; Transport mean free path: (note, u_s here is rho_t, the extinction co-efficient)<br />
   This lecture notes from biophotonics class describes mfp affects in digestable form <a href="http://www.its.caltech.edu/~bi177/private/L6_handout.pdf">http://www.its.caltech.edu/~bi177/private/L6_handout.pdf</a><br />
-<a class="glightbox" href="../../_assets/mfp.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/mfp.png" /></a></p>
+<a class="glightbox" href="../../_assets/mfp.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/mfp.png" /></a></p>
 </li>
 <li>
 <p>In homogenous objects, diffusion profiles are radially symmetric<br />
-<a class="glightbox" href="../../_assets/dipolefunc.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/dipolefunc.png" /></a><br />
-<a class="glightbox" href="../../_assets/multipoledipole.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/multipoledipole.png" /></a></p>
+<a class="glightbox" href="../../_assets/dipolefunc.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/dipolefunc.png" /></a><br />
+<a class="glightbox" href="../../_assets/multipoledipole.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/multipoledipole.png" /></a></p>
 </li>
 </ul>
 <h1 id="foundational-knowledge-but-questionable-if-practically-useful">Foundational knowledge (but questionable if practically useful):<a class="headerlink" href="#foundational-knowledge-but-questionable-if-practically-useful" title="Permanent link">#</a></h1>
@@ -17385,7 +17385,7 @@ Ap = cross sectional area of particle</p>
 </li>
 <li>
 <p>And we see that as light<br />
-<a class="glightbox" href="../../_assets/emradiation.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/emradiation.png" /></a><br />
+<a class="glightbox" href="../../_assets/emradiation.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/emradiation.png" /></a><br />
   Great lecture series on physics of light: - <a href="https://www.youtube.com/user/ilectureonline/playlists?sort=dd&amp;view=50&amp;shelf_id=10">https://www.youtube.com/user/ilectureonline/playlists?sort=dd&amp;view=50&amp;shelf_id=10</a> - <a href="https://www.youtube.com/playlist?list=PLX2gX-ftPVXWDWYVe6oJwZCpZy-92Kd1k">https://www.youtube.com/playlist?list=PLX2gX-ftPVXWDWYVe6oJwZCpZy-92Kd1k</a></p>
 </li>
 <li>
@@ -17428,7 +17428,7 @@ Ap = cross sectional area of particle</p>
 </li>
 <li>
 <p>General scattering mechanism which gives diffuse reflection by a solid surface<br />
-<a class="glightbox" href="../../_assets/diffreflection.gif" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/diffreflection.gif" /></a><br />
+<a class="glightbox" href="../../_assets/diffreflection.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/diffreflection.gif" /></a><br />
   Main article: Diffuse reflection<br />
   When light strikes the surface of a (non-metallic) material it bounces off in all directions due to multiple reflections by the microscopic irregularities inside the material (e.g. the grain boundaries of a polycrystalline material, or the cell or fiber boundaries of an organic material) and by its surface, if it is rough. Thus, an 'image' is not formed.</p>
 </li>
@@ -17452,13 +17452,13 @@ Ap = cross sectional area of particle</p>
 <li>
 <p>Quantum theory describes radiation as photons being wave packets, not continuous waves<br />
 <a href="https://www.quora.com/How-does-the-amplitude-of-an-electromagnetic-wave-affect-its-energy">https://www.quora.com/How-does-the-amplitude-of-an-electromagnetic-wave-affect-its-energy</a><br />
-<a class="glightbox" href="../../_assets/quantumpacket.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/quantumpacket.png" /></a></p>
+<a class="glightbox" href="../../_assets/quantumpacket.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/quantumpacket.png" /></a></p>
 </li>
 <li>
 <p>The usual description does assume that the “lattice” (because it is a collective behavior, see this FAQ) briefly vibrates with a non-resonant frequency and then re-emits it. That brief stop and ensuing delay is what would explain that light travels more slowly in the medium. Whether that is "scattering" or not is another question. I would say, yes, the light is scattered/re-emitted in random directions. How is it that it keeps its original direction? What I read (classical explanation) is that the network of atoms acts cooperatively so that there is destructive interference except in the original direction, but someone objected once to that in a discussion… Reference <a href="https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796">https://www.physicsforums.com/threads/difference-between-scattering-and-emission-of-photons.899796</a><br />
-<a class="glightbox" href="../../_assets/collimatedlightsource.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/collimatedlightsource.png" /></a></p>
+<a class="glightbox" href="../../_assets/collimatedlightsource.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/collimatedlightsource.png" /></a></p>
 <p>The theory of light is described by a series of increasingly complete optical models, where each successive model is able to account for more optical phenomena. In computer graphics and this dissertation, we will restrict ourselves to the simplest model, ray optics.<br />
-<a class="glightbox" href="../../_assets/theoryoflight.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/theoryoflight.png" /></a></p>
+<a class="glightbox" href="../../_assets/theoryoflight.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/theoryoflight.png" /></a></p>
 </li>
 </ul>
 <h2 id="neutron-transport">Neutron Transport<a class="headerlink" href="#neutron-transport" title="Permanent link">#</a></h2>
@@ -17471,10 +17471,10 @@ Difference between microscopic cross-section vs macroscopic crosssection:<br />
 The difference between the microscopic and macroscopic cross sections is extremely important. The microscopic cross section represents the effective target area of a single nucleus, while the macroscopic cross section represents the effective target area of all of<br />
 the nuclei contained in certain volume.</p>
 <p>From <a href="http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/microscopic-cross-section">http://www.nuclear-power.net/nuclear-power/reactor-physics/nuclear-engineering-fundamentals/neutron-nuclear-reactions/microscopic-cross-section</a><br />
-<a class="glightbox" href="../../_assets/neutrinotransport.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/neutrinotransport.png" /></a></p>
+<a class="glightbox" href="../../_assets/neutrinotransport.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/neutrinotransport.png" /></a></p>
 <p>Different cross-sections indicate characteristic target area that defines type of nuclear reaction that would occur</p>
 <p>Types of scattering + microscopic cross-sections:<br />
-<a class="glightbox" href="../../_assets/neutrinotransport2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/neutrinotransport2.png" /></a></p>
+<a class="glightbox" href="../../_assets/neutrinotransport2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/neutrinotransport2.png" /></a></p>
 <p>The transport length in a strongly diffusing medium (noted l*) is the length over which the direction of propagation of the photon is randomized. It is related to the mean free path l by the relation:[1]<br />
 <span class="arithmatex">\(l*\\ =\\ \\frac{l}{1\\ -\\ g}\)</span><br />
 From <a href="https://en.wikipedia.org/wiki/Transport_length">https://en.wikipedia.org/wiki/Transport_length</a></p>

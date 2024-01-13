@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -17367,7 +17367,7 @@
 <p>The CreateClassVariablesFromBlueprint () function traverses the Blueprint's NewVariables array. It also includes construction scripts, Timeline, etc. to find all the properties required by the class, and then creates UProperties.</p>
 <h2 id="create-function-list">Create Function List<a class="headerlink" href="#create-function-list" title="Permanent link">#</a></h2>
 <p>Functions are created by processing event graphs, regular function graphs, agents, and interfaces.</p>
-<p><a class="glightbox" href="../../../_assets/155497-20161031082616846-938102663.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082616846-938102663.png" /></a></p>
+<p><a class="glightbox" href="../../../_assets/155497-20161031082616846-938102663.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082616846-938102663.png" /></a></p>
 <h2 id="processing-event-chart">Processing event chart<a class="headerlink" href="#processing-event-chart" title="Permanent link">#</a></h2>
 <p>The CreateAndProcessUberGraph () function is used to process the event graph. It copies all the event graphs into a large graph, at which point the node has the opportunity to do the expansion operation (expand, if it needs to). Then a function stub is created for each event node in the graph, and finally a FKismetFunctionContext is created for the current event graph, which is used to process the entire event graph as a function.</p>
 <h2 id="processing-function-chart">Processing function chart<a class="headerlink" href="#processing-function-chart" title="Permanent link">#</a></h2>
@@ -17380,15 +17380,15 @@
 <li>For each remaining RegisterNets () function that runs each node processor (FNodeHandlingFunctor), it creates FBPTerminal for the value in the function.</li>
 <li>Create UFunction objects and related properties.</li>
 </ol>
-<p><a class="glightbox" href="../../../_assets/155497-20161031082617643-1093344303.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082617643-1093344303.png" /></a></p>
+<p><a class="glightbox" href="../../../_assets/155497-20161031082617643-1093344303.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082617643-1093344303.png" /></a></p>
 <h2 id="binding-and-linking-classes">Binding and Linking Classes<a class="headerlink" href="#binding-and-linking-classes" title="Permanent link">#</a></h2>
 <p>Now that the class has UFunctions and UProperties, it is now possible to bind and link classes. It contains a list of populated property chains, property sizes, and functions. At this time it is related to having a class header file, excluding the final markup, metadata, and CDO objects.</p>
 <h2 id="compile-function">Compile function<a class="headerlink" href="#compile-function" title="Permanent link">#</a></h2>
 <p>Next, you need to use the AppendStatementForNode() function of the Compile() function of each node processor (FNodeHanlingFunctor) to add FKismetBlueprintStatement for this node. This function may also create FBPTerminal objects as long as they are only used locally.<br />
-<a class="glightbox" href="../../../_assets/155497-20161031082618533-81558361.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082618533-81558361.png" /></a></p>
+<a class="glightbox" href="../../../_assets/155497-20161031082618533-81558361.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082618533-81558361.png" /></a></p>
 <h2 id="post-compiled-functions">Post-compiled functions<a class="headerlink" href="#post-compiled-functions" title="Permanent link">#</a></h2>
 <p>PostCompileFunction () is the last stage of compiling functions. It is called after all functions call CompileFunction (), mainly to repair cross-references.</p>
-<p><a class="glightbox" href="../../../_assets/155497-20161031082619065-62507138.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082619065-62507138.png" /></a></p>
+<p><a class="glightbox" href="../../../_assets/155497-20161031082619065-62507138.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082619065-62507138.png" /></a></p>
 <h2 id="completed-compilation-class">Completed compilation class<a class="headerlink" href="#completed-compilation-class" title="Permanent link">#</a></h2>
 <p>To finish compiling the class, the compiler will eventually set the class tag, inherit the tag and metadata from the parent class, and finally determine that everything is correct during the compilation process.</p>
 <h2 id="backend-generated-code">Backend generated code<a class="headerlink" href="#backend-generated-code" title="Permanent link">#</a></h2>
@@ -17396,7 +17396,7 @@
 <ol>
 <li>FKismetCompilerVMBackend converts FKismetCompilerStatement to bytecode and serializes it into a script array.</li>
 </ol>
-<p><a class="glightbox" href="../../../_assets/155497-20161031082619518-1440914481.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082619518-1440914481.png" /></a></p>
+<p><a class="glightbox" href="../../../_assets/155497-20161031082619518-1440914481.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082619518-1440914481.png" /></a></p>
 <ol>
 <li>FKismetCppBackend generates C ++ code for debugging purposes only.</li>
 </ol>
@@ -17526,8 +17526,8 @@
 <h1 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h1>
 <p>I created a new Blueprint in the blueprint that inherits from Actor. It has a variable StringTest and implements a BeginPlay event and a FunctionTest () function. This function has a local variable LocalStringTest.</p>
 <p>The following are the definitions of BeginPlay and FunctionTest:</p>
-<p><a class="glightbox" href="../../../_assets/155497-20161031082619908-250714023.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082619908-250714023.png" /></a></p>
-<p><a class="glightbox" href="../../../_assets/155497-20161031082620549-515212311.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082620549-515212311.png" /></a></p>
+<p><a class="glightbox" href="../../../_assets/155497-20161031082619908-250714023.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082619908-250714023.png" /></a></p>
+<p><a class="glightbox" href="../../../_assets/155497-20161031082620549-515212311.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../_assets/155497-20161031082620549-515212311.png" /></a></p>
 <p>In order to see the compilation results, we need to modify the setting in BaseEngine.ini to set CompileDisplaysBinaryBackend to true. If you want to display the generated cpp file, you can also set CompileDisplaysTextBackend to true. Note that you need to restart the editor. The result obtained after clicking compile in OutputLog is shown in the following code:</p>
 <div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="  1 "></span>BlueprintLog: New page: Compile NewBlueprint
 </span><span id="__span-1-2"><span class="linenos" data-linenos="  2 "></span>

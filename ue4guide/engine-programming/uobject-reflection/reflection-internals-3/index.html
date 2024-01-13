@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -17147,7 +17147,7 @@
 <li>static FCompiledInDeferEnum creates a static variable for storing a singleton function that creates an enumerated reflection object when the program starts.</li>
 </ol>
 <p>Above we explained the process of registering information, and their execution is performed with the loading of the current module. We all know that the initialization of static variables is performed before the Main function. Below we briefly draw the startup process of Unreal Editor so that we can accurately see the entire process of registering reflection information.</p>
-<p><a class="glightbox" href="../../../_assets/UE4startup.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Reflection Class Diagram" src="../../../_assets/UE4startup.png" /></a></p>
+<p><a class="glightbox" href="../../../_assets/UE4startup.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Reflection Class Diagram" src="../../../_assets/UE4startup.png" /></a></p>
 <p>You can see that the void ProcessNewlyLoadedUObjects () function is our main concern. The registration information we mentioned earlier, including reflection information of classes, structures, and enumeration types, will be registered here. Its code is as follows:</p>
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">ProcessNewlyLoadedUObjects</span><span class="w"> </span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>

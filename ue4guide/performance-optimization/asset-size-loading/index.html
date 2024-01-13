@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -17520,10 +17520,10 @@
 </ul>
 </li>
 </ul>
-<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_DoNotOverrideCompression.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_DoNotOverrideCompression" src="../../_assets/PerformanceProfiling_AssetSize_DoNotOverrideCompression.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_DoNotOverrideCompression.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_DoNotOverrideCompression" src="../../_assets/PerformanceProfiling_AssetSize_DoNotOverrideCompression.png" /></a></p>
 <h4 id="animation-compression"><strong>Animation Compression</strong><a class="headerlink" href="#animation-compression" title="Permanent link">#</a></h4>
 <p><strong>How to check the compressed asset data size 1</strong></p>
-<p><a class="glightbox" href="../../_assets/perfprofile-assetsizered.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/perfprofile-assetsizered.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/perfprofile-assetsizered.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/perfprofile-assetsizered.png" /></a></p>
 <p>You can see sizes and compressed ratios</p>
 <p>in Content Browser.</p>
 <p>Can also verify by looking at the cooked asset’s size, and the size in memory with memreport</p>
@@ -17548,7 +17548,7 @@
 <p>Stat Levels</p>
 </li>
 <li>
-<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_LoadtoMemoryProfiling.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_LoadtoMemoryProfiling" src="../../_assets/PerformanceProfiling_AssetSize_LoadtoMemoryProfiling.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_LoadtoMemoryProfiling.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_LoadtoMemoryProfiling" src="../../_assets/PerformanceProfiling_AssetSize_LoadtoMemoryProfiling.png" /></a></p>
 <ul>
 <li>
 <p>Gray ＝ Persistent Level</p>
@@ -17718,7 +17718,7 @@
 <p>Many objects are deleted at once</p>
 </li>
 </ul>
-<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_RoughGCAlgorithm.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_RoughGCAlgorithm" src="../../_assets/PerformanceProfiling_AssetSize_RoughGCAlgorithm.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_RoughGCAlgorithm.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_RoughGCAlgorithm" src="../../_assets/PerformanceProfiling_AssetSize_RoughGCAlgorithm.png" /></a></p>
 <p><strong>GC Cost</strong> <strong>=</strong> <strong>Checking cost</strong> <strong>+</strong> <strong>Deletion Cost</strong> is not entirely accurate</p>
 <p><strong>Deletion Cost</strong> = <strong>Detaching Dependencies</strong> <strong>+</strong> **Deleting actual objects (**can be distributed to other frames )</p>
 <p><strong>Cost at the frame GC is called</strong> <strong>=</strong> <strong>Checking cost</strong> <strong>+</strong> <strong>Detaching Dependencies cost</strong></p>
@@ -17739,14 +17739,14 @@
 <p>The command name is a little confusing, but this command is saying “I want to change logging settings, for the category of logging named “Log Garbage”, and I want to see all messages in that log category that are verbosity “log” or greater”</p>
 <p>You can also do “log LogGarbage verbose” to see more log messages</p>
 <p>You can see the Checking cost and the deletion cost are printed out in this manner</p>
-<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_GCCosts.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_GCCosts" src="../../_assets/PerformanceProfiling_AssetSize_GCCosts.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_GCCosts.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_GCCosts" src="../../_assets/PerformanceProfiling_AssetSize_GCCosts.png" /></a></p>
 <ol start="2">
 <li>
 <h6 id="stat-dumphitches">Stat dumphitches<a class="headerlink" href="#stat-dumphitches" title="Permanent link">#</a></h6>
 </li>
 </ol>
-<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_DumpHitches.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_DumpHitches" src="../../_assets/PerformanceProfiling_AssetSize_DumpHitches.png" /></a></p>
-<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_ProfilingGCVerify.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_ProfilingGCVerify" src="../../_assets/PerformanceProfiling_AssetSize_ProfilingGCVerify.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_DumpHitches.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_DumpHitches" src="../../_assets/PerformanceProfiling_AssetSize_DumpHitches.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_ProfilingGCVerify.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_ProfilingGCVerify" src="../../_assets/PerformanceProfiling_AssetSize_ProfilingGCVerify.png" /></a></p>
 <ol start="3">
 <li>(Stat Startfile/Stopfile)</li>
 </ol>
@@ -17786,7 +17786,7 @@
 <p>FloatProperty 3788</p>
 <p>ObjectProperty 3251</p>
 <p><strong>5/5 Command to output number of UObjects per Blueprint</strong></p>
-<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_BlueprintStats.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_BlueprintStats" src="../../_assets/PerformanceProfiling_AssetSize_BlueprintStats.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_BlueprintStats.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_BlueprintStats" src="../../_assets/PerformanceProfiling_AssetSize_BlueprintStats.png" /></a></p>
 <ul>
 <li>
 <p>As you might have noticed on the previous slide, there were a lot of UProperties like Bool or Float Properties</p>
@@ -17808,7 +17808,7 @@
 <ul>
 <li>DisregardGCObject</li>
 </ul>
-<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_DisregardGCObject.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_DisregardGCObject" src="../../_assets/PerformanceProfiling_AssetSize_DisregardGCObject.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_DisregardGCObject.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_DisregardGCObject" src="../../_assets/PerformanceProfiling_AssetSize_DisregardGCObject.png" /></a></p>
 <p><strong>1. Enable DisregardGCObject</strong></p>
 <div class="language-cpp highlight"><span class="filename">C++</span><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="p">[</span><span class="o">/</span><span class="n">Script</span><span class="o">/</span><span class="n">Engine</span><span class="p">.</span><span class="n">GarbageCollectionSettings</span><span class="p">]</span>
 </span></code></pre></div>
@@ -17830,7 +17830,7 @@
 <ul>
 <li>GC Clustering</li>
 </ul>
-<p><a class="glightbox" href="../../_assets/1556152930143.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="1556152930143" src="../../_assets/1556152930143.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/1556152930143.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1556152930143" src="../../_assets/1556152930143.png" /></a></p>
 <p>Concept:</p>
 <p>Try to cluster UObjects to decrease check costs.</p>
 <p>Note: GC Clustering doesn’t improve delete costs.</p>
@@ -17840,7 +17840,7 @@
 <li>Actors can be put in a cluster with the level they belong to, and just removed when the level is removed</li>
 <li>There is a setting for this, which is only enabled by default for static meshes and reflection captures</li>
 </ul>
-<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_Clustering.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_Clustering" src="../../_assets/PerformanceProfiling_AssetSize_Clustering.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/PerformanceProfiling_AssetSize_Clustering.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PerformanceProfiling_AssetSize_Clustering" src="../../_assets/PerformanceProfiling_AssetSize_Clustering.png" /></a></p>
 <ul>
 <li>Clustering runs when actors are added to the scene (during AddtoWorld()), so new references to this object can’t be added afterwards</li>
 <li>This can happen, for example, if you later load a sequencer sequence that references a static mesh</li>

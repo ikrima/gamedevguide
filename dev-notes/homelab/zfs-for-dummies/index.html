@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -18203,14 +18203,14 @@
 <h4 id="what-is-zfs-and-its-history">What is ZFS and It’s History<a class="headerlink" href="#what-is-zfs-and-its-history" title="Permanent link">#</a></h4>
 <p>ZFS is a local filesystem (i.e.: ext4, NTFS, exfat) and logical volume manager (i.e.: LVM on Linux) created by Sun Microsystems. ZFS was published under an open source license until Oracle bought Sun Microsystems and closed source the license. Because the source code was already in the open and ported to different OSs, eventually a project called ‘OpenZFS’ was created, and that is the core code that is used on most Unix like systems today (Linux, FreeBSD, etc.).</p>
 <h3 id="zfs-components">ZFS Components<a class="headerlink" href="#zfs-components" title="Permanent link">#</a></h3>
-<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/zfs-components.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/zfs-components.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/zfs-components.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/zfs-components.png" /></a></p>
 <h4 id="vdev">vdev<a class="headerlink" href="#vdev" title="Permanent link">#</a></h4>
 <p>A vdev is composed of one or more physical drives (can also be of things other than hard drive, like files). They can be combined together in mirrors or RAIDZs.</p>
-<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/vdev.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/vdev.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/vdev.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/vdev.png" /></a></p>
 <p>💡 <em><strong>TIP:</strong> There are 7 different types of vdevs, and some of them (like host spare, L2ARC and ZIL) are very important.</em></p>
 <h4 id="pool">Pool<a class="headerlink" href="#pool" title="Permanent link">#</a></h4>
 <p>A pool is composed of one or more vdevs and they usually contain a volume or a dataset (which you create after creating the pool). You create/define your vdevs when you create a pool (with the <code>zpool</code> command which we’ll see later). This allows you to mix vdev types together to achieve other RAIDZ levels (see example below):</p>
-<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/raid10.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/raid10.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/raid10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/raid10.png" /></a></p>
 <h4 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">#</a></h4>
 <p>Dataset is the filesystem part of ZFS (so far we’ve seen the LVM components). Here you can define user access, quotas, compression, snapshots, etc…</p>
 <h4 id="volume">Volume<a class="headerlink" href="#volume" title="Permanent link">#</a></h4>
@@ -18223,7 +18223,7 @@
 <li>RAIDZ-2 (RAID6) - Distributes parity along with the data and can lose up to 2 physical drives. RAIDZ-2 requires at least 4 disks</li>
 <li>RAIDZ-3 - Distributes parity along with the data and can lose up to 3 physical drives. RAIDZ-3 requires at least 4, but should be used with no less than 5 disks</li>
 </ul>
-<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/raidz-comparisson.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/raidz-comparisson.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/raidz-comparisson.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/raidz-comparisson.png" /></a></p>
 <hr />
 <h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">#</a></h2>
 <p>Let’s take a look at the most common commands for handling ZFS pools and filesystem. We’ll use <code>/dev/sdx</code> to refer to device names, but keep in mind that using the device UUID is preferred in order to avoid boot issues due to device name changes.</p>
@@ -18617,12 +18617,12 @@
 <h4 id="25-creating-snapshots">2.5. Creating Snapshots<a class="headerlink" href="#25-creating-snapshots" title="Permanent link">#</a></h4>
 <p>Snapshots allow you to save the state of a filesystem to a current point in time, without duplicating storage (files are not copied). It flags existing data as «read-only» while allowing new data to be added to the filesystem without affecting the existing data blocks that are protected by the snapshot (the whole process is a bit more complicated than this).</p>
 <p>Let’s take a look at the image below as an example. You have a filesystem with existing data (Data A) and you take a snapshot (snapshot 1). Then you make some changes, add new files (Data B) and take another snapshot (snapthot 2). After that you make even more changes (Data C).</p>
-<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/snapshot.1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/snapshot.1.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/snapshot.1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/snapshot.1.png" /></a></p>
 <p>Snapshot 1 protects the original data (Data A), while snapshot 2 protects Data Changes (B) as well as the original data (Data A). So you can delete snapshot 1 and data (A) will still be protected.</p>
-<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/snapshot.2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/snapshot.2.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/snapshot.2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/snapshot.2.png" /></a></p>
 <p><em><strong>Note:</strong> The amount of data used for the snapshots is very small because we are not copying the files, but instead the filesystem top-level metadata block indicating the they belong to a snapshot.</em></p>
 <p>And here are a few scenarios of what happens when you delete files and snapshots:</p>
-<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/snapshot.3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/snapshot.3.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/homelab/zfs-for-dummies/snapshot.3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../_assets/homelab/zfs-for-dummies/snapshot.3.png" /></a></p>
 <p>Snapshots are great for testing software development, or creating a failsafe before an upgrade. But by no means they should be considered (by itself) as a backup or DR solution.</p>
 <h5 id="creating-a-snapshot"><strong>Creating a snapshot</strong><a class="headerlink" href="#creating-a-snapshot" title="Permanent link">#</a></h5>
 <div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-40-1"><span class="linenos" data-linenos="1 "></span>zfs snapshot create [pool/dataset@snapshot_name]

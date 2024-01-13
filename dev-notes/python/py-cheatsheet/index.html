@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -23755,7 +23755,7 @@
 </span><span id="__span-340-5"><span class="linenos" data-linenos="5 "></span><span class="o">&lt;</span><span class="n">Figure</span><span class="o">&gt;.</span><span class="n">write_html</span><span class="o">/</span><span class="n">json</span><span class="o">/</span><span class="n">image</span><span class="p">(</span><span class="s1">&#39;&lt;path&gt;&#39;</span><span class="p">)</span>                 <span class="c1"># Also: &lt;Figure&gt;.show()</span>
 </span></code></pre></div>
 <h4 id="covid-deaths-by-continent">Covid deaths by continent<a class="headerlink" href="#covid-deaths-by-continent" title="Permanent link">#</a></h4>
-<p><a class="glightbox" href="../../_assets/covid_deaths.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Covid Deaths" src="../../_assets/covid_deaths.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/covid_deaths.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Covid Deaths" src="../../_assets/covid_deaths.png" /></a></p>
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-341-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">covid</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://covid.ourworldindata.org/data/owid-covid-data.csv&#39;</span><span class="p">,</span>
 </span><span id="__span-341-2"><span class="linenos" data-linenos=" 2 "></span>                    <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;iso_code&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;total_deaths&#39;</span><span class="p">,</span> <span class="s1">&#39;population&#39;</span><span class="p">])</span>
 </span><span id="__span-341-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">continents</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://gist.githubusercontent.com/stevewithington/20a69c0b6d2ff&#39;</span>
@@ -23769,7 +23769,7 @@
 </span><span id="__span-341-11"><span class="linenos" data-linenos="11 "></span><span class="n">line</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Total Deaths per Million&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Continent&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></code></pre></div>
 <h4 id="confirmed-covid-cases-dow-jones-gold-and-bitcoin-price">Confirmed covid cases, Dow Jones, Gold, and Bitcoin price<a class="headerlink" href="#confirmed-covid-cases-dow-jones-gold-and-bitcoin-price" title="Permanent link">#</a></h4>
-<p><a class="glightbox" href="../../_assets/covid_cases.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Covid Cases" src="../../_assets/covid_cases.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/covid_cases.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Covid Cases" src="../../_assets/covid_cases.png" /></a></p>
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><span id="__span-342-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </span><span id="__span-342-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
 </span><span id="__span-342-3"><span class="linenos" data-linenos=" 3 "></span>

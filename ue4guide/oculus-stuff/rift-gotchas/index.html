@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -17163,12 +17163,12 @@
 <ul>
 <li>World Scale can be changed in Window-&gt;World Settings. Default is 100 uu =&gt; 1m (i.e. 1 uu = 1cm)</li>
 </ul>
-<p><a class="glightbox" href="../../_assets/Oculus_RiftGotchas_worldsettings.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Oculus_RiftGotchas_worldsettings" src="../../_assets/Oculus_RiftGotchas_worldsettings.jpg" /></a></p>
+<p><a class="glightbox" href="../../_assets/Oculus_RiftGotchas_worldsettings.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Oculus_RiftGotchas_worldsettings" src="../../_assets/Oculus_RiftGotchas_worldsettings.jpg" /></a></p>
 <ul>
 <li>Player Settings: Can be changed in the Defaults or Components of your characters BluePrint</li>
 </ul>
-<p><a class="glightbox" href="../../_assets/Oculus_RiftGotchas_Playersettings.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Oculus_RiftGotchas_Playersettings" src="../../_assets/Oculus_RiftGotchas_Playersettings.jpg" /></a></p>
-<p><a class="glightbox" href="../../_assets/Oculus_RiftGotchas_playersettings2.jpg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Oculus_RiftGotchas_playersettings2" src="../../_assets/Oculus_RiftGotchas_playersettings2.jpg" /></a></p>
+<p><a class="glightbox" href="../../_assets/Oculus_RiftGotchas_Playersettings.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Oculus_RiftGotchas_Playersettings" src="../../_assets/Oculus_RiftGotchas_Playersettings.jpg" /></a></p>
+<p><a class="glightbox" href="../../_assets/Oculus_RiftGotchas_playersettings2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Oculus_RiftGotchas_playersettings2" src="../../_assets/Oculus_RiftGotchas_playersettings2.jpg" /></a></p>
 <ul>
 <li>
 <p>Height &amp; Width are based off Capsule Half Height &amp; Capsule Radius</p>
@@ -17199,7 +17199,7 @@
 <p><em>From <a href="https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization">https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization</a></em></p>
 <p>Regarding cloning multiple monitors, I personally had the <strong>best performance with cloning enabled, and my game running in fullscreen mode</strong>, instead of running with my desktop extended and the game running in a "fullscreen" window.</p>
 <p>But to make vsync work (so that the Rift doesn't inherit the vsync timing of your primary monitor), at least with an Nvidia card, you can <strong>set the Rift as your clone source</strong> in the Nvidia Control Panel (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/ikrima/gamedevguide/issues/3" title="GitHub Issue: ikrima/gamedevguide #3">#3</a> is my Rift in the screenshot below). This way the Rift's refresh timing will be used for vsync and you won't see any tearing on your headset, although if you primary monitor timing is even slightly different (probably the case) you will still see tearing on the primary monitor. Of course this shouldn't be a problem since only other people in the room will see your primary monitor while your Rift is on your head.</p>
-<p><a class="glightbox" href="../../_assets/Oculus_RiftGotchas_CloningMultiMonitor.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Oculus_RiftGotchas_CloningMultiMonitor" src="../../_assets/Oculus_RiftGotchas_CloningMultiMonitor.png" /></a></p>
+<p><a class="glightbox" href="../../_assets/Oculus_RiftGotchas_CloningMultiMonitor.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Oculus_RiftGotchas_CloningMultiMonitor" src="../../_assets/Oculus_RiftGotchas_CloningMultiMonitor.png" /></a></p>
 <p><em>From <a href="https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization">https://forums.unrealengine.com/showthread.php?3822-UE-4-and-Oculus-Rift-Framerate-Optimization</a></em></p>
 <h1 id="guide-to-getting-good-fps-and-quality-in-ue4-demos-using-distortionscale-and-screenpercentage">Guide to getting good FPS and quality in UE4 demos using DistortionScale and ScreenPercentage<a class="headerlink" href="#guide-to-getting-good-fps-and-quality-in-ue4-demos-using-distortionscale-and-screenpercentage" title="Permanent link">#</a></h1>
 <p><strong>tl;dr: The DistortionScale parameter trades off FOV and image quality. The ScreenPercentage parameter trades off FPS and image quality. Here's how to set them both.</strong></p>
