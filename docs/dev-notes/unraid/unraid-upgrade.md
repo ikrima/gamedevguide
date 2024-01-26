@@ -16,12 +16,12 @@
   
   - **Custom Plugins**:      `un-get update; un-get installed; un-get remove bat; un-get cleanup; plugin remove un-get.plg`
   - **Background Jobs**:     `ParityCheck/Tuner, Mover, AutoUpdate, AutoBackup`
-  - **Docker**:              `SettingsTab -> Docker     -> Enable Docker = No`
-  - **VM Manager**:          `SettingsTab -> VM Manager -> Enable VMs    = No`
 - Sanity Test:
   
   - **Fix Common Problems**: `SettingsTab -> Fix Common Problems`
   - **Update Assistant**:    `ToolsTab -> UpdateAssistant -> Run Tests`
+  - **Docker**:              `SettingsTab -> Docker     -> Enable Docker = No`
+  - **VM Manager**:          `SettingsTab -> VM Manager -> Enable VMs    = No`
 
 ## Apply Upgrade
 

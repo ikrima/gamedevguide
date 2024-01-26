@@ -58,11 +58,12 @@
 |`mamba env remove -n <ENV>`|remove an environment|
 |`mamba env update -n <ENV> --file env.yml --prune`|update environment from file/uninstall unused dependencies|
 |`mamba create --name CLONE_ENV_NAME --clone <ENV>`|clone an existing environment|
-|`mamba activate <ENV>`/`conda deactivate`|activate/deactivate environment|
+|`mamba activate <ENV>`/`mamba deactivate`|activate/deactivate environment|
 |||
 |Managing Packages||
 |||
 |`mamba install -n <ENV> <PKG>`|install package|
+|`mamba update --all`|update mamba, base env, etc|
 |`mamba update -n base mamba`|update mamba base|
 |`mamba update -n <ENV> --all`|update package|
 |`mamba remove -n <ENV> <PKG>`|removing a package|
