@@ -761,6 +761,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://ikrima.dev/pkm/internet-research-tips/</loc>
+         <lastmod>2024-01-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://ikrima.dev/pkm/mkdocs-cheatsheet/</loc>
          <lastmod>2024-01-26</lastmod>
          <changefreq>daily</changefreq>

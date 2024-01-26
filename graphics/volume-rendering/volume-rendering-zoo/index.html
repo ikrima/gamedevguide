@@ -17323,7 +17323,7 @@
 <h2 id="research-snippets">Research Snippets<a class="headerlink" href="#research-snippets" title="Permanent link">#</a></h2>
 <h3 id="channel-lighting-magic">Channel Lighting Magic<a class="headerlink" href="#channel-lighting-magic" title="Permanent link">#</a></h3>
 <ul>
-<li>Devon Penney's overview of his technique from Alumette<blockquote>
+<li>Devon Penney's overview of his technique from Allumette: <a href="https://dl.acm.org/doi/10.1145/2947688.2947699">DigiPro '16 - Volumetric clouds in the VR movie, Allumette</a><blockquote>
 <p>Right now the rays terminate with the max samples per ray, which is ~25, and in general the rays early terminate with a density close to 1. This works for my clouds because they are so dense, and most rays early terminate except for gazing angles.</p>
 <p>Try to do some experiments with straight ray marching, just for comparison. In my tests, I got nicely convergent renders with a 970 + Vive @ ~1.2ms GPU time, and some overhead for rendering the cloud shell into custom depth (.3-.4ms). There isn't much CPU overhead. This is with 25 samples per ray and my dense clouds with a 3d texture that is 950x950x600</p>
 <p>So yes, I did bake in 3 lights and denisty into the grid as a preprocess in Houdini</p>
@@ -17473,7 +17473,7 @@ VolumeRadianceAtSample = VolumeSample.r * KeyLightColor + VolumeSample.g * Multi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-26</span>
   </span>
 
     
