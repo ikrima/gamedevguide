@@ -150,7 +150,7 @@
 ## Research Snippets
 
 ### Channel Lighting Magic
-- Devon Penney's overview of his technique from Alumette
+- Devon Penney's overview of his technique from Allumette: [DigiPro '16 - Volumetric clouds in the VR movie, Allumette](https://dl.acm.org/doi/10.1145/2947688.2947699)
   > Right now the rays terminate with the max samples per ray, which is ~25, and in general the rays early terminate with a density close to 1. This works for my clouds because they are so dense, and most rays early terminate except for gazing angles.
   >
   > Try to do some experiments with straight ray marching, just for comparison. In my tests, I got nicely convergent renders with a 970 + Vive @ ~1.2ms GPU time, and some overhead for rendering the cloud shell into custom depth (.3-.4ms). There isn't much CPU overhead. This is with 25 samples per ray and my dense clouds with a 3d texture that is 950x950x600
