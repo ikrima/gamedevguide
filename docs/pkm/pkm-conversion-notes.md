@@ -6,13 +6,19 @@
 
 ## Notion Export
 
+- **Promising But Untested:** [Official Obsidian Importer](https://github.com/obsidianmd/obsidian-importer)
+  - [Import Guide](https://help.obsidian.md/import)
+  - [Notion Guide](https://help.obsidian.md/import/notion)
 - Worked better: <https://github.com/connertennery/Notion-to-Obsidian-Converter>
-- <https://github.com/visualcurrent/Notion-2-Obsidan>
+- [Notion-2-Obsidan](https://github.com/visualcurrent/Notion-2-Obsidan)
 
 ## OneNote Export
 
 Well this is a hellish nightmare. From best to worst:
 
+- **Promising But Untested:** [Official Obsidian Importer](https://github.com/obsidianmd/obsidian-importer)
+  - [Import Guide](https://help.obsidian.md/import)
+  - [OneNote Guide](https://help.obsidian.md/import/onenote)
 - [ConvertOneNote2MarkDown](https://github.com/SjoerdV/ConvertOneNote2MarkDown)
   - [Extended fork](https://github.com/theohbrothers/ConvertOneNote2MarkDown)
   - [Obsidian fork](https://github.com/rab-bit/ConvertOneNote2MarkDown4Obsidian)
