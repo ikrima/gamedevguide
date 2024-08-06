@@ -1,8 +1,6 @@
 # Unraid Setup
 
-## Config
-
-### Docker
+## Docker Config
 
 - create custom network
   
@@ -16,7 +14,7 @@
   - this triggers the expected write amplification from `BRTFS` copy-on-write
   - [details](https://forums.unraid.net/bug-reports/stable-releases/683-docker-image-huge-amount-of-unnecessary-writes-on-cache-r733/page/22/?tab=comments#comment-13653)
 
-### Advanced Disk Settings
+## Advanced Disk Settings
 
 - Query/Disable/Enable Write Caching [(Reference)](https://forums.unraid.net/topic/72862-drive-write-speeds-really-slow-solved/?do=findComment&comment=670028)
   
@@ -45,7 +43,9 @@
   
   - <https://wiki.unraid.net/Tips_and_Tweaks#Turn_on_Reconstruct_Write>
 
-### VM
+## VM Config
+
+### Host Config Tweaks
 
 - disable `Copy-on-write` on share storing VM vdisk image files (default is `domains`)
 
@@ -65,7 +65,7 @@
    > ```
   
    > 
-   > \[!note\] Restore _**on-demand**_ cpu governor\_
+   > \[!note\] Restore _**on-demand** cpu governor_
    > 
    > ```bash
    > #!/bin/bash
@@ -98,22 +98,29 @@
 - use direct disk path for cache only shares instead of the user share mount path e.g.
   
   - _Default VM Storage Path:_ `/mnt/user/domains/` => `/mnt/cache_nvme/domains/`
-- Windows VM Guest tweaks
+
+### Windows VM Guest Tweaks
+
+- install the VirtIO drivers
+
+- install the QEMU Guest Agent
+
+- disable Hiberfil.sys: `powercfg -h off`
+
+- set power plan to maximum performance
+
+- disable index and/or cortana search
+
+- Nvidia control panel: `3D settings` -> `Manage 3D settings` -> `Global settings`
   
-  - install the VirtIO drivers
-  - install the QEMU Guest Agent
-  - disable Hiberfil.sys: `powercfg -h off`
-  - set power plan to maximum performance
-  - disable index and/or cortana search
-  - Nvidia control panel: `3D settings` -> `Manage 3D settings` -> `Global settings`
-    - set `Power Management mode` = `Prefer maximum performance`
-    - set `Low Latency Mode` = `On`
+  - set `Power Management mode` = `Prefer maximum performance`
+  - set `Low Latency Mode` = `On`
 - references
   
   - https://resplendence.com/latencymon
   - https://forums.unraid.net/topic/135867-is-there-a-current-guide-for-setting-up-a-windows-11-vm/
 
-### SMB
+## SMB
 
 - SMB hardening
   ```config
