@@ -1,6 +1,30 @@
-# Drivers
+# Troubleshooting Windows Drivers
 
-## SetupAPI Logs
+## Check For Device Problems
+
+- use [DeviceManager](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/using-device-manager) to see if the device has a [problem code](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/devpkey-device-problemcode)
+
+- check all devices for problem
+  
+  ```batch
+  pnputil /enum-devices /problem
+  ```
+
+- check specific [device instance path](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/device-instance-ids)
+  
+  ```batch
+  pnputil /enum-devices /instanceid <device instance path>
+  ```
+
+## Check For Device Installation Problems
+
+ > 
+ > \[!TLDR\] Analyzing the Setupapi.dev.log File
+ > Check the `%windir%\\inf\setupapi.dev.log` driver installation log file; lines beginning with "!" are _**warnings**_ and "!!!" are _**error failures**_ 
+
+### SetupAPI Text Logs: Device Driver Installation Logs
+
+_**Plug n Play Manager**_ and _**SetupAPI**_ log information about installation events:
 
 |Log|Purpose<sup>
 [1](https://github.com/MicrosoftDocs/windows-driver-docs/blob/staging/windows-driver-docs-pr/install/setupapi-text-logs.md "SetupAPI Logs Reference")</sup>|
@@ -8,7 +32,104 @@
 |`C:\Windows\INF\setupapi.dev.log`|_Device Installation Log_ on device/driver installs|
 |`C:\Windows\INF\setupapi.app.log`|_App Installation Log_ on app installs associated w/device driver installs|
 
-## Approach 1: AutoRuns
+#### SetupAPI Logging Registry Settings
+
+[SetupAPI](setupapi.md) logging supports:
+
+- _**global event level:**_    controls log verbosity level; see [Setting the Event Level for a Text Log](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/setting-the-event-level-for-a-text-log)
+- _**global event category:**_ determines the type of operations that can make log entries; see [Enabling Event Categories for a Text Log](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/enabling-event-categories-for-a-text-log)
+
+#### Interpreting SetupAPI Log File
+
+SetupAPI text logs internal format:
+
+- _**log entry:**_               is one line in a text log
+
+- _**text log header:**_         info about the os and computer architecture. see [Format of a Text Log Header](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/format-of-a-text-log-header).
+
+- _**text log sections:**_       records the events during a single device installation; sections used to conceptually organize log entries in meaningful way
+
+- _**non-section log entries:**_ associated with operations not tied to specific section; appear in order they're written. see [Format of Log Entries That Are Not Part of a Text Log Section](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/format-of-log-entries-that-are-not-part-of-a-text-log-section)
+  their log entry format: _**entry_prefix** **time_stamp** **event_category** **formatted_message**_
+
+|`Entry Prefix`|Message type|
+|:-------------|:-----------|
+|"!!!  "|error message|
+|"!    "|warning message|
+|"     "|info message|
+|"   . "|info message|
+
+|`Event Category`|SetupAPI operation|
+|----------------|------------------|
+|"...: "|Vendor-supplied operation|
+|"bak: "|Backup data|
+|"cci: "|Class installer or co-installer operation|
+|"cpy: "|Copy files|
+|"dvi: "|Device installation|
+|"flq: "|Manage file queues|
+|"inf: "|Manage INF files|
+|"ndv: "|New device wizard|
+|"prp: "|Manage device and driver properties|
+|"reg: "|Manage registry settings|
+|"set: "|General setup|
+|"sig: "|Verify digital signatures|
+|"sto: "|Manage the driver store|
+|"ui : "|Manage user interface dialog boxes|
+|"ump: "|User-mode PnP manager|
+
+#### Example Log File
+
+```cpp
+>>>  [Device Install - PCI\VEN_104C&DEV_8019&SUBSYS_8010104C&REV_00\3&61aaa01&0&38]
+>>>  2005/02/13 22:06:28.109: Section start
+...
+ Additional section body log entries
+...
+     dvi: {Build Driver List}
+     dvi:      Enumerating all INFs...
+     dvi:      Found driver match:
+     dvi:           HardwareID - PCI\VEN_104C&DEV_8019
+     dvi:           InfName    - C:\WINDOWS\inf\1394.inf
+     dvi:           DevDesc    - Texas Instruments OHCI Compliant IEEE 1394 Host Controller
+     dvi:           DrvDesc    - Texas Instruments OHCI Compliant IEEE 1394 Host Controller
+     dvi:           Provider   - Microsoft
+     dvi:           Mfg        - Texas Instruments
+     dvi:           InstallSec - TIOHCI_Install
+     dvi:           ActualSec  - TIOHCI_Install.NT
+     dvi:           Rank       - 0x00002001
+     dvi:           DrvDate    - 10/01/2002
+     dvi:           Version    - 6.0.5033.0 
+!!!  inf:      InfCache: Error flagging 1394.inf for match string pci\ven_104c&dev_8019
+     dvi: {Build Driver List - exit(0x00000000)}
+...
+ Additional section body log entries 
+...
+<<<  [2005/02/13 22:06:29.000: Section end]
+<<<  [Exit Status(0x00000000)]
+```
+
+```cpp
+  . ump: Start service install for: PCI\VEN_104C&DEV_8019&SUBSYS_8010104C&REV_00\3&61aaa01&0&38
+  . ump: Creating Install Process: rundll32.exe
+
+>>>  [Device Install - PCI\VEN_104C&DEV_8019&SUBSYS_8010104C&REV_00\3&61aaa01&0&38]
+>>>  2005/02/13 22:06:28.109: Section start
+```
+
+### Common Installation Errors Errors
+
+|Error code|Description|
+|----------|-----------|
+|0x000005B4 (ERROR_TIMEOUT)|The device installation took too long and was stopped.  See [SetupApi logs](setupapi-text-logs.md) for more information about the device installation and where the time was spent.<br><br>Some common causes of timeouts are:<br><br>A co-installer executing for too long.  This could be because the co-installer is performing some unsupported operation that has hung or is too long running.  For example, a co-installer is executed in a non-interactive session, so it can't do something that needs to wait on user input.  Co-installers are deprecated and should be avoided. For more information, see [universal INFs](using-a-universal-inf-file.md).<br><br>Starting or restarting a device at the end of device installation has hung.|
+|0xe0000219 (ERROR_NO_ASSOCIATED_SERVICE)|The driver package being installed on the device didn't specify an associated service for the device.  For more information, see the SPSVCINST_ASSOCSERVICE flag in the [INF AddService Directive](inf-addservice-directive.md) documentation.|
+|0xe0000248 (ERROR_DEVICE_INSTALL_BLOCKED)|The installation of the device was blocked due to group policy settings.  For more information, see [controlling device installation using Group Policy](/previous-versions/dotnet/articles/bb530324(v=msdn.10)) and [Mobile Device Management policies for device installation](/windows/client-management/mdm/policy-csp-deviceinstallation).|
+|0x000001e0 (ERROR_PNP_QUERY_REMOVE_DEVICE_TIMEOUT)|At the end of device installation, one or more devices will be restarted to pick up new files or settings changed during the device installation.  As part of this restart operation, a query remove operation is performed on the device or devices being restarted. This error indicates that something hung or took too long during the query remove operation for the device being installed. For more information, see [SetupApi logs](setupapi-text-logs.md).|
+|0x000001e1 (ERROR_PNP_QUERY_REMOVE_RELATED_DEVICE_TIMEOUT)|At the end of device installation, one or more devices will be restarted to pick up new files or settings changed during the device installation.  As part of this restart operation, a query remove operation is performed on the device or devices being restarted. This error indicates that something hung or took too long during the query remove operation for one of the device or devices being restarted. For more information, see [SetupApi logs](setupapi-text-logs.md).|
+|0x000001e2 (ERROR_PNP_QUERY_REMOVE_UNRELATED_DEVICE_TIMEOUT)|At the end of device installation, one or more devices will be restarted to pick up new files or settings changed during the device installation.  As part of this restart operation, a query remove operation is performed on the device or devices being restarted. This error indicates that that query remove operation wasn't able to be performed in a timely manner due to a query remove operation being performed on another device on the system. For more information, see [SetupApi logs](setupapi-text-logs.md).|
+
+## Misbehaving Or Bad Drivers
+
+### Approach 1: AutoRuns
 
 - TLDR: use **_SysInternals: AutoRuns_** to find bad behaving/suspect drivers [(Reference)](https://www.overclock.net/threads/official-amd-ryzen-ddr4-24-7-memory-stability-thread.1628751/page-1041)
   - Configuration
@@ -63,7 +184,7 @@
       - [SystemInformer](https://systeminformer.sourceforge.io)
       - TaskManager/msconfig
 
-## Approach 2: SCManager
+### Approach 2: SCManager
 
 `sc.exe`: **Service Control Manager CLI** to manipulate services; drivers run as special kernel service
 
@@ -101,63 +222,68 @@
     ```
   
   - Global Commands: operate on SCManager; does not take service name
-    \| Command        | Description                                                                                        |
-    \| -------------- | -------------------------------------------------------------------------------------------------- |
-    \| `sc [command]` | get help for command                                                                               |
-    \| `boot`         | `ok|bad` Indicates whether the last boot should be saved as the last-known-good boot configuration |
-    \| `Lock`         | Locks the Service Database                                                                         |
-    \| `QueryLock`    | Queries the LockStatus for the SCManager Database                                                  |
+    
+    |Command|Description|
+    |-------|-----------|
+    |`sc [command]`|get help for command|
+    |`boot`|\`ok|
+    |`Lock`|Locks the Service Database|
+    |`QueryLock`|Queries the LockStatus for the SCManager Database|
   
   - Service Commands: operates on services; requires service name
-    \| Command           | Description                                                                                        |
-    \| ----------------- | -------------------------------------------------------------------------------------------------- |
-    \| `query`           | Queries the status for a service, or enumerates the status for types of services                   |
-    \| `queryex`         | Queries the extended status for a service, or enumerates the status for types of services          |
-    \| `start`           | Starts a service                                                                                   |
-    \| `pause`           | Sends a PAUSE control request to a service                                                         |
-    \| `interrogate`     | Sends an INTERROGATE control request to a service                                                  |
-    \| `continue`        | Sends a CONTINUE control request to a service                                                      |
-    \| `stop`            | Sends a STOP request to a service                                                                  |
-    \| `config`          | Changes the configuration of a service (persistent)                                                |
-    \| `description`     | Changes the description of a service                                                               |
-    \| `failure`         | Changes the actions taken by a service upon failure                                                |
-    \| `failureflag`     | Changes the failure actions flag of a service                                                      |
-    \| `sidtype`         | Changes the service SID type of a service                                                          |
-    \| `privs`           | Changes the required privileges of a service                                                       |
-    \| `managedaccount`  | Changes the service to mark the service account password as managed by LSA                         |
-    \| `qc`              | Queries the configuration information for a service                                                |
-    \| `qdescription`    | Queries the description for a service                                                              |
-    \| `qfailure`        | Queries the actions taken by a service upon failure                                                |
-    \| `qfailureflag`    | Queries the failure actions flag of a service                                                      |
-    \| `qsidtype`        | Queries the service SID type of a service                                                          |
-    \| `qprivs`          | Queries the required privileges of a service                                                       |
-    \| `qtriggerinfo`    | Queries the trigger parameters of a service                                                        |
-    \| `qpreferrednode`  | Queries the preferred NUMA node of a service                                                       |
-    \| `qmanagedaccount` | Queries whether a services uses an account with a password managed by LSA                          |
-    \| `qprotection`     | Queries the process protection level of a service                                                  |
-    \| `quserservice`    | Queries for a local instance of a user service template                                            |
-    \| `delete`          | Deletes a service (from the registry)                                                              |
-    \| `create`          | Creates a service. (adds it to the registry)                                                       |
-    \| `control`         | Sends a control to a service                                                                       |
-    \| `sdshow`          | Displays a service's security descriptor                                                           |
-    \| `sdset`           | Sets a service's security descriptor                                                               |
-    \| `showsid`         | Displays the service SID string corresponding to an arbitrary name                                 |
-    \| `triggerinfo`     | Configures the trigger parameters of a service                                                     |
-    \| `preferrednode`   | Sets the preferred NUMA node of a service                                                          |
-    \| `GetDisplayName`  | Gets the DisplayName for a service                                                                 |
-    \| `GetKeyName`      | Gets the ServiceKeyName for a service                                                              |
-    \| `EnumDepend`      | Enumerates Service Dependencies                                                                    |
+    
+    |Command|Description|
+    |-------|-----------|
+    |`query`|Queries the status for a service, or enumerates the status for types of services|
+    |`queryex`|Queries the extended status for a service, or enumerates the status for types of services|
+    |`start`|Starts a service|
+    |`pause`|Sends a PAUSE control request to a service|
+    |`interrogate`|Sends an INTERROGATE control request to a service|
+    |`continue`|Sends a CONTINUE control request to a service|
+    |`stop`|Sends a STOP request to a service|
+    |`config`|Changes the configuration of a service (persistent)|
+    |`description`|Changes the description of a service|
+    |`failure`|Changes the actions taken by a service upon failure|
+    |`failureflag`|Changes the failure actions flag of a service|
+    |`sidtype`|Changes the service SID type of a service|
+    |`privs`|Changes the required privileges of a service|
+    |`managedaccount`|Changes the service to mark the service account password as managed by LSA|
+    |`qc`|Queries the configuration information for a service|
+    |`qdescription`|Queries the description for a service|
+    |`qfailure`|Queries the actions taken by a service upon failure|
+    |`qfailureflag`|Queries the failure actions flag of a service|
+    |`qsidtype`|Queries the service SID type of a service|
+    |`qprivs`|Queries the required privileges of a service|
+    |`qtriggerinfo`|Queries the trigger parameters of a service|
+    |`qpreferrednode`|Queries the preferred NUMA node of a service|
+    |`qmanagedaccount`|Queries whether a services uses an account with a password managed by LSA|
+    |`qprotection`|Queries the process protection level of a service|
+    |`quserservice`|Queries for a local instance of a user service template|
+    |`delete`|Deletes a service (from the registry)|
+    |`create`|Creates a service. (adds it to the registry)|
+    |`control`|Sends a control to a service|
+    |`sdshow`|Displays a service's security descriptor|
+    |`sdset`|Sets a service's security descriptor|
+    |`showsid`|Displays the service SID string corresponding to an arbitrary name|
+    |`triggerinfo`|Configures the trigger parameters of a service|
+    |`preferrednode`|Sets the preferred NUMA node of a service|
+    |`GetDisplayName`|Gets the DisplayName for a service|
+    |`GetKeyName`|Gets the ServiceKeyName for a service|
+    |`EnumDepend`|Enumerates Service Dependencies|
   
   - `query/queryex` options
     
     - query service status: `sc query [servicename]`
+    
     - find matching services: `sc query [option]`
-      \| Option     | Value Type                | Description                                                     |
-      \| ---------- | ------------------------- | --------------------------------------------------------------- |
-      \| `state=`   | `active`,`inactive`,`all` | service state to enumerate;               default: `active`     |
-      \| `bufsize=` | `int`                     | size in bytes of enumeration buffer;      default: `4096`       |
-      \| `ri=`      | `int`                     | resume index number to begin enumeration; default: `0`          |
-      \| `group=`   | `string`                  | service group to enumerate;               default: `all groups` |
+      
+      |Option|Value Type|Description|
+      |------|----------|-----------|
+      |`state=`|`active`,`inactive`,`all`|service state to enumerate;               default: `active`|
+      |`bufsize=`|`int`|size in bytes of enumeration buffer;      default: `4096`|
+      |`ri=`|`int`|resume index number to begin enumeration; default: `0`|
+      |`group=`|`string`|service group to enumerate;               default: `all groups`|
+  
   - syntax examples
     
     ```batch
@@ -174,11 +300,13 @@
     sc query   type= driver group= NDIS     - Enumerates all NDIS drivers
     ```
 
-## Approach 3: pnputil
+### Approach 3: pnputil
 
 - find bad offender's by looking at [zombie processes](https://scorpiosoftware.net/2022/05/14/zombie-processes/) using Pavel's Object Explorer
+  
   - ex: Razer's shitty GameManagerService.exe that's forced on users for no reason
 - list/inspect
+  
   - AutoRuns
   - DriverView
   - DevManView
@@ -192,6 +320,7 @@
     ```
 
 - delete
+  
   - BCUninstaller
   - BleachBit
   - command line
