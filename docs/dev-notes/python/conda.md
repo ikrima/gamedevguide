@@ -23,6 +23,12 @@
 |`conda activate <ENV>`/`conda deactivate`|activate/deactivate environment|
 |`conda list --explicit > spec.txt`|produce an environment spec file|
 |`conda env export --from-history > env.yml`|export environment to file|
+|`conda clean`|remove unused packages and caches|
+|`conda doctor -n <ENV> [-vvv]`|display a health report for env|
+|||
+|`conda clean [--index-cache] [--packages] [--tarballs] [--logfiles] [--locks]`|remove index cache, unused cached packages, tarballs, logfiles, and lock files|
+|`conda clean -all -vvv --dry-run`|clean everything|
+|`conda doctor -n <ENV> -vvv`|display health report for env|
 |||
 |Managing Packages||
 |||
@@ -33,14 +39,6 @@
 |`conda update anaconda`|update all packages to latest stable + compatible version of Anaconda|
 |`conda update -n base conda`|update base conda environment|
 |`conda env update -n <ENV> --file env.yml --prune`|update environment from file and uninstall unused dependencies|
-
-### Migrating Environments
-
-- Using `conda-minify` to export minimal environment
-  ```bash
-  conda install conda-minify -c jamespreed
-  conda-minify --name <ENV> [--relax] [--how [full|minor]] [--file ./test_env.yml]
-  ```
 
 ## Mamba
 
@@ -57,21 +55,33 @@
 |`mamba env export -n <ENV> > env.yml`|export an environment|
 |`mamba env remove -n <ENV>`|remove an environment|
 |`mamba env update -n <ENV> --file env.yml --prune`|update environment from file/uninstall unused dependencies|
-|`mamba create --name CLONE_ENV_NAME --clone <ENV>`|clone an existing environment|
+|`mamba create -n CLONE_ENV_NAME --clone <ENV>`|clone an existing environment|
 |`mamba activate <ENV>`/`mamba deactivate`|activate/deactivate environment|
+|||
+|`mamba clean [--index-cache] [--packages] [--tarballs] [--logfiles] [--locks]`|clean environment remove index cache, unused cached packages, tarballs, logfiles, and lock files|
+|`mamba clean -all -vvv --dry-run`|clean everything|
+|`conda doctor -n <ENV> -vvv`|display health report for env|
 |||
 |Managing Packages||
 |||
 |`mamba install -n <ENV> <PKG>`|install package|
 |`mamba update --all`|update mamba, base env, etc|
 |`mamba update -n base mamba`|update mamba base|
-|`mamba update -n <ENV> --all`|update package|
+|`mamba update -n <ENV> <PKG>`|update package|
 |`mamba remove -n <ENV> <PKG>`|removing a package|
 |`mamba repoquery search <PKG>`|finding a package|
 |`mamba repoquery depends <PKG> [--recursive]`|show pkg direct/transitive dependencies|
 |`mamba repoquery depends -t <PKG>`|show pkg transitive dependencies as tree|
 |`mamba repoquery whoneeds <PKG>`|show pkg dependants i.e. inverse of depends|
 |`mamba repoquery whoneeds -t <PKG>`|show pkg dependants as tree|
+
+## Migrating Environments
+
+- Using `conda-minify` to export minimal environment
+  ```bash
+  conda install conda-minify -c jamespreed
+  conda-minify --name <ENV> [--relax] [--how [full|minor]] [--file ./test_env.yml]
+  ```
 
 ## References
 
