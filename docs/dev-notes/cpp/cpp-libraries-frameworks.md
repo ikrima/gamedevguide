@@ -47,7 +47,7 @@
 - [https://github.com/onqtam/cmake-reflection-template](https://github.com/onqtam/cmake-reflection-template)
 - [https://github.com/preshing/FlexibleReflection/tree/part1](https://github.com/preshing/FlexibleReflection/tree/part1)
 - [RTTR](https://www.rttr.org)
-- [https://github.com/TheLartians/StaticTypeInfo](https://github.com/TheLartians/StaticTypeInfo) Compile time type info
+- [StaticTypeInfo](https://github.com/TheLartians/StaticTypeInfo): Compile time type info
 - [Compile-time type info using constexpr](https://simoncoenen.com/blog/programming/StaticReflection.html)
 - [Refureku](https://github.com/jsoysouvanh/Refureku): C++ reflection library based on Kodgen
 - [Kodgen](https://github.com/jsoysouvanh/Kodgen): C++ parser & codegen
@@ -60,18 +60,18 @@
 - [https://github.com/TartanLlama/tl](https://github.com/TartanLlama/tl)
 - [https://github.com/tacticalmelonfarmer/cxl](https://github.com/tacticalmelonfarmer/cxl)
 - [https://github.com/doom/meta](https://github.com/doom/meta)
-- [https://github.com/boostorg/callable_traits](https://github.com/boostorg/callable_traits)
-- Function type traits: [https://github.com/kennytm/utils/blob/master/traits.hpp](https://github.com/kennytm/utils/blob/master/traits.hpp)
+- [callable_traits](https://github.com/boostorg/callable_traits)
+- [function type traits](https://github.com/kennytm/utils/blob/master/traits.hpp)
 
 ### C++ Utilities
 
 - Functional programming: [https://github.com/Dobiasd/FunctionalPlus](https://github.com/Dobiasd/FunctionalPlus)
-- [https://github.com/Neargye/magic_enum](https://github.com/Neargye/magic_enum)
-- Global Static  objects: <https://github.com/graphitemaster/0xABAD1DEA>
+- [magic enum](https://github.com/Neargye/magic_enum)
+- Global Static objects: <https://github.com/graphitemaster/0xABAD1DEA>
 - Asset Lib: <https://github.com/gpakosz/PPK_ASSERT>
 - Debug Print Expression Macros: ocs.google.com/
 
-#### Type erasure
+### C++ Type erasure
 
 - [boost te](https://github.com/boost-experimental/te)
 - [dyno](https://github.com/ldionne/dyno)
@@ -95,7 +95,7 @@
 
 ### Coroutines
 
-- [libaco](https://github.com/hnes/libaco) - A blazing fast and lightweight C asymmetric coroutine library
+- [libaco](https://github.com/hnes/libaco): A blazing fast and lightweight C asymmetric coroutine library
 - <https://github.com/Tencent/libco>
 - [Stackless coroutine](https://github.com/RandyGaul/cute_headers/blob/master/cute_coroutine.h)
 
@@ -104,55 +104,55 @@
 - [https://cista.rocks/](https://cista.rocks)
 - [https://uscilab.github.io/cereal/](https://uscilab.github.io/cereal)
 
-### Json
+### JSON
 
-- JSON5 - JSON for Humans: <https://github.com/json5/json5>
-- [https://github.com/Tencent/rapidjson](https://github.com/Tencent/rapidjson)
+- [JSON5](https://github.com/json5/json5): JSON for Humans
+- [rapidjson](https://github.com/Tencent/rapidjson)
 
 ## Math
 
 ### General
 
 - Math library: [https://github.com/nfrechette/rtm](https://github.com/nfrechette/rtm)
-- [cglm](https://github.com/recp/cglm) - better version of glm
+- [cglm](https://github.com/recp/cglm): better version of glm
 - Procedural math tricks: <https://github.com/zalo/MathUtilities> -  grab bag of some of the neat math and physics tricks
 - Curves Library: <https://github.com/ethz-asl/curves/tree/master/curves/include/curves>
 - Splines/Curves library: <https://github.com/andrewwillmott/splines-lib>
 
 ### Geometry
 
-- [libigl](https://libigl.github.io) - header only C++ geometry processing library
-- [geometry-central](https://github.com/nmwsharp/geometry-central) - from Keenan Crane/GeometryProcess lab, containing implementations of Keenan's papers
+- [libigl](https://libigl.github.io): header only C++ geometry processing library
+- [geometry-central](https://github.com/nmwsharp/geometry-central): from Keenan Crane/GeometryProcess lab, containing implementations of Keenan's papers
 
 ## Database
 
-- [https://github.com/LMDB/lmdb](https://github.com/LMDB/lmdb)
-  - <https://mozilla.github.io/firefox-browser-architecture/text/0015-rkv.html>
-  - <https://dgraph.io/blog/post/badger-lmdb-boltdb/>
-- [https://github.com/LMDB/sqlightning](https://github.com/LMDB/sqlightning)
-- [https://github.com/erthink/libmdbx](https://github.com/erthink/libmdbx)
-- [https://github.com/google/leveldb](https://github.com/google/leveldb)
-- [https://realm.io/](https://realm.io)
-- [dntree](https://github.com/reqa/ldap-lmdb-dntree) - an example implementation that shows how LDAP DNs can be stored in an lmdb database, structured as a hierarchical adjecency list
+- [lmdb](https://github.com/LMDB/lmdb)
+  - [Firefox Design Review: Key-Value Storage](https://mozilla.github.io/firefox-browser-architecture/text/0015-rkv.html): simple key-value storage based on LMDB
+  - [LMDB vs BoltDB](https://dgraph.io/blog/post/badger-lmdb-boltdb/)
+- [sqlightning](https://github.com/LMDB/sqlightning)
+- [libmdbx](https://github.com/erthink/libmdbx)
+- [leveldb](https://github.com/google/leveldb)
+- [realm.io](https://realm.io)
+- [dntree](https://github.com/reqa/ldap-lmdb-dntree): implementation showing how LDAP DNs can be stored in an lmdb database, structured as a hierarchical adjecency list
 - [sqlite orm](https://github.com/fnc12/sqlite_orm)
 
 ## Compute/GPU
 
 - [https://github.com/imageworks/OpenShadingLanguage](https://github.com/imageworks/OpenShadingLanguage)
 - slang
-- falcor
-- [https://github.com/xelatihy/yocto-gl](https://github.com/xelatihy/yocto-gl)
+- Falcor
+- [yocto-gl](https://github.com/xelatihy/yocto-gl)
 - Blitz++ Multi-Dimensional Array Library: [https://github.com/blitzpp/blitz](https://github.com/blitzpp/blitz)
 - [https://github.com/mitsuba-renderer/enoki](https://github.com/mitsuba-renderer/enoki)
 
 ## Data Flow/Graph
 
-- [https://github.com/FlexCoreLib/flexcore](https://github.com/FlexCoreLib/flexcore)
-- [https://github.com/cross-platform/dspatch](https://github.com/cross-platform/dspatch)
+- [flexcore](https://github.com/FlexCoreLib/flexcore)
+- [dspatch](https://github.com/cross-platform/dspatch)
 
 ## Networking
 
-- [https://github.com/Qihoo360/evpp](https://github.com/Qihoo360/evpp)
+- [evpp](https://github.com/Qihoo360/evpp)
 
 ## Platform
 
@@ -170,18 +170,18 @@
 ### Hot reload
 
 - Windows PE file parser: <https://github.com/serge1/COFFI>
-- [Blink](https://github.com/crosire/blink) - function level runtime patching with pdb+COFF reader, linker, etc
+- [Blink](https://github.com/crosire/blink): function level runtime patching with pdb+COFF reader, linker, etc
 - Run code from object files:
   - <http://h3.gd/posts/how-not-to-use-dlls/>
   - <https://github.com/h3r2tic/relocdll>
-- [CR](https://github.com/fungos/cr) - single file header-only live reload solution for C, written in C++
+- [CR](https://github.com/fungos/cr): single file header-only live reload solution for C, written in C++
 
 ## Animation
 
 ### Libs
 
 - [Ozz Animation Library](https://github.com/guillaumeblanc/ozz-animation)
-- Animation Compression [https://github.com/nfrechette/acl](https://github.com/nfrechette/acl)
+- [Animation Compression Library](https://github.com/nfrechette/acl)
 
 ### Skinning
 
@@ -189,21 +189,25 @@
 - [https://github.com/CMU-Perceptual-Computing-Lab/openpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
 - [Dem Bones](https://www.ea.com/seed/news/open-source-dem-bones): Skinning Decomposition
 - [https://github.com/damian0815/skellington](https://github.com/damian0815/skellington)
-- Fast and Efficient Skinning of Animated Meshes
-  - Implementation: [https://github.com/tneumann/skinning_decomposition_kavan](https://github.com/tneumann/skinning_decomposition_kavan)
-- Sparse Localized Deformation Components
-  - [http://www.drematrix.de/publications/sparse-localized-deformation-components/](http://www.drematrix.de/publications/sparse-localized-deformation-components)
-  - [https://github.com/tneumann/splocs](https://github.com/tneumann/splocs)
+- [Fast and Efficient Skinning of Animated Meshes](https://github.com/tneumann/skinning_decomposition_kavan): clean implementation in python
+- [Sparse Localized Deformation Components](http://www.drematrix.de/publications/sparse-localized-deformation-components): extract sparse, spatially localized deformation modes from animated mesh sequence
+  - [splocs implementation](https://github.com/tneumann/splocs)
 
 ## Compilers
 
 ### Parallel Programming
 
-- [https://github.com/thrust/thrust](https://github.com/thrust/thrust) (also [https://developer.nvidia.com/thrust](https://developer.nvidia.com/thrust))
-- [https://github.com/nlguillemot/CppSPMD](https://github.com/nlguillemot/CppSPMD)
-- SPIRV to ISPC: [https://twitter.com/_tim_jones_/status/1006208754004553728](https://twitter.com/_tim_jones_/status/1006208754004553728)
-  - [spir-v-to-ispc-convert-gpu-compute-to-the-cpu](https://software.intel.com/en-us/articles/spir-v-to-ispc-convert-gpu-compute-to-the-cpu)
-- Taichi Programming Language [http://taichi.graphics/](http://taichi.graphics)
+- [Nvidia CCCL](https://github.com/nvidia/cccl): unified Nvidia CUDA C++ Core Libraries for GPU-Accelerated
+  - [Thrust](https://github.com/NVIDIA/thrust): high-level GPU API for parallel algorithms/data structures library
+  - [Thrust Project Page](https://developer.nvidia.com/thrust): C++ Parallel Algorithm Library with high-level API with GPU/CPU configurable backends e.g. CUDA, TBB, OpenMP
+  - [CUB](https://github.com/NVIDIA/cub)
+  - [libcudacxx](https://github.com/NVIDIA/libcudacxx)
+- [Nvidia CUDA-X](https://developer.nvidia.com/gpu-accelerated-libraries): Nvidia GPU-Accelerated Libraries
+- [CppSPMD](https://github.com/nlguillemot/CppSPMD)
+- [SPIRV-Cross](https://software.intel.com/en-us/articles/spir-v-to-ispc-convert-gpu-compute-to-the-cpu): Intel's SPIR-V to ISPC translator; convert GPU Compute to CPU
+  - [SPIRV-Cross Demo](https://shader-playground.timjones.io/7b188536275bddba2caad31d92a6691a): compiling a GLSL compute shader -> SPIR-V -> ISPC
+  - [SPIRV-Cross Live](https://twitter.com/_tim_jones_/status/1006208754004553728): live demo support in Shader Playground
+- [Taichi Programming Language](http://taichi.graphics)
 
 ### Algebraic Effects
 
@@ -212,8 +216,8 @@
 
 ### Parsing
 
-- [https://tree-sitter.github.io/tree-sitter/](https://tree-sitter.github.io/tree-sitter) - incremental parser
-- [https://github.com/orangeduck/mpc](https://github.com/orangeduck/mpc) - parser combinator
+- [tree-sitter](https://tree-sitter.github.io/tree-sitter): incremental parser
+- [https://github.com/orangeduck/mpc](https://github.com/orangeduck/mpc): parser combinator
 - [http://www.buildyourownlisp.com/contents](http://www.buildyourownlisp.com/contents)
 - [https://github.com/TheLartians/Parser](https://github.com/TheLartians/Parser)
 - [https://github.com/taocpp/PEGTL](https://github.com/taocpp/PEGTL)
