@@ -10,8 +10,8 @@ mkdocs~=1.5,>=1.5.3
 pymdown-extensions~=10.2,>=10.5
 mkdocs-material~=9.5,>=9.5.2
 mkdocs-awesome-pages-plugin>=2.9.2
-mkdocs-git-revision-date-localized-plugin==1.2.1
-mkdocs-plugin-progress==1.2.0
+mkdocs-git-revision-date-localized-plugin~=1.2,>=1.2.1
+mkdocs-plugin-progress~=1.2.0
 
 # MkDocs Extra: not deployed to production yet
 mkdocs-minify-plugin==0.7.1
