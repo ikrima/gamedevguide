@@ -25,17 +25,23 @@
     submoduleSummary = true # git status is useful again when a referenced submodule commit changed
   
   # Diff tool settings
+  [difftool]
+    prompt = false
+  [pager]
+    difftool = true
   [difftool "araxis"]
     path = 'C:/Program Files/Araxis/Araxis Merge/compare.exe'
   [mergetool "araxis"]
-    path = 'C:/Program Files/Araxis/Araxis Merge/Compare.exe'
-    cmd  = \C:/Program Files/Araxis/Araxis Merge/Compare.exe\ '$REMOTE' '$BASE' '$LOCAL' '$MERGED'
+    path = 'C:/Program Files/Araxis/Araxis Merge/compare.exe'
+    cmd  = 'C:/Program Files/Araxis/Araxis Merge/compare.exe' '$REMOTE' '$BASE' '$LOCAL' '$MERGED'
   [difftool "beyondcompare"]
     path = 'C:/Program Files/Beyond Compare 4/bcomp.exe'
     cmd  = 'C:/Program Files/Beyond Compare 4/bcomp.exe' '$LOCAL' '$REMOTE'
   [mergetool "beyondcompare"]
     path = 'C:/Program Files/Beyond Compare 4/bcomp.exe'
     cmd  = 'C:/Program Files/Beyond Compare 4/bcomp.exe' '$LOCAL' '$REMOTE' '$BASE' '$MERGED'
+  [difftool "difftastic"]
+    cmd = 'difft.exe' '$LOCAL' '$REMOTE'
   ```
 
 ## Git Fetch/Clone

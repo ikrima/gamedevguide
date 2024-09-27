@@ -20,12 +20,14 @@
 - [Introduction to Linux Technology and Philosophy by Jeremy Hajek](../_assets/intro-to-linux-tech-philosophy.pdf): [(github source)](https://github.com/jhajek/Linux-text-book-part-1)
 - [The Linux Command Line by William Shotts](../_assets/linux-command-line.pdf)
 - [Bite Size Linux by Julia Evans](../_assets/bite-size-linux.pdf)
-- Help/Manuals
-  - [ManKier explain](https://www.mankier.com/): concise pretty man pages with an API
-  - [explainshell](https://explainshell.com/): match command-line arguments to their help text
-  - [tldr pages](https://tldr.sh/): more concise man pages
-  - [manned](https://manned.org/): man page versions across a range of distributions
-  - [ubuntu](https://manpages.ubuntu.com/): ubuntu man pages and documentation
+
+#### Help/Manuals
+
+- [ManKier explain](https://www.mankier.com/): concise pretty man pages with an API
+- [explainshell](https://explainshell.com/): match command-line arguments to their help text
+- [tldr pages](https://tldr.sh/): more concise man pages
+- [manned](https://manned.org/): man page versions across a range of distributions
+- [ubuntu](https://manpages.ubuntu.com/): ubuntu man pages and documentation
 
 ### Communities
 
@@ -113,15 +115,16 @@
     ```
 
 - `less`: console pager
-  \| Navigation Key        | Action                                |
-  \| --------------------- | ------------------------------------- |
-  \| `down`/`up`,`j`/`k`   | move down/up one line                 |
-  \| `space bar`/`b`       | move down/up one page                 |
-  \| `left`/`right`        | scroll left/right horizontally        |
-  \| `g`/`G`,`Home`/`End`  | go to start/end line                  |
-  \| `/pattern`/`?pattern` | search forward/backward for `pattern` |
-  \| `n`/`N`               | go to next/previous occurrence        |
-  \| `q`                   | Quit `less`                           |
+  
+  |Navigation Key|Action|
+  |--------------|------|
+  |`down`/`up`,`j`/`k`|move down/up one line|
+  |`space bar`/`b`|move down/up one page|
+  |`left`/`right`|scroll left/right horizontally|
+  |`g`/`G`,`Home`/`End`|go to start/end line|
+  |`/pattern`/`?pattern`|search forward/backward for `pattern`|
+  |`n`/`N`|go to next/previous occurrence|
+  |`q`|Quit `less`|
 
 ## Networking
 
