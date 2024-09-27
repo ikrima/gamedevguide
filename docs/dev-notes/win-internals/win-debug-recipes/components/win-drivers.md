@@ -20,7 +20,7 @@
 
  > 
  > \[!TLDR\] Analyzing the Setupapi.dev.log File
- > Check the `%windir%\\inf\setupapi.dev.log` driver installation log file; lines beginning with "!" are _**warnings**_ and "!!!" are _**error failures**_ 
+ > Check the `%windir%\\inf\setupapi.dev.log` driver installation log file; lines beginning with "!" are _**warnings**_ and "!!!" are _**error failures**_
 
 ### SetupAPI Text Logs: Device Driver Installation Logs
 
@@ -34,7 +34,7 @@ _**Plug n Play Manager**_ and _**SetupAPI**_ log information about installation 
 
 #### SetupAPI Logging Registry Settings
 
-[SetupAPI](setupapi.md) logging supports:
+[SetupAPI](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/setupapi) logging supports:
 
 - _**global event level:**_    controls log verbosity level; see [Setting the Event Level for a Text Log](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/setting-the-event-level-for-a-text-log)
 - _**global event category:**_ determines the type of operations that can make log entries; see [Enabling Event Categories for a Text Log](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/enabling-event-categories-for-a-text-log)
@@ -120,12 +120,12 @@ SetupAPI text logs internal format:
 
 |Error code|Description|
 |----------|-----------|
-|0x000005B4 (ERROR_TIMEOUT)|The device installation took too long and was stopped.  See [SetupApi logs](setupapi-text-logs.md) for more information about the device installation and where the time was spent.<br><br>Some common causes of timeouts are:<br><br>A co-installer executing for too long.  This could be because the co-installer is performing some unsupported operation that has hung or is too long running.  For example, a co-installer is executed in a non-interactive session, so it can't do something that needs to wait on user input.  Co-installers are deprecated and should be avoided. For more information, see [universal INFs](using-a-universal-inf-file.md).<br><br>Starting or restarting a device at the end of device installation has hung.|
-|0xe0000219 (ERROR_NO_ASSOCIATED_SERVICE)|The driver package being installed on the device didn't specify an associated service for the device.  For more information, see the SPSVCINST_ASSOCSERVICE flag in the [INF AddService Directive](inf-addservice-directive.md) documentation.|
-|0xe0000248 (ERROR_DEVICE_INSTALL_BLOCKED)|The installation of the device was blocked due to group policy settings.  For more information, see [controlling device installation using Group Policy](/previous-versions/dotnet/articles/bb530324(v=msdn.10)) and [Mobile Device Management policies for device installation](/windows/client-management/mdm/policy-csp-deviceinstallation).|
-|0x000001e0 (ERROR_PNP_QUERY_REMOVE_DEVICE_TIMEOUT)|At the end of device installation, one or more devices will be restarted to pick up new files or settings changed during the device installation.  As part of this restart operation, a query remove operation is performed on the device or devices being restarted. This error indicates that something hung or took too long during the query remove operation for the device being installed. For more information, see [SetupApi logs](setupapi-text-logs.md).|
-|0x000001e1 (ERROR_PNP_QUERY_REMOVE_RELATED_DEVICE_TIMEOUT)|At the end of device installation, one or more devices will be restarted to pick up new files or settings changed during the device installation.  As part of this restart operation, a query remove operation is performed on the device or devices being restarted. This error indicates that something hung or took too long during the query remove operation for one of the device or devices being restarted. For more information, see [SetupApi logs](setupapi-text-logs.md).|
-|0x000001e2 (ERROR_PNP_QUERY_REMOVE_UNRELATED_DEVICE_TIMEOUT)|At the end of device installation, one or more devices will be restarted to pick up new files or settings changed during the device installation.  As part of this restart operation, a query remove operation is performed on the device or devices being restarted. This error indicates that that query remove operation wasn't able to be performed in a timely manner due to a query remove operation being performed on another device on the system. For more information, see [SetupApi logs](setupapi-text-logs.md).|
+|0x000005B4 (ERROR_TIMEOUT)|The device installation took too long and was stopped.  See [SetupApi logs](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/setupapi-text-logs) for more information about the device installation and where the time was spent.<br><br>Some common causes of timeouts are:<br><br>A co-installer executing for too long.  This could be because the co-installer is performing some unsupported operation that has hung or is too long running.  For example, a co-installer is executed in a non-interactive session, so it can't do something that needs to wait on user input.  Co-installers are deprecated and should be avoided. For more information, see [universal INFs](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/using-a-universal-inf-file).<br><br>Starting or restarting a device at the end of device installation has hung.|
+|0xe0000219 (ERROR_NO_ASSOCIATED_SERVICE)|The driver package being installed on the device didn't specify an associated service for the device.  For more information, see the SPSVCINST_ASSOCSERVICE flag in the [INF AddService Directive](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/inf-addservice-directive) documentation.|
+|0xe0000248 (ERROR_DEVICE_INSTALL_BLOCKED)|The installation of the device was blocked due to group policy settings.  For more information, see [controlling device installation using Group Policy](https://learn.microsoft.com/en-us/previous-versions/dotnet/articles/bb530324(v=msdn.10)) and [Mobile Device Management policies for device installation](https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-deviceinstallation).|
+|0x000001e0 (ERROR_PNP_QUERY_REMOVE_DEVICE_TIMEOUT)|At the end of device installation, one or more devices will be restarted to pick up new files or settings changed during the device installation.  As part of this restart operation, a query remove operation is performed on the device or devices being restarted. This error indicates that something hung or took too long during the query remove operation for the device being installed. For more information, see [SetupApi logs](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/setupapi-text-logs).|
+|0x000001e1 (ERROR_PNP_QUERY_REMOVE_RELATED_DEVICE_TIMEOUT)|At the end of device installation, one or more devices will be restarted to pick up new files or settings changed during the device installation.  As part of this restart operation, a query remove operation is performed on the device or devices being restarted. This error indicates that something hung or took too long during the query remove operation for one of the device or devices being restarted. For more information, see [SetupApi logs](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/setupapi-text-logs).|
+|0x000001e2 (ERROR_PNP_QUERY_REMOVE_UNRELATED_DEVICE_TIMEOUT)|At the end of device installation, one or more devices will be restarted to pick up new files or settings changed during the device installation.  As part of this restart operation, a query remove operation is performed on the device or devices being restarted. This error indicates that that query remove operation wasn't able to be performed in a timely manner due to a query remove operation being performed on another device on the system. For more information, see [SetupApi logs](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/setupapi-text-logs).|
 
 ## Misbehaving Or Bad Drivers
 
@@ -226,7 +226,7 @@ SetupAPI text logs internal format:
     |Command|Description|
     |-------|-----------|
     |`sc [command]`|get help for command|
-    |`boot`|\`ok|
+    |`boot`|`ok\|bad` Indicates whether the last boot should be saved as the last-known-good boot configuration|
     |`Lock`|Locks the Service Database|
     |`QueryLock`|Queries the LockStatus for the SCManager Database|
   
