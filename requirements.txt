@@ -6,12 +6,12 @@
 # requests~=2.26,>=2.28.1
 
 # MkDocs Core: actively used
-mkdocs~=1.6.1
-pymdown-extensions~=10.10.2
-mkdocs-material~=9.5.38
-mkdocs-awesome-pages-plugin~=2.9.3
-mkdocs-git-revision-date-localized-plugin~=1.2.9
-mkdocs-plugin-progress~=1.2.0
+mkdocs==1.6.1
+pymdown-extensions==10.10.2
+mkdocs-material==9.5.38
+mkdocs-awesome-pages-plugin==2.9.3
+mkdocs-git-revision-date-localized-plugin==1.2.9
+mkdocs-plugin-progress==1.2.0
 
 # MkDocs Extra: not deployed to production yet
 mkdocs-minify-plugin==0.8.0
@@ -27,7 +27,7 @@ obsidiantools==0.10.0
 mdx_breakless_lists==1.0.1
 mkdocs-callouts==1.14.0
 mkdocs-meta-descriptions-plugin==3.0.0
-mkdocs-glightbox~=0.4.0
+mkdocs-glightbox==0.4.0
 
 # Obsidian Markdown: not deployed
 # mkdocs-embed-file-plugins==2.0.5
