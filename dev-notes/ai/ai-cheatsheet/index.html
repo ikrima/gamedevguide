@@ -12,25 +12,25 @@
         <meta name="author" content="ikrimae">
       
       
-        <link rel="canonical" href="https://ikrima.dev/dev-notes/linux/bash/">
+        <link rel="canonical" href="https://ikrima.dev/dev-notes/ai/ai-cheatsheet/">
       
       
-        <link rel="prev" href="../art-of-command-line/">
+        <link rel="prev" href="../../_assets/tagless-final-interp-cpp/">
       
       
-        <link rel="next" href="../disk-health/">
+        <link rel="next" href="../../assembly/asm-cheatsheet/">
       
       
       <link rel="icon" href="../../../_site/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
     
     
       
-        <title>Bash Cheatsheet - Gamedev Guide</title>
+        <title>AI - Gamedev Guide</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -56,7 +56,7 @@
     
       <link rel="stylesheet" href="../../../_site/obsidian-admonition.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -65,7 +65,7 @@
   
   
 
-<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-VWCEPP5L4L"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-VWCEPP5L4L",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-VWCEPP5L4L",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-VWCEPP5L4L"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-VWCEPP5L4L",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-VWCEPP5L4L",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
   
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
   
@@ -101,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bash-cheatsheet" class="md-skip">
+        <a href="#ai" class="md-skip">
           Skip to content
         </a>
       
@@ -118,12 +118,12 @@
     <a href="../../.." title="Gamedev Guide" class="md-header__button md-logo" aria-label="Gamedev Guide" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9H6m9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -135,7 +135,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bash Cheatsheet
+              AI
             
           </span>
         </div>
@@ -151,7 +151,7 @@
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="ayu" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Dark Mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Dark Mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
       </label>
     
   
@@ -161,7 +161,7 @@
     <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Light Mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Light Mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 11H1v2h6v-2m2.17-3.24L7.05 5.64 5.64 7.05l2.12 2.12 1.41-1.41M13 1h-2v6h2V1m5.36 6.05-1.41-1.41-2.12 2.12 1.41 1.41 2.12-2.12M17 11v2h6v-2h-6m-5-2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m2.83 7.24 2.12 2.12 1.41-1.41-2.12-2.12-1.41 1.41m-9.19.71 1.41 1.41 2.12-2.12-1.41-1.41-2.12 2.12M11 23h2v-6h-2v6Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 11H1v2h6zm2.17-3.24L7.05 5.64 5.64 7.05l2.12 2.12zM13 1h-2v6h2zm5.36 6.05-1.41-1.41-2.12 2.12 1.41 1.41zM17 11v2h6v-2zm-5-2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m2.83 7.24 2.12 2.12 1.41-1.41-2.12-2.12zm-9.19.71 1.41 1.41 2.12-2.12-1.41-1.41zM11 23h2v-6h-2z"/></svg>
       </label>
     
   
@@ -169,13 +169,13 @@
       
     
     
-      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -184,20 +184,20 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
           </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
       
@@ -205,7 +205,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -222,7 +222,7 @@
         <a href="https://github.com/ikrima/gamedevguide" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     ikrima/gamedevguide
@@ -428,7 +428,7 @@
     <a href="../../.." title="Gamedev Guide" class="md-nav__button md-logo" aria-label="Gamedev Guide" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9H6m9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 6h10a6 6 0 0 1 6 6 6 6 0 0 1-6 6c-1.78 0-3.37-.77-4.47-2h-1.06c-1.1 1.23-2.69 2-4.47 2a6 6 0 0 1-6-6 6 6 0 0 1 6-6M6 9v2H4v2h2v2h2v-2h2v-2H8V9zm9.5 3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0-1.5-1.5m3-3a1.5 1.5 0 0 0-1.5 1.5 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 18.5 9"/></svg>
 
     </a>
     Gamedev Guide
@@ -438,7 +438,7 @@
       <a href="https://github.com/ikrima/gamedevguide" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     ikrima/gamedevguide
@@ -12121,6 +12121,8 @@
       
         
       
+        
+      
     
     
       
@@ -12163,7 +12165,7 @@
         
   
   <span class="md-ellipsis">
-    Gamedev Environment Part IV: Optimizing Unreal Engine Builds, Visual Studio, and Final Benchmarks
+    Devbox Final Benchmarks: Optimizing Unreal Engine Builds &amp; Visual Studio
   </span>
   
 
@@ -12248,6 +12250,27 @@
   
   <span class="md-ellipsis">
     Developer Tools For Windows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devbox/memory-overclocking-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DDR4 Memory Overclocking Guide
   </span>
   
 
@@ -12503,10 +12526,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -12526,17 +12547,19 @@
       
         
       
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
         
           
           <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
@@ -12550,7 +12573,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_11">
             <span class="md-nav__icon md-icon"></span>
             linux
@@ -12564,7 +12587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../art-of-command-line/" class="md-nav__link">
+      <a href="../../linux/art-of-command-line/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12582,30 +12605,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Bash Cheatsheet
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../linux/bash-cheatsheet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12614,476 +12617,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#shell-customization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Shell Customization
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Shell Customization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dotfiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dotfiles
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#startup-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Startup Scripts
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#special-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Special Variables
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#string-quotes" class="md-nav__link">
-    <span class="md-ellipsis">
-      String Quotes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arrays" class="md-nav__link">
-    <span class="md-ellipsis">
-      Arrays
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Arrays">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#array-declaration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Array Declaration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#array-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      Array Access
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#array-operations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Array Operations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conditionals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditionals
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Conditionals">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-vs-" class="md-nav__link">
-    <span class="md-ellipsis">
-      [ vs [[
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conditions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#file-conditions" class="md-nav__link">
-    <span class="md-ellipsis">
-      File Conditions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#command-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command Execution
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Command Execution">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#shell-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Shell Execution
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conditional-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditional Execution
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command-substitution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command substitution
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#strict-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Strict Mode
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameter-expansions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameter Expansions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Parameter Expansions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Examples
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#expanded-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Expanded Examples
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#substitution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Substitution
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#substrings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Substrings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#length" class="md-nav__link">
-    <span class="md-ellipsis">
-      Length
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manipulation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Manipulation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#default-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Default values
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#loops" class="md-nav__link">
-    <span class="md-ellipsis">
-      Loops
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Loops">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-for-loop" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic for loop
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-like-for-loop" class="md-nav__link">
-    <span class="md-ellipsis">
-      C-like for loop
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ranges" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ranges
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reading-lines" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reading lines
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#forever" class="md-nav__link">
-    <span class="md-ellipsis">
-      Forever
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#defining-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Defining functions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#returning-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Returning values
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#raising-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      Raising errors
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#positional-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Positional Parameters
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Positional Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-vs--example" class="md-nav__link">
-    <span class="md-ellipsis">
-      $@ vs $* Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#special-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Special Parameters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#color-formatting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Color Formatting
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -13096,7 +12629,28 @@
   
   
     <li class="md-nav__item">
-      <a href="../disk-health/" class="md-nav__link">
+      <a href="../../linux/bash-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bash Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/disk-health/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13117,7 +12671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux-basics/" class="md-nav__link">
+      <a href="../../linux/linux-basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13138,7 +12692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux-modern-tools/" class="md-nav__link">
+      <a href="../../linux/linux-modern-tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13159,7 +12713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openssh/" class="md-nav__link">
+      <a href="../../linux/openssh/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13180,7 +12734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rsync/" class="md-nav__link">
+      <a href="../../linux/rsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13201,7 +12755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../wsl/" class="md-nav__link">
+      <a href="../../linux/wsl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14914,7 +14468,7 @@
         
   
   <span class="md-ellipsis">
-    Drivers
+    Troubleshooting Windows Drivers
   </span>
   
 
@@ -17592,450 +17146,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
+  <a href="#chatgpt-custom-gpt" class="md-nav__link">
     <span class="md-ellipsis">
-      Resources
+      ChatGPT Custom GPT
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#shell-customization" class="md-nav__link">
+  <a href="#music" class="md-nav__link">
     <span class="md-ellipsis">
-      Shell Customization
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Shell Customization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dotfiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dotfiles
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#startup-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Startup Scripts
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#special-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Special Variables
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#string-quotes" class="md-nav__link">
-    <span class="md-ellipsis">
-      String Quotes
+      Music
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#arrays" class="md-nav__link">
+  <a href="#obsidian" class="md-nav__link">
     <span class="md-ellipsis">
-      Arrays
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Arrays">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#array-declaration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Array Declaration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#array-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      Array Access
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#array-operations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Array Operations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conditionals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditionals
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Conditionals">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-vs-" class="md-nav__link">
-    <span class="md-ellipsis">
-      [ vs [[
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conditions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#file-conditions" class="md-nav__link">
-    <span class="md-ellipsis">
-      File Conditions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#command-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command Execution
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Command Execution">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#shell-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Shell Execution
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conditional-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conditional Execution
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command-substitution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command substitution
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#strict-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Strict Mode
+      Obsidian
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameter-expansions" class="md-nav__link">
+  <a href="#vscode" class="md-nav__link">
     <span class="md-ellipsis">
-      Parameter Expansions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Parameter Expansions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Examples
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#expanded-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Expanded Examples
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#substitution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Substitution
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#substrings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Substrings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#length" class="md-nav__link">
-    <span class="md-ellipsis">
-      Length
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manipulation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Manipulation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#default-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Default values
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#loops" class="md-nav__link">
-    <span class="md-ellipsis">
-      Loops
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Loops">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-for-loop" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic for loop
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-like-for-loop" class="md-nav__link">
-    <span class="md-ellipsis">
-      C-like for loop
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ranges" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ranges
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reading-lines" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reading lines
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#forever" class="md-nav__link">
-    <span class="md-ellipsis">
-      Forever
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#defining-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Defining functions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#returning-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Returning values
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#raising-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      Raising errors
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#positional-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Positional Parameters
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Positional Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-vs--example" class="md-nav__link">
-    <span class="md-ellipsis">
-      $@ vs $* Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#special-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Special Parameters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#color-formatting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Color Formatting
+      VSCode
     </span>
   </a>
   
@@ -18056,795 +17196,78 @@
                   
 
   
-    <a href="https://github.com/ikrima/gamedevguide/blob/master/docs/dev-notes/linux/bash.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/ikrima/gamedevguide/blob/master/docs/dev-notes/ai/ai-cheatsheet.md" title="Edit this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
   
   
     
       
     
-    <a href="https://github.com/ikrima/gamedevguide/raw/master/docs/dev-notes/linux/bash.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/ikrima/gamedevguide/raw/master/docs/dev-notes/ai/ai-cheatsheet.md" title="View source of this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="bash-cheatsheet">Bash Cheatsheet<a class="headerlink" href="#bash-cheatsheet" title="Permanent link">#</a></h1>
-<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">#</a></h2>
+<h1 id="ai">AI<a class="headerlink" href="#ai" title="Permanent link">#</a></h1>
+<h2 id="chatgpt-custom-gpt">ChatGPT Custom GPT<a class="headerlink" href="#chatgpt-custom-gpt" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://devhints.io/bash">Devhints Cheatsheet</a></li>
-<li><a href="https://learnxinyminutes.com/docs/bash/">Learn Bash in Y Minutes</a>: short quickstart crash course</li>
-<li><a href="https://help.ubuntu.com/community/Beginners/BashScripting">Bash Scripting 101</a></li>
-<li><a href="https://linuxhandbook.com/tag/bash-beginner/">Bash Beginner Series</a></li>
+<li><a href="https://old.reddit.com/r/ChatGPT/">r/ChatGPT</a></li>
+<li><a href="https://old.reddit.com/r/ChatGPTPro/">r/ChatGPTPro</a></li>
+<li><a href="https://www.whatplugin.ai/category/online-learning">whatplugin.ai</a>: Find Useful Custom GPTs For ChatGPT</li>
+<li><a href="https://www.khanmigo.ai/">khanmigo.ai</a></li>
+<li><a href="https://www.alphanotes.one/tutorials/style-and-formatting/style-transcripts/">alphanotes.one</a></li>
+<li><a href="https://old.reddit.com/r/ChatGPTPro/comments/19e5toq/learnflowgpt_obsidianfocused_notes_learning">learnflowgpt</a></li>
+<li><a href="https://old.reddit.com/r/OpenAI/comments/1amedij/learnflowgpt_suite_of_commands_obsidian_notes">LearnFlowGPT</a></li>
+<li><a href="https://gpt4demo.com/">gpt4demo</a></li>
+<li><a href="https://screenshottocode.com/">Screenshot to Code</a></li>
+<li><a href="https://www.tubearchivist.com/">tubearchivist</a></li>
+<li><a href="https://github.com/JushBJJ/Mr.-Ranedeer-AI-Tutor">Mr. Ranedeer</a></li>
 </ul>
-<h2 id="shell-customization">Shell Customization<a class="headerlink" href="#shell-customization" title="Permanent link">#</a></h2>
-<h3 id="dotfiles">Dotfiles<a class="headerlink" href="#dotfiles" title="Permanent link">#</a></h3>
+<h2 id="music">Music<a class="headerlink" href="#music" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://www.webpro.nl/articles/getting-started-with-dotfiles">more details</a></li>
+<li><a href="https://suno.com/">suno</a>: music generation</li>
 </ul>
-<h3 id="startup-scripts">Startup Scripts<a class="headerlink" href="#startup-scripts" title="Permanent link">#</a></h3>
-<ul>
-<li>simplified flow <a href="https://stackoverflow.com/a/9954208/21979545">(reference)</a></li>
-</ul>
-<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>                    +-----------------+   +------FIRST------+   +-----------------+
-</span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>                    |                 |   | ~/.bash_profile |   |                 |
-</span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>login shell --------&gt;|  /etc/profile   |--&gt;| ~/.bash_login -----&gt;|  ~/.bashrc      |
-</span><span id="__span-0-4"><span class="linenos" data-linenos=" 4 "></span>                    |                 |   | ~/.profile      |   |                 |
-</span><span id="__span-0-5"><span class="linenos" data-linenos=" 5 "></span>                    +-----------------+   +-----------------+   +-----------------+
-</span><span id="__span-0-6"><span class="linenos" data-linenos=" 6 "></span>                    +-----------------+   +-----------------+
-</span><span id="__span-0-7"><span class="linenos" data-linenos=" 7 "></span>                    |                 |   |                 |
-</span><span id="__span-0-8"><span class="linenos" data-linenos=" 8 "></span>interactive shell --&gt;|  /etc/bashrc ------&gt;| ~/.bashrc       |
-</span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span>                    |                 |   |                 |
-</span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>                    +-----------------+   +-----------------+
-</span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span>                    +-----------------+
-</span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span>                    |                 |
-</span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span>logout shell -------&gt;|  ~/.bash_logout |
-</span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span>                    |                 |
-</span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span>                    +-----------------+
-</span></code></pre></div>
-<ul>
-<li><code>[]--&gt;[]</code>:  <em><strong>automatically</strong></em> sourced by workflow</li>
-<li><code>[---&gt;[]</code>:  <em><strong>manually</strong></em> sourced by convention</li>
-<li><code>FIRST</code>:    <em><strong>only first available</strong></em> executed</li>
-<li><code>echo "${BASH_SOURCE[0]}"</code>: use to inspect script's sourcing origins</li>
-<li>detailed flow <a href="https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/">(reference)</a></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th></th>
-<th style="text-align: center;">Interactive Login</th>
-<th style="text-align: center;">Non-Interactive Login</th>
-<th style="text-align: center;">Interactive Non-Login</th>
-<th style="text-align: center;">Non-Interactive Non-Login</th>
-<th style="text-align: center;">Script</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>/etc/profile</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>/etc/bash.bashrc</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>~/.bashrc</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>~/.bash_profile</td>
-<td style="text-align: center;">2.A</td>
-<td style="text-align: center;">2.A</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>~/.bash_login</td>
-<td style="text-align: center;">2.B</td>
-<td style="text-align: center;">2.B</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>~/.profile</td>
-<td style="text-align: center;">2.C</td>
-<td style="text-align: center;">2.C</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>BASH_ENV</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr>
-<td>~/.bash_logout</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">#</a></h2>
-<ul>
-<li>generally quote your variables unless they contain wildcards to expand or command fragments<br />
-  <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span>
-</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$name</span><span class="w">  </span><span class="c1"># see below</span>
-</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$name</span><span class="s2">&quot;</span>
-</span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!&quot;</span>
-</span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="nv">wildcard</span><span class="o">=</span><span class="s2">&quot;*.txt&quot;</span>
-</span><span id="__span-1-6"><span class="linenos" data-linenos="6 "></span><span class="nv">option</span><span class="o">=</span><span class="s2">&quot;iv&quot;</span>
-</span><span id="__span-1-7"><span class="linenos" data-linenos="7 "></span>cp<span class="w"> </span>-<span class="nv">$options</span><span class="w"> </span><span class="nv">$wildcard</span><span class="w"> </span>/tmp
-</span></code></pre></div></li>
-</ul>
-<h3 id="special-variables">Special Variables<a class="headerlink" href="#special-variables" title="Permanent link">#</a></h3>
-<ul>
-<li><a href="http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables">(Reference)</a></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>$?</code></td>
-<td>Exit status of last task</td>
-</tr>
-<tr>
-<td><code>$!</code></td>
-<td>PID of last background task</td>
-</tr>
-<tr>
-<td><code>$$</code></td>
-<td>PID of shell</td>
-</tr>
-<tr>
-<td><code>$0</code></td>
-<td>Filename of the shell script</td>
-</tr>
-<tr>
-<td><code>$_</code></td>
-<td>Last argument of the previous command</td>
-</tr>
-<tr>
-<td><code>${PIPESTATUS[n]}</code></td>
-<td>return value of piped commands (array)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="string-quotes">String Quotes<a class="headerlink" href="#string-quotes" title="Permanent link">#</a></h2>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span>
-</span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hi </span><span class="nv">$name</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1">#=&gt; Hi John</span>
-</span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hi $name&#39;</span><span class="w">  </span><span class="c1">#=&gt; Hi $name</span>
-</span></code></pre></div>
-<h2 id="arrays">Arrays<a class="headerlink" href="#arrays" title="Permanent link">#</a></h2>
-<h3 id="array-declaration">Array Declaration<a class="headerlink" href="#array-declaration" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="nv">Fruits</span><span class="o">=(</span><span class="s1">&#39;Apple&#39;</span><span class="w"> </span><span class="s1">&#39;Banana&#39;</span><span class="w"> </span><span class="s1">&#39;Orange&#39;</span><span class="o">)</span>
-</span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>
-</span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>Fruits<span class="o">[</span><span class="m">0</span><span class="o">]=</span><span class="s2">&quot;Apple&quot;</span>
-</span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span>Fruits<span class="o">[</span><span class="m">1</span><span class="o">]=</span><span class="s2">&quot;Banana&quot;</span>
-</span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span>Fruits<span class="o">[</span><span class="m">2</span><span class="o">]=</span><span class="s2">&quot;Orange&quot;</span>
-</span></code></pre></div>
-<h3 id="array-access">Array Access<a class="headerlink" href="#array-access" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[0]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">              </span><span class="c1"># Element #0</span>
-</span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[-1]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">             </span><span class="c1"># Last element</span>
-</span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">              </span><span class="c1"># All elements, space-separated</span>
-</span><span id="__span-4-4"><span class="linenos" data-linenos=" 4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[*]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">              </span><span class="c1"># All elements, space-separated</span>
-</span><span id="__span-4-5"><span class="linenos" data-linenos=" 5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${#</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">             </span><span class="c1"># Number of elements</span>
-</span><span id="__span-4-6"><span class="linenos" data-linenos=" 6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${#</span><span class="nv">Fruits</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">                </span><span class="c1"># String length of the 1st element</span>
-</span><span id="__span-4-7"><span class="linenos" data-linenos=" 7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${#</span><span class="nv">Fruits</span><span class="p">[3]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">             </span><span class="c1"># String length of the Nth element</span>
-</span><span id="__span-4-8"><span class="linenos" data-linenos=" 8 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]:</span><span class="nv">3</span><span class="p">:</span><span class="nv">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">          </span><span class="c1"># Range (from position 3, length 2)</span>
-</span><span id="__span-4-9"><span class="linenos" data-linenos=" 9 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">!Fruits[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">             </span><span class="c1"># Keys of all elements, space-separated</span>
-</span><span id="__span-4-10"><span class="linenos" data-linenos="10 "></span><span class="k">for</span><span class="w"> </span>item<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w">   </span><span class="c1"># Array iteration</span>
-</span><span id="__span-4-11"><span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$item</span><span class="s2">&quot;</span>
-</span><span id="__span-4-12"><span class="linenos" data-linenos="12 "></span><span class="k">done</span>
-</span></code></pre></div>
-<h3 id="array-operations">Array Operations<a class="headerlink" href="#array-operations" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="nv">Fruits</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;Watermelon&quot;</span><span class="o">)</span><span class="w">    </span><span class="c1"># Push</span>
-</span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="nv">Fruits</span><span class="o">+=(</span><span class="s1">&#39;Watermelon&#39;</span><span class="o">)</span><span class="w">                  </span><span class="c1"># Also Push</span>
-</span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span><span class="nv">Fruits</span><span class="o">=(</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]/Ap*/</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">)</span><span class="w">          </span><span class="c1"># Remove by regex match</span>
-</span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span><span class="nb">unset</span><span class="w"> </span>Fruits<span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">                         </span><span class="c1"># Remove one item</span>
-</span><span id="__span-5-5"><span class="linenos" data-linenos="5 "></span><span class="nv">Fruits</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">)</span><span class="w">                 </span><span class="c1"># Duplicate</span>
-</span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span><span class="nv">Fruits</span><span class="o">=(</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">Veggies</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">)</span><span class="w"> </span><span class="c1"># Concatenate</span>
-</span><span id="__span-5-7"><span class="linenos" data-linenos="7 "></span><span class="nv">lines</span><span class="o">=(</span><span class="sb">`</span>cat<span class="w"> </span><span class="s2">&quot;logfile&quot;</span><span class="sb">`</span><span class="o">)</span><span class="w">                 </span><span class="c1"># Read from file</span>
-</span></code></pre></div>
-<h2 id="conditionals">Conditionals<a class="headerlink" href="#conditionals" title="Permanent link">#</a></h2>
-<h3 id="-vs-"><code>[</code> vs <code>[[</code><a class="headerlink" href="#-vs-" title="Permanent link">#</a></h3>
-<ul>
-<li><code>[</code>: shell command shorthand for <code>test</code> command</li>
-<li><code>[[</code>: shell keyword with quality of life nicities</li>
-<li>
-<p>integer comparison operators: <code>==</code>,<code>!=</code>,<code>&lt;</code>,<code>&lt;=</code>,<code>&gt;</code>,<code>&gt;=</code><br />
-    <div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="o">[[</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&lt;<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
-</span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="o">[</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\&lt;</span><span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
-</span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="o">[</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>logic/grouping operators: <code>&amp;&amp;</code>,<code>||</code>,<code>(</code>,<code>)</code></p>
-</li>
-<li>pattern matching: <code>[ $name = *c* ]</code></li>
-<li>regular expressions: <code>[[ $name =~ ^Ali ]]</code></li>
-</ul>
-<h3 id="conditions">Conditions<a class="headerlink" href="#conditions" title="Permanent link">#</a></h3>
-<p>Any program that obeys the same logic (like all base utils, such as <code>grep(1)</code> or <code>ping(1)</code>) can be used as condition, see examples.</p>
-<table>
-<thead>
-<tr>
-<th>Condition</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>[[ -z STRING ]]</code></td>
-<td>Empty string</td>
-</tr>
-<tr>
-<td><code>[[ -n STRING ]]</code></td>
-<td>Not empty string</td>
-</tr>
-<tr>
-<td><code>[[ STRING == STRING ]]</code></td>
-<td>Equal</td>
-</tr>
-<tr>
-<td><code>[[ STRING != STRING ]]</code></td>
-<td>Not Equal</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>[[ NUM -eq NUM ]]</code></td>
-<td>Equal</td>
-</tr>
-<tr>
-<td><code>[[ NUM -ne NUM ]]</code></td>
-<td>Not equal</td>
-</tr>
-<tr>
-<td><code>[[ NUM -lt NUM ]]</code></td>
-<td>Less than</td>
-</tr>
-<tr>
-<td><code>[[ NUM -le NUM ]]</code></td>
-<td>Less than or equal</td>
-</tr>
-<tr>
-<td><code>[[ NUM -gt NUM ]]</code></td>
-<td>Greater than</td>
-</tr>
-<tr>
-<td><code>[[ NUM -ge NUM ]]</code></td>
-<td>Greater than or equal</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>[[ STRING =~ STRING ]]</code></td>
-<td>Regexp</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>(( NUM &lt; NUM ))</code></td>
-<td>Numeric conditions</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>[[ -o noclobber ]]</code></td>
-<td>If OPTIONNAME is enabled</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>[[ ! EXPR ]]</code></td>
-<td>Not</td>
-</tr>
-<tr>
-<td><code>[[ X &amp;&amp; Y ]]</code></td>
-<td>And</td>
-</tr>
-<tr>
-<td>`[[ X</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="file-conditions">File Conditions<a class="headerlink" href="#file-conditions" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Condition</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>[ -e FILE ](../../%20-e%20FILE%20 " -e FILE ")</code></td>
-<td>Exists</td>
-</tr>
-<tr>
-<td><code>[ -r FILE ](../../%20-r%20FILE%20 " -r FILE ")</code></td>
-<td>Readable</td>
-</tr>
-<tr>
-<td><code>[ -h FILE ](../../%20-h%20FILE%20 " -h FILE ")</code></td>
-<td>Symlink</td>
-</tr>
-<tr>
-<td><code>[ -d FILE ](../../%20-d%20FILE%20 " -d FILE ")</code></td>
-<td>Directory</td>
-</tr>
-<tr>
-<td><code>[ -w FILE ](../../%20-w%20FILE%20 " -w FILE ")</code></td>
-<td>Writable</td>
-</tr>
-<tr>
-<td><code>[ -s FILE ](../../%20-s%20FILE%20 " -s FILE ")</code></td>
-<td>Size is &gt; 0 bytes</td>
-</tr>
-<tr>
-<td><code>[ -f FILE ](../../%20-f%20FILE%20 " -f FILE ")</code></td>
-<td>File</td>
-</tr>
-<tr>
-<td><code>[ -x FILE ](../../%20-x%20FILE%20 " -x FILE ")</code></td>
-<td>Executable</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>[ FILE1 -nt FILE2 ](../../%20FILE1%20-nt%20FILE2%20 " FILE1 -nt FILE2 ")</code></td>
-<td>1 is more recent than 2</td>
-</tr>
-<tr>
-<td><code>[ FILE1 -ot FILE2 ](../../%20FILE1%20-ot%20FILE2%20 " FILE1 -ot FILE2 ")</code></td>
-<td>2 is more recent than 1</td>
-</tr>
-<tr>
-<td><code>[ FILE1 -ef FILE2 ](../../%20FILE1%20-ef%20FILE2%20 " FILE1 -ef FILE2 ")</code></td>
-<td>Same files</td>
-</tr>
-</tbody>
-</table>
-<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># String</span>
-</span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$string</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">](</span>../../%20-z%20%22%24string%22%20<span class="w"> </span><span class="s2">&quot; -z &quot;</span><span class="nv">$string</span><span class="s2">&quot; &quot;</span><span class="o">)</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;String is empty&quot;</span>
-</span><span id="__span-7-4"><span class="linenos" data-linenos="4 "></span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$string</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">](</span>../../%20-n%20%22%24string%22%20<span class="w"> </span><span class="s2">&quot; -n &quot;</span><span class="nv">$string</span><span class="s2">&quot; &quot;</span><span class="o">)</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-7-5"><span class="linenos" data-linenos="5 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;String is not empty&quot;</span>
-</span><span id="__span-7-6"><span class="linenos" data-linenos="6 "></span><span class="k">else</span>
-</span><span id="__span-7-7"><span class="linenos" data-linenos="7 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This never happens&quot;</span>
-</span><span id="__span-7-8"><span class="linenos" data-linenos="8 "></span><span class="k">fi</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Combinations</span>
-</span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>X<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>Y<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span>...
-</span><span id="__span-8-4"><span class="linenos" data-linenos="4 "></span><span class="k">fi</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Equal</span>
-</span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$A</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$B</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Regex</span>
-</span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>.<span class="w"> </span><span class="o">]]</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span><span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2"> is smaller than </span><span class="nv">$b</span><span class="s2">&quot;</span>
-</span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span><span class="k">fi</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;file.txt&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;file exists&quot;</span>
-</span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span><span class="k">fi</span>
-</span></code></pre></div>
-<h2 id="command-execution">Command Execution<a class="headerlink" href="#command-execution" title="Permanent link">#</a></h2>
-<h3 id="shell-execution">Shell Execution<a class="headerlink" href="#shell-execution" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I&#39;m in </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-</span><span id="__span-13-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I&#39;m in `pwd`&quot;</span><span class="w">  </span><span class="c1"># deprecated</span>
-</span><span id="__span-13-3"><span class="linenos" data-linenos="3 "></span><span class="c1"># Same</span>
-</span></code></pre></div>
-<h3 id="conditional-execution">Conditional Execution<a class="headerlink" href="#conditional-execution" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>commit<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>push
-</span><span id="__span-14-2"><span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>commit<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Commit failed&quot;</span>
-</span></code></pre></div>
-<h3 id="command-substitution">Command substitution<a class="headerlink" href="#command-substitution" title="Permanent link">#</a></h3>
-<p><a href="http://wiki.bash-hackers.org/syntax/expansion/cmdsubst">(Reference)</a></p>
-<h2 id="strict-mode">Strict Mode<a class="headerlink" href="#strict-mode" title="Permanent link">#</a></h2>
-<ul>
-<li><a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">Reference</a></li>
-</ul>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos="1 "></span><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
-</span><span id="__span-15-2"><span class="linenos" data-linenos="2 "></span><span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\n\t&#39;</span>
-</span></code></pre></div>
-<h2 id="parameter-expansions">Parameter Expansions<a class="headerlink" href="#parameter-expansions" title="Permanent link">#</a></h2>
-<h3 id="basic-examples">Basic Examples<a class="headerlink" href="#basic-examples" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span>
-</span><span id="__span-16-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="__span-16-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="p">/J/j</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">    </span><span class="c1">#=&gt; &quot;john&quot; (substitution)</span>
-</span><span id="__span-16-4"><span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">    </span><span class="c1">#=&gt; &quot;Jo&quot; (slicing)</span>
-</span><span id="__span-16-5"><span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="p">::</span><span class="nv">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">     </span><span class="c1">#=&gt; &quot;Jo&quot; (slicing)</span>
-</span><span id="__span-16-6"><span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="p">:</span><span class="k">:-</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">    </span><span class="c1">#=&gt; &quot;Joh&quot; (slicing)</span>
-</span><span id="__span-16-7"><span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="p">:(-1)</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1">#=&gt; &quot;n&quot; (slicing from right)</span>
-</span><span id="__span-16-8"><span class="linenos" data-linenos="8 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="p">:(-2):</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1">#=&gt; &quot;h&quot; (slicing from right)</span>
-</span><span id="__span-16-9"><span class="linenos" data-linenos="9 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">food</span><span class="k">:-</span><span class="nv">Cake</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1">#=&gt; $food or &quot;Cake&quot;</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos="1 "></span><span class="nv">length</span><span class="o">=</span><span class="m">2</span>
-</span><span id="__span-17-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">length</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1">#=&gt; &quot;Jo&quot;</span>
-</span></code></pre></div>
-<h3 id="expanded-examples">Expanded Examples<a class="headerlink" href="#expanded-examples" title="Permanent link">#</a></h3>
-<ul>
-<li><a href="http://wiki.bash-hackers.org/syntax/pe">(Reference)</a></li>
-</ul>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-18-1"><span class="linenos" data-linenos=" 1 "></span><span class="nv">str</span><span class="o">=</span><span class="s2">&quot;/path/to/foo.cpp&quot;</span>
-</span><span id="__span-18-2"><span class="linenos" data-linenos=" 2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">%.cpp</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">    </span><span class="c1"># /path/to/foo</span>
-</span><span id="__span-18-3"><span class="linenos" data-linenos=" 3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">%.cpp</span><span class="si">}</span><span class="s2">.o&quot;</span><span class="w">  </span><span class="c1"># /path/to/foo.o</span>
-</span><span id="__span-18-4"><span class="linenos" data-linenos=" 4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">%/*</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">      </span><span class="c1"># /path/to</span>
-</span><span id="__span-18-5"><span class="linenos" data-linenos=" 5 "></span>
-</span><span id="__span-18-6"><span class="linenos" data-linenos=" 6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">##*.</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">     </span><span class="c1"># cpp (extension)</span>
-</span><span id="__span-18-7"><span class="linenos" data-linenos=" 7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">     </span><span class="c1"># foo.cpp (basepath)</span>
-</span><span id="__span-18-8"><span class="linenos" data-linenos=" 8 "></span>
-</span><span id="__span-18-9"><span class="linenos" data-linenos=" 9 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">#*/</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">      </span><span class="c1"># path/to/foo.cpp</span>
-</span><span id="__span-18-10"><span class="linenos" data-linenos="10 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">     </span><span class="c1"># foo.cpp</span>
-</span><span id="__span-18-11"><span class="linenos" data-linenos="11 "></span>
-</span><span id="__span-18-12"><span class="linenos" data-linenos="12 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">/foo/bar</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># /path/to/bar.cpp</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-19-1"><span class="linenos" data-linenos="1 "></span><span class="nv">str</span><span class="o">=</span><span class="s2">&quot;Hello world&quot;</span>
-</span><span id="__span-19-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">:</span><span class="nv">6</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># &quot;world&quot;</span>
-</span><span id="__span-19-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">: -5:</span><span class="nv">5</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># &quot;world&quot;</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-20-1"><span class="linenos" data-linenos="1 "></span><span class="nv">src</span><span class="o">=</span><span class="s2">&quot;/path/to/foo.cpp&quot;</span>
-</span><span id="__span-20-2"><span class="linenos" data-linenos="2 "></span><span class="nv">base</span><span class="o">=</span><span class="si">${</span><span class="nv">src</span><span class="p">##*/</span><span class="si">}</span><span class="w">   </span><span class="c1">#=&gt; &quot;foo.cpp&quot; (basepath)</span>
-</span><span id="__span-20-3"><span class="linenos" data-linenos="3 "></span><span class="nv">dir</span><span class="o">=</span><span class="si">${</span><span class="nv">src</span><span class="p">%</span><span class="nv">$base</span><span class="si">}</span><span class="w">  </span><span class="c1">#=&gt; &quot;/path/to/&quot; (dirpath)</span>
-</span></code></pre></div>
-<h3 id="substitution">Substitution<a class="headerlink" href="#substitution" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>${foo%suffix}</code></td>
-<td>Remove suffix</td>
-</tr>
-<tr>
-<td><code>${foo#prefix}</code></td>
-<td>Remove prefix</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>${foo%%suffix}</code></td>
-<td>Remove long suffix</td>
-</tr>
-<tr>
-<td><code>${foo/%suffix}</code></td>
-<td>Remove long suffix</td>
-</tr>
-<tr>
-<td><code>${foo##prefix}</code></td>
-<td>Remove long prefix</td>
-</tr>
-<tr>
-<td><code>${foo/#prefix}</code></td>
-<td>Remove long prefix</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>${foo/from/to}</code></td>
-<td>Replace first match</td>
-</tr>
-<tr>
-<td><code>${foo//from/to}</code></td>
-<td>Replace all</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>${foo/%from/to}</code></td>
-<td>Replace suffix</td>
-</tr>
-<tr>
-<td><code>${foo/#from/to}</code></td>
-<td>Replace prefix</td>
-</tr>
-</tbody>
-</table>
-<h3 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-21-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Single line comment</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-22-1"><span class="linenos" data-linenos="1 "></span>:<span class="w"> </span><span class="s1">&#39;</span>
-</span><span id="__span-22-2"><span class="linenos" data-linenos="2 "></span><span class="s1">This is a</span>
-</span><span id="__span-22-3"><span class="linenos" data-linenos="3 "></span><span class="s1">multi line</span>
-</span><span id="__span-22-4"><span class="linenos" data-linenos="4 "></span><span class="s1">comment</span>
-</span><span id="__span-22-5"><span class="linenos" data-linenos="5 "></span><span class="s1">&#39;</span>
-</span></code></pre></div>
-<h3 id="substrings">Substrings<a class="headerlink" href="#substrings" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>${foo:0:3}</code></td>
-<td>Substring <em>(position, length)</em></td>
-</tr>
-<tr>
-<td><code>${foo:(-3):3}</code></td>
-<td>Substring from the right</td>
-</tr>
-</tbody>
-</table>
-<h3 id="length">Length<a class="headerlink" href="#length" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>${#foo}</code></td>
-<td>Length of <code>$foo</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="manipulation">Manipulation<a class="headerlink" href="#manipulation" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-23-1"><span class="linenos" data-linenos="1 "></span><span class="nv">str</span><span class="o">=</span><span class="s2">&quot;HELLO WORLD!&quot;</span>
-</span><span id="__span-23-2"><span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1">#=&gt; &quot;hELLO WORLD!&quot; (lowercase 1st letter)</span>
-</span><span id="__span-23-3"><span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">,,</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1">#=&gt; &quot;hello world!&quot; (all lowercase)</span>
-</span><span id="__span-23-4"><span class="linenos" data-linenos="4 "></span>
-</span><span id="__span-23-5"><span class="linenos" data-linenos="5 "></span><span class="nv">str</span><span class="o">=</span><span class="s2">&quot;hello world!&quot;</span>
-</span><span id="__span-23-6"><span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">^</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1">#=&gt; &quot;Hello world!&quot; (uppercase 1st letter)</span>
-</span><span id="__span-23-7"><span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">str</span><span class="p">^^</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1">#=&gt; &quot;HELLO WORLD!&quot; (all uppercase)</span>
-</span></code></pre></div>
-<h3 id="default-values">Default values<a class="headerlink" href="#default-values" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>${foo:-val}</code></td>
-<td><code>$foo</code>, or <code>val</code> if unset (or null)</td>
-</tr>
-<tr>
-<td><code>${foo:=val}</code></td>
-<td>Set <code>$foo</code> to <code>val</code> if unset (or null)</td>
-</tr>
-<tr>
-<td><code>${foo:+val}</code></td>
-<td><code>val</code> if <code>$foo</code> is set (and not null)</td>
-</tr>
-<tr>
-<td><code>${foo:?message}</code></td>
-<td>Show error message and exit if <code>$foo</code> is unset (or null)</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>[!note] Omitting the <code>:</code> removes the (non)nullity checks<br />
-e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <code>$foo</code></p>
-</blockquote>
-<h2 id="loops">Loops<a class="headerlink" href="#loops" title="Permanent link">#</a></h2>
-<h3 id="basic-for-loop">Basic for loop<a class="headerlink" href="#basic-for-loop" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-24-1"><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>/etc/rc.*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-24-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span>
-</span><span id="__span-24-3"><span class="linenos" data-linenos="3 "></span><span class="k">done</span>
-</span></code></pre></div>
-<h3 id="c-like-for-loop">C-like for loop<a class="headerlink" href="#c-like-for-loop" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-25-1"><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>i<span class="w"> </span>&lt;<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>i++<span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-25-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span>
-</span><span id="__span-25-3"><span class="linenos" data-linenos="3 "></span><span class="k">done</span>
-</span></code></pre></div>
-<h3 id="ranges">Ranges<a class="headerlink" href="#ranges" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-26-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Basic</span>
-</span><span id="__span-26-2"><span class="linenos" data-linenos="2 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..5<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-26-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Welcome </span><span class="nv">$i</span><span class="s2">&quot;</span>
-</span><span id="__span-26-4"><span class="linenos" data-linenos="4 "></span><span class="k">done</span>
-</span><span id="__span-26-5"><span class="linenos" data-linenos="5 "></span>
-</span><span id="__span-26-6"><span class="linenos" data-linenos="6 "></span><span class="c1"># With step size</span>
-</span><span id="__span-26-7"><span class="linenos" data-linenos="7 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">5</span>..50..5<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-26-8"><span class="linenos" data-linenos="8 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Welcome </span><span class="nv">$i</span><span class="s2">&quot;</span>
-</span><span id="__span-26-9"><span class="linenos" data-linenos="9 "></span><span class="k">done</span>
-</span></code></pre></div>
-<h3 id="reading-lines">Reading lines<a class="headerlink" href="#reading-lines" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-27-1"><span class="linenos" data-linenos="1 "></span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>line<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-27-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span>
-</span><span id="__span-27-3"><span class="linenos" data-linenos="3 "></span><span class="k">done</span><span class="w"> </span>&lt;file.txt
-</span></code></pre></div>
-<h3 id="forever">Forever<a class="headerlink" href="#forever" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-28-1"><span class="linenos" data-linenos="1 "></span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-28-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span>...
-</span><span id="__span-28-3"><span class="linenos" data-linenos="3 "></span><span class="k">done</span>
-</span></code></pre></div>
-<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">#</a></h2>
-<h3 id="defining-functions">Defining functions<a class="headerlink" href="#defining-functions" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-29-1"><span class="linenos" data-linenos="1 "></span>myfunc<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-29-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello </span><span class="nv">$1</span><span class="s2">&quot;</span>
-</span><span id="__span-29-3"><span class="linenos" data-linenos="3 "></span><span class="o">}</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-30-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Same as above (alternate syntax)</span>
-</span><span id="__span-30-2"><span class="linenos" data-linenos="2 "></span><span class="k">function</span><span class="w"> </span>myfunc<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-30-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello </span><span class="nv">$1</span><span class="s2">&quot;</span>
-</span><span id="__span-30-4"><span class="linenos" data-linenos="4 "></span><span class="o">}</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-31-1"><span class="linenos" data-linenos="1 "></span>myfunc<span class="w"> </span><span class="s2">&quot;John&quot;</span>
-</span></code></pre></div>
-<h3 id="returning-values">Returning values<a class="headerlink" href="#returning-values" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-32-1"><span class="linenos" data-linenos="1 "></span>myfunc<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-32-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">myresult</span><span class="o">=</span><span class="s1">&#39;some value&#39;</span>
-</span><span id="__span-32-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$myresult</span><span class="s2">&quot;</span>
-</span><span id="__span-32-4"><span class="linenos" data-linenos="4 "></span><span class="o">}</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-33-1"><span class="linenos" data-linenos="1 "></span><span class="nv">result</span><span class="o">=</span><span class="k">$(</span>myfunc<span class="k">)</span>
-</span></code></pre></div>
-<h3 id="raising-errors">Raising errors<a class="headerlink" href="#raising-errors" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-34-1"><span class="linenos" data-linenos="1 "></span>myfunc<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-34-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
-</span><span id="__span-34-3"><span class="linenos" data-linenos="3 "></span><span class="o">}</span>
-</span></code></pre></div>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-35-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span>myfunc<span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-35-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;success&quot;</span>
-</span><span id="__span-35-3"><span class="linenos" data-linenos="3 "></span><span class="k">else</span>
-</span><span id="__span-35-4"><span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;failure&quot;</span>
-</span><span id="__span-35-5"><span class="linenos" data-linenos="5 "></span><span class="k">fi</span>
-</span></code></pre></div>
-<h2 id="positional-parameters">Positional Parameters<a class="headerlink" href="#positional-parameters" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>$#</code></td>
-<td>Number of arguments</td>
-</tr>
-<tr>
-<td><code>$*</code></td>
-<td>All positional arguments  (as a single word)</td>
-</tr>
-<tr>
-<td><code>$@</code></td>
-<td>All positional arguments (as separate strings)</td>
-</tr>
-<tr>
-<td><code>$1</code></td>
-<td>First argument</td>
-</tr>
-<tr>
-<td><code>$_</code></td>
-<td>Last argument of the previous command</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>[!note] <code>$@</code> and <code>$*</code> must be quoted; unquoted behavior is exactly the same i.e. args as separate strings</p>
-</blockquote>
-<h3 id="-vs--example"><code>$@</code> vs <code>$*</code> Example<a class="headerlink" href="#-vs--example" title="Permanent link">#</a></h3>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-36-1"><span class="linenos" data-linenos=" 1 "></span>print_params<span class="o">()</span><span class="w"> </span><span class="o">{</span><span class="w"> </span>
-</span><span id="__span-36-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\$1 = </span><span class="nv">$1</span><span class="s2">&quot;</span>
-</span><span id="__span-36-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\$2 = </span><span class="nv">$2</span><span class="s2">&quot;</span>
-</span><span id="__span-36-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\$3 = </span><span class="nv">$3</span><span class="s2">&quot;</span>
-</span><span id="__span-36-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\$4 = </span><span class="nv">$4</span><span class="s2">&quot;</span>
-</span><span id="__span-36-6"><span class="linenos" data-linenos=" 6 "></span><span class="o">}</span>
-</span><span id="__span-36-7"><span class="linenos" data-linenos=" 7 "></span>pass_params<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-36-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="s1">&#39;$* =&gt;&#39;</span><span class="p">;</span><span class="w">   </span>print_params<span class="w"> </span><span class="nv">$*</span>
-</span><span id="__span-36-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="s1">&#39;&quot;$*&quot; =&gt;&#39;</span><span class="p">;</span><span class="w"> </span>print_params<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$*</span><span class="s2">&quot;</span>
-</span><span id="__span-36-10"><span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="s1">&#39;$@ =&gt;&#39;</span><span class="p">;</span><span class="w">   </span>print_params<span class="w"> </span><span class="nv">$@</span>
-</span><span id="__span-36-11"><span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="s1">&#39;&quot;$@&quot; =&gt;&#39;</span><span class="p">;</span><span class="w"> </span>print_params<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
-</span><span id="__span-36-12"><span class="linenos" data-linenos="12 "></span><span class="o">}</span>
-</span><span id="__span-36-13"><span class="linenos" data-linenos="13 "></span>
-</span><span id="__span-36-14"><span class="linenos" data-linenos="14 "></span>pass_params<span class="w"> </span><span class="s2">&quot;word&quot;</span><span class="w"> </span><span class="s2">&quot;words with spaces&quot;</span>
-</span><span id="__span-36-15"><span class="linenos" data-linenos="15 "></span><span class="nv">$*</span><span class="w"> </span><span class="o">=</span>&gt;
-</span><span id="__span-36-16"><span class="linenos" data-linenos="16 "></span><span class="w">  </span><span class="nv">$1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>word
-</span><span id="__span-36-17"><span class="linenos" data-linenos="17 "></span><span class="w">  </span><span class="nv">$2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>words
-</span><span id="__span-36-18"><span class="linenos" data-linenos="18 "></span><span class="w">  </span><span class="nv">$3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>with
-</span><span id="__span-36-19"><span class="linenos" data-linenos="19 "></span><span class="w">  </span><span class="nv">$4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>spaces
-</span><span id="__span-36-20"><span class="linenos" data-linenos="20 "></span><span class="s2">&quot;</span><span class="nv">$*</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span>&gt;
-</span><span id="__span-36-21"><span class="linenos" data-linenos="21 "></span><span class="w">  </span><span class="nv">$1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>word<span class="w"> </span>words<span class="w"> </span>with<span class="w"> </span>spaces
-</span><span id="__span-36-22"><span class="linenos" data-linenos="22 "></span><span class="w">  </span><span class="nv">$2</span><span class="w"> </span><span class="o">=</span>
-</span><span id="__span-36-23"><span class="linenos" data-linenos="23 "></span><span class="w">  </span><span class="nv">$3</span><span class="w"> </span><span class="o">=</span>
-</span><span id="__span-36-24"><span class="linenos" data-linenos="24 "></span><span class="w">  </span><span class="nv">$4</span><span class="w"> </span><span class="o">=</span>
-</span><span id="__span-36-25"><span class="linenos" data-linenos="25 "></span><span class="nv">$@</span><span class="w"> </span><span class="o">=</span>&gt;
-</span><span id="__span-36-26"><span class="linenos" data-linenos="26 "></span><span class="w">  </span><span class="nv">$1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>word
-</span><span id="__span-36-27"><span class="linenos" data-linenos="27 "></span><span class="w">  </span><span class="nv">$2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>words
-</span><span id="__span-36-28"><span class="linenos" data-linenos="28 "></span><span class="w">  </span><span class="nv">$3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>with
-</span><span id="__span-36-29"><span class="linenos" data-linenos="29 "></span><span class="w">  </span><span class="nv">$4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>spaces
-</span><span id="__span-36-30"><span class="linenos" data-linenos="30 "></span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span>&gt;
-</span><span id="__span-36-31"><span class="linenos" data-linenos="31 "></span><span class="w">  </span><span class="nv">$1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>word
-</span><span id="__span-36-32"><span class="linenos" data-linenos="32 "></span><span class="w">  </span><span class="nv">$2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>words<span class="w"> </span>with<span class="w"> </span>spaces
-</span><span id="__span-36-33"><span class="linenos" data-linenos="33 "></span><span class="w">  </span><span class="nv">$3</span><span class="w"> </span><span class="o">=</span>
-</span><span id="__span-36-34"><span class="linenos" data-linenos="34 "></span><span class="w">  </span><span class="nv">$4</span><span class="w"> </span><span class="o">=</span>
-</span></code></pre></div>
-<h3 id="special-parameters">Special Parameters<a class="headerlink" href="#special-parameters" title="Permanent link">#</a></h3>
-<ul>
-<li><a href="http://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables">(Reference)</a></li>
-</ul>
-<h2 id="color-formatting">Color Formatting<a class="headerlink" href="#color-formatting" title="Permanent link">#</a></h2>
-<p><a class="glightbox" href="../../_assets/terminal-ansi-escape-codes.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ANSI Escape Codes" src="../../_assets/terminal-ansi-escape-codes.png" /></a></p>
+<h2 id="obsidian">Obsidian<a class="headerlink" href="#obsidian" title="Permanent link">#</a></h2>
 <ul>
 <li>
-<p><code>\e</code>:  0x1b ascii escape character</p>
+<p><em><strong>Obsidian Plugins</strong></em></p>
 </li>
 <li>
-<p><code>\e[38;5;(n)m</code>: Select foreground color</p>
+<p><a href="https://agithub.com/Make-md/makemd">https://agithub.com/Make-md/makemd</a></p>
+</li>
+<li><a href="https://github.com/chhoumann/MetaEdit">https://github.com/chhoumann/MetaEdit</a></li>
+<li><a href="https://github.com/blacksmithgu/obsidian-dataview">https://github.com/blacksmithgu/obsidian-dataview</a></li>
+<li><a href="https://github.com/chhoumann/">https://github.com/chhoumann/</a></li>
+<li><a href="https://github.com/AnubisNekhet/AnuPpuccin">https://github.com/AnubisNekhet/AnuPpuccin</a></li>
+<li><a href="https://github.com/qawatake/obsidian-core-search-assistant-plugin">https://github.com/qawatake/obsidian-core-search-assistant-plugin</a></li>
+<li><a href="https://github.com/anpigon/obsidian-book-search-plugin">https://github.com/anpigon/obsidian-book-search-plugin</a></li>
+<li>
+<p><em><strong>Obsidian AI Assistants</strong></em></p>
 </li>
 <li>
-<p><code>\e[48;5;(n)m</code>: Select background color</p>
+<p><a href="https://github.com/brianpetro/obsidian-smart-connections">https://github.com/brianpetro/obsidian-smart-connections</a></p>
 </li>
-<li>
-<p><em>0..7:</em>      standard colors (e.g. <code>\e[30-37m</code>)</p>
+<li><a href="https://github.com/bramses/chatgpt-md">https://github.com/bramses/chatgpt-md</a></li>
+<li><a href="https://github.com/qgrail/obsidian-ai-assistant">https://github.com/qgrail/obsidian-ai-assistant</a><ul>
+<li><a href="https://quickadd.obsidian.guide/docs/AIAssistant">https://quickadd.obsidian.guide/docs/AIAssistant</a></li>
+</ul>
 </li>
-<li><em>8..15:</em>     high intensity colors (e.g. <code>\e[90-97m</code>)</li>
-<li><em>16..231:</em>   6 x 6 x 6 cube (216 colors): 16 + 36 x r + 6 x g + b (0 &lt;= r, g, b &lt;= 5)</li>
-<li><em>232..255:</em>  grayscale from black to white in 24 steps</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/ANSI_escape_code">(Reference)</a></p>
-</li>
-<li>
-<p><a href="https://misc.flogisoft.com/bash/tip_colors_and_formatting">more details</a></p>
-</li>
+<li><a href="https://github.com/logancyang/obsidian-copilot">https://github.com/logancyang/obsidian-copilot</a></li>
+<li><a href="https://github.com/different-ai/obsidian-ava">https://github.com/different-ai/obsidian-ava</a></li>
+</ul>
+<h2 id="vscode">VSCode<a class="headerlink" href="#vscode" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">GitHub Copilot</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">Remote Development Extension Pack</a></li>
+<li><a href="https://aka.ms/vscode-remote/download/ssh">Remote-SSH</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server">Remote-Tunnels</a></li>
+<li><a href="https://aka.ms/vscode-remote/download/containers">Dev Containers</a></li>
+<li><a href="https://aka.ms/vscode-remote/download/wsl">WSL</a></li>
+<li><a href="https://www.scriptkit.com">ScriptKit</a>:  <a href="https://github.com/johnlindquist/kit">(Repo)</a></li>
 </ul>
 
 
@@ -18866,9 +17289,9 @@ e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <cod
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-27</span>
   </span>
 
     
@@ -18876,9 +17299,9 @@ e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <cod
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Created">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-27</span>
   </span>
 
     
@@ -18902,7 +17325,7 @@ e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <cod
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
   Back to top
 </button>
         
@@ -18936,7 +17359,7 @@ e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <cod
       
     
     <a href="https://github.com/ikrima" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
     </a>
   
     
@@ -18947,7 +17370,7 @@ e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <cod
       
     
     <a href="https://twitter.com/ikrimae" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
     </a>
   
     
@@ -18958,7 +17381,7 @@ e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <cod
       
     
     <a href="https://linkedin.com/in/ikrima" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
     </a>
   
 </div>
@@ -18973,10 +17396,10 @@ e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <cod
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.action.edit", "content.action.view", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
       
         <script src="../../../_site/arithmatex-mathjax.js"></script>
       
@@ -18985,5 +17408,7 @@ e.g. <code>${foo-val}</code> expands to <code>val</code> if unset otherwise <cod
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
