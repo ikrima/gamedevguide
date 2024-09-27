@@ -59,6 +59,13 @@ jobs:
       #     # key:        ${{ runner.os }}-${{ github.sha }}
       #     key:          ${{ runner.os }}-${{ hashFiles('.cache/*','.cache/**/*') }}
       #     restore-keys: ${{ runner.os }}-
+      - run: echo "cache_id=$(date --utc '+%F')" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
 
       - name: Install Native dependencies
         if: ${{ env.EXTRA_PACKAGES }}
