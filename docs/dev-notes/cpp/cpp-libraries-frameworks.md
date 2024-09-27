@@ -240,7 +240,14 @@
 
 - TinyC Compiler: [https://bellard.org/tcc/](https://bellard.org/tcc)
 - Detours: [https://github.com/microsoft/Detours](https://github.com/microsoft/Detours)
-- DynamoRIO: dynamic binary instrumentation <https://dynamorio.org/>
+- [DynamoRIO](https://dynamorio.org/): Tracing JIT framework: dynamic binary instrumentation framework for the development of dynamic program analysis tools
+  - [highlevel overview](https://en.wikipedia.org/wiki/DynamoRIO)
+  - [github](https://github.com/DynamoRIO/dynamorio)
+  - Alternatives:
+    - [QBDI](https://github.com/QBDI/QBDI)
+    - [Frida](https://frida.re/)
+    - [Fermion](https://github.com/FuzzySecurity/Fermion): UI wrapper for [Frida](https://frida.re/), a dynamic instrumentation toolkit
+- 
 - Reflective DLL Injection: [https://github.com/rokups/ReflectiveLdr](https://github.com/rokups/ReflectiveLdr)
 - [https://github.com/BitFunnel/NativeJIT](https://github.com/BitFunnel/NativeJIT)
 - Zig: [https://andrewkelley.me/post/zig-cc-powerful-drop-in-replacement-gcc-clang.html](https://andrewkelley.me/post/zig-cc-powerful-drop-in-replacement-gcc-clang.html)
@@ -274,6 +281,10 @@
 - [Radare2](https://github.com/radareorg/radare2)
   - [Redare2 Book](https://book.rada.re/)
 - [Reko](https://github.com/uxmal/reko)
+- [rizin](https://rizin.re): UNIX-like reverse engineering framework and command-line toolset
+  - [github](https://github.com/rizinorg/rizin)
+- [cutter](https://cutter.re): Free and Open Source RE Platform powered by Rizin 
+  - [github](https://github.com/rizinorg/cutter?tab=readme-ov-file)
 
 ### Debugger
 
