@@ -13,6 +13,25 @@
 
 - [more details](https://www.webpro.nl/articles/getting-started-with-dotfiles)
 
+- `.gitattributes`
+  
+  ```ini
+  * text=auto eol=lf
+  *.{cmd,[cC][mM][dD]} text eol=crlf
+  *.{bat,[bB][aA][tT]} text eol=crlf
+  ```
+
+- better aliases using modern linux tools
+  
+  ```bash
+  echo 'ls:  '; exp 'eza --icons --git'
+  echo 'l:   '; exp 'eza -alg --color=always --group-directories-first --git'
+  echo 'll:  '; exp 'eza -aliSgh --color=always --group-directories-first --icons --header --long --git'
+  echo 'lt:  '; exp 'eza -@alT --color=always --git'
+  echo 'llt: '; exp 'eza --oneline --tree --icons --git-ignore'
+  echo 'lr:  '; exp 'eza -alg --sort=modified --color=always --group-directories-first --git'
+  ```
+
 ### Startup Scripts
 
 - simplified flow [(reference)](https://stackoverflow.com/a/9954208/21979545)

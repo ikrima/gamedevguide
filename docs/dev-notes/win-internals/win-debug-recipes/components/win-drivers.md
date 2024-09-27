@@ -131,7 +131,7 @@ SetupAPI text logs internal format:
 
 ### Approach 1: AutoRuns
 
-- TLDR: use **_SysInternals: AutoRuns_** to find bad behaving/suspect drivers [(Reference)](https://www.overclock.net/threads/official-amd-ryzen-ddr4-24-7-memory-stability-thread.1628751/page-1041)
+- TLDR: use _**Sysinternals: AutoRuns**_ to find bad behaving/suspect drivers [(Reference)](https://www.overclock.net/threads/official-amd-ryzen-ddr4-24-7-memory-stability-thread.1628751/page-1041)
   - Configuration
     
     - **_Options->Hide Microsoft Entries:_** enable this and unhide everything else
@@ -157,7 +157,7 @@ SetupAPI text logs internal format:
      > |`NTIOLib_MSISimple_OC`,`NTIOLib_OCKit`,`MSI Command Center`|not the worst but hitting performances. Remove all MSI software, you can do the same without usually. Nice to change options without rebooting but then once done disable the driver|
      > |`NPF*`,`Network Packet Filter drivers`|used by many network utils (e.g. PowerLine adapters, etc) so must check if needed; can always disable/re-enable on-demand instead of deleting|
     
-    - Application Drivers: usually fine since they should only be loaded on demand on app start (e.g. CPU-z,HWInfo,GPU-z,)
+    - Application Drivers: usually fine since they should only be loaded on demand on app start (e.g. `CPU-Z`,`HWInfo`,`GPU-Z`)
     - HW drivers: dangerous as can  can cause your system to stop booting; always use system snapshots
   - **_Services_**: pretty easy bc easily discoverable/traceable
     
@@ -302,15 +302,15 @@ SetupAPI text logs internal format:
 
 ### Approach 3: pnputil
 
-- find bad offender's by looking at [zombie processes](https://scorpiosoftware.net/2022/05/14/zombie-processes/) using Pavel's Object Explorer
+- find bad offender's by looking at [zombie processes](https://scorpiosoftware.net/2022/05/14/zombie-processes/) using _**Pavel's Object Explorer**_
   
-  - ex: Razer's shitty GameManagerService.exe that's forced on users for no reason
-- list/inspect
+  - ex: Razer's shitty `GameManagerService.exe` that's forced on users for no reason
+- for list/inspect drivers:
   
-  - AutoRuns
-  - DriverView
-  - DevManView
-  - InstalledDriverList
+  - _**Sysinternals AutoRuns**_
+  - _**Nirsoft DriverView**_
+  - _**Nirsoft DevManView**_
+  - _**Nirsoft InstalledDriverList**_
   - command line
     ```batch
     driverquery /V
@@ -319,10 +319,10 @@ SetupAPI text logs internal format:
     pnputil /enum-interfaces
     ```
 
-- delete
+- for deleting drivers:
   
-  - BCUninstaller
-  - BleachBit
+  - _**BCUninstaller**_
+  - _**BleachBit**_
   - command line
     ```batch
     pnputil /delete-driver oem####.inf /uninstall /force

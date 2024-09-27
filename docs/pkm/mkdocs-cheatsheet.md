@@ -14,7 +14,7 @@
 
 - upgrade `mkdocs`
   
-  - install `pip-check-updates`: `pip install pip-check-updates; pip update pip-check-updates`
+  - install `pip-check-updates`: `pip install pip-check-updates; pip install --upgrade pip-check-updates`
   - find outdated:               `pcu requirements.txt`
   - update __requirements.txt__: `pcu requirements.txt -u`
 
