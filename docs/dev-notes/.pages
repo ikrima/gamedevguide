@@ -1,5 +1,6 @@
 nav:
   - summary:            index.md
+  - ai:                 ai
   - assembly:           assembly
   - clang:              clang
   - clojure:            clojure
@@ -21,5 +22,5 @@ nav:
   - unraid:             unraid
   - visual studio:      visual-studio
   - vscode:             vscode
-  - zig:                zig
   - windows internals:  win-internals
+  - zig:                zig
