@@ -185,6 +185,23 @@ markdown_extensions:
 
 # Plugins
 plugins:
+  - privacy:
+      enabled: !ENV [CI, false]
+      # cache: true
+      # assets: true
+      # assets_fetch: true
+  - optimize:
+      enabled: !ENV [CI, false]
+      # cache: true
+      # optimize_png: true
+  - offline:
+      enabled: !ENV [CI, false]
+  - social:
+      enabled: !ENV [CI, false]
+  - tags:
+      enabled: !ENV [CI, false]
+      tags_file: tags.md
+
   - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
   - git-revision-date-localized:

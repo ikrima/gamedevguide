@@ -12,6 +12,7 @@ mkdocs-material==9.5.38
 mkdocs-awesome-pages-plugin==2.9.3
 mkdocs-git-revision-date-localized-plugin==1.2.9
 mkdocs-plugin-progress==1.2.0
+mkdocs-material[imaging]
 
 # MkDocs Extra: not deployed to production yet
 mkdocs-minify-plugin==0.8.0
