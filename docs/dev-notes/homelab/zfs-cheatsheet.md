@@ -42,6 +42,7 @@
   - [mercenary_sysadmin's comments](https://old.reddit.com/user/mercenary_sysadmin/): /r/zfs moderator/domain expert who frequently answers questions
   - [ZFS: You should use mirror vdevs, not RAIDZ](https://jrs-s.net/2015/02/06/zfs-you-should-use-mirror-vdevs-not-raidz/)
   - [ZFS RAIDZ stripe width, or: How I Learned to Stop Worrying and Love RAIDZ](https://www.delphix.com/blog/zfs-raidz-stripe-width-or-how-i-learned-stop-worrying-and-love-raidz)
+  - [ZFS tuning cheat sheet](https://jrs-s.net/2018/08/17/zfs-tuning-cheat-sheet/)
 
 ### ZFS on Unraid
 

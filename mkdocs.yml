@@ -51,7 +51,7 @@ theme:
         name: Light Mode
   font:
     # text: Nunito
-    text: Source Serif Pro
+    text: Source Serif 4
     code: Source Code Pro
   icon:
     logo: material/gamepad-variant
@@ -190,10 +190,8 @@ plugins:
       # cache: true
       # assets: true
       # assets_fetch: true
-  - optimize:
-      enabled: !ENV [CI, false]
-      # cache: true
-      # optimize_png: true
+  #- optimize:
+  #    enabled: !ENV [CI, false]
   - offline:
       enabled: !ENV [CI, false]
   - social:

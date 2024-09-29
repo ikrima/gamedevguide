@@ -7,8 +7,8 @@
 
 # MkDocs Core: actively used
 mkdocs==1.6.1
-pymdown-extensions==10.10.2
-mkdocs-material==9.5.38
+pymdown-extensions==10.11
+mkdocs-material==9.5.39
 mkdocs-awesome-pages-plugin==2.9.3
 mkdocs-git-revision-date-localized-plugin==1.2.9
 mkdocs-plugin-progress==1.2.0

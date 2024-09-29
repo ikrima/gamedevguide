@@ -1,5 +1,10 @@
 # Unraid Setup
 
+## General Config
+
+- [The UnRAID Performance Compendium](https://github.com/teambvd/UnRAID-Performance-Compendium)
+- [HOW TO: Using SR-IOV in UnRAID with 1Gb/10Gb/40Gb NICs](https://forums.unraid.net/topic/103323-how-to-using-sr-iov-in-unraid-with-1gb10gb40gb-network-interface-cards-nics/)
+
 ## Docker Config
 
 - create custom network
@@ -117,8 +122,8 @@
   - set `Low Latency Mode` = `On`
 - references
   
-  - https://resplendence.com/latencymon
-  - https://forums.unraid.net/topic/135867-is-there-a-current-guide-for-setting-up-a-windows-11-vm/
+  - <https://resplendence.com/latencymon>
+  - <https://forums.unraid.net/topic/135867-is-there-a-current-guide-for-setting-up-a-windows-11-vm/>
 
 ## SMB
 
