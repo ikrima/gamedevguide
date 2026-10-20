@@ -214,7 +214,7 @@
   ```bash
   # You want to nuke commit C and never see it again
   git reset --hard HEAD~1
-  # Undo your commit but leave your files and your index [(Reference)](http://www.gitguys.com/topics/whats-the-deal-with-the-git-index)
+  # Undo your commit but leave your files and your index [(Reference)](https://coddy.tech/git-commands/git-reset)
   git reset --soft HEAD~1
   ```
 
